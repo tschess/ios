@@ -1,0 +1,20 @@
+PODS:
+  - BlockiesSwift (0.1.2)
+  - PushNotifications (2.0.2)
+
+DEPENDENCIES:
+  - BlockiesSwift
+  - PushNotifications (~> 2.0.2)
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - BlockiesSwift
+    - PushNotifications
+
+SPEC CHECKSUMS:
+  BlockiesSwift: 22d8d56dd187e6bfd16cb8c8fbd4fd4896c3e65d
+  PushNotifications: d315b430d33bdd882c5763329313413b240e6bcf
+
+PODFILE CHECKSUM: 1f4be27a1bf3715bce15527f151386cb38c543e5
+
+COCOAPODS: 1.8.4
