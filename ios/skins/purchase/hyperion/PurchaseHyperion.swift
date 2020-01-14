@@ -9,7 +9,7 @@
 import UIKit
 import StoreKit
 
-class PuchaseHyperion: UIViewController, UITabBarDelegate, UITextViewDelegate {
+class PurchaseHyperion: UIViewController, UITabBarDelegate, UITextViewDelegate {
     
     @IBOutlet weak var titleLabel: UILabel!
     

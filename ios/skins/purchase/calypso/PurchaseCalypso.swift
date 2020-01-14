@@ -116,8 +116,8 @@ class PurchaseCalypso: UIViewController, UITabBarDelegate, UITextViewDelegate {
                 self.present(viewController, animated: false, completion: nil)
                 return
             case "CALHOUN":
-                let storyboard: UIStoryboard = UIStoryboard(name: "PreviewCalhoun", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "PreviewCalhoun") as! Preview
+                let storyboard: UIStoryboard = UIStoryboard(name: "PreviewCalypsoCalhoun", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "PreviewCalypsoCalhoun") as! Preview
                 viewController.setPlayer(player: self.player!)
                 self.present(viewController, animated: false, completion: nil)
                 return

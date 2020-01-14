@@ -11,7 +11,7 @@
         <!--Purchase Calypso-->
         <scene sceneID="5MJ-9I-f7O">
             <objects>
-                <viewController storyboardIdentifier="CalypsoPurchaseCalhoun" useStoryboardIdentifierAsRestorationIdentifier="YES" id="drw-6Q-htw" customClass="PurchaseCalypso" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PurchaseCalypsoCalhoun" useStoryboardIdentifierAsRestorationIdentifier="YES" id="drw-6Q-htw" customClass="PurchaseCalypso" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Y9i-fv-kUh">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -128,9 +128,9 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T0I-wy-akA" userLabel="PreviewView">
+                            <view alpha="0.84999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T0I-wy-akA" userLabel="PreviewView">
                                 <rect key="frame" x="8" y="268" width="398" height="138"/>
-                                <color key="backgroundColor" red="0.023529411764705882" green="0.023529411764705882" blue="0.023529411764705882" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="138" id="6Zn-br-Y6u"/>
                                 </constraints>
@@ -188,14 +188,14 @@
                                 <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="selectedImageTintColor" red="0.86923474069999995" green="0.012778783219999999" blue="0.00083617179190000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </tabBar>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c2P-Yw-WdE" userLabel="xxx">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c2P-Yw-WdE" userLabel="xxx">
                                 <rect key="frame" x="8" y="322" width="398" height="30"/>
                                 <color key="backgroundColor" red="1" green="0.41176470588235292" blue="0.70588235294117641" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="3jN-Ti-WVb"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ffQ-m3-F0s">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ffQ-m3-F0s">
                                 <rect key="frame" x="8" y="322" width="398" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="vrd-3B-lGc"/>
@@ -225,6 +225,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="ffQ-m3-F0s" firstAttribute="top" secondItem="T0I-wy-akA" secondAttribute="top" constant="54" id="07Y-Ho-SXP"/>
                             <constraint firstItem="JHd-7m-2ud" firstAttribute="top" secondItem="o9m-xj-bNP" secondAttribute="top" id="0lQ-ZE-yJM"/>
                             <constraint firstItem="97Q-qZ-U6f" firstAttribute="leading" secondItem="o9m-xj-bNP" secondAttribute="leading" id="169-cU-C0d"/>
                             <constraint firstItem="bQ7-aU-Zkj" firstAttribute="trailing" secondItem="o9m-xj-bNP" secondAttribute="trailing" id="1dX-GU-5HE"/>
@@ -250,6 +251,7 @@
                             <constraint firstItem="bQ7-aU-Zkj" firstAttribute="bottom" secondItem="o9m-xj-bNP" secondAttribute="bottom" id="fvl-na-zeb"/>
                             <constraint firstItem="Qjp-k5-CGh" firstAttribute="top" secondItem="Y9i-fv-kUh" secondAttribute="top" id="g0T-vD-F2z"/>
                             <constraint firstItem="Qqz-xE-CHP" firstAttribute="trailing" secondItem="o9m-xj-bNP" secondAttribute="trailing" id="jcc-Vg-Kie"/>
+                            <constraint firstItem="c2P-Yw-WdE" firstAttribute="top" secondItem="T0I-wy-akA" secondAttribute="top" constant="54" id="lHV-5A-nc0"/>
                             <constraint firstItem="o9m-xj-bNP" firstAttribute="trailing" secondItem="c2P-Yw-WdE" secondAttribute="trailing" constant="8" id="mg7-37-NbG"/>
                             <constraint firstItem="o9m-xj-bNP" firstAttribute="trailing" secondItem="Xuk-MQ-W5F" secondAttribute="trailing" id="pHS-x1-A9l"/>
                             <constraint firstItem="JHd-7m-2ud" firstAttribute="top" secondItem="Qjp-k5-CGh" secondAttribute="bottom" id="pKI-QW-dgG"/>
