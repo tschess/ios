@@ -287,40 +287,19 @@ class StoryboardSelector {
         }
     }
     
-    public func purchase(player: Player, remaining: Int) {
+    public func purchase(player: Player, remaining: Int) { //PurchaseIapetus
         DispatchQueue.main.async {
             switch self.device() {
-            case "XANDROID":
-                let storyboard: UIStoryboard = UIStoryboard(name: "PurchaseXandroid", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "PurchaseXandroid") as! Purchase
-                viewController.setPlayer(player: player)
-                viewController.setRemaining(remaining: remaining)
-                UIApplication.shared.keyWindow?.rootViewController = viewController
-                return
-            case "MAGNUS":
-                let storyboard: UIStoryboard = UIStoryboard(name: "PurchaseMagnus", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "PurchaseMagnus") as! Purchase
-                viewController.setPlayer(player: player)
-                viewController.setRemaining(remaining: remaining)
-                UIApplication.shared.keyWindow?.rootViewController = viewController
-                return
-            case "XENOPHON":
-                let storyboard: UIStoryboard = UIStoryboard(name: "PurchaseXenophon", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "PurchaseXenophon") as! Purchase
-                viewController.setPlayer(player: player)
-                viewController.setRemaining(remaining: remaining)
-                UIApplication.shared.keyWindow?.rootViewController = viewController
-                return
-            case "PHAEDRUS":
-                let storyboard: UIStoryboard = UIStoryboard(name: "PurchasePhaedrus", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "PurchasePhaedrus") as! Purchase
-                viewController.setPlayer(player: player)
-                viewController.setRemaining(remaining: remaining)
-                UIApplication.shared.keyWindow?.rootViewController = viewController
-                return
+                //case "CALHOUN":
+                //let storyboard: UIStoryboard = UIStoryboard(name: "PurchaseIapetusCalhoun", bundle: nil)
+                //let viewController = storyboard.instantiateViewController(withIdentifier: "PurchaseIapetusCalhoun") as! PurchaseIapetus
+                //viewController.setPlayer(player: player)
+                //viewController.setRemaining(remaining: remaining)
+                //UIApplication.shared.keyWindow?.rootViewController = viewController
+            //return
             case "CALHOUN":
-                let storyboard: UIStoryboard = UIStoryboard(name: "PurchaseCalhoun", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "PurchaseCalhoun") as! Purchase
+                let storyboard: UIStoryboard = UIStoryboard(name: "PurchaseHyperionCalhoun", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "PurchaseHyperionCalhoun") as! PurchaseHyperion
                 viewController.setPlayer(player: player)
                 viewController.setRemaining(remaining: remaining)
                 UIApplication.shared.keyWindow?.rootViewController = viewController
