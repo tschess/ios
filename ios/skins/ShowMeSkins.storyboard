@@ -49,7 +49,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="backButtonClick:" destination="5Zn-v9-j4N" eventType="touchUpInside" id="27c-QG-HPz"/>
+                                    <action selector="backButtonClick:" destination="5Zn-v9-j4N" eventType="touchUpInside" id="aIU-Rm-tea"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xoz-ug-PNo">
@@ -174,6 +174,14 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="P38-vU-Rdh"/>
                     </view>
+                    <connections>
+                        <outlet property="avatarImageView" destination="rMZ-iU-yjv" id="npK-nz-fTV"/>
+                        <outlet property="backButton" destination="FI6-KB-OiJ" id="tfd-fQ-7V7"/>
+                        <outlet property="rankLabel" destination="eQu-dg-aTM" id="4w6-4J-6uN"/>
+                        <outlet property="tabBarMenu" destination="Oxj-m1-WFH" id="KYM-AN-OjP"/>
+                        <outlet property="tschxLabel" destination="lwX-Ab-pdb" id="GQg-Cw-w7f"/>
+                        <outlet property="usernameLabel" destination="8kw-nS-Ybw" id="e7R-yN-FKZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iue-ST-Hb3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
