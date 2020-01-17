@@ -17,6 +17,8 @@ class ShowMeSkins: UIViewController, UITabBarDelegate {
     //@IBOutlet weak var tschxLabel: UILabel!
     //@IBOutlet weak var usernameLabel: UILabel!
     
+    var skinTableMenu: SkinTableMenu?
+    
     var player: Player?
     
     public func setPlayer(player: Player){
@@ -34,25 +36,58 @@ class ShowMeSkins: UIViewController, UITabBarDelegate {
         //self.usernameLabel.text = self.player!.getName()
     }
     
-    //var squadUpAdapter: FairyTableMenu?
-    
     //func getSquadUpAdapter() -> FairyTableMenu? {
         //return squadUpAdapter
     //}
+    
+    @objc func onDidReceiveData(_ notification: NSNotification) {
+        let skinInfoSelection = notification.userInfo!["skin_info_selection"] as! String
+        
+        print("skinInfoSelection: \(skinInfoSelection)")
+        
+        DispatchQueue.main.async {
+            switch skinInfoSelection {
+            //case "CALHOUN":
+                //let storyboard: UIStoryboard = UIStoryboard(name: "PurchaseIapetusCalhoun", bundle: nil)
+                //let viewController = storyboard.instantiateViewController(withIdentifier: "PurchaseIapetusCalhoun") as! PurchaseIapetus
+                //viewController.setPlayer(player: player)
+                //viewController.setRemaining(remaining: remaining)
+                //UIApplication.shared.keyWindow?.rootViewController = viewController
+            //return
+            case "hyperion":
+                let storyboard: UIStoryboard = UIStoryboard(name: "PurchaseHyperionCalhoun", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "PurchaseHyperionCalhoun") as! PurchaseHyperion
+                viewController.setPlayer(player: self.player!)
+                viewController.setRemaining(remaining: 0)
+                UIApplication.shared.keyWindow?.rootViewController = viewController
+                return
+            case "calypso":
+                let storyboard: UIStoryboard = UIStoryboard(name: "PurchaseCalypsoCalhoun", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "PurchaseCalypsoCalhoun") as! PurchaseCalypso
+                viewController.setPlayer(player: self.player!)
+                viewController.setRemaining(remaining: 0)
+                UIApplication.shared.keyWindow?.rootViewController = viewController
+                return
+            default:
+                return
+            }
+        }
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
     
         //self.tabBarMenu.delegate = self
-        //self.squadUpAdapter = children.first as? FairyTableMenu
+        self.skinTableMenu = children.first as? SkinTableMenu
         //self.squadUpAdapter!.setPlayer(player: self.player!)
         //self.squadUpAdapter!.setFairyElementList(fairyElementList: self.player!.getFairyElementList())
         
-        //NotificationCenter.default.addObserver(
-            //self,
-            //selector: #selector(self.onDidReceiveData(_:)),
-            //name: NSNotification.Name(rawValue: "SquadUpDetailSelection"),
-            //object: nil)
+        NotificationCenter.default.addObserver(
+        self,
+        selector: #selector(self.onDidReceiveData(_:)),
+        name: NSNotification.Name(rawValue: "SkinInfoSelection"),
+        object: nil)
     }
     
     //@IBAction func backButtonClick(_ sender: Any) {

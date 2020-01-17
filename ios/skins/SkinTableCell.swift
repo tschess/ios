@@ -10,8 +10,11 @@ import UIKit
 
 class SkinTableCell: UITableViewCell {
     
-    //@IBOutlet weak var elementNameLabel: UILabel!
-    //@IBOutlet weak var elementImageView: UIImageView!
+    @IBOutlet weak var cellNameLabel: UILabel!
+    @IBOutlet weak var cellForegroundView: UIView!
+    @IBOutlet weak var cellForegroundImage: UIImageView!
+    @IBOutlet weak var cellBackgroundView: UIView!
+    @IBOutlet weak var cellBackgroundImage: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

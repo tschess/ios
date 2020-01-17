@@ -304,11 +304,18 @@ class StoryboardSelector {
                 //viewController.setRemaining(remaining: remaining)
                 //UIApplication.shared.keyWindow?.rootViewController = viewController
                 //return
-                case "CALHOUN":
-                let storyboard: UIStoryboard = UIStoryboard(name: "PurchaseCalypsoCalhoun", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "PurchaseCalypsoCalhoun") as! PurchaseCalypso
+            //case "CALHOUN":
+                //let storyboard: UIStoryboard = UIStoryboard(name: "PurchaseCalypsoCalhoun", bundle: nil)
+                //let viewController = storyboard.instantiateViewController(withIdentifier: "PurchaseCalypsoCalhoun") as! PurchaseCalypso
+                //viewController.setPlayer(player: player)
+                //viewController.setRemaining(remaining: remaining)
+                //UIApplication.shared.keyWindow?.rootViewController = viewController
+                //return
+            case "CALHOUN":
+                let storyboard: UIStoryboard = UIStoryboard(name: "ShowMeSkins", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "ShowMeSkins") as! ShowMeSkins
                 viewController.setPlayer(player: player)
-                viewController.setRemaining(remaining: remaining)
+                //viewController.setRemaining(remaining: remaining)
                 UIApplication.shared.keyWindow?.rootViewController = viewController
                 return
             default:

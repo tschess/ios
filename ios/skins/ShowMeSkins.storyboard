@@ -11,7 +11,7 @@
         <!--Show Me Skins-->
         <scene sceneID="w8Z-eh-HP1">
             <objects>
-                <viewController storyboardIdentifier="ShowMeSkinsCalhoun" useStoryboardIdentifierAsRestorationIdentifier="YES" id="5Zn-v9-j4N" customClass="ShowMeSkins" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ShowMeSkins" useStoryboardIdentifierAsRestorationIdentifier="YES" id="5Zn-v9-j4N" customClass="ShowMeSkins" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="afL-uV-Nfo">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -174,23 +174,15 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="P38-vU-Rdh"/>
                     </view>
-                    <connections>
-                        <outlet property="avatarImageView" destination="rMZ-iU-yjv" id="ezq-RX-me7"/>
-                        <outlet property="backButton" destination="FI6-KB-OiJ" id="nT9-F1-uPr"/>
-                        <outlet property="rankLabel" destination="eQu-dg-aTM" id="8Y2-8P-JfZ"/>
-                        <outlet property="tabBarMenu" destination="Oxj-m1-WFH" id="AH1-Jp-FaV"/>
-                        <outlet property="tschxLabel" destination="lwX-Ab-pdb" id="BTN-XE-TDE"/>
-                        <outlet property="usernameLabel" destination="8kw-nS-Ybw" id="3ge-Tg-8KU"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iue-ST-Hb3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-17.39130434782609" y="35.491071428571423"/>
         </scene>
-        <!--Fairy Table Menu-->
+        <!--Skin Table Menu-->
         <scene sceneID="t9W-IB-wtN">
             <objects>
-                <tableViewController id="Mmr-Cq-zzT" customClass="FairyTableMenu" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="Mmr-Cq-zzT" customClass="SkinTableMenu" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="154" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" contentViewInsetsToSafeArea="NO" id="PH5-kq-hL3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="590"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -199,49 +191,79 @@
                         <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="sectionIndexTrackingBackgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="center" restorationIdentifier="SquadUpAdapterCell" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="default" indentationWidth="10" reuseIdentifier="FairyTableCell" rowHeight="154" id="Ehq-F2-xM4" customClass="FairyTableCell" customModule="ios" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="center" restorationIdentifier="SkinTableCell" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="default" indentationWidth="10" reuseIdentifier="SkinTableCell" rowHeight="154" id="Ehq-F2-xM4" customClass="SkinTableCell" customModule="ios" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="154"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ehq-F2-xM4" id="QS4-PJ-kjd">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="154"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
-                                        <view alpha="0.85000002384185791" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nZ4-0B-Jje" userLabel="PreviewView">
+                                        <view alpha="0.85000002384185791" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nZ4-0B-Jje" userLabel="CellBackgroundView">
                                             <rect key="frame" x="8" y="8" width="398" height="138"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5We-lb-Ijk">
+                                                    <rect key="frame" x="0.0" y="0.0" width="398" height="138"/>
+                                                </imageView>
+                                            </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="138" id="2df-Ez-NjQ"/>
+                                                <constraint firstItem="5We-lb-Ijk" firstAttribute="leading" secondItem="nZ4-0B-Jje" secondAttribute="leading" id="XZ1-uf-8iB"/>
+                                                <constraint firstItem="5We-lb-Ijk" firstAttribute="top" secondItem="nZ4-0B-Jje" secondAttribute="top" id="bbf-Sp-HX7"/>
+                                                <constraint firstAttribute="bottom" secondItem="5We-lb-Ijk" secondAttribute="bottom" id="evu-pM-0VQ"/>
+                                                <constraint firstAttribute="trailing" secondItem="5We-lb-Ijk" secondAttribute="trailing" id="kdd-U9-RgN"/>
                                             </constraints>
                                         </view>
-                                        <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xk4-Kg-oxX" userLabel="xxx">
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xk4-Kg-oxX" userLabel="CellForegroundView">
                                             <rect key="frame" x="8" y="57" width="398" height="40"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cgZ-r9-6js">
+                                                    <rect key="frame" x="0.0" y="0.0" width="398" height="40"/>
+                                                </imageView>
+                                            </subviews>
                                             <color key="backgroundColor" red="1" green="0.41176470590000003" blue="0.70588235290000001" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
+                                                <constraint firstItem="cgZ-r9-6js" firstAttribute="leading" secondItem="xk4-Kg-oxX" secondAttribute="leading" id="2PW-DD-eCP"/>
+                                                <constraint firstAttribute="bottom" secondItem="cgZ-r9-6js" secondAttribute="bottom" id="K6S-Q1-XZD"/>
                                                 <constraint firstAttribute="height" constant="40" id="Mnu-i4-YWV"/>
+                                                <constraint firstAttribute="trailing" secondItem="cgZ-r9-6js" secondAttribute="trailing" id="eVt-vb-izk"/>
+                                                <constraint firstItem="cgZ-r9-6js" firstAttribute="top" secondItem="xk4-Kg-oxX" secondAttribute="top" id="fUx-xk-3Zt"/>
                                             </constraints>
                                         </view>
-                                        <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oz4-qF-uWr">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5at-FP-fHP">
                                             <rect key="frame" x="8" y="57" width="398" height="40"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="40" id="kSz-GU-brZ"/>
+                                                <constraint firstAttribute="height" constant="40" id="Ogm-Rf-ENa"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="22"/>
-                                            <state key="normal" title="calypso">
-                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </state>
-                                        </button>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="nZ4-0B-Jje" firstAttribute="leading" secondItem="QS4-PJ-kjd" secondAttribute="leading" constant="8" id="2FD-yC-lPx"/>
+                                        <constraint firstItem="5at-FP-fHP" firstAttribute="leading" secondItem="QS4-PJ-kjd" secondAttribute="leading" constant="8" id="45V-gl-mmc"/>
                                         <constraint firstItem="nZ4-0B-Jje" firstAttribute="top" secondItem="QS4-PJ-kjd" secondAttribute="top" constant="8" id="8Au-VX-Jy1"/>
                                         <constraint firstItem="xk4-Kg-oxX" firstAttribute="top" secondItem="nZ4-0B-Jje" secondAttribute="top" constant="49" id="CU8-dl-QDc"/>
+                                        <constraint firstAttribute="trailing" secondItem="xk4-Kg-oxX" secondAttribute="trailing" constant="8" id="KAk-o0-l0S"/>
+                                        <constraint firstAttribute="bottom" secondItem="5at-FP-fHP" secondAttribute="bottom" constant="57" id="KbW-ke-ayb"/>
                                         <constraint firstAttribute="bottom" secondItem="nZ4-0B-Jje" secondAttribute="bottom" constant="8" id="PE5-y8-3jT"/>
-                                        <constraint firstItem="oz4-qF-uWr" firstAttribute="top" secondItem="nZ4-0B-Jje" secondAttribute="top" constant="49" id="tg9-dP-Fq8"/>
+                                        <constraint firstItem="xk4-Kg-oxX" firstAttribute="leading" secondItem="QS4-PJ-kjd" secondAttribute="leading" constant="8" id="RVo-IG-bVN"/>
+                                        <constraint firstAttribute="trailing" secondItem="5at-FP-fHP" secondAttribute="trailing" constant="8" id="U7h-bh-yFt"/>
+                                        <constraint firstItem="5at-FP-fHP" firstAttribute="top" secondItem="QS4-PJ-kjd" secondAttribute="top" constant="57" id="WEv-Iz-m4u"/>
                                         <constraint firstAttribute="trailing" secondItem="nZ4-0B-Jje" secondAttribute="trailing" constant="8" id="tpL-ra-6K8"/>
+                                        <constraint firstAttribute="bottom" secondItem="xk4-Kg-oxX" secondAttribute="bottom" constant="57" id="wzg-Rg-0Ol"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="cellBackgroundImage" destination="5We-lb-Ijk" id="2Rg-Qe-czd"/>
+                                    <outlet property="cellBackgroundView" destination="nZ4-0B-Jje" id="jKv-BR-ZNB"/>
+                                    <outlet property="cellForegroundImage" destination="cgZ-r9-6js" id="CJQ-bc-bpY"/>
+                                    <outlet property="cellForegroundView" destination="xk4-Kg-oxX" id="S9P-h5-CAh"/>
+                                    <outlet property="cellNameLabel" destination="5at-FP-fHP" id="Yhb-Uu-fic"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>

@@ -10,32 +10,40 @@ import UIKit
 
 class SkinTableMenu: UITableViewController {
     
+    //var items = ["0", "1", "2", "3"]
+    
+    var skinList: Array<Skin>?
+    
+    //Skin
+    
+    required init?(coder aDecoder: NSCoder) {
+        
+        let pink: UIColor = UIColor(red: 255/255.0, green: 105/255.0, blue: 180/255.0, alpha: 1)
+        let purple: UIColor = UIColor(red: 140/255.0, green: 0/255.0, blue: 192/255.0, alpha: 1)
+        let blue: UIColor = UIColor(red: 84/255.0, green: 140/255.0, blue: 240/255.0, alpha: 1)
+        let green: UIColor = UIColor(red: 0/255.0, green: 255/255.0, blue: 88/255.0, alpha: 1)
+        
+        //uicolor
+        let hyperion: Skin = Skin(name: "hyperion", foreColor: purple, backColor: blue)
+        let calypso: Skin = Skin(name: "calypso", foreColor: pink, backColor: UIColor.black)
+        let neptune: Skin = Skin(name: "neptune", foreColor: green, backColor: pink)
+        
+        let iapetus: Skin = Skin(
+            name: "iapetus",
+            foreColor: UIColor.black,
+            foreImage: UIImage(named: "iapetus"),
+            backColor: UIColor.black,
+            backImage: UIImage(named: "iapetus"))
+        
+        self.skinList = Array(arrayLiteral: calypso, hyperion, neptune, iapetus)
+        
+        super.init(coder: aDecoder)
+    }
+    
     var player: Player?
     
     public func setPlayer(player: Player){
         self.player = player
-    }
-    
-    var fairyListAdapter: Array<FairyElement> = Array(arrayLiteral: Amazon(), ArrowPawn(), Hunter(), LandminePawn(), Grasshopper())
-    
-    var fairyListFilter: [FairyElement]?
-    
-    func setFairyElementList(fairyElementList: [FairyElement]) {
-        
-        self.fairyListFilter = [FairyElement]()
-        
-        for fairyElementAdapter in fairyListAdapter {
-            
-            //if !fairyElementList.contains(where: {($0.name == fairyElementAdapter.name)}){
-                
-                fairyListFilter!.append(fairyElementAdapter)
-            //}
-        }
-        self.tableView.reloadData()
-    }
-    
-    func getFairyElementList() -> [FairyElement]? {
-        return fairyListFilter
     }
     
     override func viewDidLoad() {
@@ -48,37 +56,32 @@ class SkinTableMenu: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if(fairyListFilter != nil) {
-            return fairyListFilter!.count
-        }
-        return 0
+        return skinList!.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let skinTableCell = tableView.dequeueReusableCell(withIdentifier: "SkinTableCell", for: indexPath) as! SkinTableCell
+        skinTableCell.cellNameLabel.text = self.skinList![indexPath.row].getName()
         
-        let squadUpAdapterCell = tableView.dequeueReusableCell(withIdentifier: "FairyTableCell", for: indexPath) as! FairyTableCell
-        let squadUpFairyElement = fairyListFilter![indexPath.row]
+        skinTableCell.cellForegroundView.backgroundColor = self.skinList![indexPath.row].getForeColor()
+        let foreImage = self.skinList![indexPath.row].getForeImage()
+        skinTableCell.cellForegroundImage.image = foreImage
         
-        squadUpAdapterCell.elementNameLabel.text = squadUpFairyElement.name.lowercased()
-        squadUpAdapterCell.elementImageView.image = squadUpFairyElement.getImageDefault()
+        skinTableCell.cellBackgroundView.backgroundColor = self.skinList![indexPath.row].getBackColor()
+        let backImage = self.skinList![indexPath.row].getBackImage()
+        skinTableCell.cellBackgroundImage.image = backImage
         
-//        if(self.player!.getFairyElementList().contains(squadUpFairyElement)){
-//            squadUpAdapterCell.alpha = 0.75
-//        } else {
-//            squadUpAdapterCell.alpha = 1.0
-//        }
-        
-        return squadUpAdapterCell
+        return skinTableCell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        let squadUpDetailSelectionDictionary = ["squad_up_detail_selection": indexPath.row]
+        let skinInfoSelectionDictionary = ["skin_info_selection": self.skinList![indexPath.row].getName()]
         NotificationCenter.default.post(
-            name: NSNotification.Name(rawValue: "SquadUpDetailSelection"),
+            name: NSNotification.Name(rawValue: "SkinInfoSelection"),
             object: nil,
-            userInfo: squadUpDetailSelectionDictionary)
+            userInfo: skinInfoSelectionDictionary)
     }
     
 }
