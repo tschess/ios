@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Purchase Neptune-->
+        <!--Purchase Detail-->
         <scene sceneID="5MJ-9I-f7O">
             <objects>
-                <viewController storyboardIdentifier="PurchaseNeptuneCalhoun" useStoryboardIdentifierAsRestorationIdentifier="YES" id="drw-6Q-htw" customClass="PurchaseNeptune" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PurchaseDetail" useStoryboardIdentifierAsRestorationIdentifier="YES" id="drw-6Q-htw" customClass="PurchaseDetail" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Y9i-fv-kUh">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

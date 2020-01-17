@@ -68,6 +68,20 @@ class ShowMeSkins: UIViewController, UITabBarDelegate {
                 viewController.setRemaining(remaining: 0)
                 UIApplication.shared.keyWindow?.rootViewController = viewController
                 return
+            case "neptune":
+                let storyboard: UIStoryboard = UIStoryboard(name: "PurchaseNeptuneCalhoun", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "PurchaseNeptuneCalhoun") as! PurchaseNeptune
+                viewController.setPlayer(player: self.player!)
+                viewController.setRemaining(remaining: 0)
+                UIApplication.shared.keyWindow?.rootViewController = viewController
+                return
+            case "iapetus":
+                let storyboard: UIStoryboard = UIStoryboard(name: "PurchaseIapetusCalhoun", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "PurchaseIapetusCalhoun") as! PurchaseIapetus
+                viewController.setPlayer(player: self.player!)
+                viewController.setRemaining(remaining: 0)
+                UIApplication.shared.keyWindow?.rootViewController = viewController
+                return
             default:
                 return
             }

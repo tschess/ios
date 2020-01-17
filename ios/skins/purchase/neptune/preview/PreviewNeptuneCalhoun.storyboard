@@ -181,7 +181,7 @@
                                         <size key="shadowOffset" width="0.0" height="0.0"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="1" green="0.41176470588235292" blue="0.70588235294117641" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="1" green="0.41176470588235292" blue="0.40784313725490196" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="iqn-e6-ET2" firstAttribute="leading" secondItem="Ve5-It-EtS" secondAttribute="leading" id="7tn-5H-edE"/>
                                     <constraint firstAttribute="trailing" secondItem="jrB-1B-Jc9" secondAttribute="trailing" id="AaM-s5-IoF"/>

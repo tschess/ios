@@ -18,6 +18,7 @@ class SkinTableMenu: UITableViewController {
     
     required init?(coder aDecoder: NSCoder) {
         
+        let orange: UIColor = UIColor(red: 255/255.0, green: 105/255.0, blue: 104/255.0, alpha: 1) //FF6968
         let pink: UIColor = UIColor(red: 255/255.0, green: 105/255.0, blue: 180/255.0, alpha: 1)
         let purple: UIColor = UIColor(red: 140/255.0, green: 0/255.0, blue: 192/255.0, alpha: 1)
         let blue: UIColor = UIColor(red: 84/255.0, green: 140/255.0, blue: 240/255.0, alpha: 1)
@@ -26,7 +27,7 @@ class SkinTableMenu: UITableViewController {
         //uicolor
         let hyperion: Skin = Skin(name: "hyperion", foreColor: purple, backColor: blue)
         let calypso: Skin = Skin(name: "calypso", foreColor: pink, backColor: UIColor.black)
-        let neptune: Skin = Skin(name: "neptune", foreColor: green, backColor: pink)
+        let neptune: Skin = Skin(name: "neptune", foreColor: green, backColor: orange)
         
         let iapetus: Skin = Skin(
             name: "iapetus",

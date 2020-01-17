@@ -9,7 +9,7 @@
 import UIKit
 import StoreKit
 
-class PurchaseNaptune: UIViewController, UITabBarDelegate, UITextViewDelegate {
+class PurchaseNeptune: UIViewController, UITabBarDelegate, UITextViewDelegate {
     
     @IBOutlet weak var titleLabel: UILabel!
     
@@ -56,15 +56,15 @@ class PurchaseNaptune: UIViewController, UITabBarDelegate, UITextViewDelegate {
             guard let self = self else {
                 return
             }
-            if success {
-                self.products = products!
-                let product: SKProduct = self.products[0]
-                DispatchQueue.main.async {
-                    self.purchaseButton.setTitle( "$\(product.price.floatValue)" , for: .normal)
-                }
-            }
+            //if success {
+                //self.products = products!
+                //let product: SKProduct = self.products[0]
+                //DispatchQueue.main.async {
+                    //self.purchaseButton.setTitle( "$\(product.price.floatValue)" , for: .normal)
+                //}
+            //}
         }
-        self.titleLabel.text = "iapetus \(self.remaining!)/50"
+        //self.titleLabel.text = "iapetus \(self.remaining!)/50"
     }
     
     var products: [SKProduct] = [SKProduct]()
