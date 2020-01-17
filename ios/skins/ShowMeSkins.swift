@@ -11,17 +11,11 @@ import UIKit
 class ShowMeSkins: UIViewController, UITabBarDelegate {
     
     @IBOutlet weak var backButton: UIButton!
-    //@IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var tabBarMenu: UITabBar!
-    //@IBOutlet weak var tabBarMenu: UITabBar!
     @IBOutlet weak var avatarImageView: UIImageView!
-    //@IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var rankLabel: UILabel!
-    //@IBOutlet weak var rankLabel: UILabel!
     @IBOutlet weak var tschxLabel: UILabel!
-    //@IBOutlet weak var tschxLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
-    //@IBOutlet weak var usernameLabel: UILabel!
     
     var skinTableMenu: SkinTableMenu?
     
@@ -45,15 +39,12 @@ class ShowMeSkins: UIViewController, UITabBarDelegate {
     @objc func onDidReceiveData(_ notification: NSNotification) {
         let skinSelection = notification.userInfo!["skin_selection"] as! Skin
         
-        print("skinSelection: \(skinSelection.getName())")
-        
         DispatchQueue.main.async {
             switch skinSelection.getName() {
             case "hyperion":
                 let storyboard: UIStoryboard = UIStoryboard(name: "PurchaseDetail", bundle: nil)
                 let viewController = storyboard.instantiateViewController(withIdentifier: "PurchaseDetail") as! PurchaseDetail
                 viewController.setPlayer(player: self.player!)
-                //viewController.setRemaining(remaining: 0)
                 viewController.setSkin(skin: skinSelection)
                 UIApplication.shared.keyWindow?.rootViewController = viewController
                 return
@@ -61,7 +52,6 @@ class ShowMeSkins: UIViewController, UITabBarDelegate {
                 let storyboard: UIStoryboard = UIStoryboard(name: "PurchaseDetail", bundle: nil)
                 let viewController = storyboard.instantiateViewController(withIdentifier: "PurchaseDetail") as! PurchaseDetail
                 viewController.setPlayer(player: self.player!)
-                //viewController.setRemaining(remaining: 0)
                 viewController.setSkin(skin: skinSelection)
                 UIApplication.shared.keyWindow?.rootViewController = viewController
                 return
@@ -69,7 +59,6 @@ class ShowMeSkins: UIViewController, UITabBarDelegate {
                 let storyboard: UIStoryboard = UIStoryboard(name: "PurchaseDetail", bundle: nil)
                 let viewController = storyboard.instantiateViewController(withIdentifier: "PurchaseDetail") as! PurchaseDetail
                 viewController.setPlayer(player: self.player!)
-                //viewController.setRemaining(remaining: 0)
                 viewController.setSkin(skin: skinSelection)
                 UIApplication.shared.keyWindow?.rootViewController = viewController
                 return
@@ -77,7 +66,6 @@ class ShowMeSkins: UIViewController, UITabBarDelegate {
                 let storyboard: UIStoryboard = UIStoryboard(name: "PurchaseDetail", bundle: nil)
                 let viewController = storyboard.instantiateViewController(withIdentifier: "PurchaseDetail") as! PurchaseDetail
                 viewController.setPlayer(player: self.player!)
-                //viewController.setRemaining(remaining: 0)
                 viewController.setSkin(skin: skinSelection)
                 UIApplication.shared.keyWindow?.rootViewController = viewController
                 return
@@ -102,13 +90,13 @@ class ShowMeSkins: UIViewController, UITabBarDelegate {
     }
     
     @IBAction func backButtonClick(_ sender: Any) {
-    StoryboardSelector().home(player: self.player!)
+        StoryboardSelector().home(player: self.player!)
     }
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-    switch item.tag {
-    default:
-    StoryboardSelector().profile(player: self.player!)
-    }
+        switch item.tag {
+        default:
+            StoryboardSelector().profile(player: self.player!)
+        }
     }
 }

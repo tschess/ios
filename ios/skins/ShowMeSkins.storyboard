@@ -30,7 +30,7 @@
                                     <constraint firstAttribute="height" constant="50" id="l5Z-67-pQ0"/>
                                 </constraints>
                                 <items>
-                                    <tabBarItem tag="1" title="home" image="arrowshape.turn.up.left" catalog="system" selectedImage="arrowshape.turn.up.left" id="kx7-zM-ipx">
+                                    <tabBarItem tag="1" title="profile" image="arrowshape.turn.up.left" catalog="system" selectedImage="arrowshape.turn.up.left" id="kx7-zM-ipx">
                                         <color key="badgeColor" red="0.86923474069999995" green="0.012778783219999999" blue="0.00083617179190000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tabBarItem>
                                 </items>
