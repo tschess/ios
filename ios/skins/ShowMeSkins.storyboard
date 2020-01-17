@@ -198,7 +198,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="154"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
-                                        <view alpha="0.85000002384185791" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nZ4-0B-Jje" userLabel="CellBackgroundView">
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nZ4-0B-Jje" userLabel="CellBackgroundView">
                                             <rect key="frame" x="8" y="8" width="398" height="138"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5We-lb-Ijk">
@@ -241,6 +241,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstItem="nZ4-0B-Jje" firstAttribute="leading" secondItem="QS4-PJ-kjd" secondAttribute="leading" constant="8" id="2FD-yC-lPx"/>
                                         <constraint firstItem="5at-FP-fHP" firstAttribute="leading" secondItem="QS4-PJ-kjd" secondAttribute="leading" constant="8" id="45V-gl-mmc"/>

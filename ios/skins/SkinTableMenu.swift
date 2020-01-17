@@ -27,14 +27,15 @@ class SkinTableMenu: UITableViewController {
         //uicolor
         let hyperion: Skin = Skin(name: "hyperion", foreColor: purple, backColor: blue)
         let calypso: Skin = Skin(name: "calypso", foreColor: pink, backColor: UIColor.black)
-        let neptune: Skin = Skin(name: "neptune", foreColor: green, backColor: orange)
+        let neptune: Skin = Skin(name: "neptune", foreColor: green, backColor: orange, backAlpha: 0.85)
         
         let iapetus: Skin = Skin(
             name: "iapetus",
-            foreColor: UIColor.black,
+            foreColor: UIColor.white,
             foreImage: UIImage(named: "iapetus"),
             backColor: UIColor.black,
-            backImage: UIImage(named: "iapetus"))
+            backImage: UIImage(named: "iapetus"),
+            backAlpha: 0.85)
         
         self.skinList = Array(arrayLiteral: calypso, hyperion, neptune, iapetus)
         
@@ -65,10 +66,12 @@ class SkinTableMenu: UITableViewController {
         skinTableCell.cellNameLabel.text = self.skinList![indexPath.row].getName()
         
         skinTableCell.cellForegroundView.backgroundColor = self.skinList![indexPath.row].getForeColor()
+        skinTableCell.cellForegroundView.alpha = self.skinList![indexPath.row].getForeAlpha()
         let foreImage = self.skinList![indexPath.row].getForeImage()
         skinTableCell.cellForegroundImage.image = foreImage
         
         skinTableCell.cellBackgroundView.backgroundColor = self.skinList![indexPath.row].getBackColor()
+        skinTableCell.cellBackgroundView.alpha = self.skinList![indexPath.row].getBackAlpha()
         let backImage = self.skinList![indexPath.row].getBackImage()
         skinTableCell.cellBackgroundImage.image = backImage
         
@@ -78,9 +81,9 @@ class SkinTableMenu: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        let skinInfoSelectionDictionary = ["skin_info_selection": self.skinList![indexPath.row].getName()]
+        let skinInfoSelectionDictionary = ["skin_selection": self.skinList![indexPath.row]]
         NotificationCenter.default.post(
-            name: NSNotification.Name(rawValue: "SkinInfoSelection"),
+            name: NSNotification.Name(rawValue: "SkinSelection"),
             object: nil,
             userInfo: skinInfoSelectionDictionary)
     }

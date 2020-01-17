@@ -37,49 +37,46 @@ class ShowMeSkins: UIViewController, UITabBarDelegate {
     }
     
     //func getSquadUpAdapter() -> FairyTableMenu? {
-        //return squadUpAdapter
+    //return squadUpAdapter
     //}
     
     @objc func onDidReceiveData(_ notification: NSNotification) {
-        let skinInfoSelection = notification.userInfo!["skin_info_selection"] as! String
+        let skinSelection = notification.userInfo!["skin_selection"] as! Skin
         
-        print("skinInfoSelection: \(skinInfoSelection)")
+        print("skinSelection: \(skinSelection.getName())")
         
         DispatchQueue.main.async {
-            switch skinInfoSelection {
-            //case "CALHOUN":
-                //let storyboard: UIStoryboard = UIStoryboard(name: "PurchaseIapetusCalhoun", bundle: nil)
-                //let viewController = storyboard.instantiateViewController(withIdentifier: "PurchaseIapetusCalhoun") as! PurchaseIapetus
-                //viewController.setPlayer(player: player)
-                //viewController.setRemaining(remaining: remaining)
-                //UIApplication.shared.keyWindow?.rootViewController = viewController
-            //return
+            switch skinSelection.getName() {
             case "hyperion":
-                let storyboard: UIStoryboard = UIStoryboard(name: "PurchaseHyperionCalhoun", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "PurchaseHyperionCalhoun") as! PurchaseHyperion
+                let storyboard: UIStoryboard = UIStoryboard(name: "PurchaseDetail", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "PurchaseDetail") as! PurchaseDetail
                 viewController.setPlayer(player: self.player!)
-                viewController.setRemaining(remaining: 0)
+                //viewController.setRemaining(remaining: 0)
+                viewController.setSkin(skin: skinSelection)
                 UIApplication.shared.keyWindow?.rootViewController = viewController
                 return
             case "calypso":
-                let storyboard: UIStoryboard = UIStoryboard(name: "PurchaseCalypsoCalhoun", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "PurchaseCalypsoCalhoun") as! PurchaseCalypso
+                let storyboard: UIStoryboard = UIStoryboard(name: "PurchaseDetail", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "PurchaseDetail") as! PurchaseDetail
                 viewController.setPlayer(player: self.player!)
-                viewController.setRemaining(remaining: 0)
+                //viewController.setRemaining(remaining: 0)
+                viewController.setSkin(skin: skinSelection)
                 UIApplication.shared.keyWindow?.rootViewController = viewController
                 return
             case "neptune":
-                let storyboard: UIStoryboard = UIStoryboard(name: "PurchaseNeptuneCalhoun", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "PurchaseNeptuneCalhoun") as! PurchaseNeptune
+                let storyboard: UIStoryboard = UIStoryboard(name: "PurchaseDetail", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "PurchaseDetail") as! PurchaseDetail
                 viewController.setPlayer(player: self.player!)
-                viewController.setRemaining(remaining: 0)
+                //viewController.setRemaining(remaining: 0)
+                viewController.setSkin(skin: skinSelection)
                 UIApplication.shared.keyWindow?.rootViewController = viewController
                 return
             case "iapetus":
-                let storyboard: UIStoryboard = UIStoryboard(name: "PurchaseIapetusCalhoun", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "PurchaseIapetusCalhoun") as! PurchaseIapetus
+                let storyboard: UIStoryboard = UIStoryboard(name: "PurchaseDetail", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "PurchaseDetail") as! PurchaseDetail
                 viewController.setPlayer(player: self.player!)
-                viewController.setRemaining(remaining: 0)
+                //viewController.setRemaining(remaining: 0)
+                viewController.setSkin(skin: skinSelection)
                 UIApplication.shared.keyWindow?.rootViewController = viewController
                 return
             default:
@@ -91,33 +88,33 @@ class ShowMeSkins: UIViewController, UITabBarDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        
         //self.tabBarMenu.delegate = self
         self.skinTableMenu = children.first as? SkinTableMenu
         //self.squadUpAdapter!.setPlayer(player: self.player!)
         //self.squadUpAdapter!.setFairyElementList(fairyElementList: self.player!.getFairyElementList())
         
         NotificationCenter.default.addObserver(
-        self,
-        selector: #selector(self.onDidReceiveData(_:)),
-        name: NSNotification.Name(rawValue: "SkinInfoSelection"),
-        object: nil)
+            self,
+            selector: #selector(self.onDidReceiveData(_:)),
+            name: NSNotification.Name(rawValue: "SkinSelection"),
+            object: nil)
     }
     
     //@IBAction func backButtonClick(_ sender: Any) {
-        //StoryboardSelector().home(player: self.player!)
+    //StoryboardSelector().home(player: self.player!)
     //}
     
     //@objc func onDidReceiveData(_ notification: NSNotification) {
-        //let squadUpDetailSelectionIndex = notification.userInfo!["squad_up_detail_selection"] as! Int
-        //let fairyElement = squadUpAdapter!.getFairyElementList()![squadUpDetailSelectionIndex]
-        //StoryboardSelector().acquisition(player: self.player!, fairyElement: fairyElement)
+    //let squadUpDetailSelectionIndex = notification.userInfo!["squad_up_detail_selection"] as! Int
+    //let fairyElement = squadUpAdapter!.getFairyElementList()![squadUpDetailSelectionIndex]
+    //StoryboardSelector().acquisition(player: self.player!, fairyElement: fairyElement)
     //}
     
     //func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-        //switch item.tag {
-        //default:
-            //StoryboardSelector().profile(player: self.player!)
-        //}
+    //switch item.tag {
+    //default:
+    //StoryboardSelector().profile(player: self.player!)
+    //}
     //}
 }

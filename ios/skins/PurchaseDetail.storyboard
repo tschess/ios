@@ -107,7 +107,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="backButtonClick:" destination="drw-6Q-htw" eventType="touchUpInside" id="gHy-L2-LVV"/>
+                                    <action selector="backButtonClick:" destination="drw-6Q-htw" eventType="touchUpInside" id="SeV-Dc-Uqu"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="neptune" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="97Q-qZ-U6f">
@@ -156,7 +156,7 @@
                                     <constraint firstAttribute="height" constant="50" id="chp-yw-9BH"/>
                                 </constraints>
                                 <items>
-                                    <tabBarItem title="profile" image="arrowshape.turn.up.left" catalog="system" id="xub-wA-aVQ">
+                                    <tabBarItem title="skins" image="arrowshape.turn.up.left" catalog="system" id="xub-wA-aVQ">
                                         <inset key="imageInsets" minX="2" minY="2" maxX="2" maxY="2"/>
                                         <color key="badgeColor" red="0.86923474069999995" green="0.012778783219999999" blue="0.00083617179190000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tabBarItem>
@@ -185,7 +185,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0aJ-wP-YFz" userLabel="CellView">
                                 <rect key="frame" x="8" y="268" width="398" height="138"/>
                                 <subviews>
-                                    <view alpha="0.85000002384185791" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Di3-u6-6NY" userLabel="CellBackgroundView">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Di3-u6-6NY" userLabel="CellBackgroundView">
                                         <rect key="frame" x="0.0" y="0.0" width="398" height="138"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9sf-Q5-d0d">
@@ -228,7 +228,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="d15-vf-rG0" firstAttribute="top" secondItem="0aJ-wP-YFz" secondAttribute="top" constant="49" id="9A6-d3-lOj"/>
                                     <constraint firstAttribute="bottom" secondItem="Di3-u6-6NY" secondAttribute="bottom" id="Blz-e0-ea0"/>
@@ -285,15 +285,21 @@
                         <viewLayoutGuide key="safeArea" id="o9m-xj-bNP"/>
                     </view>
                     <connections>
-                        <outlet property="avatarImageView" destination="ZYM-sO-MoJ" id="Fwo-74-5lc"/>
-                        <outlet property="backButton" destination="JHd-7m-2ud" id="okv-7g-pxC"/>
-                        <outlet property="descriptionTextView" destination="l7B-Hd-lGw" id="Hhi-kw-fOs"/>
-                        <outlet property="purchaseButton" destination="HiT-nW-sbi" id="AlO-ho-Psb"/>
-                        <outlet property="rankLabel" destination="NxX-c3-lXs" id="EDg-dC-wZo"/>
-                        <outlet property="tabBarMenu" destination="bQ7-aU-Zkj" id="wES-rf-ME4"/>
-                        <outlet property="titleLabel" destination="zkg-6z-3mg" id="wNs-fu-X7m"/>
-                        <outlet property="tschxLabel" destination="lKV-A6-VLc" id="RP5-HH-WVY"/>
-                        <outlet property="usernameLabel" destination="p9p-nn-dtj" id="YVL-Gi-aXw"/>
+                        <outlet property="avatarImageView" destination="ZYM-sO-MoJ" id="kNF-gJ-wKg"/>
+                        <outlet property="backButton" destination="JHd-7m-2ud" id="ddT-Jl-IXz"/>
+                        <outlet property="cellBackgroundImage" destination="9sf-Q5-d0d" id="ZdN-ed-t1U"/>
+                        <outlet property="cellBackgroundView" destination="Di3-u6-6NY" id="VJt-Oh-kWg"/>
+                        <outlet property="cellForegroundImage" destination="5qh-Wa-yrg" id="ePh-O3-4yk"/>
+                        <outlet property="cellForegroundView" destination="d15-vf-rG0" id="cwW-Ye-rhZ"/>
+                        <outlet property="countdownTimerLabel" destination="zkg-6z-3mg" id="Bjx-W4-7wP"/>
+                        <outlet property="descriptionTextView" destination="l7B-Hd-lGw" id="uEC-1x-kcs"/>
+                        <outlet property="priceLabel" destination="0sm-NE-aD2" id="ZKg-cT-eWs"/>
+                        <outlet property="purchaseButton" destination="HiT-nW-sbi" id="tBa-Yi-Oxe"/>
+                        <outlet property="rankLabel" destination="NxX-c3-lXs" id="ylo-5K-x0C"/>
+                        <outlet property="tabBarMenu" destination="bQ7-aU-Zkj" id="FxI-9g-FFs"/>
+                        <outlet property="titleLabel" destination="97Q-qZ-U6f" id="tT9-8p-fJ1"/>
+                        <outlet property="tschxLabel" destination="lKV-A6-VLc" id="vHG-t6-awa"/>
+                        <outlet property="usernameLabel" destination="p9p-nn-dtj" id="JOx-mM-t57"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4VU-lO-oWZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
