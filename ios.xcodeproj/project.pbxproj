@@ -248,6 +248,10 @@
 		B7F062892385CF270015C618 /* Colour.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F062882385CF270015C618 /* Colour.swift */; };
 		B7F35E332309F6D6002018F7 /* DateTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F35E322309F6D6002018F7 /* DateTime.swift */; };
 		B7F4E87A233BC091005BDF85 /* GetHeaderTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F4E879233BC091005BDF85 /* GetHeaderTask.swift */; };
+		B7F5878423D0AE4900A91CD3 /* ShowMeSkins.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7F5878323D0AE4900A91CD3 /* ShowMeSkins.storyboard */; };
+		B7F5878623D12D8000A91CD3 /* ShowMeSkins.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F5878523D12D8000A91CD3 /* ShowMeSkins.swift */; };
+		B7F5878823D12E3300A91CD3 /* SkinTableMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F5878723D12E3300A91CD3 /* SkinTableMenu.swift */; };
+		B7F5878A23D12E6300A91CD3 /* SkinTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F5878923D12E6300A91CD3 /* SkinTableCell.swift */; };
 		B7F64B06239ABA3600F6AFB7 /* Landmine.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F64B05239ABA3600F6AFB7 /* Landmine.swift */; };
 		B7F78D10236B91E800F07FD7 /* ReviewXandroid.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7F78D0F236B91E800F07FD7 /* ReviewXandroid.storyboard */; };
 		B7F78D12236B922700F07FD7 /* ReviewPhaedrus.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7F78D11236B922700F07FD7 /* ReviewPhaedrus.storyboard */; };
@@ -553,6 +557,10 @@
 		B7F062882385CF270015C618 /* Colour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colour.swift; sourceTree = "<group>"; };
 		B7F35E322309F6D6002018F7 /* DateTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTime.swift; sourceTree = "<group>"; };
 		B7F4E879233BC091005BDF85 /* GetHeaderTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetHeaderTask.swift; sourceTree = "<group>"; };
+		B7F5878323D0AE4900A91CD3 /* ShowMeSkins.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ShowMeSkins.storyboard; sourceTree = "<group>"; };
+		B7F5878523D12D8000A91CD3 /* ShowMeSkins.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowMeSkins.swift; sourceTree = "<group>"; };
+		B7F5878723D12E3300A91CD3 /* SkinTableMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkinTableMenu.swift; sourceTree = "<group>"; };
+		B7F5878923D12E6300A91CD3 /* SkinTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkinTableCell.swift; sourceTree = "<group>"; };
 		B7F64B05239ABA3600F6AFB7 /* Landmine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Landmine.swift; sourceTree = "<group>"; };
 		B7F78D0F236B91E800F07FD7 /* ReviewXandroid.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ReviewXandroid.storyboard; sourceTree = "<group>"; };
 		B7F78D11236B922700F07FD7 /* ReviewPhaedrus.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ReviewPhaedrus.storyboard; sourceTree = "<group>"; };
@@ -838,6 +846,10 @@
 				B7DF5BFC23832F8D0022A8C2 /* purchase */,
 				B7DF5BDC23832B980022A8C2 /* xpurchase */,
 				B7DF5BDB23832B820022A8C2 /* manage */,
+				B7F5878323D0AE4900A91CD3 /* ShowMeSkins.storyboard */,
+				B7F5878523D12D8000A91CD3 /* ShowMeSkins.swift */,
+				B7F5878723D12E3300A91CD3 /* SkinTableMenu.swift */,
+				B7F5878923D12E6300A91CD3 /* SkinTableCell.swift */,
 			);
 			path = skins;
 			sourceTree = "<group>";
@@ -1919,6 +1931,7 @@
 				B7EF81212388C92C00E89191 /* EthPhaedrus.storyboard in Resources */,
 				B7DF148723CE665D007B2C7D /* PurchaseHyperionCalhoun.storyboard in Resources */,
 				B7039F24238B5197003896C6 /* CancelXenophon.storyboard in Resources */,
+				B7F5878423D0AE4900A91CD3 /* ShowMeSkins.storyboard in Resources */,
 				B7BAA657237F3BDE0038C483 /* ProfilePhaedrus.storyboard in Resources */,
 				B70424B923AEE16100DBB7FA /* QuickXandroid.storyboard in Resources */,
 				B7039F1C238B4C79003896C6 /* HomeXenophon.storyboard in Resources */,
@@ -2058,6 +2071,7 @@
 				B7A6218F23A027D3005DCDA1 /* Talk.swift in Sources */,
 				B7BCD7B622F4736800CC29E6 /* BlackSpy.swift in Sources */,
 				B7F7C8F622FFA5770060AC38 /* Threat.swift in Sources */,
+				B7F5878A23D12E6300A91CD3 /* SkinTableCell.swift in Sources */,
 				B7DF149123CE6CB1007B2C7D /* PurchaseHyperion.swift in Sources */,
 				B7B81F58236C0A540030BCC4 /* ChallengeMenuCell.swift in Sources */,
 				B74145CE22F3CE0500B3B4FF /* LandminePawn.swift in Sources */,
@@ -2169,6 +2183,7 @@
 				B7AB8E60235607CD002D71BD /* HopperOffense.swift in Sources */,
 				B7E23C592381FD6D007DA860 /* IapetusSkins.swift in Sources */,
 				B7DF5C122383445B0022A8C2 /* Snapshot.swift in Sources */,
+				B7F5878623D12D8000A91CD3 /* ShowMeSkins.swift in Sources */,
 				B74145DA22F3CE6400B3B4FF /* Pawn.swift in Sources */,
 				B7EA5DD02375C61D0019C0BF /* MatrixDeserializer.swift in Sources */,
 				B794605C23A574FD004A6663 /* RequestMessage.swift in Sources */,
@@ -2178,6 +2193,7 @@
 				B7EA5DC12375C15A0019C0BF /* ConfigDeserializer.swift in Sources */,
 				B7F4E87A233BC091005BDF85 /* GetHeaderTask.swift in Sources */,
 				B7BCD7BE22F473C100CC29E6 /* WhiteHunter.swift in Sources */,
+				B7F5878823D12E3300A91CD3 /* SkinTableMenu.swift in Sources */,
 				B7FCCC9B2373F12600C4DD88 /* Processor.swift in Sources */,
 				B7088208233A0CCC00A06CAD /* LoginTask.swift in Sources */,
 				B7D0CAA023A96F5D006A7F9D /* ConfigCollectionViewCell.swift in Sources */,

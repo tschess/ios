@@ -18,7 +18,7 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KHp-zm-Jvk" userLabel="TopView">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="222"/>
-                                <color key="backgroundColor" red="0.32941176470588235" green="0.5490196078431373" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.0" green="1" blue="0.34509803921568627" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JqC-Oa-98l">
                                 <rect key="frame" x="0.0" y="44" width="414" height="40"/>
