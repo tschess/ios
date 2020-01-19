@@ -251,6 +251,9 @@
 		B7F062892385CF270015C618 /* Colour.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F062882385CF270015C618 /* Colour.swift */; };
 		B7F35E332309F6D6002018F7 /* DateTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F35E322309F6D6002018F7 /* DateTime.swift */; };
 		B7F4E87A233BC091005BDF85 /* GetHeaderTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F4E879233BC091005BDF85 /* GetHeaderTask.swift */; };
+		B7F541B623D4F3C500E89074 /* xHome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7F541B523D4F3C400E89074 /* xHome.storyboard */; };
+		B7F541B823D5005300E89074 /* xHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F541B723D5005300E89074 /* xHome.swift */; };
+		B7F541BA23D5044F00E89074 /* xHomeMenuTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F541B923D5044F00E89074 /* xHomeMenuTable.swift */; };
 		B7F5878423D0AE4900A91CD3 /* ShowMeSkins.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7F5878323D0AE4900A91CD3 /* ShowMeSkins.storyboard */; };
 		B7F5878623D12D8000A91CD3 /* ShowMeSkins.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F5878523D12D8000A91CD3 /* ShowMeSkins.swift */; };
 		B7F5878823D12E3300A91CD3 /* SkinTableMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F5878723D12E3300A91CD3 /* SkinTableMenu.swift */; };
@@ -563,6 +566,9 @@
 		B7F062882385CF270015C618 /* Colour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colour.swift; sourceTree = "<group>"; };
 		B7F35E322309F6D6002018F7 /* DateTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTime.swift; sourceTree = "<group>"; };
 		B7F4E879233BC091005BDF85 /* GetHeaderTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetHeaderTask.swift; sourceTree = "<group>"; };
+		B7F541B523D4F3C400E89074 /* xHome.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = xHome.storyboard; sourceTree = "<group>"; };
+		B7F541B723D5005300E89074 /* xHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xHome.swift; sourceTree = "<group>"; };
+		B7F541B923D5044F00E89074 /* xHomeMenuTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xHomeMenuTable.swift; sourceTree = "<group>"; };
 		B7F5878323D0AE4900A91CD3 /* ShowMeSkins.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ShowMeSkins.storyboard; sourceTree = "<group>"; };
 		B7F5878523D12D8000A91CD3 /* ShowMeSkins.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowMeSkins.swift; sourceTree = "<group>"; };
 		B7F5878723D12E3300A91CD3 /* SkinTableMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkinTableMenu.swift; sourceTree = "<group>"; };
@@ -649,6 +655,7 @@
 				B7F78D20236B940C00F07FD7 /* component */,
 				B7F78D04236B907E00F07FD7 /* storyboard */,
 				B708D0CD236B1E7300A899F9 /* Leader.swift */,
+				B7F541B723D5005300E89074 /* xHome.swift */,
 			);
 			path = leader;
 			sourceTree = "<group>";
@@ -1653,6 +1660,7 @@
 				B7CB62CD237B88AA00E50204 /* LeaderCalhoun.storyboard */,
 				B7CB62CF237B88EC00E50204 /* LeaderMagnus.storyboard */,
 				B7039F25238B5235003896C6 /* LeaderXenophon.storyboard */,
+				B7F541B523D4F3C400E89074 /* xHome.storyboard */,
 			);
 			path = storyboard;
 			sourceTree = "<group>";
@@ -1686,6 +1694,7 @@
 			children = (
 				B7F78D21236B942B00F07FD7 /* LeaderMenuTable.swift */,
 				B7F78D4A236BF06200F07FD7 /* LeaderMenuCell.swift */,
+				B7F541B923D5044F00E89074 /* xHomeMenuTable.swift */,
 			);
 			path = component;
 			sourceTree = "<group>";
@@ -1999,6 +2008,7 @@
 				B708D0F6236B4F4500A899F9 /* StartPhaedrus.storyboard in Resources */,
 				B7039F28238B52C2003896C6 /* FairyXenophon.storyboard in Resources */,
 				B7DA22202399C344006256CC /* ScannerXenophon.storyboard in Resources */,
+				B7F541B623D4F3C500E89074 /* xHome.storyboard in Resources */,
 				B7F78D1A236B935D00F07FD7 /* LeaderXandroid.storyboard in Resources */,
 				B7039F36238B585E003896C6 /* SnapshotXenophon.storyboard in Resources */,
 				B708D0DF236B354600A899F9 /* Initializer.storyboard in Resources */,
@@ -2170,6 +2180,7 @@
 				B708D0CE236B1E7300A899F9 /* Leader.swift in Sources */,
 				B7F78D35236BA71300F07FD7 /* FairyTableCell.swift in Sources */,
 				B70A86C923707B2900D303F0 /* UpdateGamestate.swift in Sources */,
+				B7F541BA23D5044F00E89074 /* xHomeMenuTable.swift in Sources */,
 				B7C5C01422EF8D0600BFCB39 /* Review.swift in Sources */,
 				B7AEEA8223A1BE73002F950C /* PageList.swift in Sources */,
 				B7F78D4B236BF06200F07FD7 /* LeaderMenuCell.swift in Sources */,
@@ -2231,6 +2242,7 @@
 				B714BF28237C942A000DD80E /* PlayerCreate.swift in Sources */,
 				B7AF6D31238C3A12001B6086 /* PlayerCore.swift in Sources */,
 				B7BCD7D022F4747F00CC29E6 /* WhiteRook.swift in Sources */,
+				B7F541B823D5005300E89074 /* xHome.swift in Sources */,
 				B7DF5BF923832F3D0022A8C2 /* Product.swift in Sources */,
 				B7F062892385CF270015C618 /* Colour.swift in Sources */,
 				B7471DC123A6E3C2008F70A3 /* BlackReveal.swift in Sources */,
