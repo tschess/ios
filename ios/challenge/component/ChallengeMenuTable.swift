@@ -54,36 +54,36 @@ class ChallengeMenuTable: UITableViewController {
         cell.eloLabel.text = gameTableMenuItem.getOpponentElo()
         cell.usernameLabel.text = gameTableMenuItem.getOpponentName()
         
-        cell.usernameLabel.alpha = 0.5
-        cell.avatarImageView.alpha = 0.5
-        cell.eloLabel.alpha = 0.5
-        cell.actionLabel.alpha = 0.5
-        cell.viewWithTag(1)!.alpha = 0.5
-        cell.actionLabel.textColor = UIColor.black
+        //cell.usernameLabel.alpha = 0.5
+        //cell.avatarImageView.alpha = 0.5
+        //cell.eloLabel.alpha = 0.5
+        //cell.actionLabel.alpha = 0.5
+        //cell.viewWithTag(1)!.alpha = 0.5
+        //cell.actionLabel.textColor = UIColor.black
         cell.usernameLabel.textColor = UIColor.black
         cell.eloLabel.textColor = UIColor.black
         if(gameTableMenuItem.winner == self.gameModel!.getOpponentName()){
             
             cell.backgroundColor = UIColor(red: 211/255.0, green: 255/255.0, blue: 211/255.0, alpha: 1)
             if(gameMenuTableList[indexPath.row].getDrawProposer().contains("TIMEOUT")){
-                cell.actionLabel.text = "timeout"
+                //cell.actionLabel.text = "timeout"
                 gameMenuTableList[indexPath.row].setOutcome(outcome: "TIMEOUT")
             } else {
-                cell.actionLabel.text = "win"
+                //cell.actionLabel.text = "win"
                 gameMenuTableList[indexPath.row].setOutcome(outcome: "WIN")
             }
         }
         else if(gameTableMenuItem.winner == "DRAW"){
-            cell.actionLabel.text = "draw"
+            //cell.actionLabel.text = "draw"
             cell.backgroundColor = UIColor(red: 255/255.0, green: 255/255.0, blue: 204/255.0, alpha: 1)
             gameMenuTableList[indexPath.row].setOutcome(outcome: "DRAW")
         } else {
             
             if(gameMenuTableList[indexPath.row].getDrawProposer().contains("TIMEOUT")){
-                cell.actionLabel.text = "timeout"
+                //cell.actionLabel.text = "timeout"
                 gameMenuTableList[indexPath.row].setOutcome(outcome: "TIMEOUT")
             } else {
-                cell.actionLabel.text = "loss"
+                //cell.actionLabel.text = "loss"
                 gameMenuTableList[indexPath.row].setOutcome(outcome: "LOSS")
             }
             cell.backgroundColor = UIColor(red: 255/255.0, green: 211/255.0, blue: 211/255.0, alpha: 1)

@@ -356,8 +356,8 @@ class StoryboardSelector {
                 UIApplication.shared.keyWindow?.rootViewController = viewController
                 return
             case "CALHOUN":
-                let storyboard: UIStoryboard = UIStoryboard(name: "ChallengeCalhoun", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "ChallengeCalhoun") as! Challenge
+                let storyboard: UIStoryboard = UIStoryboard(name: "xOther", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "xOther") as! xOther
                 viewController.setPlayer(player: player)
                 viewController.setGameModel(gameModel: gameModel)
                 UIApplication.shared.keyWindow?.rootViewController = viewController

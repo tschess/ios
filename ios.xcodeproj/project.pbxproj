@@ -254,6 +254,8 @@
 		B7F541B623D4F3C500E89074 /* xHome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7F541B523D4F3C400E89074 /* xHome.storyboard */; };
 		B7F541B823D5005300E89074 /* xHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F541B723D5005300E89074 /* xHome.swift */; };
 		B7F541BA23D5044F00E89074 /* xHomeMenuTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F541B923D5044F00E89074 /* xHomeMenuTable.swift */; };
+		B7F541BC23D507C800E89074 /* xOther.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7F541BB23D507C800E89074 /* xOther.storyboard */; };
+		B7F541BE23D510C200E89074 /* xOther.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F541BD23D510C200E89074 /* xOther.swift */; };
 		B7F5878423D0AE4900A91CD3 /* ShowMeSkins.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7F5878323D0AE4900A91CD3 /* ShowMeSkins.storyboard */; };
 		B7F5878623D12D8000A91CD3 /* ShowMeSkins.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F5878523D12D8000A91CD3 /* ShowMeSkins.swift */; };
 		B7F5878823D12E3300A91CD3 /* SkinTableMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F5878723D12E3300A91CD3 /* SkinTableMenu.swift */; };
@@ -569,6 +571,8 @@
 		B7F541B523D4F3C400E89074 /* xHome.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = xHome.storyboard; sourceTree = "<group>"; };
 		B7F541B723D5005300E89074 /* xHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xHome.swift; sourceTree = "<group>"; };
 		B7F541B923D5044F00E89074 /* xHomeMenuTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xHomeMenuTable.swift; sourceTree = "<group>"; };
+		B7F541BB23D507C800E89074 /* xOther.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = xOther.storyboard; sourceTree = "<group>"; };
+		B7F541BD23D510C200E89074 /* xOther.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xOther.swift; sourceTree = "<group>"; };
 		B7F5878323D0AE4900A91CD3 /* ShowMeSkins.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ShowMeSkins.storyboard; sourceTree = "<group>"; };
 		B7F5878523D12D8000A91CD3 /* ShowMeSkins.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowMeSkins.swift; sourceTree = "<group>"; };
 		B7F5878723D12E3300A91CD3 /* SkinTableMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkinTableMenu.swift; sourceTree = "<group>"; };
@@ -656,6 +660,7 @@
 				B7F78D04236B907E00F07FD7 /* storyboard */,
 				B708D0CD236B1E7300A899F9 /* Leader.swift */,
 				B7F541B723D5005300E89074 /* xHome.swift */,
+				B7F541BD23D510C200E89074 /* xOther.swift */,
 			);
 			path = leader;
 			sourceTree = "<group>";
@@ -1661,6 +1666,7 @@
 				B7CB62CF237B88EC00E50204 /* LeaderMagnus.storyboard */,
 				B7039F25238B5235003896C6 /* LeaderXenophon.storyboard */,
 				B7F541B523D4F3C400E89074 /* xHome.storyboard */,
+				B7F541BB23D507C800E89074 /* xOther.storyboard */,
 			);
 			path = storyboard;
 			sourceTree = "<group>";
@@ -1949,6 +1955,7 @@
 				B7EF81212388C92C00E89191 /* EthPhaedrus.storyboard in Resources */,
 				B7DF148723CE665D007B2C7D /* PurchaseHyperionCalhoun.storyboard in Resources */,
 				B7039F24238B5197003896C6 /* CancelXenophon.storyboard in Resources */,
+				B7F541BC23D507C800E89074 /* xOther.storyboard in Resources */,
 				B7F5878423D0AE4900A91CD3 /* ShowMeSkins.storyboard in Resources */,
 				B7BAA657237F3BDE0038C483 /* ProfilePhaedrus.storyboard in Resources */,
 				B70424B923AEE16100DBB7FA /* QuickXandroid.storyboard in Resources */,
@@ -2109,6 +2116,7 @@
 				B7661FA72371FB050033A556 /* UpdatePhoto.swift in Sources */,
 				B7BAA63E237F129B0038C483 /* OptionCell.swift in Sources */,
 				B708D0DD236B351000A899F9 /* Initializer.swift in Sources */,
+				B7F541BE23D510C200E89074 /* xOther.swift in Sources */,
 				B7AEEA8C23A1C721002F950C /* ActualCell.swift in Sources */,
 				B74145D022F3CE1400B3B4FF /* Medusa.swift in Sources */,
 				B74145CC22F3CDEF00B3B4FF /* Hunter.swift in Sources */,
