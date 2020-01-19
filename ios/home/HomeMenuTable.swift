@@ -1,5 +1,5 @@
 //
-//  xHomeMenuTable.swift
+//  HomeMenuTable.swift
 //  ios
 //
 //  Created by Matthew on 1/19/20.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class xHomeMenuTable: UITableViewController {
+class HomeMenuTable: UITableViewController {
     
     var leaderboardTableList: [Game] = [Game]()
     var player: Player?
@@ -71,7 +71,7 @@ class xHomeMenuTable: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "LeaderMenuCell", for: indexPath) as! LeaderMenuCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "HomeMenuCell", for: indexPath) as! HomeMenuCell
         let gameTableMenuItem = leaderboardTableList[indexPath.row]
         
         let dataDecoded: Data = Data(base64Encoded: gameTableMenuItem.getOpponentAvatar(), options: .ignoreUnknownCharacters)!
@@ -112,4 +112,3 @@ class xHomeMenuTable: UITableViewController {
         }
     }
 }
-

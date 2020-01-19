@@ -11,7 +11,7 @@
         <!--Other-->
         <scene sceneID="Uso-HT-uji">
             <objects>
-                <viewController storyboardIdentifier="xOther" useStoryboardIdentifierAsRestorationIdentifier="YES" id="DAE-jB-YvD" customClass="xOther" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Other" useStoryboardIdentifierAsRestorationIdentifier="YES" id="DAE-jB-YvD" customClass="Other" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="9gv-Ja-N4g">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -190,16 +190,16 @@
             </objects>
             <point key="canvasLocation" x="-523.1884057971015" y="64.955357142857139"/>
         </scene>
-        <!--Challenge Menu Table-->
+        <!--Other Menu Table-->
         <scene sceneID="q3I-tM-n4B">
             <objects>
-                <tableViewController id="ymK-8I-rfn" customClass="ChallengeMenuTable" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="ymK-8I-rfn" customClass="OtherMenuTable" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="103" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="RGj-zf-Ij8">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="590"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ChallengeMenuCell" rowHeight="103" id="fEE-xr-pP7" customClass="ChallengeMenuCell" customModule="ios" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="OtherMenuCell" rowHeight="103" id="fEE-xr-pP7" customClass="OtherMenuCell" customModule="ios" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="103"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fEE-xr-pP7" id="hNs-pd-88F">

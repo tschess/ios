@@ -13,7 +13,6 @@
 		B7039F1C238B4C79003896C6 /* HomeXenophon.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7039F1B238B4C79003896C6 /* HomeXenophon.storyboard */; };
 		B7039F22238B4F84003896C6 /* ReviewXenophon.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7039F21238B4F84003896C6 /* ReviewXenophon.storyboard */; };
 		B7039F24238B5197003896C6 /* CancelXenophon.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7039F23238B5197003896C6 /* CancelXenophon.storyboard */; };
-		B7039F26238B5235003896C6 /* LeaderXenophon.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7039F25238B5235003896C6 /* LeaderXenophon.storyboard */; };
 		B7039F28238B52C2003896C6 /* FairyXenophon.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7039F27238B52C2003896C6 /* FairyXenophon.storyboard */; };
 		B7039F2A238B534C003896C6 /* ChallengeXenophon.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7039F29238B534C003896C6 /* ChallengeXenophon.storyboard */; };
 		B7039F2C238B541D003896C6 /* AcquisitionXenophon.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7039F2B238B541D003896C6 /* AcquisitionXenophon.storyboard */; };
@@ -39,7 +38,6 @@
 		B7088208233A0CCC00A06CAD /* LoginTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7088207233A0CCC00A06CAD /* LoginTask.swift */; };
 		B708820E233A0F8100A06CAD /* GameDeleteTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = B708820D233A0F8100A06CAD /* GameDeleteTask.swift */; };
 		B7088210233A0FC900A06CAD /* LeaderboardPageTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = B708820F233A0FC900A06CAD /* LeaderboardPageTask.swift */; };
-		B708D0CE236B1E7300A899F9 /* Leader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B708D0CD236B1E7300A899F9 /* Leader.swift */; };
 		B708D0DD236B351000A899F9 /* Initializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B708D0DC236B351000A899F9 /* Initializer.swift */; };
 		B708D0DF236B354600A899F9 /* Initializer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B708D0DE236B354600A899F9 /* Initializer.storyboard */; };
 		B708D0E7236B366800A899F9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B708D0E6236B366800A899F9 /* LaunchScreen.storyboard */; };
@@ -158,7 +156,6 @@
 		B7BCD7DC22F474D800CC29E6 /* BlackRook.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BCD7DB22F474D800CC29E6 /* BlackRook.swift */; };
 		B7C1448B23A3C9E100404810 /* QuickTaskPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C1448A23A3C9E100404810 /* QuickTaskPlayer.swift */; };
 		B7C1448D23A3E37900404810 /* QuickTaskGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C1448C23A3E37900404810 /* QuickTaskGame.swift */; };
-		B7C1449523A452B100404810 /* DiscoveryTargetTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C1449423A452B100404810 /* DiscoveryTargetTask.swift */; };
 		B7C5C00822EF3F2F00BFCB39 /* ThroughView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C5C00722EF3F2F00BFCB39 /* ThroughView.swift */; };
 		B7C5C01422EF8D0600BFCB39 /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C5C01322EF8D0600BFCB39 /* Review.swift */; };
 		B7CA7BB2235A2DA600AA1814 /* DrawResign.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7CA7BB1235A2DA600AA1814 /* DrawResign.storyboard */; };
@@ -169,8 +166,6 @@
 		B7CB62A9237B428400E50204 /* StoryboardSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7CB62A8237B428400E50204 /* StoryboardSelector.swift */; };
 		B7CB62AF237B4E1E00E50204 /* HomeMagnus.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7CB62AE237B4E1E00E50204 /* HomeMagnus.storyboard */; };
 		B7CB62B1237B4E7800E50204 /* HomeCalhoun.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7CB62B0237B4E7800E50204 /* HomeCalhoun.storyboard */; };
-		B7CB62CE237B88AA00E50204 /* LeaderCalhoun.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7CB62CD237B88AA00E50204 /* LeaderCalhoun.storyboard */; };
-		B7CB62D0237B88EC00E50204 /* LeaderMagnus.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7CB62CF237B88EC00E50204 /* LeaderMagnus.storyboard */; };
 		B7CB62D6237B96A100E50204 /* FairyCalhoun.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7CB62D5237B96A100E50204 /* FairyCalhoun.storyboard */; };
 		B7CB62D8237B96BB00E50204 /* FairyMagnus.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7CB62D7237B96BB00E50204 /* FairyMagnus.storyboard */; };
 		B7CB62DE237BA01400E50204 /* AcquisitionMagnus.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7CB62DD237BA01400E50204 /* AcquisitionMagnus.storyboard */; };
@@ -229,7 +224,7 @@
 		B7DF5C17238346200022A8C2 /* SnapshotPhaedrus.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7DF5C16238346200022A8C2 /* SnapshotPhaedrus.storyboard */; };
 		B7DF5C192383464A0022A8C2 /* SnapshotXandroid.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7DF5C182383464A0022A8C2 /* SnapshotXandroid.storyboard */; };
 		B7DF5C1B2383483D0022A8C2 /* SnapshotMagnus.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7DF5C1A2383483D0022A8C2 /* SnapshotMagnus.storyboard */; };
-		B7E0FFA82360A20900A1148B /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E0FFA72360A20900A1148B /* Home.swift */; };
+		B7E0FFA82360A20900A1148B /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E0FFA72360A20900A1148B /* Config.swift */; };
 		B7E14C0022EC50F800CABCD3 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E14BFF22EC50F800CABCD3 /* Game.swift */; };
 		B7E23C592381FD6D007DA860 /* IapetusSkins.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E23C582381FD6D007DA860 /* IapetusSkins.swift */; };
 		B7E23C6223826045007DA860 /* ChessCalhoun.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7E23C6123826045007DA860 /* ChessCalhoun.storyboard */; };
@@ -251,11 +246,14 @@
 		B7F062892385CF270015C618 /* Colour.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F062882385CF270015C618 /* Colour.swift */; };
 		B7F35E332309F6D6002018F7 /* DateTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F35E322309F6D6002018F7 /* DateTime.swift */; };
 		B7F4E87A233BC091005BDF85 /* GetHeaderTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F4E879233BC091005BDF85 /* GetHeaderTask.swift */; };
-		B7F541B623D4F3C500E89074 /* xHome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7F541B523D4F3C400E89074 /* xHome.storyboard */; };
-		B7F541B823D5005300E89074 /* xHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F541B723D5005300E89074 /* xHome.swift */; };
-		B7F541BA23D5044F00E89074 /* xHomeMenuTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F541B923D5044F00E89074 /* xHomeMenuTable.swift */; };
-		B7F541BC23D507C800E89074 /* xOther.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7F541BB23D507C800E89074 /* xOther.storyboard */; };
-		B7F541BE23D510C200E89074 /* xOther.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F541BD23D510C200E89074 /* xOther.swift */; };
+		B7F541C123D51A5A00E89074 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F541C023D51A5A00E89074 /* Home.swift */; };
+		B7F541C423D51A9D00E89074 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7F541C323D51A9D00E89074 /* Home.storyboard */; };
+		B7F541C623D51ADD00E89074 /* HomeMenuTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F541C523D51ADD00E89074 /* HomeMenuTable.swift */; };
+		B7F541C823D51B0C00E89074 /* HomeMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F541C723D51B0C00E89074 /* HomeMenuCell.swift */; };
+		B7F541CB23D51C4300E89074 /* Other.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F541CA23D51C4300E89074 /* Other.swift */; };
+		B7F541CE23D51C6E00E89074 /* Other.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7F541CD23D51C6E00E89074 /* Other.storyboard */; };
+		B7F541D023D51CB700E89074 /* OtherMenuTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F541CF23D51CB700E89074 /* OtherMenuTable.swift */; };
+		B7F541D223D51CF900E89074 /* OtherMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F541D123D51CF900E89074 /* OtherMenuCell.swift */; };
 		B7F5878423D0AE4900A91CD3 /* ShowMeSkins.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7F5878323D0AE4900A91CD3 /* ShowMeSkins.storyboard */; };
 		B7F5878623D12D8000A91CD3 /* ShowMeSkins.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F5878523D12D8000A91CD3 /* ShowMeSkins.swift */; };
 		B7F5878823D12E3300A91CD3 /* SkinTableMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F5878723D12E3300A91CD3 /* SkinTableMenu.swift */; };
@@ -265,9 +263,6 @@
 		B7F78D12236B922700F07FD7 /* ReviewPhaedrus.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7F78D11236B922700F07FD7 /* ReviewPhaedrus.storyboard */; };
 		B7F78D14236B929800F07FD7 /* CancelPhaedrus.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7F78D13236B929800F07FD7 /* CancelPhaedrus.storyboard */; };
 		B7F78D16236B92CA00F07FD7 /* CancelXandroid.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7F78D15236B92CA00F07FD7 /* CancelXandroid.storyboard */; };
-		B7F78D18236B931100F07FD7 /* LeaderPhaedrus.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7F78D17236B931100F07FD7 /* LeaderPhaedrus.storyboard */; };
-		B7F78D1A236B935D00F07FD7 /* LeaderXandroid.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7F78D19236B935D00F07FD7 /* LeaderXandroid.storyboard */; };
-		B7F78D22236B942B00F07FD7 /* LeaderMenuTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F78D21236B942B00F07FD7 /* LeaderMenuTable.swift */; };
 		B7F78D24236B94FC00F07FD7 /* FairyXandroid.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7F78D23236B94FC00F07FD7 /* FairyXandroid.storyboard */; };
 		B7F78D26236B953200F07FD7 /* FairyPhaedrus.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7F78D25236B953200F07FD7 /* FairyPhaedrus.storyboard */; };
 		B7F78D2B236BA5FB00F07FD7 /* AcquisitionPhaedrus.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7F78D2A236BA5FB00F07FD7 /* AcquisitionPhaedrus.storyboard */; };
@@ -282,7 +277,6 @@
 		B7F78D3D236BA83A00F07FD7 /* ChallengePhaedrus.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7F78D3C236BA83A00F07FD7 /* ChallengePhaedrus.storyboard */; };
 		B7F78D40236BA88500F07FD7 /* ChallengeMenuTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F78D3F236BA88500F07FD7 /* ChallengeMenuTable.swift */; };
 		B7F78D49236BA9A200F07FD7 /* Challenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F78D48236BA9A200F07FD7 /* Challenge.swift */; };
-		B7F78D4B236BF06200F07FD7 /* LeaderMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F78D4A236BF06200F07FD7 /* LeaderMenuCell.swift */; };
 		B7F7C8ED22FF81910060AC38 /* HorizontalVertical.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F7C8EC22FF81910060AC38 /* HorizontalVertical.swift */; };
 		B7F7C8EF22FF85550060AC38 /* KingMovement.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F7C8EE22FF85550060AC38 /* KingMovement.swift */; };
 		B7F7C8F222FF8A680060AC38 /* Evaluation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F7C8F122FF8A680060AC38 /* Evaluation.swift */; };
@@ -323,7 +317,6 @@
 		B7039F1B238B4C79003896C6 /* HomeXenophon.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HomeXenophon.storyboard; sourceTree = "<group>"; };
 		B7039F21238B4F84003896C6 /* ReviewXenophon.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ReviewXenophon.storyboard; sourceTree = "<group>"; };
 		B7039F23238B5197003896C6 /* CancelXenophon.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CancelXenophon.storyboard; sourceTree = "<group>"; };
-		B7039F25238B5235003896C6 /* LeaderXenophon.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LeaderXenophon.storyboard; sourceTree = "<group>"; };
 		B7039F27238B52C2003896C6 /* FairyXenophon.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FairyXenophon.storyboard; sourceTree = "<group>"; };
 		B7039F29238B534C003896C6 /* ChallengeXenophon.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChallengeXenophon.storyboard; sourceTree = "<group>"; };
 		B7039F2B238B541D003896C6 /* AcquisitionXenophon.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AcquisitionXenophon.storyboard; sourceTree = "<group>"; };
@@ -349,7 +342,6 @@
 		B7088207233A0CCC00A06CAD /* LoginTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTask.swift; sourceTree = "<group>"; };
 		B708820D233A0F8100A06CAD /* GameDeleteTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDeleteTask.swift; sourceTree = "<group>"; };
 		B708820F233A0FC900A06CAD /* LeaderboardPageTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardPageTask.swift; sourceTree = "<group>"; };
-		B708D0CD236B1E7300A899F9 /* Leader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Leader.swift; sourceTree = "<group>"; };
 		B708D0DC236B351000A899F9 /* Initializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Initializer.swift; sourceTree = "<group>"; };
 		B708D0DE236B354600A899F9 /* Initializer.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Initializer.storyboard; sourceTree = "<group>"; };
 		B708D0E6236B366800A899F9 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -475,7 +467,6 @@
 		B7BCD7DB22F474D800CC29E6 /* BlackRook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackRook.swift; sourceTree = "<group>"; };
 		B7C1448A23A3C9E100404810 /* QuickTaskPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickTaskPlayer.swift; sourceTree = "<group>"; };
 		B7C1448C23A3E37900404810 /* QuickTaskGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickTaskGame.swift; sourceTree = "<group>"; };
-		B7C1449423A452B100404810 /* DiscoveryTargetTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryTargetTask.swift; sourceTree = "<group>"; };
 		B7C5C00722EF3F2F00BFCB39 /* ThroughView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThroughView.swift; sourceTree = "<group>"; };
 		B7C5C01322EF8D0600BFCB39 /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
 		B7CA7BB1235A2DA600AA1814 /* DrawResign.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DrawResign.storyboard; sourceTree = "<group>"; };
@@ -486,8 +477,6 @@
 		B7CB62A8237B428400E50204 /* StoryboardSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardSelector.swift; sourceTree = "<group>"; };
 		B7CB62AE237B4E1E00E50204 /* HomeMagnus.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HomeMagnus.storyboard; sourceTree = "<group>"; };
 		B7CB62B0237B4E7800E50204 /* HomeCalhoun.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HomeCalhoun.storyboard; sourceTree = "<group>"; };
-		B7CB62CD237B88AA00E50204 /* LeaderCalhoun.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LeaderCalhoun.storyboard; sourceTree = "<group>"; };
-		B7CB62CF237B88EC00E50204 /* LeaderMagnus.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LeaderMagnus.storyboard; sourceTree = "<group>"; };
 		B7CB62D5237B96A100E50204 /* FairyCalhoun.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FairyCalhoun.storyboard; sourceTree = "<group>"; };
 		B7CB62D7237B96BB00E50204 /* FairyMagnus.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FairyMagnus.storyboard; sourceTree = "<group>"; };
 		B7CB62DD237BA01400E50204 /* AcquisitionMagnus.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AcquisitionMagnus.storyboard; sourceTree = "<group>"; };
@@ -546,7 +535,7 @@
 		B7DF5C16238346200022A8C2 /* SnapshotPhaedrus.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SnapshotPhaedrus.storyboard; sourceTree = "<group>"; };
 		B7DF5C182383464A0022A8C2 /* SnapshotXandroid.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SnapshotXandroid.storyboard; sourceTree = "<group>"; };
 		B7DF5C1A2383483D0022A8C2 /* SnapshotMagnus.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SnapshotMagnus.storyboard; sourceTree = "<group>"; };
-		B7E0FFA72360A20900A1148B /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
+		B7E0FFA72360A20900A1148B /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		B7E14BFF22EC50F800CABCD3 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		B7E23C582381FD6D007DA860 /* IapetusSkins.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IapetusSkins.swift; sourceTree = "<group>"; };
 		B7E23C6123826045007DA860 /* ChessCalhoun.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChessCalhoun.storyboard; sourceTree = "<group>"; };
@@ -568,11 +557,14 @@
 		B7F062882385CF270015C618 /* Colour.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colour.swift; sourceTree = "<group>"; };
 		B7F35E322309F6D6002018F7 /* DateTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTime.swift; sourceTree = "<group>"; };
 		B7F4E879233BC091005BDF85 /* GetHeaderTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetHeaderTask.swift; sourceTree = "<group>"; };
-		B7F541B523D4F3C400E89074 /* xHome.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = xHome.storyboard; sourceTree = "<group>"; };
-		B7F541B723D5005300E89074 /* xHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xHome.swift; sourceTree = "<group>"; };
-		B7F541B923D5044F00E89074 /* xHomeMenuTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xHomeMenuTable.swift; sourceTree = "<group>"; };
-		B7F541BB23D507C800E89074 /* xOther.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = xOther.storyboard; sourceTree = "<group>"; };
-		B7F541BD23D510C200E89074 /* xOther.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xOther.swift; sourceTree = "<group>"; };
+		B7F541C023D51A5A00E89074 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
+		B7F541C323D51A9D00E89074 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
+		B7F541C523D51ADD00E89074 /* HomeMenuTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMenuTable.swift; sourceTree = "<group>"; };
+		B7F541C723D51B0C00E89074 /* HomeMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMenuCell.swift; sourceTree = "<group>"; };
+		B7F541CA23D51C4300E89074 /* Other.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Other.swift; sourceTree = "<group>"; };
+		B7F541CD23D51C6E00E89074 /* Other.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Other.storyboard; sourceTree = "<group>"; };
+		B7F541CF23D51CB700E89074 /* OtherMenuTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherMenuTable.swift; sourceTree = "<group>"; };
+		B7F541D123D51CF900E89074 /* OtherMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherMenuCell.swift; sourceTree = "<group>"; };
 		B7F5878323D0AE4900A91CD3 /* ShowMeSkins.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ShowMeSkins.storyboard; sourceTree = "<group>"; };
 		B7F5878523D12D8000A91CD3 /* ShowMeSkins.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowMeSkins.swift; sourceTree = "<group>"; };
 		B7F5878723D12E3300A91CD3 /* SkinTableMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkinTableMenu.swift; sourceTree = "<group>"; };
@@ -582,9 +574,6 @@
 		B7F78D11236B922700F07FD7 /* ReviewPhaedrus.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ReviewPhaedrus.storyboard; sourceTree = "<group>"; };
 		B7F78D13236B929800F07FD7 /* CancelPhaedrus.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CancelPhaedrus.storyboard; sourceTree = "<group>"; };
 		B7F78D15236B92CA00F07FD7 /* CancelXandroid.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CancelXandroid.storyboard; sourceTree = "<group>"; };
-		B7F78D17236B931100F07FD7 /* LeaderPhaedrus.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LeaderPhaedrus.storyboard; sourceTree = "<group>"; };
-		B7F78D19236B935D00F07FD7 /* LeaderXandroid.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LeaderXandroid.storyboard; sourceTree = "<group>"; };
-		B7F78D21236B942B00F07FD7 /* LeaderMenuTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderMenuTable.swift; sourceTree = "<group>"; };
 		B7F78D23236B94FC00F07FD7 /* FairyXandroid.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FairyXandroid.storyboard; sourceTree = "<group>"; };
 		B7F78D25236B953200F07FD7 /* FairyPhaedrus.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FairyPhaedrus.storyboard; sourceTree = "<group>"; };
 		B7F78D2A236BA5FB00F07FD7 /* AcquisitionPhaedrus.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AcquisitionPhaedrus.storyboard; sourceTree = "<group>"; };
@@ -599,7 +588,6 @@
 		B7F78D3C236BA83A00F07FD7 /* ChallengePhaedrus.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChallengePhaedrus.storyboard; sourceTree = "<group>"; };
 		B7F78D3F236BA88500F07FD7 /* ChallengeMenuTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeMenuTable.swift; sourceTree = "<group>"; };
 		B7F78D48236BA9A200F07FD7 /* Challenge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenge.swift; sourceTree = "<group>"; };
-		B7F78D4A236BF06200F07FD7 /* LeaderMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderMenuCell.swift; sourceTree = "<group>"; };
 		B7F7C8EC22FF81910060AC38 /* HorizontalVertical.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalVertical.swift; sourceTree = "<group>"; };
 		B7F7C8EE22FF85550060AC38 /* KingMovement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KingMovement.swift; sourceTree = "<group>"; };
 		B7F7C8F122FF8A680060AC38 /* Evaluation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Evaluation.swift; sourceTree = "<group>"; };
@@ -650,19 +638,6 @@
 				C061A60149C81DD0496B1CA3 /* Pods-ios.release.xcconfig */,
 			);
 			path = Pods;
-			sourceTree = "<group>";
-		};
-		62BE630E22F209B500C388B7 /* leader */ = {
-			isa = PBXGroup;
-			children = (
-				B7C1449323A4529400404810 /* networking */,
-				B7F78D20236B940C00F07FD7 /* component */,
-				B7F78D04236B907E00F07FD7 /* storyboard */,
-				B708D0CD236B1E7300A899F9 /* Leader.swift */,
-				B7F541B723D5005300E89074 /* xHome.swift */,
-				B7F541BD23D510C200E89074 /* xOther.swift */,
-			);
-			path = leader;
 			sourceTree = "<group>";
 		};
 		ABCDD5D6671D39DB5DBFE22A /* Frameworks */ = {
@@ -1060,6 +1035,8 @@
 		B787C72822E970DC009C94F7 /* ios */ = {
 			isa = PBXGroup;
 			children = (
+				B7F541C923D51C3000E89074 /* other */,
+				B7F541BF23D51A4300E89074 /* home */,
 				B7A6218A23A0277B005DCDA1 /* talk */,
 				B7A6218423A02422005DCDA1 /* quick */,
 				B7EF811823886EE000E89191 /* eth */,
@@ -1073,13 +1050,12 @@
 				B74145BC22F3CA5F00B3B4FF /* element */,
 				B74145B322F3C53100B3B4FF /* fairy */,
 				B74145B222F3C52600B3B4FF /* chess */,
-				62BE630E22F209B500C388B7 /* leader */,
 				B7C5C01922EFAA7000BFCB39 /* cancel */,
 				B7C5C01022EF8CCA00BFCB39 /* review */,
 				B7C5C00622EF3F1A00BFCB39 /* util */,
 				B7F3AB8722EF3C1800BE78D6 /* game_menu */,
 				B7E14BFE22EC50DD00CABCD3 /* model */,
-				B7E14BDD22EBCC3200CABCD3 /* home */,
+				B7E14BDD22EBCC3200CABCD3 /* config */,
 				B70F0C0B22EBC05F001415AE /* misc */,
 				B70F0C0522EBBF28001415AE /* start */,
 				B7C03B7022EA32D200873924 /* networking */,
@@ -1284,14 +1260,6 @@
 			children = (
 				B7C1448A23A3C9E100404810 /* QuickTaskPlayer.swift */,
 				B7C1448C23A3E37900404810 /* QuickTaskGame.swift */,
-			);
-			path = networking;
-			sourceTree = "<group>";
-		};
-		B7C1449323A4529400404810 /* networking */ = {
-			isa = PBXGroup;
-			children = (
-				B7C1449423A452B100404810 /* DiscoveryTargetTask.swift */,
 			);
 			path = networking;
 			sourceTree = "<group>";
@@ -1543,15 +1511,15 @@
 			path = storyboard;
 			sourceTree = "<group>";
 		};
-		B7E14BDD22EBCC3200CABCD3 /* home */ = {
+		B7E14BDD22EBCC3200CABCD3 /* config */ = {
 			isa = PBXGroup;
 			children = (
 				B7FCCC892373831A00C4DD88 /* networking */,
 				B708D101236B6AC600A899F9 /* component */,
 				B708D0F7236B4F9400A899F9 /* storyboard */,
-				B7E0FFA72360A20900A1148B /* Home.swift */,
+				B7E0FFA72360A20900A1148B /* Config.swift */,
 			);
-			path = home;
+			path = config;
 			sourceTree = "<group>";
 		};
 		B7E14BFE22EC50DD00CABCD3 /* model */ = {
@@ -1633,6 +1601,44 @@
 			path = game_menu;
 			sourceTree = "<group>";
 		};
+		B7F541BF23D51A4300E89074 /* home */ = {
+			isa = PBXGroup;
+			children = (
+				B7F541C223D51A7800E89074 /* storyboard */,
+				B7F541C023D51A5A00E89074 /* Home.swift */,
+				B7F541C523D51ADD00E89074 /* HomeMenuTable.swift */,
+				B7F541C723D51B0C00E89074 /* HomeMenuCell.swift */,
+			);
+			path = home;
+			sourceTree = "<group>";
+		};
+		B7F541C223D51A7800E89074 /* storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				B7F541C323D51A9D00E89074 /* Home.storyboard */,
+			);
+			path = storyboard;
+			sourceTree = "<group>";
+		};
+		B7F541C923D51C3000E89074 /* other */ = {
+			isa = PBXGroup;
+			children = (
+				B7F541CC23D51C5C00E89074 /* storyboard */,
+				B7F541CA23D51C4300E89074 /* Other.swift */,
+				B7F541CF23D51CB700E89074 /* OtherMenuTable.swift */,
+				B7F541D123D51CF900E89074 /* OtherMenuCell.swift */,
+			);
+			path = other;
+			sourceTree = "<group>";
+		};
+		B7F541CC23D51C5C00E89074 /* storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				B7F541CD23D51C6E00E89074 /* Other.storyboard */,
+			);
+			path = storyboard;
+			sourceTree = "<group>";
+		};
 		B7F78D02236B906B00F07FD7 /* storyboard */ = {
 			isa = PBXGroup;
 			children = (
@@ -1653,20 +1659,6 @@
 				B7CB62D5237B96A100E50204 /* FairyCalhoun.storyboard */,
 				B7CB62D7237B96BB00E50204 /* FairyMagnus.storyboard */,
 				B7039F27238B52C2003896C6 /* FairyXenophon.storyboard */,
-			);
-			path = storyboard;
-			sourceTree = "<group>";
-		};
-		B7F78D04236B907E00F07FD7 /* storyboard */ = {
-			isa = PBXGroup;
-			children = (
-				B7F78D17236B931100F07FD7 /* LeaderPhaedrus.storyboard */,
-				B7F78D19236B935D00F07FD7 /* LeaderXandroid.storyboard */,
-				B7CB62CD237B88AA00E50204 /* LeaderCalhoun.storyboard */,
-				B7CB62CF237B88EC00E50204 /* LeaderMagnus.storyboard */,
-				B7039F25238B5235003896C6 /* LeaderXenophon.storyboard */,
-				B7F541B523D4F3C400E89074 /* xHome.storyboard */,
-				B7F541BB23D507C800E89074 /* xOther.storyboard */,
 			);
 			path = storyboard;
 			sourceTree = "<group>";
@@ -1693,16 +1685,6 @@
 				B7039F21238B4F84003896C6 /* ReviewXenophon.storyboard */,
 			);
 			path = storyboard;
-			sourceTree = "<group>";
-		};
-		B7F78D20236B940C00F07FD7 /* component */ = {
-			isa = PBXGroup;
-			children = (
-				B7F78D21236B942B00F07FD7 /* LeaderMenuTable.swift */,
-				B7F78D4A236BF06200F07FD7 /* LeaderMenuCell.swift */,
-				B7F541B923D5044F00E89074 /* xHomeMenuTable.swift */,
-			);
-			path = component;
 			sourceTree = "<group>";
 		};
 		B7F78D27236B955E00F07FD7 /* component */ = {
@@ -1938,13 +1920,11 @@
 				B7DA22242399C3D5006256CC /* ScannerXandroid.storyboard in Resources */,
 				B7CB62AF237B4E1E00E50204 /* HomeMagnus.storyboard in Resources */,
 				B7E23C6223826045007DA860 /* ChessCalhoun.storyboard in Resources */,
-				B7CB62CE237B88AA00E50204 /* LeaderCalhoun.storyboard in Resources */,
 				B7DF146F23CE5179007B2C7D /* PreviewNeptuneCalhoun.storyboard in Resources */,
 				B7CB62DE237BA01400E50204 /* AcquisitionMagnus.storyboard in Resources */,
 				B70424CB23AF1DCF00DBB7FA /* QuickXenophon.storyboard in Resources */,
 				B7AEEA8723A1C442002F950C /* ActualPhaedrus.storyboard in Resources */,
 				B7CB62E6237BA9FD00E50204 /* ChallengeMagnus.storyboard in Resources */,
-				B7039F26238B5235003896C6 /* LeaderXenophon.storyboard in Resources */,
 				B7CB62D8237B96BB00E50204 /* FairyMagnus.storyboard in Resources */,
 				B7DF5C1B2383483D0022A8C2 /* SnapshotMagnus.storyboard in Resources */,
 				B708D0E7236B366800A899F9 /* LaunchScreen.storyboard in Resources */,
@@ -1955,7 +1935,6 @@
 				B7EF81212388C92C00E89191 /* EthPhaedrus.storyboard in Resources */,
 				B7DF148723CE665D007B2C7D /* PurchaseHyperionCalhoun.storyboard in Resources */,
 				B7039F24238B5197003896C6 /* CancelXenophon.storyboard in Resources */,
-				B7F541BC23D507C800E89074 /* xOther.storyboard in Resources */,
 				B7F5878423D0AE4900A91CD3 /* ShowMeSkins.storyboard in Resources */,
 				B7BAA657237F3BDE0038C483 /* ProfilePhaedrus.storyboard in Resources */,
 				B70424B923AEE16100DBB7FA /* QuickXandroid.storyboard in Resources */,
@@ -1963,7 +1942,6 @@
 				B7DA22222399C39E006256CC /* ScannerMagnus.storyboard in Resources */,
 				B7F78D26236B953200F07FD7 /* FairyPhaedrus.storyboard in Resources */,
 				B7CB62D6237B96A100E50204 /* FairyCalhoun.storyboard in Resources */,
-				B7F78D18236B931100F07FD7 /* LeaderPhaedrus.storyboard in Resources */,
 				B7DF147D23CE5C33007B2C7D /* PreviewIapetusXandroid.storyboard in Resources */,
 				B7CB62F4237BB07500E50204 /* ReviewMagnus.storyboard in Resources */,
 				B7DF5C192383464A0022A8C2 /* SnapshotXandroid.storyboard in Resources */,
@@ -2002,21 +1980,20 @@
 				B7039F22238B4F84003896C6 /* ReviewXenophon.storyboard in Resources */,
 				B70424BD23AF0D2900DBB7FA /* HistoricMagnus.storyboard in Resources */,
 				B70424C923AF18BE00DBB7FA /* ActualXenophon.storyboard in Resources */,
+				B7F541C423D51A9D00E89074 /* Home.storyboard in Resources */,
 				B70424B523AEDA9D00DBB7FA /* HistoricXandroid.storyboard in Resources */,
 				B7DF5BE923832D130022A8C2 /* ManageXandroid.storyboard in Resources */,
 				B794606023A58139004A6663 /* TalkPhaedrus.storyboard in Resources */,
-				B7CB62D0237B88EC00E50204 /* LeaderMagnus.storyboard in Resources */,
 				B7DF5BF223832E860022A8C2 /* PurchaseMagnus.storyboard in Resources */,
 				B7CA7BB2235A2DA600AA1814 /* DrawResign.storyboard in Resources */,
 				B7F78D24236B94FC00F07FD7 /* FairyXandroid.storyboard in Resources */,
+				B7F541CE23D51C6E00E89074 /* Other.storyboard in Resources */,
 				B70424B723AEDB6900DBB7FA /* ActualXandroid.storyboard in Resources */,
 				B7DF5BF623832F000022A8C2 /* PurchasePhaedrus.storyboard in Resources */,
 				B708D0F4236B4EF900A899F9 /* StartXandroid.storyboard in Resources */,
 				B708D0F6236B4F4500A899F9 /* StartPhaedrus.storyboard in Resources */,
 				B7039F28238B52C2003896C6 /* FairyXenophon.storyboard in Resources */,
 				B7DA22202399C344006256CC /* ScannerXenophon.storyboard in Resources */,
-				B7F541B623D4F3C500E89074 /* xHome.storyboard in Resources */,
-				B7F78D1A236B935D00F07FD7 /* LeaderXandroid.storyboard in Resources */,
 				B7039F36238B585E003896C6 /* SnapshotXenophon.storyboard in Resources */,
 				B708D0DF236B354600A899F9 /* Initializer.storyboard in Resources */,
 				B713774B23D25F3F006D57C2 /* PurchaseDetail.storyboard in Resources */,
@@ -2116,14 +2093,12 @@
 				B7661FA72371FB050033A556 /* UpdatePhoto.swift in Sources */,
 				B7BAA63E237F129B0038C483 /* OptionCell.swift in Sources */,
 				B708D0DD236B351000A899F9 /* Initializer.swift in Sources */,
-				B7F541BE23D510C200E89074 /* xOther.swift in Sources */,
 				B7AEEA8C23A1C721002F950C /* ActualCell.swift in Sources */,
 				B74145D022F3CE1400B3B4FF /* Medusa.swift in Sources */,
 				B74145CC22F3CDEF00B3B4FF /* Hunter.swift in Sources */,
 				B7BCD7A822F472AF00CC29E6 /* FairyElement.swift in Sources */,
 				B7E14C0022EC50F800CABCD3 /* Game.swift in Sources */,
 				B7BCD7BA22F473A000CC29E6 /* WhiteArrowPawn.swift in Sources */,
-				B7C1449523A452B100404810 /* DiscoveryTargetTask.swift in Sources */,
 				B713774D23D25F7B006D57C2 /* PurchaseDetail.swift in Sources */,
 				B7DF5BE223832BFF0022A8C2 /* PurchaseSkin.swift in Sources */,
 				B7F7C8ED22FF81910060AC38 /* HorizontalVertical.swift in Sources */,
@@ -2132,6 +2107,7 @@
 				B7DF5C05238334850022A8C2 /* Manage.swift in Sources */,
 				B74145DE22F3CE8300B3B4FF /* Rook.swift in Sources */,
 				B7BCD7C422F473F300CC29E6 /* WhiteSpy.swift in Sources */,
+				B7F541D223D51CF900E89074 /* OtherMenuCell.swift in Sources */,
 				B7C5C00822EF3F2F00BFCB39 /* ThroughView.swift in Sources */,
 				B7DF5BE023832BD80022A8C2 /* UpdateSkin.swift in Sources */,
 				B7DF148F23CE6C46007B2C7D /* PurchaseIapetus.swift in Sources */,
@@ -2182,16 +2158,14 @@
 				B7BCD7C022F473D500CC29E6 /* WhiteLandminePawn.swift in Sources */,
 				B794606223A5AEB8004A6663 /* PostSeen.swift in Sources */,
 				B74145C622F3CDC200B3B4FF /* Amazon.swift in Sources */,
+				B7F541D023D51CB700E89074 /* OtherMenuTable.swift in Sources */,
 				B7CA7BB4235A2DBE00AA1814 /* DrawResign.swift in Sources */,
 				B7F78D31236BA6AD00F07FD7 /* PresentationController.swift in Sources */,
 				B7BAA640237F13450038C483 /* OptionMenuTable.swift in Sources */,
-				B708D0CE236B1E7300A899F9 /* Leader.swift in Sources */,
 				B7F78D35236BA71300F07FD7 /* FairyTableCell.swift in Sources */,
 				B70A86C923707B2900D303F0 /* UpdateGamestate.swift in Sources */,
-				B7F541BA23D5044F00E89074 /* xHomeMenuTable.swift in Sources */,
 				B7C5C01422EF8D0600BFCB39 /* Review.swift in Sources */,
 				B7AEEA8223A1BE73002F950C /* PageList.swift in Sources */,
-				B7F78D4B236BF06200F07FD7 /* LeaderMenuCell.swift in Sources */,
 				B7DA221C2399C296006256CC /* Scanner.swift in Sources */,
 				B7BCD7BC22F473AE00CC29E6 /* WhiteGrasshopper.swift in Sources */,
 				B7EF811D2388741200E89191 /* Eth.swift in Sources */,
@@ -2200,6 +2174,7 @@
 				B7BCD7B022F4733600CC29E6 /* BlackHunter.swift in Sources */,
 				B7EA5DD22375C63F0019C0BF /* MatrixSerializer.swift in Sources */,
 				B78C5B3523304A1600570AE2 /* LoginResponseParser.swift in Sources */,
+				B7F541C823D51B0C00E89074 /* HomeMenuCell.swift in Sources */,
 				B71FA72D22FA124700B6F216 /* MyCollectionViewCell.swift in Sources */,
 				B7039F18238B35CE003896C6 /* UpdateAddress.swift in Sources */,
 				B714BF25237C939D000DD80E /* GameCreate.swift in Sources */,
@@ -2210,10 +2185,11 @@
 				B7168BBE233A7892008F59DE /* DeserializeGamestate.swift in Sources */,
 				B7BCD7CE22F4746F00CC29E6 /* WhiteQueen.swift in Sources */,
 				B74145C222F3CAC800B3B4FF /* LegalMove.swift in Sources */,
-				B7E0FFA82360A20900A1148B /* Home.swift in Sources */,
+				B7E0FFA82360A20900A1148B /* Config.swift in Sources */,
 				B7AB8E60235607CD002D71BD /* HopperOffense.swift in Sources */,
 				B7E23C592381FD6D007DA860 /* IapetusSkins.swift in Sources */,
 				B7DF5C122383445B0022A8C2 /* Snapshot.swift in Sources */,
+				B7F541C123D51A5A00E89074 /* Home.swift in Sources */,
 				B7F5878623D12D8000A91CD3 /* ShowMeSkins.swift in Sources */,
 				B74145DA22F3CE6400B3B4FF /* Pawn.swift in Sources */,
 				B7EA5DD02375C61D0019C0BF /* MatrixDeserializer.swift in Sources */,
@@ -2228,6 +2204,7 @@
 				B7FCCC9B2373F12600C4DD88 /* Processor.swift in Sources */,
 				B7088208233A0CCC00A06CAD /* LoginTask.swift in Sources */,
 				B7D0CAA023A96F5D006A7F9D /* ConfigCollectionViewCell.swift in Sources */,
+				B7F541CB23D51C4300E89074 /* Other.swift in Sources */,
 				B7BCD7C622F4744200CC29E6 /* WhiteBishop.swift in Sources */,
 				B70F0C0D22EBC075001415AE /* AppDelegate.swift in Sources */,
 				B7EA5DBD2375BEB80019C0BF /* PollingAgent.swift in Sources */,
@@ -2250,14 +2227,13 @@
 				B714BF28237C942A000DD80E /* PlayerCreate.swift in Sources */,
 				B7AF6D31238C3A12001B6086 /* PlayerCore.swift in Sources */,
 				B7BCD7D022F4747F00CC29E6 /* WhiteRook.swift in Sources */,
-				B7F541B823D5005300E89074 /* xHome.swift in Sources */,
 				B7DF5BF923832F3D0022A8C2 /* Product.swift in Sources */,
 				B7F062892385CF270015C618 /* Colour.swift in Sources */,
 				B7471DC123A6E3C2008F70A3 /* BlackReveal.swift in Sources */,
 				B79BB62623157A2F00FF5E0E /* PawnPromotion.swift in Sources */,
-				B7F78D22236B942B00F07FD7 /* LeaderMenuTable.swift in Sources */,
 				B74145D622F3CE4800B3B4FF /* King.swift in Sources */,
 				B7AEEA9123A1D8E0002F950C /* HistoricCell.swift in Sources */,
+				B7F541C623D51ADD00E89074 /* HomeMenuTable.swift in Sources */,
 				B7EA5DC42375C2710019C0BF /* Player.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

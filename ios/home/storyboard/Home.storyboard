@@ -11,7 +11,7 @@
         <!--Home-->
         <scene sceneID="g3V-6a-Oij">
             <objects>
-                <viewController storyboardIdentifier="xHome" useStoryboardIdentifierAsRestorationIdentifier="YES" id="km7-yq-FCI" customClass="xHome" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Home" useStoryboardIdentifierAsRestorationIdentifier="YES" id="km7-yq-FCI" customClass="Home" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sfS-8a-jQx">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -187,13 +187,13 @@
         <!--Home Menu Table-->
         <scene sceneID="hCS-rN-BBL">
             <objects>
-                <tableViewController id="ECz-mu-5JR" customClass="xHomeMenuTable" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="ECz-mu-5JR" customClass="HomeMenuTable" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="103" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="11K-61-DIT">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="590"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LeaderMenuCell" rowHeight="103" id="0o7-4A-IZm" customClass="LeaderMenuCell" customModule="ios" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="HomeMenuCell" rowHeight="103" id="0o7-4A-IZm" customClass="HomeMenuCell" customModule="ios" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="103"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0o7-4A-IZm" id="XUX-ys-TYW">

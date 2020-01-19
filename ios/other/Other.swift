@@ -1,5 +1,5 @@
 //
-//  xOther.swift
+//  Other.swift
 //  ios
 //
 //  Created by Matthew on 1/19/20.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class xOther: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITabBarDelegate {
+class Other: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITabBarDelegate {
     //@IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     let dateTime: DateTime = DateTime()
@@ -29,7 +29,7 @@ class xOther: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UI
     var player: Player?
     var gameModel: Game?
     
-    var gameMenuAdapter: ChallengeMenuTable?
+    var otherMenuTable: OtherMenuTable?
     
     var pickerSelectionTimeLimit: String = "24:00 h"
     var pickerOptionsTimeLimit: [String]  = ["24:00 h", "01:00 h", "00:05 m"]
@@ -87,9 +87,9 @@ class xOther: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UI
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        gameMenuAdapter = children.first as? ChallengeMenuTable
-        gameMenuAdapter!.setGameModel(gameModel: self.gameModel!)
-        gameMenuAdapter!.fetchMenuTableList()
+        self.otherMenuTable = children.first as? OtherMenuTable
+        self.otherMenuTable!.setGameModel(gameModel: self.gameModel!)
+        self.otherMenuTable!.fetchMenuTableList()
         
         tabBarMenu.delegate = self
         
@@ -124,9 +124,9 @@ class xOther: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UI
     
     @objc func onDidReceiveData(_ notification: NSNotification) {
         let gameMenuSelectionIndex = notification.userInfo!["challenge_menu_game_selection"] as! Int
-        let gameModel = self.gameMenuAdapter!.getGameMenuTableList()[gameMenuSelectionIndex]
+        let gameModel = self.otherMenuTable!.getGameMenuTableList()[gameMenuSelectionIndex]
         
-        let skin = self.gameMenuAdapter!.getGameMenuTableList()[gameMenuSelectionIndex].getSkin()
+        let skin = self.otherMenuTable!.getGameMenuTableList()[gameMenuSelectionIndex].getSkin()
         //print("XXXXX: \(skin)")
         
         gameModel.setSkin(skin: skin)
@@ -407,4 +407,3 @@ class xOther: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UI
         }
     }
 }
-

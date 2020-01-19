@@ -131,31 +131,31 @@ class StoryboardSelector {
             switch self.device() {
             case "XANDROID":
                 let homeStoryboard: UIStoryboard = UIStoryboard(name: "HomeXandroid", bundle: nil)
-                let homeViewController = homeStoryboard.instantiateViewController(withIdentifier: "HomeXandroid") as! Home
+                let homeViewController = homeStoryboard.instantiateViewController(withIdentifier: "HomeXandroid") as! Config
                 homeViewController.setPlayer(player: player)
                 UIApplication.shared.keyWindow?.rootViewController = homeViewController
                 return
             case "MAGNUS":
                 let homeStoryboard: UIStoryboard = UIStoryboard(name: "HomeMagnus", bundle: nil)
-                let homeViewController = homeStoryboard.instantiateViewController(withIdentifier: "HomeMagnus") as! Home
+                let homeViewController = homeStoryboard.instantiateViewController(withIdentifier: "HomeMagnus") as! Config
                 homeViewController.setPlayer(player: player)
                 UIApplication.shared.keyWindow?.rootViewController = homeViewController
                 return
             case "XENOPHON":
                 let homeStoryboard: UIStoryboard = UIStoryboard(name: "HomeXenophon", bundle: nil)
-                let homeViewController = homeStoryboard.instantiateViewController(withIdentifier: "HomeXenophon") as! Home
+                let homeViewController = homeStoryboard.instantiateViewController(withIdentifier: "HomeXenophon") as! Config
                 homeViewController.setPlayer(player: player)
                 UIApplication.shared.keyWindow?.rootViewController = homeViewController
                 return
             case "PHAEDRUS":
                 let homeStoryboard: UIStoryboard = UIStoryboard(name: "HomePhaedrus", bundle: nil)
-                let homeViewController = homeStoryboard.instantiateViewController(withIdentifier: "HomePhaedrus") as! Home
+                let homeViewController = homeStoryboard.instantiateViewController(withIdentifier: "HomePhaedrus") as! Config
                 homeViewController.setPlayer(player: player)
                 UIApplication.shared.keyWindow?.rootViewController = homeViewController
                 return
             case "CALHOUN":
-                let homeStoryboard: UIStoryboard = UIStoryboard(name: "xHome", bundle: nil)
-                let homeViewController = homeStoryboard.instantiateViewController(withIdentifier: "xHome") as! xHome
+                let homeStoryboard: UIStoryboard = UIStoryboard(name: "Home", bundle: nil)
+                let homeViewController = homeStoryboard.instantiateViewController(withIdentifier: "Home") as! Home
                 homeViewController.setPlayer(player: player)
                 UIApplication.shared.keyWindow?.rootViewController = homeViewController
                 return
@@ -356,8 +356,8 @@ class StoryboardSelector {
                 UIApplication.shared.keyWindow?.rootViewController = viewController
                 return
             case "CALHOUN":
-                let storyboard: UIStoryboard = UIStoryboard(name: "xOther", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "xOther") as! xOther
+                let storyboard: UIStoryboard = UIStoryboard(name: "Other", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "Other") as! Other
                 viewController.setPlayer(player: player)
                 viewController.setGameModel(gameModel: gameModel)
                 UIApplication.shared.keyWindow?.rootViewController = viewController
