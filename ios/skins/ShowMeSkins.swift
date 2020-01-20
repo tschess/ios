@@ -106,8 +106,8 @@ class ShowMeSkins: UIViewController, UITabBarDelegate {
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         switch item.tag {
         default:
-            let homeStoryboard: UIStoryboard = UIStoryboard(name: "Home", bundle: nil)
-            let homeViewController = homeStoryboard.instantiateViewController(withIdentifier: "Home") as! Home
+            let homeStoryboard: UIStoryboard = UIStoryboard(name: "Address", bundle: nil)
+            let homeViewController = homeStoryboard.instantiateViewController(withIdentifier: "Address") as! Address
             homeViewController.setPlayer(player: self.player!)
             UIApplication.shared.keyWindow?.rootViewController = homeViewController
         }

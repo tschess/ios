@@ -20,8 +20,8 @@ class Edit: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate, UII
     
     @IBOutlet weak var backButton: UIButton!
     
-    @IBOutlet weak var doneButtonWidth: NSLayoutConstraint!
-    @IBOutlet weak var backButtonWidth: NSLayoutConstraint!
+    //@IBOutlet weak var doneButtonWidth: NSLayoutConstraint!
+    //@IBOutlet weak var backButtonWidth: NSLayoutConstraint!
     
     @IBOutlet weak var rankLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
@@ -192,12 +192,6 @@ class Edit: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate, UII
         
         self.configCollectionViewHeight.constant = configCollectionView.contentSize.height
         //self.configPartitionHeightConstraint.constant = configCollectionViewHeight.constant * 2
-        
-        let screenSize = UIScreen.main.bounds
-        let screenWidth = screenSize.width
-        
-        self.doneButtonWidth.constant = screenWidth/2
-        self.backButtonWidth.constant = screenWidth/2
     }
     
     @objc func kingNotificationGesture() {

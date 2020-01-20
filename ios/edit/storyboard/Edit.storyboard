@@ -342,53 +342,7 @@
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PzU-b8-nIP" userLabel="SplitView2">
                                         <rect key="frame" x="0.0" y="366" width="414" height="224"/>
-                                        <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J8e-3c-MlF" userLabel="ButtonView">
-                                                <rect key="frame" x="0.0" y="97" width="414" height="30"/>
-                                                <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lPA-iw-LnB">
-                                                        <rect key="frame" x="314" y="0.0" width="100" height="30"/>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="100" id="0Xf-qh-iWz"/>
-                                                            <constraint firstAttribute="height" constant="30" id="Ruu-00-fNg"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="22"/>
-                                                        <state key="normal" title="done">
-                                                            <color key="titleColor" red="0.86274509799999999" green="0.015686274510000001" blue="0.015686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        </state>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tmK-ec-kes">
-                                                        <rect key="frame" x="0.0" y="0.0" width="100" height="30"/>
-                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="30" id="5tF-7V-RNt"/>
-                                                            <constraint firstAttribute="width" constant="100" id="B50-Cb-ykp"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="22"/>
-                                                        <state key="normal" title="back">
-                                                            <color key="titleColor" red="0.86274509799999999" green="0.015686274510000001" blue="0.015686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        </state>
-                                                    </button>
-                                                </subviews>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="30" id="7qg-sJ-uBy"/>
-                                                    <constraint firstAttribute="bottom" secondItem="lPA-iw-LnB" secondAttribute="bottom" id="EYv-nz-5pX"/>
-                                                    <constraint firstAttribute="bottom" secondItem="tmK-ec-kes" secondAttribute="bottom" id="QxE-y0-D9E"/>
-                                                    <constraint firstItem="tmK-ec-kes" firstAttribute="top" secondItem="J8e-3c-MlF" secondAttribute="top" id="UzO-op-g6j"/>
-                                                    <constraint firstItem="tmK-ec-kes" firstAttribute="leading" secondItem="J8e-3c-MlF" secondAttribute="leading" id="ehw-uj-gqa"/>
-                                                    <constraint firstAttribute="trailing" secondItem="lPA-iw-LnB" secondAttribute="trailing" id="k9m-lV-qPj"/>
-                                                    <constraint firstItem="lPA-iw-LnB" firstAttribute="top" secondItem="J8e-3c-MlF" secondAttribute="top" id="rs6-EU-EgI"/>
-                                                </constraints>
-                                            </view>
-                                        </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="J8e-3c-MlF" secondAttribute="trailing" id="GIx-K0-i6A"/>
-                                            <constraint firstItem="J8e-3c-MlF" firstAttribute="leading" secondItem="PzU-b8-nIP" secondAttribute="leading" id="u09-P6-ctx"/>
-                                            <constraint firstItem="J8e-3c-MlF" firstAttribute="centerY" secondItem="PzU-b8-nIP" secondAttribute="centerY" id="zHm-dv-o63"/>
-                                        </constraints>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -435,10 +389,8 @@
                         <outlet property="activityIndicator" destination="RAM-33-HiP" id="Cys-dS-h2W"/>
                         <outlet property="avatarImageView" destination="XYJ-aV-Rc5" id="1uS-TP-4fV"/>
                         <outlet property="backButton" destination="5qi-EH-0fj" id="T37-c0-SCb"/>
-                        <outlet property="backButtonWidth" destination="B50-Cb-ykp" id="aPZ-np-05r"/>
                         <outlet property="configCollectionView" destination="cLt-qU-Ujd" id="o5R-Vg-LOy"/>
                         <outlet property="configCollectionViewHeight" destination="CcB-qU-k3t" id="6Tg-VC-f3w"/>
-                        <outlet property="doneButtonWidth" destination="0Xf-qh-iWz" id="5rG-WG-zKy"/>
                         <outlet property="rankLabel" destination="Cds-SZ-ar7" id="imB-Nu-lEa"/>
                         <outlet property="tabBarMenu" destination="lR1-2A-YPc" id="CDf-K6-4Hh"/>
                         <outlet property="titleLabel" destination="rh3-GT-zds" id="CUA-nm-eYa"/>

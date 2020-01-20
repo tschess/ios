@@ -394,25 +394,7 @@
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kUP-PB-M6l" userLabel="SplitView2">
                                         <rect key="frame" x="0.0" y="348" width="414" height="242"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dnc-dD-Jbk">
-                                                <rect key="frame" x="0.0" y="106" width="414" height="30"/>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="30" id="4PC-4p-8Qx"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="22"/>
-                                                <state key="normal" title="send">
-                                                    <color key="titleColor" red="0.86274509799999999" green="0.015686274510000001" blue="0.015686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                </state>
-                                            </button>
-                                        </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstItem="dnc-dD-Jbk" firstAttribute="centerY" secondItem="kUP-PB-M6l" secondAttribute="centerY" id="2QJ-Qu-6Nz"/>
-                                            <constraint firstAttribute="trailing" secondItem="dnc-dD-Jbk" secondAttribute="trailing" id="9o6-Qi-KJF"/>
-                                            <constraint firstItem="dnc-dD-Jbk" firstAttribute="leading" secondItem="kUP-PB-M6l" secondAttribute="leading" id="ka2-CZ-HdC"/>
-                                        </constraints>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

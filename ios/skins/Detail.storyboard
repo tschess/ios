@@ -48,21 +48,8 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HiT-nW-sbi">
-                                <rect key="frame" x="0.0" y="460" width="414" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="oHU-ey-kM1"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="22"/>
-                                <state key="normal" title="purchase">
-                                    <color key="titleColor" red="0.86923474069999995" green="0.012778783219999999" blue="0.00083617179190000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="purchaseButtonClick:" destination="drw-6Q-htw" eventType="touchUpInside" id="s4s-md-7th"/>
-                                </connections>
-                            </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" bouncesZoom="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l7B-Hd-lGw">
-                                <rect key="frame" x="8" y="506" width="398" height="298"/>
+                                <rect key="frame" x="8" y="468" width="398" height="336"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -76,7 +63,7 @@
                                     <constraint firstAttribute="height" constant="50" id="chp-yw-9BH"/>
                                 </constraints>
                                 <items>
-                                    <tabBarItem title="skin" image="arrowshape.turn.up.left" catalog="system" selectedImage="arrowshape.turn.up.left.fill" id="xub-wA-aVQ">
+                                    <tabBarItem title="purchase" image="dollarsign.circle" catalog="system" selectedImage="dollarsign.circle.fill" id="xub-wA-aVQ">
                                         <inset key="imageInsets" minX="2" minY="2" maxX="2" maxY="2"/>
                                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tabBarItem>
@@ -291,24 +278,19 @@
                             <constraint firstItem="0aJ-wP-YFz" firstAttribute="leading" secondItem="o9m-xj-bNP" secondAttribute="leading" constant="8" id="7jb-Hm-BCt"/>
                             <constraint firstItem="Qjp-k5-CGh" firstAttribute="leading" secondItem="Y9i-fv-kUh" secondAttribute="leading" id="A1P-4J-eim"/>
                             <constraint firstAttribute="trailing" secondItem="Qjp-k5-CGh" secondAttribute="trailing" id="D1m-WV-L0h"/>
-                            <constraint firstItem="HiT-nW-sbi" firstAttribute="trailing" secondItem="o9m-xj-bNP" secondAttribute="trailing" id="Dor-pk-OIG"/>
                             <constraint firstItem="l7B-Hd-lGw" firstAttribute="trailing" secondItem="o9m-xj-bNP" secondAttribute="trailing" constant="-8" id="HIq-Hf-TWp"/>
                             <constraint firstItem="o9m-xj-bNP" firstAttribute="trailing" secondItem="0aJ-wP-YFz" secondAttribute="trailing" constant="8" id="I20-XC-oo5"/>
                             <constraint firstItem="zSz-If-H5s" firstAttribute="top" secondItem="JHd-7m-2ud" secondAttribute="bottom" id="IkL-B9-NgJ"/>
-                            <constraint firstItem="o9m-xj-bNP" firstAttribute="trailing" secondItem="HiT-nW-sbi" secondAttribute="trailing" id="J65-S4-Z7C"/>
                             <constraint firstItem="zkg-6z-3mg" firstAttribute="leading" secondItem="o9m-xj-bNP" secondAttribute="leading" id="Kai-GT-5QT"/>
-                            <constraint firstItem="l7B-Hd-lGw" firstAttribute="top" secondItem="HiT-nW-sbi" secondAttribute="bottom" constant="16" id="LxB-e3-mvv"/>
                             <constraint firstItem="0sm-NE-aD2" firstAttribute="top" secondItem="0aJ-wP-YFz" secondAttribute="bottom" constant="8" id="RkM-BN-7fM"/>
-                            <constraint firstItem="HiT-nW-sbi" firstAttribute="leading" secondItem="o9m-xj-bNP" secondAttribute="leading" id="S7z-JO-NOA"/>
                             <constraint firstItem="l7B-Hd-lGw" firstAttribute="leading" secondItem="o9m-xj-bNP" secondAttribute="leading" constant="8" id="ThD-h9-pvm"/>
                             <constraint firstItem="bQ7-aU-Zkj" firstAttribute="top" secondItem="l7B-Hd-lGw" secondAttribute="bottom" constant="8" id="TvY-5e-nB5"/>
+                            <constraint firstItem="l7B-Hd-lGw" firstAttribute="top" secondItem="0sm-NE-aD2" secondAttribute="bottom" constant="24" id="UKb-q7-AG0"/>
                             <constraint firstItem="zkg-6z-3mg" firstAttribute="top" secondItem="zSz-If-H5s" secondAttribute="bottom" constant="8" id="WKd-1I-VES"/>
-                            <constraint firstItem="HiT-nW-sbi" firstAttribute="top" secondItem="0sm-NE-aD2" secondAttribute="bottom" constant="16" id="adp-LT-hEv"/>
                             <constraint firstItem="97Q-qZ-U6f" firstAttribute="top" secondItem="o9m-xj-bNP" secondAttribute="top" id="aze-8s-3RW"/>
                             <constraint firstItem="97Q-qZ-U6f" firstAttribute="trailing" secondItem="o9m-xj-bNP" secondAttribute="trailing" id="bNm-zf-wMq"/>
                             <constraint firstItem="JHd-7m-2ud" firstAttribute="trailing" secondItem="o9m-xj-bNP" secondAttribute="trailing" id="bTJ-Xb-5g9"/>
                             <constraint firstItem="zSz-If-H5s" firstAttribute="leading" secondItem="o9m-xj-bNP" secondAttribute="leading" id="c9H-CN-aan"/>
-                            <constraint firstItem="HiT-nW-sbi" firstAttribute="leading" secondItem="o9m-xj-bNP" secondAttribute="leading" id="eAY-Or-h5r"/>
                             <constraint firstItem="bQ7-aU-Zkj" firstAttribute="bottom" secondItem="o9m-xj-bNP" secondAttribute="bottom" id="fvl-na-zeb"/>
                             <constraint firstItem="Qjp-k5-CGh" firstAttribute="top" secondItem="Y9i-fv-kUh" secondAttribute="top" id="g0T-vD-F2z"/>
                             <constraint firstItem="zSz-If-H5s" firstAttribute="trailing" secondItem="o9m-xj-bNP" secondAttribute="trailing" id="lA2-wr-Jnm"/>
@@ -333,7 +315,6 @@
                         <outlet property="descriptionTextView" destination="l7B-Hd-lGw" id="uEC-1x-kcs"/>
                         <outlet property="eloLabel" destination="UeO-3p-SXV" id="rP2-VL-lri"/>
                         <outlet property="priceLabel" destination="0sm-NE-aD2" id="ZKg-cT-eWs"/>
-                        <outlet property="purchaseButton" destination="HiT-nW-sbi" id="tBa-Yi-Oxe"/>
                         <outlet property="rankLabel" destination="OHA-5k-PVF" id="nON-be-7oi"/>
                         <outlet property="tabBarMenu" destination="bQ7-aU-Zkj" id="FxI-9g-FFs"/>
                         <outlet property="titleLabel" destination="97Q-qZ-U6f" id="tT9-8p-fJ1"/>
@@ -347,8 +328,8 @@
     </scenes>
     <resources>
         <image name="arrow.down" catalog="system" width="60" height="64"/>
-        <image name="arrowshape.turn.up.left" catalog="system" width="64" height="52"/>
-        <image name="arrowshape.turn.up.left.fill" catalog="system" width="64" height="52"/>
         <image name="avatar_default" width="320" height="320"/>
+        <image name="dollarsign.circle" catalog="system" width="64" height="60"/>
+        <image name="dollarsign.circle.fill" catalog="system" width="64" height="60"/>
     </resources>
 </document>
