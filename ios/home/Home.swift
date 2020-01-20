@@ -125,7 +125,11 @@ class Home: UIViewController, UISearchBarDelegate, UISearchResultsUpdating, UITa
         case 2:
             print("search")
             //profile(player: Player)
-            StoryboardSelector().profile(player: self.player!)
+            //StoryboardSelector().profile(player: self.player!)
+            let storyboard: UIStoryboard = UIStoryboard(name: "Search", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier: "Search") as! Search
+            viewController.setPlayer(player: self.player!)
+            UIApplication.shared.keyWindow?.rootViewController = viewController
         case 3:
             print("game")
             StoryboardSelector().actual(player: self.player!)
