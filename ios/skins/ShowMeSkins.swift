@@ -12,10 +12,13 @@ class ShowMeSkins: UIViewController, UITabBarDelegate {
     
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var tabBarMenu: UITabBar!
+    //@IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var avatarImageView: UIImageView!
+    //@IBOutlet weak var rankLabel: UILabel!
     @IBOutlet weak var rankLabel: UILabel!
-    @IBOutlet weak var tschxLabel: UILabel!
+    //@IBOutlet weak var tschxLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
+    //@IBOutlet weak var usernameLabel: UILabel!
     
     var skinTableMenu: SkinTableMenu?
     
@@ -32,7 +35,7 @@ class ShowMeSkins: UIViewController, UITabBarDelegate {
         let decodedimage = UIImage(data: dataDecoded)
         self.avatarImageView.image = decodedimage
         self.rankLabel.text = self.player!.getRank()
-        self.tschxLabel.text = "₮\(self.player!.getTschx())"
+        //self.tschxLabel.text = "₮\(self.player!.getTschx())"
         self.usernameLabel.text = self.player!.getName()
     }
     

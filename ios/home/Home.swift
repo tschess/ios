@@ -98,6 +98,7 @@ class Home: UIViewController, UISearchBarDelegate, UISearchResultsUpdating, UITa
         switch item.tag {
         case 0:
             print("skin")
+            StoryboardSelector().purchase(player: self.player!, remaining: 13)
         case 1:
             print("quick")
             DispatchQueue.main.async() {

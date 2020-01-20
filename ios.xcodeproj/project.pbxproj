@@ -262,6 +262,7 @@
 		B7F5878A23D12E6300A91CD3 /* SkinTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F5878923D12E6300A91CD3 /* SkinTableCell.swift */; };
 		B7F5F63923D5EA3000BCF91F /* Edit.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F5F63823D5EA3000BCF91F /* Edit.swift */; };
 		B7F5F63C23D5EA4A00BCF91F /* Edit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7F5F63B23D5EA4A00BCF91F /* Edit.storyboard */; };
+		B7F5F63E23D6232600BCF91F /* Skin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7F5F63D23D6232600BCF91F /* Skin.storyboard */; };
 		B7F64B06239ABA3600F6AFB7 /* Landmine.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F64B05239ABA3600F6AFB7 /* Landmine.swift */; };
 		B7F78D10236B91E800F07FD7 /* ReviewXandroid.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7F78D0F236B91E800F07FD7 /* ReviewXandroid.storyboard */; };
 		B7F78D12236B922700F07FD7 /* ReviewPhaedrus.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7F78D11236B922700F07FD7 /* ReviewPhaedrus.storyboard */; };
@@ -577,6 +578,7 @@
 		B7F5878923D12E6300A91CD3 /* SkinTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkinTableCell.swift; sourceTree = "<group>"; };
 		B7F5F63823D5EA3000BCF91F /* Edit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Edit.swift; sourceTree = "<group>"; };
 		B7F5F63B23D5EA4A00BCF91F /* Edit.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Edit.storyboard; sourceTree = "<group>"; };
+		B7F5F63D23D6232600BCF91F /* Skin.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Skin.storyboard; sourceTree = "<group>"; };
 		B7F64B05239ABA3600F6AFB7 /* Landmine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Landmine.swift; sourceTree = "<group>"; };
 		B7F78D0F236B91E800F07FD7 /* ReviewXandroid.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ReviewXandroid.storyboard; sourceTree = "<group>"; };
 		B7F78D11236B922700F07FD7 /* ReviewPhaedrus.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ReviewPhaedrus.storyboard; sourceTree = "<group>"; };
@@ -854,6 +856,7 @@
 				B713774823D20320006D57C2 /* Skin.swift */,
 				B713774A23D25F3F006D57C2 /* PurchaseDetail.storyboard */,
 				B713774C23D25F7B006D57C2 /* PurchaseDetail.swift */,
+				B7F5F63D23D6232600BCF91F /* Skin.storyboard */,
 			);
 			path = skins;
 			sourceTree = "<group>";
@@ -1988,6 +1991,7 @@
 				B7CB62D6237B96A100E50204 /* FairyCalhoun.storyboard in Resources */,
 				B7DF147D23CE5C33007B2C7D /* PreviewIapetusXandroid.storyboard in Resources */,
 				B7CB62F4237BB07500E50204 /* ReviewMagnus.storyboard in Resources */,
+				B7F5F63E23D6232600BCF91F /* Skin.storyboard in Resources */,
 				B7DF5C192383464A0022A8C2 /* SnapshotXandroid.storyboard in Resources */,
 				B7DF147123CE5197007B2C7D /* PreviewIapetusCalhoun.storyboard in Resources */,
 				B7F5F63C23D5EA4A00BCF91F /* Edit.storyboard in Resources */,
