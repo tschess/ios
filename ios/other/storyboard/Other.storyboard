@@ -34,7 +34,7 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="40"/>
                                 <state key="normal" title="← ">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
                                     <action selector="backButtonClick:" destination="DAE-jB-YvD" eventType="touchUpInside" id="OjC-TS-WgK"/>
@@ -125,34 +125,8 @@
                                     <constraint firstItem="RAM-33-HiP" firstAttribute="centerX" secondItem="YPS-Tp-PVu" secondAttribute="centerX" id="yYZ-Eb-lTp"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PA8-0b-k9J" userLabel="ChallengeButtonView">
-                                <rect key="frame" x="0.0" y="222" width="414" height="46"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4ht-vu-Ep7">
-                                        <rect key="frame" x="0.0" y="8" width="414" height="30"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="zIJ-Yz-P3o"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="22"/>
-                                        <state key="normal" title="new challenge">
-                                            <color key="titleColor" red="0.86274509799999999" green="0.015686274510000001" blue="0.015686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="newChallengeButtonClick:" destination="DAE-jB-YvD" eventType="touchUpInside" id="k8Q-c3-wkQ"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="4ht-vu-Ep7" secondAttribute="trailing" id="5V0-Uc-wDV"/>
-                                    <constraint firstItem="4ht-vu-Ep7" firstAttribute="top" secondItem="PA8-0b-k9J" secondAttribute="top" constant="8" id="twD-bl-mQG"/>
-                                    <constraint firstItem="4ht-vu-Ep7" firstAttribute="leading" secondItem="PA8-0b-k9J" secondAttribute="leading" id="wIA-64-GMs"/>
-                                    <constraint firstAttribute="bottom" secondItem="4ht-vu-Ep7" secondAttribute="bottom" constant="8" id="xxG-sr-mdU"/>
-                                </constraints>
-                            </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bur-R0-dip">
-                                <rect key="frame" x="0.0" y="268" width="414" height="544"/>
+                                <rect key="frame" x="0.0" y="222" width="414" height="590"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <segue destination="ymK-8I-rfn" kind="embed" id="KYg-Ud-1Oo"/>
@@ -169,13 +143,13 @@
                                     <constraint firstAttribute="height" constant="50" id="CtS-Ad-lXP"/>
                                 </constraints>
                                 <items>
-                                    <tabBarItem title="home" image="arrowshape.turn.up.left" catalog="system" id="cNg-v3-E35">
+                                    <tabBarItem title="" id="cNg-v3-E35">
                                         <color key="badgeColor" red="0.86923474069999995" green="0.012778783219999999" blue="0.00083617179190000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tabBarItem>
                                     <tabBarItem tag="1" title="challenge" image="scope" catalog="system" selectedImage="house" id="fjf-cy-wGx">
                                         <color key="badgeColor" red="0.86923474069999995" green="0.012778783219999999" blue="0.00083617179190000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tabBarItem>
-                                    <tabBarItem title="message" image="envelope.open" catalog="system" id="AgV-7t-joK">
+                                    <tabBarItem title="" id="AgV-7t-joK">
                                         <color key="badgeColor" red="0.86923474069999995" green="0.012778783219999999" blue="0.00083617179190000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tabBarItem>
                                 </items>
@@ -186,14 +160,11 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="PA8-0b-k9J" firstAttribute="leading" secondItem="Hog-c1-J9t" secondAttribute="leading" id="0La-tk-6f4"/>
                             <constraint firstItem="Hog-c1-J9t" firstAttribute="top" secondItem="5qi-EH-0fj" secondAttribute="top" id="137-RQ-Bcp"/>
                             <constraint firstItem="bur-R0-dip" firstAttribute="leading" secondItem="Hog-c1-J9t" secondAttribute="leading" id="5gU-ql-5oq"/>
                             <constraint firstAttribute="trailing" secondItem="5B6-k7-X3H" secondAttribute="trailing" id="6Ia-SO-gsm"/>
                             <constraint firstItem="5qi-EH-0fj" firstAttribute="leading" secondItem="Hog-c1-J9t" secondAttribute="leading" constant="8" id="8nE-Dh-TWR"/>
-                            <constraint firstItem="bur-R0-dip" firstAttribute="top" secondItem="PA8-0b-k9J" secondAttribute="bottom" id="ABP-uR-mWz"/>
                             <constraint firstItem="5B6-k7-X3H" firstAttribute="bottom" secondItem="5qi-EH-0fj" secondAttribute="top" id="BNU-5d-9h3"/>
-                            <constraint firstItem="PA8-0b-k9J" firstAttribute="trailing" secondItem="Hog-c1-J9t" secondAttribute="trailing" id="FbE-xW-ExA"/>
                             <constraint firstItem="rh3-GT-zds" firstAttribute="top" secondItem="5B6-k7-X3H" secondAttribute="bottom" id="Lyx-f9-P7d"/>
                             <constraint firstItem="Hog-c1-J9t" firstAttribute="bottom" secondItem="lR1-2A-YPc" secondAttribute="bottom" id="O5I-dU-VpA"/>
                             <constraint firstItem="rh3-GT-zds" firstAttribute="trailing" secondItem="Hog-c1-J9t" secondAttribute="trailing" id="OpS-J3-ymV"/>
@@ -205,8 +176,8 @@
                             <constraint firstItem="YPS-Tp-PVu" firstAttribute="trailing" secondItem="Hog-c1-J9t" secondAttribute="trailing" id="fbH-F6-TwX"/>
                             <constraint firstItem="5B6-k7-X3H" firstAttribute="top" secondItem="9gv-Ja-N4g" secondAttribute="top" id="gGb-LR-cSb"/>
                             <constraint firstItem="lR1-2A-YPc" firstAttribute="leading" secondItem="Hog-c1-J9t" secondAttribute="leading" id="izm-JD-Ctu"/>
+                            <constraint firstItem="bur-R0-dip" firstAttribute="top" secondItem="YPS-Tp-PVu" secondAttribute="bottom" id="lll-SU-vx3"/>
                             <constraint firstItem="YPS-Tp-PVu" firstAttribute="top" secondItem="5qi-EH-0fj" secondAttribute="bottom" id="lwO-9Y-FFK"/>
-                            <constraint firstItem="PA8-0b-k9J" firstAttribute="top" secondItem="YPS-Tp-PVu" secondAttribute="bottom" id="nm6-J4-yBv"/>
                             <constraint firstItem="5qi-EH-0fj" firstAttribute="trailing" secondItem="Hog-c1-J9t" secondAttribute="trailing" id="u2K-yW-c68"/>
                             <constraint firstItem="bur-R0-dip" firstAttribute="trailing" secondItem="Hog-c1-J9t" secondAttribute="trailing" id="urK-2W-Lc4"/>
                         </constraints>
@@ -216,8 +187,6 @@
                         <outlet property="activityIndicator" destination="RAM-33-HiP" id="hv1-Gz-W0b"/>
                         <outlet property="avatarImageView" destination="XYJ-aV-Rc5" id="1uS-TP-4fV"/>
                         <outlet property="backButton" destination="5qi-EH-0fj" id="9nk-ly-Hln"/>
-                        <outlet property="challengeButtonView" destination="PA8-0b-k9J" id="iWy-4A-GYJ"/>
-                        <outlet property="newChallengeButton" destination="4ht-vu-Ep7" id="8cf-Lw-CZ2"/>
                         <outlet property="rankLabel" destination="Cds-SZ-ar7" id="imB-Nu-lEa"/>
                         <outlet property="tabBarMenu" destination="lR1-2A-YPc" id="CDf-K6-4Hh"/>
                         <outlet property="usernameLabel" destination="ux2-5E-CTf" id="73i-xH-2Wl"/>
@@ -353,10 +322,8 @@
     </scenes>
     <resources>
         <image name="arrow.up" catalog="system" width="60" height="64"/>
-        <image name="arrowshape.turn.up.left" catalog="system" width="64" height="52"/>
         <image name="avatar_default" width="320" height="320"/>
         <image name="avatar_inverse" width="320" height="320"/>
-        <image name="envelope.open" catalog="system" width="64" height="60"/>
         <image name="house" catalog="system" width="64" height="54"/>
         <image name="scope" catalog="system" width="64" height="60"/>
     </resources>
