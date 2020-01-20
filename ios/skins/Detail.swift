@@ -226,21 +226,16 @@ class Detail: UIViewController, UITabBarDelegate, UITextViewDelegate {
     }
     
     @IBAction func backButtonClick(_ sender: Any) {
-        let storyboard: UIStoryboard = UIStoryboard(name: "ShowMeSkins", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "ShowMeSkins") as! ShowMeSkins
-        viewController.setPlayer(player: self.player!)
-        UIApplication.shared.keyWindow?.rootViewController = viewController
+        StoryboardSelector().purchase(player: self.player!, remaining: 13)
     }
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         switch item.tag {
         case 0:
-            let storyboard: UIStoryboard = UIStoryboard(name: "ShowMeSkins", bundle: nil)
-            let viewController = storyboard.instantiateViewController(withIdentifier: "ShowMeSkins") as! ShowMeSkins
-            viewController.setPlayer(player: self.player!)
-            UIApplication.shared.keyWindow?.rootViewController = viewController
+            StoryboardSelector().purchase(player: self.player!, remaining: 13)
         default:
-            StoryboardSelector().home(player: self.player!)
+            print("fuck")
+            //StoryboardSelector().home(player: self.player!)
         }
     }
 }
