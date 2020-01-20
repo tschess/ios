@@ -125,6 +125,7 @@ class Home: UIViewController, UISearchBarDelegate, UISearchResultsUpdating, UITa
             print("search")
         case 3:
             print("game")
+            StoryboardSelector().actual(player: self.player!)
         case 4:
             print("config")
         default:

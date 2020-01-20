@@ -6,41 +6,32 @@
 //  Copyright © 2020 bahlsenwitz. All rights reserved.
 //
 
-import UIKit
+import UIKit //
 
 class Edit: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIDropInteractionDelegate {
+    
+    var titleText: String?
+    
+    func setTitleText(titleText: String) {
+        self.titleText = titleText
+    }
+    
+    @IBOutlet weak var titleLabel: UILabel!
     
     @IBOutlet weak var backButton: UIButton!
     
     @IBOutlet weak var doneButtonWidth: NSLayoutConstraint!
     @IBOutlet weak var backButtonWidth: NSLayoutConstraint!
-    //@IBOutlet weak var notificationLabel: UILabel!
-    
-    //@IBOutlet weak var upperPartitionView: UIView!
-    //@IBOutlet weak var lowerPartitionView: UIView!
     
     @IBOutlet weak var rankLabel: UILabel!
-    //@IBOutlet weak var tschxLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var avatarImageView: UIImageView!
-    //@IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    
-    //@IBOutlet weak var pointsView: UIView!
-    //@IBOutlet weak var pointsLabel: UILabel!
-    //@IBOutlet weak var cancelEditImageButton: UIImageView!
-    //@IBOutlet weak var configPartitionHeightConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var configCollectionView: DynamicCollectionView!
     @IBOutlet weak var configCollectionViewHeight: NSLayoutConstraint!
     
-    //@IBOutlet weak var tschessElementCollectionView: UICollectionView!
     @IBOutlet weak var tschessElementCollectionView: UICollectionView!
-    
-    //@IBOutlet weak var saveConfigButton: UIButton!
-    
-    //@IBOutlet weak var activeConfigLabel: UILabel!
-    //@IBOutlet weak var configIndicatorLabel: UILabel!
     @IBOutlet weak var tabBarMenu: UITabBar!
     
     let dateTime: DateTime = DateTime()
@@ -92,23 +83,17 @@ class Edit: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate, UII
         
         self.configCollectionView.dragInteractionEnabled = false
         
-        //self.cancelEditImageButton.isHidden = true
-        //self.pointsView.isHidden = true
-        
         self.tschessElementMatrix = self.cacheCancelMatrix
         
         self.configCollectionView.reloadData()
-        
-        //self.tschessElementCollectionView.isHidden = true
-        
-        //self.saveConfigButton.isHidden = true
-        
     }
     
     //MARK: - lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.titleLabel.text = self.titleText
         
         self.activityIndicator.isHidden = true
         
@@ -121,49 +106,32 @@ class Edit: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate, UII
         self.configCollectionView.isUserInteractionEnabled = true
         self.configCollectionView.dragInteractionEnabled = false
         
-//        self.upperPartitionView.addInteraction(UIDropInteraction(delegate: self))
-//        self.lowerPartitionView.addInteraction(UIDropInteraction(delegate: self))
-//
         self.tschessElementCollectionView.delegate = self
         self.tschessElementCollectionView.dataSource = self
         self.tschessElementCollectionView.dragDelegate = self
         self.tschessElementCollectionView.isUserInteractionEnabled = true
         self.tschessElementCollectionView.dragInteractionEnabled = true
         
-//        self.notificationLabel.isHidden = true
-//        self.activityIndicator.isHidden = true
-//        self.pointsView.isHidden = true
-//        self.tschessElementCollectionView.isHidden = true
-//        self.saveConfigButton.isHidden = true
-//        self.cancelEditImageButton.isHidden = true
-        
-//        self.attributeAlphaDotFull = [
-//            NSAttributedString.Key.foregroundColor: UIColor(red: 0/255.0, green: 0/255.0, blue: 0/255.0, alpha: 1.0),
-//            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 24, weight: UIFont.Weight.bold)]
-//        self.attributeAlphaDotHalf = [
-//            NSAttributedString.Key.foregroundColor: UIColor(red: 0/255.0, green: 0/255.0, blue: 0/255.0, alpha: 0.5),
-//            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 24, weight: UIFont.Weight.bold)]
-//        let alphaDotFull = NSMutableAttributedString(string: "•", attributes: self.attributeAlphaDotFull!)
-//        let alphaDotHalf = NSMutableAttributedString(string: " • ", attributes: self.attributeAlphaDotHalf!)
-//
-//        let activeConfigLabeleString = NSMutableAttributedString()
-//        activeConfigLabeleString.append(alphaDotHalf)
-//        activeConfigLabeleString.append(alphaDotFull)
-//        activeConfigLabeleString.append(alphaDotHalf)
-//        self.configIndicatorLabel.attributedText = activeConfigLabeleString
-        
         self.tabBarMenu.delegate = self
-        
-//        self.updateHeader()
-        
     }
     
     @IBAction func backButtonClick(_ sender: Any) {
-        let storyboard: UIStoryboard = UIStoryboard(name: "Challenge", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "Challenge") as! Challenge
-        viewController.setPlayer(player: self.player!)
-        viewController.setGameModel(gameModel: self.gameModel!)
-        UIApplication.shared.keyWindow?.rootViewController = viewController
+        if(self.titleText == "new challenge"){
+            let storyboard: UIStoryboard = UIStoryboard(name: "Challenge", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier: "Challenge") as! Challenge
+            viewController.setPlayer(player: self.player!)
+            viewController.setGameModel(gameModel: self.gameModel!)
+            UIApplication.shared.keyWindow?.rootViewController = viewController
+        }
+        if(self.titleText == "quick play"){
+            let storyboard: UIStoryboard = UIStoryboard(name: "Quick", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier: "Quick") as! Quick
+            viewController.setPlayer(player: self.player!)
+            let opponent = self.gameModel!.getOpponent()
+            viewController.setOpponent(opponent: opponent)
+            UIApplication.shared.keyWindow?.rootViewController = viewController
+        }
+        print("ERROR")
     }
     
     var gameModel: Game?

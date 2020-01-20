@@ -16,7 +16,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="new challenge" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rh3-GT-zds">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="title label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rh3-GT-zds">
                                 <rect key="frame" x="0.0" y="44" width="414" height="40"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                                 <constraints>
@@ -441,6 +441,7 @@
                         <outlet property="doneButtonWidth" destination="0Xf-qh-iWz" id="5rG-WG-zKy"/>
                         <outlet property="rankLabel" destination="Cds-SZ-ar7" id="imB-Nu-lEa"/>
                         <outlet property="tabBarMenu" destination="lR1-2A-YPc" id="CDf-K6-4Hh"/>
+                        <outlet property="titleLabel" destination="rh3-GT-zds" id="CUA-nm-eYa"/>
                         <outlet property="tschessElementCollectionView" destination="nQP-5X-zQQ" id="1cF-NF-axm"/>
                         <outlet property="usernameLabel" destination="ux2-5E-CTf" id="73i-xH-2Wl"/>
                     </connections>

@@ -259,6 +259,7 @@ class Challenge:
         let viewController = storyboard.instantiateViewController(withIdentifier: "Edit") as! Edit
         viewController.setPlayer(player: self.player!)
         viewController.setGameModel(gameModel: self.gameModel!)
+        viewController.setTitleText(titleText: "new challenge")
         UIApplication.shared.keyWindow?.rootViewController = viewController
     }
     

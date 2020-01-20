@@ -288,9 +288,9 @@ class Quick:
                     UITabBarDelegate,
                     UIGestureRecognizerDelegate {
     
-    var opponent: Player?
+    var opponent: PlayerCore?
     
-    public func setOpponent(opponent: Player){
+    public func setOpponent(opponent: PlayerCore){
         self.opponent = opponent
     }
     
@@ -538,7 +538,9 @@ class Quick:
         let storyboard: UIStoryboard = UIStoryboard(name: "Edit", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "Edit") as! Edit
         viewController.setPlayer(player: self.player!)
-        viewController.setGameModel(gameModel: self.gameModel!)
+        let gameModel: Game = Game(opponent: self.opponent!)
+        viewController.setGameModel(gameModel: gameModel)
+        viewController.setTitleText(titleText: "quick play")
         UIApplication.shared.keyWindow?.rootViewController = viewController
     }
     
