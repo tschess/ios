@@ -61,7 +61,8 @@
                                     <tabBarItem title="" id="cNg-v3-E35">
                                         <color key="badgeColor" red="0.86923474069999995" green="0.012778783219999999" blue="0.00083617179190000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tabBarItem>
-                                    <tabBarItem title="home" image="arrowshape.turn.up.left" catalog="system" selectedImage="arrowshape.turn.up.left.fill" id="fjf-cy-wGx">
+                                    <tabBarItem title="address" image="suit.diamond" catalog="system" selectedImage="suit.diamond.fill" id="fjf-cy-wGx">
+                                        <inset key="imageInsets" minX="195" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tabBarItem>
                                     <tabBarItem title="" id="AgV-7t-joK">
@@ -220,6 +221,7 @@
                         <viewLayoutGuide key="safeArea" id="Hog-c1-J9t"/>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="2y5-y6-XdS" id="jSG-Tn-4JE"/>
                         <outlet property="avatarImageView" destination="tcE-ju-QfB" id="cFC-H0-JiE"/>
                         <outlet property="backButton" destination="5qi-EH-0fj" id="9nk-ly-Hln"/>
                         <outlet property="rankLabel" destination="tKl-DO-v4H" id="r7i-8M-qhg"/>
@@ -332,8 +334,8 @@
     </scenes>
     <resources>
         <image name="arrow.down" catalog="system" width="60" height="64"/>
-        <image name="arrowshape.turn.up.left" catalog="system" width="64" height="52"/>
-        <image name="arrowshape.turn.up.left.fill" catalog="system" width="64" height="52"/>
         <image name="avatar_default" width="320" height="320"/>
+        <image name="suit.diamond" catalog="system" width="52" height="64"/>
+        <image name="suit.diamond.fill" catalog="system" width="52" height="64"/>
     </resources>
 </document>

@@ -10,6 +10,8 @@ import UIKit
 
 class ShowMeSkins: UIViewController, UITabBarDelegate {
     
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var tabBarMenu: UITabBar!
     //@IBOutlet weak var avatarImageView: UIImageView!
@@ -37,6 +39,8 @@ class ShowMeSkins: UIViewController, UITabBarDelegate {
         self.rankLabel.text = self.player!.getRank()
         //self.tschxLabel.text = "₮\(self.player!.getTschx())"
         self.usernameLabel.text = self.player!.getName()
+        
+        self.activityIndicator.isHidden = true
     }
     
     @objc func onDidReceiveData(_ notification: NSNotification) {
@@ -93,13 +97,19 @@ class ShowMeSkins: UIViewController, UITabBarDelegate {
     }
     
     @IBAction func backButtonClick(_ sender: Any) {
-        StoryboardSelector().home(player: self.player!)
+        let homeStoryboard: UIStoryboard = UIStoryboard(name: "Home", bundle: nil)
+        let homeViewController = homeStoryboard.instantiateViewController(withIdentifier: "Home") as! Home
+        homeViewController.setPlayer(player: self.player!)
+        UIApplication.shared.keyWindow?.rootViewController = homeViewController
     }
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         switch item.tag {
         default:
-            StoryboardSelector().profile(player: self.player!)
+            let homeStoryboard: UIStoryboard = UIStoryboard(name: "Home", bundle: nil)
+            let homeViewController = homeStoryboard.instantiateViewController(withIdentifier: "Home") as! Home
+            homeViewController.setPlayer(player: self.player!)
+            UIApplication.shared.keyWindow?.rootViewController = homeViewController
         }
     }
 }
