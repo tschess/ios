@@ -53,8 +53,8 @@
 		B70CEADF22FE8CD800F08541 /* Diagonal.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70CEADE22FE8CD800F08541 /* Diagonal.swift */; };
 		B70F0C0D22EBC075001415AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70F0C0C22EBC075001415AE /* AppDelegate.swift */; };
 		B713774923D20320006D57C2 /* Skin.swift in Sources */ = {isa = PBXBuildFile; fileRef = B713774823D20320006D57C2 /* Skin.swift */; };
-		B713774B23D25F3F006D57C2 /* PurchaseDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B713774A23D25F3F006D57C2 /* PurchaseDetail.storyboard */; };
-		B713774D23D25F7B006D57C2 /* PurchaseDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = B713774C23D25F7B006D57C2 /* PurchaseDetail.swift */; };
+		B713774B23D25F3F006D57C2 /* xPurchaseDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B713774A23D25F3F006D57C2 /* xPurchaseDetail.storyboard */; };
+		B713774D23D25F7B006D57C2 /* Detail.swift in Sources */ = {isa = PBXBuildFile; fileRef = B713774C23D25F7B006D57C2 /* Detail.swift */; };
 		B714BF25237C939D000DD80E /* GameCreate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B714BF24237C939D000DD80E /* GameCreate.swift */; };
 		B714BF28237C942A000DD80E /* PlayerCreate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B714BF27237C942A000DD80E /* PlayerCreate.swift */; };
 		B7168BBC233A6C15008F59DE /* Date+GreaterThan.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7168BBB233A6C15008F59DE /* Date+GreaterThan.swift */; };
@@ -263,6 +263,7 @@
 		B7F5F63923D5EA3000BCF91F /* Edit.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F5F63823D5EA3000BCF91F /* Edit.swift */; };
 		B7F5F63C23D5EA4A00BCF91F /* Edit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7F5F63B23D5EA4A00BCF91F /* Edit.storyboard */; };
 		B7F5F63E23D6232600BCF91F /* Skin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7F5F63D23D6232600BCF91F /* Skin.storyboard */; };
+		B7F5F64023D629C100BCF91F /* Detail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7F5F63F23D629C100BCF91F /* Detail.storyboard */; };
 		B7F64B06239ABA3600F6AFB7 /* Landmine.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F64B05239ABA3600F6AFB7 /* Landmine.swift */; };
 		B7F78D10236B91E800F07FD7 /* ReviewXandroid.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7F78D0F236B91E800F07FD7 /* ReviewXandroid.storyboard */; };
 		B7F78D12236B922700F07FD7 /* ReviewPhaedrus.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7F78D11236B922700F07FD7 /* ReviewPhaedrus.storyboard */; };
@@ -363,8 +364,8 @@
 		B70F0C0C22EBC075001415AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B70F0C1122EBC25C001415AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B713774823D20320006D57C2 /* Skin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Skin.swift; sourceTree = "<group>"; };
-		B713774A23D25F3F006D57C2 /* PurchaseDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PurchaseDetail.storyboard; sourceTree = "<group>"; };
-		B713774C23D25F7B006D57C2 /* PurchaseDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseDetail.swift; sourceTree = "<group>"; };
+		B713774A23D25F3F006D57C2 /* xPurchaseDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = xPurchaseDetail.storyboard; sourceTree = "<group>"; };
+		B713774C23D25F7B006D57C2 /* Detail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Detail.swift; sourceTree = "<group>"; };
 		B714BF24237C939D000DD80E /* GameCreate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCreate.swift; sourceTree = "<group>"; };
 		B714BF27237C942A000DD80E /* PlayerCreate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCreate.swift; sourceTree = "<group>"; };
 		B7168BBB233A6C15008F59DE /* Date+GreaterThan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+GreaterThan.swift"; sourceTree = "<group>"; };
@@ -579,6 +580,7 @@
 		B7F5F63823D5EA3000BCF91F /* Edit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Edit.swift; sourceTree = "<group>"; };
 		B7F5F63B23D5EA4A00BCF91F /* Edit.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Edit.storyboard; sourceTree = "<group>"; };
 		B7F5F63D23D6232600BCF91F /* Skin.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Skin.storyboard; sourceTree = "<group>"; };
+		B7F5F63F23D629C100BCF91F /* Detail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Detail.storyboard; sourceTree = "<group>"; };
 		B7F64B05239ABA3600F6AFB7 /* Landmine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Landmine.swift; sourceTree = "<group>"; };
 		B7F78D0F236B91E800F07FD7 /* ReviewXandroid.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ReviewXandroid.storyboard; sourceTree = "<group>"; };
 		B7F78D11236B922700F07FD7 /* ReviewPhaedrus.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ReviewPhaedrus.storyboard; sourceTree = "<group>"; };
@@ -854,9 +856,10 @@
 				B7F5878723D12E3300A91CD3 /* SkinTableMenu.swift */,
 				B7F5878923D12E6300A91CD3 /* SkinTableCell.swift */,
 				B713774823D20320006D57C2 /* Skin.swift */,
-				B713774A23D25F3F006D57C2 /* PurchaseDetail.storyboard */,
-				B713774C23D25F7B006D57C2 /* PurchaseDetail.swift */,
+				B713774A23D25F3F006D57C2 /* xPurchaseDetail.storyboard */,
+				B713774C23D25F7B006D57C2 /* Detail.swift */,
 				B7F5F63D23D6232600BCF91F /* Skin.storyboard */,
+				B7F5F63F23D629C100BCF91F /* Detail.storyboard */,
 			);
 			path = skins;
 			sourceTree = "<group>";
@@ -1981,6 +1984,7 @@
 				B7039F2E238B54C1003896C6 /* ProfileXenophon.storyboard in Resources */,
 				B7EF81212388C92C00E89191 /* EthPhaedrus.storyboard in Resources */,
 				B7DF148723CE665D007B2C7D /* PurchaseHyperionCalhoun.storyboard in Resources */,
+				B7F5F64023D629C100BCF91F /* Detail.storyboard in Resources */,
 				B7039F24238B5197003896C6 /* CancelXenophon.storyboard in Resources */,
 				B7F5878423D0AE4900A91CD3 /* ShowMeSkins.storyboard in Resources */,
 				B7BAA657237F3BDE0038C483 /* ProfilePhaedrus.storyboard in Resources */,
@@ -2046,7 +2050,7 @@
 				B7DA22202399C344006256CC /* ScannerXenophon.storyboard in Resources */,
 				B7039F36238B585E003896C6 /* SnapshotXenophon.storyboard in Resources */,
 				B708D0DF236B354600A899F9 /* Initializer.storyboard in Resources */,
-				B713774B23D25F3F006D57C2 /* PurchaseDetail.storyboard in Resources */,
+				B713774B23D25F3F006D57C2 /* xPurchaseDetail.storyboard in Resources */,
 				B7039F2A238B534C003896C6 /* xChallengeXenophon.storyboard in Resources */,
 				B7DF5C152383448B0022A8C2 /* SnapshotCalhoun.storyboard in Resources */,
 				B7CB62F0237BB01C00E50204 /* CancelCalhoun.storyboard in Resources */,
@@ -2149,7 +2153,7 @@
 				B7BCD7A822F472AF00CC29E6 /* FairyElement.swift in Sources */,
 				B7E14C0022EC50F800CABCD3 /* Game.swift in Sources */,
 				B7BCD7BA22F473A000CC29E6 /* WhiteArrowPawn.swift in Sources */,
-				B713774D23D25F7B006D57C2 /* PurchaseDetail.swift in Sources */,
+				B713774D23D25F7B006D57C2 /* Detail.swift in Sources */,
 				B7DF5BE223832BFF0022A8C2 /* PurchaseSkin.swift in Sources */,
 				B7F7C8ED22FF81910060AC38 /* HorizontalVertical.swift in Sources */,
 				B7FCCC8E237383AD00C4DD88 /* ConfigSerializer.swift in Sources */,

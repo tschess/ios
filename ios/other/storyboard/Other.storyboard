@@ -158,7 +158,7 @@
                                     <tabBarItem title="" id="cNg-v3-E35">
                                         <color key="badgeColor" red="0.86923474069999995" green="0.012778783219999999" blue="0.00083617179190000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tabBarItem>
-                                    <tabBarItem title="challenge" image="scope" catalog="system" selectedImage="scope" id="fjf-cy-wGx">
+                                    <tabBarItem tag="1" title="challenge" image="scope" catalog="system" selectedImage="scope" id="fjf-cy-wGx">
                                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tabBarItem>
                                     <tabBarItem title="" id="AgV-7t-joK">

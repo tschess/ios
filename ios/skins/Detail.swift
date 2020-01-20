@@ -9,7 +9,9 @@
 import UIKit
 import StoreKit
 
-class PurchaseDetail: UIViewController, UITabBarDelegate, UITextViewDelegate {
+class Detail: UIViewController, UITabBarDelegate, UITextViewDelegate {
+    
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     let DURATION_PLACEHOLDER: String = "17.01.2020_15:45:53.2060"
     
@@ -76,6 +78,8 @@ class PurchaseDetail: UIViewController, UITabBarDelegate, UITextViewDelegate {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.startTimers()
+        
+        self.activityIndicator.isHidden = true
     }
     
     var skin: Skin?
@@ -87,9 +91,13 @@ class PurchaseDetail: UIViewController, UITabBarDelegate, UITextViewDelegate {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var backButton: UIButton!
     
+//    @IBOutlet weak var rankLabel: UILabel!
     @IBOutlet weak var rankLabel: UILabel!
-    @IBOutlet weak var tschxLabel: UILabel!
+    //    @IBOutlet weak var tschxLabel: UILabel!
+    @IBOutlet weak var eloLabel: UILabel!
+    //    @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var avatarImageView: UIImageView!
+    //    @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
     
     @IBOutlet weak var countdownTimerLabel: UILabel!
@@ -168,7 +176,7 @@ class PurchaseDetail: UIViewController, UITabBarDelegate, UITextViewDelegate {
         let decodedimage = UIImage(data: dataDecoded)
         self.avatarImageView.image = decodedimage
         self.rankLabel.text = self.player!.getRank()
-        self.tschxLabel.text = "₮\(self.player!.getTschx())"
+        //self.tschxLabel.text = "₮\(self.player!.getTschx())"
         self.usernameLabel.text = self.player!.getName()
         
         let cellForegroundClick = UITapGestureRecognizer(target: self, action: #selector(self.cellForegroundClick))
