@@ -495,7 +495,8 @@ class Config: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate, U
         case 2:
             StoryboardSelector().actual(player: self.player!)
         default:
-            StoryboardSelector().leader(player: self.player!)
+            return
+            //StoryboardSelector().leader(player: self.player!)
         }
     }
 }

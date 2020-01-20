@@ -92,65 +92,13 @@ class Home: UIViewController, UISearchBarDelegate, UISearchResultsUpdating, UITa
     func updateSearchResults(for searchController: UISearchController) {}
     
     func okHandler(action: UIAlertAction) {
-        StoryboardSelector().leader(player: self.player!)
-    }
-    
-    func discoverySearchTarget(discoverySearchTarget: String) {
-        DiscoveryTargetTask().execute(name: discoverySearchTarget) { (result) in
-            if result == nil {
-                DispatchQueue.main.async() {
-                    let alertController = UIAlertController(title: "", message: "", preferredStyle: UIAlertController.Style.alert)
-                    let myString = "server error"
-                    var myMutableString = NSMutableAttributedString()
-                    myMutableString = NSMutableAttributedString(string: myString as String, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18, weight: UIFont.Weight.light)])
-                    myMutableString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.white, range: NSRange(location:0, length:myString.count))
-                    alertController.setValue(myMutableString, forKey: "attributedTitle")
-                    let message = "\nplease try again later"
-                    var messageMutableString = NSMutableAttributedString()
-                    messageMutableString = NSMutableAttributedString(string: message as String, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17, weight: UIFont.Weight.thin)])
-                    messageMutableString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.white, range: NSRange(location:0,length:message.count))
-                    alertController.setValue(messageMutableString, forKey: "attributedMessage")
-                    let action = UIAlertAction(title: "ack", style: UIAlertAction.Style.default, handler: self.okHandler)
-                    action.setValue(Colour().getRed(), forKey: "titleTextColor")
-                    alertController.addAction(action)
-                    alertController.view.backgroundColor = UIColor.black
-                    alertController.view.layer.cornerRadius = 40
-                    self.present(alertController, animated: true, completion: nil)
-                }
-                return
-            }
-            let error = result as? String
-            if error != nil {
-                DispatchQueue.main.async() {
-                    let alertController = UIAlertController(title: "", message: "", preferredStyle: UIAlertController.Style.alert)
-                    let myString = "search error"
-                    var myMutableString = NSMutableAttributedString()
-                    myMutableString = NSMutableAttributedString(string: myString as String, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18, weight: UIFont.Weight.light)])
-                    myMutableString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.white, range: NSRange(location:0, length:myString.count))
-                    alertController.setValue(myMutableString, forKey: "attributedTitle")
-                    let message = "\nno such player"
-                    var messageMutableString = NSMutableAttributedString()
-                    messageMutableString = NSMutableAttributedString(string: message as String, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17, weight: UIFont.Weight.thin)])
-                    messageMutableString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.white, range: NSRange(location:0,length:message.count))
-                    alertController.setValue(messageMutableString, forKey: "attributedMessage")
-                    let action = UIAlertAction(title: "ack", style: UIAlertAction.Style.default, handler: self.okHandler)
-                    action.setValue(Colour().getRed(), forKey: "titleTextColor")
-                    alertController.addAction(action)
-                    alertController.view.backgroundColor = UIColor.black
-                    alertController.view.layer.cornerRadius = 40
-                    self.present(alertController, animated: true, completion: nil)
-                }
-                return
-            }
-            let gameModel = result as! Game
-            StoryboardSelector().challenge(player: self.player!, gameModel: gameModel)
-        }
+        //StoryboardSelector().leader(player: self.player!)
     }
     
     @objc func onDidReceiveData(_ notification: NSNotification) {
         let discoverSelectionIndex = notification.userInfo!["discover_selection"] as! Int
         let gameModel = leaderboardTableView!.getLeaderboardTableList()[discoverSelectionIndex]
-        StoryboardSelector().challenge(player: self.player!, gameModel: gameModel)
+        StoryboardSelector().other(player: self.player!, gameModel: gameModel)
     }
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {

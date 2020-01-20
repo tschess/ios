@@ -14,7 +14,7 @@
 		B7039F22238B4F84003896C6 /* ReviewXenophon.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7039F21238B4F84003896C6 /* ReviewXenophon.storyboard */; };
 		B7039F24238B5197003896C6 /* CancelXenophon.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7039F23238B5197003896C6 /* CancelXenophon.storyboard */; };
 		B7039F28238B52C2003896C6 /* FairyXenophon.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7039F27238B52C2003896C6 /* FairyXenophon.storyboard */; };
-		B7039F2A238B534C003896C6 /* ChallengeXenophon.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7039F29238B534C003896C6 /* ChallengeXenophon.storyboard */; };
+		B7039F2A238B534C003896C6 /* xChallengeXenophon.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7039F29238B534C003896C6 /* xChallengeXenophon.storyboard */; };
 		B7039F2C238B541D003896C6 /* AcquisitionXenophon.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7039F2B238B541D003896C6 /* AcquisitionXenophon.storyboard */; };
 		B7039F2E238B54C1003896C6 /* ProfileXenophon.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7039F2D238B54C1003896C6 /* ProfileXenophon.storyboard */; };
 		B7039F30238B555A003896C6 /* ManageXenophon.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7039F2F238B555A003896C6 /* ManageXenophon.storyboard */; };
@@ -170,8 +170,8 @@
 		B7CB62D8237B96BB00E50204 /* FairyMagnus.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7CB62D7237B96BB00E50204 /* FairyMagnus.storyboard */; };
 		B7CB62DE237BA01400E50204 /* AcquisitionMagnus.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7CB62DD237BA01400E50204 /* AcquisitionMagnus.storyboard */; };
 		B7CB62E0237BA15900E50204 /* AcquisitionCalhoun.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7CB62DF237BA15900E50204 /* AcquisitionCalhoun.storyboard */; };
-		B7CB62E6237BA9FD00E50204 /* ChallengeMagnus.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7CB62E5237BA9FD00E50204 /* ChallengeMagnus.storyboard */; };
-		B7CB62E8237BAA5D00E50204 /* ChallengeCalhoun.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7CB62E7237BAA5D00E50204 /* ChallengeCalhoun.storyboard */; };
+		B7CB62E6237BA9FD00E50204 /* xChallengeMagnus.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7CB62E5237BA9FD00E50204 /* xChallengeMagnus.storyboard */; };
+		B7CB62E8237BAA5D00E50204 /* xChallengeCalhoun.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7CB62E7237BAA5D00E50204 /* xChallengeCalhoun.storyboard */; };
 		B7CB62EE237BB00200E50204 /* CancelMagnus.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7CB62ED237BB00200E50204 /* CancelMagnus.storyboard */; };
 		B7CB62F0237BB01C00E50204 /* CancelCalhoun.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7CB62EF237BB01C00E50204 /* CancelCalhoun.storyboard */; };
 		B7CB62F2237BB05900E50204 /* ReviewCalhoun.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7CB62F1237BB05900E50204 /* ReviewCalhoun.storyboard */; };
@@ -254,6 +254,8 @@
 		B7F541CE23D51C6E00E89074 /* Other.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7F541CD23D51C6E00E89074 /* Other.storyboard */; };
 		B7F541D023D51CB700E89074 /* OtherMenuTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F541CF23D51CB700E89074 /* OtherMenuTable.swift */; };
 		B7F541D223D51CF900E89074 /* OtherMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F541D123D51CF900E89074 /* OtherMenuCell.swift */; };
+		B7F541D523D5208400E89074 /* Challenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F541D423D5208400E89074 /* Challenge.swift */; };
+		B7F541D823D520A400E89074 /* Challenge.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7F541D723D520A400E89074 /* Challenge.storyboard */; };
 		B7F5878423D0AE4900A91CD3 /* ShowMeSkins.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7F5878323D0AE4900A91CD3 /* ShowMeSkins.storyboard */; };
 		B7F5878623D12D8000A91CD3 /* ShowMeSkins.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F5878523D12D8000A91CD3 /* ShowMeSkins.swift */; };
 		B7F5878823D12E3300A91CD3 /* SkinTableMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F5878723D12E3300A91CD3 /* SkinTableMenu.swift */; };
@@ -273,10 +275,10 @@
 		B7F78D35236BA71300F07FD7 /* FairyTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F78D34236BA71300F07FD7 /* FairyTableCell.swift */; };
 		B7F78D37236BA7C400F07FD7 /* FairyTableMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F78D36236BA7C400F07FD7 /* FairyTableMenu.swift */; };
 		B7F78D39236BA7F400F07FD7 /* Fairy.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F78D38236BA7F400F07FD7 /* Fairy.swift */; };
-		B7F78D3B236BA80F00F07FD7 /* ChallengeXandroid.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7F78D3A236BA80F00F07FD7 /* ChallengeXandroid.storyboard */; };
-		B7F78D3D236BA83A00F07FD7 /* ChallengePhaedrus.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7F78D3C236BA83A00F07FD7 /* ChallengePhaedrus.storyboard */; };
+		B7F78D3B236BA80F00F07FD7 /* xChallengeXandroid.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7F78D3A236BA80F00F07FD7 /* xChallengeXandroid.storyboard */; };
+		B7F78D3D236BA83A00F07FD7 /* xChallengePhaedrus.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7F78D3C236BA83A00F07FD7 /* xChallengePhaedrus.storyboard */; };
 		B7F78D40236BA88500F07FD7 /* ChallengeMenuTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F78D3F236BA88500F07FD7 /* ChallengeMenuTable.swift */; };
-		B7F78D49236BA9A200F07FD7 /* Challenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F78D48236BA9A200F07FD7 /* Challenge.swift */; };
+		B7F78D49236BA9A200F07FD7 /* xChallenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F78D48236BA9A200F07FD7 /* xChallenge.swift */; };
 		B7F7C8ED22FF81910060AC38 /* HorizontalVertical.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F7C8EC22FF81910060AC38 /* HorizontalVertical.swift */; };
 		B7F7C8EF22FF85550060AC38 /* KingMovement.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F7C8EE22FF85550060AC38 /* KingMovement.swift */; };
 		B7F7C8F222FF8A680060AC38 /* Evaluation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F7C8F122FF8A680060AC38 /* Evaluation.swift */; };
@@ -318,7 +320,7 @@
 		B7039F21238B4F84003896C6 /* ReviewXenophon.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ReviewXenophon.storyboard; sourceTree = "<group>"; };
 		B7039F23238B5197003896C6 /* CancelXenophon.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CancelXenophon.storyboard; sourceTree = "<group>"; };
 		B7039F27238B52C2003896C6 /* FairyXenophon.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FairyXenophon.storyboard; sourceTree = "<group>"; };
-		B7039F29238B534C003896C6 /* ChallengeXenophon.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChallengeXenophon.storyboard; sourceTree = "<group>"; };
+		B7039F29238B534C003896C6 /* xChallengeXenophon.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = xChallengeXenophon.storyboard; sourceTree = "<group>"; };
 		B7039F2B238B541D003896C6 /* AcquisitionXenophon.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AcquisitionXenophon.storyboard; sourceTree = "<group>"; };
 		B7039F2D238B54C1003896C6 /* ProfileXenophon.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileXenophon.storyboard; sourceTree = "<group>"; };
 		B7039F2F238B555A003896C6 /* ManageXenophon.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ManageXenophon.storyboard; sourceTree = "<group>"; };
@@ -481,8 +483,8 @@
 		B7CB62D7237B96BB00E50204 /* FairyMagnus.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FairyMagnus.storyboard; sourceTree = "<group>"; };
 		B7CB62DD237BA01400E50204 /* AcquisitionMagnus.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AcquisitionMagnus.storyboard; sourceTree = "<group>"; };
 		B7CB62DF237BA15900E50204 /* AcquisitionCalhoun.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AcquisitionCalhoun.storyboard; sourceTree = "<group>"; };
-		B7CB62E5237BA9FD00E50204 /* ChallengeMagnus.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChallengeMagnus.storyboard; sourceTree = "<group>"; };
-		B7CB62E7237BAA5D00E50204 /* ChallengeCalhoun.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChallengeCalhoun.storyboard; sourceTree = "<group>"; };
+		B7CB62E5237BA9FD00E50204 /* xChallengeMagnus.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = xChallengeMagnus.storyboard; sourceTree = "<group>"; };
+		B7CB62E7237BAA5D00E50204 /* xChallengeCalhoun.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = xChallengeCalhoun.storyboard; sourceTree = "<group>"; };
 		B7CB62ED237BB00200E50204 /* CancelMagnus.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CancelMagnus.storyboard; sourceTree = "<group>"; };
 		B7CB62EF237BB01C00E50204 /* CancelCalhoun.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CancelCalhoun.storyboard; sourceTree = "<group>"; };
 		B7CB62F1237BB05900E50204 /* ReviewCalhoun.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ReviewCalhoun.storyboard; sourceTree = "<group>"; };
@@ -565,6 +567,8 @@
 		B7F541CD23D51C6E00E89074 /* Other.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Other.storyboard; sourceTree = "<group>"; };
 		B7F541CF23D51CB700E89074 /* OtherMenuTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherMenuTable.swift; sourceTree = "<group>"; };
 		B7F541D123D51CF900E89074 /* OtherMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherMenuCell.swift; sourceTree = "<group>"; };
+		B7F541D423D5208400E89074 /* Challenge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenge.swift; sourceTree = "<group>"; };
+		B7F541D723D520A400E89074 /* Challenge.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Challenge.storyboard; sourceTree = "<group>"; };
 		B7F5878323D0AE4900A91CD3 /* ShowMeSkins.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ShowMeSkins.storyboard; sourceTree = "<group>"; };
 		B7F5878523D12D8000A91CD3 /* ShowMeSkins.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowMeSkins.swift; sourceTree = "<group>"; };
 		B7F5878723D12E3300A91CD3 /* SkinTableMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkinTableMenu.swift; sourceTree = "<group>"; };
@@ -584,10 +588,10 @@
 		B7F78D34236BA71300F07FD7 /* FairyTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FairyTableCell.swift; sourceTree = "<group>"; };
 		B7F78D36236BA7C400F07FD7 /* FairyTableMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FairyTableMenu.swift; sourceTree = "<group>"; };
 		B7F78D38236BA7F400F07FD7 /* Fairy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fairy.swift; sourceTree = "<group>"; };
-		B7F78D3A236BA80F00F07FD7 /* ChallengeXandroid.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChallengeXandroid.storyboard; sourceTree = "<group>"; };
-		B7F78D3C236BA83A00F07FD7 /* ChallengePhaedrus.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChallengePhaedrus.storyboard; sourceTree = "<group>"; };
+		B7F78D3A236BA80F00F07FD7 /* xChallengeXandroid.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = xChallengeXandroid.storyboard; sourceTree = "<group>"; };
+		B7F78D3C236BA83A00F07FD7 /* xChallengePhaedrus.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = xChallengePhaedrus.storyboard; sourceTree = "<group>"; };
 		B7F78D3F236BA88500F07FD7 /* ChallengeMenuTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeMenuTable.swift; sourceTree = "<group>"; };
-		B7F78D48236BA9A200F07FD7 /* Challenge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenge.swift; sourceTree = "<group>"; };
+		B7F78D48236BA9A200F07FD7 /* xChallenge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xChallenge.swift; sourceTree = "<group>"; };
 		B7F7C8EC22FF81910060AC38 /* HorizontalVertical.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalVertical.swift; sourceTree = "<group>"; };
 		B7F7C8EE22FF85550060AC38 /* KingMovement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KingMovement.swift; sourceTree = "<group>"; };
 		B7F7C8F122FF8A680060AC38 /* Evaluation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Evaluation.swift; sourceTree = "<group>"; };
@@ -1035,6 +1039,7 @@
 		B787C72822E970DC009C94F7 /* ios */ = {
 			isa = PBXGroup;
 			children = (
+				B7F541D323D5206F00E89074 /* challenge */,
 				B7F541C923D51C3000E89074 /* other */,
 				B7F541BF23D51A4300E89074 /* home */,
 				B7A6218A23A0277B005DCDA1 /* talk */,
@@ -1046,7 +1051,7 @@
 				B7F78D28236B958300F07FD7 /* acquisition */,
 				B708D0DB236B34F000A899F9 /* initializer */,
 				B73894312328071100231170 /* ios.entitlements */,
-				B7A896112305FE3800F791A2 /* challenge */,
+				B7A896112305FE3800F791A2 /* xChallenge */,
 				B74145BC22F3CA5F00B3B4FF /* element */,
 				B74145B322F3C53100B3B4FF /* fairy */,
 				B74145B222F3C52600B3B4FF /* chess */,
@@ -1160,15 +1165,15 @@
 			path = storyboard;
 			sourceTree = "<group>";
 		};
-		B7A896112305FE3800F791A2 /* challenge */ = {
+		B7A896112305FE3800F791A2 /* xChallenge */ = {
 			isa = PBXGroup;
 			children = (
 				B714BF23237C9365000DD80E /* networking */,
 				B7F78D3E236BA86300F07FD7 /* component */,
 				B7F78D02236B906B00F07FD7 /* storyboard */,
-				B7F78D48236BA9A200F07FD7 /* Challenge.swift */,
+				B7F78D48236BA9A200F07FD7 /* xChallenge.swift */,
 			);
-			path = challenge;
+			path = xChallenge;
 			sourceTree = "<group>";
 		};
 		B7AEEA7A23A1BD0D002F950C /* actual */ = {
@@ -1639,14 +1644,31 @@
 			path = storyboard;
 			sourceTree = "<group>";
 		};
+		B7F541D323D5206F00E89074 /* challenge */ = {
+			isa = PBXGroup;
+			children = (
+				B7F541D623D5209100E89074 /* storyboard */,
+				B7F541D423D5208400E89074 /* Challenge.swift */,
+			);
+			path = challenge;
+			sourceTree = "<group>";
+		};
+		B7F541D623D5209100E89074 /* storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				B7F541D723D520A400E89074 /* Challenge.storyboard */,
+			);
+			path = storyboard;
+			sourceTree = "<group>";
+		};
 		B7F78D02236B906B00F07FD7 /* storyboard */ = {
 			isa = PBXGroup;
 			children = (
-				B7F78D3A236BA80F00F07FD7 /* ChallengeXandroid.storyboard */,
-				B7F78D3C236BA83A00F07FD7 /* ChallengePhaedrus.storyboard */,
-				B7CB62E5237BA9FD00E50204 /* ChallengeMagnus.storyboard */,
-				B7CB62E7237BAA5D00E50204 /* ChallengeCalhoun.storyboard */,
-				B7039F29238B534C003896C6 /* ChallengeXenophon.storyboard */,
+				B7F78D3A236BA80F00F07FD7 /* xChallengeXandroid.storyboard */,
+				B7F78D3C236BA83A00F07FD7 /* xChallengePhaedrus.storyboard */,
+				B7CB62E5237BA9FD00E50204 /* xChallengeMagnus.storyboard */,
+				B7CB62E7237BAA5D00E50204 /* xChallengeCalhoun.storyboard */,
+				B7039F29238B534C003896C6 /* xChallengeXenophon.storyboard */,
 			);
 			path = storyboard;
 			sourceTree = "<group>";
@@ -1924,7 +1946,7 @@
 				B7CB62DE237BA01400E50204 /* AcquisitionMagnus.storyboard in Resources */,
 				B70424CB23AF1DCF00DBB7FA /* QuickXenophon.storyboard in Resources */,
 				B7AEEA8723A1C442002F950C /* ActualPhaedrus.storyboard in Resources */,
-				B7CB62E6237BA9FD00E50204 /* ChallengeMagnus.storyboard in Resources */,
+				B7CB62E6237BA9FD00E50204 /* xChallengeMagnus.storyboard in Resources */,
 				B7CB62D8237B96BB00E50204 /* FairyMagnus.storyboard in Resources */,
 				B7DF5C1B2383483D0022A8C2 /* SnapshotMagnus.storyboard in Resources */,
 				B708D0E7236B366800A899F9 /* LaunchScreen.storyboard in Resources */,
@@ -1953,15 +1975,16 @@
 				B7DA221E2399C2DF006256CC /* ScannerPhaedrus.storyboard in Resources */,
 				B7039F32238B55FF003896C6 /* PurchaseXenophon.storyboard in Resources */,
 				B7CB62F6237BB10800E50204 /* StartCalhoun.storyboard in Resources */,
+				B7F541D823D520A400E89074 /* Challenge.storyboard in Resources */,
 				B7EF81262388CA4700E89191 /* EthMagnus.storyboard in Resources */,
-				B7F78D3D236BA83A00F07FD7 /* ChallengePhaedrus.storyboard in Resources */,
+				B7F78D3D236BA83A00F07FD7 /* xChallengePhaedrus.storyboard in Resources */,
 				B7EF81242388CA3900E89191 /* EthXandroid.storyboard in Resources */,
 				B7F78D12236B922700F07FD7 /* ReviewPhaedrus.storyboard in Resources */,
-				B7F78D3B236BA80F00F07FD7 /* ChallengeXandroid.storyboard in Resources */,
+				B7F78D3B236BA80F00F07FD7 /* xChallengeXandroid.storyboard in Resources */,
 				B7F78D10236B91E800F07FD7 /* ReviewXandroid.storyboard in Resources */,
 				B70424C723AF185E00DBB7FA /* HistoricXenophon.storyboard in Resources */,
 				B7A6217B239FFACF005DCDA1 /* HistoricCalhoun.storyboard in Resources */,
-				B7CB62E8237BAA5D00E50204 /* ChallengeCalhoun.storyboard in Resources */,
+				B7CB62E8237BAA5D00E50204 /* xChallengeCalhoun.storyboard in Resources */,
 				B79BB624231579EE00FF5E0E /* PawnPromotion.storyboard in Resources */,
 				B70424C123AF128F00DBB7FA /* QuickMagnus.storyboard in Resources */,
 				B7F78D14236B929800F07FD7 /* CancelPhaedrus.storyboard in Resources */,
@@ -1997,7 +2020,7 @@
 				B7039F36238B585E003896C6 /* SnapshotXenophon.storyboard in Resources */,
 				B708D0DF236B354600A899F9 /* Initializer.storyboard in Resources */,
 				B713774B23D25F3F006D57C2 /* PurchaseDetail.storyboard in Resources */,
-				B7039F2A238B534C003896C6 /* ChallengeXenophon.storyboard in Resources */,
+				B7039F2A238B534C003896C6 /* xChallengeXenophon.storyboard in Resources */,
 				B7DF5C152383448B0022A8C2 /* SnapshotCalhoun.storyboard in Resources */,
 				B7CB62F0237BB01C00E50204 /* CancelCalhoun.storyboard in Resources */,
 				B70424BF23AF0DA200DBB7FA /* ActualMagnus.storyboard in Resources */,
@@ -2201,6 +2224,7 @@
 				B7F4E87A233BC091005BDF85 /* GetHeaderTask.swift in Sources */,
 				B7BCD7BE22F473C100CC29E6 /* WhiteHunter.swift in Sources */,
 				B7F5878823D12E3300A91CD3 /* SkinTableMenu.swift in Sources */,
+				B7F541D523D5208400E89074 /* Challenge.swift in Sources */,
 				B7FCCC9B2373F12600C4DD88 /* Processor.swift in Sources */,
 				B7088208233A0CCC00A06CAD /* LoginTask.swift in Sources */,
 				B7D0CAA023A96F5D006A7F9D /* ConfigCollectionViewCell.swift in Sources */,
@@ -2213,7 +2237,7 @@
 				B74145C822F3CDCE00B3B4FF /* ArrowPawn.swift in Sources */,
 				B7F78D33236BA6CE00F07FD7 /* TransitioningDelegate.swift in Sources */,
 				B70CEADF22FE8CD800F08541 /* Diagonal.swift in Sources */,
-				B7F78D49236BA9A200F07FD7 /* Challenge.swift in Sources */,
+				B7F78D49236BA9A200F07FD7 /* xChallenge.swift in Sources */,
 				B708D103236B6AE600A899F9 /* TschessElementCell.swift in Sources */,
 				B7BCD7AC22F4731400CC29E6 /* BlackArrowPawn.swift in Sources */,
 				B74FA43523551E4300FC1018 /* Hopper.swift in Sources */,

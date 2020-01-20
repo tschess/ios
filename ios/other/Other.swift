@@ -169,7 +169,7 @@ class Other: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UIT
     }
     
     @IBAction func backButtonClick(_ sender: Any) {
-        StoryboardSelector().leader(player: self.player!)
+        //StoryboardSelector().leader(player: self.player!)
     }
     
 //    @IBAction func issueChallengeButtonClick(_ sender: Any) {
@@ -395,13 +395,19 @@ class Other: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UIT
 //    }
     
     func stayHandler(action: UIAlertAction) {
-        StoryboardSelector().challenge(player: self.player!, gameModel: self.gameModel!)
+        //StoryboardSelector().challenge(player: self.player!, gameModel: self.gameModel!)
     }
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         switch item.tag {
-        case 0:
-            StoryboardSelector().leader(player: self.player!)
+        case 1:
+            print("1")
+            let storyboard: UIStoryboard = UIStoryboard(name: "Challenge", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier: "Challenge") as! Challenge
+            //viewController.setGameList(gameList: gameList)
+            //viewController.setGameModel(gameModel: gameModel)
+            //viewController.setPlayer(player: player)
+            UIApplication.shared.keyWindow?.rootViewController = viewController
         default:
             StoryboardSelector().home(player: self.player!)
         }

@@ -165,45 +165,6 @@ class StoryboardSelector {
         }
     }
     
-    public func leader(player: Player) {
-        DispatchQueue.main.async {
-            switch self.device() {
-            case "XANDROID":
-                let storyboard: UIStoryboard = UIStoryboard(name: "LeaderXandroid", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "LeaderXandroid") as! Leader
-                viewController.setPlayer(player: player)
-                UIApplication.shared.keyWindow?.rootViewController = viewController
-                return
-            case "MAGNUS":
-                let storyboard: UIStoryboard = UIStoryboard(name: "LeaderMagnus", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "LeaderMagnus") as! Leader
-                viewController.setPlayer(player: player)
-                UIApplication.shared.keyWindow?.rootViewController = viewController
-                return
-            case "XENOPHON":
-                let storyboard: UIStoryboard = UIStoryboard(name: "LeaderXenophon", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "LeaderXenophon") as! Leader
-                viewController.setPlayer(player: player)
-                UIApplication.shared.keyWindow?.rootViewController = viewController
-                return
-            case "PHAEDRUS":
-                let storyboard: UIStoryboard = UIStoryboard(name: "LeaderPhaedrus", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "LeaderPhaedrus") as! Leader
-                viewController.setPlayer(player: player)
-                UIApplication.shared.keyWindow?.rootViewController = viewController
-                return
-            case "CALHOUN":
-                let storyboard: UIStoryboard = UIStoryboard(name: "LeaderCalhoun", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "LeaderCalhoun") as! Leader
-                viewController.setPlayer(player: player)
-                UIApplication.shared.keyWindow?.rootViewController = viewController
-                return
-            default:
-                return
-            }
-        }
-    }
-    
     public func profile(player: Player) {
         DispatchQueue.main.async {
             switch self.device() {
@@ -324,37 +285,9 @@ class StoryboardSelector {
         }
     }
     
-    public func challenge(player: Player, gameModel: Game) {
+    public func other(player: Player, gameModel: Game) {
         DispatchQueue.main.async {
             switch self.device() {
-            case "XANDROID":
-                let storyboard: UIStoryboard = UIStoryboard(name: "ChallengeXandroid", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "ChallengeXandroid") as! Challenge
-                viewController.setPlayer(player: player)
-                viewController.setGameModel(gameModel: gameModel)
-                UIApplication.shared.keyWindow?.rootViewController = viewController
-                return
-            case "MAGNUS":
-                let storyboard: UIStoryboard = UIStoryboard(name: "ChallengeMagnus", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "ChallengeMagnus") as! Challenge
-                viewController.setPlayer(player: player)
-                viewController.setGameModel(gameModel: gameModel)
-                UIApplication.shared.keyWindow?.rootViewController = viewController
-                return
-            case "XENOPHON":
-                let storyboard: UIStoryboard = UIStoryboard(name: "ChallengeXenophon", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "ChallengeXenophon") as! Challenge
-                viewController.setPlayer(player: player)
-                viewController.setGameModel(gameModel: gameModel)
-                UIApplication.shared.keyWindow?.rootViewController = viewController
-                return
-            case "PHAEDRUS":
-                let storyboard: UIStoryboard = UIStoryboard(name: "ChallengePhaedrus", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "ChallengePhaedrus") as! Challenge
-                viewController.setPlayer(player: player)
-                viewController.setGameModel(gameModel: gameModel)
-                UIApplication.shared.keyWindow?.rootViewController = viewController
-                return
             case "CALHOUN":
                 let storyboard: UIStoryboard = UIStoryboard(name: "Other", bundle: nil)
                 let viewController = storyboard.instantiateViewController(withIdentifier: "Other") as! Other
