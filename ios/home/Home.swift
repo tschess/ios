@@ -10,6 +10,7 @@ import UIKit
 
 class Home: UIViewController, UISearchBarDelegate, UISearchResultsUpdating, UITabBarDelegate {
     
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     //@IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     //@IBOutlet weak var backButton: UIButton!
@@ -54,6 +55,7 @@ class Home: UIViewController, UISearchBarDelegate, UISearchResultsUpdating, UITa
             object: nil)
         
         //self.activityIndicator.startAnimating()
+        self.activityIndicator.isHidden = true
     }
     
     override func viewDidLoad() {

@@ -34,14 +34,14 @@
                                 <rect key="frame" x="0.0" y="84" width="414" height="138"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatar_default" translatesAutoresizingMaskIntoConstraints="NO" id="jgj-ZT-i6z">
-                                        <rect key="frame" x="8" y="0.0" width="100" height="100"/>
+                                        <rect key="frame" x="8" y="4" width="100" height="100"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="100" id="DAy-QQ-eSA"/>
                                             <constraint firstAttribute="height" constant="100" id="teS-z2-7t8"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n3B-YV-bLf">
-                                        <rect key="frame" x="8" y="104" width="398" height="30"/>
+                                        <rect key="frame" x="8" y="106" width="398" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="Whm-UI-TBe"/>
                                         </constraints>
@@ -97,19 +97,19 @@
                                 </subviews>
                                 <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="n3B-YV-bLf" secondAttribute="bottom" constant="4" id="5fF-SN-iCE"/>
+                                    <constraint firstAttribute="bottom" secondItem="n3B-YV-bLf" secondAttribute="bottom" constant="2" id="5fF-SN-iCE"/>
                                     <constraint firstItem="79z-Oi-85T" firstAttribute="centerY" secondItem="AlY-qh-cUb" secondAttribute="centerY" id="7Gn-0d-9fs"/>
                                     <constraint firstItem="sGW-Ae-1In" firstAttribute="top" secondItem="AlY-qh-cUb" secondAttribute="top" id="Jd6-t6-EF1"/>
                                     <constraint firstItem="lXq-5I-URG" firstAttribute="top" secondItem="w0W-JM-jEB" secondAttribute="bottom" id="LbS-Jy-sYL"/>
                                     <constraint firstItem="pUJ-un-5Hg" firstAttribute="leading" secondItem="lXq-5I-URG" secondAttribute="trailing" id="OsW-oe-MeT"/>
                                     <constraint firstItem="n3B-YV-bLf" firstAttribute="leading" secondItem="AlY-qh-cUb" secondAttribute="leading" constant="8" id="TN0-Oa-bLO"/>
-                                    <constraint firstItem="jgj-ZT-i6z" firstAttribute="top" secondItem="AlY-qh-cUb" secondAttribute="top" id="Toz-P2-YGg"/>
+                                    <constraint firstItem="jgj-ZT-i6z" firstAttribute="top" secondItem="AlY-qh-cUb" secondAttribute="top" constant="4" id="Toz-P2-YGg"/>
                                     <constraint firstItem="79z-Oi-85T" firstAttribute="centerX" secondItem="AlY-qh-cUb" secondAttribute="centerX" id="Wer-lX-IRY"/>
                                     <constraint firstItem="pUJ-un-5Hg" firstAttribute="top" secondItem="sGW-Ae-1In" secondAttribute="bottom" id="adE-X0-bdF"/>
                                     <constraint firstAttribute="trailing" secondItem="n3B-YV-bLf" secondAttribute="trailing" constant="8" id="fHr-iv-aa7"/>
                                     <constraint firstAttribute="trailing" secondItem="pUJ-un-5Hg" secondAttribute="trailing" constant="8" id="iDT-fa-fe3"/>
                                     <constraint firstAttribute="trailing" secondItem="sGW-Ae-1In" secondAttribute="trailing" constant="8" id="ljL-Re-77e"/>
-                                    <constraint firstItem="n3B-YV-bLf" firstAttribute="top" secondItem="jgj-ZT-i6z" secondAttribute="bottom" constant="4" id="oEd-9G-Aqc"/>
+                                    <constraint firstItem="n3B-YV-bLf" firstAttribute="top" secondItem="jgj-ZT-i6z" secondAttribute="bottom" constant="2" id="oEd-9G-Aqc"/>
                                     <constraint firstItem="sGW-Ae-1In" firstAttribute="leading" secondItem="w0W-JM-jEB" secondAttribute="trailing" id="pm5-FP-YvF"/>
                                     <constraint firstItem="w0W-JM-jEB" firstAttribute="top" secondItem="AlY-qh-cUb" secondAttribute="top" id="tdk-IU-11m"/>
                                     <constraint firstItem="jgj-ZT-i6z" firstAttribute="leading" secondItem="AlY-qh-cUb" secondAttribute="leading" constant="8" id="zCK-My-KUy"/>
@@ -173,6 +173,7 @@
                         <viewLayoutGuide key="safeArea" id="onu-DJ-h1h"/>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="79z-Oi-85T" id="YXK-S2-M34"/>
                         <outlet property="avatarImageView" destination="jgj-ZT-i6z" id="5ET-ze-6nY"/>
                         <outlet property="rankLabel" destination="sGW-Ae-1In" id="4Hg-pX-99u"/>
                         <outlet property="tabBarMenu" destination="WKf-1J-vAW" id="4s5-lz-aLm"/>
@@ -192,6 +193,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="590"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="separatorColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="sectionIndexTrackingBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="HomeMenuCell" rowHeight="103" id="0o7-4A-IZm" customClass="HomeMenuCell" customModule="ios" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="103"/>

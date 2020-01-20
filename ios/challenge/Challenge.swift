@@ -15,45 +15,87 @@ class Challenge:
                     UITabBarDelegate,
                     UIGestureRecognizerDelegate {
     
-    //@IBOutlet weak var configCollectionView: DynamicCollectionView!
     @IBOutlet weak var configCollectionView: DynamicCollectionView!
-    //@IBOutlet weak var configCollectionViewHeight: NSLayoutConstraint!
     @IBOutlet weak var configCollectionViewHeight: NSLayoutConstraint!
     
-    
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     let reuseIdentifier = "cell"
     
+    @IBOutlet weak var activeConfigNumber: UILabel!
+    
     var items = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16"]
     
-    var arrayFirst = [
-        "red_pawn",
-        "red_knight",
-        "red_bishop",
-        "red_rook",
-        "red_queen",
-        "red_amazon",
-        "red_landmine_pawn",
-        "red_hunter",
-        "red_grasshopper",
-        "red_arrow"]
+    //@IBOutlet weak var activeConfigName: UILabel!
+    @IBOutlet weak var activeConfigIndicator: UILabel!
+    
+    func renderConfig0() {
+        self.tschessElementMatrix = self.player!.getConfig0()
+        
+        self.activeConfigNumber.text = "0̸"
+        self.configCollectionView.reloadData()
+        
+        let alphaDotFull = NSMutableAttributedString(string: "•", attributes: self.attributeAlphaDotFull!)
+        let alphaDotHalf = NSMutableAttributedString(string: " • •", attributes: self.attributeAlphaDotHalf!)
+        let activeConfigLabeleString = NSMutableAttributedString()
+        activeConfigLabeleString.append(alphaDotFull)
+        activeConfigLabeleString.append(alphaDotHalf)
+        self.activeConfigIndicator.attributedText = nil
+        self.activeConfigIndicator.attributedText = activeConfigLabeleString
+    }
+    
+    func renderConfig1() {
+        self.tschessElementMatrix = self.player!.getConfig1()
+     
+        self.activeConfigNumber.text = "1"
+        self.configCollectionView.reloadData()
+        
+        let alphaDotFull = NSMutableAttributedString(string: "•", attributes: self.attributeAlphaDotFull!)
+        let alphaDotHalf = NSMutableAttributedString(string: " • ", attributes: self.attributeAlphaDotHalf!)
+        let activeConfigLabeleString = NSMutableAttributedString()
+        activeConfigLabeleString.append(alphaDotHalf)
+        activeConfigLabeleString.append(alphaDotFull)
+        activeConfigLabeleString.append(alphaDotHalf)
+        self.activeConfigIndicator.attributedText = nil
+        self.activeConfigIndicator.attributedText = activeConfigLabeleString
+    }
+    
+    func renderConfig2() {
+        self.tschessElementMatrix = self.player!.getConfig2()
+       
+        self.activeConfigNumber.text = "2"
+        self.configCollectionView.reloadData()
+        
+        let alphaDotFull = NSMutableAttributedString(string: "•", attributes: self.attributeAlphaDotFull!)
+        let alphaDotHalf = NSMutableAttributedString(string: "• • ", attributes: self.attributeAlphaDotHalf!)
+        let activeConfigLabeleString = NSMutableAttributedString()
+        activeConfigLabeleString.append(alphaDotHalf)
+        activeConfigLabeleString.append(alphaDotFull)
+        self.activeConfigIndicator.attributedText = nil
+        self.activeConfigIndicator.attributedText = activeConfigLabeleString
+    }
+    
     
     var tschessElementMatrix: [[TschessElement?]]?
-    
-    
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
         self.configCollectionView.bounces = false
         self.configCollectionView.alwaysBounceVertical = false
-        
         self.configCollectionViewHeight.constant = configCollectionView.contentSize.height
       
+        let screenSize = UIScreen.main.bounds
+        let screenWidth = screenSize.width
+        
+        self.timePartitionWidth.constant = screenWidth/2
+        self.timeLabelWidth.constant = screenWidth/4
+        self.timePickerWidth.constant = screenWidth/4
+        
+        self.skinPartitionWidth.constant = screenWidth/2
+        self.skinPickerWidth.constant = screenWidth/4
+        self.skinPickerWidth.constant = screenWidth/4
     }
-    
-    
-    
     
     let dateTime: DateTime = DateTime()
     
@@ -62,35 +104,38 @@ class Challenge:
     @IBOutlet weak var tabBarMenu: UITabBar!
     
     @IBOutlet weak var usernameLabel: UILabel!
-    //@IBOutlet weak var issueChallengeButton: UIButton!
     
     @IBOutlet weak var rankLabel: UILabel!
     @IBOutlet weak var avatarImageView: UIImageView!
     
-    //@IBOutlet weak var timeLimitPickerView: UIPickerView!
-    //@IBOutlet weak var configurationPickerView: UIPickerView!
+    @IBOutlet weak var timeLabelWidth: NSLayoutConstraint!
+    @IBOutlet weak var timePickerWidth: NSLayoutConstraint!
+    @IBOutlet weak var timePartitionWidth: NSLayoutConstraint!
+    @IBOutlet weak var timeLimitPickerView: UIPickerView!
+    @IBOutlet weak var skinSelectPickerView: UIPickerView!
+    @IBOutlet weak var skinPartitionWidth: NSLayoutConstraint!
+    
+    @IBOutlet weak var skinPickerWidth: NSLayoutConstraint!
+    @IBOutlet weak var skinLabelWidth: NSLayoutConstraint!
     
     var player: Player?
     var gameModel: Game?
     
-    //var gameMenuAdapter: ChallengeMenuTable?
-    
     var pickerSelectionTimeLimit: String = "post"
     var pickerOptionsTimeLimit: [String]  = ["post", "blitz"]
     
-    var pickerSelectionConfiguration: String = "config. 0̸" //config. 0̸ will be the standard config... maybe
-    //var pickerOptionsConfiguration: [String] = ["config. 0̸", "config. 1", "config. 2", "standard"]
-    var pickerOptionsConfiguration: [String] = ["config. 0̸", "config. 1", "config. 2"]
+    var pickerSelectionConfiguration: String = "default"
+    var pickerOptionsSkin: [String] = ["default", "iapetus"]
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        if pickerView.tag == 1 {
+        if pickerView.tag == 0 {
             return pickerOptionsTimeLimit.count
         }
-        return pickerOptionsConfiguration.count
+        return pickerOptionsSkin.count
     }
     
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
@@ -98,13 +143,13 @@ class Challenge:
         if let v = view as? UILabel { label = v }
         label.font = UIFont.systemFont(ofSize: 22, weight: UIFont.Weight.light)
         
-        if pickerView.tag == 1 {
+        if pickerView.tag == 0 {
             label.text = pickerOptionsTimeLimit[row]
         } else {
-            label.text = pickerOptionsConfiguration[row]
+            label.text = pickerOptionsSkin[row]
         }
         
-        label.textColor = Colour().getRed()
+        label.textColor =  UIColor.black
         label.textAlignment = .center
         return label
     }
@@ -114,11 +159,11 @@ class Challenge:
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        if pickerView.tag == 1 {
+        if pickerView.tag == 0 {
             pickerSelectionTimeLimit = pickerOptionsTimeLimit[row]
             return
         }
-        pickerSelectionConfiguration = pickerOptionsConfiguration[row]
+        pickerSelectionConfiguration = pickerOptionsSkin[row]
     }
     
     public func setPlayer(player: Player){
@@ -128,6 +173,9 @@ class Challenge:
     func setGameModel(gameModel: Game){
         self.gameModel = gameModel
     }
+    
+    var attributeAlphaDotFull: [NSAttributedString.Key: NSObject]?
+    var attributeAlphaDotHalf: [NSAttributedString.Key: NSObject]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -148,42 +196,78 @@ class Challenge:
         
         self.configCollectionView.isUserInteractionEnabled = true
         self.configCollectionView.dragInteractionEnabled = false
+        
+        self.attributeAlphaDotFull = [
+            NSAttributedString.Key.foregroundColor: UIColor(red: 0/255.0, green: 0/255.0, blue: 0/255.0, alpha: 1.0),
+            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 24, weight: UIFont.Weight.bold)]
+        self.attributeAlphaDotHalf = [
+            NSAttributedString.Key.foregroundColor: UIColor(red: 0/255.0, green: 0/255.0, blue: 0/255.0, alpha: 0.5),
+            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 24, weight: UIFont.Weight.bold)]
+        let alphaDotFull = NSMutableAttributedString(string: "•", attributes: self.attributeAlphaDotFull!)
+        let alphaDotHalf = NSMutableAttributedString(string: " • ", attributes: self.attributeAlphaDotHalf!)
+        
+        let activeConfigLabeleString = NSMutableAttributedString()
+        activeConfigLabeleString.append(alphaDotHalf)
+        activeConfigLabeleString.append(alphaDotFull)
+        activeConfigLabeleString.append(alphaDotHalf)
+        self.activeConfigIndicator.attributedText = activeConfigLabeleString
+        
+        self.activityIndicator.isHidden = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        //timeLimitPickerView.delegate = self
-        //timeLimitPickerView.dataSource = self
+        self.timeLimitPickerView.delegate = self
+        self.timeLimitPickerView.dataSource = self
         
-        //configurationPickerView.delegate = self
-        //configurationPickerView.dataSource = self
+        self.skinSelectPickerView.delegate = self
+        self.skinSelectPickerView.dataSource = self
+        
+        self.swipeRightGesture = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
+        swipeRightGesture!.direction = UISwipeGestureRecognizer.Direction.right
+        self.view.addGestureRecognizer(self.swipeRightGesture!)
+        self.swipeLeftGesture = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
+        swipeLeftGesture!.direction = UISwipeGestureRecognizer.Direction.left
+        self.view.addGestureRecognizer(self.swipeLeftGesture!)
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(self.onDidReceiveData(_:)),
-            name: NSNotification.Name(rawValue: "ChallengeMenuTableView"),
-            object: nil)
-    }
+    var swipeRightGesture: UISwipeGestureRecognizer?
+    var swipeLeftGesture: UISwipeGestureRecognizer?
     
-    @objc func onDidReceiveData(_ notification: NSNotification) {
-        let gameMenuSelectionIndex = notification.userInfo!["challenge_menu_game_selection"] as! Int
-        //let gameModel = self.gameMenuAdapter!.getGameMenuTableList()[gameMenuSelectionIndex]
-        
-        //let skin = self.gameMenuAdapter!.getGameMenuTableList()[gameMenuSelectionIndex].getSkin()
-        //print("XXXXX: \(skin)")
+    @objc func respondToSwipeGesture(gesture: UIGestureRecognizer) {
+        if let swipeGesture = gesture as? UISwipeGestureRecognizer {
+            switch swipeGesture.direction {
+            case UISwipeGestureRecognizer.Direction.right:
+                if(activeConfigNumber.text == "2"){
+                    self.renderConfig1()
+                    return
+                }
+                if(activeConfigNumber.text == "1"){
+                    self.renderConfig0()
+                    return
+                }
+            case UISwipeGestureRecognizer.Direction.left:
+                if(activeConfigNumber.text == "0̸"){
+                    self.renderConfig1()
+                    return
+                }
+                if(activeConfigNumber.text == "1"){
+                    self.renderConfig2()
+                    return
+                }
+            default:
+                break
+            }
+        }
     }
-    
+
     @IBAction func backButtonClick(_ sender: Any) {
-        //StoryboardSelector().leader(player: self.player!)
-    }
-    
-    func stayHandler(action: UIAlertAction) {
-        //StoryboardSelector().challenge(player: self.player!, gameModel: self.gameModel!)
+        let storyboard: UIStoryboard = UIStoryboard(name: "Other", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "Other") as! Other
+        viewController.setPlayer(player: self.player!)
+        viewController.setGameModel(gameModel: self.gameModel!)
+        UIApplication.shared.keyWindow?.rootViewController = viewController
     }
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
@@ -258,102 +342,6 @@ extension Challenge: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
-    }
-}
-
-
-
-extension Challenge: UICollectionViewDelegate {
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        // handle tap events
-        //print("You selected cell #\(indexPath.item)!")
-    }
-    
-    func generateTschessElement(name: String) -> TschessElement? {
-        if(name.contains("arrow")){
-            return ArrowPawn()
-        }
-        if(name.contains("grasshopper")){
-            return Grasshopper()
-        }
-        if(name.contains("hunter")){
-            return Hunter()
-        }
-        if(name.contains("landmine")){
-            return LandminePawn()
-        }
-        if(name.contains("medusa")){
-            return Medusa()
-        }
-        if(name.contains("spy")){
-            return Spy()
-        }
-        if(name.contains("amazon")){
-            return Amazon()
-        }
-        if(name.contains("pawn")){
-            return Pawn()
-        }
-        if(name.contains("knight")){
-            return Knight()
-        }
-        if(name.contains("bishop")){
-            return Bishop()
-        }
-        if(name.contains("rook")){
-            return Rook()
-        }
-        if(name.contains("queen")){
-            return Queen()
-        }
-        if(name.contains("king")){
-            return King()
-        }
-        return nil
-    }
-    
-    func imageNameFromElement(tschessElement: TschessElement) -> String? {
-        if(tschessElement.name == ArrowPawn().name){
-            return "red_arrow"
-        }
-        if(tschessElement.name == Grasshopper().name){
-            return "red_grasshopper"
-        }
-        if(tschessElement.name == Hunter().name){
-            return "red_hunter"
-        }
-        if(tschessElement.name == LandminePawn().name){
-            return "red_landmine_pawn"
-        }
-        if(tschessElement.name == Medusa().name){
-            return "red_medusa"
-        }
-        if(tschessElement.name == Spy().name){
-            return "red_spy"
-        }
-        if(tschessElement.name == Amazon().name){
-            return "red_amazon"
-        }
-        if(tschessElement.name == Pawn().name){
-            return "red_pawn"
-        }
-        if(tschessElement.name == Knight().name){
-            return "red_knight"
-        }
-        if(tschessElement.name == Bishop().name){
-            return "red_bishop"
-        }
-        if(tschessElement.name == Rook().name){
-            return "red_rook"
-        }
-        if(tschessElement.name == Queen().name){
-            return "red_queen"
-        }
-        if(tschessElement.name == King().name){
-            return "red_king"
-        }
-        return nil
     }
 }
 
