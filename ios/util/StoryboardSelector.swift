@@ -650,35 +650,35 @@ class StoryboardSelector {
                 let storyboard: UIStoryboard = UIStoryboard(name: "QuickXandroid", bundle: nil)
                 let viewController = storyboard.instantiateViewController(withIdentifier: "QuickXandroid") as! Quick
                 viewController.setPlayer(player: player)
-                viewController.setOpponent(opponent: opponent)
+                //viewController.setOpponent(opponent: opponent)
                 UIApplication.shared.keyWindow?.rootViewController = viewController
                 return
             case "MAGNUS":
                 let storyboard: UIStoryboard = UIStoryboard(name: "QuickMagnus", bundle: nil)
                 let viewController = storyboard.instantiateViewController(withIdentifier: "QuickMagnus") as! Quick
                 viewController.setPlayer(player: player)
-                viewController.setOpponent(opponent: opponent)
+                //viewController.setOpponent(opponent: opponent)
                 UIApplication.shared.keyWindow?.rootViewController = viewController
                 return
             case "XENOPHON":
                 let storyboard: UIStoryboard = UIStoryboard(name: "QuickXenophon", bundle: nil)
                 let viewController = storyboard.instantiateViewController(withIdentifier: "QuickXenophon") as! Quick
                 viewController.setPlayer(player: player)
-                viewController.setOpponent(opponent: opponent)
+                //viewController.setOpponent(opponent: opponent)
                 UIApplication.shared.keyWindow?.rootViewController = viewController
                 return
             case "PHAEDRUS":
                 let storyboard: UIStoryboard = UIStoryboard(name: "QuickPhaedrus", bundle: nil)
                 let viewController = storyboard.instantiateViewController(withIdentifier: "QuickPhaedrus") as! Quick
                 viewController.setPlayer(player: player)
-                viewController.setOpponent(opponent: opponent)
+                //viewController.setOpponent(opponent: opponent)
                 UIApplication.shared.keyWindow?.rootViewController = viewController
                 return
             case "CALHOUN":
                 let storyboard: UIStoryboard = UIStoryboard(name: "QuickCalhoun", bundle: nil)
                 let viewController = storyboard.instantiateViewController(withIdentifier: "QuickCalhoun") as! Quick
                 viewController.setPlayer(player: player)
-                viewController.setOpponent(opponent: opponent)
+                //viewController.setOpponent(opponent: opponent)
                 UIApplication.shared.keyWindow?.rootViewController = viewController
                 return
             default:

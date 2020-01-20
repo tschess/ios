@@ -96,8 +96,39 @@ class Home: UIViewController, UISearchBarDelegate, UISearchResultsUpdating, UITa
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         switch item.tag {
+        case 0:
+            print("skin")
+        case 1:
+            print("quick")
+            DispatchQueue.main.async() {
+                self.activityIndicator.isHidden = false
+                self.activityIndicator.startAnimating()
+            }
+            QuickTaskPlayer().success(id: self.player!.getId()) { (result) in
+                
+                
+                DispatchQueue.main.async() {
+                    self.activityIndicator.stopAnimating()
+                    self.activityIndicator.isHidden = true
+                    
+                    let opponent = result as! Player
+                    
+                    let storyboard: UIStoryboard = UIStoryboard(name: "Quick", bundle: nil)
+                    let viewController = storyboard.instantiateViewController(withIdentifier: "Quick") as! Quick
+                    viewController.setPlayer(player: self.player!)
+                    viewController.setOpponent(opponent: opponent)
+                    UIApplication.shared.keyWindow?.rootViewController = viewController
+                }
+            }
+            
+        case 2:
+            print("search")
+        case 3:
+            print("game")
+        case 4:
+            print("config")
         default:
-            StoryboardSelector().home(player: self.player!)
+            print("error")
         }
     }
 }

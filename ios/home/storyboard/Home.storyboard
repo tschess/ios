@@ -165,19 +165,19 @@
                                     <constraint firstAttribute="height" constant="50" id="3Aw-0g-FIT"/>
                                 </constraints>
                                 <items>
-                                    <tabBarItem tag="1" title="skin" image="eye" catalog="system" selectedImage="house" id="KZk-4l-PAu">
+                                    <tabBarItem title="skin" image="eye" catalog="system" selectedImage="house" id="KZk-4l-PAu">
                                         <color key="badgeColor" red="0.86923474069999995" green="0.012778783219999999" blue="0.00083617179190000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tabBarItem>
-                                    <tabBarItem tag="1" title="quick" image="bolt" catalog="system" selectedImage="house" id="Z5R-KS-Z6j">
+                                    <tabBarItem tag="1" title="quick" image="bolt" catalog="system" selectedImage="bolt.fill" id="Z5R-KS-Z6j">
                                         <color key="badgeColor" red="0.86923474069999995" green="0.012778783219999999" blue="0.00083617179190000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tabBarItem>
-                                    <tabBarItem tag="1" title="" image="magnifyingglass" catalog="system" selectedImage="house" id="OZ0-5u-C79">
+                                    <tabBarItem tag="2" title="" image="magnifyingglass" catalog="system" selectedImage="house" id="OZ0-5u-C79">
                                         <color key="badgeColor" red="0.86923474069999995" green="0.012778783219999999" blue="0.00083617179190000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tabBarItem>
-                                    <tabBarItem tag="1" title="game" image="gamecontroller" catalog="system" selectedImage="house" id="Ccy-HC-zcU">
+                                    <tabBarItem tag="3" title="game" image="gamecontroller" catalog="system" selectedImage="house" id="Ccy-HC-zcU">
                                         <color key="badgeColor" red="0.86923474069999995" green="0.012778783219999999" blue="0.00083617179190000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tabBarItem>
-                                    <tabBarItem tag="1" title="config" image="hammer" catalog="system" selectedImage="house" id="RmV-cI-lZG">
+                                    <tabBarItem tag="4" title="config" image="hammer" catalog="system" selectedImage="house" id="RmV-cI-lZG">
                                         <color key="badgeColor" red="0.86923474069999995" green="0.012778783219999999" blue="0.00083617179190000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tabBarItem>
                                 </items>
@@ -363,6 +363,7 @@
         <image name="avatar_default" width="320" height="320"/>
         <image name="avatar_inverse" width="320" height="320"/>
         <image name="bolt" catalog="system" width="50" height="64"/>
+        <image name="bolt.fill" catalog="system" width="50" height="64"/>
         <image name="eye" catalog="system" width="64" height="40"/>
         <image name="gamecontroller" catalog="system" width="64" height="40"/>
         <image name="hammer" catalog="system" width="64" height="56"/>

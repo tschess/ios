@@ -123,14 +123,6 @@ class Other: UIViewController, UITabBarDelegate {
         UIApplication.shared.keyWindow?.rootViewController = homeViewController
     }
     
-    @IBAction func newChallengeButtonClick(_ sender: Any) {
-        let storyboard: UIStoryboard = UIStoryboard(name: "Challenge", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "Challenge") as! Challenge
-        viewController.setPlayer(player: self.player!)
-        viewController.setGameModel(gameModel: self.gameModel!)
-        UIApplication.shared.keyWindow?.rootViewController = viewController
-    }
-    
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         switch item.tag {
         case 1:

@@ -101,7 +101,7 @@
 		B7A6217B239FFACF005DCDA1 /* HistoricCalhoun.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7A6217A239FFACF005DCDA1 /* HistoricCalhoun.storyboard */; };
 		B7A6217D239FFB00005DCDA1 /* Historic.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A6217C239FFB00005DCDA1 /* Historic.swift */; };
 		B7A6218723A02446005DCDA1 /* Quick.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A6218623A02446005DCDA1 /* Quick.swift */; };
-		B7A6218923A02467005DCDA1 /* QuickCalhoun.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7A6218823A02467005DCDA1 /* QuickCalhoun.storyboard */; };
+		B7A6218923A02467005DCDA1 /* Quick.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7A6218823A02467005DCDA1 /* Quick.storyboard */; };
 		B7A6218D23A027A5005DCDA1 /* TalkCalhoun.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7A6218C23A027A5005DCDA1 /* TalkCalhoun.storyboard */; };
 		B7A6218F23A027D3005DCDA1 /* Talk.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A6218E23A027D3005DCDA1 /* Talk.swift */; };
 		B7AB8E60235607CD002D71BD /* HopperOffense.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7AB8E5F235607CD002D71BD /* HopperOffense.swift */; };
@@ -416,7 +416,7 @@
 		B7A6217A239FFACF005DCDA1 /* HistoricCalhoun.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HistoricCalhoun.storyboard; sourceTree = "<group>"; };
 		B7A6217C239FFB00005DCDA1 /* Historic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Historic.swift; sourceTree = "<group>"; };
 		B7A6218623A02446005DCDA1 /* Quick.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quick.swift; sourceTree = "<group>"; };
-		B7A6218823A02467005DCDA1 /* QuickCalhoun.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = QuickCalhoun.storyboard; sourceTree = "<group>"; };
+		B7A6218823A02467005DCDA1 /* Quick.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Quick.storyboard; sourceTree = "<group>"; };
 		B7A6218C23A027A5005DCDA1 /* TalkCalhoun.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TalkCalhoun.storyboard; sourceTree = "<group>"; };
 		B7A6218E23A027D3005DCDA1 /* Talk.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Talk.swift; sourceTree = "<group>"; };
 		B7AB8E5F235607CD002D71BD /* HopperOffense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HopperOffense.swift; sourceTree = "<group>"; };
@@ -1139,7 +1139,7 @@
 		B7A6218523A02430005DCDA1 /* storyboard */ = {
 			isa = PBXGroup;
 			children = (
-				B7A6218823A02467005DCDA1 /* QuickCalhoun.storyboard */,
+				B7A6218823A02467005DCDA1 /* Quick.storyboard */,
 				B794606523A5C05F004A6663 /* QuickPhaedrus.storyboard */,
 				B70424B823AEE16100DBB7FA /* QuickXandroid.storyboard */,
 				B70424C023AF128F00DBB7FA /* QuickMagnus.storyboard */,
@@ -1956,7 +1956,7 @@
 				B70424C523AF15CC00DBB7FA /* StartXenophon.storyboard in Resources */,
 				B7BAA655237F3BC90038C483 /* ProfileXandroid.storyboard in Resources */,
 				B7DA221A2399C26A006256CC /* ScannerCalhoun.storyboard in Resources */,
-				B7A6218923A02467005DCDA1 /* QuickCalhoun.storyboard in Resources */,
+				B7A6218923A02467005DCDA1 /* Quick.storyboard in Resources */,
 				B794606423A5C003004A6663 /* HistoricPhaedrus.storyboard in Resources */,
 				B7DF5C0F23833E160022A8C2 /* ChessMagnus.storyboard in Resources */,
 				B708D0FB236B4FF500A899F9 /* HomePhaedrus.storyboard in Resources */,
