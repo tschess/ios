@@ -58,7 +58,7 @@ class ActualTable: UITableViewController {
         let gameTableMenuItem = gameMenuTableList[indexPath.row]
         
         cell.usernameLabel.text = gameTableMenuItem.getOpponentName()
-        cell.eloLabel.text = gameTableMenuItem.getOpponentElo()
+        //cell.eloLabel.text = gameTableMenuItem.getOpponentElo()
         let dataDecoded: Data = Data(base64Encoded: gameTableMenuItem.getOpponentAvatar(), options: .ignoreUnknownCharacters)!
         let decodedimage = UIImage(data: dataDecoded)
         cell.avatarImageView.image = decodedimage
@@ -67,33 +67,33 @@ class ActualTable: UITableViewController {
         
         if(status == "ONGOING"){
             if(gameTableMenuItem.usernameTurn == self.player!.getName()){
-                cell.actionLabel.text = "my move"
-                cell.actionLabel.textColor = Colour().getRed()
+                //cell.actionLabel.text = "my move"
+                //cell.actionLabel.textColor = Colour().getRed()
                 return cell
             }
-            cell.actionLabel.text = "opponent's move"
-            cell.actionLabel.textColor = UIColor.black
+            //cell.actionLabel.text = "opponent's move"
+            //cell.actionLabel.textColor = UIColor.black
             return cell
         }
         // 'PROPOSED'...
         if(gameTableMenuItem.inbound!){
-            cell.actionLabel.text = "review"
+            //cell.actionLabel.text = "review"
             cell.backgroundColor = Colour().getInbound()
             
             let label = cell.viewWithTag(1)! as! UILabel
             label.textColor = UIColor.black
             cell.usernameLabel.textColor = UIColor.black
-            cell.actionLabel.textColor = UIColor.black
+            //cell.actionLabel.textColor = UIColor.black
             return cell
         }
-        cell.actionLabel.text = "rescind"
+        //cell.actionLabel.text = "rescind"
         cell.backgroundColor = Colour().getOutbound()
         
         let label = cell.viewWithTag(1)! as! UILabel
         label.textColor = UIColor.white
         
         cell.usernameLabel.textColor = UIColor.white
-        cell.actionLabel.textColor = UIColor.white
+        //cell.actionLabel.textColor = UIColor.white
         
         return cell
     }
@@ -134,8 +134,8 @@ class ActualTable: UITableViewController {
             self.gameMenuTableList = self.gameMenuTableList.sorted(by: { $0.inbound! && !$1.inbound! })
             self.gameMenuTableList = self.gameMenuTableList.sorted(by: { $0.gameStatus < $1.gameStatus })
             DispatchQueue.main.async() {
-                self.activityIndicator!.stopAnimating()
-                self.activityIndicator!.isHidden = true
+                //self.activityIndicator!.stopAnimating()
+                //self.activityIndicator!.isHidden = true
                 self.tableView.reloadData()
             }
         }
@@ -159,21 +159,21 @@ class ActualTable: UITableViewController {
     }
     
     private func renderShrug(){
-        DispatchQueue.main.async() {
-            self.activityIndicator!.stopAnimating()
-            self.activityIndicator!.isHidden = true
-            let frameSize: CGPoint = CGPoint(x: UIScreen.main.bounds.size.width*0.5, y: UIScreen.main.bounds.size.height*0.5)
-            self.label = UILabel(frame: CGRect(x: UIScreen.main.bounds.size.width*0.5, y: UIScreen.main.bounds.size.height*0.5, width: UIScreen.main.bounds.width, height: 40))
-            self.label!.center = frameSize
-            self.label!.textAlignment = .center
-            self.label!.font = UIFont.systemFont(ofSize: 30, weight: UIFont.Weight.light)
-            self.label!.translatesAutoresizingMaskIntoConstraints = false
-            let horizontalConstraint = NSLayoutConstraint(item: self.label!, attribute: NSLayoutConstraint.Attribute.centerX, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.view, attribute: NSLayoutConstraint.Attribute.centerX, multiplier: 1, constant: 0)
-            let verticalConstraint = NSLayoutConstraint(item: self.label!, attribute: NSLayoutConstraint.Attribute.centerY, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.view, attribute: NSLayoutConstraint.Attribute.centerY, multiplier: 1, constant: 0)
-            self.label!.text = "¯\\_( ͡° ͜ʖ ͡°)_/¯"
-            self.view.addSubview(self.label!)
-            self.view.addConstraints([horizontalConstraint, verticalConstraint])
-        }
+//        DispatchQueue.main.async() {
+//            self.activityIndicator!.stopAnimating()
+//            self.activityIndicator!.isHidden = true
+//            let frameSize: CGPoint = CGPoint(x: UIScreen.main.bounds.size.width*0.5, y: UIScreen.main.bounds.size.height*0.5)
+//            self.label = UILabel(frame: CGRect(x: UIScreen.main.bounds.size.width*0.5, y: UIScreen.main.bounds.size.height*0.5, width: UIScreen.main.bounds.width, height: 40))
+//            self.label!.center = frameSize
+//            self.label!.textAlignment = .center
+//            self.label!.font = UIFont.systemFont(ofSize: 30, weight: UIFont.Weight.light)
+//            self.label!.translatesAutoresizingMaskIntoConstraints = false
+//            let horizontalConstraint = NSLayoutConstraint(item: self.label!, attribute: NSLayoutConstraint.Attribute.centerX, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.view, attribute: NSLayoutConstraint.Attribute.centerX, multiplier: 1, constant: 0)
+//            let verticalConstraint = NSLayoutConstraint(item: self.label!, attribute: NSLayoutConstraint.Attribute.centerY, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.view, attribute: NSLayoutConstraint.Attribute.centerY, multiplier: 1, constant: 0)
+//            self.label!.text = "¯\\_( ͡° ͜ʖ ͡°)_/¯"
+//            self.view.addSubview(self.label!)
+//            self.view.addConstraints([horizontalConstraint, verticalConstraint])
+//        }
     }
 }
 

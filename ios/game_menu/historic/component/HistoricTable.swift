@@ -69,7 +69,7 @@ class HistoricTable: UITableViewController {
         let decodedimage = UIImage(data: dataDecoded)
         cell.avatarImageView.image = decodedimage
         
-        cell.actionLabel.textColor = UIColor.black
+        //cell.actionLabel.textColor = UIColor.black
         //cell.usernameLabel.textColor = Colour().getRed()
         cell.usernameLabel.textColor = UIColor.black
         
@@ -77,24 +77,24 @@ class HistoricTable: UITableViewController {
             
             cell.backgroundColor = Colour().getWin()
             if(gameMenuTableList[indexPath.row].getDrawProposer().contains("TIMEOUT")){
-                cell.actionLabel.text = "timeout"
+               // cell.actionLabel.text = "timeout"
                 gameMenuTableList[indexPath.row].setOutcome(outcome: "TIMEOUT")
             } else {
-                cell.actionLabel.text = "win"
+                //cell.actionLabel.text = "win"
                 gameMenuTableList[indexPath.row].setOutcome(outcome: "WIN")
             }
         }
         else if(gameTableMenuItem.winner == "DRAW"){
-            cell.actionLabel.text = "draw"
+            //cell.actionLabel.text = "draw"
             cell.backgroundColor = Colour().getDraw()
             gameMenuTableList[indexPath.row].setOutcome(outcome: "DRAW")
         } else {
             
             if(gameMenuTableList[indexPath.row].getDrawProposer().contains("TIMEOUT")){
-                cell.actionLabel.text = "timeout"
+                //cell.actionLabel.text = "timeout"
                 gameMenuTableList[indexPath.row].setOutcome(outcome: "TIMEOUT")
             } else {
-                cell.actionLabel.text = "loss"
+                //cell.actionLabel.text = "loss"
                 gameMenuTableList[indexPath.row].setOutcome(outcome: "LOSS")
             }
             cell.backgroundColor = Colour().getLoss()
@@ -136,8 +136,8 @@ class HistoricTable: UITableViewController {
         if(currentCount != self.gameMenuTableList.count){
             self.gameMenuTableList = self.gameMenuTableList.sorted(by: { $0.created! > $1.created! })
             DispatchQueue.main.async() {
-                self.activityIndicator!.stopAnimating()
-                self.activityIndicator!.isHidden = true
+                //self.activityIndicator!.stopAnimating()
+                //self.activityIndicator!.isHidden = true
                 self.tableView.reloadData()
             }
         }

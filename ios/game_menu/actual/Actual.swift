@@ -10,13 +10,13 @@ import UIKit
 
 class Actual: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate {
     
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    //@IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     //MARK: Properties
-    @IBOutlet weak var usernameLabel: UILabel!
-    @IBOutlet weak var avatarImageView: UIImageView!
-    @IBOutlet weak var tschxLabel: UILabel!
-    @IBOutlet weak var rankLabel: UILabel!
+//    @IBOutlet weak var usernameLabel: UILabel!
+//    @IBOutlet weak var avatarImageView: UIImageView!
+//    @IBOutlet weak var tschxLabel: UILabel!
+//    @IBOutlet weak var rankLabel: UILabel!
 
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var tabBarMenu: UITabBar!
@@ -34,25 +34,25 @@ class Actual: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate {
         tabBarMenu.delegate = self
         actualTable = children.first as? ActualTable
         actualTable!.setPlayer(player: self.player!)
-        actualTable!.setIndicator(indicator: self.activityIndicator!)
+        //actualTable!.setIndicator(indicator: self.activityIndicator!)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        let dataDecoded: Data = Data(base64Encoded: self.player!.getAvatar(), options: .ignoreUnknownCharacters)!
-        let decodedimage = UIImage(data: dataDecoded)
-        self.avatarImageView.image = decodedimage
-        self.rankLabel.text = self.player!.getRank()
-        self.tschxLabel.text = "₮\(self.player!.getTschx())"
-        self.usernameLabel.text = self.player!.getName()
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(self.onDidReceiveData(_:)),
-            name: NSNotification.Name(rawValue: "ActualSelection"),
-            object: nil)
+//        let dataDecoded: Data = Data(base64Encoded: self.player!.getAvatar(), options: .ignoreUnknownCharacters)!
+//        let decodedimage = UIImage(data: dataDecoded)
+//        self.avatarImageView.image = decodedimage
+//        self.rankLabel.text = self.player!.getRank()
+//        self.tschxLabel.text = "₮\(self.player!.getTschx())"
+//        self.usernameLabel.text = self.player!.getName()
+//        NotificationCenter.default.addObserver(
+//            self,
+//            selector: #selector(self.onDidReceiveData(_:)),
+//            name: NSNotification.Name(rawValue: "ActualSelection"),
+//            object: nil)
         
-        self.activityIndicator.startAnimating()
+        //self.activityIndicator.startAnimating()
     }
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {

@@ -124,6 +124,8 @@ class Home: UIViewController, UISearchBarDelegate, UISearchResultsUpdating, UITa
             
         case 2:
             print("search")
+            //profile(player: Player)
+            StoryboardSelector().profile(player: self.player!)
         case 3:
             print("game")
             StoryboardSelector().actual(player: self.player!)
