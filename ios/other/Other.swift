@@ -10,6 +10,8 @@ import UIKit
 
 class Other: UIViewController, UITabBarDelegate {
    
+    @IBOutlet weak var challengeButtonView: UIView! //should deffer rendering until appointed moment...
+    
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     let dateTime: DateTime = DateTime()
