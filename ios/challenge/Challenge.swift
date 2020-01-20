@@ -27,7 +27,11 @@ class Challenge:
     var items = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16"]
     
     //@IBOutlet weak var activeConfigName: UILabel!
-    @IBOutlet weak var activeConfigIndicator: UILabel!
+    //@IBOutlet weak var activeConfigIndicator: UILabel!
+    @IBOutlet weak var indicatorLabel0: UILabel!
+    @IBOutlet weak var indicatorLabel1: UILabel!
+    @IBOutlet weak var indicatorLabel2: UILabel!
+    @IBOutlet weak var indicatorLabelS: UILabel!
     
     func renderConfig0() {
         self.tschessElementMatrix = self.player!.getConfig0()
@@ -36,12 +40,16 @@ class Challenge:
         self.configCollectionView.reloadData()
         
         let alphaDotFull = NSMutableAttributedString(string: "•", attributes: self.attributeAlphaDotFull!)
-        let alphaDotHalf = NSMutableAttributedString(string: " • •", attributes: self.attributeAlphaDotHalf!)
-        let activeConfigLabeleString = NSMutableAttributedString()
-        activeConfigLabeleString.append(alphaDotFull)
-        activeConfigLabeleString.append(alphaDotHalf)
-        self.activeConfigIndicator.attributedText = nil
-        self.activeConfigIndicator.attributedText = activeConfigLabeleString
+        let alphaDotHalf = NSMutableAttributedString(string: "•", attributes: self.attributeAlphaDotHalf!)
+        let activeConfigFull = NSMutableAttributedString()
+        activeConfigFull.append(alphaDotFull)
+        let activeConfigNull = NSMutableAttributedString()
+        activeConfigNull.append(alphaDotHalf)
+        
+        self.indicatorLabel0.attributedText = activeConfigFull
+        self.indicatorLabel1.attributedText = activeConfigNull
+        self.indicatorLabel2.attributedText = activeConfigNull
+        self.indicatorLabelS.attributedText = activeConfigNull
     }
     
     func renderConfig1() {
@@ -51,13 +59,16 @@ class Challenge:
         self.configCollectionView.reloadData()
         
         let alphaDotFull = NSMutableAttributedString(string: "•", attributes: self.attributeAlphaDotFull!)
-        let alphaDotHalf = NSMutableAttributedString(string: " • ", attributes: self.attributeAlphaDotHalf!)
-        let activeConfigLabeleString = NSMutableAttributedString()
-        activeConfigLabeleString.append(alphaDotHalf)
-        activeConfigLabeleString.append(alphaDotFull)
-        activeConfigLabeleString.append(alphaDotHalf)
-        self.activeConfigIndicator.attributedText = nil
-        self.activeConfigIndicator.attributedText = activeConfigLabeleString
+        let alphaDotHalf = NSMutableAttributedString(string: "•", attributes: self.attributeAlphaDotHalf!)
+        let activeConfigFull = NSMutableAttributedString()
+        activeConfigFull.append(alphaDotFull)
+        let activeConfigNull = NSMutableAttributedString()
+        activeConfigNull.append(alphaDotHalf)
+        
+        self.indicatorLabel0.attributedText = activeConfigNull
+        self.indicatorLabel1.attributedText = activeConfigFull
+        self.indicatorLabel2.attributedText = activeConfigNull
+        self.indicatorLabelS.attributedText = activeConfigNull
     }
     
     func renderConfig2() {
@@ -67,12 +78,16 @@ class Challenge:
         self.configCollectionView.reloadData()
         
         let alphaDotFull = NSMutableAttributedString(string: "•", attributes: self.attributeAlphaDotFull!)
-        let alphaDotHalf = NSMutableAttributedString(string: "• • ", attributes: self.attributeAlphaDotHalf!)
-        let activeConfigLabeleString = NSMutableAttributedString()
-        activeConfigLabeleString.append(alphaDotHalf)
-        activeConfigLabeleString.append(alphaDotFull)
-        self.activeConfigIndicator.attributedText = nil
-        self.activeConfigIndicator.attributedText = activeConfigLabeleString
+        let alphaDotHalf = NSMutableAttributedString(string: "•", attributes: self.attributeAlphaDotHalf!)
+        let activeConfigFull = NSMutableAttributedString()
+        activeConfigFull.append(alphaDotFull)
+        let activeConfigNull = NSMutableAttributedString()
+        activeConfigNull.append(alphaDotHalf)
+        
+        self.indicatorLabel0.attributedText = activeConfigNull
+        self.indicatorLabel1.attributedText = activeConfigNull
+        self.indicatorLabel2.attributedText = activeConfigFull
+        self.indicatorLabelS.attributedText = activeConfigNull
     }
     
     
@@ -204,13 +219,16 @@ class Challenge:
             NSAttributedString.Key.foregroundColor: UIColor(red: 0/255.0, green: 0/255.0, blue: 0/255.0, alpha: 0.5),
             NSAttributedString.Key.font: UIFont.systemFont(ofSize: 24, weight: UIFont.Weight.bold)]
         let alphaDotFull = NSMutableAttributedString(string: "•", attributes: self.attributeAlphaDotFull!)
-        let alphaDotHalf = NSMutableAttributedString(string: " • ", attributes: self.attributeAlphaDotHalf!)
+        let alphaDotHalf = NSMutableAttributedString(string: "•", attributes: self.attributeAlphaDotHalf!)
+        let activeConfigFull = NSMutableAttributedString()
+        activeConfigFull.append(alphaDotFull)
+        let activeConfigNull = NSMutableAttributedString()
+        activeConfigNull.append(alphaDotHalf)
         
-        let activeConfigLabeleString = NSMutableAttributedString()
-        activeConfigLabeleString.append(alphaDotHalf)
-        activeConfigLabeleString.append(alphaDotFull)
-        activeConfigLabeleString.append(alphaDotHalf)
-        self.activeConfigIndicator.attributedText = activeConfigLabeleString
+        self.indicatorLabel0.attributedText = activeConfigFull
+        self.indicatorLabel1.attributedText = activeConfigNull
+        self.indicatorLabel2.attributedText = activeConfigNull
+        self.indicatorLabelS.attributedText = activeConfigNull
         
         self.activityIndicator.isHidden = true
     }
