@@ -230,6 +230,18 @@ class Challenge:
         self.swipeLeftGesture = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
         swipeLeftGesture!.direction = UISwipeGestureRecognizer.Direction.left
         self.view.addGestureRecognizer(self.swipeLeftGesture!)
+        
+        let elementCollectionViewGesture = UITapGestureRecognizer(target: self, action: #selector(self.renderElementCollectionView))
+        self.configCollectionView.addGestureRecognizer(elementCollectionViewGesture)
+    }
+    
+    @objc func renderElementCollectionView() {
+        print("lolol")
+        let storyboard: UIStoryboard = UIStoryboard(name: "Edit", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "Edit") as! Edit
+        viewController.setPlayer(player: self.player!)
+        viewController.setGameModel(gameModel: self.gameModel!)
+        UIApplication.shared.keyWindow?.rootViewController = viewController
     }
     
     var swipeRightGesture: UISwipeGestureRecognizer?

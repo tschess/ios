@@ -260,6 +260,8 @@
 		B7F5878623D12D8000A91CD3 /* ShowMeSkins.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F5878523D12D8000A91CD3 /* ShowMeSkins.swift */; };
 		B7F5878823D12E3300A91CD3 /* SkinTableMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F5878723D12E3300A91CD3 /* SkinTableMenu.swift */; };
 		B7F5878A23D12E6300A91CD3 /* SkinTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F5878923D12E6300A91CD3 /* SkinTableCell.swift */; };
+		B7F5F63923D5EA3000BCF91F /* Edit.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F5F63823D5EA3000BCF91F /* Edit.swift */; };
+		B7F5F63C23D5EA4A00BCF91F /* Edit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7F5F63B23D5EA4A00BCF91F /* Edit.storyboard */; };
 		B7F64B06239ABA3600F6AFB7 /* Landmine.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F64B05239ABA3600F6AFB7 /* Landmine.swift */; };
 		B7F78D10236B91E800F07FD7 /* ReviewXandroid.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7F78D0F236B91E800F07FD7 /* ReviewXandroid.storyboard */; };
 		B7F78D12236B922700F07FD7 /* ReviewPhaedrus.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7F78D11236B922700F07FD7 /* ReviewPhaedrus.storyboard */; };
@@ -573,6 +575,8 @@
 		B7F5878523D12D8000A91CD3 /* ShowMeSkins.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowMeSkins.swift; sourceTree = "<group>"; };
 		B7F5878723D12E3300A91CD3 /* SkinTableMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkinTableMenu.swift; sourceTree = "<group>"; };
 		B7F5878923D12E6300A91CD3 /* SkinTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkinTableCell.swift; sourceTree = "<group>"; };
+		B7F5F63823D5EA3000BCF91F /* Edit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Edit.swift; sourceTree = "<group>"; };
+		B7F5F63B23D5EA4A00BCF91F /* Edit.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Edit.storyboard; sourceTree = "<group>"; };
 		B7F64B05239ABA3600F6AFB7 /* Landmine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Landmine.swift; sourceTree = "<group>"; };
 		B7F78D0F236B91E800F07FD7 /* ReviewXandroid.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ReviewXandroid.storyboard; sourceTree = "<group>"; };
 		B7F78D11236B922700F07FD7 /* ReviewPhaedrus.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ReviewPhaedrus.storyboard; sourceTree = "<group>"; };
@@ -1039,6 +1043,7 @@
 		B787C72822E970DC009C94F7 /* ios */ = {
 			isa = PBXGroup;
 			children = (
+				B7F5F63723D5EA1D00BCF91F /* edit */,
 				B7F541D323D5206F00E89074 /* challenge */,
 				B7F541C923D51C3000E89074 /* other */,
 				B7F541BF23D51A4300E89074 /* home */,
@@ -1661,6 +1666,23 @@
 			path = storyboard;
 			sourceTree = "<group>";
 		};
+		B7F5F63723D5EA1D00BCF91F /* edit */ = {
+			isa = PBXGroup;
+			children = (
+				B7F5F63A23D5EA3800BCF91F /* storyboard */,
+				B7F5F63823D5EA3000BCF91F /* Edit.swift */,
+			);
+			path = edit;
+			sourceTree = "<group>";
+		};
+		B7F5F63A23D5EA3800BCF91F /* storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				B7F5F63B23D5EA4A00BCF91F /* Edit.storyboard */,
+			);
+			path = storyboard;
+			sourceTree = "<group>";
+		};
 		B7F78D02236B906B00F07FD7 /* storyboard */ = {
 			isa = PBXGroup;
 			children = (
@@ -1968,6 +1990,7 @@
 				B7CB62F4237BB07500E50204 /* ReviewMagnus.storyboard in Resources */,
 				B7DF5C192383464A0022A8C2 /* SnapshotXandroid.storyboard in Resources */,
 				B7DF147123CE5197007B2C7D /* PreviewIapetusCalhoun.storyboard in Resources */,
+				B7F5F63C23D5EA4A00BCF91F /* Edit.storyboard in Resources */,
 				B7039F1A238B47DC003896C6 /* ChessXenophon.storyboard in Resources */,
 				B7039F2C238B541D003896C6 /* AcquisitionXenophon.storyboard in Resources */,
 				B70424CD23AF1E3000DBB7FA /* TalkXenophon.storyboard in Resources */,
@@ -2158,6 +2181,7 @@
 				B7EA5DC62375C28B0019C0BF /* PlayerDeserializer.swift in Sources */,
 				B7F7C8F822FFA9740060AC38 /* KnightOffense.swift in Sources */,
 				B7088210233A0FC900A06CAD /* LeaderboardPageTask.swift in Sources */,
+				B7F5F63923D5EA3000BCF91F /* Edit.swift in Sources */,
 				B74145D422F3CE3C00B3B4FF /* Bishop.swift in Sources */,
 				B74145CA22F3CDDF00B3B4FF /* Grasshopper.swift in Sources */,
 				B7A6217D239FFB00005DCDA1 /* Historic.swift in Sources */,
