@@ -11,16 +11,11 @@ import UIKit
 class Home: UIViewController, UISearchBarDelegate, UISearchResultsUpdating, UITabBarDelegate {
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    //@IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    
-    //@IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var tabBarMenu: UITabBar!
     
     var leaderboardTableView: HomeMenuTable?
     
     var tap: UITapGestureRecognizer?
-    
-    //@IBOutlet weak var discoverySearchBar: UISearchBar!
     
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var usernameLabel: UILabel!
@@ -33,10 +28,6 @@ class Home: UIViewController, UISearchBarDelegate, UISearchResultsUpdating, UITa
     func setPlayer(player: Player){
         self.player = player
     }
-    
-//    @IBAction func backButtonClick(_ sender: Any) {
-//        StoryboardSelector().home(player: self.player!)
-//    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
