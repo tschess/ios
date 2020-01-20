@@ -16,15 +16,9 @@ class Other: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UIT
     //MARK: Properties
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var tabBarMenu: UITabBar!
-    
     @IBOutlet weak var usernameLabel: UILabel!
-    //@IBOutlet weak var issueChallengeButton: UIButton!
-    
     @IBOutlet weak var rankLabel: UILabel!
     @IBOutlet weak var avatarImageView: UIImageView!
-    
-    //@IBOutlet weak var timeLimitPickerView: UIPickerView!
-    //@IBOutlet weak var configurationPickerView: UIPickerView!
     
     var player: Player?
     var gameModel: Game?
@@ -404,9 +398,8 @@ class Other: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UIT
             print("1")
             let storyboard: UIStoryboard = UIStoryboard(name: "Challenge", bundle: nil)
             let viewController = storyboard.instantiateViewController(withIdentifier: "Challenge") as! Challenge
-            //viewController.setGameList(gameList: gameList)
-            //viewController.setGameModel(gameModel: gameModel)
-            //viewController.setPlayer(player: player)
+            viewController.setPlayer(player: self.player!)
+            viewController.setGameModel(gameModel: self.gameModel!)
             UIApplication.shared.keyWindow?.rootViewController = viewController
         default:
             StoryboardSelector().home(player: self.player!)

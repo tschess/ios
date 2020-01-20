@@ -95,11 +95,11 @@ class Challenge: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate,
         
         //self.activityIndicator.isHidden = true
         
-//        let dataDecoded: Data = Data(base64Encoded: gameModel!.getOpponentAvatar(), options: .ignoreUnknownCharacters)!
-//        let decodedimage = UIImage(data: dataDecoded)
-//        self.avatarImageView.image = decodedimage
-//        self.rankLabel.text = gameModel!.getOpponentRank()
-//        self.usernameLabel.text = gameModel!.getOpponentName()
+        let dataDecoded: Data = Data(base64Encoded: gameModel!.getOpponentAvatar(), options: .ignoreUnknownCharacters)!
+        let decodedimage = UIImage(data: dataDecoded)
+        self.avatarImageView.image = decodedimage
+        self.rankLabel.text = gameModel!.getOpponentRank()
+        self.usernameLabel.text = gameModel!.getOpponentName()
     }
     
     override func viewWillAppear(_ animated: Bool) {

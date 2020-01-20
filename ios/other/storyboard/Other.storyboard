@@ -29,13 +29,13 @@
                                     <constraint firstAttribute="height" constant="50" id="CtS-Ad-lXP"/>
                                 </constraints>
                                 <items>
-                                    <tabBarItem title="profile" image="arrowshape.turn.up.left" catalog="system" id="cNg-v3-E35">
+                                    <tabBarItem title="home" image="arrowshape.turn.up.left" catalog="system" id="cNg-v3-E35">
                                         <color key="badgeColor" red="0.86923474069999995" green="0.012778783219999999" blue="0.00083617179190000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tabBarItem>
                                     <tabBarItem tag="1" title="challenge" image="scope" catalog="system" selectedImage="house" id="fjf-cy-wGx">
                                         <color key="badgeColor" red="0.86923474069999995" green="0.012778783219999999" blue="0.00083617179190000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tabBarItem>
-                                    <tabBarItem title="home" image="house" catalog="system" id="AgV-7t-joK">
+                                    <tabBarItem title="message" image="envelope.open" catalog="system" id="AgV-7t-joK">
                                         <color key="badgeColor" red="0.86923474069999995" green="0.012778783219999999" blue="0.00083617179190000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tabBarItem>
                                 </items>
@@ -157,12 +157,13 @@
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qcf-za-ird">
                                 <rect key="frame" x="0.0" y="226" width="414" height="30"/>
+                                <color key="backgroundColor" red="0.86274509803921573" green="0.015686274509803921" blue="0.015686274509803921" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="fkS-sQ-5kz"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="22"/>
                                 <state key="normal" title="new challenge">
-                                    <color key="titleColor" red="0.86923474069999995" green="0.012778783219999999" blue="0.00083617179190000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                             </button>
                         </subviews>
@@ -333,6 +334,7 @@
         <image name="arrowshape.turn.up.left" catalog="system" width="64" height="52"/>
         <image name="avatar_default" width="320" height="320"/>
         <image name="avatar_inverse" width="320" height="320"/>
+        <image name="envelope.open" catalog="system" width="64" height="60"/>
         <image name="house" catalog="system" width="64" height="54"/>
         <image name="scope" catalog="system" width="64" height="60"/>
     </resources>
