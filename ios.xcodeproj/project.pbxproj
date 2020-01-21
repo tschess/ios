@@ -60,6 +60,8 @@
 		B7168BBC233A6C15008F59DE /* Date+GreaterThan.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7168BBB233A6C15008F59DE /* Date+GreaterThan.swift */; };
 		B7168BBE233A7892008F59DE /* DeserializeGamestate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7168BBD233A7892008F59DE /* DeserializeGamestate.swift */; };
 		B7168BD1233ADD3C008F59DE /* SquadUpTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7168BD0233ADD3C008F59DE /* SquadUpTask.swift */; };
+		B718A0BA23D76FF1006CCA20 /* SampleSkin.xib in Resources */ = {isa = PBXBuildFile; fileRef = B718A0B923D76FF1006CCA20 /* SampleSkin.xib */; };
+		B718A0BC23D77532006CCA20 /* SampleSkin.swift in Sources */ = {isa = PBXBuildFile; fileRef = B718A0BB23D77532006CCA20 /* SampleSkin.swift */; };
 		B71FA72D22FA124700B6F216 /* MyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71FA72C22FA124700B6F216 /* MyCollectionViewCell.swift */; };
 		B7285E0322F1E2980083F1CE /* DynamicCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7285E0222F1E2980083F1CE /* DynamicCollectionView.swift */; };
 		B74145BB22F3CA3600B3B4FF /* Chess.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74145BA22F3CA3600B3B4FF /* Chess.swift */; };
@@ -375,6 +377,8 @@
 		B7168BBB233A6C15008F59DE /* Date+GreaterThan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+GreaterThan.swift"; sourceTree = "<group>"; };
 		B7168BBD233A7892008F59DE /* DeserializeGamestate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeserializeGamestate.swift; sourceTree = "<group>"; };
 		B7168BD0233ADD3C008F59DE /* SquadUpTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquadUpTask.swift; sourceTree = "<group>"; };
+		B718A0B923D76FF1006CCA20 /* SampleSkin.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SampleSkin.xib; sourceTree = "<group>"; };
+		B718A0BB23D77532006CCA20 /* SampleSkin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleSkin.swift; sourceTree = "<group>"; };
 		B71FA72C22FA124700B6F216 /* MyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCollectionViewCell.swift; sourceTree = "<group>"; };
 		B7285E0222F1E2980083F1CE /* DynamicCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicCollectionView.swift; sourceTree = "<group>"; };
 		B73894312328071100231170 /* ios.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ios.entitlements; sourceTree = "<group>"; };
@@ -1147,6 +1151,8 @@
 				B7C1448923A3C95900404810 /* networking */,
 				B7A6218523A02430005DCDA1 /* storyboard */,
 				B7A6218623A02446005DCDA1 /* Quick.swift */,
+				B718A0B923D76FF1006CCA20 /* SampleSkin.xib */,
+				B718A0BB23D77532006CCA20 /* SampleSkin.swift */,
 			);
 			path = quick;
 			sourceTree = "<group>";
@@ -2025,6 +2031,7 @@
 				B7F78D3D236BA83A00F07FD7 /* xChallengePhaedrus.storyboard in Resources */,
 				B7EF81242388CA3900E89191 /* EthXandroid.storyboard in Resources */,
 				B7F78D12236B922700F07FD7 /* ReviewPhaedrus.storyboard in Resources */,
+				B718A0BA23D76FF1006CCA20 /* SampleSkin.xib in Resources */,
 				B7F78D3B236BA80F00F07FD7 /* xChallengeXandroid.storyboard in Resources */,
 				B7F78D10236B91E800F07FD7 /* ReviewXandroid.storyboard in Resources */,
 				B70424C723AF185E00DBB7FA /* HistoricXenophon.storyboard in Resources */,
@@ -2282,6 +2289,7 @@
 				B7EA5DBD2375BEB80019C0BF /* PollingAgent.swift in Sources */,
 				B7F78D2F236BA67500F07FD7 /* Intro.swift in Sources */,
 				B7E5D231234D2AD000499420 /* TestTask0.swift in Sources */,
+				B718A0BC23D77532006CCA20 /* SampleSkin.swift in Sources */,
 				B74145C822F3CDCE00B3B4FF /* ArrowPawn.swift in Sources */,
 				B7F78D33236BA6CE00F07FD7 /* TransitioningDelegate.swift in Sources */,
 				B70CEADF22FE8CD800F08541 /* Diagonal.swift in Sources */,

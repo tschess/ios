@@ -319,96 +319,25 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="heW-o1-yD8" userLabel="SplitView1">
-                                        <rect key="frame" x="0.0" y="216" width="414" height="132"/>
+                                        <rect key="frame" x="0.0" y="216" width="414" height="374"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ERo-4C-nia" userLabel="TimeView">
-                                                <rect key="frame" x="0.0" y="16" width="191" height="100"/>
-                                                <subviews>
-                                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lYQ-eF-JhS">
-                                                        <rect key="frame" x="58" y="-58" width="100" height="216"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="100" id="WcV-qA-uUd"/>
-                                                        </constraints>
-                                                    </pickerView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="time limit:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gFO-Jp-QPv">
-                                                        <rect key="frame" x="8" y="35" width="50" height="30"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="50" id="OR5-af-j9o"/>
-                                                            <constraint firstAttribute="height" constant="30" id="pW8-hI-4kR"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="22"/>
-                                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                </subviews>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <constraints>
-                                                    <constraint firstItem="gFO-Jp-QPv" firstAttribute="leading" secondItem="ERo-4C-nia" secondAttribute="leading" constant="8" id="9Hu-88-GtO"/>
-                                                    <constraint firstAttribute="height" constant="100" id="9OX-1s-nNC"/>
-                                                    <constraint firstAttribute="width" constant="191" id="CS6-c5-kk3"/>
-                                                    <constraint firstItem="gFO-Jp-QPv" firstAttribute="centerY" secondItem="ERo-4C-nia" secondAttribute="centerY" id="OaV-L7-0Md"/>
-                                                    <constraint firstItem="lYQ-eF-JhS" firstAttribute="leading" secondItem="gFO-Jp-QPv" secondAttribute="trailing" id="bCA-vx-3uK"/>
-                                                    <constraint firstItem="lYQ-eF-JhS" firstAttribute="centerY" secondItem="ERo-4C-nia" secondAttribute="centerY" id="qdD-Eg-FXW"/>
-                                                </constraints>
-                                            </view>
-                                            <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IfW-0H-AEW" userLabel="SkinView">
-                                                <rect key="frame" x="225" y="16" width="189" height="100"/>
-                                                <subviews>
-                                                    <pickerView tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4PY-S0-saW">
-                                                        <rect key="frame" x="81" y="-58" width="100" height="216"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="100" id="5iI-Dw-Ont"/>
-                                                        </constraints>
-                                                    </pickerView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="skin:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DVU-ms-iNB">
-                                                        <rect key="frame" x="12" y="35" width="65" height="30"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="65" id="Ktb-th-IqD"/>
-                                                            <constraint firstAttribute="height" constant="30" id="efx-uw-ZAa"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="22"/>
-                                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                </subviews>
-                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <constraints>
-                                                    <constraint firstItem="4PY-S0-saW" firstAttribute="leading" secondItem="DVU-ms-iNB" secondAttribute="trailing" constant="4" id="8Kc-x6-Vqs"/>
-                                                    <constraint firstAttribute="trailing" secondItem="4PY-S0-saW" secondAttribute="trailing" constant="8" id="AIS-q1-2uY"/>
-                                                    <constraint firstAttribute="width" constant="189" id="HVz-qW-PF0"/>
-                                                    <constraint firstAttribute="height" constant="100" id="V9C-3E-ja4"/>
-                                                    <constraint firstItem="4PY-S0-saW" firstAttribute="centerY" secondItem="IfW-0H-AEW" secondAttribute="centerY" id="ceH-ua-8fk"/>
-                                                    <constraint firstItem="DVU-ms-iNB" firstAttribute="centerY" secondItem="IfW-0H-AEW" secondAttribute="centerY" id="yYU-DJ-eST"/>
-                                                </constraints>
-                                            </view>
+                                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vKA-Qw-aUe">
+                                                <rect key="frame" x="0.0" y="41" width="414" height="216"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                            </pickerView>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="ERo-4C-nia" secondAttribute="bottom" constant="16" id="5gL-9m-JIz"/>
-                                            <constraint firstItem="IfW-0H-AEW" firstAttribute="top" secondItem="heW-o1-yD8" secondAttribute="top" constant="16" id="LdS-tT-oMv"/>
-                                            <constraint firstAttribute="trailing" secondItem="IfW-0H-AEW" secondAttribute="trailing" id="uPu-MV-gLX"/>
-                                            <constraint firstItem="ERo-4C-nia" firstAttribute="leading" secondItem="heW-o1-yD8" secondAttribute="leading" id="w3t-ku-atQ"/>
-                                            <constraint firstItem="ERo-4C-nia" firstAttribute="top" secondItem="heW-o1-yD8" secondAttribute="top" constant="16" id="wJM-bC-hyU"/>
-                                            <constraint firstAttribute="bottom" secondItem="IfW-0H-AEW" secondAttribute="bottom" constant="16" id="zJv-Qg-zxB"/>
-                                        </constraints>
-                                    </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kUP-PB-M6l" userLabel="SplitView2">
-                                        <rect key="frame" x="0.0" y="348" width="414" height="242"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="kUP-PB-M6l" firstAttribute="leading" secondItem="9wh-i1-2Qp" secondAttribute="leading" id="BgL-mB-CVZ"/>
-                                    <constraint firstAttribute="trailing" secondItem="kUP-PB-M6l" secondAttribute="trailing" id="Nmd-xp-qOJ"/>
                                     <constraint firstItem="heW-o1-yD8" firstAttribute="top" secondItem="FXw-uz-53m" secondAttribute="bottom" constant="24" id="P1r-X1-kYk"/>
                                     <constraint firstItem="FXw-uz-53m" firstAttribute="leading" secondItem="9wh-i1-2Qp" secondAttribute="leading" id="PFW-PP-AbP"/>
+                                    <constraint firstAttribute="bottom" secondItem="heW-o1-yD8" secondAttribute="bottom" id="Pbg-zC-exM"/>
                                     <constraint firstAttribute="trailing" secondItem="FXw-uz-53m" secondAttribute="trailing" id="erJ-Td-iqc"/>
                                     <constraint firstAttribute="trailing" secondItem="heW-o1-yD8" secondAttribute="trailing" id="iLc-ge-k0m"/>
                                     <constraint firstItem="FXw-uz-53m" firstAttribute="top" secondItem="9wh-i1-2Qp" secondAttribute="top" id="qUS-st-M6R"/>
-                                    <constraint firstItem="kUP-PB-M6l" firstAttribute="top" secondItem="heW-o1-yD8" secondAttribute="bottom" id="xQx-Ig-UGD"/>
                                     <constraint firstItem="heW-o1-yD8" firstAttribute="leading" secondItem="9wh-i1-2Qp" secondAttribute="leading" id="z3B-02-WTO"/>
-                                    <constraint firstAttribute="bottom" secondItem="kUP-PB-M6l" secondAttribute="bottom" id="zRv-Nl-3NG"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -449,15 +378,8 @@
                         <outlet property="indicatorLabel2" destination="phf-22-ho1" id="vOd-tW-dGV"/>
                         <outlet property="indicatorLabelS" destination="44E-pD-xnn" id="cne-Hl-3eZ"/>
                         <outlet property="rankLabel" destination="Cds-SZ-ar7" id="imB-Nu-lEa"/>
-                        <outlet property="skinLabelWidth" destination="Ktb-th-IqD" id="L47-LU-wae"/>
-                        <outlet property="skinPartitionWidth" destination="HVz-qW-PF0" id="pzz-uQ-Qwk"/>
-                        <outlet property="skinPickerWidth" destination="5iI-Dw-Ont" id="QF3-9F-I0D"/>
-                        <outlet property="skinSelectPickerView" destination="4PY-S0-saW" id="Tng-Ti-kJ4"/>
+                        <outlet property="skinSelectionPicker" destination="vKA-Qw-aUe" id="Tto-NS-nxs"/>
                         <outlet property="tabBarMenu" destination="lR1-2A-YPc" id="CDf-K6-4Hh"/>
-                        <outlet property="timeLabelWidth" destination="OR5-af-j9o" id="HAM-8l-b6s"/>
-                        <outlet property="timeLimitPickerView" destination="lYQ-eF-JhS" id="TCy-J3-xT8"/>
-                        <outlet property="timePartitionWidth" destination="CS6-c5-kk3" id="znh-Be-sko"/>
-                        <outlet property="timePickerWidth" destination="WcV-qA-uUd" id="Qfg-K7-Go7"/>
                         <outlet property="usernameLabel" destination="ux2-5E-CTf" id="73i-xH-2Wl"/>
                     </connections>
                 </viewController>

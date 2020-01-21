@@ -376,17 +376,6 @@ class Quick:
         self.configCollectionView.bounces = false
         self.configCollectionView.alwaysBounceVertical = false
         self.configCollectionViewHeight.constant = configCollectionView.contentSize.height
-      
-        let screenSize = UIScreen.main.bounds
-        let screenWidth = screenSize.width
-        
-        self.timePartitionWidth.constant = screenWidth/2
-        self.timeLabelWidth.constant = screenWidth/4
-        self.timePickerWidth.constant = screenWidth/4
-        
-        self.skinPartitionWidth.constant = screenWidth/2
-        self.skinPickerWidth.constant = screenWidth/4
-        self.skinPickerWidth.constant = screenWidth/4
     }
     
     let dateTime: DateTime = DateTime()
@@ -400,15 +389,8 @@ class Quick:
     @IBOutlet weak var rankLabel: UILabel!
     @IBOutlet weak var avatarImageView: UIImageView!
     
-    @IBOutlet weak var timeLabelWidth: NSLayoutConstraint!
-    @IBOutlet weak var timePickerWidth: NSLayoutConstraint!
-    @IBOutlet weak var timePartitionWidth: NSLayoutConstraint!
-    @IBOutlet weak var timeLimitPickerView: UIPickerView!
-    @IBOutlet weak var skinSelectPickerView: UIPickerView!
-    @IBOutlet weak var skinPartitionWidth: NSLayoutConstraint!
-    
-    @IBOutlet weak var skinPickerWidth: NSLayoutConstraint!
-    @IBOutlet weak var skinLabelWidth: NSLayoutConstraint!
+    @IBOutlet weak var skinSelectionPicker: UIPickerView!
+    //@IBOutlet weak var skinSelectPickerView: UIPickerView!
     
     var player: Player?
     var gameModel: Game?
@@ -431,19 +413,23 @@ class Quick:
     }
     
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
-        var label = UILabel()
-        if let v = view as? UILabel { label = v }
-        label.font = UIFont.systemFont(ofSize: 22, weight: UIFont.Weight.light)
         
-        if pickerView.tag == 0 {
-            label.text = pickerOptionsTimeLimit[row]
-        } else {
-            label.text = pickerOptionsSkin[row]
-        }
-        
-        label.textColor =  UIColor.black
-        label.textAlignment = .center
-        return label
+        //let view = SampleSkin.instanceFromNib()
+        //self.view.addSubview(view)
+                   var label = UILabel()
+                   if let v = view as? UILabel { label = v }
+                   label.font = UIFont.systemFont(ofSize: 22, weight: UIFont.Weight.light)
+           
+                   if pickerView.tag == 0 {
+                       label.text = pickerOptionsTimeLimit[row]
+                   } else {
+                       label.text = pickerOptionsSkin[row]
+                   }
+           
+                   label.textColor =  UIColor.black
+                   label.textAlignment = .center
+                   return label
+      
     }
     
     func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
@@ -514,11 +500,9 @@ class Quick:
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.timeLimitPickerView.delegate = self
-        self.timeLimitPickerView.dataSource = self
-        
-        self.skinSelectPickerView.delegate = self
-        self.skinSelectPickerView.dataSource = self
+        self.skinSelectionPicker.delegate = self
+        self.skinSelectionPicker.dataSource = self
+        //
         
         self.swipeRightGesture = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
         swipeRightGesture!.direction = UISwipeGestureRecognizer.Direction.right
