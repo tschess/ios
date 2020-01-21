@@ -416,19 +416,23 @@ class Quick:
         
         //let view = SampleSkin.instanceFromNib()
         //self.view.addSubview(view)
-                   var label = UILabel()
-                   if let v = view as? UILabel { label = v }
-                   label.font = UIFont.systemFont(ofSize: 22, weight: UIFont.Weight.light)
-           
-                   if pickerView.tag == 0 {
-                       label.text = pickerOptionsTimeLimit[row]
-                   } else {
-                       label.text = pickerOptionsSkin[row]
-                   }
-           
-                   label.textColor =  UIColor.black
-                   label.textAlignment = .center
-                   return label
+//                   var label = UILabel()
+//                   if let v = view as? UILabel { label = v }
+//                   label.font = UIFont.systemFont(ofSize: 22, weight: UIFont.Weight.light)
+//
+//                   if pickerView.tag == 0 {
+//                       label.text = pickerOptionsTimeLimit[row]
+//                   } else {
+//                       label.text = pickerOptionsSkin[row]
+//                   }
+//
+//                   label.textColor =  UIColor.black
+//                   label.textAlignment = .center
+//
+//
+//                   return label
+        let view = SampleSkin.instanceFromNib()
+        return view
       
     }
     
