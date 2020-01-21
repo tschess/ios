@@ -120,22 +120,10 @@ class Config: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate, U
     }
     
     @IBAction func backButtonClick(_ sender: Any) {
-        if(self.titleText == "new challenge"){
-            let storyboard: UIStoryboard = UIStoryboard(name: "Challenge", bundle: nil)
-            let viewController = storyboard.instantiateViewController(withIdentifier: "Challenge") as! Challenge
-            viewController.setPlayer(player: self.player!)
-            viewController.setGameModel(gameModel: self.gameModel!)
-            UIApplication.shared.keyWindow?.rootViewController = viewController
-        }
-        if(self.titleText == "quick play"){
-            let storyboard: UIStoryboard = UIStoryboard(name: "Quick", bundle: nil)
-            let viewController = storyboard.instantiateViewController(withIdentifier: "Quick") as! Quick
-            viewController.setPlayer(player: self.player!)
-            let opponent = self.gameModel!.getOpponent()
-            viewController.setOpponent(opponent: opponent)
-            UIApplication.shared.keyWindow?.rootViewController = viewController
-        }
-        print("ERROR")
+        let homeStoryboard: UIStoryboard = UIStoryboard(name: "Home", bundle: nil)
+        let homeViewController = homeStoryboard.instantiateViewController(withIdentifier: "Home") as! Home
+        homeViewController.setPlayer(player: self.player!)
+        UIApplication.shared.keyWindow?.rootViewController = homeViewController
     }
     
     var gameModel: Game?
@@ -650,6 +638,27 @@ extension Config: UICollectionViewDelegate {
         self.selectionElementName = nil
         self.configCollectionView.reloadData()
     }
+    
+    
+    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+            switch item.tag {
+            case 3:
+                print("fairy")
+                let storyboard: UIStoryboard = UIStoryboard(name: "Fairy", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "Fairy") as! Fairy
+                viewController.setPlayer(player: self.player!)
+                //viewController.setOpponent(opponent: opponent)
+                UIApplication.shared.keyWindow?.rootViewController = viewController
+            case 2:
+                print("quick")
+            case 1:
+                print("game")
+                //StoryboardSelector().actual(player: self.player!)
+            default:
+                print("error")
+            }
+        }
+
 }
 
 

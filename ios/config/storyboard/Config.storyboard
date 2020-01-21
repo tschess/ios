@@ -51,14 +51,14 @@
                                     <constraint firstAttribute="height" constant="50" id="CtS-Ad-lXP"/>
                                 </constraints>
                                 <items>
-                                    <tabBarItem title="cancel" image="xmark" catalog="system" id="cNg-v3-E35">
+                                    <tabBarItem tag="1" title="cancel" image="xmark" catalog="system" selectedImage="xmark" id="cNg-v3-E35">
                                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tabBarItem>
-                                    <tabBarItem title="fairies" image="wand.and.stars" catalog="system" selectedImage="suit.diamond.fill" id="fjf-cy-wGx">
+                                    <tabBarItem tag="3" title="fairies" image="wand.and.stars" catalog="system" selectedImage="wand.and.stars.inverse" id="fjf-cy-wGx">
                                         <inset key="imageInsets" minX="195" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tabBarItem>
-                                    <tabBarItem title="save" image="checkmark" catalog="system" id="AgV-7t-joK">
+                                    <tabBarItem tag="2" title="save" image="checkmark" catalog="system" selectedImage="checkmark" id="AgV-7t-joK">
                                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tabBarItem>
                                 </items>
@@ -515,8 +515,8 @@
         <image name="arrow.down" catalog="system" width="60" height="64"/>
         <image name="avatar_default" width="320" height="320"/>
         <image name="checkmark" catalog="system" width="64" height="56"/>
-        <image name="suit.diamond.fill" catalog="system" width="52" height="64"/>
         <image name="wand.and.stars" catalog="system" width="64" height="56"/>
+        <image name="wand.and.stars.inverse" catalog="system" width="64" height="56"/>
         <image name="xmark" catalog="system" width="64" height="56"/>
     </resources>
 </document>

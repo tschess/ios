@@ -8,23 +8,23 @@
 
 import UIKit
 
-class Acquisition: UIViewController, UITabBarDelegate, UIPopoverPresentationControllerDelegate, UITextViewDelegate {
+class Intro: UIViewController, UITabBarDelegate, UIPopoverPresentationControllerDelegate, UITextViewDelegate {
     
     let dateTime: DateTime = DateTime()
     
     @IBOutlet weak var backButton: UIButton!
     
-    @IBOutlet weak var avatarImageView: UIImageView?
-    @IBOutlet weak var rankLabel: UILabel?
-    @IBOutlet weak var tschxLabel: UILabel?
-    @IBOutlet weak var usernameLabel: UILabel?
-    
-    @IBOutlet weak var pointsLabel: UILabel!
-    @IBOutlet weak var valueLabel: UILabel!
-    @IBOutlet weak var tschessElementImageView: UIImageView!
-    @IBOutlet weak var tschessElementLabel: UILabel!
-    
-    @IBOutlet weak var completeButton: UIButton!
+//    @IBOutlet weak var avatarImageView: UIImageView?
+//    @IBOutlet weak var rankLabel: UILabel?
+//    @IBOutlet weak var tschxLabel: UILabel?
+//    @IBOutlet weak var usernameLabel: UILabel?
+//
+//    @IBOutlet weak var pointsLabel: UILabel!
+//    @IBOutlet weak var valueLabel: UILabel!
+//    @IBOutlet weak var tschessElementImageView: UIImageView!
+//    @IBOutlet weak var tschessElementLabel: UILabel!
+//
+//    @IBOutlet weak var completeButton: UIButton!
     @IBOutlet weak var tabBarMenu: UITabBar!
     
     @IBOutlet weak var attributeTextView: UITextView!
