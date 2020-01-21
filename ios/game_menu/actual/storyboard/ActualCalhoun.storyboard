@@ -31,8 +31,8 @@
                                     <constraint firstAttribute="height" constant="50" id="VH7-5F-net"/>
                                 </constraints>
                                 <items>
-                                    <tabBarItem title="home" image="arrowshape.turn.up.left" catalog="system" selectedImage="house" id="fYp-Rj-VM2">
-                                        <color key="badgeColor" red="0.86923474069999995" green="0.012778783219999999" blue="0.00083617179190000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <tabBarItem title="home" image="arrowshape.turn.up.left" catalog="system" selectedImage="arrowshape.turn.up.left.fill" id="fYp-Rj-VM2">
+                                        <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tabBarItem>
                                     <tabBarItem tag="1" title="historic" image="book" catalog="system" selectedImage="book.fill" id="T6W-Pm-TWX">
                                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -376,11 +376,11 @@
     <resources>
         <image name="arrow.down" catalog="system" width="60" height="64"/>
         <image name="arrowshape.turn.up.left" catalog="system" width="64" height="52"/>
+        <image name="arrowshape.turn.up.left.fill" catalog="system" width="64" height="52"/>
         <image name="avatar_default" width="320" height="320"/>
         <image name="avatar_inverse" width="320" height="320"/>
         <image name="book" catalog="system" width="64" height="50"/>
         <image name="book.fill" catalog="system" width="64" height="50"/>
-        <image name="house" catalog="system" width="64" height="54"/>
         <image name="tray.and.arrow.down" catalog="system" width="64" height="54"/>
     </resources>
 </document>

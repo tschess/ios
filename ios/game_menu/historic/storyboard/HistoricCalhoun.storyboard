@@ -31,16 +31,16 @@
                                     <constraint firstAttribute="height" constant="50" id="VH7-5F-net"/>
                                 </constraints>
                                 <items>
-                                    <tabBarItem tag="1" title="game" image="arrowshape.turn.up.left" catalog="system" selectedImage="book" id="T6W-Pm-TWX">
-                                        <color key="badgeColor" red="0.86923474069999995" green="0.012778783219999999" blue="0.00083617179190000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <tabBarItem tag="1" title="game" image="arrowshape.turn.up.left" catalog="system" selectedImage="arrowshape.turn.up.left.fill" id="T6W-Pm-TWX">
+                                        <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tabBarItem>
-                                    <tabBarItem title="home" image="house" catalog="system" selectedImage="house" id="KcG-ho-aJQ">
-                                        <color key="badgeColor" red="0.86923474069999995" green="0.012778783219999999" blue="0.00083617179190000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <tabBarItem title="home" image="house" catalog="system" selectedImage="house.fill" id="KcG-ho-aJQ">
+                                        <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tabBarItem>
                                 </items>
-                                <color key="tintColor" red="0.86923474069999995" green="0.012778783219999999" blue="0.00083617179190000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="selectedImageTintColor" red="0.86923474069999995" green="0.012778783219999999" blue="0.00083617179190000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="selectedImageTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tabBar>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="historic" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CH0-fz-8x4">
                                 <rect key="frame" x="0.0" y="44" width="414" height="40"/>
@@ -366,9 +366,10 @@
         <image name="arrow.down" catalog="system" width="60" height="64"/>
         <image name="arrow.up" catalog="system" width="60" height="64"/>
         <image name="arrowshape.turn.up.left" catalog="system" width="64" height="52"/>
+        <image name="arrowshape.turn.up.left.fill" catalog="system" width="64" height="52"/>
         <image name="avatar_default" width="320" height="320"/>
         <image name="avatar_inverse" width="320" height="320"/>
-        <image name="book" catalog="system" width="64" height="50"/>
         <image name="house" catalog="system" width="64" height="54"/>
+        <image name="house.fill" catalog="system" width="64" height="52"/>
     </resources>
 </document>

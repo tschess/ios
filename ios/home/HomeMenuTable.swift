@@ -20,79 +20,34 @@ class HomeMenuTable: UITableViewController {
         self.fetchGameList(page: pageFromWhichContentLoads)
     }
     
-    var searchHeaderAlignmentConstranit: NSLayoutConstraint?
+    var searchHeaderAlignmentConstraint: NSLayoutConstraint?
     
-    func setSearchHeaderAlignmentConstranit(searchHeaderAlignmentConstranit: NSLayoutConstraint){
-        self.searchHeaderAlignmentConstranit = searchHeaderAlignmentConstranit
-    }
-    
-    var searchHolderView: UIView?
-    func setSearchHolderView(searchHolderView: UIView){
-        self.searchHolderView = searchHolderView
+    func setSearchHeaderAlignmentConstraint(searchHeaderAlignmentConstraint: NSLayoutConstraint){
+        self.searchHeaderAlignmentConstraint = searchHeaderAlignmentConstraint
     }
     
     var lastY: CGFloat?
     
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        
-        print("self.searchHolderView!.frame.origin.y  \(self.searchHolderView!.frame.origin.y )")
-        
-        print("I'm scrolling! \(scrollView.contentOffset.y)")
         if(scrollView.contentOffset.y < -46) {
-            //if(self.containerViewTopConstraint!.constant == 0){
-                //self.containerViewTopConstraint!.constant += 46
-            //}
-            //if(self.searchHolderView!.frame.origin.y != 222){
-                //self.searchHolderView!.frame.origin.y += 46
-            //}
-            //
-            if(self.searchHeaderAlignmentConstranit!.constant == 0){
-                self.searchHeaderAlignmentConstranit!.constant += 46
+            if(self.searchHeaderAlignmentConstraint!.constant == 0){
+                self.searchHeaderAlignmentConstraint!.constant += 46
             }
         }
         if(lastY != nil){
             if(scrollView.contentOffset.y > 0) {
                 if(scrollView.contentOffset.y > lastY!){
-                    print("YES")
-                    if(self.searchHeaderAlignmentConstranit!.constant > 0){
-                        if(self.searchHeaderAlignmentConstranit!.constant.remainder(dividingBy: 2).isZero){
-                            self.searchHeaderAlignmentConstranit!.constant -= 2
+                    if(self.searchHeaderAlignmentConstraint!.constant > 0){
+                        if(self.searchHeaderAlignmentConstraint!.constant.remainder(dividingBy: 2).isZero){
+                            self.searchHeaderAlignmentConstraint!.constant -= 2
                         }
                         
                     }
-                } else {
-                    print("NO")
                 }
             }
-            
-//            if(scrollView.contentOffset.y > 0) {
-//                if(scrollView.contentOffset.y > lastY!){
-//                    print("YES")
-//                    if(self.searchHolderView!.frame.origin.y > 176){
-//                        self.searchHolderView!.frame.origin.y -= 1
-//                    }
-//                } else {
-//                    print("NO")
-//                }
-//            }
-            
-//            if(scrollView.contentOffset.y > 0) {
-//                if(scrollView.contentOffset.y > lastY!){
-//                    print("YES")
-//                    if(self.containerViewTopConstraint!.constant > 0){
-//                        self.containerViewTopConstraint!.constant -= 1
-//                    }
-//                } else {
-//                    print("NO")
-//                }
-//            }
         }
         lastY = scrollView.contentOffset.y
-        print("                     lastY: \(lastY!)")
     }
-    
-
-    
     
     var activityIndicator: UIActivityIndicatorView?
     

@@ -266,8 +266,6 @@
 		B7F5F64023D629C100BCF91F /* Detail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7F5F63F23D629C100BCF91F /* Detail.storyboard */; };
 		B7F5F64223D630E800BCF91F /* Address.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7F5F64123D630E700BCF91F /* Address.storyboard */; };
 		B7F5F64423D6376F00BCF91F /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F5F64323D6376F00BCF91F /* Address.swift */; };
-		B7F5F64723D64E2200BCF91F /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F5F64623D64E2200BCF91F /* Search.swift */; };
-		B7F5F64A23D64E9400BCF91F /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7F5F64923D64E9400BCF91F /* Search.storyboard */; };
 		B7F64B06239ABA3600F6AFB7 /* Landmine.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F64B05239ABA3600F6AFB7 /* Landmine.swift */; };
 		B7F78D10236B91E800F07FD7 /* ReviewXandroid.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7F78D0F236B91E800F07FD7 /* ReviewXandroid.storyboard */; };
 		B7F78D12236B922700F07FD7 /* ReviewPhaedrus.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7F78D11236B922700F07FD7 /* ReviewPhaedrus.storyboard */; };
@@ -587,8 +585,6 @@
 		B7F5F63F23D629C100BCF91F /* Detail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Detail.storyboard; sourceTree = "<group>"; };
 		B7F5F64123D630E700BCF91F /* Address.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Address.storyboard; sourceTree = "<group>"; };
 		B7F5F64323D6376F00BCF91F /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
-		B7F5F64623D64E2200BCF91F /* Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
-		B7F5F64923D64E9400BCF91F /* Search.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
 		B7F64B05239ABA3600F6AFB7 /* Landmine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Landmine.swift; sourceTree = "<group>"; };
 		B7F78D0F236B91E800F07FD7 /* ReviewXandroid.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ReviewXandroid.storyboard; sourceTree = "<group>"; };
 		B7F78D11236B922700F07FD7 /* ReviewPhaedrus.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ReviewPhaedrus.storyboard; sourceTree = "<group>"; };
@@ -1057,7 +1053,6 @@
 		B787C72822E970DC009C94F7 /* ios */ = {
 			isa = PBXGroup;
 			children = (
-				B7F5F64523D64E1000BCF91F /* search */,
 				B7F5F63723D5EA1D00BCF91F /* edit */,
 				B7F541D323D5206F00E89074 /* challenge */,
 				B7F541C923D51C3000E89074 /* other */,
@@ -1700,23 +1695,6 @@
 			path = storyboard;
 			sourceTree = "<group>";
 		};
-		B7F5F64523D64E1000BCF91F /* search */ = {
-			isa = PBXGroup;
-			children = (
-				B7F5F64823D64E4800BCF91F /* storyboard */,
-				B7F5F64623D64E2200BCF91F /* Search.swift */,
-			);
-			path = search;
-			sourceTree = "<group>";
-		};
-		B7F5F64823D64E4800BCF91F /* storyboard */ = {
-			isa = PBXGroup;
-			children = (
-				B7F5F64923D64E9400BCF91F /* Search.storyboard */,
-			);
-			path = storyboard;
-			sourceTree = "<group>";
-		};
 		B7F78D02236B906B00F07FD7 /* storyboard */ = {
 			isa = PBXGroup;
 			children = (
@@ -2072,7 +2050,6 @@
 				B7F78D24236B94FC00F07FD7 /* FairyXandroid.storyboard in Resources */,
 				B7F541CE23D51C6E00E89074 /* Other.storyboard in Resources */,
 				B70424B723AEDB6900DBB7FA /* ActualXandroid.storyboard in Resources */,
-				B7F5F64A23D64E9400BCF91F /* Search.storyboard in Resources */,
 				B7DF5BF623832F000022A8C2 /* PurchasePhaedrus.storyboard in Resources */,
 				B708D0F4236B4EF900A899F9 /* StartXandroid.storyboard in Resources */,
 				B708D0F6236B4F4500A899F9 /* StartPhaedrus.storyboard in Resources */,
@@ -2278,7 +2255,6 @@
 				B7F541C123D51A5A00E89074 /* Home.swift in Sources */,
 				B7F5878623D12D8000A91CD3 /* ShowMeSkins.swift in Sources */,
 				B74145DA22F3CE6400B3B4FF /* Pawn.swift in Sources */,
-				B7F5F64723D64E2200BCF91F /* Search.swift in Sources */,
 				B7EA5DD02375C61D0019C0BF /* MatrixDeserializer.swift in Sources */,
 				B794605C23A574FD004A6663 /* RequestMessage.swift in Sources */,
 				B7DF5C03238334540022A8C2 /* Preview.swift in Sources */,

@@ -8,7 +8,13 @@
 
 import UIKit
 
-class Home: UIViewController, UISearchBarDelegate, UISearchResultsUpdating, UITabBarDelegate {
+class Home: UIViewController, UISearchBarDelegate, UISearchResultsUpdating, UITabBarDelegate, UITextFieldDelegate {
+    
+    @IBOutlet weak var headerView: UIView!
+    
+    @IBOutlet weak var searchTextField: UITextField!
+    @IBOutlet weak var searchPlaceholderLabel: UILabel!
+    @IBOutlet weak var searchHeaderAlignmentConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var tabBarMenu: UITabBar!
@@ -29,8 +35,17 @@ class Home: UIViewController, UISearchBarDelegate, UISearchResultsUpdating, UITa
         self.player = player
     }
     
+    @objc func activateProfile() {
+           StoryboardSelector().profile(player: self.player!)
+       }
+    
+    var activateProfileGestureRecognizer: UITapGestureRecognizer?
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        self.activateProfileGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.activateProfile))
+        self.headerView.addGestureRecognizer(self.activateProfileGestureRecognizer!)
         
         let dataDecoded: Data = Data(base64Encoded: self.player!.getAvatar(), options: .ignoreUnknownCharacters)!
         let decodedimage = UIImage(data: dataDecoded)
@@ -47,7 +62,31 @@ class Home: UIViewController, UISearchBarDelegate, UISearchResultsUpdating, UITa
         
         //self.activityIndicator.startAnimating()
         self.activityIndicator.isHidden = true
+        
+        self.searchTextField.delegate = self
     }
+    
+    //MARK: UITextFieldDelegate
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        searchTextField.resignFirstResponder()
+        return true
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        view.addGestureRecognizer(self.dismissKeyboardGesture!)
+        self.searchPlaceholderLabel.isHidden = true
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        self.dismissKeyboard()
+        searchPlaceholderLabel.resignFirstResponder()
+        view.removeGestureRecognizer(self.dismissKeyboardGesture!)
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,13 +97,13 @@ class Home: UIViewController, UISearchBarDelegate, UISearchResultsUpdating, UITa
         
         leaderboardTableView = children.first as? HomeMenuTable
         leaderboardTableView!.setPlayer(player: self.player!)
+        leaderboardTableView!.setSearchHeaderAlignmentConstraint(searchHeaderAlignmentConstraint: self.searchHeaderAlignmentConstraint)
         //leaderboardTableView!.setIndicator(indicator: self.activityIndicator!)
+        
+        self.dismissKeyboardGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
     }
     
-    @objc func dismissKeyboard() {
-        view.endEditing(true)
-        view.removeGestureRecognizer(tap!)
-    }
+    var dismissKeyboardGesture: UITapGestureRecognizer?
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         searchBar.autocorrectionType = .no
@@ -122,14 +161,14 @@ class Home: UIViewController, UISearchBarDelegate, UISearchResultsUpdating, UITa
                 }
             }
             
-        case 2:
-            print("search")
-            //profile(player: Player)
-            //StoryboardSelector().profile(player: self.player!)
-            let storyboard: UIStoryboard = UIStoryboard(name: "Search", bundle: nil)
-            let viewController = storyboard.instantiateViewController(withIdentifier: "Search") as! Search
-            viewController.setPlayer(player: self.player!)
-            UIApplication.shared.keyWindow?.rootViewController = viewController
+//        case 2:
+//            print("search")
+//            //profile(player: Player)
+//            //StoryboardSelector().profile(player: self.player!)
+//            let storyboard: UIStoryboard = UIStoryboard(name: "Search", bundle: nil)
+//            let viewController = storyboard.instantiateViewController(withIdentifier: "Search") as! Search
+//            viewController.setPlayer(player: self.player!)
+//            UIApplication.shared.keyWindow?.rootViewController = viewController
         case 3:
             print("game")
             StoryboardSelector().actual(player: self.player!)
