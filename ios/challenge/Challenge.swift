@@ -18,6 +18,8 @@ class Challenge:
     @IBOutlet weak var configCollectionView: DynamicCollectionView!
     @IBOutlet weak var configCollectionViewHeight: NSLayoutConstraint!
     
+    @IBOutlet weak var timeSwitch: UISwitch!
+    
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     let reuseIdentifier = "cell"
@@ -26,8 +28,6 @@ class Challenge:
     
     var items = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16"]
     
-    //@IBOutlet weak var activeConfigName: UILabel!
-    //@IBOutlet weak var activeConfigIndicator: UILabel!
     @IBOutlet weak var indicatorLabel0: UILabel!
     @IBOutlet weak var indicatorLabel1: UILabel!
     @IBOutlet weak var indicatorLabel2: UILabel!
@@ -99,17 +99,6 @@ class Challenge:
         self.configCollectionView.bounces = false
         self.configCollectionView.alwaysBounceVertical = false
         self.configCollectionViewHeight.constant = configCollectionView.contentSize.height
-      
-        let screenSize = UIScreen.main.bounds
-        let screenWidth = screenSize.width
-        
-        self.timePartitionWidth.constant = screenWidth/2
-        self.timeLabelWidth.constant = screenWidth/4
-        self.timePickerWidth.constant = screenWidth/4
-        
-        self.skinPartitionWidth.constant = screenWidth/2
-        self.skinPickerWidth.constant = screenWidth/4
-        self.skinPickerWidth.constant = screenWidth/4
     }
     
     let dateTime: DateTime = DateTime()
@@ -123,62 +112,42 @@ class Challenge:
     @IBOutlet weak var rankLabel: UILabel!
     @IBOutlet weak var avatarImageView: UIImageView!
     
-    @IBOutlet weak var timeLabelWidth: NSLayoutConstraint!
-    @IBOutlet weak var timePickerWidth: NSLayoutConstraint!
-    @IBOutlet weak var timePartitionWidth: NSLayoutConstraint!
-    @IBOutlet weak var timeLimitPickerView: UIPickerView!
-    @IBOutlet weak var skinSelectPickerView: UIPickerView!
-    @IBOutlet weak var skinPartitionWidth: NSLayoutConstraint!
-    
-    @IBOutlet weak var skinPickerWidth: NSLayoutConstraint!
-    @IBOutlet weak var skinLabelWidth: NSLayoutConstraint!
-    
     var player: Player?
     var gameModel: Game?
-    
-    var pickerSelectionTimeLimit: String = "post"
-    var pickerOptionsTimeLimit: [String]  = ["post", "blitz"]
-    
-    var pickerSelectionConfiguration: String = "default"
-    var pickerOptionsSkin: [String] = ["default", "iapetus"]
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        if pickerView.tag == 0 {
-            return pickerOptionsTimeLimit.count
-        }
-        return pickerOptionsSkin.count
+        return self.skinList!.count
     }
     
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
-        var label = UILabel()
-        if let v = view as? UILabel { label = v }
-        label.font = UIFont.systemFont(ofSize: 22, weight: UIFont.Weight.light)
+        let skinAsset = self.skinList![row]
         
-        if pickerView.tag == 0 {
-            label.text = pickerOptionsTimeLimit[row]
-        } else {
-            label.text = pickerOptionsSkin[row]
-        }
+        let sampleView = SampleSkin.instanceFromNib()
+        sampleView.nameLabel.text = skinAsset.getName()
+
+        sampleView.backgroundView.backgroundColor = skinAsset.getBackColor()
+        sampleView.backgroundView.alpha = skinAsset.getBackAlpha()
+        sampleView.backgroundImage.image = skinAsset.getBackImage()
         
-        label.textColor =  UIColor.black
-        label.textAlignment = .center
-        return label
+        sampleView.foregroundView.backgroundColor = skinAsset.getForeColor()
+        sampleView.foregroundView.alpha = skinAsset.getForeAlpha()
+        sampleView.foregroundImage.image = skinAsset.getForeImage()
+        
+        return sampleView
     }
     
     func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
-        return 30
+        return 69
     }
     
+    var skinSelectionPick: String = "calypso"
+    
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        if pickerView.tag == 0 {
-            pickerSelectionTimeLimit = pickerOptionsTimeLimit[row]
-            return
-        }
-        pickerSelectionConfiguration = pickerOptionsSkin[row]
+        self.skinSelectionPick = self.skinList![row].getName()
     }
     
     public func setPlayer(player: Player){
@@ -191,6 +160,8 @@ class Challenge:
     
     var attributeAlphaDotFull: [NSAttributedString.Key: NSObject]?
     var attributeAlphaDotHalf: [NSAttributedString.Key: NSObject]?
+    
+    var skinList: Array<Skin>?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -231,16 +202,35 @@ class Challenge:
         self.indicatorLabelS.attributedText = activeConfigNull
         
         self.activityIndicator.isHidden = true
+        
+        let orange: UIColor = UIColor(red: 255/255.0, green: 105/255.0, blue: 104/255.0, alpha: 1) //FF6968
+        let pink: UIColor = UIColor(red: 255/255.0, green: 105/255.0, blue: 180/255.0, alpha: 1)
+        let purple: UIColor = UIColor(red: 140/255.0, green: 0/255.0, blue: 192/255.0, alpha: 1)
+        let blue: UIColor = UIColor(red: 84/255.0, green: 140/255.0, blue: 240/255.0, alpha: 1)
+        let green: UIColor = UIColor(red: 0/255.0, green: 255/255.0, blue: 88/255.0, alpha: 1)
+        
+        let hyperion: Skin = Skin(name: "hyperion", foreColor: purple, backColor: blue)
+        let calypso: Skin = Skin(name: "calypso", foreColor: pink, backColor: UIColor.black)
+        let neptune: Skin = Skin(name: "neptune", foreColor: green, backColor: orange, backAlpha: 0.85)
+        
+        let iapetus: Skin = Skin(
+            name: "iapetus",
+            foreColor: UIColor.white,
+            foreImage: UIImage(named: "iapetus"),
+            backColor: UIColor.black,
+            backImage: UIImage(named: "iapetus"),
+            backAlpha: 0.85)
+        
+        self.skinList = Array(arrayLiteral: calypso, hyperion, neptune, iapetus)
     }
+    
+    @IBOutlet weak var skinSelectionPicker: UIPickerView!
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.timeLimitPickerView.delegate = self
-        self.timeLimitPickerView.dataSource = self
-        
-        self.skinSelectPickerView.delegate = self
-        self.skinSelectPickerView.dataSource = self
+        self.skinSelectionPicker.delegate = self
+        self.skinSelectionPicker.dataSource = self
         
         self.swipeRightGesture = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
         swipeRightGesture!.direction = UISwipeGestureRecognizer.Direction.right
