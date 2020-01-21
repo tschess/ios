@@ -513,7 +513,7 @@ class Quick:
         
         self.skinSelectionPicker.delegate = self
         self.skinSelectionPicker.dataSource = self
-        //
+        //self.skinSelectionPicker.
         
         self.swipeRightGesture = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
         swipeRightGesture!.direction = UISwipeGestureRecognizer.Direction.right
