@@ -438,49 +438,49 @@ class StoryboardSelector {
         }
     }
     
-    public func acquisition(player: Player, fairyElement: FairyElement) {
-        DispatchQueue.main.async {
-            switch self.device() {
-            case "XANDROID":
-                let storyboard: UIStoryboard = UIStoryboard(name: "AcquisitionXandroid", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "AcquisitionXandroid") as! Acquisition
-                viewController.setPlayer(player: player)
-                viewController.setFairyElement(fairyElement: fairyElement)
-                UIApplication.shared.keyWindow?.rootViewController = viewController
-                return
-            case "MAGNUS":
-                let storyboard: UIStoryboard = UIStoryboard(name: "AcquisitionMagnus", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "AcquisitionMagnus") as! Acquisition
-                viewController.setPlayer(player: player)
-                viewController.setFairyElement(fairyElement: fairyElement)
-                UIApplication.shared.keyWindow?.rootViewController = viewController
-                return
-            case "XENOPHON":
-                let storyboard: UIStoryboard = UIStoryboard(name: "AcquisitionXenophon", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "AcquisitionXenophon") as! Acquisition
-                viewController.setPlayer(player: player)
-                viewController.setFairyElement(fairyElement: fairyElement)
-                UIApplication.shared.keyWindow?.rootViewController = viewController
-                return
-            case "PHAEDRUS":
-                let storyboard: UIStoryboard = UIStoryboard(name: "AcquisitionPhaedrus", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "AcquisitionPhaedrus") as! Acquisition
-                viewController.setPlayer(player: player)
-                viewController.setFairyElement(fairyElement: fairyElement)
-                UIApplication.shared.keyWindow?.rootViewController = viewController
-                return
-            case "CALHOUN":
-                let storyboard: UIStoryboard = UIStoryboard(name: "AcquisitionCalhoun", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "AcquisitionCalhoun") as! Acquisition
-                viewController.setPlayer(player: player)
-                viewController.setFairyElement(fairyElement: fairyElement)
-                UIApplication.shared.keyWindow?.rootViewController = viewController
-                return
-            default:
-                return
-            }
-        }
-    }
+//    public func acquisition(player: Player, fairyElement: FairyElement) {
+//        DispatchQueue.main.async {
+//            switch self.device() {
+//            case "XANDROID":
+//                let storyboard: UIStoryboard = UIStoryboard(name: "AcquisitionXandroid", bundle: nil)
+//                let viewController = storyboard.instantiateViewController(withIdentifier: "AcquisitionXandroid") as! Acquisition
+//                viewController.setPlayer(player: player)
+//                viewController.setFairyElement(fairyElement: fairyElement)
+//                UIApplication.shared.keyWindow?.rootViewController = viewController
+//                return
+//            case "MAGNUS":
+//                let storyboard: UIStoryboard = UIStoryboard(name: "AcquisitionMagnus", bundle: nil)
+//                let viewController = storyboard.instantiateViewController(withIdentifier: "AcquisitionMagnus") as! Acquisition
+//                viewController.setPlayer(player: player)
+//                viewController.setFairyElement(fairyElement: fairyElement)
+//                UIApplication.shared.keyWindow?.rootViewController = viewController
+//                return
+//            case "XENOPHON":
+//                let storyboard: UIStoryboard = UIStoryboard(name: "AcquisitionXenophon", bundle: nil)
+//                let viewController = storyboard.instantiateViewController(withIdentifier: "AcquisitionXenophon") as! Acquisition
+//                viewController.setPlayer(player: player)
+//                viewController.setFairyElement(fairyElement: fairyElement)
+//                UIApplication.shared.keyWindow?.rootViewController = viewController
+//                return
+//            case "PHAEDRUS":
+//                let storyboard: UIStoryboard = UIStoryboard(name: "AcquisitionPhaedrus", bundle: nil)
+//                let viewController = storyboard.instantiateViewController(withIdentifier: "AcquisitionPhaedrus") as! Acquisition
+//                viewController.setPlayer(player: player)
+//                viewController.setFairyElement(fairyElement: fairyElement)
+//                UIApplication.shared.keyWindow?.rootViewController = viewController
+//                return
+//            case "CALHOUN":
+//                let storyboard: UIStoryboard = UIStoryboard(name: "AcquisitionCalhoun", bundle: nil)
+//                let viewController = storyboard.instantiateViewController(withIdentifier: "AcquisitionCalhoun") as! Acquisition
+//                viewController.setPlayer(player: player)
+//                viewController.setFairyElement(fairyElement: fairyElement)
+//                UIApplication.shared.keyWindow?.rootViewController = viewController
+//                return
+//            default:
+//                return
+//            }
+//        }
+//    }
     
     public func eth(player: Player, scan: Bool = false) {
         DispatchQueue.main.async {

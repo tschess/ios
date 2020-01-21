@@ -65,7 +65,7 @@ class Fairy: UIViewController, UITabBarDelegate {
     @objc func onDidReceiveData(_ notification: NSNotification) {
         let squadUpDetailSelectionIndex = notification.userInfo!["squad_up_detail_selection"] as! Int
         let fairyElement = squadUpAdapter!.getFairyElementList()![squadUpDetailSelectionIndex]
-        StoryboardSelector().acquisition(player: self.player!, fairyElement: fairyElement)
+        //StoryboardSelector().acquisition(player: self.player!, fairyElement: fairyElement)
     }
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {

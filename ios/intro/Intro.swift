@@ -44,39 +44,39 @@ class Intro: UIViewController, UITabBarDelegate, UIPopoverPresentationController
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.tschessElementImageView.image = fairyElement!.getImageDefault()
-        self.tschessElementLabel.text = fairyElement!.name.lowercased()
-      
-        self.pointsLabel.text = fairyElement!.strength
-        self.valueLabel.text = "₮\(fairyElement!.tschxValue)"
-        self.attributeTextView.text = fairyElement!.description
-        self.attributeTextView.isEditable = false
-        self.attributeTextView.backgroundColor = UIColor.white
-        self.attributeTextView.textColor = UIColor.black
-        
-        if(self.player!.getFairyElementList().contains(self.fairyElement!)){
-            completeButton.setTitle( "acquired" , for: .normal)
-            completeButton.alpha = 1
-            completeButton.isUserInteractionEnabled = false
-            completeButton.setTitleColor(UIColor.black, for: .normal)
-        } else {
-            if(Int(self.player!.getTschx())! < Int(fairyElement!.tschxValue)!){
-                completeButton.setTitle( "tschx (₮) balance insufficient" , for: .normal)
-                completeButton.alpha = 0.5
-                insufficientBalance = true
-                completeButton.isUserInteractionEnabled = false
-            }
-        }
-        let device = StoryboardSelector().device()
-        if(device == "XANDROID" || device == "MAGNUS"){
-            return
-        }
-        let dataDecoded: Data = Data(base64Encoded: self.player!.getAvatar(), options: .ignoreUnknownCharacters)!
-        let decodedimage = UIImage(data: dataDecoded)
-        self.avatarImageView!.image = decodedimage
-        self.usernameLabel!.text = self.player!.getName()
-        self.rankLabel!.text = self.player!.getRank()
-        self.tschxLabel!.text = "₮\(self.player!.getTschx())"
+//        self.tschessElementImageView.image = fairyElement!.getImageDefault()
+//        self.tschessElementLabel.text = fairyElement!.name.lowercased()
+//
+//        self.pointsLabel.text = fairyElement!.strength
+//        self.valueLabel.text = "₮\(fairyElement!.tschxValue)"
+//        self.attributeTextView.text = fairyElement!.description
+//        self.attributeTextView.isEditable = false
+//        self.attributeTextView.backgroundColor = UIColor.white
+//        self.attributeTextView.textColor = UIColor.black
+//
+//        if(self.player!.getFairyElementList().contains(self.fairyElement!)){
+//            completeButton.setTitle( "acquired" , for: .normal)
+//            completeButton.alpha = 1
+//            completeButton.isUserInteractionEnabled = false
+//            completeButton.setTitleColor(UIColor.black, for: .normal)
+//        } else {
+//            if(Int(self.player!.getTschx())! < Int(fairyElement!.tschxValue)!){
+//                completeButton.setTitle( "tschx (₮) balance insufficient" , for: .normal)
+//                completeButton.alpha = 0.5
+//                insufficientBalance = true
+//                completeButton.isUserInteractionEnabled = false
+//            }
+//        }
+//        let device = StoryboardSelector().device()
+//        if(device == "XANDROID" || device == "MAGNUS"){
+//            return
+//        }
+//        let dataDecoded: Data = Data(base64Encoded: self.player!.getAvatar(), options: .ignoreUnknownCharacters)!
+//        let decodedimage = UIImage(data: dataDecoded)
+//        self.avatarImageView!.image = decodedimage
+//        self.usernameLabel!.text = self.player!.getName()
+//        self.rankLabel!.text = self.player!.getRank()
+//        self.tschxLabel!.text = "₮\(self.player!.getTschx())"
     }
     
     var insufficientBalance: Bool = false
@@ -87,18 +87,18 @@ class Intro: UIViewController, UITabBarDelegate, UIPopoverPresentationController
         tabBarMenu.delegate = self
     }
     
-    @IBAction func completeButtonClick(_ sender: Any) {
-        if(insufficientBalance){
-            return
-        }
-        let name = self.player!.getName()
-        let target = self.fairyElement!.name
-        let tschx = self.fairyElement!.getTschxValue()
-        let requestPayload = ["name": name, "target": target, "tschx": tschx, "updated": dateTime.currentDateString()]
-        SquadUpTask().execute(requestPayload: requestPayload, player: self.player!) { (result, error) in
-            StoryboardSelector().fairy(player: self.player!)
-        }
-    }
+//    @IBAction func completeButtonClick(_ sender: Any) {
+//        if(insufficientBalance){
+//            return
+//        }
+//        let name = self.player!.getName()
+//        let target = self.fairyElement!.name
+//        let tschx = self.fairyElement!.getTschxValue()
+//        let requestPayload = ["name": name, "target": target, "tschx": tschx, "updated": dateTime.currentDateString()]
+//        SquadUpTask().execute(requestPayload: requestPayload, player: self.player!) { (result, error) in
+//            StoryboardSelector().fairy(player: self.player!)
+//        }
+//    }
     
     @IBAction func backButtonClick(_ sender: Any) {
         StoryboardSelector().fairy(player: self.player!)
