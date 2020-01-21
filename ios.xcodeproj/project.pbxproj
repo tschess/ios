@@ -224,7 +224,7 @@
 		B7DF5C17238346200022A8C2 /* SnapshotPhaedrus.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7DF5C16238346200022A8C2 /* SnapshotPhaedrus.storyboard */; };
 		B7DF5C192383464A0022A8C2 /* SnapshotXandroid.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7DF5C182383464A0022A8C2 /* SnapshotXandroid.storyboard */; };
 		B7DF5C1B2383483D0022A8C2 /* SnapshotMagnus.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7DF5C1A2383483D0022A8C2 /* SnapshotMagnus.storyboard */; };
-		B7E0FFA82360A20900A1148B /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E0FFA72360A20900A1148B /* Config.swift */; };
+		B7E0FFA82360A20900A1148B /* xConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E0FFA72360A20900A1148B /* xConfig.swift */; };
 		B7E14C0022EC50F800CABCD3 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E14BFF22EC50F800CABCD3 /* Game.swift */; };
 		B7E23C592381FD6D007DA860 /* IapetusSkins.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E23C582381FD6D007DA860 /* IapetusSkins.swift */; };
 		B7E23C6223826045007DA860 /* ChessCalhoun.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7E23C6123826045007DA860 /* ChessCalhoun.storyboard */; };
@@ -266,6 +266,8 @@
 		B7F5F64023D629C100BCF91F /* Detail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7F5F63F23D629C100BCF91F /* Detail.storyboard */; };
 		B7F5F64223D630E800BCF91F /* Address.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7F5F64123D630E700BCF91F /* Address.storyboard */; };
 		B7F5F64423D6376F00BCF91F /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F5F64323D6376F00BCF91F /* Address.swift */; };
+		B7F5F64C23D67BC800BCF91F /* Config.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7F5F64B23D67BC800BCF91F /* Config.storyboard */; };
+		B7F5F64E23D67FB000BCF91F /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F5F64D23D67FB000BCF91F /* Config.swift */; };
 		B7F64B06239ABA3600F6AFB7 /* Landmine.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F64B05239ABA3600F6AFB7 /* Landmine.swift */; };
 		B7F78D10236B91E800F07FD7 /* ReviewXandroid.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7F78D0F236B91E800F07FD7 /* ReviewXandroid.storyboard */; };
 		B7F78D12236B922700F07FD7 /* ReviewPhaedrus.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7F78D11236B922700F07FD7 /* ReviewPhaedrus.storyboard */; };
@@ -543,7 +545,7 @@
 		B7DF5C16238346200022A8C2 /* SnapshotPhaedrus.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SnapshotPhaedrus.storyboard; sourceTree = "<group>"; };
 		B7DF5C182383464A0022A8C2 /* SnapshotXandroid.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SnapshotXandroid.storyboard; sourceTree = "<group>"; };
 		B7DF5C1A2383483D0022A8C2 /* SnapshotMagnus.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SnapshotMagnus.storyboard; sourceTree = "<group>"; };
-		B7E0FFA72360A20900A1148B /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		B7E0FFA72360A20900A1148B /* xConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xConfig.swift; sourceTree = "<group>"; };
 		B7E14BFF22EC50F800CABCD3 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		B7E23C582381FD6D007DA860 /* IapetusSkins.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IapetusSkins.swift; sourceTree = "<group>"; };
 		B7E23C6123826045007DA860 /* ChessCalhoun.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChessCalhoun.storyboard; sourceTree = "<group>"; };
@@ -585,6 +587,8 @@
 		B7F5F63F23D629C100BCF91F /* Detail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Detail.storyboard; sourceTree = "<group>"; };
 		B7F5F64123D630E700BCF91F /* Address.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Address.storyboard; sourceTree = "<group>"; };
 		B7F5F64323D6376F00BCF91F /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
+		B7F5F64B23D67BC800BCF91F /* Config.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Config.storyboard; sourceTree = "<group>"; };
+		B7F5F64D23D67FB000BCF91F /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		B7F64B05239ABA3600F6AFB7 /* Landmine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Landmine.swift; sourceTree = "<group>"; };
 		B7F78D0F236B91E800F07FD7 /* ReviewXandroid.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ReviewXandroid.storyboard; sourceTree = "<group>"; };
 		B7F78D11236B922700F07FD7 /* ReviewPhaedrus.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ReviewPhaedrus.storyboard; sourceTree = "<group>"; };
@@ -749,6 +753,7 @@
 				B7CB62AE237B4E1E00E50204 /* HomeMagnus.storyboard */,
 				B7CB62B0237B4E7800E50204 /* HomeCalhoun.storyboard */,
 				B7039F1B238B4C79003896C6 /* HomeXenophon.storyboard */,
+				B7F5F64B23D67BC800BCF91F /* Config.storyboard */,
 			);
 			path = storyboard;
 			sourceTree = "<group>";
@@ -1537,7 +1542,8 @@
 				B7FCCC892373831A00C4DD88 /* networking */,
 				B708D101236B6AC600A899F9 /* component */,
 				B708D0F7236B4F9400A899F9 /* storyboard */,
-				B7E0FFA72360A20900A1148B /* Config.swift */,
+				B7E0FFA72360A20900A1148B /* xConfig.swift */,
+				B7F5F64D23D67FB000BCF91F /* Config.swift */,
 			);
 			path = config;
 			sourceTree = "<group>";
@@ -1976,6 +1982,7 @@
 				B7DF5C17238346200022A8C2 /* SnapshotPhaedrus.storyboard in Resources */,
 				B7DA22242399C3D5006256CC /* ScannerXandroid.storyboard in Resources */,
 				B7CB62AF237B4E1E00E50204 /* HomeMagnus.storyboard in Resources */,
+				B7F5F64C23D67BC800BCF91F /* Config.storyboard in Resources */,
 				B7E23C6223826045007DA860 /* ChessCalhoun.storyboard in Resources */,
 				B7DF146F23CE5179007B2C7D /* PreviewNeptuneCalhoun.storyboard in Resources */,
 				B7CB62DE237BA01400E50204 /* AcquisitionMagnus.storyboard in Resources */,
@@ -2248,7 +2255,7 @@
 				B7168BBE233A7892008F59DE /* DeserializeGamestate.swift in Sources */,
 				B7BCD7CE22F4746F00CC29E6 /* WhiteQueen.swift in Sources */,
 				B74145C222F3CAC800B3B4FF /* LegalMove.swift in Sources */,
-				B7E0FFA82360A20900A1148B /* Config.swift in Sources */,
+				B7E0FFA82360A20900A1148B /* xConfig.swift in Sources */,
 				B7AB8E60235607CD002D71BD /* HopperOffense.swift in Sources */,
 				B7E23C592381FD6D007DA860 /* IapetusSkins.swift in Sources */,
 				B7DF5C122383445B0022A8C2 /* Snapshot.swift in Sources */,
@@ -2266,6 +2273,7 @@
 				B7F5878823D12E3300A91CD3 /* SkinTableMenu.swift in Sources */,
 				B7F541D523D5208400E89074 /* Challenge.swift in Sources */,
 				B7FCCC9B2373F12600C4DD88 /* Processor.swift in Sources */,
+				B7F5F64E23D67FB000BCF91F /* Config.swift in Sources */,
 				B7088208233A0CCC00A06CAD /* LoginTask.swift in Sources */,
 				B7D0CAA023A96F5D006A7F9D /* ConfigCollectionViewCell.swift in Sources */,
 				B7F541CB23D51C4300E89074 /* Other.swift in Sources */,

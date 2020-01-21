@@ -41,7 +41,6 @@ class HomeMenuTable: UITableViewController {
                         if(self.searchHeaderAlignmentConstraint!.constant.remainder(dividingBy: 2).isZero){
                             self.searchHeaderAlignmentConstraint!.constant -= 2
                         }
-                        
                     }
                 }
             }

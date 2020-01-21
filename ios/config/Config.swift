@@ -1,40 +1,41 @@
 //
-//  Home.swift
+//  Config.swift
 //  ios
 //
-//  Created by Matthew on 10/23/19.
-//  Copyright © 2019 bahlsenwitz. All rights reserved.
+//  Created by Matthew on 1/20/20.
+//  Copyright © 2020 bahlsenwitz. All rights reserved.
 //
 
-import UIKit
+import UIKit //
 
 class Config: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIDropInteractionDelegate {
     
-    @IBOutlet weak var notificationLabel: UILabel!
+    var titleText: String?
     
-    @IBOutlet weak var upperPartitionView: UIView!
-    @IBOutlet weak var lowerPartitionView: UIView!
+    func setTitleText(titleText: String) {
+        self.titleText = titleText
+    }
+    
+    @IBOutlet weak var titleLabel: UILabel!
+    //@IBOutlet weak var titleLabel: UILabel!
+    
+    @IBOutlet weak var backButton: UIButton!
+    
+    //@IBOutlet weak var doneButtonWidth: NSLayoutConstraint!
+    //@IBOutlet weak var backButtonWidth: NSLayoutConstraint!
     
     @IBOutlet weak var rankLabel: UILabel!
-    @IBOutlet weak var tschxLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
-    @IBOutlet weak var pointsView: UIView!
-    @IBOutlet weak var pointsLabel: UILabel!
-    @IBOutlet weak var cancelEditImageButton: UIImageView!
-    @IBOutlet weak var configPartitionHeightConstraint: NSLayoutConstraint!
-    
     @IBOutlet weak var configCollectionView: DynamicCollectionView!
+    //@IBOutlet weak var configCollectionView: DynamicCollectionView!
     @IBOutlet weak var configCollectionViewHeight: NSLayoutConstraint!
+    //@IBOutlet weak var configCollectionViewHeight: NSLayoutConstraint!
     
     @IBOutlet weak var tschessElementCollectionView: UICollectionView!
-    
-    @IBOutlet weak var saveConfigButton: UIButton!
-    
-    @IBOutlet weak var activeConfigLabel: UILabel!
-    @IBOutlet weak var configIndicatorLabel: UILabel!
+    //@IBOutlet weak var tschessElementCollectionView: UICollectionView!
     @IBOutlet weak var tabBarMenu: UITabBar!
     
     let dateTime: DateTime = DateTime()
@@ -86,89 +87,19 @@ class Config: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate, U
         
         self.configCollectionView.dragInteractionEnabled = false
         
-        self.cancelEditImageButton.isHidden = true
-        self.pointsView.isHidden = true
-        
         self.tschessElementMatrix = self.cacheCancelMatrix
         
         self.configCollectionView.reloadData()
-        
-        self.tschessElementCollectionView.isHidden = true
-        
-        self.saveConfigButton.isHidden = true
-        self.activeConfigLabel.isHidden = false
-    }
-    
-    @IBAction func saveConfigButtonClick(_ sender: Any) {
-        self.persistCurrentConfig()
-        self.avatarImageView!.addGestureRecognizer(self.updatePhotoGesture!)
-        self.view.addGestureRecognizer(self.swipeRightGesture!)
-        self.view.addGestureRecognizer(self.swipeLeftGesture!)
-        
-        self.configCollectionView.dragInteractionEnabled = false
-        
-        self.tschessElementCollectionView.isHidden = true
-        self.cancelEditImageButton.isHidden = true
-        self.notificationLabel.isHidden = true
-        self.saveConfigButton.isHidden = true
-        self.pointsView.isHidden = true
-        
-        self.activeConfigLabel.isHidden = false
-    }
-    
-    func persistCurrentConfig() {
-        DispatchQueue.main.async() {
-            self.activityIndicator.isHidden = false
-            self.activityIndicator.startAnimating()
-        }
-        let id = self.player!.getId()
-        let config = ConfigSerializer().serializeConfiguration(savedConfigurationMatrix: self.tschessElementMatrix!)
-        var updateConfig = [
-            "id": id,
-            "config": config,
-            "updated": self.dateTime.currentDateString()
-            ] as [String: Any]
-        
-        var name: String = "config0"
-        if(activeConfigLabel.text == "config. 1"){
-            name = "config1"
-        }
-        if(activeConfigLabel.text == "config. 2"){
-            name = "config2"
-        }
-        updateConfig["name"] = name
-        UpdateConfig().execute(requestPayload: updateConfig, player: self.player!) { (result) in
-            if result == nil {
-                //print("error!") // print a popup
-            }
-            //out to assign to user model right here...
-            self.player = result!
-            DispatchQueue.main.async() {
-                self.activityIndicator.stopAnimating()
-                self.activityIndicator.isHidden = true
-                if(self.activeConfigLabel.text == "config. 0̸"){
-                    self.renderConfig0()
-                    self.configCollectionView.reloadData()
-                    return
-                }
-                if(self.activeConfigLabel.text == "config. 1"){
-                    self.renderConfig1()
-                    self.configCollectionView.reloadData()
-                    return
-                }
-                if(self.activeConfigLabel.text == "config. 2"){
-                    self.renderConfig2()
-                    self.configCollectionView.reloadData()
-                    return
-                }
-            }
-        }
     }
     
     //MARK: - lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //self.titleLabel.text = self.titleText
+        
+        self.activityIndicator.isHidden = true
         
         self.deviceType = StoryboardSelector().device()
         
@@ -179,130 +110,83 @@ class Config: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate, U
         self.configCollectionView.isUserInteractionEnabled = true
         self.configCollectionView.dragInteractionEnabled = false
         
-        self.upperPartitionView.addInteraction(UIDropInteraction(delegate: self))
-        self.lowerPartitionView.addInteraction(UIDropInteraction(delegate: self))
-        
         self.tschessElementCollectionView.delegate = self
         self.tschessElementCollectionView.dataSource = self
         self.tschessElementCollectionView.dragDelegate = self
         self.tschessElementCollectionView.isUserInteractionEnabled = true
         self.tschessElementCollectionView.dragInteractionEnabled = true
         
-        self.notificationLabel.isHidden = true
-        self.activityIndicator.isHidden = true
-        self.pointsView.isHidden = true
-        self.tschessElementCollectionView.isHidden = true
-        self.saveConfigButton.isHidden = true
-        self.cancelEditImageButton.isHidden = true
-        
-        self.attributeAlphaDotFull = [
-            NSAttributedString.Key.foregroundColor: UIColor(red: 0/255.0, green: 0/255.0, blue: 0/255.0, alpha: 1.0),
-            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 24, weight: UIFont.Weight.bold)]
-        self.attributeAlphaDotHalf = [
-            NSAttributedString.Key.foregroundColor: UIColor(red: 0/255.0, green: 0/255.0, blue: 0/255.0, alpha: 0.5),
-            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 24, weight: UIFont.Weight.bold)]
-        let alphaDotFull = NSMutableAttributedString(string: "•", attributes: self.attributeAlphaDotFull!)
-        let alphaDotHalf = NSMutableAttributedString(string: " • ", attributes: self.attributeAlphaDotHalf!)
-        
-        let activeConfigLabeleString = NSMutableAttributedString()
-        activeConfigLabeleString.append(alphaDotHalf)
-        activeConfigLabeleString.append(alphaDotFull)
-        activeConfigLabeleString.append(alphaDotHalf)
-        self.configIndicatorLabel.attributedText = activeConfigLabeleString
-        
         self.tabBarMenu.delegate = self
-        
-        self.updateHeader()
-        
     }
     
-    func renderConfig0() {
-        self.tschessElementMatrix = self.player!.getConfig0()
-        self.cacheCancelMatrix = self.tschessElementMatrix0
-        self.activeConfigLabel.text = "config. 0̸"
-        self.configCollectionView.reloadData()
-        
-        let alphaDotFull = NSMutableAttributedString(string: "•", attributes: self.attributeAlphaDotFull!)
-        let alphaDotHalf = NSMutableAttributedString(string: " • •", attributes: self.attributeAlphaDotHalf!)
-        let activeConfigLabeleString = NSMutableAttributedString()
-        activeConfigLabeleString.append(alphaDotFull)
-        activeConfigLabeleString.append(alphaDotHalf)
-        self.configIndicatorLabel.attributedText = activeConfigLabeleString
+    @IBAction func backButtonClick(_ sender: Any) {
+        if(self.titleText == "new challenge"){
+            let storyboard: UIStoryboard = UIStoryboard(name: "Challenge", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier: "Challenge") as! Challenge
+            viewController.setPlayer(player: self.player!)
+            viewController.setGameModel(gameModel: self.gameModel!)
+            UIApplication.shared.keyWindow?.rootViewController = viewController
+        }
+        if(self.titleText == "quick play"){
+            let storyboard: UIStoryboard = UIStoryboard(name: "Quick", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier: "Quick") as! Quick
+            viewController.setPlayer(player: self.player!)
+            let opponent = self.gameModel!.getOpponent()
+            viewController.setOpponent(opponent: opponent)
+            UIApplication.shared.keyWindow?.rootViewController = viewController
+        }
+        print("ERROR")
     }
     
-    func renderConfig1() {
-        self.tschessElementMatrix = self.player!.getConfig1()
-        self.cacheCancelMatrix = self.tschessElementMatrix1
-        self.activeConfigLabel.text = "config. 1"
-        self.configCollectionView.reloadData()
-        
-        let alphaDotFull = NSMutableAttributedString(string: "•", attributes: self.attributeAlphaDotFull!)
-        let alphaDotHalf = NSMutableAttributedString(string: " • ", attributes: self.attributeAlphaDotHalf!)
-        let activeConfigLabeleString = NSMutableAttributedString()
-        activeConfigLabeleString.append(alphaDotHalf)
-        activeConfigLabeleString.append(alphaDotFull)
-        activeConfigLabeleString.append(alphaDotHalf)
-        self.configIndicatorLabel.attributedText = activeConfigLabeleString
-    }
+    var gameModel: Game?
     
-    func renderConfig2() {
-        self.tschessElementMatrix = self.player!.getConfig2()
-        self.cacheCancelMatrix = self.tschessElementMatrix2
-        self.activeConfigLabel.text = "config. 2"
-        self.configCollectionView.reloadData()
-        
-        let alphaDotFull = NSMutableAttributedString(string: "•", attributes: self.attributeAlphaDotFull!)
-        let alphaDotHalf = NSMutableAttributedString(string: "• • ", attributes: self.attributeAlphaDotHalf!)
-        let activeConfigLabeleString = NSMutableAttributedString()
-        activeConfigLabeleString.append(alphaDotHalf)
-        activeConfigLabeleString.append(alphaDotFull)
-        self.configIndicatorLabel.attributedText = activeConfigLabeleString
+    func setGameModel(gameModel: Game){
+        self.gameModel = gameModel
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         let dataDecoded: Data = Data(base64Encoded: self.player!.getAvatar(), options: .ignoreUnknownCharacters)!
-        let decodedImage = UIImage(data: dataDecoded)
-        self.avatarImageView.image = decodedImage
-        self.avatarImageView.isUserInteractionEnabled = true
+        let decodedimage = UIImage(data: dataDecoded)
+        self.avatarImageView.image = decodedimage
         self.rankLabel.text = self.player!.getRank()
-        self.tschxLabel.text = "₮\(self.player!.getTschx())"
+        //self.tschxLabel.text = "₮\(self.player!.getTschx())"
         self.usernameLabel.text = self.player!.getName()
         
-        self.tschessElementMatrix0 = self.player!.getConfig0()
-        self.tschessElementMatrix1 = self.player!.getConfig1()
-        self.tschessElementMatrix2 = self.player!.getConfig2()
+        self.tschessElementMatrix = self.player!.getConfig0()
+//        self.tschessElementMatrix1 = self.player!.getConfig1()
+//        self.tschessElementMatrix2 = self.player!.getConfig2()
         
         //self.tschessElementMatrix = tschessElementMatrix1 //TODO: RANDOMIZE!!!
         //self.cacheCancelMatrix = tschessElementMatrix1
         //self.activeConfigLabel.text = "config. 1"
-        switch Int.random(in: 0 ... 2) {
-        case 0:
-            self.renderConfig0()
-        case 1:
-            self.renderConfig1()
-        default:
-            self.renderConfig2()
-        }
+//        switch Int.random(in: 0 ... 2) {
+//        case 0:
+//            self.renderConfig0()
+//        case 1:
+//            self.renderConfig1()
+//        default:
+//            self.renderConfig2()
+//        }
         
-        let kingNotificationGesture = UITapGestureRecognizer(target: self, action: #selector(self.kingNotificationGesture))
-        self.notificationLabel.isUserInteractionEnabled = true
-        self.notificationLabel.addGestureRecognizer(kingNotificationGesture)
+//        let kingNotificationGesture = UITapGestureRecognizer(target: self, action: #selector(self.kingNotificationGesture))
+//        self.notificationLabel.isUserInteractionEnabled = true
+//        self.notificationLabel.addGestureRecognizer(kingNotificationGesture)
+//
+//        let cancelEditGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissEditUtilities))
+//        self.cancelEditImageButton.addGestureRecognizer(cancelEditGesture)
+//        let elementCollectionViewGesture = UITapGestureRecognizer(target: self, action: #selector(self.renderElementCollectionView))
+//        self.configCollectionView.addGestureRecognizer(elementCollectionViewGesture)
         
-        let cancelEditGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissEditUtilities))
-        self.cancelEditImageButton.addGestureRecognizer(cancelEditGesture)
-        let elementCollectionViewGesture = UITapGestureRecognizer(target: self, action: #selector(self.renderElementCollectionView))
-        self.configCollectionView.addGestureRecognizer(elementCollectionViewGesture)
-        
-        self.updatePhotoGesture = UITapGestureRecognizer(target: self, action: #selector(self.updatePhoto))
-        self.avatarImageView.addGestureRecognizer(self.updatePhotoGesture!)
-        self.swipeRightGesture = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
-        swipeRightGesture!.direction = UISwipeGestureRecognizer.Direction.right
-        self.view.addGestureRecognizer(self.swipeRightGesture!)
-        self.swipeLeftGesture = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
-        swipeLeftGesture!.direction = UISwipeGestureRecognizer.Direction.left
-        self.view.addGestureRecognizer(self.swipeLeftGesture!)
+//        self.updatePhotoGesture = UITapGestureRecognizer(target: self, action: #selector(self.updatePhoto))
+//        self.avatarImageView.addGestureRecognizer(self.updatePhotoGesture!)
+//        self.swipeRightGesture = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
+//        swipeRightGesture!.direction = UISwipeGestureRecognizer.Direction.right
+//        self.view.addGestureRecognizer(self.swipeRightGesture!)
+//        self.swipeLeftGesture = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
+//        swipeLeftGesture!.direction = UISwipeGestureRecognizer.Direction.left
+//        self.view.addGestureRecognizer(self.swipeLeftGesture!)
     }
     
     override func viewDidLayoutSubviews() {
@@ -312,48 +196,13 @@ class Config: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate, U
         self.configCollectionView.alwaysBounceVertical = false
         
         self.configCollectionViewHeight.constant = configCollectionView.contentSize.height
-        self.configPartitionHeightConstraint.constant = configCollectionViewHeight.constant * 2
-        
-        if let longPressRecognizer = configCollectionView.gestureRecognizers?.compactMap({ $0 as? UILongPressGestureRecognizer}).first {
-            longPressRecognizer.minimumPressDuration = 0.01
-        }
-        if let longPressRecognizer = tschessElementCollectionView.gestureRecognizers?.compactMap({ $0 as? UILongPressGestureRecognizer}).first {
-            longPressRecognizer.minimumPressDuration = 0.1
-            
-        }
+        //self.configPartitionHeightConstraint.constant = configCollectionViewHeight.constant * 2
     }
     
     @objc func kingNotificationGesture() {
-        self.pointsLabel.text = "\(self.generatePointsTotal(tschessElementMatrix: self.tschessElementMatrix!))/39"
-        self.pointsView.isHidden = false
-        self.notificationLabel.isHidden = true
-    }
-    
-    @objc func respondToSwipeGesture(gesture: UIGestureRecognizer) {
-        if let swipeGesture = gesture as? UISwipeGestureRecognizer {
-            switch swipeGesture.direction {
-            case UISwipeGestureRecognizer.Direction.right:
-                if(activeConfigLabel.text == "config. 2"){
-                    self.renderConfig1()
-                    return
-                }
-                if(activeConfigLabel.text == "config. 1"){
-                    self.renderConfig0()
-                    return
-                }
-            case UISwipeGestureRecognizer.Direction.left:
-                if(activeConfigLabel.text == "config. 0̸"){
-                    self.renderConfig1()
-                    return
-                }
-                if(activeConfigLabel.text == "config. 1"){
-                    self.renderConfig2()
-                    return
-                }
-            default:
-                break
-            }
-        }
+        //self.pointsLabel.text = "\(self.generatePointsTotal(tschessElementMatrix: self.tschessElementMatrix!))/39"
+        //self.pointsView.isHidden = false
+        //self.notificationLabel.isHidden = true
     }
     
     @objc func renderElementCollectionView() {
@@ -365,139 +214,14 @@ class Config: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate, U
         
         self.tschessElementCollectionView.reloadData()
         self.tschessElementCollectionView.isHidden = false
-        
-        self.saveConfigButton.isHidden = false
-        self.activeConfigLabel.isHidden = true
-        
-        self.cancelEditImageButton.isUserInteractionEnabled = true
-        self.cancelEditImageButton.isHidden = false
-        self.pointsLabel.text = "\(self.generatePointsTotal(tschessElementMatrix: self.tschessElementMatrix!))/39"
-        self.pointsView.isHidden = false
-    }
-    
-    func okHandler(action: UIAlertAction) {
-        StoryboardSelector().home(player: self.player!)
-    }
-    
-    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-        switch item.tag {
-        case 0:
-            StoryboardSelector().profile(player: self.player!)
-        case 1:
-            DispatchQueue.main.async() {
-                self.activityIndicator.isHidden = false
-                self.activityIndicator.startAnimating()
-            }
-            QuickTaskPlayer().success(id: self.player!.getId()) { (result) in
-                if(result == nil) {
-                    DispatchQueue.main.async() {
-                        self.activityIndicator.stopAnimating()
-                        self.activityIndicator.isHidden = true
-                        
-                        let alertController = UIAlertController(title: "", message: "", preferredStyle: UIAlertController.Style.alert)
-                        let myString = "server error"
-                        var myMutableString = NSMutableAttributedString()
-                        myMutableString = NSMutableAttributedString(string: myString as String, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18, weight: UIFont.Weight.light)])
-                        myMutableString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.white, range: NSRange(location:0, length:myString.count))
-                        alertController.setValue(myMutableString, forKey: "attributedTitle")
-                        let message = "\nplease try again later"
-                        var messageMutableString = NSMutableAttributedString()
-                        messageMutableString = NSMutableAttributedString(string: message as String, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17, weight: UIFont.Weight.thin)])
-                        messageMutableString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.white, range: NSRange(location:0,length:message.count))
-                        alertController.setValue(messageMutableString, forKey: "attributedMessage")
-                        let action = UIAlertAction(title: "ack", style: UIAlertAction.Style.default, handler: self.okHandler)
-                        action.setValue(Colour().getRed(), forKey: "titleTextColor")
-                        alertController.addAction(action)
-                        alertController.view.backgroundColor = UIColor.black
-                        alertController.view.layer.cornerRadius = 40
-                        self.present(alertController, animated: true, completion: nil)
-                    }
-                    return
-                }
-                let error = result as? String
-                if error != nil {
-                    switch error! {
-                    case "ongoing":
-                        DispatchQueue.main.async() {
-                            self.activityIndicator.stopAnimating()
-                            self.activityIndicator.isHidden = true
-                            
-                            let alertController = UIAlertController(title: "", message: "", preferredStyle: UIAlertController.Style.alert)
-                            let myString = "maximum game threshold"
-                            var myMutableString = NSMutableAttributedString()
-                            myMutableString = NSMutableAttributedString(string: myString as String, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18, weight: UIFont.Weight.light)])
-                            myMutableString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.white, range: NSRange(location:0, length:myString.count))
-                            alertController.setValue(myMutableString, forKey: "attributedTitle")
-                            let message = "\nplease resolve at least one\nongoing game or invitation\nbefore initiating another"
-                            var messageMutableString = NSMutableAttributedString()
-                            messageMutableString = NSMutableAttributedString(string: message as String, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17, weight: UIFont.Weight.thin)])
-                            messageMutableString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.white, range: NSRange(location:0,length:message.count))
-                            alertController.setValue(messageMutableString, forKey: "attributedMessage")
-                            let action = UIAlertAction(title: "ack", style: UIAlertAction.Style.default, handler: self.okHandler)
-                            action.setValue(Colour().getRed(), forKey: "titleTextColor")
-                            alertController.addAction(action)
-                            alertController.view.backgroundColor = UIColor.black
-                            alertController.view.layer.cornerRadius = 40
-                            self.present(alertController, animated: true, completion: nil)
-                        }
-                    case "availability":
-                        DispatchQueue.main.async() {
-                            self.activityIndicator.stopAnimating()
-                            self.activityIndicator.isHidden = true
-                            
-                            let alertController = UIAlertController(title: "", message: "", preferredStyle: UIAlertController.Style.alert)
-                            let myString = "opponent deficit"
-                            var myMutableString = NSMutableAttributedString()
-                            myMutableString = NSMutableAttributedString(string: myString as String, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18, weight: UIFont.Weight.light)])
-                            myMutableString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.white, range: NSRange(location:0, length:myString.count))
-                            alertController.setValue(myMutableString, forKey: "attributedTitle")
-                            let message = "\nlack of available opponents"
-                            var messageMutableString = NSMutableAttributedString()
-                            messageMutableString = NSMutableAttributedString(string: message as String, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17, weight: UIFont.Weight.thin)])
-                            messageMutableString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.white, range: NSRange(location:0,length:message.count))
-                            alertController.setValue(messageMutableString, forKey: "attributedMessage")
-                            let action = UIAlertAction(title: "ack", style: UIAlertAction.Style.default, handler: self.okHandler)
-                            action.setValue(Colour().getRed(), forKey: "titleTextColor")
-                            alertController.addAction(action)
-                            alertController.view.backgroundColor = UIColor.black
-                            alertController.view.layer.cornerRadius = 40
-                            self.present(alertController, animated: true, completion: nil)
-                        }
-                    default:
-                        DispatchQueue.main.async() {
-                            self.activityIndicator.stopAnimating()
-                            self.activityIndicator.isHidden = true
-                            
-                            let alertController = UIAlertController(title: "", message: "", preferredStyle: UIAlertController.Style.alert)
-                            let myString = "server error"
-                            var myMutableString = NSMutableAttributedString()
-                            myMutableString = NSMutableAttributedString(string: myString as String, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18, weight: UIFont.Weight.light)])
-                            myMutableString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.white, range: NSRange(location:0, length:myString.count))
-                            alertController.setValue(myMutableString, forKey: "attributedTitle")
-                            let message = "\nplease try again later"
-                            var messageMutableString = NSMutableAttributedString()
-                            messageMutableString = NSMutableAttributedString(string: message as String, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17, weight: UIFont.Weight.thin)])
-                            messageMutableString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.white, range: NSRange(location:0,length:message.count))
-                            alertController.setValue(messageMutableString, forKey: "attributedMessage")
-                            let action = UIAlertAction(title: "ack", style: UIAlertAction.Style.default, handler: self.okHandler)
-                            action.setValue(Colour().getRed(), forKey: "titleTextColor")
-                            alertController.addAction(action)
-                            alertController.view.backgroundColor = UIColor.black
-                            alertController.view.layer.cornerRadius = 40
-                            self.present(alertController, animated: true, completion: nil)
-                        }
-                    }
-                    return
-                }
-                let opponent = result as! Player
-                StoryboardSelector().quick(player: self.player!, opponent: opponent)
-            }
-        case 2:
-            StoryboardSelector().actual(player: self.player!)
-        default:
-            return
-            //StoryboardSelector().leader(player: self.player!)
-        }
+//
+//        self.saveConfigButton.isHidden = false
+//        self.activeConfigLabel.isHidden = true
+//
+//        self.cancelEditImageButton.isUserInteractionEnabled = true
+//        self.cancelEditImageButton.isHidden = false
+//        self.pointsLabel.text = "\(self.generatePointsTotal(tschessElementMatrix: self.tschessElementMatrix!))/39"
+//        self.pointsView.isHidden = false
     }
 }
 
@@ -622,11 +346,11 @@ extension Config: UICollectionViewDragDelegate {
     }
     
     func collectionView(_ collectionView: UICollectionView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
-        if(!self.notificationLabel.isHidden){
-            self.notificationLabel.isHidden = true
-            self.pointsLabel.text = "\(self.generatePointsTotal(tschessElementMatrix: self.tschessElementMatrix!))/39"
-            self.pointsView.isHidden = false
-        }
+//        if(!self.notificationLabel.isHidden){
+//            self.notificationLabel.isHidden = true
+//            self.pointsLabel.text = "\(self.generatePointsTotal(tschessElementMatrix: self.tschessElementMatrix!))/39"
+//            self.pointsView.isHidden = false
+//        }
         self.cacheMatrix = self.tschessElementMatrix!
         
         var generator = UIImpactFeedbackGenerator(style: .light)
@@ -681,7 +405,7 @@ extension Config: UICollectionViewDragDelegate {
     
     internal func collectionView(_: UICollectionView, dragSessionDidEnd: UIDragSession){
         tschessElementCollectionView.reloadData()
-        self.pointsLabel.text = "\(self.generatePointsTotal(tschessElementMatrix: self.tschessElementMatrix!))/39"
+        //self.pointsLabel.text = "\(self.generatePointsTotal(tschessElementMatrix: self.tschessElementMatrix!))/39"
     }
     
 }
@@ -721,7 +445,7 @@ extension Config: UICollectionViewDropDelegate {
             self.tschessElementMatrix = self.cacheMatrix
             configCollectionView.reloadData()
         } else {
-            self.pointsLabel.text = "\(pointUpdate)/39"
+            //self.pointsLabel.text = "\(pointUpdate)/39"
         }
         
         
@@ -892,7 +616,7 @@ extension Config: UICollectionViewDelegate {
             self.setPlayer(player: result!)
             DispatchQueue.main.async {
                 self.rankLabel.text = self.player!.getRank()
-                self.tschxLabel.text = "₮\(self.player!.getTschx())"
+                //self.tschxLabel.text = "₮\(self.player!.getTschx())"
                 let dataDecoded: Data = Data(base64Encoded: self.player!.getAvatar(), options: .ignoreUnknownCharacters)!
                 let decodedimage = UIImage(data: dataDecoded)
                 self.avatarImageView.image = decodedimage
@@ -915,9 +639,9 @@ extension Config: UICollectionViewDelegate {
         if(self.selectionElementName != nil){
             if(self.selectionElementName!.lowercased().contains("king")){
                 
-                self.pointsView.isHidden = true
-                self.notificationLabel.isHidden = false
-                self.notificationLabel.text = "king cannot be removed"
+                //self.pointsView.isHidden = true
+                //self.notificationLabel.isHidden = false
+                //self.notificationLabel.text = "king cannot be removed"
                 
                 self.tschessElementMatrix = self.cacheMatrix
                 configCollectionView.reloadData() //give a warning also... feedback
@@ -927,5 +651,7 @@ extension Config: UICollectionViewDelegate {
         self.configCollectionView.reloadData()
     }
 }
+
+
 
 

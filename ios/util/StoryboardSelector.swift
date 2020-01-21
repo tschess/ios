@@ -131,25 +131,25 @@ class StoryboardSelector {
             switch self.device() {
             case "XANDROID":
                 let homeStoryboard: UIStoryboard = UIStoryboard(name: "HomeXandroid", bundle: nil)
-                let homeViewController = homeStoryboard.instantiateViewController(withIdentifier: "HomeXandroid") as! Config
+                let homeViewController = homeStoryboard.instantiateViewController(withIdentifier: "HomeXandroid") as! xConfig
                 homeViewController.setPlayer(player: player)
                 UIApplication.shared.keyWindow?.rootViewController = homeViewController
                 return
             case "MAGNUS":
                 let homeStoryboard: UIStoryboard = UIStoryboard(name: "HomeMagnus", bundle: nil)
-                let homeViewController = homeStoryboard.instantiateViewController(withIdentifier: "HomeMagnus") as! Config
+                let homeViewController = homeStoryboard.instantiateViewController(withIdentifier: "HomeMagnus") as! xConfig
                 homeViewController.setPlayer(player: player)
                 UIApplication.shared.keyWindow?.rootViewController = homeViewController
                 return
             case "XENOPHON":
                 let homeStoryboard: UIStoryboard = UIStoryboard(name: "HomeXenophon", bundle: nil)
-                let homeViewController = homeStoryboard.instantiateViewController(withIdentifier: "HomeXenophon") as! Config
+                let homeViewController = homeStoryboard.instantiateViewController(withIdentifier: "HomeXenophon") as! xConfig
                 homeViewController.setPlayer(player: player)
                 UIApplication.shared.keyWindow?.rootViewController = homeViewController
                 return
             case "PHAEDRUS":
                 let homeStoryboard: UIStoryboard = UIStoryboard(name: "HomePhaedrus", bundle: nil)
-                let homeViewController = homeStoryboard.instantiateViewController(withIdentifier: "HomePhaedrus") as! Config
+                let homeViewController = homeStoryboard.instantiateViewController(withIdentifier: "HomePhaedrus") as! xConfig
                 homeViewController.setPlayer(player: player)
                 UIApplication.shared.keyWindow?.rootViewController = homeViewController
                 return

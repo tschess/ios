@@ -228,13 +228,13 @@
                                     <constraint firstAttribute="height" constant="50" id="3Aw-0g-FIT"/>
                                 </constraints>
                                 <items>
-                                    <tabBarItem title="skin" image="eye" catalog="system" selectedImage="eye.fill" id="KZk-4l-PAu">
+                                    <tabBarItem title="skins" image="eye" catalog="system" selectedImage="eye.fill" id="KZk-4l-PAu">
                                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tabBarItem>
                                     <tabBarItem tag="1" title="quick" image="bolt" catalog="system" selectedImage="bolt.fill" id="Z5R-KS-Z6j">
                                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tabBarItem>
-                                    <tabBarItem tag="3" title="game" image="gamecontroller" catalog="system" selectedImage="gamecontroller.fill" id="Ccy-HC-zcU">
+                                    <tabBarItem tag="3" title="games" image="gamecontroller" catalog="system" selectedImage="gamecontroller.fill" id="Ccy-HC-zcU">
                                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tabBarItem>
                                     <tabBarItem tag="4" title="config" image="hammer" catalog="system" selectedImage="hammer.fill" id="RmV-cI-lZG">

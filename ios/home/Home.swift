@@ -174,6 +174,11 @@ class Home: UIViewController, UISearchBarDelegate, UISearchResultsUpdating, UITa
             StoryboardSelector().actual(player: self.player!)
         case 4:
             print("config")
+            let storyboard: UIStoryboard = UIStoryboard(name: "Config", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier: "Config") as! Config
+            viewController.setPlayer(player: self.player!)
+            //viewController.setOpponent(opponent: opponent)
+            UIApplication.shared.keyWindow?.rootViewController = viewController
         default:
             print("error")
         }
