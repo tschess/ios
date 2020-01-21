@@ -390,7 +390,6 @@ class Quick:
     @IBOutlet weak var avatarImageView: UIImageView!
     
     @IBOutlet weak var skinSelectionPicker: UIPickerView!
-    //@IBOutlet weak var skinSelectPickerView: UIPickerView!
     
     var player: Player?
     var gameModel: Game?
@@ -406,46 +405,32 @@ class Quick:
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        if pickerView.tag == 0 {
-            return pickerOptionsTimeLimit.count
-        }
-        return pickerOptionsSkin.count
+        return self.skinList!.count
     }
     
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        let skinAsset = self.skinList![row]
         
-        //let view = SampleSkin.instanceFromNib()
-        //self.view.addSubview(view)
-//                   var label = UILabel()
-//                   if let v = view as? UILabel { label = v }
-//                   label.font = UIFont.systemFont(ofSize: 22, weight: UIFont.Weight.light)
-//
-//                   if pickerView.tag == 0 {
-//                       label.text = pickerOptionsTimeLimit[row]
-//                   } else {
-//                       label.text = pickerOptionsSkin[row]
-//                   }
-//
-//                   label.textColor =  UIColor.black
-//                   label.textAlignment = .center
-//
-//
-//                   return label
-        let view = SampleSkin.instanceFromNib()
-        return view
-      
+        let sampleView = SampleSkin.instanceFromNib()
+        sampleView.nameLabel.text = skinAsset.getName()
+
+        sampleView.backgroundView.backgroundColor = skinAsset.getBackColor()
+        sampleView.backgroundView.alpha = skinAsset.getBackAlpha()
+        sampleView.backgroundImage.image = skinAsset.getBackImage()
+        
+        sampleView.foregroundView.backgroundColor = skinAsset.getForeColor()
+        sampleView.foregroundView.alpha = skinAsset.getForeAlpha()
+        sampleView.foregroundImage.image = skinAsset.getForeImage()
+        
+        return sampleView
     }
     
     func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
-        return 30
+        return 69
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        if pickerView.tag == 0 {
-            pickerSelectionTimeLimit = pickerOptionsTimeLimit[row]
-            return
-        }
-        pickerSelectionConfiguration = pickerOptionsSkin[row]
+        pickerSelectionConfiguration = self.skinList![row].getName()
     }
     
     public func setPlayer(player: Player){
@@ -499,7 +484,29 @@ class Quick:
         self.indicatorLabelS.attributedText = activeConfigNull
         
         self.activityIndicator.isHidden = true
+        
+        let orange: UIColor = UIColor(red: 255/255.0, green: 105/255.0, blue: 104/255.0, alpha: 1) //FF6968
+        let pink: UIColor = UIColor(red: 255/255.0, green: 105/255.0, blue: 180/255.0, alpha: 1)
+        let purple: UIColor = UIColor(red: 140/255.0, green: 0/255.0, blue: 192/255.0, alpha: 1)
+        let blue: UIColor = UIColor(red: 84/255.0, green: 140/255.0, blue: 240/255.0, alpha: 1)
+        let green: UIColor = UIColor(red: 0/255.0, green: 255/255.0, blue: 88/255.0, alpha: 1)
+        
+        let hyperion: Skin = Skin(name: "hyperion", foreColor: purple, backColor: blue)
+        let calypso: Skin = Skin(name: "calypso", foreColor: pink, backColor: UIColor.black)
+        let neptune: Skin = Skin(name: "neptune", foreColor: green, backColor: orange, backAlpha: 0.85)
+        
+        let iapetus: Skin = Skin(
+            name: "iapetus",
+            foreColor: UIColor.white,
+            foreImage: UIImage(named: "iapetus"),
+            backColor: UIColor.black,
+            backImage: UIImage(named: "iapetus"),
+            backAlpha: 0.85)
+        
+        self.skinList = Array(arrayLiteral: calypso, hyperion, neptune, iapetus)
     }
+    
+    var skinList: Array<Skin>?
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
