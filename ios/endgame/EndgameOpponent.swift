@@ -21,6 +21,7 @@ class EndgameOpponent: UIViewController, UICollectionViewDataSource, UICollectio
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var headerImage: UIImageView!
     
+    //@IBOutlet weak var infoViewWidth: NSLayoutConstraint!
     @IBOutlet weak var winnerImageView: UIImageView!
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
@@ -84,6 +85,10 @@ class EndgameOpponent: UIViewController, UICollectionViewDataSource, UICollectio
         self.usernameLabelBlack.text = usernameBlack
         
         self.outcomeLabel.text = self.gameModel!.getOutcome() //correct?
+        
+        //self.infoViewWidth.constant =
+        //let totalHeaderWidth = self.headerView.frame.size.height
+        //self.infoViewWidth.constant = totalHeaderWidth/2
     }
     
     //var device: String?
