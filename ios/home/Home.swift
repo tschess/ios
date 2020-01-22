@@ -173,7 +173,7 @@ class Home: UIViewController, UISearchBarDelegate, UISearchResultsUpdating, UITa
             print("game")
             StoryboardSelector().actual(player: self.player!)
         case 4:
-            print("config")
+            print("overview") //OVERVIEW
             let storyboard: UIStoryboard = UIStoryboard(name: "Config", bundle: nil)
             let viewController = storyboard.instantiateViewController(withIdentifier: "Config") as! Config
             viewController.setPlayer(player: self.player!)

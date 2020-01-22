@@ -30,7 +30,7 @@
                                     <action selector="backButtonClick:" destination="ppG-Gz-AcZ" eventType="touchUpInside" id="JOx-Ff-Max"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="fairy" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q4A-c6-MEi">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="fairy" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q4A-c6-MEi">
                                 <rect key="frame" x="0.0" y="44" width="414" height="40"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -68,7 +68,7 @@
                                 <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="selectedImageTintColor" red="0.86923474069999995" green="0.012778783219999999" blue="0.00083617179190000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </tabBar>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="H5N-MH-now">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H5N-MH-now">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
@@ -77,6 +77,7 @@
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatar_default" translatesAutoresizingMaskIntoConstraints="NO" id="ZbD-1l-KSv">
                                         <rect key="frame" x="306" y="4" width="100" height="100"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="100" id="tR5-kb-RGI"/>
                                             <constraint firstAttribute="height" constant="100" id="xgg-hl-b7m"/>
@@ -142,6 +143,7 @@
                             <constraint firstItem="lbh-w0-YmU" firstAttribute="trailing" secondItem="BgY-E1-fEa" secondAttribute="trailing" id="ApG-zs-QlK"/>
                             <constraint firstItem="5Bp-kd-XW1" firstAttribute="top" secondItem="lbh-w0-YmU" secondAttribute="top" id="GjS-jy-1aK"/>
                             <constraint firstItem="5Bp-kd-XW1" firstAttribute="leading" secondItem="49s-YQ-uDd" secondAttribute="leading" id="LsY-Cq-TCI"/>
+                            <constraint firstItem="NsW-Q1-5Ec" firstAttribute="top" secondItem="q4A-c6-MEi" secondAttribute="bottom" id="Qnq-2F-uyZ"/>
                             <constraint firstItem="lbh-w0-YmU" firstAttribute="trailing" secondItem="5Bp-kd-XW1" secondAttribute="trailing" id="VUp-Ew-Qzv"/>
                             <constraint firstItem="lbh-w0-YmU" firstAttribute="bottom" secondItem="BgY-E1-fEa" secondAttribute="bottom" id="XjD-qe-7Wz"/>
                             <constraint firstItem="B71-9a-Vqo" firstAttribute="top" secondItem="NsW-Q1-5Ec" secondAttribute="bottom" constant="8" id="d2d-eq-z8S"/>
@@ -153,13 +155,19 @@
                             <constraint firstItem="NsW-Q1-5Ec" firstAttribute="top" secondItem="5Bp-kd-XW1" secondAttribute="bottom" id="mmg-9g-1vy"/>
                             <constraint firstItem="NsW-Q1-5Ec" firstAttribute="leading" secondItem="lbh-w0-YmU" secondAttribute="leading" id="pRb-V8-1sn"/>
                             <constraint firstItem="H5N-MH-now" firstAttribute="top" secondItem="49s-YQ-uDd" secondAttribute="top" id="ro7-7o-Ynu"/>
+                            <constraint firstItem="q4A-c6-MEi" firstAttribute="top" secondItem="H5N-MH-now" secondAttribute="bottom" id="syH-tF-Pd5"/>
                             <constraint firstItem="q4A-c6-MEi" firstAttribute="trailing" secondItem="lbh-w0-YmU" secondAttribute="trailing" id="udS-kS-lvN"/>
+                            <constraint firstItem="5Bp-kd-XW1" firstAttribute="top" secondItem="H5N-MH-now" secondAttribute="bottom" id="yCJ-In-iAj"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="lbh-w0-YmU"/>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="RPE-SM-gTZ" id="x1k-3r-gla"/>
                         <outlet property="attributeTextView" destination="B71-9a-Vqo" id="Ebz-HE-2p8"/>
                         <outlet property="backButton" destination="5Bp-kd-XW1" id="O0R-Ci-CbO"/>
+                        <outlet property="fairyImageView" destination="ZbD-1l-KSv" id="r6n-1e-szL"/>
+                        <outlet property="fairyNameLabel" destination="Td8-ue-hLu" id="Thf-Iv-sbB"/>
+                        <outlet property="fairyPointsLabel" destination="12u-zE-oqg" id="g4f-W0-R2e"/>
                         <outlet property="tabBarMenu" destination="BgY-E1-fEa" id="JX3-eh-beO"/>
                     </connections>
                 </viewController>

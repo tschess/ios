@@ -251,8 +251,8 @@ class Quick:
     
     @objc func renderElementCollectionView() {
         print("lolol")
-        let storyboard: UIStoryboard = UIStoryboard(name: "Edit", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "Edit") as! Edit
+        let storyboard: UIStoryboard = UIStoryboard(name: "EditOpponent", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "EditOpponent") as! EditOpponent
         viewController.setPlayer(player: self.player!)
         let gameModel: Game = Game(opponent: self.opponent!)
         viewController.setGameModel(gameModel: gameModel)

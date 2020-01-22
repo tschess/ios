@@ -14,11 +14,12 @@ class Intro: UIViewController, UITabBarDelegate, UIPopoverPresentationController
     
     @IBOutlet weak var backButton: UIButton!
     
-//    @IBOutlet weak var avatarImageView: UIImageView?
-//    @IBOutlet weak var rankLabel: UILabel?
-//    @IBOutlet weak var tschxLabel: UILabel?
-//    @IBOutlet weak var usernameLabel: UILabel?
-//
+    @IBOutlet weak var fairyImageView: UIImageView!
+    @IBOutlet weak var fairyNameLabel: UILabel!
+    @IBOutlet weak var fairyPointsLabel: UILabel!
+ 
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
 //    @IBOutlet weak var pointsLabel: UILabel!
 //    @IBOutlet weak var valueLabel: UILabel!
 //    @IBOutlet weak var tschessElementImageView: UIImageView!
@@ -44,8 +45,10 @@ class Intro: UIViewController, UITabBarDelegate, UIPopoverPresentationController
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-//        self.tschessElementImageView.image = fairyElement!.getImageDefault()
-//        self.tschessElementLabel.text = fairyElement!.name.lowercased()
+        self.fairyImageView.image = fairyElement!.getImageDefault()
+        self.fairyNameLabel.text = fairyElement!.getName().lowercased()
+        self.fairyPointsLabel.text = fairyElement!.getStrength()
+        //self.tschessElementLabel.text = fairyElement!.name.lowercased()
 //
 //        self.pointsLabel.text = fairyElement!.strength
 //        self.valueLabel.text = "₮\(fairyElement!.tschxValue)"
@@ -77,6 +80,7 @@ class Intro: UIViewController, UITabBarDelegate, UIPopoverPresentationController
 //        self.usernameLabel!.text = self.player!.getName()
 //        self.rankLabel!.text = self.player!.getRank()
 //        self.tschxLabel!.text = "₮\(self.player!.getTschx())"
+        self.activityIndicator.isHidden = true
     }
     
     var insufficientBalance: Bool = false
@@ -85,6 +89,18 @@ class Intro: UIViewController, UITabBarDelegate, UIPopoverPresentationController
         super.viewDidLoad()
         
         tabBarMenu.delegate = self
+        
+           let description = "" +
+              "• freshly minted individual edition of the iapetus game skin, one of fifty\r\r" +
+              "• visible to oneself and opponent during gameplay\r\r" +
+              "• globally visible in leaderboard and on challenge/review endgame snapshot\r\r" +
+              "• design inspired by science fantasy novel \"the chessmen of mars\" by edgar rice burroughs\r\r"
+        
+            //self.descriptionTextVieew
+            self.attributeTextView.isEditable = false
+            self.attributeTextView.backgroundColor = UIColor.white
+            self.attributeTextView.textColor = UIColor.black
+            self.attributeTextView.text = description
     }
     
 //    @IBAction func completeButtonClick(_ sender: Any) {
@@ -101,13 +117,21 @@ class Intro: UIViewController, UITabBarDelegate, UIPopoverPresentationController
 //    }
     
     @IBAction func backButtonClick(_ sender: Any) {
-        StoryboardSelector().fairy(player: self.player!)
+        let storyboard: UIStoryboard = UIStoryboard(name: "Fairy", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "Fairy") as! Fairy
+        viewController.setPlayer(player: self.player!)
+        UIApplication.shared.keyWindow?.rootViewController = viewController
     }
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         switch item.tag {
         case 0:
-            StoryboardSelector().fairy(player: self.player!)
+            //StoryboardSelector().fairy(player: self.player!)
+            let storyboard: UIStoryboard = UIStoryboard(name: "Fairy", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier: "Fairy") as! Fairy
+            viewController.setPlayer(player: self.player!)
+            //viewController.setOpponent(opponent: opponent)
+            UIApplication.shared.keyWindow?.rootViewController = viewController
         default:
             StoryboardSelector().home(player: self.player!)
         }

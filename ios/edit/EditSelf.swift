@@ -8,7 +8,7 @@
 
 import UIKit //
 
-class Edit: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIDropInteractionDelegate {
+class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIDropInteractionDelegate {
     
     var titleText: String?
     
@@ -20,13 +20,14 @@ class Edit: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate, UII
     
     @IBOutlet weak var backButton: UIButton!
     
-    //@IBOutlet weak var doneButtonWidth: NSLayoutConstraint!
-    //@IBOutlet weak var backButtonWidth: NSLayoutConstraint!
-    
     @IBOutlet weak var rankLabel: UILabel!
+    //    @IBOutlet weak var rankLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
+    //    @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var avatarImageView: UIImageView!
+    //    @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    //    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     @IBOutlet weak var configCollectionView: DynamicCollectionView!
     @IBOutlet weak var configCollectionViewHeight: NSLayoutConstraint!
@@ -131,7 +132,11 @@ class Edit: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate, UII
             viewController.setOpponent(opponent: opponent)
             UIApplication.shared.keyWindow?.rootViewController = viewController
         }
-        print("ERROR")
+        //if(self.titleText!.text.contains("config")){
+        let storyboard: UIStoryboard = UIStoryboard(name: "Config", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "Config") as! Config
+        viewController.setPlayer(player: self.player!)
+        UIApplication.shared.keyWindow?.rootViewController = viewController
     }
     
     var gameModel: Game?
@@ -150,38 +155,38 @@ class Edit: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate, UII
         self.usernameLabel.text = gameModel!.getOpponentName()
         
         self.tschessElementMatrix = self.player!.getConfig0()
-//        self.tschessElementMatrix1 = self.player!.getConfig1()
-//        self.tschessElementMatrix2 = self.player!.getConfig2()
+        //        self.tschessElementMatrix1 = self.player!.getConfig1()
+        //        self.tschessElementMatrix2 = self.player!.getConfig2()
         
         //self.tschessElementMatrix = tschessElementMatrix1 //TODO: RANDOMIZE!!!
         //self.cacheCancelMatrix = tschessElementMatrix1
         //self.activeConfigLabel.text = "config. 1"
-//        switch Int.random(in: 0 ... 2) {
-//        case 0:
-//            self.renderConfig0()
-//        case 1:
-//            self.renderConfig1()
-//        default:
-//            self.renderConfig2()
-//        }
+        //        switch Int.random(in: 0 ... 2) {
+        //        case 0:
+        //            self.renderConfig0()
+        //        case 1:
+        //            self.renderConfig1()
+        //        default:
+        //            self.renderConfig2()
+        //        }
         
-//        let kingNotificationGesture = UITapGestureRecognizer(target: self, action: #selector(self.kingNotificationGesture))
-//        self.notificationLabel.isUserInteractionEnabled = true
-//        self.notificationLabel.addGestureRecognizer(kingNotificationGesture)
-//
-//        let cancelEditGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissEditUtilities))
-//        self.cancelEditImageButton.addGestureRecognizer(cancelEditGesture)
-//        let elementCollectionViewGesture = UITapGestureRecognizer(target: self, action: #selector(self.renderElementCollectionView))
-//        self.configCollectionView.addGestureRecognizer(elementCollectionViewGesture)
+        //        let kingNotificationGesture = UITapGestureRecognizer(target: self, action: #selector(self.kingNotificationGesture))
+        //        self.notificationLabel.isUserInteractionEnabled = true
+        //        self.notificationLabel.addGestureRecognizer(kingNotificationGesture)
+        //
+        //        let cancelEditGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissEditUtilities))
+        //        self.cancelEditImageButton.addGestureRecognizer(cancelEditGesture)
+        //        let elementCollectionViewGesture = UITapGestureRecognizer(target: self, action: #selector(self.renderElementCollectionView))
+        //        self.configCollectionView.addGestureRecognizer(elementCollectionViewGesture)
         
-//        self.updatePhotoGesture = UITapGestureRecognizer(target: self, action: #selector(self.updatePhoto))
-//        self.avatarImageView.addGestureRecognizer(self.updatePhotoGesture!)
-//        self.swipeRightGesture = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
-//        swipeRightGesture!.direction = UISwipeGestureRecognizer.Direction.right
-//        self.view.addGestureRecognizer(self.swipeRightGesture!)
-//        self.swipeLeftGesture = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
-//        swipeLeftGesture!.direction = UISwipeGestureRecognizer.Direction.left
-//        self.view.addGestureRecognizer(self.swipeLeftGesture!)
+        //        self.updatePhotoGesture = UITapGestureRecognizer(target: self, action: #selector(self.updatePhoto))
+        //        self.avatarImageView.addGestureRecognizer(self.updatePhotoGesture!)
+        //        self.swipeRightGesture = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
+        //        swipeRightGesture!.direction = UISwipeGestureRecognizer.Direction.right
+        //        self.view.addGestureRecognizer(self.swipeRightGesture!)
+        //        self.swipeLeftGesture = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
+        //        swipeLeftGesture!.direction = UISwipeGestureRecognizer.Direction.left
+        //        self.view.addGestureRecognizer(self.swipeLeftGesture!)
     }
     
     override func viewDidLayoutSubviews() {
@@ -209,19 +214,19 @@ class Edit: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate, UII
         
         self.tschessElementCollectionView.reloadData()
         self.tschessElementCollectionView.isHidden = false
-//
-//        self.saveConfigButton.isHidden = false
-//        self.activeConfigLabel.isHidden = true
-//
-//        self.cancelEditImageButton.isUserInteractionEnabled = true
-//        self.cancelEditImageButton.isHidden = false
-//        self.pointsLabel.text = "\(self.generatePointsTotal(tschessElementMatrix: self.tschessElementMatrix!))/39"
-//        self.pointsView.isHidden = false
+        //
+        //        self.saveConfigButton.isHidden = false
+        //        self.activeConfigLabel.isHidden = true
+        //
+        //        self.cancelEditImageButton.isUserInteractionEnabled = true
+        //        self.cancelEditImageButton.isHidden = false
+        //        self.pointsLabel.text = "\(self.generatePointsTotal(tschessElementMatrix: self.tschessElementMatrix!))/39"
+        //        self.pointsView.isHidden = false
     }
 }
 
 //MARK: - UICollectionViewDataSource
-extension Edit: UICollectionViewDataSource {
+extension EditSelf: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == self.tschessElementCollectionView {
@@ -297,7 +302,7 @@ extension Edit: UICollectionViewDataSource {
 }
 
 //MARK: - UICollectionViewDelegateFlowLayout
-extension Edit: UICollectionViewDelegateFlowLayout {
+extension EditSelf: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if collectionView == self.tschessElementCollectionView {
@@ -328,7 +333,7 @@ extension Edit: UICollectionViewDelegateFlowLayout {
 }
 
 //MARK: - UICollectionViewDragDelegate
-extension Edit: UICollectionViewDragDelegate {
+extension EditSelf: UICollectionViewDragDelegate {
     
     func collectionView(_ collectionView: UICollectionView, dragPreviewParametersForItemAt indexPath: IndexPath) -> UIDragPreviewParameters?{
         let previewParameters = UIDragPreviewParameters()
@@ -341,11 +346,11 @@ extension Edit: UICollectionViewDragDelegate {
     }
     
     func collectionView(_ collectionView: UICollectionView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
-//        if(!self.notificationLabel.isHidden){
-//            self.notificationLabel.isHidden = true
-//            self.pointsLabel.text = "\(self.generatePointsTotal(tschessElementMatrix: self.tschessElementMatrix!))/39"
-//            self.pointsView.isHidden = false
-//        }
+        //        if(!self.notificationLabel.isHidden){
+        //            self.notificationLabel.isHidden = true
+        //            self.pointsLabel.text = "\(self.generatePointsTotal(tschessElementMatrix: self.tschessElementMatrix!))/39"
+        //            self.pointsView.isHidden = false
+        //        }
         self.cacheMatrix = self.tschessElementMatrix!
         
         var generator = UIImpactFeedbackGenerator(style: .light)
@@ -405,7 +410,7 @@ extension Edit: UICollectionViewDragDelegate {
     
 }
 
-extension Edit: UICollectionViewDropDelegate {
+extension EditSelf: UICollectionViewDropDelegate {
     
     func generatePointsTotal(tschessElementMatrix: [[TschessElement?]]) -> Int {
         var points: Int = 0
@@ -460,7 +465,7 @@ extension Edit: UICollectionViewDropDelegate {
     
 }
 
-extension Edit: UICollectionViewDelegate {
+extension EditSelf: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // handle tap events
@@ -645,6 +650,20 @@ extension Edit: UICollectionViewDelegate {
         self.selectionElementName = nil
         self.configCollectionView.reloadData()
     }
+    
+    
+    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        switch item.tag {
+        case 0:
+            let storyboard: UIStoryboard = UIStoryboard(name: "Config", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier: "Config") as! Config
+            viewController.setPlayer(player: self.player!)
+            UIApplication.shared.keyWindow?.rootViewController = viewController
+        default:
+            StoryboardSelector().home(player: self.player!)
+        }
+    }
+    
 }
 
 

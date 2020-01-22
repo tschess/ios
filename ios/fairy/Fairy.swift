@@ -59,13 +59,21 @@ class Fairy: UIViewController, UITabBarDelegate {
     }
     
     @IBAction func backButtonClick(_ sender: Any) {
-        StoryboardSelector().home(player: self.player!)
+        let storyboard: UIStoryboard = UIStoryboard(name: "Config", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "Config") as! Config
+        viewController.setPlayer(player: self.player!)
+        UIApplication.shared.keyWindow?.rootViewController = viewController
     }
     
     @objc func onDidReceiveData(_ notification: NSNotification) {
         let squadUpDetailSelectionIndex = notification.userInfo!["squad_up_detail_selection"] as! Int
         let fairyElement = squadUpAdapter!.getFairyElementList()![squadUpDetailSelectionIndex]
         //StoryboardSelector().acquisition(player: self.player!, fairyElement: fairyElement)
+        let storyboard: UIStoryboard = UIStoryboard(name: "Intro", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "Intro") as! Intro
+        viewController.setPlayer(player: self.player!)
+        viewController.setFairyElement(fairyElement: fairyElement)
+        UIApplication.shared.keyWindow?.rootViewController = viewController
     }
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
