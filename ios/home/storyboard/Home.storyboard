@@ -27,7 +27,7 @@
                                     <constraint firstAttribute="height" constant="40" id="Inr-Ze-1Do"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="22"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view tag="8" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JN4-fo-IUK" userLabel="SearchHolder">
@@ -237,7 +237,7 @@
                                     <tabBarItem tag="3" title="games" image="gamecontroller" catalog="system" selectedImage="gamecontroller.fill" id="Ccy-HC-zcU">
                                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tabBarItem>
-                                    <tabBarItem tag="4" title="overview" image="hammer" catalog="system" selectedImage="hammer.fill" id="RmV-cI-lZG">
+                                    <tabBarItem tag="4" title="config" image="hammer" catalog="system" selectedImage="hammer.fill" id="RmV-cI-lZG">
                                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tabBarItem>
                                 </items>
