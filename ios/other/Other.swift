@@ -9,7 +9,7 @@
 import UIKit
 
 class Other: UIViewController, UITabBarDelegate {
-   
+    
     @IBOutlet weak var challengeButtonView: UIView! //should deffer rendering until appointed moment...
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
@@ -78,44 +78,17 @@ class Other: UIViewController, UITabBarDelegate {
         //print("XXXXX: \(skin)")
         
         gameModel.setSkin(skin: skin)
+        gameModel.setAvatarSelf(avatarSelf: self.gameModel!.getOpponentAvatar()) //????
         DispatchQueue.main.async {
-            switch StoryboardSelector().device() {
-            case "XANDROID":
-                let storyboard: UIStoryboard = UIStoryboard(name: "SnapshotXandroid", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "SnapshotXandroid") as! Snapshot
-                viewController.setGameModel(gameModel: gameModel)
-                self.present(viewController, animated: false, completion: nil)
-                return
-            case "MAGNUS":
-                let storyboard: UIStoryboard = UIStoryboard(name: "SnapshotMagnus", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "SnapshotMagnus") as! Snapshot
-                viewController.setGameModel(gameModel: gameModel)
-                self.present(viewController, animated: false, completion: nil)
-                return
-            case "XENOPHON":
-                let storyboard: UIStoryboard = UIStoryboard(name: "SnapshotXenophon", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "SnapshotXenophon") as! Snapshot
-                viewController.setGameModel(gameModel: gameModel)
-                self.present(viewController, animated: false, completion: nil)
-                return
-            case "PHAEDRUS":
-                let storyboard: UIStoryboard = UIStoryboard(name: "SnapshotPhaedrus", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "SnapshotPhaedrus") as! Snapshot
-                viewController.setGameModel(gameModel: gameModel)
-                self.present(viewController, animated: false, completion: nil)
-                return
-            case "CALHOUN":
-                let storyboard: UIStoryboard = UIStoryboard(name: "SnapshotCalhoun", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "SnapshotCalhoun") as! Snapshot
-                viewController.setGameModel(gameModel: gameModel)
-                self.present(viewController, animated: false, completion: nil)
-                return
-            default:
-                return
-            }
+            
+            let storyboard: UIStoryboard = UIStoryboard(name: "EndgameOpponent", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier: "EndgameOpponent") as! EndgameOpponent
+            viewController.setGameModel(gameModel: gameModel)
+            self.present(viewController, animated: false, completion: nil)
+            
         }
     }
-
+    
     @IBAction func backButtonClick(_ sender: Any) {
         let homeStoryboard: UIStoryboard = UIStoryboard(name: "Home", bundle: nil)
         let homeViewController = homeStoryboard.instantiateViewController(withIdentifier: "Home") as! Home

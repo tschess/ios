@@ -10,6 +10,8 @@ import UIKit
 
 class Game: Equatable, Hashable {
     
+    var avatarSelf: String?
+    
     let dateTime: DateTime = DateTime()
     
     var hashValue: Int {
@@ -197,6 +199,14 @@ class Game: Equatable, Hashable {
     
     func getOpponentAvatar() -> String {
         return opponent.getAvatar()
+    }
+    
+    func setAvatarSelf(avatarSelf: String) {
+        self.avatarSelf = avatarSelf
+    }
+    
+    func getAvatarSelf() -> String {
+        return self.avatarSelf!
     }
     
     func setUsernameTurn(usernameTurn: String) {
