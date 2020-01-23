@@ -58,37 +58,43 @@ class ActualTable: UITableViewController {
         let gameTableMenuItem = gameMenuTableList[indexPath.row]
         
         cell.usernameLabel.text = gameTableMenuItem.getOpponentName()
-        cell.eloLabel.text = gameTableMenuItem.getOpponentElo()
+        //cell.eloLabel.text = gameTableMenuItem.getOpponentElo()
         let dataDecoded: Data = Data(base64Encoded: gameTableMenuItem.getOpponentAvatar(), options: .ignoreUnknownCharacters)!
         let decodedimage = UIImage(data: dataDecoded)
         cell.avatarImageView.image = decodedimage
         
         let status = gameTableMenuItem.getGameStatus()
         
-//        if(status == "ONGOING"){
-//            if(gameTableMenuItem.usernameTurn == self.player!.getName()){
-//                //cell.actionLabel.text = "my move"
-//                //cell.actionLabel.textColor = Colour().getRed()
-//                return cell
-//            }
-//            //cell.actionLabel.text = "opponent's move"
-//            //cell.actionLabel.textColor = UIColor.black
-//            return cell
-//        }
+        if(status == "ONGOING"){
+            if(gameTableMenuItem.usernameTurn == self.player!.getName()){
+                if #available(iOS 13.0, *) {
+                    let image = UIImage(systemName: "gamecontroller.fill")!
+                    cell.actionImageView.image = image.withRenderingMode(.alwaysTemplate)
+                    cell.actionImageView.tintColor = Colour().getRed()
+                }
+                return cell
+            }
+            if #available(iOS 13.0, *) {
+                let image = UIImage(systemName: "gamecontroller")!
+                cell.actionImageView.image = image.withRenderingMode(.alwaysTemplate)
+                cell.actionImageView.tintColor = .black
+            }
+            return cell
+        }
         // 'PROPOSED'...
         if(gameTableMenuItem.inbound!){
             if #available(iOS 13.0, *) {
-                print("aHaHaHa")
-                cell.invitationDirectionImage.tintColor = .blue
+                //print("aHaHaHa")
+                 cell.actionImageView.tintColor = Colour().getRed()
                 let image = UIImage(systemName: "tray.and.arrow.down")!
-                cell.invitationDirectionImage.image = image.withRenderingMode(.alwaysTemplate)
+                cell.actionImageView.image = image.withRenderingMode(.alwaysTemplate)
             }
             return cell
         }
         if #available(iOS 13.0, *) {
-            cell.invitationDirectionImage.tintColor = .magenta
+            cell.actionImageView.tintColor = .black
             let image = UIImage(systemName: "tray.and.arrow.up")!
-            cell.invitationDirectionImage.image = image.withRenderingMode(.alwaysTemplate)
+            cell.actionImageView.image = image.withRenderingMode(.alwaysTemplate)
         }
         return cell
     }
