@@ -85,7 +85,7 @@ class ActualTable: UITableViewController {
         if(gameTableMenuItem.inbound!){
             if #available(iOS 13.0, *) {
                 //print("aHaHaHa")
-                 cell.actionImageView.tintColor = Colour().getRed()
+                cell.actionImageView.tintColor = Colour().getRed()
                 let image = UIImage(systemName: "tray.and.arrow.down")!
                 cell.actionImageView.image = image.withRenderingMode(.alwaysTemplate)
             }
@@ -160,26 +160,83 @@ class ActualTable: UITableViewController {
     }
     
     private func renderShrug(){
-//        DispatchQueue.main.async() {
-//            self.activityIndicator!.stopAnimating()
-//            self.activityIndicator!.isHidden = true
-//            let frameSize: CGPoint = CGPoint(x: UIScreen.main.bounds.size.width*0.5, y: UIScreen.main.bounds.size.height*0.5)
-//            self.label = UILabel(frame: CGRect(x: UIScreen.main.bounds.size.width*0.5, y: UIScreen.main.bounds.size.height*0.5, width: UIScreen.main.bounds.width, height: 40))
-//            self.label!.center = frameSize
-//            self.label!.textAlignment = .center
-//            self.label!.font = UIFont.systemFont(ofSize: 30, weight: UIFont.Weight.light)
-//            self.label!.translatesAutoresizingMaskIntoConstraints = false
-//            let horizontalConstraint = NSLayoutConstraint(item: self.label!, attribute: NSLayoutConstraint.Attribute.centerX, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.view, attribute: NSLayoutConstraint.Attribute.centerX, multiplier: 1, constant: 0)
-//            let verticalConstraint = NSLayoutConstraint(item: self.label!, attribute: NSLayoutConstraint.Attribute.centerY, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.view, attribute: NSLayoutConstraint.Attribute.centerY, multiplier: 1, constant: 0)
-//            self.label!.text = "¯\\_( ͡° ͜ʖ ͡°)_/¯"
-//            self.view.addSubview(self.label!)
-//            self.view.addConstraints([horizontalConstraint, verticalConstraint])
-//        }
+        //        DispatchQueue.main.async() {
+        //            self.activityIndicator!.stopAnimating()
+        //            self.activityIndicator!.isHidden = true
+        //            let frameSize: CGPoint = CGPoint(x: UIScreen.main.bounds.size.width*0.5, y: UIScreen.main.bounds.size.height*0.5)
+        //            self.label = UILabel(frame: CGRect(x: UIScreen.main.bounds.size.width*0.5, y: UIScreen.main.bounds.size.height*0.5, width: UIScreen.main.bounds.width, height: 40))
+        //            self.label!.center = frameSize
+        //            self.label!.textAlignment = .center
+        //            self.label!.font = UIFont.systemFont(ofSize: 30, weight: UIFont.Weight.light)
+        //            self.label!.translatesAutoresizingMaskIntoConstraints = false
+        //            let horizontalConstraint = NSLayoutConstraint(item: self.label!, attribute: NSLayoutConstraint.Attribute.centerX, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.view, attribute: NSLayoutConstraint.Attribute.centerX, multiplier: 1, constant: 0)
+        //            let verticalConstraint = NSLayoutConstraint(item: self.label!, attribute: NSLayoutConstraint.Attribute.centerY, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.view, attribute: NSLayoutConstraint.Attribute.centerY, multiplier: 1, constant: 0)
+        //            self.label!.text = "¯\\_( ͡° ͜ʖ ͡°)_/¯"
+        //            self.view.addSubview(self.label!)
+        //            self.view.addConstraints([horizontalConstraint, verticalConstraint])
+        //        }
     }
+    
+    
+    //
+    //    override func tableView(_ tableView: UITableView, editActionsForRowAt: IndexPath) -> [UITableViewRowAction]? {
+    ////        let more = UITableViewRowAction(style: .normal, title: "nACK") { action, index in
+    ////            print("more button tapped")
+    ////        }
+    ////        more.backgroundColor = UIColor(red: 255/255.0, green: 211/255.0, blue: 211/255.0, alpha: 1)
+    //
+    //        let share = UITableViewRowAction(style: .normal, title: "ACK") { action, index in
+    //            print("share button tapped")
+    //        }
+    //        share.backgroundColor = UIColor(red: 211/255.0, green: 255/255.0, blue: 211/255.0, alpha: 1)
+    //
+    //        return [share]
+    //    }
+    
+    override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let gameTableMenuItem = gameMenuTableList[indexPath.row]
+        if(!gameTableMenuItem.inbound!){
+            let modifyAction = UIContextualAction(style: .normal, title:  "CANCEL", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
+                print("Update action ...")
+                success(true)
+            })
+            if #available(iOS 13.0, *) { //xmark
+                modifyAction.image = UIImage(systemName: "xmark.rectangle.fill")!
+            }
+            modifyAction.backgroundColor = .black
+            return UISwipeActionsConfiguration(actions: [modifyAction])
+        }
+        let closeAction = UIContextualAction(style: .normal, title:  "nACK", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
+            print("OK, marked as Closed")
+            success(true)
+        })
+        if #available(iOS 13.0, *) {
+            closeAction.image = UIImage(systemName: "hand.thumbsdown.fill")!
+        }
+        closeAction.backgroundColor = .red
+        return UISwipeActionsConfiguration(actions: [closeAction])
+    }
+    
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let gameTableMenuItem = gameMenuTableList[indexPath.row]
+        if(!gameTableMenuItem.inbound!){
+           return nil
+        }
+        let modifyAction = UIContextualAction(style: .normal, title:  "ACK", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
+            print("Update action ...")
+            success(true)
+        })
+        if #available(iOS 13.0, *) { //xmark
+            modifyAction.image = UIImage(systemName: "hand.thumbsup.fill")!
+        }
+        modifyAction.backgroundColor = .green
+        return UISwipeActionsConfiguration(actions: [modifyAction])
+    }
+    
 }
 
 extension UITableView {
-
+    
     var selectionCount: Int {
         let sections = self.numberOfSections
         var rows = 0

@@ -237,7 +237,7 @@
                                 </constraints>
                                 <items>
                                     <tabBarItem title="game" image="arrowshape.turn.up.left" catalog="system" id="wg2-in-1KM"/>
-                                    <tabBarItem tag="1" title="options" image="gauge" catalog="system" id="9es-eF-wsz"/>
+                                    <tabBarItem tag="1" title="options" id="9es-eF-wsz"/>
                                     <tabBarItem tag="2" title="talk" image="bubble.left.and.bubble.right" catalog="system" id="av3-gU-jBw"/>
                                 </items>
                                 <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -306,7 +306,6 @@
         <image name="arrowshape.turn.up.left" catalog="system" width="64" height="52"/>
         <image name="avatar_default" width="320" height="320"/>
         <image name="bubble.left.and.bubble.right" catalog="system" width="64" height="48"/>
-        <image name="gauge" catalog="system" width="64" height="60"/>
         <image name="iapetus" width="761" height="800"/>
     </resources>
 </document>

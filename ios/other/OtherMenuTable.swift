@@ -155,4 +155,20 @@ class OtherMenuTable: UITableViewController {
             }
         }
     }
+    
+        override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+    //        let leaderboardItem = leaderboardTableList[indexPath.row]
+    //        if(!gameTableMenuItem.inbound!){
+    //           return nil
+    //        }
+            let modifyAction = UIContextualAction(style: .normal, title:  "CHALLENGE", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
+                print("Update action ...")
+                success(true)
+            })
+            if #available(iOS 13.0, *) { //xmark
+                modifyAction.image = UIImage(systemName: "gamecontroller.fill")!
+            }
+            modifyAction.backgroundColor = .purple
+            return UISwipeActionsConfiguration(actions: [modifyAction])
+        }
 }
