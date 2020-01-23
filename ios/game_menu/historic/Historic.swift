@@ -10,14 +10,21 @@ import UIKit
 
 class Historic: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate {
     
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     //@IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     //MARK: Properties
-//    @IBOutlet weak var usernameLabel: UILabel!
-//    @IBOutlet weak var avatarImageView: UIImageView!
-//    @IBOutlet weak var tschxLabel: UILabel!
-//    @IBOutlet weak var rankLabel: UILabel!
-
+    @IBOutlet weak var usernameLabel: UILabel!
+    //    @IBOutlet weak var usernameLabel: UILabel!
+    @IBOutlet weak var avatarImageView: UIImageView!
+    //    @IBOutlet weak var avatarImageView: UIImageView!
+    @IBOutlet weak var rankLabel: UILabel!
+    //    @IBOutlet weak var tschxLabel: UILabel!
+    @IBOutlet weak var eloLabel: UILabel!
+    //    @IBOutlet weak var rankLabel: UILabel!
+    @IBOutlet weak var displacementLabel: UILabel!
+    @IBOutlet weak var displacementImage: UIImageView!
+    
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var tabBarMenu: UITabBar!
 
@@ -44,19 +51,19 @@ class Historic: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-//        let dataDecoded: Data = Data(base64Encoded: self.player!.getAvatar(), options: .ignoreUnknownCharacters)!
-//        let decodedimage = UIImage(data: dataDecoded)
-//        self.avatarImageView.image = decodedimage
-//        self.rankLabel.text = self.player!.getRank()
-//        self.tschxLabel.text = "₮\(self.player!.getTschx())"
-//        self.usernameLabel.text = self.player!.getName()
-//        NotificationCenter.default.addObserver(
-//            self,
-//            selector: #selector(self.onDidReceiveData(_:)),
-//            name: NSNotification.Name(rawValue: "HistoricSelection"),
-//            object: nil)
-//
-//        self.activityIndicator.startAnimating()
+        let dataDecoded: Data = Data(base64Encoded: self.player!.getAvatar(), options: .ignoreUnknownCharacters)!
+        let decodedimage = UIImage(data: dataDecoded)
+        self.avatarImageView.image = decodedimage
+        self.rankLabel.text = self.player!.getRank()
+        //self.tschxLabel.text = "₮\(self.player!.getTschx())"
+        self.usernameLabel.text = self.player!.getName()
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(self.onDidReceiveData(_:)),
+            name: NSNotification.Name(rawValue: "HistoricSelection"),
+            object: nil)
+
+        self.activityIndicator.isHidden = true
     }
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {

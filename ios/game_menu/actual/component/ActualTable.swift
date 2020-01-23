@@ -195,7 +195,7 @@ class ActualTable: UITableViewController {
     
     override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let gameTableMenuItem = gameMenuTableList[indexPath.row]
-        if(!gameTableMenuItem.inbound!){
+        if(!gameTableMenuItem.inbound!){ //rescind
             let modifyAction = UIContextualAction(style: .normal, title:  "CANCEL", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
                 print("Update action ...")
                 success(true)

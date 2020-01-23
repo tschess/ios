@@ -61,9 +61,9 @@ class HistoricTable: UITableViewController {
         let formatter = DateFormatter()
         formatter.dateFormat = "dd.MM.YY"
         let yayayaya = formatter.string(from: gameTableMenuItem.created!)
-        cell.eloLabel.text = yayayaya
+        //cell.eloLabel.text = yayayaya
         //cell.eloLabel.textColor = Colour().getRed()
-        cell.eloLabel.textColor = UIColor.black
+        //cell.eloLabel.textColor = UIColor.black
         
         let dataDecoded: Data = Data(base64Encoded: gameTableMenuItem.getOpponentAvatar(), options: .ignoreUnknownCharacters)!
         let decodedimage = UIImage(data: dataDecoded)
@@ -164,19 +164,35 @@ class HistoricTable: UITableViewController {
     }
     
     private func renderShrug(){
-        let frameSize: CGPoint = CGPoint(x: UIScreen.main.bounds.size.width*0.5, y: UIScreen.main.bounds.size.height*0.5)
-        self.label = UILabel(frame: CGRect(x: UIScreen.main.bounds.size.width*0.5, y: UIScreen.main.bounds.size.height*0.5, width: UIScreen.main.bounds.width, height: 40))
-        self.label!.center = frameSize
-        self.label!.textAlignment = .center
-        self.label!.font = UIFont.systemFont(ofSize: 30, weight: UIFont.Weight.light)
-        self.label!.translatesAutoresizingMaskIntoConstraints = false
-        let horizontalConstraint = NSLayoutConstraint(item: self.label!, attribute: NSLayoutConstraint.Attribute.centerX, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.view, attribute: NSLayoutConstraint.Attribute.centerX, multiplier: 1, constant: 0)
-        let verticalConstraint = NSLayoutConstraint(item: self.label!, attribute: NSLayoutConstraint.Attribute.centerY, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.view, attribute: NSLayoutConstraint.Attribute.centerY, multiplier: 1, constant: 0)
-        DispatchQueue.main.async() {
-            self.activityIndicator!.stopAnimating()
-            self.label!.text = "¯\\_( ͡° ͜ʖ ͡°)_/¯"
-            self.view.addSubview(self.label!)
-            self.view.addConstraints([horizontalConstraint, verticalConstraint])
+//        let frameSize: CGPoint = CGPoint(x: UIScreen.main.bounds.size.width*0.5, y: UIScreen.main.bounds.size.height*0.5)
+//        self.label = UILabel(frame: CGRect(x: UIScreen.main.bounds.size.width*0.5, y: UIScreen.main.bounds.size.height*0.5, width: UIScreen.main.bounds.width, height: 40))
+//        self.label!.center = frameSize
+//        self.label!.textAlignment = .center
+//        self.label!.font = UIFont.systemFont(ofSize: 30, weight: UIFont.Weight.light)
+//        self.label!.translatesAutoresizingMaskIntoConstraints = false
+//        let horizontalConstraint = NSLayoutConstraint(item: self.label!, attribute: NSLayoutConstraint.Attribute.centerX, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.view, attribute: NSLayoutConstraint.Attribute.centerX, multiplier: 1, constant: 0)
+//        let verticalConstraint = NSLayoutConstraint(item: self.label!, attribute: NSLayoutConstraint.Attribute.centerY, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.view, attribute: NSLayoutConstraint.Attribute.centerY, multiplier: 1, constant: 0)
+//        DispatchQueue.main.async() {
+//            self.activityIndicator!.stopAnimating()
+//            self.label!.text = "¯\\_( ͡° ͜ʖ ͡°)_/¯"
+//            self.view.addSubview(self.label!)
+//            self.view.addConstraints([horizontalConstraint, verticalConstraint])
+//        }
+    }
+    
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+//        let gameTableMenuItem = gameMenuTableList[indexPath.row]
+//        if(!gameTableMenuItem.inbound!){
+//           return nil
+//        }
+        let modifyAction = UIContextualAction(style: .normal, title:  "REMATCH", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
+            print("Update action ...")
+            success(true)
+        })
+        if #available(iOS 13.0, *) { //xmark
+            modifyAction.image = UIImage(systemName: "gamecontroller.fill")!
         }
+        modifyAction.backgroundColor = .purple
+        return UISwipeActionsConfiguration(actions: [modifyAction])
     }
 }
