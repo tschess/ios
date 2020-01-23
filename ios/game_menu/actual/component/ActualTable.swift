@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import SwipeCellKit
 
-class ActualTable: UITableViewController {
+class ActualTable: UITableViewController, SwipeTableViewCellDelegate {
     
     var gameMenuTableList: [Game] = [Game]()
     var player: Player?
@@ -51,9 +52,37 @@ class ActualTable: UITableViewController {
         return gameMenuTableList.count
     }
     
+    
+    
+    
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        ...
+//        cell.delegate = self
+//        return cell
+//    }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
+        guard orientation == .right else { return nil }
+
+        let deleteAction = SwipeAction(style: .destructive, title: "Delete") { action, indexPath in
+            // handle action by updating model with deletion
+        }
+
+        // customize the action appearance
+        deleteAction.image = UIImage(named: "trash")
+
+        return [deleteAction]
+    }
+    
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ActualCell", for: indexPath) as! ActualCell
+        
+        
+        
+        cell.delegate = self
+        
         
         let gameTableMenuItem = gameMenuTableList[indexPath.row]
         
@@ -102,16 +131,17 @@ class ActualTable: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        var discoverSelectionDictionary: [String: Any] = ["actual_selection": indexPath.row]
+        //var discoverSelectionDictionary: [String: Any] = ["actual_selection": indexPath.row]
         
         let cell = tableView.cellForRow(at: indexPath) as! ActualCell
+        cell.showSwipe(orientation: .right, animated: true)
         
         //discoverSelectionDictionary["action"] = cell.actionLabel!.text!
         
-        NotificationCenter.default.post(
-            name: NSNotification.Name(rawValue: "ActualSelection"),
-            object: nil,
-            userInfo: discoverSelectionDictionary)
+//        NotificationCenter.default.post(
+//            name: NSNotification.Name(rawValue: "ActualSelection"),
+//            object: nil,
+//            userInfo: discoverSelectionDictionary)
     }
     
     override open func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {

@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import SwipeCellKit
 
-class ActualCell: UITableViewCell {
+class ActualCell: SwipeTableViewCell {
     
     @IBOutlet weak var timeIndicatorLabel: UILabel!
     

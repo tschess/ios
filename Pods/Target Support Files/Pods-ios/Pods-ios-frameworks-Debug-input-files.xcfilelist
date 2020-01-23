@@ -1,3 +1,4 @@
 ${PODS_ROOT}/Target Support Files/Pods-ios/Pods-ios-frameworks.sh
 ${BUILT_PRODUCTS_DIR}/BlockiesSwift/BlockiesSwift.framework
 ${BUILT_PRODUCTS_DIR}/PushNotifications/PushNotifications.framework
+${BUILT_PRODUCTS_DIR}/SwipeCellKit/SwipeCellKit.framework

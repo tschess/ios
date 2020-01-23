@@ -9,5 +9,6 @@ use_frameworks!
 target 'ios' do
     pod 'PushNotifications', '~> 2.0.2'
     pod 'BlockiesSwift'
+    pod 'SwipeCellKit'
 end
 
