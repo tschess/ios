@@ -62,14 +62,52 @@ class ActualTable: UITableViewController, SwipeTableViewCellDelegate {
 //    }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
-        guard orientation == .right else { return nil }
+        
+//        let modifyAction = UIContextualAction(style: .normal, title:  "ACK", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
+//            print("Update action ...")
+//            success(true)
+//        })
+//        if #available(iOS 13.0, *) { //xmark
+//            modifyAction.image = UIImage(systemName: "hand.thumbsup.fill")!
+//        }
+//        modifyAction.backgroundColor = .green
+//        return UISwipeActionsConfiguration(actions: [modifyAction])
+        
+        guard orientation == .right else {
+            
+//            let closeAction = UIContextualAction(style: .normal, title:  "nACK", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
+//                print("OK, marked as Closed")
+//                success(true)
+//            })
+//            if #available(iOS 13.0, *) {
+//                closeAction.image = UIImage(systemName: "hand.thumbsdown.fill")!
+//            }
+//            closeAction.backgroundColor = .red
+//            return UISwipeActionsConfiguration(actions: [closeAction])
+            let deleteAction = SwipeAction(style: .default, title: "nACK") { action, indexPath in
+                // handle action by updating model with deletion
+            }
 
-        let deleteAction = SwipeAction(style: .destructive, title: "Delete") { action, indexPath in
+            deleteAction.backgroundColor = .red
+            
+            if #available(iOS 13.0, *) { //xmark
+                deleteAction.image = UIImage(systemName: "hand.thumbsdown.fill")!
+            }
+
+            return [deleteAction]
+            
+            
+        }
+
+        let deleteAction = SwipeAction(style: .default, title: "ACK") { action, indexPath in
             // handle action by updating model with deletion
         }
 
-        // customize the action appearance
-        deleteAction.image = UIImage(named: "trash")
+        deleteAction.backgroundColor = .green
+        
+        if #available(iOS 13.0, *) { //xmark
+            deleteAction.image = UIImage(systemName: "hand.thumbsup.fill")!
+        }
 
         return [deleteAction]
     }
