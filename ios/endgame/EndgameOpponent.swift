@@ -27,7 +27,9 @@ class EndgameOpponent: UIViewController, UICollectionViewDataSource, UICollectio
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     @IBOutlet weak var usernameLabelWhite: UILabel!
+    //@IBOutlet weak var usernameLabelWhite: UILabel!
     @IBOutlet weak var usernameLabelBlack: UILabel!
+    //@IBOutlet weak var usernameLabelBlack: UILabel!
     @IBOutlet weak var usernameWinner: UILabel!
     //@IBOutlet weak var endgameCatalystLabel: UILabel!
     
@@ -46,7 +48,9 @@ class EndgameOpponent: UIViewController, UICollectionViewDataSource, UICollectio
     @IBOutlet weak var statsView: UIView!
     @IBOutlet weak var statsImage: UIImageView!
     
+    //@IBOutlet weak var moveCountLabel: UILabel!
     @IBOutlet weak var moveCountLabel: UILabel!
+    //@IBOutlet weak var outcomeLabel: UILabel!
     @IBOutlet weak var outcomeLabel: UILabel!
     
     @IBOutlet weak var tabBarMenu: UITabBar!
