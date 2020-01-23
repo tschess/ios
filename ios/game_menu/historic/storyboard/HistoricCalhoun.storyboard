@@ -352,6 +352,10 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="avatarImageView" destination="WUv-Ut-EiN" id="HNQ-tP-EHf"/>
+                                    <outlet property="displacementImage" destination="Lqa-j6-Juz" id="AYs-eA-Z3q"/>
+                                    <outlet property="displacementLabel" destination="v3Q-LF-V5V" id="EzV-Eq-3cl"/>
+                                    <outlet property="oddsLabel" destination="cLa-v4-iLa" id="Mcl-yS-J4L"/>
+                                    <outlet property="terminationDateLabel" destination="vW1-vC-zYR" id="0EC-Td-191"/>
                                     <outlet property="usernameLabel" destination="WfW-uC-JgQ" id="UAd-ka-Z9o"/>
                                 </connections>
                             </tableViewCell>
