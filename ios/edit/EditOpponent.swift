@@ -20,10 +20,15 @@ class EditOpponent: UIViewController, UITabBarDelegate, UIGestureRecognizerDeleg
     
     @IBOutlet weak var backButton: UIButton!
     
+    @IBOutlet weak var rankDateLabel: UILabel!
     @IBOutlet weak var rankLabel: UILabel!
+    //@IBOutlet weak var rankLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
+    //@IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var avatarImageView: UIImageView!
+    //@IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    //@IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     @IBOutlet weak var configCollectionView: DynamicCollectionView!
     @IBOutlet weak var configCollectionViewHeight: NSLayoutConstraint!

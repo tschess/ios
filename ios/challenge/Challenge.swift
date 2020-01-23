@@ -21,6 +21,14 @@ class Challenge:
     @IBOutlet weak var timeSwitch: UISwitch!
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    //@IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var usernameLabel: UILabel!
+    //@IBOutlet weak var usernameLabel: UILabel!
+    //@IBOutlet weak var rankLabel: UILabel!
+    @IBOutlet weak var rankDateLabel: UILabel!
+    @IBOutlet weak var rankLabel: UILabel!
+    //@IBOutlet weak var avatarImageView: UIImageView!
+    @IBOutlet weak var avatarImageView: UIImageView!
     
     let reuseIdentifier = "cell"
     
@@ -106,11 +114,6 @@ class Challenge:
     //MARK: Properties
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var tabBarMenu: UITabBar!
-    
-    @IBOutlet weak var usernameLabel: UILabel!
-    
-    @IBOutlet weak var rankLabel: UILabel!
-    @IBOutlet weak var avatarImageView: UIImageView!
     
     var player: Player?
     var gameModel: Game?
