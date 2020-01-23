@@ -10,7 +10,7 @@ import UIKit
 
 class Other: UIViewController, UITabBarDelegate {
     
-    @IBOutlet weak var challengeButtonView: UIView! //should deffer rendering until appointed moment...
+    //@IBOutlet weak var challengeButtonView: UIView! //should deffer rendering until appointed moment...
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
@@ -28,7 +28,7 @@ class Other: UIViewController, UITabBarDelegate {
     
     var otherMenuTable: OtherMenuTable?
     
-    @IBOutlet weak var newChallengeButton: UIButton!
+    //@IBOutlet weak var newChallengeButton: UIButton!
     
     
     public func setPlayer(player: Player){
