@@ -58,43 +58,38 @@ class ActualTable: UITableViewController {
         let gameTableMenuItem = gameMenuTableList[indexPath.row]
         
         cell.usernameLabel.text = gameTableMenuItem.getOpponentName()
-        //cell.eloLabel.text = gameTableMenuItem.getOpponentElo()
+        cell.eloLabel.text = gameTableMenuItem.getOpponentElo()
         let dataDecoded: Data = Data(base64Encoded: gameTableMenuItem.getOpponentAvatar(), options: .ignoreUnknownCharacters)!
         let decodedimage = UIImage(data: dataDecoded)
         cell.avatarImageView.image = decodedimage
         
         let status = gameTableMenuItem.getGameStatus()
         
-        if(status == "ONGOING"){
-            if(gameTableMenuItem.usernameTurn == self.player!.getName()){
-                //cell.actionLabel.text = "my move"
-                //cell.actionLabel.textColor = Colour().getRed()
-                return cell
-            }
-            //cell.actionLabel.text = "opponent's move"
-            //cell.actionLabel.textColor = UIColor.black
-            return cell
-        }
+//        if(status == "ONGOING"){
+//            if(gameTableMenuItem.usernameTurn == self.player!.getName()){
+//                //cell.actionLabel.text = "my move"
+//                //cell.actionLabel.textColor = Colour().getRed()
+//                return cell
+//            }
+//            //cell.actionLabel.text = "opponent's move"
+//            //cell.actionLabel.textColor = UIColor.black
+//            return cell
+//        }
         // 'PROPOSED'...
         if(gameTableMenuItem.inbound!){
-            //cell.actionLabel.text = "review"
-            cell.backgroundColor = Colour().getInbound()
-            
-            let label = cell.viewWithTag(1)! as! UILabel
-            label.textColor = UIColor.black
-            cell.usernameLabel.textColor = UIColor.black
-            //cell.actionLabel.textColor = UIColor.black
+            if #available(iOS 13.0, *) {
+                print("aHaHaHa")
+                cell.invitationDirectionImage.tintColor = .blue
+                let image = UIImage(systemName: "tray.and.arrow.down")!
+                cell.invitationDirectionImage.image = image.withRenderingMode(.alwaysTemplate)
+            }
             return cell
         }
-        //cell.actionLabel.text = "rescind"
-        cell.backgroundColor = Colour().getOutbound()
-        
-        let label = cell.viewWithTag(1)! as! UILabel
-        label.textColor = UIColor.white
-        
-        cell.usernameLabel.textColor = UIColor.white
-        //cell.actionLabel.textColor = UIColor.white
-        
+        if #available(iOS 13.0, *) {
+            cell.invitationDirectionImage.tintColor = .magenta
+            let image = UIImage(systemName: "tray.and.arrow.up")!
+            cell.invitationDirectionImage.image = image.withRenderingMode(.alwaysTemplate)
+        }
         return cell
     }
     
@@ -105,7 +100,7 @@ class ActualTable: UITableViewController {
         
         let cell = tableView.cellForRow(at: indexPath) as! ActualCell
         
-        discoverSelectionDictionary["action"] = cell.actionLabel!.text!
+        //discoverSelectionDictionary["action"] = cell.actionLabel!.text!
         
         NotificationCenter.default.post(
             name: NSNotification.Name(rawValue: "ActualSelection"),
