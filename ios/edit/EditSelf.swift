@@ -20,14 +20,13 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
     
     @IBOutlet weak var backButton: UIButton!
     
+    @IBOutlet weak var displacementImage: UIImageView!
+    @IBOutlet weak var displacementLabel: UILabel!
+    @IBOutlet weak var eloLabel: UILabel!
     @IBOutlet weak var rankLabel: UILabel!
-    //    @IBOutlet weak var rankLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
-    //    @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var avatarImageView: UIImageView!
-    //    @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    //    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     @IBOutlet weak var configCollectionView: DynamicCollectionView!
     @IBOutlet weak var configCollectionViewHeight: NSLayoutConstraint!
@@ -131,6 +130,9 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
             let opponent = self.gameModel!.getOpponent()
             viewController.setOpponent(opponent: opponent)
             UIApplication.shared.keyWindow?.rootViewController = viewController
+        }
+        if(self.titleText == "select config"){
+            StoryboardSelector().actual(player: self.player!)
         }
         //if(self.titleText!.text.contains("config")){
         let storyboard: UIStoryboard = UIStoryboard(name: "Config", bundle: nil)

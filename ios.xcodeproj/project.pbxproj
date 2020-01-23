@@ -86,6 +86,8 @@
 		B74CBE6222F09B6C00A30F09 /* Cancel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74CBE6122F09B6C00A30F09 /* Cancel.swift */; };
 		B74FA43523551E4300FC1018 /* Hopper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74FA43423551E4300FC1018 /* Hopper.swift */; };
 		B7661FA72371FB050033A556 /* UpdatePhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7661FA62371FB050033A556 /* UpdatePhoto.swift */; };
+		B7877C4823DA639600F59FF3 /* Ack.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7877C4723DA639600F59FF3 /* Ack.storyboard */; };
+		B7877C4A23DA659000F59FF3 /* Ack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7877C4923DA659000F59FF3 /* Ack.swift */; };
 		B787C73122E970DD009C94F7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B787C73022E970DD009C94F7 /* Assets.xcassets */; };
 		B787C73F22E970DD009C94F7 /* iosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B787C73E22E970DD009C94F7 /* iosTests.swift */; };
 		B787C74A22E970DD009C94F7 /* iosUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B787C74922E970DD009C94F7 /* iosUITests.swift */; };
@@ -408,6 +410,8 @@
 		B74CBE6122F09B6C00A30F09 /* Cancel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cancel.swift; sourceTree = "<group>"; };
 		B74FA43423551E4300FC1018 /* Hopper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hopper.swift; sourceTree = "<group>"; };
 		B7661FA62371FB050033A556 /* UpdatePhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePhoto.swift; sourceTree = "<group>"; };
+		B7877C4723DA639600F59FF3 /* Ack.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Ack.storyboard; sourceTree = "<group>"; };
+		B7877C4923DA659000F59FF3 /* Ack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ack.swift; sourceTree = "<group>"; };
 		B787C72622E970DC009C94F7 /* ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ios.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B787C73022E970DD009C94F7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B787C73A22E970DD009C94F7 /* iosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iosTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1153,6 +1157,7 @@
 				B7A6218623A02446005DCDA1 /* Quick.swift */,
 				B718A0B923D76FF1006CCA20 /* SampleSkin.xib */,
 				B718A0BB23D77532006CCA20 /* SampleSkin.swift */,
+				B7877C4923DA659000F59FF3 /* Ack.swift */,
 			);
 			path = quick;
 			sourceTree = "<group>";
@@ -1165,6 +1170,7 @@
 				B70424B823AEE16100DBB7FA /* QuickXandroid.storyboard */,
 				B70424C023AF128F00DBB7FA /* QuickMagnus.storyboard */,
 				B70424CA23AF1DCF00DBB7FA /* QuickXenophon.storyboard */,
+				B7877C4723DA639600F59FF3 /* Ack.storyboard */,
 			);
 			path = storyboard;
 			sourceTree = "<group>";
@@ -2020,6 +2026,7 @@
 				B7F5F64023D629C100BCF91F /* Detail.storyboard in Resources */,
 				B7039F24238B5197003896C6 /* CancelXenophon.storyboard in Resources */,
 				B7F5878423D0AE4900A91CD3 /* ShowMeSkins.storyboard in Resources */,
+				B7877C4823DA639600F59FF3 /* Ack.storyboard in Resources */,
 				B7BAA657237F3BDE0038C483 /* ProfilePhaedrus.storyboard in Resources */,
 				B70424B923AEE16100DBB7FA /* QuickXandroid.storyboard in Resources */,
 				B7039F1C238B4C79003896C6 /* HomeXenophon.storyboard in Resources */,
@@ -2330,6 +2337,7 @@
 				B74145D622F3CE4800B3B4FF /* King.swift in Sources */,
 				B7AEEA9123A1D8E0002F950C /* HistoricCell.swift in Sources */,
 				B7F541C623D51ADD00E89074 /* HomeMenuTable.swift in Sources */,
+				B7877C4A23DA659000F59FF3 /* Ack.swift in Sources */,
 				B7EA5DC42375C2710019C0BF /* Player.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -32,6 +32,9 @@ class Config:
     
     @IBOutlet weak var backButton: UIButton!
     
+    @IBOutlet weak var displacementImage: UIImageView!
+    @IBOutlet weak var displacementLabel: UILabel!
+    @IBOutlet weak var eloLabel: UILabel!
     @IBOutlet weak var rankLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var avatarImageView: UIImageView!

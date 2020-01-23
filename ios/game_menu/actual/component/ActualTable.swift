@@ -52,66 +52,42 @@ class ActualTable: UITableViewController, SwipeTableViewCellDelegate {
         return gameMenuTableList.count
     }
     
-    
-    
-    
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        ...
-//        cell.delegate = self
-//        return cell
-//    }
-    
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
-        
-//        let modifyAction = UIContextualAction(style: .normal, title:  "ACK", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
-//            print("Update action ...")
-//            success(true)
-//        })
-//        if #available(iOS 13.0, *) { //xmark
-//            modifyAction.image = UIImage(systemName: "hand.thumbsup.fill")!
-//        }
-//        modifyAction.backgroundColor = .green
-//        return UISwipeActionsConfiguration(actions: [modifyAction])
-        
+                
         guard orientation == .right else {
             
-//            let closeAction = UIContextualAction(style: .normal, title:  "nACK", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
-//                print("OK, marked as Closed")
-//                success(true)
-//            })
-//            if #available(iOS 13.0, *) {
-//                closeAction.image = UIImage(systemName: "hand.thumbsdown.fill")!
-//            }
-//            closeAction.backgroundColor = .red
-//            return UISwipeActionsConfiguration(actions: [closeAction])
             let deleteAction = SwipeAction(style: .default, title: "nACK") { action, indexPath in
-                // handle action by updating model with deletion
+                print("OK, marked as Closed")
+                
+                self.gameMenuTableList.remove(at: indexPath.row)
+                self.tableView!.reloadData()
             }
-
             deleteAction.backgroundColor = .red
-            
-            if #available(iOS 13.0, *) { //xmark
+            if #available(iOS 13.0, *) {
                 deleteAction.image = UIImage(systemName: "hand.thumbsdown.fill")!
             }
-
             return [deleteAction]
-            
-            
         }
-
         let deleteAction = SwipeAction(style: .default, title: "ACK") { action, indexPath in
-            // handle action by updating model with deletion
+            print("4 - 4 - 4")
+            let storyboard: UIStoryboard = UIStoryboard(name: "Ack", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier: "Ack") as! Ack
+            viewController.setPlayer(player: self.player!)
+            
+            let gameModel = Game(opponent: self.player!)
+            //let gameModel = self.gameMenuTableList[indexPath.row]
+            
+            viewController.setGameModel(gameModel: gameModel)
+            //viewController.setTitleText(titleText: "select config")
+            UIApplication.shared.keyWindow?.rootViewController = viewController
+            
         }
-
         deleteAction.backgroundColor = .green
-        
-        if #available(iOS 13.0, *) { //xmark
+        if #available(iOS 13.0, *) {
             deleteAction.image = UIImage(systemName: "hand.thumbsup.fill")!
         }
-
         return [deleteAction]
     }
-    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
