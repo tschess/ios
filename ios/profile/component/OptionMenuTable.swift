@@ -10,7 +10,7 @@ import UIKit
 
 class OptionMenuTable: UITableViewController {
     
-    let options = ["fairy pieces", "game skins", "eth address", "sign out"]
+    let options = ["update photo", "sign out"]
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -28,13 +28,15 @@ class OptionMenuTable: UITableViewController {
     func generateIcon(value: Int) -> UIImage? {
         switch value {
         case 0:
-            return UIImage(named: "fairy")
-        case 1:
-            return UIImage(named: "mask")
-        case 2:
-            return UIImage(named: "eth")
+            if #available(iOS 13.0, *) {
+                return UIImage(systemName: "photo")
+            }
+            return nil
         default:
-            return UIImage(named: "exit")
+            if #available(iOS 13.0, *) {
+                return UIImage(systemName: "tornado")
+            }
+            return nil
         }
     }
     

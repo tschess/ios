@@ -17,18 +17,11 @@ class Profile: UIViewController, UITabBarDelegate {
     
     
     @IBOutlet weak var displacementImage: UIImageView!
-    //    @IBOutlet weak var displacementImage: UIImageView!
     @IBOutlet weak var displacementLabel: UILabel!
-    //    @IBOutlet weak var displacementLabel: UILabel!
-//    @IBOutlet weak var eloLabel: UILabel!
     @IBOutlet weak var eloLabel: UILabel!
-    //    @IBOutlet weak var rankLabel: UILabel!
     @IBOutlet weak var rankLabel: UILabel!
-    //    @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
-    //    @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var avatarImageView: UIImageView!
-    //    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     
@@ -54,6 +47,8 @@ class Profile: UIViewController, UITabBarDelegate {
         //self.tschxLabel.text = "₮\(self.player!.getTschx())"
         self.usernameLabel.text = self.player!.getName()
         
+        self.activityIndicator.isHidden = true
+        
         NotificationCenter.default.addObserver(
         self,
         selector: #selector(self.onDidReceiveData(_:)),
@@ -65,20 +60,10 @@ class Profile: UIViewController, UITabBarDelegate {
         let menuSelectionIndex = notification.userInfo!["option_menu_selection"] as! Int
         
         switch menuSelectionIndex {
-        case 1:
-            IapetusSkins().execute(id: self.player!.getId()) { (result) in
-                if(result!.steward!){
-                    StoryboardSelector().manage(player: self.player!, defaultSkin: result!.defaultSkin!)
-                    return
-                }
-                StoryboardSelector().purchase(player: self.player!, remaining: result!.count!)
-            }
-        case 2:
-            StoryboardSelector().eth(player: self.player!)
-        case 3:
-            self.signOut()
+        case 0:
+            print("lolol")
         default:
-            StoryboardSelector().fairy(player: self.player!)
+            self.signOut()
         }
     }
     
