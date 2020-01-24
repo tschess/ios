@@ -79,6 +79,8 @@
 		B74145DA22F3CE6400B3B4FF /* Pawn.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74145D922F3CE6400B3B4FF /* Pawn.swift */; };
 		B74145DC22F3CE7600B3B4FF /* Queen.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74145DB22F3CE7600B3B4FF /* Queen.swift */; };
 		B74145DE22F3CE8300B3B4FF /* Rook.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74145DD22F3CE8300B3B4FF /* Rook.swift */; };
+		B74594A323DB65E900B9F302 /* Tschess.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B74594A223DB65E900B9F302 /* Tschess.storyboard */; };
+		B74594A523DB6BD100B9F302 /* Tschess.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74594A423DB6BD100B9F302 /* Tschess.swift */; };
 		B7471DBD23A6CE87008F70A3 /* GameAcceptTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7471DBC23A6CE87008F70A3 /* GameAcceptTask.swift */; };
 		B7471DBF23A6E3B0008F70A3 /* WhiteReveal.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7471DBE23A6E3B0008F70A3 /* WhiteReveal.swift */; };
 		B7471DC123A6E3C2008F70A3 /* BlackReveal.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7471DC023A6E3C2008F70A3 /* BlackReveal.swift */; };
@@ -403,6 +405,8 @@
 		B74145D922F3CE6400B3B4FF /* Pawn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pawn.swift; sourceTree = "<group>"; };
 		B74145DB22F3CE7600B3B4FF /* Queen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queen.swift; sourceTree = "<group>"; };
 		B74145DD22F3CE8300B3B4FF /* Rook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rook.swift; sourceTree = "<group>"; };
+		B74594A223DB65E900B9F302 /* Tschess.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Tschess.storyboard; sourceTree = "<group>"; };
+		B74594A423DB6BD100B9F302 /* Tschess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tschess.swift; sourceTree = "<group>"; };
 		B7471DBC23A6CE87008F70A3 /* GameAcceptTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameAcceptTask.swift; sourceTree = "<group>"; };
 		B7471DBE23A6E3B0008F70A3 /* WhiteReveal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhiteReveal.swift; sourceTree = "<group>"; };
 		B7471DC023A6E3C2008F70A3 /* BlackReveal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackReveal.swift; sourceTree = "<group>"; };
@@ -782,6 +786,7 @@
 				B7DF5C0C23833C9C0022A8C2 /* ChessXandroid.storyboard */,
 				B7DF5C0E23833E160022A8C2 /* ChessMagnus.storyboard */,
 				B7039F19238B47DC003896C6 /* ChessXenophon.storyboard */,
+				B74594A223DB65E900B9F302 /* Tschess.storyboard */,
 			);
 			path = storyboard;
 			sourceTree = "<group>";
@@ -905,6 +910,7 @@
 				B7CA7BB0235A2D8F00AA1814 /* modal_menu */,
 				B70CEAC022FE42DF00F08541 /* controller */,
 				B74145BA22F3CA3600B3B4FF /* Chess.swift */,
+				B74594A423DB6BD100B9F302 /* Tschess.swift */,
 			);
 			path = chess;
 			sourceTree = "<group>";
@@ -2017,6 +2023,7 @@
 				B7CCB61A23D7DD99008C34A1 /* EndgameOpponent.storyboard in Resources */,
 				B7DF5C1B2383483D0022A8C2 /* SnapshotMagnus.storyboard in Resources */,
 				B708D0E7236B366800A899F9 /* LaunchScreen.storyboard in Resources */,
+				B74594A323DB65E900B9F302 /* Tschess.storyboard in Resources */,
 				B7DF148323CE5F1E007B2C7D /* PurchaseCalypsoCalhoun.storyboard in Resources */,
 				B7DF147323CE51AA007B2C7D /* PreviewHyperionCalhoun.storyboard in Resources */,
 				B7DF5C0D23833C9C0022A8C2 /* ChessXandroid.storyboard in Resources */,
@@ -2233,6 +2240,7 @@
 				B7F7C8F822FFA9740060AC38 /* KnightOffense.swift in Sources */,
 				B7088210233A0FC900A06CAD /* LeaderboardPageTask.swift in Sources */,
 				B7F5F63923D5EA3000BCF91F /* EditOpponent.swift in Sources */,
+				B74594A523DB6BD100B9F302 /* Tschess.swift in Sources */,
 				B74145D422F3CE3C00B3B4FF /* Bishop.swift in Sources */,
 				B74145CA22F3CDDF00B3B4FF /* Grasshopper.swift in Sources */,
 				B7A6217D239FFB00005DCDA1 /* Historic.swift in Sources */,
