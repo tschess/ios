@@ -21,8 +21,9 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     @IBOutlet weak var eloLabel: UILabel!
     @IBOutlet weak var rankLabel: UILabel!
     @IBOutlet weak var rankLabelDate: UILabel!
-    @IBOutlet weak var turnIndicatorImage: UIImageView!
+    //@IBOutlet weak var turnIndicatorImage: UIImageView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var usernameLabel: UILabel!
     
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var contentViewImage: UIImageView!
@@ -34,6 +35,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     @IBOutlet weak var timerView: UIView!
     @IBOutlet weak var timerImage: UIImageView!
     @IBOutlet weak var timerLabel: UILabel!
+    @IBOutlet weak var turnaryLabel: UILabel!
     
     @IBOutlet weak var tabBarMenu: UITabBar!
     
@@ -69,7 +71,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         self.pawnPromotionStoryboard = UIStoryboard(name: "PawnPromotion", bundle: nil)
         self.pawnPromotion = pawnPromotionStoryboard!.instantiateViewController(withIdentifier: "PawnPromotion") as? PawnPromotion
         self.pawnPromotion!.setTransitioner(transitioner: transitioner!)
-        self.pawnPromotion!.setChess(chess: self)
+        //self.pawnPromotion!.setChess(chess: self)
     }
     
     public func setPlayer(player: Player) {
@@ -93,8 +95,10 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         self.collectionView.reloadData()
         self.collectionView.isHidden = false
         self.startTimers()
-        self.countdownTimerLabel.isHidden = false
+        //self.countdownTimerLabel.isHidden = false
         self.indicatorLabelUpdate()
+        
+        self.activityIndicator.isHidden = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -107,56 +111,20 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     override func viewDidLoad() {
         super.viewDidLoad()
         self.collectionView.isHidden = true
-        self.countdownTimerLabel.isHidden = true
+        //self.countdownTimerLabel.isHidden = true
         self.deviceType = StoryboardSelector().device()
         
-        self.renderSkinLayout()
-        self.notificationLabel.text = nil
+        //self.renderSkinLayout()
+        //self.notificationLabel.text = nil
         self.assessDrawValues(gamestate: self.gamestate!)
-        if(!self.longView()){
-            return
-        }
+        //if(!self.longView()){
+            //return
+        //}
         let dataDecoded: Data = Data(base64Encoded: self.gameModel!.getOpponentAvatar(), options: .ignoreUnknownCharacters)!
         let decodedimage = UIImage(data: dataDecoded)
-        self.opponentAvatarImageView!.image = decodedimage
-        self.opponentRankLabel!.text = self.gameModel!.getOpponentRank()
-        self.opponentUsernameLabel!.text = self.gameModel!.getOpponentName()
-    }
-    
-    private func longView() -> Bool {
-        return self.deviceType! == "XENOPHON" || self.deviceType! == "PHAEDRUS" || self.deviceType! == "CALHOUN"
-    }
-    
-    // MARK: layout / colour schema
-    private func setIapetusTextColourShadow(label: UILabel) {
-        label.textColor = UIColor.white
-        label.shadowOffset = CGSize(width: -1, height: -1)
-        label.shadowColor = UIColor.black
-    }
-    
-    private func renderSkinLayout() {
-        if(self.gameModel!.skin == "NONE"){
-            self.iapetusTop!.image = nil
-            self.iapetusContent.image = nil
-            self.defaultColor = UIColor.black
-            return
-        }
-        self.defaultColor = UIColor.white
-        self.backButton.titleLabel!.font = UIFont.systemFont(ofSize: 40, weight: UIFont.Weight.light)
-        self.backButton.setTitleColor(UIColor.white, for: .normal)
-        self.backButton.setTitleShadowColor(UIColor.black, for: .normal)
-        self.backButton.titleLabel!.shadowOffset = CGSize(width: -1, height: -1)
-        self.setIapetusTextColourShadow(label: self.tschessLabel)
-        self.setIapetusTextColourShadow(label: self.countdownTimerLabel)
-        self.setIapetusTextColourShadow(label: self.turnaryIndicatorLabel)
-        self.setIapetusTextColourShadow(label: self.notificationLabel)
-        if(!self.longView()){
-            return
-        }
-        self.opponentRankLabel!.shadowOffset = CGSize(width: -1, height: -1)
-        self.opponentRankLabel!.shadowColor = UIColor.black
-        self.setIapetusTextColourShadow(label: self.opponentUsernameLabel!)
-        self.setIapetusTextColourShadow(label: self.rankLabelIndicator!)
+        self.avatarImageView!.image = decodedimage
+        self.rankLabel!.text = self.gameModel!.getOpponentRank()
+        self.usernameLabel!.text = self.gameModel!.getOpponentName()
     }
     
     @objc func updateCounter() {
@@ -171,7 +139,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         let hour = Int(timeInterval_x / 3600)
         
         counter = String(format: "%02d:%02d:%02d", hour, min, sec)
-        countdownTimerLabel.text = counter
+        timerLabel.text = counter
     }
     
     private func prohibited() -> Bool {
@@ -398,7 +366,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     
     private func processDrawProposal() {
         DispatchQueue.main.async {
-            self.notificationLabel.attributedText = self.attributeString(red: "", black: "awaiting result of draw proposal")
+            self.contentViewLabel.attributedText = self.attributeString(red: "", black: "awaiting result of draw proposal")
         }
     }
     
@@ -495,49 +463,49 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         }
         self.gamestate!.setHighlight(coords: nil)
         self.stopTimers()
-        self.countdownTimerLabel.text = nil
-        self.turnaryIndicatorLabel.text = nil
+        self.timerLabel.text = nil
+        self.turnaryLabel.text = nil
         self.gamestate!.setGameStatus(gameStatus: "RESOLVED")
         let drawProposer = gamestate!.getDrawProposer()
         if(drawProposer == "START"){
-            self.tschessLabel.attributedText = self.attributeString(red: "false start", black: "")
-            self.notificationLabel.attributedText = self.attributeString(red: "", black: ". ends in draw")
+            self.titleViewLabel.attributedText = self.attributeString(red: "false start", black: "")
+            self.contentViewLabel.attributedText = self.attributeString(red: "", black: ". ends in draw")
             return
         }
         if(winner == "DRAW"){
-            self.tschessLabel.attributedText = self.attributeString(red: "game over", black: "")
-            self.notificationLabel.attributedText = self.attributeString(red: "", black: "agree to draw")
+            self.titleViewLabel.attributedText = self.attributeString(red: "game over", black: "")
+            self.contentViewLabel.attributedText = self.attributeString(red: "", black: "agree to draw")
             return
         }
-        self.tschessLabel.attributedText = self.attributeString(red: "game over", black: "")
-        self.notificationLabel.attributedText = self.attributeString(red: "", black: "\(winner) wins")
+        self.titleViewLabel.attributedText = self.attributeString(red: "game over", black: "")
+        self.contentViewLabel.attributedText = self.attributeString(red: "", black: "\(winner) wins")
     }
     
     private func indicatorLabelUpdate() {
         let drawProposer = gamestate!.getDrawProposer()
         if(drawProposer == "LANDMINE"){
-            self.notificationLabel.text = "landmine!"
-            self.notificationLabel.textColor = Colour().getRed()
+            self.contentViewLabel.text = "landmine!"
+            self.contentViewLabel.textColor = Colour().getRed()
             self.gamestate!.setDrawProposer(drawProposer: "NONE")
         }
         else if(drawProposer == "PASSANT"){
-            self.notificationLabel.text = "en passant!"
-            self.notificationLabel.textColor = Colour().getRed()
+            self.contentViewLabel.text = "en passant!"
+            self.contentViewLabel.textColor = Colour().getRed()
             self.gamestate!.setDrawProposer(drawProposer: "NONE")
         }
         else if(drawProposer == "HOPPED"){
-            self.notificationLabel.text = "hopped!"
-            self.notificationLabel.textColor = Colour().getRed()
+            self.contentViewLabel.text = "hopped!"
+            self.contentViewLabel.textColor = Colour().getRed()
             self.gamestate!.setDrawProposer(drawProposer: "NONE")
         }
         else if(drawProposer == "CASTLE"){
-            self.notificationLabel.text = "castle"
-            self.notificationLabel.textColor = self.defaultColor
+            self.contentViewLabel.text = "castle"
+            self.contentViewLabel.textColor = self.defaultColor
             self.gamestate!.setDrawProposer(drawProposer: "NONE")
         }
         else if(drawProposer == "NONE") {
-            self.notificationLabel.textColor = self.defaultColor
-            self.notificationLabel.text = ""
+            self.contentViewLabel.textColor = self.defaultColor
+            self.contentViewLabel.text = ""
         }
         /* * */
         let usernameSelf = self.player!.getName()
@@ -546,21 +514,22 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         let usernameCheck = gamestate!.getCheckOn()
         if(usernameSelf == usernameTurn){
             if(usernameSelf == usernameCheck){
-                self.turnaryIndicatorLabel.text = "you're in check"
-                self.turnaryIndicatorLabel.textColor = Colour().getRed()
+                self.contentViewLabel.text = "you're in check"
+                self.contentViewLabel.textColor = Colour().getRed()
                 return
             }
-            self.turnaryIndicatorLabel.text = "your move"
-            self.turnaryIndicatorLabel.textColor = self.defaultColor
+           
+            self.turnaryLabel.text = "\(self.player!.getName()) to move"
+            
             return
         }
         if(usernameOpponent == usernameCheck){
-            self.turnaryIndicatorLabel.text = "opponent in check"
-            self.turnaryIndicatorLabel.textColor = self.defaultColor
+            self.contentViewLabel.text = "opponent in check"
+            self.contentViewLabel.textColor = self.defaultColor
             return
         }
-        self.turnaryIndicatorLabel.text = "opponent's move"
-        self.turnaryIndicatorLabel.textColor = self.defaultColor
+        
+        self.turnaryLabel.text = "\(self.gameModel!.getOpponentName()) to move"
     }
     
     private func assessDrawValues(gamestate: Gamestate) -> Bool {
@@ -569,7 +538,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         let drawProposerServer = gamestate.getDrawProposer()
         if(drawProposerServer == "NONE"){
             DispatchQueue.main.async {
-                self.notificationLabel.text = nil
+                self.contentViewLabel.text = nil
             }
         }
         if(drawProposerServer == usernameSelf){
