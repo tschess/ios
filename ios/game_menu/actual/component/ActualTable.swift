@@ -113,7 +113,7 @@ class ActualTable: UITableViewController, SwipeTableViewCellDelegate {
                 if #available(iOS 13.0, *) {
                     let image = UIImage(systemName: "gamecontroller.fill")!
                     cell.actionImageView.image = image.withRenderingMode(.alwaysTemplate)
-                    cell.actionImageView.tintColor = Colour().getRed()
+                    cell.actionImageView.tintColor = .magenta //Colour().getRed()
                 }
                 return cell
             }
