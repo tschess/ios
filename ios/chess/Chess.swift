@@ -60,7 +60,7 @@ class Chess: UIViewController, UICollectionViewDataSource, UICollectionViewDeleg
         self.pawnPromotionStoryboard = UIStoryboard(name: "PawnPromotion", bundle: nil)
         self.pawnPromotion = pawnPromotionStoryboard!.instantiateViewController(withIdentifier: "PawnPromotion") as? PawnPromotion
         self.pawnPromotion!.setTransitioner(transitioner: transitioner!)
-        self.pawnPromotion!.setChess(chess: self)
+        //self.pawnPromotion!.setChess(chess: self)
     }
     
     public func setPlayer(player: Player) {

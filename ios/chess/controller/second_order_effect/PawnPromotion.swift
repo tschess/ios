@@ -10,6 +10,9 @@ import UIKit
 
 class PawnPromotion: UIViewController {
     
+    var chess: Tschess?
+    var coordinate: [Int]?
+    
     @IBOutlet weak var imageViewKnight: UIImageView!
     @IBOutlet weak var imageViewBishop: UIImageView!
     @IBOutlet weak var imageViewQueen: UIImageView!
@@ -27,10 +30,10 @@ class PawnPromotion: UIViewController {
         configure()
     }
     
-    var coordinate: [Int]?
     
-    var chess: Chess?
-    public func setChess(chess: Chess) {
+    
+    
+    public func setChess(chess: Tschess) {
         self.chess = chess
     }
     

@@ -60,22 +60,25 @@ class HistoricTable: UITableViewController {
         
         let formatter = DateFormatter()
         formatter.dateFormat = "dd.MM.YY"
-        let yayayaya = formatter.string(from: gameTableMenuItem.created!)
-        //cell.eloLabel.text = yayayaya
-        //cell.eloLabel.textColor = Colour().getRed()
-        //cell.eloLabel.textColor = UIColor.black
+        var yayayaya = formatter.string(from: gameTableMenuItem.created!)
+        yayayaya.insert("'", at: yayayaya.index(yayayaya.endIndex, offsetBy: -2))
+        cell.terminationDateLabel.text = yayayaya //should be terminated date, not the created date
         
         let dataDecoded: Data = Data(base64Encoded: gameTableMenuItem.getOpponentAvatar(), options: .ignoreUnknownCharacters)!
         let decodedimage = UIImage(data: dataDecoded)
         cell.avatarImageView.image = decodedimage
         
-        //cell.actionLabel.textColor = UIColor.black
-        //cell.usernameLabel.textColor = Colour().getRed()
         cell.usernameLabel.textColor = UIColor.black
+        
+        print("gameTableMenuItem.winner: \(gameTableMenuItem.winner)")
+        print("  self.player!.getName(): \(self.player!.getName())")
         
         if(gameTableMenuItem.winner == self.player!.getName()){
             
-            cell.backgroundColor = Colour().getWin()
+            print("A")
+            
+            //cell.backgroundColor = Colour().getWin()
+            cell.contentView.backgroundColor = Colour().getWin()
             if(gameMenuTableList[indexPath.row].getDrawProposer().contains("TIMEOUT")){
                // cell.actionLabel.text = "timeout"
                 gameMenuTableList[indexPath.row].setOutcome(outcome: "TIMEOUT")
@@ -85,10 +88,19 @@ class HistoricTable: UITableViewController {
             }
         }
         else if(gameTableMenuItem.winner == "DRAW"){
+            
+            print("B")
+            
             //cell.actionLabel.text = "draw"
-            cell.backgroundColor = Colour().getDraw()
+            //cell.backgroundColor = Colour().getDraw()
+            cell.contentView.backgroundColor = Colour().getDraw()
             gameMenuTableList[indexPath.row].setOutcome(outcome: "DRAW")
         } else {
+            
+            print("C")
+            
+            //cell.backgroundColor = Colour().getLoss()
+            cell.contentView.backgroundColor = Colour().getLoss()
             
             if(gameMenuTableList[indexPath.row].getDrawProposer().contains("TIMEOUT")){
                 //cell.actionLabel.text = "timeout"
@@ -97,7 +109,7 @@ class HistoricTable: UITableViewController {
                 //cell.actionLabel.text = "loss"
                 gameMenuTableList[indexPath.row].setOutcome(outcome: "LOSS")
             }
-            cell.backgroundColor = Colour().getLoss()
+            
             
         }
         
@@ -163,7 +175,7 @@ class HistoricTable: UITableViewController {
         }
     }
     
-    private func renderShrug(){
+    private func renderShrug(){  // thiis can exist in practice...
         DispatchQueue.main.async() {
         let frameSize: CGPoint = CGPoint(x: UIScreen.main.bounds.size.width*0.5, y: UIScreen.main.bounds.size.height*0.5)
         self.label = UILabel(frame: CGRect(x: UIScreen.main.bounds.size.width*0.5, y: UIScreen.main.bounds.size.height*0.5, width: UIScreen.main.bounds.width, height: 40))

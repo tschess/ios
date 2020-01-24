@@ -307,7 +307,7 @@
                                     <tabBarItem title="games" image="arrowshape.turn.up.left" catalog="system" selectedImage="arrowshape.turn.up.left.fill" id="6f1-4w-L4h">
                                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tabBarItem>
-                                    <tabBarItem tag="1" title="options" image="circle.grid.2x2" catalog="system" selectedImage="arrowshape.turn.up.left.fill" id="ZJf-6D-pXa">
+                                    <tabBarItem tag="1" title="options" image="circle.grid.2x2" catalog="system" selectedImage="circle.grid.2x2.fill" id="ZJf-6D-pXa">
                                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tabBarItem>
                                 </items>
@@ -375,5 +375,6 @@
         <image name="arrowshape.turn.up.left.fill" catalog="system" width="64" height="52"/>
         <image name="avatar_default" width="320" height="320"/>
         <image name="circle.grid.2x2" catalog="system" width="64" height="56"/>
+        <image name="circle.grid.2x2.fill" catalog="system" width="64" height="56"/>
     </resources>
 </document>

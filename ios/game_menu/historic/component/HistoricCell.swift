@@ -11,9 +11,7 @@ import UIKit
 class HistoricCell: UITableViewCell {
     
     @IBOutlet weak var avatarImageView: UIImageView!
-    //@IBOutlet weak var actionLabel: UILabel!
     @IBOutlet weak var terminationDateLabel: UILabel!
-    //@IBOutlet weak var eloLabel: UILabel!
     @IBOutlet weak var oddsLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var displacementLabel: UILabel!

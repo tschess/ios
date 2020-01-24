@@ -21,7 +21,6 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     @IBOutlet weak var eloLabel: UILabel!
     @IBOutlet weak var rankLabel: UILabel!
     @IBOutlet weak var rankLabelDate: UILabel!
-    //@IBOutlet weak var turnIndicatorImage: UIImageView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var usernameLabel: UILabel!
     
@@ -38,8 +37,6 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     @IBOutlet weak var turnaryLabel: UILabel!
     
     @IBOutlet weak var tabBarMenu: UITabBar!
-    
-    var defaultColor: UIColor?
     
     var deviceType: String?
     var player: Player?
@@ -71,7 +68,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         self.pawnPromotionStoryboard = UIStoryboard(name: "PawnPromotion", bundle: nil)
         self.pawnPromotion = pawnPromotionStoryboard!.instantiateViewController(withIdentifier: "PawnPromotion") as? PawnPromotion
         self.pawnPromotion!.setTransitioner(transitioner: transitioner!)
-        //self.pawnPromotion!.setChess(chess: self)
+        self.pawnPromotion!.setChess(chess: self)
     }
     
     public func setPlayer(player: Player) {
@@ -343,7 +340,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
             NSAttributedString.Key.foregroundColor: Colour().getRed(),
             NSAttributedString.Key.font: UIFont.systemFont(ofSize: 22, weight: UIFont.Weight.light)]
         let attributeBlack = [
-            NSAttributedString.Key.foregroundColor: self.defaultColor!,
+            NSAttributedString.Key.foregroundColor: UIColor.black,
             NSAttributedString.Key.font: UIFont.systemFont(ofSize: 22, weight: UIFont.Weight.light)]
         let label = NSMutableAttributedString(string: red, attributes: attributeRed)
         let content = NSMutableAttributedString(string: black, attributes: attributeBlack)
@@ -500,11 +497,11 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         }
         else if(drawProposer == "CASTLE"){
             self.contentViewLabel.text = "castle"
-            self.contentViewLabel.textColor = self.defaultColor
+            self.contentViewLabel.textColor = UIColor.black
             self.gamestate!.setDrawProposer(drawProposer: "NONE")
         }
         else if(drawProposer == "NONE") {
-            self.contentViewLabel.textColor = self.defaultColor
+            self.contentViewLabel.textColor = UIColor.black
             self.contentViewLabel.text = ""
         }
         /* * */
@@ -525,7 +522,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         }
         if(usernameOpponent == usernameCheck){
             self.contentViewLabel.text = "opponent in check"
-            self.contentViewLabel.textColor = self.defaultColor
+            self.contentViewLabel.textColor = UIColor.black
             return
         }
         
