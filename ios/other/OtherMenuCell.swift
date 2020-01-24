@@ -10,9 +10,14 @@ import UIKit
 
 class OtherMenuCell: UITableViewCell {
     
+    @IBOutlet weak var displacementImage: UIImageView!
     @IBOutlet weak var avatarImageView: UIImageView!
-    @IBOutlet weak var eloLabel: UILabel!
+    
+    @IBOutlet weak var displacementLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
+    
+    @IBOutlet weak var oddsLabel: UILabel!
+    @IBOutlet weak var terminalDateLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

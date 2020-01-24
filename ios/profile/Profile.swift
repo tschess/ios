@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import PushNotifications
+//import PushNotifications
 
 class Profile: UIViewController, UITabBarDelegate {
     

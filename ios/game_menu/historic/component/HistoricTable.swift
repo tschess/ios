@@ -61,7 +61,7 @@ class HistoricTable: UITableViewController {
         formatter.dateFormat = "dd.MM.YY"
         var yayayaya = formatter.string(from: gameTableMenuItem.created!)
         yayayaya.insert("'", at: yayayaya.index(yayayaya.endIndex, offsetBy: -2))
-        cell.terminationDateLabel.text = yayayaya //should be terminated date, not the created date
+        cell.terminalDateLabel.text = yayayaya //should be terminated date, not the created date
         
         let dataDecoded: Data = Data(base64Encoded: gameTableMenuItem.getOpponentAvatar(), options: .ignoreUnknownCharacters)!
         let decodedimage = UIImage(data: dataDecoded)

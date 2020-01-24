@@ -51,14 +51,8 @@
                                     <constraint firstAttribute="height" constant="50" id="CtS-Ad-lXP"/>
                                 </constraints>
                                 <items>
-                                    <tabBarItem title="" id="cNg-v3-E35">
-                                        <color key="badgeColor" red="0.86923474069999995" green="0.012778783219999999" blue="0.00083617179190000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </tabBarItem>
-                                    <tabBarItem title="play" image="gamecontroller" catalog="system" selectedImage="gamecontroller.fill" id="6f1-4w-L4h">
+                                    <tabBarItem title="let's play!" image="gamecontroller" catalog="system" selectedImage="gamecontroller.fill" id="6f1-4w-L4h">
                                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </tabBarItem>
-                                    <tabBarItem title="" id="xqj-Cj-U3q">
-                                        <color key="badgeColor" red="0.86923474069999995" green="0.012778783219999999" blue="0.00083617179190000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tabBarItem>
                                 </items>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -214,6 +208,7 @@
                                             <constraint firstAttribute="trailing" secondItem="cLt-qU-Ujd" secondAttribute="trailing" id="8To-i1-sDe"/>
                                             <constraint firstItem="mwi-KC-XMF" firstAttribute="centerX" secondItem="FXw-uz-53m" secondAttribute="centerX" id="Apl-ZQ-bn1"/>
                                             <constraint firstItem="cLt-qU-Ujd" firstAttribute="top" secondItem="xYU-1C-1h2" secondAttribute="bottom" constant="8" id="BHj-O0-uM0"/>
+                                            <constraint firstAttribute="height" constant="192" id="MLS-mq-JDT"/>
                                             <constraint firstItem="cLt-qU-Ujd" firstAttribute="leading" secondItem="FXw-uz-53m" secondAttribute="leading" id="Wnb-pl-leG"/>
                                             <constraint firstItem="mwi-KC-XMF" firstAttribute="top" secondItem="cLt-qU-Ujd" secondAttribute="bottom" constant="8" id="abv-7L-Gx0"/>
                                             <constraint firstItem="xYU-1C-1h2" firstAttribute="centerX" secondItem="FXw-uz-53m" secondAttribute="centerX" id="d7z-KI-IzN"/>
@@ -260,6 +255,7 @@
                                             <constraint firstItem="vKA-Qw-aUe" firstAttribute="top" secondItem="heW-o1-yD8" secondAttribute="top" constant="20" symbolic="YES" id="W7v-fW-Ow0"/>
                                             <constraint firstAttribute="trailing" secondItem="4ug-Aw-rl4" secondAttribute="trailing" id="jbp-lY-DRG"/>
                                             <constraint firstItem="vKA-Qw-aUe" firstAttribute="leading" secondItem="heW-o1-yD8" secondAttribute="leading" constant="8" id="q2h-Oq-JuG"/>
+                                            <constraint firstAttribute="height" constant="374" id="xic-FJ-tMt"/>
                                             <constraint firstAttribute="trailing" secondItem="vKA-Qw-aUe" secondAttribute="trailing" constant="8" id="zcG-Yb-tdD"/>
                                         </constraints>
                                     </view>
@@ -429,6 +425,7 @@
                         <outlet property="backButton" destination="5qi-EH-0fj" id="9nk-ly-Hln"/>
                         <outlet property="configCollectionView" destination="cLt-qU-Ujd" id="o5R-Vg-LOy"/>
                         <outlet property="configCollectionViewHeight" destination="CcB-qU-k3t" id="6Tg-VC-f3w"/>
+                        <outlet property="contentView" destination="9wh-i1-2Qp" id="rzq-jQ-fO5"/>
                         <outlet property="displacementImage" destination="RfY-jx-6c0" id="3bc-La-4pK"/>
                         <outlet property="displacementLabel" destination="UHg-ke-qRu" id="8Dc-2i-caN"/>
                         <outlet property="eloLabel" destination="w8I-AG-vuO" id="SNW-Pu-38v"/>
@@ -438,6 +435,8 @@
                         <outlet property="indicatorLabelS" destination="44E-pD-xnn" id="cne-Hl-3eZ"/>
                         <outlet property="rankLabel" destination="vWF-4j-zOR" id="dit-xb-1bA"/>
                         <outlet property="skinSelectionPicker" destination="vKA-Qw-aUe" id="Tto-NS-nxs"/>
+                        <outlet property="splitViewHeight0" destination="MLS-mq-JDT" id="mjw-Qb-hHC"/>
+                        <outlet property="splitViewHeight1" destination="xic-FJ-tMt" id="gUi-xI-mCD"/>
                         <outlet property="tabBarMenu" destination="lR1-2A-YPc" id="CDf-K6-4Hh"/>
                         <outlet property="usernameLabel" destination="BuK-xA-qNa" id="ePu-Je-GZh"/>
                     </connections>

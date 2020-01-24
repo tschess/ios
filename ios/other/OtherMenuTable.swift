@@ -51,8 +51,14 @@ class OtherMenuTable: UITableViewController {
         let dataDecoded: Data = Data(base64Encoded: gameTableMenuItem.getOpponentAvatar(), options: .ignoreUnknownCharacters)!
         let decodedimage = UIImage(data: dataDecoded)
         cell.avatarImageView.image = decodedimage
-        cell.eloLabel.text = gameTableMenuItem.getOpponentElo()
+        //cell.eloLabel.text = gameTableMenuItem.getOpponentElo()
         cell.usernameLabel.text = gameTableMenuItem.getOpponentName()
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd.MM.YY"
+        var yayayaya = formatter.string(from: gameTableMenuItem.created!)
+        yayayaya.insert("'", at: yayayaya.index(yayayaya.endIndex, offsetBy: -2))
+        cell.terminalDateLabel.text = yayayaya //should be terminated date, not the created date
         
         //cell.usernameLabel.alpha = 0.5
         //cell.avatarImageView.alpha = 0.5
@@ -61,10 +67,11 @@ class OtherMenuTable: UITableViewController {
         //cell.viewWithTag(1)!.alpha = 0.5
         //cell.actionLabel.textColor = UIColor.black
         cell.usernameLabel.textColor = UIColor.black
-        cell.eloLabel.textColor = UIColor.black
+        //cell.eloLabel.textColor = UIColor.black
         if(gameTableMenuItem.winner == self.gameModel!.getOpponentName()){
             
-            cell.backgroundColor = UIColor(red: 211/255.0, green: 255/255.0, blue: 211/255.0, alpha: 1)
+            cell.contentView.backgroundColor = Colour().getWin()
+            
             if(gameMenuTableList[indexPath.row].getDrawProposer().contains("TIMEOUT")){
                 //cell.actionLabel.text = "timeout"
                 gameMenuTableList[indexPath.row].setOutcome(outcome: "TIMEOUT")
@@ -75,7 +82,7 @@ class OtherMenuTable: UITableViewController {
         }
         else if(gameTableMenuItem.winner == "DRAW"){
             //cell.actionLabel.text = "draw"
-            cell.backgroundColor = UIColor(red: 255/255.0, green: 255/255.0, blue: 204/255.0, alpha: 1)
+            cell.contentView.backgroundColor = Colour().getDraw()
             gameMenuTableList[indexPath.row].setOutcome(outcome: "DRAW")
         } else {
             
@@ -86,7 +93,8 @@ class OtherMenuTable: UITableViewController {
                 //cell.actionLabel.text = "loss"
                 gameMenuTableList[indexPath.row].setOutcome(outcome: "LOSS")
             }
-            cell.backgroundColor = UIColor(red: 255/255.0, green: 211/255.0, blue: 211/255.0, alpha: 1)
+            cell.contentView.backgroundColor = Colour().getLoss()
+            
             
         }
         

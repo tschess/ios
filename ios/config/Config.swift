@@ -230,23 +230,23 @@ extension Config: UICollectionViewDataSource {
            
            if (indexPath.row % 2 == 0) {
                if (indexPath.row / 8 == 0) {
-                    //cell.backgroundColor = UIColor(red: 220/255.0, green: 0/255.0, blue: 70/255.0, alpha: 0.65)
-                    cell.backgroundColor = .black
-                    cell.alpha = 0.01
+                    cell.backgroundColor = UIColor(red: 220/255.0, green: 0/255.0, blue: 70/255.0, alpha: 0.65)
+                    //cell.backgroundColor = .black
+                    //cell.alpha = 0.01
                } else {
-                   //cell.backgroundColor = UIColor(red: 250/255.0, green: 250/255.0, blue: 250/255.0, alpha: 0.88)
-                    cell.backgroundColor = .white
-                    cell.alpha = 1
+                   cell.backgroundColor = UIColor(red: 250/255.0, green: 250/255.0, blue: 250/255.0, alpha: 0.88)
+                    //cell.backgroundColor = .white
+                    //cell.alpha = 1
                }
            } else {
                if (indexPath.row / 8 == 0) {
-                   //cell.backgroundColor = UIColor(red: 250/255.0, green: 250/255.0, blue: 250/255.0, alpha: 0.88)
-                    cell.backgroundColor = .white
-                    cell.alpha = 1
+                   cell.backgroundColor = UIColor(red: 250/255.0, green: 250/255.0, blue: 250/255.0, alpha: 0.88)
+                    //cell.backgroundColor = .white
+                    //cell.alpha = 1
                } else {
-                   //cell.backgroundColor = UIColor(red: 220/255.0, green: 0/255.0, blue: 70/255.0, alpha: 0.65)
-                    cell.backgroundColor = .black
-                    cell.alpha = 0.01
+                   cell.backgroundColor = UIColor(red: 220/255.0, green: 0/255.0, blue: 70/255.0, alpha: 0.65)
+                    //cell.backgroundColor = .black
+                    //cell.alpha = 0.01
                }
            }
            

@@ -38,7 +38,10 @@ class Ack:
     
     let reuseIdentifier = "cell"
     
+    @IBOutlet weak var contentView: UIView!
     
+    @IBOutlet weak var splitViewHeight0: NSLayoutConstraint!
+    @IBOutlet weak var splitViewHeight1: NSLayoutConstraint!
     
     var items = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16"]
     
@@ -256,6 +259,11 @@ class Ack:
         
         let elementCollectionViewGesture = UITapGestureRecognizer(target: self, action: #selector(self.renderElementCollectionView))
         self.configCollectionView.addGestureRecognizer(elementCollectionViewGesture)
+        
+        let totalContentHeight = self.contentView.frame.size.height
+        
+        self.splitViewHeight0.constant = totalContentHeight/2
+        self.splitViewHeight1.constant = totalContentHeight/2
     }
     
     @objc func renderElementCollectionView() {
