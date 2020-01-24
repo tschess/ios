@@ -164,20 +164,21 @@ class HistoricTable: UITableViewController {
     }
     
     private func renderShrug(){
-//        let frameSize: CGPoint = CGPoint(x: UIScreen.main.bounds.size.width*0.5, y: UIScreen.main.bounds.size.height*0.5)
-//        self.label = UILabel(frame: CGRect(x: UIScreen.main.bounds.size.width*0.5, y: UIScreen.main.bounds.size.height*0.5, width: UIScreen.main.bounds.width, height: 40))
-//        self.label!.center = frameSize
-//        self.label!.textAlignment = .center
-//        self.label!.font = UIFont.systemFont(ofSize: 30, weight: UIFont.Weight.light)
-//        self.label!.translatesAutoresizingMaskIntoConstraints = false
-//        let horizontalConstraint = NSLayoutConstraint(item: self.label!, attribute: NSLayoutConstraint.Attribute.centerX, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.view, attribute: NSLayoutConstraint.Attribute.centerX, multiplier: 1, constant: 0)
-//        let verticalConstraint = NSLayoutConstraint(item: self.label!, attribute: NSLayoutConstraint.Attribute.centerY, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.view, attribute: NSLayoutConstraint.Attribute.centerY, multiplier: 1, constant: 0)
-//        DispatchQueue.main.async() {
-//            self.activityIndicator!.stopAnimating()
-//            self.label!.text = "¯\\_( ͡° ͜ʖ ͡°)_/¯"
-//            self.view.addSubview(self.label!)
-//            self.view.addConstraints([horizontalConstraint, verticalConstraint])
-//        }
+        DispatchQueue.main.async() {
+        let frameSize: CGPoint = CGPoint(x: UIScreen.main.bounds.size.width*0.5, y: UIScreen.main.bounds.size.height*0.5)
+        self.label = UILabel(frame: CGRect(x: UIScreen.main.bounds.size.width*0.5, y: UIScreen.main.bounds.size.height*0.5, width: UIScreen.main.bounds.width, height: 40))
+        self.label!.center = frameSize
+        self.label!.textAlignment = .center
+        self.label!.font = UIFont.systemFont(ofSize: 30, weight: UIFont.Weight.light)
+        self.label!.translatesAutoresizingMaskIntoConstraints = false
+        let horizontalConstraint = NSLayoutConstraint(item: self.label!, attribute: NSLayoutConstraint.Attribute.centerX, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.view, attribute: NSLayoutConstraint.Attribute.centerX, multiplier: 1, constant: 0)
+        let verticalConstraint = NSLayoutConstraint(item: self.label!, attribute: NSLayoutConstraint.Attribute.centerY, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.view, attribute: NSLayoutConstraint.Attribute.centerY, multiplier: 1, constant: 0)
+        
+            //self.activityIndicator!.stopAnimating()
+            self.label!.text = "¯\\_( ͡° ͜ʖ ͡°)_/¯"
+            self.view.addSubview(self.label!)
+            self.view.addConstraints([horizontalConstraint, verticalConstraint])
+        }
     }
     
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {

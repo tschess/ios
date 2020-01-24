@@ -52,48 +52,84 @@ class ActualTable: UITableViewController, SwipeTableViewCellDelegate {
         return gameMenuTableList.count
     }
     
+    //    func tableView(_ tableView: UITableView, editActionsOptionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> SwipeOptions {
+    //        var options = SwipeOptions()
+    //        return options
+    //    }
+    
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
-                
-        guard orientation == .right else {
+        
+        print("orientation: \(orientation)")
+        let actualMenuItem = gameMenuTableList[indexPath.row]
+        
+        if(actualMenuItem.getGameStatus() == "ONGOING"){
             
-            let deleteAction = SwipeAction(style: .default, title: "nACK") { action, indexPath in
-                print("OK, marked as Closed")
-                
+            let gameModel = gameMenuTableList[indexPath.row]
+            
+            let tschessElementMatrix = [[TschessElement?]](repeating: [TschessElement?](repeating: nil, count: 8), count: 8)
+            let gamestate = Gamestate(
+                gameModel: gameModel,
+                tschessElementMatrix: tschessElementMatrix
+            )
+            gamestate.setPlayer(player: self.player!)
+            PollingAgent().execute(id: gameModel.getIdentifier(), gamestate: gamestate) { (result, error) in
+                if(error != nil || result == nil){
+                    return
+                }
+                StoryboardSelector().chess(gameModel: gameModel, player: gamestate.getPlayer(), gamestate: result!)
+            }
+            return nil
+        }
+        
+        if(!actualMenuItem.inbound!){
+            
+            guard orientation == .right else { return nil}
+            
+            let rescind = SwipeAction(style: .default, title: "RESCIND") { action, indexPath in
+                print("RESCIND")
+                //TODO: delete from server...
                 self.gameMenuTableList.remove(at: indexPath.row)
                 self.tableView!.reloadData()
             }
-            deleteAction.backgroundColor = .red
+            rescind.backgroundColor = .orange
             if #available(iOS 13.0, *) {
-                deleteAction.image = UIImage(systemName: "hand.thumbsdown.fill")!
+                rescind.image = UIImage(systemName: "xmark.rectangle.fill")!
             }
-            return [deleteAction]
+            return [rescind]
         }
-        let deleteAction = SwipeAction(style: .default, title: "ACK") { action, indexPath in
-            print("4 - 4 - 4")
+        guard orientation == .right else {
+            let nAction = SwipeAction(style: .default, title: "nACK") { action, indexPath in
+                print("nACK")
+                //TODO: delete from server...
+                self.gameMenuTableList.remove(at: indexPath.row)
+                self.tableView!.reloadData()
+            }
+            nAction.backgroundColor = .red
+            if #available(iOS 13.0, *) {
+                nAction.image = UIImage(systemName: "hand.thumbsdown.fill")!
+            }
+            return [nAction]
+        }
+        let ackAction = SwipeAction(style: .default, title: "ACK") { action, indexPath in
+            print("ACK")
             let storyboard: UIStoryboard = UIStoryboard(name: "Ack", bundle: nil)
             let viewController = storyboard.instantiateViewController(withIdentifier: "Ack") as! Ack
             viewController.setPlayer(player: self.player!)
             
             let gameModel = Game(opponent: self.player!)
-            //let gameModel = self.gameMenuTableList[indexPath.row]
-            
             viewController.setGameModel(gameModel: gameModel)
-            //viewController.setTitleText(titleText: "select config")
             UIApplication.shared.keyWindow?.rootViewController = viewController
-            
         }
-        deleteAction.backgroundColor = .green
+        ackAction.backgroundColor = .green
         if #available(iOS 13.0, *) {
-            deleteAction.image = UIImage(systemName: "hand.thumbsup.fill")!
+            ackAction.image = UIImage(systemName: "hand.thumbsup.fill")!
         }
-        return [deleteAction]
+        return [ackAction]
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ActualCell", for: indexPath) as! ActualCell
-        
-        
         
         cell.delegate = self
         
@@ -113,7 +149,8 @@ class ActualTable: UITableViewController, SwipeTableViewCellDelegate {
                 if #available(iOS 13.0, *) {
                     let image = UIImage(systemName: "gamecontroller.fill")!
                     cell.actionImageView.image = image.withRenderingMode(.alwaysTemplate)
-                    cell.actionImageView.tintColor = .magenta //Colour().getRed()
+                    //cell.actionImageView.tintColor = .magenta //Colour().getRed()
+                    cell.actionImageView.tintColor = .black
                 }
                 return cell
             }
@@ -128,7 +165,8 @@ class ActualTable: UITableViewController, SwipeTableViewCellDelegate {
         if(gameTableMenuItem.inbound!){
             if #available(iOS 13.0, *) {
                 //print("aHaHaHa")
-                cell.actionImageView.tintColor = Colour().getRed()
+                //cell.actionImageView.tintColor = Colour().getRed()
+                cell.actionImageView.tintColor = .black
                 let image = UIImage(systemName: "tray.and.arrow.down")!
                 cell.actionImageView.image = image.withRenderingMode(.alwaysTemplate)
             }
@@ -152,10 +190,10 @@ class ActualTable: UITableViewController, SwipeTableViewCellDelegate {
         
         //discoverSelectionDictionary["action"] = cell.actionLabel!.text!
         
-//        NotificationCenter.default.post(
-//            name: NSNotification.Name(rawValue: "ActualSelection"),
-//            object: nil,
-//            userInfo: discoverSelectionDictionary)
+        //        NotificationCenter.default.post(
+        //            name: NSNotification.Name(rawValue: "ActualSelection"),
+        //            object: nil,
+        //            userInfo: discoverSelectionDictionary)
     }
     
     override open func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -203,22 +241,23 @@ class ActualTable: UITableViewController, SwipeTableViewCellDelegate {
         }
     }
     
+    // beecause of quick play yoou'll never see this...
     private func renderShrug(){
-        //        DispatchQueue.main.async() {
-        //            self.activityIndicator!.stopAnimating()
-        //            self.activityIndicator!.isHidden = true
-        //            let frameSize: CGPoint = CGPoint(x: UIScreen.main.bounds.size.width*0.5, y: UIScreen.main.bounds.size.height*0.5)
-        //            self.label = UILabel(frame: CGRect(x: UIScreen.main.bounds.size.width*0.5, y: UIScreen.main.bounds.size.height*0.5, width: UIScreen.main.bounds.width, height: 40))
-        //            self.label!.center = frameSize
-        //            self.label!.textAlignment = .center
-        //            self.label!.font = UIFont.systemFont(ofSize: 30, weight: UIFont.Weight.light)
-        //            self.label!.translatesAutoresizingMaskIntoConstraints = false
-        //            let horizontalConstraint = NSLayoutConstraint(item: self.label!, attribute: NSLayoutConstraint.Attribute.centerX, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.view, attribute: NSLayoutConstraint.Attribute.centerX, multiplier: 1, constant: 0)
-        //            let verticalConstraint = NSLayoutConstraint(item: self.label!, attribute: NSLayoutConstraint.Attribute.centerY, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.view, attribute: NSLayoutConstraint.Attribute.centerY, multiplier: 1, constant: 0)
-        //            self.label!.text = "¯\\_( ͡° ͜ʖ ͡°)_/¯"
-        //            self.view.addSubview(self.label!)
-        //            self.view.addConstraints([horizontalConstraint, verticalConstraint])
-        //        }
+        DispatchQueue.main.async() {
+            //self.activityIndicator!.stopAnimating()
+            //self.activityIndicator!.isHidden = true
+            let frameSize: CGPoint = CGPoint(x: UIScreen.main.bounds.size.width*0.5, y: UIScreen.main.bounds.size.height*0.5)
+            self.label = UILabel(frame: CGRect(x: UIScreen.main.bounds.size.width*0.5, y: UIScreen.main.bounds.size.height*0.5, width: UIScreen.main.bounds.width, height: 40))
+            self.label!.center = frameSize
+            self.label!.textAlignment = .center
+            self.label!.font = UIFont.systemFont(ofSize: 30, weight: UIFont.Weight.light)
+            self.label!.translatesAutoresizingMaskIntoConstraints = false
+            let horizontalConstraint = NSLayoutConstraint(item: self.label!, attribute: NSLayoutConstraint.Attribute.centerX, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.view, attribute: NSLayoutConstraint.Attribute.centerX, multiplier: 1, constant: 0)
+            let verticalConstraint = NSLayoutConstraint(item: self.label!, attribute: NSLayoutConstraint.Attribute.centerY, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.view, attribute: NSLayoutConstraint.Attribute.centerY, multiplier: 1, constant: 0)
+            self.label!.text = "¯\\_( ͡° ͜ʖ ͡°)_/¯"
+            self.view.addSubview(self.label!)
+            self.view.addConstraints([horizontalConstraint, verticalConstraint])
+        }
     }
     
     
@@ -264,7 +303,7 @@ class ActualTable: UITableViewController, SwipeTableViewCellDelegate {
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let gameTableMenuItem = gameMenuTableList[indexPath.row]
         if(!gameTableMenuItem.inbound!){
-           return nil
+            return nil
         }
         let modifyAction = UIContextualAction(style: .normal, title:  "ACK", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
             print("Update action ...")

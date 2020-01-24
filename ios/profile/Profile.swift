@@ -13,10 +13,26 @@ class Profile: UIViewController, UITabBarDelegate {
     
     @IBOutlet weak var backButton: UIButton!
     
-    @IBOutlet weak var usernameLabel: UILabel!
+
+    
+    
+    @IBOutlet weak var displacementImage: UIImageView!
+    //    @IBOutlet weak var displacementImage: UIImageView!
+    @IBOutlet weak var displacementLabel: UILabel!
+    //    @IBOutlet weak var displacementLabel: UILabel!
+//    @IBOutlet weak var eloLabel: UILabel!
+    @IBOutlet weak var eloLabel: UILabel!
+    //    @IBOutlet weak var rankLabel: UILabel!
     @IBOutlet weak var rankLabel: UILabel!
-    @IBOutlet weak var tschxLabel: UILabel!
+    //    @IBOutlet weak var usernameLabel: UILabel!
+    @IBOutlet weak var usernameLabel: UILabel!
+    //    @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var avatarImageView: UIImageView!
+    //    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
+    
+    
     
     @IBOutlet weak var tabBarMenu: UITabBar!
     
@@ -35,7 +51,7 @@ class Profile: UIViewController, UITabBarDelegate {
         self.avatarImageView.image = decodedimage
         
         self.rankLabel.text = self.player!.getRank()
-        self.tschxLabel.text = "₮\(self.player!.getTschx())"
+        //self.tschxLabel.text = "₮\(self.player!.getTschx())"
         self.usernameLabel.text = self.player!.getName()
         
         NotificationCenter.default.addObserver(

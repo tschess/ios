@@ -11,8 +11,9 @@ import Foundation
 class ServerAddress {
     
     //let IP: String = "18.189.244.179" //savannah
-    let IP: String = "3.133.3.150" //tupelo
     //let IP: String = "3.13.168.230" //heraklion
+    //let IP: String = "3.133.3.150" //tupelo
+    let IP: String = "3.12.121.89" //galena
     
 }
 

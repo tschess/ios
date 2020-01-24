@@ -141,12 +141,21 @@ class HomeMenuTable: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let leaderboardItem = leaderboardTableList[indexPath.row]
+//        let leaderboardItem = leaderboardTableList[indexPath.row]
 //        if(!gameTableMenuItem.inbound!){
 //           return nil
 //        }
         let modifyAction = UIContextualAction(style: .normal, title:  "CHALLENGE", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
             print("Update action ...")
+            
+            //let gameModel = Game(opponent: self.player!)
+            let gameModel = self.leaderboardTableList[indexPath.row]
+            
+            let storyboard: UIStoryboard = UIStoryboard(name: "Challenge", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier: "Challenge") as! Challenge
+            viewController.setPlayer(player: self.player!)
+            viewController.setGameModel(gameModel: gameModel)
+            UIApplication.shared.keyWindow?.rootViewController = viewController
             success(true)
         })
         if #available(iOS 13.0, *) { //xmark
