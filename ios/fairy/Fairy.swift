@@ -12,13 +12,22 @@ class Fairy: UIViewController, UITabBarDelegate {
     
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var tabBarMenu: UITabBar!
-//    @IBOutlet weak var avatarImageView: UIImageView!
-    @IBOutlet weak var avatarImageView: UIImageView!
-    //    @IBOutlet weak var rankLabel: UILabel!
+
+    
+    @IBOutlet weak var displacementImage: UIImageView!
+    //    @IBOutlet weak var displacementImage: UIImageView!
+    @IBOutlet weak var displacementLabel: UILabel!
+    //    @IBOutlet weak var displacementLabel: UILabel!
+    @IBOutlet weak var eloLabel: UILabel!
+    //    @IBOutlet weak var eloLabel: UILabel!
     @IBOutlet weak var rankLabel: UILabel!
-    //    @IBOutlet weak var tschxLabel: UILabel!
+    //    @IBOutlet weak var rankLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
     //    @IBOutlet weak var usernameLabel: UILabel!
+    @IBOutlet weak var avatarImageView: UIImageView!
+    //    @IBOutlet weak var avatarImageView: UIImageView!
+    @IBOutlet weak var activityIndicatorLabel: UIActivityIndicatorView!
+    //    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     var player: Player?
     
@@ -35,6 +44,8 @@ class Fairy: UIViewController, UITabBarDelegate {
         self.rankLabel.text = self.player!.getRank()
         //self.tschxLabel.text = "₮\(self.player!.getTschx())"
         self.usernameLabel.text = self.player!.getName()
+        
+        self.activityIndicatorLabel.isHidden = true
     }
     
     var squadUpAdapter: FairyTableMenu?
