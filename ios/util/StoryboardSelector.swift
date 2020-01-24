@@ -67,16 +67,16 @@ class StoryboardSelector {
                 UIApplication.shared.keyWindow?.rootViewController = viewController
                 return
             case "PHAEDRUS":
-                let storyboard: UIStoryboard = UIStoryboard(name: "ChessPhaedrus", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "ChessPhaedrus") as! Chess
+                let storyboard: UIStoryboard = UIStoryboard(name: "Tschess", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "Tschess") as! Tschess
                 viewController.setGamestate(gamestate: gamestate)
                 viewController.setGameModel(gameModel: gamestate.getGameModel())
                 viewController.setPlayer(player: gamestate.getPlayer())
                 UIApplication.shared.keyWindow?.rootViewController = viewController
                 return
             case "CALHOUN":
-                let storyboard: UIStoryboard = UIStoryboard(name: "ChessCalhoun", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "ChessCalhoun") as! Chess
+                let storyboard: UIStoryboard = UIStoryboard(name: "Tschess", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "Tschess") as! Tschess
                 viewController.setGamestate(gamestate: gamestate)
                 viewController.setGameModel(gameModel: gamestate.getGameModel())
                 viewController.setPlayer(player: gamestate.getPlayer())
