@@ -6,7 +6,7 @@
 //  Copyright © 2019 bahlsenwitz. All rights reserved.
 //
 import UIKit
-import PushNotifications
+//import PushNotifications
 
 class Start: UIViewController, UITextFieldDelegate {
     
@@ -222,8 +222,8 @@ class Start: UIViewController, UITextFieldDelegate {
                 }
             }
             else if let result = result {
-                try? PushNotifications.shared.clearDeviceInterests()
-                try? PushNotifications.shared.addDeviceInterest(interest: result.getId())
+                //try? PushNotifications.shared.clearDeviceInterests()
+                //try? PushNotifications.shared.addDeviceInterest(interest: result.getId())
                 StoryboardSelector().home(player: result)
             }
         }
@@ -359,8 +359,8 @@ class Start: UIViewController, UITextFieldDelegate {
                 }
             }
             else if let result = result {
-                try? PushNotifications.shared.clearDeviceInterests()
-                try? PushNotifications.shared.addDeviceInterest(interest: result.getId())
+                //try? PushNotifications.shared.clearDeviceInterests()
+                //try? PushNotifications.shared.addDeviceInterest(interest: result.getId())
                 StoryboardSelector().home(player: result)
             }
         }

@@ -148,8 +148,8 @@ class StoryboardSelector {
                 UIApplication.shared.keyWindow?.rootViewController = homeViewController
                 return
             case "PHAEDRUS":
-                let homeStoryboard: UIStoryboard = UIStoryboard(name: "HomePhaedrus", bundle: nil)
-                let homeViewController = homeStoryboard.instantiateViewController(withIdentifier: "HomePhaedrus") as! xConfig
+                let homeStoryboard: UIStoryboard = UIStoryboard(name: "Home", bundle: nil)
+                let homeViewController = homeStoryboard.instantiateViewController(withIdentifier: "Home") as! Home
                 homeViewController.setPlayer(player: player)
                 UIApplication.shared.keyWindow?.rootViewController = homeViewController
                 return
@@ -288,6 +288,13 @@ class StoryboardSelector {
     public func other(player: Player, gameModel: Game) {
         DispatchQueue.main.async {
             switch self.device() {
+            case "PHAEDRUS":
+                let storyboard: UIStoryboard = UIStoryboard(name: "Other", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "Other") as! Other
+                viewController.setPlayer(player: player)
+                viewController.setGameModel(gameModel: gameModel)
+                UIApplication.shared.keyWindow?.rootViewController = viewController
+                return
             case "CALHOUN":
                 let storyboard: UIStoryboard = UIStoryboard(name: "Other", bundle: nil)
                 let viewController = storyboard.instantiateViewController(withIdentifier: "Other") as! Other
@@ -587,8 +594,8 @@ class StoryboardSelector {
                 UIApplication.shared.keyWindow?.rootViewController = viewController
                 return
             case "PHAEDRUS":
-                let storyboard: UIStoryboard = UIStoryboard(name: "ActualPhaedrus", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "ActualPhaedrus") as! Actual
+                let storyboard: UIStoryboard = UIStoryboard(name: "ActualCalhoun", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "ActualCalhoun") as! Actual
                 viewController.setPlayer(player: player)
                 UIApplication.shared.keyWindow?.rootViewController = viewController
                 return
@@ -626,8 +633,8 @@ class StoryboardSelector {
                 UIApplication.shared.keyWindow?.rootViewController = viewController
                 return
             case "PHAEDRUS":
-                let storyboard: UIStoryboard = UIStoryboard(name: "HistoricPhaedrus", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "HistoricPhaedrus") as! Historic
+                let storyboard: UIStoryboard = UIStoryboard(name: "HistoricCalhoun", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "HistoricCalhoun") as! Historic
                 viewController.setPlayer(player: player)
                 UIApplication.shared.keyWindow?.rootViewController = viewController
                 return

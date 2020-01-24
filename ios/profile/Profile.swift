@@ -72,7 +72,7 @@ class Profile: UIViewController, UITabBarDelegate {
         let device = UIDevice.current.identifierForVendor!.uuidString
         ClearDevice().execute(device: device) { (result) in
             //print("result: \(String(describing: result))")
-            try? PushNotifications.shared.clearDeviceInterests()
+            //try? PushNotifications.shared.clearDeviceInterests()
             //exit(0)
             StoryboardSelector().start()
         }

@@ -43,6 +43,7 @@ class Other: UIViewController, UITabBarDelegate {
         super.viewDidLoad()
         self.otherMenuTable = children.first as? OtherMenuTable
         self.otherMenuTable!.setGameModel(gameModel: self.gameModel!)
+        self.otherMenuTable!.setPlayer(player: self.player!)
         self.otherMenuTable!.fetchMenuTableList()
         
         tabBarMenu.delegate = self

@@ -163,6 +163,13 @@ class OtherMenuTable: UITableViewController {
     //        }
             let modifyAction = UIContextualAction(style: .normal, title:  "CHALLENGE", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
                 print("Update action ...")
+                let gameModel = self.gameMenuTableList[indexPath.row]
+                
+                let storyboard: UIStoryboard = UIStoryboard(name: "Challenge", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "Challenge") as! Challenge
+                viewController.setPlayer(player: self.player!)
+                viewController.setGameModel(gameModel: gameModel)
+                UIApplication.shared.keyWindow?.rootViewController = viewController
                 success(true)
             })
             if #available(iOS 13.0, *) { //xmark
@@ -171,4 +178,11 @@ class OtherMenuTable: UITableViewController {
             modifyAction.backgroundColor = .purple
             return UISwipeActionsConfiguration(actions: [modifyAction])
         }
+    
+    var player: Player?
+ 
+    
+    public func setPlayer(player: Player){
+        self.player = player
+    }
 }

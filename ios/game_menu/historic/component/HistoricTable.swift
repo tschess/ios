@@ -52,7 +52,6 @@ class HistoricTable: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "HistoricCell", for: indexPath) as! HistoricCell
         
         let gameTableMenuItem = gameMenuTableList[indexPath.row]
@@ -70,50 +69,27 @@ class HistoricTable: UITableViewController {
         
         cell.usernameLabel.textColor = UIColor.black
         
-        print("gameTableMenuItem.winner: \(gameTableMenuItem.winner)")
-        print("  self.player!.getName(): \(self.player!.getName())")
-        
         if(gameTableMenuItem.winner == self.player!.getName()){
             
-            print("A")
-            
-            //cell.backgroundColor = Colour().getWin()
             cell.contentView.backgroundColor = Colour().getWin()
             if(gameMenuTableList[indexPath.row].getDrawProposer().contains("TIMEOUT")){
-               // cell.actionLabel.text = "timeout"
                 gameMenuTableList[indexPath.row].setOutcome(outcome: "TIMEOUT")
             } else {
-                //cell.actionLabel.text = "win"
                 gameMenuTableList[indexPath.row].setOutcome(outcome: "WIN")
             }
         }
         else if(gameTableMenuItem.winner == "DRAW"){
-            
-            print("B")
-            
-            //cell.actionLabel.text = "draw"
-            //cell.backgroundColor = Colour().getDraw()
             cell.contentView.backgroundColor = Colour().getDraw()
             gameMenuTableList[indexPath.row].setOutcome(outcome: "DRAW")
         } else {
-            
-            print("C")
-            
-            //cell.backgroundColor = Colour().getLoss()
             cell.contentView.backgroundColor = Colour().getLoss()
             
             if(gameMenuTableList[indexPath.row].getDrawProposer().contains("TIMEOUT")){
-                //cell.actionLabel.text = "timeout"
                 gameMenuTableList[indexPath.row].setOutcome(outcome: "TIMEOUT")
             } else {
-                //cell.actionLabel.text = "loss"
                 gameMenuTableList[indexPath.row].setOutcome(outcome: "LOSS")
             }
-            
-            
         }
-        
-        
         return cell
     }
     
@@ -200,6 +176,13 @@ class HistoricTable: UITableViewController {
 //        }
         let modifyAction = UIContextualAction(style: .normal, title:  "REMATCH", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
             print("Update action ...")
+            let gameModel = self.gameMenuTableList[indexPath.row]
+            
+            let storyboard: UIStoryboard = UIStoryboard(name: "Challenge", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier: "Challenge") as! Challenge
+            viewController.setPlayer(player: self.player!)
+            viewController.setGameModel(gameModel: gameModel)
+            UIApplication.shared.keyWindow?.rootViewController = viewController
             success(true)
         })
         if #available(iOS 13.0, *) { //xmark

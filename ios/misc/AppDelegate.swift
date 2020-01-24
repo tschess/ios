@@ -8,27 +8,27 @@
 
 import UIKit
 import UserNotifications // <-- is this actually necessary?
-import PushNotifications // NEED TO REVISIIT THESE PUSH NOTIFICATIONS!
+//import PushNotifications // NEED TO REVISIIT THESE PUSH NOTIFICATIONS!
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
-    let pushNotifications = PushNotifications.shared
+    //let pushNotifications = PushNotifications.shared
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        self.pushNotifications.start(instanceId: "33e7c056-ccd1-4bd1-ad69-0e2f0af28a69")
-        self.pushNotifications.registerForRemoteNotifications()
+        //self.pushNotifications.start(instanceId: "33e7c056-ccd1-4bd1-ad69-0e2f0af28a69")
+        //self.pushNotifications.registerForRemoteNotifications()
         self.configureGlobalUI()
         return true
     }
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        self.pushNotifications.registerDeviceToken(deviceToken)
+        //self.pushNotifications.registerDeviceToken(deviceToken)
     }
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        self.pushNotifications.handleNotification(userInfo: userInfo)
+        //self.pushNotifications.handleNotification(userInfo: userInfo)
     }
     
     func applicationWillResignActive(_ application: UIApplication) {
