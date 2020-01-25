@@ -114,12 +114,16 @@ class EditOpponent: UIViewController, UITabBarDelegate, UIGestureRecognizerDeleg
     }
     
     @IBAction func backButtonClick(_ sender: Any) {
+        
+        //print("self.titleText: \(self.titleText)")
+        
         if(self.titleText == "new challenge"){
             let storyboard: UIStoryboard = UIStoryboard(name: "Challenge", bundle: nil)
             let viewController = storyboard.instantiateViewController(withIdentifier: "Challenge") as! Challenge
             viewController.setPlayer(player: self.player!)
             viewController.setGameModel(gameModel: self.gameModel!)
             UIApplication.shared.keyWindow?.rootViewController = viewController
+            return
         }
         if(self.titleText == "quick play"){
             let storyboard: UIStoryboard = UIStoryboard(name: "Quick", bundle: nil)
@@ -128,8 +132,9 @@ class EditOpponent: UIViewController, UITabBarDelegate, UIGestureRecognizerDeleg
             let opponent = self.gameModel!.getOpponent()
             viewController.setOpponent(opponent: opponent)
             UIApplication.shared.keyWindow?.rootViewController = viewController
+            return
         }
-        if(self.titleText == "let's play!"){
+        if(self.titleText!.contains("play!")){
             let storyboard: UIStoryboard = UIStoryboard(name: "Ack", bundle: nil)
             let viewController = storyboard.instantiateViewController(withIdentifier: "Ack") as! Ack
             viewController.setPlayer(player: self.player!)
@@ -138,6 +143,7 @@ class EditOpponent: UIViewController, UITabBarDelegate, UIGestureRecognizerDeleg
             let gameModel = Game(opponent: opponent)     // <-- REDUNDANT
             viewController.setGameModel(gameModel: gameModel)
             UIApplication.shared.keyWindow?.rootViewController = viewController
+            return
         }
         //if(self.titleText!.text.contains("config")){
         let storyboard: UIStoryboard = UIStoryboard(name: "Config", bundle: nil)
@@ -661,21 +667,73 @@ extension EditOpponent: UICollectionViewDelegate {
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         switch item.tag {
         case 1:
-            let storyboard: UIStoryboard = UIStoryboard(name: "Ack", bundle: nil)
-            let viewController = storyboard.instantiateViewController(withIdentifier: "Ack") as! Ack
+            if(self.titleText == "new challenge"){
+                let storyboard: UIStoryboard = UIStoryboard(name: "Challenge", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "Challenge") as! Challenge
+                viewController.setPlayer(player: self.player!)
+                viewController.setGameModel(gameModel: self.gameModel!)
+                UIApplication.shared.keyWindow?.rootViewController = viewController
+                return
+            }
+            if(self.titleText == "quick play"){
+                let storyboard: UIStoryboard = UIStoryboard(name: "Quick", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "Quick") as! Quick
+                viewController.setPlayer(player: self.player!)
+                let opponent = self.gameModel!.getOpponent()
+                viewController.setOpponent(opponent: opponent)
+                UIApplication.shared.keyWindow?.rootViewController = viewController
+                return
+            }
+            if(self.titleText!.contains("play!")){
+                let storyboard: UIStoryboard = UIStoryboard(name: "Ack", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "Ack") as! Ack
+                viewController.setPlayer(player: self.player!)
+                let opponent = self.gameModel!.getOpponent()
+                viewController.setOpponent(opponent: opponent) // <-- REDUNDANT
+                let gameModel = Game(opponent: opponent)     // <-- REDUNDANT
+                viewController.setGameModel(gameModel: gameModel)
+                UIApplication.shared.keyWindow?.rootViewController = viewController
+                return
+            }
+            //if(self.titleText!.text.contains("config")){
+            let storyboard: UIStoryboard = UIStoryboard(name: "Config", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier: "Config") as! Config
             viewController.setPlayer(player: self.player!)
-            let opponent = self.gameModel!.getOpponent()    // <-- REDUNDANT
-            viewController.setOpponent(opponent: opponent)      // <-- REDUNDANT
-            viewController.setGameModel(gameModel: self.gameModel!)  // <-- REDUNDANT
             UIApplication.shared.keyWindow?.rootViewController = viewController
             return
         default:
-            let storyboard: UIStoryboard = UIStoryboard(name: "Ack", bundle: nil)
-            let viewController = storyboard.instantiateViewController(withIdentifier: "Ack") as! Ack
+            if(self.titleText == "new challenge"){
+                let storyboard: UIStoryboard = UIStoryboard(name: "Challenge", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "Challenge") as! Challenge
+                viewController.setPlayer(player: self.player!)
+                viewController.setGameModel(gameModel: self.gameModel!)
+                UIApplication.shared.keyWindow?.rootViewController = viewController
+                return
+            }
+            if(self.titleText == "quick play"){
+                let storyboard: UIStoryboard = UIStoryboard(name: "Quick", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "Quick") as! Quick
+                viewController.setPlayer(player: self.player!)
+                let opponent = self.gameModel!.getOpponent()
+                viewController.setOpponent(opponent: opponent)
+                UIApplication.shared.keyWindow?.rootViewController = viewController
+                return
+            }
+            if(self.titleText!.contains("play!")){
+                let storyboard: UIStoryboard = UIStoryboard(name: "Ack", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "Ack") as! Ack
+                viewController.setPlayer(player: self.player!)
+                let opponent = self.gameModel!.getOpponent()
+                viewController.setOpponent(opponent: opponent) // <-- REDUNDANT
+                let gameModel = Game(opponent: opponent)     // <-- REDUNDANT
+                viewController.setGameModel(gameModel: gameModel)
+                UIApplication.shared.keyWindow?.rootViewController = viewController
+                return
+            }
+            //if(self.titleText!.text.contains("config")){
+            let storyboard: UIStoryboard = UIStoryboard(name: "Config", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier: "Config") as! Config
             viewController.setPlayer(player: self.player!)
-            let opponent = self.gameModel!.getOpponent()    // <-- REDUNDANT
-            viewController.setOpponent(opponent: opponent)      // <-- REDUNDANT
-            viewController.setGameModel(gameModel: self.gameModel!)  // <-- REDUNDANT
             UIApplication.shared.keyWindow?.rootViewController = viewController
         }
     }

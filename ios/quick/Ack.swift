@@ -293,7 +293,7 @@ UIGestureRecognizerDelegate {
         viewController.setPlayer(player: self.player!)
         let gameModel: Game = Game(opponent: self.opponent!)
         viewController.setGameModel(gameModel: gameModel)
-        viewController.setTitleText(titleText: "let's play")
+        viewController.setTitleText(titleText: "let's play!")
         UIApplication.shared.keyWindow?.rootViewController = viewController
     }
     
