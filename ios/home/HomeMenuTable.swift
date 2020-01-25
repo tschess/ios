@@ -20,11 +20,8 @@ class HomeMenuTable: UITableViewController {
         self.fetchGameList(page: pageFromWhichContentLoads)
     }
     
-    var searchHeaderAlignmentConstraint: NSLayoutConstraint?
-    
-    func setSearchHeaderAlignmentConstraint(searchHeaderAlignmentConstraint: NSLayoutConstraint){
-        self.searchHeaderAlignmentConstraint = searchHeaderAlignmentConstraint
-    }
+ 
+   
     
 //    var lastY: CGFloat?
 //

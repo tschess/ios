@@ -8,27 +8,23 @@
 
 import UIKit
 
-class Home: UIViewController, UISearchBarDelegate, UISearchResultsUpdating, UITabBarDelegate, UITextFieldDelegate {
+class Home: UIViewController, UITabBarDelegate {
     
     @IBOutlet weak var headerView: UIView!
-    
-    @IBOutlet weak var searchTextField: UITextField!
-    @IBOutlet weak var searchPlaceholderLabel: UILabel!
-    @IBOutlet weak var searchHeaderAlignmentConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var tabBarMenu: UITabBar!
     
     var leaderboardTableView: HomeMenuTable?
     
-    var tap: UITapGestureRecognizer?
+    //var tap: UITapGestureRecognizer?
     
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var rankLabel: UILabel!
     @IBOutlet weak var tschxLabel: UILabel!
     
-    var searchTargetUser: String?
+
     var player: Player?
     
     func setPlayer(player: Player){
@@ -44,14 +40,18 @@ class Home: UIViewController, UISearchBarDelegate, UISearchResultsUpdating, UITa
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        
+        
         self.activateProfileGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.activateProfile))
         self.headerView.addGestureRecognizer(self.activateProfileGestureRecognizer!)
+        
+        
+        
         
         let dataDecoded: Data = Data(base64Encoded: self.player!.getAvatar(), options: .ignoreUnknownCharacters)!
         let decodedimage = UIImage(data: dataDecoded)
         self.avatarImageView.image = decodedimage
         self.rankLabel.text = self.player!.getRank()
-        //self.tschxLabel.text = "₮\(self.player!.getTschx())"
         self.usernameLabel.text = self.player!.getName()
         
         NotificationCenter.default.addObserver(
@@ -63,29 +63,12 @@ class Home: UIViewController, UISearchBarDelegate, UISearchResultsUpdating, UITa
         //self.activityIndicator.startAnimating()
         self.activityIndicator.isHidden = true
         
-        self.searchTextField.delegate = self
+      
     }
     
-    //MARK: UITextFieldDelegate
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        searchTextField.resignFirstResponder()
-        return true
-    }
+ 
     
-    @objc func dismissKeyboard() {
-        view.endEditing(true)
-    }
-    
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        view.addGestureRecognizer(self.dismissKeyboardGesture!)
-        self.searchPlaceholderLabel.isHidden = true
-    }
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        self.dismissKeyboard()
-        searchPlaceholderLabel.resignFirstResponder()
-        view.removeGestureRecognizer(self.dismissKeyboardGesture!)
-    }
+  
     
     
     override func viewDidLoad() {
@@ -97,41 +80,26 @@ class Home: UIViewController, UISearchBarDelegate, UISearchResultsUpdating, UITa
         
         leaderboardTableView = children.first as? HomeMenuTable
         leaderboardTableView!.setPlayer(player: self.player!)
-        leaderboardTableView!.setSearchHeaderAlignmentConstraint(searchHeaderAlignmentConstraint: self.searchHeaderAlignmentConstraint)
+       
         //leaderboardTableView!.setIndicator(indicator: self.activityIndicator!)
-        
-        self.dismissKeyboardGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
+  
     }
     
-    var dismissKeyboardGesture: UITapGestureRecognizer?
+   
     
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        searchBar.autocorrectionType = .no
-        searchBar.autocapitalizationType = .none
-        searchBar.spellCheckingType = .no
-        
-        tap = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
-        view.addGestureRecognizer(tap!)
-    }
+ 
     
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        //discoverySearchTarget(discoverySearchTarget: discoverySearchBar.text!)
-        //discoverySearchBar.text = nil
-        //discoverySearchBar.resignFirstResponder()
-        view.removeGestureRecognizer(tap!)
-    }
+   
     
-    func updateSearchResults(for searchController: UISearchController) {}
     
-    func okHandler(action: UIAlertAction) {
-        //StoryboardSelector().leader(player: self.player!)
-    }
+    
     
     @objc func onDidReceiveData(_ notification: NSNotification) {
         let discoverSelectionIndex = notification.userInfo!["discover_selection"] as! Int
         let gameModel = leaderboardTableView!.getLeaderboardTableList()[discoverSelectionIndex]
         StoryboardSelector().other(player: self.player!, gameModel: gameModel)
     }
+   
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         switch item.tag {

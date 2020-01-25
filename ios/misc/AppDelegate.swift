@@ -55,7 +55,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     /* * */
     func configureGlobalUI() {
-        UINavigationBar.appearance().tintColor = Colour().getRed()
+        UINavigationBar.appearance().tintColor = UIColor.white
     }
 
 }
