@@ -87,7 +87,7 @@ class ActualTable: UITableViewController, SwipeTableViewCellDelegate {
             
             let rescind = SwipeAction(style: .default, title: "RESCIND") { action, indexPath in
                 print("RESCIND")
-                //TODO: delete from server...
+                GameDeleteTask().execute(id: actualMenuItem.getIdentifier())
                 self.gameMenuTableList.remove(at: indexPath.row)
                 self.tableView!.reloadData()
             }
@@ -100,7 +100,6 @@ class ActualTable: UITableViewController, SwipeTableViewCellDelegate {
         guard orientation == .right else {
             let nAction = SwipeAction(style: .default, title: "nACK") { action, indexPath in
                 print("nACK")
-                //TODO: delete from server...
                 GameDeleteTask().execute(id: actualMenuItem.getIdentifier())
                 self.gameMenuTableList.remove(at: indexPath.row)
                 self.tableView!.reloadData()
