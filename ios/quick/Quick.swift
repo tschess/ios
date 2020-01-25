@@ -24,7 +24,22 @@ class Quick:
     @IBOutlet weak var configCollectionView: DynamicCollectionView!
     @IBOutlet weak var configCollectionViewHeight: NSLayoutConstraint!
     
+    
+    
+    @IBOutlet weak var rankDateLabel: UILabel!
+    //    @IBOutlet weak var rankDateLabel: UILabel!
+    @IBOutlet weak var eloLabel: UILabel!
+    //       @IBOutlet weak var eloLabel: UILabel!
+    @IBOutlet weak var rankLabel: UILabel!
+    //       @IBOutlet weak var rankLabel: UILabel!
+    @IBOutlet weak var usernameLabel: UILabel!
+    //       @IBOutlet weak var usernameLabel: UILabel!
+    @IBOutlet weak var avatarImageView: UIImageView!
+    //       @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    //       @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
+    
     
     let reuseIdentifier = "cell"
     
@@ -111,10 +126,10 @@ class Quick:
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var tabBarMenu: UITabBar!
     
-    @IBOutlet weak var usernameLabel: UILabel!
+    //@IBOutlet weak var usernameLabel: UILabel!
     
-    @IBOutlet weak var rankLabel: UILabel!
-    @IBOutlet weak var avatarImageView: UIImageView!
+    //@IBOutlet weak var rankLabel: UILabel!
+    //@IBOutlet weak var avatarImageView: UIImageView!
     
     @IBOutlet weak var skinSelectionPicker: UIPickerView!
     

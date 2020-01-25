@@ -351,7 +351,7 @@ extension Config: UICollectionViewDelegate {
    
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
             switch item.tag {
-            case 0:
+            case 1:
                 //print("fairy")
                 let storyboard: UIStoryboard = UIStoryboard(name: "Fairy", bundle: nil)
                 let viewController = storyboard.instantiateViewController(withIdentifier: "Fairy") as! Fairy
