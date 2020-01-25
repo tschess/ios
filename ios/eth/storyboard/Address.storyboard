@@ -303,11 +303,17 @@
                         <viewLayoutGuide key="safeArea" id="Hog-c1-J9t"/>
                     </view>
                     <connections>
-                        <outlet property="activityIndicator" destination="RAM-33-HiP" id="6av-VH-pB3"/>
-                        <outlet property="avatarImageView" destination="XYJ-aV-Rc5" id="1uS-TP-4fV"/>
+                        <outlet property="activityIndicator" destination="RAM-33-HiP" id="4hy-vT-NzG"/>
+                        <outlet property="addressLabel" destination="ux2-5E-CTf" id="22h-S2-zQp"/>
                         <outlet property="backButton" destination="5qi-EH-0fj" id="9nk-ly-Hln"/>
+                        <outlet property="blockieImageView" destination="XYJ-aV-Rc5" id="Sws-qu-8aK"/>
+                        <outlet property="inputImageEmail" destination="cjG-Ug-ehC" id="vBr-YJ-Rhg"/>
+                        <outlet property="inputImageName" destination="ZH7-kx-1os" id="PUN-rj-Bvm"/>
+                        <outlet property="inputImageSurname" destination="XVd-We-z0l" id="ysw-dD-OV9"/>
+                        <outlet property="inputTextFieldEmail" destination="QSp-Jt-vO4" id="Qf6-sz-7lB"/>
+                        <outlet property="inputTextFieldName" destination="gjl-0b-EYW" id="odL-HK-NMV"/>
+                        <outlet property="inputTextFieldSurname" destination="CKk-mv-Vw6" id="HSE-QJ-Nth"/>
                         <outlet property="tabBarMenu" destination="lR1-2A-YPc" id="CDf-K6-4Hh"/>
-                        <outlet property="usernameLabel" destination="ux2-5E-CTf" id="73i-xH-2Wl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sPR-ON-pUE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

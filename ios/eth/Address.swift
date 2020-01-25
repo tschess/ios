@@ -11,17 +11,30 @@ import BlockiesSwift
 
 class Address: UIViewController, UITabBarDelegate, UITextViewDelegate { //force people to use the QR code.
     
+    @IBOutlet weak var inputTextFieldName: UITextField!
+    @IBOutlet weak var inputImageName: UIImageView!
+    
+    @IBOutlet weak var inputTextFieldSurname: UITextField!
+    @IBOutlet weak var inputImageSurname: UIImageView!
+    
+    @IBOutlet weak var inputTextFieldEmail: UITextField!
+    @IBOutlet weak var inputImageEmail: UIImageView!
+    
     var scan: Bool?
     
     public func setScan(scan: Bool){
         self.scan = scan
     }
     
-  
+    @IBOutlet weak var blockieImageView: UIImageView!
+    @IBOutlet weak var addressLabel: UILabel!
+    
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     @IBOutlet weak var backButton: UIButton!
     
-   
+  
+    
     
     @IBOutlet weak var tabBarMenu: UITabBar!
     
@@ -39,7 +52,7 @@ class Address: UIViewController, UITabBarDelegate, UITextViewDelegate { //force 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
        
-        
+        self.activityIndicator.isHidden = true
         
     }
     
