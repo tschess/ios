@@ -115,6 +115,7 @@ class ShowMeSkins: UIViewController, UITabBarDelegate {
         switch item.tag {
         case 1:
             StoryboardSelector().home(player: self.player!)
+            return
         default:
             let homeStoryboard: UIStoryboard = UIStoryboard(name: "Address", bundle: nil)
             let homeViewController = homeStoryboard.instantiateViewController(withIdentifier: "Address") as! Address

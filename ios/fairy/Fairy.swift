@@ -89,6 +89,9 @@ class Fairy: UIViewController, UITabBarDelegate {
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         switch item.tag {
+        case 1:
+            StoryboardSelector().home(player: self.player!)
+            return
         default:
             let storyboard: UIStoryboard = UIStoryboard(name: "Config", bundle: nil)
             let viewController = storyboard.instantiateViewController(withIdentifier: "Config") as! Config
