@@ -115,8 +115,8 @@ class ActualTable: UITableViewController, SwipeTableViewCellDelegate {
             let storyboard: UIStoryboard = UIStoryboard(name: "Ack", bundle: nil)
             let viewController = storyboard.instantiateViewController(withIdentifier: "Ack") as! Ack
             viewController.setPlayer(player: self.player!)
-            
-            let gameModel = Game(opponent: self.player!)
+            viewController.setOpponent(opponent: actualMenuItem.getOpponent()) // <-- REDUNDANT
+            let gameModel = Game(opponent: actualMenuItem.getOpponent())     // <-- REDUNDANT
             viewController.setGameModel(gameModel: gameModel)
             UIApplication.shared.keyWindow?.rootViewController = viewController
         }

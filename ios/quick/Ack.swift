@@ -9,11 +9,11 @@
 import UIKit
 
 class Ack:
-                    UIViewController,
-                    UIPickerViewDataSource,
-                    UIPickerViewDelegate,
-                    UITabBarDelegate,
-                    UIGestureRecognizerDelegate {
+    UIViewController,
+    UIPickerViewDataSource,
+    UIPickerViewDelegate,
+    UITabBarDelegate,
+UIGestureRecognizerDelegate {
     
     var opponent: PlayerCore?
     
@@ -26,13 +26,14 @@ class Ack:
     
     
     
-    @IBOutlet weak var displacementImage: UIImageView!
-    @IBOutlet weak var displacementLabel: UILabel!
+    @IBOutlet weak var rankDateLabel: UILabel!
     @IBOutlet weak var eloLabel: UILabel!
     @IBOutlet weak var rankLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
+    
     @IBOutlet weak var activeConfigNumber: UILabel!
     
     
@@ -71,7 +72,7 @@ class Ack:
     
     func renderConfig1() {
         self.tschessElementMatrix = self.player!.getConfig1()
-     
+        
         self.activeConfigNumber.text = "1"
         self.configCollectionView.reloadData()
         
@@ -90,7 +91,7 @@ class Ack:
     
     func renderConfig2() {
         self.tschessElementMatrix = self.player!.getConfig2()
-       
+        
         self.activeConfigNumber.text = "2"
         self.configCollectionView.reloadData()
         
@@ -149,7 +150,7 @@ class Ack:
         
         let sampleView = SampleSkin.instanceFromNib()
         sampleView.nameLabel.text = skinAsset.getName()
-
+        
         sampleView.backgroundView.backgroundColor = skinAsset.getBackColor()
         sampleView.backgroundView.alpha = skinAsset.getBackAlpha()
         sampleView.backgroundImage.image = skinAsset.getBackImage()
@@ -182,7 +183,7 @@ class Ack:
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+        
         tabBarMenu.delegate = self
         
         let dataDecoded: Data = Data(base64Encoded: gameModel!.getOpponentAvatar(), options: .ignoreUnknownCharacters)!
@@ -260,20 +261,21 @@ class Ack:
         let elementCollectionViewGesture = UITapGestureRecognizer(target: self, action: #selector(self.renderElementCollectionView))
         self.configCollectionView.addGestureRecognizer(elementCollectionViewGesture)
         
+        
         let totalContentHeight = self.contentView.frame.size.height
         
         self.splitViewHeight0.constant = totalContentHeight/2
         self.splitViewHeight1.constant = totalContentHeight/2
+        
     }
     
     @objc func renderElementCollectionView() {
-        print("lolol")
         let storyboard: UIStoryboard = UIStoryboard(name: "EditOpponent", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "EditOpponent") as! EditOpponent
         viewController.setPlayer(player: self.player!)
         let gameModel: Game = Game(opponent: self.opponent!)
         viewController.setGameModel(gameModel: gameModel)
-        viewController.setTitleText(titleText: "quick play")
+        viewController.setTitleText(titleText: "let's play")
         UIApplication.shared.keyWindow?.rootViewController = viewController
     }
     
@@ -306,7 +308,7 @@ class Ack:
             }
         }
     }
-
+    
     @IBAction func backButtonClick(_ sender: Any) {
         let homeStoryboard: UIStoryboard = UIStoryboard(name: "Home", bundle: nil)
         let homeViewController = homeStoryboard.instantiateViewController(withIdentifier: "Home") as! Home
@@ -318,7 +320,21 @@ class Ack:
         switch item.tag {
         case 0:
             print("0")
-            //StoryboardSelector().leader(player: self.player!)
+            let gameModel = self.gameModel!
+            
+            let tschessElementMatrix = [[TschessElement?]](repeating: [TschessElement?](repeating: nil, count: 8), count: 8)
+            let gamestate = Gamestate(
+                gameModel: gameModel,
+                tschessElementMatrix: tschessElementMatrix
+            )
+            gamestate.setPlayer(player: self.player!)
+            PollingAgent().execute(id: gameModel.getIdentifier(), gamestate: gamestate) { (result, error) in
+                if(error != nil || result == nil){
+                    return
+                }
+                StoryboardSelector().chess(gameModel: gameModel, player: gamestate.getPlayer(), gamestate: result!)
+            }
+            return
         default:
             StoryboardSelector().home(player: self.player!)
         }
@@ -335,7 +351,7 @@ extension Ack: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    
+        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ConfigCollectionViewCell
         
         if (indexPath.row % 2 == 0) {
