@@ -26,27 +26,27 @@ class HomeMenuTable: UITableViewController {
         self.searchHeaderAlignmentConstraint = searchHeaderAlignmentConstraint
     }
     
-    var lastY: CGFloat?
-    
-    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if(scrollView.contentOffset.y < -46) {
-            if(self.searchHeaderAlignmentConstraint!.constant == 0){
-                self.searchHeaderAlignmentConstraint!.constant += 46
-            }
-        }
-        if(lastY != nil){
-            if(scrollView.contentOffset.y > 0) {
-                if(scrollView.contentOffset.y > lastY!){
-                    if(self.searchHeaderAlignmentConstraint!.constant > 0){
-                        if(self.searchHeaderAlignmentConstraint!.constant.remainder(dividingBy: 2).isZero){
-                            self.searchHeaderAlignmentConstraint!.constant -= 2
-                        }
-                    }
-                }
-            }
-        }
-        lastY = scrollView.contentOffset.y
-    }
+//    var lastY: CGFloat?
+//
+//    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        if(scrollView.contentOffset.y < -46) {
+//            if(self.searchHeaderAlignmentConstraint!.constant == 0){
+//                self.searchHeaderAlignmentConstraint!.constant += 46
+//            }
+//        }
+//        if(lastY != nil){
+//            if(scrollView.contentOffset.y > 0) {
+//                if(scrollView.contentOffset.y > lastY!){
+//                    if(self.searchHeaderAlignmentConstraint!.constant > 0){
+//                        if(self.searchHeaderAlignmentConstraint!.constant.remainder(dividingBy: 2).isZero){
+//                            self.searchHeaderAlignmentConstraint!.constant -= 2
+//                        }
+//                    }
+//                }
+//            }
+//        }
+//        lastY = scrollView.contentOffset.y
+//    }
     
     var activityIndicator: UIActivityIndicatorView?
     
