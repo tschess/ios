@@ -553,8 +553,8 @@ class StoryboardSelector {
                 UIApplication.shared.keyWindow?.rootViewController = viewController
                 return
             case "PHAEDRUS":
-                let storyboard: UIStoryboard = UIStoryboard(name: "ScannerPhaedrus", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "ScannerPhaedrus") as! Scanner
+                let storyboard: UIStoryboard = UIStoryboard(name: "ScannerCalhoun", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "ScannerCalhoun") as! Scanner
                 viewController.setPlayer(player: player)
                 UIApplication.shared.keyWindow?.rootViewController = viewController
                 return

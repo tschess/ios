@@ -54,6 +54,8 @@ class Address: UIViewController, UITabBarDelegate, UITextViewDelegate { //force 
        
         self.activityIndicator.isHidden = true
         
+        self.tabBarMenu.delegate = self
+        
     }
     
 //    override func viewDidLoad() {
@@ -257,7 +259,9 @@ class Address: UIViewController, UITabBarDelegate, UITextViewDelegate { //force 
         case 0:
             print("reclaim...")
             //StoryboardSelector().profile(player: self.player!)
+            return
         case 1:
+            print("scanner")
             StoryboardSelector().scanner(player: self.player!)
             return
         case 2:

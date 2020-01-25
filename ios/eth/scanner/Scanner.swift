@@ -18,10 +18,29 @@ class Scanner: UIViewController, UITabBarDelegate, AVCaptureMetadataOutputObject
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var tabBarMenu: UITabBar!
     
-    @IBOutlet weak var tschxLabel: UILabel!
+
+
+    
+    
+    @IBOutlet weak var displacementImage: UIImageView!
+    //    @IBOutlet weak var displacementImage: UIImageView!
+    @IBOutlet weak var displacementLabel: UILabel!
+    //    @IBOutlet weak var displacementLabel: UILabel!
+    @IBOutlet weak var eloLabel: UILabel!
+    //    @IBOutlet weak var eloLabel: UILabel!
     @IBOutlet weak var rankLabel: UILabel!
-    @IBOutlet weak var avatarImageView: UIImageView!
+    //    @IBOutlet weak var rankLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
+    //    @IBOutlet weak var usernameLabel: UILabel!
+    @IBOutlet weak var avatarImageView: UIImageView!
+    //    @IBOutlet weak var avatarImageView: UIImageView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    //    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
+    
+    
+    
+    
     
     var player: Player?
     
@@ -35,12 +54,14 @@ class Scanner: UIViewController, UITabBarDelegate, AVCaptureMetadataOutputObject
         let decodedimage = UIImage(data: dataDecoded)
         self.avatarImageView.image = decodedimage
         self.rankLabel.text = self.player!.getRank()
-        self.tschxLabel.text = "₮\(self.player!.getTschx())"
+        //self.tschxLabel.text = "₮\(self.player!.getTschx())"
         self.usernameLabel.text = self.player!.getName()
         
         if (captureSession?.isRunning == false) {
             captureSession.startRunning()
         }
+        
+        self.activityIndicator.isHidden = true
     }
     
     override func viewDidLoad() {
@@ -87,7 +108,10 @@ class Scanner: UIViewController, UITabBarDelegate, AVCaptureMetadataOutputObject
     }
     
     @IBAction func backButtonClick(_ sender: Any) {
-        StoryboardSelector().eth(player: self.player!)
+       let homeStoryboard: UIStoryboard = UIStoryboard(name: "Address", bundle: nil)
+        let homeViewController = homeStoryboard.instantiateViewController(withIdentifier: "Address") as! Address
+        homeViewController.setPlayer(player: self.player!)
+        UIApplication.shared.keyWindow?.rootViewController = homeViewController
     }
     
     func failed() {
@@ -115,7 +139,10 @@ class Scanner: UIViewController, UITabBarDelegate, AVCaptureMetadataOutputObject
             found(code: stringValue)
         }
 
-        StoryboardSelector().eth(player: self.player!, scan: true)
+        let homeStoryboard: UIStoryboard = UIStoryboard(name: "Address", bundle: nil)
+        let homeViewController = homeStoryboard.instantiateViewController(withIdentifier: "Address") as! Address
+        homeViewController.setPlayer(player: self.player!)
+        UIApplication.shared.keyWindow?.rootViewController = homeViewController
     }
 
     func found(code: String) {
@@ -133,12 +160,16 @@ class Scanner: UIViewController, UITabBarDelegate, AVCaptureMetadataOutputObject
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
            switch item.tag {
-           case 0:
-               StoryboardSelector().profile(player: self.player!)
-           case 1:
-               StoryboardSelector().eth(player: self.player!)
+//           case 0:
+//               StoryboardSelector().profile(player: self.player!)
+//           case 1:
+//               StoryboardSelector().eth(player: self.player!)
            default:
-               StoryboardSelector().home(player: self.player!)
+               let homeStoryboard: UIStoryboard = UIStoryboard(name: "Address", bundle: nil)
+               let homeViewController = homeStoryboard.instantiateViewController(withIdentifier: "Address") as! Address
+               homeViewController.setPlayer(player: self.player!)
+               UIApplication.shared.keyWindow?.rootViewController = homeViewController
+            return
            }
        }
     
