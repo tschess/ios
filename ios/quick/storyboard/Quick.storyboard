@@ -51,8 +51,8 @@
                                     <constraint firstAttribute="height" constant="50" id="CtS-Ad-lXP"/>
                                 </constraints>
                                 <items>
-                                    <tabBarItem title="send" image="arrow.up.bin" catalog="system" id="6f1-4w-L4h">
-                                        <color key="badgeColor" red="0.86923474069999995" green="0.012778783219999999" blue="0.00083617179190000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <tabBarItem title="send" image="arrow.up.bin" catalog="system" selectedImage="arrow.up.bin.fill" id="6f1-4w-L4h">
+                                        <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tabBarItem>
                                 </items>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -419,6 +419,7 @@
     </scenes>
     <resources>
         <image name="arrow.up.bin" catalog="system" width="64" height="46"/>
+        <image name="arrow.up.bin.fill" catalog="system" width="64" height="46"/>
         <image name="avatar_default" width="320" height="320"/>
     </resources>
 </document>
