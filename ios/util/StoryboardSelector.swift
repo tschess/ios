@@ -187,8 +187,8 @@ class StoryboardSelector {
                 UIApplication.shared.keyWindow?.rootViewController = profileViewController
                 return
             case "PHAEDRUS":
-                let profileStoryboard: UIStoryboard = UIStoryboard(name: "ProfilePhaedrus", bundle: nil)
-                let profileViewController = profileStoryboard.instantiateViewController(withIdentifier: "ProfilePhaedrus") as! Profile
+                let profileStoryboard: UIStoryboard = UIStoryboard(name: "ProfileCalhoun", bundle: nil)
+                let profileViewController = profileStoryboard.instantiateViewController(withIdentifier: "ProfileCalhoun") as! Profile
                 profileViewController.setPlayer(player: player)
                 UIApplication.shared.keyWindow?.rootViewController = profileViewController
                 return
@@ -265,18 +265,16 @@ class StoryboardSelector {
                 //viewController.setRemaining(remaining: remaining)
                 //UIApplication.shared.keyWindow?.rootViewController = viewController
                 //return
-            //case "CALHOUN":
-                //let storyboard: UIStoryboard = UIStoryboard(name: "PurchaseCalypsoCalhoun", bundle: nil)
-                //let viewController = storyboard.instantiateViewController(withIdentifier: "PurchaseCalypsoCalhoun") as! PurchaseCalypso
-                //viewController.setPlayer(player: player)
-                //viewController.setRemaining(remaining: remaining)
-                //UIApplication.shared.keyWindow?.rootViewController = viewController
-                //return
+            case "PHAEDRUS":
+                let storyboard: UIStoryboard = UIStoryboard(name: "Skin", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "Skin") as! ShowMeSkins
+                viewController.setPlayer(player: player)
+                UIApplication.shared.keyWindow?.rootViewController = viewController
+                return
             case "CALHOUN":
                 let storyboard: UIStoryboard = UIStoryboard(name: "Skin", bundle: nil)
                 let viewController = storyboard.instantiateViewController(withIdentifier: "Skin") as! ShowMeSkins
                 viewController.setPlayer(player: player)
-                //viewController.setRemaining(remaining: remaining)
                 UIApplication.shared.keyWindow?.rootViewController = viewController
                 return
             default:
