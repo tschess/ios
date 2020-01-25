@@ -116,8 +116,7 @@ class ActualTable: UITableViewController, SwipeTableViewCellDelegate {
             let viewController = storyboard.instantiateViewController(withIdentifier: "Ack") as! Ack
             viewController.setPlayer(player: self.player!)
             viewController.setOpponent(opponent: actualMenuItem.getOpponent()) // <-- REDUNDANT
-            let gameModel = Game(opponent: actualMenuItem.getOpponent())     // <-- REDUNDANT
-            viewController.setGameModel(gameModel: gameModel)
+            viewController.setGameModel(gameModel: actualMenuItem)
             UIApplication.shared.keyWindow?.rootViewController = viewController
         }
         ackAction.backgroundColor = .green

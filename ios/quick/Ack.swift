@@ -284,7 +284,7 @@ UIGestureRecognizerDelegate {
         self.configCollectionView.addGestureRecognizer(elementCollectionViewGesture)
         
         
-
+        
     }
     
     @objc func renderElementCollectionView() {
@@ -334,29 +334,6 @@ UIGestureRecognizerDelegate {
         UIApplication.shared.keyWindow?.rootViewController = homeViewController
     }
     
-    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-        switch item.tag {
-        case 0:
-            print("0")
-            let gameModel = self.gameModel!
-            
-            let tschessElementMatrix = [[TschessElement?]](repeating: [TschessElement?](repeating: nil, count: 8), count: 8)
-            let gamestate = Gamestate(
-                gameModel: gameModel,
-                tschessElementMatrix: tschessElementMatrix
-            )
-            gamestate.setPlayer(player: self.player!)
-            PollingAgent().execute(id: gameModel.getIdentifier(), gamestate: gamestate) { (result, error) in
-                if(error != nil || result == nil){
-                    return
-                }
-                StoryboardSelector().chess(gameModel: gameModel, player: gamestate.getPlayer(), gamestate: result!)
-            }
-            return
-        default:
-            StoryboardSelector().home(player: self.player!)
-        }
-    }
 }
 
 
@@ -420,6 +397,26 @@ extension Ack: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
+    }
+    
+    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        switch item.tag {
+        case 0:
+            print("0")
+            var tschessElementMatrix: [[TschessElement?]] = self.player!.getConfig0()
+            //                    if(configPickerSelection == "config. 1"){
+            //                        tschessElementMatrix = self.player!.getConfig1()
+            //                    }
+            //                    if(configPickerSelection == "config. 2"){
+            //                        tschessElementMatrix = self.player!.getConfig2()
+            //                    }
+            GameAcceptTask().execute(config: tschessElementMatrix, gameModel: gameModel!, player: self.player!) { (result) in
+                StoryboardSelector().chess(gamestate: result)
+            }
+            return
+        default:
+            StoryboardSelector().home(player: self.player!)
+        }
     }
 }
 
