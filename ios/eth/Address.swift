@@ -17,22 +17,11 @@ class Address: UIViewController, UITabBarDelegate, UITextViewDelegate { //force 
         self.scan = scan
     }
     
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    
-    //@IBOutlet weak var blockiesImageView: UIImageView!
-    
-    //@IBOutlet weak var titleLabel: UILabel!
+  
     
     @IBOutlet weak var backButton: UIButton!
     
-    @IBOutlet weak var rankLabel: UILabel!
-    @IBOutlet weak var tschxLabel: UILabel!
-    @IBOutlet weak var usernameLabel: UILabel!
-    @IBOutlet weak var avatarImageView: UIImageView!
-    
-    @IBOutlet weak var linkAddressButton: UIButton!
-    
-    @IBOutlet weak var ethAddressTextView: UITextView!
+   
     
     @IBOutlet weak var tabBarMenu: UITabBar!
     
@@ -49,12 +38,9 @@ class Address: UIViewController, UITabBarDelegate, UITextViewDelegate { //force 
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let dataDecoded: Data = Data(base64Encoded: self.player!.getAvatar(), options: .ignoreUnknownCharacters)!
-        let decodedimage = UIImage(data: dataDecoded)
-        //self.avatarImageView.image = decodedimage
-        //self.rankLabel.text = self.player!.getRank()
-        //self.tschxLabel.text = "₮\(self.player!.getTschx())"
-        //self.usernameLabel.text = self.player!.getName()
+       
+        
+        
     }
     
 //    override func viewDidLoad() {
@@ -256,46 +242,21 @@ class Address: UIViewController, UITabBarDelegate, UITextViewDelegate { //force 
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         switch item.tag {
         case 0:
-            StoryboardSelector().profile(player: self.player!)
-        default:
+            print("reclaim...")
+            //StoryboardSelector().profile(player: self.player!)
+        case 1:
             StoryboardSelector().scanner(player: self.player!)
+            return
+        case 2:
+            print("linq...")
+            //StoryboardSelector().scanner(player: self.player!)
+            return
+        default:
+            return
         }
     }
     
-    @objc func flash() {
-        let generator = UIImpactFeedbackGenerator(style: .light)
-        generator.impactOccurred()
-        let flashFrame = UIView(frame: self.ethAddressTextView.bounds)
-        flashFrame.backgroundColor = UIColor.white
-        flashFrame.alpha = 0.7
-        self.ethAddressTextView.addSubview(flashFrame)
-        UIView.animate(withDuration: 0.09, animations: {
-            flashFrame.alpha = 0.0
-        }, completion: {(finished:Bool) in
-            flashFrame.removeFromSuperview()
-        })
-    }
+ 
     
 }
 
-//extension UITextView {
-//    func centerContentVertically() {
-//        let fitSize = CGSize(width: bounds.width, height: CGFloat.greatestFiniteMagnitude)
-//        let size = sizeThatFits(fitSize)
-//        let heightOffset = (bounds.size.height - size.height * zoomScale) / 2
-//        let positiveTopOffset = max(0, heightOffset)
-//        contentOffset.y = -positiveTopOffset
-//    }
-//}
-
-//extension String {
-//
-//    func insertSeparator(_ separatorString: String, atEvery n: Int) -> String {
-//        guard 0 < n else { return self }
-//        return self.enumerated().map({String($0.element) + (($0.offset != self.count - 1 && $0.offset % n ==  n - 1) ? "\(separatorString)" : "")}).joined()
-//    }
-//
-//    mutating func insertedSeparator(_ separatorString: String, atEvery n: Int) {
-//        self = insertSeparator(separatorString, atEvery: n)
-//    }
-//}
