@@ -41,8 +41,8 @@ UIGestureRecognizerDelegate {
     
     @IBOutlet weak var contentView: UIView!
     
-    @IBOutlet weak var splitViewHeight0: NSLayoutConstraint!
-    @IBOutlet weak var splitViewHeight1: NSLayoutConstraint!
+    @IBOutlet var splitViewHeight0: NSLayoutConstraint!
+    @IBOutlet var splitViewHeight1: NSLayoutConstraint! //strong
     
     var items = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16"]
     
@@ -117,6 +117,10 @@ UIGestureRecognizerDelegate {
         self.configCollectionView.bounces = false
         self.configCollectionView.alwaysBounceVertical = false
         self.configCollectionViewHeight.constant = configCollectionView.contentSize.height
+        
+        
+        
+        
     }
     
     let dateTime: DateTime = DateTime()
@@ -240,12 +244,30 @@ UIGestureRecognizerDelegate {
             backAlpha: 0.85)
         
         self.skinList = Array(arrayLiteral: calypso, hyperion, neptune, iapetus)
+        
+        
     }
     
     var skinList: Array<Skin>?
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        
+        
+        let totalContentHeight = self.contentView.frame.size.height
+        print("totalContentHeight: \(totalContentHeight)")
+        
+        self.splitViewHeight0.isActive = false
+        self.splitViewHeight1.isActive = false
+        self.splitViewHeight0.constant = totalContentHeight/2
+        print("self.splitViewHeight0.constant: \(self.splitViewHeight0.constant)")
+        self.splitViewHeight1.constant = totalContentHeight/2
+        print("self.splitViewHeight1.constant: \(self.splitViewHeight1.constant)")
+        self.splitViewHeight0.isActive = true
+        self.splitViewHeight1.isActive = true
+        
+        
         
         self.skinSelectionPicker.delegate = self
         self.skinSelectionPicker.dataSource = self
@@ -262,11 +284,7 @@ UIGestureRecognizerDelegate {
         self.configCollectionView.addGestureRecognizer(elementCollectionViewGesture)
         
         
-        let totalContentHeight = self.contentView.frame.size.height
-        
-        self.splitViewHeight0.constant = totalContentHeight/2
-        self.splitViewHeight1.constant = totalContentHeight/2
-        
+
     }
     
     @objc func renderElementCollectionView() {

@@ -22,13 +22,9 @@ class EditOpponent: UIViewController, UITabBarDelegate, UIGestureRecognizerDeleg
     
     @IBOutlet weak var rankDateLabel: UILabel!
     @IBOutlet weak var rankLabel: UILabel!
-    //@IBOutlet weak var rankLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
-    //@IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var avatarImageView: UIImageView!
-    //@IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    //@IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     @IBOutlet weak var configCollectionView: DynamicCollectionView!
     @IBOutlet weak var configCollectionViewHeight: NSLayoutConstraint!
@@ -131,6 +127,16 @@ class EditOpponent: UIViewController, UITabBarDelegate, UIGestureRecognizerDeleg
             viewController.setPlayer(player: self.player!)
             let opponent = self.gameModel!.getOpponent()
             viewController.setOpponent(opponent: opponent)
+            UIApplication.shared.keyWindow?.rootViewController = viewController
+        }
+        if(self.titleText == "let's play"){
+            let storyboard: UIStoryboard = UIStoryboard(name: "Ack", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier: "Ack") as! Ack
+            viewController.setPlayer(player: self.player!)
+            let opponent = self.gameModel!.getOpponent()
+            viewController.setOpponent(opponent: opponent) // <-- REDUNDANT
+            let gameModel = Game(opponent: opponent)     // <-- REDUNDANT
+            viewController.setGameModel(gameModel: gameModel)
             UIApplication.shared.keyWindow?.rootViewController = viewController
         }
         //if(self.titleText!.text.contains("config")){
@@ -650,6 +656,28 @@ extension EditOpponent: UICollectionViewDelegate {
         }
         self.selectionElementName = nil
         self.configCollectionView.reloadData()
+    }
+    
+    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        switch item.tag {
+        case 1:
+            let storyboard: UIStoryboard = UIStoryboard(name: "Ack", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier: "Ack") as! Ack
+            viewController.setPlayer(player: self.player!)
+            let opponent = self.gameModel!.getOpponent()    // <-- REDUNDANT
+            viewController.setOpponent(opponent: opponent)      // <-- REDUNDANT
+            viewController.setGameModel(gameModel: self.gameModel!)  // <-- REDUNDANT
+            UIApplication.shared.keyWindow?.rootViewController = viewController
+            return
+        default:
+            let storyboard: UIStoryboard = UIStoryboard(name: "Ack", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier: "Ack") as! Ack
+            viewController.setPlayer(player: self.player!)
+            let opponent = self.gameModel!.getOpponent()    // <-- REDUNDANT
+            viewController.setOpponent(opponent: opponent)      // <-- REDUNDANT
+            viewController.setGameModel(gameModel: self.gameModel!)  // <-- REDUNDANT
+            UIApplication.shared.keyWindow?.rootViewController = viewController
+        }
     }
 }
 

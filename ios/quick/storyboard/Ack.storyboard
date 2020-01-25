@@ -263,7 +263,6 @@
                                 <constraints>
                                     <constraint firstItem="heW-o1-yD8" firstAttribute="top" secondItem="FXw-uz-53m" secondAttribute="bottom" id="28p-PH-RHZ"/>
                                     <constraint firstItem="FXw-uz-53m" firstAttribute="leading" secondItem="9wh-i1-2Qp" secondAttribute="leading" id="PFW-PP-AbP"/>
-                                    <constraint firstAttribute="bottom" secondItem="heW-o1-yD8" secondAttribute="bottom" id="Pbg-zC-exM"/>
                                     <constraint firstAttribute="trailing" secondItem="FXw-uz-53m" secondAttribute="trailing" id="erJ-Td-iqc"/>
                                     <constraint firstAttribute="trailing" secondItem="heW-o1-yD8" secondAttribute="trailing" id="iLc-ge-k0m"/>
                                     <constraint firstItem="FXw-uz-53m" firstAttribute="top" secondItem="9wh-i1-2Qp" secondAttribute="top" id="qUS-st-M6R"/>
