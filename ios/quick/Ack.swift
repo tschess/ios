@@ -256,14 +256,14 @@ UIGestureRecognizerDelegate {
         
         
         let totalContentHeight = self.contentView.frame.size.height
-        print("totalContentHeight: \(totalContentHeight)")
+        //print("totalContentHeight: \(totalContentHeight)")
         
         self.splitViewHeight0.isActive = false
         self.splitViewHeight1.isActive = false
         self.splitViewHeight0.constant = totalContentHeight/2
-        print("self.splitViewHeight0.constant: \(self.splitViewHeight0.constant)")
+        //print("self.splitViewHeight0.constant: \(self.splitViewHeight0.constant)")
         self.splitViewHeight1.constant = totalContentHeight/2
-        print("self.splitViewHeight1.constant: \(self.splitViewHeight1.constant)")
+        //print("self.splitViewHeight1.constant: \(self.splitViewHeight1.constant)")
         self.splitViewHeight0.isActive = true
         self.splitViewHeight1.isActive = true
         

@@ -129,7 +129,7 @@ class EditOpponent: UIViewController, UITabBarDelegate, UIGestureRecognizerDeleg
             viewController.setOpponent(opponent: opponent)
             UIApplication.shared.keyWindow?.rootViewController = viewController
         }
-        if(self.titleText == "let's play"){
+        if(self.titleText == "let's play!"){
             let storyboard: UIStoryboard = UIStoryboard(name: "Ack", bundle: nil)
             let viewController = storyboard.instantiateViewController(withIdentifier: "Ack") as! Ack
             viewController.setPlayer(player: self.player!)
