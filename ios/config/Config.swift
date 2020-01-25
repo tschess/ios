@@ -351,20 +351,14 @@ extension Config: UICollectionViewDelegate {
    
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
             switch item.tag {
-            case 3:
-                print("fairy")
+            case 0:
+                //print("fairy")
                 let storyboard: UIStoryboard = UIStoryboard(name: "Fairy", bundle: nil)
                 let viewController = storyboard.instantiateViewController(withIdentifier: "Fairy") as! Fairy
                 viewController.setPlayer(player: self.player!)
-                //viewController.setOpponent(opponent: opponent)
                 UIApplication.shared.keyWindow?.rootViewController = viewController
-            case 2:
-                print("quick")
-            case 1:
-                print("game")
-                //StoryboardSelector().actual(player: self.player!)
             default:
-                print("error")
+                StoryboardSelector().home(player: self.player!)
             }
         }
 
