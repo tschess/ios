@@ -263,7 +263,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
             }
         default:
             self.stopTimers()
-            StoryboardSelector().talk(player: self.player!, opponent: self.gamestate!.getGameModel().getOpponent(), gamestate: self.gamestate!)
+            print("lol")
         }
     }
     

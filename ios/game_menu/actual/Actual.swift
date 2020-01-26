@@ -72,11 +72,11 @@ class Actual: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate {
         let action = notification.userInfo!["action"] as! String
         let gameList = self.actualTable!.getGameMenuTableList() //TODO: why do you need this???
         if(action == "review") {
-            StoryboardSelector().review(player: self.player!, gameModel: gameModel, gameList: gameList)
+            //StoryboardSelector().review(player: self.player!, gameModel: gameModel, gameList: gameList)
             return
         }
         if(action == "rescind") {
-            StoryboardSelector().cancel(player: self.player!, gameModel: gameModel, gameList: gameList)
+            //StoryboardSelector().cancel(player: self.player!, gameModel: gameModel, gameList: gameList)
             return
         }
         let tschessElementMatrix = [[TschessElement?]](repeating: [TschessElement?](repeating: nil, count: 8), count: 8)

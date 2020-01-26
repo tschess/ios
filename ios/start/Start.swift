@@ -6,11 +6,9 @@
 //  Copyright © 2019 bahlsenwitz. All rights reserved.
 //
 import UIKit
-//import PushNotifications
 
 class Start: UIViewController, UITextFieldDelegate {
     
-    //@IBOutlet weak var recoverAccountButton: UIButton!
     @IBOutlet weak var recoverAccountButton: UIButton!
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!

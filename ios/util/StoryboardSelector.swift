@@ -42,30 +42,6 @@ class StoryboardSelector {
     public func chess(gameModel: Game, player: Player, gamestate: Gamestate) {
         DispatchQueue.main.async {
             switch self.device() {
-            case "XANDROID":
-                let storyboard: UIStoryboard = UIStoryboard(name: "ChessXandroid", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "ChessXandroid") as! Chess
-                viewController.setGamestate(gamestate: gamestate)
-                viewController.setGameModel(gameModel: gamestate.getGameModel())
-                viewController.setPlayer(player: gamestate.getPlayer())
-                UIApplication.shared.keyWindow?.rootViewController = viewController
-                return
-            case "MAGNUS":
-                let storyboard: UIStoryboard = UIStoryboard(name: "ChessMagnus", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "ChessMagnus") as! Chess
-                viewController.setGamestate(gamestate: gamestate)
-                viewController.setGameModel(gameModel: gamestate.getGameModel())
-                viewController.setPlayer(player: gamestate.getPlayer())
-                UIApplication.shared.keyWindow?.rootViewController = viewController
-                return
-            case "XENOPHON":
-                let storyboard: UIStoryboard = UIStoryboard(name: "ChessXenophon", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "ChessXenophon") as! Chess
-                viewController.setGamestate(gamestate: gamestate)
-                viewController.setGameModel(gameModel: gamestate.getGameModel())
-                viewController.setPlayer(player: gamestate.getPlayer())
-                UIApplication.shared.keyWindow?.rootViewController = viewController
-                return
             case "PHAEDRUS":
                 let storyboard: UIStoryboard = UIStoryboard(name: "Tschess", bundle: nil)
                 let viewController = storyboard.instantiateViewController(withIdentifier: "Tschess") as! Tschess
@@ -129,24 +105,6 @@ class StoryboardSelector {
     public func home(player: Player) {
         DispatchQueue.main.async {
             switch self.device() {
-            case "XANDROID":
-                let homeStoryboard: UIStoryboard = UIStoryboard(name: "HomeXandroid", bundle: nil)
-                let homeViewController = homeStoryboard.instantiateViewController(withIdentifier: "HomeXandroid") as! xConfig
-                homeViewController.setPlayer(player: player)
-                UIApplication.shared.keyWindow?.rootViewController = homeViewController
-                return
-            case "MAGNUS":
-                let homeStoryboard: UIStoryboard = UIStoryboard(name: "HomeMagnus", bundle: nil)
-                let homeViewController = homeStoryboard.instantiateViewController(withIdentifier: "HomeMagnus") as! xConfig
-                homeViewController.setPlayer(player: player)
-                UIApplication.shared.keyWindow?.rootViewController = homeViewController
-                return
-            case "XENOPHON":
-                let homeStoryboard: UIStoryboard = UIStoryboard(name: "HomeXenophon", bundle: nil)
-                let homeViewController = homeStoryboard.instantiateViewController(withIdentifier: "HomeXenophon") as! xConfig
-                homeViewController.setPlayer(player: player)
-                UIApplication.shared.keyWindow?.rootViewController = homeViewController
-                return
             case "PHAEDRUS":
                 let homeStoryboard: UIStoryboard = UIStoryboard(name: "Home", bundle: nil)
                 let homeViewController = homeStoryboard.instantiateViewController(withIdentifier: "Home") as! Home
@@ -306,104 +264,6 @@ class StoryboardSelector {
         }
     }
     
-    public func cancel(player: Player, gameModel: Game, gameList: [Game]) {
-        DispatchQueue.main.async {
-            switch self.device() {
-            case "XANDROID":
-                let storyboard: UIStoryboard = UIStoryboard(name: "CancelXandroid", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "CancelXandroid") as! Cancel
-                viewController.setGameList(gameList: gameList)
-                viewController.setGameModel(gameModel: gameModel)
-                viewController.setPlayer(player: player)
-                UIApplication.shared.keyWindow?.rootViewController = viewController
-                return
-            case "MAGNUS":
-                let storyboard: UIStoryboard = UIStoryboard(name: "CancelMagnus", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "CancelMagnus") as! Cancel
-                viewController.setGameList(gameList: gameList)
-                viewController.setGameModel(gameModel: gameModel)
-                viewController.setPlayer(player: player)
-                UIApplication.shared.keyWindow?.rootViewController = viewController
-                return
-            case "XENOPHON":
-                let storyboard: UIStoryboard = UIStoryboard(name: "CancelXenophon", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "CancelXenophon") as! Cancel
-                viewController.setGameList(gameList: gameList)
-                viewController.setGameModel(gameModel: gameModel)
-                viewController.setPlayer(player: player)
-                UIApplication.shared.keyWindow?.rootViewController = viewController
-                return
-            case "PHAEDRUS":
-                let storyboard: UIStoryboard = UIStoryboard(name: "CancelPhaedrus", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "CancelPhaedrus") as! Cancel
-                viewController.setGameList(gameList: gameList)
-                viewController.setGameModel(gameModel: gameModel)
-                viewController.setPlayer(player: player)
-                UIApplication.shared.keyWindow?.rootViewController = viewController
-                return
-            case "CALHOUN":
-                let storyboard: UIStoryboard = UIStoryboard(name: "CancelCalhoun", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "CancelCalhoun") as! Cancel
-                viewController.setGameList(gameList: gameList)
-                viewController.setGameModel(gameModel: gameModel)
-                viewController.setPlayer(player: player)
-                UIApplication.shared.keyWindow?.rootViewController = viewController
-                return
-            default:
-                return
-            }
-        }
-    }
-    
-    public func review(player: Player, gameModel: Game, gameList: [Game]) {
-        DispatchQueue.main.async {
-            switch self.device() {
-            case "XANDROID":
-                let storyboard: UIStoryboard = UIStoryboard(name: "ReviewXandroid", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "ReviewXandroid") as! Review
-                viewController.setGameList(gameList: gameList)
-                viewController.setGameModel(gameModel: gameModel)
-                viewController.setPlayer(player: player)
-                UIApplication.shared.keyWindow?.rootViewController = viewController
-                return
-            case "MAGNUS":
-                let storyboard: UIStoryboard = UIStoryboard(name: "ReviewMagnus", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "ReviewMagnus") as! Review
-                viewController.setGameList(gameList: gameList)
-                viewController.setGameModel(gameModel: gameModel)
-                viewController.setPlayer(player: player)
-                UIApplication.shared.keyWindow?.rootViewController = viewController
-                return
-            case "XENOPHON":
-                let storyboard: UIStoryboard = UIStoryboard(name: "ReviewXenophon", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "ReviewXenophon") as! Review
-                viewController.setGameList(gameList: gameList)
-                viewController.setGameModel(gameModel: gameModel)
-                viewController.setPlayer(player: player)
-                UIApplication.shared.keyWindow?.rootViewController = viewController
-                return
-            case "PHAEDRUS":
-                let storyboard: UIStoryboard = UIStoryboard(name: "ReviewPhaedrus", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "ReviewPhaedrus") as! Review
-                viewController.setGameList(gameList: gameList)
-                viewController.setGameModel(gameModel: gameModel)
-                viewController.setPlayer(player: player)
-                UIApplication.shared.keyWindow?.rootViewController = viewController
-                return
-            case "CALHOUN":
-                let storyboard: UIStoryboard = UIStoryboard(name: "ReviewCalhoun", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "ReviewCalhoun") as! Review
-                viewController.setGameList(gameList: gameList)
-                viewController.setGameModel(gameModel: gameModel)
-                viewController.setPlayer(player: player)
-                UIApplication.shared.keyWindow?.rootViewController = viewController
-                return
-            default:
-                return
-            }
-        }
-    }
-    
     public func fairy(player: Player) {
         DispatchQueue.main.async {
             switch self.device() {
@@ -435,94 +295,6 @@ class StoryboardSelector {
                 let storyboard: UIStoryboard = UIStoryboard(name: "FairyCalhoun", bundle: nil)
                 let viewController = storyboard.instantiateViewController(withIdentifier: "FairyCalhoun") as! Fairy
                 viewController.setPlayer(player: player)
-                UIApplication.shared.keyWindow?.rootViewController = viewController
-                return
-            default:
-                return
-            }
-        }
-    }
-    
-//    public func acquisition(player: Player, fairyElement: FairyElement) {
-//        DispatchQueue.main.async {
-//            switch self.device() {
-//            case "XANDROID":
-//                let storyboard: UIStoryboard = UIStoryboard(name: "AcquisitionXandroid", bundle: nil)
-//                let viewController = storyboard.instantiateViewController(withIdentifier: "AcquisitionXandroid") as! Acquisition
-//                viewController.setPlayer(player: player)
-//                viewController.setFairyElement(fairyElement: fairyElement)
-//                UIApplication.shared.keyWindow?.rootViewController = viewController
-//                return
-//            case "MAGNUS":
-//                let storyboard: UIStoryboard = UIStoryboard(name: "AcquisitionMagnus", bundle: nil)
-//                let viewController = storyboard.instantiateViewController(withIdentifier: "AcquisitionMagnus") as! Acquisition
-//                viewController.setPlayer(player: player)
-//                viewController.setFairyElement(fairyElement: fairyElement)
-//                UIApplication.shared.keyWindow?.rootViewController = viewController
-//                return
-//            case "XENOPHON":
-//                let storyboard: UIStoryboard = UIStoryboard(name: "AcquisitionXenophon", bundle: nil)
-//                let viewController = storyboard.instantiateViewController(withIdentifier: "AcquisitionXenophon") as! Acquisition
-//                viewController.setPlayer(player: player)
-//                viewController.setFairyElement(fairyElement: fairyElement)
-//                UIApplication.shared.keyWindow?.rootViewController = viewController
-//                return
-//            case "PHAEDRUS":
-//                let storyboard: UIStoryboard = UIStoryboard(name: "AcquisitionPhaedrus", bundle: nil)
-//                let viewController = storyboard.instantiateViewController(withIdentifier: "AcquisitionPhaedrus") as! Acquisition
-//                viewController.setPlayer(player: player)
-//                viewController.setFairyElement(fairyElement: fairyElement)
-//                UIApplication.shared.keyWindow?.rootViewController = viewController
-//                return
-//            case "CALHOUN":
-//                let storyboard: UIStoryboard = UIStoryboard(name: "AcquisitionCalhoun", bundle: nil)
-//                let viewController = storyboard.instantiateViewController(withIdentifier: "AcquisitionCalhoun") as! Acquisition
-//                viewController.setPlayer(player: player)
-//                viewController.setFairyElement(fairyElement: fairyElement)
-//                UIApplication.shared.keyWindow?.rootViewController = viewController
-//                return
-//            default:
-//                return
-//            }
-//        }
-//    }
-    
-    public func eth(player: Player, scan: Bool = false) {
-        DispatchQueue.main.async {
-            switch self.device() {
-            case "XANDROID":
-                let storyboard: UIStoryboard = UIStoryboard(name: "EthXandroid", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "EthXandroid") as! Eth
-                viewController.setPlayer(player: player)
-                viewController.setScan(scan: scan)
-                UIApplication.shared.keyWindow?.rootViewController = viewController
-                return
-            case "MAGNUS":
-                let storyboard: UIStoryboard = UIStoryboard(name: "EthMagnus", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "EthMagnus") as! Eth
-                viewController.setPlayer(player: player)
-                viewController.setScan(scan: scan)
-                UIApplication.shared.keyWindow?.rootViewController = viewController
-                return
-            case "XENOPHON":
-                let storyboard: UIStoryboard = UIStoryboard(name: "EthXenophon", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "EthXenophon") as! Eth
-                viewController.setPlayer(player: player)
-                viewController.setScan(scan: scan)
-                UIApplication.shared.keyWindow?.rootViewController = viewController
-                return
-            case "PHAEDRUS":
-                let storyboard: UIStoryboard = UIStoryboard(name: "EthPhaedrus", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "EthPhaedrus") as! Eth
-                viewController.setPlayer(player: player)
-                viewController.setScan(scan: scan)
-                UIApplication.shared.keyWindow?.rootViewController = viewController
-                return
-            case "CALHOUN":
-                let storyboard: UIStoryboard = UIStoryboard(name: "EthCalhoun", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "EthCalhoun") as! Eth
-                viewController.setPlayer(player: player)
-                viewController.setScan(scan: scan)
                 UIApplication.shared.keyWindow?.rootViewController = viewController
                 return
             default:
@@ -692,57 +464,4 @@ class StoryboardSelector {
         }
     }
     
-    public func talk(player: Player, opponent: PlayerCore, gamestate: Gamestate) {
-        DispatchQueue.main.async {
-            switch self.device() {
-            case "XANDROID":
-                let storyboard: UIStoryboard = UIStoryboard(name: "TalkXandroid", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "TalkXandroid") as! Talk
-                viewController.setPlayer(player: player)
-                viewController.setOpponent(opponent: opponent)
-                viewController.setGameModel(gameModel: gamestate.getGameModel())
-                viewController.setGamestate(gamestate: gamestate)
-                UIApplication.shared.keyWindow?.rootViewController = viewController
-                return
-            case "MAGNUS":
-                let storyboard: UIStoryboard = UIStoryboard(name: "TalkMagnus", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "TalkMagnus") as! Talk
-                viewController.setPlayer(player: player)
-                viewController.setOpponent(opponent: opponent)
-                viewController.setGameModel(gameModel: gamestate.getGameModel())
-                viewController.setGamestate(gamestate: gamestate)
-                UIApplication.shared.keyWindow?.rootViewController = viewController
-                return
-            case "XENOPHON":
-                let storyboard: UIStoryboard = UIStoryboard(name: "TalkXenophon", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "TalkXenophon") as! Talk
-                viewController.setPlayer(player: player)
-                viewController.setOpponent(opponent: opponent)
-                viewController.setGameModel(gameModel: gamestate.getGameModel())
-                viewController.setGamestate(gamestate: gamestate)
-                UIApplication.shared.keyWindow?.rootViewController = viewController
-                return
-            case "PHAEDRUS":
-                let storyboard: UIStoryboard = UIStoryboard(name: "TalkPhaedrus", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "TalkPhaedrus") as! Talk
-                viewController.setPlayer(player: player)
-                viewController.setOpponent(opponent: opponent)
-                viewController.setGameModel(gameModel: gamestate.getGameModel())
-                viewController.setGamestate(gamestate: gamestate)
-                UIApplication.shared.keyWindow?.rootViewController = viewController
-                return
-            case "CALHOUN":
-                let storyboard: UIStoryboard = UIStoryboard(name: "TalkCalhoun", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "TalkCalhoun") as! Talk
-                viewController.setPlayer(player: player)
-                viewController.setOpponent(opponent: opponent)
-                viewController.setGameModel(gameModel: gamestate.getGameModel())
-                viewController.setGamestate(gamestate: gamestate)
-                UIApplication.shared.keyWindow?.rootViewController = viewController
-                return
-            default:
-                return
-            }
-        }
-    }
 }
