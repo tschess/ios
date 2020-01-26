@@ -179,9 +179,9 @@
                         <outlet property="contentView" destination="NyH-VF-R5g" id="54L-Ps-4Gn"/>
                         <outlet property="easterEggImageView" destination="8th-jg-167" id="H5U-bI-dKI"/>
                         <outlet property="easterEggLabel" destination="d6V-ci-BVi" id="yMq-mh-qtQ"/>
+                        <outlet property="passwordTextField" destination="iP2-rm-ezV" id="qvL-MI-C4Z"/>
                         <outlet property="recoverAccountButton" destination="13Q-ST-VzR" id="hsG-Wl-uTg"/>
-                        <outlet property="textFieldPassword" destination="iP2-rm-ezV" id="qvL-MI-C4Z"/>
-                        <outlet property="textFieldUsername" destination="nRp-yq-OSS" id="sLH-kV-N8W"/>
+                        <outlet property="usernameTextField" destination="nRp-yq-OSS" id="sLH-kV-N8W"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
