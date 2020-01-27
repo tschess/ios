@@ -6,33 +6,86 @@
 //  Copyright © 2019 bahlsenwitz. All rights reserved.
 //
 import UIKit
+import IHKeyboardAvoiding
 
 class Start: UIViewController, UITextFieldDelegate {
     
-    @IBOutlet weak var recoverAccountButton: UIButton!
+     //@IBOutlet weak var contentView: UIView!
+    @IBOutlet weak var contentView: UIView!
     
+    //MARK: Constant
+    let DATE_TIME: DateTime = DateTime()
+    
+    //MARK: Layout
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
+    //MARK: Input
+    @IBOutlet weak var usernameTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    var usernameTextString: String?
+    var passwordTextString: String?
     
-    @IBOutlet weak var contentView: UIView!
-    //MARK: Properties
+    //MARK: Button
+    @IBOutlet weak var buttonRecover: UIButton!
     @IBOutlet weak var buttonLogin: UIButton!
     @IBOutlet weak var buttonCreate: UIButton!
     
+    //MARK: Test
+    @IBOutlet weak var testTaskImageView: UIImageView!
+    @IBOutlet weak var testTaskLabel: UILabel!
+    var testTaskCounter: Int
+    
+    required init?(coder aDecoder: NSCoder) {
+        self.testTaskCounter = 0
+        super.init(coder: aDecoder)
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.activityIndicator.isHidden = true
+        self.testTaskLabel.isHidden = true
+        
+        self.usernameTextField.delegate = self
+        self.passwordTextField.delegate = self
+        self.usernameTextField.attributedPlaceholder = NSAttributedString(string: "username",
+                                                                     attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+        self.passwordTextField.attributedPlaceholder = NSAttributedString(string: "password",
+                                                                     attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+        let dismissKeyboard: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
+        view.addGestureRecognizer(dismissKeyboard)
+        
+        //self.contentView.addInputVisibilityController()
+        KeyboardAvoiding.avoidingView = self.contentView
+    }
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
     
     
-    @IBOutlet weak var easterEggImageView: UIImageView!
-    @IBOutlet weak var easterEggLabel: UILabel!
-    var easterEggCounter: Int?
+
+//    @objc func keyboardWillShow(notification: NSNotification) {
+//        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+//            if self.view.frame.origin.y == 0 {
+//                self.view.frame.origin.y -= keyboardSize.height
+//            }
+//        }
+//        self.view.addConstraint(bottomContraint)
+//    }
+//
+//    @objc func keyboardWillHide(notification: NSNotification) {
+//        if self.view.frame.origin.y != 0 {
+//            self.view.frame.origin.y = 0
+//        }
+//    }
     
-    var deviceId: String?
-    let dateTime: DateTime = DateTime()
-    
-    
-    @IBOutlet weak var usernameTextField: UITextField!
-    var usernameTextString: String?
-    @IBOutlet weak var passwordTextField: UITextField!
-    var passwordTextString: String?
+    //MARK: UITextFieldDelegate
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.usernameTextField.resignFirstResponder()
+        self.passwordTextField.resignFirstResponder()
+        return true
+    }
     
     @IBAction func loginButtonClick(_ sender: UIButton) {
         self.usernameTextString = usernameTextField.text!
@@ -46,9 +99,16 @@ class Start: UIViewController, UITextFieldDelegate {
         self.usernameTextField.isHidden = true
         self.passwordTextField.isHidden = true
         
-        let updated = dateTime.currentDateString()
+        let updated = DATE_TIME.currentDateString()
+        let deviceId = UIDevice.current.identifierForVendor?.uuidString
         
-        let requestPayload = ["name":usernameTextString!,"password":passwordTextString!,"device":deviceId!,"updated":updated]
+        let requestPayload = [
+            "username": usernameTextString!,
+            "password": passwordTextString!,
+            "device": deviceId!,
+            "updated": updated
+        ]
+        
         LoginTask().execute(requestPayload: requestPayload) { (result, error) in
             if let result = result {
                 StoryboardSelector().home(player: result)
@@ -59,101 +119,38 @@ class Start: UIViewController, UITextFieldDelegate {
     
     
     
-    
-    
-    
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        self.activityIndicator.isHidden = true
-        
-        self.deviceId = UIDevice.current.identifierForVendor?.uuidString
-        self.easterEggCounter = 0
-        
-        easterEggLabel.isHidden = true
-        
-        usernameTextField.delegate = self
-        usernameTextField.attributedPlaceholder = NSAttributedString(string: "username",
-                                                                     attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
-        passwordTextField.delegate = self
-        passwordTextField.attributedPlaceholder = NSAttributedString(string: "password",
-                                                                     attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
-        easterEggImageView.alpha = 0.75
-        
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
-        view.addGestureRecognizer(tap)
-        
-       
-    }
-    
-   
-    
-    //MARK: UITextFieldDelegate
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        usernameTextField.resignFirstResponder()
-        passwordTextField.resignFirstResponder()
-        return true
-    }
-    
-    @objc func dismissKeyboard() {
-        view.endEditing(true)
-    }
-    
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        animateViewMoving(up: true, moveValue: self.contentView.frame.size.height + 16)
-    }
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        animateViewMoving(up: false, moveValue: self.contentView.frame.size.height + 16)
-    }
-    
-    func animateViewMoving(up: Bool, moveValue: CGFloat){
-        let movementDuration: TimeInterval = 0.2
-        let movement: CGFloat = (up ? -moveValue : moveValue)
-        UIView.beginAnimations("animateView", context: nil)
-        UIView.setAnimationBeginsFromCurrentState(true)
-        UIView.setAnimationDuration(movementDuration)
-        self.view.frame = self.view.frame.offsetBy(dx: 0, dy: movement)
-        UIView.commitAnimations()
-    }
-    
-    //MARK: Actions
-    
-    
-    func okHandler(action: UIAlertAction) {
-        StoryboardSelector().start()
-    }
+
+
     
     @IBAction func createButtonClick(_ sender: UIButton) {
-        usernameTextString = usernameTextField.text!
-        passwordTextString = passwordTextField.text!
-        
-        self.dismissKeyboard()
-        
-        self.activityIndicator.isHidden = false
-        self.activityIndicator.startAnimating()
-        self.buttonLogin.isHidden = true
-        self.buttonCreate.isHidden = true
-        self.usernameTextField.isHidden = true
-        self.passwordTextField.isHidden = true
-        
-        let updated = dateTime.currentDateString()
-        let api = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as! String
-        let requestPayload = [
-            "name": usernameTextString!,
-            "password": passwordTextString!,
-            "device": deviceId!,
-            "updated": updated,
-            "created": updated,
-            "api": api
-        ]
-        PlayerCreate().execute(requestPayload: requestPayload) { (result, error) in
-            if let result = result {
-             
-                StoryboardSelector().home(player: result)
-            }
-        }
+//        usernameTextString = usernameTextField.text!
+//        passwordTextString = passwordTextField.text!
+//
+//        self.dismissKeyboard()
+//
+//        self.activityIndicator.isHidden = false
+//        self.activityIndicator.startAnimating()
+//        self.buttonLogin.isHidden = true
+//        self.buttonCreate.isHidden = true
+//        self.usernameTextField.isHidden = true
+//        self.passwordTextField.isHidden = true
+//
+//        let updated = dateTime.currentDateString()
+//        let api = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as! String
+//        let requestPayload = [
+//            "name": usernameTextString!,
+//            "password": passwordTextString!,
+//            "device": deviceId!,
+//            "updated": updated,
+//            "created": updated,
+//            "api": api
+//        ]
+//        PlayerCreate().execute(requestPayload: requestPayload) { (result, error) in
+//            if let result = result {
+//
+//                StoryboardSelector().home(player: result)
+//            }
+//        }
     }
     
     func testBoardState() -> [[String]] {
