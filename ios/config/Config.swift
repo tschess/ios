@@ -138,8 +138,6 @@ class Config:
         let storyboard: UIStoryboard = UIStoryboard(name: "EditSelf", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "EditSelf") as! EditSelf
         viewController.setPlayer(player: self.player!)
-        let gameModel = Game(opponent: self.player!)
-        viewController.setGameModel(gameModel: gameModel)
         viewController.setTitleText(titleText: "config. 0̸")
         UIApplication.shared.keyWindow?.rootViewController = viewController
     }
@@ -148,8 +146,6 @@ class Config:
         let storyboard: UIStoryboard = UIStoryboard(name: "EditSelf", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "EditSelf") as! EditSelf
         viewController.setPlayer(player: self.player!)
-        let gameModel = Game(opponent: self.player!)
-        viewController.setGameModel(gameModel: gameModel)
         viewController.setTitleText(titleText: "config. 1")
         UIApplication.shared.keyWindow?.rootViewController = viewController
     }
@@ -158,8 +154,6 @@ class Config:
            let storyboard: UIStoryboard = UIStoryboard(name: "EditSelf", bundle: nil)
            let viewController = storyboard.instantiateViewController(withIdentifier: "EditSelf") as! EditSelf
            viewController.setPlayer(player: self.player!)
-           let gameModel = Game(opponent: self.player!)
-           viewController.setGameModel(gameModel: gameModel)
            viewController.setTitleText(titleText: "config. 2")
            UIApplication.shared.keyWindow?.rootViewController = viewController
        }
