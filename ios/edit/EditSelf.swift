@@ -38,7 +38,34 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
     
     public func setPlayer(player: Player){
         self.player = player
-        let dataDecoded: Data = Data(base64Encoded: self.player!.getAvatar(), options: .ignoreUnknownCharacters)!
+    }
+    
+    //MARK: Layout: Menu
+    @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var tabBarMenu: UITabBar!
+    @IBOutlet weak var titleLabel: UILabel!
+    var titleText: String?
+    
+    func setTitleText(titleText: String) {
+        self.titleText = titleText
+    }
+    
+    //MARK: Input
+    @IBOutlet weak var tschessElementCollectionView: UICollectionView!
+    @IBOutlet weak var configCollectionViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var configCollectionView: DynamicCollectionView!
+    
+    //MARK: Variables
+    var elementMatrixAbort: [[TschessElement?]]?
+    var elementMatrixCache: [[TschessElement?]]?
+    var elementMatrixActiv: [[TschessElement?]]?
+    var selectionElementName: String?
+    var points: Int?
+    
+    //MARK: Lifecycle
+    
+    private func assignHeader() {
+       let dataDecoded: Data = Data(base64Encoded: self.player!.getAvatar(), options: .ignoreUnknownCharacters)!
         let decodedimage = UIImage(data: dataDecoded)
         self.avatarImageView.image = decodedimage
         self.rankLabel.text = self.player!.getRank()
@@ -60,31 +87,6 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
             self.displacementImage.tintColor = .red
         }
     }
-    
-    //MARK: Layout: Menu
-    @IBOutlet weak var backButton: UIButton!
-    @IBOutlet weak var tabBarMenu: UITabBar!
-    @IBOutlet weak var titleLabel: UILabel!
-    var titleText: String?
-    
-    func setTitleText(titleText: String) {
-        self.titleText = titleText
-        self.titleLabel.text = self.titleText
-    }
-    
-    //MARK: Input
-    @IBOutlet weak var tschessElementCollectionView: UICollectionView!
-    @IBOutlet weak var configCollectionViewHeight: NSLayoutConstraint!
-    @IBOutlet weak var configCollectionView: DynamicCollectionView!
-    
-    //MARK: Variables
-    var elementMatrixAbort: [[TschessElement?]]?
-    var elementMatrixCache: [[TschessElement?]]?
-    var elementMatrixActiv: [[TschessElement?]]?
-    var selectionElementName: String?
-    var points: Int?
-    
-    //MARK: Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -123,6 +125,8 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
             self.elementMatrixActiv = self.player!.getConfig0()
             self.elementMatrixAbort = self.elementMatrixActiv
         }
+        self.titleLabel.text = self.titleText
+        self.assignHeader()
     }
     
     override func viewDidLayoutSubviews() {
