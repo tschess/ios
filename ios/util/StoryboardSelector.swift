@@ -87,8 +87,8 @@ class StoryboardSelector {
                 UIApplication.shared.keyWindow?.rootViewController = viewController
                 return
             case "PHAEDRUS":
-                let storyboard: UIStoryboard = UIStoryboard(name: "StartPhaedrus", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "StartPhaedrus") as! Start
+                let storyboard: UIStoryboard = UIStoryboard(name: "StartCalhoun", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "StartCalhoun") as! Start
                 UIApplication.shared.keyWindow?.rootViewController = viewController
                 return
             case "CALHOUN":

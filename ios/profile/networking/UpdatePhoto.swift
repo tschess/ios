@@ -12,7 +12,7 @@ class UpdatePhoto {
     
     func execute(requestPayload: [String: Any], completion: @escaping (Error?) -> Void) {
         
-        //print("requestPayload: \(requestPayload)")
+        print("UpdatePhoto - requestPayload: \(requestPayload)")
         
         let url = URL(string: "http://\(ServerAddress().IP):8080/player/avatar")!
         var request = URLRequest(url: url)
@@ -41,7 +41,7 @@ class UpdatePhoto {
                     return
                 }
                 
-                //print(json)
+                print(json)
               
                 completion(nil)
             } catch let error {

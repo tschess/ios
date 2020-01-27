@@ -145,9 +145,6 @@ class Profile: UIViewController, UITabBarDelegate, UINavigationControllerDelegat
         //remove device from user profile on server...
         let device = UIDevice.current.identifierForVendor!.uuidString
         ClearDevice().execute(device: device) { (result) in
-            //print("result: \(String(describing: result))")
-            //try? PushNotifications.shared.clearDeviceInterests()
-            //exit(0)
             StoryboardSelector().start()
         }
     }

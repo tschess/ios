@@ -145,7 +145,6 @@
 		B7DF5C03238334540022A8C2 /* Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7DF5C02238334540022A8C2 /* Preview.swift */; };
 		B7DF5C07238334B10022A8C2 /* Purchase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7DF5C06238334B10022A8C2 /* Purchase.swift */; };
 		B7E14C0022EC50F800CABCD3 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E14BFF22EC50F800CABCD3 /* Game.swift */; };
-		B7E23C592381FD6D007DA860 /* IapetusSkins.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E23C582381FD6D007DA860 /* IapetusSkins.swift */; };
 		B7E644A62329A45E00DC1634 /* Castling.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E644A52329A45E00DC1634 /* Castling.swift */; };
 		B7EA5DBD2375BEB80019C0BF /* PollingAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7EA5DBC2375BEB80019C0BF /* PollingAgent.swift */; };
 		B7EA5DC12375C15A0019C0BF /* ConfigDeserializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7EA5DC02375C15A0019C0BF /* ConfigDeserializer.swift */; };
@@ -367,7 +366,6 @@
 		B7DF5C02238334540022A8C2 /* Preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preview.swift; sourceTree = "<group>"; };
 		B7DF5C06238334B10022A8C2 /* Purchase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Purchase.swift; sourceTree = "<group>"; };
 		B7E14BFF22EC50F800CABCD3 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
-		B7E23C582381FD6D007DA860 /* IapetusSkins.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IapetusSkins.swift; sourceTree = "<group>"; };
 		B7E644A52329A45E00DC1634 /* Castling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Castling.swift; sourceTree = "<group>"; };
 		B7EA5DBC2375BEB80019C0BF /* PollingAgent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollingAgent.swift; sourceTree = "<group>"; };
 		B7EA5DC02375C15A0019C0BF /* ConfigDeserializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigDeserializer.swift; sourceTree = "<group>"; };
@@ -779,7 +777,6 @@
 			isa = PBXGroup;
 			children = (
 				B7661FA62371FB050033A556 /* UpdatePhoto.swift */,
-				B7E23C582381FD6D007DA860 /* IapetusSkins.swift */,
 				B7FAD96D238490D1006440B6 /* ClearDevice.swift */,
 			);
 			path = networking;
@@ -1759,7 +1756,6 @@
 				B74145C222F3CAC800B3B4FF /* LegalMove.swift in Sources */,
 				B7AB8E60235607CD002D71BD /* HopperOffense.swift in Sources */,
 				B7C5B79423D9EDE50074B81C /* GameCreate.swift in Sources */,
-				B7E23C592381FD6D007DA860 /* IapetusSkins.swift in Sources */,
 				B7F541C123D51A5A00E89074 /* Home.swift in Sources */,
 				B7F5878623D12D8000A91CD3 /* ShowMeSkins.swift in Sources */,
 				B74136CB23DE34EF001B3D60 /* TestTask1.swift in Sources */,
