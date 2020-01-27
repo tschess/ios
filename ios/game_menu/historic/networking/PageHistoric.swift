@@ -57,7 +57,7 @@ class PageHistoric {
                 guard let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [[String: Any]] else {
                     return
                 }
-                //print("*PageHistoric* \n\n \(json)")
+                print("*PageHistoric* \n\n \(json)")
                 var gameList = [Game]()
                 
                 let responseList = self.generateGameList(serverResponse: json)

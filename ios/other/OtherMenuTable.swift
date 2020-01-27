@@ -124,31 +124,18 @@ class OtherMenuTable: UITableViewController {
         pageHistoric.setMatrixDeserializer(name: self.gameModel!.getUsernameOpponent())
         pageHistoric.executeLeaderboard(gameModel: self.gameModel!, page: self.pageFromWhichContentLoads){ (result) in
             if(result == nil){
+                self.renderShrug()
+                print("0 - 0")
                 return
             }
+            print("1 - 1")
             self.appendToLeaderboardTableList(additionalCellList: result!)
-            
-            DispatchQueue.main.async() {
-                
-                if(self.gameMenuTableList.count == 0) {
-                    let frameSize: CGPoint = CGPoint(x: UIScreen.main.bounds.size.width*0.5, y: UIScreen.main.bounds.size.height*0.5)
-                    self.label = UILabel(frame: CGRect(x: UIScreen.main.bounds.size.width*0.5, y: UIScreen.main.bounds.size.height*0.5, width: UIScreen.main.bounds.width, height: 40))
-                    self.label!.center = frameSize
-                    self.label!.textAlignment = .center
-                    self.label!.text = "¯\\_( ͡° ͜ʖ ͡°)_/¯"
-                    self.label!.font = UIFont.systemFont(ofSize: 30, weight: UIFont.Weight.light)
-                    self.view.addSubview(self.label!)
-                    self.label!.translatesAutoresizingMaskIntoConstraints = false
-                    let horizontalConstraint = NSLayoutConstraint(item: self.label!, attribute: NSLayoutConstraint.Attribute.centerX, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.view, attribute: NSLayoutConstraint.Attribute.centerX, multiplier: 1, constant: 0)
-                    let verticalConstraint = NSLayoutConstraint(item: self.label!, attribute: NSLayoutConstraint.Attribute.centerY, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.view, attribute: NSLayoutConstraint.Attribute.centerY, multiplier: 1, constant: 0)
-                    self.view.addConstraints([horizontalConstraint, verticalConstraint])
-                }
-            }
         }
     }
     
     func appendToLeaderboardTableList(additionalCellList: [Game]) {
         let currentCount = self.gameMenuTableList.count
+        
         for game in additionalCellList {
             if(!self.gameMenuTableList.contains(game)){
                 self.gameMenuTableList.append(game)
@@ -157,40 +144,51 @@ class OtherMenuTable: UITableViewController {
         if(currentCount != self.gameMenuTableList.count){
             self.gameMenuTableList = self.gameMenuTableList.sorted(by: { $0.created! > $1.created! })
             DispatchQueue.main.async() {
-                //self.activityIndicator!.stopAnimating()
-                //self.activityIndicator!.isHidden = true
                 self.tableView.reloadData()
             }
         }
     }
     
-        override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-    //        let leaderboardItem = leaderboardTableList[indexPath.row]
-    //        if(!gameTableMenuItem.inbound!){
-    //           return nil
-    //        }
-            let modifyAction = UIContextualAction(style: .normal, title:  "CHALLENGE", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
-                print("Update action ...")
-                let gameModel = self.gameMenuTableList[indexPath.row]
-                
-                let storyboard: UIStoryboard = UIStoryboard(name: "Challenge", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "Challenge") as! Challenge
-                viewController.setPlayer(player: self.player!)
-                viewController.setGameModel(gameModel: gameModel)
-                UIApplication.shared.keyWindow?.rootViewController = viewController
-                success(true)
-            })
-            if #available(iOS 13.0, *) { //xmark
-                modifyAction.image = UIImage(systemName: "gamecontroller.fill")!
-            }
-            modifyAction.backgroundColor = .purple
-            return UISwipeActionsConfiguration(actions: [modifyAction])
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let modifyAction = UIContextualAction(style: .normal, title:  "CHALLENGE", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
+            print("Update action ...")
+            let gameModel = self.gameMenuTableList[indexPath.row]
+            
+            let storyboard: UIStoryboard = UIStoryboard(name: "Challenge", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier: "Challenge") as! Challenge
+            viewController.setPlayer(player: self.player!)
+            viewController.setGameModel(gameModel: gameModel)
+            UIApplication.shared.keyWindow?.rootViewController = viewController
+            success(true)
+        })
+        if #available(iOS 13.0, *) { //xmark
+            modifyAction.image = UIImage(systemName: "gamecontroller.fill")!
         }
+        modifyAction.backgroundColor = .purple
+        return UISwipeActionsConfiguration(actions: [modifyAction])
+    }
     
     var player: Player?
- 
+    
     
     public func setPlayer(player: Player){
         self.player = player
+    }
+    
+    private func renderShrug(){  // this can exist in practice...
+        DispatchQueue.main.async() {
+            let frameSize: CGPoint = CGPoint(x: UIScreen.main.bounds.size.width*0.5, y: UIScreen.main.bounds.size.height*0.5)
+            let label = UILabel(frame: CGRect(x: UIScreen.main.bounds.size.width*0.5, y: UIScreen.main.bounds.size.height*0.5, width: UIScreen.main.bounds.width, height: 40))
+            label.textColor = UIColor.white
+            label.center = frameSize
+            label.textAlignment = .center
+            label.font = UIFont.systemFont(ofSize: 30, weight: UIFont.Weight.light)
+            label.translatesAutoresizingMaskIntoConstraints = false
+            let horizontalConstraint = NSLayoutConstraint(item: label, attribute: NSLayoutConstraint.Attribute.centerX, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.view, attribute: NSLayoutConstraint.Attribute.centerX, multiplier: 1, constant: 0)
+            let verticalConstraint = NSLayoutConstraint(item: label, attribute: NSLayoutConstraint.Attribute.centerY, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.view, attribute: NSLayoutConstraint.Attribute.centerY, multiplier: 1, constant: 0)
+            label.text = "¯\\_( ͡° ͜ʖ ͡°)_/¯"
+            self.view.addSubview(label)
+            self.view.addConstraints([horizontalConstraint, verticalConstraint])
+        }
     }
 }

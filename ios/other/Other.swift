@@ -10,8 +10,6 @@ import UIKit
 
 class Other: UIViewController, UITabBarDelegate {
     
-    //@IBOutlet weak var challengeButtonView: UIView! //should deffer rendering until appointed moment...
-    
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     let dateTime: DateTime = DateTime()
@@ -22,6 +20,8 @@ class Other: UIViewController, UITabBarDelegate {
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var rankLabel: UILabel!
     @IBOutlet weak var avatarImageView: UIImageView!
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var eloLabel: UILabel!
     
     var player: Player?
     var gameModel: Game?
@@ -46,7 +46,7 @@ class Other: UIViewController, UITabBarDelegate {
         self.otherMenuTable!.setPlayer(player: self.player!)
         self.otherMenuTable!.fetchMenuTableList()
         
-        tabBarMenu.delegate = self
+        self.tabBarMenu.delegate = self
         
         self.activityIndicator.isHidden = true
         
@@ -54,7 +54,21 @@ class Other: UIViewController, UITabBarDelegate {
         let decodedimage = UIImage(data: dataDecoded)
         self.avatarImageView.image = decodedimage
         self.rankLabel.text = gameModel!.getOpponentRank()
+        self.eloLabel.text = gameModel!.getOpponent().getElo()
         self.usernameLabel.text = gameModel!.getUsernameOpponent()
+        
+        let date: String = gameModel!.getOpponent().getDate()
+        if(date == "TBD"){
+            let formatter = DateFormatter()
+            formatter.dateFormat = "dd.MM.YY"
+            var yayayaya = formatter.string(from: DateTime().currentDate())
+            yayayaya.insert("'", at: yayayaya.index(yayayaya.endIndex, offsetBy: -2))
+            self.dateLabel.text = yayayaya
+        } else {
+            //date...
+        }
+        
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {

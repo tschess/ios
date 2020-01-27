@@ -156,14 +156,8 @@
                                     <constraint firstAttribute="height" constant="50" id="CtS-Ad-lXP"/>
                                 </constraints>
                                 <items>
-                                    <tabBarItem title="" id="cNg-v3-E35">
-                                        <color key="badgeColor" red="0.86923474069999995" green="0.012778783219999999" blue="0.00083617179190000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </tabBarItem>
                                     <tabBarItem tag="1" title="challenge" image="gamecontroller" catalog="system" selectedImage="gamecontroller.fill" id="fjf-cy-wGx">
                                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </tabBarItem>
-                                    <tabBarItem title="" id="AgV-7t-joK">
-                                        <color key="badgeColor" red="0.86923474069999995" green="0.012778783219999999" blue="0.00083617179190000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </tabBarItem>
                                 </items>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -200,6 +194,8 @@
                         <outlet property="activityIndicator" destination="RAM-33-HiP" id="hv1-Gz-W0b"/>
                         <outlet property="avatarImageView" destination="XYJ-aV-Rc5" id="1uS-TP-4fV"/>
                         <outlet property="backButton" destination="5qi-EH-0fj" id="9nk-ly-Hln"/>
+                        <outlet property="dateLabel" destination="W87-PB-Jjr" id="GmQ-7E-Ipf"/>
+                        <outlet property="eloLabel" destination="TbE-OR-tfD" id="rzc-Qm-RYg"/>
                         <outlet property="rankLabel" destination="Cds-SZ-ar7" id="imB-Nu-lEa"/>
                         <outlet property="tabBarMenu" destination="lR1-2A-YPc" id="CDf-K6-4Hh"/>
                         <outlet property="usernameLabel" destination="ux2-5E-CTf" id="73i-xH-2Wl"/>

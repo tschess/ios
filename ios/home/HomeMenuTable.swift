@@ -68,9 +68,11 @@ class HomeMenuTable: UITableViewController {
             var yayayaya = formatter.string(from: DateTime().currentDate())
             yayayaya.insert("'", at: yayayaya.index(yayayaya.endIndex, offsetBy: -2))
             cell.dateLabel.text = yayayaya
+        } else {
+            //date...
         }
         
-        cell.dispLabel.text = String(abs(Int(self.player!.getDisp())!)) //gameTableMenuItem.getOpponent().getDisp()
+        cell.dispLabel.text = String(abs(Int(gameTableMenuItem.getOpponent().getDisp())!))
         
         let disp: Int = Int(gameTableMenuItem.getOpponent().getDisp())!
         
