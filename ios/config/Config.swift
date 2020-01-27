@@ -6,7 +6,7 @@
 //  Copyright © 2020 bahlsenwitz. All rights reserved.
 //
 
-import UIKit //UITextViewDelegate
+import UIKit
 
 class Config:
                 UIViewController,

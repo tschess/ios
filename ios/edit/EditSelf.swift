@@ -26,7 +26,9 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
         "red_grasshopper",
         "red_arrow"]
     
-    //MARK: Layout: Header
+    //MARK: Layout: Core
+    @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var tabBarMenu: UITabBar!
     @IBOutlet weak var displacementImage: UIImageView!
     @IBOutlet weak var displacementLabel: UILabel!
     @IBOutlet weak var eloLabel: UILabel!
@@ -39,30 +41,6 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
     public func setPlayer(player: Player){
         self.player = player
     }
-    
-    //MARK: Layout: Menu
-    @IBOutlet weak var backButton: UIButton!
-    @IBOutlet weak var tabBarMenu: UITabBar!
-    @IBOutlet weak var titleLabel: UILabel!
-    var titleText: String?
-    
-    func setTitleText(titleText: String) {
-        self.titleText = titleText
-    }
-    
-    //MARK: Input
-    @IBOutlet weak var tschessElementCollectionView: UICollectionView!
-    @IBOutlet weak var configCollectionViewHeight: NSLayoutConstraint!
-    @IBOutlet weak var configCollectionView: DynamicCollectionView!
-    
-    //MARK: Variables
-    var elementMatrixAbort: [[TschessElement?]]?
-    var elementMatrixCache: [[TschessElement?]]?
-    var elementMatrixActiv: [[TschessElement?]]?
-    var selectionElementName: String?
-    var points: Int?
-    
-    //MARK: Lifecycle
     
     private func assignHeader() {
        let dataDecoded: Data = Data(base64Encoded: self.player!.getAvatar(), options: .ignoreUnknownCharacters)!
@@ -88,6 +66,33 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
         }
     }
     
+    //MARK: Layout: Content
+    @IBOutlet weak var totalPointLabel: UILabel!
+    @IBOutlet weak var notificationLabel: UILabel!
+    @IBOutlet weak var splitViewHeight0: NSLayoutConstraint!
+    @IBOutlet weak var splitViewHeight1: NSLayoutConstraint!
+    @IBOutlet weak var splitViewHeight2: NSLayoutConstraint!
+    @IBOutlet weak var contentView: UIView!
+    @IBOutlet weak var titleLabel: UILabel!
+    var titleText: String?
+    
+    func setTitleText(titleText: String) {
+        self.titleText = titleText
+    }
+    
+    //MARK: Input
+    @IBOutlet weak var tschessElementCollectionView: UICollectionView!
+    @IBOutlet weak var configCollectionViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var configCollectionView: DynamicCollectionView!
+    
+    //MARK: Variables
+    var elementMatrixAbort: [[TschessElement?]]?
+    var elementMatrixCache: [[TschessElement?]]?
+    var elementMatrixActiv: [[TschessElement?]]?
+    var selectionElementName: String?
+    var points: Int?
+    
+    //MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configCollectionView.delegate = self
@@ -98,10 +103,19 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
         self.tschessElementCollectionView.dataSource = self
         self.tschessElementCollectionView.dragDelegate = self
         self.tabBarMenu.delegate = self
+        
+        self.upperPartitionView.addInteraction(UIDropInteraction(delegate: self))
+        self.lowerPartitionView.addInteraction(UIDropInteraction(delegate: self))
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        let totalContentHeight = self.contentView.frame.size.height - 8
+        self.splitViewHeight0.constant = totalContentHeight/3
+        self.splitViewHeight1.constant = totalContentHeight/3
+        self.splitViewHeight2.constant = totalContentHeight/3
+        
         self.activityIndicator.isHidden = true
         
         self.configCollectionView.isUserInteractionEnabled = true
