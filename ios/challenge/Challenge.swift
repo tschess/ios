@@ -247,7 +247,7 @@ class Challenge:
     }
     
     @objc func renderElementCollectionView() {
-        print("lolol")
+        //print("lolol")
         let storyboard: UIStoryboard = UIStoryboard(name: "EditOpponent", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "EditOpponent") as! EditOpponent
         viewController.setPlayer(player: self.player!)

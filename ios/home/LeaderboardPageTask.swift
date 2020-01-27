@@ -14,7 +14,7 @@ class LeaderboardPageTask {
     
     func execute(page: Int, completion: @escaping (([Game]?) -> Void)) {
         
-        print("page: \(page)")
+        //print("page: \(page)")
         
         let url = URL(string: "http://\(ServerAddress().IP):8080/player/leaderboard/\(page)")!
         var request = URLRequest(url: url)
@@ -46,7 +46,7 @@ class LeaderboardPageTask {
                     return
                 }
                 
-                print(json)
+                //print(json)
                 print("count: \(json.count)")
                 
                 //let xxx = json["content"] as! [[String: Any]]

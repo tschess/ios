@@ -30,7 +30,7 @@ class PlayerDevice {
                     completion(nil)
                     return
                 }
-                print(json)
+                //print(json)
 
                 if(json["info"] != nil){
                     completion(nil)
