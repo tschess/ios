@@ -26,6 +26,13 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
         "red_grasshopper",
         "red_arrow"]
     
+    
+    
+    @IBOutlet weak var dropViewTop0: UIView!
+    @IBOutlet weak var dropViewTop1: UIView!
+    @IBOutlet weak var dropViewBottom0: UIView!
+    @IBOutlet weak var splitView2: UIView!
+    
     //MARK: Layout: Core
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var tabBarMenu: UITabBar!
@@ -102,10 +109,13 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
         self.tschessElementCollectionView.delegate = self
         self.tschessElementCollectionView.dataSource = self
         self.tschessElementCollectionView.dragDelegate = self
-        self.tabBarMenu.delegate = self
         
-        self.upperPartitionView.addInteraction(UIDropInteraction(delegate: self))
-        self.lowerPartitionView.addInteraction(UIDropInteraction(delegate: self))
+        self.dropViewTop0.addInteraction(UIDropInteraction(delegate: self))
+        self.dropViewBottom0.addInteraction(UIDropInteraction(delegate: self))
+        self.dropViewTop1.addInteraction(UIDropInteraction(delegate: self))
+        self.splitView2.addInteraction(UIDropInteraction(delegate: self))
+        
+        self.tabBarMenu.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
