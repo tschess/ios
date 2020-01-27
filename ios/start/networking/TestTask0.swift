@@ -49,9 +49,9 @@ class TestTask0 {
                 let playerBlack: Player = PlayerDeserializer().execute(dictionary: json["black"] as! [String: Any])
                 
                 let gamestateDeserializer = MatrixDeserializer()
-                gamestateDeserializer.setUsername(username: playerWhite.getName())
-                gamestateDeserializer.setUsernameWhite(username: playerWhite.getName())
-                gamestateDeserializer.setUsernameBlack(username: playerBlack.getName())
+                gamestateDeserializer.setUsername(username: playerWhite.getUsername())
+                gamestateDeserializer.setUsernameWhite(username: playerWhite.getUsername())
+                gamestateDeserializer.setUsernameBlack(username: playerBlack.getUsername())
                 
                 let gameStatus = json["status"]! as! String
                 gamestateDeserializer.setGameStatus(gameStatus: gameStatus)
@@ -59,19 +59,23 @@ class TestTask0 {
                 let state = json["state"]! as! [[String]]
                 let tschessElementMatrix = gamestateDeserializer.deserialize(stringRepresentation: state, orientationBlack: false)
                 
+          
+                
                 let opponent = PlayerCore(
-                    id: playerBlack.getId(),
-                    name: playerBlack.getName(),
-                    avatar: playerBlack.getAvatar(),
-                    rank: playerBlack.getRank(),
-                    elo: playerBlack.getElo())
+                id: playerWhite.getId(),
+                username: playerBlack.getUsername(),
+                avatar: playerBlack.getAvatar(),
+                elo: playerBlack.getElo(),
+                rank: playerBlack.getRank(),
+                date: playerBlack.getDate(),
+                disp: playerBlack.getDisp())
                 
                 let gameModel: Game = Game(opponent: opponent)
                 gameModel.setIdentifier(identifier: id)
                 gameModel.setClock(clock: String(clock))
-                gameModel.setUsernameTurn(usernameTurn: playerWhite.getName())
-                gameModel.setUsernameWhite(usernameWhite: playerWhite.getName())
-                gameModel.setUsernameBlack(usernameBlack: playerBlack.getName())
+                gameModel.setUsernameTurn(usernameTurn: playerWhite.getUsername())
+                gameModel.setUsernameWhite(usernameWhite: playerWhite.getUsername())
+                gameModel.setUsernameBlack(usernameBlack: playerBlack.getUsername())
                 gameModel.setLastMoveBlack(lastMoveBlack: self.dateTime.currentDateString())
                 gameModel.setLastMoveWhite(lastMoveWhite: "TBD")
                 

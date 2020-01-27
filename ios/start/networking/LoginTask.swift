@@ -36,7 +36,13 @@ class LoginTask {
                     completion(nil, "")
                     return
                 }
-               
+                
+                
+                
+               print(json)
+                
+                
+                
                 if(json["error"] != nil){
                     let error = json["error"]! as! String
                     completion(nil, error)

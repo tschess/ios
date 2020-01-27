@@ -121,12 +121,12 @@ class Gamestate {
         return self.player!
     }
     
-    func getSelfName() -> String { //!!!
-        return self.player!.getName()
+    func getUsernameSelf() -> String { //!!!
+        return self.player!.getUsername()
     }
     
-    func getOpponentName() -> String {
-        return gameModel!.getOpponentName()
+    func getUsernameOpponent() -> String {
+        return gameModel!.getUsernameOpponent()
     }
     
     func getSelfId() -> String {
@@ -174,14 +174,14 @@ class Gamestate {
     }
     
     func getSelfAffiliation() -> String {
-        if(self.getSelfName() == self.getUsernameWhite()){
+        if(self.getUsernameSelf() == self.getUsernameWhite()){
             return "WHITE"
         }
         return "BLACK"
     }
     
     func getOpponentAffiliation() -> String {
-        if(self.getSelfName() == self.getUsernameWhite()){
+        if(self.getUsernameSelf() == self.getUsernameWhite()){
             return "BLACK"
         }
         return "WHITE"
@@ -240,7 +240,7 @@ class Gamestate {
     }
     
     public func getOrientationBlack() -> Bool {
-        if(getUsernameWhite() == self.getSelfName()){
+        if(getUsernameWhite() == self.getUsernameSelf()){
             return false
         }
         return true

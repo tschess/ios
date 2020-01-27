@@ -14,6 +14,10 @@ class HomeMenuCell: UITableViewCell {
     @IBOutlet weak var rankLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
     
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var dispImage: UIImageView!
+    @IBOutlet weak var dispLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }

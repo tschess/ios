@@ -82,9 +82,9 @@
                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="79z-Oi-85T">
+                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="79z-Oi-85T">
                                         <rect key="frame" x="188.66666666666666" y="50.666666666666657" width="37" height="37"/>
-                                        <color key="tintColor" red="0.86923474069999995" green="0.012778783219999999" blue="0.00083617179190000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </activityIndicatorView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JDT-f9-ELr">
@@ -206,12 +206,14 @@
                         <viewLayoutGuide key="safeArea" id="onu-DJ-h1h"/>
                     </view>
                     <connections>
-                        <outlet property="activityIndicator" destination="79z-Oi-85T" id="YXK-S2-M34"/>
+                        <outlet property="activityIndicator" destination="79z-Oi-85T" id="p6D-7Y-zFf"/>
                         <outlet property="avatarImageView" destination="jgj-ZT-i6z" id="5ET-ze-6nY"/>
+                        <outlet property="dispImageView" destination="fPO-nw-FP9" id="Ecp-1L-atI"/>
+                        <outlet property="dispLabel" destination="JDT-f9-ELr" id="Z1Y-XI-CKh"/>
+                        <outlet property="eloLabel" destination="pUJ-un-5Hg" id="Tvx-7A-MzC"/>
                         <outlet property="headerView" destination="AlY-qh-cUb" id="I3a-Dt-S7B"/>
                         <outlet property="rankLabel" destination="sGW-Ae-1In" id="4Hg-pX-99u"/>
                         <outlet property="tabBarMenu" destination="WKf-1J-vAW" id="4s5-lz-aLm"/>
-                        <outlet property="tschxLabel" destination="pUJ-un-5Hg" id="2Za-8a-XiA"/>
                         <outlet property="usernameLabel" destination="n3B-YV-bLf" id="axj-yc-IUL"/>
                     </connections>
                 </viewController>
@@ -338,6 +340,9 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="avatarImageView" destination="nKx-cM-yYc" id="DE1-UN-nTD"/>
+                                    <outlet property="dateLabel" destination="QXK-mb-Sho" id="44A-Fx-dr0"/>
+                                    <outlet property="dispImage" destination="inX-hi-2ve" id="6gB-Sj-6U0"/>
+                                    <outlet property="dispLabel" destination="0O4-Ti-Ubf" id="tUg-y5-PeH"/>
                                     <outlet property="rankLabel" destination="OGP-Ay-XBh" id="wTm-n3-2tD"/>
                                     <outlet property="usernameLabel" destination="dIN-pV-xv0" id="llr-gc-rGO"/>
                                 </connections>

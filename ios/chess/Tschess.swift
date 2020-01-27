@@ -121,7 +121,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         let decodedimage = UIImage(data: dataDecoded)
         self.avatarImageView!.image = decodedimage
         self.rankLabel!.text = self.gameModel!.getOpponentRank()
-        self.usernameLabel!.text = self.gameModel!.getOpponentName()
+        self.usernameLabel!.text = self.gameModel!.getUsernameOpponent()
     }
     
     @objc func updateCounter() {
@@ -140,7 +140,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     }
     
     private func prohibited() -> Bool {
-        let turn: Bool = self.player!.getName() == self.gamestate!.getUsernameTurn()
+        let turn: Bool = self.player!.getUsername() == self.gamestate!.getUsernameTurn()
         let ongooing: Bool = gamestate!.getGameStatus() == "ONGOING"
         return !turn || !ongooing
     }
@@ -311,7 +311,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         if(self.gamestate!.getGameStatus() == "RESOLVED"){ //not the place for this...
             return cell
         }
-        if(self.gamestate!.getUsernameTurn() == self.player!.getName()){
+        if(self.gamestate!.getUsernameTurn() == self.player!.getUsername()){
             let x = indexPath.row / 8
             let y = indexPath.row % 8
             if(highlight!.contains([x,y])){
@@ -505,8 +505,8 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
             self.contentViewLabel.text = ""
         }
         /* * */
-        let usernameSelf = self.player!.getName()
-        let usernameOpponent = self.gamestate!.getOpponentName()
+        let usernameSelf = self.player!.getUsername()
+        let usernameOpponent = self.gamestate!.getUsernameOpponent()
         let usernameTurn = gamestate!.getUsernameTurn()
         let usernameCheck = gamestate!.getCheckOn()
         if(usernameSelf == usernameTurn){
@@ -516,7 +516,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
                 return
             }
            
-            self.turnaryLabel.text = "\(self.player!.getName()) to move"
+            self.turnaryLabel.text = "\(self.player!.getUsername()) to move"
             
             return
         }
@@ -526,12 +526,12 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
             return
         }
         
-        self.turnaryLabel.text = "\(self.gameModel!.getOpponentName()) to move"
+        self.turnaryLabel.text = "\(self.gameModel!.getUsernameOpponent()) to move"
     }
     
     private func assessDrawValues(gamestate: Gamestate) -> Bool {
-        let usernameSelf = self.player!.getName()
-        let usernameOpponent = self.gameModel!.getOpponentName()
+        let usernameSelf = self.player!.getUsername()
+        let usernameOpponent = self.gameModel!.getUsernameOpponent()
         let drawProposerServer = gamestate.getDrawProposer()
         if(drawProposerServer == "NONE"){
             DispatchQueue.main.async {

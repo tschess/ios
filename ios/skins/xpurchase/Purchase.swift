@@ -76,8 +76,8 @@ class Purchase: UIViewController, UITabBarDelegate, UITextViewDelegate {
         let decodedimage = UIImage(data: dataDecoded)
         self.avatarImageView.image = decodedimage
         self.rankLabel.text = self.player!.getRank()
-        self.tschxLabel.text = "₮\(self.player!.getTschx())"
-        self.usernameLabel.text = self.player!.getName()
+        //self.tschxLabel.text = "₮\(self.player!.getTschx())"
+        //self.usernameLabel.text = self.player!.getName()
     }
     
     @IBAction func purchaseButtonClick(_ sender: Any) {

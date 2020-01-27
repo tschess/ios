@@ -46,7 +46,7 @@ class ShowMeSkins: UIViewController, UITabBarDelegate {
         self.avatarImageView.image = decodedimage
         self.rankLabel.text = self.player!.getRank()
         //self.tschxLabel.text = "₮\(self.player!.getTschx())"
-        self.usernameLabel.text = self.player!.getName()
+        self.usernameLabel.text = self.player!.getUsername()
         
         self.activityIndicator.isHidden = true
     }

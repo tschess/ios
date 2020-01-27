@@ -184,7 +184,7 @@ class GameAcceptTask {
     func generateTschessElementBlack(name: String) -> TschessElement? {
         if(name.contains("Landmine")){
             let blackLandminePawn = BlackLandminePawn()
-            blackLandminePawn.setUsername(username: self.player!.getName())
+            blackLandminePawn.setUsername(username: self.player!.getUsername())
             blackLandminePawn.setUsernameBlack(username: self.gameModel!.getUsernameBlack())
             blackLandminePawn.setImageVisible(imageVisible: blackLandminePawn.getImageDefault())
             return blackLandminePawn
@@ -231,7 +231,7 @@ class GameAcceptTask {
     func generateTschessElementWhite(name: String) -> TschessElement? {
         if(name.contains("Landmine")){
             let whiteLandminePawn = WhiteLandminePawn()
-            whiteLandminePawn.setUsername(username: self.player!.getName())
+            whiteLandminePawn.setUsername(username: self.player!.getUsername())
             whiteLandminePawn.setUsernameWhite(username: self.gameModel!.getUsernameWhite())
             whiteLandminePawn.setImageVisible(imageVisible: whiteLandminePawn.getImageDefault())
             return whiteLandminePawn

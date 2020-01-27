@@ -162,50 +162,6 @@ class StoryboardSelector {
         }
     }
     
-    public func manage(player: Player, defaultSkin: Bool) {
-        DispatchQueue.main.async {
-            switch self.device() {
-            case "XANDROID":
-                let skinsStoryboard: UIStoryboard = UIStoryboard(name: "ManageXandroid", bundle: nil)
-                let skinsViewController = skinsStoryboard.instantiateViewController(withIdentifier: "ManageXandroid") as! Manage
-                skinsViewController.setPlayer(player: player)
-                skinsViewController.setDefaultSkin(defaultSkin: defaultSkin)
-                UIApplication.shared.keyWindow?.rootViewController = skinsViewController
-                return
-            case "MAGNUS":
-                let skinsStoryboard: UIStoryboard = UIStoryboard(name: "ManageMagnus", bundle: nil)
-                let skinsViewController = skinsStoryboard.instantiateViewController(withIdentifier: "ManageMagnus") as! Manage
-                skinsViewController.setPlayer(player: player)
-                skinsViewController.setDefaultSkin(defaultSkin: defaultSkin)
-                UIApplication.shared.keyWindow?.rootViewController = skinsViewController
-                return
-            case "XENOPHON":
-                let skinsStoryboard: UIStoryboard = UIStoryboard(name: "ManageXenophon", bundle: nil)
-                let skinsViewController = skinsStoryboard.instantiateViewController(withIdentifier: "ManageXenophon") as! Manage
-                skinsViewController.setPlayer(player: player)
-                skinsViewController.setDefaultSkin(defaultSkin: defaultSkin)
-                UIApplication.shared.keyWindow?.rootViewController = skinsViewController
-                return
-            case "PHAEDRUS":
-                let skinsStoryboard: UIStoryboard = UIStoryboard(name: "ManagePhaedrus", bundle: nil)
-                let skinsViewController = skinsStoryboard.instantiateViewController(withIdentifier: "ManagePhaedrus") as! Manage
-                skinsViewController.setPlayer(player: player)
-                skinsViewController.setDefaultSkin(defaultSkin: defaultSkin)
-                UIApplication.shared.keyWindow?.rootViewController = skinsViewController
-                return
-            case "CALHOUN":
-                let skinsStoryboard: UIStoryboard = UIStoryboard(name: "ManageCalhoun", bundle: nil)
-                let skinsViewController = skinsStoryboard.instantiateViewController(withIdentifier: "ManageCalhoun") as! Manage
-                skinsViewController.setPlayer(player: player)
-                skinsViewController.setDefaultSkin(defaultSkin: defaultSkin)
-                UIApplication.shared.keyWindow?.rootViewController = skinsViewController
-                return
-            default:
-                return
-            }
-        }
-    }
-    
     public func purchase(player: Player, remaining: Int) { //PurchaseIapetus
         DispatchQueue.main.async {
             switch self.device() {

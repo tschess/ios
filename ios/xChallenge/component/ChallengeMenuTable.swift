@@ -52,7 +52,7 @@ class ChallengeMenuTable: UITableViewController {
         let decodedimage = UIImage(data: dataDecoded)
         cell.avatarImageView.image = decodedimage
         cell.eloLabel.text = gameTableMenuItem.getOpponentElo()
-        cell.usernameLabel.text = gameTableMenuItem.getOpponentName()
+        cell.usernameLabel.text = gameTableMenuItem.getUsernameOpponent()
         
         //cell.usernameLabel.alpha = 0.5
         //cell.avatarImageView.alpha = 0.5
@@ -62,7 +62,7 @@ class ChallengeMenuTable: UITableViewController {
         //cell.actionLabel.textColor = UIColor.black
         cell.usernameLabel.textColor = UIColor.black
         cell.eloLabel.textColor = UIColor.black
-        if(gameTableMenuItem.winner == self.gameModel!.getOpponentName()){
+        if(gameTableMenuItem.winner == self.gameModel!.getUsernameOpponent()){
             
             cell.backgroundColor = UIColor(red: 211/255.0, green: 255/255.0, blue: 211/255.0, alpha: 1)
             if(gameMenuTableList[indexPath.row].getDrawProposer().contains("TIMEOUT")){
@@ -112,8 +112,8 @@ class ChallengeMenuTable: UITableViewController {
     
     func fetchMenuTableList() {
         let pageHistoric = PageHistoric()
-        pageHistoric.setName(name: self.gameModel!.getOpponentName())
-        pageHistoric.setMatrixDeserializer(name: self.gameModel!.getOpponentName())
+        pageHistoric.setName(name: self.gameModel!.getUsernameOpponent())
+        pageHistoric.setMatrixDeserializer(name: self.gameModel!.getUsernameOpponent())
         pageHistoric.executeLeaderboard(gameModel: self.gameModel!, page: self.pageFromWhichContentLoads){ (result) in
             if(result == nil){
                 return

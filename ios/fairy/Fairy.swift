@@ -43,7 +43,7 @@ class Fairy: UIViewController, UITabBarDelegate {
         self.avatarImageView.image = decodedimage
         self.rankLabel.text = self.player!.getRank()
         //self.tschxLabel.text = "₮\(self.player!.getTschx())"
-        self.usernameLabel.text = self.player!.getName()
+        self.usernameLabel.text = self.player!.getUsername()
         
         self.activityIndicatorLabel.isHidden = true
     }
@@ -60,7 +60,7 @@ class Fairy: UIViewController, UITabBarDelegate {
         self.tabBarMenu.delegate = self
         self.squadUpAdapter = children.first as? FairyTableMenu
         self.squadUpAdapter!.setPlayer(player: self.player!)
-        self.squadUpAdapter!.setFairyElementList(fairyElementList: self.player!.getFairyElementList())
+        //self.squadUpAdapter!.setFairyElementList(fairyElementList: self.player!.getFairyElementList())
         
         NotificationCenter.default.addObserver(
             self,

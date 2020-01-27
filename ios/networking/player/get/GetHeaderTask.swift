@@ -54,7 +54,7 @@ class GetHeaderTask {
                 
                 player.setAvatar(avatar: avatar)
                     
-                player.setTschx(tschx: tschx)
+                //player.setTschx(tschx: tschx)
                 player.setRank(rank: rank)
                 player.setAddress(address: address)
                 

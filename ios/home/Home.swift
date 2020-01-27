@@ -10,96 +10,85 @@ import UIKit
 
 class Home: UIViewController, UITabBarDelegate {
     
+    //MARK: Header
     @IBOutlet weak var headerView: UIView!
-    
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    @IBOutlet weak var tabBarMenu: UITabBar!
-    
-    var leaderboardTableView: HomeMenuTable?
-    
-    //var tap: UITapGestureRecognizer?
-    
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var usernameLabel: UILabel!
+    @IBOutlet weak var eloLabel: UILabel!
     @IBOutlet weak var rankLabel: UILabel!
-    @IBOutlet weak var tschxLabel: UILabel!
+    @IBOutlet weak var dispImageView: UIImageView!
+    @IBOutlet weak var dispLabel: UILabel!
     
-
+    @IBOutlet weak var tabBarMenu: UITabBar!
+    
+    var activateProfileGestureRecognizer: UITapGestureRecognizer?
+    var leaderboardTableView: HomeMenuTable?
+    
     var player: Player?
     
     func setPlayer(player: Player){
         self.player = player
     }
     
-    @objc func activateProfile() {
-           StoryboardSelector().profile(player: self.player!)
-       }
-    
-    var activateProfileGestureRecognizer: UITapGestureRecognizer?
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
-        
-        
-        self.activateProfileGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.activateProfile))
-        self.headerView.addGestureRecognizer(self.activateProfileGestureRecognizer!)
-        
-        
-        
-        
-        let dataDecoded: Data = Data(base64Encoded: self.player!.getAvatar(), options: .ignoreUnknownCharacters)!
-        let decodedimage = UIImage(data: dataDecoded)
-        self.avatarImageView.image = decodedimage
-        self.rankLabel.text = self.player!.getRank()
-        self.usernameLabel.text = self.player!.getName()
+        self.tabBarMenu.delegate = self
+        self.leaderboardTableView = children.first as? HomeMenuTable
+        self.leaderboardTableView!.setPlayer(player: self.player!)
+        self.leaderboardTableView!.setActivityIndicator(activityIndicator: self.activityIndicator)
         
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(self.onDidReceiveData(_:)),
             name: NSNotification.Name(rawValue: "DiscoverSelection"),
             object: nil)
-        
-        //self.activityIndicator.startAnimating()
-        self.activityIndicator.isHidden = true
-        
-      
     }
     
- 
-    
-  
-    
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        //discoverySearchBar.delegate = self
-        //discoverySearchBar.resignFirstResponder()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
-        tabBarMenu.delegate = self
+        self.activateProfileGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.activateProfile))
+        self.headerView.addGestureRecognizer(self.activateProfileGestureRecognizer!)
         
-        leaderboardTableView = children.first as? HomeMenuTable
-        leaderboardTableView!.setPlayer(player: self.player!)
-       
-        //leaderboardTableView!.setIndicator(indicator: self.activityIndicator!)
-  
+        let dataDecoded: Data = Data(base64Encoded: self.player!.getAvatar(), options: .ignoreUnknownCharacters)!
+        let decodedimage = UIImage(data: dataDecoded)
+        self.avatarImageView.image = decodedimage
+        self.usernameLabel.text = self.player!.getUsername()
+        self.eloLabel.text = self.player!.getElo()
+        self.rankLabel.text = self.player!.getRank()
+        self.dispLabel.text = String(abs(Int(self.player!.getDisp())!))
+        
+        let disp: Int = Int(self.player!.getDisp())!
+        
+        if(disp >= 0){
+            if #available(iOS 13.0, *) {
+                let image = UIImage(systemName: "arrow.up")!
+                self.dispImageView.image = image
+                self.dispImageView.tintColor = .green
+            }
+        }
+        else {
+            if #available(iOS 13.0, *) {
+                let image = UIImage(systemName: "arrow.down")!
+                self.dispImageView.image = image
+                self.dispImageView.tintColor = .red
+            }
+        }
+        
     }
     
-   
-    
- 
-    
-   
-    
-    
-    
+    @objc func activateProfile() {
+        StoryboardSelector().profile(player: self.player!)
+    }
     
     @objc func onDidReceiveData(_ notification: NSNotification) {
         let discoverSelectionIndex = notification.userInfo!["discover_selection"] as! Int
         let gameModel = leaderboardTableView!.getLeaderboardTableList()[discoverSelectionIndex]
         StoryboardSelector().other(player: self.player!, gameModel: gameModel)
     }
-   
+    
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         switch item.tag {
@@ -128,15 +117,6 @@ class Home: UIViewController, UITabBarDelegate {
                     UIApplication.shared.keyWindow?.rootViewController = viewController
                 }
             }
-            
-//        case 2:
-//            print("search")
-//            //profile(player: Player)
-//            //StoryboardSelector().profile(player: self.player!)
-//            let storyboard: UIStoryboard = UIStoryboard(name: "Search", bundle: nil)
-//            let viewController = storyboard.instantiateViewController(withIdentifier: "Search") as! Search
-//            viewController.setPlayer(player: self.player!)
-//            UIApplication.shared.keyWindow?.rootViewController = viewController
         case 3:
             print("game")
             StoryboardSelector().actual(player: self.player!)
@@ -145,7 +125,6 @@ class Home: UIViewController, UITabBarDelegate {
             let storyboard: UIStoryboard = UIStoryboard(name: "Config", bundle: nil)
             let viewController = storyboard.instantiateViewController(withIdentifier: "Config") as! Config
             viewController.setPlayer(player: self.player!)
-            //viewController.setOpponent(opponent: opponent)
             UIApplication.shared.keyWindow?.rootViewController = viewController
         default:
             print("error")

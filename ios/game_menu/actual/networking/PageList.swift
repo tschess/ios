@@ -19,9 +19,9 @@ class PageList {
         self.player = player
         
         matrixDeserializer = MatrixDeserializer()
-        matrixDeserializer!.setUsername(username: player.getName())
+        matrixDeserializer!.setUsername(username: player.getUsername())
         
-        let requestPayload: [String: Any] = ["id": player.getId(), "page": page, "size": 13]
+        let requestPayload: [String: Any] = ["id": player.getId(), "page": page, "size": 8]
         
         let url = URL(string: "http://\(ServerAddress().IP):8080/game/list")!
         
@@ -72,17 +72,24 @@ class PageList {
         
         for gameDictionary in serverResponse {
             
-            let opponent_id = gameDictionary["opponent_id"]! as! String
-            let opponent_name = gameDictionary["opponent_name"]! as! String
-            let opponent_avatar = gameDictionary["opponent_avatar"]! as! String
-            let opponent_elo = String(gameDictionary["opponent_elo"]! as! Int)
-            let opponent_rank = String(gameDictionary["opponent_rank"]! as! Int)
+            let oppId = gameDictionary["opp_id"]! as! String
+            let oppName = gameDictionary["opp_username"]! as! String
+            let oppAvatar = gameDictionary["opp_avatar"]! as! String
+            let oppElo = String(gameDictionary["opp_elo"]! as! Int)
+            let oppRank = String(gameDictionary["opp_rank"]! as! Int)
+            
+            let oppDisp = String(gameDictionary["opp_disp"]! as! Int)
+            let oppDate = gameDictionary["opp_date"]! as! String
+            let oppRect = gameDictionary["opp_rect"]! as! Bool
+            
             let opponent = PlayerCore(
-                id: opponent_id,
-                name: opponent_name,
-                avatar: opponent_avatar,
-                rank: opponent_rank,
-                elo: opponent_elo)
+                id: oppId,
+                username: oppName,
+                avatar: oppAvatar,
+                elo: oppElo,
+                rank: oppRank,
+                date: oppDate,
+                disp: oppDisp)
             
             let game = Game(opponent: opponent)
             

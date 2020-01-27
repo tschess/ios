@@ -13,23 +13,29 @@ import UIKit
 class PlayerCore {
     
     var id: String
-    var name: String
+    var username: String
     var avatar: String
-    var rank: String
     var elo: String
+    var rank: String
+    var date: String
+    var disp: String
     
     init(
         id: String,
-        name: String,
+        username: String,
         avatar: String,
+        elo: String,
         rank: String,
-        elo: String
-        ) {
+        date: String,
+        disp: String
+    ) {
         self.id = id
-        self.name = name
+        self.username = username
         self.avatar = avatar
-        self.rank = rank
         self.elo = elo
+        self.rank = rank
+        self.date = date
+        self.disp = disp
     }
     
     func getId() -> String {
@@ -39,11 +45,11 @@ class PlayerCore {
         self.id = id
     }
     
-    func getName() -> String {
-        return name
+    func getUsername() -> String {
+        return username
     }
-    func setName(name: String) {
-        self.name = name
+    func setUsername(username: String) {
+        self.username = username
     }
     
     func getAvatar() -> String {
@@ -53,6 +59,13 @@ class PlayerCore {
         self.avatar = avatar
     }
     
+    func getElo() -> String {
+        return elo
+    }
+    func setElo(elo: String) {
+        self.elo = elo
+    }
+    
     public func getRank() -> String {
         return rank
     }
@@ -60,11 +73,18 @@ class PlayerCore {
         self.rank = rank
     }
     
-    func getElo() -> String {
-        return elo
+    public func getDate() -> String {
+        return date
     }
-    func setElo(elo: String) {
-        self.elo = elo
+    public func setDate(date: String) {
+        self.date = date
+    }
+    
+    public func getDisp() -> String {
+        return disp
+    }
+    public func setDisp(disp: String) {
+        self.disp = disp
     }
     
 }

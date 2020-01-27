@@ -52,7 +52,7 @@ class OtherMenuTable: UITableViewController {
         let decodedimage = UIImage(data: dataDecoded)
         cell.avatarImageView.image = decodedimage
         //cell.eloLabel.text = gameTableMenuItem.getOpponentElo()
-        cell.usernameLabel.text = gameTableMenuItem.getOpponentName()
+        cell.usernameLabel.text = gameTableMenuItem.getUsernameOpponent()
         
         let formatter = DateFormatter()
         formatter.dateFormat = "dd.MM.YY"
@@ -68,7 +68,7 @@ class OtherMenuTable: UITableViewController {
         //cell.actionLabel.textColor = UIColor.black
         cell.usernameLabel.textColor = UIColor.black
         //cell.eloLabel.textColor = UIColor.black
-        if(gameTableMenuItem.winner == self.gameModel!.getOpponentName()){
+        if(gameTableMenuItem.winner == self.gameModel!.getUsernameOpponent()){
             
             cell.contentView.backgroundColor = Colour().getWin()
             
@@ -120,8 +120,8 @@ class OtherMenuTable: UITableViewController {
     
     func fetchMenuTableList() {
         let pageHistoric = PageHistoric()
-        pageHistoric.setName(name: self.gameModel!.getOpponentName())
-        pageHistoric.setMatrixDeserializer(name: self.gameModel!.getOpponentName())
+        pageHistoric.setName(name: self.gameModel!.getUsernameOpponent())
+        pageHistoric.setMatrixDeserializer(name: self.gameModel!.getUsernameOpponent())
         pageHistoric.executeLeaderboard(gameModel: self.gameModel!, page: self.pageFromWhichContentLoads){ (result) in
             if(result == nil){
                 return

@@ -35,7 +35,7 @@ class Landmine {
                 }
                 tschessElementMatrix[coordinate[0]][coordinate[1]]!.setImageVisible(imageVisible: elementPresent!.imageDefault)
                 gamestate.setTschessElementMatrix(tschessElementMatrix: tschessElementMatrix)
-                gamestate.setWinner(winner: gamestate.getOpponentName())
+                gamestate.setWinner(winner: gamestate.getUsernameOpponent())
                 //let requestUpdate = GamestateSerializer().execute(gamestate: gamestate)
                 //UpdateGamestate().execute(requestPayload: requestUpdate)
                 return true

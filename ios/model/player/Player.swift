@@ -10,106 +10,89 @@ import UIKit
 
 class Player: PlayerCore {
     
-    //MARK: Properties
     var password: String
-    
-    var api: String
-    var device: String
-    
+    var address: String
+    var name: String
+    var surname: String
+    var email: String
+    var skinsList: [String]
     var config0: [[TschessElement?]]
     var config1: [[TschessElement?]]
     var config2: [[TschessElement?]]
     
-    var skin: String
-    var tschx: String
-    var address: String
-    var fairyElementList: [FairyElement]
-    
     init(
         id: String,
-        name: String,
+        username: String,
         avatar: String,
-        rank: String,
         elo: String,
+        rank: String,
+        date: String,
+        disp: String,
+    
         password: String,
-        api: String,
-        device: String,
+        address: String,
+        name: String,
+        surname: String,
+        email: String,
+        skinsList: [String],
         config0: [[TschessElement?]],
         config1: [[TschessElement?]],
-        config2: [[TschessElement?]],
-        skin: String,
-        tschx: String,
-        address: String,
-        fairyElementList: [FairyElement]) {
-        
+        config2: [[TschessElement?]]
+    ) {
         self.password = password
-        self.api = api
-        self.device = device
+        self.address = address
+        self.name = name
+        self.surname = surname
+        self.email = email
+        self.skinsList = skinsList
         self.config0 = config0
         self.config1 = config1
         self.config2 = config2
-        self.skin = skin
-        self.tschx = tschx
-        self.address = address
-        self.fairyElementList = fairyElementList
         
-        super.init(id: id, name: name, avatar: avatar, rank: rank, elo: elo)
+        super.init(
+            id: id,
+            username: username,
+            avatar: avatar,
+            elo: elo,
+            rank: rank,
+            date: date,
+            disp: disp
+        )
     }
     
-    func getSkin() -> String {
-        return self.skin
+    func getSkinsList() -> [String] {
+        return self.skinsList
+    }
+    func setSkinsList(skinsList: [String]) {
+        self.skinsList = skinsList
     }
     
     func getAddress() -> String {
         return self.address
     }
-
     func setAddress(address: String) {
         self.address = address
-    }
-    
-    func appendToFairyElementList(fairyElement: FairyElement) {
-        self.fairyElementList.append(fairyElement)
-    }
-    
-    func setFairyElementList(fairyElementList: [FairyElement]) {
-        self.fairyElementList = fairyElementList
-    }
-    
-    func getFairyElementList() -> [FairyElement] {
-        return fairyElementList
-    }
-    
-    func setConfig0(config0: [[TschessElement?]]) {
-        self.config0 = config0
     }
     
     func getConfig0() -> [[TschessElement?]] {
         return config0
     }
-    
-    func setConfig1(config1: [[TschessElement?]]) {
-        self.config1 = config1
+    func setConfig0(config0: [[TschessElement?]]) {
+        self.config0 = config0
     }
     
     func getConfig1() -> [[TschessElement?]] {
         return config1
     }
-    
-    func setConfig2(config2: [[TschessElement?]]) {
-        self.config2 = config2
+    func setConfig1(config1: [[TschessElement?]]) {
+        self.config1 = config1
     }
     
     func getConfig2() -> [[TschessElement?]] {
         return config2
     }
-    
-    func setTschx(tschx: String) {
-        self.tschx = tschx
-    }
-    
-    func getTschx() -> String {
-        return tschx
+    func setConfig2(config2: [[TschessElement?]]) {
+        self.config2 = config2
     }
     
 }

@@ -55,7 +55,7 @@ class HistoricTable: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "HistoricCell", for: indexPath) as! HistoricCell
         
         let gameTableMenuItem = gameMenuTableList[indexPath.row]
-        cell.usernameLabel.text = gameTableMenuItem.getOpponentName()
+        cell.usernameLabel.text = gameTableMenuItem.getUsernameOpponent()
         
         let formatter = DateFormatter()
         formatter.dateFormat = "dd.MM.YY"
@@ -69,7 +69,7 @@ class HistoricTable: UITableViewController {
         
         cell.usernameLabel.textColor = UIColor.black
         
-        if(gameTableMenuItem.winner == self.player!.getName()){
+        if(gameTableMenuItem.winner == self.player!.getUsername()){
             
             cell.contentView.backgroundColor = Colour().getWin()
             if(gameMenuTableList[indexPath.row].getDrawProposer().contains("TIMEOUT")){
@@ -133,8 +133,8 @@ class HistoricTable: UITableViewController {
     
     func fetchMenuTableList(id: String) {
         let pageHistoric = PageHistoric()
-        pageHistoric.setName(name: self.player!.getName())
-        pageHistoric.setMatrixDeserializer(name: self.player!.getName())
+        pageHistoric.setName(name: self.player!.getUsername())
+        pageHistoric.setMatrixDeserializer(name: self.player!.getUsername())
         pageHistoric.execute(id: self.player!.getId(), page: self.pageFromWhichContentLoads){ (result) in
             if(result == nil){
                 return

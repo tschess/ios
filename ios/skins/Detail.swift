@@ -190,7 +190,7 @@ class Detail: UIViewController, UITabBarDelegate, UITextViewDelegate {
         self.avatarImageView.image = decodedimage
         self.rankLabel.text = self.player!.getRank()
         //self.tschxLabel.text = "₮\(self.player!.getTschx())"
-        self.usernameLabel.text = self.player!.getName()
+        self.usernameLabel.text = self.player!.getUsername()
         
         let cellForegroundClick = UITapGestureRecognizer(target: self, action: #selector(self.cellForegroundClick))
         self.cellForegroundView.isUserInteractionEnabled = true

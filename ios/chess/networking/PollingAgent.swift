@@ -41,15 +41,15 @@ class PollingAgent {
                 }
                 
                 let playerWhite: Player = PlayerDeserializer().execute(dictionary: json["white"] as! [String: Any])
-                gamestate.getGameModel().setUsernameWhite(usernameWhite: playerWhite.getName())
+                gamestate.getGameModel().setUsernameWhite(usernameWhite: playerWhite.getUsername())
                 
                 let playerBlack: Player = PlayerDeserializer().execute(dictionary: json["black"] as! [String: Any])
-                gamestate.getGameModel().setUsernameBlack(usernameBlack: playerBlack.getName())
+                gamestate.getGameModel().setUsernameBlack(usernameBlack: playerBlack.getUsername())
                 
                 let matrixDeserializer = MatrixDeserializer()
-                matrixDeserializer.setUsername(username: gamestate.getSelfName())
-                matrixDeserializer.setUsernameWhite(username: playerWhite.getName())
-                matrixDeserializer.setUsernameBlack(username: playerBlack.getName())
+                matrixDeserializer.setUsername(username: gamestate.getUsernameSelf())
+                matrixDeserializer.setUsernameWhite(username: playerWhite.getUsername())
+                matrixDeserializer.setUsernameBlack(username: playerBlack.getUsername())
                 
                 let gameStatus = json["status"]! as! String
                 matrixDeserializer.setGameStatus(gameStatus: gameStatus)

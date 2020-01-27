@@ -135,7 +135,7 @@ class ActualTable: UITableViewController, SwipeTableViewCellDelegate {
         
         let gameTableMenuItem = gameMenuTableList[indexPath.row]
         
-        cell.usernameLabel.text = gameTableMenuItem.getOpponentName()
+        cell.usernameLabel.text = gameTableMenuItem.getUsernameOpponent()
         //cell.eloLabel.text = gameTableMenuItem.getOpponentElo()
         let dataDecoded: Data = Data(base64Encoded: gameTableMenuItem.getOpponentAvatar(), options: .ignoreUnknownCharacters)!
         let decodedimage = UIImage(data: dataDecoded)
@@ -144,7 +144,7 @@ class ActualTable: UITableViewController, SwipeTableViewCellDelegate {
         let status = gameTableMenuItem.getGameStatus()
         
         if(status == "ONGOING"){
-            if(gameTableMenuItem.usernameTurn == self.player!.getName()){
+            if(gameTableMenuItem.usernameTurn == self.player!.getUsername()){
                 if #available(iOS 13.0, *) {
                     let image = UIImage(systemName: "gamecontroller.fill")!
                     cell.actionImageView.image = image.withRenderingMode(.alwaysTemplate)

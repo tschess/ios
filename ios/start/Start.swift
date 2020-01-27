@@ -10,14 +10,12 @@ import IHKeyboardAvoiding
 
 class Start: UIViewController, UITextFieldDelegate {
     
-     //@IBOutlet weak var contentView: UIView!
-    @IBOutlet weak var contentView: UIView!
-    
     //MARK: Constant
     let DATE_TIME: DateTime = DateTime()
     
     //MARK: Layout
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var contentView: UIView!
     
     //MARK: Input
     @IBOutlet weak var usernameTextField: UITextField!
@@ -55,30 +53,12 @@ class Start: UIViewController, UITextFieldDelegate {
         let dismissKeyboard: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
         view.addGestureRecognizer(dismissKeyboard)
         
-        //self.contentView.addInputVisibilityController()
         KeyboardAvoiding.avoidingView = self.contentView
     }
     
     @objc func dismissKeyboard() {
         view.endEditing(true)
     }
-    
-    
-
-//    @objc func keyboardWillShow(notification: NSNotification) {
-//        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-//            if self.view.frame.origin.y == 0 {
-//                self.view.frame.origin.y -= keyboardSize.height
-//            }
-//        }
-//        self.view.addConstraint(bottomContraint)
-//    }
-//
-//    @objc func keyboardWillHide(notification: NSNotification) {
-//        if self.view.frame.origin.y != 0 {
-//            self.view.frame.origin.y = 0
-//        }
-//    }
     
     //MARK: UITextFieldDelegate
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -115,12 +95,6 @@ class Start: UIViewController, UITextFieldDelegate {
             }
         }
     }
-    
-    
-    
-    
-
-
     
     @IBAction func createButtonClick(_ sender: UIButton) {
 //        usernameTextString = usernameTextField.text!

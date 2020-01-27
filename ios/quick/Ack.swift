@@ -194,7 +194,7 @@ UIGestureRecognizerDelegate {
         let decodedimage = UIImage(data: dataDecoded)
         self.avatarImageView.image = decodedimage
         self.rankLabel.text = gameModel!.getOpponentRank()
-        self.usernameLabel.text = gameModel!.getOpponentName()
+        self.usernameLabel.text = gameModel!.getUsernameOpponent()
         
         self.tschessElementMatrix = self.player!.getConfig0()
         

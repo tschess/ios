@@ -10,6 +10,8 @@ import UIKit
 
 class HomeMenuTable: UITableViewController {
     
+    var activityIndicator: UIActivityIndicatorView?
+    
     var leaderboardTableList: [Game] = [Game]()
     var player: Player?
     
@@ -17,39 +19,15 @@ class HomeMenuTable: UITableViewController {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        self.fetchGameList(page: pageFromWhichContentLoads)
     }
     
- 
-   
-    
-//    var lastY: CGFloat?
-//
-//    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//        if(scrollView.contentOffset.y < -46) {
-//            if(self.searchHeaderAlignmentConstraint!.constant == 0){
-//                self.searchHeaderAlignmentConstraint!.constant += 46
-//            }
-//        }
-//        if(lastY != nil){
-//            if(scrollView.contentOffset.y > 0) {
-//                if(scrollView.contentOffset.y > lastY!){
-//                    if(self.searchHeaderAlignmentConstraint!.constant > 0){
-//                        if(self.searchHeaderAlignmentConstraint!.constant.remainder(dividingBy: 2).isZero){
-//                            self.searchHeaderAlignmentConstraint!.constant -= 2
-//                        }
-//                    }
-//                }
-//            }
-//        }
-//        lastY = scrollView.contentOffset.y
-//    }
-    
-    var activityIndicator: UIActivityIndicatorView?
-    
-    public func setIndicator(indicator: UIActivityIndicatorView){
-        self.activityIndicator = indicator
+    override func viewDidLoad() {
+        self.fetchGameList()
     }
+    
+    public func setActivityIndicator(activityIndicator: UIActivityIndicatorView) {
+           self.activityIndicator = activityIndicator
+       }
     
     public func setPlayer(player: Player) {
         self.player = player
@@ -60,30 +38,8 @@ class HomeMenuTable: UITableViewController {
         tableView.tableFooterView = UIView()
     }
     
-    func appendToLeaderboardTableList(additionalCellList: [Game]) {
-        let t0 = leaderboardTableList.count
-        for game in additionalCellList.sorted(by: {Int($0.getOpponentElo())! > Int($1.getOpponentElo())!}) {
-            if(!leaderboardTableList.contains(game)){
-                leaderboardTableList.append(game)
-            }
-        }
-        DispatchQueue.main.async() {
-            if(t0 != self.leaderboardTableList.count){
-                self.leaderboardTableList = self.leaderboardTableList.sorted(by: {Int($0.getOpponentElo())! > Int($1.getOpponentElo())!})
-                //self.activityIndicator!.stopAnimating()
-                //self.activityIndicator!.isHidden = true
-                self.tableView.reloadData()
-            }
-        }
-    }
-    
     func getLeaderboardTableList() -> [Game] {
         return leaderboardTableList
-    }
-    
-    func resetLeaderboardTableList() {
-        self.pageFromWhichContentLoads = 0
-        self.leaderboardTableList = [Game]()
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -103,10 +59,35 @@ class HomeMenuTable: UITableViewController {
         let decodedimage = UIImage(data: dataDecoded)
         cell.avatarImageView.image = decodedimage
         cell.rankLabel.text = gameTableMenuItem.getOpponentRank()
-        cell.usernameLabel.text = gameTableMenuItem.getOpponentName()
+        cell.usernameLabel.text = gameTableMenuItem.getUsernameOpponent()
         
-        //cell.actionLabel.text = "challenge"
+        let date = gameTableMenuItem.getOpponent().getDate()
+        if(date == "TBD"){
+            let formatter = DateFormatter()
+            formatter.dateFormat = "dd.MM.YY"
+            var yayayaya = formatter.string(from: DateTime().currentDate())
+            yayayaya.insert("'", at: yayayaya.index(yayayaya.endIndex, offsetBy: -2))
+            cell.dateLabel.text = yayayaya
+        }
         
+        cell.dispLabel.text = String(abs(Int(self.player!.getDisp())!)) //gameTableMenuItem.getOpponent().getDisp()
+        
+        let disp: Int = Int(gameTableMenuItem.getOpponent().getDisp())!
+        
+        if(disp >= 0){
+            if #available(iOS 13.0, *) {
+                let image = UIImage(systemName: "arrow.up")!
+                cell.dispImage.image = image
+                cell.dispImage.tintColor = .green
+            }
+        }
+        else {
+            if #available(iOS 13.0, *) {
+                let image = UIImage(systemName: "arrow.down")!
+                cell.dispImage.image = image
+                cell.dispImage.tintColor = .red
+            }
+        }
         return cell
     }
     
@@ -121,15 +102,37 @@ class HomeMenuTable: UITableViewController {
     }
     
     override open func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        print("indexPath.row: \(indexPath.row)")
+        if(indexPath.row < LeaderboardPageTask().PAGE_SIZE - 1){
+            //print("indexPath.row: \(indexPath.row)")
+            return
+        }
         if indexPath.row == leaderboardTableList.count - 1 {
-            pageFromWhichContentLoads += 1
-            fetchGameList(page: pageFromWhichContentLoads)
+            //print("indexPath.row: \(indexPath.row)")
+            self.fetchGameList()
         }
     }
     
-    func fetchGameList(page: Int) {
-        let requestPayload = ["page": page, "size": 13]
-        LeaderboardPageTask().execute(requestPayload: requestPayload) { (result) in
+    func fetchGameList() {
+        DispatchQueue.main.async() {
+            self.activityIndicator!.isHidden = false
+            self.activityIndicator!.startAnimating()
+
+        }
+        //print("0 - self.activityIndicator!.isHidden: \(self.activityIndicator!.isHidden)")
+        LeaderboardPageTask().execute(page: self.pageFromWhichContentLoads) { (result) in
+            
+            //print("1 - self.activityIndicator!.isHidden: \(self.activityIndicator!.isHidden)")
+            
+            DispatchQueue.main.async() {
+                self.activityIndicator!.stopAnimating()
+                self.activityIndicator!.isHidden = true
+            }
+            
+            //print("2 - self.activityIndicator!.isHidden: \(self.activityIndicator!.isHidden)")
+            
+            
+            self.pageFromWhichContentLoads += 1
             if(result == nil){
                 return
             }
@@ -142,7 +145,7 @@ class HomeMenuTable: UITableViewController {
 //        if(!gameTableMenuItem.inbound!){
 //           return nil
 //        }
-        let modifyAction = UIContextualAction(style: .normal, title:  "CHALLENGE", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
+        let modifyAction = UIContextualAction(style: .normal, title:  "CHALLENGE", handler: { (ac: UIContextualAction, view:UIView, success:(Bool) -> Void) in
             print("Update action ...")
             
             //let gameModel = Game(opponent: self.player!)
@@ -160,5 +163,20 @@ class HomeMenuTable: UITableViewController {
         }
         modifyAction.backgroundColor = .purple
         return UISwipeActionsConfiguration(actions: [modifyAction])
+    }
+    
+    func appendToLeaderboardTableList(additionalCellList: [Game]) {
+        let leaderboardCount = leaderboardTableList.count
+        for game in additionalCellList {
+            if(!leaderboardTableList.contains(game)){
+                leaderboardTableList.append(game)
+            }
+        }
+        DispatchQueue.main.async() {
+            if(leaderboardCount != self.leaderboardTableList.count){
+                //self.leaderboardTableList = self.leaderboardTableList.sorted(by: {Int($0.getOpponentElo())! > Int($1.getOpponentElo())!})
+                self.tableView.reloadData()
+            }
+        }
     }
 }

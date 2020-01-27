@@ -70,7 +70,7 @@ class Preview: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         let decodedimage = UIImage(data: dataDecoded)
         self.avatarImageView!.image = decodedimage
         self.rankLabel!.text = self.player!.getRank()
-        self.usernameLabel!.text = self.player!.getName()
+        self.usernameLabel!.text = self.player!.getUsername()
     }
     
     func flash() {

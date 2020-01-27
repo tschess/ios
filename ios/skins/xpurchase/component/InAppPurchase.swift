@@ -150,7 +150,7 @@ extension InAppPurchase: SKPaymentTransactionObserver {
         PurchaseSkin().execute(requestPayload: requestPayload)  { (result) in
             //print("lalala")
             //print("result: \(String(describing: result))")
-            StoryboardSelector().manage(player: self.player!, defaultSkin: true)
+            //StoryboardSelector().manage(player: self.player!, defaultSkin: true)
         }
     }
     

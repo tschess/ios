@@ -71,7 +71,7 @@ class EndgameOpponent: UIViewController, UICollectionViewDataSource, UICollectio
         let winner = self.gameModel!.getWinner()
         self.usernameWinner.text = winner
         
-        let opponent = self.gameModel!.getOpponentName()
+        let opponent = self.gameModel!.getUsernameOpponent()
         
         if(winner == opponent){
             let dataDecoded: Data = Data(base64Encoded: self.gameModel!.getOpponentAvatar(), options: .ignoreUnknownCharacters)!

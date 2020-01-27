@@ -57,7 +57,7 @@ class Transitioner {
             let tschessElementMatrix = gamestate.getTschessElementMatrix()
             let tschessElement = tschessElementMatrix[self.coordinate![0]][self.coordinate![1]]!
             Highlighter().setImageSelection(tschessElement: tschessElement, gamestate: gamestate)
-            if(gamestate.getCheckOn() == gamestate.getSelfName()) {
+            if(gamestate.getCheckOn() == gamestate.getUsernameSelf()) {
                 CanonicalCheck().circumscribedCheck(coordinate0: coordinate, gamestate0: gamestate)
                 return
             }
@@ -83,7 +83,7 @@ class Transitioner {
     }
     
     private func setLastMove(gamestate: Gamestate) {
-        if(gamestate.getSelfName() == gamestate.getUsernameWhite()) {
+        if(gamestate.getUsernameSelf() == gamestate.getUsernameWhite()) {
             gamestate.setLastMoveWhite(lastMoveWhite: dateTime.currentDateString())
             return
         }
@@ -101,10 +101,10 @@ class Transitioner {
         let king = CanonicalCheck().kingCoordinate(affiliation: gamestate.getOpponentAffiliation(), gamestate: gamestateCanonical)
         if(CanonicalCheck().check(coordinate: king, gamestate: gamestateCanonical)){
             if(CanonicalMate().mate(king: king, gamestate: gamestateCanonical)){
-                gamestate.setWinner(winner: gamestate.getSelfName())
+                gamestate.setWinner(winner: gamestate.getUsernameSelf())
                 return
             }
-            gamestate.setCheckOn(checkOn: gamestate.getOpponentName())
+            gamestate.setCheckOn(checkOn: gamestate.getUsernameOpponent())
         }
     }
 }

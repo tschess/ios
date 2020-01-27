@@ -20,7 +20,7 @@ class Game: Equatable, Hashable {
                 return identifier!.hashValue
             }
             return self.opponent.getId().hashValue ^
-                   self.opponent.getName().hashValue ^
+                   self.opponent.getUsername().hashValue ^
                    self.opponent.getAvatar().hashValue ^
                    self.opponent.getRank().hashValue ^
                    self.opponent.getElo().hashValue
@@ -32,7 +32,7 @@ class Game: Equatable, Hashable {
             return lhs.identifier! == rhs.identifier!
         }
         return lhs.opponent.getId()     == rhs.opponent.getId()     &&
-               lhs.opponent.getName()   == rhs.opponent.getName()   &&
+               lhs.opponent.getUsername()   == rhs.opponent.getUsername()   &&
                lhs.opponent.getAvatar() == rhs.opponent.getAvatar() &&
                lhs.opponent.getRank()   == rhs.opponent.getRank()   &&
                lhs.opponent.getElo()    == rhs.opponent.getElo()
@@ -189,8 +189,8 @@ class Game: Equatable, Hashable {
         return opponent.getId()
     }
     
-    func getOpponentName() -> String {
-        return opponent.getName()
+    func getUsernameOpponent() -> String {
+        return opponent.getUsername()
     }
     
     func getOpponentElo() -> String {

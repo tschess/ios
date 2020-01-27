@@ -165,7 +165,7 @@ class EditOpponent: UIViewController, UITabBarDelegate, UIDropInteractionDelegat
         let decodedimage = UIImage(data: dataDecoded)
         self.avatarImageView.image = decodedimage
         self.rankLabel.text = gameModel!.getOpponentRank()
-        self.usernameLabel.text = gameModel!.getOpponentName()
+        self.usernameLabel.text = gameModel!.getUsernameOpponent()
         
         self.tschessElementMatrix = self.player!.getConfig0()
         //        self.tschessElementMatrix1 = self.player!.getConfig1()
@@ -252,15 +252,6 @@ extension EditOpponent: UICollectionViewDataSource {
         let pointsNew = pointsCurrent + Int(tschessElement.strength)!
         if(pointsNew > 39){
             return true
-        }
-        for fairyElement in self.player!.getFairyElementList() {
-            if(!tschessElement.standard){
-                if(fairyElement.name.lowercased() == tschessElement.name.lowercased()){
-                    return false
-                }
-            } else { //not a fairy element...
-                return false
-            }
         }
         return true
     }

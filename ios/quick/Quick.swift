@@ -192,7 +192,7 @@ class Quick:
         let decodedimage = UIImage(data: dataDecoded)
         self.avatarImageView.image = decodedimage
         self.rankLabel.text = self.opponent!.getRank()
-        self.usernameLabel.text = self.opponent!.getName()
+        self.usernameLabel.text = self.opponent!.getUsername()
         
         self.tschessElementMatrix = self.player!.getConfig0()
         
@@ -341,9 +341,9 @@ class Quick:
     //            if(pickerSelectionConfiguration == "config. 2"){
     //                config = "config2"
     //            }
-                let white_name = gameModel!.getOpponentName()
+                let white_name = gameModel!.getUsernameOpponent()
                 let white_uuid = gameModel!.getOpponentId()
-                let black_name = player!.getName()
+                let black_name = player!.getUsername()
                 let black_uuid = player!.getId()
                 let updated = dateTime.currentDateString()
                 let requestPayload = [

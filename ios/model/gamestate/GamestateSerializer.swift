@@ -51,7 +51,7 @@ class GamestateSerializer {
             "updated": updated,
             
             "notification_id": gamestate.getOpponentId(),
-            "notification_name": gamestate.getSelfName()
+            "notification_name": gamestate.getUsernameSelf()
             
             ] as [String : Any]
         return requestPayload

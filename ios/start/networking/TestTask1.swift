@@ -39,7 +39,7 @@ class TestTask1 {
                 
                 let id = json["id"]! as! String
                 //print(" - id: \(id)")
-
+                
                 let clock = json["clock"]! as! Int
                 //print(" - clock: \(clock)")
                 
@@ -50,7 +50,7 @@ class TestTask1 {
                 
                 let gameStatus = json["status"]! as! String
                 gamestateDeserializer.setGameStatus(gameStatus: gameStatus)
-
+                
                 let state = json["state"]! as! [[String]]
                 let tschessElementMatrix = gamestateDeserializer.deserialize(stringRepresentation: state, orientationBlack: true)
                 //print(" - tschessElementMatrix: \(tschessElementMatrix)")
@@ -67,19 +67,22 @@ class TestTask1 {
                 let playerWhite: Player = PlayerDeserializer().execute(dictionary: json["white"] as! [String: Any])
                 let playerBlack: Player = PlayerDeserializer().execute(dictionary: json["black"] as! [String: Any])
                 
+                
                 let opponent = PlayerCore(
                     id: playerWhite.getId(),
-                    name: playerWhite.getName(),
+                    username: playerWhite.getUsername(),
                     avatar: playerWhite.getAvatar(),
+                    elo: playerWhite.getElo(),
                     rank: playerWhite.getRank(),
-                    elo: playerWhite.getElo())
+                    date: playerWhite.getDate(),
+                    disp: playerWhite.getDisp())
                 
                 let gameModel: Game = Game(opponent: opponent)
                 gameModel.setIdentifier(identifier: id)
                 gameModel.setClock(clock: String(clock))
                 gameModel.setUsernameTurn(usernameTurn: turn)
-                gameModel.setUsernameWhite(usernameWhite: playerWhite.getName())
-                gameModel.setUsernameBlack(usernameBlack: playerBlack.getName())
+                gameModel.setUsernameWhite(usernameWhite: playerWhite.getUsername())
+                gameModel.setUsernameBlack(usernameBlack: playerBlack.getUsername())
                 gameModel.setLastMoveBlack(lastMoveBlack: black_update)
                 gameModel.setLastMoveWhite(lastMoveWhite: white_update)
                 
@@ -103,7 +106,7 @@ class TestTask1 {
                 let messageBlackPosted = json["black_posted"]! as! String
                 //print(" - messageBlackPosted: \(messageBlackPosted)")
                 gameModel.setMessageBlackPosted(messageBlackPosted: messageBlackPosted)
-
+                
                 let gamestate: Gamestate = Gamestate(gameModel: gameModel, tschessElementMatrix: tschessElementMatrix)
                 gamestate.setPlayer(player: playerBlack)
                 gamestate.setGameStatus(gameStatus: "ONGOING")
