@@ -15,6 +15,8 @@ class EditOpponent: UIViewController, UITabBarDelegate, UIDropInteractionDelegat
     func setTitleText(titleText: String) {
         self.titleText = titleText
     }
+
+    @IBOutlet weak var eloLabel: UILabel!
     
     @IBOutlet weak var titleLabel: UILabel!
     
@@ -168,6 +170,22 @@ class EditOpponent: UIViewController, UITabBarDelegate, UIDropInteractionDelegat
         self.usernameLabel.text = gameModel!.getUsernameOpponent()
         
         self.tschessElementMatrix = self.player!.getConfig0()
+        
+       
+        
+        
+        self.eloLabel.text = gameModel!.getOpponent().getElo()
+          let date: String = gameModel!.getOpponent().getDate()
+              if(date == "TBD"){
+                  let formatter = DateFormatter()
+                  formatter.dateFormat = "dd.MM.YY"
+                  var yayayaya = formatter.string(from: DateTime().currentDate())
+                  yayayaya.insert("'", at: yayayaya.index(yayayaya.endIndex, offsetBy: -2))
+                  self.rankDateLabel.text = yayayaya
+              } else {
+                  //date...
+              }
+        
         //        self.tschessElementMatrix1 = self.player!.getConfig1()
         //        self.tschessElementMatrix2 = self.player!.getConfig2()
         
@@ -277,15 +295,19 @@ extension EditOpponent: UICollectionViewDataSource {
         
         if (indexPath.row % 2 == 0) {
             if (indexPath.row / 8 == 0) {
-                cell.backgroundColor = UIColor(red: 220/255.0, green: 0/255.0, blue: 70/255.0, alpha: 0.65)
+                cell.backgroundColor = .black
+                //cell.backgroundColor = UIColor(red: 220/255.0, green: 0/255.0, blue: 70/255.0, alpha: 0.65)
             } else {
-                cell.backgroundColor = UIColor(red: 250/255.0, green: 250/255.0, blue: 250/255.0, alpha: 0.88)
+                cell.backgroundColor = .white
+                //cell.backgroundColor = UIColor(red: 250/255.0, green: 250/255.0, blue: 250/255.0, alpha: 0.88)
             }
         } else {
             if (indexPath.row / 8 == 0) {
-                cell.backgroundColor = UIColor(red: 250/255.0, green: 250/255.0, blue: 250/255.0, alpha: 0.88)
+                cell.backgroundColor = .white
+                //cell.backgroundColor = UIColor(red: 250/255.0, green: 250/255.0, blue: 250/255.0, alpha: 0.88)
             } else {
-                cell.backgroundColor = UIColor(red: 220/255.0, green: 0/255.0, blue: 70/255.0, alpha: 0.65)
+                cell.backgroundColor = .black
+                //cell.backgroundColor = UIColor(red: 220/255.0, green: 0/255.0, blue: 70/255.0, alpha: 0.65)
             }
         }
         

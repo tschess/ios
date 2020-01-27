@@ -10,17 +10,13 @@ import UIKit
 
 class Actual: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate {
     
-    //@IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var displacementLabel: UILabel!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     //MARK: Properties
     @IBOutlet weak var usernameLabel: UILabel!
-    //    @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var avatarImageView: UIImageView!
-    //    @IBOutlet weak var avatarImageView: UIImageView!
-//    @IBOutlet weak var tschxLabel: UILabel!
     @IBOutlet weak var rankLabel: UILabel!
-    //    @IBOutlet weak var rankLabel: UILabel!
     @IBOutlet weak var eloLabel: UILabel!
     
     @IBOutlet weak var backButton: UIButton!
@@ -50,10 +46,27 @@ class Actual: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate {
         let decodedimage = UIImage(data: dataDecoded)
         self.avatarImageView.image = decodedimage
         self.rankLabel.text = self.player!.getRank()
-        //self.tschxLabel.text = "₮\(self.player!.getTschx())"
         self.usernameLabel.text = self.player!.getUsername()
-
-        //self.activityIndicator.startAnimating()
+        self.eloLabel.text = self.player!.getElo()
+        self.displacementLabel.text = String(abs(Int(self.player!.getDisp())!))
+        
+        let disp: Int = Int(self.player!.getDisp())!
+        
+        if(disp >= 0){
+            if #available(iOS 13.0, *) {
+                let image = UIImage(systemName: "arrow.up")!
+                self.rankDirectionImage.image = image
+                self.rankDirectionImage.tintColor = .green
+            }
+        }
+        else {
+            if #available(iOS 13.0, *) {
+                let image = UIImage(systemName: "arrow.down")!
+                self.rankDirectionImage.image = image
+                self.rankDirectionImage.tintColor = .red
+            }
+        }
+        
         self.activityIndicator.isHidden = true
     }
     

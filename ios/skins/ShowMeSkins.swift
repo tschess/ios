@@ -19,16 +19,8 @@ class ShowMeSkins: UIViewController, UITabBarDelegate {
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
-    
-    
-    
-    //@IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var tabBarMenu: UITabBar!
-    //@IBOutlet weak var avatarImageView: UIImageView!
-    //@IBOutlet weak var rankLabel: UILabel!
-    //@IBOutlet weak var usernameLabel: UILabel!
     
     var skinTableMenu: SkinTableMenu?
     
@@ -45,8 +37,26 @@ class ShowMeSkins: UIViewController, UITabBarDelegate {
         let decodedimage = UIImage(data: dataDecoded)
         self.avatarImageView.image = decodedimage
         self.rankLabel.text = self.player!.getRank()
-        //self.tschxLabel.text = "₮\(self.player!.getTschx())"
         self.usernameLabel.text = self.player!.getUsername()
+        self.eloLabel.text = self.player!.getElo()
+        self.displacementLabel.text = String(abs(Int(self.player!.getDisp())!))
+        
+        let disp: Int = Int(self.player!.getDisp())!
+        
+        if(disp >= 0){
+            if #available(iOS 13.0, *) {
+                let image = UIImage(systemName: "arrow.up")!
+                self.displacementImage.image = image
+                self.displacementImage.tintColor = .green
+            }
+        }
+        else {
+            if #available(iOS 13.0, *) {
+                let image = UIImage(systemName: "arrow.down")!
+                self.displacementImage.image = image
+                self.displacementImage.tintColor = .red
+            }
+        }
         
         self.activityIndicator.isHidden = true
     }

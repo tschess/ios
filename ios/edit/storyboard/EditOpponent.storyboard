@@ -389,6 +389,7 @@
                         <outlet property="backButton" destination="5qi-EH-0fj" id="T37-c0-SCb"/>
                         <outlet property="configCollectionView" destination="cLt-qU-Ujd" id="o5R-Vg-LOy"/>
                         <outlet property="configCollectionViewHeight" destination="CcB-qU-k3t" id="6Tg-VC-f3w"/>
+                        <outlet property="eloLabel" destination="Z6b-Zq-yG6" id="Pmv-us-cMJ"/>
                         <outlet property="rankDateLabel" destination="geX-eN-tf9" id="nla-2j-lFO"/>
                         <outlet property="rankLabel" destination="n23-Ft-buE" id="IF3-F7-YJg"/>
                         <outlet property="tabBarMenu" destination="lR1-2A-YPc" id="CDf-K6-4Hh"/>

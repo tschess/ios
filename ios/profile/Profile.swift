@@ -7,13 +7,12 @@
 //
 
 import UIKit
-//import PushNotifications
 
 class Profile: UIViewController, UITabBarDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate  {
     
     
     func imagePickerController(_ picker: UIImagePickerController,
-                               didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+                               didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         
         let selectedImage = info[.originalImage] as! UIImage
         let imageString = selectedImage.jpegData(compressionQuality: 0.1)!.base64EncodedString()
@@ -97,10 +96,32 @@ class Profile: UIViewController, UITabBarDelegate, UINavigationControllerDelegat
         self.avatarImageView.image = decodedimage
         
         self.rankLabel.text = self.player!.getRank()
-        //self.tschxLabel.text = "₮\(self.player!.getTschx())"
         self.usernameLabel.text = self.player!.getUsername()
         
+        self.eloLabel.text = self.player!.getElo()
+        self.displacementLabel.text = String(abs(Int(self.player!.getDisp())!))
+        
+        let disp: Int = Int(self.player!.getDisp())!
+        
+        if(disp >= 0){
+            if #available(iOS 13.0, *) {
+                let image = UIImage(systemName: "arrow.up")!
+                self.displacementImage.image = image
+                self.displacementImage.tintColor = .green
+            }
+        }
+        else {
+            if #available(iOS 13.0, *) {
+                let image = UIImage(systemName: "arrow.down")!
+                self.displacementImage.image = image
+                self.displacementImage.tintColor = .red
+            }
+        }
+        
+        
+        ///
         self.activityIndicator.isHidden = true
+        ///
         
         NotificationCenter.default.addObserver(
         self,

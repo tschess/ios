@@ -170,10 +170,29 @@ class Config:
         let dataDecoded: Data = Data(base64Encoded: self.player!.getAvatar(), options: .ignoreUnknownCharacters)!
         let decodedimage = UIImage(data: dataDecoded)
         self.avatarImageView.image = decodedimage
-        self.rankLabel.text = self.player!.getRank()
 
         self.usernameLabel.text = self.player!.getUsername()
         
+       self.eloLabel.text = self.player!.getElo()
+        self.rankLabel.text = self.player!.getRank()
+        self.displacementLabel.text = String(abs(Int(self.player!.getDisp())!))
+        
+        let disp: Int = Int(self.player!.getDisp())!
+        
+        if(disp >= 0){
+            if #available(iOS 13.0, *) {
+                let image = UIImage(systemName: "arrow.up")!
+                self.displacementImage.image = image
+                self.displacementImage.tintColor = .green
+            }
+        }
+        else {
+            if #available(iOS 13.0, *) {
+                let image = UIImage(systemName: "arrow.down")!
+                self.displacementImage.image = image
+                self.displacementImage.tintColor = .red
+            }
+        }
         
         let totalContentHeight = self.contentView.frame.size.height - 8
         
@@ -230,21 +249,23 @@ extension Config: UICollectionViewDataSource {
            
            if (indexPath.row % 2 == 0) {
                if (indexPath.row / 8 == 0) {
-                    cell.backgroundColor = UIColor(red: 220/255.0, green: 0/255.0, blue: 70/255.0, alpha: 0.65)
+                    //cell.backgroundColor = UIColor(red: 220/255.0, green: 0/255.0, blue: 70/255.0, alpha: 0.65)
+                cell.backgroundColor = .black
                     //cell.backgroundColor = .black
                     //cell.alpha = 0.01
                } else {
-                   cell.backgroundColor = UIColor(red: 250/255.0, green: 250/255.0, blue: 250/255.0, alpha: 0.88)
-                    //cell.backgroundColor = .white
+                   //cell.backgroundColor = UIColor(red: 250/255.0, green: 250/255.0, blue: 250/255.0, alpha: 0.88)
+                    cell.backgroundColor = .white
                     //cell.alpha = 1
                }
            } else {
                if (indexPath.row / 8 == 0) {
-                   cell.backgroundColor = UIColor(red: 250/255.0, green: 250/255.0, blue: 250/255.0, alpha: 0.88)
-                    //cell.backgroundColor = .white
+                   //cell.backgroundColor = UIColor(red: 250/255.0, green: 250/255.0, blue: 250/255.0, alpha: 0.88)
+                    cell.backgroundColor = .white
                     //cell.alpha = 1
                } else {
-                   cell.backgroundColor = UIColor(red: 220/255.0, green: 0/255.0, blue: 70/255.0, alpha: 0.65)
+                   //cell.backgroundColor = UIColor(red: 220/255.0, green: 0/255.0, blue: 70/255.0, alpha: 0.65)
+                cell.backgroundColor = .black
                     //cell.backgroundColor = .black
                     //cell.alpha = 0.01
                }
@@ -267,15 +288,19 @@ extension Config: UICollectionViewDataSource {
            
            if (indexPath.row % 2 == 0) {
                if (indexPath.row / 8 == 0) {
-                   cell.backgroundColor = UIColor(red: 220/255.0, green: 0/255.0, blue: 70/255.0, alpha: 0.65)
+                   //cell.backgroundColor = UIColor(red: 220/255.0, green: 0/255.0, blue: 70/255.0, alpha: 0.65)
+                cell.backgroundColor = .black
                } else {
-                   cell.backgroundColor = UIColor(red: 250/255.0, green: 250/255.0, blue: 250/255.0, alpha: 0.88)
+                   //cell.backgroundColor = UIColor(red: 250/255.0, green: 250/255.0, blue: 250/255.0, alpha: 0.88)
+                cell.backgroundColor = .white
                }
            } else {
                if (indexPath.row / 8 == 0) {
-                   cell.backgroundColor = UIColor(red: 250/255.0, green: 250/255.0, blue: 250/255.0, alpha: 0.88)
+                   //cell.backgroundColor = UIColor(red: 250/255.0, green: 250/255.0, blue: 250/255.0, alpha: 0.88)
+                cell.backgroundColor = .white
                } else {
-                   cell.backgroundColor = UIColor(red: 220/255.0, green: 0/255.0, blue: 70/255.0, alpha: 0.65)
+                   //cell.backgroundColor = UIColor(red: 220/255.0, green: 0/255.0, blue: 70/255.0, alpha: 0.65)
+                cell.backgroundColor = .black
                }
            }
            
@@ -296,15 +321,19 @@ extension Config: UICollectionViewDataSource {
            
            if (indexPath.row % 2 == 0) {
                if (indexPath.row / 8 == 0) {
-                   cell.backgroundColor = UIColor(red: 220/255.0, green: 0/255.0, blue: 70/255.0, alpha: 0.65)
+                   //cell.backgroundColor = UIColor(red: 220/255.0, green: 0/255.0, blue: 70/255.0, alpha: 0.65)
+                cell.backgroundColor = .black
                } else {
-                   cell.backgroundColor = UIColor(red: 250/255.0, green: 250/255.0, blue: 250/255.0, alpha: 0.88)
+                   //cell.backgroundColor = UIColor(red: 250/255.0, green: 250/255.0, blue: 250/255.0, alpha: 0.88)
+                cell.backgroundColor = .white
                }
            } else {
                if (indexPath.row / 8 == 0) {
-                   cell.backgroundColor = UIColor(red: 250/255.0, green: 250/255.0, blue: 250/255.0, alpha: 0.88)
+                   //cell.backgroundColor = UIColor(red: 250/255.0, green: 250/255.0, blue: 250/255.0, alpha: 0.88)
+                cell.backgroundColor = .white
                } else {
-                   cell.backgroundColor = UIColor(red: 220/255.0, green: 0/255.0, blue: 70/255.0, alpha: 0.65)
+                   //cell.backgroundColor = UIColor(red: 220/255.0, green: 0/255.0, blue: 70/255.0, alpha: 0.65)
+                cell.backgroundColor = .black
                }
            }
            

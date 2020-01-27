@@ -156,6 +156,26 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
         self.rankLabel.text = gameModel!.getOpponentRank()
         self.usernameLabel.text = gameModel!.getUsernameOpponent()
         
+        self.eloLabel.text = self.player!.getElo()
+        self.displacementLabel.text = String(abs(Int(self.player!.getDisp())!))
+        
+        let disp: Int = Int(self.player!.getDisp())!
+        
+        if(disp >= 0){
+            if #available(iOS 13.0, *) {
+                let image = UIImage(systemName: "arrow.up")!
+                self.displacementImage.image = image
+                self.displacementImage.tintColor = .green
+            }
+        }
+        else {
+            if #available(iOS 13.0, *) {
+                let image = UIImage(systemName: "arrow.down")!
+                self.displacementImage.image = image
+                self.displacementImage.tintColor = .red
+            }
+        }
+        
         self.tschessElementMatrix = self.player!.getConfig0()
         //        self.tschessElementMatrix1 = self.player!.getConfig1()
         //        self.tschessElementMatrix2 = self.player!.getConfig2()
@@ -268,15 +288,19 @@ extension EditSelf: UICollectionViewDataSource {
         
         if (indexPath.row % 2 == 0) {
             if (indexPath.row / 8 == 0) {
-                cell.backgroundColor = UIColor(red: 220/255.0, green: 0/255.0, blue: 70/255.0, alpha: 0.65)
+                //cell.backgroundColor = UIColor(red: 220/255.0, green: 0/255.0, blue: 70/255.0, alpha: 0.65)
+                cell.backgroundColor = .black
             } else {
-                cell.backgroundColor = UIColor(red: 250/255.0, green: 250/255.0, blue: 250/255.0, alpha: 0.88)
+                //cell.backgroundColor = UIColor(red: 250/255.0, green: 250/255.0, blue: 250/255.0, alpha: 0.88)
+                cell.backgroundColor = .white
             }
         } else {
             if (indexPath.row / 8 == 0) {
-                cell.backgroundColor = UIColor(red: 250/255.0, green: 250/255.0, blue: 250/255.0, alpha: 0.88)
+                //cell.backgroundColor = UIColor(red: 250/255.0, green: 250/255.0, blue: 250/255.0, alpha: 0.88)
+                cell.backgroundColor = .white
             } else {
-                cell.backgroundColor = UIColor(red: 220/255.0, green: 0/255.0, blue: 70/255.0, alpha: 0.65)
+                //cell.backgroundColor = UIColor(red: 220/255.0, green: 0/255.0, blue: 70/255.0, alpha: 0.65)
+                cell.backgroundColor = .black
             }
         }
         
