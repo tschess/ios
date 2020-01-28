@@ -11,7 +11,7 @@ import Foundation
 class RequestQuick {
     
     func success(id: String, completion: @escaping (Any?) -> Void) {
-        let url = URL(string: "http://\(ServerAddress().IP):8080/game/quick/\(id)")!
+        let url = URL(string: "http://\(ServerAddress().IP):8080/player/quick/\(id)")!
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         request.addValue("application/json", forHTTPHeaderField: "Accept")
@@ -31,7 +31,7 @@ class RequestQuick {
                     return
                 }
                 print("\n\n--RequestQuick--\n\n")
-                print(json)
+                //print(json)
                 if(json["error"] != nil){
                     let error = json["error"]! as! String
                     //print("\n\n ERROR: \(error)\n\n")
