@@ -43,15 +43,18 @@
                             <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YPS-Tp-PVu" userLabel="HeaderView">
                                 <rect key="frame" x="0.0" y="84" width="414" height="138"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blockies" translatesAutoresizingMaskIntoConstraints="NO" id="XYJ-aV-Rc5">
-                                        <rect key="frame" x="157" y="4" width="100" height="100"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="xmark" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="XYJ-aV-Rc5">
+                                        <rect key="frame" x="157" y="6.6666666666666643" width="100" height="95"/>
+                                        <color key="tintColor" red="0.86274509799999999" green="0.015686274510000001" blue="0.015686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="100" id="2Tw-xd-Qng"/>
                                             <constraint firstAttribute="width" constant="100" id="udH-89-LAw"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0x3b66507597116b9bc4083a5D40Cc8a38D2a52F24" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ux2-5E-CTf">
-                                        <rect key="frame" x="8" y="106" width="398" height="30"/>
+                                        <rect key="frame" x="4" y="106" width="406" height="30"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="iwZ-b9-tS7"/>
                                         </constraints>
@@ -67,9 +70,9 @@
                                 </subviews>
                                 <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="ux2-5E-CTf" secondAttribute="trailing" constant="8" id="CRb-H6-f64"/>
+                                    <constraint firstAttribute="trailing" secondItem="ux2-5E-CTf" secondAttribute="trailing" constant="4" id="CRb-H6-f64"/>
                                     <constraint firstItem="XYJ-aV-Rc5" firstAttribute="top" secondItem="YPS-Tp-PVu" secondAttribute="top" constant="4" id="CcS-Vv-mwd"/>
-                                    <constraint firstItem="ux2-5E-CTf" firstAttribute="leading" secondItem="YPS-Tp-PVu" secondAttribute="leading" constant="8" id="InZ-qS-0F2"/>
+                                    <constraint firstItem="ux2-5E-CTf" firstAttribute="leading" secondItem="YPS-Tp-PVu" secondAttribute="leading" constant="4" id="InZ-qS-0F2"/>
                                     <constraint firstAttribute="bottom" secondItem="ux2-5E-CTf" secondAttribute="bottom" constant="2" id="U6E-Og-3ox"/>
                                     <constraint firstItem="XYJ-aV-Rc5" firstAttribute="centerX" secondItem="YPS-Tp-PVu" secondAttribute="centerX" id="VCR-fa-gtE"/>
                                     <constraint firstItem="ux2-5E-CTf" firstAttribute="top" secondItem="XYJ-aV-Rc5" secondAttribute="bottom" constant="2" id="pvG-0v-ImA"/>
@@ -88,9 +91,6 @@
                                     <constraint firstAttribute="height" constant="50" id="CtS-Ad-lXP"/>
                                 </constraints>
                                 <items>
-                                    <tabBarItem title="reclaim" image="hand.raised" catalog="system" selectedImage="hand.raised.fill" id="GTZ-Ve-THK">
-                                        <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </tabBarItem>
                                     <tabBarItem tag="1" title="scan" image="qrcode" catalog="system" selectedImage="qrcode" id="cNg-v3-E35">
                                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tabBarItem>
@@ -135,7 +135,7 @@
                                                 </constraints>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                             </textField>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -183,7 +183,7 @@
                                                 </constraints>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                             </textField>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -231,7 +231,7 @@
                                                 </constraints>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                             </textField>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -322,10 +322,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="blockies" width="322" height="322"/>
         <image name="checkmark" catalog="system" width="64" height="56"/>
-        <image name="hand.raised" catalog="system" width="64" height="64"/>
-        <image name="hand.raised.fill" catalog="system" width="64" height="64"/>
         <image name="link" catalog="system" width="64" height="58"/>
         <image name="qrcode" catalog="system" width="64" height="56"/>
         <image name="xmark" catalog="system" width="64" height="56"/>
