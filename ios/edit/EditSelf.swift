@@ -10,6 +10,194 @@ import UIKit //
 
 class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIDropInteractionDelegate {
     
+    func allocatedOver(element: TschessElement) -> Bool {
+        let increasePointValue = Int(element.strength)!
+        let totalPointValue0 = self.getTotalPointValue(elementMatrix: self.elementMatrixActiv!)
+        let totalPointValue1 = totalPointValue0 + increasePointValue
+        if(totalPointValue1 > 39){
+            print("ZZZ: \(totalPointValue1)")
+            return true
+        }
+        print("RRR: \(totalPointValue1)")
+        return true
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if collectionView == self.tschessElementCollectionView {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TschessElementCell", for: indexPath) as! TschessElementCell
+            cell.configureCell(image: UIImage(named: self.ELEMENT_LIST[indexPath.row])!)
+            let tschessElement = self.generateTschessElement(name: self.ELEMENT_LIST[indexPath.row])
+            cell.nameLabel.text = tschessElement!.name
+            cell.pointsLabel.text = tschessElement!.strength
+            cell.imageView.alpha = 1
+            cell.nameLabel.alpha = 1
+            cell.pointsLabel.alpha = 1
+//            if(self.allocatedOver(element: tschessElement!)){
+//                cell.imageView.alpha = 0.5
+//                cell.nameLabel.alpha = 0.5
+//                cell.pointsLabel.alpha = 0.5
+//            }
+            return cell
+        }
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ConfigCollectionViewCell
+        if (indexPath.row % 2 == 0) {
+            if (indexPath.row / 8 == 0) {
+                cell.backgroundColor = .black
+            } else {
+                cell.backgroundColor = .white
+            }
+        } else {
+            if (indexPath.row / 8 == 0) {
+                cell.backgroundColor = .white
+            } else {
+                cell.backgroundColor = .black
+            }
+        }
+        let x = indexPath.row / 8
+        let y = indexPath.row % 8
+        if(self.elementMatrixActiv![x][y] != nil){
+            cell.imageView.image = self.elementMatrixActiv![x][y]!.getImageDefault()
+        } else {
+            cell.imageView.image = nil
+        }
+        cell.imageView.bounds = CGRect(origin: cell.bounds.origin, size: cell.bounds.size)
+        cell.imageView.center = CGPoint(x: cell.bounds.size.width/2, y: cell.bounds.size.height/2)
+        return cell
+    }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, dragPreviewParametersForItemAt indexPath: IndexPath) -> UIDragPreviewParameters?{
+        let previewParameters = UIDragPreviewParameters()
+        previewParameters.backgroundColor = UIColor.clear
+        return previewParameters
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, itemsForAddingTo session: UIDragSession, at indexPath: IndexPath, point: CGPoint) -> [UIDragItem] {
+        return self.collectionView(collectionView, itemsForBeginning: session, at: indexPath)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
+        self.elementMatrixCache = self.elementMatrixActiv!
+        
+        let generator = UIImpactFeedbackGenerator(style: .light)
+        generator.impactOccurred()
+        
+        if collectionView == self.tschessElementCollectionView {
+            let tschessElement = generateTschessElement(name: self.ELEMENT_LIST[indexPath.row])
+//            if(self.allocatedOver(element: tschessElement!)){
+//                return []
+//            }
+            let imageName = self.imageNameFromElement(tschessElement: tschessElement!)!
+            self.selectionElementName = imageName
+            let itemProvider = NSItemProvider(object: UIImage(named: imageName)!)
+            let dragItem = UIDragItem(itemProvider: itemProvider)
+            dragItem.previewProvider = {
+                () -> UIDragPreview? in
+                let imageView = UIImageView(image: UIImage(named: imageName)!)
+                imageView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+                let previewParameters = UIDragPreviewParameters()
+                previewParameters.backgroundColor = UIColor.clear
+                return UIDragPreview(view: imageView, parameters: previewParameters)
+            }
+            self.setTotalPointValue()
+            return [dragItem]
+        }
+        /***/
+        let x = indexPath.row / 8
+        let y = indexPath.row % 8
+        let tschessElement = self.elementMatrixActiv![x][y]
+        if(tschessElement == nil) {
+            return []
+        }
+        self.elementMatrixActiv![x][y] = nil
+        self.configCollectionView.reloadData()
+        /***/
+        let imageName = imageNameFromElement(tschessElement: tschessElement!)!
+        self.selectionElementName = imageName
+        let itemProvider = NSItemProvider(object: UIImage(named: imageName)!)
+        let dragItem = UIDragItem(itemProvider: itemProvider)
+        dragItem.previewProvider = {
+            () -> UIDragPreview? in
+            let imageView = UIImageView(image: UIImage(named: imageName)!)
+            imageView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+            let previewParameters = UIDragPreviewParameters()
+            previewParameters.backgroundColor = UIColor.clear
+            return UIDragPreview(view: imageView, parameters: previewParameters)
+        }
+        self.setTotalPointValue()
+        return [dragItem]
+    }
+    
+    internal func collectionView(_: UICollectionView, dragSessionDidEnd: UIDragSession){
+        self.tschessElementCollectionView.reloadData()
+        self.setTotalPointValue()
+    }
+    
+    
+        func collectionView(_ collectionView: UICollectionView,  dropSessionDidEnd session: UIDropSession) {
+    //        var kingAbsent: Bool = true
+    //        for row in self.elementMatrixActiv! {
+    //            for tschessElement in row {
+    //                if(tschessElement != nil){
+    //                    if(tschessElement!.name.lowercased().contains("king")){
+    //                        kingAbsent = false
+    //                    }
+    //                }
+    //            }
+    //        }
+    //        if(kingAbsent){
+    //            self.elementMatrixActiv = self.elementMatrixCache
+    //            self.configCollectionView.reloadData()
+    //        }
+    //        let pointUpdate = generatePointsTotal(tschessElementMatrix: self.elementMatrixActiv!)
+    //        if(pointUpdate > 39){
+    //            self.elementMatrixActiv = self.elementMatrixCache
+    //            self.configCollectionView.reloadData()
+    //        } else {
+    //            self.totalPointLabel.text = String(self.generatePointsTotal(tschessElementMatrix: self.elementMatrixActiv!))
+    //        }
+        }
+        
+        func collectionView(_ collectionView: UICollectionView, dropSessionDidUpdate session: UIDropSession, withDestinationIndexPath destinationIndexPath: IndexPath?) -> UICollectionViewDropProposal {
+            return UICollectionViewDropProposal(operation: .move, intent: .insertIntoDestinationIndexPath)
+        }
+        
+        func collectionView(_ collectionView: UICollectionView, performDropWith coordinator: UICollectionViewDropCoordinator) {
+            let x = coordinator.destinationIndexPath!.row / 8
+            let y = coordinator.destinationIndexPath!.row % 8
+            let tschessElement = generateTschessElement(name: self.selectionElementName!)
+            self.elementMatrixActiv![x][y] = tschessElement!
+            self.setTotalPointValue()
+            self.configCollectionView.reloadData()
+        }
+    
+    func dropInteraction(_ interaction: UIDropInteraction, canHandle session: UIDropSession) -> Bool { // 1
+        //print("canHandle session: \(session)")
+        return true
+    }
+    
+    func dropInteraction(_ interaction: UIDropInteraction, sessionDidUpdate session: UIDropSession) -> UIDropProposal { // 2
+        //print("sessionDidUpdate session: \(session)")
+        return UIDropProposal(operation: .move)
+    }
+    
+    func dropInteraction(_ interaction: UIDropInteraction, performDrop session: UIDropSession) {
+        //print("performDrop session: \(session)")
+        if(self.selectionElementName != nil){
+            if(self.selectionElementName!.lowercased().contains("king")){
+                
+                //self.pointsView.isHidden = true
+                //self.notificationLabel.isHidden = false
+                //self.notificationLabel.text = "king cannot be removed"
+                
+                self.elementMatrixActiv = self.elementMatrixCache
+                configCollectionView.reloadData() //give a warning also... feedback
+            }
+        }
+        self.selectionElementName = nil
+        self.configCollectionView.reloadData()
+    }
+    
     //MARK: Constant
     let DATE_TIME: DateTime = DateTime()
     let REUSE_IDENTIFIER = "cell"
@@ -25,8 +213,6 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
         "red_hunter",
         "red_grasshopper",
         "red_arrow"]
-    
-    
     
     @IBOutlet weak var dropViewTop0: UIView!
     @IBOutlet weak var dropViewTop1: UIView!
@@ -74,12 +260,32 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
     }
     
     //MARK: Layout: Content
-    @IBOutlet weak var totalPointLabel: UILabel!
     @IBOutlet weak var notificationLabel: UILabel!
     @IBOutlet weak var splitViewHeight0: NSLayoutConstraint!
     @IBOutlet weak var splitViewHeight1: NSLayoutConstraint!
     @IBOutlet weak var splitViewHeight2: NSLayoutConstraint!
     @IBOutlet weak var contentView: UIView!
+    @IBOutlet weak var totalPointLabel: UILabel!
+    var totalPointValue: Int?
+    
+    private func getTotalPointValue(elementMatrix: [[TschessElement?]]) -> Int {
+        var totalPointValue: Int = 0
+        for row in elementMatrix {
+            for element in row {
+                if(element == nil) {
+                    continue
+                }
+                totalPointValue += Int(element!.getStrength())!
+            }
+        }
+        return totalPointValue
+    }
+    
+    private func setTotalPointValue() {
+        let totalPointValue = self.getTotalPointValue(elementMatrix: self.elementMatrixActiv!)
+        self.totalPointLabel.text = String(totalPointValue)
+    }
+    
     @IBOutlet weak var titleLabel: UILabel!
     var titleText: String?
     
@@ -96,8 +302,7 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
     var elementMatrixAbort: [[TschessElement?]]?
     var elementMatrixCache: [[TschessElement?]]?
     var elementMatrixActiv: [[TschessElement?]]?
-    var selectionElementName: String?
-    var points: Int?
+   var selectionElementName: String?
     
     //MARK: Lifecycle
     override func viewDidLoad() {
@@ -106,6 +311,7 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
         self.configCollectionView.dataSource = self
         self.configCollectionView.dragDelegate = self
         self.configCollectionView.dropDelegate = self
+        
         self.tschessElementCollectionView.delegate = self
         self.tschessElementCollectionView.dataSource = self
         self.tschessElementCollectionView.dragDelegate = self
@@ -151,17 +357,14 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
         }
         self.titleLabel.text = self.titleText
         self.assignHeader()
+        
+        self.notificationLabel.isHidden = true
+        self.setTotalPointValue()
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         self.configCollectionViewHeight.constant = configCollectionView.contentSize.height
-    }
-    
-    @objc func kingNotificationGesture() {
-        //self.pointsLabel.text = "\(self.generatePointsTotal(tschessElementMatrix: self.tschessElementMatrix!))/39"
-        //self.pointsView.isHidden = false
-        //self.notificationLabel.isHidden = true
     }
 }
 
@@ -173,61 +376,6 @@ extension EditSelf: UICollectionViewDataSource {
             return ELEMENT_LIST.count
         }
         return PLACEMENT_LIST.count
-    }
-    
-    func disactivated(tschessElement: TschessElement) -> Bool {
-        let pointsCurrent = self.generatePointsTotal(tschessElementMatrix: self.elementMatrixActiv!)
-        let pointsNew = pointsCurrent + Int(tschessElement.strength)!
-        if(pointsNew > 39){
-            return true
-        }
-        return true
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if collectionView == self.tschessElementCollectionView {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TschessElementCell", for: indexPath) as! TschessElementCell
-            cell.configureCell(image: UIImage(named: self.ELEMENT_LIST[indexPath.row])!)
-            let tschessElement = generateTschessElement(name: self.ELEMENT_LIST[indexPath.row])
-            cell.nameLabel.text = tschessElement!.name
-            cell.pointsLabel.text = tschessElement!.strength
-            cell.imageView.alpha = 1
-            cell.nameLabel.alpha = 1
-            cell.pointsLabel.alpha = 1
-            if(self.disactivated(tschessElement: tschessElement!)){
-                cell.imageView.alpha = 0.5
-                cell.nameLabel.alpha = 0.5
-                cell.pointsLabel.alpha = 0.5
-            }
-            return cell
-        }
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ConfigCollectionViewCell
-        
-        if (indexPath.row % 2 == 0) {
-            if (indexPath.row / 8 == 0) {
-                cell.backgroundColor = .black
-            } else {
-                cell.backgroundColor = .white
-            }
-        } else {
-            if (indexPath.row / 8 == 0) {
-                cell.backgroundColor = .white
-            } else {
-                cell.backgroundColor = .black
-            }
-        }
-        
-        let x = indexPath.row / 8
-        let y = indexPath.row % 8
-        
-        if(self.elementMatrixActiv![x][y] != nil){
-            cell.imageView.image = self.elementMatrixActiv![x][y]!.getImageDefault()
-        } else {
-            cell.imageView.image = nil
-        }
-        cell.imageView.bounds = CGRect(origin: cell.bounds.origin, size: cell.bounds.size)
-        cell.imageView.center = CGPoint(x: cell.bounds.size.width/2, y: cell.bounds.size.height/2)
-        return cell
     }
 }
 
@@ -260,142 +408,12 @@ extension EditSelf: UICollectionViewDelegateFlowLayout {
 }
 
 //MARK: DragDelegate
-extension EditSelf: UICollectionViewDragDelegate {
-    
-    func collectionView(_ collectionView: UICollectionView, dragPreviewParametersForItemAt indexPath: IndexPath) -> UIDragPreviewParameters?{
-        let previewParameters = UIDragPreviewParameters()
-        previewParameters.backgroundColor = UIColor.clear
-        return previewParameters
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, itemsForAddingTo session: UIDragSession, at indexPath: IndexPath, point: CGPoint) -> [UIDragItem] {
-        return self.collectionView(collectionView, itemsForBeginning: session, at: indexPath)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
-        //        if(!self.notificationLabel.isHidden){
-        //            self.notificationLabel.isHidden = true
-        //            self.pointsLabel.text = "\(self.generatePointsTotal(tschessElementMatrix: self.tschessElementMatrix!))/39"
-        //            self.pointsView.isHidden = false
-        //        }
-        self.elementMatrixCache = self.elementMatrixActiv!
-        
-        let generator = UIImpactFeedbackGenerator(style: .light)
-        generator.impactOccurred()
-        
-        if collectionView == self.tschessElementCollectionView {
-            let tschessElement = generateTschessElement(name: self.ELEMENT_LIST[indexPath.row])
-            if(self.disactivated(tschessElement: tschessElement!)){
-                return []
-            }
-            let imageName = imageNameFromElement(tschessElement: tschessElement!)!
-            self.selectionElementName = imageName
-            let itemProvider = NSItemProvider(object: UIImage(named: imageName)!)
-            let dragItem = UIDragItem(itemProvider: itemProvider)
-            dragItem.previewProvider = {
-                () -> UIDragPreview? in
-                let imageView = UIImageView(image: UIImage(named: imageName)!)
-                imageView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
-                let previewParameters = UIDragPreviewParameters()
-                previewParameters.backgroundColor = UIColor.clear
-                return UIDragPreview(view: imageView, parameters: previewParameters)
-            }
-            return [dragItem]
-        }
-        /***/
-        let x = indexPath.row / 8
-        let y = indexPath.row % 8
-        let tschessElement = self.elementMatrixActiv![x][y]
-        if(tschessElement == nil) {
-            return []
-        }
-        self.elementMatrixActiv![x][y] = nil
-        self.configCollectionView.reloadData()
-        /***/
-        let imageName = imageNameFromElement(tschessElement: tschessElement!)!
-        self.selectionElementName = imageName
-        let itemProvider = NSItemProvider(object: UIImage(named: imageName)!)
-        let dragItem = UIDragItem(itemProvider: itemProvider)
-        dragItem.previewProvider = {
-            () -> UIDragPreview? in
-            let imageView = UIImageView(image: UIImage(named: imageName)!)
-            imageView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
-            let previewParameters = UIDragPreviewParameters()
-            previewParameters.backgroundColor = UIColor.clear
-            return UIDragPreview(view: imageView, parameters: previewParameters)
-        }
-        return [dragItem]
-    }
-    
-    internal func collectionView(_: UICollectionView, dragSessionDidEnd: UIDragSession){
-        tschessElementCollectionView.reloadData()
-        //self.pointsLabel.text = "\(self.generatePointsTotal(tschessElementMatrix: self.tschessElementMatrix!))/39"
-    }
-    
-}
+extension EditSelf: UICollectionViewDragDelegate {}
 
 //MARK: DropDelegate
-extension EditSelf: UICollectionViewDropDelegate {
-    
-    func generatePointsTotal(tschessElementMatrix: [[TschessElement?]]) -> Int {
-        var points: Int = 0
-        for row in tschessElementMatrix {
-            for tschessElement in row {
-                if(tschessElement != nil) {
-                    let addition = Int(tschessElement!.getStrength())!
-                    points += addition
-                }
-            }
-        }
-        return points
-    }
-    
-    func collectionView(_ collectionView: UICollectionView,  dropSessionDidEnd session: UIDropSession) {
-        var kingAbsent: Bool = true
-        for row in self.elementMatrixActiv! {
-            for tschessElement in row {
-                if(tschessElement != nil){
-                    if(tschessElement!.name.lowercased().contains("king")){
-                        kingAbsent = false
-                    }
-                }
-            }
-        }
-        if(kingAbsent){
-            self.elementMatrixActiv = self.elementMatrixCache
-            configCollectionView.reloadData()
-        }
-        let pointUpdate = generatePointsTotal(tschessElementMatrix: self.elementMatrixActiv!)
-        if(pointUpdate > 39){
-            self.elementMatrixActiv = self.elementMatrixCache
-            configCollectionView.reloadData()
-        } else {
-            //self.pointsLabel.text = "\(pointUpdate)/39"
-        }
-        
-        
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, dropSessionDidUpdate session: UIDropSession, withDestinationIndexPath destinationIndexPath: IndexPath?) -> UICollectionViewDropProposal {
-        return UICollectionViewDropProposal(operation: .move, intent: .insertIntoDestinationIndexPath)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, performDropWith coordinator: UICollectionViewDropCoordinator) {
-        let x = coordinator.destinationIndexPath!.row / 8
-        let y = coordinator.destinationIndexPath!.row % 8
-        let tschessElement = generateTschessElement(name: self.selectionElementName!)
-        self.elementMatrixActiv![x][y] = tschessElement!
-        configCollectionView.reloadData()
-    }
-    
-}
+extension EditSelf: UICollectionViewDropDelegate {}
 
 extension EditSelf: UICollectionViewDelegate {
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        // handle tap events
-        //print("You selected cell #\(indexPath.item)!")
-    }
     
     func generateTschessElement(name: String) -> TschessElement? {
         if(name.contains("arrow")){
@@ -481,37 +499,6 @@ extension EditSelf: UICollectionViewDelegate {
             return "red_king"
         }
         return nil
-    }
-    
-    
-    
-    
-    
-    func dropInteraction(_ interaction: UIDropInteraction, canHandle session: UIDropSession) -> Bool { // 1
-        //print("canHandle session: \(session)")
-        return true
-    }
-    
-    func dropInteraction(_ interaction: UIDropInteraction, sessionDidUpdate session: UIDropSession) -> UIDropProposal { // 2
-        //print("sessionDidUpdate session: \(session)")
-        return UIDropProposal(operation: .move)
-    }
-    
-    func dropInteraction(_ interaction: UIDropInteraction, performDrop session: UIDropSession) {
-        //print("performDrop session: \(session)")
-        if(self.selectionElementName != nil){
-            if(self.selectionElementName!.lowercased().contains("king")){
-                
-                //self.pointsView.isHidden = true
-                //self.notificationLabel.isHidden = false
-                //self.notificationLabel.text = "king cannot be removed"
-                
-                self.elementMatrixActiv = self.elementMatrixCache
-                configCollectionView.reloadData() //give a warning also... feedback
-            }
-        }
-        self.selectionElementName = nil
-        self.configCollectionView.reloadData()
     }
     
     @IBAction func backButtonClick(_ sender: Any) {
