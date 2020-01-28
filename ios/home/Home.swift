@@ -101,7 +101,7 @@ class Home: UIViewController, UITabBarDelegate {
                 self.activityIndicator.isHidden = false
                 self.activityIndicator.startAnimating()
             }
-            QuickTaskPlayer().success(id: self.player!.getId()) { (result) in
+            RequestQuick().success(id: self.player!.getId()) { (result) in
                 
                 
                 DispatchQueue.main.async() {

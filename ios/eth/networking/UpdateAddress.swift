@@ -8,7 +8,7 @@
 
 import Foundation
 
-class UpdateAddressTask {
+class UpdateAddress {
   
     func execute(updatePayload: [String: Any], completion: @escaping (String) -> Void) {
         

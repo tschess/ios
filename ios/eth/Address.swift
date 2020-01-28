@@ -161,12 +161,12 @@ class Address: UIViewController, UITabBarDelegate, UITextFieldDelegate { //force
                 "updated": self.DATE_TIME.currentDateString()
                 ] as [String: Any]
             
-            UpdateAddressTask().execute(updatePayload: updatePayload) { (result) in
+            UpdateAddress().execute(updatePayload: updatePayload) { (result) in
                 DispatchQueue.main.async() {
                     self.activityIndicator!.stopAnimating()
                     self.activityIndicator!.isHidden = true
                 }
-                print("UpdateAddressTask: \(result)")
+                print("UpdateAddress: \(result)")
             }
         }
     }

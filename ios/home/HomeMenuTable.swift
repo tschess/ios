@@ -131,7 +131,7 @@ class HomeMenuTable: UITableViewController {
             "index": self.requestPageIndex,
             "size": REQUEST_PAGE_SIZE
             ] as [String: Int]
-        RequestPageTask().execute(requestPayload: requestPayload) { (result) in
+        RequestPage().execute(requestPayload: requestPayload) { (result) in
             DispatchQueue.main.async() {
                 self.activityIndicator!.stopAnimating()
                 self.activityIndicator!.isHidden = true

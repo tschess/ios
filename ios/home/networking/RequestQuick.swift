@@ -8,7 +8,7 @@
 
 import Foundation
 
-class QuickTaskPlayer {
+class RequestQuick {
     
     func success(id: String, completion: @escaping (Any?) -> Void) {
         let url = URL(string: "http://\(ServerAddress().IP):8080/game/quick/\(id)")!

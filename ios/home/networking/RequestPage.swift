@@ -8,7 +8,7 @@
 
 import Foundation
 
-class RequestPageTask {
+class RequestPage {
     
     func execute(requestPayload: [String: Int], completion: @escaping (([Game]?) -> Void)) {
         

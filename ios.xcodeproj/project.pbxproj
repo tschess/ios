@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4E766FB2BBF9176550BB45F9 /* Pods_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45C0F287A16E70CE8A23A2EB /* Pods_ios.framework */; };
-		B7039F18238B35CE003896C6 /* UpdateAddressTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7039F17238B35CE003896C6 /* UpdateAddressTask.swift */; };
+		B7039F18238B35CE003896C6 /* UpdateAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7039F17238B35CE003896C6 /* UpdateAddress.swift */; };
 		B70577F0234BD0A500A9E2CA /* TschessTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70577EF234BD0A500A9E2CA /* TschessTests.swift */; };
 		B708820E233A0F8100A06CAD /* GameDeleteTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = B708820D233A0F8100A06CAD /* GameDeleteTask.swift */; };
 		B708D0DD236B351000A899F9 /* Initializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B708D0DC236B351000A899F9 /* Initializer.swift */; };
@@ -80,7 +80,8 @@
 		B7AF786B23E09A3000BAD8EC /* UpdateConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7AF786A23E09A3000BAD8EC /* UpdateConfig.swift */; };
 		B7AF786E23E09AC000BAD8EC /* ConfigSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7AF786D23E09AC000BAD8EC /* ConfigSerializer.swift */; };
 		B7AF787023E09AD100BAD8EC /* ConfigDeserializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7AF786F23E09AD100BAD8EC /* ConfigDeserializer.swift */; };
-		B7AF787323E0B9DA00BAD8EC /* RequestPageTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7AF787223E0B9DA00BAD8EC /* RequestPageTask.swift */; };
+		B7AF787323E0B9DA00BAD8EC /* RequestPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7AF787223E0B9DA00BAD8EC /* RequestPage.swift */; };
+		B7AF787523E0C7B100BAD8EC /* RequestQuick.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7AF787423E0C7B100BAD8EC /* RequestQuick.swift */; };
 		B7B74A52237DCAF200D07061 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7B74A51237DCAF200D07061 /* StoreKit.framework */; };
 		B7B74A55237DCC8600D07061 /* PlayerDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B74A54237DCC8600D07061 /* PlayerDevice.swift */; };
 		B7B81F58236C0A540030BCC4 /* ChallengeMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B81F57236C0A540030BCC4 /* ChallengeMenuCell.swift */; };
@@ -117,7 +118,6 @@
 		B7BCD7D822F474BC00CC29E6 /* BlackPawn.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BCD7D722F474BC00CC29E6 /* BlackPawn.swift */; };
 		B7BCD7DA22F474CA00CC29E6 /* BlackQueen.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BCD7D922F474CA00CC29E6 /* BlackQueen.swift */; };
 		B7BCD7DC22F474D800CC29E6 /* BlackRook.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BCD7DB22F474D800CC29E6 /* BlackRook.swift */; };
-		B7C1448B23A3C9E100404810 /* QuickTaskPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C1448A23A3C9E100404810 /* QuickTaskPlayer.swift */; };
 		B7C1448D23A3E37900404810 /* QuickTaskGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C1448C23A3E37900404810 /* QuickTaskGame.swift */; };
 		B7C5B79423D9EDE50074B81C /* GameCreate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C5B79323D9EDE50074B81C /* GameCreate.swift */; };
 		B7C5C00822EF3F2F00BFCB39 /* ThroughView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C5C00722EF3F2F00BFCB39 /* ThroughView.swift */; };
@@ -222,7 +222,7 @@
 /* Begin PBXFileReference section */
 		45C0F287A16E70CE8A23A2EB /* Pods_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD83F59EDBC27D005F033F41 /* Pods-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios.debug.xcconfig"; path = "Target Support Files/Pods-ios/Pods-ios.debug.xcconfig"; sourceTree = "<group>"; };
-		B7039F17238B35CE003896C6 /* UpdateAddressTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateAddressTask.swift; sourceTree = "<group>"; };
+		B7039F17238B35CE003896C6 /* UpdateAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateAddress.swift; sourceTree = "<group>"; };
 		B70577EF234BD0A500A9E2CA /* TschessTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TschessTests.swift; sourceTree = "<group>"; };
 		B708820D233A0F8100A06CAD /* GameDeleteTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDeleteTask.swift; sourceTree = "<group>"; };
 		B708D0DC236B351000A899F9 /* Initializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Initializer.swift; sourceTree = "<group>"; };
@@ -301,7 +301,8 @@
 		B7AF786A23E09A3000BAD8EC /* UpdateConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateConfig.swift; sourceTree = "<group>"; };
 		B7AF786D23E09AC000BAD8EC /* ConfigSerializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigSerializer.swift; sourceTree = "<group>"; };
 		B7AF786F23E09AD100BAD8EC /* ConfigDeserializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigDeserializer.swift; sourceTree = "<group>"; };
-		B7AF787223E0B9DA00BAD8EC /* RequestPageTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestPageTask.swift; sourceTree = "<group>"; };
+		B7AF787223E0B9DA00BAD8EC /* RequestPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestPage.swift; sourceTree = "<group>"; };
+		B7AF787423E0C7B100BAD8EC /* RequestQuick.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestQuick.swift; sourceTree = "<group>"; };
 		B7B74A51237DCAF200D07061 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		B7B74A54237DCC8600D07061 /* PlayerDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerDevice.swift; sourceTree = "<group>"; };
 		B7B81F57236C0A540030BCC4 /* ChallengeMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeMenuCell.swift; sourceTree = "<group>"; };
@@ -338,7 +339,6 @@
 		B7BCD7D722F474BC00CC29E6 /* BlackPawn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackPawn.swift; sourceTree = "<group>"; };
 		B7BCD7D922F474CA00CC29E6 /* BlackQueen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackQueen.swift; sourceTree = "<group>"; };
 		B7BCD7DB22F474D800CC29E6 /* BlackRook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackRook.swift; sourceTree = "<group>"; };
-		B7C1448A23A3C9E100404810 /* QuickTaskPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickTaskPlayer.swift; sourceTree = "<group>"; };
 		B7C1448C23A3E37900404810 /* QuickTaskGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickTaskGame.swift; sourceTree = "<group>"; };
 		B7C5B79323D9EDE50074B81C /* GameCreate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCreate.swift; sourceTree = "<group>"; };
 		B7C5C00722EF3F2F00BFCB39 /* ThroughView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThroughView.swift; sourceTree = "<group>"; };
@@ -991,7 +991,8 @@
 		B7AF787123E0B9BC00BAD8EC /* networking */ = {
 			isa = PBXGroup;
 			children = (
-				B7AF787223E0B9DA00BAD8EC /* RequestPageTask.swift */,
+				B7AF787223E0B9DA00BAD8EC /* RequestPage.swift */,
+				B7AF787423E0C7B100BAD8EC /* RequestQuick.swift */,
 			);
 			path = networking;
 			sourceTree = "<group>";
@@ -1025,7 +1026,6 @@
 		B7C1448923A3C95900404810 /* networking */ = {
 			isa = PBXGroup;
 			children = (
-				B7C1448A23A3C9E100404810 /* QuickTaskPlayer.swift */,
 				B7C1448C23A3E37900404810 /* QuickTaskGame.swift */,
 			);
 			path = networking;
@@ -1276,7 +1276,7 @@
 		B7EF81222388CA2300E89191 /* networking */ = {
 			isa = PBXGroup;
 			children = (
-				B7039F17238B35CE003896C6 /* UpdateAddressTask.swift */,
+				B7039F17238B35CE003896C6 /* UpdateAddress.swift */,
 			);
 			path = networking;
 			sourceTree = "<group>";
@@ -1728,7 +1728,6 @@
 				B7CB62A9237B428400E50204 /* StoryboardSelector.swift in Sources */,
 				B7F7C8F222FF8A680060AC38 /* Evaluation.swift in Sources */,
 				B7F64B06239ABA3600F6AFB7 /* Landmine.swift in Sources */,
-				B7C1448B23A3C9E100404810 /* QuickTaskPlayer.swift in Sources */,
 				B7BCD7AE22F4732500CC29E6 /* BlackGrasshopper.swift in Sources */,
 				B7D66C9E2378BC3100AAA00B /* CanonicalMate.swift in Sources */,
 				B7FCCC8323737E3300C4DD88 /* CanonicalCheck.swift in Sources */,
@@ -1740,7 +1739,7 @@
 				B7BCD7C022F473D500CC29E6 /* WhiteLandminePawn.swift in Sources */,
 				B74145C622F3CDC200B3B4FF /* Amazon.swift in Sources */,
 				B7F541D023D51CB700E89074 /* OtherMenuTable.swift in Sources */,
-				B7AF787323E0B9DA00BAD8EC /* RequestPageTask.swift in Sources */,
+				B7AF787323E0B9DA00BAD8EC /* RequestPage.swift in Sources */,
 				B7CA7BB4235A2DBE00AA1814 /* DrawResign.swift in Sources */,
 				B7F78D31236BA6AD00F07FD7 /* PresentationController.swift in Sources */,
 				B7BAA640237F13450038C483 /* OptionMenuTable.swift in Sources */,
@@ -1754,8 +1753,9 @@
 				B7BCD7B022F4733600CC29E6 /* BlackHunter.swift in Sources */,
 				B7EA5DD22375C63F0019C0BF /* MatrixSerializer.swift in Sources */,
 				B7F541C823D51B0C00E89074 /* HomeMenuCell.swift in Sources */,
+				B7AF787523E0C7B100BAD8EC /* RequestQuick.swift in Sources */,
 				B71FA72D22FA124700B6F216 /* MyCollectionViewCell.swift in Sources */,
-				B7039F18238B35CE003896C6 /* UpdateAddressTask.swift in Sources */,
+				B7039F18238B35CE003896C6 /* UpdateAddress.swift in Sources */,
 				B7EA5DC92375C2AD0019C0BF /* Gamestate.swift in Sources */,
 				B7BB475523009871001791F0 /* PawnOffense.swift in Sources */,
 				B7F5F64423D6376F00BCF91F /* Address.swift in Sources */,
