@@ -262,31 +262,8 @@ class StoryboardSelector {
     public func scanner(player: Player) {
         DispatchQueue.main.async {
             switch self.device() {
-            case "XANDROID":
-                let storyboard: UIStoryboard = UIStoryboard(name: "ScannerXandroid", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "ScannerXandroid") as! Scanner
-                viewController.setPlayer(player: player)
-                UIApplication.shared.keyWindow?.rootViewController = viewController
-                return
-            case "MAGNUS":
-                let storyboard: UIStoryboard = UIStoryboard(name: "ScannerMagnus", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "ScannerMagnus") as! Scanner
-                viewController.setPlayer(player: player)
-                UIApplication.shared.keyWindow?.rootViewController = viewController
-                return
-            case "XENOPHON":
-                let storyboard: UIStoryboard = UIStoryboard(name: "ScannerXenophon", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "ScannerXenophon") as! Scanner
-                viewController.setPlayer(player: player)
-                UIApplication.shared.keyWindow?.rootViewController = viewController
-                return
-            case "PHAEDRUS":
-                let storyboard: UIStoryboard = UIStoryboard(name: "ScannerCalhoun", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "ScannerCalhoun") as! Scanner
-                viewController.setPlayer(player: player)
-                UIApplication.shared.keyWindow?.rootViewController = viewController
-                return
             case "CALHOUN":
+                print("so lala")
                 let storyboard: UIStoryboard = UIStoryboard(name: "ScannerCalhoun", bundle: nil)
                 let viewController = storyboard.instantiateViewController(withIdentifier: "ScannerCalhoun") as! Scanner
                 viewController.setPlayer(player: player)

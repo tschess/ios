@@ -91,10 +91,10 @@
                                     <constraint firstAttribute="height" constant="50" id="CtS-Ad-lXP"/>
                                 </constraints>
                                 <items>
-                                    <tabBarItem tag="1" title="scan" image="qrcode" catalog="system" selectedImage="qrcode" id="cNg-v3-E35">
+                                    <tabBarItem title="scan" image="qrcode" catalog="system" selectedImage="qrcode" id="cNg-v3-E35">
                                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tabBarItem>
-                                    <tabBarItem tag="2" title="link" image="link" catalog="system" selectedImage="link" id="xqj-Cj-U3q">
+                                    <tabBarItem tag="1" title="link" image="link" catalog="system" selectedImage="link" id="xqj-Cj-U3q">
                                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tabBarItem>
                                 </items>
@@ -304,15 +304,15 @@
                     </view>
                     <connections>
                         <outlet property="activityIndicator" destination="RAM-33-HiP" id="4hy-vT-NzG"/>
+                        <outlet property="addressImageView" destination="XYJ-aV-Rc5" id="Sws-qu-8aK"/>
                         <outlet property="addressLabel" destination="ux2-5E-CTf" id="22h-S2-zQp"/>
                         <outlet property="backButton" destination="5qi-EH-0fj" id="9nk-ly-Hln"/>
-                        <outlet property="blockieImageView" destination="XYJ-aV-Rc5" id="Sws-qu-8aK"/>
-                        <outlet property="inputImageEmail" destination="cjG-Ug-ehC" id="vBr-YJ-Rhg"/>
-                        <outlet property="inputImageName" destination="ZH7-kx-1os" id="PUN-rj-Bvm"/>
-                        <outlet property="inputImageSurname" destination="XVd-We-z0l" id="ysw-dD-OV9"/>
-                        <outlet property="inputTextFieldEmail" destination="QSp-Jt-vO4" id="Qf6-sz-7lB"/>
-                        <outlet property="inputTextFieldName" destination="gjl-0b-EYW" id="odL-HK-NMV"/>
-                        <outlet property="inputTextFieldSurname" destination="CKk-mv-Vw6" id="HSE-QJ-Nth"/>
+                        <outlet property="emailImageView" destination="cjG-Ug-ehC" id="vBr-YJ-Rhg"/>
+                        <outlet property="emailTextField" destination="QSp-Jt-vO4" id="Qf6-sz-7lB"/>
+                        <outlet property="nameImageView" destination="ZH7-kx-1os" id="PUN-rj-Bvm"/>
+                        <outlet property="nameTextField" destination="gjl-0b-EYW" id="odL-HK-NMV"/>
+                        <outlet property="surnameImageView" destination="XVd-We-z0l" id="ysw-dD-OV9"/>
+                        <outlet property="surnameTextField" destination="CKk-mv-Vw6" id="HSE-QJ-Nth"/>
                         <outlet property="tabBarMenu" destination="lR1-2A-YPc" id="CDf-K6-4Hh"/>
                     </connections>
                 </viewController>
