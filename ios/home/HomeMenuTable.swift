@@ -10,7 +10,7 @@ import UIKit
 
 class HomeMenuTable: UITableViewController {
     
-    let REQUEST_PAGE_SIZE: Int = 8
+    let REQUEST_PAGE_SIZE: Int = 9
     var requestPageIndex: Int = 0
     //??? ^when/where/how does this get reset by lifecycle???
     
@@ -104,23 +104,75 @@ class HomeMenuTable: UITableViewController {
             userInfo: discoverSelectionDictionary)
     }
     
-    override open func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if let indices = tableView.indexPathsForVisibleRows {
-            for index in indices {
-                
-                print("INDEX: \(index)")
-                
-                if index.row == (REQUEST_PAGE_SIZE * requestPageIndex) + (REQUEST_PAGE_SIZE - 1) {
-                    
-                    print("~ so fetch ~")
-                    
-                    self.fetchGameList()
-                }
-            }
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        let visibleRows = self.tableView.indexPathsForVisibleRows
+        let lastRow = visibleRows?.last?.row
+        print("                         lastRow: \(lastRow)")
+        
+        if(lastRow == nil){
+           return
+        }
+        
+        let index = self.requestPageIndex
+        print("                         index: \(index)")
+        print("                         self.requestPageIndex: \(self.requestPageIndex)")
+        let size = self.REQUEST_PAGE_SIZE
+        print("                         size: \(size)")
+        print("                         self.REQUEST_PAGE_SIZE: \(self.REQUEST_PAGE_SIZE)")
+        let indexFrom: Int =  index * size
+        print("                         indexFrom: \(indexFrom)")
+        let indexTo: Int = indexFrom + REQUEST_PAGE_SIZE - 2
+        
+       
+       print("                         indexTo: \(indexTo)")
+        
+        if lastRow == indexTo {
+             self.requestPageIndex += 1
+             self.fetchGameList()
         }
     }
     
+//    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+//        let intTotalrow = tableView.numberOfRows(inSection: indexPath.section) //first get total rows in that section by current indexPath.
+//        //get last last row of tablview
+//        if indexPath.row == intTotalrow - 1{
+//
+//            // call for last display
+//            let gameTableMenuItem = leaderboardTableList[indexPath.row]
+//            print("                                       indexPath.row: \(indexPath.row)")
+//            print("                                            username: \(gameTableMenuItem.getOpponent().getUsername())")
+//
+//
+//        }
+//    }
+    
+//    override open func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+//        if let indices = tableView.indexPathsForVisibleRows {
+//            for index in indices {
+//
+//                print("                                       index.row: \(index.row)")
+//                //print("(self.REQUEST_PAGE_SIZE * self.requestPageIndex): \((self.REQUEST_PAGE_SIZE * self.requestPageIndex))")
+//                //print("                         (REQUEST_PAGE_SIZE - 2): \((REQUEST_PAGE_SIZE - 2))")
+//                print("\n\n")
+//
+//                if index.row == (self.REQUEST_PAGE_SIZE * self.requestPageIndex) + (REQUEST_PAGE_SIZE - 2) {
+//
+//
+//
+//                    self.fetchGameList()
+//                }
+//            }
+//        }
+//    }
+    
     func fetchGameList() {
+        
+        print("~ so fetch ~")
+        print("self.REQUEST_PAGE_SIZE: \(self.REQUEST_PAGE_SIZE)")
+        print("      requestPageIndex: \(self.requestPageIndex)")
+        
         DispatchQueue.main.async() {
             self.activityIndicator!.isHidden = false
             self.activityIndicator!.startAnimating()
@@ -144,7 +196,7 @@ class HomeMenuTable: UITableViewController {
             //print("2 - self.activityIndicator!.isHidden: \(self.activityIndicator!.isHidden)")
             
             
-            self.requestPageIndex += 1
+            
             if(result == nil){
                 return
             }
