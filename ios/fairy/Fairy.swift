@@ -10,6 +10,8 @@ import UIKit
 
 class Fairy: UIViewController, UITabBarDelegate {
     
+    var fairyElementList: [FairyElement] = [Amazon(), ArrowPawn(), Grasshopper(), Hunter(), LandminePawn(), Medusa(), Spy()]
+    
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var tabBarMenu: UITabBar!
 
@@ -70,7 +72,7 @@ class Fairy: UIViewController, UITabBarDelegate {
         self.tabBarMenu.delegate = self
         self.squadUpAdapter = children.first as? FairyTableMenu
         self.squadUpAdapter!.setPlayer(player: self.player!)
-        //self.squadUpAdapter!.setFairyElementList(fairyElementList: self.player!.getFairyElementList())
+        self.squadUpAdapter!.setFairyElementList(fairyElementList: self.fairyElementList)
         
         NotificationCenter.default.addObserver(
             self,
