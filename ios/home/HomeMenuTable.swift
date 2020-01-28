@@ -106,97 +106,36 @@ class HomeMenuTable: UITableViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        
         let visibleRows = self.tableView.indexPathsForVisibleRows
         let lastRow = visibleRows?.last?.row
-        print("                         lastRow: \(lastRow)")
-        
         if(lastRow == nil){
            return
         }
-        
         let index = self.requestPageIndex
-        print("                         index: \(index)")
-        print("                         self.requestPageIndex: \(self.requestPageIndex)")
         let size = self.REQUEST_PAGE_SIZE
-        print("                         size: \(size)")
-        print("                         self.REQUEST_PAGE_SIZE: \(self.REQUEST_PAGE_SIZE)")
         let indexFrom: Int =  index * size
-        print("                         indexFrom: \(indexFrom)")
         let indexTo: Int = indexFrom + REQUEST_PAGE_SIZE - 2
-        
-       
-       print("                         indexTo: \(indexTo)")
-        
         if lastRow == indexTo {
              self.requestPageIndex += 1
              self.fetchGameList()
         }
     }
     
-//    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-//        let intTotalrow = tableView.numberOfRows(inSection: indexPath.section) //first get total rows in that section by current indexPath.
-//        //get last last row of tablview
-//        if indexPath.row == intTotalrow - 1{
-//
-//            // call for last display
-//            let gameTableMenuItem = leaderboardTableList[indexPath.row]
-//            print("                                       indexPath.row: \(indexPath.row)")
-//            print("                                            username: \(gameTableMenuItem.getOpponent().getUsername())")
-//
-//
-//        }
-//    }
-    
-//    override open func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-//        if let indices = tableView.indexPathsForVisibleRows {
-//            for index in indices {
-//
-//                print("                                       index.row: \(index.row)")
-//                //print("(self.REQUEST_PAGE_SIZE * self.requestPageIndex): \((self.REQUEST_PAGE_SIZE * self.requestPageIndex))")
-//                //print("                         (REQUEST_PAGE_SIZE - 2): \((REQUEST_PAGE_SIZE - 2))")
-//                print("\n\n")
-//
-//                if index.row == (self.REQUEST_PAGE_SIZE * self.requestPageIndex) + (REQUEST_PAGE_SIZE - 2) {
-//
-//
-//
-//                    self.fetchGameList()
-//                }
-//            }
-//        }
-//    }
-    
     func fetchGameList() {
-        
-        print("~ so fetch ~")
-        print("self.REQUEST_PAGE_SIZE: \(self.REQUEST_PAGE_SIZE)")
-        print("      requestPageIndex: \(self.requestPageIndex)")
-        
         DispatchQueue.main.async() {
             self.activityIndicator!.isHidden = false
             self.activityIndicator!.startAnimating()
             
         }
-        
         let requestPayload = [
             "index": self.requestPageIndex,
             "size": REQUEST_PAGE_SIZE
             ] as [String: Int]
-        
         RequestPageTask().execute(requestPayload: requestPayload) { (result) in
-            
-            //print("1 - self.activityIndicator!.isHidden: \(self.activityIndicator!.isHidden)")
-            
             DispatchQueue.main.async() {
                 self.activityIndicator!.stopAnimating()
                 self.activityIndicator!.isHidden = true
             }
-            
-            //print("2 - self.activityIndicator!.isHidden: \(self.activityIndicator!.isHidden)")
-            
-            
-            
             if(result == nil){
                 return
             }
@@ -205,10 +144,6 @@ class HomeMenuTable: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        //        let leaderboardItem = leaderboardTableList[indexPath.row]
-        //        if(!gameTableMenuItem.inbound!){
-        //           return nil
-        //        }
         let modifyAction = UIContextualAction(style: .normal, title:  "CHALLENGE", handler: { (ac: UIContextualAction, view:UIView, success:(Bool) -> Void) in
             print("Update action ...")
             
@@ -238,7 +173,6 @@ class HomeMenuTable: UITableViewController {
         }
         DispatchQueue.main.async() {
             if(leaderboardCount != self.leaderboardTableList.count){
-                //self.leaderboardTableList = self.leaderboardTableList.sorted(by: {Int($0.getOpponentElo())! > Int($1.getOpponentElo())!})
                 self.tableView.reloadData()
             }
         }
