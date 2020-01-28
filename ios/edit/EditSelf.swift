@@ -10,8 +10,6 @@ import UIKit //
 
 class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIDropInteractionDelegate {
     
-    @IBOutlet weak var headerView: UIView!
-    
     private func getPointValue(elementMatrix: [[TschessElement?]]) -> Int {
         var totalPointValue: Int = 0
         for row in elementMatrix {
@@ -26,40 +24,30 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
     }
     
     func inExcess(element: TschessElement, elementMatrix: [[TschessElement?]]) -> Bool {
-        
-        print("    element: \(element.name)")
-        print("   strength: \(element.strength)")
-        
-        
-        
         let pointIncrease = Int(element.strength)!
         let pointValue0 = self.getPointValue(elementMatrix: elementMatrix)
-        print("pointValue0: \(pointValue0)")
         let pointValue1 = pointValue0 + pointIncrease
-        print("pointValue1: \(pointValue1)")
         if(pointValue1 > 39){
-            print("inExcess (true)\n\n")
             return true
         }
-        print("inExcess (false)\n\n")
         return false
     }
     
     //MARK: Constant
-       let DATE_TIME: DateTime = DateTime()
-       let REUSE_IDENTIFIER = "cell"
-       let PLACEMENT_LIST = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16"]
-       let ELEMENT_LIST = [
-           "red_pawn",
-           "red_knight",
-           "red_bishop",
-           "red_rook",
-           "red_queen",
-           "red_amazon",
-           "red_landmine_pawn",
-           "red_hunter",
-           "red_grasshopper",
-           "red_arrow"]
+    let DATE_TIME: DateTime = DateTime()
+    let REUSE_IDENTIFIER = "cell"
+    let PLACEMENT_LIST = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16"]
+    let ELEMENT_LIST = [
+        "red_pawn",
+        "red_knight",
+        "red_bishop",
+        "red_rook",
+        "red_queen",
+        "red_amazon",
+        "red_landmine_pawn",
+        "red_hunter",
+        "red_grasshopper",
+        "red_arrow"]
     
     //MARK: Render
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -74,43 +62,32 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
             elementCell.nameLabel.text = elementObject.name
             elementCell.pointsLabel.text = elementObject.strength
             
+            elementCell.imageView.alpha = 1
+            elementCell.nameLabel.alpha = 1
+            elementCell.pointsLabel.alpha = 1
             if(self.inExcess(element: elementObject, elementMatrix: self.elementMatrixActiv!)){
-                
-                print("t")
-                
                 elementCell.imageView.alpha = 0.5
                 elementCell.nameLabel.alpha = 0.5
                 elementCell.pointsLabel.alpha = 0.5
-            } else {
-                
-                print("f")
-                
-                elementCell.imageView.alpha = 1
-                elementCell.nameLabel.alpha = 1
-                elementCell.pointsLabel.alpha = 1
             }
             return elementCell
         }
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ConfigCollectionViewCell
+        cell.backgroundColor = .black
+        if (indexPath.row / 8 == 0) {
+            cell.backgroundColor = .white
+        }
         if (indexPath.row % 2 == 0) {
+            cell.backgroundColor = .white
             if (indexPath.row / 8 == 0) {
-                cell.backgroundColor = .black
-            } else {
-                cell.backgroundColor = .white
-            }
-        } else {
-            if (indexPath.row / 8 == 0) {
-                cell.backgroundColor = .white
-            } else {
                 cell.backgroundColor = .black
             }
         }
         let x = indexPath.row / 8
         let y = indexPath.row % 8
+        cell.imageView.image = nil
         if(self.elementMatrixActiv![x][y] != nil){
             cell.imageView.image = self.elementMatrixActiv![x][y]!.getImageDefault()
-        } else {
-            cell.imageView.image = nil
         }
         cell.imageView.bounds = CGRect(origin: cell.bounds.origin, size: cell.bounds.size)
         cell.imageView.center = CGPoint(x: cell.bounds.size.width/2, y: cell.bounds.size.height/2)
@@ -130,15 +107,15 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
     
     func collectionView(_ collectionView: UICollectionView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
         self.elementMatrixCache = self.elementMatrixActiv!
-        
-        let generator = UIImpactFeedbackGenerator(style: .light)
-        generator.impactOccurred()
-        
         if collectionView == self.tschessElementCollectionView {
             let tschessElement = generateTschessElement(name: self.ELEMENT_LIST[indexPath.row])
-//            if(self.allocatedOver(element: tschessElement!)){
-//                return []
-//            }
+            
+            if(self.inExcess(element: tschessElement!, elementMatrix: self.elementMatrixActiv!)){
+                return []
+            }
+            let generator = UIImpactFeedbackGenerator(style: .light)
+            generator.impactOccurred()
+            
             let imageName = self.imageNameFromElement(tschessElement: tschessElement!)!
             self.selectionElementName = imageName
             let itemProvider = NSItemProvider(object: UIImage(named: imageName)!)
@@ -154,13 +131,15 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
             self.setTotalPointValue()
             return [dragItem]
         }
-        /***/
         let x = indexPath.row / 8
         let y = indexPath.row % 8
         let tschessElement = self.elementMatrixActiv![x][y]
         if(tschessElement == nil) {
             return []
         }
+        let generator = UIImpactFeedbackGenerator(style: .light)
+        generator.impactOccurred()
+        
         self.elementMatrixActiv![x][y] = nil
         self.configCollectionView.reloadData()
         self.tschessElementCollectionView.reloadData()
@@ -182,71 +161,67 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
     }
     
     internal func collectionView(_: UICollectionView, dragSessionDidEnd: UIDragSession){
-        self.tschessElementCollectionView.reloadData() //!!!!!
+        self.tschessElementCollectionView.reloadData()
         self.setTotalPointValue()
     }
     
+    func collectionView(_ collectionView: UICollectionView,  dropSessionDidEnd session: UIDropSession) {
+        var kingAbsent: Bool = true
+        for row in self.elementMatrixActiv! {
+            for tschessElement in row {
+                if(tschessElement == nil){
+                    continue
+                }
+                if(tschessElement!.name.lowercased().contains("king")){
+                    kingAbsent = false
+                }
+            }
+        }
+        if(!kingAbsent){
+            return
+        }
+        self.elementMatrixActiv = self.elementMatrixCache
+        self.configCollectionView.reloadData()
+        self.setTotalPointValue()
+        self.tschessElementCollectionView.reloadData()
+    }
     
-        func collectionView(_ collectionView: UICollectionView,  dropSessionDidEnd session: UIDropSession) {
-    //        var kingAbsent: Bool = true
-    //        for row in self.elementMatrixActiv! {
-    //            for tschessElement in row {
-    //                if(tschessElement != nil){
-    //                    if(tschessElement!.name.lowercased().contains("king")){
-    //                        kingAbsent = false
-    //                    }
-    //                }
-    //            }
-    //        }
-    //        if(kingAbsent){
-    //            self.elementMatrixActiv = self.elementMatrixCache
-    //            self.configCollectionView.reloadData()
-    //        }
-    //        let pointUpdate = generatePointsTotal(tschessElementMatrix: self.elementMatrixActiv!)
-    //        if(pointUpdate > 39){
-    //            self.elementMatrixActiv = self.elementMatrixCache
-    //            self.configCollectionView.reloadData()
-    //        } else {
-    //            self.totalPointLabel.text = String(self.generatePointsTotal(tschessElementMatrix: self.elementMatrixActiv!))
-    //        }
-        }
-        
-        func collectionView(_ collectionView: UICollectionView, dropSessionDidUpdate session: UIDropSession, withDestinationIndexPath destinationIndexPath: IndexPath?) -> UICollectionViewDropProposal {
-            return UICollectionViewDropProposal(operation: .move, intent: .insertIntoDestinationIndexPath)
-        }
-        
-        func collectionView(_ collectionView: UICollectionView, performDropWith coordinator: UICollectionViewDropCoordinator) {
-            let x = coordinator.destinationIndexPath!.row / 8
-            let y = coordinator.destinationIndexPath!.row % 8
-            let tschessElement = generateTschessElement(name: self.selectionElementName!)
-            self.elementMatrixActiv![x][y] = tschessElement!
-            self.setTotalPointValue()
-            self.configCollectionView.reloadData()
-            self.tschessElementCollectionView.reloadData()
-        }
+    func collectionView(_ collectionView: UICollectionView, dropSessionDidUpdate session: UIDropSession, withDestinationIndexPath destinationIndexPath: IndexPath?) -> UICollectionViewDropProposal {
+        return UICollectionViewDropProposal(operation: .move, intent: .insertIntoDestinationIndexPath)
+    }
     
-    func dropInteraction(_ interaction: UIDropInteraction, canHandle session: UIDropSession) -> Bool { // 1
-        //print("canHandle session: \(session)")
+    func collectionView(_ collectionView: UICollectionView, performDropWith coordinator: UICollectionViewDropCoordinator) {
+        let x = coordinator.destinationIndexPath!.row / 8
+        let y = coordinator.destinationIndexPath!.row % 8
+        
+        let occupant: TschessElement? = self.elementMatrixActiv![x][y]
+        if(occupant != nil){
+            if(occupant!.name.lowercased().contains("king")){
+                self.elementMatrixActiv = self.elementMatrixCache
+                configCollectionView.reloadData()
+                return
+            }
+        }
+        let tschessElement = generateTschessElement(name: self.selectionElementName!)
+        self.elementMatrixActiv![x][y] = tschessElement!
+        self.setTotalPointValue()
+        self.configCollectionView.reloadData()
+        self.tschessElementCollectionView.reloadData()
+    }
+    
+    func dropInteraction(_ interaction: UIDropInteraction, canHandle session: UIDropSession) -> Bool {
         return true
     }
     
-    func dropInteraction(_ interaction: UIDropInteraction, sessionDidUpdate session: UIDropSession) -> UIDropProposal { // 2
-        //print("sessionDidUpdate session: \(session)")
+    func dropInteraction(_ interaction: UIDropInteraction, sessionDidUpdate session: UIDropSession) -> UIDropProposal {
         return UIDropProposal(operation: .move)
     }
     
     func dropInteraction(_ interaction: UIDropInteraction, performDrop session: UIDropSession) {
-        //print("performDrop session: \(session)")
         if(self.selectionElementName != nil){
             if(self.selectionElementName!.lowercased().contains("king")){
-                
-                //self.pointsView.isHidden = true
-                //self.notificationLabel.isHidden = false
-                //self.notificationLabel.text = "king cannot be removed"
-                
                 self.elementMatrixActiv = self.elementMatrixCache
                 configCollectionView.reloadData() //give a warning also... feedback
-                self.tschessElementCollectionView.reloadData()
             }
         }
         self.selectionElementName = nil
@@ -261,6 +236,7 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
     
     //MARK: Layout: Core
     @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var tabBarMenu: UITabBar!
     @IBOutlet weak var displacementImage: UIImageView!
     @IBOutlet weak var displacementLabel: UILabel!
@@ -276,7 +252,7 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
     }
     
     private func assignHeader() {
-       let dataDecoded: Data = Data(base64Encoded: self.player!.getAvatar(), options: .ignoreUnknownCharacters)!
+        let dataDecoded: Data = Data(base64Encoded: self.player!.getAvatar(), options: .ignoreUnknownCharacters)!
         let decodedimage = UIImage(data: dataDecoded)
         self.avatarImageView.image = decodedimage
         self.rankLabel.text = self.player!.getRank()
@@ -329,7 +305,7 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
     var elementMatrixAbort: [[TschessElement?]]?
     var elementMatrixCache: [[TschessElement?]]?
     var elementMatrixActiv: [[TschessElement?]]?
-   var selectionElementName: String?
+    var selectionElementName: String?
     
     //MARK: Lifecycle
     override func viewDidLoad() {
