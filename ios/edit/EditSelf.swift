@@ -10,34 +10,86 @@ import UIKit //
 
 class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIDropInteractionDelegate {
     
-    func allocatedOver(element: TschessElement) -> Bool {
-        let increasePointValue = Int(element.strength)!
-        let totalPointValue0 = self.getTotalPointValue(elementMatrix: self.elementMatrixActiv!)
-        let totalPointValue1 = totalPointValue0 + increasePointValue
-        if(totalPointValue1 > 39){
-            print("ZZZ: \(totalPointValue1)")
-            return true
+    @IBOutlet weak var headerView: UIView!
+    
+    private func getPointValue(elementMatrix: [[TschessElement?]]) -> Int {
+        var totalPointValue: Int = 0
+        for row in elementMatrix {
+            for element in row {
+                if(element == nil) {
+                    continue
+                }
+                totalPointValue += Int(element!.getStrength())!
+            }
         }
-        print("RRR: \(totalPointValue1)")
-        return true
+        return totalPointValue
     }
     
+    func inExcess(element: TschessElement, elementMatrix: [[TschessElement?]]) -> Bool {
+        
+        print("    element: \(element.name)")
+        print("   strength: \(element.strength)")
+        
+        
+        
+        let pointIncrease = Int(element.strength)!
+        let pointValue0 = self.getPointValue(elementMatrix: elementMatrix)
+        print("pointValue0: \(pointValue0)")
+        let pointValue1 = pointValue0 + pointIncrease
+        print("pointValue1: \(pointValue1)")
+        if(pointValue1 > 39){
+            print("inExcess (true)\n\n")
+            return true
+        }
+        print("inExcess (false)\n\n")
+        return false
+    }
+    
+    //MARK: Constant
+       let DATE_TIME: DateTime = DateTime()
+       let REUSE_IDENTIFIER = "cell"
+       let PLACEMENT_LIST = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16"]
+       let ELEMENT_LIST = [
+           "red_pawn",
+           "red_knight",
+           "red_bishop",
+           "red_rook",
+           "red_queen",
+           "red_amazon",
+           "red_landmine_pawn",
+           "red_hunter",
+           "red_grasshopper",
+           "red_arrow"]
+    
+    //MARK: Render
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == self.tschessElementCollectionView {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TschessElementCell", for: indexPath) as! TschessElementCell
-            cell.configureCell(image: UIImage(named: self.ELEMENT_LIST[indexPath.row])!)
-            let tschessElement = self.generateTschessElement(name: self.ELEMENT_LIST[indexPath.row])
-            cell.nameLabel.text = tschessElement!.name
-            cell.pointsLabel.text = tschessElement!.strength
-            cell.imageView.alpha = 1
-            cell.nameLabel.alpha = 1
-            cell.pointsLabel.alpha = 1
-//            if(self.allocatedOver(element: tschessElement!)){
-//                cell.imageView.alpha = 0.5
-//                cell.nameLabel.alpha = 0.5
-//                cell.pointsLabel.alpha = 0.5
-//            }
-            return cell
+            let elementCell = collectionView.dequeueReusableCell(withReuseIdentifier: "TschessElementCell", for: indexPath) as! TschessElementCell
+            
+            let elementImageIdentifier: String = self.ELEMENT_LIST[indexPath.row]
+            let elementImage: UIImage = UIImage(named: elementImageIdentifier)!
+            elementCell.configureCell(image: elementImage)
+            
+            let elementObject: TschessElement = self.generateTschessElement(name: self.ELEMENT_LIST[indexPath.row])!
+            elementCell.nameLabel.text = elementObject.name
+            elementCell.pointsLabel.text = elementObject.strength
+            
+            if(self.inExcess(element: elementObject, elementMatrix: self.elementMatrixActiv!)){
+                
+                print("t")
+                
+                elementCell.imageView.alpha = 0.5
+                elementCell.nameLabel.alpha = 0.5
+                elementCell.pointsLabel.alpha = 0.5
+            } else {
+                
+                print("f")
+                
+                elementCell.imageView.alpha = 1
+                elementCell.nameLabel.alpha = 1
+                elementCell.pointsLabel.alpha = 1
+            }
+            return elementCell
         }
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ConfigCollectionViewCell
         if (indexPath.row % 2 == 0) {
@@ -111,6 +163,7 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
         }
         self.elementMatrixActiv![x][y] = nil
         self.configCollectionView.reloadData()
+        self.tschessElementCollectionView.reloadData()
         /***/
         let imageName = imageNameFromElement(tschessElement: tschessElement!)!
         self.selectionElementName = imageName
@@ -129,7 +182,7 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
     }
     
     internal func collectionView(_: UICollectionView, dragSessionDidEnd: UIDragSession){
-        self.tschessElementCollectionView.reloadData()
+        self.tschessElementCollectionView.reloadData() //!!!!!
         self.setTotalPointValue()
     }
     
@@ -169,6 +222,7 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
             self.elementMatrixActiv![x][y] = tschessElement!
             self.setTotalPointValue()
             self.configCollectionView.reloadData()
+            self.tschessElementCollectionView.reloadData()
         }
     
     func dropInteraction(_ interaction: UIDropInteraction, canHandle session: UIDropSession) -> Bool { // 1
@@ -192,27 +246,13 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
                 
                 self.elementMatrixActiv = self.elementMatrixCache
                 configCollectionView.reloadData() //give a warning also... feedback
+                self.tschessElementCollectionView.reloadData()
             }
         }
         self.selectionElementName = nil
         self.configCollectionView.reloadData()
+        self.tschessElementCollectionView.reloadData()
     }
-    
-    //MARK: Constant
-    let DATE_TIME: DateTime = DateTime()
-    let REUSE_IDENTIFIER = "cell"
-    let PLACEMENT_LIST = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16"]
-    let ELEMENT_LIST = [
-        "red_pawn",
-        "red_knight",
-        "red_bishop",
-        "red_rook",
-        "red_queen",
-        "red_amazon",
-        "red_landmine_pawn",
-        "red_hunter",
-        "red_grasshopper",
-        "red_arrow"]
     
     @IBOutlet weak var dropViewTop0: UIView!
     @IBOutlet weak var dropViewTop1: UIView!
@@ -268,21 +308,8 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
     @IBOutlet weak var totalPointLabel: UILabel!
     var totalPointValue: Int?
     
-    private func getTotalPointValue(elementMatrix: [[TschessElement?]]) -> Int {
-        var totalPointValue: Int = 0
-        for row in elementMatrix {
-            for element in row {
-                if(element == nil) {
-                    continue
-                }
-                totalPointValue += Int(element!.getStrength())!
-            }
-        }
-        return totalPointValue
-    }
-    
     private func setTotalPointValue() {
-        let totalPointValue = self.getTotalPointValue(elementMatrix: self.elementMatrixActiv!)
+        let totalPointValue = self.getPointValue(elementMatrix: self.elementMatrixActiv!)
         self.totalPointLabel.text = String(totalPointValue)
     }
     
@@ -316,10 +343,12 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
         self.tschessElementCollectionView.dataSource = self
         self.tschessElementCollectionView.dragDelegate = self
         
-        self.dropViewTop0.addInteraction(UIDropInteraction(delegate: self))
+        self.tschessElementCollectionView.addInteraction(UIDropInteraction(delegate: self))
         self.dropViewBottom0.addInteraction(UIDropInteraction(delegate: self))
+        self.dropViewTop0.addInteraction(UIDropInteraction(delegate: self))
         self.dropViewTop1.addInteraction(UIDropInteraction(delegate: self))
         self.splitView2.addInteraction(UIDropInteraction(delegate: self))
+        self.headerView.addInteraction(UIDropInteraction(delegate: self))
         
         self.tabBarMenu.delegate = self
     }
