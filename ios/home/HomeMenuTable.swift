@@ -10,24 +10,25 @@ import UIKit
 
 class HomeMenuTable: UITableViewController {
     
-    var activityIndicator: UIActivityIndicatorView?
-    
-    var leaderboardTableList: [Game] = [Game]()
-    var player: Player?
-    
-    public var pageFromWhichContentLoads: Int = 0
+    let REQUEST_PAGE_SIZE: Int = 8
+    var requestPageIndex: Int = 0
+    //??? ^when/where/how does this get reset by lifecycle???
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
+    
+    var activityIndicator: UIActivityIndicatorView?
+    var leaderboardTableList: [Game] = [Game]()
+    var player: Player?
     
     override func viewDidLoad() {
         self.fetchGameList()
     }
     
     public func setActivityIndicator(activityIndicator: UIActivityIndicatorView) {
-           self.activityIndicator = activityIndicator
-       }
+        self.activityIndicator = activityIndicator
+    }
     
     public func setPlayer(player: Player) {
         self.player = player
@@ -104,14 +105,18 @@ class HomeMenuTable: UITableViewController {
     }
     
     override open func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        print("indexPath.row: \(indexPath.row)")
-        if(indexPath.row < LeaderboardPageTask().PAGE_SIZE - 1){
-            //print("indexPath.row: \(indexPath.row)")
-            return
-        }
-        if indexPath.row == leaderboardTableList.count - 1 {
-            //print("indexPath.row: \(indexPath.row)")
-            self.fetchGameList()
+        if let indices = tableView.indexPathsForVisibleRows {
+            for index in indices {
+                
+                print("INDEX: \(index)")
+                
+                if index.row == (REQUEST_PAGE_SIZE * requestPageIndex) + (REQUEST_PAGE_SIZE - 1) {
+                    
+                    print("~ so fetch ~")
+                    
+                    self.fetchGameList()
+                }
+            }
         }
     }
     
@@ -119,10 +124,15 @@ class HomeMenuTable: UITableViewController {
         DispatchQueue.main.async() {
             self.activityIndicator!.isHidden = false
             self.activityIndicator!.startAnimating()
-
+            
         }
-        //print("0 - self.activityIndicator!.isHidden: \(self.activityIndicator!.isHidden)")
-        LeaderboardPageTask().execute(page: self.pageFromWhichContentLoads) { (result) in
+        
+        let requestPayload = [
+            "index": self.requestPageIndex,
+            "size": REQUEST_PAGE_SIZE
+            ] as [String: Int]
+        
+        RequestPageTask().execute(requestPayload: requestPayload) { (result) in
             
             //print("1 - self.activityIndicator!.isHidden: \(self.activityIndicator!.isHidden)")
             
@@ -134,7 +144,7 @@ class HomeMenuTable: UITableViewController {
             //print("2 - self.activityIndicator!.isHidden: \(self.activityIndicator!.isHidden)")
             
             
-            self.pageFromWhichContentLoads += 1
+            self.requestPageIndex += 1
             if(result == nil){
                 return
             }
@@ -143,10 +153,10 @@ class HomeMenuTable: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-//        let leaderboardItem = leaderboardTableList[indexPath.row]
-//        if(!gameTableMenuItem.inbound!){
-//           return nil
-//        }
+        //        let leaderboardItem = leaderboardTableList[indexPath.row]
+        //        if(!gameTableMenuItem.inbound!){
+        //           return nil
+        //        }
         let modifyAction = UIContextualAction(style: .normal, title:  "CHALLENGE", handler: { (ac: UIContextualAction, view:UIView, success:(Bool) -> Void) in
             print("Update action ...")
             

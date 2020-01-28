@@ -8,19 +8,24 @@
 
 import Foundation
 
-class LeaderboardPageTask {
+class RequestPageTask {
     
-    var PAGE_SIZE: Int = 9
-    
-    func execute(page: Int, completion: @escaping (([Game]?) -> Void)) {
+    func execute(requestPayload: [String: Int], completion: @escaping (([Game]?) -> Void)) {
         
         //print("page: \(page)")
         
-        let url = URL(string: "http://\(ServerAddress().IP):8080/player/leaderboard/\(page)")!
+        let url = URL(string: "http://\(ServerAddress().IP):8080/player/leaderboard")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        do {
+            request.httpBody = try JSONSerialization.data(withJSONObject: requestPayload, options: .prettyPrinted)
+        } catch _ {
+            completion(nil)
+        }
+        
         
         URLSession.shared.dataTask(with: request, completionHandler: { data, response, error in
             
@@ -53,7 +58,7 @@ class LeaderboardPageTask {
                 
                 //print("Int(requestPayload[page])! \(requestPayload["page"])")
                 
-                let leaderboardPage: [Game] = self.generateLeaderboardPage(page: page, size: self.PAGE_SIZE, serverRespose: json)
+                let leaderboardPage: [Game] = self.generateLeaderboardPage(page: requestPayload["index"]!, size: requestPayload["size"]!, serverRespose: json)
                 completion(leaderboardPage)
                 //completion(nil)
                 
@@ -66,7 +71,7 @@ class LeaderboardPageTask {
     private func generateLeaderboardPage(page: Int, size: Int, serverRespose: [[String: Any]]) -> [Game] {
         var leaderboardPage = [Game]()
         for index in stride(from: 0, to: serverRespose.count, by: 1) {
-           
+            
             let id = serverRespose[index]["id"]! as! String
             let name = serverRespose[index]["username"]! as! String
             let avatar = serverRespose[index]["avatar"]! as! String

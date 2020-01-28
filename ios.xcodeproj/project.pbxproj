@@ -32,7 +32,6 @@
 		B74136C723DE34A0001B3D60 /* LoginTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74136C623DE34A0001B3D60 /* LoginTask.swift */; };
 		B74136C923DE34CC001B3D60 /* TestTask0.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74136C823DE34CC001B3D60 /* TestTask0.swift */; };
 		B74136CB23DE34EF001B3D60 /* TestTask1.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74136CA23DE34EF001B3D60 /* TestTask1.swift */; };
-		B74136CD23DE850B001B3D60 /* LeaderboardPageTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74136CC23DE850B001B3D60 /* LeaderboardPageTask.swift */; };
 		B74145C022F3CABB00B3B4FF /* TschessElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74145BF22F3CABB00B3B4FF /* TschessElement.swift */; };
 		B74145C222F3CAC800B3B4FF /* LegalMove.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74145C122F3CAC800B3B4FF /* LegalMove.swift */; };
 		B74145C622F3CDC200B3B4FF /* Amazon.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74145C522F3CDC200B3B4FF /* Amazon.swift */; };
@@ -81,6 +80,7 @@
 		B7AF786B23E09A3000BAD8EC /* UpdateConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7AF786A23E09A3000BAD8EC /* UpdateConfig.swift */; };
 		B7AF786E23E09AC000BAD8EC /* ConfigSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7AF786D23E09AC000BAD8EC /* ConfigSerializer.swift */; };
 		B7AF787023E09AD100BAD8EC /* ConfigDeserializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7AF786F23E09AD100BAD8EC /* ConfigDeserializer.swift */; };
+		B7AF787323E0B9DA00BAD8EC /* RequestPageTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7AF787223E0B9DA00BAD8EC /* RequestPageTask.swift */; };
 		B7B74A52237DCAF200D07061 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7B74A51237DCAF200D07061 /* StoreKit.framework */; };
 		B7B74A55237DCC8600D07061 /* PlayerDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B74A54237DCC8600D07061 /* PlayerDevice.swift */; };
 		B7B81F58236C0A540030BCC4 /* ChallengeMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B81F57236C0A540030BCC4 /* ChallengeMenuCell.swift */; };
@@ -248,7 +248,6 @@
 		B74136C623DE34A0001B3D60 /* LoginTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTask.swift; sourceTree = "<group>"; };
 		B74136C823DE34CC001B3D60 /* TestTask0.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTask0.swift; sourceTree = "<group>"; };
 		B74136CA23DE34EF001B3D60 /* TestTask1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTask1.swift; sourceTree = "<group>"; };
-		B74136CC23DE850B001B3D60 /* LeaderboardPageTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardPageTask.swift; sourceTree = "<group>"; };
 		B74145BF22F3CABB00B3B4FF /* TschessElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TschessElement.swift; sourceTree = "<group>"; };
 		B74145C122F3CAC800B3B4FF /* LegalMove.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegalMove.swift; sourceTree = "<group>"; };
 		B74145C522F3CDC200B3B4FF /* Amazon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Amazon.swift; sourceTree = "<group>"; };
@@ -302,6 +301,7 @@
 		B7AF786A23E09A3000BAD8EC /* UpdateConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateConfig.swift; sourceTree = "<group>"; };
 		B7AF786D23E09AC000BAD8EC /* ConfigSerializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigSerializer.swift; sourceTree = "<group>"; };
 		B7AF786F23E09AD100BAD8EC /* ConfigDeserializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigDeserializer.swift; sourceTree = "<group>"; };
+		B7AF787223E0B9DA00BAD8EC /* RequestPageTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestPageTask.swift; sourceTree = "<group>"; };
 		B7B74A51237DCAF200D07061 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		B7B74A54237DCC8600D07061 /* PlayerDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerDevice.swift; sourceTree = "<group>"; };
 		B7B81F57236C0A540030BCC4 /* ChallengeMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeMenuCell.swift; sourceTree = "<group>"; };
@@ -988,6 +988,14 @@
 			path = encoding;
 			sourceTree = "<group>";
 		};
+		B7AF787123E0B9BC00BAD8EC /* networking */ = {
+			isa = PBXGroup;
+			children = (
+				B7AF787223E0B9DA00BAD8EC /* RequestPageTask.swift */,
+			);
+			path = networking;
+			sourceTree = "<group>";
+		};
 		B7B74A53237DCC4A00D07061 /* networking */ = {
 			isa = PBXGroup;
 			children = (
@@ -1285,11 +1293,11 @@
 		B7F541BF23D51A4300E89074 /* home */ = {
 			isa = PBXGroup;
 			children = (
+				B7AF787123E0B9BC00BAD8EC /* networking */,
 				B7F541C223D51A7800E89074 /* storyboard */,
 				B7F541C023D51A5A00E89074 /* Home.swift */,
 				B7F541C523D51ADD00E89074 /* HomeMenuTable.swift */,
 				B7F541C723D51B0C00E89074 /* HomeMenuCell.swift */,
-				B74136CC23DE850B001B3D60 /* LeaderboardPageTask.swift */,
 			);
 			path = home;
 			sourceTree = "<group>";
@@ -1731,8 +1739,8 @@
 				B7471DC323A71CC9008F70A3 /* Hopped.swift in Sources */,
 				B7BCD7C022F473D500CC29E6 /* WhiteLandminePawn.swift in Sources */,
 				B74145C622F3CDC200B3B4FF /* Amazon.swift in Sources */,
-				B74136CD23DE850B001B3D60 /* LeaderboardPageTask.swift in Sources */,
 				B7F541D023D51CB700E89074 /* OtherMenuTable.swift in Sources */,
+				B7AF787323E0B9DA00BAD8EC /* RequestPageTask.swift in Sources */,
 				B7CA7BB4235A2DBE00AA1814 /* DrawResign.swift in Sources */,
 				B7F78D31236BA6AD00F07FD7 /* PresentationController.swift in Sources */,
 				B7BAA640237F13450038C483 /* OptionMenuTable.swift in Sources */,
