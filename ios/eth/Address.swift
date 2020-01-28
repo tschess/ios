@@ -11,6 +11,9 @@ import BlockiesSwift
 
 class Address: UIViewController, UITabBarDelegate, UITextFieldDelegate { //force people to use the QR code.
     
+    //MARK: Constant
+    let DATE_TIME: DateTime = DateTime()
+    
     func textFieldDidEndEditing(_ textField: UITextField) {
         view.removeGestureRecognizer(self.dismissKeyboardGesture!)
     }
@@ -139,8 +142,24 @@ class Address: UIViewController, UITabBarDelegate, UITextFieldDelegate { //force
             StoryboardSelector().scanner(player: self.player!)
             return
         default: // 1
-           print("linq...")
+            
             //pop up check that they added all the right shit before youu let them linq...
+            print("linq...")
+            
+            //address
+            //name
+            //surname
+            //email
+            
+            var updatePayload = [
+                "id": "id",
+                "address": "address",
+                "name": "name",
+                "surname": "surname",
+                "email": "email",
+                "updated": self.DATE_TIME.currentDateString()
+                ] as [String: Any]
+            
             return
         }
     }
