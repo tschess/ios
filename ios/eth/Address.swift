@@ -139,19 +139,20 @@ class Address: UIViewController, UITabBarDelegate, UITextFieldDelegate { //force
         switch item.tag {
         case 0:
             print("scanner")
+            tabBar.selectedItem = nil
             StoryboardSelector().scanner(player: self.player!)
             return
         default: // 1
-            
             //pop up check that they added all the right shit before youu let them linq...
             print("linq...")
             
-            //address
-            //name
-            //surname
-            //email
-            
-            var updatePayload = [
+            tabBar.selectedItem = nil
+            DispatchQueue.main.async() {
+                self.activityIndicator!.isHidden = false
+                self.activityIndicator!.startAnimating()
+                
+            }
+            let updatePayload = [
                 "id": "id",
                 "address": "address",
                 "name": "name",
@@ -160,7 +161,13 @@ class Address: UIViewController, UITabBarDelegate, UITextFieldDelegate { //force
                 "updated": self.DATE_TIME.currentDateString()
                 ] as [String: Any]
             
-            return
+            UpdateAddressTask().execute(updatePayload: updatePayload) { (result) in
+                DispatchQueue.main.async() {
+                    self.activityIndicator!.stopAnimating()
+                    self.activityIndicator!.isHidden = true
+                }
+                print("UpdateAddressTask: \(result)")
+            }
         }
     }
     

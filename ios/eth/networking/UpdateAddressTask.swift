@@ -8,9 +8,9 @@
 
 import Foundation
 
-class UpdateAddress {
+class UpdateAddressTask {
   
-    func execute(requestPayload: [String: Any], completion: @escaping (Error?) -> Void) {
+    func execute(updatePayload: [String: Any], completion: @escaping (String) -> Void) {
         
         //print("UpdateAddress - requestPayload: \(requestPayload)")
         
@@ -20,32 +20,31 @@ class UpdateAddress {
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         do {
-            request.httpBody = try JSONSerialization.data(withJSONObject: requestPayload, options: .prettyPrinted)
+            request.httpBody = try JSONSerialization.data(withJSONObject: updatePayload, options: .prettyPrinted)
         } catch let error {
             print(error.localizedDescription)
-            completion(error)
+            completion("ERROR")
         }
         let session = URLSession.shared
         let task = session.dataTask(with: request, completionHandler: { data, response, error in
             guard error == nil else {
-                completion(error)
+                completion("ERROR")
                 return
             }
             guard let data = data else {
-                completion(NSError(domain: "dataNilError", code: -100001, userInfo: nil))
+                completion("ERROR")
                 return
             }
             do {
                 guard (try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any]) != nil else {
-                    completion(NSError(domain: "invalidJSONTypeError", code: -100009, userInfo: nil))
+                    completion("ERROR")
                     return
                 }
                 //print("UpdateAddress: \(json)")
-              
-                completion(nil)
+                completion("OK")
             } catch let error {
                 print(error.localizedDescription)
-                completion(error)
+                completion("ERROR")
             }
         })
         task.resume()

@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4E766FB2BBF9176550BB45F9 /* Pods_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45C0F287A16E70CE8A23A2EB /* Pods_ios.framework */; };
-		B7039F18238B35CE003896C6 /* UpdateAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7039F17238B35CE003896C6 /* UpdateAddress.swift */; };
+		B7039F18238B35CE003896C6 /* UpdateAddressTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7039F17238B35CE003896C6 /* UpdateAddressTask.swift */; };
 		B70577F0234BD0A500A9E2CA /* TschessTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70577EF234BD0A500A9E2CA /* TschessTests.swift */; };
 		B708820E233A0F8100A06CAD /* GameDeleteTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = B708820D233A0F8100A06CAD /* GameDeleteTask.swift */; };
 		B708D0DD236B351000A899F9 /* Initializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B708D0DC236B351000A899F9 /* Initializer.swift */; };
@@ -222,7 +222,7 @@
 /* Begin PBXFileReference section */
 		45C0F287A16E70CE8A23A2EB /* Pods_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD83F59EDBC27D005F033F41 /* Pods-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios.debug.xcconfig"; path = "Target Support Files/Pods-ios/Pods-ios.debug.xcconfig"; sourceTree = "<group>"; };
-		B7039F17238B35CE003896C6 /* UpdateAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateAddress.swift; sourceTree = "<group>"; };
+		B7039F17238B35CE003896C6 /* UpdateAddressTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateAddressTask.swift; sourceTree = "<group>"; };
 		B70577EF234BD0A500A9E2CA /* TschessTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TschessTests.swift; sourceTree = "<group>"; };
 		B708820D233A0F8100A06CAD /* GameDeleteTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDeleteTask.swift; sourceTree = "<group>"; };
 		B708D0DC236B351000A899F9 /* Initializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Initializer.swift; sourceTree = "<group>"; };
@@ -1276,7 +1276,7 @@
 		B7EF81222388CA2300E89191 /* networking */ = {
 			isa = PBXGroup;
 			children = (
-				B7039F17238B35CE003896C6 /* UpdateAddress.swift */,
+				B7039F17238B35CE003896C6 /* UpdateAddressTask.swift */,
 			);
 			path = networking;
 			sourceTree = "<group>";
@@ -1755,7 +1755,7 @@
 				B7EA5DD22375C63F0019C0BF /* MatrixSerializer.swift in Sources */,
 				B7F541C823D51B0C00E89074 /* HomeMenuCell.swift in Sources */,
 				B71FA72D22FA124700B6F216 /* MyCollectionViewCell.swift in Sources */,
-				B7039F18238B35CE003896C6 /* UpdateAddress.swift in Sources */,
+				B7039F18238B35CE003896C6 /* UpdateAddressTask.swift in Sources */,
 				B7EA5DC92375C2AD0019C0BF /* Gamestate.swift in Sources */,
 				B7BB475523009871001791F0 /* PawnOffense.swift in Sources */,
 				B7F5F64423D6376F00BCF91F /* Address.swift in Sources */,
