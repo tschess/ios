@@ -9,11 +9,26 @@
 import UIKit
 
 class Quick:
-                    UIViewController,
-                    UIPickerViewDataSource,
-                    UIPickerViewDelegate,
-                    UITabBarDelegate,
-                    UIGestureRecognizerDelegate {
+    UIViewController,
+    UIPickerViewDataSource,
+    UIPickerViewDelegate,
+    UITabBarDelegate,
+UIGestureRecognizerDelegate {
+    
+    var activateBackConfig: Int?
+    
+    public func setActivateBackConfig(activateBackConfig: Int){
+        self.activateBackConfig = activateBackConfig
+    }
+    
+    
+    func generateTraditionalMatrix() -> [[TschessElement]] {
+            
+        var row_0 = [Pawn(), Pawn(), Pawn(), Pawn(), Pawn(), Pawn(), Pawn(), Pawn()]
+        var row_1 = [Rook(), Knight(), Bishop(), Queen(), King(), Bishop(), Knight(), Rook()]
+            
+            return [row_0, row_1]
+        }
     
     var opponent: PlayerCore?
     
@@ -54,85 +69,74 @@ class Quick:
         self.configLabelView.isHidden = false
         self.traditionalLabel.isHidden = true
         
-        let alphaDotFull = NSMutableAttributedString(string: "•", attributes: self.attributeAlphaDotFull!)
-        let alphaDotHalf = NSMutableAttributedString(string: "•", attributes: self.attributeAlphaDotHalf!)
         let activeConfigFull = NSMutableAttributedString()
-        activeConfigFull.append(alphaDotFull)
+        activeConfigFull.append(self.alphaDotFull!)
         let activeConfigNull = NSMutableAttributedString()
-        activeConfigNull.append(alphaDotHalf)
+        activeConfigNull.append(self.alphaDotHalf!)
         
-        self.indicatorLabel0.attributedText = activeConfigFull
-        self.indicatorLabel1.attributedText = activeConfigNull
+        self.indicatorLabelS.attributedText = activeConfigFull
         self.indicatorLabel2.attributedText = activeConfigNull
-        self.indicatorLabelS.attributedText = activeConfigNull
+        self.indicatorLabel1.attributedText = activeConfigNull
+        self.indicatorLabel0.attributedText = activeConfigNull
     }
     
     func renderConfig1() {
         self.tschessElementMatrix = self.player!.getConfig1()
-     
+        
         self.activeConfigNumber.text = "1"
         self.configCollectionView.reloadData()
         
         self.configLabelView.isHidden = false
         self.traditionalLabel.isHidden = true
         
-        let alphaDotFull = NSMutableAttributedString(string: "•", attributes: self.attributeAlphaDotFull!)
-        let alphaDotHalf = NSMutableAttributedString(string: "•", attributes: self.attributeAlphaDotHalf!)
         let activeConfigFull = NSMutableAttributedString()
-        activeConfigFull.append(alphaDotFull)
+        activeConfigFull.append(self.alphaDotFull!)
         let activeConfigNull = NSMutableAttributedString()
-        activeConfigNull.append(alphaDotHalf)
+        activeConfigNull.append(self.alphaDotHalf!)
         
-        self.indicatorLabel0.attributedText = activeConfigNull
-        self.indicatorLabel1.attributedText = activeConfigFull
-        self.indicatorLabel2.attributedText = activeConfigNull
         self.indicatorLabelS.attributedText = activeConfigNull
+        self.indicatorLabel2.attributedText = activeConfigFull
+        self.indicatorLabel1.attributedText = activeConfigNull
+        self.indicatorLabel0.attributedText = activeConfigNull
     }
     
     func renderConfig2() {
         self.tschessElementMatrix = self.player!.getConfig2()
-       
+        
         self.activeConfigNumber.text = "2"
         self.configCollectionView.reloadData()
         
         self.configLabelView.isHidden = false
         self.traditionalLabel.isHidden = true
         
-        let alphaDotFull = NSMutableAttributedString(string: "•", attributes: self.attributeAlphaDotFull!)
-        let alphaDotHalf = NSMutableAttributedString(string: "•", attributes: self.attributeAlphaDotHalf!)
         let activeConfigFull = NSMutableAttributedString()
-        activeConfigFull.append(alphaDotFull)
+        activeConfigFull.append(self.alphaDotFull!)
         let activeConfigNull = NSMutableAttributedString()
-        activeConfigNull.append(alphaDotHalf)
+        activeConfigNull.append(self.alphaDotHalf!)
         
-        self.indicatorLabel0.attributedText = activeConfigNull
-        self.indicatorLabel1.attributedText = activeConfigNull
-        self.indicatorLabel2.attributedText = activeConfigFull
         self.indicatorLabelS.attributedText = activeConfigNull
+        self.indicatorLabel2.attributedText = activeConfigNull
+        self.indicatorLabel1.attributedText = activeConfigFull
+        self.indicatorLabel0.attributedText = activeConfigNull
     }
     
     func renderConfigS() {
-           self.tschessElementMatrix = self.player!.getConfig2()
-          
-//           self.activeConfigNumber.text = "2"
-//           self.configCollectionView.reloadData()
+        self.tschessElementMatrix = self.generateTraditionalMatrix()
+        self.configCollectionView.reloadData()
         
-            self.configLabelView.isHidden = true
-            self.traditionalLabel.isHidden = false
-           
-           let alphaDotFull = NSMutableAttributedString(string: "•", attributes: self.attributeAlphaDotFull!)
-           let alphaDotHalf = NSMutableAttributedString(string: "•", attributes: self.attributeAlphaDotHalf!)
-           let activeConfigFull = NSMutableAttributedString()
-           activeConfigFull.append(alphaDotFull)
-           let activeConfigNull = NSMutableAttributedString()
-           activeConfigNull.append(alphaDotHalf)
-           
-           self.indicatorLabel0.attributedText = activeConfigNull
-           self.indicatorLabel1.attributedText = activeConfigNull
-           self.indicatorLabel2.attributedText = activeConfigNull
-           self.indicatorLabelS.attributedText = activeConfigFull
-       }
-    
+        self.configLabelView.isHidden = true
+        self.traditionalLabel.isHidden = false
+        
+        let activeConfigFull = NSMutableAttributedString()
+        activeConfigFull.append(self.alphaDotFull!)
+        let activeConfigNull = NSMutableAttributedString()
+        activeConfigNull.append(self.alphaDotHalf!)
+        
+        self.indicatorLabelS.attributedText = activeConfigNull
+        self.indicatorLabel2.attributedText = activeConfigNull
+        self.indicatorLabel1.attributedText = activeConfigNull
+        self.indicatorLabel0.attributedText = activeConfigFull
+    }
     
     var tschessElementMatrix: [[TschessElement?]]?
     
@@ -170,7 +174,7 @@ class Quick:
         
         let sampleView = SampleSkin.instanceFromNib()
         sampleView.nameLabel.text = skinAsset.getName()
-
+        
         sampleView.backgroundView.backgroundColor = skinAsset.getBackColor()
         sampleView.backgroundView.alpha = skinAsset.getBackAlpha()
         sampleView.backgroundImage.image = skinAsset.getBackImage()
@@ -201,10 +205,23 @@ class Quick:
     var attributeAlphaDotFull: [NSAttributedString.Key: NSObject]?
     var attributeAlphaDotHalf: [NSAttributedString.Key: NSObject]?
     
+    var alphaDotFull: NSMutableAttributedString?
+    var alphaDotHalf: NSMutableAttributedString?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+        
         tabBarMenu.delegate = self
+        
+        self.attributeAlphaDotFull = [
+            NSAttributedString.Key.foregroundColor: UIColor.black,
+            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 24, weight: UIFont.Weight.bold)]
+        self.attributeAlphaDotHalf = [
+            NSAttributedString.Key.foregroundColor: UIColor(red: 0/255.0, green: 0/255.0, blue: 0/255.0, alpha: 0.5),
+            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 24, weight: UIFont.Weight.bold)]
+        
+        self.alphaDotFull = NSMutableAttributedString(string: "•", attributes: self.attributeAlphaDotFull!)
+        self.alphaDotHalf = NSMutableAttributedString(string: "•", attributes: self.attributeAlphaDotHalf!)
         
         //opponent
         let dataDecoded: Data = Data(base64Encoded: self.opponent!.getAvatar(), options: .ignoreUnknownCharacters)!
@@ -228,18 +245,7 @@ class Quick:
         
         //self.tschessElementMatrix = self.player!.getConfig0()
         
-        switch Int.random(in: 0 ... 3) {
-        case 0:
-            self.renderConfig0()
-        case 1:
-            self.renderConfig1()
-        case 2:
-            self.renderConfig1()
-        default:
-            print("CONFIG S")
-            self.renderConfigS()
-            //self.renderConfigD()
-        }
+        
         
         
         self.configCollectionView.delegate = self
@@ -271,6 +277,30 @@ class Quick:
             backAlpha: 0.85)
         
         self.skinList = Array(arrayLiteral: calypso, hyperion, neptune, iapetus)
+        
+        if(self.activateBackConfig != nil){
+            switch self.activateBackConfig! {
+            case 1:
+                self.renderConfig1()
+                return
+            case 2:
+                self.renderConfig2()
+                return
+            default:
+                self.renderConfig0()
+                return
+            }
+        }
+        switch Int.random(in: 0 ... 3) {
+        case 0:
+            self.renderConfig0()
+        case 1:
+            self.renderConfig1()
+        case 2:
+            self.renderConfig2()
+        default:
+            self.renderConfigS()
+        }
     }
     
     var skinList: Array<Skin>?
@@ -292,7 +322,25 @@ class Quick:
         self.configCollectionView.addGestureRecognizer(elementCollectionViewGesture)
     }
     
+    func flash() {
+        let flashFrame = UIView(frame: self.configCollectionView.bounds)
+        flashFrame.backgroundColor = UIColor.white
+        flashFrame.alpha = 0.7
+        self.configCollectionView.addSubview(flashFrame)
+        UIView.animate(withDuration: 0.1, animations: {
+            flashFrame.alpha = 0.0
+        }, completion: {(finished:Bool) in
+            flashFrame.removeFromSuperview()
+        })
+    }
+    
     @objc func renderElementCollectionView() {
+        if(self.traditionalLabel.isHidden == false){
+            let generator = UIImpactFeedbackGenerator(style: .light)
+            generator.impactOccurred()
+            self.flash()
+            return
+        }
         let storyboard: UIStoryboard = UIStoryboard(name: "EditOther", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "EditOther") as! EditOther
         viewController.setTitleText(titleText: "quick play")
@@ -316,6 +364,10 @@ class Quick:
         if let swipeGesture = gesture as? UISwipeGestureRecognizer {
             switch swipeGesture.direction {
             case UISwipeGestureRecognizer.Direction.right:
+                if(self.traditionalLabel.isHidden == false){
+                    self.renderConfig2()
+                    return
+                }
                 if(activeConfigNumber.text == "2"){
                     self.renderConfig1()
                     return
@@ -324,6 +376,10 @@ class Quick:
                     self.renderConfig0()
                     return
                 }
+//                if(activeConfigNumber.text == "0̸"){
+//                     self.renderConfigS()
+//                    return
+//                }
             case UISwipeGestureRecognizer.Direction.left:
                 if(activeConfigNumber.text == "0̸"){
                     self.renderConfig1()
@@ -333,6 +389,16 @@ class Quick:
                     self.renderConfig2()
                     return
                 }
+                if(activeConfigNumber.text == "2"){
+                    self.renderConfigS()
+                    return
+                }
+//                if(self.configLabelView.isHidden == false){
+//                    self.configLabelView.isHidden = true
+//                    self.traditionalLabel.isHidden = false
+//                    self.renderConfig0()
+//                    return
+//                }
             default:
                 break
             }
@@ -345,7 +411,7 @@ class Quick:
         homeViewController.setPlayer(player: self.player!)
         UIApplication.shared.keyWindow?.rootViewController = homeViewController
     }
-
+    
     @IBAction func backButtonClick(_ sender: Any) {
         let homeStoryboard: UIStoryboard = UIStoryboard(name: "Home", bundle: nil)
         let homeViewController = homeStoryboard.instantiateViewController(withIdentifier: "Home") as! Home
@@ -353,85 +419,114 @@ class Quick:
         UIApplication.shared.keyWindow?.rootViewController = homeViewController
     }
     
-        func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-            switch item.tag {
-            default: //1
-                //self.issueChallengeButton.isHidden = true
-                
-                self.activityIndicator.isHidden = false
-                self.activityIndicator.startAnimating()
-                
-                var clock = "24"
-    //            if(pickerSelectionTimeLimit == "01:00 h"){
-    //                clock = "1"
-    //            }
-    //            if(pickerSelectionTimeLimit == "00:05 m"){
-    //                clock = "5"
-    //            }
-                var config = "config0"
-    //            if(pickerSelectionConfiguration == "config. 1"){
-    //                config = "config1"
-    //            }
-    //            if(pickerSelectionConfiguration == "config. 2"){
-    //                config = "config2"
-    //            }
-                let white_name = gameModel!.getUsernameOpponent()
-                let white_uuid = gameModel!.getOpponentId()
-                let black_name = player!.getUsername()
-                let black_uuid = player!.getId()
-                let updated = DATE_TIME.currentDateString()
-                let requestPayload = [
-                    "white_name": white_name,
-                    "white_uuid": white_uuid,
-                    "black_name": black_name,
-                    "black_uuid": black_uuid,
-                    "clock": clock,
-                    "config": config,
-                    "updated": updated,
-                    "created": updated
-                    ] as [String : Any]
-                GameCreate().success(requestPayload: requestPayload){ (result) in
-                    if(result == nil){
-                        DispatchQueue.main.async() {
-                            self.activityIndicator.stopAnimating()
-                            self.activityIndicator.isHidden = true
-                            //self.issueChallengeButton.isHidden = false
-                            let alertController = UIAlertController(title: "", message: "", preferredStyle: UIAlertController.Style.alert)
-                            let myString = "server error"
-                            var myMutableString = NSMutableAttributedString()
-                            myMutableString = NSMutableAttributedString(string: myString as String, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18, weight: UIFont.Weight.light)])
-                            myMutableString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.white, range: NSRange(location:0, length:myString.count))
-                            alertController.setValue(myMutableString, forKey: "attributedTitle")
-                            let message = "\nplease try again later"
-                            var messageMutableString = NSMutableAttributedString()
-                            messageMutableString = NSMutableAttributedString(string: message as String, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17, weight: UIFont.Weight.thin)])
-                            messageMutableString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.white, range: NSRange(location:0,length:message.count))
-                            alertController.setValue(messageMutableString, forKey: "attributedMessage")
-                            let action = UIAlertAction(title: "ack", style: UIAlertAction.Style.default, handler: self.stayHandler)
-                            action.setValue(Colour().getRed(), forKey: "titleTextColor")
-                            alertController.addAction(action)
-                            alertController.view.backgroundColor = UIColor.black
-                            alertController.view.layer.cornerRadius = 40
-                            self.present(alertController, animated: true, completion: nil)
-                        }
-                        return
+    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        switch item.tag {
+        default: //1
+            //self.issueChallengeButton.isHidden = true
+            
+            self.activityIndicator.isHidden = false
+            self.activityIndicator.startAnimating()
+            
+            var clock = "24"
+            //            if(pickerSelectionTimeLimit == "01:00 h"){
+            //                clock = "1"
+            //            }
+            //            if(pickerSelectionTimeLimit == "00:05 m"){
+            //                clock = "5"
+            //            }
+            var config = "config0"
+            //            if(pickerSelectionConfiguration == "config. 1"){
+            //                config = "config1"
+            //            }
+            //            if(pickerSelectionConfiguration == "config. 2"){
+            //                config = "config2"
+            //            }
+            let white_name = gameModel!.getUsernameOpponent()
+            let white_uuid = gameModel!.getOpponentId()
+            let black_name = player!.getUsername()
+            let black_uuid = player!.getId()
+            let updated = DATE_TIME.currentDateString()
+            let requestPayload = [
+                "white_name": white_name,
+                "white_uuid": white_uuid,
+                "black_name": black_name,
+                "black_uuid": black_uuid,
+                "clock": clock,
+                "config": config,
+                "updated": updated,
+                "created": updated
+                ] as [String : Any]
+            GameCreate().success(requestPayload: requestPayload){ (result) in
+                if(result == nil){
+                    DispatchQueue.main.async() {
+                        self.activityIndicator.stopAnimating()
+                        self.activityIndicator.isHidden = true
+                        //self.issueChallengeButton.isHidden = false
+                        let alertController = UIAlertController(title: "", message: "", preferredStyle: UIAlertController.Style.alert)
+                        let myString = "server error"
+                        var myMutableString = NSMutableAttributedString()
+                        myMutableString = NSMutableAttributedString(string: myString as String, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18, weight: UIFont.Weight.light)])
+                        myMutableString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.white, range: NSRange(location:0, length:myString.count))
+                        alertController.setValue(myMutableString, forKey: "attributedTitle")
+                        let message = "\nplease try again later"
+                        var messageMutableString = NSMutableAttributedString()
+                        messageMutableString = NSMutableAttributedString(string: message as String, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17, weight: UIFont.Weight.thin)])
+                        messageMutableString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.white, range: NSRange(location:0,length:message.count))
+                        alertController.setValue(messageMutableString, forKey: "attributedMessage")
+                        let action = UIAlertAction(title: "ack", style: UIAlertAction.Style.default, handler: self.stayHandler)
+                        action.setValue(Colour().getRed(), forKey: "titleTextColor")
+                        alertController.addAction(action)
+                        alertController.view.backgroundColor = UIColor.black
+                        alertController.view.layer.cornerRadius = 40
+                        self.present(alertController, animated: true, completion: nil)
                     }
-                    
-                    let responseDict = result as! [String: Any]
-                    
-                    let success = responseDict["success"] as? String
-                    if(success != nil){
+                    return
+                }
+                
+                let responseDict = result as! [String: Any]
+                
+                let success = responseDict["success"] as? String
+                if(success != nil){
+                    DispatchQueue.main.async() {
+                        self.activityIndicator.stopAnimating()
+                        self.activityIndicator.isHidden = true
+                        //self.issueChallengeButton.isHidden = false
+                        let alertController = UIAlertController(title: "", message: "", preferredStyle: UIAlertController.Style.alert)
+                        let myString = "success"
+                        var myMutableString = NSMutableAttributedString()
+                        myMutableString = NSMutableAttributedString(string: myString as String, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18, weight: UIFont.Weight.light)])
+                        myMutableString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.white, range: NSRange(location:0, length:myString.count))
+                        alertController.setValue(myMutableString, forKey: "attributedTitle")
+                        let message = "\nchallenge has been issued"
+                        var messageMutableString = NSMutableAttributedString()
+                        messageMutableString = NSMutableAttributedString(string: message as String, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17, weight: UIFont.Weight.thin)])
+                        messageMutableString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.white, range: NSRange(location:0,length:message.count))
+                        alertController.setValue(messageMutableString, forKey: "attributedMessage")
+                        let action = UIAlertAction(title: "ACK", style: UIAlertAction.Style.default, handler: self.stayHandler)
+                        action.setValue(Colour().getRed(), forKey: "titleTextColor")
+                        alertController.addAction(action)
+                        alertController.view.backgroundColor = UIColor.black
+                        alertController.view.layer.cornerRadius = 40
+                        self.present(alertController, animated: true, completion: nil)
+                    }
+                    return
+                }
+                let catalyst = responseDict["catalyst"] as? String
+                let error = responseDict["error"] as? String
+                
+                if(catalyst == nil){
+                    if(error == "auto"){
                         DispatchQueue.main.async() {
                             self.activityIndicator.stopAnimating()
                             self.activityIndicator.isHidden = true
                             //self.issueChallengeButton.isHidden = false
                             let alertController = UIAlertController(title: "", message: "", preferredStyle: UIAlertController.Style.alert)
-                            let myString = "success"
+                            let myString = "reflexive prohibition"
                             var myMutableString = NSMutableAttributedString()
                             myMutableString = NSMutableAttributedString(string: myString as String, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18, weight: UIFont.Weight.light)])
                             myMutableString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.white, range: NSRange(location:0, length:myString.count))
                             alertController.setValue(myMutableString, forKey: "attributedTitle")
-                            let message = "\nchallenge has been issued"
+                            let message = "\ncannot play against oneself"
                             var messageMutableString = NSMutableAttributedString()
                             messageMutableString = NSMutableAttributedString(string: message as String, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17, weight: UIFont.Weight.thin)])
                             messageMutableString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.white, range: NSRange(location:0,length:message.count))
@@ -445,122 +540,18 @@ class Quick:
                         }
                         return
                     }
-                    let catalyst = responseDict["catalyst"] as? String
-                    let error = responseDict["error"] as? String
-                    
-                    if(catalyst == nil){
-                        if(error == "auto"){
-                            DispatchQueue.main.async() {
-                                self.activityIndicator.stopAnimating()
-                                self.activityIndicator.isHidden = true
-                                //self.issueChallengeButton.isHidden = false
-                                let alertController = UIAlertController(title: "", message: "", preferredStyle: UIAlertController.Style.alert)
-                                let myString = "reflexive prohibition"
-                                var myMutableString = NSMutableAttributedString()
-                                myMutableString = NSMutableAttributedString(string: myString as String, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18, weight: UIFont.Weight.light)])
-                                myMutableString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.white, range: NSRange(location:0, length:myString.count))
-                                alertController.setValue(myMutableString, forKey: "attributedTitle")
-                                let message = "\ncannot play against oneself"
-                                var messageMutableString = NSMutableAttributedString()
-                                messageMutableString = NSMutableAttributedString(string: message as String, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17, weight: UIFont.Weight.thin)])
-                                messageMutableString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.white, range: NSRange(location:0,length:message.count))
-                                alertController.setValue(messageMutableString, forKey: "attributedMessage")
-                                let action = UIAlertAction(title: "ACK", style: UIAlertAction.Style.default, handler: self.stayHandler)
-                                action.setValue(Colour().getRed(), forKey: "titleTextColor")
-                                alertController.addAction(action)
-                                alertController.view.backgroundColor = UIColor.black
-                                alertController.view.layer.cornerRadius = 40
-                                self.present(alertController, animated: true, completion: nil)
-                            }
-                            return
-                        }
-                        if(error == "prior"){
-                            DispatchQueue.main.async() {
-                                self.activityIndicator.stopAnimating()
-                                self.activityIndicator.isHidden = true
-                                //self.issueChallengeButton.isHidden = false
-                                let alertController = UIAlertController(title: "", message: "", preferredStyle: UIAlertController.Style.alert)
-                                let myString = "resolve ongoing interaction"
-                                var myMutableString = NSMutableAttributedString()
-                                myMutableString = NSMutableAttributedString(string: myString as String, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18, weight: UIFont.Weight.light)])
-                                myMutableString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.white, range: NSRange(location:0, length:myString.count))
-                                alertController.setValue(myMutableString, forKey: "attributedTitle")
-                                let message = "\nlimited to one mutual ongoing\ngame or invitation at a time\nbetween any two players"
-                                var messageMutableString = NSMutableAttributedString()
-                                messageMutableString = NSMutableAttributedString(string: message as String, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17, weight: UIFont.Weight.thin)])
-                                messageMutableString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.white, range: NSRange(location:0,length:message.count))
-                                alertController.setValue(messageMutableString, forKey: "attributedMessage")
-                                let action = UIAlertAction(title: "ACK", style: UIAlertAction.Style.default, handler: self.stayHandler)
-                                action.setValue(Colour().getRed(), forKey: "titleTextColor")
-                                alertController.addAction(action)
-                                alertController.view.backgroundColor = UIColor.black
-                                alertController.view.layer.cornerRadius = 40
-                                self.present(alertController, animated: true, completion: nil)
-                            }
-                            return
-                        }
-                    }
-                    switch error {
-                    case "proposed":
-                        if(catalyst == "opponent"){
-                            DispatchQueue.main.async() {
-                                self.activityIndicator.stopAnimating()
-                                self.activityIndicator.isHidden = true
-                                //self.issueChallengeButton.isHidden = false
-                                let alertController = UIAlertController(title: "", message: "", preferredStyle: UIAlertController.Style.alert)
-                                let myString = "maximum invite threshold"
-                                var myMutableString = NSMutableAttributedString()
-                                myMutableString = NSMutableAttributedString(string: myString as String, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18, weight: UIFont.Weight.light)])
-                                myMutableString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.white, range: NSRange(location:0, length:myString.count))
-                                alertController.setValue(myMutableString, forKey: "attributedTitle")
-                                let message = "\nthis player has no capacity\nto accept new challenges\nat this time\nplease try again later"
-                                var messageMutableString = NSMutableAttributedString()
-                                messageMutableString = NSMutableAttributedString(string: message as String, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17, weight: UIFont.Weight.thin)])
-                                messageMutableString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.white, range: NSRange(location:0,length:message.count))
-                                alertController.setValue(messageMutableString, forKey: "attributedMessage")
-                                let action = UIAlertAction(title: "ACK", style: UIAlertAction.Style.default, handler: self.stayHandler)
-                                action.setValue(Colour().getRed(), forKey: "titleTextColor")
-                                alertController.addAction(action)
-                                alertController.view.backgroundColor = UIColor.black
-                                alertController.view.layer.cornerRadius = 40
-                                self.present(alertController, animated: true, completion: nil)
-                            }
-                            break
-                        }
+                    if(error == "prior"){
                         DispatchQueue.main.async() {
                             self.activityIndicator.stopAnimating()
                             self.activityIndicator.isHidden = true
                             //self.issueChallengeButton.isHidden = false
                             let alertController = UIAlertController(title: "", message: "", preferredStyle: UIAlertController.Style.alert)
-                            let myString = "maximum invite threshold"
+                            let myString = "resolve ongoing interaction"
                             var myMutableString = NSMutableAttributedString()
                             myMutableString = NSMutableAttributedString(string: myString as String, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18, weight: UIFont.Weight.light)])
                             myMutableString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.white, range: NSRange(location:0, length:myString.count))
                             alertController.setValue(myMutableString, forKey: "attributedTitle")
-                            let message = "\nplease resolve at least one\nexisting invitation\nprior to issuing new challenge"
-                            var messageMutableString = NSMutableAttributedString()
-                            messageMutableString = NSMutableAttributedString(string: message as String, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17, weight: UIFont.Weight.thin)])
-                            messageMutableString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.white, range: NSRange(location:0,length:message.count))
-                            alertController.setValue(messageMutableString, forKey: "attributedMessage")
-                            let action = UIAlertAction(title: "ACK", style: UIAlertAction.Style.default, handler: self.stayHandler)
-                            action.setValue(Colour().getRed(), forKey: "titleTextColor")
-                            alertController.addAction(action)
-                            alertController.view.backgroundColor = UIColor.black
-                            alertController.view.layer.cornerRadius = 40
-                            self.present(alertController, animated: true, completion: nil)
-                        }
-                    default:
-                        DispatchQueue.main.async() {
-                            self.activityIndicator.stopAnimating()
-                            self.activityIndicator.isHidden = true
-                            //self.issueChallengeButton.isHidden = false
-                            let alertController = UIAlertController(title: "", message: "", preferredStyle: UIAlertController.Style.alert)
-                            let myString = "server error"
-                            var myMutableString = NSMutableAttributedString()
-                            myMutableString = NSMutableAttributedString(string: myString as String, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18, weight: UIFont.Weight.light)])
-                            myMutableString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.white, range: NSRange(location:0, length:myString.count))
-                            alertController.setValue(myMutableString, forKey: "attributedTitle")
-                            let message = "\nplease try again later"
+                            let message = "\nlimited to one mutual ongoing\ngame or invitation at a time\nbetween any two players"
                             var messageMutableString = NSMutableAttributedString()
                             messageMutableString = NSMutableAttributedString(string: message as String, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17, weight: UIFont.Weight.thin)])
                             messageMutableString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.white, range: NSRange(location:0,length:message.count))
@@ -575,9 +566,84 @@ class Quick:
                         return
                     }
                 }
+                switch error {
+                case "proposed":
+                    if(catalyst == "opponent"){
+                        DispatchQueue.main.async() {
+                            self.activityIndicator.stopAnimating()
+                            self.activityIndicator.isHidden = true
+                            //self.issueChallengeButton.isHidden = false
+                            let alertController = UIAlertController(title: "", message: "", preferredStyle: UIAlertController.Style.alert)
+                            let myString = "maximum invite threshold"
+                            var myMutableString = NSMutableAttributedString()
+                            myMutableString = NSMutableAttributedString(string: myString as String, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18, weight: UIFont.Weight.light)])
+                            myMutableString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.white, range: NSRange(location:0, length:myString.count))
+                            alertController.setValue(myMutableString, forKey: "attributedTitle")
+                            let message = "\nthis player has no capacity\nto accept new challenges\nat this time\nplease try again later"
+                            var messageMutableString = NSMutableAttributedString()
+                            messageMutableString = NSMutableAttributedString(string: message as String, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17, weight: UIFont.Weight.thin)])
+                            messageMutableString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.white, range: NSRange(location:0,length:message.count))
+                            alertController.setValue(messageMutableString, forKey: "attributedMessage")
+                            let action = UIAlertAction(title: "ACK", style: UIAlertAction.Style.default, handler: self.stayHandler)
+                            action.setValue(Colour().getRed(), forKey: "titleTextColor")
+                            alertController.addAction(action)
+                            alertController.view.backgroundColor = UIColor.black
+                            alertController.view.layer.cornerRadius = 40
+                            self.present(alertController, animated: true, completion: nil)
+                        }
+                        break
+                    }
+                    DispatchQueue.main.async() {
+                        self.activityIndicator.stopAnimating()
+                        self.activityIndicator.isHidden = true
+                        //self.issueChallengeButton.isHidden = false
+                        let alertController = UIAlertController(title: "", message: "", preferredStyle: UIAlertController.Style.alert)
+                        let myString = "maximum invite threshold"
+                        var myMutableString = NSMutableAttributedString()
+                        myMutableString = NSMutableAttributedString(string: myString as String, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18, weight: UIFont.Weight.light)])
+                        myMutableString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.white, range: NSRange(location:0, length:myString.count))
+                        alertController.setValue(myMutableString, forKey: "attributedTitle")
+                        let message = "\nplease resolve at least one\nexisting invitation\nprior to issuing new challenge"
+                        var messageMutableString = NSMutableAttributedString()
+                        messageMutableString = NSMutableAttributedString(string: message as String, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17, weight: UIFont.Weight.thin)])
+                        messageMutableString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.white, range: NSRange(location:0,length:message.count))
+                        alertController.setValue(messageMutableString, forKey: "attributedMessage")
+                        let action = UIAlertAction(title: "ACK", style: UIAlertAction.Style.default, handler: self.stayHandler)
+                        action.setValue(Colour().getRed(), forKey: "titleTextColor")
+                        alertController.addAction(action)
+                        alertController.view.backgroundColor = UIColor.black
+                        alertController.view.layer.cornerRadius = 40
+                        self.present(alertController, animated: true, completion: nil)
+                    }
+                default:
+                    DispatchQueue.main.async() {
+                        self.activityIndicator.stopAnimating()
+                        self.activityIndicator.isHidden = true
+                        //self.issueChallengeButton.isHidden = false
+                        let alertController = UIAlertController(title: "", message: "", preferredStyle: UIAlertController.Style.alert)
+                        let myString = "server error"
+                        var myMutableString = NSMutableAttributedString()
+                        myMutableString = NSMutableAttributedString(string: myString as String, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18, weight: UIFont.Weight.light)])
+                        myMutableString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.white, range: NSRange(location:0, length:myString.count))
+                        alertController.setValue(myMutableString, forKey: "attributedTitle")
+                        let message = "\nplease try again later"
+                        var messageMutableString = NSMutableAttributedString()
+                        messageMutableString = NSMutableAttributedString(string: message as String, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17, weight: UIFont.Weight.thin)])
+                        messageMutableString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.white, range: NSRange(location:0,length:message.count))
+                        alertController.setValue(messageMutableString, forKey: "attributedMessage")
+                        let action = UIAlertAction(title: "ACK", style: UIAlertAction.Style.default, handler: self.stayHandler)
+                        action.setValue(Colour().getRed(), forKey: "titleTextColor")
+                        alertController.addAction(action)
+                        alertController.view.backgroundColor = UIColor.black
+                        alertController.view.layer.cornerRadius = 40
+                        self.present(alertController, animated: true, completion: nil)
+                    }
+                    return
+                }
             }
         }
     }
+}
 
 
 

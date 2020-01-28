@@ -58,7 +58,17 @@ class EditOther: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate
         self.rankLabel.text = self.playerOther!.getRank()
         self.usernameLabel.text = self.playerOther!.getUsername()
         self.eloLabel.text = self.playerOther!.getElo()
-        self.dateLabel.text = self.playerOther!.getDate()
+        
+        let date: String = self.playerOther!.getDate()
+        if(date == "TBD"){
+            let formatter = DateFormatter()
+            formatter.dateFormat = "dd.MM.YY"
+            var yayayaya = formatter.string(from: DateTime().currentDate())
+            yayayaya.insert("'", at: yayayaya.index(yayayaya.endIndex, offsetBy: -2))
+            self.dateLabel.text = yayayaya
+        } else {
+            //date...
+        }
     }
     
     //MARK: Constant
@@ -520,6 +530,7 @@ extension EditOther: UICollectionViewDelegate {
             let viewController = storyboard.instantiateViewController(withIdentifier: "Quick") as! Quick
             viewController.setPlayer(player: self.playerSelf!)
             viewController.setOpponent(opponent: self.playerOther!)
+            viewController.setActivateBackConfig(activateBackConfig: self.activeConfigNumber!)
             UIApplication.shared.keyWindow?.rootViewController = viewController
             return
         }
@@ -553,6 +564,7 @@ extension EditOther: UICollectionViewDelegate {
                 let viewController = storyboard.instantiateViewController(withIdentifier: "Quick") as! Quick
                 viewController.setPlayer(player: self.playerSelf!)
                 viewController.setOpponent(opponent: self.playerOther!)
+                viewController.setActivateBackConfig(activateBackConfig: self.activeConfigNumber!)
                 UIApplication.shared.keyWindow?.rootViewController = viewController
                 return
             }
@@ -582,10 +594,10 @@ extension EditOther: UICollectionViewDelegate {
                 ] as [String: Any]
             
             var index: Int = 0
-            if(self.titleLabel.text == "config. 1"){
+            if(self.activeConfigNumber! == 1){
                 index = 1
             }
-            if(self.titleLabel.text == "config. 2"){
+            if(self.activeConfigNumber! == 2){
                 index = 2
             }
             updateConfig["index"] = index
@@ -611,6 +623,7 @@ extension EditOther: UICollectionViewDelegate {
                         let viewController = storyboard.instantiateViewController(withIdentifier: "Quick") as! Quick
                         viewController.setPlayer(player: self.playerSelf!)
                         viewController.setOpponent(opponent: self.playerOther!)
+                        viewController.setActivateBackConfig(activateBackConfig: self.activeConfigNumber!)
                         UIApplication.shared.keyWindow?.rootViewController = viewController
                         return
                     }
