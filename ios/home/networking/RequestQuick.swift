@@ -38,8 +38,8 @@ class RequestQuick {
                     completion(error)
                     return
                 }
-                let player: Player = PlayerDeserializer().execute(dictionary: json)
-                completion(player)
+                let opponent: PlayerCore = PlayerCoreDeserializer().execute(dictionary: json)
+                completion(opponent)
                 
             } catch let error {
                 print(error.localizedDescription)

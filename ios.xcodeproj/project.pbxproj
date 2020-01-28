@@ -82,6 +82,7 @@
 		B7AF787023E09AD100BAD8EC /* ConfigDeserializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7AF786F23E09AD100BAD8EC /* ConfigDeserializer.swift */; };
 		B7AF787323E0B9DA00BAD8EC /* RequestPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7AF787223E0B9DA00BAD8EC /* RequestPage.swift */; };
 		B7AF787523E0C7B100BAD8EC /* RequestQuick.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7AF787423E0C7B100BAD8EC /* RequestQuick.swift */; };
+		B7AF787723E0D80E00BAD8EC /* PlayerCoreDeserialiizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7AF787623E0D80E00BAD8EC /* PlayerCoreDeserialiizer.swift */; };
 		B7B74A52237DCAF200D07061 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7B74A51237DCAF200D07061 /* StoreKit.framework */; };
 		B7B74A55237DCC8600D07061 /* PlayerDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B74A54237DCC8600D07061 /* PlayerDevice.swift */; };
 		B7B81F58236C0A540030BCC4 /* ChallengeMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B81F57236C0A540030BCC4 /* ChallengeMenuCell.swift */; };
@@ -118,7 +119,6 @@
 		B7BCD7D822F474BC00CC29E6 /* BlackPawn.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BCD7D722F474BC00CC29E6 /* BlackPawn.swift */; };
 		B7BCD7DA22F474CA00CC29E6 /* BlackQueen.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BCD7D922F474CA00CC29E6 /* BlackQueen.swift */; };
 		B7BCD7DC22F474D800CC29E6 /* BlackRook.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BCD7DB22F474D800CC29E6 /* BlackRook.swift */; };
-		B7C1448D23A3E37900404810 /* QuickTaskGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C1448C23A3E37900404810 /* QuickTaskGame.swift */; };
 		B7C5B79423D9EDE50074B81C /* GameCreate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C5B79323D9EDE50074B81C /* GameCreate.swift */; };
 		B7C5C00822EF3F2F00BFCB39 /* ThroughView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C5C00722EF3F2F00BFCB39 /* ThroughView.swift */; };
 		B7CA7BB2235A2DA600AA1814 /* DrawResign.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7CA7BB1235A2DA600AA1814 /* DrawResign.storyboard */; };
@@ -303,6 +303,7 @@
 		B7AF786F23E09AD100BAD8EC /* ConfigDeserializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigDeserializer.swift; sourceTree = "<group>"; };
 		B7AF787223E0B9DA00BAD8EC /* RequestPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestPage.swift; sourceTree = "<group>"; };
 		B7AF787423E0C7B100BAD8EC /* RequestQuick.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestQuick.swift; sourceTree = "<group>"; };
+		B7AF787623E0D80E00BAD8EC /* PlayerCoreDeserialiizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCoreDeserialiizer.swift; sourceTree = "<group>"; };
 		B7B74A51237DCAF200D07061 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		B7B74A54237DCC8600D07061 /* PlayerDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerDevice.swift; sourceTree = "<group>"; };
 		B7B81F57236C0A540030BCC4 /* ChallengeMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeMenuCell.swift; sourceTree = "<group>"; };
@@ -339,7 +340,6 @@
 		B7BCD7D722F474BC00CC29E6 /* BlackPawn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackPawn.swift; sourceTree = "<group>"; };
 		B7BCD7D922F474CA00CC29E6 /* BlackQueen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackQueen.swift; sourceTree = "<group>"; };
 		B7BCD7DB22F474D800CC29E6 /* BlackRook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackRook.swift; sourceTree = "<group>"; };
-		B7C1448C23A3E37900404810 /* QuickTaskGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickTaskGame.swift; sourceTree = "<group>"; };
 		B7C5B79323D9EDE50074B81C /* GameCreate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCreate.swift; sourceTree = "<group>"; };
 		B7C5C00722EF3F2F00BFCB39 /* ThroughView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThroughView.swift; sourceTree = "<group>"; };
 		B7CA7BB1235A2DA600AA1814 /* DrawResign.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DrawResign.storyboard; sourceTree = "<group>"; };
@@ -889,7 +889,6 @@
 		B7A6218423A02422005DCDA1 /* quick */ = {
 			isa = PBXGroup;
 			children = (
-				B7C1448923A3C95900404810 /* networking */,
 				B7A6218523A02430005DCDA1 /* storyboard */,
 				B7A6218623A02446005DCDA1 /* Quick.swift */,
 				B718A0B923D76FF1006CCA20 /* SampleSkin.xib */,
@@ -1019,14 +1018,6 @@
 			children = (
 				B70881FE233A09E300A06CAD /* game */,
 				B70881FD233A09D000A06CAD /* player */,
-			);
-			path = networking;
-			sourceTree = "<group>";
-		};
-		B7C1448923A3C95900404810 /* networking */ = {
-			isa = PBXGroup;
-			children = (
-				B7C1448C23A3E37900404810 /* QuickTaskGame.swift */,
 			);
 			path = networking;
 			sourceTree = "<group>";
@@ -1231,6 +1222,7 @@
 				B7EA5DC32375C2710019C0BF /* Player.swift */,
 				B7EA5DC52375C28B0019C0BF /* PlayerDeserializer.swift */,
 				B7AF6D30238C3A12001B6086 /* PlayerCore.swift */,
+				B7AF787623E0D80E00BAD8EC /* PlayerCoreDeserialiizer.swift */,
 			);
 			path = player;
 			sourceTree = "<group>";
@@ -1665,6 +1657,7 @@
 				B7B81F58236C0A540030BCC4 /* ChallengeMenuCell.swift in Sources */,
 				B74145CE22F3CE0500B3B4FF /* LandminePawn.swift in Sources */,
 				B70A86CB2370989000D303F0 /* ServerAddress.swift in Sources */,
+				B7AF787723E0D80E00BAD8EC /* PlayerCoreDeserialiizer.swift in Sources */,
 				B74145D822F3CE5400B3B4FF /* Knight.swift in Sources */,
 				B7285E0322F1E2980083F1CE /* DynamicCollectionView.swift in Sources */,
 				B7B74A55237DCC8600D07061 /* PlayerDevice.swift in Sources */,
@@ -1693,7 +1686,6 @@
 				B7F541D223D51CF900E89074 /* OtherMenuCell.swift in Sources */,
 				B7C5C00822EF3F2F00BFCB39 /* ThroughView.swift in Sources */,
 				B7BAA642237F145C0038C483 /* Profile.swift in Sources */,
-				B7C1448D23A3E37900404810 /* QuickTaskGame.swift in Sources */,
 				B7BCD7AA22F472FB00CC29E6 /* BlackAmazon.swift in Sources */,
 				B7BCD7B422F4735400CC29E6 /* BlackMedusa.swift in Sources */,
 				B708D0E9236B369D00A899F9 /* Start.swift in Sources */,

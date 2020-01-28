@@ -21,25 +21,18 @@ class Quick:
         self.opponent = opponent
     }
     
+    @IBOutlet weak var configLabelView: UIView!
+    @IBOutlet weak var traditionalLabel: UILabel!
+    
     @IBOutlet weak var configCollectionView: DynamicCollectionView!
     @IBOutlet weak var configCollectionViewHeight: NSLayoutConstraint!
     
-    
-    
     @IBOutlet weak var rankDateLabel: UILabel!
-    //    @IBOutlet weak var rankDateLabel: UILabel!
     @IBOutlet weak var eloLabel: UILabel!
-    //       @IBOutlet weak var eloLabel: UILabel!
     @IBOutlet weak var rankLabel: UILabel!
-    //       @IBOutlet weak var rankLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
-    //       @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var avatarImageView: UIImageView!
-    //       @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    //       @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    
-    
     
     let reuseIdentifier = "cell"
     
@@ -57,6 +50,9 @@ class Quick:
         
         self.activeConfigNumber.text = "0̸"
         self.configCollectionView.reloadData()
+        
+        self.configLabelView.isHidden = false
+        self.traditionalLabel.isHidden = true
         
         let alphaDotFull = NSMutableAttributedString(string: "•", attributes: self.attributeAlphaDotFull!)
         let alphaDotHalf = NSMutableAttributedString(string: "•", attributes: self.attributeAlphaDotHalf!)
@@ -77,6 +73,9 @@ class Quick:
         self.activeConfigNumber.text = "1"
         self.configCollectionView.reloadData()
         
+        self.configLabelView.isHidden = false
+        self.traditionalLabel.isHidden = true
+        
         let alphaDotFull = NSMutableAttributedString(string: "•", attributes: self.attributeAlphaDotFull!)
         let alphaDotHalf = NSMutableAttributedString(string: "•", attributes: self.attributeAlphaDotHalf!)
         let activeConfigFull = NSMutableAttributedString()
@@ -96,6 +95,9 @@ class Quick:
         self.activeConfigNumber.text = "2"
         self.configCollectionView.reloadData()
         
+        self.configLabelView.isHidden = false
+        self.traditionalLabel.isHidden = true
+        
         let alphaDotFull = NSMutableAttributedString(string: "•", attributes: self.attributeAlphaDotFull!)
         let alphaDotHalf = NSMutableAttributedString(string: "•", attributes: self.attributeAlphaDotHalf!)
         let activeConfigFull = NSMutableAttributedString()
@@ -109,6 +111,28 @@ class Quick:
         self.indicatorLabelS.attributedText = activeConfigNull
     }
     
+    func renderConfigS() {
+           self.tschessElementMatrix = self.player!.getConfig2()
+          
+//           self.activeConfigNumber.text = "2"
+//           self.configCollectionView.reloadData()
+        
+            self.configLabelView.isHidden = true
+            self.traditionalLabel.isHidden = false
+           
+           let alphaDotFull = NSMutableAttributedString(string: "•", attributes: self.attributeAlphaDotFull!)
+           let alphaDotHalf = NSMutableAttributedString(string: "•", attributes: self.attributeAlphaDotHalf!)
+           let activeConfigFull = NSMutableAttributedString()
+           activeConfigFull.append(alphaDotFull)
+           let activeConfigNull = NSMutableAttributedString()
+           activeConfigNull.append(alphaDotHalf)
+           
+           self.indicatorLabel0.attributedText = activeConfigNull
+           self.indicatorLabel1.attributedText = activeConfigNull
+           self.indicatorLabel2.attributedText = activeConfigNull
+           self.indicatorLabelS.attributedText = activeConfigFull
+       }
+    
     
     var tschessElementMatrix: [[TschessElement?]]?
     
@@ -120,16 +144,11 @@ class Quick:
         self.configCollectionViewHeight.constant = configCollectionView.contentSize.height
     }
     
-    let dateTime: DateTime = DateTime()
+    let DATE_TIME: DateTime = DateTime()
     
     //MARK: Properties
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var tabBarMenu: UITabBar!
-    
-    //@IBOutlet weak var usernameLabel: UILabel!
-    
-    //@IBOutlet weak var rankLabel: UILabel!
-    //@IBOutlet weak var avatarImageView: UIImageView!
     
     @IBOutlet weak var skinSelectionPicker: UIPickerView!
     
@@ -194,7 +213,33 @@ class Quick:
         self.rankLabel.text = self.opponent!.getRank()
         self.usernameLabel.text = self.opponent!.getUsername()
         
-        self.tschessElementMatrix = self.player!.getConfig0()
+        self.eloLabel.text = self.opponent!.getElo()
+        
+        let date: String = self.opponent!.getDate()
+        if(date == "TBD"){
+            let formatter = DateFormatter()
+            formatter.dateFormat = "dd.MM.YY"
+            var yayayaya = formatter.string(from: DateTime().currentDate())
+            yayayaya.insert("'", at: yayayaya.index(yayayaya.endIndex, offsetBy: -2))
+            self.rankDateLabel.text = yayayaya
+        } else {
+            //date...
+        }
+        
+        //self.tschessElementMatrix = self.player!.getConfig0()
+        
+        switch Int.random(in: 0 ... 3) {
+        case 0:
+            self.renderConfig0()
+        case 1:
+            self.renderConfig1()
+        case 2:
+            self.renderConfig1()
+        default:
+            print("CONFIG S")
+            self.renderConfigS()
+            //self.renderConfigD()
+        }
         
         
         self.configCollectionView.delegate = self
@@ -203,23 +248,7 @@ class Quick:
         self.configCollectionView.isUserInteractionEnabled = true
         self.configCollectionView.dragInteractionEnabled = false
         
-        self.attributeAlphaDotFull = [
-            NSAttributedString.Key.foregroundColor: UIColor(red: 0/255.0, green: 0/255.0, blue: 0/255.0, alpha: 1.0),
-            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 24, weight: UIFont.Weight.bold)]
-        self.attributeAlphaDotHalf = [
-            NSAttributedString.Key.foregroundColor: UIColor(red: 0/255.0, green: 0/255.0, blue: 0/255.0, alpha: 0.5),
-            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 24, weight: UIFont.Weight.bold)]
-        let alphaDotFull = NSMutableAttributedString(string: "•", attributes: self.attributeAlphaDotFull!)
-        let alphaDotHalf = NSMutableAttributedString(string: "•", attributes: self.attributeAlphaDotHalf!)
-        let activeConfigFull = NSMutableAttributedString()
-        activeConfigFull.append(alphaDotFull)
-        let activeConfigNull = NSMutableAttributedString()
-        activeConfigNull.append(alphaDotHalf)
         
-        self.indicatorLabel0.attributedText = activeConfigFull
-        self.indicatorLabel1.attributedText = activeConfigNull
-        self.indicatorLabel2.attributedText = activeConfigNull
-        self.indicatorLabelS.attributedText = activeConfigNull
         
         self.activityIndicator.isHidden = true
         
@@ -267,8 +296,15 @@ class Quick:
         let storyboard: UIStoryboard = UIStoryboard(name: "EditOther", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "EditOther") as! EditOther
         viewController.setTitleText(titleText: "quick play")
-        viewController.setActiveConfigNumber(activeConfigNumber: Int(self.activeConfigNumber.text!)!)
-        viewController.setPlayerOther(playerOther: self.gameModel!.getOpponent())
+        viewController.setActiveConfigNumber(activeConfigNumber: 0)
+        let numberString: String = self.activeConfigNumber.text!
+        if(numberString == "1"){
+            viewController.setActiveConfigNumber(activeConfigNumber: 1)
+        }
+        if(numberString == "2") {
+            viewController.setActiveConfigNumber(activeConfigNumber: 2)
+        }
+        viewController.setPlayerOther(playerOther: self.opponent!)
         viewController.setPlayerSelf(playerSelf: self.player!)
         UIApplication.shared.keyWindow?.rootViewController = viewController
     }
@@ -343,7 +379,7 @@ class Quick:
                 let white_uuid = gameModel!.getOpponentId()
                 let black_name = player!.getUsername()
                 let black_uuid = player!.getId()
-                let updated = dateTime.currentDateString()
+                let updated = DATE_TIME.currentDateString()
                 let requestPayload = [
                     "white_name": white_name,
                     "white_uuid": white_uuid,
@@ -553,30 +589,22 @@ extension Quick: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ConfigCollectionViewCell
-        
+        cell.backgroundColor = .black
+        if (indexPath.row / 8 == 0) {
+            cell.backgroundColor = .white
+        }
         if (indexPath.row % 2 == 0) {
+            cell.backgroundColor = .white
             if (indexPath.row / 8 == 0) {
-                cell.backgroundColor = UIColor(red: 220/255.0, green: 0/255.0, blue: 70/255.0, alpha: 0.65)
-            } else {
-                cell.backgroundColor = UIColor(red: 250/255.0, green: 250/255.0, blue: 250/255.0, alpha: 0.88)
-            }
-        } else {
-            if (indexPath.row / 8 == 0) {
-                cell.backgroundColor = UIColor(red: 250/255.0, green: 250/255.0, blue: 250/255.0, alpha: 0.88)
-            } else {
-                cell.backgroundColor = UIColor(red: 220/255.0, green: 0/255.0, blue: 70/255.0, alpha: 0.65)
+                cell.backgroundColor = .black
             }
         }
-        
         let x = indexPath.row / 8
         let y = indexPath.row % 8
-        
+        cell.imageView.image = nil
         if(self.tschessElementMatrix![x][y] != nil){
             cell.imageView.image = self.tschessElementMatrix![x][y]!.getImageDefault()
-        } else {
-            cell.imageView.image = nil
         }
         cell.imageView.bounds = CGRect(origin: cell.bounds.origin, size: cell.bounds.size)
         cell.imageView.center = CGPoint(x: cell.bounds.size.width/2, y: cell.bounds.size.height/2)

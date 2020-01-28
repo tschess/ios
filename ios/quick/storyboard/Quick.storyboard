@@ -65,6 +65,16 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FXw-uz-53m" userLabel="SplitView0">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="192"/>
                                         <subviews>
+                                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="traditional" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K4L-Qt-JGO">
+                                                <rect key="frame" x="0.0" y="8" width="414" height="30"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="h0L-P0-3ym"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="22"/>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xYU-1C-1h2" userLabel="ConfigLabelView">
                                                 <rect key="frame" x="165" y="8" width="84" height="30"/>
                                                 <subviews>
@@ -208,11 +218,15 @@
                                             <constraint firstAttribute="trailing" secondItem="cLt-qU-Ujd" secondAttribute="trailing" id="8To-i1-sDe"/>
                                             <constraint firstItem="mwi-KC-XMF" firstAttribute="centerX" secondItem="FXw-uz-53m" secondAttribute="centerX" id="Apl-ZQ-bn1"/>
                                             <constraint firstItem="cLt-qU-Ujd" firstAttribute="top" secondItem="xYU-1C-1h2" secondAttribute="bottom" constant="8" id="BHj-O0-uM0"/>
+                                            <constraint firstItem="cLt-qU-Ujd" firstAttribute="top" secondItem="K4L-Qt-JGO" secondAttribute="bottom" constant="8" id="HMU-Mw-zZO"/>
                                             <constraint firstItem="cLt-qU-Ujd" firstAttribute="leading" secondItem="FXw-uz-53m" secondAttribute="leading" id="Wnb-pl-leG"/>
                                             <constraint firstItem="mwi-KC-XMF" firstAttribute="top" secondItem="cLt-qU-Ujd" secondAttribute="bottom" constant="8" id="abv-7L-Gx0"/>
+                                            <constraint firstItem="K4L-Qt-JGO" firstAttribute="leading" secondItem="FXw-uz-53m" secondAttribute="leading" id="agm-HF-MA9"/>
+                                            <constraint firstAttribute="trailing" secondItem="K4L-Qt-JGO" secondAttribute="trailing" id="c24-yR-JgX"/>
                                             <constraint firstItem="xYU-1C-1h2" firstAttribute="centerX" secondItem="FXw-uz-53m" secondAttribute="centerX" id="d7z-KI-IzN"/>
                                             <constraint firstAttribute="bottom" secondItem="mwi-KC-XMF" secondAttribute="bottom" constant="8" id="eYY-7p-hFH"/>
                                             <constraint firstItem="xYU-1C-1h2" firstAttribute="top" secondItem="FXw-uz-53m" secondAttribute="top" constant="8" id="pI2-2Z-rCe"/>
+                                            <constraint firstItem="K4L-Qt-JGO" firstAttribute="top" secondItem="FXw-uz-53m" secondAttribute="top" constant="8" id="sdp-nm-k56"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="heW-o1-yD8" userLabel="SplitView1">
@@ -400,6 +414,7 @@
                         <outlet property="backButton" destination="5qi-EH-0fj" id="9nk-ly-Hln"/>
                         <outlet property="configCollectionView" destination="cLt-qU-Ujd" id="o5R-Vg-LOy"/>
                         <outlet property="configCollectionViewHeight" destination="CcB-qU-k3t" id="6Tg-VC-f3w"/>
+                        <outlet property="configLabelView" destination="xYU-1C-1h2" id="9sA-d8-zu7"/>
                         <outlet property="eloLabel" destination="2Jh-yN-CId" id="cuk-ot-loX"/>
                         <outlet property="indicatorLabel0" destination="VPP-XL-5Tt" id="QsZ-hp-zLa"/>
                         <outlet property="indicatorLabel1" destination="Yhr-6S-h4W" id="CPB-5A-lQW"/>
@@ -409,6 +424,7 @@
                         <outlet property="rankLabel" destination="se3-h2-W22" id="wwi-LT-6yg"/>
                         <outlet property="skinSelectionPicker" destination="vKA-Qw-aUe" id="Tto-NS-nxs"/>
                         <outlet property="tabBarMenu" destination="lR1-2A-YPc" id="CDf-K6-4Hh"/>
+                        <outlet property="traditionalLabel" destination="K4L-Qt-JGO" id="ZWw-XP-3nm"/>
                         <outlet property="usernameLabel" destination="g3j-ni-4Ac" id="VXp-gK-mze"/>
                     </connections>
                 </viewController>

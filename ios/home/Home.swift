@@ -108,7 +108,7 @@ class Home: UIViewController, UITabBarDelegate {
                     self.activityIndicator.stopAnimating()
                     self.activityIndicator.isHidden = true
                     
-                    let opponent = result as! Player
+                    let opponent = result as! PlayerCore
                     
                     let storyboard: UIStoryboard = UIStoryboard(name: "Quick", bundle: nil)
                     let viewController = storyboard.instantiateViewController(withIdentifier: "Quick") as! Quick
