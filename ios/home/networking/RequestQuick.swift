@@ -30,7 +30,8 @@ class RequestQuick {
                     completion(nil)
                     return
                 }
-                //print(json)
+                print("\n\n--RequestQuick--\n\n")
+                print(json)
                 if(json["error"] != nil){
                     let error = json["error"]! as! String
                     //print("\n\n ERROR: \(error)\n\n")
