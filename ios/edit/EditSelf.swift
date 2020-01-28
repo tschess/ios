@@ -530,6 +530,7 @@ extension EditSelf: UICollectionViewDelegate {
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         switch item.tag {
         case 0://back
+            tabBar.selectedItem = nil
             switch self.titleText {
             case "config. 1":
                 self.player!.setConfig1(config1: self.elementMatrixAbort!)
@@ -545,6 +546,8 @@ extension EditSelf: UICollectionViewDelegate {
             viewController.setPlayer(player: self.player!)
             UIApplication.shared.keyWindow?.rootViewController = viewController
         default: //save...
+            tabBar.selectedItem = nil
+            
             DispatchQueue.main.async() {
                 self.activityIndicator!.isHidden = false
                 self.activityIndicator!.startAnimating()
@@ -573,11 +576,12 @@ extension EditSelf: UICollectionViewDelegate {
                 DispatchQueue.main.async() {
                     self.activityIndicator.stopAnimating()
                     self.activityIndicator.isHidden = true
+                    let storyboard: UIStoryboard = UIStoryboard(name: "Config", bundle: nil)
+                    let viewController = storyboard.instantiateViewController(withIdentifier: "Config") as! Config
+                    viewController.setPlayer(player: self.player!)
+                    UIApplication.shared.keyWindow?.rootViewController = viewController
                 }
-                let storyboard: UIStoryboard = UIStoryboard(name: "Config", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "Config") as! Config
-                viewController.setPlayer(player: self.player!)
-                UIApplication.shared.keyWindow?.rootViewController = viewController
+                
             }
         }
     }
