@@ -12,7 +12,7 @@ class Other: UIViewController, UITabBarDelegate {
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
-    let dateTime: DateTime = DateTime()
+    let DATE_TIME: DateTime = DateTime()
     
     //MARK: Properties
     @IBOutlet weak var backButton: UIButton!
@@ -27,9 +27,6 @@ class Other: UIViewController, UITabBarDelegate {
     var gameModel: Game?
     
     var otherMenuTable: OtherMenuTable?
-    
-    //@IBOutlet weak var newChallengeButton: UIButton!
-    
     
     public func setPlayer(player: Player){
         self.player = player

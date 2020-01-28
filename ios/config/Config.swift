@@ -9,12 +9,12 @@
 import UIKit
 
 class Config:
-                UIViewController,
-                UITabBarDelegate,
-                UIGestureRecognizerDelegate,
-                UIImagePickerControllerDelegate,
-                UINavigationControllerDelegate,
-                UIDropInteractionDelegate {
+    UIViewController,
+    UITabBarDelegate,
+    UIGestureRecognizerDelegate,
+    UIImagePickerControllerDelegate,
+    UINavigationControllerDelegate,
+UIDropInteractionDelegate {
     
     var titleText: String?
     
@@ -50,7 +50,7 @@ class Config:
     @IBOutlet weak var configCollectionView2: DynamicCollectionView!
     @IBOutlet weak var configCollectionViewHeight2: NSLayoutConstraint!
     
-
+    
     @IBOutlet weak var tabBarMenu: UITabBar!
     
     let dateTime: DateTime = DateTime()
@@ -151,12 +151,12 @@ class Config:
     }
     
     @objc func editCollectionView2() {
-           let storyboard: UIStoryboard = UIStoryboard(name: "EditSelf", bundle: nil)
-           let viewController = storyboard.instantiateViewController(withIdentifier: "EditSelf") as! EditSelf
-           viewController.setPlayer(player: self.player!)
-           viewController.setTitleText(titleText: "config. 2")
-           UIApplication.shared.keyWindow?.rootViewController = viewController
-       }
+        let storyboard: UIStoryboard = UIStoryboard(name: "EditSelf", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "EditSelf") as! EditSelf
+        viewController.setPlayer(player: self.player!)
+        viewController.setTitleText(titleText: "config. 2")
+        UIApplication.shared.keyWindow?.rootViewController = viewController
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -164,10 +164,10 @@ class Config:
         let dataDecoded: Data = Data(base64Encoded: self.player!.getAvatar(), options: .ignoreUnknownCharacters)!
         let decodedimage = UIImage(data: dataDecoded)
         self.avatarImageView.image = decodedimage
-
+        
         self.usernameLabel.text = self.player!.getUsername()
         
-       self.eloLabel.text = self.player!.getElo()
+        self.eloLabel.text = self.player!.getElo()
         self.rankLabel.text = self.player!.getRank()
         self.displacementLabel.text = String(abs(Int(self.player!.getDisp())!))
         
@@ -217,7 +217,7 @@ class Config:
         self.configCollectionView2.bounces = false
         self.configCollectionView2.alwaysBounceVertical = false
         self.configCollectionViewHeight2.constant = configCollectionView2.contentSize.height
-       
+        
         
         
     }
@@ -239,109 +239,109 @@ extension Config: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == self.configCollectionView0 {
-           let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ConfigCollectionViewCell
-           
-           if (indexPath.row % 2 == 0) {
-               if (indexPath.row / 8 == 0) {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ConfigCollectionViewCell
+            
+            if (indexPath.row % 2 == 0) {
+                if (indexPath.row / 8 == 0) {
                     //cell.backgroundColor = UIColor(red: 220/255.0, green: 0/255.0, blue: 70/255.0, alpha: 0.65)
-                cell.backgroundColor = .black
+                    cell.backgroundColor = .black
                     //cell.backgroundColor = .black
                     //cell.alpha = 0.01
-               } else {
-                   //cell.backgroundColor = UIColor(red: 250/255.0, green: 250/255.0, blue: 250/255.0, alpha: 0.88)
+                } else {
+                    //cell.backgroundColor = UIColor(red: 250/255.0, green: 250/255.0, blue: 250/255.0, alpha: 0.88)
                     cell.backgroundColor = .white
                     //cell.alpha = 1
-               }
-           } else {
-               if (indexPath.row / 8 == 0) {
-                   //cell.backgroundColor = UIColor(red: 250/255.0, green: 250/255.0, blue: 250/255.0, alpha: 0.88)
+                }
+            } else {
+                if (indexPath.row / 8 == 0) {
+                    //cell.backgroundColor = UIColor(red: 250/255.0, green: 250/255.0, blue: 250/255.0, alpha: 0.88)
                     cell.backgroundColor = .white
                     //cell.alpha = 1
-               } else {
-                   //cell.backgroundColor = UIColor(red: 220/255.0, green: 0/255.0, blue: 70/255.0, alpha: 0.65)
-                cell.backgroundColor = .black
+                } else {
+                    //cell.backgroundColor = UIColor(red: 220/255.0, green: 0/255.0, blue: 70/255.0, alpha: 0.65)
+                    cell.backgroundColor = .black
                     //cell.backgroundColor = .black
                     //cell.alpha = 0.01
-               }
-           }
-           
-           let x = indexPath.row / 8
-           let y = indexPath.row % 8
-           
-           if(self.tschessElementMatrix0![x][y] != nil){
-               cell.imageView.image = self.tschessElementMatrix0![x][y]!.getImageDefault()
-           } else {
-               cell.imageView.image = nil
-           }
-           cell.imageView.bounds = CGRect(origin: cell.bounds.origin, size: cell.bounds.size)
-           cell.imageView.center = CGPoint(x: cell.bounds.size.width/2, y: cell.bounds.size.height/2)
-           return cell
+                }
+            }
+            
+            let x = indexPath.row / 8
+            let y = indexPath.row % 8
+            
+            if(self.tschessElementMatrix0![x][y] != nil){
+                cell.imageView.image = self.tschessElementMatrix0![x][y]!.getImageDefault()
+            } else {
+                cell.imageView.image = nil
+            }
+            cell.imageView.bounds = CGRect(origin: cell.bounds.origin, size: cell.bounds.size)
+            cell.imageView.center = CGPoint(x: cell.bounds.size.width/2, y: cell.bounds.size.height/2)
+            return cell
         }
         if collectionView == self.configCollectionView1 {
-           let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ConfigCollectionViewCell
-           
-           if (indexPath.row % 2 == 0) {
-               if (indexPath.row / 8 == 0) {
-                   //cell.backgroundColor = UIColor(red: 220/255.0, green: 0/255.0, blue: 70/255.0, alpha: 0.65)
-                cell.backgroundColor = .black
-               } else {
-                   //cell.backgroundColor = UIColor(red: 250/255.0, green: 250/255.0, blue: 250/255.0, alpha: 0.88)
-                cell.backgroundColor = .white
-               }
-           } else {
-               if (indexPath.row / 8 == 0) {
-                   //cell.backgroundColor = UIColor(red: 250/255.0, green: 250/255.0, blue: 250/255.0, alpha: 0.88)
-                cell.backgroundColor = .white
-               } else {
-                   //cell.backgroundColor = UIColor(red: 220/255.0, green: 0/255.0, blue: 70/255.0, alpha: 0.65)
-                cell.backgroundColor = .black
-               }
-           }
-           
-           let x = indexPath.row / 8
-           let y = indexPath.row % 8
-           
-           if(self.tschessElementMatrix1![x][y] != nil){
-               cell.imageView.image = self.tschessElementMatrix1![x][y]!.getImageDefault()
-           } else {
-               cell.imageView.image = nil
-           }
-           cell.imageView.bounds = CGRect(origin: cell.bounds.origin, size: cell.bounds.size)
-           cell.imageView.center = CGPoint(x: cell.bounds.size.width/2, y: cell.bounds.size.height/2)
-           return cell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ConfigCollectionViewCell
+            
+            if (indexPath.row % 2 == 0) {
+                if (indexPath.row / 8 == 0) {
+                    //cell.backgroundColor = UIColor(red: 220/255.0, green: 0/255.0, blue: 70/255.0, alpha: 0.65)
+                    cell.backgroundColor = .black
+                } else {
+                    //cell.backgroundColor = UIColor(red: 250/255.0, green: 250/255.0, blue: 250/255.0, alpha: 0.88)
+                    cell.backgroundColor = .white
+                }
+            } else {
+                if (indexPath.row / 8 == 0) {
+                    //cell.backgroundColor = UIColor(red: 250/255.0, green: 250/255.0, blue: 250/255.0, alpha: 0.88)
+                    cell.backgroundColor = .white
+                } else {
+                    //cell.backgroundColor = UIColor(red: 220/255.0, green: 0/255.0, blue: 70/255.0, alpha: 0.65)
+                    cell.backgroundColor = .black
+                }
+            }
+            
+            let x = indexPath.row / 8
+            let y = indexPath.row % 8
+            
+            if(self.tschessElementMatrix1![x][y] != nil){
+                cell.imageView.image = self.tschessElementMatrix1![x][y]!.getImageDefault()
+            } else {
+                cell.imageView.image = nil
+            }
+            cell.imageView.bounds = CGRect(origin: cell.bounds.origin, size: cell.bounds.size)
+            cell.imageView.center = CGPoint(x: cell.bounds.size.width/2, y: cell.bounds.size.height/2)
+            return cell
         }
         //if collectionView == self.configCollectionView2 {
-           let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ConfigCollectionViewCell
-           
-           if (indexPath.row % 2 == 0) {
-               if (indexPath.row / 8 == 0) {
-                   //cell.backgroundColor = UIColor(red: 220/255.0, green: 0/255.0, blue: 70/255.0, alpha: 0.65)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ConfigCollectionViewCell
+        
+        if (indexPath.row % 2 == 0) {
+            if (indexPath.row / 8 == 0) {
+                //cell.backgroundColor = UIColor(red: 220/255.0, green: 0/255.0, blue: 70/255.0, alpha: 0.65)
                 cell.backgroundColor = .black
-               } else {
-                   //cell.backgroundColor = UIColor(red: 250/255.0, green: 250/255.0, blue: 250/255.0, alpha: 0.88)
+            } else {
+                //cell.backgroundColor = UIColor(red: 250/255.0, green: 250/255.0, blue: 250/255.0, alpha: 0.88)
                 cell.backgroundColor = .white
-               }
-           } else {
-               if (indexPath.row / 8 == 0) {
-                   //cell.backgroundColor = UIColor(red: 250/255.0, green: 250/255.0, blue: 250/255.0, alpha: 0.88)
+            }
+        } else {
+            if (indexPath.row / 8 == 0) {
+                //cell.backgroundColor = UIColor(red: 250/255.0, green: 250/255.0, blue: 250/255.0, alpha: 0.88)
                 cell.backgroundColor = .white
-               } else {
-                   //cell.backgroundColor = UIColor(red: 220/255.0, green: 0/255.0, blue: 70/255.0, alpha: 0.65)
+            } else {
+                //cell.backgroundColor = UIColor(red: 220/255.0, green: 0/255.0, blue: 70/255.0, alpha: 0.65)
                 cell.backgroundColor = .black
-               }
-           }
-           
-           let x = indexPath.row / 8
-           let y = indexPath.row % 8
-           
-           if(self.tschessElementMatrix2![x][y] != nil){
-               cell.imageView.image = self.tschessElementMatrix2![x][y]!.getImageDefault()
-           } else {
-               cell.imageView.image = nil
-           }
-           cell.imageView.bounds = CGRect(origin: cell.bounds.origin, size: cell.bounds.size)
-           cell.imageView.center = CGPoint(x: cell.bounds.size.width/2, y: cell.bounds.size.height/2)
-           return cell
+            }
+        }
+        
+        let x = indexPath.row / 8
+        let y = indexPath.row % 8
+        
+        if(self.tschessElementMatrix2![x][y] != nil){
+            cell.imageView.image = self.tschessElementMatrix2![x][y]!.getImageDefault()
+        } else {
+            cell.imageView.image = nil
+        }
+        cell.imageView.bounds = CGRect(origin: cell.bounds.origin, size: cell.bounds.size)
+        cell.imageView.center = CGPoint(x: cell.bounds.size.width/2, y: cell.bounds.size.height/2)
+        return cell
         
     }
     
@@ -371,20 +371,20 @@ extension Config: UICollectionViewDelegateFlowLayout {
 }
 
 extension Config: UICollectionViewDelegate {
-   
+    
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-            switch item.tag {
-            case 1:
-                //print("fairy")
-                let storyboard: UIStoryboard = UIStoryboard(name: "Fairy", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "Fairy") as! Fairy
-                viewController.setPlayer(player: self.player!)
-                UIApplication.shared.keyWindow?.rootViewController = viewController
-            default:
-                StoryboardSelector().home(player: self.player!)
-            }
+        switch item.tag {
+        case 1:
+            //print("fairy")
+            let storyboard: UIStoryboard = UIStoryboard(name: "Fairy", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier: "Fairy") as! Fairy
+            viewController.setPlayer(player: self.player!)
+            UIApplication.shared.keyWindow?.rootViewController = viewController
+        default:
+            StoryboardSelector().home(player: self.player!)
         }
-
+    }
+    
 }
 
 

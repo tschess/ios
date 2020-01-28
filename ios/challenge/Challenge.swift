@@ -248,11 +248,12 @@ class Challenge:
     
     @objc func renderElementCollectionView() {
         //print("lolol")
-        let storyboard: UIStoryboard = UIStoryboard(name: "EditOpponent", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "EditOpponent") as! EditOpponent
-        viewController.setPlayer(player: self.player!)
-        viewController.setGameModel(gameModel: self.gameModel!)
+        let storyboard: UIStoryboard = UIStoryboard(name: "EditOther", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "EditOther") as! EditOther
         viewController.setTitleText(titleText: "new challenge")
+        viewController.setActiveConfigNumber(activeConfigNumber: Int(self.activeConfigNumber.text!)!)
+        viewController.setPlayerOther(playerOther: self.gameModel!.getOpponent())
+        viewController.setPlayerSelf(playerSelf: self.player!)
         UIApplication.shared.keyWindow?.rootViewController = viewController
     }
     

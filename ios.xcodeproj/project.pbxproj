@@ -173,8 +173,8 @@
 		B7F5878623D12D8000A91CD3 /* ShowMeSkins.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F5878523D12D8000A91CD3 /* ShowMeSkins.swift */; };
 		B7F5878823D12E3300A91CD3 /* SkinTableMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F5878723D12E3300A91CD3 /* SkinTableMenu.swift */; };
 		B7F5878A23D12E6300A91CD3 /* SkinTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F5878923D12E6300A91CD3 /* SkinTableCell.swift */; };
-		B7F5F63923D5EA3000BCF91F /* EditOpponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F5F63823D5EA3000BCF91F /* EditOpponent.swift */; };
-		B7F5F63C23D5EA4A00BCF91F /* EditOpponent.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7F5F63B23D5EA4A00BCF91F /* EditOpponent.storyboard */; };
+		B7F5F63923D5EA3000BCF91F /* EditOther.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F5F63823D5EA3000BCF91F /* EditOther.swift */; };
+		B7F5F63C23D5EA4A00BCF91F /* EditOther.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7F5F63B23D5EA4A00BCF91F /* EditOther.storyboard */; };
 		B7F5F63E23D6232600BCF91F /* Skin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7F5F63D23D6232600BCF91F /* Skin.storyboard */; };
 		B7F5F64023D629C100BCF91F /* Detail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7F5F63F23D629C100BCF91F /* Detail.storyboard */; };
 		B7F5F64223D630E800BCF91F /* Address.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7F5F64123D630E700BCF91F /* Address.storyboard */; };
@@ -394,8 +394,8 @@
 		B7F5878523D12D8000A91CD3 /* ShowMeSkins.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowMeSkins.swift; sourceTree = "<group>"; };
 		B7F5878723D12E3300A91CD3 /* SkinTableMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkinTableMenu.swift; sourceTree = "<group>"; };
 		B7F5878923D12E6300A91CD3 /* SkinTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkinTableCell.swift; sourceTree = "<group>"; };
-		B7F5F63823D5EA3000BCF91F /* EditOpponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditOpponent.swift; sourceTree = "<group>"; };
-		B7F5F63B23D5EA4A00BCF91F /* EditOpponent.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditOpponent.storyboard; sourceTree = "<group>"; };
+		B7F5F63823D5EA3000BCF91F /* EditOther.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditOther.swift; sourceTree = "<group>"; };
+		B7F5F63B23D5EA4A00BCF91F /* EditOther.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditOther.storyboard; sourceTree = "<group>"; };
 		B7F5F63D23D6232600BCF91F /* Skin.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Skin.storyboard; sourceTree = "<group>"; };
 		B7F5F63F23D629C100BCF91F /* Detail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Detail.storyboard; sourceTree = "<group>"; };
 		B7F5F64123D630E700BCF91F /* Address.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Address.storyboard; sourceTree = "<group>"; };
@@ -1352,7 +1352,7 @@
 			children = (
 				B7AF786923E09A0700BAD8EC /* networking */,
 				B7F5F63A23D5EA3800BCF91F /* storyboard */,
-				B7F5F63823D5EA3000BCF91F /* EditOpponent.swift */,
+				B7F5F63823D5EA3000BCF91F /* EditOther.swift */,
 				B7CCB61723D7B2B9008C34A1 /* EditSelf.swift */,
 			);
 			path = edit;
@@ -1361,7 +1361,7 @@
 		B7F5F63A23D5EA3800BCF91F /* storyboard */ = {
 			isa = PBXGroup;
 			children = (
-				B7F5F63B23D5EA4A00BCF91F /* EditOpponent.storyboard */,
+				B7F5F63B23D5EA4A00BCF91F /* EditOther.storyboard */,
 				B7CCB61523D7B252008C34A1 /* EditSelf.storyboard */,
 			);
 			path = storyboard;
@@ -1574,7 +1574,7 @@
 				B7CB62D6237B96A100E50204 /* Fairy.storyboard in Resources */,
 				B7F5F63E23D6232600BCF91F /* Skin.storyboard in Resources */,
 				B7DF147123CE5197007B2C7D /* PreviewIapetusCalhoun.storyboard in Resources */,
-				B7F5F63C23D5EA4A00BCF91F /* EditOpponent.storyboard in Resources */,
+				B7F5F63C23D5EA4A00BCF91F /* EditOther.storyboard in Resources */,
 				B7CB62F6237BB10800E50204 /* StartCalhoun.storyboard in Resources */,
 				B7F541D823D520A400E89074 /* Challenge.storyboard in Resources */,
 				B7CCB61623D7B252008C34A1 /* EditSelf.storyboard in Resources */,
@@ -1716,7 +1716,7 @@
 				B74136C723DE34A0001B3D60 /* LoginTask.swift in Sources */,
 				B7EA5DC62375C28B0019C0BF /* PlayerDeserializer.swift in Sources */,
 				B7F7C8F822FFA9740060AC38 /* KnightOffense.swift in Sources */,
-				B7F5F63923D5EA3000BCF91F /* EditOpponent.swift in Sources */,
+				B7F5F63923D5EA3000BCF91F /* EditOther.swift in Sources */,
 				B74594A523DB6BD100B9F302 /* Tschess.swift in Sources */,
 				B74145D422F3CE3C00B3B4FF /* Bishop.swift in Sources */,
 				B74145CA22F3CDDF00B3B4FF /* Grasshopper.swift in Sources */,

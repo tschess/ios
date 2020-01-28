@@ -251,7 +251,6 @@ class Quick:
         
         self.skinSelectionPicker.delegate = self
         self.skinSelectionPicker.dataSource = self
-        //self.skinSelectionPicker.
         
         self.swipeRightGesture = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
         swipeRightGesture!.direction = UISwipeGestureRecognizer.Direction.right
@@ -265,13 +264,12 @@ class Quick:
     }
     
     @objc func renderElementCollectionView() {
-        print("lolol")
-        let storyboard: UIStoryboard = UIStoryboard(name: "EditOpponent", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "EditOpponent") as! EditOpponent
-        viewController.setPlayer(player: self.player!)
-        let gameModel: Game = Game(opponent: self.opponent!)
-        viewController.setGameModel(gameModel: gameModel)
+        let storyboard: UIStoryboard = UIStoryboard(name: "EditOther", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "EditOther") as! EditOther
         viewController.setTitleText(titleText: "quick play")
+        viewController.setActiveConfigNumber(activeConfigNumber: Int(self.activeConfigNumber.text!)!)
+        viewController.setPlayerOther(playerOther: self.gameModel!.getOpponent())
+        viewController.setPlayerSelf(playerSelf: self.player!)
         UIApplication.shared.keyWindow?.rootViewController = viewController
     }
     

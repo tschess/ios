@@ -9,12 +9,105 @@
 import UIKit
 
 //MARK: DragDelegate
-extension EditSelf: UICollectionViewDragDelegate {}
+extension EditOther: UICollectionViewDragDelegate {}
 
 //MARK: DropDelegate
-extension EditSelf: UICollectionViewDropDelegate {}
+extension EditOther: UICollectionViewDropDelegate {}
 
-class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIDropInteractionDelegate {
+class EditOther: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIDropInteractionDelegate {
+    
+    var activeConfigNumber: Int?
+    
+    public func setActiveConfigNumber(activeConfigNumber: Int){
+        self.activeConfigNumber = activeConfigNumber
+    }
+    
+    var playerOther: PlayerCore?
+    
+    public func setPlayerOther(playerOther: PlayerCore){
+        self.playerOther = playerOther
+    }
+    
+    var playerSelf: Player?
+    
+    public func setPlayerSelf(playerSelf: Player){
+        self.playerSelf = playerSelf
+    }
+    
+    @IBOutlet weak var dropViewTop0: UIView!
+    @IBOutlet weak var dropViewTop1: UIView!
+    @IBOutlet weak var dropViewBottom0: UIView!
+    @IBOutlet weak var splitView2: UIView!
+    
+    //MARK: Layout: Core
+    @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var headerView: UIView!
+    @IBOutlet weak var tabBarMenu: UITabBar!
+    
+    @IBOutlet weak var eloLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var rankLabel: UILabel!
+    @IBOutlet weak var usernameLabel: UILabel!
+    @IBOutlet weak var avatarImageView: UIImageView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
+    private func assignHeader() {
+        let dataDecoded: Data = Data(base64Encoded: self.playerOther!.getAvatar(), options: .ignoreUnknownCharacters)!
+        let decodedimage = UIImage(data: dataDecoded)
+        self.avatarImageView.image = decodedimage
+        self.rankLabel.text = self.playerOther!.getRank()
+        self.usernameLabel.text = self.playerOther!.getUsername()
+        self.eloLabel.text = self.playerOther!.getElo()
+        self.dateLabel.text = self.playerOther!.getDate()
+    }
+    
+    //MARK: Constant
+    let DATE_TIME: DateTime = DateTime()
+    let REUSE_IDENTIFIER = "cell"
+    let PLACEMENT_LIST = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16"]
+    let ELEMENT_LIST = [
+        "red_pawn",
+        "red_knight",
+        "red_bishop",
+        "red_rook",
+        "red_queen",
+        "red_amazon",
+        "red_landmine_pawn",
+        "red_hunter",
+        "red_grasshopper",
+        "red_arrow"]
+    
+    //MARK: Layout: Content
+       @IBOutlet weak var notificationLabel: UILabel!
+       @IBOutlet weak var splitViewHeight0: NSLayoutConstraint!
+       @IBOutlet weak var splitViewHeight1: NSLayoutConstraint!
+       @IBOutlet weak var splitViewHeight2: NSLayoutConstraint!
+       @IBOutlet weak var contentView: UIView!
+       @IBOutlet weak var totalPointLabel: UILabel!
+       var totalPointValue: Int?
+       
+       private func setTotalPointValue() {
+           let totalPointValue = self.getPointValue(elementMatrix: self.elementMatrixActiv!)
+           self.totalPointLabel.text = String(totalPointValue)
+       }
+       
+       @IBOutlet weak var titleLabel: UILabel!
+       var titleText: String?
+       
+       func setTitleText(titleText: String) {
+           self.titleText = titleText
+       }
+       
+       //MARK: Input
+       @IBOutlet weak var tschessElementCollectionView: UICollectionView!
+       @IBOutlet weak var configCollectionViewHeight: NSLayoutConstraint!
+       @IBOutlet weak var configCollectionView: DynamicCollectionView!
+       
+       //MARK: Variables
+       var elementMatrixAbort: [[TschessElement?]]?
+       var elementMatrixCache: [[TschessElement?]]?
+       var elementMatrixActiv: [[TschessElement?]]?
+       var selectionElementName: String?
     
     private func getPointValue(elementMatrix: [[TschessElement?]]) -> Int {
         var totalPointValue: Int = 0
@@ -38,22 +131,6 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
         }
         return false
     }
-    
-    //MARK: Constant
-    let DATE_TIME: DateTime = DateTime()
-    let REUSE_IDENTIFIER = "cell"
-    let PLACEMENT_LIST = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16"]
-    let ELEMENT_LIST = [
-        "red_pawn",
-        "red_knight",
-        "red_bishop",
-        "red_rook",
-        "red_queen",
-        "red_amazon",
-        "red_landmine_pawn",
-        "red_hunter",
-        "red_grasshopper",
-        "red_arrow"]
     
     //MARK: Render
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -235,84 +312,6 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
         self.tschessElementCollectionView.reloadData()
     }
     
-    @IBOutlet weak var dropViewTop0: UIView!
-    @IBOutlet weak var dropViewTop1: UIView!
-    @IBOutlet weak var dropViewBottom0: UIView!
-    @IBOutlet weak var splitView2: UIView!
-    
-    //MARK: Layout: Core
-    @IBOutlet weak var backButton: UIButton!
-    @IBOutlet weak var headerView: UIView!
-    @IBOutlet weak var tabBarMenu: UITabBar!
-    @IBOutlet weak var displacementImage: UIImageView!
-    @IBOutlet weak var displacementLabel: UILabel!
-    @IBOutlet weak var eloLabel: UILabel!
-    @IBOutlet weak var rankLabel: UILabel!
-    @IBOutlet weak var usernameLabel: UILabel!
-    @IBOutlet weak var avatarImageView: UIImageView!
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    var player: Player?
-    
-    public func setPlayer(player: Player){
-        self.player = player
-    }
-    
-    private func assignHeader() {
-        let dataDecoded: Data = Data(base64Encoded: self.player!.getAvatar(), options: .ignoreUnknownCharacters)!
-        let decodedimage = UIImage(data: dataDecoded)
-        self.avatarImageView.image = decodedimage
-        self.rankLabel.text = self.player!.getRank()
-        self.usernameLabel.text = self.player!.getUsername()
-        self.eloLabel.text = self.player!.getElo()
-        self.displacementLabel.text = String(abs(Int(self.player!.getDisp())!))
-        let disp: Int = Int(self.player!.getDisp())!
-        if(disp >= 0){
-            if #available(iOS 13.0, *) {
-                let image = UIImage(systemName: "arrow.up")!
-                self.displacementImage.image = image
-                self.displacementImage.tintColor = .green
-            }
-            return
-        }
-        if #available(iOS 13.0, *) {
-            let image = UIImage(systemName: "arrow.down")!
-            self.displacementImage.image = image
-            self.displacementImage.tintColor = .red
-        }
-    }
-    
-    //MARK: Layout: Content
-    @IBOutlet weak var notificationLabel: UILabel!
-    @IBOutlet weak var splitViewHeight0: NSLayoutConstraint!
-    @IBOutlet weak var splitViewHeight1: NSLayoutConstraint!
-    @IBOutlet weak var splitViewHeight2: NSLayoutConstraint!
-    @IBOutlet weak var contentView: UIView!
-    @IBOutlet weak var totalPointLabel: UILabel!
-    var totalPointValue: Int?
-    
-    private func setTotalPointValue() {
-        let totalPointValue = self.getPointValue(elementMatrix: self.elementMatrixActiv!)
-        self.totalPointLabel.text = String(totalPointValue)
-    }
-    
-    @IBOutlet weak var titleLabel: UILabel!
-    var titleText: String?
-    
-    func setTitleText(titleText: String) {
-        self.titleText = titleText
-    }
-    
-    //MARK: Input
-    @IBOutlet weak var tschessElementCollectionView: UICollectionView!
-    @IBOutlet weak var configCollectionViewHeight: NSLayoutConstraint!
-    @IBOutlet weak var configCollectionView: DynamicCollectionView!
-    
-    //MARK: Variables
-    var elementMatrixAbort: [[TschessElement?]]?
-    var elementMatrixCache: [[TschessElement?]]?
-    var elementMatrixActiv: [[TschessElement?]]?
-    var selectionElementName: String?
-    
     //MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -353,17 +352,17 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
         self.tschessElementCollectionView.isUserInteractionEnabled = true
         self.tschessElementCollectionView.dragInteractionEnabled = true
         
-        switch self.titleText {
-        case "config. 1":
-            self.elementMatrixActiv = self.player!.getConfig1()
+        switch self.activeConfigNumber {
+        case 1:
+            self.elementMatrixActiv = self.playerSelf!.getConfig1()
             self.elementMatrixAbort = self.elementMatrixActiv
             break
-        case "config. 2":
-            self.elementMatrixActiv = self.player!.getConfig2()
+        case 2:
+            self.elementMatrixActiv = self.playerSelf!.getConfig2()
             self.elementMatrixAbort = self.elementMatrixActiv
             break
         default:
-            self.elementMatrixActiv = self.player!.getConfig0()
+            self.elementMatrixActiv = self.playerSelf!.getConfig0()
             self.elementMatrixAbort = self.elementMatrixActiv
         }
         self.titleLabel.text = self.titleText
@@ -380,7 +379,7 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
 }
 
 //MARK: DataSource
-extension EditSelf: UICollectionViewDataSource {
+extension EditOther: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == self.tschessElementCollectionView {
@@ -391,7 +390,7 @@ extension EditSelf: UICollectionViewDataSource {
 }
 
 //MARK: FlowLayout
-extension EditSelf: UICollectionViewDelegateFlowLayout {
+extension EditOther: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if collectionView == self.tschessElementCollectionView {
@@ -418,7 +417,7 @@ extension EditSelf: UICollectionViewDelegateFlowLayout {
     }
 }
 
-extension EditSelf: UICollectionViewDelegate {
+extension EditOther: UICollectionViewDelegate {
     
     func generateTschessElement(name: String) -> TschessElement? {
         if(name.contains("arrow")){
@@ -507,44 +506,66 @@ extension EditSelf: UICollectionViewDelegate {
     }
     
     @IBAction func backButtonClick(_ sender: Any) {
-        switch self.titleText {
-        case "config. 1":
-            self.player!.setConfig1(config1: self.elementMatrixAbort!)
-            break
-        case "config. 2":
-            self.player!.setConfig2(config2: self.elementMatrixAbort!)
-            break
-        default:
-            self.player!.setConfig0(config0: self.elementMatrixAbort!)
-        }
-        if(self.titleText == "select config"){
-            StoryboardSelector().actual(player: self.player!)
+        if(self.titleText == "new challenge"){
+            let storyboard: UIStoryboard = UIStoryboard(name: "Challenge", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier: "Challenge") as! Challenge
+            viewController.setPlayer(player: self.playerSelf!)
+            let gameModel = Game(opponent: self.playerOther!) //TODO: !!!
+            viewController.setGameModel(gameModel: gameModel)
+            UIApplication.shared.keyWindow?.rootViewController = viewController
             return
         }
-        let storyboard: UIStoryboard = UIStoryboard(name: "Config", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "Config") as! Config
-        viewController.setPlayer(player: self.player!)
-        UIApplication.shared.keyWindow?.rootViewController = viewController
+        if(self.titleText == "quick play"){
+            let storyboard: UIStoryboard = UIStoryboard(name: "Quick", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier: "Quick") as! Quick
+            viewController.setPlayer(player: self.playerSelf!)
+            viewController.setOpponent(opponent: self.playerOther!)
+            UIApplication.shared.keyWindow?.rootViewController = viewController
+            return
+        }
+        //if(self.titleText!.contains("play!")){
+            let storyboard: UIStoryboard = UIStoryboard(name: "Ack", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier: "Ack") as! Ack
+            viewController.setPlayer(player: self.playerSelf!)
+            viewController.setOpponent(opponent: self.playerOther!) // <-- REDUNDANT
+            let gameModel = Game(opponent: self.playerOther!) //TODO: !!! // <-- REDUNDANT
+            viewController.setGameModel(gameModel: gameModel) // <-- REDUNDANT
+            UIApplication.shared.keyWindow?.rootViewController = viewController
+            //return
+        //}
     }
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         switch item.tag {
         case 0://back
             tabBar.selectedItem = nil
-            switch self.titleText {
-            case "config. 1":
-                self.player!.setConfig1(config1: self.elementMatrixAbort!)
-                break
-            case "config. 2":
-                self.player!.setConfig2(config2: self.elementMatrixAbort!)
-                break
-            default:
-                self.player!.setConfig0(config0: self.elementMatrixAbort!)
+            if(self.titleText == "new challenge"){
+                let storyboard: UIStoryboard = UIStoryboard(name: "Challenge", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "Challenge") as! Challenge
+                viewController.setPlayer(player: self.playerSelf!)
+                let gameModel = Game(opponent: self.playerOther!) //TODO: !!!
+                viewController.setGameModel(gameModel: gameModel)
+                UIApplication.shared.keyWindow?.rootViewController = viewController
+                return
             }
-            let storyboard: UIStoryboard = UIStoryboard(name: "Config", bundle: nil)
-            let viewController = storyboard.instantiateViewController(withIdentifier: "Config") as! Config
-            viewController.setPlayer(player: self.player!)
-            UIApplication.shared.keyWindow?.rootViewController = viewController
+            if(self.titleText == "quick play"){
+                let storyboard: UIStoryboard = UIStoryboard(name: "Quick", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "Quick") as! Quick
+                viewController.setPlayer(player: self.playerSelf!)
+                viewController.setOpponent(opponent: self.playerOther!)
+                UIApplication.shared.keyWindow?.rootViewController = viewController
+                return
+            }
+            //if(self.titleText!.contains("play!")){
+                let storyboard: UIStoryboard = UIStoryboard(name: "Ack", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "Ack") as! Ack
+                viewController.setPlayer(player: self.playerSelf!)
+                viewController.setOpponent(opponent: self.playerOther!) // <-- REDUNDANT
+                let gameModel = Game(opponent: self.playerOther!) //TODO: !!! // <-- REDUNDANT
+                viewController.setGameModel(gameModel: gameModel) // <-- REDUNDANT
+                UIApplication.shared.keyWindow?.rootViewController = viewController
+                return
+            //}
         default: //save...
             tabBar.selectedItem = nil
             
@@ -552,7 +573,7 @@ extension EditSelf: UICollectionViewDelegate {
                 self.activityIndicator!.isHidden = false
                 self.activityIndicator!.startAnimating()
             }
-            let id = self.player!.getId()
+            let id = self.playerSelf!.getId()
             let config = ConfigSerializer().serializeConfiguration(savedConfigurationMatrix: self.elementMatrixActiv!)
             var updateConfig = [
                 "id": id,
@@ -568,18 +589,41 @@ extension EditSelf: UICollectionViewDelegate {
                 index = 2
             }
             updateConfig["index"] = index
-            UpdateConfig().execute(requestPayload: updateConfig, player: self.player!) { (result) in
+            UpdateConfig().execute(requestPayload: updateConfig, player: self.playerSelf!) { (result) in
                 if result == nil {
                     print("error!") // print a popup
                 }
-                self.player = result!
+                self.playerSelf = result!
                 DispatchQueue.main.async() {
                     self.activityIndicator.stopAnimating()
                     self.activityIndicator.isHidden = true
-                    let storyboard: UIStoryboard = UIStoryboard(name: "Config", bundle: nil)
-                    let viewController = storyboard.instantiateViewController(withIdentifier: "Config") as! Config
-                    viewController.setPlayer(player: self.player!)
-                    UIApplication.shared.keyWindow?.rootViewController = viewController
+                    if(self.titleText == "new challenge"){
+                        let storyboard: UIStoryboard = UIStoryboard(name: "Challenge", bundle: nil)
+                        let viewController = storyboard.instantiateViewController(withIdentifier: "Challenge") as! Challenge
+                        viewController.setPlayer(player: self.playerSelf!)
+                        let gameModel = Game(opponent: self.playerOther!) //TODO: !!!
+                        viewController.setGameModel(gameModel: gameModel)
+                        UIApplication.shared.keyWindow?.rootViewController = viewController
+                        return
+                    }
+                    if(self.titleText == "quick play"){
+                        let storyboard: UIStoryboard = UIStoryboard(name: "Quick", bundle: nil)
+                        let viewController = storyboard.instantiateViewController(withIdentifier: "Quick") as! Quick
+                        viewController.setPlayer(player: self.playerSelf!)
+                        viewController.setOpponent(opponent: self.playerOther!)
+                        UIApplication.shared.keyWindow?.rootViewController = viewController
+                        return
+                    }
+                    //if(self.titleText!.contains("play!")){
+                        let storyboard: UIStoryboard = UIStoryboard(name: "Ack", bundle: nil)
+                        let viewController = storyboard.instantiateViewController(withIdentifier: "Ack") as! Ack
+                        viewController.setPlayer(player: self.playerSelf!)
+                        viewController.setOpponent(opponent: self.playerOther!) // <-- REDUNDANT
+                        let gameModel = Game(opponent: self.playerOther!) //TODO: !!! // <-- REDUNDANT
+                        viewController.setGameModel(gameModel: gameModel) // <-- REDUNDANT
+                        UIApplication.shared.keyWindow?.rootViewController = viewController
+                        //return
+                    //}
                 }
                 
             }
