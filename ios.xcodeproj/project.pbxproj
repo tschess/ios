@@ -78,6 +78,9 @@
 		B7AEEA8F23A1D8D2002F950C /* HistoricTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7AEEA8E23A1D8D2002F950C /* HistoricTable.swift */; };
 		B7AEEA9123A1D8E0002F950C /* HistoricCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7AEEA9023A1D8E0002F950C /* HistoricCell.swift */; };
 		B7AF6D31238C3A12001B6086 /* PlayerCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7AF6D30238C3A12001B6086 /* PlayerCore.swift */; };
+		B7AF786B23E09A3000BAD8EC /* UpdateConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7AF786A23E09A3000BAD8EC /* UpdateConfig.swift */; };
+		B7AF786E23E09AC000BAD8EC /* ConfigSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7AF786D23E09AC000BAD8EC /* ConfigSerializer.swift */; };
+		B7AF787023E09AD100BAD8EC /* ConfigDeserializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7AF786F23E09AD100BAD8EC /* ConfigDeserializer.swift */; };
 		B7B74A52237DCAF200D07061 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7B74A51237DCAF200D07061 /* StoreKit.framework */; };
 		B7B74A55237DCC8600D07061 /* PlayerDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B74A54237DCC8600D07061 /* PlayerDevice.swift */; };
 		B7B81F58236C0A540030BCC4 /* ChallengeMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B81F57236C0A540030BCC4 /* ChallengeMenuCell.swift */; };
@@ -147,7 +150,6 @@
 		B7E14C0022EC50F800CABCD3 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E14BFF22EC50F800CABCD3 /* Game.swift */; };
 		B7E644A62329A45E00DC1634 /* Castling.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E644A52329A45E00DC1634 /* Castling.swift */; };
 		B7EA5DBD2375BEB80019C0BF /* PollingAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7EA5DBC2375BEB80019C0BF /* PollingAgent.swift */; };
-		B7EA5DC12375C15A0019C0BF /* ConfigDeserializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7EA5DC02375C15A0019C0BF /* ConfigDeserializer.swift */; };
 		B7EA5DC42375C2710019C0BF /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7EA5DC32375C2710019C0BF /* Player.swift */; };
 		B7EA5DC62375C28B0019C0BF /* PlayerDeserializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7EA5DC52375C28B0019C0BF /* PlayerDeserializer.swift */; };
 		B7EA5DC92375C2AD0019C0BF /* Gamestate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7EA5DC82375C2AD0019C0BF /* Gamestate.swift */; };
@@ -195,8 +197,6 @@
 		B7F7C8F822FFA9740060AC38 /* KnightOffense.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F7C8F722FFA9740060AC38 /* KnightOffense.swift */; };
 		B7FAD96E238490D1006440B6 /* ClearDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7FAD96D238490D1006440B6 /* ClearDevice.swift */; };
 		B7FCCC8323737E3300C4DD88 /* CanonicalCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7FCCC8223737E3300C4DD88 /* CanonicalCheck.swift */; };
-		B7FCCC8B2373835700C4DD88 /* UpdateConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7FCCC8A2373835700C4DD88 /* UpdateConfig.swift */; };
-		B7FCCC8E237383AD00C4DD88 /* ConfigSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7FCCC8D237383AD00C4DD88 /* ConfigSerializer.swift */; };
 		B7FCCC992373ED4F00C4DD88 /* Highlighter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7FCCC982373ED4F00C4DD88 /* Highlighter.swift */; };
 		B7FCCC9B2373F12600C4DD88 /* Processor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7FCCC9A2373F12600C4DD88 /* Processor.swift */; };
 		B7FCCC9D2374001E00C4DD88 /* Transitioner.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7FCCC9C2374001E00C4DD88 /* Transitioner.swift */; };
@@ -299,6 +299,9 @@
 		B7AEEA8E23A1D8D2002F950C /* HistoricTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoricTable.swift; sourceTree = "<group>"; };
 		B7AEEA9023A1D8E0002F950C /* HistoricCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoricCell.swift; sourceTree = "<group>"; };
 		B7AF6D30238C3A12001B6086 /* PlayerCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCore.swift; sourceTree = "<group>"; };
+		B7AF786A23E09A3000BAD8EC /* UpdateConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateConfig.swift; sourceTree = "<group>"; };
+		B7AF786D23E09AC000BAD8EC /* ConfigSerializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigSerializer.swift; sourceTree = "<group>"; };
+		B7AF786F23E09AD100BAD8EC /* ConfigDeserializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigDeserializer.swift; sourceTree = "<group>"; };
 		B7B74A51237DCAF200D07061 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		B7B74A54237DCC8600D07061 /* PlayerDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerDevice.swift; sourceTree = "<group>"; };
 		B7B81F57236C0A540030BCC4 /* ChallengeMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeMenuCell.swift; sourceTree = "<group>"; };
@@ -368,7 +371,6 @@
 		B7E14BFF22EC50F800CABCD3 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		B7E644A52329A45E00DC1634 /* Castling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Castling.swift; sourceTree = "<group>"; };
 		B7EA5DBC2375BEB80019C0BF /* PollingAgent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollingAgent.swift; sourceTree = "<group>"; };
-		B7EA5DC02375C15A0019C0BF /* ConfigDeserializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigDeserializer.swift; sourceTree = "<group>"; };
 		B7EA5DC32375C2710019C0BF /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		B7EA5DC52375C28B0019C0BF /* PlayerDeserializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerDeserializer.swift; sourceTree = "<group>"; };
 		B7EA5DC82375C2AD0019C0BF /* Gamestate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gamestate.swift; sourceTree = "<group>"; };
@@ -416,8 +418,6 @@
 		B7F7C8F722FFA9740060AC38 /* KnightOffense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnightOffense.swift; sourceTree = "<group>"; };
 		B7FAD96D238490D1006440B6 /* ClearDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClearDevice.swift; sourceTree = "<group>"; };
 		B7FCCC8223737E3300C4DD88 /* CanonicalCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanonicalCheck.swift; sourceTree = "<group>"; };
-		B7FCCC8A2373835700C4DD88 /* UpdateConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateConfig.swift; sourceTree = "<group>"; };
-		B7FCCC8D237383AD00C4DD88 /* ConfigSerializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigSerializer.swift; sourceTree = "<group>"; };
 		B7FCCC982373ED4F00C4DD88 /* Highlighter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Highlighter.swift; sourceTree = "<group>"; };
 		B7FCCC9A2373F12600C4DD88 /* Processor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Processor.swift; sourceTree = "<group>"; };
 		B7FCCC9C2374001E00C4DD88 /* Transitioner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transitioner.swift; sourceTree = "<group>"; };
@@ -970,6 +970,24 @@
 			path = component;
 			sourceTree = "<group>";
 		};
+		B7AF786923E09A0700BAD8EC /* networking */ = {
+			isa = PBXGroup;
+			children = (
+				B7AF786C23E09A5E00BAD8EC /* encoding */,
+				B7AF786A23E09A3000BAD8EC /* UpdateConfig.swift */,
+			);
+			path = networking;
+			sourceTree = "<group>";
+		};
+		B7AF786C23E09A5E00BAD8EC /* encoding */ = {
+			isa = PBXGroup;
+			children = (
+				B7AF786D23E09AC000BAD8EC /* ConfigSerializer.swift */,
+				B7AF786F23E09AD100BAD8EC /* ConfigDeserializer.swift */,
+			);
+			path = encoding;
+			sourceTree = "<group>";
+		};
 		B7B74A53237DCC4A00D07061 /* networking */ = {
 			isa = PBXGroup;
 			children = (
@@ -1182,7 +1200,6 @@
 		B7E14BDD22EBCC3200CABCD3 /* config */ = {
 			isa = PBXGroup;
 			children = (
-				B7FCCC892373831A00C4DD88 /* networking */,
 				B708D101236B6AC600A899F9 /* component */,
 				B708D0F7236B4F9400A899F9 /* storyboard */,
 				B7F5F64D23D67FB000BCF91F /* Config.swift */,
@@ -1325,6 +1342,7 @@
 		B7F5F63723D5EA1D00BCF91F /* edit */ = {
 			isa = PBXGroup;
 			children = (
+				B7AF786923E09A0700BAD8EC /* networking */,
 				B7F5F63A23D5EA3800BCF91F /* storyboard */,
 				B7F5F63823D5EA3000BCF91F /* EditOpponent.swift */,
 				B7CCB61723D7B2B9008C34A1 /* EditSelf.swift */,
@@ -1405,24 +1423,6 @@
 				B7D66C9D2378BC3100AAA00B /* CanonicalMate.swift */,
 			);
 			path = check;
-			sourceTree = "<group>";
-		};
-		B7FCCC892373831A00C4DD88 /* networking */ = {
-			isa = PBXGroup;
-			children = (
-				B7FCCC8C2373839100C4DD88 /* encoding */,
-				B7FCCC8A2373835700C4DD88 /* UpdateConfig.swift */,
-			);
-			path = networking;
-			sourceTree = "<group>";
-		};
-		B7FCCC8C2373839100C4DD88 /* encoding */ = {
-			isa = PBXGroup;
-			children = (
-				B7FCCC8D237383AD00C4DD88 /* ConfigSerializer.swift */,
-				B7EA5DC02375C15A0019C0BF /* ConfigDeserializer.swift */,
-			);
-			path = encoding;
 			sourceTree = "<group>";
 		};
 		B7FCCC972373ED2900C4DD88 /* validation */ = {
@@ -1648,7 +1648,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B7CA7BBA235A60B400AA1814 /* EvaluateProposal.swift in Sources */,
-				B7FCCC8B2373835700C4DD88 /* UpdateConfig.swift in Sources */,
 				B7E644A62329A45E00DC1634 /* Castling.swift in Sources */,
 				B7BCD7B222F4734500CC29E6 /* BlackLandminePawn.swift in Sources */,
 				B7BCD7B622F4736800CC29E6 /* BlackSpy.swift in Sources */,
@@ -1668,6 +1667,7 @@
 				B74145DC22F3CE7600B3B4FF /* Queen.swift in Sources */,
 				B7DF5C07238334B10022A8C2 /* Purchase.swift in Sources */,
 				B7661FA72371FB050033A556 /* UpdatePhoto.swift in Sources */,
+				B7AF787023E09AD100BAD8EC /* ConfigDeserializer.swift in Sources */,
 				B7BAA63E237F129B0038C483 /* OptionCell.swift in Sources */,
 				B708D0DD236B351000A899F9 /* Initializer.swift in Sources */,
 				B7AEEA8C23A1C721002F950C /* ActualCell.swift in Sources */,
@@ -1679,7 +1679,6 @@
 				B713774D23D25F7B006D57C2 /* Detail.swift in Sources */,
 				B7DF5BE223832BFF0022A8C2 /* PurchaseSkin.swift in Sources */,
 				B7F7C8ED22FF81910060AC38 /* HorizontalVertical.swift in Sources */,
-				B7FCCC8E237383AD00C4DD88 /* ConfigSerializer.swift in Sources */,
 				B7AEEA8A23A1C714002F950C /* ActualTable.swift in Sources */,
 				B74145DE22F3CE8300B3B4FF /* Rook.swift in Sources */,
 				B7BCD7C422F473F300CC29E6 /* WhiteSpy.swift in Sources */,
@@ -1700,6 +1699,7 @@
 				B7BCD7B822F4739400CC29E6 /* WhiteAmazon.swift in Sources */,
 				B7BCD7DC22F474D800CC29E6 /* BlackRook.swift in Sources */,
 				B79BB6282315C4A000FF5E0E /* EnPassant.swift in Sources */,
+				B7AF786B23E09A3000BAD8EC /* UpdateConfig.swift in Sources */,
 				B7BCD7D622F474B000CC29E6 /* BlackKnight.swift in Sources */,
 				B7F78D37236BA7C400F07FD7 /* FairyTableMenu.swift in Sources */,
 				B7471DBD23A6CE87008F70A3 /* GameAcceptTask.swift in Sources */,
@@ -1764,7 +1764,6 @@
 				B7DF5C03238334540022A8C2 /* Preview.swift in Sources */,
 				B7BCD7DA22F474CA00CC29E6 /* BlackQueen.swift in Sources */,
 				B7F35E332309F6D6002018F7 /* DateTime.swift in Sources */,
-				B7EA5DC12375C15A0019C0BF /* ConfigDeserializer.swift in Sources */,
 				B7F4E87A233BC091005BDF85 /* GetHeaderTask.swift in Sources */,
 				B7BCD7BE22F473C100CC29E6 /* WhiteHunter.swift in Sources */,
 				B7F5878823D12E3300A91CD3 /* SkinTableMenu.swift in Sources */,
@@ -1793,6 +1792,7 @@
 				B714BF28237C942A000DD80E /* PlayerCreate.swift in Sources */,
 				B7AF6D31238C3A12001B6086 /* PlayerCore.swift in Sources */,
 				B7BCD7D022F4747F00CC29E6 /* WhiteRook.swift in Sources */,
+				B7AF786E23E09AC000BAD8EC /* ConfigSerializer.swift in Sources */,
 				B7DF5BF923832F3D0022A8C2 /* Product.swift in Sources */,
 				B7F062892385CF270015C618 /* Colour.swift in Sources */,
 				B74136C923DE34CC001B3D60 /* TestTask0.swift in Sources */,
