@@ -10,6 +10,8 @@ import UIKit
 
 class OtherMenuTable: UITableViewController {
     
+    let DATE_TIME: DateTime = DateTime()
+    
     var gameMenuTableList: [Game] = [Game]()
     var gameModel: Game?
     var label: UILabel?
@@ -56,7 +58,10 @@ class OtherMenuTable: UITableViewController {
         
         let formatter = DateFormatter()
         formatter.dateFormat = "dd.MM.YY"
-        var yayayaya = formatter.string(from: gameTableMenuItem.created!)
+        
+        
+        
+        var yayayaya = formatter.string(from: DATE_TIME.toFormatDate(string: gameTableMenuItem.endDate))
         yayayaya.insert("'", at: yayayaya.index(yayayaya.endIndex, offsetBy: -2))
         cell.terminalDateLabel.text = yayayaya //should be terminated date, not the created date
         
@@ -68,35 +73,35 @@ class OtherMenuTable: UITableViewController {
         //cell.actionLabel.textColor = UIColor.black
         cell.usernameLabel.textColor = UIColor.black
         //cell.eloLabel.textColor = UIColor.black
-        if(gameTableMenuItem.winner == self.gameModel!.getUsernameOpponent()){
+        //if(gameTableMenuItem.winner == self.gameModel!.getUsernameOpponent()){
             
-            cell.contentView.backgroundColor = Colour().getWin()
+            //cell.contentView.backgroundColor = Colour().getWin()
             
-            if(gameMenuTableList[indexPath.row].getDrawProposer().contains("TIMEOUT")){
+            //if(gameMenuTableList[indexPath.row].getDrawProposer().contains("TIMEOUT")){
                 //cell.actionLabel.text = "timeout"
-                gameMenuTableList[indexPath.row].setOutcome(outcome: "TIMEOUT")
-            } else {
+                //gameMenuTableList[indexPath.row].setOutcome(outcome: "TIMEOUT")
+            //} else {
                 //cell.actionLabel.text = "win"
-                gameMenuTableList[indexPath.row].setOutcome(outcome: "WIN")
-            }
-        }
-        else if(gameTableMenuItem.winner == "DRAW"){
-            //cell.actionLabel.text = "draw"
-            cell.contentView.backgroundColor = Colour().getDraw()
-            gameMenuTableList[indexPath.row].setOutcome(outcome: "DRAW")
-        } else {
-            
-            if(gameMenuTableList[indexPath.row].getDrawProposer().contains("TIMEOUT")){
-                //cell.actionLabel.text = "timeout"
-                gameMenuTableList[indexPath.row].setOutcome(outcome: "TIMEOUT")
-            } else {
-                //cell.actionLabel.text = "loss"
-                gameMenuTableList[indexPath.row].setOutcome(outcome: "LOSS")
-            }
-            cell.contentView.backgroundColor = Colour().getLoss()
-            
-            
-        }
+                //gameMenuTableList[indexPath.row].setOutcome(outcome: "WIN")
+            //}
+//        }
+//        else if(gameTableMenuItem.winner == "DRAW"){
+//            //cell.actionLabel.text = "draw"
+//            cell.contentView.backgroundColor = Colour().getDraw()
+//            gameMenuTableList[indexPath.row].setOutcome(outcome: "DRAW")
+//        } else {
+//
+//            if(gameMenuTableList[indexPath.row].getDrawProposer().contains("TIMEOUT")){
+//                //cell.actionLabel.text = "timeout"
+//                gameMenuTableList[indexPath.row].setOutcome(outcome: "TIMEOUT")
+//            } else {
+//                //cell.actionLabel.text = "loss"
+//                gameMenuTableList[indexPath.row].setOutcome(outcome: "LOSS")
+//            }
+//            cell.contentView.backgroundColor = Colour().getLoss()
+//
+//
+//        }
         
         return cell
     }
@@ -119,16 +124,38 @@ class OtherMenuTable: UITableViewController {
     }
     
     func fetchMenuTableList() {
-        let pageHistoric = PageHistoric()
-        pageHistoric.setName(name: self.gameModel!.getUsernameOpponent())
-        pageHistoric.setMatrixDeserializer(name: self.gameModel!.getUsernameOpponent())
-        pageHistoric.executeLeaderboard(gameModel: self.gameModel!, page: self.pageFromWhichContentLoads){ (result) in
+//        let pageHistoric = PageHistoric()
+//        pageHistoric.setName(name: self.gameModel!.getUsernameOpponent())
+//        pageHistoric.setMatrixDeserializer(name: self.gameModel!.getUsernameOpponent())
+//        pageHistoric.executeLeaderboard(gameModel: self.gameModel!, page: self.pageFromWhichContentLoads){ (result) in
+//            if(result == nil){
+//                self.renderShrug()
+//                print("0 - 0")
+//                return
+//            }
+//            print("1 - 1")
+//            self.appendToLeaderboardTableList(additionalCellList: result!)
+//        }
+        DispatchQueue.main.async() {
+            //self.activityIndicator!.isHidden = false
+            //self.activityIndicator!.startAnimating()
+            
+        }
+        var REQUEST_PAGE_SIZE: Int = 9
+        var requestPageIndex: Int = 0
+        let requestPayload = [
+            "id": self.gameModel!.getOpponent().getId(),
+            "index": requestPageIndex,
+            "size": REQUEST_PAGE_SIZE
+            ] as [String: Any]
+        RequestOther().execute(requestPayload: requestPayload) { (result) in
+            DispatchQueue.main.async() {
+                //self.activityIndicator!.stopAnimating()
+                //self.activityIndicator!.isHidden = true
+            }
             if(result == nil){
-                self.renderShrug()
-                print("0 - 0")
                 return
             }
-            print("1 - 1")
             self.appendToLeaderboardTableList(additionalCellList: result!)
         }
     }
@@ -142,7 +169,7 @@ class OtherMenuTable: UITableViewController {
             }
         }
         if(currentCount != self.gameMenuTableList.count){
-            self.gameMenuTableList = self.gameMenuTableList.sorted(by: { $0.created! > $1.created! })
+            //self.gameMenuTableList = self.gameMenuTableList.sorted(by: { $0.created! > $1.created! })
             DispatchQueue.main.async() {
                 self.tableView.reloadData()
             }
@@ -161,7 +188,7 @@ class OtherMenuTable: UITableViewController {
             UIApplication.shared.keyWindow?.rootViewController = viewController
             success(true)
         })
-        if #available(iOS 13.0, *) { //xmark
+        if #available(iOS 13.0, *) {
             modifyAction.image = UIImage(systemName: "gamecontroller.fill")!
         }
         modifyAction.backgroundColor = .purple

@@ -1,34 +1,53 @@
 //
-//  Challenge.swift
+//  Quick.swift
 //  ios
 //
-//  Created by Matthew on 1/19/20.
-//  Copyright © 2020 bahlsenwitz. All rights reserved.
+//  Created by Matthew on 12/10/19.
+//  Copyright © 2019 bahlsenwitz. All rights reserved.
 //
 
 import UIKit
 
 class Challenge:
-                    UIViewController,
-                    UIPickerViewDataSource,
-                    UIPickerViewDelegate,
-                    UITabBarDelegate,
-                    UIGestureRecognizerDelegate {
+    UIViewController,
+    UIPickerViewDataSource,
+    UIPickerViewDelegate,
+    UITabBarDelegate,
+UIGestureRecognizerDelegate {
+    
+    var activateBackConfig: Int?
+    
+    public func setActivateBackConfig(activateBackConfig: Int){
+        self.activateBackConfig = activateBackConfig
+    }
+    
+    
+    func generateTraditionalMatrix() -> [[TschessElement]] {
+            
+        var row_0 = [Pawn(), Pawn(), Pawn(), Pawn(), Pawn(), Pawn(), Pawn(), Pawn()]
+        var row_1 = [Rook(), Knight(), Bishop(), Queen(), King(), Bishop(), Knight(), Rook()]
+            
+            return [row_0, row_1]
+        }
+    
+    var opponent: PlayerCore?
+    
+    public func setOpponent(opponent: PlayerCore){
+        self.opponent = opponent
+    }
+    
+    @IBOutlet weak var configLabelView: UIView!
+    @IBOutlet weak var traditionalLabel: UILabel!
     
     @IBOutlet weak var configCollectionView: DynamicCollectionView!
     @IBOutlet weak var configCollectionViewHeight: NSLayoutConstraint!
     
-    @IBOutlet weak var timeSwitch: UISwitch!
-    
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    //@IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    @IBOutlet weak var usernameLabel: UILabel!
-    //@IBOutlet weak var usernameLabel: UILabel!
-    //@IBOutlet weak var rankLabel: UILabel!
     @IBOutlet weak var rankDateLabel: UILabel!
+    @IBOutlet weak var eloLabel: UILabel!
     @IBOutlet weak var rankLabel: UILabel!
-    //@IBOutlet weak var avatarImageView: UIImageView!
+    @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var avatarImageView: UIImageView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     let reuseIdentifier = "cell"
     
@@ -47,57 +66,77 @@ class Challenge:
         self.activeConfigNumber.text = "0̸"
         self.configCollectionView.reloadData()
         
-        let alphaDotFull = NSMutableAttributedString(string: "•", attributes: self.attributeAlphaDotFull!)
-        let alphaDotHalf = NSMutableAttributedString(string: "•", attributes: self.attributeAlphaDotHalf!)
-        let activeConfigFull = NSMutableAttributedString()
-        activeConfigFull.append(alphaDotFull)
-        let activeConfigNull = NSMutableAttributedString()
-        activeConfigNull.append(alphaDotHalf)
+        self.configLabelView.isHidden = false
+        self.traditionalLabel.isHidden = true
         
-        self.indicatorLabel0.attributedText = activeConfigFull
-        self.indicatorLabel1.attributedText = activeConfigNull
+        let activeConfigFull = NSMutableAttributedString()
+        activeConfigFull.append(self.alphaDotFull!)
+        let activeConfigNull = NSMutableAttributedString()
+        activeConfigNull.append(self.alphaDotHalf!)
+        
+        self.indicatorLabelS.attributedText = activeConfigFull
         self.indicatorLabel2.attributedText = activeConfigNull
-        self.indicatorLabelS.attributedText = activeConfigNull
+        self.indicatorLabel1.attributedText = activeConfigNull
+        self.indicatorLabel0.attributedText = activeConfigNull
     }
     
     func renderConfig1() {
         self.tschessElementMatrix = self.player!.getConfig1()
-     
+        
         self.activeConfigNumber.text = "1"
         self.configCollectionView.reloadData()
         
-        let alphaDotFull = NSMutableAttributedString(string: "•", attributes: self.attributeAlphaDotFull!)
-        let alphaDotHalf = NSMutableAttributedString(string: "•", attributes: self.attributeAlphaDotHalf!)
-        let activeConfigFull = NSMutableAttributedString()
-        activeConfigFull.append(alphaDotFull)
-        let activeConfigNull = NSMutableAttributedString()
-        activeConfigNull.append(alphaDotHalf)
+        self.configLabelView.isHidden = false
+        self.traditionalLabel.isHidden = true
         
-        self.indicatorLabel0.attributedText = activeConfigNull
-        self.indicatorLabel1.attributedText = activeConfigFull
-        self.indicatorLabel2.attributedText = activeConfigNull
+        let activeConfigFull = NSMutableAttributedString()
+        activeConfigFull.append(self.alphaDotFull!)
+        let activeConfigNull = NSMutableAttributedString()
+        activeConfigNull.append(self.alphaDotHalf!)
+        
         self.indicatorLabelS.attributedText = activeConfigNull
+        self.indicatorLabel2.attributedText = activeConfigFull
+        self.indicatorLabel1.attributedText = activeConfigNull
+        self.indicatorLabel0.attributedText = activeConfigNull
     }
     
     func renderConfig2() {
         self.tschessElementMatrix = self.player!.getConfig2()
-       
+        
         self.activeConfigNumber.text = "2"
         self.configCollectionView.reloadData()
         
-        let alphaDotFull = NSMutableAttributedString(string: "•", attributes: self.attributeAlphaDotFull!)
-        let alphaDotHalf = NSMutableAttributedString(string: "•", attributes: self.attributeAlphaDotHalf!)
-        let activeConfigFull = NSMutableAttributedString()
-        activeConfigFull.append(alphaDotFull)
-        let activeConfigNull = NSMutableAttributedString()
-        activeConfigNull.append(alphaDotHalf)
+        self.configLabelView.isHidden = false
+        self.traditionalLabel.isHidden = true
         
-        self.indicatorLabel0.attributedText = activeConfigNull
-        self.indicatorLabel1.attributedText = activeConfigNull
-        self.indicatorLabel2.attributedText = activeConfigFull
+        let activeConfigFull = NSMutableAttributedString()
+        activeConfigFull.append(self.alphaDotFull!)
+        let activeConfigNull = NSMutableAttributedString()
+        activeConfigNull.append(self.alphaDotHalf!)
+        
         self.indicatorLabelS.attributedText = activeConfigNull
+        self.indicatorLabel2.attributedText = activeConfigNull
+        self.indicatorLabel1.attributedText = activeConfigFull
+        self.indicatorLabel0.attributedText = activeConfigNull
     }
     
+    func renderConfigS() {
+        self.tschessElementMatrix = self.generateTraditionalMatrix()
+        self.configCollectionView.reloadData()
+        
+        self.configLabelView.isHidden = true
+        self.traditionalLabel.isHidden = false
+        
+        let activeConfigFull = NSMutableAttributedString()
+        activeConfigFull.append(self.alphaDotFull!)
+        let activeConfigNull = NSMutableAttributedString()
+        activeConfigNull.append(self.alphaDotHalf!)
+        
+        self.indicatorLabelS.attributedText = activeConfigNull
+        self.indicatorLabel2.attributedText = activeConfigNull
+        self.indicatorLabel1.attributedText = activeConfigNull
+        self.indicatorLabel0.attributedText = activeConfigFull
+    }
     
     var tschessElementMatrix: [[TschessElement?]]?
     
@@ -109,14 +148,18 @@ class Challenge:
         self.configCollectionViewHeight.constant = configCollectionView.contentSize.height
     }
     
-    let dateTime: DateTime = DateTime()
+    let DATE_TIME: DateTime = DateTime()
     
     //MARK: Properties
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var tabBarMenu: UITabBar!
     
+    @IBOutlet weak var skinSelectionPicker: UIPickerView!
+    
     var player: Player?
     var gameModel: Game?
+    
+    var skinSelectionPick: String = "calypso"
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -131,7 +174,7 @@ class Challenge:
         
         let sampleView = SampleSkin.instanceFromNib()
         sampleView.nameLabel.text = skinAsset.getName()
-
+        
         sampleView.backgroundView.backgroundColor = skinAsset.getBackColor()
         sampleView.backgroundView.alpha = skinAsset.getBackAlpha()
         sampleView.backgroundImage.image = skinAsset.getBackImage()
@@ -147,10 +190,8 @@ class Challenge:
         return 69
     }
     
-    var skinSelectionPick: String = "calypso"
-    
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        self.skinSelectionPick = self.skinList![row].getName()
+        skinSelectionPick = self.skinList![row].getName()
     }
     
     public func setPlayer(player: Player){
@@ -164,20 +205,47 @@ class Challenge:
     var attributeAlphaDotFull: [NSAttributedString.Key: NSObject]?
     var attributeAlphaDotHalf: [NSAttributedString.Key: NSObject]?
     
-    var skinList: Array<Skin>?
+    var alphaDotFull: NSMutableAttributedString?
+    var alphaDotHalf: NSMutableAttributedString?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+        
         tabBarMenu.delegate = self
         
-        let dataDecoded: Data = Data(base64Encoded: gameModel!.getOpponentAvatar(), options: .ignoreUnknownCharacters)!
+        self.attributeAlphaDotFull = [
+            NSAttributedString.Key.foregroundColor: UIColor.black,
+            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 24, weight: UIFont.Weight.bold)]
+        self.attributeAlphaDotHalf = [
+            NSAttributedString.Key.foregroundColor: UIColor(red: 0/255.0, green: 0/255.0, blue: 0/255.0, alpha: 0.5),
+            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 24, weight: UIFont.Weight.bold)]
+        
+        self.alphaDotFull = NSMutableAttributedString(string: "•", attributes: self.attributeAlphaDotFull!)
+        self.alphaDotHalf = NSMutableAttributedString(string: "•", attributes: self.attributeAlphaDotHalf!)
+        
+        //opponent
+        let dataDecoded: Data = Data(base64Encoded: self.opponent!.getAvatar(), options: .ignoreUnknownCharacters)!
         let decodedimage = UIImage(data: dataDecoded)
         self.avatarImageView.image = decodedimage
-        self.rankLabel.text = gameModel!.getOpponentRank()
-        self.usernameLabel.text = gameModel!.getUsernameOpponent()
+        self.rankLabel.text = self.opponent!.getRank()
+        self.usernameLabel.text = self.opponent!.getUsername()
         
-        self.tschessElementMatrix = self.player!.getConfig0()
+        self.eloLabel.text = self.opponent!.getElo()
+        
+        let date: String = self.opponent!.getDate()
+        if(date == "TBD"){
+            let formatter = DateFormatter()
+            formatter.dateFormat = "dd.MM.YY"
+            var yayayaya = formatter.string(from: DateTime().currentDate())
+            yayayaya.insert("'", at: yayayaya.index(yayayaya.endIndex, offsetBy: -2))
+            self.rankDateLabel.text = yayayaya
+        } else {
+            //date...
+        }
+        
+        //self.tschessElementMatrix = self.player!.getConfig0()
+        
+        
         
         
         self.configCollectionView.delegate = self
@@ -186,23 +254,7 @@ class Challenge:
         self.configCollectionView.isUserInteractionEnabled = true
         self.configCollectionView.dragInteractionEnabled = false
         
-        self.attributeAlphaDotFull = [
-            NSAttributedString.Key.foregroundColor: UIColor(red: 0/255.0, green: 0/255.0, blue: 0/255.0, alpha: 1.0),
-            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 24, weight: UIFont.Weight.bold)]
-        self.attributeAlphaDotHalf = [
-            NSAttributedString.Key.foregroundColor: UIColor(red: 0/255.0, green: 0/255.0, blue: 0/255.0, alpha: 0.5),
-            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 24, weight: UIFont.Weight.bold)]
-        let alphaDotFull = NSMutableAttributedString(string: "•", attributes: self.attributeAlphaDotFull!)
-        let alphaDotHalf = NSMutableAttributedString(string: "•", attributes: self.attributeAlphaDotHalf!)
-        let activeConfigFull = NSMutableAttributedString()
-        activeConfigFull.append(alphaDotFull)
-        let activeConfigNull = NSMutableAttributedString()
-        activeConfigNull.append(alphaDotHalf)
         
-        self.indicatorLabel0.attributedText = activeConfigFull
-        self.indicatorLabel1.attributedText = activeConfigNull
-        self.indicatorLabel2.attributedText = activeConfigNull
-        self.indicatorLabelS.attributedText = activeConfigNull
         
         self.activityIndicator.isHidden = true
         
@@ -225,9 +277,33 @@ class Challenge:
             backAlpha: 0.85)
         
         self.skinList = Array(arrayLiteral: calypso, hyperion, neptune, iapetus)
+        
+        if(self.activateBackConfig != nil){
+            switch self.activateBackConfig! {
+            case 1:
+                self.renderConfig1()
+                return
+            case 2:
+                self.renderConfig2()
+                return
+            default:
+                self.renderConfig0()
+                return
+            }
+        }
+        switch Int.random(in: 0 ... 3) {
+        case 0:
+            self.renderConfig0()
+        case 1:
+            self.renderConfig1()
+        case 2:
+            self.renderConfig2()
+        default:
+            self.renderConfigS()
+        }
     }
     
-    @IBOutlet weak var skinSelectionPicker: UIPickerView!
+    var skinList: Array<Skin>?
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -246,13 +322,37 @@ class Challenge:
         self.configCollectionView.addGestureRecognizer(elementCollectionViewGesture)
     }
     
+    func flash() {
+        let flashFrame = UIView(frame: self.configCollectionView.bounds)
+        flashFrame.backgroundColor = UIColor.white
+        flashFrame.alpha = 0.7
+        self.configCollectionView.addSubview(flashFrame)
+        UIView.animate(withDuration: 0.1, animations: {
+            flashFrame.alpha = 0.0
+        }, completion: {(finished:Bool) in
+            flashFrame.removeFromSuperview()
+        })
+    }
+    
     @objc func renderElementCollectionView() {
-        //print("lolol")
+        if(self.traditionalLabel.isHidden == false){
+            let generator = UIImpactFeedbackGenerator(style: .light)
+            generator.impactOccurred()
+            self.flash()
+            return
+        }
         let storyboard: UIStoryboard = UIStoryboard(name: "EditOther", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "EditOther") as! EditOther
         viewController.setTitleText(titleText: "new challenge")
-        viewController.setActiveConfigNumber(activeConfigNumber: Int(self.activeConfigNumber.text!)!)
-        viewController.setPlayerOther(playerOther: self.gameModel!.getOpponent())
+        viewController.setActiveConfigNumber(activeConfigNumber: 0)
+        let numberString: String = self.activeConfigNumber.text!
+        if(numberString == "1"){
+            viewController.setActiveConfigNumber(activeConfigNumber: 1)
+        }
+        if(numberString == "2") {
+            viewController.setActiveConfigNumber(activeConfigNumber: 2)
+        }
+        viewController.setPlayerOther(playerOther: self.opponent!)
         viewController.setPlayerSelf(playerSelf: self.player!)
         UIApplication.shared.keyWindow?.rootViewController = viewController
     }
@@ -264,6 +364,10 @@ class Challenge:
         if let swipeGesture = gesture as? UISwipeGestureRecognizer {
             switch swipeGesture.direction {
             case UISwipeGestureRecognizer.Direction.right:
+                if(self.traditionalLabel.isHidden == false){
+                    self.renderConfig2()
+                    return
+                }
                 if(activeConfigNumber.text == "2"){
                     self.renderConfig1()
                     return
@@ -272,6 +376,10 @@ class Challenge:
                     self.renderConfig0()
                     return
                 }
+//                if(activeConfigNumber.text == "0̸"){
+//                     self.renderConfigS()
+//                    return
+//                }
             case UISwipeGestureRecognizer.Direction.left:
                 if(activeConfigNumber.text == "0̸"){
                     self.renderConfig1()
@@ -281,12 +389,29 @@ class Challenge:
                     self.renderConfig2()
                     return
                 }
+                if(activeConfigNumber.text == "2"){
+                    self.renderConfigS()
+                    return
+                }
+//                if(self.configLabelView.isHidden == false){
+//                    self.configLabelView.isHidden = true
+//                    self.traditionalLabel.isHidden = false
+//                    self.renderConfig0()
+//                    return
+//                }
             default:
                 break
             }
         }
     }
-
+    
+    func stayHandler(action: UIAlertAction) {
+        let homeStoryboard: UIStoryboard = UIStoryboard(name: "Home", bundle: nil)
+        let homeViewController = homeStoryboard.instantiateViewController(withIdentifier: "Home") as! Home
+        homeViewController.setPlayer(player: self.player!)
+        UIApplication.shared.keyWindow?.rootViewController = homeViewController
+    }
+    
     @IBAction func backButtonClick(_ sender: Any) {
         let storyboard: UIStoryboard = UIStoryboard(name: "Other", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "Other") as! Other
@@ -297,33 +422,31 @@ class Challenge:
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         switch item.tag {
-        case 0:
-            print("0")
         default: //1
             //self.issueChallengeButton.isHidden = true
             
             self.activityIndicator.isHidden = false
             self.activityIndicator.startAnimating()
             
-            var clock = "24"
-//            if(pickerSelectionTimeLimit == "01:00 h"){
-//                clock = "1"
-//            }
-//            if(pickerSelectionTimeLimit == "00:05 m"){
-//                clock = "5"
-//            }
+            //var clock = "24"
+            //            if(pickerSelectionTimeLimit == "01:00 h"){
+            //                clock = "1"
+            //            }
+            //            if(pickerSelectionTimeLimit == "00:05 m"){
+            //                clock = "5"
+            //            }
             var config = "config0"
-//            if(pickerSelectionConfiguration == "config. 1"){
-//                config = "config1"
-//            }
-//            if(pickerSelectionConfiguration == "config. 2"){
-//                config = "config2"
-//            }
+            //            if(pickerSelectionConfiguration == "config. 1"){
+            //                config = "config1"
+            //            }
+            //            if(pickerSelectionConfiguration == "config. 2"){
+            //                config = "config2"
+            //            }
             let white_name = gameModel!.getUsernameOpponent()
             let white_uuid = gameModel!.getOpponentId()
             let black_name = player!.getUsername()
             let black_uuid = player!.getId()
-            let updated = dateTime.currentDateString()
+            let updated = DATE_TIME.currentDateString()
             let requestPayload = [
                 "white_name": white_name,
                 "white_uuid": white_uuid,
@@ -533,30 +656,22 @@ extension Challenge: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ConfigCollectionViewCell
-        
+        cell.backgroundColor = .black
+        if (indexPath.row / 8 == 0) {
+            cell.backgroundColor = .white
+        }
         if (indexPath.row % 2 == 0) {
+            cell.backgroundColor = .white
             if (indexPath.row / 8 == 0) {
-                cell.backgroundColor = UIColor(red: 220/255.0, green: 0/255.0, blue: 70/255.0, alpha: 0.65)
-            } else {
-                cell.backgroundColor = UIColor(red: 250/255.0, green: 250/255.0, blue: 250/255.0, alpha: 0.88)
-            }
-        } else {
-            if (indexPath.row / 8 == 0) {
-                cell.backgroundColor = UIColor(red: 250/255.0, green: 250/255.0, blue: 250/255.0, alpha: 0.88)
-            } else {
-                cell.backgroundColor = UIColor(red: 220/255.0, green: 0/255.0, blue: 70/255.0, alpha: 0.65)
+                cell.backgroundColor = .black
             }
         }
-        
         let x = indexPath.row / 8
         let y = indexPath.row % 8
-        
+        cell.imageView.image = nil
         if(self.tschessElementMatrix![x][y] != nil){
             cell.imageView.image = self.tschessElementMatrix![x][y]!.getImageDefault()
-        } else {
-            cell.imageView.image = nil
         }
         cell.imageView.bounds = CGRect(origin: cell.bounds.origin, size: cell.bounds.size)
         cell.imageView.center = CGPoint(x: cell.bounds.size.width/2, y: cell.bounds.size.height/2)
@@ -584,16 +699,6 @@ extension Challenge: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
-    }
-    
-    
-    
-    func stayHandler(action: UIAlertAction) {
-        let storyboard: UIStoryboard = UIStoryboard(name: "Other", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "Other") as! Other
-        viewController.setPlayer(player: self.player!)
-        viewController.setGameModel(gameModel: self.gameModel!)
-        UIApplication.shared.keyWindow?.rootViewController = viewController
     }
 }
 

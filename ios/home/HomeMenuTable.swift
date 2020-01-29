@@ -153,11 +153,12 @@ class HomeMenuTable: UITableViewController {
             let storyboard: UIStoryboard = UIStoryboard(name: "Challenge", bundle: nil)
             let viewController = storyboard.instantiateViewController(withIdentifier: "Challenge") as! Challenge
             viewController.setPlayer(player: self.player!)
-            viewController.setGameModel(gameModel: gameModel)
+            viewController.setOpponent(opponent: gameModel.getOpponent())
+            viewController.setGameModel(gameModel: gameModel)  //TODO: ???need this???
             UIApplication.shared.keyWindow?.rootViewController = viewController
             success(true)
         })
-        if #available(iOS 13.0, *) { //xmark
+        if #available(iOS 13.0, *) { 
             modifyAction.image = UIImage(systemName: "gamecontroller.fill")!
         }
         modifyAction.backgroundColor = .purple

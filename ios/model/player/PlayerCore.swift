@@ -24,10 +24,10 @@ class PlayerCore {
         id: String,
         username: String,
         avatar: String,
-        elo: String,
-        rank: String,
-        date: String,
-        disp: String
+        elo: String = "TBD",
+        rank: String = "TBD",
+        date: String = "TBD",
+        disp: String = "TBD"
     ) {
         self.id = id
         self.username = username

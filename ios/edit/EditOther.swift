@@ -520,8 +520,12 @@ extension EditOther: UICollectionViewDelegate {
             let storyboard: UIStoryboard = UIStoryboard(name: "Challenge", bundle: nil)
             let viewController = storyboard.instantiateViewController(withIdentifier: "Challenge") as! Challenge
             viewController.setPlayer(player: self.playerSelf!)
+            viewController.setOpponent(opponent: self.playerOther!)
+            viewController.setActivateBackConfig(activateBackConfig: self.activeConfigNumber!)
+            
             let gameModel = Game(opponent: self.playerOther!) //TODO: !!!
             viewController.setGameModel(gameModel: gameModel)
+            
             UIApplication.shared.keyWindow?.rootViewController = viewController
             return
         }
@@ -554,8 +558,12 @@ extension EditOther: UICollectionViewDelegate {
                 let storyboard: UIStoryboard = UIStoryboard(name: "Challenge", bundle: nil)
                 let viewController = storyboard.instantiateViewController(withIdentifier: "Challenge") as! Challenge
                 viewController.setPlayer(player: self.playerSelf!)
+                viewController.setOpponent(opponent: self.playerOther!)
+                viewController.setActivateBackConfig(activateBackConfig: self.activeConfigNumber!)
+                
                 let gameModel = Game(opponent: self.playerOther!) //TODO: !!!
                 viewController.setGameModel(gameModel: gameModel)
+                
                 UIApplication.shared.keyWindow?.rootViewController = viewController
                 return
             }
@@ -613,8 +621,12 @@ extension EditOther: UICollectionViewDelegate {
                         let storyboard: UIStoryboard = UIStoryboard(name: "Challenge", bundle: nil)
                         let viewController = storyboard.instantiateViewController(withIdentifier: "Challenge") as! Challenge
                         viewController.setPlayer(player: self.playerSelf!)
+                        viewController.setOpponent(opponent: self.playerOther!)
+                        viewController.setActivateBackConfig(activateBackConfig: self.activeConfigNumber!)
+                        //
                         let gameModel = Game(opponent: self.playerOther!) //TODO: !!!
                         viewController.setGameModel(gameModel: gameModel)
+                        //
                         UIApplication.shared.keyWindow?.rootViewController = viewController
                         return
                     }

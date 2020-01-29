@@ -20,10 +20,10 @@ class Game: Equatable, Hashable {
                 return identifier!.hashValue
             }
             return self.opponent.getId().hashValue ^
-                   self.opponent.getUsername().hashValue ^
-                   self.opponent.getAvatar().hashValue ^
-                   self.opponent.getRank().hashValue ^
-                   self.opponent.getElo().hashValue
+                self.opponent.getUsername().hashValue ^
+                self.opponent.getAvatar().hashValue ^
+                self.opponent.getRank().hashValue ^
+                self.opponent.getElo().hashValue
         }
     }
     
@@ -32,10 +32,10 @@ class Game: Equatable, Hashable {
             return lhs.identifier! == rhs.identifier!
         }
         return lhs.opponent.getId()     == rhs.opponent.getId()     &&
-               lhs.opponent.getUsername()   == rhs.opponent.getUsername()   &&
-               lhs.opponent.getAvatar() == rhs.opponent.getAvatar() &&
-               lhs.opponent.getRank()   == rhs.opponent.getRank()   &&
-               lhs.opponent.getElo()    == rhs.opponent.getElo()
+            lhs.opponent.getUsername()   == rhs.opponent.getUsername()   &&
+            lhs.opponent.getAvatar() == rhs.opponent.getAvatar() &&
+            lhs.opponent.getRank()   == rhs.opponent.getRank()   &&
+            lhs.opponent.getElo()    == rhs.opponent.getElo()
     }
     
     var opponent: PlayerCore
@@ -59,9 +59,18 @@ class Game: Equatable, Hashable {
     var outcome: String?
     var state: [[TschessElement?]]?
     
+    
+    
     func getOpponent() -> PlayerCore {
         return self.opponent
     }
+    
+    
+    
+    var endDate: String
+    var disp: String
+    var odds: String
+    var winnerInt: Int
     
     init(
         opponent: PlayerCore,
@@ -78,8 +87,14 @@ class Game: Equatable, Hashable {
         gameStatus: String = "PROPOSED",
         winner: String = "TBD",
         drawProposer: String = "NONE",
-        checkOn: String = "NONE"
-        ) {
+        checkOn: String = "NONE",
+        
+        endDate: String = "TBD",
+        disp: String = "TBD",
+        odds: String = "TBD",
+        winnerInt: Int = 0
+        
+    ) {
         self.opponent = opponent
         
         self.identifier = identifier
@@ -97,8 +112,12 @@ class Game: Equatable, Hashable {
         self.checkOn = checkOn
         
         self.updated = dateTime.currentDate()
-        
         self.skin = "NONE"
+        
+        self.endDate = endDate
+        self.disp = disp
+        self.odds = odds
+        self.winnerInt = winnerInt
     }
     
     var skin: String

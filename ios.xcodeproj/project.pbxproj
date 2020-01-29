@@ -54,6 +54,8 @@
 		B7471DC123A6E3C2008F70A3 /* BlackReveal.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7471DC023A6E3C2008F70A3 /* BlackReveal.swift */; };
 		B7471DC323A71CC9008F70A3 /* Hopped.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7471DC223A71CC9008F70A3 /* Hopped.swift */; };
 		B74FA43523551E4300FC1018 /* Hopper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74FA43423551E4300FC1018 /* Hopper.swift */; };
+		B7513D0123E1F4C800C63827 /* RequestOther.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7513D0023E1F4C800C63827 /* RequestOther.swift */; };
+		B7513D0423E1F53300C63827 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7513D0323E1F53300C63827 /* Game.swift */; };
 		B7661FA72371FB050033A556 /* UpdatePhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7661FA62371FB050033A556 /* UpdatePhoto.swift */; };
 		B7877C4823DA639600F59FF3 /* Ack.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7877C4723DA639600F59FF3 /* Ack.storyboard */; };
 		B7877C4A23DA659000F59FF3 /* Ack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7877C4923DA659000F59FF3 /* Ack.swift */; };
@@ -147,7 +149,6 @@
 		B7DF5BFB23832F660022A8C2 /* InAppPurchase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7DF5BFA23832F660022A8C2 /* InAppPurchase.swift */; };
 		B7DF5C03238334540022A8C2 /* Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7DF5C02238334540022A8C2 /* Preview.swift */; };
 		B7DF5C07238334B10022A8C2 /* Purchase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7DF5C06238334B10022A8C2 /* Purchase.swift */; };
-		B7E14C0022EC50F800CABCD3 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E14BFF22EC50F800CABCD3 /* Game.swift */; };
 		B7E644A62329A45E00DC1634 /* Castling.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E644A52329A45E00DC1634 /* Castling.swift */; };
 		B7EA5DBD2375BEB80019C0BF /* PollingAgent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7EA5DBC2375BEB80019C0BF /* PollingAgent.swift */; };
 		B7EA5DC42375C2710019C0BF /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7EA5DC32375C2710019C0BF /* Player.swift */; };
@@ -270,6 +271,8 @@
 		B7471DC023A6E3C2008F70A3 /* BlackReveal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackReveal.swift; sourceTree = "<group>"; };
 		B7471DC223A71CC9008F70A3 /* Hopped.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hopped.swift; sourceTree = "<group>"; };
 		B74FA43423551E4300FC1018 /* Hopper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hopper.swift; sourceTree = "<group>"; };
+		B7513D0023E1F4C800C63827 /* RequestOther.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestOther.swift; sourceTree = "<group>"; };
+		B7513D0323E1F53300C63827 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		B7661FA62371FB050033A556 /* UpdatePhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePhoto.swift; sourceTree = "<group>"; };
 		B7877C4723DA639600F59FF3 /* Ack.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Ack.storyboard; sourceTree = "<group>"; };
 		B7877C4923DA659000F59FF3 /* Ack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ack.swift; sourceTree = "<group>"; };
@@ -368,7 +371,6 @@
 		B7DF5BFA23832F660022A8C2 /* InAppPurchase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppPurchase.swift; sourceTree = "<group>"; };
 		B7DF5C02238334540022A8C2 /* Preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preview.swift; sourceTree = "<group>"; };
 		B7DF5C06238334B10022A8C2 /* Purchase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Purchase.swift; sourceTree = "<group>"; };
-		B7E14BFF22EC50F800CABCD3 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		B7E644A52329A45E00DC1634 /* Castling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Castling.swift; sourceTree = "<group>"; };
 		B7EA5DBC2375BEB80019C0BF /* PollingAgent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollingAgent.swift; sourceTree = "<group>"; };
 		B7EA5DC32375C2710019C0BF /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
@@ -771,6 +773,22 @@
 				B7BCD7DB22F474D800CC29E6 /* BlackRook.swift */,
 			);
 			path = black;
+			sourceTree = "<group>";
+		};
+		B7513CFF23E1F48900C63827 /* networking */ = {
+			isa = PBXGroup;
+			children = (
+				B7513D0023E1F4C800C63827 /* RequestOther.swift */,
+			);
+			path = networking;
+			sourceTree = "<group>";
+		};
+		B7513D0223E1F52200C63827 /* game */ = {
+			isa = PBXGroup;
+			children = (
+				B7513D0323E1F53300C63827 /* Game.swift */,
+			);
+			path = game;
 			sourceTree = "<group>";
 		};
 		B7661FA52371FAD50033A556 /* networking */ = {
@@ -1209,9 +1227,9 @@
 		B7E14BFE22EC50DD00CABCD3 /* model */ = {
 			isa = PBXGroup;
 			children = (
+				B7513D0223E1F52200C63827 /* game */,
 				B7EA5DC72375C29E0019C0BF /* gamestate */,
 				B7EA5DC22375C2600019C0BF /* player */,
-				B7E14BFF22EC50F800CABCD3 /* Game.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -1305,6 +1323,7 @@
 		B7F541C923D51C3000E89074 /* other */ = {
 			isa = PBXGroup;
 			children = (
+				B7513CFF23E1F48900C63827 /* networking */,
 				B7F541CC23D51C5C00E89074 /* storyboard */,
 				B7F541CA23D51C4300E89074 /* Other.swift */,
 				B7F541CF23D51CB700E89074 /* OtherMenuTable.swift */,
@@ -1675,7 +1694,6 @@
 				B74145D022F3CE1400B3B4FF /* Medusa.swift in Sources */,
 				B74145CC22F3CDEF00B3B4FF /* Hunter.swift in Sources */,
 				B7BCD7A822F472AF00CC29E6 /* FairyElement.swift in Sources */,
-				B7E14C0022EC50F800CABCD3 /* Game.swift in Sources */,
 				B7BCD7BA22F473A000CC29E6 /* WhiteArrowPawn.swift in Sources */,
 				B713774D23D25F7B006D57C2 /* Detail.swift in Sources */,
 				B7DF5BE223832BFF0022A8C2 /* PurchaseSkin.swift in Sources */,
@@ -1714,6 +1732,7 @@
 				B74145CA22F3CDDF00B3B4FF /* Grasshopper.swift in Sources */,
 				B7A6217D239FFB00005DCDA1 /* Historic.swift in Sources */,
 				B7AEEA8523A1C1BB002F950C /* PageHistoric.swift in Sources */,
+				B7513D0123E1F4C800C63827 /* RequestOther.swift in Sources */,
 				B7168BBC233A6C15008F59DE /* Date+GreaterThan.swift in Sources */,
 				B7BCD7D822F474BC00CC29E6 /* BlackPawn.swift in Sources */,
 				B74145C022F3CABB00B3B4FF /* TschessElement.swift in Sources */,
@@ -1771,6 +1790,7 @@
 				B7FCCC9B2373F12600C4DD88 /* Processor.swift in Sources */,
 				B7F5F64E23D67FB000BCF91F /* Config.swift in Sources */,
 				B7D0CAA023A96F5D006A7F9D /* ConfigCollectionViewCell.swift in Sources */,
+				B7513D0423E1F53300C63827 /* Game.swift in Sources */,
 				B7F541CB23D51C4300E89074 /* Other.swift in Sources */,
 				B7BCD7C622F4744200CC29E6 /* WhiteBishop.swift in Sources */,
 				B70F0C0D22EBC075001415AE /* AppDelegate.swift in Sources */,
