@@ -55,27 +55,34 @@ class OtherMenuTable: UITableViewController {
         cell.avatarImageView.image = decodedimage
         //cell.eloLabel.text = gameTableMenuItem.getOpponentElo()
         cell.usernameLabel.text = gameTableMenuItem.getUsernameOpponent()
+        //cell.usernameLabel.textColor = UIColor.black
+        
+        cell.oddsLabel.text = gameTableMenuItem.odds
+        cell.displacementLabel.text = gameTableMenuItem.disp
         
         let formatter = DateFormatter()
         formatter.dateFormat = "dd.MM.YY"
-        
-        
-        
         var yayayaya = formatter.string(from: DATE_TIME.toFormatDate(string: gameTableMenuItem.endDate))
         yayayaya.insert("'", at: yayayaya.index(yayayaya.endIndex, offsetBy: -2))
         cell.terminalDateLabel.text = yayayaya //should be terminated date, not the created date
         
-        //cell.usernameLabel.alpha = 0.5
-        //cell.avatarImageView.alpha = 0.5
-        //cell.eloLabel.alpha = 0.5
-        //cell.actionLabel.alpha = 0.5
-        //cell.viewWithTag(1)!.alpha = 0.5
-        //cell.actionLabel.textColor = UIColor.black
-        cell.usernameLabel.textColor = UIColor.black
+    
+        let winnerInt: Int = gameTableMenuItem.winnerInt
+        
+        if(winnerInt == 1){
+            cell.contentView.backgroundColor = Colour().getWin()
+        }
+        if(winnerInt == -1){
+            cell.contentView.backgroundColor = Colour().getLoss()
+        }
+        if(winnerInt == 0){
+            cell.contentView.backgroundColor = Colour().getDraw()
+        }
+        
         //cell.eloLabel.textColor = UIColor.black
         //if(gameTableMenuItem.winner == self.gameModel!.getUsernameOpponent()){
             
-            //cell.contentView.backgroundColor = Colour().getWin()
+            //
             
             //if(gameMenuTableList[indexPath.row].getDrawProposer().contains("TIMEOUT")){
                 //cell.actionLabel.text = "timeout"
