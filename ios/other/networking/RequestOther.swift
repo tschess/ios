@@ -79,8 +79,8 @@ class RequestOther {
             let date_end = serverRespose[index]["date_end"]! as! String
             print("date_end: \(date_end)")
             
-            let disp = String(serverRespose[index]["disp"]! as! Int)
-            let odds = String(serverRespose[index]["odds"]! as! Int)
+            let disp = serverRespose[index]["disp"]! as! Int
+            let odds = serverRespose[index]["odds"]! as! Int
             let winner = serverRespose[index]["winner"]! as! Int
             
             

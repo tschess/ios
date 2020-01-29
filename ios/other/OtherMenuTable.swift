@@ -57,8 +57,8 @@ class OtherMenuTable: UITableViewController {
         cell.usernameLabel.text = gameTableMenuItem.getUsernameOpponent()
         //cell.usernameLabel.textColor = UIColor.black
         
-        cell.oddsLabel.text = gameTableMenuItem.odds
-        cell.displacementLabel.text = gameTableMenuItem.disp
+        
+        
         
         let formatter = DateFormatter()
         formatter.dateFormat = "dd.MM.YY"
@@ -78,6 +78,38 @@ class OtherMenuTable: UITableViewController {
         if(winnerInt == 0){
             cell.contentView.backgroundColor = Colour().getDraw()
         }
+        
+        let oddsInt: Int = gameTableMenuItem.odds
+        
+        if(oddsInt >= 0){
+            cell.oddsLabel.text = "+"
+        } else {
+            cell.oddsLabel.text = "-"
+        }
+        
+        cell.displacementLabel.text = String(abs(gameTableMenuItem.disp))
+        
+        let disp: Int = gameTableMenuItem.disp
+        
+        if(disp >= 0){
+            if #available(iOS 13.0, *) {
+                let image = UIImage(systemName: "arrow.up")!
+                cell.displacementImage.image = image
+                cell.displacementImage.tintColor = .green
+            }
+        }
+        else {
+            if #available(iOS 13.0, *) {
+                let image = UIImage(systemName: "arrow.down")!
+                cell.displacementImage.image = image
+                cell.displacementImage.tintColor = .red
+            }
+        }
+        
+        
+        
+        
+        //cell.displacementLabel.text = gameTableMenuItem.disp
         
         //cell.eloLabel.textColor = UIColor.black
         //if(gameTableMenuItem.winner == self.gameModel!.getUsernameOpponent()){

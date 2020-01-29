@@ -68,8 +68,8 @@ class Game: Equatable, Hashable {
     
     
     var endDate: String
-    var disp: String
-    var odds: String
+    var disp: Int
+    var odds: Int
     var winnerInt: Int
     
     init(
@@ -90,8 +90,8 @@ class Game: Equatable, Hashable {
         checkOn: String = "NONE",
         
         endDate: String = "TBD",
-        disp: String = "TBD",
-        odds: String = "TBD",
+        disp: Int = 0,
+        odds: Int = 0,
         winnerInt: Int = 0
         
     ) {
