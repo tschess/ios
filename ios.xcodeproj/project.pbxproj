@@ -652,7 +652,7 @@
 			path = networking;
 			sourceTree = "<group>";
 		};
-		B74145B222F3C52600B3B4FF /* chess */ = {
+		B74145B222F3C52600B3B4FF /* tschess */ = {
 			isa = PBXGroup;
 			children = (
 				B70A86C52370784C00D303F0 /* networking */,
@@ -661,7 +661,7 @@
 				B70CEAC022FE42DF00F08541 /* controller */,
 				B74594A423DB6BD100B9F302 /* Tschess.swift */,
 			);
-			path = chess;
+			path = tschess;
 			sourceTree = "<group>";
 		};
 		B74145B322F3C53100B3B4FF /* fairy */ = {
@@ -835,7 +835,7 @@
 				B7A896112305FE3800F791A2 /* xChallenge */,
 				B74145BC22F3CA5F00B3B4FF /* element */,
 				B74145B322F3C53100B3B4FF /* fairy */,
-				B74145B222F3C52600B3B4FF /* chess */,
+				B74145B222F3C52600B3B4FF /* tschess */,
 				B7C5C00622EF3F1A00BFCB39 /* util */,
 				B7F3AB8722EF3C1800BE78D6 /* game_menu */,
 				B7E14BFE22EC50DD00CABCD3 /* model */,
