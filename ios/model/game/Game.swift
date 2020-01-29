@@ -65,8 +65,9 @@ class Game: Equatable, Hashable {
         return self.opponent
     }
     
-    
-    
+    var inbound: Bool
+    var invitation: Bool
+    var actualDate: String
     var endDate: String
     var disp: Int
     var odds: Int
@@ -92,7 +93,10 @@ class Game: Equatable, Hashable {
         endDate: String = "TBD",
         disp: Int = 0,
         odds: Int = 0,
-        winnerInt: Int = 0
+        winnerInt: Int = 0,
+        actualDate: String = "TBD",
+        invitation: Bool = false,
+        inbound: Bool = false
         
     ) {
         self.opponent = opponent
@@ -118,6 +122,9 @@ class Game: Equatable, Hashable {
         self.disp = disp
         self.odds = odds
         self.winnerInt = winnerInt
+        self.actualDate = actualDate
+        self.invitation = invitation
+        self.inbound = inbound
     }
     
     var skin: String
@@ -181,8 +188,6 @@ class Game: Equatable, Hashable {
     func getClock() -> String? {
         return clock
     }
-    
-    var inbound: Bool?
     
     func setInbound(inbound: Bool) {
         self.inbound = inbound

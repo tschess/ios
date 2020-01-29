@@ -81,7 +81,7 @@ class ActualTable: UITableViewController, SwipeTableViewCellDelegate {
             return nil
         }
         
-        if(!actualMenuItem.inbound!){
+        if(!actualMenuItem.inbound){
             
             guard orientation == .right else { return nil}
             
@@ -141,10 +141,20 @@ class ActualTable: UITableViewController, SwipeTableViewCellDelegate {
         let decodedimage = UIImage(data: dataDecoded)
         cell.avatarImageView.image = decodedimage
         
-        let status = gameTableMenuItem.getGameStatus()
         
-        if(status == "ONGOING"){
-            if(gameTableMenuItem.usernameTurn == self.player!.getUsername()){
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd.MM.YY"
+        var yayayaya = formatter.string(from: DateTime().toFormatDate(string: gameTableMenuItem.actualDate))
+        yayayaya.insert("'", at: yayayaya.index(yayayaya.endIndex, offsetBy: -2))
+        //cell.terminalDateLabel.text = yayayaya //should be terminated date, not the created date
+        cell.timeIndicatorLabel.text = yayayaya
+        
+        
+        let invitation = gameTableMenuItem.invitation
+        let inbound = gameTableMenuItem.inbound
+        
+        if(!invitation){
+            if(inbound){
                 if #available(iOS 13.0, *) {
                     let image = UIImage(systemName: "gamecontroller.fill")!
                     cell.actionImageView.image = image.withRenderingMode(.alwaysTemplate)
@@ -161,7 +171,7 @@ class ActualTable: UITableViewController, SwipeTableViewCellDelegate {
             return cell
         }
         // 'PROPOSED'...
-        if(gameTableMenuItem.inbound!){
+        if(inbound){
             if #available(iOS 13.0, *) {
                 //print("aHaHaHa")
                 //cell.actionImageView.tintColor = Colour().getRed()
@@ -213,8 +223,8 @@ class ActualTable: UITableViewController, SwipeTableViewCellDelegate {
             }
         }
         if(currentCount != self.gameMenuTableList.count){
-            self.gameMenuTableList = self.gameMenuTableList.sorted(by: { $0.inbound! && !$1.inbound! })
-            self.gameMenuTableList = self.gameMenuTableList.sorted(by: { $0.gameStatus < $1.gameStatus })
+            //self.gameMenuTableList = self.gameMenuTableList.sorted(by: { $0.inbound && !$1.inbound })
+            //self.gameMenuTableList = self.gameMenuTableList.sorted(by: { $0.gameStatus < $1.gameStatus })
             DispatchQueue.main.async() {
                 //self.activityIndicator!.stopAnimating()
                 //self.activityIndicator!.isHidden = true
@@ -224,7 +234,7 @@ class ActualTable: UITableViewController, SwipeTableViewCellDelegate {
     }
     
     func fetchMenuTableList(id: String) {
-        PageList().execute(player: self.player!, page: self.pageFromWhichContentLoads){ (result) in
+        RequestActual().execute(player: self.player!, page: self.pageFromWhichContentLoads){ (result) in
             if(result == nil){
                 return
             }
@@ -259,30 +269,14 @@ class ActualTable: UITableViewController, SwipeTableViewCellDelegate {
         }
     }
     
-    
-    //
-    //    override func tableView(_ tableView: UITableView, editActionsForRowAt: IndexPath) -> [UITableViewRowAction]? {
-    ////        let more = UITableViewRowAction(style: .normal, title: "nACK") { action, index in
-    ////            print("more button tapped")
-    ////        }
-    ////        more.backgroundColor = UIColor(red: 255/255.0, green: 211/255.0, blue: 211/255.0, alpha: 1)
-    //
-    //        let share = UITableViewRowAction(style: .normal, title: "ACK") { action, index in
-    //            print("share button tapped")
-    //        }
-    //        share.backgroundColor = UIColor(red: 211/255.0, green: 255/255.0, blue: 211/255.0, alpha: 1)
-    //
-    //        return [share]
-    //    }
-    
     override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let gameTableMenuItem = gameMenuTableList[indexPath.row]
-        if(!gameTableMenuItem.inbound!){ //rescind
+        if(!gameTableMenuItem.inbound){ //rescind
             let modifyAction = UIContextualAction(style: .normal, title:  "CANCEL", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
                 print("Update action ...")
                 success(true)
             })
-            if #available(iOS 13.0, *) { //xmark
+            if #available(iOS 13.0, *) {
                 modifyAction.image = UIImage(systemName: "xmark.rectangle.fill")!
             }
             modifyAction.backgroundColor = .black
@@ -301,14 +295,14 @@ class ActualTable: UITableViewController, SwipeTableViewCellDelegate {
     
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let gameTableMenuItem = gameMenuTableList[indexPath.row]
-        if(!gameTableMenuItem.inbound!){
+        if(!gameTableMenuItem.inbound){
             return nil
         }
         let modifyAction = UIContextualAction(style: .normal, title:  "ACK", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
             print("Update action ...")
             success(true)
         })
-        if #available(iOS 13.0, *) { //xmark
+        if #available(iOS 13.0, *) {
             modifyAction.image = UIImage(systemName: "hand.thumbsup.fill")!
         }
         modifyAction.backgroundColor = .green

@@ -21,7 +21,7 @@ class PlayerCore {
     var disp: String
     
     init(
-        id: String,
+        id: String = "TBD",
         username: String,
         avatar: String,
         elo: String = "TBD",
