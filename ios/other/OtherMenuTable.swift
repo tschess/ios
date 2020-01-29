@@ -180,14 +180,14 @@ class OtherMenuTable: UITableViewController {
             //self.activityIndicator!.startAnimating()
             
         }
-        var REQUEST_PAGE_SIZE: Int = 9
-        var requestPageIndex: Int = 0
+        let REQUEST_PAGE_SIZE: Int = 9
+        let requestPageIndex: Int = 0
         let requestPayload = [
             "id": self.gameModel!.getOpponent().getId(),
             "index": requestPageIndex,
             "size": REQUEST_PAGE_SIZE
             ] as [String: Any]
-        RequestOther().execute(requestPayload: requestPayload) { (result) in
+        RequestHistoricOther().execute(requestPayload: requestPayload) { (result) in
             DispatchQueue.main.async() {
                 //self.activityIndicator!.stopAnimating()
                 //self.activityIndicator!.isHidden = true

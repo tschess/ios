@@ -10,6 +10,8 @@ import UIKit
 
 class HistoricTable: UITableViewController {
     
+    let DATE_TIME: DateTime = DateTime()
+    
     var gameMenuTableList: [Game] = [Game]()
     var player: Player?
     var label: UILabel?
@@ -57,39 +59,96 @@ class HistoricTable: UITableViewController {
         let gameTableMenuItem = gameMenuTableList[indexPath.row]
         cell.usernameLabel.text = gameTableMenuItem.getUsernameOpponent()
         
-        let formatter = DateFormatter()
-        formatter.dateFormat = "dd.MM.YY"
-        var yayayaya = formatter.string(from: gameTableMenuItem.created!)
-        yayayaya.insert("'", at: yayayaya.index(yayayaya.endIndex, offsetBy: -2))
-        cell.terminalDateLabel.text = yayayaya //should be terminated date, not the created date
-        
         let dataDecoded: Data = Data(base64Encoded: gameTableMenuItem.getOpponentAvatar(), options: .ignoreUnknownCharacters)!
         let decodedimage = UIImage(data: dataDecoded)
         cell.avatarImageView.image = decodedimage
         
-        cell.usernameLabel.textColor = UIColor.black
+//        let formatter = DateFormatter()
+//        formatter.dateFormat = "dd.MM.YY"
+//        var yayayaya = formatter.string(from: gameTableMenuItem.end!)
+//        yayayaya.insert("'", at: yayayaya.index(yayayaya.endIndex, offsetBy: -2))
+//        cell.terminalDateLabel.text = yayayaya //should be terminated date, not the created date
+//
+//        let dataDecoded: Data = Data(base64Encoded: gameTableMenuItem.getOpponentAvatar(), options: .ignoreUnknownCharacters)!
+//        let decodedimage = UIImage(data: dataDecoded)
+//        cell.avatarImageView.image = decodedimage
+//
+//        cell.usernameLabel.textColor = UIColor.black
+//
+//        if(gameTableMenuItem.winner == self.player!.getUsername()){
+//
+//            cell.contentView.backgroundColor = Colour().getWin()
+//            if(gameMenuTableList[indexPath.row].getDrawProposer().contains("TIMEOUT")){
+//                gameMenuTableList[indexPath.row].setOutcome(outcome: "TIMEOUT")
+//            } else {
+//                gameMenuTableList[indexPath.row].setOutcome(outcome: "WIN")
+//            }
+//        }
+//        else if(gameTableMenuItem.winner == "DRAW"){
+//            cell.contentView.backgroundColor = Colour().getDraw()
+//            gameMenuTableList[indexPath.row].setOutcome(outcome: "DRAW")
+//        } else {
+//            cell.contentView.backgroundColor = Colour().getLoss()
+//
+//            if(gameMenuTableList[indexPath.row].getDrawProposer().contains("TIMEOUT")){
+//                gameMenuTableList[indexPath.row].setOutcome(outcome: "TIMEOUT")
+//            } else {
+//                gameMenuTableList[indexPath.row].setOutcome(outcome: "LOSS")
+//            }
+//        }
         
-        if(gameTableMenuItem.winner == self.player!.getUsername()){
+        //cell.usernameLabel.text = gameTableMenuItem.getUsernameOpponent()
+            //cell.usernameLabel.textColor = UIColor.black
             
-            cell.contentView.backgroundColor = Colour().getWin()
-            if(gameMenuTableList[indexPath.row].getDrawProposer().contains("TIMEOUT")){
-                gameMenuTableList[indexPath.row].setOutcome(outcome: "TIMEOUT")
-            } else {
-                gameMenuTableList[indexPath.row].setOutcome(outcome: "WIN")
-            }
-        }
-        else if(gameTableMenuItem.winner == "DRAW"){
-            cell.contentView.backgroundColor = Colour().getDraw()
-            gameMenuTableList[indexPath.row].setOutcome(outcome: "DRAW")
-        } else {
-            cell.contentView.backgroundColor = Colour().getLoss()
             
-            if(gameMenuTableList[indexPath.row].getDrawProposer().contains("TIMEOUT")){
-                gameMenuTableList[indexPath.row].setOutcome(outcome: "TIMEOUT")
-            } else {
-                gameMenuTableList[indexPath.row].setOutcome(outcome: "LOSS")
+            
+            
+            let formatter = DateFormatter()
+            formatter.dateFormat = "dd.MM.YY"
+            var yayayaya = formatter.string(from: DATE_TIME.toFormatDate(string: gameTableMenuItem.endDate))
+            yayayaya.insert("'", at: yayayaya.index(yayayaya.endIndex, offsetBy: -2))
+            cell.terminalDateLabel.text = yayayaya //should be terminated date, not the created date
+            
+        
+            let winnerInt: Int = gameTableMenuItem.winnerInt
+            
+            if(winnerInt == 1){
+                cell.contentView.backgroundColor = Colour().getWin()
             }
-        }
+            if(winnerInt == -1){
+                cell.contentView.backgroundColor = Colour().getLoss()
+            }
+            if(winnerInt == 0){
+                cell.contentView.backgroundColor = Colour().getDraw()
+            }
+            
+            let oddsInt: Int = gameTableMenuItem.odds
+            
+            if(oddsInt >= 0){
+                cell.oddsLabel.text = "+"
+            } else {
+                cell.oddsLabel.text = "-"
+            }
+            
+            cell.displacementLabel.text = String(abs(gameTableMenuItem.disp))
+            
+            let disp: Int = gameTableMenuItem.disp
+            
+            if(disp >= 0){
+                if #available(iOS 13.0, *) {
+                    let image = UIImage(systemName: "arrow.up")!
+                    cell.displacementImage.image = image
+                    cell.displacementImage.tintColor = .green
+                }
+            }
+            else {
+                if #available(iOS 13.0, *) {
+                    let image = UIImage(systemName: "arrow.down")!
+                    cell.displacementImage.image = image
+                    cell.displacementImage.tintColor = .red
+                }
+            }
+        
         return cell
     }
     
@@ -122,7 +181,7 @@ class HistoricTable: UITableViewController {
             }
         }
         if(currentCount != self.gameMenuTableList.count){
-            self.gameMenuTableList = self.gameMenuTableList.sorted(by: { $0.created! > $1.created! })
+            //self.gameMenuTableList = self.gameMenuTableList.sorted(by: { $0.created! > $1.created! })
             DispatchQueue.main.async() {
                 //self.activityIndicator!.stopAnimating()
                 //self.activityIndicator!.isHidden = true
@@ -132,22 +191,39 @@ class HistoricTable: UITableViewController {
     }
     
     func fetchMenuTableList(id: String) {
-        let pageHistoric = PageHistoric()
-        pageHistoric.setName(name: self.player!.getUsername())
-        pageHistoric.setMatrixDeserializer(name: self.player!.getUsername())
-        pageHistoric.execute(id: self.player!.getId(), page: self.pageFromWhichContentLoads){ (result) in
+//        let pageHistoric = PageHistoric()
+//        pageHistoric.setName(name: self.player!.getUsername())
+//        pageHistoric.setMatrixDeserializer(name: self.player!.getUsername())
+//        pageHistoric.execute(id: self.player!.getId(), page: self.pageFromWhichContentLoads){ (result) in
+//            if(result == nil){
+//                return
+//            }
+//            let resultList: [Game] = result!
+//            if(resultList.count == 0) {
+//                self.renderShrug()
+//                return
+//            }
+//            if(self.label != nil) {
+//                self.label!.removeFromSuperview()
+//            }
+//            self.appendToTableList(additionalCellList: resultList)
+//        }
+        let REQUEST_PAGE_SIZE: Int = 9
+        let requestPageIndex: Int = 0
+        let requestPayload = [
+            "id": self.player!.getId(),
+            "index": requestPageIndex,
+            "size": REQUEST_PAGE_SIZE
+            ] as [String: Any]
+        RequestHistoricSelf().execute(requestPayload: requestPayload) { (result) in
+            DispatchQueue.main.async() {
+                //self.activityIndicator!.stopAnimating()
+                //self.activityIndicator!.isHidden = true
+            }
             if(result == nil){
                 return
             }
-            let resultList: [Game] = result!
-            if(resultList.count == 0) {
-                self.renderShrug()
-                return
-            }
-            if(self.label != nil) {
-                self.label!.removeFromSuperview()
-            }
-            self.appendToTableList(additionalCellList: resultList)
+            self.appendToTableList(additionalCellList: result!)
         }
     }
     

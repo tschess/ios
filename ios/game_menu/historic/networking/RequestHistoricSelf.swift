@@ -8,13 +8,13 @@
 
 import Foundation
 
-class RequestOther {
+class RequestHistoricSelf {
     
     func execute(requestPayload: [String: Any], completion: @escaping (([Game]?) -> Void)) {
         
         print("requestPayload: \(requestPayload)")
         
-        let url = URL(string: "http://\(ServerAddress().IP):8080/game/other")!
+        let url = URL(string: "http://\(ServerAddress().IP):8080/game/historic")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Accept")
