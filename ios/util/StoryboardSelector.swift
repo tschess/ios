@@ -23,8 +23,8 @@ class StoryboardSelector {
                 //print("iPhone 6+/6S+/7+/8+") //magnus
                 return "MAGNUS"
             case 2436:
-                //print("iPhone X/XS/11 Pro")
-                return "XENOPHON"
+                //print("iPhone X/XS/11 Pro")	
+                return "CALHOUN"
             case 2688:
                 //print("iPhone XS Max/11 Pro Max") //calhoun
                 return "CALHOUN"
