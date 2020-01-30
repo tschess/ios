@@ -33,7 +33,7 @@
     {
       "size" : "60x60",
       "idiom" : "iphone",
-      "filename" : "logo_120.png",
+      "filename" : "120wood.png",
       "scale" : "2x"
     },
     {
@@ -89,7 +89,7 @@
     {
       "size" : "1024x1024",
       "idiom" : "ios-marketing",
-      "filename" : "Gradient BG.png",
+      "filename" : "1024.png",
       "scale" : "1x"
     }
   ],
