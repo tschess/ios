@@ -62,22 +62,24 @@ class ActualTable: UITableViewController, SwipeTableViewCellDelegate {
         print("orientation: \(orientation)")
         let actualMenuItem = gameMenuTableList[indexPath.row]
         
-        if(actualMenuItem.getGameStatus() == "ONGOING"){
+        if(!actualMenuItem.invitation){
             
-            let gameModel = gameMenuTableList[indexPath.row]
+            print("NOT INVITE: \(!actualMenuItem.invitation)")
             
-            let tschessElementMatrix = [[TschessElement?]](repeating: [TschessElement?](repeating: nil, count: 8), count: 8)
-            let gamestate = Gamestate(
-                gameModel: gameModel,
-                tschessElementMatrix: tschessElementMatrix
-            )
-            gamestate.setPlayer(player: self.player!)
-            PollingAgent().execute(id: gameModel.getIdentifier(), gamestate: gamestate) { (result, error) in
-                if(error != nil || result == nil){
-                    return
-                }
-                StoryboardSelector().chess(gameModel: gameModel, player: gamestate.getPlayer(), gamestate: result!)
-            }
+//            let gameModel = gameMenuTableList[indexPath.row]
+//
+//            let tschessElementMatrix = [[TschessElement?]](repeating: [TschessElement?](repeating: nil, count: 8), count: 8)
+//            let gamestate = Gamestate(
+//                gameModel: gameModel,
+//                tschessElementMatrix: tschessElementMatrix
+//            )
+//            gamestate.setPlayer(player: self.player!)
+//            PollingAgent().execute(id: gameModel.getIdentifier(), gamestate: gamestate) { (result, error) in
+//                if(error != nil || result == nil){
+//                    return
+//                }
+//                StoryboardSelector().chess(gameModel: gameModel, player: gamestate.getPlayer(), gamestate: result!)
+//            }
             return nil
         }
         
