@@ -188,14 +188,6 @@ UIDropInteractionDelegate {
             }
         }
         
-        let totalContentHeight = self.contentView.frame.size.height - 8
-        
-        self.splitViewHeight0.constant = totalContentHeight/3
-        self.splitViewHeight1.constant = totalContentHeight/3
-        self.splitViewHeight2.constant = totalContentHeight/3
-        
-        
-        
         self.tschessElementMatrix0 = self.player!.getConfig0()
         self.tschessElementMatrix1 = self.player!.getConfig1()
         self.tschessElementMatrix2 = self.player!.getConfig2()
@@ -203,6 +195,12 @@ UIDropInteractionDelegate {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        
+        let totalContentHeight = self.contentView.frame.size.height - 8
+        
+        self.splitViewHeight0.constant = totalContentHeight/3
+        self.splitViewHeight1.constant = totalContentHeight/3
+        self.splitViewHeight2.constant = totalContentHeight/3
         
         self.configCollectionView0.bounces = false
         self.configCollectionView0.alwaysBounceVertical = false
