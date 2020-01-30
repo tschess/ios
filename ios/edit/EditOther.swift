@@ -88,36 +88,36 @@ class EditOther: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate
         "red_arrow"]
     
     //MARK: Layout: Content
-       @IBOutlet weak var notificationLabel: UILabel!
-       @IBOutlet weak var splitViewHeight0: NSLayoutConstraint!
-       @IBOutlet weak var splitViewHeight1: NSLayoutConstraint!
-       @IBOutlet weak var splitViewHeight2: NSLayoutConstraint!
-       @IBOutlet weak var contentView: UIView!
-       @IBOutlet weak var totalPointLabel: UILabel!
-       var totalPointValue: Int?
-       
-       private func setTotalPointValue() {
-           let totalPointValue = self.getPointValue(elementMatrix: self.elementMatrixActiv!)
-           self.totalPointLabel.text = String(totalPointValue)
-       }
-       
-       @IBOutlet weak var titleLabel: UILabel!
-       var titleText: String?
-       
-       func setTitleText(titleText: String) {
-           self.titleText = titleText
-       }
-       
-       //MARK: Input
-       @IBOutlet weak var tschessElementCollectionView: UICollectionView!
-       @IBOutlet weak var configCollectionViewHeight: NSLayoutConstraint!
-       @IBOutlet weak var configCollectionView: DynamicCollectionView!
-       
-       //MARK: Variables
-       var elementMatrixAbort: [[TschessElement?]]?
-       var elementMatrixCache: [[TschessElement?]]?
-       var elementMatrixActiv: [[TschessElement?]]?
-       var selectionElementName: String?
+    @IBOutlet weak var notificationLabel: UILabel!
+    @IBOutlet weak var splitViewHeight0: NSLayoutConstraint!
+    @IBOutlet weak var splitViewHeight1: NSLayoutConstraint!
+    @IBOutlet weak var splitViewHeight2: NSLayoutConstraint!
+    @IBOutlet weak var contentView: UIView!
+    @IBOutlet weak var totalPointLabel: UILabel!
+    var totalPointValue: Int?
+    
+    private func setTotalPointValue() {
+        let totalPointValue = self.getPointValue(elementMatrix: self.elementMatrixActiv!)
+        self.totalPointLabel.text = String(totalPointValue)
+    }
+    
+    @IBOutlet weak var titleLabel: UILabel!
+    var titleText: String?
+    
+    func setTitleText(titleText: String) {
+        self.titleText = titleText
+    }
+    
+    //MARK: Input
+    @IBOutlet weak var tschessElementCollectionView: UICollectionView!
+    @IBOutlet weak var configCollectionViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var configCollectionView: DynamicCollectionView!
+    
+    //MARK: Variables
+    var elementMatrixAbort: [[TschessElement?]]?
+    var elementMatrixCache: [[TschessElement?]]?
+    var elementMatrixActiv: [[TschessElement?]]?
+    var selectionElementName: String?
     
     private func getPointValue(elementMatrix: [[TschessElement?]]) -> Int {
         var totalPointValue: Int = 0
@@ -347,6 +347,14 @@ class EditOther: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.configCollectionView.reloadData()
+        
+        if let longPressRecognizer = self.configCollectionView.gestureRecognizers?.compactMap({ $0 as? UILongPressGestureRecognizer}).first {
+            longPressRecognizer.minimumPressDuration = 0.1 // your custom value
+        }
+        
+        if let longPressRecognizer = self.tschessElementCollectionView.gestureRecognizers?.compactMap({ $0 as? UILongPressGestureRecognizer}).first {
+            longPressRecognizer.minimumPressDuration = 0.1 // your custom value
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -544,14 +552,14 @@ extension EditOther: UICollectionViewDelegate {
             return
         }
         //if(self.titleText!.contains("play!")){
-            let storyboard: UIStoryboard = UIStoryboard(name: "Ack", bundle: nil)
-            let viewController = storyboard.instantiateViewController(withIdentifier: "Ack") as! Ack
-            viewController.setPlayer(player: self.playerSelf!)
-            viewController.setOpponent(opponent: self.playerOther!) // <-- REDUNDANT
-            let gameModel = Game(opponent: self.playerOther!) //TODO: !!! // <-- REDUNDANT
-            viewController.setGameModel(gameModel: gameModel) // <-- REDUNDANT
-            UIApplication.shared.keyWindow?.rootViewController = viewController
-            //return
+        let storyboard: UIStoryboard = UIStoryboard(name: "Ack", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "Ack") as! Ack
+        viewController.setPlayer(player: self.playerSelf!)
+        viewController.setOpponent(opponent: self.playerOther!) // <-- REDUNDANT
+        let gameModel = Game(opponent: self.playerOther!) //TODO: !!! // <-- REDUNDANT
+        viewController.setGameModel(gameModel: gameModel) // <-- REDUNDANT
+        UIApplication.shared.keyWindow?.rootViewController = viewController
+        //return
         //}
     }
     
@@ -582,15 +590,15 @@ extension EditOther: UICollectionViewDelegate {
                 return
             }
             //if(self.titleText!.contains("play!")){
-                let storyboard: UIStoryboard = UIStoryboard(name: "Ack", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "Ack") as! Ack
-                viewController.setPlayer(player: self.playerSelf!)
-                viewController.setOpponent(opponent: self.playerOther!) // <-- REDUNDANT
-                let gameModel = Game(opponent: self.playerOther!) //TODO: !!! // <-- REDUNDANT
-                viewController.setGameModel(gameModel: gameModel) // <-- REDUNDANT
-                UIApplication.shared.keyWindow?.rootViewController = viewController
-                return
-            //}
+            let storyboard: UIStoryboard = UIStoryboard(name: "Ack", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier: "Ack") as! Ack
+            viewController.setPlayer(player: self.playerSelf!)
+            viewController.setOpponent(opponent: self.playerOther!) // <-- REDUNDANT
+            let gameModel = Game(opponent: self.playerOther!) //TODO: !!! // <-- REDUNDANT
+            viewController.setGameModel(gameModel: gameModel) // <-- REDUNDANT
+            UIApplication.shared.keyWindow?.rootViewController = viewController
+            return
+        //}
         default: //save...
             tabBar.selectedItem = nil
             
@@ -645,14 +653,14 @@ extension EditOther: UICollectionViewDelegate {
                         return
                     }
                     //if(self.titleText!.contains("play!")){
-                        let storyboard: UIStoryboard = UIStoryboard(name: "Ack", bundle: nil)
-                        let viewController = storyboard.instantiateViewController(withIdentifier: "Ack") as! Ack
-                        viewController.setPlayer(player: self.playerSelf!)
-                        viewController.setOpponent(opponent: self.playerOther!) // <-- REDUNDANT
-                        let gameModel = Game(opponent: self.playerOther!) //TODO: !!! // <-- REDUNDANT
-                        viewController.setGameModel(gameModel: gameModel) // <-- REDUNDANT
-                        UIApplication.shared.keyWindow?.rootViewController = viewController
-                        //return
+                    let storyboard: UIStoryboard = UIStoryboard(name: "Ack", bundle: nil)
+                    let viewController = storyboard.instantiateViewController(withIdentifier: "Ack") as! Ack
+                    viewController.setPlayer(player: self.playerSelf!)
+                    viewController.setOpponent(opponent: self.playerOther!) // <-- REDUNDANT
+                    let gameModel = Game(opponent: self.playerOther!) //TODO: !!! // <-- REDUNDANT
+                    viewController.setGameModel(gameModel: gameModel) // <-- REDUNDANT
+                    UIApplication.shared.keyWindow?.rootViewController = viewController
+                    //return
                     //}
                 }
                 

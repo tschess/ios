@@ -316,6 +316,7 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
     //MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.configCollectionView.delegate = self
         self.configCollectionView.dataSource = self
         self.configCollectionView.dragDelegate = self
@@ -338,6 +339,14 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.configCollectionView.reloadData()
+        
+        if let longPressRecognizer = configCollectionView.gestureRecognizers?.compactMap({ $0 as? UILongPressGestureRecognizer}).first {
+            longPressRecognizer.minimumPressDuration = 0.1 // your custom value
+        }
+        
+        if let longPressRecognizer = tschessElementCollectionView.gestureRecognizers?.compactMap({ $0 as? UILongPressGestureRecognizer}).first {
+            longPressRecognizer.minimumPressDuration = 0.1 // your custom value
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
