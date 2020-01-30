@@ -227,6 +227,13 @@ UIDropInteractionDelegate {
         self.view.removeGestureRecognizer(self.swipeRightGesture!)
         self.view.removeGestureRecognizer(self.swipeLeftGesture!)
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.configCollectionView0.reloadData()
+        self.configCollectionView1.reloadData()
+        self.configCollectionView2.reloadData()
+    }
 }
 
 //MARK: - UICollectionViewDataSource
