@@ -344,6 +344,11 @@ class EditOther: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate
         self.tabBarMenu.delegate = self
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.configCollectionView.reloadData()
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
