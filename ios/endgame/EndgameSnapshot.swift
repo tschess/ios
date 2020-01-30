@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EndgameOpponent: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UITabBarDelegate {
+class EndgameSnapshot: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UITabBarDelegate {
     
     @IBOutlet weak var titleBackView: UIView!
     @IBOutlet weak var titleBackImage: UIImageView!

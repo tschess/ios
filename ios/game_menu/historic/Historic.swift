@@ -146,7 +146,7 @@ class Historic: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate 
         DispatchQueue.main.async {
             
             let storyboard: UIStoryboard = UIStoryboard(name: "EndgameOpponent", bundle: nil)
-            let viewController = storyboard.instantiateViewController(withIdentifier: "EndgameOpponent") as! EndgameOpponent
+            let viewController = storyboard.instantiateViewController(withIdentifier: "EndgameOpponent") as! EndgameSnapshot
             viewController.setGameModel(gameModel: gameModel)
             self.present(viewController, animated: false, completion: nil)
             

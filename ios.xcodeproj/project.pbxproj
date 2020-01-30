@@ -133,8 +133,8 @@
 		B7CB62F6237BB10800E50204 /* StartCalhoun.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7CB62F5237BB10800E50204 /* StartCalhoun.storyboard */; };
 		B7CCB61623D7B252008C34A1 /* EditSelf.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7CCB61523D7B252008C34A1 /* EditSelf.storyboard */; };
 		B7CCB61823D7B2B9008C34A1 /* EditSelf.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7CCB61723D7B2B9008C34A1 /* EditSelf.swift */; };
-		B7CCB61A23D7DD99008C34A1 /* EndgameOpponent.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7CCB61923D7DD99008C34A1 /* EndgameOpponent.storyboard */; };
-		B7CCB61C23D7F1EC008C34A1 /* EndgameOpponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7CCB61B23D7F1EC008C34A1 /* EndgameOpponent.swift */; };
+		B7CCB61A23D7DD99008C34A1 /* EndgameSnapshot.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7CCB61923D7DD99008C34A1 /* EndgameSnapshot.storyboard */; };
+		B7CCB61C23D7F1EC008C34A1 /* EndgameSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7CCB61B23D7F1EC008C34A1 /* EndgameSnapshot.swift */; };
 		B7D0CAA023A96F5D006A7F9D /* ConfigCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D0CA9F23A96F5D006A7F9D /* ConfigCollectionViewCell.swift */; };
 		B7D66C9E2378BC3100AAA00B /* CanonicalMate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D66C9D2378BC3100AAA00B /* CanonicalMate.swift */; };
 		B7DA221A2399C26A006256CC /* ScannerCalhoun.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7DA22192399C26A006256CC /* ScannerCalhoun.storyboard */; };
@@ -353,8 +353,8 @@
 		B7CB62F5237BB10800E50204 /* StartCalhoun.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = StartCalhoun.storyboard; sourceTree = "<group>"; };
 		B7CCB61523D7B252008C34A1 /* EditSelf.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditSelf.storyboard; sourceTree = "<group>"; };
 		B7CCB61723D7B2B9008C34A1 /* EditSelf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSelf.swift; sourceTree = "<group>"; };
-		B7CCB61923D7DD99008C34A1 /* EndgameOpponent.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EndgameOpponent.storyboard; sourceTree = "<group>"; };
-		B7CCB61B23D7F1EC008C34A1 /* EndgameOpponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndgameOpponent.swift; sourceTree = "<group>"; };
+		B7CCB61923D7DD99008C34A1 /* EndgameSnapshot.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EndgameSnapshot.storyboard; sourceTree = "<group>"; };
+		B7CCB61B23D7F1EC008C34A1 /* EndgameSnapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndgameSnapshot.swift; sourceTree = "<group>"; };
 		B7D0CA9F23A96F5D006A7F9D /* ConfigCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigCollectionViewCell.swift; sourceTree = "<group>"; };
 		B7D66C9D2378BC3100AAA00B /* CanonicalMate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanonicalMate.swift; sourceTree = "<group>"; };
 		B7DA22192399C26A006256CC /* ScannerCalhoun.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ScannerCalhoun.storyboard; sourceTree = "<group>"; };
@@ -1188,7 +1188,7 @@
 			isa = PBXGroup;
 			children = (
 				B7DF5C13238344620022A8C2 /* storyboard */,
-				B7CCB61B23D7F1EC008C34A1 /* EndgameOpponent.swift */,
+				B7CCB61B23D7F1EC008C34A1 /* EndgameSnapshot.swift */,
 			);
 			path = endgame;
 			sourceTree = "<group>";
@@ -1196,7 +1196,7 @@
 		B7DF5C13238344620022A8C2 /* storyboard */ = {
 			isa = PBXGroup;
 			children = (
-				B7CCB61923D7DD99008C34A1 /* EndgameOpponent.storyboard */,
+				B7CCB61923D7DD99008C34A1 /* EndgameSnapshot.storyboard */,
 			);
 			path = storyboard;
 			sourceTree = "<group>";
@@ -1553,7 +1553,7 @@
 				B7A6218923A02467005DCDA1 /* Quick.storyboard in Resources */,
 				B7F5F64C23D67BC800BCF91F /* Config.storyboard in Resources */,
 				B7DF146F23CE5179007B2C7D /* PreviewNeptuneCalhoun.storyboard in Resources */,
-				B7CCB61A23D7DD99008C34A1 /* EndgameOpponent.storyboard in Resources */,
+				B7CCB61A23D7DD99008C34A1 /* EndgameSnapshot.storyboard in Resources */,
 				B708D0E7236B366800A899F9 /* LaunchScreen.storyboard in Resources */,
 				B74594A323DB65E900B9F302 /* Tschess.storyboard in Resources */,
 				B7DF147323CE51AA007B2C7D /* PreviewHyperionCalhoun.storyboard in Resources */,
@@ -1650,7 +1650,7 @@
 				B7BCD7B622F4736800CC29E6 /* BlackSpy.swift in Sources */,
 				B7F7C8F622FFA5770060AC38 /* Threat.swift in Sources */,
 				B7F5878A23D12E6300A91CD3 /* SkinTableCell.swift in Sources */,
-				B7CCB61C23D7F1EC008C34A1 /* EndgameOpponent.swift in Sources */,
+				B7CCB61C23D7F1EC008C34A1 /* EndgameSnapshot.swift in Sources */,
 				B74145CE22F3CE0500B3B4FF /* LandminePawn.swift in Sources */,
 				B70A86CB2370989000D303F0 /* ServerAddress.swift in Sources */,
 				B7AF787723E0D80E00BAD8EC /* PlayerCoreDeserialiizer.swift in Sources */,
