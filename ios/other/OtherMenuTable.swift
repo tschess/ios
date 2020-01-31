@@ -76,13 +76,16 @@ class OtherMenuTable: UITableViewController {
         let winnerInt: Int = gameTableMenuItem.winnerInt
         
         if(winnerInt == 1){
-            cell.contentView.backgroundColor = Colour().getWin()
+            //cell.contentView.backgroundColor = Colour().getWin()
+            cell.contentView.backgroundColor = UIColor.black
         }
         if(winnerInt == -1){
-            cell.contentView.backgroundColor = Colour().getLoss()
+            //cell.contentView.backgroundColor = Colour().getLoss()
+            cell.contentView.backgroundColor = UIColor.black
         }
         if(winnerInt == 0){
-            cell.contentView.backgroundColor = Colour().getDraw()
+            //cell.contentView.backgroundColor = Colour().getDraw()
+            cell.contentView.backgroundColor = UIColor.black
         }
         
         let oddsInt: Int = gameTableMenuItem.odds

@@ -120,7 +120,7 @@ class Home: UIViewController, UITabBarDelegate {
                DispatchQueue.main.async() {
                    self.tabBarMenu.selectedImageTintColor = UIColor.magenta
                    if #available(iOS 13.0, *) {
-                       let notify = self.tabBarMenu.items![2]
+                       let notify = self.tabBarMenu.items![1]
                        notify.selectedImage = UIImage(systemName: "gamecontroller")!
                        self.tabBarMenu.selectedItem = notify
                    }
@@ -132,9 +132,8 @@ class Home: UIViewController, UITabBarDelegate {
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         self.tabBarMenu.selectedImageTintColor = UIColor.white
         if #available(iOS 13.0, *) {
-            let notify = self.tabBarMenu.items![2]
+            let notify = self.tabBarMenu.items![1]
             notify.selectedImage = UIImage(systemName: "gamecontroller.fill")!
-            self.tabBarMenu.selectedItem = notify
         }
         switch item.tag {
         case 0:
