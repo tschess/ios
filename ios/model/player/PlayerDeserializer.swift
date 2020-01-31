@@ -21,10 +21,15 @@ class PlayerDeserializer {
         let date = dictionary["date"]! as! String
         let disp = String(dictionary["disp"]! as! Int)
       
-        let address = dictionary["address"]! as! String
-        let name = dictionary["name"]! as! String
-        let surname = dictionary["surname"]! as! String
-        let email = dictionary["email"]! as! String
+        //let address = dictionary["address"]! as! String
+        //let name = dictionary["name"]! as! String
+        //let surname = dictionary["surname"]! as! String
+        //let email = dictionary["email"]! as! String
+        let address = "TBD"
+        let name = "TBD"
+        let surname = "TBD"
+        let email = "TBD"
+        
         let matrix0 = dictionary["config0"]! as! [[String]]
         let matrix1 = dictionary["config1"]! as! [[String]]
         let matrix2 = dictionary["config2"]! as! [[String]]

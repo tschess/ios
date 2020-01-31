@@ -46,6 +46,12 @@ class Home: UIViewController, UITabBarDelegate {
             object: nil)
     }
     
+    override func viewDidDisappear(_ animated: Bool){
+        super.viewDidDisappear(animated)
+        self.notificationTimerStop()
+        
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -77,6 +83,7 @@ class Home: UIViewController, UITabBarDelegate {
             }
         }
         
+        self.notificationTimerStart() //gotta stop it too...
     }
     
     @objc func activateProfile() {
@@ -89,20 +96,59 @@ class Home: UIViewController, UITabBarDelegate {
         StoryboardSelector().other(player: self.player!, gameModel: gameModel)
     }
     
+    // MARK: NOTIFICATION TIMER
+       
+       var notificationTimer: Timer?
+       
+       func notificationTimerStart() {
+           guard self.notificationTimer == nil else {
+               return
+           }
+           self.notificationTimer = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(self.notificationTimerTask), userInfo: nil, repeats: true)
+       }
+       
+       func notificationTimerStop() {
+           self.notificationTimer?.invalidate()
+           self.notificationTimer = nil
+       }
+          
+       @objc func notificationTimerTask() {
+           GetNotify().execute(id: self.player!.getId()) { (notify) in
+               if(!notify){
+                   return
+               }
+               DispatchQueue.main.async() {
+                   self.tabBarMenu.selectedImageTintColor = UIColor.magenta
+                   if #available(iOS 13.0, *) {
+                       let notify = self.tabBarMenu.items![2]
+                       notify.selectedImage = UIImage(systemName: "gamecontroller")!
+                       self.tabBarMenu.selectedItem = notify
+                   }
+               }
+           }
+       }
+    
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        self.tabBarMenu.selectedImageTintColor = UIColor.white
+        if #available(iOS 13.0, *) {
+            let notify = self.tabBarMenu.items![2]
+            notify.selectedImage = UIImage(systemName: "gamecontroller.fill")!
+            self.tabBarMenu.selectedItem = notify
+        }
         switch item.tag {
         case 0:
             print("skin")
+            self.notificationTimerStop()
             StoryboardSelector().purchase(player: self.player!, remaining: 13)
         case 1:
             print("quick")
+            self.notificationTimerStop()
             DispatchQueue.main.async() {
                 self.activityIndicator.isHidden = false
                 self.activityIndicator.startAnimating()
             }
             RequestQuick().success(id: self.player!.getId()) { (result) in
-                
                 
                 DispatchQueue.main.async() {
                     self.activityIndicator.stopAnimating()
@@ -119,8 +165,10 @@ class Home: UIViewController, UITabBarDelegate {
             }
         case 3:
             print("game")
+            self.notificationTimerStop()
             StoryboardSelector().actual(player: self.player!)
         case 4:
+            self.notificationTimerStop()
             print("overview") //OVERVIEW
             let storyboard: UIStoryboard = UIStoryboard(name: "Config", bundle: nil)
             let viewController = storyboard.instantiateViewController(withIdentifier: "Config") as! Config
