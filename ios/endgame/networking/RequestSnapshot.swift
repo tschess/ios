@@ -80,6 +80,10 @@ class RequestSnapshot {
                 let state = matrixDeserializer.deserialize(stringRepresentation: state0, orientationBlack: !canonical)
                 endgameCore.state = state
                 
+                print("winner_skin: \(json["winner_skin"])")
+                //let winner_skin: SKIN = json["winner_skin"]! as! SKIN
+                //endgameCore.winner_skin = winner_skin
+                
                 completion(endgameCore)
             } catch let error {
                 print(error.localizedDescription)

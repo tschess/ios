@@ -100,9 +100,9 @@ class Other: UIViewController, UITabBarDelegate {
                let requestPayload = ["game": gameModel.getIdentifier(), "player": self.gameModel!.getOpponent().getId()]
                
         RequestSnapshot().execute(requestPayload: requestPayload, endgameCore: endgameCore) { (snapshot) in
-                   if let game = game {
-                       print("game: \(game)")
-                   }
+                   //if let game = game {
+                       print("snapshot: \(snapshot)")
+                   //}
                }
         
 //        gameModel.setSkin(skin: skin)
