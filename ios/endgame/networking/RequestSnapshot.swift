@@ -68,6 +68,8 @@ class RequestSnapshot {
                 //endgameCore.outcome = outcome
                 
                 let state0: [[String]] = json["state"]! as! [[String]]
+                print("json[\"state\"]: \(json["state"])\n\n")
+                print("state0: \(state0)")
                 
                 let matrixDeserializer = MatrixDeserializer()
                 matrixDeserializer.setUsername(username: usernameBlack)
@@ -78,6 +80,7 @@ class RequestSnapshot {
                 matrixDeserializer.setUsernameBlack(username: usernameBlack)
                 matrixDeserializer.setGameStatus(gameStatus: "RESOLVED")
                 let state = matrixDeserializer.deserialize(stringRepresentation: state0, orientationBlack: !canonical)
+                print("\n\n state: \(state)")
                 endgameCore.state = state
                 
                 print("winner_skin: \(json["winner_skin"])")

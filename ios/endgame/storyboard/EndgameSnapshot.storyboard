@@ -165,7 +165,7 @@
                                         </constraints>
                                     </imageView>
                                     <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="RAM-33-HiP">
-                                        <rect key="frame" x="188.66666666666666" y="50.666666666666671" width="37" height="37"/>
+                                        <rect key="frame" x="188.66666666666666" y="50.666666666666686" width="37" height="37"/>
                                         <color key="tintColor" red="0.86923474069999995" green="0.012778783219999999" blue="0.00083617179190000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </activityIndicatorView>
@@ -209,6 +209,8 @@
                                     </label>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="v4N-X5-tXk" customClass="DynamicCollectionView" customModule="ios" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="46" width="414" height="200"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="200" id="UrR-TT-KiU"/>
                                         </constraints>

@@ -10,6 +10,12 @@ import UIKit
 
 class EndgameSnapshot: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UITabBarDelegate {
     
+    var snapshot: EndgameCore?
+    
+    func setSnapshot(snapshot: EndgameCore){
+        self.snapshot = snapshot
+    }
+    
     @IBOutlet weak var titleBackView: UIView!
     @IBOutlet weak var titleBackImage: UIImageView!
     
@@ -34,7 +40,7 @@ class EndgameSnapshot: UIViewController, UICollectionViewDataSource, UICollectio
     
     @IBOutlet weak var collectionView: DynamicCollectionView!
     @IBOutlet weak var collectionViewHeight: NSLayoutConstraint!
-
+    
     /* * */
     @IBOutlet weak var statsView: UIView!
     @IBOutlet weak var statsImage: UIImageView!
@@ -44,11 +50,7 @@ class EndgameSnapshot: UIViewController, UICollectionViewDataSource, UICollectio
     
     @IBOutlet weak var tabBarMenu: UITabBar!
     
-    var gameModel: Game?
-    
-    public func setGameModel(gameModel: Game){
-        self.gameModel = gameModel
-    }
+    var tschessElementMatrix: [[TschessElement?]]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,27 +58,18 @@ class EndgameSnapshot: UIViewController, UICollectionViewDataSource, UICollectio
         self.activityIndicator.isHidden = true
         self.collectionView.isHidden = true
         
-        let winner = self.gameModel!.getWinner()
-        self.usernameWinner.text = winner
+        self.tschessElementMatrix = self.snapshot!.state!
         
-        let opponent = self.gameModel!.getUsernameOpponent()
+        self.usernameWinner.text = self.snapshot!.usernameWinner
         
-        if(winner == opponent){
-            let dataDecoded: Data = Data(base64Encoded: self.gameModel!.getOpponentAvatar(), options: .ignoreUnknownCharacters)!
-            let decodedimage = UIImage(data: dataDecoded)
-            self.winnerImageView!.image = decodedimage
-        } else {
-            let dataDecoded: Data = Data(base64Encoded: self.gameModel!.getAvatarSelf(), options: .ignoreUnknownCharacters)!
-            let decodedimage = UIImage(data: dataDecoded)
-            self.winnerImageView!.image = decodedimage
-        }
+        let dataDecoded: Data = Data(base64Encoded: self.snapshot!.avatarWinner, options: .ignoreUnknownCharacters)!
+        let decodedimage = UIImage(data: dataDecoded)
+        self.winnerImageView!.image = decodedimage
         
-        let usernameWhite = self.gameModel!.getUsernameWhite()
-        self.usernameLabelWhite.text = usernameWhite
-        let usernameBlack = self.gameModel!.getUsernameBlack()
-        self.usernameLabelBlack.text = usernameBlack
+        self.usernameLabelWhite.text = self.snapshot!.usernameWhite!
+        self.usernameLabelBlack.text = self.snapshot!.usernameBlack!
         
-        self.outcomeLabel.text = self.gameModel!.getOutcome() //correct?
+        //self.outcomeLabel.text = "\(self.snapshot!.outcome!)"
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -119,14 +112,11 @@ class EndgameSnapshot: UIViewController, UICollectionViewDataSource, UICollectio
     }
     
     private func assignCellTschessElement(indexPath: IndexPath) -> UIImage? {
-        //DANGER!!
-        if(gameModel!.getState() != nil) {
-            let tschessElementMatrix = gameModel!.getState()!
-            let x = indexPath.row / 8
-            let y = indexPath.row % 8
-            if(tschessElementMatrix[x][y] != nil){
-                return tschessElementMatrix[x][y]!.getImageVisible()
-            }
+        let x = indexPath.row / 8
+        let y = indexPath.row % 8
+        if(self.tschessElementMatrix![x][y] != nil){
+            //print("name: \(self.tschessElementMatrix![x][y]!.name)")
+            return self.tschessElementMatrix![x][y]!.getImageVisible()
         }
         return nil
     }

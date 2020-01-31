@@ -97,22 +97,24 @@ class Other: UIViewController, UITabBarDelegate {
         
         let endgameCore: EndgameCore = EndgameCore(id: id, date: date, avatarWinner: avatarWinner, usernameWinner: usernameWinner)
                
-               let requestPayload = ["game": gameModel.getIdentifier(), "player": self.gameModel!.getOpponent().getId()]
+        let requestPayload = ["game_id": gameModel.getIdentifier(), "self_id": self.player!.getId()]
                
         RequestSnapshot().execute(requestPayload: requestPayload, endgameCore: endgameCore) { (snapshot) in
                    //if let game = game {
+            DispatchQueue.main.async {
                        print("snapshot: \(snapshot)")
+            let storyboard: UIStoryboard = UIStoryboard(name: "EndgameSnapshot", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier: "EndgameSnapshot") as! EndgameSnapshot
+            viewController.setSnapshot(snapshot: snapshot!)
+            self.present(viewController, animated: false, completion: nil)
                    //}
-               }
+            }}
         
 //        gameModel.setSkin(skin: skin)
 //        gameModel.setAvatarSelf(avatarSelf: self.gameModel!.getOpponentAvatar()) //????
 //        DispatchQueue.main.async {
 //
-//            let storyboard: UIStoryboard = UIStoryboard(name: "EndgameSnapshot", bundle: nil)
-//            let viewController = storyboard.instantiateViewController(withIdentifier: "EndgameSnapshot") as! EndgameSnapshot
-//            viewController.setGameModel(gameModel: gameModel)
-//            self.present(viewController, animated: false, completion: nil)
+
 //
 //        }
     }
