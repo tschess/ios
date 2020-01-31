@@ -10,7 +10,7 @@ import Foundation
 
 class RequestChallenge {
     
-    func execute(requestPayload: [String: Any], completion: @escaping (([Game]?) -> Void)) {
+    func execute(requestPayload: [String: Any], completion: @escaping ((Bool) -> Void)) {
         
         print("\n\nRequestChallenge: \(requestPayload)\n\n")
         
@@ -23,7 +23,7 @@ class RequestChallenge {
         do {
             request.httpBody = try JSONSerialization.data(withJSONObject: requestPayload, options: .prettyPrinted)
         } catch _ {
-            completion(nil)
+            completion(false)
         }
         
         
@@ -31,23 +31,23 @@ class RequestChallenge {
             
             guard error == nil else {
                 print("b")
-                completion(nil)
+                completion(false)
                 return
             }
             guard let data = data else {
                 print("c")
-                completion(nil)
+                completion(false)
                 return
             }
             if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {
                 print("d")
-                completion(nil)
+                completion(false)
                 return
             }
             do {
                 guard let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any] else {
                     print("e")
-                    completion(nil)
+                    completion(false)
                     return
                 }
                 
@@ -60,10 +60,11 @@ class RequestChallenge {
                 
                 //let leaderboardPage: [Game] = self.generateLeaderboardPage(page: requestPayload["index"]!, size: requestPayload["size"]!, serverRespose: json)
                 //completion(leaderboardPage)
-                completion(nil)
+                completion(true)
                 
             } catch let error {
                 print(error.localizedDescription)
+                completion(false)
             }
         }).resume()
     }
