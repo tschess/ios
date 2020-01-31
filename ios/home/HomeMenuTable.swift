@@ -18,13 +18,14 @@ class HomeMenuTable: UITableViewController {
         super.init(coder: aDecoder)
     }
     
-    var activityIndicator: UIActivityIndicatorView?
     var leaderboardTableList: [Game] = [Game]()
     var player: Player?
     
     override func viewDidLoad() {
         self.fetchGameList()
     }
+    
+    var activityIndicator: UIActivityIndicatorView?
     
     public func setActivityIndicator(activityIndicator: UIActivityIndicatorView) {
         self.activityIndicator = activityIndicator

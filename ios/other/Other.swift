@@ -39,6 +39,7 @@ class Other: UIViewController, UITabBarDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.otherMenuTable = children.first as? OtherMenuTable
+        self.otherMenuTable!.setActivityIndicator(activityIndicator: self.activityIndicator!)
         self.otherMenuTable!.setGameModel(gameModel: self.gameModel!)
         self.otherMenuTable!.setPlayer(player: self.player!)
         self.otherMenuTable!.fetchMenuTableList()
@@ -85,20 +86,35 @@ class Other: UIViewController, UITabBarDelegate {
     @objc func onDidReceiveData(_ notification: NSNotification) {
         let gameMenuSelectionIndex = notification.userInfo!["challenge_menu_game_selection"] as! Int
         let gameModel = self.otherMenuTable!.getGameMenuTableList()[gameMenuSelectionIndex]
-        
-        let skin = self.otherMenuTable!.getGameMenuTableList()[gameMenuSelectionIndex].getSkin()
-        //print("XXXXX: \(skin)")
-        
-        gameModel.setSkin(skin: skin)
-        gameModel.setAvatarSelf(avatarSelf: self.gameModel!.getOpponentAvatar()) //????
-        DispatchQueue.main.async {
-            
-            let storyboard: UIStoryboard = UIStoryboard(name: "EndgameOpponent", bundle: nil)
-            let viewController = storyboard.instantiateViewController(withIdentifier: "EndgameOpponent") as! EndgameSnapshot
-            viewController.setGameModel(gameModel: gameModel)
-            self.present(viewController, animated: false, completion: nil)
-            
+    
+        let id: String = gameModel.getIdentifier()
+        let date: String = gameModel.endDate
+        var avatarWinner: String = gameModel.getOpponentAvatar()
+        let usernameWinner: String = gameModel.winner
+        if(gameModel.winnerInt == 1){
+            avatarWinner = self.player!.getAvatar()
         }
+        
+        let endgameCore: EndgameCore = EndgameCore(id: id, date: date, avatarWinner: avatarWinner, usernameWinner: usernameWinner)
+               
+               let requestPayload = ["game": gameModel.getIdentifier(), "player": self.gameModel!.getOpponent().getId()]
+               
+        RequestSnapshot().execute(requestPayload: requestPayload, endgameCore: endgameCore) { (snapshot) in
+                   if let game = game {
+                       print("game: \(game)")
+                   }
+               }
+        
+//        gameModel.setSkin(skin: skin)
+//        gameModel.setAvatarSelf(avatarSelf: self.gameModel!.getOpponentAvatar()) //????
+//        DispatchQueue.main.async {
+//
+//            let storyboard: UIStoryboard = UIStoryboard(name: "EndgameSnapshot", bundle: nil)
+//            let viewController = storyboard.instantiateViewController(withIdentifier: "EndgameSnapshot") as! EndgameSnapshot
+//            viewController.setGameModel(gameModel: gameModel)
+//            self.present(viewController, animated: false, completion: nil)
+//
+//        }
     }
     
     @IBAction func backButtonClick(_ sender: Any) {

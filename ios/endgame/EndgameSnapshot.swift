@@ -17,24 +17,16 @@ class EndgameSnapshot: UIViewController, UICollectionViewDataSource, UICollectio
     @IBOutlet weak var titleLabel: UILabel!
     
     /* * */
-    
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var headerImage: UIImageView!
     
-    //@IBOutlet weak var infoViewWidth: NSLayoutConstraint!
     @IBOutlet weak var winnerImageView: UIImageView!
-    
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    
     @IBOutlet weak var usernameLabelWhite: UILabel!
-    //@IBOutlet weak var usernameLabelWhite: UILabel!
     @IBOutlet weak var usernameLabelBlack: UILabel!
-    //@IBOutlet weak var usernameLabelBlack: UILabel!
     @IBOutlet weak var usernameWinner: UILabel!
-    //@IBOutlet weak var endgameCatalystLabel: UILabel!
     
     /* * */
-    
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var contentImage: UIImageView!
     
@@ -44,17 +36,13 @@ class EndgameSnapshot: UIViewController, UICollectionViewDataSource, UICollectio
     @IBOutlet weak var collectionViewHeight: NSLayoutConstraint!
 
     /* * */
-    
     @IBOutlet weak var statsView: UIView!
     @IBOutlet weak var statsImage: UIImageView!
     
-    //@IBOutlet weak var moveCountLabel: UILabel!
     @IBOutlet weak var moveCountLabel: UILabel!
-    //@IBOutlet weak var outcomeLabel: UILabel!
     @IBOutlet weak var outcomeLabel: UILabel!
     
     @IBOutlet weak var tabBarMenu: UITabBar!
-
     
     var gameModel: Game?
     
@@ -89,13 +77,7 @@ class EndgameSnapshot: UIViewController, UICollectionViewDataSource, UICollectio
         self.usernameLabelBlack.text = usernameBlack
         
         self.outcomeLabel.text = self.gameModel!.getOutcome() //correct?
-        
-        //self.infoViewWidth.constant =
-        //let totalHeaderWidth = self.headerView.frame.size.height
-        //self.infoViewWidth.constant = totalHeaderWidth/2
     }
-    
-    //var device: String?
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

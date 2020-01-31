@@ -30,6 +30,8 @@
 		B71FA72D22FA124700B6F216 /* MyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71FA72C22FA124700B6F216 /* MyCollectionViewCell.swift */; };
 		B7285E0322F1E2980083F1CE /* DynamicCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7285E0222F1E2980083F1CE /* DynamicCollectionView.swift */; };
 		B72AF9E323E3BDBF003740CD /* GetNotify.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72AF9E223E3BDBF003740CD /* GetNotify.swift */; };
+		B72AF9E623E3D477003740CD /* RequestSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72AF9E523E3D477003740CD /* RequestSnapshot.swift */; };
+		B72AF9E923E3D8CC003740CD /* EndgameCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72AF9E823E3D8CC003740CD /* EndgameCore.swift */; };
 		B74136C723DE34A0001B3D60 /* LoginTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74136C623DE34A0001B3D60 /* LoginTask.swift */; };
 		B74136C923DE34CC001B3D60 /* TestTask0.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74136C823DE34CC001B3D60 /* TestTask0.swift */; };
 		B74136CB23DE34EF001B3D60 /* TestTask1.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74136CA23DE34EF001B3D60 /* TestTask1.swift */; };
@@ -245,6 +247,8 @@
 		B71FA72C22FA124700B6F216 /* MyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCollectionViewCell.swift; sourceTree = "<group>"; };
 		B7285E0222F1E2980083F1CE /* DynamicCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicCollectionView.swift; sourceTree = "<group>"; };
 		B72AF9E223E3BDBF003740CD /* GetNotify.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetNotify.swift; sourceTree = "<group>"; };
+		B72AF9E523E3D477003740CD /* RequestSnapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestSnapshot.swift; sourceTree = "<group>"; };
+		B72AF9E823E3D8CC003740CD /* EndgameCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndgameCore.swift; sourceTree = "<group>"; };
 		B73894312328071100231170 /* ios.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ios.entitlements; sourceTree = "<group>"; };
 		B74136C623DE34A0001B3D60 /* LoginTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTask.swift; sourceTree = "<group>"; };
 		B74136C823DE34CC001B3D60 /* TestTask0.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTask0.swift; sourceTree = "<group>"; };
@@ -650,6 +654,22 @@
 				B74136CA23DE34EF001B3D60 /* TestTask1.swift */,
 			);
 			path = networking;
+			sourceTree = "<group>";
+		};
+		B72AF9E423E3D405003740CD /* networking */ = {
+			isa = PBXGroup;
+			children = (
+				B72AF9E523E3D477003740CD /* RequestSnapshot.swift */,
+			);
+			path = networking;
+			sourceTree = "<group>";
+		};
+		B72AF9E723E3D88C003740CD /* model */ = {
+			isa = PBXGroup;
+			children = (
+				B72AF9E823E3D8CC003740CD /* EndgameCore.swift */,
+			);
+			path = model;
 			sourceTree = "<group>";
 		};
 		B74145B222F3C52600B3B4FF /* tschess */ = {
@@ -1190,6 +1210,8 @@
 		B7DF5C102383437D0022A8C2 /* endgame */ = {
 			isa = PBXGroup;
 			children = (
+				B72AF9E723E3D88C003740CD /* model */,
+				B72AF9E423E3D405003740CD /* networking */,
 				B7DF5C13238344620022A8C2 /* storyboard */,
 				B7CCB61B23D7F1EC008C34A1 /* EndgameSnapshot.swift */,
 			);
@@ -1679,6 +1701,7 @@
 				B7DF5BE223832BFF0022A8C2 /* PurchaseSkin.swift in Sources */,
 				B7F7C8ED22FF81910060AC38 /* HorizontalVertical.swift in Sources */,
 				B7AEEA8A23A1C714002F950C /* ActualTable.swift in Sources */,
+				B72AF9E923E3D8CC003740CD /* EndgameCore.swift in Sources */,
 				B74145DE22F3CE8300B3B4FF /* Rook.swift in Sources */,
 				B7BCD7C422F473F300CC29E6 /* WhiteSpy.swift in Sources */,
 				B7F541D223D51CF900E89074 /* OtherMenuCell.swift in Sources */,
@@ -1721,6 +1744,7 @@
 				B7BCD7AE22F4732500CC29E6 /* BlackGrasshopper.swift in Sources */,
 				B7D66C9E2378BC3100AAA00B /* CanonicalMate.swift in Sources */,
 				B7FCCC8323737E3300C4DD88 /* CanonicalCheck.swift in Sources */,
+				B72AF9E623E3D477003740CD /* RequestSnapshot.swift in Sources */,
 				B7F7C8EF22FF85550060AC38 /* KingMovement.swift in Sources */,
 				B7BCD7C222F473E500CC29E6 /* WhiteMedusa.swift in Sources */,
 				B7471DBF23A6E3B0008F70A3 /* WhiteReveal.swift in Sources */,

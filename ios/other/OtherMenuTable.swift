@@ -10,6 +10,12 @@ import UIKit
 
 class OtherMenuTable: UITableViewController {
     
+    var activityIndicator: UIActivityIndicatorView?
+    
+    public func setActivityIndicator(activityIndicator: UIActivityIndicatorView) {
+        self.activityIndicator = activityIndicator
+    }
+    
     let DATE_TIME: DateTime = DateTime()
     
     var gameMenuTableList: [Game] = [Game]()
@@ -105,43 +111,6 @@ class OtherMenuTable: UITableViewController {
                 cell.displacementImage.tintColor = .red
             }
         }
-        
-        
-        
-        
-        //cell.displacementLabel.text = gameTableMenuItem.disp
-        
-        //cell.eloLabel.textColor = UIColor.black
-        //if(gameTableMenuItem.winner == self.gameModel!.getUsernameOpponent()){
-            
-            //
-            
-            //if(gameMenuTableList[indexPath.row].getDrawProposer().contains("TIMEOUT")){
-                //cell.actionLabel.text = "timeout"
-                //gameMenuTableList[indexPath.row].setOutcome(outcome: "TIMEOUT")
-            //} else {
-                //cell.actionLabel.text = "win"
-                //gameMenuTableList[indexPath.row].setOutcome(outcome: "WIN")
-            //}
-//        }
-//        else if(gameTableMenuItem.winner == "DRAW"){
-//            //cell.actionLabel.text = "draw"
-//            cell.contentView.backgroundColor = Colour().getDraw()
-//            gameMenuTableList[indexPath.row].setOutcome(outcome: "DRAW")
-//        } else {
-//
-//            if(gameMenuTableList[indexPath.row].getDrawProposer().contains("TIMEOUT")){
-//                //cell.actionLabel.text = "timeout"
-//                gameMenuTableList[indexPath.row].setOutcome(outcome: "TIMEOUT")
-//            } else {
-//                //cell.actionLabel.text = "loss"
-//                gameMenuTableList[indexPath.row].setOutcome(outcome: "LOSS")
-//            }
-//            cell.contentView.backgroundColor = Colour().getLoss()
-//
-//
-//        }
-        
         return cell
     }
     
@@ -163,21 +132,10 @@ class OtherMenuTable: UITableViewController {
     }
     
     func fetchMenuTableList() {
-//        let pageHistoric = PageHistoric()
-//        pageHistoric.setName(name: self.gameModel!.getUsernameOpponent())
-//        pageHistoric.setMatrixDeserializer(name: self.gameModel!.getUsernameOpponent())
-//        pageHistoric.executeLeaderboard(gameModel: self.gameModel!, page: self.pageFromWhichContentLoads){ (result) in
-//            if(result == nil){
-//                self.renderShrug()
-//                print("0 - 0")
-//                return
-//            }
-//            print("1 - 1")
-//            self.appendToLeaderboardTableList(additionalCellList: result!)
-//        }
+
         DispatchQueue.main.async() {
-            //self.activityIndicator!.isHidden = false
-            //self.activityIndicator!.startAnimating()
+            self.activityIndicator!.isHidden = false
+            self.activityIndicator!.startAnimating()
             
         }
         let REQUEST_PAGE_SIZE: Int = 9
@@ -189,8 +147,8 @@ class OtherMenuTable: UITableViewController {
             ] as [String: Any]
         RequestHistoricOther().execute(requestPayload: requestPayload) { (result) in
             DispatchQueue.main.async() {
-                //self.activityIndicator!.stopAnimating()
-                //self.activityIndicator!.isHidden = true
+                self.activityIndicator!.stopAnimating()
+                self.activityIndicator!.isHidden = true
             }
             if(result == nil){
                 return
@@ -208,7 +166,6 @@ class OtherMenuTable: UITableViewController {
             }
         }
         if(currentCount != self.gameMenuTableList.count){
-            //self.gameMenuTableList = self.gameMenuTableList.sorted(by: { $0.created! > $1.created! })
             DispatchQueue.main.async() {
                 self.tableView.reloadData()
             }
