@@ -860,7 +860,7 @@
 				B7F541D323D5206F00E89074 /* challenge */,
 				B7F541C923D51C3000E89074 /* other */,
 				B7F541BF23D51A4300E89074 /* home */,
-				B7A6218423A02422005DCDA1 /* quick */,
+				B7A6218423A02422005DCDA1 /* play */,
 				B7EF811823886EE000E89191 /* eth */,
 				B7DF5C102383437D0022A8C2 /* endgame */,
 				B71451C42379CCAE002FAF54 /* skins */,
@@ -921,7 +921,7 @@
 			path = storyboard;
 			sourceTree = "<group>";
 		};
-		B7A6218423A02422005DCDA1 /* quick */ = {
+		B7A6218423A02422005DCDA1 /* play */ = {
 			isa = PBXGroup;
 			children = (
 				B7A6218523A02430005DCDA1 /* storyboard */,
@@ -930,7 +930,7 @@
 				B718A0BB23D77532006CCA20 /* SampleSkin.swift */,
 				B7877C4923DA659000F59FF3 /* Ack.swift */,
 			);
-			path = quick;
+			path = play;
 			sourceTree = "<group>";
 		};
 		B7A6218523A02430005DCDA1 /* storyboard */ = {

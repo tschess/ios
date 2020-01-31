@@ -164,7 +164,7 @@
                                     <constraint firstAttribute="height" constant="50" id="3Aw-0g-FIT"/>
                                 </constraints>
                                 <items>
-                                    <tabBarItem tag="1" title="quick" image="bolt" catalog="system" selectedImage="bolt.fill" id="Z5R-KS-Z6j">
+                                    <tabBarItem tag="1" title="play" image="bolt" catalog="system" selectedImage="bolt.fill" id="Z5R-KS-Z6j">
                                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tabBarItem>
                                     <tabBarItem tag="3" title="games" image="gamecontroller" catalog="system" selectedImage="gamecontroller.fill" id="Ccy-HC-zcU">
