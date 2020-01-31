@@ -12,9 +12,9 @@ class RequestChallenge {
     
     func execute(requestPayload: [String: Any], completion: @escaping (([Game]?) -> Void)) {
         
-        //print("page: \(page)")
+        print("\n\nRequestChallenge: \(requestPayload)\n\n")
         
-        let url = URL(string: "http://\(ServerAddress().IP):8080/player/leaderboard")!
+        let url = URL(string: "http://\(ServerAddress().IP):8080/game/challenge")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Accept")
@@ -45,14 +45,14 @@ class RequestChallenge {
                 return
             }
             do {
-                guard let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [[String: Any]] else {
+                guard let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any] else {
                     print("e")
                     completion(nil)
                     return
                 }
                 
-                //print(json)
-                print("count: \(json.count)")
+                print(json)
+                //print("count: \(json.count)")
                 
                 //let xxx = json["content"] as! [[String: Any]]
                 
@@ -66,47 +66,6 @@ class RequestChallenge {
                 print(error.localizedDescription)
             }
         }).resume()
-    }
-    
-    private func generateLeaderboardPage(page: Int, size: Int, serverRespose: [[String: Any]]) -> [Game] {
-        var leaderboardPage = [Game]()
-        for index in stride(from: 0, to: serverRespose.count, by: 1) {
-            
-            let id = serverRespose[index]["id"]! as! String
-            let name = serverRespose[index]["username"]! as! String
-            let avatar = serverRespose[index]["avatar"]! as! String
-            let elo = String(serverRespose[index]["elo"]! as! Int)
-            
-            /* * */
-            //var rank0 =
-            //rank0 += 1
-            let rank = String(serverRespose[index]["rank"]! as! Int)
-            /* * */
-            
-            let disp = String(serverRespose[index]["disp"]! as! Int)
-            let date = serverRespose[index]["date"]! as! String
-            
-            let opponent = PlayerCore(
-                id: id,
-                username: name,
-                avatar: avatar,
-                elo: elo,
-                rank: rank,
-                date: date,
-                disp: disp)
-            
-            let game = Game(opponent: opponent)
-            leaderboardPage.append(game)
-        }
-        return leaderboardPage
-    }
-    
-    enum SKIN {
-        case DEFAULT
-        case IAPETUS
-        case CALYPSO
-        case HYPERION
-        case NEPTUNE
     }
     
 }

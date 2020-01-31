@@ -117,9 +117,6 @@ class Other: UIViewController, UITabBarDelegate {
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         switch item.tag {
         case 1:
-
-            
-            
             print("1")
             let storyboard: UIStoryboard = UIStoryboard(name: "Challenge", bundle: nil)
             let viewController = storyboard.instantiateViewController(withIdentifier: "Challenge") as! Challenge

@@ -6,13 +6,6 @@
 //  Copyright © 2019 bahlsenwitz. All rights reserved.
 //
 
-
-//let requestPayload = [
-//"id_self": self.player!.getId(),
-//"id_other": self.gameModel!.getOpponent().getId(),
-//"skin": self.player!.getId(),
-//"config": self.gameModel!.getOpponent().getId()]
-
 import UIKit
 
 class Challenge:
@@ -31,8 +24,8 @@ UIGestureRecognizerDelegate {
     
     func generateTraditionalMatrix() -> [[TschessElement]] {
             
-        var row_0 = [Pawn(), Pawn(), Pawn(), Pawn(), Pawn(), Pawn(), Pawn(), Pawn()]
-        var row_1 = [Rook(), Knight(), Bishop(), Queen(), King(), Bishop(), Knight(), Rook()]
+        let row_0 = [Pawn(), Pawn(), Pawn(), Pawn(), Pawn(), Pawn(), Pawn(), Pawn()]
+        let row_1 = [Rook(), Knight(), Bishop(), Queen(), King(), Bishop(), Knight(), Rook()]
             
             return [row_0, row_1]
         }
@@ -430,43 +423,35 @@ UIGestureRecognizerDelegate {
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         switch item.tag {
         default: //1
-            //self.issueChallengeButton.isHidden = true
             
             self.activityIndicator.isHidden = false
             self.activityIndicator.startAnimating()
             
-            //var clock = "24"
-            //            if(pickerSelectionTimeLimit == "01:00 h"){
-            //                clock = "1"
-            //            }
-            //            if(pickerSelectionTimeLimit == "00:05 m"){
-            //                clock = "5"
-            //            }
-            var config = "config0"
-            //            if(pickerSelectionConfiguration == "config. 1"){
-            //                config = "config1"
-            //            }
-            //            if(pickerSelectionConfiguration == "config. 2"){
-            //                config = "config2"
-            //            }
-            let white_name = gameModel!.getUsernameOpponent()
-            let white_uuid = gameModel!.getOpponentId()
-            let black_name = player!.getUsername()
-            let black_uuid = player!.getId()
-            let updated = DATE_TIME.currentDateString()
-            let requestPayload = [
-                "white_name": white_name,
-                "white_uuid": white_uuid,
-                "black_name": black_name,
-                "black_uuid": black_uuid,
-                "clock": clock,
-                "config": config,
-                "updated": updated,
-                "created": updated
-                ] as [String : Any]
+            let requestPayload: [String: Any] = [
+            "id_self": self.player!.getId(),
+            "id_other": self.gameModel!.getOpponent().getId(),
+            "skin": "DEFAULT",
+            "config": 0]
+            
+            RequestChallenge().execute(requestPayload: requestPayload) { (result) in
+                
+                print("result: \(result)")
+                
+                DispatchQueue.main.async {
+                    StoryboardSelector().other(player: self.player!, gameModel: self.gameModel!)
+                }
+            }
             
         }
     }
+    
+//    enum SKIN {
+//        case DEFAULT
+//        case IAPETUS
+//        case CALYPSO
+//        case HYPERION
+//        case NEPTUNE
+//    }
 }
 
 
