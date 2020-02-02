@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SkinTableCell: UITableViewCell {
+class SkinsTableCell: UITableViewCell {
     
     @IBOutlet weak var cellNameLabel: UILabel!
     @IBOutlet weak var cellForegroundView: UIView!

@@ -22,7 +22,7 @@ class ShowMeSkins: UIViewController, UITabBarDelegate {
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var tabBarMenu: UITabBar!
     
-    var skinTableMenu: SkinTableMenu?
+    var skinTableMenu: SkinsTableMenu?
     
     var player: Player?
     
@@ -62,7 +62,7 @@ class ShowMeSkins: UIViewController, UITabBarDelegate {
     }
     
     @objc func onDidReceiveData(_ notification: NSNotification) {
-        let skinSelection = notification.userInfo!["skin_selection"] as! Skin
+        let skinSelection = notification.userInfo!["skin_selection"] as! SkinCore
         
         DispatchQueue.main.async {
             switch skinSelection.getName() {
@@ -105,7 +105,7 @@ class ShowMeSkins: UIViewController, UITabBarDelegate {
         super.viewDidLoad()
         
         self.tabBarMenu.delegate = self
-        self.skinTableMenu = children.first as? SkinTableMenu
+        self.skinTableMenu = children.first as? SkinsTableMenu
         
         NotificationCenter.default.addObserver(
             self,

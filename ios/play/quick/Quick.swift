@@ -264,11 +264,11 @@ UIGestureRecognizerDelegate {
         let blue: UIColor = UIColor(red: 84/255.0, green: 140/255.0, blue: 240/255.0, alpha: 1)
         let green: UIColor = UIColor(red: 0/255.0, green: 255/255.0, blue: 88/255.0, alpha: 1)
         
-        let hyperion: Skin = Skin(name: "hyperion", foreColor: purple, backColor: blue)
-        let calypso: Skin = Skin(name: "calypso", foreColor: pink, backColor: UIColor.black)
-        let neptune: Skin = Skin(name: "neptune", foreColor: green, backColor: orange, backAlpha: 0.85)
+        let hyperion: SkinCore = SkinCore(name: "hyperion", foreColor: purple, backColor: blue)
+        let calypso: SkinCore = SkinCore(name: "calypso", foreColor: pink, backColor: UIColor.black)
+        let neptune: SkinCore = SkinCore(name: "neptune", foreColor: green, backColor: orange, backAlpha: 0.85)
         
-        let iapetus: Skin = Skin(
+        let iapetus: SkinCore = SkinCore(
             name: "iapetus",
             foreColor: UIColor.white,
             foreImage: UIImage(named: "iapetus"),
@@ -303,7 +303,7 @@ UIGestureRecognizerDelegate {
         }
     }
     
-    var skinList: Array<Skin>?
+    var skinList: Array<SkinCore>?
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)

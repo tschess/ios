@@ -34,74 +34,11 @@ class RequestAck {
                     return
                 }
                 
-                let skin = json["skin"] as! String
-                gameModel.setSkin(skin: skin)
+                print("999\n\n\n")
+                print(json)
+                print("\n\n\n999")
                 
-                let identifier =  json["id"] as! String
-                //print("identifier: \(identifier)")
-                gameModel.setIdentifier(identifier: identifier)
-                
-                let white =  json["white"] as! [String: Any]
-                //print("white: \(white)")
-                let usernameWhite =  white["name"] as! String
-                gameModel.setUsernameWhite(usernameWhite: usernameWhite)
-                //print("usernameWhite: \(usernameWhite)")
-                
-                let black =  json["black"] as! [String: Any]
-                //print("black: \(black)")
-                let usernameBlack =  black["name"] as! String
-                gameModel.setUsernameBlack(usernameBlack: usernameBlack)
-                //print("usernameBlack: \(usernameBlack)")
-                
-                /* * */
-                let configurationInviter = json["config"] as! [[String]]
-                //print("configurationInviterMatrix: \(configurationInviterMatrix)")
-                let tschessElementMatrix = self.generateTschessElementMatrix(configurationInviter: configurationInviter, configurationAcceptor: config)
-                /* * */
-                
-                
-                let messageWhite = json["white_message"]! as! String
-                gameModel.setMessageWhite(messageWhite: messageWhite)
-                let seenMessageWhite = json["white_seen"]! as! Bool
-                gameModel.setSeenMessageWhite(seenMessageWhite: seenMessageWhite)
-                let messageWhitePosted = json["white_posted"]! as! String
-                gameModel.setMessageWhitePosted(messageWhitePosted: messageWhitePosted)
-                
-                let messageBlack = json["black_message"]! as! String
-                gameModel.setMessageBlack(messageBlack: messageBlack)
-                let seenMessageBlack = json["black_seen"]! as! Bool
-                gameModel.setSeenMessageBlack(seenMessageBlack: seenMessageBlack)
-                let messageBlackPosted = json["black_posted"]! as! String
-                gameModel.setMessageBlackPosted(messageBlackPosted: messageBlackPosted)
-                
-                
-                
-                let usernameTurn =  json["turn"] as! String
-                //print("usernameTurn: \(usernameTurn)")
-                gameModel.setUsernameTurn(usernameTurn: usernameTurn)
-                
-                let status =  json["status"] as! String
-                //print("status: \(status)")
-                gameModel.setGameStatus(gameStatus: status)
-                
-                let clock =  json["clock"] as! Int
-                //print("clock: \(clock)")
-                gameModel.setClock(clock: String(clock))
-                
-                //gameModel.setLastMoveBlack(lastMoveBlack: self.dateTime.currentDateString())
-                gameModel.setLastMoveWhite(lastMoveWhite: "TBD")
-                //gameModel.updateNow()
-                let gamestate = Gamestate(gameModel: gameModel, tschessElementMatrix: tschessElementMatrix)
-                gamestate.setPlayer(player: player)
-                
-                let winner = json["winner"]! as! String
-                
-                gamestate.setWinner(winner: winner)
-                
-                let requestPayload = GamestateSerializer().execute(gamestate: gamestate)
-                UpdateGamestate().execute(requestPayload: requestPayload)
-                
-                completion(gamestate)
+                completion(nil)
                 
             } catch let error {
                 print(error.localizedDescription)
@@ -166,9 +103,9 @@ class RequestAck {
     func generateTschessElementBlack(name: String) -> TschessElement? {
         if(name.contains("Landmine")){
             let blackLandminePawn = BlackLandminePawn()
-            blackLandminePawn.setUsername(username: self.player!.getUsername())
-            blackLandminePawn.setUsernameBlack(username: self.gameModel!.getUsernameBlack())
-            blackLandminePawn.setImageVisible(imageVisible: blackLandminePawn.getImageDefault())
+            //blackLandminePawn.setUsername(username: self.player!.getUsername())
+            //blackLandminePawn.setUsernameBlack(username: self.gameModel!.getUsernameBlack())
+            //blackLandminePawn.setImageVisible(imageVisible: blackLandminePawn.getImageDefault())
             return blackLandminePawn
         }
         if(name.contains("Arrow")){
@@ -213,9 +150,9 @@ class RequestAck {
     func generateTschessElementWhite(name: String) -> TschessElement? {
         if(name.contains("Landmine")){
             let whiteLandminePawn = WhiteLandminePawn()
-            whiteLandminePawn.setUsername(username: self.player!.getUsername())
-            whiteLandminePawn.setUsernameWhite(username: self.gameModel!.getUsernameWhite())
-            whiteLandminePawn.setImageVisible(imageVisible: whiteLandminePawn.getImageDefault())
+            //whiteLandminePawn.setUsername(username: self.player!.getUsername())
+            //whiteLandminePawn.setUsernameWhite(username: self.gameModel!.getUsernameWhite())
+            //whiteLandminePawn.setImageVisible(imageVisible: whiteLandminePawn.getImageDefault())
             return whiteLandminePawn
         }
         if(name.contains("Arrow")){

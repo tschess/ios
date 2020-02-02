@@ -29,7 +29,7 @@
 		B70D31B323E7812300345DB0 /* RequestAck.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70D31B223E7812300345DB0 /* RequestAck.swift */; };
 		B70D31B623E7816D00345DB0 /* TschessCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70D31B523E7816D00345DB0 /* TschessCore.swift */; };
 		B70F0C0D22EBC075001415AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70F0C0C22EBC075001415AE /* AppDelegate.swift */; };
-		B713774923D20320006D57C2 /* Skin.swift in Sources */ = {isa = PBXBuildFile; fileRef = B713774823D20320006D57C2 /* Skin.swift */; };
+		B713774923D20320006D57C2 /* SkinCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B713774823D20320006D57C2 /* SkinCore.swift */; };
 		B713774D23D25F7B006D57C2 /* Detail.swift in Sources */ = {isa = PBXBuildFile; fileRef = B713774C23D25F7B006D57C2 /* Detail.swift */; };
 		B713F8E123E4CF8B00580DB5 /* UpdateNack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B713F8E023E4CF8B00580DB5 /* UpdateNack.swift */; };
 		B714BF28237C942A000DD80E /* PlayerCreate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B714BF27237C942A000DD80E /* PlayerCreate.swift */; };
@@ -171,13 +171,12 @@
 		B7F541D223D51CF900E89074 /* OtherMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F541D123D51CF900E89074 /* OtherMenuCell.swift */; };
 		B7F541D523D5208400E89074 /* Challenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F541D423D5208400E89074 /* Challenge.swift */; };
 		B7F541D823D520A400E89074 /* Challenge.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7F541D723D520A400E89074 /* Challenge.storyboard */; };
-		B7F5878423D0AE4900A91CD3 /* ShowMeSkins.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7F5878323D0AE4900A91CD3 /* ShowMeSkins.storyboard */; };
 		B7F5878623D12D8000A91CD3 /* ShowMeSkins.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F5878523D12D8000A91CD3 /* ShowMeSkins.swift */; };
-		B7F5878823D12E3300A91CD3 /* SkinTableMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F5878723D12E3300A91CD3 /* SkinTableMenu.swift */; };
-		B7F5878A23D12E6300A91CD3 /* SkinTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F5878923D12E6300A91CD3 /* SkinTableCell.swift */; };
+		B7F5878823D12E3300A91CD3 /* SkinsTableMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F5878723D12E3300A91CD3 /* SkinsTableMenu.swift */; };
+		B7F5878A23D12E6300A91CD3 /* SkinsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F5878923D12E6300A91CD3 /* SkinsTableCell.swift */; };
 		B7F5F63923D5EA3000BCF91F /* EditOther.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F5F63823D5EA3000BCF91F /* EditOther.swift */; };
 		B7F5F63C23D5EA4A00BCF91F /* EditOther.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7F5F63B23D5EA4A00BCF91F /* EditOther.storyboard */; };
-		B7F5F63E23D6232600BCF91F /* Skin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7F5F63D23D6232600BCF91F /* Skin.storyboard */; };
+		B7F5F63E23D6232600BCF91F /* Skins.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7F5F63D23D6232600BCF91F /* Skins.storyboard */; };
 		B7F5F64023D629C100BCF91F /* Detail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7F5F63F23D629C100BCF91F /* Detail.storyboard */; };
 		B7F5F64223D630E800BCF91F /* Address.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7F5F64123D630E700BCF91F /* Address.storyboard */; };
 		B7F5F64423D6376F00BCF91F /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F5F64323D6376F00BCF91F /* Address.swift */; };
@@ -245,7 +244,7 @@
 		B70D31B523E7816D00345DB0 /* TschessCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TschessCore.swift; sourceTree = "<group>"; };
 		B70F0C0C22EBC075001415AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B70F0C1122EBC25C001415AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B713774823D20320006D57C2 /* Skin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Skin.swift; sourceTree = "<group>"; };
+		B713774823D20320006D57C2 /* SkinCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkinCore.swift; sourceTree = "<group>"; };
 		B713774C23D25F7B006D57C2 /* Detail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Detail.swift; sourceTree = "<group>"; };
 		B713F8E023E4CF8B00580DB5 /* UpdateNack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateNack.swift; sourceTree = "<group>"; };
 		B714BF27237C942A000DD80E /* PlayerCreate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCreate.swift; sourceTree = "<group>"; };
@@ -393,13 +392,12 @@
 		B7F541D123D51CF900E89074 /* OtherMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherMenuCell.swift; sourceTree = "<group>"; };
 		B7F541D423D5208400E89074 /* Challenge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenge.swift; sourceTree = "<group>"; };
 		B7F541D723D520A400E89074 /* Challenge.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Challenge.storyboard; sourceTree = "<group>"; };
-		B7F5878323D0AE4900A91CD3 /* ShowMeSkins.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ShowMeSkins.storyboard; sourceTree = "<group>"; };
 		B7F5878523D12D8000A91CD3 /* ShowMeSkins.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowMeSkins.swift; sourceTree = "<group>"; };
-		B7F5878723D12E3300A91CD3 /* SkinTableMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkinTableMenu.swift; sourceTree = "<group>"; };
-		B7F5878923D12E6300A91CD3 /* SkinTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkinTableCell.swift; sourceTree = "<group>"; };
+		B7F5878723D12E3300A91CD3 /* SkinsTableMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkinsTableMenu.swift; sourceTree = "<group>"; };
+		B7F5878923D12E6300A91CD3 /* SkinsTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkinsTableCell.swift; sourceTree = "<group>"; };
 		B7F5F63823D5EA3000BCF91F /* EditOther.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditOther.swift; sourceTree = "<group>"; };
 		B7F5F63B23D5EA4A00BCF91F /* EditOther.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditOther.storyboard; sourceTree = "<group>"; };
-		B7F5F63D23D6232600BCF91F /* Skin.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Skin.storyboard; sourceTree = "<group>"; };
+		B7F5F63D23D6232600BCF91F /* Skins.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Skins.storyboard; sourceTree = "<group>"; };
 		B7F5F63F23D629C100BCF91F /* Detail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Detail.storyboard; sourceTree = "<group>"; };
 		B7F5F64123D630E700BCF91F /* Address.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Address.storyboard; sourceTree = "<group>"; };
 		B7F5F64323D6376F00BCF91F /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
@@ -659,13 +657,12 @@
 			children = (
 				B7DF5BFC23832F8D0022A8C2 /* purchase */,
 				B7DF5BDC23832B980022A8C2 /* xpurchase */,
-				B7F5878323D0AE4900A91CD3 /* ShowMeSkins.storyboard */,
 				B7F5878523D12D8000A91CD3 /* ShowMeSkins.swift */,
-				B7F5878723D12E3300A91CD3 /* SkinTableMenu.swift */,
-				B7F5878923D12E6300A91CD3 /* SkinTableCell.swift */,
-				B713774823D20320006D57C2 /* Skin.swift */,
+				B7F5878723D12E3300A91CD3 /* SkinsTableMenu.swift */,
+				B7F5878923D12E6300A91CD3 /* SkinsTableCell.swift */,
+				B713774823D20320006D57C2 /* SkinCore.swift */,
 				B713774C23D25F7B006D57C2 /* Detail.swift */,
-				B7F5F63D23D6232600BCF91F /* Skin.storyboard */,
+				B7F5F63D23D6232600BCF91F /* Skins.storyboard */,
 				B7F5F63F23D629C100BCF91F /* Detail.storyboard */,
 			);
 			path = skins;
@@ -898,7 +895,7 @@
 				B74145B322F3C53100B3B4FF /* fairy */,
 				B74145B222F3C52600B3B4FF /* tschess */,
 				B7C5C00622EF3F1A00BFCB39 /* util */,
-				B7F3AB8722EF3C1800BE78D6 /* menu */,
+				B7F3AB8722EF3C1800BE78D6 /* games */,
 				B7E14BFE22EC50DD00CABCD3 /* model */,
 				B7E14BDD22EBCC3200CABCD3 /* config */,
 				B70F0C0B22EBC05F001415AE /* misc */,
@@ -1300,13 +1297,13 @@
 			path = networking;
 			sourceTree = "<group>";
 		};
-		B7F3AB8722EF3C1800BE78D6 /* menu */ = {
+		B7F3AB8722EF3C1800BE78D6 /* games */ = {
 			isa = PBXGroup;
 			children = (
 				B7AEEA7A23A1BD0D002F950C /* actual */,
 				B7A62178239FFA9D005DCDA1 /* historic */,
 			);
-			path = menu;
+			path = games;
 			sourceTree = "<group>";
 		};
 		B7F541BF23D51A4300E89074 /* home */ = {
@@ -1580,9 +1577,8 @@
 				B74594A323DB65E900B9F302 /* Tschess.storyboard in Resources */,
 				B7DF147323CE51AA007B2C7D /* PreviewHyperionCalhoun.storyboard in Resources */,
 				B7F5F64023D629C100BCF91F /* Detail.storyboard in Resources */,
-				B7F5878423D0AE4900A91CD3 /* ShowMeSkins.storyboard in Resources */,
 				B7CB62D6237B96A100E50204 /* Fairy.storyboard in Resources */,
-				B7F5F63E23D6232600BCF91F /* Skin.storyboard in Resources */,
+				B7F5F63E23D6232600BCF91F /* Skins.storyboard in Resources */,
 				B70D31A723E77FF900345DB0 /* Ack.storyboard in Resources */,
 				B7DF147123CE5197007B2C7D /* PreviewIapetusCalhoun.storyboard in Resources */,
 				B7F5F63C23D5EA4A00BCF91F /* EditOther.storyboard in Resources */,
@@ -1672,7 +1668,7 @@
 				B7BCD7B622F4736800CC29E6 /* BlackSpy.swift in Sources */,
 				B7F7C8F622FFA5770060AC38 /* Threat.swift in Sources */,
 				B70D318E23E7736D00345DB0 /* ActualTable.swift in Sources */,
-				B7F5878A23D12E6300A91CD3 /* SkinTableCell.swift in Sources */,
+				B7F5878A23D12E6300A91CD3 /* SkinsTableCell.swift in Sources */,
 				B7CCB61C23D7F1EC008C34A1 /* EndgameSnapshot.swift in Sources */,
 				B70D319023E7738B00345DB0 /* ActualCell.swift in Sources */,
 				B74145CE22F3CE0500B3B4FF /* LandminePawn.swift in Sources */,
@@ -1718,7 +1714,7 @@
 				B7BCD7D622F474B000CC29E6 /* BlackKnight.swift in Sources */,
 				B7F78D37236BA7C400F07FD7 /* FairyTableMenu.swift in Sources */,
 				B7AEEA8F23A1D8D2002F950C /* HistoricTable.swift in Sources */,
-				B713774923D20320006D57C2 /* Skin.swift in Sources */,
+				B713774923D20320006D57C2 /* SkinCore.swift in Sources */,
 				B74136C723DE34A0001B3D60 /* LoginTask.swift in Sources */,
 				B7EA5DC62375C28B0019C0BF /* PlayerDeserializer.swift in Sources */,
 				B7F7C8F822FFA9740060AC38 /* KnightOffense.swift in Sources */,
@@ -1783,7 +1779,7 @@
 				B7BCD7DA22F474CA00CC29E6 /* BlackQueen.swift in Sources */,
 				B7F35E332309F6D6002018F7 /* DateTime.swift in Sources */,
 				B7BCD7BE22F473C100CC29E6 /* WhiteHunter.swift in Sources */,
-				B7F5878823D12E3300A91CD3 /* SkinTableMenu.swift in Sources */,
+				B7F5878823D12E3300A91CD3 /* SkinsTableMenu.swift in Sources */,
 				B7F541D523D5208400E89074 /* Challenge.swift in Sources */,
 				B7FCCC9B2373F12600C4DD88 /* Processor.swift in Sources */,
 				B7F5F64E23D67FB000BCF91F /* Config.swift in Sources */,

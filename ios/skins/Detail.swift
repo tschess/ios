@@ -11,22 +11,13 @@ import StoreKit
 
 class Detail: UIViewController, UITabBarDelegate, UITextViewDelegate {
     
-    
     @IBOutlet weak var displacementLabel: UILabel!
-    //    @IBOutlet weak var displacementImage: UIImageView!
     @IBOutlet weak var displacementImage: UIImageView!
-    //    @IBOutlet weak var displacementLabel: UILabel!
     @IBOutlet weak var eloLabel: UILabel!
-    //    @IBOutlet weak var eloLabel: UILabel!
     @IBOutlet weak var rankLabel: UILabel!
-    //    @IBOutlet weak var rankLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
-    //    @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var avatarImageView: UIImageView!
-    //    @IBOutlet weak var avatarImageView: UIImageView!
-//    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    
     
     let DURATION_PLACEHOLDER: String = "17.01.2020_15:45:53.2060"
     
@@ -97,21 +88,14 @@ class Detail: UIViewController, UITabBarDelegate, UITextViewDelegate {
         self.activityIndicator.isHidden = true
     }
     
-    var skin: Skin?
+    var skin: SkinCore?
     
-    public func setSkin(skin: Skin){
+    public func setSkin(skin: SkinCore){
         self.skin = skin
     }
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var backButton: UIButton!
-    
-
-    
-    
-    
-    
-    
     
     @IBOutlet weak var countdownTimerLabel: UILabel!
     
@@ -121,7 +105,6 @@ class Detail: UIViewController, UITabBarDelegate, UITextViewDelegate {
     @IBOutlet weak var cellForegroundImage: UIImageView!
     
     @IBOutlet weak var priceLabel: UILabel!
-    //@IBOutlet weak var purchaseButton: UIButton!
     @IBOutlet weak var descriptionTextView: UITextView!
     @IBOutlet weak var tabBarMenu: UITabBar!
     

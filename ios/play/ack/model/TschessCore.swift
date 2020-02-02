@@ -69,7 +69,7 @@ class TschessCore {
     }
     
     enum CONTESTANT {
-        case WHITE,
+        case WHITE
         case BLACK
     }
     

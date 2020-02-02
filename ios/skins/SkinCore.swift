@@ -1,5 +1,5 @@
 //
-//  Skin.swift
+//  Skins.swift
 //  ios
 //
 //  Created by Matthew on 1/17/20.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Skin {
+class SkinCore {
     
     var name: String
     var foreColor: UIColor
