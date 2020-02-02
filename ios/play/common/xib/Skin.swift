@@ -17,7 +17,7 @@ class Skin: UIView {
     @IBOutlet weak var nameLabel: UILabel!
     
     class func instanceFromNib() -> Skin {
-        return UINib(nibName: "SampleSkin", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! Skin
+        return UINib(nibName: "Skin", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! Skin
     }
 
 }

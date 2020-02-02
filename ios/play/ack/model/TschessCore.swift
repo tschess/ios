@@ -11,33 +11,31 @@ import UIKit
 class TschessCore {
     
     var idGame: String
-    var white: Bool
-   
     var playerSelf: Player
     var playerOppo: PlayerCore
     
-    var state: [[TschessElement?]]
-    var onCheck: Bool
-    var highlight: [[Int]]
+    var white: Bool?
+    var onCheck: Bool?
+    var highlight: [[Int]]?
+    var state: [[TschessElement?]]?
     
-    var turn: CONTESTANT
-    var status: STATUS
-    var skin: SKIN
+    var skin: SKIN?
+    var status: STATUS?
+    var turn: CONTESTANT?
     
     init(
         idGame: String,
-        white: Bool,
-        
         playerSelf: Player,
         playerOppo: PlayerCore,
         
-        state: [[TschessElement?]],
-        onCheck: Bool,
-        highlight: [[Int]],
+        white: Bool? = nil,
+        onCheck: Bool? = nil,
+        highlight: [[Int]]? = nil,
+        state: [[TschessElement?]]? = nil,
         
-        turn: CONTESTANT,
-        status: STATUS,
-        skin: SKIN
+        skin: SKIN? = nil,
+        status: STATUS? = nil,
+        turn: CONTESTANT? = nil
     ) {
         self.idGame = idGame
         self.white = white

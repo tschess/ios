@@ -386,34 +386,23 @@ extension Ack: UICollectionViewDelegateFlowLayout {
             self.activityIndicator.isHidden = false
             self.activityIndicator.startAnimating()
             
+            
+            let idGame = self.gameModel!.getIdentifier()
+            
             let requestPayload: [String: Any] = [
-                "id_game": self.gameModel!.getIdentifier(),
+                "id_game": idGame,
                 "id_player": self.player!.getId(),
                 "skin": "DEFAULT",
                 "config": 0]
             
-//            TschessCore(
-//                idGame = String,
-//                white = Bool,
-//
-//                playerSelf = Player,
-//                playerOppo: PlayerCore,
-//
-//                state: [[TschessElement?]],
-//                onCheck: Bool,
-//                highlight: [[Int]],
-//
-//                turn: CONTESTANT,
-//                status: STATUS,
-//                skin: SKIN
-//            )
+            let tschessCore: TschessCore = TschessCore(idGame: idGame, playerSelf: self.player!, playerOppo: self.opponent!)
             
-            RequestAck().execute(requestPayload: requestPayload) { (result) in
+            RequestAck().execute(requestPayload: requestPayload, tschessCore: tschessCore) { (result) in
                 
                 print("result: \(result)")
                 
                 DispatchQueue.main.async {
-                    StoryboardSelector().other(player: self.player!, gameModel: self.gameModel!)
+                    
                 }
             }
 

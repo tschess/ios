@@ -10,7 +10,7 @@ import Foundation
 
 class RequestAck {
     
-    func execute(requestPayload: [String: Any], completion: @escaping ((TschessCore?) -> Void)) {
+    func execute(requestPayload: [String: Any], tschessCore: TschessCore, completion: @escaping ((TschessCore?) -> Void)) {
         
         let url = URL(string: "http://\(ServerAddress().IP):8080/game/ack")!
         var request = URLRequest(url: url)
@@ -34,9 +34,48 @@ class RequestAck {
                     return
                 }
                 
+                let matrixDeserializer = MatrixDeserializer()
+                matrixDeserializer.setUsername(username: tschessCore.playerSelf.username)
+                matrixDeserializer.setUsernameWhite(username: tschessCore.playerSelf.username)
+                matrixDeserializer.setUsernameBlack(username: tschessCore.playerOppo.username)
+                
                 print("999\n\n\n")
                 print(json)
                 print("\n\n\n999")
+                
+                let white: Bool = json["white"] as! Bool
+                print("white: \(white)")
+                if(!white){
+                    matrixDeserializer.setUsernameWhite(username: tschessCore.playerOppo.username)
+                    matrixDeserializer.setUsernameBlack(username: tschessCore.playerSelf.username)
+                }
+                
+                let status: String = json["status"] as! String
+                print("status: \(status)")
+                matrixDeserializer.setGameStatus(gameStatus: "ONGOING") ///lalalal
+                
+                
+                let state0: [[String]] = json["state"]! as! [[String]]
+                print("json[\"state\"]: \(json["state"])\n\n")
+                print("state0: \(state0)")
+                
+                let state = matrixDeserializer.deserialize(stringRepresentation: state0, orientationBlack: !white)
+                print("\n\n state: \(state)")
+                
+                
+                let onCheck: Bool = json["onCheck"] as! Bool
+                print("onCheck: \(onCheck)")
+                
+                let highlight: String = json["highlight"] as! String
+                print("highlight: \(highlight)")
+                
+                let turn: String = json["turn"] as! String
+                print("turn: \(turn)")
+                
+               let skin: String = json["skin"] as! String
+               print("skin: \(skin)")
+         
+           
                 
                 completion(nil)
                 
@@ -45,6 +84,8 @@ class RequestAck {
             }
         }).resume()
     }
+    
+    
     
     public func generateTschessElementMatrix(configurationInviter: [[String]], configurationAcceptor: [[TschessElement?]])  -> [[TschessElement?]] {
         var outputRow_0 = [TschessElement?](repeating: nil, count: 8)
