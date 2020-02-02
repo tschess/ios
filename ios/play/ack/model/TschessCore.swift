@@ -6,7 +6,6 @@
 //  Copyright © 2020 bahlsenwitz. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 class TschessCore {

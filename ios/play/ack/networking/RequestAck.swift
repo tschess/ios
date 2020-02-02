@@ -10,23 +10,7 @@ import Foundation
 
 class RequestAck {
     
-    var gameModel: Game?
-    var player: Player?
-    
-    public func setPlayer(player: Player){
-        self.player = player
-    }
-    
-    public func setGameModel(gameModel: Game){
-        self.gameModel = gameModel
-    }
-    
-    func execute(config: [[TschessElement?]], gameModel: Game, player: Player, completion: @escaping ((Gamestate) -> Void)) {
-        
-        self.player = player
-        self.gameModel = gameModel
-        
-        let requestPayload = ["id": gameModel.getIdentifier(), "updated": "dateTime.currentDateString()"]
+    func execute(requestPayload: [String: Any], completion: @escaping ((TschessCore?) -> Void)) {
         
         let url = URL(string: "http://\(ServerAddress().IP):8080/game/ack")!
         var request = URLRequest(url: url)
