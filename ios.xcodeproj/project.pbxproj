@@ -898,7 +898,7 @@
 				B74145B322F3C53100B3B4FF /* fairy */,
 				B74145B222F3C52600B3B4FF /* tschess */,
 				B7C5C00622EF3F1A00BFCB39 /* util */,
-				B7F3AB8722EF3C1800BE78D6 /* game_menu */,
+				B7F3AB8722EF3C1800BE78D6 /* menu */,
 				B7E14BFE22EC50DD00CABCD3 /* model */,
 				B7E14BDD22EBCC3200CABCD3 /* config */,
 				B70F0C0B22EBC05F001415AE /* misc */,
@@ -1300,13 +1300,13 @@
 			path = networking;
 			sourceTree = "<group>";
 		};
-		B7F3AB8722EF3C1800BE78D6 /* game_menu */ = {
+		B7F3AB8722EF3C1800BE78D6 /* menu */ = {
 			isa = PBXGroup;
 			children = (
 				B7AEEA7A23A1BD0D002F950C /* actual */,
 				B7A62178239FFA9D005DCDA1 /* historic */,
 			);
-			path = game_menu;
+			path = menu;
 			sourceTree = "<group>";
 		};
 		B7F541BF23D51A4300E89074 /* home */ = {

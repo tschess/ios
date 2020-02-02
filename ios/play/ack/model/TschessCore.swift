@@ -10,58 +10,67 @@ import UIKit
 
 class TschessCore {
     
-    var id: String
-    var date: String
-    var avatarWinner: String
-    var usernameWinner: String
+    var idGame: String
+    var white: Bool
+   
+    var playerSelf: Player
+    var playerOppo: PlayerCore
     
-    var canonical: Bool?
-    var usernameWhite: String?
-    var usernameBlack: String?
-    var moves: Int?
-    var outcome: OUTCOME?
-    var state: [[TschessElement?]]?
+    var state: [[TschessElement?]]
+    var onCheck: Bool
+    var highlight: [[Int]]
+    
+    var turn: CONTESTANT
+    var status: STATUS
+    var skin: SKIN
     
     init(
-        id: String,
-        date: String,
-        avatarWinner: String,
-        usernameWinner: String,
+        idGame: String,
+        white: Bool,
         
-        canonical: Bool? = nil,
-        usernameWhite: String? = nil,
-        usernameBlack: String? = nil,
-        moves: Int? = nil,
-        outcome: OUTCOME? = nil,
-        state: [[TschessElement?]]? = nil
+        playerSelf: Player,
+        playerOppo: PlayerCore,
         
+        state: [[TschessElement?]],
+        onCheck: Bool,
+        highlight: [[Int]],
+        
+        turn: CONTESTANT,
+        status: STATUS,
+        skin: SKIN
     ) {
-        self.id = id
-        self.date = date
-        self.avatarWinner = avatarWinner
-        self.usernameWinner = usernameWinner
-        //
-        self.canonical = canonical
-        self.usernameWhite = usernameWhite
-        self.usernameBlack = usernameBlack
-        self.moves = moves
-        self.outcome = outcome
+        self.idGame = idGame
+        self.white = white
+        
+        self.playerSelf = playerSelf
+        self.playerOppo = playerOppo
+        
         self.state = state
+        self.onCheck = onCheck
+        self.highlight = highlight
+        
+        self.turn = turn
+        self.status = status
+        self.skin = skin
     }
     
-    func getDate() -> String {
-        return date
+    enum STATUS {
+        case ONGOING
+        case PENDING
+        case RESOLVED
     }
     
-    func setDate(date: String) {
-        self.date = date
+    enum SKIN {
+        case DEFAULT
+        case IAPETUS
+        case CALYPSO
+        case HYPERION
+        case NEPTUNE
     }
     
-    enum OUTCOME {
-        case CHECKMATE
-        case TIMEOUT
-        case RESIGN
-        case DRAW
+    enum CONTESTANT {
+        case WHITE,
+        case BLACK
     }
     
 }

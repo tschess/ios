@@ -392,6 +392,22 @@ extension Ack: UICollectionViewDelegateFlowLayout {
                 "skin": "DEFAULT",
                 "config": 0]
             
+//            TschessCore(
+//                idGame = String,
+//                white = Bool,
+//
+//                playerSelf = Player,
+//                playerOppo: PlayerCore,
+//
+//                state: [[TschessElement?]],
+//                onCheck: Bool,
+//                highlight: [[Int]],
+//
+//                turn: CONTESTANT,
+//                status: STATUS,
+//                skin: SKIN
+//            )
+            
             RequestAck().execute(requestPayload: requestPayload) { (result) in
                 
                 print("result: \(result)")
