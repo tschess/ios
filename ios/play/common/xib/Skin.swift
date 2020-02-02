@@ -8,18 +8,16 @@
 
 import UIKit
 
-class SampleSkin: UIView {
+class Skin: UIView {
 
     @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var backgroundImage: UIImageView!
-    
     @IBOutlet weak var foregroundView: UIView!
     @IBOutlet weak var foregroundImage: UIImageView!
-    
     @IBOutlet weak var nameLabel: UILabel!
     
-    class func instanceFromNib() -> SampleSkin {
-        return UINib(nibName: "SampleSkin", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! SampleSkin
+    class func instanceFromNib() -> Skin {
+        return UINib(nibName: "SampleSkin", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! Skin
     }
 
 }

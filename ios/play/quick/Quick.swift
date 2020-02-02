@@ -172,7 +172,7 @@ UIGestureRecognizerDelegate {
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         let skinAsset = self.skinList![row]
         
-        let sampleView = SampleSkin.instanceFromNib()
+        let sampleView = Skin.instanceFromNib()
         sampleView.nameLabel.text = skinAsset.getName()
         
         sampleView.backgroundView.backgroundColor = skinAsset.getBackColor()

@@ -18,9 +18,16 @@
 		B70A86C923707B2900D303F0 /* UpdateGamestate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70A86C823707B2900D303F0 /* UpdateGamestate.swift */; };
 		B70A86CB2370989000D303F0 /* ServerAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70A86CA2370989000D303F0 /* ServerAddress.swift */; };
 		B70CEADF22FE8CD800F08541 /* Diagonal.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70CEADE22FE8CD800F08541 /* Diagonal.swift */; };
-		B70D318C23E7730F00345DB0 /* RequestAck.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70D318B23E7730F00345DB0 /* RequestAck.swift */; };
 		B70D318E23E7736D00345DB0 /* ActualTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70D318D23E7736D00345DB0 /* ActualTable.swift */; };
 		B70D319023E7738B00345DB0 /* ActualCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70D318F23E7738B00345DB0 /* ActualCell.swift */; };
+		B70D319E23E77F5F00345DB0 /* Quick.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70D319D23E77F5F00345DB0 /* Quick.swift */; };
+		B70D31A123E77F9100345DB0 /* Quick.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B70D31A023E77F9100345DB0 /* Quick.storyboard */; };
+		B70D31A423E77FC900345DB0 /* Ack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70D31A323E77FC900345DB0 /* Ack.swift */; };
+		B70D31A723E77FF900345DB0 /* Ack.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B70D31A623E77FF900345DB0 /* Ack.storyboard */; };
+		B70D31AA23E7804A00345DB0 /* Skin.xib in Resources */ = {isa = PBXBuildFile; fileRef = B70D31A923E7804A00345DB0 /* Skin.xib */; };
+		B70D31AC23E780A800345DB0 /* Skin.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70D31AB23E780A800345DB0 /* Skin.swift */; };
+		B70D31B323E7812300345DB0 /* RequestAck.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70D31B223E7812300345DB0 /* RequestAck.swift */; };
+		B70D31B623E7816D00345DB0 /* TschessCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70D31B523E7816D00345DB0 /* TschessCore.swift */; };
 		B70F0C0D22EBC075001415AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70F0C0C22EBC075001415AE /* AppDelegate.swift */; };
 		B713774923D20320006D57C2 /* Skin.swift in Sources */ = {isa = PBXBuildFile; fileRef = B713774823D20320006D57C2 /* Skin.swift */; };
 		B713774D23D25F7B006D57C2 /* Detail.swift in Sources */ = {isa = PBXBuildFile; fileRef = B713774C23D25F7B006D57C2 /* Detail.swift */; };
@@ -28,8 +35,6 @@
 		B714BF28237C942A000DD80E /* PlayerCreate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B714BF27237C942A000DD80E /* PlayerCreate.swift */; };
 		B7168BBC233A6C15008F59DE /* Date+GreaterThan.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7168BBB233A6C15008F59DE /* Date+GreaterThan.swift */; };
 		B7168BBE233A7892008F59DE /* DeserializeGamestate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7168BBD233A7892008F59DE /* DeserializeGamestate.swift */; };
-		B718A0BA23D76FF1006CCA20 /* SampleSkin.xib in Resources */ = {isa = PBXBuildFile; fileRef = B718A0B923D76FF1006CCA20 /* SampleSkin.xib */; };
-		B718A0BC23D77532006CCA20 /* SampleSkin.swift in Sources */ = {isa = PBXBuildFile; fileRef = B718A0BB23D77532006CCA20 /* SampleSkin.swift */; };
 		B71FA72D22FA124700B6F216 /* MyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71FA72C22FA124700B6F216 /* MyCollectionViewCell.swift */; };
 		B7285E0322F1E2980083F1CE /* DynamicCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7285E0222F1E2980083F1CE /* DynamicCollectionView.swift */; };
 		B72AF9E323E3BDBF003740CD /* GetNotify.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72AF9E223E3BDBF003740CD /* GetNotify.swift */; };
@@ -62,8 +67,6 @@
 		B7513D0123E1F4C800C63827 /* RequestHistoricOther.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7513D0023E1F4C800C63827 /* RequestHistoricOther.swift */; };
 		B7513D0423E1F53300C63827 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7513D0323E1F53300C63827 /* Game.swift */; };
 		B7661FA72371FB050033A556 /* UpdatePhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7661FA62371FB050033A556 /* UpdatePhoto.swift */; };
-		B7877C4823DA639600F59FF3 /* Ack.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7877C4723DA639600F59FF3 /* Ack.storyboard */; };
-		B7877C4A23DA659000F59FF3 /* Ack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7877C4923DA659000F59FF3 /* Ack.swift */; };
 		B787C73122E970DD009C94F7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B787C73022E970DD009C94F7 /* Assets.xcassets */; };
 		B787C73F22E970DD009C94F7 /* iosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B787C73E22E970DD009C94F7 /* iosTests.swift */; };
 		B787C74A22E970DD009C94F7 /* iosUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B787C74922E970DD009C94F7 /* iosUITests.swift */; };
@@ -72,8 +75,6 @@
 		B79BB6282315C4A000FF5E0E /* EnPassant.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79BB6272315C4A000FF5E0E /* EnPassant.swift */; };
 		B7A6217B239FFACF005DCDA1 /* HistoricCalhoun.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7A6217A239FFACF005DCDA1 /* HistoricCalhoun.storyboard */; };
 		B7A6217D239FFB00005DCDA1 /* Historic.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A6217C239FFB00005DCDA1 /* Historic.swift */; };
-		B7A6218723A02446005DCDA1 /* Quick.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A6218623A02446005DCDA1 /* Quick.swift */; };
-		B7A6218923A02467005DCDA1 /* Quick.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7A6218823A02467005DCDA1 /* Quick.storyboard */; };
 		B7AB8E60235607CD002D71BD /* HopperOffense.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7AB8E5F235607CD002D71BD /* HopperOffense.swift */; };
 		B7AEEA7D23A1BD5E002F950C /* Actual.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7AEEA7C23A1BD5E002F950C /* Actual.swift */; };
 		B7AEEA7F23A1BD93002F950C /* ActualCalhoun.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7AEEA7E23A1BD93002F950C /* ActualCalhoun.storyboard */; };
@@ -232,9 +233,16 @@
 		B70A86C823707B2900D303F0 /* UpdateGamestate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateGamestate.swift; sourceTree = "<group>"; };
 		B70A86CA2370989000D303F0 /* ServerAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerAddress.swift; sourceTree = "<group>"; };
 		B70CEADE22FE8CD800F08541 /* Diagonal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Diagonal.swift; sourceTree = "<group>"; };
-		B70D318B23E7730F00345DB0 /* RequestAck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestAck.swift; sourceTree = "<group>"; };
 		B70D318D23E7736D00345DB0 /* ActualTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActualTable.swift; sourceTree = "<group>"; };
 		B70D318F23E7738B00345DB0 /* ActualCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActualCell.swift; sourceTree = "<group>"; };
+		B70D319D23E77F5F00345DB0 /* Quick.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quick.swift; sourceTree = "<group>"; };
+		B70D31A023E77F9100345DB0 /* Quick.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Quick.storyboard; sourceTree = "<group>"; };
+		B70D31A323E77FC900345DB0 /* Ack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ack.swift; sourceTree = "<group>"; };
+		B70D31A623E77FF900345DB0 /* Ack.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Ack.storyboard; sourceTree = "<group>"; };
+		B70D31A923E7804A00345DB0 /* Skin.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Skin.xib; sourceTree = "<group>"; };
+		B70D31AB23E780A800345DB0 /* Skin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Skin.swift; sourceTree = "<group>"; };
+		B70D31B223E7812300345DB0 /* RequestAck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestAck.swift; sourceTree = "<group>"; };
+		B70D31B523E7816D00345DB0 /* TschessCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TschessCore.swift; sourceTree = "<group>"; };
 		B70F0C0C22EBC075001415AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B70F0C1122EBC25C001415AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B713774823D20320006D57C2 /* Skin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Skin.swift; sourceTree = "<group>"; };
@@ -243,8 +251,6 @@
 		B714BF27237C942A000DD80E /* PlayerCreate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCreate.swift; sourceTree = "<group>"; };
 		B7168BBB233A6C15008F59DE /* Date+GreaterThan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+GreaterThan.swift"; sourceTree = "<group>"; };
 		B7168BBD233A7892008F59DE /* DeserializeGamestate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeserializeGamestate.swift; sourceTree = "<group>"; };
-		B718A0B923D76FF1006CCA20 /* SampleSkin.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SampleSkin.xib; sourceTree = "<group>"; };
-		B718A0BB23D77532006CCA20 /* SampleSkin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleSkin.swift; sourceTree = "<group>"; };
 		B71FA72C22FA124700B6F216 /* MyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCollectionViewCell.swift; sourceTree = "<group>"; };
 		B7285E0222F1E2980083F1CE /* DynamicCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicCollectionView.swift; sourceTree = "<group>"; };
 		B72AF9E223E3BDBF003740CD /* GetNotify.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetNotify.swift; sourceTree = "<group>"; };
@@ -278,8 +284,6 @@
 		B7513D0023E1F4C800C63827 /* RequestHistoricOther.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestHistoricOther.swift; sourceTree = "<group>"; };
 		B7513D0323E1F53300C63827 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		B7661FA62371FB050033A556 /* UpdatePhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePhoto.swift; sourceTree = "<group>"; };
-		B7877C4723DA639600F59FF3 /* Ack.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Ack.storyboard; sourceTree = "<group>"; };
-		B7877C4923DA659000F59FF3 /* Ack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ack.swift; sourceTree = "<group>"; };
 		B787C72622E970DC009C94F7 /* ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ios.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B787C73022E970DD009C94F7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B787C73A22E970DD009C94F7 /* iosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iosTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -293,8 +297,6 @@
 		B79BB6272315C4A000FF5E0E /* EnPassant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnPassant.swift; sourceTree = "<group>"; };
 		B7A6217A239FFACF005DCDA1 /* HistoricCalhoun.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HistoricCalhoun.storyboard; sourceTree = "<group>"; };
 		B7A6217C239FFB00005DCDA1 /* Historic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Historic.swift; sourceTree = "<group>"; };
-		B7A6218623A02446005DCDA1 /* Quick.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quick.swift; sourceTree = "<group>"; };
-		B7A6218823A02467005DCDA1 /* Quick.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Quick.storyboard; sourceTree = "<group>"; };
 		B7AB8E5F235607CD002D71BD /* HopperOffense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HopperOffense.swift; sourceTree = "<group>"; };
 		B7AEEA7C23A1BD5E002F950C /* Actual.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Actual.swift; sourceTree = "<group>"; };
 		B7AEEA7E23A1BD93002F950C /* ActualCalhoun.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ActualCalhoun.storyboard; sourceTree = "<group>"; };
@@ -561,6 +563,75 @@
 				B74FA43423551E4300FC1018 /* Hopper.swift */,
 			);
 			path = movement;
+			sourceTree = "<group>";
+		};
+		B70D319923E77EF000345DB0 /* common */ = {
+			isa = PBXGroup;
+			children = (
+				B70D31A823E7803000345DB0 /* xib */,
+			);
+			path = common;
+			sourceTree = "<group>";
+		};
+		B70D319C23E77F4400345DB0 /* quick */ = {
+			isa = PBXGroup;
+			children = (
+				B70D319F23E77F7600345DB0 /* storyboard */,
+				B70D319D23E77F5F00345DB0 /* Quick.swift */,
+			);
+			path = quick;
+			sourceTree = "<group>";
+		};
+		B70D319F23E77F7600345DB0 /* storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				B70D31A023E77F9100345DB0 /* Quick.storyboard */,
+			);
+			path = storyboard;
+			sourceTree = "<group>";
+		};
+		B70D31A223E77FB500345DB0 /* ack */ = {
+			isa = PBXGroup;
+			children = (
+				B70D31B423E7815000345DB0 /* model */,
+				B70D31B123E7811000345DB0 /* networking */,
+				B70D31A523E77FEA00345DB0 /* storyboard */,
+				B70D31A323E77FC900345DB0 /* Ack.swift */,
+			);
+			path = ack;
+			sourceTree = "<group>";
+		};
+		B70D31A523E77FEA00345DB0 /* storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				B70D31A623E77FF900345DB0 /* Ack.storyboard */,
+			);
+			path = storyboard;
+			sourceTree = "<group>";
+		};
+		B70D31A823E7803000345DB0 /* xib */ = {
+			isa = PBXGroup;
+			children = (
+				B70D31A923E7804A00345DB0 /* Skin.xib */,
+				B70D31AB23E780A800345DB0 /* Skin.swift */,
+			);
+			path = xib;
+			sourceTree = "<group>";
+		};
+		B70D31B123E7811000345DB0 /* networking */ = {
+			isa = PBXGroup;
+			children = (
+				B70D31B223E7812300345DB0 /* RequestAck.swift */,
+			);
+			path = networking;
+			sourceTree = "<group>";
+		};
+		B70D31B423E7815000345DB0 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				B70D31B523E7816D00345DB0 /* TschessCore.swift */,
+			);
+			path = model;
 			sourceTree = "<group>";
 		};
 		B70F0C0522EBBF28001415AE /* start */ = {
@@ -878,22 +949,11 @@
 		B7A6218423A02422005DCDA1 /* play */ = {
 			isa = PBXGroup;
 			children = (
-				B7A6218523A02430005DCDA1 /* storyboard */,
-				B7A6218623A02446005DCDA1 /* Quick.swift */,
-				B718A0B923D76FF1006CCA20 /* SampleSkin.xib */,
-				B718A0BB23D77532006CCA20 /* SampleSkin.swift */,
-				B7877C4923DA659000F59FF3 /* Ack.swift */,
+				B70D31A223E77FB500345DB0 /* ack */,
+				B70D319C23E77F4400345DB0 /* quick */,
+				B70D319923E77EF000345DB0 /* common */,
 			);
 			path = play;
-			sourceTree = "<group>";
-		};
-		B7A6218523A02430005DCDA1 /* storyboard */ = {
-			isa = PBXGroup;
-			children = (
-				B7A6218823A02467005DCDA1 /* Quick.storyboard */,
-				B7877C4723DA639600F59FF3 /* Ack.storyboard */,
-			);
-			path = storyboard;
 			sourceTree = "<group>";
 		};
 		B7AEEA7A23A1BD0D002F950C /* actual */ = {
@@ -921,7 +981,6 @@
 			children = (
 				B7AEEA8123A1BE73002F950C /* RequestActual.swift */,
 				B713F8E023E4CF8B00580DB5 /* UpdateNack.swift */,
-				B70D318B23E7730F00345DB0 /* RequestAck.swift */,
 			);
 			path = networking;
 			sourceTree = "<group>";
@@ -1513,24 +1572,24 @@
 				B7CA7BB8235A60A400AA1814 /* EvaluateProposal.storyboard in Resources */,
 				B787C73122E970DD009C94F7 /* Assets.xcassets in Resources */,
 				B7DA221A2399C26A006256CC /* ScannerCalhoun.storyboard in Resources */,
-				B7A6218923A02467005DCDA1 /* Quick.storyboard in Resources */,
 				B7F5F64C23D67BC800BCF91F /* Config.storyboard in Resources */,
 				B7DF146F23CE5179007B2C7D /* PreviewNeptuneCalhoun.storyboard in Resources */,
+				B70D31AA23E7804A00345DB0 /* Skin.xib in Resources */,
 				B7CCB61A23D7DD99008C34A1 /* EndgameSnapshot.storyboard in Resources */,
 				B708D0E7236B366800A899F9 /* LaunchScreen.storyboard in Resources */,
 				B74594A323DB65E900B9F302 /* Tschess.storyboard in Resources */,
 				B7DF147323CE51AA007B2C7D /* PreviewHyperionCalhoun.storyboard in Resources */,
 				B7F5F64023D629C100BCF91F /* Detail.storyboard in Resources */,
 				B7F5878423D0AE4900A91CD3 /* ShowMeSkins.storyboard in Resources */,
-				B7877C4823DA639600F59FF3 /* Ack.storyboard in Resources */,
 				B7CB62D6237B96A100E50204 /* Fairy.storyboard in Resources */,
 				B7F5F63E23D6232600BCF91F /* Skin.storyboard in Resources */,
+				B70D31A723E77FF900345DB0 /* Ack.storyboard in Resources */,
 				B7DF147123CE5197007B2C7D /* PreviewIapetusCalhoun.storyboard in Resources */,
 				B7F5F63C23D5EA4A00BCF91F /* EditOther.storyboard in Resources */,
 				B7CB62F6237BB10800E50204 /* StartCalhoun.storyboard in Resources */,
+				B70D31A123E77F9100345DB0 /* Quick.storyboard in Resources */,
 				B7F541D823D520A400E89074 /* Challenge.storyboard in Resources */,
 				B7CCB61623D7B252008C34A1 /* EditSelf.storyboard in Resources */,
-				B718A0BA23D76FF1006CCA20 /* SampleSkin.xib in Resources */,
 				B7A6217B239FFACF005DCDA1 /* HistoricCalhoun.storyboard in Resources */,
 				B79BB624231579EE00FF5E0E /* PawnPromotion.storyboard in Resources */,
 				B7BAA63B237F0FFD0038C483 /* ProfileCalhoun.storyboard in Resources */,
@@ -1632,7 +1691,6 @@
 				B7AF787023E09AD100BAD8EC /* ConfigDeserializer.swift in Sources */,
 				B7BAA63E237F129B0038C483 /* OptionCell.swift in Sources */,
 				B708D0DD236B351000A899F9 /* Initializer.swift in Sources */,
-				B70D318C23E7730F00345DB0 /* RequestAck.swift in Sources */,
 				B74145D022F3CE1400B3B4FF /* Medusa.swift in Sources */,
 				B74145CC22F3CDEF00B3B4FF /* Hunter.swift in Sources */,
 				B7BCD7A822F472AF00CC29E6 /* FairyElement.swift in Sources */,
@@ -1690,6 +1748,7 @@
 				B74145C622F3CDC200B3B4FF /* Amazon.swift in Sources */,
 				B7F541D023D51CB700E89074 /* OtherMenuTable.swift in Sources */,
 				B7AF787323E0B9DA00BAD8EC /* RequestPage.swift in Sources */,
+				B70D31B323E7812300345DB0 /* RequestAck.swift in Sources */,
 				B7CA7BB4235A2DBE00AA1814 /* DrawResign.swift in Sources */,
 				B7F78D31236BA6AD00F07FD7 /* PresentationController.swift in Sources */,
 				B7BAA640237F13450038C483 /* OptionMenuTable.swift in Sources */,
@@ -1712,6 +1771,7 @@
 				B7168BBE233A7892008F59DE /* DeserializeGamestate.swift in Sources */,
 				B7BCD7CE22F4746F00CC29E6 /* WhiteQueen.swift in Sources */,
 				B74145C222F3CAC800B3B4FF /* LegalMove.swift in Sources */,
+				B70D31AC23E780A800345DB0 /* Skin.swift in Sources */,
 				B7AB8E60235607CD002D71BD /* HopperOffense.swift in Sources */,
 				B7C5B79423D9EDE50074B81C /* RequestChallenge.swift in Sources */,
 				B7F541C123D51A5A00E89074 /* Home.swift in Sources */,
@@ -1734,7 +1794,6 @@
 				B70F0C0D22EBC075001415AE /* AppDelegate.swift in Sources */,
 				B7EA5DBD2375BEB80019C0BF /* PollingAgent.swift in Sources */,
 				B7F78D2F236BA67500F07FD7 /* Intro.swift in Sources */,
-				B718A0BC23D77532006CCA20 /* SampleSkin.swift in Sources */,
 				B74145C822F3CDCE00B3B4FF /* ArrowPawn.swift in Sources */,
 				B7F78D33236BA6CE00F07FD7 /* TransitioningDelegate.swift in Sources */,
 				B70CEADF22FE8CD800F08541 /* Diagonal.swift in Sources */,
@@ -1745,8 +1804,9 @@
 				B7CCB61823D7B2B9008C34A1 /* EditSelf.swift in Sources */,
 				B7BB4753230095CA001791F0 /* KingOffense.swift in Sources */,
 				B74145D222F3CE1F00B3B4FF /* Spy.swift in Sources */,
-				B7A6218723A02446005DCDA1 /* Quick.swift in Sources */,
+				B70D31A423E77FC900345DB0 /* Ack.swift in Sources */,
 				B7F78D39236BA7F400F07FD7 /* Fairy.swift in Sources */,
+				B70D319E23E77F5F00345DB0 /* Quick.swift in Sources */,
 				B714BF28237C942A000DD80E /* PlayerCreate.swift in Sources */,
 				B7AF6D31238C3A12001B6086 /* PlayerCore.swift in Sources */,
 				B7BCD7D022F4747F00CC29E6 /* WhiteRook.swift in Sources */,
@@ -1759,9 +1819,9 @@
 				B79BB62623157A2F00FF5E0E /* PawnPromotion.swift in Sources */,
 				B74145D622F3CE4800B3B4FF /* King.swift in Sources */,
 				B72AF9E323E3BDBF003740CD /* GetNotify.swift in Sources */,
+				B70D31B623E7816D00345DB0 /* TschessCore.swift in Sources */,
 				B7AEEA9123A1D8E0002F950C /* HistoricCell.swift in Sources */,
 				B7F541C623D51ADD00E89074 /* HomeMenuTable.swift in Sources */,
-				B7877C4A23DA659000F59FF3 /* Ack.swift in Sources */,
 				B7EA5DC42375C2710019C0BF /* Player.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

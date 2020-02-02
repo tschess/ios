@@ -24,8 +24,6 @@ UIGestureRecognizerDelegate {
     @IBOutlet weak var configCollectionView: DynamicCollectionView!
     @IBOutlet weak var configCollectionViewHeight: NSLayoutConstraint!
     
-    
-    
     @IBOutlet weak var rankDateLabel: UILabel!
     @IBOutlet weak var eloLabel: UILabel!
     @IBOutlet weak var rankLabel: UILabel!
@@ -33,9 +31,7 @@ UIGestureRecognizerDelegate {
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
-    
     @IBOutlet weak var activeConfigNumber: UILabel!
-    
     
     let reuseIdentifier = "cell"
     
@@ -117,10 +113,6 @@ UIGestureRecognizerDelegate {
         self.configCollectionView.bounces = false
         self.configCollectionView.alwaysBounceVertical = false
         self.configCollectionViewHeight.constant = configCollectionView.contentSize.height
-        
-        
-        
-        
     }
     
     let dateTime: DateTime = DateTime()
@@ -129,17 +121,12 @@ UIGestureRecognizerDelegate {
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var tabBarMenu: UITabBar!
     
-    //@IBOutlet weak var usernameLabel: UILabel!
-    
-    //@IBOutlet weak var rankLabel: UILabel!
-    //@IBOutlet weak var avatarImageView: UIImageView!
-    
     @IBOutlet weak var skinSelectionPicker: UIPickerView!
     
     var player: Player?
     var gameModel: Game?
     
-    var skinSelectionPick: String = "calypso"
+    var skinSelectionPick: String = "iapetus"
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -152,7 +139,7 @@ UIGestureRecognizerDelegate {
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         let skinAsset = self.skinList![row]
         
-        let sampleView = SampleSkin.instanceFromNib()
+        let sampleView = Skin.instanceFromNib()
         sampleView.nameLabel.text = skinAsset.getName()
         
         sampleView.backgroundView.backgroundColor = skinAsset.getBackColor()
@@ -243,9 +230,7 @@ UIGestureRecognizerDelegate {
             backImage: UIImage(named: "iapetus"),
             backAlpha: 0.85)
         
-        self.skinList = Array(arrayLiteral: calypso, hyperion, neptune, iapetus)
-        
-        
+        self.skinList = Array(arrayLiteral: iapetus, calypso, hyperion, neptune) //in actual fact default will come first...
     }
     
     var skinList: Array<Skin>?
@@ -253,10 +238,7 @@ UIGestureRecognizerDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        
-        
         let totalContentHeight = self.contentView.frame.size.height
-        //print("totalContentHeight: \(totalContentHeight)")
         
         self.splitViewHeight0.isActive = false
         self.splitViewHeight1.isActive = false
@@ -399,17 +381,27 @@ extension Ack: UICollectionViewDelegateFlowLayout {
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         switch item.tag {
         case 0:
-            print("0")
-            var tschessElementMatrix: [[TschessElement?]] = self.player!.getConfig0()
-            //                    if(configPickerSelection == "config. 1"){
-            //                        tschessElementMatrix = self.player!.getConfig1()
-            //                    }
-            //                    if(configPickerSelection == "config. 2"){
-            //                        tschessElementMatrix = self.player!.getConfig2()
-            //                    }
-            //GameAcceptTask().execute(config: tschessElementMatrix, gameModel: gameModel!, player: self.player!) { (result) in
-                //StoryboardSelector().chess(gamestate: result)
-            //}
+            print("let's play")
+            
+            self.activityIndicator.isHidden = false
+            self.activityIndicator.startAnimating()
+            
+            let requestPayload: [String: Any] = [
+                "id_game": self.gameModel!.getIdentifier(),
+                "id_player": self.player!.getId(),
+                "skin": "DEFAULT",
+                "config": 0]
+            
+            RequestAck().execute(requestPayload: requestPayload) { (result) in
+                
+                print("result: \(result)")
+                
+                DispatchQueue.main.async {
+                    StoryboardSelector().other(player: self.player!, gameModel: self.gameModel!)
+                }
+            }
+
+            
             return
         default:
             StoryboardSelector().home(player: self.player!)
