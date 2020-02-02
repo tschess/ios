@@ -407,9 +407,9 @@ extension Ack: UICollectionViewDelegateFlowLayout {
             //                    if(configPickerSelection == "config. 2"){
             //                        tschessElementMatrix = self.player!.getConfig2()
             //                    }
-            GameAcceptTask().execute(config: tschessElementMatrix, gameModel: gameModel!, player: self.player!) { (result) in
-                StoryboardSelector().chess(gamestate: result)
-            }
+            //GameAcceptTask().execute(config: tschessElementMatrix, gameModel: gameModel!, player: self.player!) { (result) in
+                //StoryboardSelector().chess(gamestate: result)
+            //}
             return
         default:
             StoryboardSelector().home(player: self.player!)

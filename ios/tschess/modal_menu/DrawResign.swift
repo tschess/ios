@@ -52,7 +52,7 @@ class DrawResign: UIViewController  {
             "uuid_player": self.gamestate!.getOpponentId(),
             "updated": dateTime.currentDateString()
         ]
-        UnilateralUpdateTask().execute(requestPayload: requestPayload, operationRoute: "resign")
+        //UnilateralUpdateTask().execute(requestPayload: requestPayload, operationRoute: "resign")
         self.presentingViewController!.dismiss(animated: false, completion: nil)
     }
     
@@ -62,7 +62,7 @@ class DrawResign: UIViewController  {
             "uuid_player": self.gamestate!.getSelfId(),
             "updated": dateTime.currentDateString()
         ]
-        UnilateralUpdateTask().execute(requestPayload: requestPayload, operationRoute: "draw")
+        //UnilateralUpdateTask().execute(requestPayload: requestPayload, operationRoute: "draw")
         self.presentingViewController!.dismiss(animated: false, completion: nil)
     }
     

@@ -1,16 +1,14 @@
 //
-//  GameAcceptTask.swift
+//  RequestAck.swift
 //  ios
 //
-//  Created by Matthew on 9/24/19.
-//  Copyright © 2019 bahlsenwitz. All rights reserved.
+//  Created by Matthew on 2/2/20.
+//  Copyright © 2020 bahlsenwitz. All rights reserved.
 //
 
 import Foundation
 
-class GameAcceptTask {
-    
-    let dateTime: DateTime = DateTime()
+class RequestAck {
     
     var gameModel: Game?
     var player: Player?
@@ -28,9 +26,9 @@ class GameAcceptTask {
         self.player = player
         self.gameModel = gameModel
         
-        let requestPayload = ["id": gameModel.getIdentifier(), "updated": dateTime.currentDateString()]
+        let requestPayload = ["id": gameModel.getIdentifier(), "updated": "dateTime.currentDateString()"]
         
-        let url = URL(string: "http://\(ServerAddress().IP):8080/game/accept")!
+        let url = URL(string: "http://\(ServerAddress().IP):8080/game/ack")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         do {
@@ -106,7 +104,7 @@ class GameAcceptTask {
                 //print("clock: \(clock)")
                 gameModel.setClock(clock: String(clock))
                 
-                gameModel.setLastMoveBlack(lastMoveBlack: self.dateTime.currentDateString())
+                //gameModel.setLastMoveBlack(lastMoveBlack: self.dateTime.currentDateString())
                 gameModel.setLastMoveWhite(lastMoveWhite: "TBD")
                 //gameModel.updateNow()
                 let gamestate = Gamestate(gameModel: gameModel, tschessElementMatrix: tschessElementMatrix)

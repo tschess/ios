@@ -14,7 +14,7 @@ class UpdateNack {
             
             print("\n\nRequestChallenge: \(requestPayload)\n\n")
             
-            let url = URL(string: "http://\(ServerAddress().IP):8080/game/challenge")!
+            let url = URL(string: "http://\(ServerAddress().IP):8080/game/nack")!
             var request = URLRequest(url: url)
             request.httpMethod = "POST"
             request.addValue("application/json", forHTTPHeaderField: "Accept")

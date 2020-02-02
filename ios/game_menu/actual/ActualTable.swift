@@ -52,11 +52,6 @@ class ActualTable: UITableViewController, SwipeTableViewCellDelegate {
         return gameMenuTableList.count
     }
     
-    //    func tableView(_ tableView: UITableView, editActionsOptionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> SwipeOptions {
-    //        var options = SwipeOptions()
-    //        return options
-    //    }
-    
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
         
         print("orientation: \(orientation)")
@@ -85,13 +80,26 @@ class ActualTable: UITableViewController, SwipeTableViewCellDelegate {
         
         if(!actualMenuItem.inbound){
             
-            guard orientation == .right else { return nil}
+            guard orientation == .left else {
+                return nil
+            }
             
             let rescind = SwipeAction(style: .default, title: "RESCIND") { action, indexPath in
                 print("RESCIND")
-                GameDeleteTask().execute(id: actualMenuItem.getIdentifier())
-                self.gameMenuTableList.remove(at: indexPath.row)
-                self.tableView!.reloadData()
+                self.activityIndicator!.isHidden = false
+                self.activityIndicator!.startAnimating()
+                let game = self.gameMenuTableList[indexPath.row]
+                let requestPayload: [String: Any] = ["id_game": game.identifier!, "id_player": self.player!.getId()]
+                
+                UpdateNack().execute(requestPayload: requestPayload) { (result) in
+                    print("result: \(result)")
+                    DispatchQueue.main.async {
+                        self.activityIndicator!.stopAnimating()
+                        self.activityIndicator!.isHidden = true
+                        self.gameMenuTableList.remove(at: indexPath.row)
+                        self.tableView!.reloadData()
+                    }
+                }
             }
             rescind.backgroundColor = .orange
             if #available(iOS 13.0, *) {
@@ -102,9 +110,20 @@ class ActualTable: UITableViewController, SwipeTableViewCellDelegate {
         guard orientation == .right else {
             let nAction = SwipeAction(style: .default, title: "nACK") { action, indexPath in
                 print("nACK")
-                GameDeleteTask().execute(id: actualMenuItem.getIdentifier())
-                self.gameMenuTableList.remove(at: indexPath.row)
-                self.tableView!.reloadData()
+                self.activityIndicator!.isHidden = false
+                self.activityIndicator!.startAnimating()
+                let game = self.gameMenuTableList[indexPath.row]
+                let requestPayload: [String: Any] = ["id_game": game.identifier!, "id_player": self.player!.getId()]
+                
+                UpdateNack().execute(requestPayload: requestPayload) { (result) in
+                    print("result: \(result)")
+                    DispatchQueue.main.async {
+                        self.activityIndicator!.stopAnimating()
+                        self.activityIndicator!.isHidden = true
+                        self.gameMenuTableList.remove(at: indexPath.row)
+                        self.tableView!.reloadData()
+                    }
+                }
             }
             nAction.backgroundColor = .red
             if #available(iOS 13.0, *) {
@@ -129,28 +148,21 @@ class ActualTable: UITableViewController, SwipeTableViewCellDelegate {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "ActualCell", for: indexPath) as! ActualCell
-        
         cell.delegate = self
-        
         
         let gameTableMenuItem = gameMenuTableList[indexPath.row]
         
         cell.usernameLabel.text = gameTableMenuItem.getUsernameOpponent()
-        //cell.eloLabel.text = gameTableMenuItem.getOpponentElo()
         let dataDecoded: Data = Data(base64Encoded: gameTableMenuItem.getOpponentAvatar(), options: .ignoreUnknownCharacters)!
         let decodedimage = UIImage(data: dataDecoded)
         cell.avatarImageView.image = decodedimage
-        
         
         let formatter = DateFormatter()
         formatter.dateFormat = "dd.MM.YY"
         var yayayaya = formatter.string(from: DateTime().toFormatDate(string: gameTableMenuItem.actualDate))
         yayayaya.insert("'", at: yayayaya.index(yayayaya.endIndex, offsetBy: -2))
-        //cell.terminalDateLabel.text = yayayaya //should be terminated date, not the created date
         cell.timeIndicatorLabel.text = yayayaya
-        
         
         let invitation = gameTableMenuItem.invitation
         let inbound = gameTableMenuItem.inbound
@@ -160,7 +172,6 @@ class ActualTable: UITableViewController, SwipeTableViewCellDelegate {
                 if #available(iOS 13.0, *) {
                     let image = UIImage(systemName: "gamecontroller.fill")!
                     cell.actionImageView.image = image.withRenderingMode(.alwaysTemplate)
-                    //cell.actionImageView.tintColor = .magenta //Colour().getRed()
                     cell.actionImageView.tintColor = .black
                 }
                 return cell
@@ -175,8 +186,6 @@ class ActualTable: UITableViewController, SwipeTableViewCellDelegate {
         // 'PROPOSED'...
         if(inbound){
             if #available(iOS 13.0, *) {
-                //print("aHaHaHa")
-                //cell.actionImageView.tintColor = Colour().getRed()
                 cell.actionImageView.tintColor = .black
                 let image = UIImage(systemName: "tray.and.arrow.down")!
                 cell.actionImageView.image = image.withRenderingMode(.alwaysTemplate)
@@ -193,18 +202,15 @@ class ActualTable: UITableViewController, SwipeTableViewCellDelegate {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        
-        //var discoverSelectionDictionary: [String: Any] = ["actual_selection": indexPath.row]
-        
         let cell = tableView.cellForRow(at: indexPath) as! ActualCell
+        let gameTableMenuItem = gameMenuTableList[indexPath.row]
+        
+        let inbound = gameTableMenuItem.inbound
+        if(!inbound){
+            cell.showSwipe(orientation: .left, animated: true)
+            return
+        }
         cell.showSwipe(orientation: .right, animated: true)
-        
-        //discoverSelectionDictionary["action"] = cell.actionLabel!.text!
-        
-        //        NotificationCenter.default.post(
-        //            name: NSNotification.Name(rawValue: "ActualSelection"),
-        //            object: nil,
-        //            userInfo: discoverSelectionDictionary)
     }
     
     override open func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -225,8 +231,6 @@ class ActualTable: UITableViewController, SwipeTableViewCellDelegate {
             }
         }
         if(currentCount != self.gameMenuTableList.count){
-            //self.gameMenuTableList = self.gameMenuTableList.sorted(by: { $0.inbound && !$1.inbound })
-            //self.gameMenuTableList = self.gameMenuTableList.sorted(by: { $0.gameStatus < $1.gameStatus })
             DispatchQueue.main.async() {
                 //self.activityIndicator!.stopAnimating()
                 //self.activityIndicator!.isHidden = true
@@ -242,32 +246,15 @@ class ActualTable: UITableViewController, SwipeTableViewCellDelegate {
             }
             let resultList: [Game] = result!
             if(resultList.count == 0) {
-                self.renderShrug()
+                // beecause of quick play yoou'll never see this...
+                //private func renderShrug(){}
+                //self.renderShrug()
                 return
             }
             if(self.label != nil) {
                 self.label!.removeFromSuperview()
             }
             self.appendToTableList(additionalCellList: resultList)
-        }
-    }
-    
-    // beecause of quick play yoou'll never see this...
-    private func renderShrug(){
-        DispatchQueue.main.async() {
-            //self.activityIndicator!.stopAnimating()
-            //self.activityIndicator!.isHidden = true
-            let frameSize: CGPoint = CGPoint(x: UIScreen.main.bounds.size.width*0.5, y: UIScreen.main.bounds.size.height*0.5)
-            self.label = UILabel(frame: CGRect(x: UIScreen.main.bounds.size.width*0.5, y: UIScreen.main.bounds.size.height*0.5, width: UIScreen.main.bounds.width, height: 40))
-            self.label!.center = frameSize
-            self.label!.textAlignment = .center
-            self.label!.font = UIFont.systemFont(ofSize: 30, weight: UIFont.Weight.light)
-            self.label!.translatesAutoresizingMaskIntoConstraints = false
-            let horizontalConstraint = NSLayoutConstraint(item: self.label!, attribute: NSLayoutConstraint.Attribute.centerX, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.view, attribute: NSLayoutConstraint.Attribute.centerX, multiplier: 1, constant: 0)
-            let verticalConstraint = NSLayoutConstraint(item: self.label!, attribute: NSLayoutConstraint.Attribute.centerY, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.view, attribute: NSLayoutConstraint.Attribute.centerY, multiplier: 1, constant: 0)
-            self.label!.text = "¯\\_( ͡° ͜ʖ ͡°)_/¯"
-            self.view.addSubview(self.label!)
-            self.view.addConstraints([horizontalConstraint, verticalConstraint])
         }
     }
     

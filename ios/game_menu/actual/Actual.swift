@@ -36,7 +36,7 @@ class Actual: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate {
         tabBarMenu.delegate = self
         actualTable = children.first as? ActualTable
         actualTable!.setPlayer(player: self.player!)
-        //actualTable!.setIndicator(indicator: self.activityIndicator!)
+        actualTable!.setIndicator(indicator: self.activityIndicator!)
     }
     
     override func viewWillAppear(_ animated: Bool) {
