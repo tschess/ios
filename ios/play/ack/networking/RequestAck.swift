@@ -39,9 +39,13 @@ class RequestAck {
                 matrixDeserializer.setUsernameWhite(username: tschessCore.playerSelf.username)
                 matrixDeserializer.setUsernameBlack(username: tschessCore.playerOppo.username)
                 
-                print("999\n\n\n")
-                print(json)
-                print("\n\n\n999")
+                //print("999\n\n\n")
+                //print(json)
+                //print("\n\n\n999")
+                
+//                skin: SKIN? = nil,
+//                       white: Bool? = nil,
+//                       state: [[TschessElement?]]? = nil
                 
                 let white: Bool = json["white"] as! Bool
                 print("white: \(white)")
@@ -50,8 +54,7 @@ class RequestAck {
                     matrixDeserializer.setUsernameBlack(username: tschessCore.playerSelf.username)
                 }
                 
-                let status: String = json["status"] as! String
-                print("status: \(status)")
+               
                 matrixDeserializer.setGameStatus(gameStatus: "ONGOING") ///lalalal
                 
                 
@@ -61,16 +64,6 @@ class RequestAck {
                 
                 let state = matrixDeserializer.deserialize(stringRepresentation: state0, orientationBlack: !white)
                 print("\n\n state: \(state)")
-                
-                
-                let onCheck: Bool = json["onCheck"] as! Bool
-                print("onCheck: \(onCheck)")
-                
-                let highlight: String = json["highlight"] as! String
-                print("highlight: \(highlight)")
-                
-                let turn: String = json["turn"] as! String
-                print("turn: \(turn)")
                 
                let skin: String = json["skin"] as! String
                print("skin: \(skin)")
