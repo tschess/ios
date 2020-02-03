@@ -94,9 +94,11 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
        
         let dataDecoded: Data = Data(base64Encoded: self.gameTschess!.playerOppo.avatar, options: .ignoreUnknownCharacters)!
         let decodedimage = UIImage(data: dataDecoded)
-        self.avatarImageView!.image = decodedimage
-        self.rankLabel!.text = self.gameTschess!.playerOppo.rank
-        self.usernameLabel!.text = self.gameTschess!.playerOppo.username
+        self.avatarImageView.image = decodedimage
+        self.rankLabel.text = self.gameTschess!.playerOppo.rank
+        self.eloLabel.text = self.gameTschess!.playerOppo.elo
+        self.rankLabelDate.text = self.gameTschess!.playerOppo.date
+        self.usernameLabel.text = self.gameTschess!.playerOppo.username
     }
     
     @objc func updateCounter() {

@@ -61,20 +61,25 @@ class ActualTable: UITableViewController, SwipeTableViewCellDelegate {
             
             print("NOT INVITE: \(!actualMenuItem.invitation)")
             
-//            let gameModel = gameMenuTableList[indexPath.row]
-//
-//            let tschessElementMatrix = [[TschessElement?]](repeating: [TschessElement?](repeating: nil, count: 8), count: 8)
-//            let gamestate = Gamestate(
-//                gameModel: gameModel,
-//                tschessElementMatrix: tschessElementMatrix
-//            )
-//            gamestate.setPlayer(player: self.player!)
-//            PollingAgent().execute(id: gameModel.getIdentifier(), gamestate: gamestate) { (result, error) in
-//                if(error != nil || result == nil){
-//                    return
-//                }
-//                StoryboardSelector().chess(gameModel: gameModel, player: gamestate.getPlayer(), gamestate: result!)
-//            }
+            let gameModel = gameMenuTableList[indexPath.row]
+            
+            let requestPayload: [String: Any] = ["id_game": gameModel.getIdentifier(), "id_player": self.player!.getId()]
+            
+            let gameAck: GameAck = GameAck(idGame: gameModel.getIdentifier(), playerSelf: self.player!, playerOppo: gameModel.getOpponent())
+            let gameConnect: GameConnect = GameConnect(gameAck: gameAck)
+            
+            RequestConnect().execute(requestPayload: requestPayload, gameConnect: gameConnect) { (gameTschess) in
+                print("result: \(gameTschess)")
+                /**
+                 * ERROR HANDLING!!!
+                 */
+                DispatchQueue.main.async {
+                    let storyboard: UIStoryboard = UIStoryboard(name: "Tschess", bundle: nil)
+                    let viewController = storyboard.instantiateViewController(withIdentifier: "Tschess") as! Tschess
+                    viewController.setGameTschess(gameTschess: gameTschess!)
+                    UIApplication.shared.keyWindow?.rootViewController = viewController
+                }
+            }
             return nil
         }
         
