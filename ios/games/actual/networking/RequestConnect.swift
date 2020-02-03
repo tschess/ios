@@ -39,36 +39,64 @@ class RequestConnect {
                 }
                 
                 let matrixDeserializer = MatrixDeserializer()
-                matrixDeserializer.setUsername(username: tschessCore.playerSelf.username)
-                matrixDeserializer.setUsernameWhite(username: tschessCore.playerSelf.username)
-                matrixDeserializer.setUsernameBlack(username: tschessCore.playerOppo.username)
-                matrixDeserializer.setGameStatus(gameStatus: "ONGOING") ///cause its accept this will always be ongoing...
+                matrixDeserializer.setUsername(username: gameConnect.gameAck.playerSelf.username)
+                matrixDeserializer.setUsernameWhite(username: gameConnect.gameAck.playerSelf.username)
+                matrixDeserializer.setUsernameBlack(username: gameConnect.gameAck.playerOppo.username)
+                
+                
+                
+                let status: String = json["status"] as! String
+                print("status: \(status)")
+                gameConnect.status = status
+                matrixDeserializer.setGameStatus(gameStatus: status)
+                
+                
                 
                 
                 let state0: [[String]] = json["state"]! as! [[String]]
                 
                 let white: Bool = json["white"] as! Bool
                 print("white: \(white)")
-                tschessCore.white = white
+                gameConnect.gameAck.white = white
                 
                 let state = matrixDeserializer.deserialize(stringRepresentation: state0, orientationBlack: !white)
                 //print("\n\n state: \(state)")
-                tschessCore.state = state
+                gameConnect.gameAck.state = state
                 
                 if(!white){
-                    matrixDeserializer.setUsernameWhite(username: tschessCore.playerOppo.username)
-                    matrixDeserializer.setUsernameBlack(username: tschessCore.playerSelf.username)
+                    matrixDeserializer.setUsernameWhite(username: gameConnect.gameAck.playerOppo.username)
+                    matrixDeserializer.setUsernameBlack(username: gameConnect.gameAck.playerSelf.username)
                     let state = matrixDeserializer.deserialize(stringRepresentation: state0, orientationBlack: white)
                     //print("\n\n state: \(state)")
-                    tschessCore.state = state
+                    gameConnect.gameAck.state = state
                 }
                 
                 let skin: String = json["skin"] as! String
                 //print("skin: \(skin)")
-                tschessCore.skin = skin
+                gameConnect.gameAck.skin = skin
                 
+                let date: String = json["date"] as! String
+                print("date: \(date)")
+                gameConnect.gameAck.date = date
                 
-                completion(tschessCore)
+                //highlight
+                let highlight: String = json["highlight"] as! String
+                print("highlight: \(highlight)")
+                gameConnect.highlight = highlight
+                
+                //on_check
+                let onCheck: Bool = json["on_check"] as! Bool
+                print("onCheck: \(onCheck)")
+                gameConnect.onCheck = onCheck
+                
+                //turn
+                let turn: String = json["turn"] as! String
+                print("turn: \(turn)")
+                gameConnect.turn = turn
+                
+                let gameTschess: GameTschess = GameTschess(gameConnect: gameConnect)
+                completion(gameTschess)
+                
                 
             } catch let error {
                 print(error.localizedDescription)

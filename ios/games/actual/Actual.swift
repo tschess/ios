@@ -81,40 +81,26 @@ class Actual: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate {
     
     @objc func onDidReceiveData(_ notification: NSNotification) {
         let gameMenuSelectionIndex = notification.userInfo!["actual_selection"] as! Int
+        
         let gameModel = self.actualTable!.getGameMenuTableList()[gameMenuSelectionIndex]
-        let action = notification.userInfo!["action"] as! String
-        let gameList = self.actualTable!.getGameMenuTableList() //TODO: why do you need this???
-        if(action == "review") {
-            //StoryboardSelector().review(player: self.player!, gameModel: gameModel, gameList: gameList)
-            return
-        }
-        if(action == "rescind") {
-            //StoryboardSelector().cancel(player: self.player!, gameModel: gameModel, gameList: gameList)
-            return
-        }
-        let tschessElementMatrix = [[TschessElement?]](repeating: [TschessElement?](repeating: nil, count: 8), count: 8)
-        let gamestate = Gamestate(
-            gameModel: gameModel,
-            tschessElementMatrix: tschessElementMatrix
-        )
-        gamestate.setPlayer(player: self.player!)
-        PollingAgent().execute(id: self.actualTable!.getGameMenuTableList()[gameMenuSelectionIndex].getIdentifier(), gamestate: gamestate) { (result, error) in
-            if(error != nil || result == nil){
-                return
+        
+        let requestPayload: [String: Any] = ["id_game": gameModel.getIdentifier(), "id_player": self.player!.getId()]
+        
+        let gameAck: GameAck = GameAck(idGame: gameModel.getIdentifier(), playerSelf: self.player!, playerOppo: gameModel.getOpponent())
+        let gameConnect: GameConnect = GameConnect(gameAck: gameAck)
+        
+        RequestConnect().execute(requestPayload: requestPayload, gameConnect: gameConnect) { (gameTschess) in
+            print("result: \(gameTschess)")
+            /**
+             * ERROR HANDLING!!!
+             */
+            DispatchQueue.main.async {
+                let storyboard: UIStoryboard = UIStoryboard(name: "Tschess", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "Tschess") as! Tschess
+                viewController.setGameTschess(gameTschess: gameTschess!)
+                UIApplication.shared.keyWindow?.rootViewController = viewController
             }
-            let gameModel = self.actualTable!.getGameMenuTableList()[gameMenuSelectionIndex]
-           // StoryboardSelector().chess(gameModel: gameModel, player: gamestate.getPlayer(), gamestate: result!)
         }
-        
-        
-//        DispatchQueue.main.async {
-//            let storyboard: UIStoryboard = UIStoryboard(name: "Tschess", bundle: nil)
-//            let viewController = storyboard.instantiateViewController(withIdentifier: "Tschess") as! Tschess
-//            viewController.setTschessCore(tschessCore: tschessCore)
-//            UIApplication.shared.keyWindow?.rootViewController = viewController
-//        }
-        
-        
     }
     
     @IBAction func backButtonClick(_ sender: Any) {

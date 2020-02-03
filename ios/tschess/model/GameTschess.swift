@@ -28,11 +28,11 @@ class GameTschess {
     }
     
     init(gameConnect: GameConnect) {
-        self.idGame = gameConnect.idGame
-        self.playerSelf = gameConnect.playerSelf
-        self.playerOppo = gameConnect.playerOppo
-        self.skin = gameConnect.skin
-        self.white = gameConnect.white
-        self.state = gameConnect.state
+        self.idGame = gameConnect.gameAck.idGame
+        self.playerSelf = gameConnect.gameAck.playerSelf
+        self.playerOppo = gameConnect.gameAck.playerOppo
+        self.skin = gameConnect.gameAck.skin
+        self.white = gameConnect.gameAck.white
+        self.state = gameConnect.gameAck.state
     }
 }

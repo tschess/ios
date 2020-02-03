@@ -10,33 +10,25 @@ import UIKit
 
 class GameConnect {
     
-    var idGame: String
-    var playerSelf: Player
-    var playerOppo: PlayerCore
+    var gameAck: GameAck
     
-    var skin: String?
-    var white: Bool?
-    var state: [[TschessElement?]]?
-    var date: String?
+    var turn: String?
+    var status: String?
+    var highlight: String?
+    var onCheck: Bool?
     
     init(
-        idGame: String,
-        playerSelf: Player,
-        playerOppo: PlayerCore,
-        
-        skin: String? = nil,
-        white: Bool? = nil,
-        state: [[TschessElement?]]? = nil,
-        date: String? = nil
+        gameAck: GameAck
+        //turn: String? = nil,
+        //status: String,
+        //highlight: String,
+        //onCheck: Bool
     ) {
-        self.idGame = idGame
+        self.gameAck = gameAck
         
-        self.playerSelf = playerSelf
-        self.playerOppo = playerOppo
-        
-        self.skin = skin
-        self.white = white
-        self.state = state
-        self.date = date
+        //self.turn = turn
+        //self.status = status
+        //self.highlight = highlight
+        //self.onCheck = onCheck
     }
 }
