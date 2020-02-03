@@ -11,20 +11,16 @@ import Foundation
 class ConfigDeserializer {
     
     public func generateTschessElementMatrix(savedConfigurationNestedStringArray: [[String]])  -> [[TschessElement?]] {
-        var outputRow_1 = [TschessElement?](repeating: nil, count: 8)
-        let row_1 = savedConfigurationNestedStringArray[1]
-        outputRow_1 = self.buildConstituentElementList(rowElementStringArray: row_1)
         
-        var outputRow_0 = [TschessElement?](repeating: nil, count: 8)
-        let row_0 = savedConfigurationNestedStringArray[0]
-        outputRow_0 = self.buildConstituentElementList(rowElementStringArray: row_0)
+        var outputRow0 = [TschessElement?](repeating: nil, count: 8)
+        let row0 = savedConfigurationNestedStringArray[0]
+        outputRow0 = self.buildConstituentElementList(rowElementStringArray: row0)
         
-        var tschessElementMatrix: [[TschessElement?]]
-        tschessElementMatrix = [
-            outputRow_0,
-            outputRow_1
-        ]
-        return tschessElementMatrix
+        var outputRow1 = [TschessElement?](repeating: nil, count: 8)
+        let row1 = savedConfigurationNestedStringArray[1]
+        outputRow1 = self.buildConstituentElementList(rowElementStringArray: row1)
+        
+        return [outputRow1, outputRow0] as [[TschessElement?]]
     }
     
     func buildConstituentElementList(rowElementStringArray: [String]) -> [TschessElement?] {
