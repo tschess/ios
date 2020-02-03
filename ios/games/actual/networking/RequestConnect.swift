@@ -42,13 +42,14 @@ class RequestConnect {
                 matrixDeserializer.setUsername(username: gameConnect.gameAck.playerSelf.username)
                 matrixDeserializer.setUsernameWhite(username: gameConnect.gameAck.playerSelf.username)
                 matrixDeserializer.setUsernameBlack(username: gameConnect.gameAck.playerOppo.username)
+            
                 
                 
                 
-                let status: String = json["status"] as! String
-                print("status: \(status)")
-                gameConnect.status = status
-                matrixDeserializer.setGameStatus(gameStatus: status)
+               // let status: String = json["status"] as! String
+                print("status: \(json["status"])")
+                //gameConnect.status = status
+                //matrixDeserializer.setGameStatus(gameStatus: status)
                 
                 
                 

@@ -10,6 +10,40 @@ import UIKit
 
 class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UITabBarDelegate {
     
+    let DATE_TIME: DateTime = DateTime()
+    
+    private func updateCountdownTimer() {
+        let dateUpdate: Date = self.DATE_TIME.toFormatDate(string: self.gameTschess!.gameAck!.date!)
+        let dateActual: Date = self.DATE_TIME.currentDate()
+        let intervalDifference: TimeInterval = dateActual.timeIntervalSince(dateUpdate)
+        let intervalStandard: TimeInterval = Double(24) * 60 * 60
+        let timeRemaining = intervalStandard - intervalDifference
+        self.counter = String(timeRemaining)
+    }
+    
+    func renderCountdownFormat(_ countdownFormat: String) -> TimeInterval {
+        var interval: Double = 0
+        let componentValueSet = countdownFormat.components(separatedBy: ":")
+        for (index, component) in componentValueSet.reversed().enumerated() {
+            interval += (Double(component) ?? 0) * pow(Double(60), Double(index))
+        }
+        return interval
+    }
+    
+    @objc func updateCounter() {
+        let countActual = self.renderCountdownFormat(self.counter!) - TimeInterval(1.0)
+    
+        let sec = Int(countActual.truncatingRemainder(dividingBy: 60))
+        let min = Int(countActual.truncatingRemainder(dividingBy: 3600) / 60)
+        let hour = Int(countActual / 3600)
+        
+        if(self.timerLabel.isHidden){
+            self.timerLabel.isHidden = false
+        }
+        
+        self.timerLabel.text = String(format: "%02d:%02d:%02d", hour, min, sec)
+    }
+    
     var gameTschess: GameTschess?
 
     public func setGameTschess(gameTschess: GameTschess) {
@@ -48,7 +82,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     var counterTimer: Timer?
     
     var counter: String?
-    var dateTime: DateTime?
+   
     var transitioner: Transitioner?
     
     var castling: Castling?
@@ -58,9 +92,11 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
-        self.counter = "00:00:00"
         
-        self.dateTime = DateTime()
+        self.counter = "00:00:00" //
+        
+        
+        
         self.transitioner = Transitioner()
         
         self.castling = Castling()
@@ -75,8 +111,11 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.collectionView.reloadData()
+        
+         
+        
         self.collectionView.isHidden = false
-        self.startTimers()
+        
         
         self.activityIndicator.isHidden = true
     }
@@ -91,29 +130,19 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     override func viewDidLoad() {
         super.viewDidLoad()
         self.collectionView.isHidden = true
+        
+        self.timerLabel.isHidden = true
+        self.contentViewLabel.isHidden = true
        
-        let dataDecoded: Data = Data(base64Encoded: self.gameTschess!.playerOppo.avatar, options: .ignoreUnknownCharacters)!
+        let dataDecoded: Data = Data(base64Encoded: self.gameTschess!.gameAck!.playerOppo.avatar, options: .ignoreUnknownCharacters)!
         let decodedimage = UIImage(data: dataDecoded)
         self.avatarImageView.image = decodedimage
-        self.rankLabel.text = self.gameTschess!.playerOppo.rank
-        self.eloLabel.text = self.gameTschess!.playerOppo.elo
-        self.rankLabelDate.text = self.gameTschess!.playerOppo.date
-        self.usernameLabel.text = self.gameTschess!.playerOppo.username
-    }
-    
-    @objc func updateCounter() {
-        if(counter == nil){
-            return
-        }
-        var timeInterval_x = parseDuration(counter!)
-        timeInterval_x -= TimeInterval(1.0)
+        self.rankLabel.text = self.gameTschess!.gameAck!.playerOppo.rank
+        self.eloLabel.text = self.gameTschess!.gameAck!.playerOppo.elo
+        self.rankLabelDate.text = self.gameTschess!.gameAck!.playerOppo.date
+        self.usernameLabel.text = self.gameTschess!.gameAck!.playerOppo.username
         
-        let sec = Int(timeInterval_x.truncatingRemainder(dividingBy: 60))
-        let min = Int(timeInterval_x.truncatingRemainder(dividingBy: 3600) / 60)
-        let hour = Int(timeInterval_x / 3600)
-        
-        counter = String(format: "%02d:%02d:%02d", hour, min, sec)
-        timerLabel.text = counter
+        self.startTimers()
     }
     
     private func prohibited() -> Bool {
@@ -151,7 +180,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     }
     
     private func assignCellTschessElement(indexPath: IndexPath) -> UIImage? {
-        let tschessElementMatrix = self.gameTschess!.state!
+        let tschessElementMatrix = self.gameTschess!.gameAck!.state!
         let x = indexPath.row / 8
         let y = indexPath.row % 8
         if(tschessElementMatrix[x][y] != nil){
@@ -167,18 +196,6 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         cell.imageView.bounds = CGRect(origin: cell.bounds.origin, size: cell.bounds.size)
         cell.imageView.center = CGPoint(x: cell.bounds.size.width/2, y: cell.bounds.size.height/2)
         return self.highlightLastMoveCoords(indexPath: indexPath, cell: cell)
-    }
-    
-    func parseDuration(_ timeString:String) -> TimeInterval {
-        guard !timeString.isEmpty else {
-            return 0
-        }
-        var interval: Double = 0
-        let parts = timeString.components(separatedBy: ":")
-        for (index, part) in parts.reversed().enumerated() {
-            interval += (Double(part) ?? 0) * pow(Double(60), Double(index))
-        }
-        return interval
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -221,14 +238,14 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     
     @IBAction func backButtonClick(_ sender: Any) {
         self.stopTimers()
-        StoryboardSelector().actual(player: self.gameTschess!.playerSelf)
+        StoryboardSelector().actual(player: self.gameTschess!.gameAck!.playerSelf)
     }
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         switch item.tag {
         case 0:
             self.stopTimers()
-            StoryboardSelector().actual(player: self.gameTschess!.playerSelf)
+            StoryboardSelector().actual(player: self.gameTschess!.gameAck!.playerSelf)
         case 1:
             DispatchQueue.main.async {
                 let drawResign_storyboard: UIStoryboard = UIStoryboard(name: "DrawResign", bundle: nil)
@@ -247,11 +264,6 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
             self.pawnPromotion!.setProposed(proposed: proposed)
             self.present(self.pawnPromotion!, animated: false, completion: nil)
         }
-    }
-    
-    private func updateCountdownTimer() {
-        var countdownTimer_format: Date
-
     }
     
     private func highlightLastMoveCoords(indexPath: IndexPath, cell: MyCollectionViewCell) -> MyCollectionViewCell {
