@@ -325,30 +325,22 @@ extension Ack: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ConfigCollectionViewCell
-        
+        cell.backgroundColor = .black
+        if (indexPath.row / 8 == 0) {
+            cell.backgroundColor = .white
+        }
         if (indexPath.row % 2 == 0) {
+            cell.backgroundColor = .white
             if (indexPath.row / 8 == 0) {
-                cell.backgroundColor = UIColor(red: 220/255.0, green: 0/255.0, blue: 70/255.0, alpha: 0.65)
-            } else {
-                cell.backgroundColor = UIColor(red: 250/255.0, green: 250/255.0, blue: 250/255.0, alpha: 0.88)
-            }
-        } else {
-            if (indexPath.row / 8 == 0) {
-                cell.backgroundColor = UIColor(red: 250/255.0, green: 250/255.0, blue: 250/255.0, alpha: 0.88)
-            } else {
-                cell.backgroundColor = UIColor(red: 220/255.0, green: 0/255.0, blue: 70/255.0, alpha: 0.65)
+                cell.backgroundColor = .black
             }
         }
-        
         let x = indexPath.row / 8
         let y = indexPath.row % 8
-        
+        cell.imageView.image = nil
         if(self.tschessElementMatrix![x][y] != nil){
             cell.imageView.image = self.tschessElementMatrix![x][y]!.getImageDefault()
-        } else {
-            cell.imageView.image = nil
         }
         cell.imageView.bounds = CGRect(origin: cell.bounds.origin, size: cell.bounds.size)
         cell.imageView.center = CGPoint(x: cell.bounds.size.width/2, y: cell.bounds.size.height/2)
@@ -393,7 +385,7 @@ extension Ack: UICollectionViewDelegateFlowLayout {
                 "id_game": idGame,
                 "id_player": self.player!.getId(),
                 "skin": "DEFAULT",
-                "config": 0]
+                "config": 3]
             
             let tschessCore: TschessCore = TschessCore(idGame: idGame, playerSelf: self.player!, playerOppo: self.opponent!)
             

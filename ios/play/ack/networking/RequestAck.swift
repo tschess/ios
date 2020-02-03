@@ -39,9 +39,9 @@ class RequestAck {
                 matrixDeserializer.setUsernameWhite(username: tschessCore.playerSelf.username)
                 matrixDeserializer.setUsernameBlack(username: tschessCore.playerOppo.username)
                 
-                //print("999\n\n\n")
-                //print(json)
-                //print("\n\n\n999")
+                print("999\n\n\n")
+                print(json)
+                print("\n\n\n999")
                 
 //                skin: SKIN? = nil,
 //                       white: Bool? = nil,
