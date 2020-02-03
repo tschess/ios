@@ -387,13 +387,17 @@ extension Ack: UICollectionViewDelegateFlowLayout {
                 "skin": "DEFAULT",
                 "config": 3]
             
-            let tschessCore: TschessCore = TschessCore(idGame: idGame, playerSelf: self.player!, playerOppo: self.opponent!)
-            RequestAck().execute(requestPayload: requestPayload, tschessCore: tschessCore) { (result) in
-                print("result: \(result)")
+            let gameAck: GameAck = GameAck(idGame: idGame, playerSelf: self.player!, playerOppo: self.opponent!)
+            
+            RequestAck().execute(requestPayload: requestPayload, gameAck: gameAck) { (gameTschess) in
+                print("result: \(gameTschess)")
+                /**
+                 * ERROR HANDLING!!!
+                 */
                 DispatchQueue.main.async {
                     let storyboard: UIStoryboard = UIStoryboard(name: "Tschess", bundle: nil)
                     let viewController = storyboard.instantiateViewController(withIdentifier: "Tschess") as! Tschess
-                    viewController.setTschessCore(tschessCore: tschessCore)
+                    viewController.setGameTschess(gameTschess: gameTschess!)
                     UIApplication.shared.keyWindow?.rootViewController = viewController
                 }
             }

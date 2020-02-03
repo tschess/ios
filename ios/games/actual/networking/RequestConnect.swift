@@ -1,5 +1,5 @@
 //
-//  RequestAck.swift
+//  RequestConnect.swift
 //  ios
 //
 //  Created by Matthew on 2/2/20.
@@ -8,11 +8,11 @@
 
 import Foundation
 
-class RequestAck {
+class RequestConnect {
     
-    func execute(requestPayload: [String: Any], gameAck: GameAck, completion: @escaping ((GameTschess?) -> Void)) {
+    func execute(requestPayload: [String: Any], gameConnect: GameConnect, completion: @escaping ((GameTschess?) -> Void)) {
         
-        let url = URL(string: "http://\(ServerAddress().IP):8080/game/ack")!
+        let url = URL(string: "http://\(ServerAddress().IP):8080/game/connect")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         do {
@@ -37,10 +37,11 @@ class RequestAck {
                     completion(nil)
                     return
                 }
+                
                 let matrixDeserializer = MatrixDeserializer()
-                matrixDeserializer.setUsername(username: gameAck.playerSelf.username)
-                matrixDeserializer.setUsernameWhite(username: gameAck.playerSelf.username)
-                matrixDeserializer.setUsernameBlack(username: gameAck.playerOppo.username)
+                matrixDeserializer.setUsername(username: tschessCore.playerSelf.username)
+                matrixDeserializer.setUsernameWhite(username: tschessCore.playerSelf.username)
+                matrixDeserializer.setUsernameBlack(username: tschessCore.playerOppo.username)
                 matrixDeserializer.setGameStatus(gameStatus: "ONGOING") ///cause its accept this will always be ongoing...
                 
                 
@@ -48,30 +49,26 @@ class RequestAck {
                 
                 let white: Bool = json["white"] as! Bool
                 print("white: \(white)")
-                gameAck.white = white
+                tschessCore.white = white
                 
                 let state = matrixDeserializer.deserialize(stringRepresentation: state0, orientationBlack: !white)
                 //print("\n\n state: \(state)")
-                gameAck.state = state
+                tschessCore.state = state
                 
                 if(!white){
-                    matrixDeserializer.setUsernameWhite(username: gameAck.playerOppo.username)
-                    matrixDeserializer.setUsernameBlack(username: gameAck.playerSelf.username)
+                    matrixDeserializer.setUsernameWhite(username: tschessCore.playerOppo.username)
+                    matrixDeserializer.setUsernameBlack(username: tschessCore.playerSelf.username)
                     let state = matrixDeserializer.deserialize(stringRepresentation: state0, orientationBlack: white)
                     //print("\n\n state: \(state)")
-                    gameAck.state = state
+                    tschessCore.state = state
                 }
                 
                 let skin: String = json["skin"] as! String
                 //print("skin: \(skin)")
-                gameAck.skin = skin
+                tschessCore.skin = skin
                 
-                let date: String = json["date"] as! String
-                print("date: \(date)")
-                gameAck.date = date
                 
-                let gameTschess: GameTschess = GameTschess(gameAck: gameAck)
-                completion(gameTschess)
+                completion(tschessCore)
                 
             } catch let error {
                 print(error.localizedDescription)
@@ -80,3 +77,4 @@ class RequestAck {
         }).resume()
     }
 }
+

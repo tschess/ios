@@ -27,7 +27,10 @@
 		B70D31AA23E7804A00345DB0 /* Skin.xib in Resources */ = {isa = PBXBuildFile; fileRef = B70D31A923E7804A00345DB0 /* Skin.xib */; };
 		B70D31AC23E780A800345DB0 /* Skin.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70D31AB23E780A800345DB0 /* Skin.swift */; };
 		B70D31B323E7812300345DB0 /* RequestAck.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70D31B223E7812300345DB0 /* RequestAck.swift */; };
-		B70D31B623E7816D00345DB0 /* TschessCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70D31B523E7816D00345DB0 /* TschessCore.swift */; };
+		B70D31B623E7816D00345DB0 /* GameAck.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70D31B523E7816D00345DB0 /* GameAck.swift */; };
+		B70D31B823E7B5B400345DB0 /* RequestConnect.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70D31B723E7B5B400345DB0 /* RequestConnect.swift */; };
+		B70D31BB23E7B7FB00345DB0 /* GameTschess.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70D31BA23E7B7FB00345DB0 /* GameTschess.swift */; };
+		B70D31BE23E7B94400345DB0 /* GameConnect.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70D31BD23E7B94400345DB0 /* GameConnect.swift */; };
 		B70F0C0D22EBC075001415AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70F0C0C22EBC075001415AE /* AppDelegate.swift */; };
 		B713774923D20320006D57C2 /* SkinCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B713774823D20320006D57C2 /* SkinCore.swift */; };
 		B713774D23D25F7B006D57C2 /* Detail.swift in Sources */ = {isa = PBXBuildFile; fileRef = B713774C23D25F7B006D57C2 /* Detail.swift */; };
@@ -241,7 +244,10 @@
 		B70D31A923E7804A00345DB0 /* Skin.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Skin.xib; sourceTree = "<group>"; };
 		B70D31AB23E780A800345DB0 /* Skin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Skin.swift; sourceTree = "<group>"; };
 		B70D31B223E7812300345DB0 /* RequestAck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestAck.swift; sourceTree = "<group>"; };
-		B70D31B523E7816D00345DB0 /* TschessCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TschessCore.swift; sourceTree = "<group>"; };
+		B70D31B523E7816D00345DB0 /* GameAck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameAck.swift; sourceTree = "<group>"; };
+		B70D31B723E7B5B400345DB0 /* RequestConnect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestConnect.swift; sourceTree = "<group>"; };
+		B70D31BA23E7B7FB00345DB0 /* GameTschess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTschess.swift; sourceTree = "<group>"; };
+		B70D31BD23E7B94400345DB0 /* GameConnect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameConnect.swift; sourceTree = "<group>"; };
 		B70F0C0C22EBC075001415AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B70F0C1122EBC25C001415AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B713774823D20320006D57C2 /* SkinCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkinCore.swift; sourceTree = "<group>"; };
@@ -627,7 +633,23 @@
 		B70D31B423E7815000345DB0 /* model */ = {
 			isa = PBXGroup;
 			children = (
-				B70D31B523E7816D00345DB0 /* TschessCore.swift */,
+				B70D31B523E7816D00345DB0 /* GameAck.swift */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		B70D31B923E7B7E800345DB0 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				B70D31BA23E7B7FB00345DB0 /* GameTschess.swift */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		B70D31BC23E7B93800345DB0 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				B70D31BD23E7B94400345DB0 /* GameConnect.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -698,6 +720,7 @@
 		B74145B222F3C52600B3B4FF /* tschess */ = {
 			isa = PBXGroup;
 			children = (
+				B70D31B923E7B7E800345DB0 /* model */,
 				B70A86C52370784C00D303F0 /* networking */,
 				B708D0FC236B507700A899F9 /* storyboard */,
 				B7CA7BB0235A2D8F00AA1814 /* modal_menu */,
@@ -956,6 +979,7 @@
 		B7AEEA7A23A1BD0D002F950C /* actual */ = {
 			isa = PBXGroup;
 			children = (
+				B70D31BC23E7B93800345DB0 /* model */,
 				B7AEEA8023A1BE50002F950C /* networking */,
 				B7AEEA7B23A1BD24002F950C /* storyboard */,
 				B7AEEA7C23A1BD5E002F950C /* Actual.swift */,
@@ -978,6 +1002,7 @@
 			children = (
 				B7AEEA8123A1BE73002F950C /* RequestActual.swift */,
 				B713F8E023E4CF8B00580DB5 /* UpdateNack.swift */,
+				B70D31B723E7B5B400345DB0 /* RequestConnect.swift */,
 			);
 			path = networking;
 			sourceTree = "<group>";
@@ -1708,7 +1733,9 @@
 				B7BCD7CC22F4746300CC29E6 /* WhitePawn.swift in Sources */,
 				B7FCCC9D2374001E00C4DD88 /* Transitioner.swift in Sources */,
 				B7BCD7B822F4739400CC29E6 /* WhiteAmazon.swift in Sources */,
+				B70D31B823E7B5B400345DB0 /* RequestConnect.swift in Sources */,
 				B7BCD7DC22F474D800CC29E6 /* BlackRook.swift in Sources */,
+				B70D31BE23E7B94400345DB0 /* GameConnect.swift in Sources */,
 				B79BB6282315C4A000FF5E0E /* EnPassant.swift in Sources */,
 				B7AF786B23E09A3000BAD8EC /* UpdateConfig.swift in Sources */,
 				B7BCD7D622F474B000CC29E6 /* BlackKnight.swift in Sources */,
@@ -1809,13 +1836,14 @@
 				B7AF786E23E09AC000BAD8EC /* ConfigSerializer.swift in Sources */,
 				B713F8E123E4CF8B00580DB5 /* UpdateNack.swift in Sources */,
 				B7DF5BF923832F3D0022A8C2 /* Product.swift in Sources */,
+				B70D31BB23E7B7FB00345DB0 /* GameTschess.swift in Sources */,
 				B7F062892385CF270015C618 /* Colour.swift in Sources */,
 				B74136C923DE34CC001B3D60 /* TestTask0.swift in Sources */,
 				B7471DC123A6E3C2008F70A3 /* BlackReveal.swift in Sources */,
 				B79BB62623157A2F00FF5E0E /* PawnPromotion.swift in Sources */,
 				B74145D622F3CE4800B3B4FF /* King.swift in Sources */,
 				B72AF9E323E3BDBF003740CD /* GetNotify.swift in Sources */,
-				B70D31B623E7816D00345DB0 /* TschessCore.swift in Sources */,
+				B70D31B623E7816D00345DB0 /* GameAck.swift in Sources */,
 				B7AEEA9123A1D8E0002F950C /* HistoricCell.swift in Sources */,
 				B7F541C623D51ADD00E89074 /* HomeMenuTable.swift in Sources */,
 				B7EA5DC42375C2710019C0BF /* Player.swift in Sources */,

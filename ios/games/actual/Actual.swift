@@ -105,6 +105,16 @@ class Actual: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate {
             let gameModel = self.actualTable!.getGameMenuTableList()[gameMenuSelectionIndex]
            // StoryboardSelector().chess(gameModel: gameModel, player: gamestate.getPlayer(), gamestate: result!)
         }
+        
+        
+//        DispatchQueue.main.async {
+//            let storyboard: UIStoryboard = UIStoryboard(name: "Tschess", bundle: nil)
+//            let viewController = storyboard.instantiateViewController(withIdentifier: "Tschess") as! Tschess
+//            viewController.setTschessCore(tschessCore: tschessCore)
+//            UIApplication.shared.keyWindow?.rootViewController = viewController
+//        }
+        
+        
     }
     
     @IBAction func backButtonClick(_ sender: Any) {

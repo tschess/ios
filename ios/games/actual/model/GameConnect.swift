@@ -1,5 +1,5 @@
 //
-//  TschessCore.swift
+//  GameConnect.swift
 //  ios
 //
 //  Created by Matthew on 2/2/20.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TschessCore {
+class GameConnect {
     
     var idGame: String
     var playerSelf: Player
@@ -17,6 +17,7 @@ class TschessCore {
     var skin: String?
     var white: Bool?
     var state: [[TschessElement?]]?
+    var date: String?
     
     init(
         idGame: String,
@@ -25,7 +26,8 @@ class TschessCore {
         
         skin: String? = nil,
         white: Bool? = nil,
-        state: [[TschessElement?]]? = nil
+        state: [[TschessElement?]]? = nil,
+        date: String? = nil
     ) {
         self.idGame = idGame
         
@@ -35,12 +37,6 @@ class TschessCore {
         self.skin = skin
         self.white = white
         self.state = state
+        self.date = date
     }
 }
-//enum SKIN {
-    //case DEFAULT
-    //case IAPETUS
-    //case CALYPSO
-    //case HYPERION
-    //case NEPTUNE
-//}
