@@ -79,9 +79,9 @@ class HomeMenuTable: UITableViewController {
             return
         }
         if #available(iOS 13.0, *) {
-                let image = UIImage(systemName: "arrow.down")!
-                self.dispImageView!.image = image
-                self.dispImageView!.tintColor = .red
+            let image = UIImage(systemName: "arrow.down")!
+            self.dispImageView!.image = image
+            self.dispImageView!.tintColor = .red
         }
     }
     
@@ -106,8 +106,8 @@ class HomeMenuTable: UITableViewController {
         self.requestPageIndex = 0
         
         DispatchQueue.main.async() {
-        self.leaderboardList = [Game]()
-        self.tableView.reloadData()
+            self.leaderboardList = [Game]()
+            self.tableView.reloadData()
         }
         
         let requestPayload = ["id_player": self.player!.getId(), "page_size": REQUEST_PAGE_SIZE] as [String: Any]
@@ -124,16 +124,10 @@ class HomeMenuTable: UITableViewController {
         }
     }
     
-    
-    
-    
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.tableFooterView = UIView()
     }
-    
-    
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -165,7 +159,11 @@ class HomeMenuTable: UITableViewController {
             yayayaya.insert("'", at: yayayaya.index(yayayaya.endIndex, offsetBy: -2))
             cell.dateLabel.text = yayayaya
         } else {
-            //date...
+            let formatter = DateFormatter()
+            formatter.dateFormat = "dd.MM.YY"
+            var yayayaya = formatter.string(from: DateTime().toFormatDate(string: date))
+            yayayaya.insert("'", at: yayayaya.index(yayayaya.endIndex, offsetBy: -2))
+            cell.dateLabel.text = yayayaya
         }
         
         cell.dispLabel.text = String(abs(Int(gameTableMenuItem.getOpponent().getDisp())!))
@@ -210,12 +208,8 @@ class HomeMenuTable: UITableViewController {
         DispatchQueue.main.async() {
             self.activityIndicator!.isHidden = false
             self.activityIndicator!.startAnimating()
-            
         }
-        let requestPayload = [
-            "index": self.requestPageIndex,
-            "size": REQUEST_PAGE_SIZE
-            ] as [String: Int]
+        let requestPayload = ["index": self.requestPageIndex, "size": REQUEST_PAGE_SIZE] as [String: Int]
         RequestPage().execute(requestPayload: requestPayload) { (result) in
             DispatchQueue.main.async() {
                 self.activityIndicator!.stopAnimating()
