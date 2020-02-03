@@ -106,7 +106,7 @@ class ActualTable: UITableViewController, SwipeTableViewCellDelegate {
                     }
                 }
             }
-            rescind.backgroundColor = .red
+            rescind.backgroundColor = .orange
             if #available(iOS 13.0, *) {
                 rescind.image = UIImage(systemName: "xmark.rectangle.fill")!
             }

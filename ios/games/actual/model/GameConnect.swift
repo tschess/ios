@@ -18,17 +18,16 @@ class GameConnect {
     var onCheck: Bool?
     
     init(
-        gameAck: GameAck
-        //turn: String? = nil,
-        //status: String,
-        //highlight: String,
-        //onCheck: Bool
+        gameAck: GameAck,
+        turn: String? = nil,
+        status: String? = nil,
+        highlight: String? = nil,
+        onCheck: Bool? = nil
     ) {
         self.gameAck = gameAck
-        
-        //self.turn = turn
-        //self.status = status
-        //self.highlight = highlight
-        //self.onCheck = onCheck
+        self.turn = turn
+        self.status = status
+        self.highlight = highlight
+        self.onCheck = onCheck
     }
 }
