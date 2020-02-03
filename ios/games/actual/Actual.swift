@@ -35,14 +35,13 @@ class Actual: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate {
         super.viewDidLoad()
         tabBarMenu.delegate = self
         actualTable = children.first as? ActualTable
+        actualTable!.setActual(actual: self)
         actualTable!.setPlayer(player: self.player!)
         actualTable!.setIndicator(indicator: self.activityIndicator!)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        let dataDecoded: Data = Data(base64Encoded: self.player!.getAvatar(), options: .ignoreUnknownCharacters)!
+    public func renderHeader() {
+       let dataDecoded: Data = Data(base64Encoded: self.player!.getAvatar(), options: .ignoreUnknownCharacters)!
         let decodedimage = UIImage(data: dataDecoded)
         self.avatarImageView.image = decodedimage
         self.rankLabel.text = self.player!.getRank()
@@ -66,6 +65,12 @@ class Actual: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate {
                 self.rankDirectionImage.tintColor = .red
             }
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.renderHeader()
         
         self.activityIndicator.isHidden = true
     }
@@ -79,29 +84,29 @@ class Actual: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate {
         }
     }
     
-    @objc func onDidReceiveData(_ notification: NSNotification) {
-        let gameMenuSelectionIndex = notification.userInfo!["actual_selection"] as! Int
-        
-        let gameModel = self.actualTable!.getGameMenuTableList()[gameMenuSelectionIndex]
-        
-        let requestPayload: [String: Any] = ["id_game": gameModel.getIdentifier(), "id_player": self.player!.getId()]
-        
-        let gameAck: GameAck = GameAck(idGame: gameModel.getIdentifier(), playerSelf: self.player!, playerOppo: gameModel.getOpponent())
-        let gameConnect: GameConnect = GameConnect(gameAck: gameAck)
-        
-        RequestConnect().execute(requestPayload: requestPayload, gameConnect: gameConnect) { (gameTschess) in
-            print("result: \(gameTschess)")
-            /**
-             * ERROR HANDLING!!!
-             */
-            DispatchQueue.main.async {
-                let storyboard: UIStoryboard = UIStoryboard(name: "Tschess", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "Tschess") as! Tschess
-                viewController.setGameTschess(gameTschess: gameTschess!)
-                UIApplication.shared.keyWindow?.rootViewController = viewController
-            }
-        }
-    }
+//    @objc func onDidReceiveData(_ notification: NSNotification) {
+//        let gameMenuSelectionIndex = notification.userInfo!["actual_selection"] as! Int
+//
+//        let gameModel = self.actualTable!.getGameMenuTableList()[gameMenuSelectionIndex]
+//
+//        let requestPayload: [String: Any] = ["id_game": gameModel.getIdentifier(), "id_player": self.player!.getId()]
+//
+//        let gameAck: GameAck = GameAck(idGame: gameModel.getIdentifier(), playerSelf: self.player!, playerOppo: gameModel.getOpponent())
+//        let gameConnect: GameConnect = GameConnect(gameAck: gameAck)
+//
+//        RequestConnect().execute(requestPayload: requestPayload, gameConnect: gameConnect) { (gameTschess) in
+//            print("result: \(gameTschess)")
+//            /**
+//             * ERROR HANDLING!!!
+//             */
+//            DispatchQueue.main.async {
+//                let storyboard: UIStoryboard = UIStoryboard(name: "Tschess", bundle: nil)
+//                let viewController = storyboard.instantiateViewController(withIdentifier: "Tschess") as! Tschess
+//                viewController.setGameTschess(gameTschess: gameTschess!)
+//                UIApplication.shared.keyWindow?.rootViewController = viewController
+//            }
+//        }
+//    }
     
     @IBAction func backButtonClick(_ sender: Any) {
         StoryboardSelector().home(player: self.player!)

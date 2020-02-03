@@ -11,6 +11,12 @@ import SwipeCellKit
 
 class ActualTable: UITableViewController, SwipeTableViewCellDelegate {
     
+    var actual: Actual?
+    
+    public func setActual(actual: Actual) {
+        self.actual = actual
+    }
+    
     var gameMenuTableList: [Game] = [Game]()
     var player: Player?
     var label: UILabel?
@@ -120,9 +126,13 @@ class ActualTable: UITableViewController, SwipeTableViewCellDelegate {
                 let game = self.gameMenuTableList[indexPath.row]
                 let requestPayload: [String: Any] = ["id_game": game.identifier!, "id_player": self.player!.getId()]
                 
-                UpdateNack().execute(requestPayload: requestPayload) { (result) in
-                    print("result: \(result)")
+                UpdateNack().execute(requestPayload: requestPayload) { (player) in
+                    print("player: \(player)")
+                    //ERROR...
+                    self.setPlayer(player: player!)
+                    self.actual!.setPlayer(player: player!)
                     DispatchQueue.main.async {
+                        self.actual!.renderHeader()
                         self.activityIndicator!.stopAnimating()
                         self.activityIndicator!.isHidden = true
                         self.gameMenuTableList.remove(at: indexPath.row)

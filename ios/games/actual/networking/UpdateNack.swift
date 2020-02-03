@@ -10,7 +10,7 @@ import Foundation
 
 class UpdateNack {
     
-        func execute(requestPayload: [String: Any], completion: @escaping ((Bool) -> Void)) {
+        func execute(requestPayload: [String: Any], completion: @escaping ((Player?) -> Void)) {
             
             print("\n\nRequestChallenge: \(requestPayload)\n\n")
             
@@ -23,7 +23,7 @@ class UpdateNack {
             do {
                 request.httpBody = try JSONSerialization.data(withJSONObject: requestPayload, options: .prettyPrinted)
             } catch _ {
-                completion(false)
+                completion(nil)
             }
             
             
@@ -31,27 +31,27 @@ class UpdateNack {
                 
                 guard error == nil else {
                     print("b")
-                    completion(false)
+                    completion(nil)
                     return
                 }
                 guard let data = data else {
                     print("c")
-                    completion(false)
+                    completion(nil)
                     return
                 }
                 if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {
                     print("d")
-                    completion(false)
+                    completion(nil)
                     return
                 }
                 do {
                     guard let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any] else {
                         print("e")
-                        completion(false)
+                        completion(nil)
                         return
                     }
                     
-                    print(json)
+                    //print(json)
                     //print("count: \(json.count)")
                     
                     //let xxx = json["content"] as! [[String: Any]]
@@ -60,11 +60,13 @@ class UpdateNack {
                     
                     //let leaderboardPage: [Game] = self.generateLeaderboardPage(page: requestPayload["index"]!, size: requestPayload["size"]!, serverRespose: json)
                     //completion(leaderboardPage)
-                    completion(true)
+                    //completion(true)
+                    let player: Player = PlayerDeserializer().execute(dictionary: json)
+                    completion(player)
                     
                 } catch let error {
                     print(error.localizedDescription)
-                    completion(false)
+                    completion(nil)
                 }
             }).resume()
         }
