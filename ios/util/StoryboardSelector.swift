@@ -39,33 +39,33 @@ class StoryboardSelector {
         return "XANDROID" //???
     }
     
-    public func chess(gameModel: Game, player: Player, gamestate: Gamestate) {
-        DispatchQueue.main.async {
-            switch self.device() {
-            case "PHAEDRUS":
-                let storyboard: UIStoryboard = UIStoryboard(name: "Tschess", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "Tschess") as! Tschess
-                viewController.setGamestate(gamestate: gamestate)
-                viewController.setGameModel(gameModel: gamestate.getGameModel())
-                viewController.setPlayer(player: gamestate.getPlayer())
-                UIApplication.shared.keyWindow?.rootViewController = viewController
-                return
-            case "CALHOUN":
-                let storyboard: UIStoryboard = UIStoryboard(name: "Tschess", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "Tschess") as! Tschess
-                viewController.setGamestate(gamestate: gamestate)
-                viewController.setGameModel(gameModel: gamestate.getGameModel())
-                viewController.setPlayer(player: gamestate.getPlayer())
-                UIApplication.shared.keyWindow?.rootViewController = viewController
-                return
-            default:
-                return
-            }
-        }
-    }
+//    public func chess(gameModel: Game, player: Player, gamestate: Gamestate) {
+//        DispatchQueue.main.async {
+//            switch self.device() {
+//            case "PHAEDRUS":
+//                let storyboard: UIStoryboard = UIStoryboard(name: "Tschess", bundle: nil)
+//                let viewController = storyboard.instantiateViewController(withIdentifier: "Tschess") as! Tschess
+//                viewController.setGamestate(gamestate: gamestate)
+//                viewController.setGameModel(gameModel: gamestate.getGameModel())
+//                viewController.setPlayer(player: gamestate.getPlayer())
+//                UIApplication.shared.keyWindow?.rootViewController = viewController
+//                return
+//            case "CALHOUN":
+//                let storyboard: UIStoryboard = UIStoryboard(name: "Tschess", bundle: nil)
+//                let viewController = storyboard.instantiateViewController(withIdentifier: "Tschess") as! Tschess
+//                viewController.setGamestate(gamestate: gamestate)
+//                viewController.setGameModel(gameModel: gamestate.getGameModel())
+//                viewController.setPlayer(player: gamestate.getPlayer())
+//                UIApplication.shared.keyWindow?.rootViewController = viewController
+//                return
+//            default:
+//                return
+//            }
+//        }
+//    }
     
     public func chess(gamestate: Gamestate) {
-        self.chess(gameModel: gamestate.getGameModel(), player: gamestate.getPlayer(), gamestate: gamestate)
+        //self.chess(gameModel: gamestate.getGameModel(), player: gamestate.getPlayer(), gamestate: gamestate)
     }
     
     public func start() {

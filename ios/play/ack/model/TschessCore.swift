@@ -14,7 +14,7 @@ class TschessCore {
     var playerSelf: Player
     var playerOppo: PlayerCore
     
-    var skin: SKIN?
+    var skin: String?
     var white: Bool?
     var state: [[TschessElement?]]?
     
@@ -23,7 +23,7 @@ class TschessCore {
         playerSelf: Player,
         playerOppo: PlayerCore,
         
-        skin: SKIN? = nil,
+        skin: String? = nil,
         white: Bool? = nil,
         state: [[TschessElement?]]? = nil
     ) {
@@ -36,13 +36,11 @@ class TschessCore {
         self.white = white
         self.state = state
     }
-    
-    enum SKIN {
-        case DEFAULT
-        case IAPETUS
-        case CALYPSO
-        case HYPERION
-        case NEPTUNE
-    }
-    
 }
+//enum SKIN {
+    //case DEFAULT
+    //case IAPETUS
+    //case CALYPSO
+    //case HYPERION
+    //case NEPTUNE
+//}

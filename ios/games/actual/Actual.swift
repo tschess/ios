@@ -103,7 +103,7 @@ class Actual: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate {
                 return
             }
             let gameModel = self.actualTable!.getGameMenuTableList()[gameMenuSelectionIndex]
-            StoryboardSelector().chess(gameModel: gameModel, player: gamestate.getPlayer(), gamestate: result!)
+           // StoryboardSelector().chess(gameModel: gameModel, player: gamestate.getPlayer(), gamestate: result!)
         }
     }
     

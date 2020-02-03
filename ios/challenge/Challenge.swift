@@ -21,7 +21,6 @@ UIGestureRecognizerDelegate {
         self.activateBackConfig = activateBackConfig
     }
     
-    
     func generateTraditionalMatrix() -> [[TschessElement]] {
             
         let row_0 = [Pawn(), Pawn(), Pawn(), Pawn(), Pawn(), Pawn(), Pawn(), Pawn()]
@@ -428,8 +427,8 @@ UIGestureRecognizerDelegate {
             self.activityIndicator.startAnimating()
             
             let requestPayload: [String: Any] = [
-            "id_self": self.player!.getId(),
-            "id_other": self.gameModel!.getOpponent().getId(),
+            "player_self": self.player!.getId(),
+            "player_oppo": self.gameModel!.getOpponent().getId(),
             "skin": "DEFAULT",
             "config": 0]
             
@@ -444,14 +443,6 @@ UIGestureRecognizerDelegate {
             
         }
     }
-    
-//    enum SKIN {
-//        case DEFAULT
-//        case IAPETUS
-//        case CALYPSO
-//        case HYPERION
-//        case NEPTUNE
-//    }
 }
 
 

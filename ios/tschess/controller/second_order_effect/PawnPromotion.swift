@@ -102,52 +102,52 @@ class PawnPromotion: UIViewController {
     }
     
     public func evaluate(coordinate: [Int], proposed: [Int]) -> Bool {
-        let gamestate = self.chess!.getGamestate()
-        let tschessElementMatrix = gamestate.getTschessElementMatrix()
-        let tschessElement = tschessElementMatrix[coordinate[0]][coordinate[1]]
-        if(tschessElement == nil){
-            return false
-        }
-        if(tschessElement!.name.contains("Arrow")) {
-            return false
-        }
-        if(tschessElement!.name.contains("Pawn")) {
-            let rank = proposed[0] == 0
-            let move = coordinate[0] - proposed[0] == 1
-            if(rank && move){
-                self.coordinate = coordinate
-                return true
-            }
-        }
+//        let gamestate = self.chess!.getGamestate()
+//        let tschessElementMatrix = gamestate.getTschessElementMatrix()
+//        let tschessElement = tschessElementMatrix[coordinate[0]][coordinate[1]]
+//        if(tschessElement == nil){
+//            return false
+//        }
+//        if(tschessElement!.name.contains("Arrow")) {
+//            return false
+//        }
+//        if(tschessElement!.name.contains("Pawn")) {
+//            let rank = proposed[0] == 0
+//            let move = coordinate[0] - proposed[0] == 1
+//            if(rank && move){
+//                self.coordinate = coordinate
+//                return true
+//            }
+//        }
         return false
     }
     
     private func execute(white: TschessElement, black: TschessElement) {
-        let gamestate = self.chess!.getGamestate()
-        var tschessElementMatrix = gamestate.getTschessElementMatrix()
-        var tschessElement: TschessElement = white
-        let affiliation = gamestate.getSelfAffiliation()
-        if(affiliation != "WHITE"){
-            tschessElement = black
-        }
-        tschessElementMatrix[proposed![0]][proposed![1]] = tschessElement
-        tschessElementMatrix[coordinate![0]][coordinate![1]] = nil
-        
-        Highlighter().restoreSelection(coordinate: proposed!, gamestate: gamestate)
-        Highlighter().neutralize(gamestate: gamestate)
-        
-        // is this redundant from render effect????
-        gamestate.setLastMoveUpdate(gamestate: gamestate)
-        gamestate.changeTurn()
-        gamestate.setTschessElementMatrix(tschessElementMatrix: tschessElementMatrix)
-        gamestate.setDrawProposer(drawProposer: "NONE")
-        
-        Transitioner().evaluateCheckMate(gamestate: gamestate)
-        
-        let requestUpdate = GamestateSerializer().execute(gamestate: gamestate)
-        UpdateGamestate().execute(requestPayload: requestUpdate)
-        
-        self.presentingViewController!.dismiss(animated: false, completion: nil)
+//        let gamestate = self.chess!.getGamestate()
+//        var tschessElementMatrix = gamestate.getTschessElementMatrix()
+//        var tschessElement: TschessElement = white
+//        let affiliation = gamestate.getSelfAffiliation()
+//        if(affiliation != "WHITE"){
+//            tschessElement = black
+//        }
+//        tschessElementMatrix[proposed![0]][proposed![1]] = tschessElement
+//        tschessElementMatrix[coordinate![0]][coordinate![1]] = nil
+//
+//        Highlighter().restoreSelection(coordinate: proposed!, gamestate: gamestate)
+//        Highlighter().neutralize(gamestate: gamestate)
+//
+//        // is this redundant from render effect????
+//        gamestate.setLastMoveUpdate(gamestate: gamestate)
+//        gamestate.changeTurn()
+//        gamestate.setTschessElementMatrix(tschessElementMatrix: tschessElementMatrix)
+//        gamestate.setDrawProposer(drawProposer: "NONE")
+//
+//        Transitioner().evaluateCheckMate(gamestate: gamestate)
+//
+//        let requestUpdate = GamestateSerializer().execute(gamestate: gamestate)
+//        UpdateGamestate().execute(requestPayload: requestUpdate)
+//
+//        self.presentingViewController!.dismiss(animated: false, completion: nil)
     }
     
 }
