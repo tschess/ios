@@ -47,9 +47,9 @@ class Start: UIViewController, UITextFieldDelegate {
         self.usernameTextField.delegate = self
         self.passwordTextField.delegate = self
         self.usernameTextField.attributedPlaceholder = NSAttributedString(string: "username",
-                                                                     attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+                                                                     attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
         self.passwordTextField.attributedPlaceholder = NSAttributedString(string: "password",
-                                                                     attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+                                                                     attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
         let dismissKeyboard: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
         view.addGestureRecognizer(dismissKeyboard)
         
