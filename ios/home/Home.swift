@@ -10,6 +10,14 @@ import UIKit
 
 class Home: UIViewController, UITabBarDelegate {
     
+//    @objc func onDidReceiveData(_ notification: NSNotification) {
+//        let discoverSelectionIndex = notification.userInfo!["leaderboard_index"] as! Int
+//        let gameModel = self.leaderboardTableView!.getLeaderboardTableList()[discoverSelectionIndex]
+//        StoryboardSelector().other(player: self.player!, gameModel: gameModel)
+//    }
+    
+    var homeMenuTable: HomeMenuTable?
+    
     //MARK: Header
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
@@ -23,7 +31,6 @@ class Home: UIViewController, UITabBarDelegate {
     @IBOutlet weak var tabBarMenu: UITabBar!
     
     var activateProfileGestureRecognizer: UITapGestureRecognizer?
-    var leaderboardTableView: HomeMenuTable?
     
     var player: Player?
     
@@ -31,32 +38,7 @@ class Home: UIViewController, UITabBarDelegate {
         self.player = player
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        self.tabBarMenu.delegate = self
-        self.leaderboardTableView = children.first as? HomeMenuTable
-        self.leaderboardTableView!.setPlayer(player: self.player!)
-        self.leaderboardTableView!.setActivityIndicator(activityIndicator: self.activityIndicator)
-        
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(self.onDidReceiveData(_:)),
-            name: NSNotification.Name(rawValue: "DiscoverSelection"),
-            object: nil)
-    }
-    
-    override func viewDidDisappear(_ animated: Bool){
-        super.viewDidDisappear(animated)
-        self.notificationTimerStop()
-        
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        self.activateProfileGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.activateProfile))
-        self.headerView.addGestureRecognizer(self.activateProfileGestureRecognizer!)
+    public func renderHeader() {
         
         let dataDecoded: Data = Data(base64Encoded: self.player!.getAvatar(), options: .ignoreUnknownCharacters)!
         let decodedimage = UIImage(data: dataDecoded)
@@ -82,6 +64,42 @@ class Home: UIViewController, UITabBarDelegate {
                 self.dispImageView.tintColor = .red
             }
         }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.tabBarMenu.delegate = self
+        self.homeMenuTable = children.first as? HomeMenuTable
+        
+        self.homeMenuTable!.setPlayer(player: self.player!)
+        self.homeMenuTable!.setHeaderView(
+            eloLabel: self.eloLabel,
+            rankLabel: self.rankLabel,
+            dispLabel: self.dispLabel,
+            dispImageView: self.dispImageView,
+            activityIndicator: self.activityIndicator)
+        
+//        NotificationCenter.default.addObserver(
+//            self,
+//            selector: #selector(self.onDidReceiveData(_:)),
+//            name: NSNotification.Name(rawValue: "HomeMenuTable"),
+//            object: nil)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool){
+        super.viewDidDisappear(animated)
+        self.notificationTimerStop()
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.activateProfileGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.activateProfile))
+        self.headerView.addGestureRecognizer(self.activateProfileGestureRecognizer!)
+        
+        self.renderHeader()
         
         self.notificationTimerStart() //gotta stop it too...
     }
@@ -90,43 +108,37 @@ class Home: UIViewController, UITabBarDelegate {
         StoryboardSelector().profile(player: self.player!)
     }
     
-    @objc func onDidReceiveData(_ notification: NSNotification) {
-        let discoverSelectionIndex = notification.userInfo!["discover_selection"] as! Int
-        let gameModel = leaderboardTableView!.getLeaderboardTableList()[discoverSelectionIndex]
-        StoryboardSelector().other(player: self.player!, gameModel: gameModel)
+    // MARK: NOTIFICATION TIMER
+    
+    var notificationTimer: Timer?
+    
+    func notificationTimerStart() {
+        guard self.notificationTimer == nil else {
+            return
+        }
+        self.notificationTimer = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(self.notificationTimerTask), userInfo: nil, repeats: true)
     }
     
-    // MARK: NOTIFICATION TIMER
-       
-       var notificationTimer: Timer?
-       
-       func notificationTimerStart() {
-           guard self.notificationTimer == nil else {
-               return
-           }
-           self.notificationTimer = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(self.notificationTimerTask), userInfo: nil, repeats: true)
-       }
-       
-       func notificationTimerStop() {
-           self.notificationTimer?.invalidate()
-           self.notificationTimer = nil
-       }
-          
-       @objc func notificationTimerTask() {
-           GetNotify().execute(id: self.player!.getId()) { (notify) in
-               if(!notify){
-                   return
-               }
-               DispatchQueue.main.async() {
-                   self.tabBarMenu.selectedImageTintColor = UIColor.magenta
-                   if #available(iOS 13.0, *) {
-                       let notify = self.tabBarMenu.items![1]
-                       notify.selectedImage = UIImage(systemName: "gamecontroller")!
-                       self.tabBarMenu.selectedItem = notify
-                   }
-               }
-           }
-       }
+    func notificationTimerStop() {
+        self.notificationTimer?.invalidate()
+        self.notificationTimer = nil
+    }
+    
+    @objc func notificationTimerTask() {
+        GetNotify().execute(id: self.player!.getId()) { (notify) in
+            if(!notify){
+                return
+            }
+            DispatchQueue.main.async() {
+                self.tabBarMenu.selectedImageTintColor = UIColor.magenta
+                if #available(iOS 13.0, *) {
+                    let notify = self.tabBarMenu.items![1]
+                    notify.selectedImage = UIImage(systemName: "gamecontroller")!
+                    self.tabBarMenu.selectedItem = notify
+                }
+            }
+        }
+    }
     
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {

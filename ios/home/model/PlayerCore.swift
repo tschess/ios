@@ -1,16 +1,14 @@
 //
-//  Opponent.swift
+//  PlayerCore.swift
 //  ios
 //
-//  Created by Matthew on 8/15/19.
-//  Copyright © 2019 bahlsenwitz. All rights reserved.
+//  Created by Matthew on 2/3/20.
+//  Copyright © 2020 bahlsenwitz. All rights reserved.
 //
-
-import Foundation
 
 import UIKit
 
-class PlayerCore {
+class PlayerCore: Equatable, Hashable {
     
     var id: String
     var username: String
@@ -19,6 +17,14 @@ class PlayerCore {
     var rank: String
     var date: String
     var disp: String
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(self.id)
+    }
+    
+    static func == (lhs: PlayerCore, rhs: PlayerCore) -> Bool {
+        return lhs.id == rhs.id
+    }
     
     init(
         id: String = "TBD",
@@ -88,3 +94,4 @@ class PlayerCore {
     }
     
 }
+

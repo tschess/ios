@@ -43,6 +43,9 @@
 		B72AF9E323E3BDBF003740CD /* GetNotify.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72AF9E223E3BDBF003740CD /* GetNotify.swift */; };
 		B72AF9E623E3D477003740CD /* RequestSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72AF9E523E3D477003740CD /* RequestSnapshot.swift */; };
 		B72AF9E923E3D8CC003740CD /* EndgameCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72AF9E823E3D8CC003740CD /* EndgameCore.swift */; };
+		B7316D1123E8AA8E00119865 /* RequestRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7316D1023E8AA8E00119865 /* RequestRefresh.swift */; };
+		B7316D1423E8ADCB00119865 /* PlayerCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7316D1323E8ADCB00119865 /* PlayerCore.swift */; };
+		B7316D1623E8ADF100119865 /* PlayerCoreDeserializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7316D1523E8ADF100119865 /* PlayerCoreDeserializer.swift */; };
 		B74136C723DE34A0001B3D60 /* LoginTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74136C623DE34A0001B3D60 /* LoginTask.swift */; };
 		B74136C923DE34CC001B3D60 /* TestTask0.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74136C823DE34CC001B3D60 /* TestTask0.swift */; };
 		B74136CB23DE34EF001B3D60 /* TestTask1.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74136CA23DE34EF001B3D60 /* TestTask1.swift */; };
@@ -85,13 +88,11 @@
 		B7AEEA8523A1C1BB002F950C /* RequestHistoricSelf.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7AEEA8423A1C1BB002F950C /* RequestHistoricSelf.swift */; };
 		B7AEEA8F23A1D8D2002F950C /* HistoricTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7AEEA8E23A1D8D2002F950C /* HistoricTable.swift */; };
 		B7AEEA9123A1D8E0002F950C /* HistoricCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7AEEA9023A1D8E0002F950C /* HistoricCell.swift */; };
-		B7AF6D31238C3A12001B6086 /* PlayerCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7AF6D30238C3A12001B6086 /* PlayerCore.swift */; };
 		B7AF786B23E09A3000BAD8EC /* UpdateConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7AF786A23E09A3000BAD8EC /* UpdateConfig.swift */; };
 		B7AF786E23E09AC000BAD8EC /* ConfigSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7AF786D23E09AC000BAD8EC /* ConfigSerializer.swift */; };
 		B7AF787023E09AD100BAD8EC /* ConfigDeserializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7AF786F23E09AD100BAD8EC /* ConfigDeserializer.swift */; };
 		B7AF787323E0B9DA00BAD8EC /* RequestPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7AF787223E0B9DA00BAD8EC /* RequestPage.swift */; };
 		B7AF787523E0C7B100BAD8EC /* RequestQuick.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7AF787423E0C7B100BAD8EC /* RequestQuick.swift */; };
-		B7AF787723E0D80E00BAD8EC /* PlayerCoreDeserialiizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7AF787623E0D80E00BAD8EC /* PlayerCoreDeserialiizer.swift */; };
 		B7B74A52237DCAF200D07061 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7B74A51237DCAF200D07061 /* StoreKit.framework */; };
 		B7B74A55237DCC8600D07061 /* PlayerDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B74A54237DCC8600D07061 /* PlayerDevice.swift */; };
 		B7BAA63B237F0FFD0038C483 /* ProfileCalhoun.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7BAA63A237F0FFD0038C483 /* ProfileCalhoun.storyboard */; };
@@ -261,6 +262,9 @@
 		B72AF9E223E3BDBF003740CD /* GetNotify.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetNotify.swift; sourceTree = "<group>"; };
 		B72AF9E523E3D477003740CD /* RequestSnapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestSnapshot.swift; sourceTree = "<group>"; };
 		B72AF9E823E3D8CC003740CD /* EndgameCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndgameCore.swift; sourceTree = "<group>"; };
+		B7316D1023E8AA8E00119865 /* RequestRefresh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestRefresh.swift; sourceTree = "<group>"; };
+		B7316D1323E8ADCB00119865 /* PlayerCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCore.swift; sourceTree = "<group>"; };
+		B7316D1523E8ADF100119865 /* PlayerCoreDeserializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCoreDeserializer.swift; sourceTree = "<group>"; };
 		B73894312328071100231170 /* ios.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ios.entitlements; sourceTree = "<group>"; };
 		B74136C623DE34A0001B3D60 /* LoginTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTask.swift; sourceTree = "<group>"; };
 		B74136C823DE34CC001B3D60 /* TestTask0.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTask0.swift; sourceTree = "<group>"; };
@@ -309,13 +313,11 @@
 		B7AEEA8423A1C1BB002F950C /* RequestHistoricSelf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestHistoricSelf.swift; sourceTree = "<group>"; };
 		B7AEEA8E23A1D8D2002F950C /* HistoricTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoricTable.swift; sourceTree = "<group>"; };
 		B7AEEA9023A1D8E0002F950C /* HistoricCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoricCell.swift; sourceTree = "<group>"; };
-		B7AF6D30238C3A12001B6086 /* PlayerCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCore.swift; sourceTree = "<group>"; };
 		B7AF786A23E09A3000BAD8EC /* UpdateConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateConfig.swift; sourceTree = "<group>"; };
 		B7AF786D23E09AC000BAD8EC /* ConfigSerializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigSerializer.swift; sourceTree = "<group>"; };
 		B7AF786F23E09AD100BAD8EC /* ConfigDeserializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigDeserializer.swift; sourceTree = "<group>"; };
 		B7AF787223E0B9DA00BAD8EC /* RequestPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestPage.swift; sourceTree = "<group>"; };
 		B7AF787423E0C7B100BAD8EC /* RequestQuick.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestQuick.swift; sourceTree = "<group>"; };
-		B7AF787623E0D80E00BAD8EC /* PlayerCoreDeserialiizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCoreDeserialiizer.swift; sourceTree = "<group>"; };
 		B7B74A51237DCAF200D07061 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		B7B74A54237DCC8600D07061 /* PlayerDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerDevice.swift; sourceTree = "<group>"; };
 		B7BAA63A237F0FFD0038C483 /* ProfileCalhoun.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileCalhoun.storyboard; sourceTree = "<group>"; };
@@ -717,6 +719,15 @@
 			path = model;
 			sourceTree = "<group>";
 		};
+		B7316D1223E8ADB100119865 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				B7316D1323E8ADCB00119865 /* PlayerCore.swift */,
+				B7316D1523E8ADF100119865 /* PlayerCoreDeserializer.swift */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
 		B74145B222F3C52600B3B4FF /* tschess */ = {
 			isa = PBXGroup;
 			children = (
@@ -1048,6 +1059,7 @@
 				B7AF787223E0B9DA00BAD8EC /* RequestPage.swift */,
 				B7AF787423E0C7B100BAD8EC /* RequestQuick.swift */,
 				B72AF9E223E3BDBF003740CD /* GetNotify.swift */,
+				B7316D1023E8AA8E00119865 /* RequestRefresh.swift */,
 			);
 			path = networking;
 			sourceTree = "<group>";
@@ -1270,8 +1282,6 @@
 			children = (
 				B7EA5DC32375C2710019C0BF /* Player.swift */,
 				B7EA5DC52375C28B0019C0BF /* PlayerDeserializer.swift */,
-				B7AF6D30238C3A12001B6086 /* PlayerCore.swift */,
-				B7AF787623E0D80E00BAD8EC /* PlayerCoreDeserialiizer.swift */,
 			);
 			path = player;
 			sourceTree = "<group>";
@@ -1334,6 +1344,7 @@
 		B7F541BF23D51A4300E89074 /* home */ = {
 			isa = PBXGroup;
 			children = (
+				B7316D1223E8ADB100119865 /* model */,
 				B7AF787123E0B9BC00BAD8EC /* networking */,
 				B7F541C223D51A7800E89074 /* storyboard */,
 				B7F541C023D51A5A00E89074 /* Home.swift */,
@@ -1698,7 +1709,6 @@
 				B70D319023E7738B00345DB0 /* ActualCell.swift in Sources */,
 				B74145CE22F3CE0500B3B4FF /* LandminePawn.swift in Sources */,
 				B70A86CB2370989000D303F0 /* ServerAddress.swift in Sources */,
-				B7AF787723E0D80E00BAD8EC /* PlayerCoreDeserialiizer.swift in Sources */,
 				B74145D822F3CE5400B3B4FF /* Knight.swift in Sources */,
 				B7285E0322F1E2980083F1CE /* DynamicCollectionView.swift in Sources */,
 				B7B74A55237DCC8600D07061 /* PlayerDevice.swift in Sources */,
@@ -1720,6 +1730,7 @@
 				B7DF5BE223832BFF0022A8C2 /* PurchaseSkin.swift in Sources */,
 				B7F7C8ED22FF81910060AC38 /* HorizontalVertical.swift in Sources */,
 				B72AF9E923E3D8CC003740CD /* EndgameCore.swift in Sources */,
+				B7316D1423E8ADCB00119865 /* PlayerCore.swift in Sources */,
 				B74145DE22F3CE8300B3B4FF /* Rook.swift in Sources */,
 				B7BCD7C422F473F300CC29E6 /* WhiteSpy.swift in Sources */,
 				B7F541D223D51CF900E89074 /* OtherMenuCell.swift in Sources */,
@@ -1792,6 +1803,7 @@
 				B7BB475523009871001791F0 /* PawnOffense.swift in Sources */,
 				B7F5F64423D6376F00BCF91F /* Address.swift in Sources */,
 				B7168BBE233A7892008F59DE /* DeserializeGamestate.swift in Sources */,
+				B7316D1123E8AA8E00119865 /* RequestRefresh.swift in Sources */,
 				B7BCD7CE22F4746F00CC29E6 /* WhiteQueen.swift in Sources */,
 				B74145C222F3CAC800B3B4FF /* LegalMove.swift in Sources */,
 				B70D31AC23E780A800345DB0 /* Skin.swift in Sources */,
@@ -1831,7 +1843,6 @@
 				B7F78D39236BA7F400F07FD7 /* Fairy.swift in Sources */,
 				B70D319E23E77F5F00345DB0 /* Quick.swift in Sources */,
 				B714BF28237C942A000DD80E /* PlayerCreate.swift in Sources */,
-				B7AF6D31238C3A12001B6086 /* PlayerCore.swift in Sources */,
 				B7BCD7D022F4747F00CC29E6 /* WhiteRook.swift in Sources */,
 				B7AF786E23E09AC000BAD8EC /* ConfigSerializer.swift in Sources */,
 				B713F8E123E4CF8B00580DB5 /* UpdateNack.swift in Sources */,
@@ -1846,6 +1857,7 @@
 				B70D31B623E7816D00345DB0 /* GameAck.swift in Sources */,
 				B7AEEA9123A1D8E0002F950C /* HistoricCell.swift in Sources */,
 				B7F541C623D51ADD00E89074 /* HomeMenuTable.swift in Sources */,
+				B7316D1623E8ADF100119865 /* PlayerCoreDeserializer.swift in Sources */,
 				B7EA5DC42375C2710019C0BF /* Player.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
