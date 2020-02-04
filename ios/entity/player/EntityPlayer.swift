@@ -41,16 +41,13 @@ class EntityPlayer: Equatable, Hashable {
         config2: [[TschessElement?]]
     ) {
         self.id_player = id_player
-        
         self.username = username
         self.password = password
-        
         self.elo = elo
         self.rank = rank
         self.date = date
         self.disp = disp
         self.avatar = avatar
-        
         self.config0 = config0
         self.config1 = config1
         self.config2 = config2
