@@ -54,10 +54,10 @@ class DrawResign: UIViewController  {
         self.activityIndicator.startAnimating()
         
         let requestPayload = [
-            "id_game": self.gameTschess!.gameAck!.idGame,
-            "id_self": self.gameTschess!.gameAck!.playerSelf.id,
-            "id_oppo": self.gameTschess!.gameAck!.playerOppo.id,
-            "white": self.gameTschess!.gameAck!.white!] as [String: Any]
+            "id_game": self.gameTschess!.idGame,
+            "id_self": self.gameTschess!.playerSelf.id,
+            "id_oppo": self.gameTschess!.playerOppo.id,
+            "white": self.gameTschess!.white!] as [String: Any]
         
 //        UpdateResign {
 //

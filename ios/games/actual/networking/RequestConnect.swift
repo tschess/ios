@@ -39,9 +39,9 @@ class RequestConnect {
                 }
                 
                 let matrixDeserializer = MatrixDeserializer()
-                matrixDeserializer.setUsername(username: gameConnect.gameAck.playerSelf.username)
-                matrixDeserializer.setUsernameWhite(username: gameConnect.gameAck.playerSelf.username)
-                matrixDeserializer.setUsernameBlack(username: gameConnect.gameAck.playerOppo.username)
+                matrixDeserializer.setUsername(username: gameConnect.playerSelf.username)
+                matrixDeserializer.setUsernameWhite(username: gameConnect.playerSelf.username)
+                matrixDeserializer.setUsernameBlack(username: gameConnect.playerOppo.username)
             
                 
                 
@@ -58,27 +58,27 @@ class RequestConnect {
                 
                 let white: Bool = json["white"] as! Bool
                 print("white: \(white)")
-                gameConnect.gameAck.white = white
+                gameConnect.white = white
                 
                 let state = matrixDeserializer.deserialize(stringRepresentation: state0, orientationBlack: !white)
                 //print("\n\n state: \(state)")
-                gameConnect.gameAck.state = state
+                gameConnect.state = state
                 
                 if(!white){
-                    matrixDeserializer.setUsernameWhite(username: gameConnect.gameAck.playerOppo.username)
-                    matrixDeserializer.setUsernameBlack(username: gameConnect.gameAck.playerSelf.username)
+                    matrixDeserializer.setUsernameWhite(username: gameConnect.playerOppo.username)
+                    matrixDeserializer.setUsernameBlack(username: gameConnect.playerSelf.username)
                     let state = matrixDeserializer.deserialize(stringRepresentation: state0, orientationBlack: white)
                     //print("\n\n state: \(state)")
-                    gameConnect.gameAck.state = state
+                    gameConnect.state = state
                 }
                 
                 let skin: String = json["skin"] as! String
                 //print("skin: \(skin)")
-                gameConnect.gameAck.skin = skin
+                gameConnect.skin = skin
                 
                 let date: String = json["date"] as! String
                 print("date: \(date)")
-                gameConnect.gameAck.date = date
+                gameConnect.date = date
                 
                 //highlight
                 let highlight: String = json["highlight"] as! String
@@ -96,6 +96,9 @@ class RequestConnect {
                 gameConnect.turn = turn
                 
                 let gameTschess: GameTschess = GameTschess(gameConnect: gameConnect)
+                
+                //gameTschess.playerOppo
+                
                 completion(gameTschess)
                 
                 

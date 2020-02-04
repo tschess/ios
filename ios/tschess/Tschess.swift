@@ -13,7 +13,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     let DATE_TIME: DateTime = DateTime()
     
     private func updateCountdownTimer() {
-        let dateUpdate: Date = self.DATE_TIME.toFormatDate(string: self.gameTschess!.gameAck!.date!)
+        let dateUpdate: Date = self.DATE_TIME.toFormatDate(string: self.gameTschess!.date!)
         let dateActual: Date = self.DATE_TIME.currentDate()
         let intervalDifference: TimeInterval = dateActual.timeIntervalSince(dateUpdate)
         let intervalStandard: TimeInterval = Double(24) * 60 * 60
@@ -134,13 +134,13 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         self.timerLabel.isHidden = true
         self.contentViewLabel.isHidden = true
        
-        let dataDecoded: Data = Data(base64Encoded: self.gameTschess!.gameAck!.playerOppo.avatar, options: .ignoreUnknownCharacters)!
+        let dataDecoded: Data = Data(base64Encoded: self.gameTschess!.playerOppo.avatar, options: .ignoreUnknownCharacters)!
         let decodedimage = UIImage(data: dataDecoded)
         self.avatarImageView.image = decodedimage
-        self.rankLabel.text = self.gameTschess!.gameAck!.playerOppo.rank
-        self.eloLabel.text = self.gameTschess!.gameAck!.playerOppo.elo
-        self.rankLabelDate.text = self.gameTschess!.gameAck!.playerOppo.date
-        self.usernameLabel.text = self.gameTschess!.gameAck!.playerOppo.username
+        self.rankLabel.text = self.gameTschess!.playerOppo.rank
+        self.eloLabel.text = self.gameTschess!.playerOppo.elo
+        self.rankLabelDate.text = self.gameTschess!.playerOppo.date
+        self.usernameLabel.text = self.gameTschess!.playerOppo.username
         
         self.startTimers()
     }
@@ -180,7 +180,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     }
     
     private func assignCellTschessElement(indexPath: IndexPath) -> UIImage? {
-        let tschessElementMatrix = self.gameTschess!.gameAck!.state!
+        let tschessElementMatrix = self.gameTschess!.state!
         let x = indexPath.row / 8
         let y = indexPath.row % 8
         if(tschessElementMatrix[x][y] != nil){
@@ -238,7 +238,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     
     @IBAction func backButtonClick(_ sender: Any) {
         self.stopTimers()
-        StoryboardSelector().actual(player: self.gameTschess!.gameAck!.playerSelf)
+        StoryboardSelector().actual(player: self.gameTschess!.playerSelf)
     }
     
     func pawnPromotion(proposed: [Int]) {
@@ -367,11 +367,12 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
            switch item.tag {
            case 0:
                self.stopTimers()
-               StoryboardSelector().actual(player: self.gameTschess!.gameAck!.playerSelf)
+               StoryboardSelector().actual(player: self.gameTschess!.playerSelf)
            case 1:
                DispatchQueue.main.async {
                    let storyboard: UIStoryboard = UIStoryboard(name: "DrawResign", bundle: nil)
                    let viewController = storyboard.instantiateViewController(withIdentifier: "DrawResign") as! DrawResign
+                viewController.setGameTschess(gameTschess: self.gameTschess!)
                    self.present(viewController, animated: true, completion: nil)
                }
            default:
