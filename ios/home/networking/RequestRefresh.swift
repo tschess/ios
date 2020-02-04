@@ -67,7 +67,7 @@ class RequestRefresh {
                 
                 let leaderboardPage: [Game] = self.generateLeaderboardPage(
                     page: 0,
-                    size: requestPayload["page_size"] as! Int,
+                    size: requestPayload["size"] as! Int,
                     serverRespose: json["page"] as! [[String: Any]])
                 
                 completion(leaderboardPage, player)

@@ -105,12 +105,7 @@ class HomeMenuTable: UITableViewController {
         
         self.requestPageIndex = 0
         
-        DispatchQueue.main.async() {
-            self.leaderboardList = [Game]()
-            self.tableView.reloadData()
-        }
-        
-        let requestPayload = ["id_player": self.player!.getId(), "page_size": REQUEST_PAGE_SIZE] as [String: Any]
+        let requestPayload = ["id_player": self.player!.getId(), "size": REQUEST_PAGE_SIZE] as [String: Any]
         
         RequestRefresh().execute(requestPayload: requestPayload, player: self.player!) { (list, player) in
             
@@ -118,6 +113,8 @@ class HomeMenuTable: UITableViewController {
             
             DispatchQueue.main.async() {
                 self.renderHeader()
+                self.leaderboardList = [Game]()
+                self.tableView.reloadData()
                 self.appendToLeaderboardTableList(additionalCellList: list!)
                 refreshControl.endRefreshing()
             }
