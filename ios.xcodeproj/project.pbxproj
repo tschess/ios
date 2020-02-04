@@ -46,6 +46,8 @@
 		B7316D1123E8AA8E00119865 /* RequestRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7316D1023E8AA8E00119865 /* RequestRefresh.swift */; };
 		B7316D1423E8ADCB00119865 /* PlayerCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7316D1323E8ADCB00119865 /* PlayerCore.swift */; };
 		B7316D1623E8ADF100119865 /* PlayerCoreDeserializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7316D1523E8ADF100119865 /* PlayerCoreDeserializer.swift */; };
+		B7316D1823E8F6BE00119865 /* UpdateRescind.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7316D1723E8F6BE00119865 /* UpdateRescind.swift */; };
+		B7316D1A23E8FB0C00119865 /* UpdateResign.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7316D1923E8FB0C00119865 /* UpdateResign.swift */; };
 		B74136C723DE34A0001B3D60 /* LoginTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74136C623DE34A0001B3D60 /* LoginTask.swift */; };
 		B74136C923DE34CC001B3D60 /* TestTask0.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74136C823DE34CC001B3D60 /* TestTask0.swift */; };
 		B74136CB23DE34EF001B3D60 /* TestTask1.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74136CA23DE34EF001B3D60 /* TestTask1.swift */; };
@@ -265,6 +267,8 @@
 		B7316D1023E8AA8E00119865 /* RequestRefresh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestRefresh.swift; sourceTree = "<group>"; };
 		B7316D1323E8ADCB00119865 /* PlayerCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCore.swift; sourceTree = "<group>"; };
 		B7316D1523E8ADF100119865 /* PlayerCoreDeserializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCoreDeserializer.swift; sourceTree = "<group>"; };
+		B7316D1723E8F6BE00119865 /* UpdateRescind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateRescind.swift; sourceTree = "<group>"; };
+		B7316D1923E8FB0C00119865 /* UpdateResign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateResign.swift; sourceTree = "<group>"; };
 		B73894312328071100231170 /* ios.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ios.entitlements; sourceTree = "<group>"; };
 		B74136C623DE34A0001B3D60 /* LoginTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTask.swift; sourceTree = "<group>"; };
 		B74136C823DE34CC001B3D60 /* TestTask0.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTask0.swift; sourceTree = "<group>"; };
@@ -525,6 +529,7 @@
 			children = (
 				B70A86C823707B2900D303F0 /* UpdateGamestate.swift */,
 				B7EA5DBC2375BEB80019C0BF /* PollingAgent.swift */,
+				B7316D1923E8FB0C00119865 /* UpdateResign.swift */,
 			);
 			path = networking;
 			sourceTree = "<group>";
@@ -1014,6 +1019,7 @@
 				B7AEEA8123A1BE73002F950C /* RequestActual.swift */,
 				B713F8E023E4CF8B00580DB5 /* UpdateNack.swift */,
 				B70D31B723E7B5B400345DB0 /* RequestConnect.swift */,
+				B7316D1723E8F6BE00119865 /* UpdateRescind.swift */,
 			);
 			path = networking;
 			sourceTree = "<group>";
@@ -1741,6 +1747,7 @@
 				B708D0E9236B369D00A899F9 /* Start.swift in Sources */,
 				B7BCD7D422F474A600CC29E6 /* BlackKing.swift in Sources */,
 				B7FCCC992373ED4F00C4DD88 /* Highlighter.swift in Sources */,
+				B7316D1823E8F6BE00119865 /* UpdateRescind.swift in Sources */,
 				B7BCD7CC22F4746300CC29E6 /* WhitePawn.swift in Sources */,
 				B7FCCC9D2374001E00C4DD88 /* Transitioner.swift in Sources */,
 				B7BCD7B822F4739400CC29E6 /* WhiteAmazon.swift in Sources */,
@@ -1850,6 +1857,7 @@
 				B70D31BB23E7B7FB00345DB0 /* GameTschess.swift in Sources */,
 				B7F062892385CF270015C618 /* Colour.swift in Sources */,
 				B74136C923DE34CC001B3D60 /* TestTask0.swift in Sources */,
+				B7316D1A23E8FB0C00119865 /* UpdateResign.swift in Sources */,
 				B7471DC123A6E3C2008F70A3 /* BlackReveal.swift in Sources */,
 				B79BB62623157A2F00FF5E0E /* PawnPromotion.swift in Sources */,
 				B74145D622F3CE4800B3B4FF /* King.swift in Sources */,
