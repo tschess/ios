@@ -8,19 +8,16 @@
 
 import UIKit
 
-class EntityPlayer { //: Equatable, Hashable
+class EntityPlayer: Equatable, Hashable {
     
     var id_player: String
-    
     var username: String
     var password: String
-    
     var elo: Int
     var rank: Int
     var disp: Int
     var date: String
     var avatar: String
-    
     var config0: [[TschessElement?]]
     var config1: [[TschessElement?]]
     var config2: [[TschessElement?]]
@@ -32,16 +29,13 @@ class EntityPlayer { //: Equatable, Hashable
     
     init(
         id_player: String,
-        
         username: String,
         password: String,
-        
         elo: Int,
         rank: Int,
         disp: Int,
         date: String,
         avatar: String,
-        
         config0: [[TschessElement?]],
         config1: [[TschessElement?]],
         config2: [[TschessElement?]]
@@ -62,13 +56,13 @@ class EntityPlayer { //: Equatable, Hashable
         self.config2 = config2
     }
     
-    //    func hash(into hasher: inout Hasher) {
-    //        hasher.combine(self.id)
-    //    }
-    //
-    //    static func == (lhs: EntityPlayer, rhs: EntityPlayer) -> Bool {
-    //        return lhs.id == rhs.id
-    //    }
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(self.id_player)
+    }
+    
+    static func == (lhs: EntityPlayer, rhs: EntityPlayer) -> Bool {
+        return lhs.id_player == rhs.id_player
+    }
     
 }
 
