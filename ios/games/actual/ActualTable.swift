@@ -102,7 +102,7 @@ class ActualTable: UITableViewController, SwipeTableViewCellDelegate {
                 let game = self.gameMenuTableList[indexPath.row]
                 let requestPayload: [String: Any] = ["id_game": game.identifier!, "id_player": self.player!.getId()]
                 
-                UpdateNack().execute(requestPayload: requestPayload) { (result) in
+                UpdateRescind().execute(requestPayload: requestPayload) { (result) in
                     print("result: \(result)")
                     DispatchQueue.main.async {
                         self.activityIndicator!.stopAnimating()
@@ -275,17 +275,6 @@ class ActualTable: UITableViewController, SwipeTableViewCellDelegate {
     
     override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let gameTableMenuItem = gameMenuTableList[indexPath.row]
-        if(!gameTableMenuItem.inbound){ //rescind
-            let modifyAction = UIContextualAction(style: .normal, title:  "CANCEL", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
-                print("Update action ...")
-                success(true)
-            })
-            if #available(iOS 13.0, *) {
-                modifyAction.image = UIImage(systemName: "xmark.rectangle.fill")!
-            }
-            modifyAction.backgroundColor = .black
-            return UISwipeActionsConfiguration(actions: [modifyAction])
-        }
         let closeAction = UIContextualAction(style: .normal, title:  "nACK", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
             print("OK, marked as Closed")
             success(true)
