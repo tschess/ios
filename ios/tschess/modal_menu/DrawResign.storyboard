@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -37,6 +37,22 @@
                                             <action selector="backButtonClick:" destination="A6v-yg-1nQ" eventType="touchUpInside" id="wQV-fP-asB"/>
                                         </connections>
                                     </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UzR-4C-7N1" userLabel="ActivityCenterView">
+                                        <rect key="frame" x="0.0" y="40" width="270" height="150"/>
+                                        <subviews>
+                                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="2Rx-Bu-blN">
+                                                <rect key="frame" x="116.5" y="56.5" width="37" height="37"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </activityIndicatorView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="2Rx-Bu-blN" firstAttribute="centerX" secondItem="UzR-4C-7N1" secondAttribute="centerX" id="aYb-1S-fJu"/>
+                                            <constraint firstItem="2Rx-Bu-blN" firstAttribute="centerY" secondItem="UzR-4C-7N1" secondAttribute="centerY" id="dYx-m6-PZG"/>
+                                        </constraints>
+                                    </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pyq-uB-O7i">
                                         <rect key="frame" x="0.0" y="70" width="270" height="30"/>
                                         <constraints>
@@ -44,7 +60,7 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="22"/>
                                         <state key="normal" title="resign">
-                                            <color key="titleColor" red="0.86923474069999995" green="0.012778783219999999" blue="0.00083617179190000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
                                             <action selector="surrenderButtonClick:" destination="A6v-yg-1nQ" eventType="touchUpInside" id="tfU-Kb-pfN"/>
@@ -57,7 +73,7 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="22"/>
                                         <state key="normal" title="propose draw">
-                                            <color key="titleColor" red="0.86923474069999995" green="0.012778783219999999" blue="0.00083617179190000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
                                             <action selector="proposeDrawButtonClick:" destination="A6v-yg-1nQ" eventType="touchUpInside" id="iji-QR-vQi"/>
@@ -77,13 +93,17 @@
                                 <color key="backgroundColor" red="0.97647058819999999" green="0.97647058819999999" blue="0.97647058819999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="UzR-4C-7N1" secondAttribute="trailing" id="8QU-qO-sP7"/>
                                     <constraint firstAttribute="width" constant="270" id="Alr-2G-eNP"/>
+                                    <constraint firstItem="UzR-4C-7N1" firstAttribute="top" secondItem="0uY-kq-0IJ" secondAttribute="bottom" id="BLM-Ol-hA5"/>
                                     <constraint firstItem="MIb-Fw-3aJ" firstAttribute="leading" secondItem="a78-Fj-Oza" secondAttribute="leading" id="EHg-Ma-Gw7"/>
                                     <constraint firstItem="0uY-kq-0IJ" firstAttribute="leading" secondItem="a78-Fj-Oza" secondAttribute="leading" id="GPQ-eI-fp5"/>
                                     <constraint firstAttribute="trailing" secondItem="MIb-Fw-3aJ" secondAttribute="trailing" id="HCu-cW-cHb"/>
                                     <constraint firstItem="0uY-kq-0IJ" firstAttribute="top" secondItem="a78-Fj-Oza" secondAttribute="top" id="HEI-wZ-FFI"/>
                                     <constraint firstAttribute="trailing" secondItem="0uY-kq-0IJ" secondAttribute="trailing" id="KNQ-cj-Ghx"/>
                                     <constraint firstAttribute="height" constant="190" id="RAv-zr-4eG"/>
+                                    <constraint firstAttribute="bottom" secondItem="UzR-4C-7N1" secondAttribute="bottom" id="YMa-Wy-M1r"/>
+                                    <constraint firstItem="UzR-4C-7N1" firstAttribute="leading" secondItem="a78-Fj-Oza" secondAttribute="leading" id="af3-kC-evO"/>
                                     <constraint firstItem="jSr-ih-fKy" firstAttribute="leading" secondItem="a78-Fj-Oza" secondAttribute="leading" id="aiI-oh-sum"/>
                                     <constraint firstItem="pyq-uB-O7i" firstAttribute="top" secondItem="MIb-Fw-3aJ" secondAttribute="bottom" constant="30" id="o3N-Ia-YYD"/>
                                     <constraint firstItem="jSr-ih-fKy" firstAttribute="top" secondItem="pyq-uB-O7i" secondAttribute="bottom" constant="30" id="p4t-LN-gyV"/>
@@ -103,6 +123,7 @@
                         <viewLayoutGuide key="safeArea" id="qNk-7O-b5x"/>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="2Rx-Bu-blN" id="2bi-dT-5Q9"/>
                         <outlet property="backButton" destination="0uY-kq-0IJ" id="mG5-iB-gG4"/>
                         <outlet property="proposeDrawButton" destination="jSr-ih-fKy" id="DQI-dL-blZ"/>
                         <outlet property="surrenderButton" destination="pyq-uB-O7i" id="XFT-j9-iJh"/>

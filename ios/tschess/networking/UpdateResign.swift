@@ -52,7 +52,7 @@ class UpdateResign {
                         return
                     }
                     
-                    //print(json)
+                    print(json)
                     //print("count: \(json.count)")
                     
                     //let xxx = json["content"] as! [[String: Any]]
@@ -62,8 +62,8 @@ class UpdateResign {
                     //let leaderboardPage: [Game] = self.generateLeaderboardPage(page: requestPayload["index"]!, size: requestPayload["size"]!, serverRespose: json)
                     //completion(leaderboardPage)
                     //completion(true)
-                    let player: Player = PlayerDeserializer().execute(dictionary: json)
-                    completion(player)
+                    //let player: Player = PlayerDeserializer().execute(dictionary: json)
+                    completion(nil)
                     
                 } catch let error {
                     print(error.localizedDescription)

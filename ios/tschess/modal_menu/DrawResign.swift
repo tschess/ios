@@ -10,6 +10,7 @@ import UIKit
 
 class DrawResign: UIViewController  {
     
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     let dateTime: DateTime = DateTime()
     
     @IBOutlet weak var surrenderButton: UIButton!
@@ -21,18 +22,19 @@ class DrawResign: UIViewController  {
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        configure()
+        self.configure()
     }
     
-    var gamestate: Gamestate?
-    
-    func setGamestate(gamestate: Gamestate) {
-        self.gamestate = gamestate
-    }
+    var gameTschess: GameTschess?
+
+       public func setGameTschess(gameTschess: GameTschess) {
+           self.gameTschess = gameTschess
+       }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        configure()
+        self.configure()
+        self.activityIndicator.isHidden = true
     }
     
     func configure() {
@@ -46,22 +48,36 @@ class DrawResign: UIViewController  {
     }
     
     @IBAction func surrenderButtonClick(_ sender: Any) {
-        self.gamestate!.setHighlight(coords: nil)
+        self.activityIndicator.isHidden = false
+        self.activityIndicator.startAnimating()
+        
         let requestPayload = [
-            "uuid_game": self.gamestate!.getIdentifier(),
-            "uuid_player": self.gamestate!.getOpponentId(),
-            "updated": dateTime.currentDateString()
-        ]
-        //UnilateralUpdateTask().execute(requestPayload: requestPayload, operationRoute: "resign")
-        self.presentingViewController!.dismiss(animated: false, completion: nil)
+            "id_game": self.gameTschess!.gameAck!.idGame,
+            "id_self": self.gameTschess!.gameAck!.playerSelf.id,
+            "id_oppo": self.gameTschess!.gameAck!.playerOppo.id,
+            "white": self.gameTschess!.gameAck!.white!] as [String: Any]
+        
+//        UpdateResign {
+//
+//            func execute(requestPayload: [String: Any],
+        
+        UpdateResign().execute(requestPayload: requestPayload) { (result) in
+            print("result: \(result)")
+            
+            DispatchQueue.main.async {
+                self.activityIndicator!.stopAnimating()
+                self.activityIndicator!.isHidden = true
+                self.presentingViewController!.dismiss(animated: false, completion: nil)
+            }
+        }
     }
     
     @IBAction func proposeDrawButtonClick(_ sender: Any) {
-        let requestPayload = [
-            "uuid_game": self.gamestate!.getIdentifier(),
-            "uuid_player": self.gamestate!.getSelfId(),
-            "updated": dateTime.currentDateString()
-        ]
+//        let requestPayload = [
+//            "uuid_game": self.gamestate!.getIdentifier(),
+//            "uuid_player": self.gamestate!.getSelfId(),
+//            "updated": dateTime.currentDateString()
+//        ]
         //UnilateralUpdateTask().execute(requestPayload: requestPayload, operationRoute: "draw")
         self.presentingViewController!.dismiss(animated: false, completion: nil)
     }

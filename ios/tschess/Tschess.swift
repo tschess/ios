@@ -241,24 +241,6 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         StoryboardSelector().actual(player: self.gameTschess!.gameAck!.playerSelf)
     }
     
-    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-        switch item.tag {
-        case 0:
-            self.stopTimers()
-            StoryboardSelector().actual(player: self.gameTschess!.gameAck!.playerSelf)
-        case 1:
-            DispatchQueue.main.async {
-                let drawResign_storyboard: UIStoryboard = UIStoryboard(name: "DrawResign", bundle: nil)
-                let drawResign = drawResign_storyboard.instantiateViewController(withIdentifier: "DrawResign") as! DrawResign
-               
-                self.present(drawResign, animated: true, completion: nil)
-            }
-        default:
-            self.stopTimers()
-            print("lol")
-        }
-    }
-    
     func pawnPromotion(proposed: [Int]) {
         DispatchQueue.main.async {
             self.pawnPromotion!.setProposed(proposed: proposed)
@@ -380,6 +362,23 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         self.collectionViewHeight.constant = collectionView.contentSize.height
         self.updateCountdownTimer()
     }
+    
+    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+           switch item.tag {
+           case 0:
+               self.stopTimers()
+               StoryboardSelector().actual(player: self.gameTschess!.gameAck!.playerSelf)
+           case 1:
+               DispatchQueue.main.async {
+                   let storyboard: UIStoryboard = UIStoryboard(name: "DrawResign", bundle: nil)
+                   let viewController = storyboard.instantiateViewController(withIdentifier: "DrawResign") as! DrawResign
+                   self.present(viewController, animated: true, completion: nil)
+               }
+           default:
+               self.stopTimers()
+               print("lol")
+           }
+       }
 
 }
 
