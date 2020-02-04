@@ -34,7 +34,7 @@ class DrawResign: UIViewController  {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.configure()
-        self.activityIndicator.isHidden = true
+        
     }
     
     func configure() {
@@ -45,6 +45,8 @@ class DrawResign: UIViewController  {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.activityIndicator.isHidden = true
     }
     
     @IBAction func surrenderButtonClick(_ sender: Any) {
