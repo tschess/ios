@@ -53,69 +53,15 @@ class OtherMenuTable: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let game = gameMenuTableList[indexPath.row]
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "OtherMenuCell", for: indexPath) as! OtherMenuCell
-        
-//        let gameTableMenuItem = gameMenuTableList[indexPath.row]
-//
-//        let dataDecoded: Data = Data(base64Encoded: gameTableMenuItem.getOpponentAvatar(), options: .ignoreUnknownCharacters)!
-//        let decodedimage = UIImage(data: dataDecoded)
-//        cell.avatarImageView.image = decodedimage
-//        //cell.eloLabel.text = gameTableMenuItem.getOpponentElo()
-//        cell.usernameLabel.text = gameTableMenuItem.getUsernameOpponent()
-//        //cell.usernameLabel.textColor = UIColor.black
-//
-//
-//
-//
-//        let formatter = DateFormatter()
-//        formatter.dateFormat = "dd.MM.YY"
-//        var yayayaya = formatter.string(from: DATE_TIME.toFormatDate(string: gameTableMenuItem.endDate))
-//        yayayaya.insert("'", at: yayayaya.index(yayayaya.endIndex, offsetBy: -2))
-//        cell.terminalDateLabel.text = yayayaya //should be terminated date, not the created date
-//
-//
-//        let winnerInt: Int = gameTableMenuItem.winnerInt
-//
-//        if(winnerInt == 1){
-//            //cell.contentView.backgroundColor = Colour().getWin()
-//            cell.contentView.backgroundColor = UIColor.black
-//        }
-//        if(winnerInt == -1){
-//            //cell.contentView.backgroundColor = Colour().getLoss()
-//            cell.contentView.backgroundColor = UIColor.black
-//        }
-//        if(winnerInt == 0){
-//            //cell.contentView.backgroundColor = Colour().getDraw()
-//            cell.contentView.backgroundColor = UIColor.black
-//        }
-//
-//        let oddsInt: Int = gameTableMenuItem.odds
-//
-//        if(oddsInt >= 0){
-//            cell.oddsLabel.text = "+"
-//        } else {
-//            cell.oddsLabel.text = "-"
-//        }
-//
-//        cell.displacementLabel.text = String(abs(gameTableMenuItem.disp))
-//
-//        let disp: Int = gameTableMenuItem.disp
-//
-//        if(disp >= 0){
-//            if #available(iOS 13.0, *) {
-//                let image = UIImage(systemName: "arrow.up")!
-//                cell.displacementImage.image = image
-//                cell.displacementImage.tintColor = .green
-//            }
-//        }
-//        else {
-//            if #available(iOS 13.0, *) {
-//                let image = UIImage(systemName: "arrow.down")!
-//                cell.displacementImage.image = image
-//                cell.displacementImage.tintColor = .red
-//            }
-//        }
+        cell.terminalDateLabel.text = game.getLabelTextDate()
+        cell.usernameLabel.text = game.getLabelTextUsernameOpponent(username: self.player!.username)
+        cell.avatarImageView.image = game.getImageAvatarOpponent(username: self.player!.username)
+        cell.displacementLabel.text = game.getLabelTextDisp(username: self.player!.username)
+        cell.displacementImage.image = game.getImageDisp(username: self.player!.username)
+        cell.oddsLabel.text = game.getOdds(username: self.player!.username)
         return cell
     }
     
@@ -150,16 +96,13 @@ class OtherMenuTable: UITableViewController {
             "index": requestPageIndex,
             "size": REQUEST_PAGE_SIZE
             ] as [String: Any]
-//        RequestHistoricOther().execute(requestPayload: requestPayload) { (result) in
-//            DispatchQueue.main.async() {
-//                self.activityIndicator!.stopAnimating()
-//                self.activityIndicator!.isHidden = true
-//            }
-//            if(result == nil){
-//                return
-//            }
-//            self.appendToLeaderboardTableList(additionalCellList: result!)
-//        }
+        RequestHistoric().execute(requestPayload: requestPayload) { (result) in
+            DispatchQueue.main.async() {
+                self.activityIndicator!.stopAnimating()
+                self.activityIndicator!.isHidden = true
+            }
+            self.appendToLeaderboardTableList(additionalCellList: result!)
+        }
     }
     
     func appendToLeaderboardTableList(additionalCellList: [EntityGame]) {

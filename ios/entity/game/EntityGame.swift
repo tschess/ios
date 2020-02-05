@@ -10,7 +10,7 @@ import UIKit
 
 class EntityGame: Equatable, Hashable {
     
-    var id_game: String
+    var id: String
     var state: [[String?]]
     var moves: Int
     var status: String
@@ -32,7 +32,7 @@ class EntityGame: Equatable, Hashable {
     var created: String
     
     init(
-        id_game: String,
+        id: String,
         state: [[String?]],
         moves: Int,
         status: String,
@@ -53,7 +53,7 @@ class EntityGame: Equatable, Hashable {
         updated: String,
         created: String
     ) {
-        self.id_game = id_game
+        self.id = id
         self.state = state
         self.moves = moves
         self.status = status
@@ -76,11 +76,81 @@ class EntityGame: Equatable, Hashable {
     }
     
     func hash(into hasher: inout Hasher) {
-        hasher.combine(self.id_game)
+        hasher.combine(self.id)
     }
     
     static func == (lhs: EntityGame, rhs: EntityGame) -> Bool {
-        return lhs.id_game == rhs.id_game
+        return lhs.id == rhs.id
     }
+    
+    func getImageDisp(username: String) -> UIImage? {
+        if(self.white.username == username){
+            if(self.white_disp >= 0){
+                if #available(iOS 13.0, *) {
+                    return UIImage(systemName: "arrow.up")!.withTintColor(.green)
+                }
+            }
+            if #available(iOS 13.0, *) {
+                return UIImage(systemName: "arrow.down")!.withTintColor(.red)
+            }
+        }
+        if(self.black_disp >= 0){
+            if #available(iOS 13.0, *) {
+                return UIImage(systemName: "arrow.up")!.withTintColor(.green)
+            }
+        }
+        if #available(iOS 13.0, *) {
+            return UIImage(systemName: "arrow.down")!.withTintColor(.red)
+        }
+        return nil
+    }
+    
+    func getLabelTextDisp(username: String) -> String {
+        if(self.white.username == username){
+            return String(abs(self.white_disp))
+        }
+        return String(abs(self.black_disp))
+    }
+    
+    func getOdds(username: String) -> String {
+        var odds: Int
+        if(self.white.username == username){
+            odds = self.white.elo - self.black.elo
+        } else {
+            odds = self.black.elo - self.white.elo
+        }
+        if(odds >= 0){
+            return "+"
+        }
+        return "-"
+    }
+    
+    func getImageAvatarOpponent(username: String) -> UIImage {
+        if(self.white.username == username){
+            return self.black.getImageAvatar()
+        }
+        return self.white.getImageAvatar()
+    }
+    
+    func getLabelTextUsernameOpponent(username: String) -> String {
+        if(self.white.username == username){
+            return self.black.username
+        }
+        return self.white.username
+    }
+    
+    func getDate() -> Date {
+        return DateTime().toFormatDate(string: self.updated)
+    }
+    
+    func getLabelTextDate() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd.MM.YY"
+        var date = formatter.string(from: self.getDate())
+        date.insert("'", at: date.index(date.endIndex, offsetBy: -2))
+        return date
+    }
+    
+    
     
 }

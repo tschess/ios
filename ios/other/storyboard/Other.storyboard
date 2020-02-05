@@ -304,7 +304,7 @@
                                             </constraints>
                                         </imageView>
                                     </subviews>
-                                    <color key="backgroundColor" red="0.82745098039215681" green="1" blue="0.82745098039215681" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstItem="yPL-IF-vl4" firstAttribute="leading" secondItem="M6s-nP-07Q" secondAttribute="trailing" constant="8" id="9Ge-h6-ecp"/>
                                         <constraint firstItem="dTO-FS-168" firstAttribute="leading" secondItem="Gru-Hl-8vV" secondAttribute="trailing" constant="3" id="CGk-y3-6t2"/>

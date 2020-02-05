@@ -29,6 +29,8 @@
 		B7BE116323EA722B00ADA499 /* Other.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7BE116223EA722B00ADA499 /* Other.storyboard */; };
 		B7BE116523EA727200ADA499 /* OtherMenuTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE116423EA727100ADA499 /* OtherMenuTable.swift */; };
 		B7BE116723EA73DC00ADA499 /* OtherMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE116623EA73DC00ADA499 /* OtherMenuCell.swift */; };
+		B7BE116A23EA74AE00ADA499 /* RequestHistoric.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE116923EA74AE00ADA499 /* RequestHistoric.swift */; };
+		B7BE116C23EA750B00ADA499 /* ParseGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE116B23EA750B00ADA499 /* ParseGame.swift */; };
 		B7CB62F6237BB10800E50204 /* Start.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7CB62F5237BB10800E50204 /* Start.storyboard */; };
 		B7EF701E23EA28BA00BAF2E2 /* EntityPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7EF701D23EA28BA00BAF2E2 /* EntityPlayer.swift */; };
 		B7EF702123EA28E300BAF2E2 /* EntityGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7EF702023EA28E300BAF2E2 /* EntityGame.swift */; };
@@ -86,6 +88,8 @@
 		B7BE116223EA722B00ADA499 /* Other.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Other.storyboard; sourceTree = "<group>"; };
 		B7BE116423EA727100ADA499 /* OtherMenuTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherMenuTable.swift; sourceTree = "<group>"; };
 		B7BE116623EA73DC00ADA499 /* OtherMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherMenuCell.swift; sourceTree = "<group>"; };
+		B7BE116923EA74AE00ADA499 /* RequestHistoric.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestHistoric.swift; sourceTree = "<group>"; };
+		B7BE116B23EA750B00ADA499 /* ParseGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseGame.swift; sourceTree = "<group>"; };
 		B7CB62F5237BB10800E50204 /* Start.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Start.storyboard; sourceTree = "<group>"; };
 		B7EF701D23EA28BA00BAF2E2 /* EntityPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityPlayer.swift; sourceTree = "<group>"; };
 		B7EF702023EA28E300BAF2E2 /* EntityGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityGame.swift; sourceTree = "<group>"; };
@@ -267,6 +271,7 @@
 		B7BE115E23EA71B300ADA499 /* other */ = {
 			isa = PBXGroup;
 			children = (
+				B7BE116823EA749D00ADA499 /* networking */,
 				B7BE116123EA721500ADA499 /* storyboard */,
 				B7BE115F23EA71D100ADA499 /* Other.swift */,
 				B7BE116423EA727100ADA499 /* OtherMenuTable.swift */,
@@ -281,6 +286,14 @@
 				B7BE116223EA722B00ADA499 /* Other.storyboard */,
 			);
 			path = storyboard;
+			sourceTree = "<group>";
+		};
+		B7BE116823EA749D00ADA499 /* networking */ = {
+			isa = PBXGroup;
+			children = (
+				B7BE116923EA74AE00ADA499 /* RequestHistoric.swift */,
+			);
+			path = networking;
 			sourceTree = "<group>";
 		};
 		B7C5C00622EF3F1A00BFCB39 /* util */ = {
@@ -314,6 +327,7 @@
 			isa = PBXGroup;
 			children = (
 				B7EF702023EA28E300BAF2E2 /* EntityGame.swift */,
+				B7BE116B23EA750B00ADA499 /* ParseGame.swift */,
 			);
 			path = game;
 			sourceTree = "<group>";
@@ -529,6 +543,7 @@
 				B7BE116023EA71D100ADA499 /* Other.swift in Sources */,
 				B7EF702123EA28E300BAF2E2 /* EntityGame.swift in Sources */,
 				B708D0DD236B351000A899F9 /* Initializer.swift in Sources */,
+				B7BE116C23EA750B00ADA499 /* ParseGame.swift in Sources */,
 				B7BE115D23EA4FBE00ADA499 /* ParsePlayer.swift in Sources */,
 				B708D0E9236B369D00A899F9 /* Start.swift in Sources */,
 				B74136C723DE34A0001B3D60 /* PlayerLogin.swift in Sources */,
@@ -542,6 +557,7 @@
 				B7EF701E23EA28BA00BAF2E2 /* EntityPlayer.swift in Sources */,
 				B72AF9E323E3BDBF003740CD /* GetNotify.swift in Sources */,
 				B7BE116723EA73DC00ADA499 /* OtherMenuCell.swift in Sources */,
+				B7BE116A23EA74AE00ADA499 /* RequestHistoric.swift in Sources */,
 				B7F541C623D51ADD00E89074 /* HomeMenuTable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
