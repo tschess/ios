@@ -66,9 +66,9 @@ class Snapshot: UIViewController, UICollectionViewDataSource, UICollectionViewDe
         
         self.state = self.game!.getStateClient(username: self.player!.username)
         self.winnerImageView!.image = self.game!.getImageAvatarWinner()
+        self.usernameWinner.text = self.game!.getUsernameWinner()
         
         self.outcomeLabel.text = self.game!.outcome
-        self.usernameWinner.text = self.game!.winner
         self.usernameLabelWhite.text = self.game!.white.username
         self.usernameLabelBlack.text = self.game!.black.username
     }
@@ -124,15 +124,15 @@ class Snapshot: UIViewController, UICollectionViewDataSource, UICollectionViewDe
     private func assignCellBackgroundColor(indexPath: IndexPath) -> UIColor {
         if (indexPath.row % 2 == 0) {
             if ((indexPath.row / 8) % 2 == 0) {
-                return UIColor.purple
-            } else {
                 return UIColor.brown
+            } else {
+                return  UIColor.purple
             }
         }
         if ((indexPath.row / 8) % 2 == 0) {
-            return UIColor.brown
+            return UIColor.purple
         }
-        return UIColor.purple
+        return  UIColor.brown
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

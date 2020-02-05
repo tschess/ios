@@ -166,4 +166,11 @@ class EntityGame: Equatable, Hashable {
         return self.black.getImageAvatar()
     }
     
+    func getUsernameWinner() -> String {
+        if(self.winner == "WHITE"){
+            return self.white.username
+        }
+        return self.black.username
+    }
+    
 }

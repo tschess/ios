@@ -23,34 +23,27 @@ class SerializerState {
     }
     
     func renderClient(state: [[String]]) -> [[Piece?]] {
-        var rowA: [Piece?] = [Piece?](repeating: nil, count: 8) // 0
-        var rowB: [Piece?] = [Piece?](repeating: nil, count: 8) // 1
-        var rowC: [Piece?] = [Piece?](repeating: nil, count: 8) // 2
-        var rowD: [Piece?] = [Piece?](repeating: nil, count: 8) // 3
-        var rowE: [Piece?] = [Piece?](repeating: nil, count: 8) // 4
-        var rowF: [Piece?] = [Piece?](repeating: nil, count: 8) // 5
-        var rowG: [Piece?] = [Piece?](repeating: nil, count: 8) // 6
-        var rowH: [Piece?] = [Piece?](repeating: nil, count: 8) // 7
-        
-        for row0 in (0 ..< 8) {
-            for col0 in (0 ..< 8) {
-                let col1: Int = abs(self.offset - col0)
-                let row1: Int = abs(self.offset - row0)
-                
-                rowA[col1] = getPiece(name: state[row1][col1])
-                rowB[col1] = getPiece(name: state[row1][col1])
-                rowC[col1] = getPiece(name: state[row1][col1])
-                rowD[col1] = getPiece(name: state[row1][col1])
-                rowE[col1] = getPiece(name: state[row1][col1])
-                rowF[col1] = getPiece(name: state[row1][col1])
-                rowG[col1] = getPiece(name: state[row1][col1])
-                rowH[col1] = getPiece(name: state[row1][col1])
-            }
-        }
+        let rowA: [Piece?] = self.getPiece(row0: state[0])
+        let rowB: [Piece?] = self.getPiece(row0: state[1])
+        let rowC: [Piece?] = self.getPiece(row0: state[2])
+        let rowD: [Piece?] = self.getPiece(row0: state[3])
+        let rowE: [Piece?] = self.getPiece(row0: state[4])
+        let rowF: [Piece?] = self.getPiece(row0: state[5])
+        let rowG: [Piece?] = self.getPiece(row0: state[6])
+        let rowH: [Piece?] = self.getPiece(row0: state[7])
         if(self.white){
             return [rowH, rowG, rowF, rowE, rowD, rowC, rowB, rowA]
         }
         return [rowA, rowB, rowC, rowD, rowE, rowF, rowG, rowH]
+    }
+    
+    func getPiece(row0: [String]) -> [Piece?] {
+        var row1: [Piece?] = [Piece?](repeating: nil, count: 8)
+        for col0 in (0 ..< 8) {
+            let col1: Int = abs(self.offset - col0)
+            row1[col1] = self.getPiece(name: row0[col0])
+        }
+        return row1
     }
     
     func getPiece(name: String) -> Piece? {
