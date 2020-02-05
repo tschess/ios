@@ -8,12 +8,18 @@
 
 import UIKit
 
+//CANONICAL
 class SerializerState {
     
-    var game: EntityGame?
+    var white: Bool
+    var offset: Int
     
-    func setGame(game: EntityGame){
-        self.game = game
+    init(white: Bool){
+        self.white = white
+        self.offset = 7
+        if(self.white){
+            self.offset = 0
+        }
     }
     
     func renderClient(state: [[String]]) -> [[Piece?]] {
@@ -26,22 +32,25 @@ class SerializerState {
         var rowG: [Piece?] = [Piece?](repeating: nil, count: 8) // 6
         var rowH: [Piece?] = [Piece?](repeating: nil, count: 8) // 7
         
-        for row in (0 ..< 8) {
-            for col in (0 ..< 8) {
-                rowA[col] = getPiece(name: state[row][col])
-                rowB[col] = getPiece(name: state[row][col])
-                rowC[col] = getPiece(name: state[row][col])
-                rowD[col] = getPiece(name: state[row][col])
-                rowE[col] = getPiece(name: state[row][col])
-                rowF[col] = getPiece(name: state[row][col])
-                rowG[col] = getPiece(name: state[row][col])
-                rowH[col] = getPiece(name: state[row][col])
+        for row0 in (0 ..< 8) {
+            for col0 in (0 ..< 8) {
+                let col1: Int = abs(self.offset - col0)
+                let row1: Int = abs(self.offset - row0)
+                
+                rowA[col1] = getPiece(name: state[row1][col1])
+                rowB[col1] = getPiece(name: state[row1][col1])
+                rowC[col1] = getPiece(name: state[row1][col1])
+                rowD[col1] = getPiece(name: state[row1][col1])
+                rowE[col1] = getPiece(name: state[row1][col1])
+                rowF[col1] = getPiece(name: state[row1][col1])
+                rowG[col1] = getPiece(name: state[row1][col1])
+                rowH[col1] = getPiece(name: state[row1][col1])
             }
         }
-        //if(self.game!.white){
-            //return [rowA, rowB, rowC, rowD, rowE, rowF, rowG, rowH]
-        //}
-        return [rowH, rowG, rowF, rowE, rowD, rowC, rowB, rowA]
+        if(self.white){
+            return [rowH, rowG, rowF, rowE, rowD, rowC, rowB, rowA]
+        }
+        return [rowA, rowB, rowC, rowD, rowE, rowF, rowG, rowH]
     }
     
     func getPiece(name: String) -> Piece? {
@@ -92,22 +101,25 @@ class SerializerState {
         var rowF: [String] = [String](repeating: "", count: 8) // 5
         var rowG: [String] = [String](repeating: "", count: 8) // 6
         var rowH: [String] = [String](repeating: "", count: 8) // 7
-        for row in (0 ..< 8) {
-            for col in (0 ..< 8) {
-                rowA[col] = getName(piece: state[row][col])
-                rowB[col] = getName(piece: state[row][col])
-                rowC[col] = getName(piece: state[row][col])
-                rowD[col] = getName(piece: state[row][col])
-                rowE[col] = getName(piece: state[row][col])
-                rowF[col] = getName(piece: state[row][col])
-                rowG[col] = getName(piece: state[row][col])
-                rowH[col] = getName(piece: state[row][col])
+        for row0 in (0 ..< 8) {
+            for col0 in (0 ..< 8) {
+                let col1: Int = abs(self.offset - col0)
+                let row1: Int = abs(self.offset - row0)
+                
+                rowA[col1] = getName(piece: state[row1][col1])
+                rowB[col1] = getName(piece: state[row1][col1])
+                rowC[col1] = getName(piece: state[row1][col1])
+                rowD[col1] = getName(piece: state[row1][col1])
+                rowE[col1] = getName(piece: state[row1][col1])
+                rowF[col1] = getName(piece: state[row1][col1])
+                rowG[col1] = getName(piece: state[row1][col1])
+                rowH[col1] = getName(piece: state[row1][col1])
             }
         }
-        //if(self.game!.white){
-            //return [rowA, rowB, rowC, rowD, rowE, rowF, rowG, rowH]
-        //}
-        return [rowH, rowG, rowF, rowE, rowD, rowC, rowB, rowA]
+        if(self.white){
+            return [rowH, rowG, rowF, rowE, rowD, rowC, rowB, rowA]
+        }
+        return [rowA, rowB, rowC, rowD, rowE, rowF, rowG, rowH]
     }
     
     func getName(piece: Piece?) -> String {

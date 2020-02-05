@@ -11,7 +11,7 @@ import UIKit
 class EntityGame: Equatable, Hashable {
     
     var id: String
-    var state: [[String?]]
+    var state: [[String]]
     var moves: Int
     var status: String
     var outcome: String
@@ -33,7 +33,7 @@ class EntityGame: Equatable, Hashable {
     
     init(
         id: String,
-        state: [[String?]],
+        state: [[String]],
         moves: Int,
         status: String,
         outcome: String,
@@ -152,5 +152,11 @@ class EntityGame: Equatable, Hashable {
     }
     
     
+    func getStateClient(username: String) -> [[Piece?]] {
+        if(self.white.username == username){
+            return SerializerState(white: true).renderClient(state: self.state)
+        }
+        return SerializerState(white: false).renderClient(state: self.state)
+    }
     
 }
