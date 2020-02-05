@@ -10,7 +10,7 @@ import UIKit
 
 class Historic: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate {
     
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet var activityIndicator: UIActivityIndicatorView!
     
     //MARK: Properties
     @IBOutlet weak var usernameLabel: UILabel!
@@ -36,6 +36,7 @@ class Historic: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate 
         self.tabBarMenu.delegate = self
         self.historicTable = children.first as? HistoricTable
         self.historicTable!.setPlayerSelf(playerSelf: self.playerSelf!)
+        self.historicTable!.setActivityIndicator(activityIndicator: self.activityIndicator)
         self.historicTable!.fetchMenuTableList()
     }
     

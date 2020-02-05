@@ -35,7 +35,6 @@ class Actual: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate {
         super.viewDidLoad()
         tabBarMenu.delegate = self
         actualTable = children.first as? ActualTable
-        actualTable!.setActual(actual: self)
         actualTable!.setPlayerSelf(playerSelf: self.playerSelf!)
         actualTable!.setIndicator(indicator: self.activityIndicator!)
         actualTable!.fetchMenuTableList()
@@ -52,10 +51,8 @@ class Actual: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        self.renderHeader()
-        
         self.activityIndicator.isHidden = true
+        self.renderHeader()
     }
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
@@ -68,8 +65,12 @@ class Actual: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate {
                 UIApplication.shared.keyWindow?.rootViewController = viewController
             }
         default:
-            print("~")
-            //StoryboardSelector().historic(player: self.player!)
+            DispatchQueue.main.async {
+                let storyboard: UIStoryboard = UIStoryboard(name: "Historic", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "Historic") as! Historic
+                viewController.setPlayerSelf(playerSelf: self.playerSelf!)
+                UIApplication.shared.keyWindow?.rootViewController = viewController
+            }
         }
     }
     

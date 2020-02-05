@@ -30,15 +30,6 @@ class RequestQuick {
                     completion(nil)
                     return
                 }
-                print("\n\n--RequestQuick--\n\n")
-                print(json)
-                
-//                if(json["error"] != nil){
-//                    let error = json["error"]! as! String
-//                    //print("\n\n ERROR: \(error)\n\n")
-//                    completion(nil)
-//                    return
-//                }
                 
                 let player: EntityPlayer = ParsePlayer().execute(json: json)
                 completion(player)

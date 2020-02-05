@@ -14,17 +14,17 @@ class HistoricTable: UITableViewController {
     
     let DATE_TIME: DateTime = DateTime()
     
-     var playerSelf: EntityPlayer?
-       
-       func setPlayerSelf(playerSelf: EntityPlayer){
-           self.playerSelf = playerSelf
-       }
+    var playerSelf: EntityPlayer?
     
-       var gameMenuTableList: [EntityGame] = [EntityGame]()
-       
-       func getGameMenuTableList() -> [EntityGame] {
-           return gameMenuTableList
-       }
+    func setPlayerSelf(playerSelf: EntityPlayer){
+        self.playerSelf = playerSelf
+    }
+    
+    var gameMenuTableList: [EntityGame] = [EntityGame]()
+    
+    func getGameMenuTableList() -> [EntityGame] {
+        return gameMenuTableList
+    }
     
     public var pageFromWhichContentLoads: Int
     
@@ -35,14 +35,13 @@ class HistoricTable: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         tableView.tableFooterView = UIView()
     }
     
     var activityIndicator: UIActivityIndicatorView?
     
-    public func setIndicator(indicator: UIActivityIndicatorView){
-        self.activityIndicator = indicator
+    public func setActivityIndicator(activityIndicator: UIActivityIndicatorView){
+        self.activityIndicator = activityIndicator
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -77,8 +76,24 @@ class HistoricTable: UITableViewController {
             userInfo: discoverSelectionDictionary)
     }
     
-    override open func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if indexPath.row == self.gameMenuTableList.count - 1 {
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        let visibleRows = self.tableView.indexPathsForVisibleRows
+        let lastRow = visibleRows?.last?.row
+        if(lastRow == nil){
+            return
+        }
+        let REQUEST_PAGE_SIZE: Int = 9
+        
+        let index = self.pageFromWhichContentLoads
+        let size = REQUEST_PAGE_SIZE
+        let indexFrom: Int =  index * size
+        let indexTo: Int = indexFrom + REQUEST_PAGE_SIZE - 2
+        
+        if(lastRow! <= indexTo){
+            return
+        }
+        if lastRow == indexTo {
             self.pageFromWhichContentLoads += 1
             self.fetchMenuTableList()
         }
@@ -100,7 +115,7 @@ class HistoricTable: UITableViewController {
     }
     
     func fetchMenuTableList() {
-
+        
         DispatchQueue.main.async() {
             self.activityIndicator!.isHidden = false
             self.activityIndicator!.startAnimating()
@@ -124,15 +139,15 @@ class HistoricTable: UITableViewController {
     
     private func renderShrug(){  // thiis can exist in practice...
         DispatchQueue.main.async() {
-        let frameSize: CGPoint = CGPoint(x: UIScreen.main.bounds.size.width*0.5, y: UIScreen.main.bounds.size.height*0.5)
-        self.label = UILabel(frame: CGRect(x: UIScreen.main.bounds.size.width*0.5, y: UIScreen.main.bounds.size.height*0.5, width: UIScreen.main.bounds.width, height: 40))
-        self.label!.center = frameSize
-        self.label!.textAlignment = .center
-        self.label!.font = UIFont.systemFont(ofSize: 30, weight: UIFont.Weight.light)
-        self.label!.translatesAutoresizingMaskIntoConstraints = false
-        let horizontalConstraint = NSLayoutConstraint(item: self.label!, attribute: NSLayoutConstraint.Attribute.centerX, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.view, attribute: NSLayoutConstraint.Attribute.centerX, multiplier: 1, constant: 0)
-        let verticalConstraint = NSLayoutConstraint(item: self.label!, attribute: NSLayoutConstraint.Attribute.centerY, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.view, attribute: NSLayoutConstraint.Attribute.centerY, multiplier: 1, constant: 0)
-        
+            let frameSize: CGPoint = CGPoint(x: UIScreen.main.bounds.size.width*0.5, y: UIScreen.main.bounds.size.height*0.5)
+            self.label = UILabel(frame: CGRect(x: UIScreen.main.bounds.size.width*0.5, y: UIScreen.main.bounds.size.height*0.5, width: UIScreen.main.bounds.width, height: 40))
+            self.label!.center = frameSize
+            self.label!.textAlignment = .center
+            self.label!.font = UIFont.systemFont(ofSize: 30, weight: UIFont.Weight.light)
+            self.label!.translatesAutoresizingMaskIntoConstraints = false
+            let horizontalConstraint = NSLayoutConstraint(item: self.label!, attribute: NSLayoutConstraint.Attribute.centerX, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.view, attribute: NSLayoutConstraint.Attribute.centerX, multiplier: 1, constant: 0)
+            let verticalConstraint = NSLayoutConstraint(item: self.label!, attribute: NSLayoutConstraint.Attribute.centerY, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.view, attribute: NSLayoutConstraint.Attribute.centerY, multiplier: 1, constant: 0)
+            
             //self.activityIndicator!.stopAnimating()
             self.label!.text = "¯\\_( ͡° ͜ʖ ͡°)_/¯"
             self.view.addSubview(self.label!)
@@ -141,20 +156,20 @@ class HistoricTable: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-//        let gameTableMenuItem = gameMenuTableList[indexPath.row]
-//        if(!gameTableMenuItem.inbound!){
-//           return nil
-//        }
+        //        let gameTableMenuItem = gameMenuTableList[indexPath.row]
+        //        if(!gameTableMenuItem.inbound!){
+        //           return nil
+        //        }
         let modifyAction = UIContextualAction(style: .normal, title:  "REMATCH", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
             print("Update action ...")
             let gameModel = self.gameMenuTableList[indexPath.row]
             
-//            let storyboard: UIStoryboard = UIStoryboard(name: "Challenge", bundle: nil)
-//            let viewController = storyboard.instantiateViewController(withIdentifier: "Challenge") as! Challenge
-//            viewController.setPlayer(player: self.player!)
-//            viewController.setGameModel(gameModel: gameModel)
-//            UIApplication.shared.keyWindow?.rootViewController = viewController
-//            success(true)
+            //            let storyboard: UIStoryboard = UIStoryboard(name: "Challenge", bundle: nil)
+            //            let viewController = storyboard.instantiateViewController(withIdentifier: "Challenge") as! Challenge
+            //            viewController.setPlayer(player: self.player!)
+            //            viewController.setGameModel(gameModel: gameModel)
+            //            UIApplication.shared.keyWindow?.rootViewController = viewController
+            //            success(true)
         })
         if #available(iOS 13.0, *) { //xmark
             modifyAction.image = UIImage(systemName: "gamecontroller.fill")!

@@ -11,18 +11,12 @@ import SwipeCellKit
 
 class ActualTable: UITableViewController, SwipeTableViewCellDelegate {
     
-    var actual: Actual?
-    
-    public func setActual(actual: Actual) {
-        self.actual = actual
-    }
-    
     var playerSelf: EntityPlayer?
     
     func setPlayerSelf(playerSelf: EntityPlayer){
         self.playerSelf = playerSelf
     }
- 
+    
     var gameMenuTableList: [EntityGame] = [EntityGame]()
     
     func getGameMenuTableList() -> [EntityGame] {
@@ -64,67 +58,67 @@ class ActualTable: UITableViewController, SwipeTableViewCellDelegate {
         
         if(game.status == "ONGOING"){
             print(" - Tschess - ")
-//            let requestPayload: [String: Any] = ["id_game": gameModel.getIdentifier(), "id_player": self.player!.getId()]
-//            let gameAck: GameAck = GameAck(idGame: gameModel.getIdentifier(), playerSelf: self.player!, playerOppo: gameModel.getOpponent())
-//            let gameConnect: GameConnect = GameConnect(gameAck: gameAck)
-//            RequestConnect().execute(requestPayload: requestPayload, gameConnect: gameConnect) { (gameTschess) in
-//                print("result: \(gameTschess)")
-//                /**
-//                 * ERROR HANDLING!!!
-//                 */
-//                DispatchQueue.main.async {
-//                    let storyboard: UIStoryboard = UIStoryboard(name: "Tschess", bundle: nil)
-//                    let viewController = storyboard.instantiateViewController(withIdentifier: "Tschess") as! Tschess
-//                    viewController.setGameTschess(gameTschess: gameTschess!)
-//                    UIApplication.shared.keyWindow?.rootViewController = viewController
-//                }
-//            }
+            //            let requestPayload: [String: Any] = ["id_game": gameModel.getIdentifier(), "id_player": self.player!.getId()]
+            //            let gameAck: GameAck = GameAck(idGame: gameModel.getIdentifier(), playerSelf: self.player!, playerOppo: gameModel.getOpponent())
+            //            let gameConnect: GameConnect = GameConnect(gameAck: gameAck)
+            //            RequestConnect().execute(requestPayload: requestPayload, gameConnect: gameConnect) { (gameTschess) in
+            //                print("result: \(gameTschess)")
+            //                /**
+            //                 * ERROR HANDLING!!!
+            //                 */
+            //                DispatchQueue.main.async {
+            //                    let storyboard: UIStoryboard = UIStoryboard(name: "Tschess", bundle: nil)
+            //                    let viewController = storyboard.instantiateViewController(withIdentifier: "Tschess") as! Tschess
+            //                    viewController.setGameTschess(gameTschess: gameTschess!)
+            //                    UIApplication.shared.keyWindow?.rootViewController = viewController
+            //                }
+            //            }
             return nil
         }
         
         if(game.getInboundInvitation(username: self.playerSelf!.username)){
             
-             guard orientation == .right else {
-                        let nAction = SwipeAction(style: .default, title: "nACK") { action, indexPath in
-                            print("nACK")
-                            self.activityIndicator!.isHidden = false
-                            self.activityIndicator!.startAnimating()
-//                            let requestPayload: [String: Any] = ["id_game": game.identifier!, "id_player": self.player!.getId()]
-//
-//                            UpdateNack().execute(requestPayload: requestPayload) { (player) in
-//                                print("player: \(player)")
-//                                //ERROR...
-//                                self.setPlayer(player: player!)
-//                                self.actual!.setPlayer(player: player!)
-//                                DispatchQueue.main.async {
-//                                    self.actual!.renderHeader()
-//                                    self.activityIndicator!.stopAnimating()
-//                                    self.activityIndicator!.isHidden = true
-//                                    self.gameMenuTableList.remove(at: indexPath.row)
-//                                    self.tableView!.reloadData()
-//                                }
-//                            }
-                        }
-                        nAction.backgroundColor = .red
-                        if #available(iOS 13.0, *) {
-                            nAction.image = UIImage(systemName: "hand.thumbsdown.fill")!
-                        }
-                        return [nAction]
-                    }
-                    let ackAction = SwipeAction(style: .default, title: "ACK") { action, indexPath in
-            //            print("ACK")
-            //            let storyboard: UIStoryboard = UIStoryboard(name: "Ack", bundle: nil)
-            //            let viewController = storyboard.instantiateViewController(withIdentifier: "Ack") as! Ack
-            //            viewController.setPlayer(player: self.player!)
-            //            viewController.setOpponent(opponent: actualMenuItem.getOpponent()) // <-- REDUNDANT
-            //            viewController.setGameModel(gameModel: actualMenuItem)
-            //            UIApplication.shared.keyWindow?.rootViewController = viewController
-                    }
-                    ackAction.backgroundColor = .green
-                    if #available(iOS 13.0, *) {
-                        ackAction.image = UIImage(systemName: "hand.thumbsup.fill")!
-                    }
-                    return [ackAction]
+            guard orientation == .right else {
+                let nAction = SwipeAction(style: .default, title: "nACK") { action, indexPath in
+                    print("nACK")
+                    self.activityIndicator!.isHidden = false
+                    self.activityIndicator!.startAnimating()
+                    //                            let requestPayload: [String: Any] = ["id_game": game.identifier!, "id_player": self.player!.getId()]
+                    //
+                    //                            UpdateNack().execute(requestPayload: requestPayload) { (player) in
+                    //                                print("player: \(player)")
+                    //                                //ERROR...
+                    //                                self.setPlayer(player: player!)
+                    //                                self.actual!.setPlayer(player: player!)
+                    //                                DispatchQueue.main.async {
+                    //                                    self.actual!.renderHeader()
+                    //                                    self.activityIndicator!.stopAnimating()
+                    //                                    self.activityIndicator!.isHidden = true
+                    //                                    self.gameMenuTableList.remove(at: indexPath.row)
+                    //                                    self.tableView!.reloadData()
+                    //                                }
+                    //                            }
+                }
+                nAction.backgroundColor = .red
+                if #available(iOS 13.0, *) {
+                    nAction.image = UIImage(systemName: "hand.thumbsdown.fill")!
+                }
+                return [nAction]
+            }
+            let ackAction = SwipeAction(style: .default, title: "ACK") { action, indexPath in
+                //            print("ACK")
+                //            let storyboard: UIStoryboard = UIStoryboard(name: "Ack", bundle: nil)
+                //            let viewController = storyboard.instantiateViewController(withIdentifier: "Ack") as! Ack
+                //            viewController.setPlayer(player: self.player!)
+                //            viewController.setOpponent(opponent: actualMenuItem.getOpponent()) // <-- REDUNDANT
+                //            viewController.setGameModel(gameModel: actualMenuItem)
+                //            UIApplication.shared.keyWindow?.rootViewController = viewController
+            }
+            ackAction.backgroundColor = .green
+            if #available(iOS 13.0, *) {
+                ackAction.image = UIImage(systemName: "hand.thumbsup.fill")!
+            }
+            return [ackAction]
             
         }
         guard orientation == .left else {
@@ -135,17 +129,17 @@ class ActualTable: UITableViewController, SwipeTableViewCellDelegate {
             print("RESCIND")
             self.activityIndicator!.isHidden = false
             self.activityIndicator!.startAnimating()
-//            let requestPayload: [String: Any] = ["id_game": game.identifier!, "id_player": self.player!.getId()]
-//
-//            UpdateRescind().execute(requestPayload: requestPayload) { (result) in
-//                print("result: \(result)")
-//                DispatchQueue.main.async {
-//                    self.activityIndicator!.stopAnimating()
-//                    self.activityIndicator!.isHidden = true
-//                    self.gameMenuTableList.remove(at: indexPath.row)
-//                    self.tableView!.reloadData()
-//                }
-//            }
+            //            let requestPayload: [String: Any] = ["id_game": game.identifier!, "id_player": self.player!.getId()]
+            //
+            //            UpdateRescind().execute(requestPayload: requestPayload) { (result) in
+            //                print("result: \(result)")
+            //                DispatchQueue.main.async {
+            //                    self.activityIndicator!.stopAnimating()
+            //                    self.activityIndicator!.isHidden = true
+            //                    self.gameMenuTableList.remove(at: indexPath.row)
+            //                    self.tableView!.reloadData()
+            //                }
+            //            }
         }
         rescind.backgroundColor = .orange
         if #available(iOS 13.0, *) {
@@ -210,28 +204,27 @@ class ActualTable: UITableViewController, SwipeTableViewCellDelegate {
     }
     
     override func viewDidLayoutSubviews() {
-           super.viewDidLayoutSubviews()
-           let visibleRows = self.tableView.indexPathsForVisibleRows
-           let lastRow = visibleRows?.last?.row
-           if(lastRow == nil){
-               return
-           }
+        super.viewDidLayoutSubviews()
+        let visibleRows = self.tableView.indexPathsForVisibleRows
+        let lastRow = visibleRows?.last?.row
+        if(lastRow == nil){
+            return
+        }
         let REQUEST_PAGE_SIZE: Int = 9
-        //let pageFromWhichContentLoads: Int = 0
         
-           let index = self.pageFromWhichContentLoads
-           let size = REQUEST_PAGE_SIZE
-           let indexFrom: Int =  index * size
-           let indexTo: Int = indexFrom + REQUEST_PAGE_SIZE - 2
+        let index = self.pageFromWhichContentLoads
+        let size = REQUEST_PAGE_SIZE
+        let indexFrom: Int =  index * size
+        let indexTo: Int = indexFrom + REQUEST_PAGE_SIZE - 2
         
         if(lastRow! <= indexTo){
             return
         }
-           if lastRow == indexTo {
-               self.pageFromWhichContentLoads += 1
-               self.fetchMenuTableList()
-           }
-       }
+        if lastRow == indexTo {
+            self.pageFromWhichContentLoads += 1
+            self.fetchMenuTableList()
+        }
+    }
     
     override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let gameTableMenuItem = gameMenuTableList[indexPath.row]
@@ -263,21 +256,21 @@ class ActualTable: UITableViewController, SwipeTableViewCellDelegate {
     }
     
     func appendToTableList(additionalCellList: [EntityGame]) {
-           let currentCount = self.gameMenuTableList.count
-           
-           for game in additionalCellList {
-               if(!self.gameMenuTableList.contains(game)){
-                   self.gameMenuTableList.append(game)
-               }
-           }
-           if(currentCount != self.gameMenuTableList.count){
-               DispatchQueue.main.async() {
-                   self.tableView.reloadData()
-               }
-           }
-       }
-       
-       func fetchMenuTableList() {
+        let currentCount = self.gameMenuTableList.count
+        
+        for game in additionalCellList {
+            if(!self.gameMenuTableList.contains(game)){
+                self.gameMenuTableList.append(game)
+            }
+        }
+        if(currentCount != self.gameMenuTableList.count){
+            DispatchQueue.main.async() {
+                self.tableView.reloadData()
+            }
+        }
+    }
+    
+    func fetchMenuTableList() {
         
         DispatchQueue.main.async() {
             self.activityIndicator!.isHidden = false
@@ -292,14 +285,14 @@ class ActualTable: UITableViewController, SwipeTableViewCellDelegate {
             "size": REQUEST_PAGE_SIZE
             ] as [String: Any]
         
-           RequestActual().execute(requestPayload: requestPayload) { (result) in
-               DispatchQueue.main.async() {
-                   self.activityIndicator!.stopAnimating()
-                   self.activityIndicator!.isHidden = true
-               }
-               self.appendToTableList(additionalCellList: result!)
-           }
-       }
+        RequestActual().execute(requestPayload: requestPayload) { (result) in
+            DispatchQueue.main.async() {
+                self.activityIndicator!.stopAnimating()
+                self.activityIndicator!.isHidden = true
+            }
+            self.appendToTableList(additionalCellList: result!)
+        }
+    }
     
 }
 
