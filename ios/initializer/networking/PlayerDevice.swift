@@ -18,29 +18,28 @@ class PlayerDevice {
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         URLSession.shared.dataTask(with: request, completionHandler: { data, response, error in
             guard error == nil else {
-                print("A")
+                
                 completion(nil)
                 return
             }
             guard let data = data else {
-                print("B")
+             
                 completion(nil)
                 return
             }
             do {
                 guard let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any] else {
-                    print("C")
+                   
                     completion(nil)
                     return
                 }
                 
                 
-                //let player: EntityPlayer = PlayerDeserializer().execute(dictionary: json)
-                print("E")
-                completion(nil)
+                let player: EntityPlayer = ParsePlayer().execute(json: json)
+                completion(player)
                 
             } catch let error {
-                print(error.localizedDescription)
+           
                 completion(nil)
             }
         }).resume()

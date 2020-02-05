@@ -38,15 +38,11 @@ class PlayerLogin {
                 }
                 
                 
-                
-               //print(json)
-                
-                
                 let player: EntityPlayer = ParsePlayer().execute(json: json)
                 completion(player)
                 
             } catch let error {
-                print(error.localizedDescription)
+               
                 completion(nil)
             }
         })

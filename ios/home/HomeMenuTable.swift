@@ -110,7 +110,7 @@ class HomeMenuTable: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        print("indexPath.row: \(indexPath.row)")
+       
         let player = self.leaderboardList[indexPath.row]
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "HomeMenuCell", for: indexPath) as! HomeMenuCell
@@ -160,7 +160,7 @@ class HomeMenuTable: UITableViewController {
     
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let modifyAction = UIContextualAction(style: .normal, title:  "CHALLENGE", handler: { (ac: UIContextualAction, view:UIView, success:(Bool) -> Void) in
-            print("Update action ...")
+            
             
             //            //let gameModel = Game(opponent: self.player!)
             //            let gameModel = self.leaderboardList[indexPath.row]

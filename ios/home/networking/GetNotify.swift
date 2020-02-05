@@ -39,7 +39,7 @@ class GetNotify {
                 }
                 completion(false)
             } catch let error {
-                print(error.localizedDescription)
+               
                 completion(false)
             }
         }).resume()

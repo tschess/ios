@@ -57,7 +57,7 @@ class RequestHistoric {
                
 
             } catch let error {
-                print(error.localizedDescription)
+              
             }
         }).resume()
     }

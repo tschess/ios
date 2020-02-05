@@ -99,7 +99,7 @@ class Start: UIViewController, UITextFieldDelegate {
                     return
                 }
             }
-            print("fuq")
+         
         }
     }
     

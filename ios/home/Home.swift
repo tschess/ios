@@ -118,11 +118,11 @@ class Home: UIViewController, UITabBarDelegate {
         }
         switch item.tag {
         case 0:
-            print("skin")
+            
             self.notificationTimerStop()
             //StoryboardSelector().purchase(player: self.player!, remaining: 13)
         case 1:
-            print("quick")
+           
             self.notificationTimerStop()
             DispatchQueue.main.async() {
                 self.activityIndicator.isHidden = false
@@ -144,18 +144,18 @@ class Home: UIViewController, UITabBarDelegate {
 //                }
 //            }
         case 3:
-            print("game")
+            
             self.notificationTimerStop()
             //StoryboardSelector().actual(player: self.player!)
         case 4:
             self.notificationTimerStop()
-            print("overview") //OVERVIEW
+             //OVERVIEW
 //            let storyboard: UIStoryboard = UIStoryboard(name: "Config", bundle: nil)
 //            let viewController = storyboard.instantiateViewController(withIdentifier: "Config") as! Config
 //            viewController.setPlayer(player: self.player!)
 //            UIApplication.shared.keyWindow?.rootViewController = viewController
         default:
-            print("error")
+            self.notificationTimerStop()
         }
     }
 }
