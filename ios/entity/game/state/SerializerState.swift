@@ -26,38 +26,16 @@ class SerializerState {
         var rowG: [Piece?] = [Piece?](repeating: nil, count: 8) // 6
         var rowH: [Piece?] = [Piece?](repeating: nil, count: 8) // 7
         
-        
-        //
-        //row1[i] = getPiece(name: state[i][j])
-        
-    }
-    
-    func getName(piece: Piece?) -> String {
-        if(piece == nil){
-            return ""
-        }
-        return piece!.name
-    }
-    
-    func renderServer(state: [[Piece?]]) -> [[String]] {
-        var rowA: [String] = [String](repeating: "", count: 8) // 0
-        var rowB: [String] = [String](repeating: "", count: 8) // 1
-        var rowC: [String] = [String](repeating: "", count: 8) // 2
-        var rowD: [String] = [String](repeating: "", count: 8) // 3
-        var rowE: [String] = [String](repeating: "", count: 8) // 4
-        var rowF: [String] = [String](repeating: "", count: 8) // 5
-        var rowG: [String] = [String](repeating: "", count: 8) // 6
-        var rowH: [String] = [String](repeating: "", count: 8) // 7
         for row in (0 ..< 8) {
             for col in (0 ..< 8) {
-                rowA[col] = getName(piece: state[row][col])
-                rowB[col] = getName(piece: state[row][col])
-                rowC[col] = getName(piece: state[row][col])
-                rowD[col] = getName(piece: state[row][col])
-                rowE[col] = getName(piece: state[row][col])
-                rowF[col] = getName(piece: state[row][col])
-                rowG[col] = getName(piece: state[row][col])
-                rowH[col] = getName(piece: state[row][col])
+                rowA[col] = getPiece(name: state[row][col])
+                rowB[col] = getPiece(name: state[row][col])
+                rowC[col] = getPiece(name: state[row][col])
+                rowD[col] = getPiece(name: state[row][col])
+                rowE[col] = getPiece(name: state[row][col])
+                rowF[col] = getPiece(name: state[row][col])
+                rowG[col] = getPiece(name: state[row][col])
+                rowH[col] = getPiece(name: state[row][col])
             }
         }
         //if(self.game!.white){
@@ -103,6 +81,40 @@ class SerializerState {
             return nil
         }
         
+    }
+    
+    func renderServer(state: [[Piece?]]) -> [[String]] {
+        var rowA: [String] = [String](repeating: "", count: 8) // 0
+        var rowB: [String] = [String](repeating: "", count: 8) // 1
+        var rowC: [String] = [String](repeating: "", count: 8) // 2
+        var rowD: [String] = [String](repeating: "", count: 8) // 3
+        var rowE: [String] = [String](repeating: "", count: 8) // 4
+        var rowF: [String] = [String](repeating: "", count: 8) // 5
+        var rowG: [String] = [String](repeating: "", count: 8) // 6
+        var rowH: [String] = [String](repeating: "", count: 8) // 7
+        for row in (0 ..< 8) {
+            for col in (0 ..< 8) {
+                rowA[col] = getName(piece: state[row][col])
+                rowB[col] = getName(piece: state[row][col])
+                rowC[col] = getName(piece: state[row][col])
+                rowD[col] = getName(piece: state[row][col])
+                rowE[col] = getName(piece: state[row][col])
+                rowF[col] = getName(piece: state[row][col])
+                rowG[col] = getName(piece: state[row][col])
+                rowH[col] = getName(piece: state[row][col])
+            }
+        }
+        //if(self.game!.white){
+            //return [rowA, rowB, rowC, rowD, rowE, rowF, rowG, rowH]
+        //}
+        return [rowH, rowG, rowF, rowE, rowD, rowC, rowB, rowA]
+    }
+    
+    func getName(piece: Piece?) -> String {
+        if(piece == nil){
+            return ""
+        }
+        return piece!.name
     }
     
 }
