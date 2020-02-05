@@ -431,18 +431,18 @@ extension EditOther: UICollectionViewDelegateFlowLayout {
 extension EditOther: UICollectionViewDelegate {
     
     func generateTschessElement(name: String) -> Piece? {
-//        if(name.contains("grasshopper")){
-//            return Grasshopper()
-//        }
-//        if(name.contains("hunter")){
-//            return Hunter()
-//        }
-//        if(name.contains("poison")){
-//            return PoisonPawn()
-//        }
-//        if(name.contains("amazon")){
-//            return Amazon()
-//        }
+        if(name.contains("grasshopper")){
+            return Grasshopper()
+        }
+        if(name.contains("hunter")){
+            return Hunter()
+        }
+        if(name.contains("poison")){
+            return PoisonPawn()
+        }
+        if(name.contains("amazon")){
+            return Amazon()
+        }
         if(name.contains("pawn")){
             return Pawn()
         }
@@ -465,18 +465,18 @@ extension EditOther: UICollectionViewDelegate {
     }
     
     func imageNameFromPiece(piece: Piece) -> String? {
-//        if(piece.name == Grasshopper().name){
-//            return "red_grasshopper"
-//        }
-//        if(piece.name == Hunter().name){
-//            return "red_hunter"
-//        }
-//        if(piece.name == PoisonPawn().name){
-//            return "red_landmine_pawn"
-//        }
-//        if(piece.name == Amazon().name){
-//            return "red_amazon"
-//        }
+        if(piece.name == Grasshopper().name){
+            return "red_grasshopper"
+        }
+        if(piece.name == Hunter().name){
+            return "red_hunter"
+        }
+        if(piece.name == PoisonPawn().name){
+            return "red_landmine_pawn"
+        }
+        if(piece.name == Amazon().name){
+            return "red_amazon"
+        }
         if(piece.name == Pawn().name){
             return "red_pawn"
         }

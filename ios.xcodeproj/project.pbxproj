@@ -72,6 +72,12 @@
 		B7BE11F723EAC97200ADA499 /* EditOther.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE11F623EAC97200ADA499 /* EditOther.swift */; };
 		B7BE11FA23EAC98F00ADA499 /* EditOther.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7BE11F923EAC98F00ADA499 /* EditOther.storyboard */; };
 		B7BE11FF23EACCDE00ADA499 /* ConfigCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE11FE23EACCDE00ADA499 /* ConfigCell.swift */; };
+		B7BE120523EAD3C600ADA499 /* PoisonPawn.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE120423EAD3C600ADA499 /* PoisonPawn.swift */; };
+		B7BE120723EAD3D200ADA499 /* Amazon.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE120623EAD3D200ADA499 /* Amazon.swift */; };
+		B7BE120923EAD3DD00ADA499 /* Hunter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE120823EAD3DD00ADA499 /* Hunter.swift */; };
+		B7BE120B23EAD3E900ADA499 /* Grasshopper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE120A23EAD3E900ADA499 /* Grasshopper.swift */; };
+		B7BE120D23EAD42C00ADA499 /* Fairy.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE120C23EAD42C00ADA499 /* Fairy.swift */; };
+		B7BE121023EAD64100ADA499 /* Hopper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE120F23EAD64100ADA499 /* Hopper.swift */; };
 		B7CB62F6237BB10800E50204 /* Start.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7CB62F5237BB10800E50204 /* Start.storyboard */; };
 		B7EF701E23EA28BA00BAF2E2 /* EntityPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7EF701D23EA28BA00BAF2E2 /* EntityPlayer.swift */; };
 		B7EF702123EA28E300BAF2E2 /* EntityGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7EF702023EA28E300BAF2E2 /* EntityGame.swift */; };
@@ -172,6 +178,12 @@
 		B7BE11F623EAC97200ADA499 /* EditOther.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditOther.swift; sourceTree = "<group>"; };
 		B7BE11F923EAC98F00ADA499 /* EditOther.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditOther.storyboard; sourceTree = "<group>"; };
 		B7BE11FE23EACCDE00ADA499 /* ConfigCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigCell.swift; sourceTree = "<group>"; };
+		B7BE120423EAD3C600ADA499 /* PoisonPawn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoisonPawn.swift; sourceTree = "<group>"; };
+		B7BE120623EAD3D200ADA499 /* Amazon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Amazon.swift; sourceTree = "<group>"; };
+		B7BE120823EAD3DD00ADA499 /* Hunter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hunter.swift; sourceTree = "<group>"; };
+		B7BE120A23EAD3E900ADA499 /* Grasshopper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grasshopper.swift; sourceTree = "<group>"; };
+		B7BE120C23EAD42C00ADA499 /* Fairy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fairy.swift; sourceTree = "<group>"; };
+		B7BE120F23EAD64100ADA499 /* Hopper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hopper.swift; sourceTree = "<group>"; };
 		B7CB62F5237BB10800E50204 /* Start.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Start.storyboard; sourceTree = "<group>"; };
 		B7EF701D23EA28BA00BAF2E2 /* EntityPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityPlayer.swift; sourceTree = "<group>"; };
 		B7EF702023EA28E300BAF2E2 /* EntityGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityGame.swift; sourceTree = "<group>"; };
@@ -428,6 +440,11 @@
 		B7BE118523EA949300ADA499 /* fairy */ = {
 			isa = PBXGroup;
 			children = (
+				B7BE120323EAD3AE00ADA499 /* grasshopper */,
+				B7BE120223EAD39100ADA499 /* hunter */,
+				B7BE120123EAD38500ADA499 /* amazon */,
+				B7BE120023EAD37A00ADA499 /* poison */,
+				B7BE120C23EAD42C00ADA499 /* Fairy.swift */,
 			);
 			path = fairy;
 			sourceTree = "<group>";
@@ -604,6 +621,47 @@
 				B7BE11F923EAC98F00ADA499 /* EditOther.storyboard */,
 			);
 			path = storyboard;
+			sourceTree = "<group>";
+		};
+		B7BE120023EAD37A00ADA499 /* poison */ = {
+			isa = PBXGroup;
+			children = (
+				B7BE120423EAD3C600ADA499 /* PoisonPawn.swift */,
+			);
+			path = poison;
+			sourceTree = "<group>";
+		};
+		B7BE120123EAD38500ADA499 /* amazon */ = {
+			isa = PBXGroup;
+			children = (
+				B7BE120623EAD3D200ADA499 /* Amazon.swift */,
+			);
+			path = amazon;
+			sourceTree = "<group>";
+		};
+		B7BE120223EAD39100ADA499 /* hunter */ = {
+			isa = PBXGroup;
+			children = (
+				B7BE120823EAD3DD00ADA499 /* Hunter.swift */,
+			);
+			path = hunter;
+			sourceTree = "<group>";
+		};
+		B7BE120323EAD3AE00ADA499 /* grasshopper */ = {
+			isa = PBXGroup;
+			children = (
+				B7BE120E23EAD63000ADA499 /* logic */,
+				B7BE120A23EAD3E900ADA499 /* Grasshopper.swift */,
+			);
+			path = grasshopper;
+			sourceTree = "<group>";
+		};
+		B7BE120E23EAD63000ADA499 /* logic */ = {
+			isa = PBXGroup;
+			children = (
+				B7BE120F23EAD64100ADA499 /* Hopper.swift */,
+			);
+			path = logic;
 			sourceTree = "<group>";
 		};
 		B7C5C00622EF3F1A00BFCB39 /* util */ = {
@@ -863,6 +921,7 @@
 				B7BE11B923EA9DD400ADA499 /* BishopWhite.swift in Sources */,
 				B7BE11BB23EA9DE200ADA499 /* BishopBlack.swift in Sources */,
 				B7BE11F123EAC92C00ADA499 /* EditSelf.swift in Sources */,
+				B7BE120923EAD3DD00ADA499 /* Hunter.swift in Sources */,
 				B7BE11A923EA9C8800ADA499 /* King.swift in Sources */,
 				B7BE11B223EA9D7000ADA499 /* QueenWhite.swift in Sources */,
 				B7BE11A623EA97EC00ADA499 /* MovementKing.swift in Sources */,
@@ -884,15 +943,18 @@
 				B7BE11E523EAC39E00ADA499 /* EntitySkin.swift in Sources */,
 				B74136C723DE34A0001B3D60 /* PlayerLogin.swift in Sources */,
 				B7AF787323E0B9DA00BAD8EC /* RequestPage.swift in Sources */,
+				B7BE121023EAD64100ADA499 /* Hopper.swift in Sources */,
 				B7BE11E123EAC23500ADA499 /* Skin.swift in Sources */,
 				B7F541C823D51B0C00E89074 /* HomeMenuCell.swift in Sources */,
 				B7BE117523EA930F00ADA499 /* Piece.swift in Sources */,
+				B7BE120523EAD3C600ADA499 /* PoisonPawn.swift in Sources */,
 				B7BE11D723EAA23200ADA499 /* SquareCell.swift in Sources */,
 				B7BE116523EA727200ADA499 /* OtherMenuTable.swift in Sources */,
 				B7316D1123E8AA8E00119865 /* RequestRefresh.swift in Sources */,
 				B7BE11C523EA9E7C00ADA499 /* Rook.swift in Sources */,
 				B7BE11ED23EAC6CB00ADA499 /* RequestQuick.swift in Sources */,
 				B7BE117723EA93A600ADA499 /* PieceAnte.swift in Sources */,
+				B7BE120B23EAD3E900ADA499 /* Grasshopper.swift in Sources */,
 				B7BE11F723EAC97200ADA499 /* EditOther.swift in Sources */,
 				B7BE116F23EA91CD00ADA499 /* Snapshot.swift in Sources */,
 				B7F541C123D51A5A00E89074 /* Home.swift in Sources */,
@@ -900,6 +962,7 @@
 				B7F35E332309F6D6002018F7 /* DateTime.swift in Sources */,
 				B7BE11CC23EA9EE900ADA499 /* Knight.swift in Sources */,
 				B7BE11E823EAC40800ADA499 /* SerializerConfig.swift in Sources */,
+				B7BE120D23EAD42C00ADA499 /* Fairy.swift in Sources */,
 				B70F0C0D22EBC075001415AE /* AppDelegate.swift in Sources */,
 				B7BE11CE23EA9F1600ADA499 /* KnightWhite.swift in Sources */,
 				B7BE11B023EA9D2B00ADA499 /* Queen.swift in Sources */,
@@ -909,6 +972,7 @@
 				B72AF9E323E3BDBF003740CD /* GetNotify.swift in Sources */,
 				B7BE11DA23EAA4BF00ADA499 /* SerializerState.swift in Sources */,
 				B7BE11C923EA9EB700ADA499 /* RookBlack.swift in Sources */,
+				B7BE120723EAD3D200ADA499 /* Amazon.swift in Sources */,
 				B7BE116723EA73DC00ADA499 /* OtherMenuCell.swift in Sources */,
 				B7BE11A223EA965B00ADA499 /* HorizontalVertical.swift in Sources */,
 				B7BE116A23EA74AE00ADA499 /* RequestHistoric.swift in Sources */,
