@@ -96,7 +96,7 @@
                                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="22"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" secureTextEntry="YES" textContentType="password"/>
                                             </textField>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YEk-ia-8qZ" userLabel="ButtonView" customClass="ThroughView" customModule="ios" customModuleProvider="target">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YEk-ia-8qZ" userLabel="ButtonView">
                                                 <rect key="frame" x="0.0" y="86" width="414" height="35"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VtP-2Q-amp">

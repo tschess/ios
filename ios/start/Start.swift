@@ -47,9 +47,9 @@ class Start: UIViewController, UITextFieldDelegate {
         self.usernameTextField.delegate = self
         self.passwordTextField.delegate = self
         self.usernameTextField.attributedPlaceholder = NSAttributedString(string: "username",
-                                                                     attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+                                                                          attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
         self.passwordTextField.attributedPlaceholder = NSAttributedString(string: "password",
-                                                                     attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+                                                                          attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
         let dismissKeyboard: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
         view.addGestureRecognizer(dismissKeyboard)
         
@@ -79,7 +79,7 @@ class Start: UIViewController, UITextFieldDelegate {
         self.usernameTextField.isHidden = true
         self.passwordTextField.isHidden = true
         
-        let updated = DATE_TIME.currentDateString()
+        let updated = DATE_TIME.currentDateString() //this out to happen on the srver only...
         let deviceId = UIDevice.current.identifierForVendor?.uuidString
         
         let requestPayload = [
@@ -89,15 +89,22 @@ class Start: UIViewController, UITextFieldDelegate {
             "updated": updated
         ]
         
-//        LoginTask().execute(requestPayload: requestPayload) { (result, error) in
-//            if let result = result {
-//                StoryboardSelector().home(player: result)
-//            }
-//        }
+        PlayerLogin().execute(requestPayload: requestPayload) { (player) in
+            if let player = player {
+                DispatchQueue.main.async {
+                    let storyboard: UIStoryboard = UIStoryboard(name: "Home", bundle: nil)
+                    let viewController = storyboard.instantiateViewController(withIdentifier: "Home") as! Home
+                    viewController.setPlayer(player: player)
+                    UIApplication.shared.keyWindow?.rootViewController = viewController
+                    return
+                }
+            }
+         
+        }
     }
     
     @IBAction func createButtonClick(_ sender: UIButton) {
-
+        
     }
     
 }
