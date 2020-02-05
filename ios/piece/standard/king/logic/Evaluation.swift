@@ -10,19 +10,19 @@ import Foundation
 
 class Evaluation {
     
-    let kingMovement = KingMovement()
+    let kingMovement = MovementKing()
     
-    func rowStraightDown(present: [Int], proposed: [Int], affiliation: String, gamestate: Gamestate, threat: Bool) -> Bool {
-        let tschessElementMatrix = gamestate.getTschessElementMatrix()
+    func rowStraightDown(present: [Int], proposed: [Int], affiliation: String, state: [[Piece?]], threat: Bool) -> Bool {
+        //let tschessElementMatrix = gamestate.getTschessElementMatrix()
         
         if (proposed[0] <= 7) {
-            if (tschessElementMatrix[proposed[0]][proposed[1]] != nil) {
+            if (state[proposed[0]][proposed[1]] != nil) {
                 return evaluateAttackVector(
                     present: present,
                     proposed: proposed,
                     affiliation: affiliation,
                     vector: "HorizontalVertical",
-                    gamestate: gamestate,
+                    state: state,
                     threat: threat)
             }
             let coordinate0 = proposed[0] + 1
@@ -31,24 +31,24 @@ class Evaluation {
                 present: present,
                 proposed: [coordinate0, coordinate1],
                 affiliation: affiliation,
-                gamestate: gamestate,
+                state: state,
                 threat: threat)
         }
         return false
     }
     
-    func rowStraightUp(present: [Int], proposed: [Int], affiliation: String, gamestate: Gamestate, threat: Bool) -> Bool {
-        let tschessElementMatrix = gamestate.getTschessElementMatrix()
+    func rowStraightUp(present: [Int], proposed: [Int], affiliation: String, state: [[Piece?]], threat: Bool) -> Bool {
+        //let tschessElementMatrix = gamestate.getTschessElementMatrix()
         
         if (proposed[0] >= 0) {
             
-            if (tschessElementMatrix[proposed[0]][proposed[1]] != nil) {
+            if (state[proposed[0]][proposed[1]] != nil) {
                 return evaluateAttackVector(
                     present: present,
                     proposed: proposed,
                     affiliation: affiliation,
                     vector: "HorizontalVertical",
-                    gamestate: gamestate,
+                    state: state,
                     threat: threat)
             }
             let coordinate0 = proposed[0] - 1
@@ -57,23 +57,23 @@ class Evaluation {
                 present: present,
                 proposed: [coordinate0, coordinate1],
                 affiliation: affiliation,
-                gamestate: gamestate,
+                state: state,
                 threat: threat)
         }
         return false
     }
     
-        func diagonalDownRight(present: [Int], proposed: [Int], affiliation: String, gamestate: Gamestate, threat: Bool) -> Bool {
-            let tschessElementMatrix = gamestate.getTschessElementMatrix()
+        func diagonalDownRight(present: [Int], proposed: [Int], affiliation: String, state: [[Piece?]], threat: Bool) -> Bool {
+            //let tschessElementMatrix = gamestate.getTschessElementMatrix()
     
             if (proposed[0] <= 7 && proposed[1] <= 7) {
-                if (tschessElementMatrix[proposed[0]][proposed[1]] != nil) {
+                if (state[proposed[0]][proposed[1]] != nil) {
                     return evaluateAttackVector(
                         present: present,
                         proposed: proposed,
                         affiliation: affiliation,
                         vector: "Diagonal",
-                        gamestate: gamestate,
+                        state: state,
                         threat: threat)
                 }
                 let coordinate0 = proposed[0] + 1
@@ -82,23 +82,23 @@ class Evaluation {
                     present: present,
                     proposed: [coordinate0, coordinate1],
                     affiliation: affiliation,
-                    gamestate: gamestate,
+                    state: state,
                     threat: threat)
             }
             return false
         }
     
-        func diagonalDownLeft(present: [Int], proposed: [Int], affiliation: String, gamestate: Gamestate, threat: Bool) -> Bool {
-            let tschessElementMatrix = gamestate.getTschessElementMatrix()
+        func diagonalDownLeft(present: [Int], proposed: [Int], affiliation: String, state: [[Piece?]], threat: Bool) -> Bool {
+            //let tschessElementMatrix = gamestate.getTschessElementMatrix()
     
             if (proposed[0] <= 7 && proposed[1] >= 0) {
-                if (tschessElementMatrix[proposed[0]][proposed[1]] != nil) {
+                if (state[proposed[0]][proposed[1]] != nil) {
                     return evaluateAttackVector(
                         present: present,
                         proposed: proposed,
                         affiliation: affiliation,
                         vector: "Diagonal",
-                        gamestate: gamestate,
+                        state: state,
                         threat: threat)
                 }
                 let coordinate0 = proposed[0] + 1
@@ -107,23 +107,23 @@ class Evaluation {
                     present: present,
                     proposed: [coordinate0, coordinate1],
                     affiliation: affiliation,
-                    gamestate: gamestate,
+                    state: state,
                     threat: threat)
             }
             return false
         }
     
-        func diagonalUpLeft(present: [Int], proposed: [Int], affiliation: String, gamestate: Gamestate, threat: Bool) -> Bool {
-            let tschessElementMatrix = gamestate.getTschessElementMatrix()
+        func diagonalUpLeft(present: [Int], proposed: [Int], affiliation: String, state: [[Piece?]], threat: Bool) -> Bool {
+            //let tschessElementMatrix = gamestate.getTschessElementMatrix()
     
             if (proposed[0] >= 0 && proposed[1] >= 0) {
-                if (tschessElementMatrix[proposed[0]][proposed[1]] != nil) {
+                if (state[proposed[0]][proposed[1]] != nil) {
                     return evaluateAttackVector(
                         present: present,
                         proposed: proposed,
                         affiliation: affiliation,
                         vector: "Diagonal",
-                        gamestate: gamestate,
+                        state: state,
                         threat: threat)
                 }
                 let coordinate0 = proposed[0] - 1
@@ -132,24 +132,24 @@ class Evaluation {
                     present: present,
                     proposed: [coordinate0, coordinate1],
                     affiliation: affiliation,
-                    gamestate: gamestate,
+                    state: state,
                     threat: threat)
             }
             return false
         }
     
-        func diagonalUpRight(present: [Int], proposed: [Int], affiliation: String, gamestate: Gamestate, threat: Bool) -> Bool {
-            let tschessElementMatrix = gamestate.getTschessElementMatrix()
+        func diagonalUpRight(present: [Int], proposed: [Int], affiliation: String, state: [[Piece?]], threat: Bool) -> Bool {
+            //let tschessElementMatrix = gamestate.getTschessElementMatrix()
     
             if (proposed[0] >= 0 && proposed[1] <= 7) {
     
-                if (tschessElementMatrix[proposed[0]][proposed[1]] != nil) {
+                if (state[proposed[0]][proposed[1]] != nil) {
                     return evaluateAttackVector(
                         present: present,
                         proposed: proposed,
                         affiliation: affiliation,
                         vector: "Diagonal",
-                        gamestate: gamestate,
+                        state: state,
                         threat: threat)
                 }
                 let coordinate0 = proposed[0] - 1
@@ -158,23 +158,23 @@ class Evaluation {
                     present: present,
                     proposed: [coordinate0, coordinate1],
                     affiliation: affiliation,
-                    gamestate: gamestate,
+                    state: state,
                     threat: threat)
             }
             return false
         }
     
-        func columnLeft(present: [Int], proposed: [Int], affiliation: String, gamestate: Gamestate, threat: Bool) -> Bool {
-            let tschessElementMatrix = gamestate.getTschessElementMatrix()
+        func columnLeft(present: [Int], proposed: [Int], affiliation: String, state: [[Piece?]], threat: Bool) -> Bool {
+            //let tschessElementMatrix = gamestate.getTschessElementMatrix()
     
             if (proposed[1] >= 0) {
-                if (tschessElementMatrix[proposed[0]][proposed[1]] != nil) {
+                if (state[proposed[0]][proposed[1]] != nil) {
                     return evaluateAttackVector(
                         present: present,
                         proposed: proposed,
                         affiliation: affiliation,
                         vector: "HorizontalVertical",
-                        gamestate: gamestate,
+                        state: state,
                         threat: threat)
                 }
                 let coordinate0 = proposed[0]
@@ -183,23 +183,23 @@ class Evaluation {
                     present: present,
                     proposed: [coordinate0, coordinate1],
                     affiliation: affiliation,
-                    gamestate: gamestate,
+                    state: state,
                     threat: threat)
             }
             return false
         }
     
-    func columnRight(present: [Int], proposed: [Int], affiliation: String, gamestate: Gamestate, threat: Bool) -> Bool {
-        let tschessElementMatrix = gamestate.getTschessElementMatrix()
+    func columnRight(present: [Int], proposed: [Int], affiliation: String, state: [[Piece?]], threat: Bool) -> Bool {
+        //let tschessElementMatrix = gamestate.getTschessElementMatrix()
         
         if (proposed[1] <= 7) {
-            if (tschessElementMatrix[proposed[0]][proposed[1]] != nil) {
+            if (state[proposed[0]][proposed[1]] != nil) {
                 return evaluateAttackVector(
                     present: present,
                     proposed: proposed,
                     affiliation: affiliation,
                     vector: "HorizontalVertical",
-                    gamestate: gamestate,
+                    state: state,
                     threat: threat)
             }
             let coordinate0 = proposed[0]
@@ -208,15 +208,15 @@ class Evaluation {
                 present: present,
                 proposed: [coordinate0, coordinate1],
                 affiliation: affiliation,
-                gamestate: gamestate,
+                state: state,
                 threat: threat)
         }
         return false
     }
     
-    func evaluateAttackVector(present: [Int], proposed: [Int], affiliation: String, vector: String, gamestate: Gamestate, threat: Bool) -> Bool {
-        let tschessElementMatrix = gamestate.getTschessElementMatrix()
-        let occupant = tschessElementMatrix[proposed[0]][proposed[1]]!
+    func evaluateAttackVector(present: [Int], proposed: [Int], affiliation: String, vector: String, state: [[Piece?]], threat: Bool) -> Bool {
+        //let tschessElementMatrix = gamestate.getTschessElementMatrix()
+        let occupant = state[proposed[0]][proposed[1]]!
         
         if(affiliation != occupant.affiliation) {
             
@@ -235,14 +235,14 @@ class Evaluation {
         return false
     }
     
-    func evaluateAttackVector(coordinate: [Int], affiliation: String, vector: String, gamestate: Gamestate) -> Bool {
-        let tschessElementMatrix = gamestate.getTschessElementMatrix()
+    func evaluateAttackVector(coordinate: [Int], affiliation: String, vector: String, state: [[Piece?]]) -> Bool {
+        //let tschessElementMatrix = gamestate.getTschessElementMatrix()
         
         if(coordinate[0] >= 0 && coordinate[0] <= 7 && coordinate[1] >= 0 && coordinate[1] <= 7) {
             
-            if (tschessElementMatrix[coordinate[0]][coordinate[1]] != nil) {
+            if (state[coordinate[0]][coordinate[1]] != nil) {
                 
-                let occupant = tschessElementMatrix[coordinate[0]][coordinate[1]]!
+                let occupant = state[coordinate[0]][coordinate[1]]!
                 
                 if(affiliation != occupant.affiliation) {
                     

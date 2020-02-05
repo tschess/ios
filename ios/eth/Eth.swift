@@ -65,9 +65,9 @@ class Eth: UIViewController, UITabBarDelegate, UITextFieldDelegate { //force peo
     
     let dateTime: DateTime = DateTime()
     
-    var player: Player?
+    var player: EntityPlayer?
     
-    public func setPlayer(player: Player){
+    func setPlayer(player: EntityPlayer){
         self.player = player
     }
     
@@ -132,7 +132,12 @@ class Eth: UIViewController, UITabBarDelegate, UITextFieldDelegate { //force peo
     }
     
     @IBAction func backButtonClick(_ sender: Any) {
-        StoryboardSelector().purchase(player: self.player!, remaining: 13)
+         DispatchQueue.main.async {
+        let storyboard: UIStoryboard = UIStoryboard(name: "Skins", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "Skins") as! Skins
+        viewController.setPlayer(player: self.player!)
+            UIApplication.shared.keyWindow?.rootViewController = viewController
+        }
     }
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
@@ -140,7 +145,12 @@ class Eth: UIViewController, UITabBarDelegate, UITextFieldDelegate { //force peo
         case 0:
             print("scanner")
             tabBar.selectedItem = nil
-            StoryboardSelector().scanner(player: self.player!)
+             DispatchQueue.main.async {
+            let storyboard: UIStoryboard = UIStoryboard(name: "Scanner", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier: "Scanner") as! Scanner
+            viewController.setPlayer(player: self.player!)
+            UIApplication.shared.keyWindow?.rootViewController = viewController
+            }
             return
         default: // 1
             //pop up check that they added all the right shit before youu let them linq...
@@ -161,13 +171,13 @@ class Eth: UIViewController, UITabBarDelegate, UITextFieldDelegate { //force peo
                 "updated": self.DATE_TIME.currentDateString()
                 ] as [String: Any]
             
-            UpdateAddress().execute(updatePayload: updatePayload) { (result) in
-                DispatchQueue.main.async() {
-                    self.activityIndicator!.stopAnimating()
-                    self.activityIndicator!.isHidden = true
-                }
-                print("UpdateAddress: \(result)")
-            }
+//            UpdateAddress().execute(updatePayload: updatePayload) { (result) in
+//                DispatchQueue.main.async() {
+//                    self.activityIndicator!.stopAnimating()
+//                    self.activityIndicator!.isHidden = true
+//                }
+//                print("UpdateAddress: \(result)")
+//            }
         }
     }
     

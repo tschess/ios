@@ -19,9 +19,9 @@ open class InAppPurchase: NSObject  {
     
     let dateTime: DateTime = DateTime()
     
-    var player: Player?
+    var player: EntityPlayer?
     
-    func setPlayer(player: Player){
+    func setPlayer(player: EntityPlayer){
         self.player = player
     }
     
@@ -64,7 +64,7 @@ extension InAppPurchase {
         productsRequest!.start()
     }
     
-    func buyProduct(_ product: SKProduct, player: Player) {
+    func buyProduct(_ product: SKProduct, player: EntityPlayer) {
         self.setPlayer(player: player)
         //print("Buying \(product.productIdentifier)...")
         let payment = SKPayment(product: product)
@@ -143,8 +143,8 @@ extension InAppPurchase: SKPaymentTransactionObserver {
         SKPaymentQueue.default().finishTransaction(transaction)
         
         let updated = dateTime.currentDateString()
-        let requestPayload = ["id": self.player!.getId(), "updated": updated]
-        PurchaseSkin().execute(requestPayload: requestPayload)  { (result) in
+        let requestPayload = ["id": self.player!.id, "updated": updated]
+        PurchaseRequest().execute(requestPayload: requestPayload)  { (result) in
             //print("lalala")
             //print("result: \(String(describing: result))")
             //StoryboardSelector().manage(player: self.player!, defaultSkin: true)

@@ -12,70 +12,70 @@ class KingOffense {
     
     let king: String = "King"
     
-    func minusMinus(coordinate: [Int], affiliation: String, gamestate: Gamestate) -> Bool {
+    func minusMinus(coordinate: [Int], affiliation: String, state: [[Piece?]]) -> Bool {
         if (coordinate[0] - 1 >= 0 && coordinate[1] - 1 >= 0) {
-            return evaluateName(attacker: king, coordinate: [coordinate[0] - 1, coordinate[1] - 1], affiliation: affiliation, gamestate: gamestate)
+            return evaluateName(attacker: king, coordinate: [coordinate[0] - 1, coordinate[1] - 1], affiliation: affiliation, state: state)
         }
         return false
     }
 
-    func minusPlus(coordinate: [Int], affiliation: String, gamestate: Gamestate) -> Bool {
+    func minusPlus(coordinate: [Int], affiliation: String,  state: [[Piece?]]) -> Bool {
         if (coordinate[0] - 1 >= 0 && coordinate[1] + 1 <= 7) {
-            return evaluateName(attacker: king, coordinate: [coordinate[0] - 1, coordinate[1] + 1], affiliation: affiliation, gamestate: gamestate)
+            return evaluateName(attacker: king, coordinate: [coordinate[0] - 1, coordinate[1] + 1], affiliation: affiliation, state: state)
         }
         return false
     }
 
-    func plusMinus(coordinate: [Int], affiliation: String, gamestate: Gamestate) -> Bool {
+    func plusMinus(coordinate: [Int], affiliation: String,  state: [[Piece?]]) -> Bool {
         if (coordinate[0] + 1 <= 7 && coordinate[1] - 1 >= 0) {
-            return evaluateName(attacker: king, coordinate: [coordinate[0] + 1, coordinate[1] - 1], affiliation: affiliation, gamestate: gamestate)
+            return evaluateName(attacker: king, coordinate: [coordinate[0] + 1, coordinate[1] - 1], affiliation: affiliation, state: state)
         }
         return false
     }
 
-    func plusPlus(coordinate: [Int], affiliation: String, gamestate: Gamestate) -> Bool {
+    func plusPlus(coordinate: [Int], affiliation: String,  state: [[Piece?]]) -> Bool {
         if (coordinate[0] + 1 <= 7 && coordinate[1] + 1 <= 7) {
-            return evaluateName(attacker: king, coordinate: [coordinate[0] + 1, coordinate[1] + 1], affiliation: affiliation, gamestate: gamestate)
+            return evaluateName(attacker: king, coordinate: [coordinate[0] + 1, coordinate[1] + 1], affiliation: affiliation, state: state)
         }
         return false
     }
 
-    func zeroMinus(coordinate: [Int], affiliation: String, gamestate: Gamestate) -> Bool {
+    func zeroMinus(coordinate: [Int], affiliation: String,  state: [[Piece?]]) -> Bool {
         if (coordinate[0] - 1 >= 0) {
-            return evaluateName(attacker: king, coordinate: [coordinate[0] - 1, coordinate[1]], affiliation: affiliation, gamestate: gamestate)
+            return evaluateName(attacker: king, coordinate: [coordinate[0] - 1, coordinate[1]], affiliation: affiliation, state: state)
         }
         return false
     }
 
-    func zeroPlus(coordinate: [Int], affiliation: String, gamestate: Gamestate) -> Bool {
+    func zeroPlus(coordinate: [Int], affiliation: String,  state: [[Piece?]]) -> Bool {
         if (coordinate[0] + 1 <= 7) {
-            return evaluateName(attacker: king, coordinate: [coordinate[0] + 1, coordinate[1]], affiliation: affiliation, gamestate: gamestate)
+            return evaluateName(attacker: king, coordinate: [coordinate[0] + 1, coordinate[1]], affiliation: affiliation, state: state)
         }
         return false
     }
 
-    func oneMinus(coordinate: [Int], affiliation: String, gamestate: Gamestate) -> Bool {
+    func oneMinus(coordinate: [Int], affiliation: String,  state: [[Piece?]]) -> Bool {
         if (coordinate[1] - 1 <= 7) {
-            return evaluateName(attacker: king, coordinate: [coordinate[0], coordinate[1] - 1], affiliation: affiliation, gamestate: gamestate)
+            return evaluateName(attacker: king, coordinate: [coordinate[0], coordinate[1] - 1], affiliation: affiliation, state: state)
         }
         return false
     }
 
-    func onePlus(coordinate: [Int], affiliation: String, gamestate: Gamestate) -> Bool {
+    func onePlus(coordinate: [Int], affiliation: String, state: [[Piece?]]) -> Bool {
         if (coordinate[1] + 1 <= 7) {
-            return evaluateName(attacker: king, coordinate: [coordinate[0], coordinate[1] + 1], affiliation: affiliation, gamestate: gamestate)
+            return evaluateName(attacker: king, coordinate: [coordinate[0], coordinate[1] + 1], affiliation: affiliation, state: state)
         }
         return false
     }
     
-    func evaluateName(attacker: String, coordinate: [Int], affiliation: String, gamestate: Gamestate) -> Bool {
-        let tschessElementMatrix = gamestate.getTschessElementMatrix()
+    func evaluateName(attacker: String, coordinate: [Int], affiliation: String,  state: [[Piece?]]) -> Bool {
+        //let tschessElementMatrix = gamestate.getTschessElementMatrix()
         
         if(coordinate[0] >= 0 && coordinate[0] <= 7 && coordinate[1] >= 0 && coordinate[1] <= 7) {
             
-            if (tschessElementMatrix[coordinate[0]][coordinate[1]] != nil) {
+            if (state[coordinate[0]][coordinate[1]] != nil) {
                 
-                let occupant = tschessElementMatrix[coordinate[0]][coordinate[1]]!
+                let occupant = state[coordinate[0]][coordinate[1]]!
                 
                 if(affiliation != occupant.affiliation) {
                     let name = occupant.name

@@ -27,7 +27,7 @@ class Detail: UIViewController, UITabBarDelegate, UITextViewDelegate {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-    
+        
         self.counter = "24:00:00"
         self.dateTime = DateTime()
     }
@@ -88,9 +88,9 @@ class Detail: UIViewController, UITabBarDelegate, UITextViewDelegate {
         self.activityIndicator.isHidden = true
     }
     
-    var skin: SkinCore?
+    var skin: EntitySkin?
     
-    public func setSkin(skin: SkinCore){
+    public func setSkin(skin: EntitySkin){
         self.skin = skin
     }
     
@@ -108,10 +108,19 @@ class Detail: UIViewController, UITabBarDelegate, UITextViewDelegate {
     @IBOutlet weak var descriptionTextView: UITextView!
     @IBOutlet weak var tabBarMenu: UITabBar!
     
-    var player: Player?
+    var player: EntityPlayer?
     
-    public func setPlayer(player: Player){
+    func setPlayer(player: EntityPlayer){
         self.player = player
+    }
+    
+    public func renderHeader() {
+        self.avatarImageView.image = self.player!.getImageAvatar()
+        self.usernameLabel.text = self.player!.username
+        self.eloLabel.text = self.player!.getLabelTextElo()
+        self.rankLabel.text = self.player!.getLabelTextRank()
+        self.displacementLabel.text = self.player!.getLabelTextDisp()
+        self.displacementImage.image = self.player!.getImageDisp()!
     }
     
     var remaining: Int?
@@ -131,7 +140,7 @@ class Detail: UIViewController, UITabBarDelegate, UITextViewDelegate {
             "• freshly minted individual edition of the iapetus game skin, one of fifty\r\r" +
             "• visible to oneself and opponent during gameplay\r\r" +
             "• globally visible in leaderboard and on challenge/review endgame snapshot\r\r" +
-            "• design inspired by science fantasy novel \"the chessmen of mars\" by edgar rice burroughs\r\r"
+        "• design inspired by science fantasy novel \"the chessmen of mars\" by edgar rice burroughs\r\r"
         
         self.descriptionTextView.isEditable = false
         self.descriptionTextView.backgroundColor = UIColor.white
@@ -170,30 +179,9 @@ class Detail: UIViewController, UITabBarDelegate, UITextViewDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        let dataDecoded: Data = Data(base64Encoded: self.player!.getAvatar(), options: .ignoreUnknownCharacters)!
-        let decodedimage = UIImage(data: dataDecoded)
-        self.avatarImageView.image = decodedimage
-        self.rankLabel.text = self.player!.getRank()
-        self.usernameLabel.text = self.player!.getUsername()
-        self.eloLabel.text = self.player!.getElo()
-        self.displacementLabel.text = String(abs(Int(self.player!.getDisp())!))
         
-        let disp: Int = Int(self.player!.getDisp())!
         
-        if(disp >= 0){
-            if #available(iOS 13.0, *) {
-                let image = UIImage(systemName: "arrow.up")!
-                self.displacementImage.image = image
-                self.displacementImage.tintColor = .green
-            }
-        }
-        else {
-            if #available(iOS 13.0, *) {
-                let image = UIImage(systemName: "arrow.down")!
-                self.displacementImage.image = image
-                self.displacementImage.tintColor = .red
-            }
-        }
+        self.renderHeader()
         
         let cellForegroundClick = UITapGestureRecognizer(target: self, action: #selector(self.cellForegroundClick))
         self.cellForegroundView.isUserInteractionEnabled = true
@@ -212,28 +200,32 @@ class Detail: UIViewController, UITabBarDelegate, UITextViewDelegate {
         DispatchQueue.main.async {
             switch self.skin!.getName() {
             case "hyperion":
-                let storyboard: UIStoryboard = UIStoryboard(name: "PreviewHyperionCalhoun", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "PreviewHyperionCalhoun") as! Preview
+                let storyboard: UIStoryboard = UIStoryboard(name: "Detail", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "Detail") as! Detail
                 viewController.setPlayer(player: self.player!)
-                self.present(viewController, animated: false, completion: nil)
+                viewController.setSkin(skin: self.skin!)
+                UIApplication.shared.keyWindow?.rootViewController = viewController
                 return
             case "calypso":
-                let storyboard: UIStoryboard = UIStoryboard(name: "PreviewCalypsoCalhoun", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "PreviewCalypsoCalhoun") as! Preview
+                let storyboard: UIStoryboard = UIStoryboard(name: "Detail", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "Detail") as! Detail
                 viewController.setPlayer(player: self.player!)
-                self.present(viewController, animated: false, completion: nil)
+                viewController.setSkin(skin: self.skin!)
+                UIApplication.shared.keyWindow?.rootViewController = viewController
                 return
             case "neptune":
-                let storyboard: UIStoryboard = UIStoryboard(name: "PreviewNeptuneCalhoun", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "PreviewNeptuneCalhoun") as! Preview
+                let storyboard: UIStoryboard = UIStoryboard(name: "Detail", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "Detail") as! Detail
                 viewController.setPlayer(player: self.player!)
-                self.present(viewController, animated: false, completion: nil)
+                viewController.setSkin(skin: self.skin!)
+                UIApplication.shared.keyWindow?.rootViewController = viewController
                 return
             case "iapetus":
-                let storyboard: UIStoryboard = UIStoryboard(name: "PreviewIapetusCalhoun", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "PreviewIapetusCalhoun") as! Preview
+                let storyboard: UIStoryboard = UIStoryboard(name: "Detail", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "Detail") as! Detail
                 viewController.setPlayer(player: self.player!)
-                self.present(viewController, animated: false, completion: nil)
+                viewController.setSkin(skin: self.skin!)
+                UIApplication.shared.keyWindow?.rootViewController = viewController
                 return
             default:
                 return
@@ -242,16 +234,30 @@ class Detail: UIViewController, UITabBarDelegate, UITextViewDelegate {
     }
     
     @IBAction func backButtonClick(_ sender: Any) {
-        StoryboardSelector().purchase(player: self.player!, remaining: 13)
+        DispatchQueue.main.async {
+            let storyboard: UIStoryboard = UIStoryboard(name: "Skins", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier: "Skins") as! Skins
+            viewController.setPlayer(player: self.player!)
+            UIApplication.shared.keyWindow?.rootViewController = viewController
+        }
     }
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         switch item.tag {
         case 0:
-            StoryboardSelector().purchase(player: self.player!, remaining: 13)
+            DispatchQueue.main.async {
+                let storyboard: UIStoryboard = UIStoryboard(name: "Skins", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "Skins") as! Skins
+                viewController.setPlayer(player: self.player!)
+                UIApplication.shared.keyWindow?.rootViewController = viewController
+            }
         default:
-            print("fuck")
-            //StoryboardSelector().home(player: self.player!)
+            DispatchQueue.main.async {
+                let storyboard: UIStoryboard = UIStoryboard(name: "Home", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "Home") as! Home
+                viewController.setPlayer(player: self.player!)
+                UIApplication.shared.keyWindow?.rootViewController = viewController
+            }
         }
     }
 }

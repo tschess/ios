@@ -10,7 +10,7 @@ import UIKit
 
 class SkinsTable: UITableViewController {
     
-    var skinList: Array<SkinCore>?
+    var skinList: Array<EntitySkin>?
     
     required init?(coder aDecoder: NSCoder) {
         
@@ -20,11 +20,11 @@ class SkinsTable: UITableViewController {
         let blue: UIColor = UIColor(red: 84/255.0, green: 140/255.0, blue: 240/255.0, alpha: 1)
         let green: UIColor = UIColor(red: 0/255.0, green: 255/255.0, blue: 88/255.0, alpha: 1)
         
-        let hyperion: SkinCore = SkinCore(name: "hyperion", foreColor: purple, backColor: blue)
-        let calypso: SkinCore = SkinCore(name: "calypso", foreColor: pink, backColor: UIColor.black)
-        let neptune: SkinCore = SkinCore(name: "neptune", foreColor: green, backColor: orange, backAlpha: 0.85)
+        let hyperion: EntitySkin = EntitySkin(name: "hyperion", foreColor: purple, backColor: blue)
+        let calypso: EntitySkin = EntitySkin(name: "calypso", foreColor: pink, backColor: UIColor.black)
+        let neptune: EntitySkin = EntitySkin(name: "neptune", foreColor: green, backColor: orange, backAlpha: 0.85)
         
-        let iapetus: SkinCore = SkinCore(
+        let iapetus: EntitySkin = EntitySkin(
             name: "iapetus",
             foreColor: UIColor.white,
             foreImage: UIImage(named: "iapetus"),
@@ -37,9 +37,9 @@ class SkinsTable: UITableViewController {
         super.init(coder: aDecoder)
     }
     
-    var player: Player?
+    var player: EntityPlayer?
     
-    public func setPlayer(player: Player){
+    func setPlayer(player: EntityPlayer){
         self.player = player
     }
     
@@ -57,7 +57,7 @@ class SkinsTable: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let skinTableCell = tableView.dequeueReusableCell(withIdentifier: "SkinTableCell", for: indexPath) as! SkinsTableCell
+        let skinTableCell = tableView.dequeueReusableCell(withIdentifier: "SkinsCell", for: indexPath) as! SkinsCell
         skinTableCell.cellNameLabel.text = self.skinList![indexPath.row].getName()
         
         skinTableCell.cellForegroundView.backgroundColor = self.skinList![indexPath.row].getForeColor()

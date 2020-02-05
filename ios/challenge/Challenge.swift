@@ -20,24 +20,18 @@ class Challenge:
         self.activateBackConfig = activateBackConfig
     }
     
-    func generateTraditionalMatrix() -> [[TschessElement]] {
+    func generateTraditionalMatrix() -> [[Piece]] {
             
-        let row_0 = [Pawn(), Pawn(), Pawn(), Pawn(), Pawn(), Pawn(), Pawn(), Pawn()]
-        let row_1 = [Rook(), Knight(), Bishop(), Queen(), King(), Bishop(), Knight(), Rook()]
+        let row0 = [Pawn(), Pawn(), Pawn(), Pawn(), Pawn(), Pawn(), Pawn(), Pawn()]
+        let row1 = [Rook(), Knight(), Bishop(), Queen(), King(), Bishop(), Knight(), Rook()]
             
-            return [row_0, row_1]
+            return [row0, row1]
         }
-    
-    var opponent: PlayerCore?
-    
-    public func setOpponent(opponent: PlayerCore){
-        self.opponent = opponent
-    }
     
     @IBOutlet weak var configLabelView: UIView!
     @IBOutlet weak var traditionalLabel: UILabel!
     
-    @IBOutlet weak var configCollectionView: DynamicCollectionView!
+    @IBOutlet weak var configCollectionView: BoardView!
     @IBOutlet weak var configCollectionViewHeight: NSLayoutConstraint!
     
     @IBOutlet weak var rankDateLabel: UILabel!
@@ -47,7 +41,7 @@ class Challenge:
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
-    let reuseIdentifier = "cell"
+    let reuseIdentifier = "square"
     
     @IBOutlet weak var activeConfigNumber: UILabel!
     
@@ -59,7 +53,7 @@ class Challenge:
     @IBOutlet weak var indicatorLabelS: UILabel!
     
     func renderConfig0() {
-        self.tschessElementMatrix = self.player!.getConfig0()
+        self.tschessElementMatrix = self.playerSelf!.getConfig(index: 0)
         
         self.activeConfigNumber.text = "0̸"
         self.configCollectionView.reloadData()
@@ -79,7 +73,7 @@ class Challenge:
     }
     
     func renderConfig1() {
-        self.tschessElementMatrix = self.player!.getConfig1()
+        self.tschessElementMatrix = self.playerSelf!.getConfig(index: 1)
         
         self.activeConfigNumber.text = "1"
         self.configCollectionView.reloadData()
@@ -99,7 +93,7 @@ class Challenge:
     }
     
     func renderConfig2() {
-        self.tschessElementMatrix = self.player!.getConfig2()
+        self.tschessElementMatrix = self.playerSelf!.getConfig(index: 2)
         
         self.activeConfigNumber.text = "2"
         self.configCollectionView.reloadData()
@@ -136,7 +130,7 @@ class Challenge:
         self.indicatorLabel0.attributedText = activeConfigFull
     }
     
-    var tschessElementMatrix: [[TschessElement?]]?
+    var tschessElementMatrix: [[Piece?]]?
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -154,10 +148,19 @@ class Challenge:
     
     @IBOutlet weak var skinSelectionPicker: UIPickerView!
     
-    var player: Player?
-    var gameModel: Game?
+    var playerOther: EntityPlayer?
     
-    var skinSelectionPick: String = "calypso"
+    func setPlayerOther(playerOther: EntityPlayer){
+        self.playerOther = playerOther
+    }
+    
+    var playerSelf: EntityPlayer?
+    
+    func setPlayerSelf(playerSelf: EntityPlayer){
+        self.playerSelf = playerSelf
+    }
+    
+    var skinSelectionPick: String = "iapetus"
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -192,19 +195,19 @@ class Challenge:
         skinSelectionPick = self.skinList![row].getName()
     }
     
-    public func setPlayer(player: Player){
-        self.player = player
-    }
-    
-    func setGameModel(gameModel: Game){
-        self.gameModel = gameModel
-    }
-    
     var attributeAlphaDotFull: [NSAttributedString.Key: NSObject]?
     var attributeAlphaDotHalf: [NSAttributedString.Key: NSObject]?
     
     var alphaDotFull: NSMutableAttributedString?
     var alphaDotHalf: NSMutableAttributedString?
+    
+    public func renderHeaderOther() {
+           self.avatarImageView.image = self.playerOther!.getImageAvatar()
+           self.usernameLabel.text = self.playerOther!.username
+           self.eloLabel.text = self.playerOther!.getLabelTextElo()
+           self.rankLabel.text = self.playerOther!.getLabelTextRank()
+           self.rankDateLabel.text = self.playerOther!.getLabelTextDate()
+       }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -221,30 +224,9 @@ class Challenge:
         self.alphaDotFull = NSMutableAttributedString(string: "•", attributes: self.attributeAlphaDotFull!)
         self.alphaDotHalf = NSMutableAttributedString(string: "•", attributes: self.attributeAlphaDotHalf!)
         
-        //opponent
-        let dataDecoded: Data = Data(base64Encoded: self.opponent!.getAvatar(), options: .ignoreUnknownCharacters)!
-        let decodedimage = UIImage(data: dataDecoded)
-        self.avatarImageView.image = decodedimage
-        self.rankLabel.text = self.opponent!.getRank()
-        self.usernameLabel.text = self.opponent!.getUsername()
-        
-        self.eloLabel.text = self.opponent!.getElo()
-        
-        let date: String = self.opponent!.getDate()
-        if(date == "TBD"){
-            let formatter = DateFormatter()
-            formatter.dateFormat = "dd.MM.YY"
-            var yayayaya = formatter.string(from: DateTime().currentDate())
-            yayayaya.insert("'", at: yayayaya.index(yayayaya.endIndex, offsetBy: -2))
-            self.rankDateLabel.text = yayayaya
-        } else {
-            //date...
-        }
-        
-        //self.tschessElementMatrix = self.player!.getConfig0()
-        
-        
-        
+        //
+        self.renderHeaderOther()
+        //
         
         self.configCollectionView.delegate = self
         self.configCollectionView.dataSource = self
@@ -262,11 +244,11 @@ class Challenge:
         let blue: UIColor = UIColor(red: 84/255.0, green: 140/255.0, blue: 240/255.0, alpha: 1)
         let green: UIColor = UIColor(red: 0/255.0, green: 255/255.0, blue: 88/255.0, alpha: 1)
         
-        let hyperion: SkinCore = SkinCore(name: "hyperion", foreColor: purple, backColor: blue)
-        let calypso: SkinCore = SkinCore(name: "calypso", foreColor: pink, backColor: UIColor.black)
-        let neptune: SkinCore = SkinCore(name: "neptune", foreColor: green, backColor: orange, backAlpha: 0.85)
+        let hyperion: EntitySkin = EntitySkin(name: "hyperion", foreColor: purple, backColor: blue)
+        let calypso: EntitySkin = EntitySkin(name: "calypso", foreColor: pink, backColor: UIColor.black)
+        let neptune: EntitySkin = EntitySkin(name: "neptune", foreColor: green, backColor: orange, backAlpha: 0.85)
         
-        let iapetus: SkinCore = SkinCore(
+        let iapetus: EntitySkin = EntitySkin(
             name: "iapetus",
             foreColor: UIColor.white,
             foreImage: UIImage(named: "iapetus"),
@@ -274,7 +256,7 @@ class Challenge:
             backImage: UIImage(named: "iapetus"),
             backAlpha: 0.85)
         
-        self.skinList = Array(arrayLiteral: calypso, hyperion, neptune, iapetus)
+        self.skinList = Array(arrayLiteral: iapetus, calypso, hyperion, neptune)
         
         if(self.activateBackConfig != nil){
             switch self.activateBackConfig! {
@@ -301,7 +283,7 @@ class Challenge:
         }
     }
     
-    var skinList: Array<SkinCore>?
+    var skinList: Array<EntitySkin>?
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -350,8 +332,8 @@ class Challenge:
         if(numberString == "2") {
             viewController.setActiveConfigNumber(activeConfigNumber: 2)
         }
-        viewController.setPlayerOther(playerOther: self.opponent!)
-        viewController.setPlayerSelf(playerSelf: self.player!)
+        viewController.setPlayerOther(playerOther: self.playerOther!)
+        viewController.setPlayerSelf(playerSelf: self.playerSelf!)
         UIApplication.shared.keyWindow?.rootViewController = viewController
     }
     
@@ -406,15 +388,15 @@ class Challenge:
     func stayHandler(action: UIAlertAction) {
         let homeStoryboard: UIStoryboard = UIStoryboard(name: "Home", bundle: nil)
         let homeViewController = homeStoryboard.instantiateViewController(withIdentifier: "Home") as! Home
-        homeViewController.setPlayer(player: self.player!)
+        homeViewController.setPlayer(player: self.playerSelf!)
         UIApplication.shared.keyWindow?.rootViewController = homeViewController
     }
     
     @IBAction func backButtonClick(_ sender: Any) {
         let storyboard: UIStoryboard = UIStoryboard(name: "Other", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "Other") as! Other
-        viewController.setPlayer(player: self.player!)
-        viewController.setGameModel(gameModel: self.gameModel!)
+        viewController.setPlayerSelf(playerSelf: self.playerSelf!)
+        viewController.setPlayerOther(playerOther: self.playerOther!)
         UIApplication.shared.keyWindow?.rootViewController = viewController
     }
     
@@ -426,8 +408,8 @@ class Challenge:
             self.activityIndicator.startAnimating()
             
             let requestPayload: [String: Any] = [
-            "player_self": self.player!.getId(),
-            "player_oppo": self.gameModel!.getOpponent().getId(),
+                "player_self": self.playerSelf!.id,
+            "player_oppo": self.playerOther!.id,
             "skin": "DEFAULT",
             "config": 0]
             
@@ -436,7 +418,11 @@ class Challenge:
                 print("result: \(result)")
                 
                 DispatchQueue.main.async {
-                    StoryboardSelector().other(player: self.player!, gameModel: self.gameModel!)
+                    let storyboard: UIStoryboard = UIStoryboard(name: "Other", bundle: nil)
+                    let viewController = storyboard.instantiateViewController(withIdentifier: "Other") as! Other
+                    viewController.setPlayerSelf(playerSelf: self.playerSelf!)
+                    viewController.setPlayerOther(playerOther: self.playerOther!)
+                    UIApplication.shared.keyWindow?.rootViewController = viewController
                 }
             }
             
@@ -454,7 +440,7 @@ extension Challenge: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ConfigCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "square", for: indexPath) as! SquareCell
         cell.backgroundColor = .black
         if (indexPath.row / 8 == 0) {
             cell.backgroundColor = .white

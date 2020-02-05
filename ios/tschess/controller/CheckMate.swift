@@ -10,24 +10,24 @@ import Foundation
 
 class CheckMate {
     
-    func mate(king: [Int], gamestate: Gamestate) -> Bool {
-        let tschessElementMatrix = gamestate.getTschessElementMatrix()
-        let kingElement = tschessElementMatrix[king[0]][king[1]]!
+    func mate(king: [Int], state: [[Piece?]]) -> Bool {
+        //let tschessElementMatrix = gamestate.getTschessElementMatrix()
+        let kingElement = state[king[0]][king[1]]!
         var listValidateKing = Array<[Int]>()
         for i in (0 ..< 8) {
             for j in (0 ..< 8) {
-                if(kingElement.validate(present: king, proposed: [i,j], gamestate: gamestate)){
+                if(kingElement.validate(present: king, proposed: [i,j], state: state)){
                     listValidateKing.append([i,j])
                 }
             }
         }
-        let listOpponent = CanonicalCheck().listOpponent(king: king, gamestate: gamestate)
+        let listOpponent = CheckCheck().listOpponent(king: king, state: state)
         
         var listValidateKingOpponent = Array<[Int]>()
         for move in listValidateKing {
             for opponent in listOpponent {
-                let opponentElement = tschessElementMatrix[opponent[0]][opponent[1]]!
-                if(opponentElement.validate(present: opponent, proposed: move, gamestate: gamestate)) {
+                let opponentElement = state[opponent[0]][opponent[1]]!
+                if(opponentElement.validate(present: opponent, proposed: move, state: state)) {
                     listValidateKingOpponent.append(move)
                 }
             }
@@ -37,27 +37,27 @@ class CheckMate {
         if(listKingMove.count > 0){
             return false
         }
-        let listAttacker = self.listAttacker(king: king, gamestate: gamestate)
+        let listAttacker = self.listAttacker(king: king, state: state)
         if(listAttacker.count > 1){
             return true
         }
-        if(!self.thwart(king: king, gamestate: gamestate)){
+        if(!self.thwart(king: king, state: state)){
             return true
         }
         return false
     }
     
-    func listAttacker(king: [Int], gamestate: Gamestate) -> Array<[Int]> {
+    func listAttacker(king: [Int], state: [[Piece?]]) -> Array<[Int]> {
         var arrayList = Array<[Int]>()
-        let tschessElementMatrix = gamestate.getTschessElementMatrix()
-        let listOpponent = CanonicalCheck().listOpponent(king: king, gamestate: gamestate)
+        //let tschessElementMatrix = gamestate.getTschessElementMatrix()
+        let listOpponent = CheckCheck().listOpponent(king: king, state: state)
         for opponent in listOpponent {
-            let opponentElement = tschessElementMatrix[opponent[0]][opponent[1]]
-            if(opponentElement!.validate(present: opponent, proposed: king, gamestate: gamestate)) {
+            let opponentElement = state[opponent[0]][opponent[1]]
+            if(opponentElement!.validate(present: opponent, proposed: king, state: state)) {
                 arrayList.append(opponent)
             }
             if(opponentElement!.name.contains("Grasshopper")){
-                if(HopperOffense().evaluate(present: king, gamestate: gamestate, affiliation: gamestate.getSelfAffiliation())){
+                if(HopperOffense().evaluate(present: king, state: state, affiliation: "FUCK")){
                     arrayList.append(opponent)
                 }
             }
@@ -65,26 +65,26 @@ class CheckMate {
         return arrayList
     }
     
-    func thwart(king: [Int], gamestate: Gamestate) -> Bool {
-        var tschessElementMatrix = gamestate.getTschessElementMatrix()
+    func thwart(king: [Int], state: [[Piece?]]) -> Bool {
+        //var tschessElementMatrix = gamestate.getTschessElementMatrix()
         
-        let listAttacker = self.listAttacker(king: king, gamestate: gamestate)
+        let listAttacker = self.listAttacker(king: king, state: state)
         
         let coordinateAttacker = listAttacker[0]
-        let attackerElement = tschessElementMatrix[coordinateAttacker[0]][coordinateAttacker[1]]!
+        let attackerElement = state[coordinateAttacker[0]][coordinateAttacker[1]]!
         
-        let listCompatriot = CanonicalCheck().listCompatriot(king: king, gamestate: gamestate)
+        let listCompatriot = CheckCheck().listCompatriot(king: king, state: state)
         for coordinateCompatriot in listCompatriot {
-            let compatriotElement = tschessElementMatrix[coordinateCompatriot[0]][coordinateCompatriot[1]]!
+            let compatriotElement = state[coordinateCompatriot[0]][coordinateCompatriot[1]]!
             for i in (0 ..< 8) {
                 for j in (0 ..< 8) {
-                    if(compatriotElement.validate(present: coordinateCompatriot, proposed: [i,j], gamestate: gamestate)) {
-                        let tschessElement = tschessElementMatrix[i][j]
-                        tschessElementMatrix[i][j] = compatriotElement
-                        tschessElementMatrix[coordinateCompatriot[0]][coordinateCompatriot[1]] = nil
-                        gamestate.setTschessElementMatrix(tschessElementMatrix: tschessElementMatrix)
-                        if(!attackerElement.validate(present: coordinateAttacker, proposed: king, gamestate: gamestate)) {
-                            if(CanonicalCheck().check(coordinate: king, gamestate: gamestate)){
+                    if(compatriotElement.validate(present: coordinateCompatriot, proposed: [i,j], state: state)) {
+                        let tschessElement = state[i][j]
+                        //state[i][j] = compatriotElement
+                        //state[coordinateCompatriot[0]][coordinateCompatriot[1]] = nil
+                        //gamestate.setTschessElementMatrix(tschessElementMatrix: state)
+                        if(!attackerElement.validate(present: coordinateAttacker, proposed: king, state: state)) {
+                            if(CheckCheck().check(coordinate: king, state: state)){
                                 return false
                             }
                             return true
@@ -94,7 +94,7 @@ class CheckMate {
                         
                     
                         if(attackerElement.name.contains("Grasshopper")){
-                            if(!HopperOffense().evaluate(present: king, gamestate: gamestate, affiliation: gamestate.getSelfAffiliation())){
+                            if(!HopperOffense().evaluate(present: king, state: state, affiliation: "FUCK")){
                                 return true
                             }
                             return false
@@ -104,9 +104,9 @@ class CheckMate {
                         
                         
                         
-                        tschessElementMatrix[i][j] = tschessElement
-                        tschessElementMatrix[coordinateCompatriot[0]][coordinateCompatriot[1]] = compatriotElement
-                        gamestate.setTschessElementMatrix(tschessElementMatrix: tschessElementMatrix)
+                        //tschessElementMatrix[i][j] = tschessElement
+                        //tschessElementMatrix[coordinateCompatriot[0]][coordinateCompatriot[1]] = compatriotElement
+                        //gamestate.setTschessElementMatrix(tschessElementMatrix: tschessElementMatrix)
                     }
                 }
             }

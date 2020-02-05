@@ -14,26 +14,26 @@ class Attack {
     
     let pawnOffense = PawnOffense()
     
-    func rowStraightDown(rowStraightDown: [Int], affiliation: String, present: [Int], proposed: [Int], gamestate: Gamestate, threat: Bool) -> Bool {
+    func rowStraightDown(rowStraightDown: [Int], affiliation: String, present: [Int], proposed: [Int], state: [[Piece?]], threat: Bool) -> Bool {
         if(rowStraightDown == proposed){
             return evaluation.rowStraightDown(
                 present: present,
                 proposed: proposed,
                 affiliation: affiliation,
-                gamestate: gamestate,
+                state: state,
                 threat: threat)
         }
         return false
     }
     
-    func rowStraightDown_lookBehind(rowStraightDown_lookBehind: [Int], rowStraightDown: [Int], affiliation: String, present: [Int], proposed: [Int], gamestate: Gamestate, threat: Bool) -> Bool {
+    func rowStraightDown_lookBehind(rowStraightDown_lookBehind: [Int], rowStraightDown: [Int], affiliation: String, present: [Int], proposed: [Int], state: [[Piece?]], threat: Bool) -> Bool {
         if(rowStraightDown_lookBehind == proposed){
             if (rowStraightDown_lookBehind[0] >= 0) {
                 if (evaluation.rowStraightDown(
                     present: present,
                     proposed: rowStraightDown,
                     affiliation: affiliation,
-                    gamestate: gamestate,
+                    state: state,
                     threat: threat)) {
                     return true
                 }
@@ -41,32 +41,32 @@ class Attack {
                     coordinate: rowStraightDown,
                     affiliation: affiliation,
                     vector: "HorizontalVertical",
-                    gamestate: gamestate)
+                    state: state)
             }
         }
         return false
     }
 
-    func rowStraightUp(rowStraightUp: [Int], affiliation: String, present: [Int], proposed: [Int], gamestate: Gamestate, threat: Bool) -> Bool {
+    func rowStraightUp(rowStraightUp: [Int], affiliation: String, present: [Int], proposed: [Int], state: [[Piece?]], threat: Bool) -> Bool {
         if(rowStraightUp == proposed){
             return evaluation.rowStraightUp(
                 present: present,
                 proposed: proposed,
                 affiliation: affiliation,
-                gamestate: gamestate,
+                state: state,
                 threat: threat)
         }
         return false
     }
 
-    func rowStraightUp_lookBehind(rowStraightUp_lookBehind: [Int], rowStraightUp: [Int], affiliation: String, present: [Int], proposed: [Int], gamestate: Gamestate, threat: Bool) -> Bool {
+    func rowStraightUp_lookBehind(rowStraightUp_lookBehind: [Int], rowStraightUp: [Int], affiliation: String, present: [Int], proposed: [Int], state: [[Piece?]], threat: Bool) -> Bool {
         if(rowStraightUp_lookBehind == proposed){
             if (rowStraightUp_lookBehind[0] <= 7) {
                 if (evaluation.rowStraightUp(
                     present: present,
                     proposed: rowStraightUp,
                     affiliation: affiliation,
-                    gamestate: gamestate,
+                    state: state,
                     threat: threat)) {
                     return true
                 }
@@ -74,32 +74,32 @@ class Attack {
                     coordinate: rowStraightUp,
                     affiliation: affiliation,
                     vector: "HorizontalVertical",
-                    gamestate: gamestate)
+                    state: state)
             }
         }
         return false
     }
 
-    func columnLeft(columnLeft: [Int], affiliation: String, present: [Int], proposed: [Int], gamestate: Gamestate, threat: Bool) -> Bool {
+    func columnLeft(columnLeft: [Int], affiliation: String, present: [Int], proposed: [Int], state: [[Piece?]], threat: Bool) -> Bool {
         if(columnLeft == proposed){
             return evaluation.columnLeft(
                 present: present,
                 proposed: columnLeft,
                 affiliation: affiliation,
-                gamestate: gamestate,
+                state: state,
                 threat: threat)
         }
         return false
     }
 
-    func columnLeft_lookBehind(columnLeft_lookBehind: [Int], columnLeft: [Int], affiliation: String, present: [Int], proposed: [Int], gamestate: Gamestate, threat: Bool) -> Bool {
+    func columnLeft_lookBehind(columnLeft_lookBehind: [Int], columnLeft: [Int], affiliation: String, present: [Int], proposed: [Int], state: [[Piece?]], threat: Bool) -> Bool {
         if(columnLeft_lookBehind == proposed){
             if (columnLeft_lookBehind[1] <= 7) {
                 if (evaluation.columnLeft(
                     present: present,
                     proposed: columnLeft,
                     affiliation: affiliation,
-                    gamestate: gamestate,
+                    state: state,
                     threat: threat)) {
                     return true
                 }
@@ -107,32 +107,32 @@ class Attack {
                     coordinate: columnLeft,
                     affiliation: affiliation,
                     vector: "HorizontalVertical",
-                    gamestate: gamestate)
+                    state: state)
             }
         }
         return false
     }
 
-    func columnRight(columnRight: [Int], affiliation: String, present: [Int], proposed: [Int], gamestate: Gamestate, threat: Bool) -> Bool {
+    func columnRight(columnRight: [Int], affiliation: String, present: [Int], proposed: [Int], state: [[Piece?]], threat: Bool) -> Bool {
         if(columnRight == proposed){
             return evaluation.columnRight(
                 present: present,
                 proposed: columnRight,
                 affiliation: affiliation,
-                gamestate: gamestate,
+                state: state,
                 threat: threat)
         }
         return false
     }
 
-    func columnRight_lookBehind(columnRight_lookBehind: [Int], columnRight: [Int], affiliation: String, present: [Int], proposed: [Int], gamestate: Gamestate, threat: Bool) -> Bool {
+    func columnRight_lookBehind(columnRight_lookBehind: [Int], columnRight: [Int], affiliation: String, present: [Int], proposed: [Int], state: [[Piece?]], threat: Bool) -> Bool {
         if(columnRight_lookBehind == proposed){
             if (columnRight_lookBehind[1] >= 0) {
                 if (evaluation.columnRight(
                     present: present,
                     proposed: columnRight,
                     affiliation: affiliation,
-                    gamestate: gamestate,
+                    state: state,
                     threat: threat)) {
                     return true
                 }
@@ -140,32 +140,32 @@ class Attack {
                     coordinate: columnRight,
                     affiliation: affiliation,
                     vector: "HorizontalVertical",
-                    gamestate: gamestate)
+                    state: state)
             }
         }
         return false
     }
 
-    func diagonalUpRight(diagonalUpRight: [Int], affiliation: String, present: [Int], proposed: [Int], gamestate: Gamestate, threat: Bool) -> Bool {
+    func diagonalUpRight(diagonalUpRight: [Int], affiliation: String, present: [Int], proposed: [Int], state: [[Piece?]], threat: Bool) -> Bool {
         if(diagonalUpRight == proposed){
             return evaluation.diagonalUpRight(
                 present: present,
                 proposed: diagonalUpRight,
                 affiliation: affiliation,
-                gamestate: gamestate,
+                state: state,
                 threat: threat)
         }
         return false
     }
 
-    func diagonalUpRight_lookBehind(diagonalUpRight_lookBehind: [Int], diagonalUpRight: [Int], affiliation: String, present: [Int], proposed: [Int], gamestate: Gamestate, threat: Bool) -> Bool {
+    func diagonalUpRight_lookBehind(diagonalUpRight_lookBehind: [Int], diagonalUpRight: [Int], affiliation: String, present: [Int], proposed: [Int], state: [[Piece?]], threat: Bool) -> Bool {
         if(diagonalUpRight_lookBehind == proposed){
             if (diagonalUpRight_lookBehind[0] >= 0 && diagonalUpRight_lookBehind[1] <= 7) {
                 if (evaluation.diagonalUpRight(
                     present: present,
                     proposed: diagonalUpRight,
                     affiliation: affiliation,
-                    gamestate: gamestate,
+                    state: state,
                     threat: threat)) {
                     return true
                 }
@@ -173,32 +173,32 @@ class Attack {
                     coordinate: diagonalUpRight,
                     affiliation: affiliation,
                     vector: "Diagonal",
-                    gamestate: gamestate)
+                    state: state)
             }
         }
         return false
     }
 
-    func diagonalDownLeft(diagonalDownLeft: [Int], affiliation: String, present: [Int], proposed: [Int], gamestate: Gamestate, threat: Bool) -> Bool {
+    func diagonalDownLeft(diagonalDownLeft: [Int], affiliation: String, present: [Int], proposed: [Int], state: [[Piece?]], threat: Bool) -> Bool {
         if(diagonalDownLeft == proposed){
             return evaluation.diagonalDownLeft(
                 present: present,
                 proposed: diagonalDownLeft,
                 affiliation: affiliation,
-                gamestate: gamestate,
+                state: state,
                 threat: threat)
         }
         return false
     }
 
-    func diagonalDownLeft_lookBehind(diagonalDownLeft_lookBehind: [Int], diagonalDownLeft: [Int], affiliation: String, present: [Int], proposed: [Int], gamestate: Gamestate, threat: Bool) -> Bool {
+    func diagonalDownLeft_lookBehind(diagonalDownLeft_lookBehind: [Int], diagonalDownLeft: [Int], affiliation: String, present: [Int], proposed: [Int], state: [[Piece?]], threat: Bool) -> Bool {
         if(diagonalDownLeft_lookBehind == proposed){
             if (diagonalDownLeft_lookBehind[0] <= 7 && diagonalDownLeft_lookBehind[1] >= 0) {
                 if (evaluation.diagonalDownLeft(
                     present: present,
                     proposed: diagonalDownLeft,
                     affiliation: affiliation,
-                    gamestate: gamestate,
+                    state: state,
                     threat: threat)) {
                     return true
                 }
@@ -206,32 +206,32 @@ class Attack {
                     coordinate: diagonalDownLeft,
                     affiliation: affiliation,
                     vector: "Diagonal",
-                    gamestate: gamestate)
+                    state: state)
             }
         }
         return false
     }
 
-    func diagonalUpLeft(diagonalUpLeft: [Int], affiliation: String, present: [Int], proposed: [Int], gamestate: Gamestate, threat: Bool) -> Bool {
+    func diagonalUpLeft(diagonalUpLeft: [Int], affiliation: String, present: [Int], proposed: [Int], state: [[Piece?]], threat: Bool) -> Bool {
         if(diagonalUpLeft == proposed){
             return evaluation.diagonalUpLeft(
                 present: present,
                 proposed: diagonalUpLeft,
                 affiliation: affiliation,
-                gamestate: gamestate,
+                state: state,
                 threat: threat)
         }
         return false
     }
 
-    func diagonalUpLeft_lookBehind(diagonalUpLeft_lookBehind: [Int], diagonalUpLeft: [Int], affiliation: String, present: [Int], proposed: [Int], gamestate: Gamestate, threat: Bool) -> Bool {
+    func diagonalUpLeft_lookBehind(diagonalUpLeft_lookBehind: [Int], diagonalUpLeft: [Int], affiliation: String, present: [Int], proposed: [Int], state: [[Piece?]], threat: Bool) -> Bool {
         if(diagonalUpLeft_lookBehind == proposed){
             if (diagonalUpLeft_lookBehind[0] <= 7 && diagonalUpLeft_lookBehind[1] <= 7) {
                 if (evaluation.diagonalUpLeft(
                     present: present,
                     proposed: diagonalUpLeft,
                     affiliation: affiliation,
-                    gamestate: gamestate,
+                    state: state,
                     threat: threat)) {
                     return true
                 }
@@ -239,32 +239,32 @@ class Attack {
                     coordinate: diagonalUpLeft,
                     affiliation: affiliation,
                     vector: "Diagonal",
-                    gamestate: gamestate)
+                    state: state)
             }
         }
         return false
     }
 
-    func diagonalDownRight(diagonalDownRight: [Int], affiliation: String, present: [Int], proposed: [Int], gamestate: Gamestate, threat: Bool) -> Bool {
+    func diagonalDownRight(diagonalDownRight: [Int], affiliation: String, present: [Int], proposed: [Int], state: [[Piece?]], threat: Bool) -> Bool {
         if(diagonalDownRight == proposed){
             return evaluation.diagonalDownRight(
                 present: present,
                 proposed: diagonalDownRight,
                 affiliation: affiliation,
-                gamestate: gamestate,
+                state: state,
                 threat: threat)
         }
         return false
     }
 
-    func diagonalDownRight_lookBehind(diagonalDownRight_lookBehind: [Int], diagonalDownRight: [Int], affiliation: String, present: [Int], proposed: [Int], gamestate: Gamestate, threat: Bool) -> Bool {
+    func diagonalDownRight_lookBehind(diagonalDownRight_lookBehind: [Int], diagonalDownRight: [Int], affiliation: String, present: [Int], proposed: [Int], state: [[Piece?]], threat: Bool) -> Bool {
         if(diagonalDownRight_lookBehind == proposed){
             if (diagonalDownRight_lookBehind[0] >= 0 && diagonalDownRight_lookBehind[1] >= 0) {
                 if (evaluation.diagonalDownRight(
                     present: present,
                     proposed: diagonalDownRight,
                     affiliation: affiliation,
-                    gamestate: gamestate,
+                    state: state,
                     threat: threat)) {
                     return true
                 }
@@ -272,7 +272,7 @@ class Attack {
                     coordinate: diagonalDownRight,
                     affiliation: affiliation,
                     vector: "Diagonal",
-                    gamestate: gamestate)
+                    state: state)
             }
         }
         return false
@@ -280,9 +280,9 @@ class Attack {
 
     /* * */
 
-    func evaluate(present: [Int], proposed: [Int], gamestate: Gamestate) -> Bool {
-        let tschessElementMatrix = gamestate.getTschessElementMatrix()
-        let affiliation = tschessElementMatrix[present[0]][present[1]]!.affiliation
+    func evaluate(present: [Int], proposed: [Int], state: [[Piece?]]) -> Bool {
+        //let tschessElementMatrix = [[Piece?]].getTschessElementMatrix()
+        let affiliation = state[present[0]][present[1]]!.affiliation
 
         let rowStraightDown = [present[0] + 1, present[1]]
         if(self.rowStraightDown(
@@ -290,7 +290,7 @@ class Attack {
             affiliation: affiliation,
             present: present,
             proposed: proposed,
-            gamestate: gamestate,
+            state: state,
             threat: false)){
             return true
         }
@@ -301,7 +301,7 @@ class Attack {
             affiliation: affiliation,
             present: present,
             proposed: proposed,
-            gamestate: gamestate,
+            state: state,
             threat: false)){
             return true
         }
@@ -312,7 +312,7 @@ class Attack {
             affiliation: affiliation,
             present: present,
             proposed: proposed,
-            gamestate: gamestate,
+            state: state,
             threat: false)){
             return true
         }
@@ -323,7 +323,7 @@ class Attack {
             affiliation: affiliation,
             present: present,
             proposed: proposed,
-            gamestate: gamestate,
+            state: state,
             threat: false)){
             return true
         }
@@ -334,7 +334,7 @@ class Attack {
             affiliation: affiliation,
             present: present,
             proposed: proposed,
-            gamestate: gamestate,
+            state: state,
             threat: false)){
             return true
         }
@@ -345,7 +345,7 @@ class Attack {
             affiliation: affiliation,
             present: present,
             proposed: proposed,
-            gamestate: gamestate,
+            state: state,
             threat: false)){
             return true
         }
@@ -356,7 +356,7 @@ class Attack {
             affiliation: affiliation,
             present: present,
             proposed: proposed,
-            gamestate: gamestate,
+            state: state,
             threat: false)){
             return true
         }
@@ -367,7 +367,7 @@ class Attack {
             affiliation: affiliation,
             present: present,
             proposed: proposed,
-            gamestate: gamestate,
+            state: state,
             threat: false)){
             return true
         }
@@ -378,7 +378,7 @@ class Attack {
             affiliation: affiliation,
             present: present,
             proposed: proposed,
-            gamestate: gamestate,
+            state: state,
             threat: false)){
             return true
         }
@@ -389,7 +389,7 @@ class Attack {
             affiliation: affiliation,
             present: present,
             proposed: proposed,
-            gamestate: gamestate,
+            state: state,
             threat: false)){
             return true
         }
@@ -400,7 +400,7 @@ class Attack {
             affiliation: affiliation,
             present: present,
             proposed: proposed,
-            gamestate: gamestate,
+            state: state,
             threat: false)){
             return true
         }
@@ -411,7 +411,7 @@ class Attack {
             affiliation: affiliation,
             present: present,
             proposed: proposed,
-            gamestate: gamestate,
+            state: state,
             threat: false)){
             return true
         }
@@ -422,7 +422,7 @@ class Attack {
             affiliation: affiliation,
             present: present,
             proposed: proposed,
-            gamestate: gamestate,
+            state: state,
             threat: false)){
             return true
         }
@@ -433,7 +433,7 @@ class Attack {
             affiliation: affiliation,
             present: present,
             proposed: proposed,
-            gamestate: gamestate,
+            state: state,
             threat: false)){
             return true
         }
@@ -444,7 +444,7 @@ class Attack {
             affiliation: affiliation,
             present: present,
             proposed: proposed,
-            gamestate: gamestate,
+            state: state,
             threat: false)){
             return true
         }
@@ -455,7 +455,7 @@ class Attack {
             affiliation: affiliation,
             present: present,
             proposed: proposed,
-            gamestate: gamestate,
+            state: state,
             threat: false)){
             return true
         }

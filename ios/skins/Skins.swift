@@ -22,47 +22,33 @@ class Skins: UIViewController, UITabBarDelegate {
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var tabBarMenu: UITabBar!
     
-    var skinTableMenu: SkinsTableMenu?
+    var skinTableMenu: SkinsTable?
     
-    var player: Player?
+    var player: EntityPlayer?
     
-    public func setPlayer(player: Player){
+    func setPlayer(player: EntityPlayer){
         self.player = player
+    }
+    
+    public func renderHeaderSelf() {
+        self.avatarImageView.image = self.player!.getImageAvatar()
+        self.usernameLabel.text = self.player!.username
+        self.eloLabel.text = self.player!.getLabelTextElo()
+        self.rankLabel.text = self.player!.getLabelTextRank()
+        self.displacementLabel.text = self.player!.getLabelTextDisp()
+        self.displacementImage.image = self.player!.getImageDisp()!
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        let dataDecoded: Data = Data(base64Encoded: self.player!.getAvatar(), options: .ignoreUnknownCharacters)!
-        let decodedimage = UIImage(data: dataDecoded)
-        self.avatarImageView.image = decodedimage
-        self.rankLabel.text = self.player!.getRank()
-        self.usernameLabel.text = self.player!.getUsername()
-        self.eloLabel.text = self.player!.getElo()
-        self.displacementLabel.text = String(abs(Int(self.player!.getDisp())!))
-        
-        let disp: Int = Int(self.player!.getDisp())!
-        
-        if(disp >= 0){
-            if #available(iOS 13.0, *) {
-                let image = UIImage(systemName: "arrow.up")!
-                self.displacementImage.image = image
-                self.displacementImage.tintColor = .green
-            }
-        }
-        else {
-            if #available(iOS 13.0, *) {
-                let image = UIImage(systemName: "arrow.down")!
-                self.displacementImage.image = image
-                self.displacementImage.tintColor = .red
-            }
-        }
+        self.renderHeaderSelf()
         
         self.activityIndicator.isHidden = true
     }
     
     @objc func onDidReceiveData(_ notification: NSNotification) {
-        let skinSelection = notification.userInfo!["skin_selection"] as! SkinCore
+        let skinSelection = notification.userInfo!["skin_selection"] as! EntitySkin
         
         DispatchQueue.main.async {
             switch skinSelection.getName() {
@@ -105,7 +91,7 @@ class Skins: UIViewController, UITabBarDelegate {
         super.viewDidLoad()
         
         self.tabBarMenu.delegate = self
-        self.skinTableMenu = children.first as? SkinsTableMenu
+        self.skinTableMenu = children.first as? SkinsTable
         
         NotificationCenter.default.addObserver(
             self,
@@ -124,13 +110,21 @@ class Skins: UIViewController, UITabBarDelegate {
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         switch item.tag {
         case 1:
-            StoryboardSelector().home(player: self.player!)
+            DispatchQueue.main.async {
+                let storyboard: UIStoryboard = UIStoryboard(name: "Home", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "Home") as! Home
+                viewController.setPlayer(player: self.player!)
+                UIApplication.shared.keyWindow?.rootViewController = viewController
+            }
             return
         default:
-            let homeStoryboard: UIStoryboard = UIStoryboard(name: "Address", bundle: nil)
-            let homeViewController = homeStoryboard.instantiateViewController(withIdentifier: "Address") as! Address
+            DispatchQueue.main.async {
+            let homeStoryboard: UIStoryboard = UIStoryboard(name: "Eth", bundle: nil)
+            let homeViewController = homeStoryboard.instantiateViewController(withIdentifier: "Eth") as! Eth
             homeViewController.setPlayer(player: self.player!)
-            UIApplication.shared.keyWindow?.rootViewController = homeViewController
+                UIApplication.shared.keyWindow?.rootViewController = homeViewController
+                
+            }
         }
     }
 }
