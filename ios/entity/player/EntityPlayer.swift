@@ -98,5 +98,17 @@ class EntityPlayer: Equatable, Hashable {
         return String(self.elo)
     }
     
+    func getDate() -> Date {
+        return DateTime().toFormatDate(string: self.date)
+    }
+    
+    func getLabelTextDate() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd.MM.YY"
+        var date = formatter.string(from: self.getDate())
+        date.insert("'", at: date.index(date.endIndex, offsetBy: -2))
+        return date
+    }
+    
 }
 
