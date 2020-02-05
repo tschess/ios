@@ -56,7 +56,7 @@ class OtherMenuTable: UITableViewController {
         let game = gameMenuTableList[indexPath.row]
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "OtherMenuCell", for: indexPath) as! OtherMenuCell
-        cell.terminalDateLabel.text = game.getLabelTextDate()
+        cell.terminalDateLabel.text = game.getLabelTextDate(update: true)
         cell.usernameLabel.text = game.getLabelTextUsernameOpponent(username: self.player!.username)
         cell.avatarImageView.image = game.getImageAvatarOpponent(username: self.player!.username)
         cell.displacementLabel.text = game.getLabelTextDisp(username: self.player!.username)
@@ -90,10 +90,10 @@ class OtherMenuTable: UITableViewController {
             
         }
         let REQUEST_PAGE_SIZE: Int = 9
-        let requestPageIndex: Int = 0
+        
         let requestPayload = [
             "id": self.player!.id,
-            "index": requestPageIndex,
+            "index": self.pageFromWhichContentLoads,
             "size": REQUEST_PAGE_SIZE
             ] as [String: Any]
         RequestHistoric().execute(requestPayload: requestPayload) { (result) in

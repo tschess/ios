@@ -51,8 +51,11 @@ class RequestHistoric {
                 }
 
          
-
-                let leaderboardPage: [EntityGame] = self.generateLeaderboardPage(page: requestPayload["index"] as! Int, size: requestPayload["size"] as! Int, serverRespose: json)
+                var leaderboardPage = [EntityGame]()
+                for index in stride(from: 0, to: json.count, by: 1) {
+                     let game: EntityGame = ParseGame().execute(json: json[index])
+                    leaderboardPage.append(game)
+                }
                 completion(leaderboardPage)
                
 
@@ -60,15 +63,6 @@ class RequestHistoric {
               
             }
         }).resume()
-    }
-    
-    private func generateLeaderboardPage(page: Int, size: Int, serverRespose: [[String: Any]]) -> [EntityGame] {
-        var leaderboardPage = [EntityGame]()
-        for index in stride(from: 0, to: serverRespose.count, by: 1) {
-             let game: EntityGame = ParseGame().execute(json: serverRespose[index])
-            leaderboardPage.append(game)
-        }
-        return leaderboardPage
     }
     
 }

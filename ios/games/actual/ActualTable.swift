@@ -266,21 +266,26 @@ class ActualTable: UITableViewController, SwipeTableViewCellDelegate {
        }
        
        func fetchMenuTableList(id: String) {
-           RequestActual().execute(player: self.player!, page: self.pageFromWhichContentLoads){ (result) in
-               if(result == nil){
-                   return
+        
+        DispatchQueue.main.async() {
+            self.activityIndicator!.isHidden = false
+            self.activityIndicator!.startAnimating()
+            
+        }
+        let REQUEST_PAGE_SIZE: Int = 9
+        //let pageFromWhichContentLoads: Int = 0
+        let requestPayload = [
+            "id": self.playerSelf!.id,
+            "index": self.pageFromWhichContentLoads, //TODO ~ remove this...
+            "size": REQUEST_PAGE_SIZE
+            ] as [String: Any]
+        
+           RequestActual().execute(requestPayload: requestPayload) { (result) in
+               DispatchQueue.main.async() {
+                   self.activityIndicator!.stopAnimating()
+                   self.activityIndicator!.isHidden = true
                }
-               let resultList: [Game] = result!
-               if(resultList.count == 0) {
-                   // beecause of quick play yoou'll never see this...
-                   //private func renderShrug(){}
-                   //self.renderShrug()
-                   return
-               }
-               if(self.label != nil) {
-                   self.label!.removeFromSuperview()
-               }
-               self.appendToTableList(additionalCellList: resultList)
+               self.appendToTableList(additionalCellList: result!)
            }
        }
     
