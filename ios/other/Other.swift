@@ -25,25 +25,31 @@ class Other: UIViewController, UITabBarDelegate {
     
     var otherMenuTable: OtherMenuTable?
     
-    var player: EntityPlayer?
+    var playerOther: EntityPlayer?
     
-    func setPlayer(player: EntityPlayer){
-        self.player = player
+    func setPlayerOther(playerOther: EntityPlayer){
+        self.playerOther = playerOther
+    }
+    
+    var playerSelf: EntityPlayer?
+    
+    func setPlayerSelf(playerSelf: EntityPlayer){
+        self.playerSelf = playerSelf
     }
     
     public func renderHeader() {
-        self.avatarImageView.image = self.player!.getImageAvatar()
-        self.usernameLabel.text = self.player!.username
-        self.eloLabel.text = self.player!.getLabelTextElo()
-        self.rankLabel.text = self.player!.getLabelTextRank()
-        self.dateLabel.text = self.player!.getLabelTextDate()
+        self.avatarImageView.image = self.playerOther!.getImageAvatar()
+        self.usernameLabel.text = self.playerOther!.username
+        self.eloLabel.text = self.playerOther!.getLabelTextElo()
+        self.rankLabel.text = self.playerOther!.getLabelTextRank()
+        self.dateLabel.text = self.playerOther!.getLabelTextDate()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.otherMenuTable = children.first as? OtherMenuTable
         self.otherMenuTable!.setActivityIndicator(activityIndicator: self.activityIndicator!)
-        self.otherMenuTable!.setPlayer(player: self.player!)
+        self.otherMenuTable!.setPlayer(player: self.playerOther!)
         self.otherMenuTable!.fetchMenuTableList()
         
         self.tabBarMenu.delegate = self
@@ -71,16 +77,17 @@ class Other: UIViewController, UITabBarDelegate {
         let gameMenuSelectionIndex = notification.userInfo!["other_menu_selection"] as! Int
         let game = self.otherMenuTable!.getGameMenuTableList()[gameMenuSelectionIndex]
         
-        let storyboard: UIStoryboard = UIStoryboard(name: "EndgameSnapshot", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "EndgameSnapshot") as! EndgameSnapshot
+        let storyboard: UIStoryboard = UIStoryboard(name: "Snapshot", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "Snapshot") as! Snapshot
         viewController.setGame(game: game)
+        viewController.setPlayer(player: self.playerOther!)
         self.present(viewController, animated: false, completion: nil)
     }
     
     @IBAction func backButtonClick(_ sender: Any) {
         let homeStoryboard: UIStoryboard = UIStoryboard(name: "Home", bundle: nil)
         let homeViewController = homeStoryboard.instantiateViewController(withIdentifier: "Home") as! Home
-        homeViewController.setPlayer(player: self.player!)
+        homeViewController.setPlayer(player: self.playerSelf!)
         UIApplication.shared.keyWindow?.rootViewController = homeViewController
     }
     
@@ -97,7 +104,7 @@ class Other: UIViewController, UITabBarDelegate {
         default:
             let homeStoryboard: UIStoryboard = UIStoryboard(name: "Home", bundle: nil)
             let homeViewController = homeStoryboard.instantiateViewController(withIdentifier: "Home") as! Home
-            homeViewController.setPlayer(player: self.player!)
+            homeViewController.setPlayer(player: self.playerSelf!)
             UIApplication.shared.keyWindow?.rootViewController = homeViewController
         }
     }

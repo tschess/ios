@@ -17,7 +17,7 @@ class ParseGame {
         print("id: \(id)")
         
         //        var state: [[String?]]
-        let state = json["state"]! as! [[String?]]
+        let state = json["state"]! as! [[String]]
         print("state: \(state)")
         
         //        var moves: Int

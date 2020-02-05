@@ -13,12 +13,13 @@ class HomeMenuTable: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        let player = self.leaderboardList[indexPath.row]
+        let playerOther = self.leaderboardList[indexPath.row]
         
         DispatchQueue.main.async {
             let storyboard: UIStoryboard = UIStoryboard(name: "Other", bundle: nil)
             let viewController = storyboard.instantiateViewController(withIdentifier: "Other") as! Other
-            viewController.setPlayer(player: player)
+            viewController.setPlayerSelf(playerSelf: self.player!)
+            viewController.setPlayerOther(playerOther: playerOther)
             UIApplication.shared.keyWindow?.rootViewController = viewController
         }
     }

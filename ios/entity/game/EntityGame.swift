@@ -159,4 +159,11 @@ class EntityGame: Equatable, Hashable {
         return SerializerState(white: false).renderClient(state: self.state)
     }
     
+    func getImageAvatarWinner() -> UIImage {
+        if(self.winner == "WHITE"){
+            return self.white.getImageAvatar()
+        }
+        return self.black.getImageAvatar()
+    }
+    
 }

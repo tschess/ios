@@ -10,6 +10,12 @@ import UIKit
 
 class Snapshot: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UITabBarDelegate {
     
+    var player: EntityPlayer?
+    
+    func setPlayer(player: EntityPlayer){
+        self.player = player
+    }
+    
     var game: EntityGame?
     
     func setGame(game: EntityGame){
@@ -58,13 +64,8 @@ class Snapshot: UIViewController, UICollectionViewDataSource, UICollectionViewDe
         self.activityIndicator.isHidden = true
         self.boardView.isHidden = true
         
-        self.state = self.game!.state
-        
-        
-        
-        let dataDecoded: Data = Data(base64Encoded: self.game!.avatarWinner, options: .ignoreUnknownCharacters)!
-        let decodedimage = UIImage(data: dataDecoded)
-        self.winnerImageView!.image = decodedimage
+        self.state = self.game!.getStateClient(username: self.player!.username)
+        self.winnerImageView!.image = self.game!.getImageAvatarWinner()
         
         self.outcomeLabel.text = self.game!.outcome
         self.usernameWinner.text = self.game!.winner
