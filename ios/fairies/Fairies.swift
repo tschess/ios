@@ -10,7 +10,7 @@ import UIKit
 
 class Fairies: UIViewController, UITabBarDelegate {
     
-    var fairyElementList: [FairyElement] = [Amazon(), ArrowPawn(), Grasshopper(), Hunter(), LandminePawn(), Medusa(), Spy()]
+    var fairyElementList: [Fairy] = [Amazon(), Grasshopper(), Hunter(), PoisonPawn()]
     
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var tabBarMenu: UITabBar!
@@ -23,46 +23,32 @@ class Fairies: UIViewController, UITabBarDelegate {
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var activityIndicatorLabel: UIActivityIndicatorView!
     
-    var player: Player?
+    var player: EntityPlayer?
     
-    public func setPlayer(player: Player){
+    func setPlayer(player: EntityPlayer){
         self.player = player
+    }
+    
+    public func renderHeader() {
+        self.avatarImageView.image = self.player!.getImageAvatar()
+        self.usernameLabel.text = self.player!.username
+        self.eloLabel.text = self.player!.getLabelTextElo()
+        self.rankLabel.text = self.player!.getLabelTextRank()
+        self.displacementLabel.text = self.player!.getLabelTextDisp()
+        self.displacementImage.image = self.player!.getImageDisp()!
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        let dataDecoded: Data = Data(base64Encoded: self.player!.getAvatar(), options: .ignoreUnknownCharacters)!
-        let decodedimage = UIImage(data: dataDecoded)
-        self.avatarImageView.image = decodedimage
-        self.rankLabel.text = self.player!.getRank()
-        self.usernameLabel.text = self.player!.getUsername()
-        self.eloLabel.text = self.player!.getElo()
-        self.displacementLabel.text = String(abs(Int(self.player!.getDisp())!))
-        
-        let disp: Int = Int(self.player!.getDisp())!
-        
-        if(disp >= 0){
-            if #available(iOS 13.0, *) {
-                let image = UIImage(systemName: "arrow.up")!
-                self.displacementImage.image = image
-                self.displacementImage.tintColor = .green
-            }
-        }
-        else {
-            if #available(iOS 13.0, *) {
-                let image = UIImage(systemName: "arrow.down")!
-                self.displacementImage.image = image
-                self.displacementImage.tintColor = .red
-            }
-        }
+        self.renderHeader()
         
         self.activityIndicatorLabel.isHidden = true
     }
     
-    var squadUpAdapter: FairyTableMenu?
+    var squadUpAdapter: FairiesTable?
     
-    func getSquadUpAdapter() -> FairyTableMenu? {
+    func getSquadUpAdapter() -> FairiesTable? {
         return squadUpAdapter
     }
     
@@ -70,14 +56,14 @@ class Fairies: UIViewController, UITabBarDelegate {
         super.viewDidLoad()
     
         self.tabBarMenu.delegate = self
-        self.squadUpAdapter = children.first as? FairyTableMenu
+        self.squadUpAdapter = children.first as? FairiesTable
         self.squadUpAdapter!.setPlayer(player: self.player!)
         self.squadUpAdapter!.setFairyElementList(fairyElementList: self.fairyElementList)
         
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(self.onDidReceiveData(_:)),
-            name: NSNotification.Name(rawValue: "SquadUpDetailSelection"),
+            name: NSNotification.Name(rawValue: "FairiesTableSelection"),
             object: nil)
     }
     
@@ -88,12 +74,16 @@ class Fairies: UIViewController, UITabBarDelegate {
         UIApplication.shared.keyWindow?.rootViewController = viewController
     }
     
+//    ["fairies_table_selection": indexPath.row]
+//    NotificationCenter.default.post(
+//        name: NSNotification.Name(rawValue: "FairiesTableSelection"),
+    
     @objc func onDidReceiveData(_ notification: NSNotification) {
-        let squadUpDetailSelectionIndex = notification.userInfo!["squad_up_detail_selection"] as! Int
+        let squadUpDetailSelectionIndex = notification.userInfo!["fairies_table_selection"] as! Int
         let fairyElement = squadUpAdapter!.getFairyElementList()![squadUpDetailSelectionIndex]
         //StoryboardSelector().acquisition(player: self.player!, fairyElement: fairyElement)
-        let storyboard: UIStoryboard = UIStoryboard(name: "Intro", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "Intro") as! Intro
+        let storyboard: UIStoryboard = UIStoryboard(name: "Info", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "Info") as! Info
         viewController.setPlayer(player: self.player!)
         viewController.setFairyElement(fairyElement: fairyElement)
         UIApplication.shared.keyWindow?.rootViewController = viewController
@@ -102,7 +92,12 @@ class Fairies: UIViewController, UITabBarDelegate {
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         switch item.tag {
         case 1:
-            StoryboardSelector().home(player: self.player!)
+            DispatchQueue.main.async {
+                let storyboard: UIStoryboard = UIStoryboard(name: "Home", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "Home") as! Home
+                viewController.setPlayer(player: self.player!)
+                UIApplication.shared.keyWindow?.rootViewController = viewController
+            }
             return
         default:
             let storyboard: UIStoryboard = UIStoryboard(name: "Config", bundle: nil)

@@ -13,7 +13,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     let DATE_TIME: DateTime = DateTime()
     
     private func updateCountdownTimer() {
-        let dateUpdate: Date = self.DATE_TIME.toFormatDate(string: self.gameTschess!.date)
+        let dateUpdate: Date = self.DATE_TIME.toFormatDate(string: self.gameTschess!.updated)
         let dateActual: Date = self.DATE_TIME.currentDate()
         let intervalDifference: TimeInterval = dateActual.timeIntervalSince(dateUpdate)
         let intervalStandard: TimeInterval = Double(24) * 60 * 60
@@ -188,7 +188,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     }
     
     private func assignCellTschessElement(indexPath: IndexPath) -> UIImage? {
-        let tschessElementMatrix = self.gameTschess!.state
+        let tschessElementMatrix = self.gameTschess!.getStateClient(username: self.playerSelf!.username)
         let x = indexPath.row / 8
         let y = indexPath.row % 8
         if(tschessElementMatrix[x][y] != nil){

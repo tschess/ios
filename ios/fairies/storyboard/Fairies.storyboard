@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Fairy-->
+        <!--Fairies-->
         <scene sceneID="w8Z-eh-HP1">
             <objects>
-                <viewController storyboardIdentifier="Fairy" useStoryboardIdentifierAsRestorationIdentifier="YES" id="5Zn-v9-j4N" customClass="Fairy" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Fairies" useStoryboardIdentifierAsRestorationIdentifier="YES" id="5Zn-v9-j4N" customClass="Fairies" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="afL-uV-Nfo">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -234,10 +234,10 @@
             </objects>
             <point key="canvasLocation" x="-17.39130434782609" y="35.491071428571423"/>
         </scene>
-        <!--Fairy Table Menu-->
+        <!--Fairies Table-->
         <scene sceneID="t9W-IB-wtN">
             <objects>
-                <tableViewController id="Mmr-Cq-zzT" customClass="FairyTableMenu" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="Mmr-Cq-zzT" customClass="FairiesTable" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="135" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" contentViewInsetsToSafeArea="NO" id="PH5-kq-hL3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="590"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -246,7 +246,7 @@
                         <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="sectionIndexTrackingBackgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="center" restorationIdentifier="SquadUpAdapterCell" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="default" indentationWidth="10" reuseIdentifier="FairyTableCell" rowHeight="135" id="Ehq-F2-xM4" customClass="FairyTableCell" customModule="ios" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="center" restorationIdentifier="FairiesCell" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="default" indentationWidth="10" reuseIdentifier="FairiesCell" rowHeight="135" id="Ehq-F2-xM4" customClass="FairiesCell" customModule="ios" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="135"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ehq-F2-xM4" id="QS4-PJ-kjd">
@@ -279,6 +279,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="elementImageView" destination="zQu-Vi-hoM" id="xz7-Zd-UBA"/>
                                     <outlet property="elementNameLabel" destination="3NA-qj-JnP" id="XQc-yN-hIm"/>

@@ -17,7 +17,7 @@ class Profile: UIViewController, UITabBarDelegate, UINavigationControllerDelegat
         let selectedImage = info[.originalImage] as! UIImage
         let imageString = selectedImage.jpegData(compressionQuality: 0.1)!.base64EncodedString()
         
-        let updatePhoto = ["id": self.player!.getId(), "avatar": imageString] as [String: Any]
+        let updatePhoto = ["id": self.player!.id, "avatar": imageString] as [String: Any]
         UpdatePhoto().execute(requestPayload: updatePhoto) { (error) in
             if error != nil {
                 print("error: \(error!.localizedDescription)")
@@ -32,7 +32,7 @@ class Profile: UIViewController, UITabBarDelegate, UINavigationControllerDelegat
         let dataDecoded: Data = Data(base64Encoded: imageString, options: .ignoreUnknownCharacters)!
         let decodedimage = UIImage(data: dataDecoded)
         avatarImageView.image = decodedimage
-        self.player!.setAvatar(avatar: imageString)
+        //self.player!.setAvatar(avatar: imageString)
         
         dismiss(animated: true, completion: nil)
     }
@@ -81,42 +81,26 @@ class Profile: UIViewController, UITabBarDelegate, UINavigationControllerDelegat
     
     @IBOutlet weak var tabBarMenu: UITabBar!
     
-    var player: Player?
+    var player: EntityPlayer?
     
-    func setPlayer(player: Player){
+    func setPlayer(player: EntityPlayer){
         self.player = player
+    }
+    
+    public func renderHeader() {
+        self.avatarImageView.image = self.player!.getImageAvatar()
+        self.usernameLabel.text = self.player!.username
+        self.eloLabel.text = self.player!.getLabelTextElo()
+        self.rankLabel.text = self.player!.getLabelTextRank()
+        self.displacementLabel.text = self.player!.getLabelTextDisp()
+        self.displacementImage.image = self.player!.getImageDisp()!
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tabBarMenu.delegate = self
         
-        let dataDecoded: Data = Data(base64Encoded: self.player!.getAvatar(), options: .ignoreUnknownCharacters)!
-        let decodedimage = UIImage(data: dataDecoded)
-        self.avatarImageView.image = decodedimage
-        
-        self.rankLabel.text = self.player!.getRank()
-        self.usernameLabel.text = self.player!.getUsername()
-        
-        self.eloLabel.text = self.player!.getElo()
-        self.displacementLabel.text = String(abs(Int(self.player!.getDisp())!))
-        
-        let disp: Int = Int(self.player!.getDisp())!
-        
-        if(disp >= 0){
-            if #available(iOS 13.0, *) {
-                let image = UIImage(systemName: "arrow.up")!
-                self.displacementImage.image = image
-                self.displacementImage.tintColor = .green
-            }
-        }
-        else {
-            if #available(iOS 13.0, *) {
-                let image = UIImage(systemName: "arrow.down")!
-                self.displacementImage.image = image
-                self.displacementImage.tintColor = .red
-            }
-        }
+        self.renderHeader()
         
         
         ///
@@ -126,12 +110,12 @@ class Profile: UIViewController, UITabBarDelegate, UINavigationControllerDelegat
         NotificationCenter.default.addObserver(
         self,
         selector: #selector(self.onDidReceiveData(_:)),
-        name: NSNotification.Name(rawValue: "OptionMenuSelection"),
+        name: NSNotification.Name(rawValue: "ProfileMenuSelection"),
         object: nil)
     }
     
     @objc func onDidReceiveData(_ notification: NSNotification) {
-        let menuSelectionIndex = notification.userInfo!["option_menu_selection"] as! Int
+        let menuSelectionIndex = notification.userInfo!["profile_selection"] as! Int
         
         switch menuSelectionIndex {
         case 0:
@@ -144,19 +128,33 @@ class Profile: UIViewController, UITabBarDelegate, UINavigationControllerDelegat
     func signOut() {
         //remove device from user profile on server...
         let device = UIDevice.current.identifierForVendor!.uuidString
-        ClearDevice().execute(device: device) { (result) in
-            StoryboardSelector().start()
+        UpdateDevice().execute(device: device) { (result) in
+            DispatchQueue.main.async {
+                let storyboard: UIStoryboard = UIStoryboard(name: "Start", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "Start") as! Start
+                UIApplication.shared.keyWindow?.rootViewController = viewController
+            }
         }
     }
     
     @IBAction func backButtonClick(_ sender: Any) {
-        StoryboardSelector().home(player: self.player!)
+        DispatchQueue.main.async {
+            let storyboard: UIStoryboard = UIStoryboard(name: "Home", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier: "Home") as! Home
+            viewController.setPlayer(player: self.player!)
+            UIApplication.shared.keyWindow?.rootViewController = viewController
+        }
     }
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         switch item.tag {
         default:
-            StoryboardSelector().home(player: self.player!)
+            DispatchQueue.main.async {
+                let storyboard: UIStoryboard = UIStoryboard(name: "Home", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "Home") as! Home
+                viewController.setPlayer(player: self.player!)
+                UIApplication.shared.keyWindow?.rootViewController = viewController
+            }
         }
     }
     

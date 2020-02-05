@@ -16,14 +16,14 @@ class Castle {
         self.transitioner = transitioner
     }
     
-    func opponentCoordinateList(kingCoordinate: [Int], gamestate: Gamestate) -> Array<[Int]> {
+    func opponentCoordinateList(kingCoordinate: [Int], state: [[Piece?]]) -> Array<[Int]> {
         var opponentCoordinateList = Array<[Int]>()
-        let tschessElementMatrix = gamestate.getTschessElementMatrix()
-        let kingAffiliation = tschessElementMatrix[kingCoordinate[0]][kingCoordinate[1]]!.affiliation
+        //let tschessElementMatrix = gamestate.getTschessElementMatrix()
+        let kingAffiliation = state[kingCoordinate[0]][kingCoordinate[1]]!.affiliation
         for i in (0 ..< 8) {
             for j in (0 ..< 8) {
-                if(tschessElementMatrix[i][j] != nil){
-                    if(tschessElementMatrix[i][j]!.affiliation != kingAffiliation) {
+                if(state[i][j] != nil){
+                    if(state[i][j]!.affiliation != kingAffiliation) {
                         opponentCoordinateList.append([i,j])
                     }
                 }
@@ -57,10 +57,10 @@ class Castle {
         return nil
     }
     
-    private func validateRookFirstTouch(proposed: [Int], tschessElementMatrix: [[TschessElement?]], affiliation: String) -> Bool {
+    private func validateRookFirstTouch(proposed: [Int], state: [[Piece?]], affiliation: String) -> Bool {
         if(affiliation == "WHITE"){
             if(proposed == [7,6]){
-                let candidateRook = tschessElementMatrix[7][7]
+                let candidateRook = state[7][7]
                 if(candidateRook != nil){
                     if(!candidateRook!.name.contains("Rook")){
                         return false
@@ -70,7 +70,7 @@ class Castle {
                 }
             }
             if(proposed == [7,2]){
-                let candidateRook = tschessElementMatrix[7][0]
+                let candidateRook = state[7][0]
                 if(candidateRook != nil){
                     if(!candidateRook!.name.contains("Rook")){
                         return false
@@ -82,7 +82,7 @@ class Castle {
         }
         if(affiliation == "BLACK"){
             if(proposed == [7,1]){
-                let candidateRook = tschessElementMatrix[7][0]
+                let candidateRook = state[7][0]
                 if(candidateRook != nil){
                     if(!candidateRook!.name.contains("Rook")){
                         return false
@@ -92,7 +92,7 @@ class Castle {
                 }
             }
             if(proposed == [7,5]){
-                let candidateRook = tschessElementMatrix[7][7]
+                let candidateRook = state[7][7]
                 if(candidateRook != nil){
                     if(!candidateRook!.name.contains("Rook")){
                         return false
@@ -105,10 +105,10 @@ class Castle {
         return false
     }
     
-    private func validateKingFirstTouch(kingCoordinate: [Int], tschessElementMatrix: [[TschessElement?]]) -> Bool {
-        let tschessElement = tschessElementMatrix[kingCoordinate[0]][kingCoordinate[1]]
+    private func validateKingFirstTouch(kingCoordinate: [Int], state: [[Piece?]]) -> Bool {
+        let tschessElement = state[kingCoordinate[0]][kingCoordinate[1]]
         if(tschessElement != nil) {
-            if(!tschessElementMatrix[kingCoordinate[0]][kingCoordinate[1]]!.name.contains("King")) {
+            if(!state[kingCoordinate[0]][kingCoordinate[1]]!.name.contains("King")) {
                 return false
             }
         }
@@ -118,37 +118,37 @@ class Castle {
         return true
     }
     
-    public func castle(kingCoordinate: [Int], proposed: [Int], gamestate: Gamestate) ->  Bool {
+    public func castle(kingCoordinate: [Int], proposed: [Int], state: [[Piece?]]) ->  Bool {
         if(kingCoordinate[0] != 7 || proposed[0] != 7){
             return false
         }
-        let tschessElementMatrix = gamestate.getTschessElementMatrix()
-        let king = tschessElementMatrix[kingCoordinate[0]][kingCoordinate[1]]
+        //let tschessElementMatrix = gamestate.getTschessElementMatrix()
+        let king = state[kingCoordinate[0]][kingCoordinate[1]]
         if(king == nil){
             return false
         }
         let affiliation = king!.affiliation
         let searchSpace = generateSearchSpace(proposed: proposed, affiliation: affiliation)
         
-        if(!validateKingFirstTouch(kingCoordinate: kingCoordinate, tschessElementMatrix: tschessElementMatrix)){
+        if(!validateKingFirstTouch(kingCoordinate: kingCoordinate, state: state)){
             return false
         }
-        if(!validateRookFirstTouch(proposed: proposed, tschessElementMatrix: tschessElementMatrix, affiliation: affiliation)){
+        if(!validateRookFirstTouch(proposed: proposed, state: state, affiliation: affiliation)){
             return false
         }
-        let opponentCoordinateList = self.opponentCoordinateList(kingCoordinate: kingCoordinate, gamestate: gamestate)
+        let opponentCoordinateList = self.opponentCoordinateList(kingCoordinate: kingCoordinate, state: state)
         for opponentCoordinate in opponentCoordinateList {
-            let opponent = gamestate.getTschessElementMatrix()[opponentCoordinate[0]][opponentCoordinate[1]]!
+            let opponent = state[opponentCoordinate[0]][opponentCoordinate[1]]!
             //print("opponent: \(opponent)")
             if(searchSpace != nil) {
                 for space in searchSpace! {
-                    if(opponent.validate(present: opponentCoordinate, proposed: space, gamestate: gamestate)) {
+                    if(opponent.validate(present: opponentCoordinate, proposed: space, state: state)) {
                         return false
                     }
                     if(space == kingCoordinate){
                         continue
                     }
-                    let spaceOccupant = tschessElementMatrix[space[0]][space[1]]
+                    let spaceOccupant = state[space[0]][space[1]]
                     if(spaceOccupant != nil){
                         if(spaceOccupant!.name != "LegalMove"){
                             return false
@@ -160,19 +160,19 @@ class Castle {
         return true
     }
     
-    public func execute(coordinate: [Int], proposed: [Int], gamestate: Gamestate) -> Bool {
+    public func execute(coordinate: [Int], proposed: [Int], state: [[Piece?]]) -> Bool {
         if(coordinate[0] != 7 || proposed[0] != 7){
             return false
         }
-        var tschessElementMatrix = gamestate.getTschessElementMatrix()
-        let tschessElement = tschessElementMatrix[coordinate[0]][coordinate[1]]
+        //var tschessElementMatrix = gamestate.getTschessElementMatrix()
+        let tschessElement = state[coordinate[0]][coordinate[1]]
         if(tschessElement == nil){
             return false
         }
         if(!tschessElement!.name.contains("King")) {
             return false
         }
-        let tschessElementProposed = tschessElementMatrix[proposed[0]][proposed[1]]
+        let tschessElementProposed = state[proposed[0]][proposed[1]]
         if(tschessElementProposed == nil){
             return false
         }
@@ -183,7 +183,7 @@ class Castle {
         if(affiliation == "WHITE"){
             if(proposed == [7,6]){
                 
-                let rook = tschessElementMatrix[7][7]
+                let rook = state[7][7]
                 if(rook == nil){
                     return false
                 }
@@ -191,75 +191,70 @@ class Castle {
                     return false
                 }
                 
-                let imageDefault = tschessElement!.getImageDefault()
-                tschessElement!.setImageVisible(imageVisible: imageDefault)
-                tschessElementMatrix[7][6] = tschessElement
-                tschessElementMatrix[7][6]!.setFirstTouch(firstTouch: false)
-                tschessElementMatrix[coordinate[0]][coordinate[1]] = nil
-                tschessElementMatrix[7][5] = rook!
-                tschessElementMatrix[7][5]!.setFirstTouch(firstTouch: false)
-                tschessElementMatrix[7][7] = nil
-                gamestate.setTschessElementMatrix(tschessElementMatrix: tschessElementMatrix)
-                gamestate.setDrawProposer(drawProposer: "CASTLE")
-                gamestate.setHighlight(coords: [7,6,7,5])
-                
+//                let imageDefault = tschessElement!.getImageDefault()
+//                tschessElement!.setImageVisible(imageVisible: imageDefault)
+//                state[7][6] = tschessElement
+//                state[7][6]!.setFirstTouch(firstTouch: false)
+//                state[coordinate[0]][coordinate[1]] = nil
+//                state[7][5] = rook!
+//                state[7][5]!.setFirstTouch(firstTouch: false)
+//                state[7][7] = nil
+//                gamestate.setTschessElementMatrix(tschessElementMatrix: state)
+//                gamestate.setDrawProposer(drawProposer: "CASTLE")
+//                gamestate.setHighlight(coords: [7,6,7,5])
                 return true
                 
             }
             if(proposed == [7,2]){
                 
-                let rook = tschessElementMatrix[7][0]
+                let rook = state[7][0]
                 if(rook == nil){
                     return false
                 }
                 if(!rook!.name.contains("Rook")){
                     return false
                 }
-              
-                let imageDefault = tschessElement!.getImageDefault()
-                tschessElement!.setImageVisible(imageVisible: imageDefault)
-                tschessElementMatrix[7][2] = tschessElement
-                tschessElementMatrix[7][2]!.setFirstTouch(firstTouch: false)
-                tschessElementMatrix[coordinate[0]][coordinate[1]] = nil
-                tschessElementMatrix[7][3] = rook!
-                tschessElementMatrix[7][3]!.setFirstTouch(firstTouch: false)
-                tschessElementMatrix[7][0] = nil
-                gamestate.setTschessElementMatrix(tschessElementMatrix: tschessElementMatrix)
-                gamestate.setDrawProposer(drawProposer: "CASTLE")
-                gamestate.setHighlight(coords: [7,3,7,2])
-                
+//                let imageDefault = tschessElement!.getImageDefault()
+//                tschessElement!.setImageVisible(imageVisible: imageDefault)
+//                tschessElementMatrix[7][2] = tschessElement
+//                tschessElementMatrix[7][2]!.setFirstTouch(firstTouch: false)
+//                tschessElementMatrix[coordinate[0]][coordinate[1]] = nil
+//                tschessElementMatrix[7][3] = rook!
+//                tschessElementMatrix[7][3]!.setFirstTouch(firstTouch: false)
+//                tschessElementMatrix[7][0] = nil
+//                gamestate.setTschessElementMatrix(tschessElementMatrix: tschessElementMatrix)
+//                gamestate.setDrawProposer(drawProposer: "CASTLE")
+//                gamestate.setHighlight(coords: [7,3,7,2])
                 return true
             }
         }
         if(affiliation == "BLACK"){
             if(proposed == [7,1]){
                 
-                let rook = tschessElementMatrix[7][0]
+                let rook = state[7][0]
                 if(rook == nil){
                     return false
                 }
                 if(!rook!.name.contains("Rook")){
                     return false
                 }
-                
-                let imageDefault = tschessElement!.getImageDefault()
-                tschessElement!.setImageVisible(imageVisible: imageDefault)
-                tschessElementMatrix[7][1] = tschessElement
-                tschessElementMatrix[7][1]!.setFirstTouch(firstTouch: false)
-                tschessElementMatrix[coordinate[0]][coordinate[1]] = nil
-                tschessElementMatrix[7][2] = rook!
-                tschessElementMatrix[7][2]!.setFirstTouch(firstTouch: false)
-                tschessElementMatrix[7][0] = nil
-                gamestate.setTschessElementMatrix(tschessElementMatrix: tschessElementMatrix)
-                gamestate.setDrawProposer(drawProposer: "CASTLE")
-                gamestate.setHighlight(coords: [7,2,7,1])
-                
+//                let imageDefault = tschessElement!.getImageDefault()
+//                tschessElement!.setImageVisible(imageVisible: imageDefault)
+//                tschessElementMatrix[7][1] = tschessElement
+//                tschessElementMatrix[7][1]!.setFirstTouch(firstTouch: false)
+//                tschessElementMatrix[coordinate[0]][coordinate[1]] = nil
+//                tschessElementMatrix[7][2] = rook!
+//                tschessElementMatrix[7][2]!.setFirstTouch(firstTouch: false)
+//                tschessElementMatrix[7][0] = nil
+//                gamestate.setTschessElementMatrix(tschessElementMatrix: tschessElementMatrix)
+//                gamestate.setDrawProposer(drawProposer: "CASTLE")
+//                gamestate.setHighlight(coords: [7,2,7,1])
                 return true
                 
             }
             if(proposed == [7,5]){
                 
-                let rook = tschessElementMatrix[7][7]
+                let rook = state[7][7]
                 if(rook == nil){
                     return false
                 }
@@ -267,18 +262,17 @@ class Castle {
                    return false
                 }
                 
-                let imageDefault = tschessElement!.getImageDefault()
-                tschessElement!.setImageVisible(imageVisible: imageDefault)
-                tschessElementMatrix[7][5] = tschessElement
-                tschessElementMatrix[7][5]!.setFirstTouch(firstTouch: false)
-                tschessElementMatrix[coordinate[0]][coordinate[1]] = nil
-                tschessElementMatrix[7][4] = rook!
-                tschessElementMatrix[7][4]!.setFirstTouch(firstTouch: false)
-                tschessElementMatrix[7][7] = nil
-                gamestate.setTschessElementMatrix(tschessElementMatrix: tschessElementMatrix)
-                gamestate.setDrawProposer(drawProposer: "CASTLE")
-                gamestate.setHighlight(coords: [7,4,7,5])
-                
+//                let imageDefault = tschessElement!.getImageDefault()
+//                tschessElement!.setImageVisible(imageVisible: imageDefault)
+//                tschessElementMatrix[7][5] = tschessElement
+//                tschessElementMatrix[7][5]!.setFirstTouch(firstTouch: false)
+//                tschessElementMatrix[coordinate[0]][coordinate[1]] = nil
+//                tschessElementMatrix[7][4] = rook!
+//                tschessElementMatrix[7][4]!.setFirstTouch(firstTouch: false)
+//                tschessElementMatrix[7][7] = nil
+//                gamestate.setTschessElementMatrix(tschessElementMatrix: tschessElementMatrix)
+//                gamestate.setDrawProposer(drawProposer: "CASTLE")
+//                gamestate.setHighlight(coords: [7,4,7,5])
                 return true
             }
         }

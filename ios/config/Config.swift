@@ -13,7 +13,7 @@ class Config:
     UITabBarDelegate,
     UIGestureRecognizerDelegate,
     UIImagePickerControllerDelegate,
-    UINavigationControllerDelegate, UIDropInteractionDelegate {
+UINavigationControllerDelegate, UIDropInteractionDelegate {
     
     var titleText: String?
     
@@ -126,27 +126,27 @@ class Config:
     }
     
     @objc func editCollectionView0() {
-//        let storyboard: UIStoryboard = UIStoryboard(name: "EditSelf", bundle: nil)
-//        let viewController = storyboard.instantiateViewController(withIdentifier: "EditSelf") as! EditSelf
-//        viewController.setPlayer(player: self.player!)
-//        viewController.setTitleText(titleText: "config. 0̸")
-//        UIApplication.shared.keyWindow?.rootViewController = viewController
+        //        let storyboard: UIStoryboard = UIStoryboard(name: "EditSelf", bundle: nil)
+        //        let viewController = storyboard.instantiateViewController(withIdentifier: "EditSelf") as! EditSelf
+        //        viewController.setPlayer(player: self.player!)
+        //        viewController.setTitleText(titleText: "config. 0̸")
+        //        UIApplication.shared.keyWindow?.rootViewController = viewController
     }
     
     @objc func editCollectionView1() {
-//        let storyboard: UIStoryboard = UIStoryboard(name: "EditSelf", bundle: nil)
-//        let viewController = storyboard.instantiateViewController(withIdentifier: "EditSelf") as! EditSelf
-//        viewController.setPlayer(player: self.player!)
-//        viewController.setTitleText(titleText: "config. 1")
-//        UIApplication.shared.keyWindow?.rootViewController = viewController
+        //        let storyboard: UIStoryboard = UIStoryboard(name: "EditSelf", bundle: nil)
+        //        let viewController = storyboard.instantiateViewController(withIdentifier: "EditSelf") as! EditSelf
+        //        viewController.setPlayer(player: self.player!)
+        //        viewController.setTitleText(titleText: "config. 1")
+        //        UIApplication.shared.keyWindow?.rootViewController = viewController
     }
     
     @objc func editCollectionView2() {
-//        let storyboard: UIStoryboard = UIStoryboard(name: "EditSelf", bundle: nil)
-//        let viewController = storyboard.instantiateViewController(withIdentifier: "EditSelf") as! EditSelf
-//        viewController.setPlayer(player: self.player!)
-//        viewController.setTitleText(titleText: "config. 2")
-//        UIApplication.shared.keyWindow?.rootViewController = viewController
+        //        let storyboard: UIStoryboard = UIStoryboard(name: "EditSelf", bundle: nil)
+        //        let viewController = storyboard.instantiateViewController(withIdentifier: "EditSelf") as! EditSelf
+        //        viewController.setPlayer(player: self.player!)
+        //        viewController.setTitleText(titleText: "config. 2")
+        //        UIApplication.shared.keyWindow?.rootViewController = viewController
     }
     
     public func renderHeader() {
@@ -355,11 +355,12 @@ extension Config: UICollectionViewDelegate {
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         switch item.tag {
         case 1:
-            print("~")
-//            let storyboard: UIStoryboard = UIStoryboard(name: "Fairy", bundle: nil)
-//            let viewController = storyboard.instantiateViewController(withIdentifier: "Fairy") as! Fairy
-//            viewController.setPlayer(player: self.player!)
-//            UIApplication.shared.keyWindow?.rootViewController = viewController
+            DispatchQueue.main.async {
+                let storyboard: UIStoryboard = UIStoryboard(name: "Fairies", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "Fairies") as! Fairies
+                viewController.setPlayer(player: self.player!)
+                UIApplication.shared.keyWindow?.rootViewController = viewController
+            }
         default:
             DispatchQueue.main.async {
                 let storyboard: UIStoryboard = UIStoryboard(name: "Home", bundle: nil)

@@ -18,62 +18,33 @@ class Scanner: UIViewController, UITabBarDelegate, AVCaptureMetadataOutputObject
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var tabBarMenu: UITabBar!
     
-    
-    
-    
-    
     @IBOutlet weak var displacementImage: UIImageView!
-    //    @IBOutlet weak var displacementImage: UIImageView!
     @IBOutlet weak var displacementLabel: UILabel!
-    //    @IBOutlet weak var displacementLabel: UILabel!
     @IBOutlet weak var eloLabel: UILabel!
-    //    @IBOutlet weak var eloLabel: UILabel!
     @IBOutlet weak var rankLabel: UILabel!
-    //    @IBOutlet weak var rankLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
-    //    @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var avatarImageView: UIImageView!
-    //    @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    //    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
+    var player: EntityPlayer?
     
-    
-    
-    
-    
-    var player: Player?
-    
-    public func setPlayer(player: Player){
+    public func setPlayer(player: EntityPlayer){
         self.player = player
+    }
+    
+    public func renderHeader() {
+        self.avatarImageView.image = self.player!.getImageAvatar()
+        self.usernameLabel.text = self.player!.username
+        self.eloLabel.text = self.player!.getLabelTextElo()
+        self.rankLabel.text = self.player!.getLabelTextRank()
+        self.displacementLabel.text = self.player!.getLabelTextDisp()
+        self.displacementImage.image = self.player!.getImageDisp()!
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let dataDecoded: Data = Data(base64Encoded: self.player!.getAvatar(), options: .ignoreUnknownCharacters)!
-        let decodedimage = UIImage(data: dataDecoded)
-        self.avatarImageView.image = decodedimage
-        self.rankLabel.text = self.player!.getRank()
-        self.usernameLabel.text = self.player!.getUsername()
-        self.eloLabel.text = self.player!.getElo()
-        self.displacementLabel.text = String(abs(Int(self.player!.getDisp())!))
         
-        let disp: Int = Int(self.player!.getDisp())!
-        
-        if(disp >= 0){
-            if #available(iOS 13.0, *) {
-                let image = UIImage(systemName: "arrow.up")!
-                self.displacementImage.image = image
-                self.displacementImage.tintColor = .green
-            }
-        }
-        else {
-            if #available(iOS 13.0, *) {
-                let image = UIImage(systemName: "arrow.down")!
-                self.displacementImage.image = image
-                self.displacementImage.tintColor = .red
-            }
-        }
+        self.renderHeader()
         
         if (captureSession?.isRunning == false) {
             captureSession.startRunning()
@@ -126,8 +97,8 @@ class Scanner: UIViewController, UITabBarDelegate, AVCaptureMetadataOutputObject
     }
     
     @IBAction func backButtonClick(_ sender: Any) {
-        let homeStoryboard: UIStoryboard = UIStoryboard(name: "Address", bundle: nil)
-        let homeViewController = homeStoryboard.instantiateViewController(withIdentifier: "Address") as! Address
+        let homeStoryboard: UIStoryboard = UIStoryboard(name: "Eth", bundle: nil)
+        let homeViewController = homeStoryboard.instantiateViewController(withIdentifier: "Eth") as! Eth
         homeViewController.setPlayer(player: self.player!)
         UIApplication.shared.keyWindow?.rootViewController = homeViewController
     }
@@ -157,14 +128,14 @@ class Scanner: UIViewController, UITabBarDelegate, AVCaptureMetadataOutputObject
             found(code: stringValue)
         }
         
-        let homeStoryboard: UIStoryboard = UIStoryboard(name: "Address", bundle: nil)
-        let homeViewController = homeStoryboard.instantiateViewController(withIdentifier: "Address") as! Address
+        let homeStoryboard: UIStoryboard = UIStoryboard(name: "Eth", bundle: nil)
+        let homeViewController = homeStoryboard.instantiateViewController(withIdentifier: "Eth") as! Eth
         homeViewController.setPlayer(player: self.player!)
         UIApplication.shared.keyWindow?.rootViewController = homeViewController
     }
     
     func found(code: String) {
-        self.player!.setAddress(address: code)
+        //self.player!.setAddress(address: code)
         print(code)
     }
     
@@ -183,11 +154,10 @@ class Scanner: UIViewController, UITabBarDelegate, AVCaptureMetadataOutputObject
             //           case 1:
         //               StoryboardSelector().eth(player: self.player!)
         default:
-            let homeStoryboard: UIStoryboard = UIStoryboard(name: "Address", bundle: nil)
-            let homeViewController = homeStoryboard.instantiateViewController(withIdentifier: "Address") as! Address
+            let homeStoryboard: UIStoryboard = UIStoryboard(name: "Eth", bundle: nil)
+            let homeViewController = homeStoryboard.instantiateViewController(withIdentifier: "Eth") as! Eth
             homeViewController.setPlayer(player: self.player!)
             UIApplication.shared.keyWindow?.rootViewController = homeViewController
-            return
         }
     }
     

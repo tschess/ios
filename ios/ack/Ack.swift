@@ -14,13 +14,13 @@ class Ack:
     UIPickerViewDelegate,
     UITabBarDelegate, UIGestureRecognizerDelegate {
     
-    var opponent: PlayerCore?
+     var player: EntityPlayer?
+       
+       public func setPlayer(player: EntityPlayer){
+           self.player = player
+       }
     
-    public func setOpponent(opponent: PlayerCore){
-        self.opponent = opponent
-    }
-    
-    @IBOutlet weak var configCollectionView: DynamicCollectionView!
+    @IBOutlet weak var configCollectionView: BoardView!
     @IBOutlet weak var configCollectionViewHeight: NSLayoutConstraint!
     
     @IBOutlet weak var rankDateLabel: UILabel!
@@ -32,7 +32,7 @@ class Ack:
     
     @IBOutlet weak var activeConfigNumber: UILabel!
     
-    let reuseIdentifier = "cell"
+    let reuseIdentifier = "square"
     
     @IBOutlet weak var contentView: UIView!
     
@@ -47,7 +47,7 @@ class Ack:
     @IBOutlet weak var indicatorLabelS: UILabel!
     
     func renderConfig0() {
-        self.tschessElementMatrix = self.player!.getConfig0()
+        self.tschessElementMatrix = self.player!.getConfig(index: 0)
         
         self.activeConfigNumber.text = "0̸"
         self.configCollectionView.reloadData()
@@ -66,7 +66,7 @@ class Ack:
     }
     
     func renderConfig1() {
-        self.tschessElementMatrix = self.player!.getConfig1()
+        self.tschessElementMatrix = self.player!.getConfig(index: 1)
         
         self.activeConfigNumber.text = "1"
         self.configCollectionView.reloadData()
@@ -85,7 +85,7 @@ class Ack:
     }
     
     func renderConfig2() {
-        self.tschessElementMatrix = self.player!.getConfig2()
+        self.tschessElementMatrix = self.player!.getConfig(index: 2)
         
         self.activeConfigNumber.text = "2"
         self.configCollectionView.reloadData()
@@ -104,7 +104,7 @@ class Ack:
     }
     
     
-    var tschessElementMatrix: [[TschessElement?]]?
+    var tschessElementMatrix: [[Piece?]]?
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -122,8 +122,17 @@ class Ack:
     
     @IBOutlet weak var skinSelectionPicker: UIPickerView!
     
-    var player: Player?
-    var gameModel: Game?
+     var playerOther: EntityPlayer?
+       
+       func setPlayerOther(playerOther: EntityPlayer){
+           self.playerOther = playerOther
+       }
+       
+       var playerSelf: EntityPlayer?
+       
+       func setPlayerSelf(playerSelf: EntityPlayer){
+           self.playerSelf = playerSelf
+       }
     
     var skinSelectionPick: String = "iapetus"
     
@@ -160,13 +169,13 @@ class Ack:
         skinSelectionPick = self.skinList![row].getName()
     }
     
-    public func setPlayer(player: Player){
-        self.player = player
-    }
-    
-    func setGameModel(gameModel: Game){
-        self.gameModel = gameModel
-    }
+    public func renderHeader() {
+           self.avatarImageView.image = self.playerOther!.getImageAvatar()
+           self.usernameLabel.text = self.playerOther!.username
+           self.eloLabel.text = self.playerOther!.getLabelTextElo()
+           self.rankLabel.text = self.playerOther!.getLabelTextRank()
+           self.rankDateLabel.text = self.playerOther!.getLabelTextDate()
+       }
     
     var attributeAlphaDotFull: [NSAttributedString.Key: NSObject]?
     var attributeAlphaDotHalf: [NSAttributedString.Key: NSObject]?
@@ -176,13 +185,9 @@ class Ack:
         
         tabBarMenu.delegate = self
         
-        let dataDecoded: Data = Data(base64Encoded: gameModel!.getOpponentAvatar(), options: .ignoreUnknownCharacters)!
-        let decodedimage = UIImage(data: dataDecoded)
-        self.avatarImageView.image = decodedimage
-        self.rankLabel.text = gameModel!.getOpponentRank()
-        self.usernameLabel.text = gameModel!.getUsernameOpponent()
+        self.renderHeader()
         
-        self.tschessElementMatrix = self.player!.getConfig0()
+        self.tschessElementMatrix = self.player!.getConfig(index: 0)
         
         
         self.configCollectionView.delegate = self
@@ -217,11 +222,11 @@ class Ack:
         let blue: UIColor = UIColor(red: 84/255.0, green: 140/255.0, blue: 240/255.0, alpha: 1)
         let green: UIColor = UIColor(red: 0/255.0, green: 255/255.0, blue: 88/255.0, alpha: 1)
         
-        let hyperion: SkinCore = SkinCore(name: "hyperion", foreColor: purple, backColor: blue)
-        let calypso: SkinCore = SkinCore(name: "calypso", foreColor: pink, backColor: UIColor.black)
-        let neptune: SkinCore = SkinCore(name: "neptune", foreColor: green, backColor: orange, backAlpha: 0.85)
+        let hyperion: EntitySkin = EntitySkin(name: "hyperion", foreColor: purple, backColor: blue)
+        let calypso: EntitySkin = EntitySkin(name: "calypso", foreColor: pink, backColor: UIColor.black)
+        let neptune: EntitySkin = EntitySkin(name: "neptune", foreColor: green, backColor: orange, backAlpha: 0.85)
         
-        let iapetus: SkinCore = SkinCore(
+        let iapetus: EntitySkin = EntitySkin(
             name: "iapetus",
             foreColor: UIColor.white,
             foreImage: UIImage(named: "iapetus"),
@@ -232,7 +237,7 @@ class Ack:
         self.skinList = Array(arrayLiteral: iapetus, calypso, hyperion, neptune) //in actual fact default will come first...
     }
     
-    var skinList: Array<SkinCore>?
+    var skinList: Array<EntitySkin>?
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -242,9 +247,7 @@ class Ack:
         self.splitViewHeight0.isActive = false
         self.splitViewHeight1.isActive = false
         self.splitViewHeight0.constant = totalContentHeight/2
-        //print("self.splitViewHeight0.constant: \(self.splitViewHeight0.constant)")
         self.splitViewHeight1.constant = totalContentHeight/2
-        //print("self.splitViewHeight1.constant: \(self.splitViewHeight1.constant)")
         self.splitViewHeight0.isActive = true
         self.splitViewHeight1.isActive = true
         
@@ -270,8 +273,8 @@ class Ack:
         let viewController = storyboard.instantiateViewController(withIdentifier: "EditOther") as! EditOther
         viewController.setTitleText(titleText: "let's play!")
         viewController.setActiveConfigNumber(activeConfigNumber: Int(self.activeConfigNumber.text!)!)
-        viewController.setPlayerOther(playerOther: self.gameModel!.getOpponent())
-        viewController.setPlayerSelf(playerSelf: self.player!)
+        viewController.setPlayerOther(playerOther: self.playerOther!)
+        viewController.setPlayerSelf(playerSelf: self.playerSelf!)
         UIApplication.shared.keyWindow?.rootViewController = viewController
     }
     
@@ -308,7 +311,7 @@ class Ack:
     @IBAction func backButtonClick(_ sender: Any) {
         let homeStoryboard: UIStoryboard = UIStoryboard(name: "Home", bundle: nil)
         let homeViewController = homeStoryboard.instantiateViewController(withIdentifier: "Home") as! Home
-        homeViewController.setPlayer(player: self.player!)
+        homeViewController.setPlayer(player: self.playerSelf!)
         UIApplication.shared.keyWindow?.rootViewController = homeViewController
     }
     
@@ -324,7 +327,7 @@ extension Ack: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ConfigCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "square", for: indexPath) as! SquareCell
         cell.backgroundColor = .black
         if (indexPath.row / 8 == 0) {
             cell.backgroundColor = .white
@@ -378,31 +381,37 @@ extension Ack: UICollectionViewDelegateFlowLayout {
             self.activityIndicator.startAnimating()
             
             
-            let idGame = self.gameModel!.getIdentifier()
+            //let idGame = self.gameModel!.getIdentifier()
             
-            let requestPayload: [String: Any] = [
-                "id_game": idGame,
-                "id_player": self.player!.getId(),
-                "skin": "DEFAULT",
-                "config": 3]
+//            let requestPayload: [String: Any] = [
+//                "id_game": idGame,
+//                "id_player": self.player!.getId(),
+//                "skin": "DEFAULT",
+//                "config": 3]
             
-            let gameAck: GameAck = GameAck(idGame: idGame, playerSelf: self.player!, playerOppo: self.opponent!)
+            //let gameAck: GameAck = GameAck(idGame: idGame, playerSelf: self.player!, playerOppo: self.opponent!)
             
-            RequestAck().execute(requestPayload: requestPayload, gameAck: gameAck) { (gameTschess) in
-                print("result: \(gameTschess)")
-                /**
-                 * ERROR HANDLING!!!
-                 */
-                DispatchQueue.main.async {
-                    let storyboard: UIStoryboard = UIStoryboard(name: "Tschess", bundle: nil)
-                    let viewController = storyboard.instantiateViewController(withIdentifier: "Tschess") as! Tschess
-                    viewController.setGameTschess(gameTschess: gameTschess!)
-                    UIApplication.shared.keyWindow?.rootViewController = viewController
-                }
-            }
+//            RequestAck().execute(requestPayload: requestPayload, gameAck: gameAck) { (gameTschess) in
+//                print("result: \(gameTschess)")
+//                /**
+//                 * ERROR HANDLING!!!
+//                 */
+//                DispatchQueue.main.async {
+//                    let storyboard: UIStoryboard = UIStoryboard(name: "Tschess", bundle: nil)
+//                    let viewController = storyboard.instantiateViewController(withIdentifier: "Tschess") as! Tschess
+//                    viewController.setGameTschess(gameTschess: gameTschess!)
+//                    UIApplication.shared.keyWindow?.rootViewController = viewController
+//                }
+//            }
             return
         default:
-            StoryboardSelector().home(player: self.player!)
+            
+            DispatchQueue.main.async {
+                let storyboard: UIStoryboard = UIStoryboard(name: "Home", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "Home") as! Home
+                viewController.setPlayer(player: self.player!)
+                UIApplication.shared.keyWindow?.rootViewController = viewController
+            }
         }
     }
 }

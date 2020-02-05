@@ -41,7 +41,7 @@ class ProfileTable: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "OptionCell", for: indexPath) as! OptionCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileCell", for: indexPath) as! ProfileCell
         cell.optionLabel.text = options[indexPath.row]
         cell.optionImageView.image = self.generateIcon(value: indexPath.row)
         return cell
@@ -50,9 +50,9 @@ class ProfileTable: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        let optionSelectionDictionary = ["option_menu_selection": indexPath.row]
+        let optionSelectionDictionary = ["profile_selection": indexPath.row]
         NotificationCenter.default.post(
-            name: NSNotification.Name(rawValue: "OptionMenuSelection"),
+            name: NSNotification.Name(rawValue: "ProfileSelection"),
             object: nil,
             userInfo: optionSelectionDictionary)
     }

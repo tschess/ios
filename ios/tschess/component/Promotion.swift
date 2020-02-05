@@ -77,28 +77,28 @@ class Promotion: UIViewController {
         if (gesture.view as? UIImageView) == nil {
             return
         }
-        self.execute(white: WhiteKnight(), black: BlackKnight())
+        self.execute(white: KnightWhite(), black: KnightBlack())
     }
     
     @objc func clickBishop(gesture: UIGestureRecognizer) {
         if (gesture.view as? UIImageView) == nil {
             return
         }
-        self.execute(white: WhiteBishop(), black: BlackBishop())
+        self.execute(white: BishopWhite(), black: BishopBlack())
     }
     
     @objc func clickRook(gesture: UIGestureRecognizer) {
         if (gesture.view as? UIImageView) == nil {
             return
         }
-        self.execute(white: WhiteRook(), black: BlackRook())
+        self.execute(white: RookWhite(), black: RookBlack())
     }
     
     @objc func clickQueen(gesture: UIGestureRecognizer) {
         if (gesture.view as? UIImageView) == nil {
             return
         }
-        self.execute(white: WhiteQueen(), black: BlackQueen())
+        self.execute(white: QueenWhite(), black: QueenBlack())
     }
     
     public func evaluate(coordinate: [Int], proposed: [Int]) -> Bool {
@@ -122,7 +122,7 @@ class Promotion: UIViewController {
         return false
     }
     
-    private func execute(white: TschessElement, black: TschessElement) {
+    private func execute(white: Piece, black: Piece) {
 //        let gamestate = self.chess!.getGamestate()
 //        var tschessElementMatrix = gamestate.getTschessElementMatrix()
 //        var tschessElement: TschessElement = white
