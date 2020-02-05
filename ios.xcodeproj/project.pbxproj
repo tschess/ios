@@ -87,6 +87,8 @@
 		B7BE122D23EADC9700ADA499 /* ActualTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE122C23EADC9700ADA499 /* ActualTable.swift */; };
 		B7BE122F23EADCB900ADA499 /* ActualCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE122E23EADCB900ADA499 /* ActualCell.swift */; };
 		B7BE123223EAE35B00ADA499 /* RequestActual.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE123123EAE35B00ADA499 /* RequestActual.swift */; };
+		B7BE123423EAE7EC00ADA499 /* HistoricTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE123323EAE7EC00ADA499 /* HistoricTable.swift */; };
+		B7BE123623EAE80E00ADA499 /* HistoricCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE123523EAE80E00ADA499 /* HistoricCell.swift */; };
 		B7CB62F6237BB10800E50204 /* Start.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7CB62F5237BB10800E50204 /* Start.storyboard */; };
 		B7EF701E23EA28BA00BAF2E2 /* EntityPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7EF701D23EA28BA00BAF2E2 /* EntityPlayer.swift */; };
 		B7EF702123EA28E300BAF2E2 /* EntityGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7EF702023EA28E300BAF2E2 /* EntityGame.swift */; };
@@ -202,6 +204,8 @@
 		B7BE122C23EADC9700ADA499 /* ActualTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActualTable.swift; sourceTree = "<group>"; };
 		B7BE122E23EADCB900ADA499 /* ActualCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActualCell.swift; sourceTree = "<group>"; };
 		B7BE123123EAE35B00ADA499 /* RequestActual.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestActual.swift; sourceTree = "<group>"; };
+		B7BE123323EAE7EC00ADA499 /* HistoricTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoricTable.swift; sourceTree = "<group>"; };
+		B7BE123523EAE80E00ADA499 /* HistoricCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoricCell.swift; sourceTree = "<group>"; };
 		B7CB62F5237BB10800E50204 /* Start.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Start.storyboard; sourceTree = "<group>"; };
 		B7EF701D23EA28BA00BAF2E2 /* EntityPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityPlayer.swift; sourceTree = "<group>"; };
 		B7EF702023EA28E300BAF2E2 /* EntityGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityGame.swift; sourceTree = "<group>"; };
@@ -753,6 +757,8 @@
 			children = (
 				B7BE122023EAD90700ADA499 /* storyboard */,
 				B7BE122223EAD92B00ADA499 /* Historic.swift */,
+				B7BE123323EAE7EC00ADA499 /* HistoricTable.swift */,
+				B7BE123523EAE80E00ADA499 /* HistoricCell.swift */,
 			);
 			path = historic;
 			sourceTree = "<group>";
@@ -1055,6 +1061,7 @@
 				B7BE11B923EA9DD400ADA499 /* BishopWhite.swift in Sources */,
 				B7BE11BB23EA9DE200ADA499 /* BishopBlack.swift in Sources */,
 				B7BE11F123EAC92C00ADA499 /* EditSelf.swift in Sources */,
+				B7BE123623EAE80E00ADA499 /* HistoricCell.swift in Sources */,
 				B7BE120923EAD3DD00ADA499 /* Hunter.swift in Sources */,
 				B7BE11A923EA9C8800ADA499 /* King.swift in Sources */,
 				B7BE11B223EA9D7000ADA499 /* QueenWhite.swift in Sources */,
@@ -1077,6 +1084,7 @@
 				B7BE11E523EAC39E00ADA499 /* EntitySkin.swift in Sources */,
 				B7BE122723EAD94700ADA499 /* Actual.swift in Sources */,
 				B74136C723DE34A0001B3D60 /* PlayerLogin.swift in Sources */,
+				B7BE123423EAE7EC00ADA499 /* HistoricTable.swift in Sources */,
 				B7AF787323E0B9DA00BAD8EC /* RequestPage.swift in Sources */,
 				B7BE121023EAD64100ADA499 /* Hopper.swift in Sources */,
 				B7BE11E123EAC23500ADA499 /* Skin.swift in Sources */,
