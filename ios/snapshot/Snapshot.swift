@@ -115,7 +115,7 @@ class Snapshot: UIViewController, UICollectionViewDataSource, UICollectionViewDe
         let x = indexPath.row / 8
         let y = indexPath.row % 8
         if(self.state![x][y] != nil){
-            //print("name: \(self.tschessElementMatrix![x][y]!.name)")
+           
             return self.state![x][y]!.getImageVisible()
         }
         return nil

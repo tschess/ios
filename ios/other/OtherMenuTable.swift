@@ -122,7 +122,7 @@ class OtherMenuTable: UITableViewController {
     
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let modifyAction = UIContextualAction(style: .normal, title:  "CHALLENGE", handler: { (ac: UIContextualAction, view: UIView, success:(Bool) -> Void) in
-            print("Update action ...")
+            
             let gameModel = self.gameMenuTableList[indexPath.row]
             
 //            let storyboard: UIStoryboard = UIStoryboard(name: "Challenge", bundle: nil)
