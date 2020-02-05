@@ -207,7 +207,7 @@
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="v4N-X5-tXk" customClass="DynamicCollectionView" customModule="ios" customModuleProvider="target">
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="v4N-X5-tXk" customClass="BoardView" customModule="ios" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="46" width="414" height="200"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -221,7 +221,7 @@
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="JfB-Zy-e7d" customClass="MyCollectionViewCell" customModule="ios" customModuleProvider="target">
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="square" id="JfB-Zy-e7d" customClass="SquareCell" customModule="ios" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="78" height="55"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -378,8 +378,8 @@
                     <connections>
                         <outlet property="activityIndicator" destination="RAM-33-HiP" id="qIU-bR-j4G"/>
                         <outlet property="backButton" destination="5qi-EH-0fj" id="9nk-ly-Hln"/>
-                        <outlet property="collectionView" destination="v4N-X5-tXk" id="oE4-af-oQh"/>
-                        <outlet property="collectionViewHeight" destination="UrR-TT-KiU" id="ICf-JA-lf2"/>
+                        <outlet property="boardView" destination="v4N-X5-tXk" id="oE4-af-oQh"/>
+                        <outlet property="boardViewHeight" destination="UrR-TT-KiU" id="ICf-JA-lf2"/>
                         <outlet property="contentImage" destination="Zdw-QN-Ye3" id="rLE-m9-kgC"/>
                         <outlet property="contentView" destination="9wh-i1-2Qp" id="lq2-56-VQi"/>
                         <outlet property="dateLabel" destination="9bQ-DV-v2s" id="ep4-iU-xPd"/>

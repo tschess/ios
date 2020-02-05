@@ -57,6 +57,9 @@
 		B7BE11CE23EA9F1600ADA499 /* KnightWhite.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE11CD23EA9F1600ADA499 /* KnightWhite.swift */; };
 		B7BE11D023EA9F2400ADA499 /* KnightBlack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE11CF23EA9F2400ADA499 /* KnightBlack.swift */; };
 		B7BE11D323EAA0A600ADA499 /* Castle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE11D223EAA0A600ADA499 /* Castle.swift */; };
+		B7BE11D523EAA18000ADA499 /* BoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE11D423EAA18000ADA499 /* BoardView.swift */; };
+		B7BE11D723EAA23200ADA499 /* SquareCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE11D623EAA23200ADA499 /* SquareCell.swift */; };
+		B7BE11DA23EAA4BF00ADA499 /* SerializerState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE11D923EAA4BF00ADA499 /* SerializerState.swift */; };
 		B7CB62F6237BB10800E50204 /* Start.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7CB62F5237BB10800E50204 /* Start.storyboard */; };
 		B7EF701E23EA28BA00BAF2E2 /* EntityPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7EF701D23EA28BA00BAF2E2 /* EntityPlayer.swift */; };
 		B7EF702123EA28E300BAF2E2 /* EntityGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7EF702023EA28E300BAF2E2 /* EntityGame.swift */; };
@@ -142,6 +145,9 @@
 		B7BE11CD23EA9F1600ADA499 /* KnightWhite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnightWhite.swift; sourceTree = "<group>"; };
 		B7BE11CF23EA9F2400ADA499 /* KnightBlack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnightBlack.swift; sourceTree = "<group>"; };
 		B7BE11D223EAA0A600ADA499 /* Castle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Castle.swift; sourceTree = "<group>"; };
+		B7BE11D423EAA18000ADA499 /* BoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardView.swift; sourceTree = "<group>"; };
+		B7BE11D623EAA23200ADA499 /* SquareCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SquareCell.swift; sourceTree = "<group>"; };
+		B7BE11D923EAA4BF00ADA499 /* SerializerState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerializerState.swift; sourceTree = "<group>"; };
 		B7CB62F5237BB10800E50204 /* Start.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Start.storyboard; sourceTree = "<group>"; };
 		B7EF701D23EA28BA00BAF2E2 /* EntityPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityPlayer.swift; sourceTree = "<group>"; };
 		B7EF702023EA28E300BAF2E2 /* EntityGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityGame.swift; sourceTree = "<group>"; };
@@ -478,11 +484,21 @@
 			path = logic;
 			sourceTree = "<group>";
 		};
+		B7BE11D823EAA48500ADA499 /* state */ = {
+			isa = PBXGroup;
+			children = (
+				B7BE11D923EAA4BF00ADA499 /* SerializerState.swift */,
+			);
+			path = state;
+			sourceTree = "<group>";
+		};
 		B7C5C00622EF3F1A00BFCB39 /* util */ = {
 			isa = PBXGroup;
 			children = (
 				B7F35E322309F6D6002018F7 /* DateTime.swift */,
 				B70A86CA2370989000D303F0 /* ServerAddress.swift */,
+				B7BE11D423EAA18000ADA499 /* BoardView.swift */,
+				B7BE11D623EAA23200ADA499 /* SquareCell.swift */,
 			);
 			path = util;
 			sourceTree = "<group>";
@@ -508,6 +524,7 @@
 		B7EF701F23EA28D200BAF2E2 /* game */ = {
 			isa = PBXGroup;
 			children = (
+				B7BE11D823EAA48500ADA499 /* state */,
 				B7EF702023EA28E300BAF2E2 /* EntityGame.swift */,
 				B7BE116B23EA750B00ADA499 /* ParseGame.swift */,
 			);
@@ -738,12 +755,14 @@
 				B7BE11AB23EA9C9C00ADA499 /* KingWhite.swift in Sources */,
 				B7BE116C23EA750B00ADA499 /* ParseGame.swift in Sources */,
 				B7BE11D023EA9F2400ADA499 /* KnightBlack.swift in Sources */,
+				B7BE11D523EAA18000ADA499 /* BoardView.swift in Sources */,
 				B7BE115D23EA4FBE00ADA499 /* ParsePlayer.swift in Sources */,
 				B708D0E9236B369D00A899F9 /* Start.swift in Sources */,
 				B74136C723DE34A0001B3D60 /* PlayerLogin.swift in Sources */,
 				B7AF787323E0B9DA00BAD8EC /* RequestPage.swift in Sources */,
 				B7F541C823D51B0C00E89074 /* HomeMenuCell.swift in Sources */,
 				B7BE117523EA930F00ADA499 /* Piece.swift in Sources */,
+				B7BE11D723EAA23200ADA499 /* SquareCell.swift in Sources */,
 				B7BE116523EA727200ADA499 /* OtherMenuTable.swift in Sources */,
 				B7316D1123E8AA8E00119865 /* RequestRefresh.swift in Sources */,
 				B7BE11C523EA9E7C00ADA499 /* Rook.swift in Sources */,
@@ -760,6 +779,7 @@
 				B7BE11C723EA9EA700ADA499 /* RookWhite.swift in Sources */,
 				B7BE11B423EA9D7E00ADA499 /* QueenBlack.swift in Sources */,
 				B72AF9E323E3BDBF003740CD /* GetNotify.swift in Sources */,
+				B7BE11DA23EAA4BF00ADA499 /* SerializerState.swift in Sources */,
 				B7BE11C923EA9EB700ADA499 /* RookBlack.swift in Sources */,
 				B7BE116723EA73DC00ADA499 /* OtherMenuCell.swift in Sources */,
 				B7BE11A223EA965B00ADA499 /* HorizontalVertical.swift in Sources */,

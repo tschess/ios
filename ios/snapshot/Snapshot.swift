@@ -38,8 +38,8 @@ class Snapshot: UIViewController, UICollectionViewDataSource, UICollectionViewDe
     
     @IBOutlet weak var dateLabel: UILabel!
     
-    @IBOutlet weak var collectionView: DynamicCollectionView!
-    @IBOutlet weak var collectionViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var boardView: BoardView!
+    @IBOutlet weak var boardViewHeight: NSLayoutConstraint!
     
     /* * */
     @IBOutlet weak var statsView: UIView!
@@ -50,33 +50,32 @@ class Snapshot: UIViewController, UICollectionViewDataSource, UICollectionViewDe
     
     @IBOutlet weak var tabBarMenu: UITabBar!
     
-    var tschessElementMatrix: [[TschessElement?]]?
+    var state: [[Piece?]]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.activityIndicator.isHidden = true
-        self.collectionView.isHidden = true
+        self.boardView.isHidden = true
         
-        self.tschessElementMatrix = self.snapshot!.state!
+        self.state = self.game!.state
         
-        self.usernameWinner.text = self.snapshot!.usernameWinner
         
-        let dataDecoded: Data = Data(base64Encoded: self.snapshot!.avatarWinner, options: .ignoreUnknownCharacters)!
+        
+        let dataDecoded: Data = Data(base64Encoded: self.game!.avatarWinner, options: .ignoreUnknownCharacters)!
         let decodedimage = UIImage(data: dataDecoded)
         self.winnerImageView!.image = decodedimage
         
-        self.usernameLabelWhite.text = self.snapshot!.usernameWhite!
-        self.usernameLabelBlack.text = self.snapshot!.usernameBlack!
-        
-        //self.outcomeLabel.text = "\(self.snapshot!.outcome!)"
+        self.outcomeLabel.text = self.game!.outcome
+        self.usernameWinner.text = self.game!.winner
+        self.usernameLabelWhite.text = self.game!.white.username
+        self.usernameLabelBlack.text = self.game!.black.username
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        collectionView.dataSource = self
-        collectionView.delegate = self
-        
+        boardView.dataSource = self
+        boardView.delegate = self
         tabBarMenu.delegate = self
     }
     
@@ -103,7 +102,7 @@ class Snapshot: UIViewController, UICollectionViewDataSource, UICollectionViewDe
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! MyCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "square", for: indexPath) as!  SquareCell
         cell.backgroundColor = assignCellBackgroundColor(indexPath: indexPath)
         cell.imageView.image = assignCellTschessElement(indexPath: indexPath)
         cell.imageView.bounds = CGRect(origin: cell.bounds.origin, size: cell.bounds.size)
@@ -114,9 +113,9 @@ class Snapshot: UIViewController, UICollectionViewDataSource, UICollectionViewDe
     private func assignCellTschessElement(indexPath: IndexPath) -> UIImage? {
         let x = indexPath.row / 8
         let y = indexPath.row % 8
-        if(self.tschessElementMatrix![x][y] != nil){
+        if(self.state![x][y] != nil){
             //print("name: \(self.tschessElementMatrix![x][y]!.name)")
-            return self.tschessElementMatrix![x][y]!.getImageVisible()
+            return self.state![x][y]!.getImageVisible()
         }
         return nil
     }
@@ -145,13 +144,13 @@ class Snapshot: UIViewController, UICollectionViewDataSource, UICollectionViewDe
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        collectionView.isHidden = false
-        collectionView.reloadData()
+        boardView.isHidden = false
+        boardView.reloadData()
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        collectionViewHeight.constant = collectionView.contentSize.height
+        boardViewHeight.constant = boardView.contentSize.height
     }
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
