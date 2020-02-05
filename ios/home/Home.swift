@@ -128,21 +128,19 @@ class Home: UIViewController, UITabBarDelegate {
                 self.activityIndicator.isHidden = false
                 self.activityIndicator.startAnimating()
             }
-//            RequestQuick().success(id: self.player!.getId()) { (result) in
-//
-//                DispatchQueue.main.async() {
-//                    self.activityIndicator.stopAnimating()
-//                    self.activityIndicator.isHidden = true
-//
-//                    let opponent = result as! PlayerCore
-//
-//                    let storyboard: UIStoryboard = UIStoryboard(name: "Quick", bundle: nil)
-//                    let viewController = storyboard.instantiateViewController(withIdentifier: "Quick") as! Quick
-//                    viewController.setPlayer(player: self.player!)
-//                    viewController.setOpponent(opponent: opponent)
-//                    UIApplication.shared.keyWindow?.rootViewController = viewController
-//                }
-//            }
+            RequestQuick().success(id: self.player!.id) { (opponent) in
+
+                DispatchQueue.main.async() {
+                    self.activityIndicator.stopAnimating()
+                    self.activityIndicator.isHidden = true
+
+                    let storyboard: UIStoryboard = UIStoryboard(name: "Play", bundle: nil)
+                    let viewController = storyboard.instantiateViewController(withIdentifier: "Play") as! Play
+                    viewController.setPlayerSelf(playerSelf: self.player!)
+                    viewController.setPlayerOther(playerOther: opponent!)
+                    UIApplication.shared.keyWindow?.rootViewController = viewController
+                }
+            }
         case 3:
             
             self.notificationTimerStop()
