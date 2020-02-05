@@ -68,9 +68,9 @@ class OtherMenuTable: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
         
-        let discoverSelectionDictionary = ["challenge_menu_game_selection": indexPath.row]
+        let discoverSelectionDictionary = ["other_menu_selection": indexPath.row]
         NotificationCenter.default.post(
-            name: NSNotification.Name(rawValue: "ChallengeMenuTableView"),
+            name: NSNotification.Name(rawValue: "OtherMenuTable"),
             object: nil,
             userInfo: discoverSelectionDictionary)
     }

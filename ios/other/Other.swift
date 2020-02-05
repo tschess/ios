@@ -63,32 +63,18 @@ class Other: UIViewController, UITabBarDelegate {
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(self.onDidReceiveData(_:)),
-            name: NSNotification.Name(rawValue: "ChallengeMenuTableView"),
+            name: NSNotification.Name(rawValue: "OtherMenuTable"),
             object: nil)
     }
     
     @objc func onDidReceiveData(_ notification: NSNotification) {
-        let gameMenuSelectionIndex = notification.userInfo!["challenge_menu_game_selection"] as! Int
-        let gameModel = self.otherMenuTable!.getGameMenuTableList()[gameMenuSelectionIndex]
+        let gameMenuSelectionIndex = notification.userInfo!["other_menu_selection"] as! Int
+        let game = self.otherMenuTable!.getGameMenuTableList()[gameMenuSelectionIndex]
         
-//        let id: String = gameModel.getIdentifier()
-//        let date: String = gameModel.endDate
-//        var avatarWinner: String = gameModel.getOpponentAvatar()
-//        let usernameWinner: String = gameModel.winner
-//        if(gameModel.winnerInt == 1){
-//            avatarWinner = self.player!.getAvatar()
-//        }
-//        let endgameCore: EndgameCore = EndgameCore(id: id, date: date, avatarWinner: avatarWinner, usernameWinner: usernameWinner)
-//        let requestPayload = ["game_id": gameModel.getIdentifier(), "self_id": self.player!.getId()]
-//        RequestSnapshot().execute(requestPayload: requestPayload, endgameCore: endgameCore) { (snapshot) in
-//            DispatchQueue.main.async {
-//                //print("snapshot: \(snapshot)")
-//                let storyboard: UIStoryboard = UIStoryboard(name: "EndgameSnapshot", bundle: nil)
-//                let viewController = storyboard.instantiateViewController(withIdentifier: "EndgameSnapshot") as! EndgameSnapshot
-//                viewController.setSnapshot(snapshot: snapshot!)
-//                self.present(viewController, animated: false, completion: nil)
-//            }
-//        }
+        let storyboard: UIStoryboard = UIStoryboard(name: "EndgameSnapshot", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "EndgameSnapshot") as! EndgameSnapshot
+        viewController.setGame(game: game)
+        self.present(viewController, animated: false, completion: nil)
     }
     
     @IBAction func backButtonClick(_ sender: Any) {
