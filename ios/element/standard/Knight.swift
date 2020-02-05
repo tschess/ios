@@ -29,156 +29,156 @@ class Knight: TschessElement {
         )
     }
     
-    public override func validate(present: [Int], proposed: [Int], gamestate: Gamestate) ->  Bool {
-        if(minusTwo_minusOne(present: present, proposed: proposed, gamestate: gamestate)){
-            return true
-        }
-        if(minusTwo_plusOne(present: present, proposed: proposed, gamestate: gamestate)){
-            return true
-        }
-        if(plusTwo_minusOne(present: present, proposed: proposed, gamestate: gamestate)){
-            return true
-        }
-        if(plusTwo_plusOne(present: present, proposed: proposed, gamestate: gamestate)){
-            return true
-        }
-        if(minusOne_minusTwo(present: present, proposed: proposed, gamestate: gamestate)){
-            return true
-        }
-        if(minusOne_plusTwo(present: present, proposed: proposed, gamestate: gamestate)){
-            return true
-        }
-        if(plusOne_minusTwo(present: present, proposed: proposed, gamestate: gamestate)){
-            return true
-        }
-        if(plusOne_plusTwo(present: present, proposed: proposed, gamestate: gamestate)){
-            return true
-        }
-        
-        return false
-    }
+//    public override func validate(present: [Int], proposed: [Int], gamestate: Gamestate) ->  Bool {
+//        if(minusTwo_minusOne(present: present, proposed: proposed, gamestate: gamestate)){
+//            return true
+//        }
+//        if(minusTwo_plusOne(present: present, proposed: proposed, gamestate: gamestate)){
+//            return true
+//        }
+//        if(plusTwo_minusOne(present: present, proposed: proposed, gamestate: gamestate)){
+//            return true
+//        }
+//        if(plusTwo_plusOne(present: present, proposed: proposed, gamestate: gamestate)){
+//            return true
+//        }
+//        if(minusOne_minusTwo(present: present, proposed: proposed, gamestate: gamestate)){
+//            return true
+//        }
+//        if(minusOne_plusTwo(present: present, proposed: proposed, gamestate: gamestate)){
+//            return true
+//        }
+//        if(plusOne_minusTwo(present: present, proposed: proposed, gamestate: gamestate)){
+//            return true
+//        }
+//        if(plusOne_plusTwo(present: present, proposed: proposed, gamestate: gamestate)){
+//            return true
+//        }
+//        
+//        return false
+//    }
     
-    public func minusTwo_minusOne(present: [Int], proposed: [Int], gamestate: Gamestate) ->  Bool {
-        let tschessElementMatrix = gamestate.getTschessElementMatrix()
-        if((present[0] - 2) - proposed[0] == 0 && (present[1] - 1) - proposed[1] == 0) {
-            if(tschessElementMatrix[present[0] - 2][present[1] - 1] != nil) {
-                if(tschessElementMatrix[present[0] - 2][present[1] - 1]!.name == "LegalMove") {
-                    return true
-                }
-                return tschessElementMatrix[present[0] - 2][present[1] - 1]!.affiliation !=
-                    tschessElementMatrix[present[0]][present[1]]!.affiliation
-            }
-            return true
-        }
-        return false
-    }
+//    public func minusTwo_minusOne(present: [Int], proposed: [Int], gamestate: Gamestate) ->  Bool {
+//        let tschessElementMatrix = gamestate.getTschessElementMatrix()
+//        if((present[0] - 2) - proposed[0] == 0 && (present[1] - 1) - proposed[1] == 0) {
+//            if(tschessElementMatrix[present[0] - 2][present[1] - 1] != nil) {
+//                if(tschessElementMatrix[present[0] - 2][present[1] - 1]!.name == "LegalMove") {
+//                    return true
+//                }
+//                return tschessElementMatrix[present[0] - 2][present[1] - 1]!.affiliation !=
+//                    tschessElementMatrix[present[0]][present[1]]!.affiliation
+//            }
+//            return true
+//        }
+//        return false
+//    }
     
-    public func minusTwo_plusOne(present: [Int], proposed: [Int], gamestate: Gamestate) ->  Bool {
-        let tschessElementMatrix = gamestate.getTschessElementMatrix()
-        if((present[0] - 2) - proposed[0] == 0 && (present[1] + 1) - proposed[1] == 0) {
-            if(tschessElementMatrix[present[0] - 2][present[1] + 1] != nil) {
-                if(tschessElementMatrix[present[0] - 2][present[1] + 1]!.name == "LegalMove") {
-                    return true
-                }
-                return tschessElementMatrix[present[0] - 2][present[1] + 1]!.affiliation !=
-                    tschessElementMatrix[present[0]][present[1]]!.affiliation
-            }
-            return true
-        }
-        return false
-    }
+//    public func minusTwo_plusOne(present: [Int], proposed: [Int], gamestate: Gamestate) ->  Bool {
+//        let tschessElementMatrix = gamestate.getTschessElementMatrix()
+//        if((present[0] - 2) - proposed[0] == 0 && (present[1] + 1) - proposed[1] == 0) {
+//            if(tschessElementMatrix[present[0] - 2][present[1] + 1] != nil) {
+//                if(tschessElementMatrix[present[0] - 2][present[1] + 1]!.name == "LegalMove") {
+//                    return true
+//                }
+//                return tschessElementMatrix[present[0] - 2][present[1] + 1]!.affiliation !=
+//                    tschessElementMatrix[present[0]][present[1]]!.affiliation
+//            }
+//            return true
+//        }
+//        return false
+//    }
     
-    public func plusTwo_minusOne(present: [Int], proposed: [Int], gamestate: Gamestate) ->  Bool {
-        let tschessElementMatrix = gamestate.getTschessElementMatrix()
-        if((present[0] + 2) - proposed[0] == 0 && (present[1] - 1) - proposed[1] == 0) {
-            if(tschessElementMatrix[present[0] + 2][present[1] - 1] != nil) {
-                if(tschessElementMatrix[present[0] + 2][present[1] - 1]!.name == "LegalMove") {
-                    return true
-                }
-                return tschessElementMatrix[present[0] + 2][present[1] - 1]!.affiliation !=
-                    tschessElementMatrix[present[0]][present[1]]!.affiliation
-            }
-            return true
-        }
-        return false
-    }
+//    public func plusTwo_minusOne(present: [Int], proposed: [Int], gamestate: Gamestate) ->  Bool {
+//        let tschessElementMatrix = gamestate.getTschessElementMatrix()
+//        if((present[0] + 2) - proposed[0] == 0 && (present[1] - 1) - proposed[1] == 0) {
+//            if(tschessElementMatrix[present[0] + 2][present[1] - 1] != nil) {
+//                if(tschessElementMatrix[present[0] + 2][present[1] - 1]!.name == "LegalMove") {
+//                    return true
+//                }
+//                return tschessElementMatrix[present[0] + 2][present[1] - 1]!.affiliation !=
+//                    tschessElementMatrix[present[0]][present[1]]!.affiliation
+//            }
+//            return true
+//        }
+//        return false
+//    }
     
-    public func plusTwo_plusOne(present: [Int], proposed: [Int], gamestate: Gamestate) ->  Bool {
-        let tschessElementMatrix = gamestate.getTschessElementMatrix()
-        if((present[0] + 2) - proposed[0] == 0 && (present[1] + 1) - proposed[1] == 0) {
-            if(tschessElementMatrix[present[0] + 2][present[1] + 1] != nil) {
-                if(tschessElementMatrix[present[0] + 2][present[1] + 1]!.name == "LegalMove") {
-                    return true
-                }
-                return tschessElementMatrix[present[0] + 2][present[1] + 1]!.affiliation !=
-                    tschessElementMatrix[present[0]][present[1]]!.affiliation
-            }
-            return true
-        }
-        return false
-    }
-    
-    
-    public func minusOne_minusTwo(present: [Int], proposed: [Int], gamestate: Gamestate) ->  Bool {
-        let tschessElementMatrix = gamestate.getTschessElementMatrix()
-        if((present[0] - 1) - proposed[0] == 0 && (present[1] - 2) - proposed[1] == 0) {
-            if(tschessElementMatrix[present[0] - 1][present[1] - 2] != nil) {
-                if(tschessElementMatrix[present[0] - 1][present[1] - 2]!.name == "LegalMove") {
-                    return true
-                }
-                return tschessElementMatrix[present[0] - 1][present[1] - 2]!.affiliation !=
-                    tschessElementMatrix[present[0]][present[1]]!.affiliation
-            }
-            return true
-        }
-        return false
-    }
+//    public func plusTwo_plusOne(present: [Int], proposed: [Int], gamestate: Gamestate) ->  Bool {
+//        let tschessElementMatrix = gamestate.getTschessElementMatrix()
+//        if((present[0] + 2) - proposed[0] == 0 && (present[1] + 1) - proposed[1] == 0) {
+//            if(tschessElementMatrix[present[0] + 2][present[1] + 1] != nil) {
+//                if(tschessElementMatrix[present[0] + 2][present[1] + 1]!.name == "LegalMove") {
+//                    return true
+//                }
+//                return tschessElementMatrix[present[0] + 2][present[1] + 1]!.affiliation !=
+//                    tschessElementMatrix[present[0]][present[1]]!.affiliation
+//            }
+//            return true
+//        }
+//        return false
+//    }
     
     
-    public func minusOne_plusTwo(present: [Int], proposed: [Int], gamestate: Gamestate) ->  Bool {
-        let tschessElementMatrix = gamestate.getTschessElementMatrix()
-        if((present[0] - 1) - proposed[0] == 0 && (present[1] + 2) - proposed[1] == 0) {
-            if(tschessElementMatrix[present[0] - 1][present[1] + 2] != nil) {
-                if(tschessElementMatrix[present[0] - 1][present[1] + 2]!.name == "LegalMove") {
-                    return true
-                }
-                return tschessElementMatrix[present[0] - 1][present[1] + 2]!.affiliation !=
-                    tschessElementMatrix[present[0]][present[1]]!.affiliation
-            }
-            return true
-        }
-        return false
-    }
+//    public func minusOne_minusTwo(present: [Int], proposed: [Int], gamestate: Gamestate) ->  Bool {
+//        let tschessElementMatrix = gamestate.getTschessElementMatrix()
+//        if((present[0] - 1) - proposed[0] == 0 && (present[1] - 2) - proposed[1] == 0) {
+//            if(tschessElementMatrix[present[0] - 1][present[1] - 2] != nil) {
+//                if(tschessElementMatrix[present[0] - 1][present[1] - 2]!.name == "LegalMove") {
+//                    return true
+//                }
+//                return tschessElementMatrix[present[0] - 1][present[1] - 2]!.affiliation !=
+//                    tschessElementMatrix[present[0]][present[1]]!.affiliation
+//            }
+//            return true
+//        }
+//        return false
+//    }
     
-    public func plusOne_minusTwo(present: [Int], proposed: [Int], gamestate: Gamestate) ->  Bool {
-        let tschessElementMatrix = gamestate.getTschessElementMatrix()
-        if((present[0] + 1) - proposed[0] == 0 && (present[1] - 2) - proposed[1] == 0) {
-            if(tschessElementMatrix[present[0] + 1][present[1] - 2] != nil) {
-                if(tschessElementMatrix[present[0] + 1][present[1] - 2]!.name == "LegalMove") {
-                    return true
-                }
-                return tschessElementMatrix[present[0] + 1][present[1] - 2]!.affiliation !=
-                    tschessElementMatrix[present[0]][present[1]]!.affiliation
-            }
-            return true
-        }
-        return false
-    }
     
-    public func plusOne_plusTwo(present: [Int], proposed: [Int], gamestate: Gamestate) ->  Bool {
-        let tschessElementMatrix = gamestate.getTschessElementMatrix()
-        if((present[0] + 1) - proposed[0] == 0 && (present[1] + 2) - proposed[1] == 0) {
-            if(tschessElementMatrix[present[0] + 1][present[1] + 2] != nil) {
-                if(tschessElementMatrix[present[0] + 1][present[1] + 2]!.name == "LegalMove") {
-                    return true
-                }
-                return tschessElementMatrix[present[0] + 1][present[1] + 2]!.affiliation !=
-                    tschessElementMatrix[present[0]][present[1]]!.affiliation
-            }
-            return true
-        }
-        return false
-    }
+//    public func minusOne_plusTwo(present: [Int], proposed: [Int], gamestate: Gamestate) ->  Bool {
+//        let tschessElementMatrix = gamestate.getTschessElementMatrix()
+//        if((present[0] - 1) - proposed[0] == 0 && (present[1] + 2) - proposed[1] == 0) {
+//            if(tschessElementMatrix[present[0] - 1][present[1] + 2] != nil) {
+//                if(tschessElementMatrix[present[0] - 1][present[1] + 2]!.name == "LegalMove") {
+//                    return true
+//                }
+//                return tschessElementMatrix[present[0] - 1][present[1] + 2]!.affiliation !=
+//                    tschessElementMatrix[present[0]][present[1]]!.affiliation
+//            }
+//            return true
+//        }
+//        return false
+//    }
+    
+//    public func plusOne_minusTwo(present: [Int], proposed: [Int], gamestate: Gamestate) ->  Bool {
+//        let tschessElementMatrix = gamestate.getTschessElementMatrix()
+//        if((present[0] + 1) - proposed[0] == 0 && (present[1] - 2) - proposed[1] == 0) {
+//            if(tschessElementMatrix[present[0] + 1][present[1] - 2] != nil) {
+//                if(tschessElementMatrix[present[0] + 1][present[1] - 2]!.name == "LegalMove") {
+//                    return true
+//                }
+//                return tschessElementMatrix[present[0] + 1][present[1] - 2]!.affiliation !=
+//                    tschessElementMatrix[present[0]][present[1]]!.affiliation
+//            }
+//            return true
+//        }
+//        return false
+//    }
+    
+//    public func plusOne_plusTwo(present: [Int], proposed: [Int], gamestate: Gamestate) ->  Bool {
+//        let tschessElementMatrix = gamestate.getTschessElementMatrix()
+//        if((present[0] + 1) - proposed[0] == 0 && (present[1] + 2) - proposed[1] == 0) {
+//            if(tschessElementMatrix[present[0] + 1][present[1] + 2] != nil) {
+//                if(tschessElementMatrix[present[0] + 1][present[1] + 2]!.name == "LegalMove") {
+//                    return true
+//                }
+//                return tschessElementMatrix[present[0] + 1][present[1] + 2]!.affiliation !=
+//                    tschessElementMatrix[present[0]][present[1]]!.affiliation
+//            }
+//            return true
+//        }
+//        return false
+//    }
     
     public override func getBezierPath() -> UIBezierPath {
         //// Color Declarations

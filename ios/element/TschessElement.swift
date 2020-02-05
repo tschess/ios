@@ -96,9 +96,9 @@ class TschessElement {
         return self.isHopped
     }
     
-    public func validate(present: [Int], proposed: [Int], gamestate: Gamestate) ->  Bool {
-        return false
-    }
+//    public func validate(present: [Int], proposed: [Int], gamestate: Gamestate) ->  Bool {
+//        return false
+//    }
     
     public func getBezierPath() -> UIBezierPath {
         return UIBezierPath()

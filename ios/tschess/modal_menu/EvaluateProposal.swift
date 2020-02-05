@@ -20,11 +20,11 @@ class EvaluateProposal: UIViewController {
         configure()
     }
     
-    var gamestate: Gamestate?
-    
-    func setGamestate(gamestate: Gamestate) {
-        self.gamestate = gamestate
-    }
+//    var gamestate: Gamestate?
+//    
+//    func setGamestate(gamestate: Gamestate) {
+//        self.gamestate = gamestate
+//    }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -43,23 +43,23 @@ class EvaluateProposal: UIViewController {
     
     let dateTime: DateTime = DateTime()
     
-    @IBAction func rejectButtonClick(_ sender: Any) {
-        self.gamestate!.setDrawProposer(drawProposer: "NONE")
-        
-        let requestPayload = GamestateSerializer().execute(gamestate: gamestate!, updated: self.gamestate!.getUpdated())
-        UpdateGamestate().execute(requestPayload: requestPayload)
-        
-        StoryboardSelector().chess(gamestate: self.gamestate!)
-    }
+//    @IBAction func rejectButtonClick(_ sender: Any) {
+//        self.gamestate!.setDrawProposer(drawProposer: "NONE")
+//        
+//        let requestPayload = GamestateSerializer().execute(gamestate: gamestate!, updated: self.gamestate!.getUpdated())
+//        UpdateGamestate().execute(requestPayload: requestPayload)
+//        
+//        StoryboardSelector().chess(gamestate: self.gamestate!)
+//    }
     
-    @IBAction func acceptButtonClick(_ sender: Any) {
-        self.gamestate!.setDrawProposer(drawProposer: "NONE")
-        self.gamestate!.setWinner(winner: "DRAW")
-        
-        let requestPayload = GamestateSerializer().execute(gamestate: gamestate!)
-        UpdateGamestate().execute(requestPayload: requestPayload)
-        
-        StoryboardSelector().chess(gamestate: self.gamestate!)
-    }
+//    @IBAction func acceptButtonClick(_ sender: Any) {
+//        self.gamestate!.setDrawProposer(drawProposer: "NONE")
+//        self.gamestate!.setWinner(winner: "DRAW")
+//        
+//        let requestPayload = GamestateSerializer().execute(gamestate: gamestate!)
+//        UpdateGamestate().execute(requestPayload: requestPayload)
+//        
+//        StoryboardSelector().chess(gamestate: self.gamestate!)
+//    }
     
 }

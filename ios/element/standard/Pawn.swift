@@ -29,78 +29,78 @@ class Pawn: TschessElement {
         )
     }
     
-    public override func validate(present: [Int], proposed: [Int], gamestate: Gamestate) ->  Bool {
-        if(advanceOne(present: present, proposed: proposed, gamestate: gamestate)) {
-            return true
-        }
-        if(advanceTwo(present: present, proposed: proposed, gamestate: gamestate)) {
-            return true
-        }
-        if(attack(present: present, proposed: proposed, gamestate: gamestate)) {
-            return true
-        }
-        return false
-    }
+//    public override func validate(present: [Int], proposed: [Int], gamestate: Gamestate) ->  Bool {
+//        if(advanceOne(present: present, proposed: proposed, gamestate: gamestate)) {
+//            return true
+//        }
+//        if(advanceTwo(present: present, proposed: proposed, gamestate: gamestate)) {
+//            return true
+//        }
+//        if(attack(present: present, proposed: proposed, gamestate: gamestate)) {
+//            return true
+//        }
+//        return false
+//    }
     
-    public func advanceOne(present: [Int], proposed: [Int], gamestate: Gamestate) ->  Bool {
-        let tschessElementMatrix = gamestate.getTschessElementMatrix()
-        
-        if((present[0] - 1) - proposed[0] == 0 && (present[1] - proposed[1] == 0)) {
-            if(tschessElementMatrix[present[0] - 1][present[1]] != nil) {
-                if(tschessElementMatrix[present[0] - 1][present[1]]!.name == "LegalMove") {
-                    return true
-                }
-                return false
-            }
-            return true
-        }
-        return false
-    }
+//    public func advanceOne(present: [Int], proposed: [Int], gamestate: Gamestate) ->  Bool {
+//        let tschessElementMatrix = gamestate.getTschessElementMatrix()
+//        
+//        if((present[0] - 1) - proposed[0] == 0 && (present[1] - proposed[1] == 0)) {
+//            if(tschessElementMatrix[present[0] - 1][present[1]] != nil) {
+//                if(tschessElementMatrix[present[0] - 1][present[1]]!.name == "LegalMove") {
+//                    return true
+//                }
+//                return false
+//            }
+//            return true
+//        }
+//        return false
+//    }
     
-    public func advanceTwo(present: [Int], proposed: [Int], gamestate: Gamestate) ->  Bool {
-        if(present[0] != 6){
-            return false
-        }
-        let tschessElementMatrix = gamestate.getTschessElementMatrix()
-        
-        if((present[0] - 2) - proposed[0] == 0 && (present[1] - proposed[1] == 0)) {
-            
-            if(tschessElementMatrix[present[0] - 2][present[1]] != nil) {
-                if(tschessElementMatrix[present[0] - 2][present[1]]!.name != "LegalMove") {
-                    return false
-                }
-            } //it IS nil (2) ...
-            if(tschessElementMatrix[present[0] - 1][present[1]] != nil) {
-                if(tschessElementMatrix[present[0] - 1][present[1]]!.name != "LegalMove") {
-                    return false
-                }
-            } //it IS nil (1)
-            //either they're both legal move or they're both nil...
-            return tschessElementMatrix[present[0]][present[1]]!.firstTouch
-        }
-        return false
-    }
+//    public func advanceTwo(present: [Int], proposed: [Int], gamestate: Gamestate) ->  Bool {
+//        if(present[0] != 6){
+//            return false
+//        }
+//        let tschessElementMatrix = gamestate.getTschessElementMatrix()
+//        
+//        if((present[0] - 2) - proposed[0] == 0 && (present[1] - proposed[1] == 0)) {
+//            
+//            if(tschessElementMatrix[present[0] - 2][present[1]] != nil) {
+//                if(tschessElementMatrix[present[0] - 2][present[1]]!.name != "LegalMove") {
+//                    return false
+//                }
+//            } //it IS nil (2) ...
+//            if(tschessElementMatrix[present[0] - 1][present[1]] != nil) {
+//                if(tschessElementMatrix[present[0] - 1][present[1]]!.name != "LegalMove") {
+//                    return false
+//                }
+//            } //it IS nil (1)
+//            //either they're both legal move or they're both nil...
+//            return tschessElementMatrix[present[0]][present[1]]!.firstTouch
+//        }
+//        return false
+//    }
     
-    public func attack(present: [Int], proposed: [Int], gamestate: Gamestate) ->  Bool {
-        let tschessElementMatrix = gamestate.getTschessElementMatrix()
-        if((present[0] - 1) - proposed[0] == 0 && ((present[1] + 1) - proposed[1] == 0)) {
-            if(tschessElementMatrix[present[0] - 1][present[1] + 1] != nil) {
-                if(tschessElementMatrix[present[0] - 1][present[1] + 1]!.name != "LegalMove") {
-                    return tschessElementMatrix[present[0] - 1][present[1] + 1]!.affiliation !=
-                        tschessElementMatrix[present[0]][present[1]]!.affiliation
-                }
-            }
-        }
-        if((present[0] - 1) - proposed[0] == 0 && ((present[1] - 1) - proposed[1] == 0)) {
-            if(tschessElementMatrix[present[0] - 1][present[1] - 1] != nil) {
-                if(tschessElementMatrix[present[0] - 1][present[1] - 1]!.name != "LegalMove") {
-                    return tschessElementMatrix[present[0] - 1][present[1] - 1]!.affiliation !=
-                        tschessElementMatrix[present[0]][present[1]]!.affiliation
-                }
-            }
-        }
-        return false
-    }
+//    public func attack(present: [Int], proposed: [Int], gamestate: Gamestate) ->  Bool {
+//        let tschessElementMatrix = gamestate.getTschessElementMatrix()
+//        if((present[0] - 1) - proposed[0] == 0 && ((present[1] + 1) - proposed[1] == 0)) {
+//            if(tschessElementMatrix[present[0] - 1][present[1] + 1] != nil) {
+//                if(tschessElementMatrix[present[0] - 1][present[1] + 1]!.name != "LegalMove") {
+//                    return tschessElementMatrix[present[0] - 1][present[1] + 1]!.affiliation !=
+//                        tschessElementMatrix[present[0]][present[1]]!.affiliation
+//                }
+//            }
+//        }
+//        if((present[0] - 1) - proposed[0] == 0 && ((present[1] - 1) - proposed[1] == 0)) {
+//            if(tschessElementMatrix[present[0] - 1][present[1] - 1] != nil) {
+//                if(tschessElementMatrix[present[0] - 1][present[1] - 1]!.name != "LegalMove") {
+//                    return tschessElementMatrix[present[0] - 1][present[1] - 1]!.affiliation !=
+//                        tschessElementMatrix[present[0]][present[1]]!.affiliation
+//                }
+//            }
+//        }
+//        return false
+//    }
     
     public override func getBezierPath() -> UIBezierPath {
         //// Color Declarations

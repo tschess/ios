@@ -46,9 +46,9 @@ class LandminePawn: FairyElement {
         )
     }
     
-    public override func validate(present: [Int], proposed: [Int], gamestate: Gamestate) ->  Bool {
-        return Pawn().validate(present: present, proposed: proposed, gamestate: gamestate)
-    }
+//    public override func validate(present: [Int], proposed: [Int], gamestate: Gamestate) ->  Bool {
+//        return Pawn().validate(present: present, proposed: proposed, gamestate: gamestate)
+//    }
     
     public override func getBezierPath() -> UIBezierPath {
         //// Color Declarations

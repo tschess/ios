@@ -32,21 +32,21 @@ class Grasshopper: FairyElement {
         )
     }
     
-    public override func validate(present: [Int], proposed: [Int], gamestate: Gamestate) -> Bool {
-        if(hopper.direction_UP(present: present, proposed: proposed, gamestate: gamestate, affiliation: gamestate.getSelfAffiliation())){
-            return true
-        }
-        if(hopper.direction_DOWN(present: present, proposed: proposed, gamestate: gamestate, affiliation: gamestate.getSelfAffiliation())){
-            return true
-        }
-        if(hopper.direction_LEFT(present: present, proposed: proposed, gamestate: gamestate, affiliation: gamestate.getSelfAffiliation())){
-            return true
-        }
-        if(hopper.direction_RIGHT(present: present, proposed: proposed, gamestate: gamestate, affiliation: gamestate.getSelfAffiliation())){
-            return true
-        }
-        return false
-    }
+//    public override func validate(present: [Int], proposed: [Int], gamestate: Gamestate) -> Bool {
+//        if(hopper.direction_UP(present: present, proposed: proposed, gamestate: gamestate, affiliation: gamestate.getSelfAffiliation())){
+//            return true
+//        }
+//        if(hopper.direction_DOWN(present: present, proposed: proposed, gamestate: gamestate, affiliation: gamestate.getSelfAffiliation())){
+//            return true
+//        }
+//        if(hopper.direction_LEFT(present: present, proposed: proposed, gamestate: gamestate, affiliation: gamestate.getSelfAffiliation())){
+//            return true
+//        }
+//        if(hopper.direction_RIGHT(present: present, proposed: proposed, gamestate: gamestate, affiliation: gamestate.getSelfAffiliation())){
+//            return true
+//        }
+//        return false
+//    }
     
     public override func getBezierPath() -> UIBezierPath {
         //// Color Declarations

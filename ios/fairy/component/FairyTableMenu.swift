@@ -10,11 +10,11 @@ import UIKit
 
 class FairyTableMenu: UITableViewController {
     
-    var player: Player?
-    
-    public func setPlayer(player: Player){
-        self.player = player
-    }
+//    var player: Player?
+//    
+//    public func setPlayer(player: Player){
+//        self.player = player
+//    }
     
     var fairyListAdapter: Array<FairyElement> = Array(arrayLiteral: Amazon(), ArrowPawn(), Hunter(), LandminePawn(), Grasshopper())
     
