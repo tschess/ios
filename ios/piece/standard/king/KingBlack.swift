@@ -1,5 +1,5 @@
 //
-//  WhitePawn.swift
+//  KingBlack.swift
 //  ios
 //
 //  Created by Matthew on 2/5/20.
