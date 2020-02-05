@@ -117,12 +117,10 @@ class Home: UIViewController, UITabBarDelegate {
             notify.selectedImage = UIImage(systemName: "gamecontroller.fill")!
         }
         switch item.tag {
-        case 0:
-            
-            self.notificationTimerStop()
+        //case 0:
+            //self.notificationTimerStop()
             //StoryboardSelector().purchase(player: self.player!, remaining: 13)
         case 1:
-           
             self.notificationTimerStop()
             DispatchQueue.main.async() {
                 self.activityIndicator.isHidden = false
@@ -142,16 +140,21 @@ class Home: UIViewController, UITabBarDelegate {
                 }
             }
         case 3:
-            
             self.notificationTimerStop()
-            //StoryboardSelector().actual(player: self.player!)
+            DispatchQueue.main.async() {
+                let storyboard: UIStoryboard = UIStoryboard(name: "Actual", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "Actual") as! Actual
+                viewController.setPlayerSelf(playerSelf: self.player!)
+                UIApplication.shared.keyWindow?.rootViewController = viewController
+            }
         case 4:
             self.notificationTimerStop()
-             //OVERVIEW
-//            let storyboard: UIStoryboard = UIStoryboard(name: "Config", bundle: nil)
-//            let viewController = storyboard.instantiateViewController(withIdentifier: "Config") as! Config
-//            viewController.setPlayer(player: self.player!)
-//            UIApplication.shared.keyWindow?.rootViewController = viewController
+            DispatchQueue.main.async() {
+            let storyboard: UIStoryboard = UIStoryboard(name: "Config", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier: "Config") as! Config
+            viewController.setPlayer(player: self.player!)
+            UIApplication.shared.keyWindow?.rootViewController = viewController
+            }
         default:
             self.notificationTimerStop()
         }
