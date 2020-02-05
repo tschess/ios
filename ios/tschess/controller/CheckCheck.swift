@@ -10,40 +10,40 @@ import Foundation
 
 class CheckCheck {
     
-    func check(coordinate: [Int], gamestate: Gamestate) -> Bool {
-        let tschessElementMatrix = gamestate.getTschessElementMatrix()
-        let king = tschessElementMatrix[coordinate[0]][coordinate[1]]!
+    func check(coordinate: [Int], state: [[Piece?]]) -> Bool {
+        //let tschessElementMatrix = gamestate.getTschessElementMatrix()
+        let king = state[coordinate[0]][coordinate[1]]!
         let affiliation = king.affiliation
         for i in (0 ..< 8) {
             for j in (0 ..< 8) {
-                let tschessElement = tschessElementMatrix[i][j]
+                let tschessElement = state[i][j]
                 if(tschessElement == nil) {
                     continue
                 }
-                if(tschessElement!.name == "LegalMove") {
+                if(tschessElement!.name == "PieceAnte") {
                     continue
                 }
                 let friendly = tschessElement!.affiliation == affiliation
                 if(friendly){
                     continue
                 }
-                if(tschessElement!.validate(present: [i,j], proposed: coordinate, gamestate: gamestate)) {
+                if(tschessElement!.validate(present: [i,j], proposed: coordinate, state: state)) {
                     return true
                 }
             }
         }
         //special check for hopper...
-        if(HopperOffense().evaluate(present: coordinate, gamestate: gamestate, affiliation: gamestate.getSelfAffiliation())){
+        if(HopperOffense().evaluate(present: coordinate, state: state, affiliation: "FUCK")){
             return true
         }
         return false
     }
     
-    func kingCoordinate(affiliation: String, gamestate: Gamestate) -> [Int] {
-        let tschessElementMatrix = gamestate.getTschessElementMatrix()
+    func kingCoordinate(affiliation: String, state: [[Piece?]]) -> [Int] {
+        //let tschessElementMatrix = gamestate.getTschessElementMatrix()
         for i in (0 ..< 8) {
             for j in (0 ..< 8) {
-                let tschessElement = tschessElementMatrix[i][j]
+                let tschessElement = state[i][j]
                 if (tschessElement == nil) {
                     continue
                 }
@@ -58,9 +58,9 @@ class CheckCheck {
         return []
     }
     
-    public func circumscribedCheck(coordinate0: [Int], gamestate0: Gamestate) {
+    public func circumscribedCheck(coordinate0: [Int], state: [[Piece?]]) {
         
-        let orientation = gamestate0.getOrientationBlack()
+        let orientation = true //FUCK
         
         var coordinate1: [Int]
         if(orientation){
@@ -68,45 +68,45 @@ class CheckCheck {
         } else {
             coordinate1 = [coordinate0[0],coordinate0[1]]
         }
-        var tschessElementMatrix0 = gamestate0.getTschessElementMatrix()
-        let tschessElementMatrix1 = MatrixSerializer().canonicalGenerator(localMatrix: tschessElementMatrix0, orientation: orientation)
-        let gamestate1 = gamestate0.copy()
-        gamestate1.setTschessElementMatrix(tschessElementMatrix: tschessElementMatrix1)
+        //var tschessElementMatrix0 = gamestate0.getTschessElementMatrix()
+        //let tschessElementMatrix1 = MatrixSerializer().canonicalGenerator(localMatrix: tschessElementMatrix0, orientation: orientation)
+        //let gamestate1 = gamestate0.copy()
+        //gamestate1.setTschessElementMatrix(tschessElementMatrix: tschessElementMatrix1)
         
-        let kingCoordinate = self.kingCoordinate(affiliation: gamestate0.getSelfAffiliation(), gamestate: gamestate1)
+        //let kingCoordinate = self.kingCoordinate(affiliation: gamestate0.getSelfAffiliation(), gamestate: gamestate1)
         
-        let listLegalMove = self.listLegalMove(coordinate: coordinate1, gamestate: gamestate1, king: kingCoordinate)
-        
-        for (element, moveList) in listLegalMove {
-            if(element == coordinate1){
-                for move in moveList {
-                    
-                    if(orientation){
-                        tschessElementMatrix0[7-move[0]][7-move[1]] = Highlighter().transformElement(tschessElement: tschessElementMatrix0[7-move[0]][7-move[1]])
-                    } else {
-                        tschessElementMatrix0[move[0]][move[1]] = Highlighter().transformElement(tschessElement: tschessElementMatrix0[move[0]][move[1]])
-                    }
-                    
-                }
-            }
-        }
-        gamestate0.setTschessElementMatrix(tschessElementMatrix: tschessElementMatrix0)
+//        let listLegalMove = self.listLegalMove(coordinate: coordinate1, gamestate: gamestate1, king: kingCoordinate)
+//
+//        for (element, moveList) in listLegalMove {
+//            if(element == coordinate1){
+//                for move in moveList {
+//
+//                    if(orientation){
+//                        tschessElementMatrix0[7-move[0]][7-move[1]] = Highlighter().transformElement(tschessElement: tschessElementMatrix0[7-move[0]][7-move[1]])
+//                    } else {
+//                        tschessElementMatrix0[move[0]][move[1]] = Highlighter().transformElement(tschessElement: tschessElementMatrix0[move[0]][move[1]])
+//                    }
+//
+//                }
+//            }
+//        }
+//        gamestate0.setTschessElementMatrix(tschessElementMatrix: tschessElementMatrix0)
     }
     
-    public func listLegalMove(coordinate: [Int], gamestate: Gamestate, king: [Int]) -> [[Int]: Array<[Int]>] {
+    public func listLegalMove(coordinate: [Int], state: [[Piece?]], king: [Int]) -> [[Int]: Array<[Int]>] {
         if(coordinate == king) {
-            return self.listKingMove(coordinate: king, gamestate: gamestate)
+            return self.listKingMove(coordinate: king, state: state)
         }
-        return self.thwartDict(king: king, gamestate: gamestate)
+        return self.thwartDict(king: king, state: state)
     }
     
-    func listKingMove(coordinate: [Int], gamestate: Gamestate) -> [[Int]: Array<[Int]>] {
+    func listKingMove(coordinate: [Int], state: [[Piece?]]) -> [[Int]: Array<[Int]>] {
         var arrayList = Array<[Int]>()
-        let tschessElementMatrix = gamestate.getTschessElementMatrix()
-        let king = tschessElementMatrix[coordinate[0]][coordinate[1]]
+        //let tschessElementMatrix = gamestate.getTschessElementMatrix()
+        let king = state[coordinate[0]][coordinate[1]]
         for i in (0 ..< 8) {
             for j in (0 ..< 8) {
-                if(king!.validate(present: coordinate, proposed: [i,j], gamestate: gamestate)){
+                if(king!.validate(present: coordinate, proposed: [i,j], state: state)){
                     arrayList.append([i,j])
                 }
             }
@@ -114,17 +114,17 @@ class CheckCheck {
         return [coordinate: arrayList]
     }
     
-    func listCompatriot(king: [Int], gamestate: Gamestate) -> Array<[Int]> {
+    func listCompatriot(king: [Int], state: [[Piece?]]) -> Array<[Int]> {
         var arrayList = Array<[Int]>()
-        let tschessElementMatrix = gamestate.getTschessElementMatrix()
-        let kingElement = tschessElementMatrix[king[0]][king[1]]
+        //let tschessElementMatrix = gamestate.getTschessElementMatrix()
+        let kingElement = state[king[0]][king[1]]
         let affiliation = kingElement!.affiliation
         for i in (0 ..< 8) {
             for j in (0 ..< 8) {
                 if([i,j] == king){
                     continue
                 }
-                let tschessElement = tschessElementMatrix[i][j]
+                let tschessElement = state[i][j]
                 if(tschessElement == nil){
                     continue
                 }
@@ -137,17 +137,17 @@ class CheckCheck {
         return arrayList
     }
     
-    func listOpponent(king: [Int], gamestate: Gamestate) -> Array<[Int]> {
+    func listOpponent(king: [Int], state: [[Piece?]]) -> Array<[Int]> {
         var arrayList = Array<[Int]>()
-        let tschessElementMatrix = gamestate.getTschessElementMatrix()
-        let kingElement = tschessElementMatrix[king[0]][king[1]]
+        //let tschessElementMatrix = gamestate.getTschessElementMatrix()
+        let kingElement = state[king[0]][king[1]]
         let affiliation = kingElement!.affiliation
         for i in (0 ..< 8) {
             for j in (0 ..< 8) {
                 if([i,j] == king){
                     continue
                 }
-                let tschessElement = tschessElementMatrix[i][j]
+                let tschessElement = state[i][j]
                 if(tschessElement == nil){
                     continue
                 }
@@ -160,47 +160,47 @@ class CheckCheck {
         return arrayList
     }
     
-    func listAttacker(king: [Int], gamestate: Gamestate) -> Array<[Int]> {
+    func listAttacker(king: [Int], state: [[Piece?]]) -> Array<[Int]> {
         var arrayList = Array<[Int]>()
-        let tschessElementMatrix = gamestate.getTschessElementMatrix()
-        let listOpponent = self.listOpponent(king: king, gamestate: gamestate)
+        //let tschessElementMatrix = gamestate.getTschessElementMatrix()
+        let listOpponent = self.listOpponent(king: king, state: state)
         for opponent in listOpponent {
-            let opponentElement = tschessElementMatrix[opponent[0]][opponent[1]]
-            if(opponentElement!.validate(present: opponent, proposed: king, gamestate: gamestate)) {
+            let opponentElement = state[opponent[0]][opponent[1]]
+            if(opponentElement!.validate(present: opponent, proposed: king, state: state)) {
                 arrayList.append(opponent)
             }
         }
         return arrayList
     }
     
-    func thwartDict(king: [Int], gamestate: Gamestate) -> [[Int]: Array<[Int]>] {
+    func thwartDict(king: [Int], state: [[Piece?]]) -> [[Int]: Array<[Int]>] {
         var thwartDict = [[Int]: Array<[Int]>]()
-        var tschessElementMatrix = gamestate.getTschessElementMatrix()
+        //var tschessElementMatrix = gamestate.getTschessElementMatrix()
         
-        let listAttacker = self.listAttacker(king: king, gamestate: gamestate)
-        let listCompatriot = self.listCompatriot(king: king, gamestate: gamestate)
+        let listAttacker = self.listAttacker(king: king, state: state)
+        let listCompatriot = self.listCompatriot(king: king, state: state)
         
         for coordinateAttacker in listAttacker {
             for coordinateCompatriot in listCompatriot {
                 var arrayList = Array<[Int]>()
                 
-                let attackerElement = tschessElementMatrix[coordinateAttacker[0]][coordinateAttacker[1]]!
-                let compatriotElement = tschessElementMatrix[coordinateCompatriot[0]][coordinateCompatriot[1]]!
+                let attackerElement = state[coordinateAttacker[0]][coordinateAttacker[1]]!
+                let compatriotElement = state[coordinateCompatriot[0]][coordinateCompatriot[1]]!
                 
                 for i in (0 ..< 8) {
                     for j in (0 ..< 8) {
-                        if(compatriotElement.validate(present: coordinateCompatriot, proposed: [i,j], gamestate: gamestate)) {
-                            let tschessElement = tschessElementMatrix[i][j]
-                            tschessElementMatrix[i][j] = compatriotElement
-                            tschessElementMatrix[coordinateCompatriot[0]][coordinateCompatriot[1]] = tschessElement
-                            gamestate.setTschessElementMatrix(tschessElementMatrix: tschessElementMatrix)
+                        if(compatriotElement.validate(present: coordinateCompatriot, proposed: [i,j], state: state)) {
+                            let tschessElement = state[i][j]
+                            //state[i][j] = compatriotElement
+                            //state[coordinateCompatriot[0]][coordinateCompatriot[1]] = tschessElement
+                            //gamestate.setTschessElementMatrix(tschessElementMatrix: state)
                             
-                            if(!attackerElement.validate(present: coordinateAttacker, proposed: king, gamestate: gamestate)) {
+                            if(!attackerElement.validate(present: coordinateAttacker, proposed: king, state: state)) {
                                 arrayList.append([i,j])
                             }
-                            tschessElementMatrix[i][j] = tschessElement
-                            tschessElementMatrix[coordinateCompatriot[0]][coordinateCompatriot[1]] = compatriotElement
-                            gamestate.setTschessElementMatrix(tschessElementMatrix: tschessElementMatrix)
+                            //state[i][j] = tschessElement
+                            //state[coordinateCompatriot[0]][coordinateCompatriot[1]] = compatriotElement
+                            //gamestate.setTschessElementMatrix(tschessElementMatrix: state)
                         }
                     }
                 }

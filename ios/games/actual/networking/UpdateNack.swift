@@ -10,9 +10,9 @@ import Foundation
 
 class UpdateNack {
     
-        func execute(requestPayload: [String: Any], completion: @escaping ((Player?) -> Void)) {
+        func execute(requestPayload: [String: Any], completion: @escaping ((EntityPlayer?) -> Void)) {
             
-            print("\n\nRequestChallenge: \(requestPayload)\n\n")
+            print("\n\nUpdateNack: \(requestPayload)\n\n")
             
             let url = URL(string: "http://\(ServerAddress().IP):8080/game/nack")!
             var request = URLRequest(url: url)
@@ -51,17 +51,7 @@ class UpdateNack {
                         return
                     }
                     
-                    //print(json)
-                    //print("count: \(json.count)")
-                    
-                    //let xxx = json["content"] as! [[String: Any]]
-                    
-                    //print("Int(requestPayload[page])! \(requestPayload["page"])")
-                    
-                    //let leaderboardPage: [Game] = self.generateLeaderboardPage(page: requestPayload["index"]!, size: requestPayload["size"]!, serverRespose: json)
-                    //completion(leaderboardPage)
-                    //completion(true)
-                    let player: Player = PlayerDeserializer().execute(dictionary: json)
+                   let player: EntityPlayer = ParsePlayer().execute(json: json)
                     completion(player)
                     
                 } catch let error {

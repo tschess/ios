@@ -10,31 +10,26 @@ import UIKit
 
 class FairiesTable: UITableViewController {
     
-    var player: Player?
+    var player: EntityPlayer?
     
-    public func setPlayer(player: Player){
+    func setPlayer(player: EntityPlayer){
         self.player = player
     }
     
-    var fairyListAdapter: Array<FairyElement> = Array(arrayLiteral: Amazon(), ArrowPawn(), Hunter(), LandminePawn(), Grasshopper())
+    var fairyListAdapter: Array<Fairy> = Array(arrayLiteral: Amazon(), PoisonPawn(), Hunter(), Grasshopper())
     
-    var fairyListFilter: [FairyElement]?
+    var fairyListFilter: [Fairy]?
     
-    func setFairyElementList(fairyElementList: [FairyElement]) {
-        
-        self.fairyListFilter = [FairyElement]()
+    func setFairyElementList(fairyElementList: [Fairy]) {
+        self.fairyListFilter = [Fairy]()
         
         for fairyElementAdapter in fairyListAdapter {
-            
-            //if !fairyElementList.contains(where: {($0.name == fairyElementAdapter.name)}){
-                
-                fairyListFilter!.append(fairyElementAdapter)
-            //}
+            fairyListFilter!.append(fairyElementAdapter)
         }
         self.tableView.reloadData()
     }
     
-    func getFairyElementList() -> [FairyElement]? {
+    func getFairyElementList() -> [Fairy]? {
         return fairyListFilter
     }
     
@@ -55,28 +50,19 @@ class FairiesTable: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let squadUpAdapterCell = tableView.dequeueReusableCell(withIdentifier: "FairyTableCell", for: indexPath) as! FairyTableCell
+        let squadUpAdapterCell = tableView.dequeueReusableCell(withIdentifier: "FairiesCell", for: indexPath) as! FairiesCell
         let squadUpFairyElement = fairyListFilter![indexPath.row]
-        
         squadUpAdapterCell.elementNameLabel.text = squadUpFairyElement.name.lowercased()
         squadUpAdapterCell.elementImageView.image = squadUpFairyElement.getImageDefault()
-        
-//        if(self.player!.getFairyElementList().contains(squadUpFairyElement)){
-//            squadUpAdapterCell.alpha = 0.75
-//        } else {
-//            squadUpAdapterCell.alpha = 1.0
-//        }
-        
         return squadUpAdapterCell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        let squadUpDetailSelectionDictionary = ["squad_up_detail_selection": indexPath.row]
+        let squadUpDetailSelectionDictionary = ["fairies_table_selection": indexPath.row]
         NotificationCenter.default.post(
-            name: NSNotification.Name(rawValue: "SquadUpDetailSelection"),
+            name: NSNotification.Name(rawValue: "FairiesTableSelection"),
             object: nil,
             userInfo: squadUpDetailSelectionDictionary)
     }

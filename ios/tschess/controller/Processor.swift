@@ -10,26 +10,26 @@ import Foundation
 
 class Processor { //TODO: doesnt need to be its own class...
     
-    public func execute(present: [Int], proposed: [Int], gamestate: Gamestate) {
-        var tschessElementMatrix = gamestate.getTschessElementMatrix()
-        let elementPresent = tschessElementMatrix[present[0]][present[1]]!
-        let elementPropose = tschessElementMatrix[proposed[0]][proposed[1]]
+    public func execute(present: [Int], proposed: [Int], state: [[Piece?]]) {
+        //var tschessElementMatrix = gamestate.getTschessElementMatrix()
+        let elementPresent = state[present[0]][present[1]]!
+        let elementPropose = state[proposed[0]][proposed[1]]
         if(self.validateElement(candidate: elementPropose)){
-            tschessElementMatrix[present[0]][present[1]] = nil
-            tschessElementMatrix[proposed[0]][proposed[1]] = elementPresent
-            gamestate.setTschessElementMatrix(tschessElementMatrix: tschessElementMatrix)
+//            state[present[0]][present[1]] = nil
+//            state[proposed[0]][proposed[1]] = elementPresent
+            //gamestate.setTschessElementMatrix(tschessElementMatrix: tschessElementMatrix)
         }
         
     }
     
-    public func validateElement(candidate: TschessElement?) -> Bool {
+    public func validateElement(candidate: Piece?) -> Bool {
         if(candidate == nil){
             return false
         }
         if(candidate!.isTarget){
             return true
         }
-        if(candidate!.name == "LegalMove"){
+        if(candidate!.name == "PieceAnte"){
             return true
         }
         return false
