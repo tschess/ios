@@ -84,6 +84,8 @@
 		B7BE122523EAD93900ADA499 /* Historic.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7BE122423EAD93900ADA499 /* Historic.storyboard */; };
 		B7BE122723EAD94700ADA499 /* Actual.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE122623EAD94700ADA499 /* Actual.swift */; };
 		B7BE122923EAD95600ADA499 /* Actual.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7BE122823EAD95600ADA499 /* Actual.storyboard */; };
+		B7BE122D23EADC9700ADA499 /* ActualTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE122C23EADC9700ADA499 /* ActualTable.swift */; };
+		B7BE122F23EADCB900ADA499 /* ActualCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE122E23EADCB900ADA499 /* ActualCell.swift */; };
 		B7CB62F6237BB10800E50204 /* Start.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7CB62F5237BB10800E50204 /* Start.storyboard */; };
 		B7EF701E23EA28BA00BAF2E2 /* EntityPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7EF701D23EA28BA00BAF2E2 /* EntityPlayer.swift */; };
 		B7EF702123EA28E300BAF2E2 /* EntityGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7EF702023EA28E300BAF2E2 /* EntityGame.swift */; };
@@ -196,6 +198,8 @@
 		B7BE122423EAD93900ADA499 /* Historic.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Historic.storyboard; sourceTree = "<group>"; };
 		B7BE122623EAD94700ADA499 /* Actual.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Actual.swift; sourceTree = "<group>"; };
 		B7BE122823EAD95600ADA499 /* Actual.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Actual.storyboard; sourceTree = "<group>"; };
+		B7BE122C23EADC9700ADA499 /* ActualTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActualTable.swift; sourceTree = "<group>"; };
+		B7BE122E23EADCB900ADA499 /* ActualCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActualCell.swift; sourceTree = "<group>"; };
 		B7CB62F5237BB10800E50204 /* Start.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Start.storyboard; sourceTree = "<group>"; };
 		B7EF701D23EA28BA00BAF2E2 /* EntityPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityPlayer.swift; sourceTree = "<group>"; };
 		B7EF702023EA28E300BAF2E2 /* EntityGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityGame.swift; sourceTree = "<group>"; };
@@ -735,6 +739,8 @@
 			children = (
 				B7BE122123EAD91600ADA499 /* storyboard */,
 				B7BE122623EAD94700ADA499 /* Actual.swift */,
+				B7BE122C23EADC9700ADA499 /* ActualTable.swift */,
+				B7BE122E23EADCB900ADA499 /* ActualCell.swift */,
 			);
 			path = actual;
 			sourceTree = "<group>";
@@ -1086,9 +1092,11 @@
 				B7BE11B023EA9D2B00ADA499 /* Queen.swift in Sources */,
 				B7EF701E23EA28BA00BAF2E2 /* EntityPlayer.swift in Sources */,
 				B7BE11C723EA9EA700ADA499 /* RookWhite.swift in Sources */,
+				B7BE122F23EADCB900ADA499 /* ActualCell.swift in Sources */,
 				B7BE11B423EA9D7E00ADA499 /* QueenBlack.swift in Sources */,
 				B72AF9E323E3BDBF003740CD /* GetNotify.swift in Sources */,
 				B7BE11DA23EAA4BF00ADA499 /* SerializerState.swift in Sources */,
+				B7BE122D23EADC9700ADA499 /* ActualTable.swift in Sources */,
 				B7BE11C923EA9EB700ADA499 /* RookBlack.swift in Sources */,
 				B7BE120723EAD3D200ADA499 /* Amazon.swift in Sources */,
 				B7BE122323EAD92B00ADA499 /* Historic.swift in Sources */,

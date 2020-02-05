@@ -139,16 +139,26 @@ class EntityGame: Equatable, Hashable {
         return self.white.username
     }
     
-    func getDate() -> Date {
+    func getDateUpdated() -> Date {
         return DateTime().toFormatDate(string: self.updated)
     }
     
-    func getLabelTextDate() -> String {
+    func getDateCreated() -> Date {
+        return DateTime().toFormatDate(string: self.created)
+    }
+    
+    func getLabelTextDate(update: Bool) -> String {
+        var date: Date
+        if(update){
+            date = self.getDateUpdated()
+        } else {
+            date = self.getDateCreated()
+        }
         let formatter = DateFormatter()
         formatter.dateFormat = "dd.MM.YY"
-        var date = formatter.string(from: self.getDate())
-        date.insert("'", at: date.index(date.endIndex, offsetBy: -2))
-        return date
+        var dateFormat = formatter.string(from: date)
+        dateFormat.insert("'", at: dateFormat.index(dateFormat.endIndex, offsetBy: -2))
+        return dateFormat
     }
     
     
@@ -171,6 +181,32 @@ class EntityGame: Equatable, Hashable {
             return self.white.username
         }
         return self.black.username
+    }
+    
+    func getInboundInvitation(username: String) -> Bool {
+        if(self.white.username == username){
+            if(self.challenger == "WHITE"){
+                return false
+            }
+            return true
+        }
+        if(self.challenger == "BLACK"){
+            return false
+        }
+        return true
+    }
+    
+    func getInboundGame(username: String) -> Bool {
+        if(self.white.username == username){
+            if(self.turn == "WHITE"){
+                return true
+            }
+            return false
+        }
+        if(self.turn == "BLACK"){
+            return true
+        }
+        return false
     }
     
 }
