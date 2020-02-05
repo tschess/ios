@@ -1,5 +1,5 @@
 //
-//  Fairy.swift
+//  Fairies.swift
 //  ios
 //
 //  Created by Matthew on 2/5/20.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Fairy: UIViewController, UITabBarDelegate {
+class Fairies: UIViewController, UITabBarDelegate {
     
     var fairyElementList: [FairyElement] = [Amazon(), ArrowPawn(), Grasshopper(), Hunter(), LandminePawn(), Medusa(), Spy()]
     

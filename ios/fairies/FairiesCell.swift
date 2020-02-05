@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FairyTableCell: UITableViewCell {
+class FairiesCell: UITableViewCell {
     
     @IBOutlet weak var elementNameLabel: UILabel!
     @IBOutlet weak var elementImageView: UIImageView!

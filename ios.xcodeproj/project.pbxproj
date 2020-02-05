@@ -95,10 +95,10 @@
 		B7BE124123EB013400ADA499 /* RequestChallenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE124023EB013400ADA499 /* RequestChallenge.swift */; };
 		B7BE124323EB015700ADA499 /* Ack.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7BE124223EB015700ADA499 /* Ack.storyboard */; };
 		B7BE124623EB01CB00ADA499 /* RequestAck.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE124523EB01CB00ADA499 /* RequestAck.swift */; };
-		B7BE124823EB023700ADA499 /* Fairy.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE124723EB023700ADA499 /* Fairy.swift */; };
-		B7BE124A23EB027400ADA499 /* FairyTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE124923EB027400ADA499 /* FairyTable.swift */; };
-		B7BE124C23EB02A200ADA499 /* FairyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE124B23EB02A200ADA499 /* FairyCell.swift */; };
-		B7BE124F23EB02DB00ADA499 /* Fairy.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7BE124E23EB02DB00ADA499 /* Fairy.storyboard */; };
+		B7BE124823EB023700ADA499 /* Fairies.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE124723EB023700ADA499 /* Fairies.swift */; };
+		B7BE124A23EB027400ADA499 /* FairiesTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE124923EB027400ADA499 /* FairiesTable.swift */; };
+		B7BE124C23EB02A200ADA499 /* FairiesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE124B23EB02A200ADA499 /* FairiesCell.swift */; };
+		B7BE124F23EB02DB00ADA499 /* Fairies.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7BE124E23EB02DB00ADA499 /* Fairies.storyboard */; };
 		B7BE125123EB032E00ADA499 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE125023EB032E00ADA499 /* Profile.swift */; };
 		B7BE125323EB035000ADA499 /* ProfileTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE125223EB035000ADA499 /* ProfileTable.swift */; };
 		B7BE125523EB038700ADA499 /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE125423EB038700ADA499 /* ProfileCell.swift */; };
@@ -268,10 +268,10 @@
 		B7BE124023EB013400ADA499 /* RequestChallenge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestChallenge.swift; sourceTree = "<group>"; };
 		B7BE124223EB015700ADA499 /* Ack.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Ack.storyboard; sourceTree = "<group>"; };
 		B7BE124523EB01CB00ADA499 /* RequestAck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestAck.swift; sourceTree = "<group>"; };
-		B7BE124723EB023700ADA499 /* Fairy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fairy.swift; sourceTree = "<group>"; };
-		B7BE124923EB027400ADA499 /* FairyTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FairyTable.swift; sourceTree = "<group>"; };
-		B7BE124B23EB02A200ADA499 /* FairyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FairyCell.swift; sourceTree = "<group>"; };
-		B7BE124E23EB02DB00ADA499 /* Fairy.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Fairy.storyboard; sourceTree = "<group>"; };
+		B7BE124723EB023700ADA499 /* Fairies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fairies.swift; sourceTree = "<group>"; };
+		B7BE124923EB027400ADA499 /* FairiesTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FairiesTable.swift; sourceTree = "<group>"; };
+		B7BE124B23EB02A200ADA499 /* FairiesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FairiesCell.swift; sourceTree = "<group>"; };
+		B7BE124E23EB02DB00ADA499 /* Fairies.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Fairies.storyboard; sourceTree = "<group>"; };
 		B7BE125023EB032E00ADA499 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		B7BE125223EB035000ADA499 /* ProfileTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTable.swift; sourceTree = "<group>"; };
 		B7BE125423EB038700ADA499 /* ProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
@@ -456,7 +456,7 @@
 				B7BE122A23EAD97100ADA499 /* challenge */,
 				B7BE121D23EAD8E000ADA499 /* games */,
 				B7BE121C23EAD8C700ADA499 /* profile */,
-				B7BE121B23EAD8BB00ADA499 /* fairy */,
+				B7BE121B23EAD8BB00ADA499 /* fairies */,
 				B7BE121123EAD7AD00ADA499 /* config */,
 				B7BE11EE23EAC90A00ADA499 /* edit */,
 				B7BE11DF23EAC19100ADA499 /* view */,
@@ -842,15 +842,15 @@
 			path = storyboard;
 			sourceTree = "<group>";
 		};
-		B7BE121B23EAD8BB00ADA499 /* fairy */ = {
+		B7BE121B23EAD8BB00ADA499 /* fairies */ = {
 			isa = PBXGroup;
 			children = (
 				B7BE124D23EB02B400ADA499 /* storyboard */,
-				B7BE124723EB023700ADA499 /* Fairy.swift */,
-				B7BE124923EB027400ADA499 /* FairyTable.swift */,
-				B7BE124B23EB02A200ADA499 /* FairyCell.swift */,
+				B7BE124723EB023700ADA499 /* Fairies.swift */,
+				B7BE124923EB027400ADA499 /* FairiesTable.swift */,
+				B7BE124B23EB02A200ADA499 /* FairiesCell.swift */,
 			);
-			path = fairy;
+			path = fairies;
 			sourceTree = "<group>";
 		};
 		B7BE121C23EAD8C700ADA499 /* profile */ = {
@@ -978,7 +978,7 @@
 		B7BE124D23EB02B400ADA499 /* storyboard */ = {
 			isa = PBXGroup;
 			children = (
-				B7BE124E23EB02DB00ADA499 /* Fairy.storyboard */,
+				B7BE124E23EB02DB00ADA499 /* Fairies.storyboard */,
 			);
 			path = storyboard;
 			sourceTree = "<group>";
@@ -1368,7 +1368,7 @@
 				B7BE11F423EAC94E00ADA499 /* EditSelf.storyboard in Resources */,
 				B7BE126523EB058800ADA499 /* Detail.storyboard in Resources */,
 				B7BE11FA23EAC98F00ADA499 /* EditOther.storyboard in Resources */,
-				B7BE124F23EB02DB00ADA499 /* Fairy.storyboard in Resources */,
+				B7BE124F23EB02DB00ADA499 /* Fairies.storyboard in Resources */,
 				B7BE116323EA722B00ADA499 /* Other.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1462,7 +1462,7 @@
 				B7EF702123EA28E300BAF2E2 /* EntityGame.swift in Sources */,
 				B7BE12BF23EB0EC600ADA499 /* Evaluation.swift in Sources */,
 				B708D0DD236B351000A899F9 /* Init.swift in Sources */,
-				B7BE124823EB023700ADA499 /* Fairy.swift in Sources */,
+				B7BE124823EB023700ADA499 /* Fairies.swift in Sources */,
 				B7BE11D323EAA0A600ADA499 /* Castle.swift in Sources */,
 				B7BE11AB23EA9C9C00ADA499 /* KingWhite.swift in Sources */,
 				B7BE11FF23EACCDE00ADA499 /* ConfigCell.swift in Sources */,
@@ -1494,7 +1494,7 @@
 				B7BE120523EAD3C600ADA499 /* PoisonPawn.swift in Sources */,
 				B7BE11D723EAA23200ADA499 /* SquareCell.swift in Sources */,
 				B7BE116523EA727200ADA499 /* OtherMenuTable.swift in Sources */,
-				B7BE124C23EB02A200ADA499 /* FairyCell.swift in Sources */,
+				B7BE124C23EB02A200ADA499 /* FairiesCell.swift in Sources */,
 				B7316D1123E8AA8E00119865 /* RequestRefresh.swift in Sources */,
 				B7BE129923EB0A9E00ADA499 /* DrawResign.swift in Sources */,
 				B7BE11C523EA9E7C00ADA499 /* Rook.swift in Sources */,
@@ -1515,7 +1515,7 @@
 				B7BE12AA23EB0C7F00ADA499 /* Poison.swift in Sources */,
 				B7BE129B23EB0AAE00ADA499 /* Evaluate.swift in Sources */,
 				B7BE11CE23EA9F1600ADA499 /* KnightWhite.swift in Sources */,
-				B7BE124A23EB027400ADA499 /* FairyTable.swift in Sources */,
+				B7BE124A23EB027400ADA499 /* FairiesTable.swift in Sources */,
 				B7BE11B023EA9D2B00ADA499 /* Queen.swift in Sources */,
 				B7EF701E23EA28BA00BAF2E2 /* EntityPlayer.swift in Sources */,
 				B7BE125F23EB049000ADA499 /* UpdateNack.swift in Sources */,

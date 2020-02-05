@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FairyTable: UITableViewController {
+class FairiesTable: UITableViewController {
     
     var player: Player?
     
