@@ -17,13 +17,14 @@
 		B70F0C0D22EBC075001415AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70F0C0C22EBC075001415AE /* AppDelegate.swift */; };
 		B72AF9E323E3BDBF003740CD /* GetNotify.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72AF9E223E3BDBF003740CD /* GetNotify.swift */; };
 		B7316D1123E8AA8E00119865 /* RequestRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7316D1023E8AA8E00119865 /* RequestRefresh.swift */; };
-		B74136C723DE34A0001B3D60 /* LoginTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74136C623DE34A0001B3D60 /* LoginTask.swift */; };
+		B74136C723DE34A0001B3D60 /* PlayerLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74136C623DE34A0001B3D60 /* PlayerLogin.swift */; };
 		B787C73122E970DD009C94F7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B787C73022E970DD009C94F7 /* Assets.xcassets */; };
 		B787C73F22E970DD009C94F7 /* iosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B787C73E22E970DD009C94F7 /* iosTests.swift */; };
 		B787C74A22E970DD009C94F7 /* iosUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B787C74922E970DD009C94F7 /* iosUITests.swift */; };
 		B7AF787323E0B9DA00BAD8EC /* RequestPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7AF787223E0B9DA00BAD8EC /* RequestPage.swift */; };
 		B7B74A52237DCAF200D07061 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7B74A51237DCAF200D07061 /* StoreKit.framework */; };
 		B7B74A55237DCC8600D07061 /* PlayerDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B74A54237DCC8600D07061 /* PlayerDevice.swift */; };
+		B7BE115D23EA4FBE00ADA499 /* ParsePlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE115C23EA4FBE00ADA499 /* ParsePlayer.swift */; };
 		B7CB62F6237BB10800E50204 /* Start.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7CB62F5237BB10800E50204 /* Start.storyboard */; };
 		B7EF701E23EA28BA00BAF2E2 /* EntityPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7EF701D23EA28BA00BAF2E2 /* EntityPlayer.swift */; };
 		B7EF702123EA28E300BAF2E2 /* EntityGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7EF702023EA28E300BAF2E2 /* EntityGame.swift */; };
@@ -64,7 +65,7 @@
 		B70F0C1122EBC25C001415AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B72AF9E223E3BDBF003740CD /* GetNotify.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetNotify.swift; sourceTree = "<group>"; };
 		B7316D1023E8AA8E00119865 /* RequestRefresh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestRefresh.swift; sourceTree = "<group>"; };
-		B74136C623DE34A0001B3D60 /* LoginTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTask.swift; sourceTree = "<group>"; };
+		B74136C623DE34A0001B3D60 /* PlayerLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerLogin.swift; sourceTree = "<group>"; };
 		B787C72622E970DC009C94F7 /* ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ios.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B787C73022E970DD009C94F7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B787C73A22E970DD009C94F7 /* iosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iosTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -76,6 +77,7 @@
 		B7AF787223E0B9DA00BAD8EC /* RequestPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestPage.swift; sourceTree = "<group>"; };
 		B7B74A51237DCAF200D07061 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		B7B74A54237DCC8600D07061 /* PlayerDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerDevice.swift; sourceTree = "<group>"; };
+		B7BE115C23EA4FBE00ADA499 /* ParsePlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParsePlayer.swift; sourceTree = "<group>"; };
 		B7CB62F5237BB10800E50204 /* Start.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Start.storyboard; sourceTree = "<group>"; };
 		B7EF701D23EA28BA00BAF2E2 /* EntityPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityPlayer.swift; sourceTree = "<group>"; };
 		B7EF702023EA28E300BAF2E2 /* EntityGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityGame.swift; sourceTree = "<group>"; };
@@ -175,7 +177,7 @@
 		B714BF26237C9410000DD80E /* networking */ = {
 			isa = PBXGroup;
 			children = (
-				B74136C623DE34A0001B3D60 /* LoginTask.swift */,
+				B74136C623DE34A0001B3D60 /* PlayerLogin.swift */,
 			);
 			path = networking;
 			sourceTree = "<group>";
@@ -275,6 +277,7 @@
 			isa = PBXGroup;
 			children = (
 				B7EF701D23EA28BA00BAF2E2 /* EntityPlayer.swift */,
+				B7BE115C23EA4FBE00ADA499 /* ParsePlayer.swift */,
 			);
 			path = player;
 			sourceTree = "<group>";
@@ -496,8 +499,9 @@
 				B7B74A55237DCC8600D07061 /* PlayerDevice.swift in Sources */,
 				B7EF702123EA28E300BAF2E2 /* EntityGame.swift in Sources */,
 				B708D0DD236B351000A899F9 /* Initializer.swift in Sources */,
+				B7BE115D23EA4FBE00ADA499 /* ParsePlayer.swift in Sources */,
 				B708D0E9236B369D00A899F9 /* Start.swift in Sources */,
-				B74136C723DE34A0001B3D60 /* LoginTask.swift in Sources */,
+				B74136C723DE34A0001B3D60 /* PlayerLogin.swift in Sources */,
 				B7AF787323E0B9DA00BAD8EC /* RequestPage.swift in Sources */,
 				B7F541C823D51B0C00E89074 /* HomeMenuCell.swift in Sources */,
 				B7316D1123E8AA8E00119865 /* RequestRefresh.swift in Sources */,

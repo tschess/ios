@@ -19,10 +19,12 @@ class Initializer: UIViewController {
         PlayerDevice().execute(device: device!) { (result) in
             if(result != nil) {
                 sleep(1)
-                let homeStoryboard: UIStoryboard = UIStoryboard(name: "Home", bundle: nil)
-                let homeViewController = homeStoryboard.instantiateViewController(withIdentifier: "Home") as! Home
-                //homeViewController.setPlayer(player: player)
-                UIApplication.shared.keyWindow?.rootViewController = homeViewController
+                DispatchQueue.main.async {
+                    let homeStoryboard: UIStoryboard = UIStoryboard(name: "Home", bundle: nil)
+                    let homeViewController = homeStoryboard.instantiateViewController(withIdentifier: "Home") as! Home
+                    //homeViewController.setPlayer(player: player)
+                    UIApplication.shared.keyWindow?.rootViewController = homeViewController
+                }
                 return
             }
             self.start()

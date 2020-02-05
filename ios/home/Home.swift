@@ -10,12 +10,6 @@ import UIKit
 
 class Home: UIViewController, UITabBarDelegate {
     
-//    @objc func onDidReceiveData(_ notification: NSNotification) {
-//        let discoverSelectionIndex = notification.userInfo!["leaderboard_index"] as! Int
-//        let gameModel = self.leaderboardTableView!.getLeaderboardTableList()[discoverSelectionIndex]
-//        StoryboardSelector().other(player: self.player!, gameModel: gameModel)
-//    }
-    
     var homeMenuTable: HomeMenuTable?
     
     //MARK: Header
@@ -32,38 +26,19 @@ class Home: UIViewController, UITabBarDelegate {
     
     var activateProfileGestureRecognizer: UITapGestureRecognizer?
     
-    //var player: Player?
+    var player: EntityPlayer?
     
-//    func setPlayer(player: Player){
-//        self.player = player
-//    }
+    func setPlayer(player: EntityPlayer){
+        self.player = player
+    }
     
     public func renderHeader() {
-        
-//        let dataDecoded: Data = Data(base64Encoded: self.player!.getAvatar(), options: .ignoreUnknownCharacters)!
-//        let decodedimage = UIImage(data: dataDecoded)
-//        self.avatarImageView.image = decodedimage
-//        self.usernameLabel.text = self.player!.getUsername()
-//        self.eloLabel.text = self.player!.getElo()
-//        self.rankLabel.text = self.player!.getRank()
-//        self.dispLabel.text = String(abs(Int(self.player!.getDisp())!))
-//
-//        let disp: Int = Int(self.player!.getDisp())!
-//
-//        if(disp >= 0){
-//            if #available(iOS 13.0, *) {
-//                let image = UIImage(systemName: "arrow.up")!
-//                self.dispImageView.image = image
-//                self.dispImageView.tintColor = .green
-//            }
-//        }
-//        else {
-//            if #available(iOS 13.0, *) {
-//                let image = UIImage(systemName: "arrow.down")!
-//                self.dispImageView.image = image
-//                self.dispImageView.tintColor = .red
-//            }
-//        }
+        self.avatarImageView.image = self.player!.getImageAvatar()
+        self.usernameLabel.text = self.player!.username
+        self.eloLabel.text = self.player!.getLabelTextElo()
+        self.rankLabel.text = self.player!.getLabelTextRank()
+        self.dispLabel.text = self.player!.getLabelTextDisp()
+        self.dispImageView.image = self.player!.getImageDisp()!
     }
     
     override func viewDidLoad() {
@@ -72,19 +47,13 @@ class Home: UIViewController, UITabBarDelegate {
         self.tabBarMenu.delegate = self
         self.homeMenuTable = children.first as? HomeMenuTable
         
-        //self.homeMenuTable!.setPlayer(player: self.player!)
+        self.homeMenuTable!.setPlayer(player: self.player!)
         self.homeMenuTable!.setHeaderView(
             eloLabel: self.eloLabel,
             rankLabel: self.rankLabel,
             dispLabel: self.dispLabel,
             dispImageView: self.dispImageView,
             activityIndicator: self.activityIndicator)
-        
-//        NotificationCenter.default.addObserver(
-//            self,
-//            selector: #selector(self.onDidReceiveData(_:)),
-//            name: NSNotification.Name(rawValue: "HomeMenuTable"),
-//            object: nil)
     }
     
     override func viewDidDisappear(_ animated: Bool){

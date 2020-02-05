@@ -18,9 +18,9 @@ class EntityPlayer: Equatable, Hashable {
     var disp: Int
     var date: String
     var avatar: String
-    var config0: [[String?]]
-    var config1: [[String?]]
-    var config2: [[String?]]
+    var config0: [[String]]
+    var config1: [[String]]
+    var config2: [[String]]
     
     var notify: Bool
     var device: String
@@ -36,9 +36,9 @@ class EntityPlayer: Equatable, Hashable {
         disp: Int,
         date: String,
         avatar: String,
-        config0: [[String?]],
-        config1: [[String?]],
-        config2: [[String?]],
+        config0: [[String]],
+        config1: [[String]],
+        config2: [[String]],
         notify: Bool,
         device: String,
         updated: String,
@@ -67,6 +67,35 @@ class EntityPlayer: Equatable, Hashable {
     
     static func == (lhs: EntityPlayer, rhs: EntityPlayer) -> Bool {
         return lhs.id_player == rhs.id_player
+    }
+    
+    func getImageAvatar() -> UIImage {
+        let data: Data = Data(base64Encoded: self.avatar, options: .ignoreUnknownCharacters)!
+        return UIImage(data: data)!
+    }
+    
+    func getImageDisp() -> UIImage? {
+        if(self.disp >= 0){
+            if #available(iOS 13.0, *) {
+                return UIImage(systemName: "arrow.up")!.withTintColor(.green)
+            }
+        }
+        if #available(iOS 13.0, *) {
+            return UIImage(systemName: "arrow.down")!.withTintColor(.red)
+        }
+        return nil
+    }
+    
+    func getLabelTextDisp() -> String{
+        return String(abs(self.disp))
+    }
+    
+    func getLabelTextRank() -> String{
+        return String(self.rank)
+    }
+    
+    func getLabelTextElo() -> String{
+        return String(self.elo)
     }
     
 }
