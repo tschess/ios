@@ -66,7 +66,7 @@ class OtherMenuTable: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
+        tableView.deselectRow(at: indexPath, animated: false)
         
         let discoverSelectionDictionary = ["challenge_menu_game_selection": indexPath.row]
         NotificationCenter.default.post(
@@ -121,7 +121,7 @@ class OtherMenuTable: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let modifyAction = UIContextualAction(style: .normal, title:  "CHALLENGE", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
+        let modifyAction = UIContextualAction(style: .normal, title:  "CHALLENGE", handler: { (ac: UIContextualAction, view: UIView, success:(Bool) -> Void) in
             print("Update action ...")
             let gameModel = self.gameMenuTableList[indexPath.row]
             
@@ -136,7 +136,13 @@ class OtherMenuTable: UITableViewController {
             modifyAction.image = UIImage(systemName: "gamecontroller.fill")!
         }
         modifyAction.backgroundColor = .purple
-        return UISwipeActionsConfiguration(actions: [modifyAction])
+        
+        
+        let config = UISwipeActionsConfiguration(actions: [modifyAction])
+        config.performsFirstActionWithFullSwipe = false
+       
+        
+        return config
     }
     
     private func renderShrug(){  // this can exist in practice...
