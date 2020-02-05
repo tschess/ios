@@ -12,7 +12,7 @@ class Challenge:
     UIViewController,
     UIPickerViewDataSource,
     UIPickerViewDelegate,
-    UITabBarDelegate, UIGestureRecognizerDelegate {
+UITabBarDelegate, UIGestureRecognizerDelegate {
     
     var activateBackConfig: Int?
     
@@ -21,12 +21,11 @@ class Challenge:
     }
     
     func generateTraditionalMatrix() -> [[Piece]] {
-            
+        
         let row0 = [Pawn(), Pawn(), Pawn(), Pawn(), Pawn(), Pawn(), Pawn(), Pawn()]
         let row1 = [Rook(), Knight(), Bishop(), Queen(), King(), Bishop(), Knight(), Rook()]
-            
-            return [row0, row1]
-        }
+        return [row0, row1]
+    }
     
     @IBOutlet weak var configLabelView: UIView!
     @IBOutlet weak var traditionalLabel: UILabel!
@@ -202,12 +201,12 @@ class Challenge:
     var alphaDotHalf: NSMutableAttributedString?
     
     public func renderHeaderOther() {
-           self.avatarImageView.image = self.playerOther!.getImageAvatar()
-           self.usernameLabel.text = self.playerOther!.username
-           self.eloLabel.text = self.playerOther!.getLabelTextElo()
-           self.rankLabel.text = self.playerOther!.getLabelTextRank()
-           self.rankDateLabel.text = self.playerOther!.getLabelTextDate()
-       }
+        self.avatarImageView.image = self.playerOther!.getImageAvatar()
+        self.usernameLabel.text = self.playerOther!.username
+        self.eloLabel.text = self.playerOther!.getLabelTextElo()
+        self.rankLabel.text = self.playerOther!.getLabelTextRank()
+        self.rankDateLabel.text = self.playerOther!.getLabelTextDate()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -356,10 +355,10 @@ class Challenge:
                     self.renderConfig0()
                     return
                 }
-//                if(activeConfigNumber.text == "0̸"){
-//                     self.renderConfigS()
-//                    return
-//                }
+                //                if(activeConfigNumber.text == "0̸"){
+                //                     self.renderConfigS()
+                //                    return
+            //                }
             case UISwipeGestureRecognizer.Direction.left:
                 if(activeConfigNumber.text == "0̸"){
                     self.renderConfig1()
@@ -373,12 +372,12 @@ class Challenge:
                     self.renderConfigS()
                     return
                 }
-//                if(self.configLabelView.isHidden == false){
-//                    self.configLabelView.isHidden = true
-//                    self.traditionalLabel.isHidden = false
-//                    self.renderConfig0()
-//                    return
-//                }
+                //                if(self.configLabelView.isHidden == false){
+                //                    self.configLabelView.isHidden = true
+                //                    self.traditionalLabel.isHidden = false
+                //                    self.renderConfig0()
+                //                    return
+            //                }
             default:
                 break
             }
@@ -409,9 +408,9 @@ class Challenge:
             
             let requestPayload: [String: Any] = [
                 "player_self": self.playerSelf!.id,
-            "player_oppo": self.playerOther!.id,
-            "skin": "DEFAULT",
-            "config": 0]
+                "player_oppo": self.playerOther!.id,
+                "skin": "DEFAULT",
+                "config": 0]
             
             RequestChallenge().execute(requestPayload: requestPayload) { (result) in
                 

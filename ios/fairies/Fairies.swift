@@ -70,13 +70,9 @@ class Fairies: UIViewController, UITabBarDelegate {
     @IBAction func backButtonClick(_ sender: Any) {
         let storyboard: UIStoryboard = UIStoryboard(name: "Config", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "Config") as! Config
-        viewController.setPlayer(player: self.player!)
+        viewController.setPlayerSelf(playerSelf: self.player!)
         UIApplication.shared.keyWindow?.rootViewController = viewController
     }
-    
-//    ["fairies_table_selection": indexPath.row]
-//    NotificationCenter.default.post(
-//        name: NSNotification.Name(rawValue: "FairiesTableSelection"),
     
     @objc func onDidReceiveData(_ notification: NSNotification) {
         let squadUpDetailSelectionIndex = notification.userInfo!["fairies_table_selection"] as! Int
@@ -97,13 +93,12 @@ class Fairies: UIViewController, UITabBarDelegate {
                 let viewController = storyboard.instantiateViewController(withIdentifier: "Home") as! Home
                 viewController.setPlayer(player: self.player!)
                 UIApplication.shared.keyWindow?.rootViewController = viewController
+                return
             }
-            return
         default:
             let storyboard: UIStoryboard = UIStoryboard(name: "Config", bundle: nil)
             let viewController = storyboard.instantiateViewController(withIdentifier: "Config") as! Config
-            viewController.setPlayer(player: self.player!)
-            //viewController.setOpponent(opponent: opponent)
+            viewController.setPlayerSelf(playerSelf: self.player!)
             UIApplication.shared.keyWindow?.rootViewController = viewController
         }
     }

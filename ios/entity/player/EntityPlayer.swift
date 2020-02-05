@@ -120,5 +120,16 @@ class EntityPlayer: Equatable, Hashable {
         return SerializerConfig().renderClient(config: self.config0)
     }
     
+    func setConfig(index: Int, config: [[Piece?]]) {
+        if(index == 2){
+            self.config2 = SerializerConfig().renderServer(config: config)
+            //return SerializerConfig().renderClient(config: self.config2)
+        }
+        if(index == 1){
+            self.config1 = SerializerConfig().renderServer(config: config)
+        }
+        self.config0 = SerializerConfig().renderServer(config: config)
+    }
+    
 }
 

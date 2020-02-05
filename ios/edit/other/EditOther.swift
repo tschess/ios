@@ -133,7 +133,7 @@ class EditOther: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate
     //MARK: Render
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == self.pieceCollectionView {
-            let elementCell = collectionView.dequeueReusableCell(withReuseIdentifier: "piece", for: indexPath) as! ConfigCell
+            let elementCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ConfigCell", for: indexPath) as! ConfigCell
             
             let elementImageIdentifier: String = self.ELEMENT_LIST[indexPath.row]
             let elementImage: UIImage = UIImage(named: elementImageIdentifier)!

@@ -11,7 +11,7 @@
         <!--Profile-->
         <scene sceneID="Q28-1V-CcY">
             <objects>
-                <viewController storyboardIdentifier="ProfileCalhoun" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ppG-Gz-AcZ" customClass="Profile" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Profile" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ppG-Gz-AcZ" customClass="Profile" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="49s-YQ-uDd">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -57,6 +57,8 @@
                             </tabBar>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x0F-qL-q6P">
                                 <rect key="frame" x="0.0" y="222" width="414" height="590"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <segue destination="6lQ-GQ-oYe" kind="embed" id="Upl-IC-WjT"/>
                                 </connections>
@@ -187,7 +189,8 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="BgY-E1-fEa" firstAttribute="top" secondItem="x0F-qL-q6P" secondAttribute="bottom" id="180-pF-wdy"/>
                             <constraint firstItem="x0F-qL-q6P" firstAttribute="top" secondItem="79G-Gn-uss" secondAttribute="bottom" id="7Xy-h9-7Gs"/>
@@ -228,18 +231,18 @@
             </objects>
             <point key="canvasLocation" x="-391.304347826087" y="164.73214285714286"/>
         </scene>
-        <!--Option Menu Table-->
+        <!--Profile Table-->
         <scene sceneID="nOf-70-oD6">
             <objects>
-                <tableViewController id="6lQ-GQ-oYe" customClass="OptionMenuTable" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="6lQ-GQ-oYe" customClass="ProfileTable" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="64" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="U8B-RQ-Tre">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="590"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="tintColor" red="0.86923474069999995" green="0.012778783219999999" blue="0.00083617179190000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="separatorColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="OptionCell" rowHeight="64" id="chw-qD-YHE" customClass="OptionCell" customModule="ios" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ProfileCell" rowHeight="64" id="chw-qD-YHE" customClass="ProfileCell" customModule="ios" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="64"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="chw-qD-YHE" id="fhY-kg-IUt">
@@ -248,14 +251,14 @@
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tornado" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="pXj-06-TZZ">
                                             <rect key="frame" x="8" y="9.6666666666666643" width="45" height="45"/>
-                                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="45" id="Wfm-4Y-AG9"/>
                                                 <constraint firstAttribute="height" constant="45" id="cbx-iE-23U"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="custom skins" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H8g-9w-PaC">
-                                            <rect key="frame" x="53" y="0.0" width="353" height="64"/>
+                                            <rect key="frame" x="8" y="0.0" width="398" height="64"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="64" id="Ymh-Hk-Yds"/>
                                             </constraints>
@@ -264,9 +267,10 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstItem="pXj-06-TZZ" firstAttribute="leading" secondItem="fhY-kg-IUt" secondAttribute="leading" constant="8" id="210-WL-DFz"/>
-                                        <constraint firstItem="H8g-9w-PaC" firstAttribute="leading" secondItem="pXj-06-TZZ" secondAttribute="trailing" id="SdP-Ka-OGx"/>
+                                        <constraint firstItem="H8g-9w-PaC" firstAttribute="leading" secondItem="fhY-kg-IUt" secondAttribute="leading" constant="8" id="SdP-Ka-OGx"/>
                                         <constraint firstItem="pXj-06-TZZ" firstAttribute="centerY" secondItem="fhY-kg-IUt" secondAttribute="centerY" id="h0h-iE-Vz3"/>
                                         <constraint firstAttribute="trailing" secondItem="H8g-9w-PaC" secondAttribute="trailing" constant="8" id="iMQ-T6-XL5"/>
                                         <constraint firstItem="H8g-9w-PaC" firstAttribute="centerY" secondItem="fhY-kg-IUt" secondAttribute="centerY" id="yPh-0T-tWA"/>

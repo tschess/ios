@@ -75,12 +75,28 @@ class OtherMenuTable: UITableViewController {
             userInfo: discoverSelectionDictionary)
     }
     
-    override open func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if indexPath.row == self.gameMenuTableList.count - 1 {
-            self.pageFromWhichContentLoads += 1
-            self.fetchMenuTableList()
-        }
-    }
+     override func viewDidLayoutSubviews() {
+           super.viewDidLayoutSubviews()
+           let visibleRows = self.tableView.indexPathsForVisibleRows
+           let lastRow = visibleRows?.last?.row
+           if(lastRow == nil){
+               return
+           }
+           let REQUEST_PAGE_SIZE: Int = 9
+           
+           let index = self.pageFromWhichContentLoads
+           let size = REQUEST_PAGE_SIZE
+           let indexFrom: Int =  index * size
+           let indexTo: Int = indexFrom + REQUEST_PAGE_SIZE - 2
+           
+           if(lastRow! <= indexTo){
+               return
+           }
+           if lastRow == indexTo {
+               self.pageFromWhichContentLoads += 1
+               self.fetchMenuTableList()
+           }
+       }
     
     func fetchMenuTableList() {
 
@@ -100,6 +116,9 @@ class OtherMenuTable: UITableViewController {
             DispatchQueue.main.async() {
                 self.activityIndicator!.stopAnimating()
                 self.activityIndicator!.isHidden = true
+            }
+            if(result == nil){
+                return
             }
             self.appendToLeaderboardTableList(additionalCellList: result!)
         }
@@ -125,11 +144,11 @@ class OtherMenuTable: UITableViewController {
             
             let gameModel = self.gameMenuTableList[indexPath.row]
             
-//            let storyboard: UIStoryboard = UIStoryboard(name: "Challenge", bundle: nil)
-//            let viewController = storyboard.instantiateViewController(withIdentifier: "Challenge") as! Challenge
-//            viewController.setPlayer(player: self.player!)
-//            viewController.setGameModel(gameModel: gameModel)
-//            UIApplication.shared.keyWindow?.rootViewController = viewController
+            let storyboard: UIStoryboard = UIStoryboard(name: "Challenge", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier: "Challenge") as! Challenge
+            viewController.setPlayerSelf(playerSelf: self.player!)
+            viewController.setPlayerOther(playerOther: gameModel.getPlayerOther(username: self.player!.username))
+            UIApplication.shared.keyWindow?.rootViewController = viewController
             
             success(true)
         })

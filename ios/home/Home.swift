@@ -74,7 +74,12 @@ class Home: UIViewController, UITabBarDelegate {
     }
     
     @objc func activateProfile() {
-        //StoryboardSelector().profile(player: self.player!)
+        DispatchQueue.main.async() {
+            let profileStoryboard: UIStoryboard = UIStoryboard(name: "Profile", bundle: nil)
+            let profileViewController = profileStoryboard.instantiateViewController(withIdentifier: "Profile") as! Profile
+            profileViewController.setPlayer(player: self.player!)
+            UIApplication.shared.keyWindow?.rootViewController = profileViewController
+        }
     }
     
     // MARK: NOTIFICATION TIMER
@@ -94,19 +99,19 @@ class Home: UIViewController, UITabBarDelegate {
     }
     
     @objc func notificationTimerTask() {
-//        GetNotify().execute(id: self.player!.getId()) { (notify) in
-//            if(!notify){
-//                return
-//            }
-//            DispatchQueue.main.async() {
-//                self.tabBarMenu.selectedImageTintColor = UIColor.magenta
-//                if #available(iOS 13.0, *) {
-//                    let notify = self.tabBarMenu.items![1]
-//                    notify.selectedImage = UIImage(systemName: "gamecontroller")!
-//                    self.tabBarMenu.selectedItem = notify
-//                }
-//            }
-//        }
+        //        GetNotify().execute(id: self.player!.getId()) { (notify) in
+        //            if(!notify){
+        //                return
+        //            }
+        //            DispatchQueue.main.async() {
+        //                self.tabBarMenu.selectedImageTintColor = UIColor.magenta
+        //                if #available(iOS 13.0, *) {
+        //                    let notify = self.tabBarMenu.items![1]
+        //                    notify.selectedImage = UIImage(systemName: "gamecontroller")!
+        //                    self.tabBarMenu.selectedItem = notify
+        //                }
+        //            }
+        //        }
     }
     
     
@@ -117,9 +122,9 @@ class Home: UIViewController, UITabBarDelegate {
             notify.selectedImage = UIImage(systemName: "gamecontroller.fill")!
         }
         switch item.tag {
-        //case 0:
+            //case 0:
             //self.notificationTimerStop()
-            //StoryboardSelector().purchase(player: self.player!, remaining: 13)
+        //StoryboardSelector().purchase(player: self.player!, remaining: 13)
         case 1:
             self.notificationTimerStop()
             DispatchQueue.main.async() {
@@ -127,11 +132,11 @@ class Home: UIViewController, UITabBarDelegate {
                 self.activityIndicator.startAnimating()
             }
             RequestQuick().success(id: self.player!.id) { (opponent) in
-
+                
                 DispatchQueue.main.async() {
                     self.activityIndicator.stopAnimating()
                     self.activityIndicator.isHidden = true
-
+                    
                     let storyboard: UIStoryboard = UIStoryboard(name: "Play", bundle: nil)
                     let viewController = storyboard.instantiateViewController(withIdentifier: "Play") as! Play
                     viewController.setPlayerSelf(playerSelf: self.player!)
@@ -150,10 +155,10 @@ class Home: UIViewController, UITabBarDelegate {
         case 4:
             self.notificationTimerStop()
             DispatchQueue.main.async() {
-            let storyboard: UIStoryboard = UIStoryboard(name: "Config", bundle: nil)
-            let viewController = storyboard.instantiateViewController(withIdentifier: "Config") as! Config
-            viewController.setPlayer(player: self.player!)
-            UIApplication.shared.keyWindow?.rootViewController = viewController
+                let storyboard: UIStoryboard = UIStoryboard(name: "Config", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "Config") as! Config
+                viewController.setPlayerSelf(playerSelf: self.player!)
+                UIApplication.shared.keyWindow?.rootViewController = viewController
             }
         default:
             self.notificationTimerStop()

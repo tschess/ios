@@ -48,7 +48,24 @@ class SerializerConfig {
         default:
             return nil
         }
-        
+    }
+    
+    func renderServer(config: [[Piece?]]) -> [[String]] {
+        var rowA = [String](repeating: "", count: 8)
+        var rowB = [String](repeating: "", count: 8)
+        for col in (0 ..< 8) {
+            rowA[col] = self.getName(piece: config[1][col])
+            rowB[col] = self.getName(piece: config[0][col])
+        }
+        return [rowA, rowB]
+    }
+    
+    
+    func getName(piece: Piece?) -> String {
+        if(piece == nil){
+            return ""
+        }
+        return piece!.name
     }
     
 }

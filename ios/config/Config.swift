@@ -86,11 +86,11 @@ UINavigationControllerDelegate, UIDropInteractionDelegate {
     
     var points: Int?
     
-    var deviceType: String?
-    var player: EntityPlayer?
+    //var deviceType: String?
+    var playerSelf: EntityPlayer?
     
-    public func setPlayer(player: EntityPlayer){
-        self.player = player
+    public func setPlayerSelf(playerSelf: EntityPlayer){
+        self.playerSelf = playerSelf
     }
     
     //MARK: - lifecycle
@@ -121,41 +121,41 @@ UINavigationControllerDelegate, UIDropInteractionDelegate {
     @IBAction func backButtonClick(_ sender: Any) {
         let homeStoryboard: UIStoryboard = UIStoryboard(name: "Home", bundle: nil)
         let homeViewController = homeStoryboard.instantiateViewController(withIdentifier: "Home") as! Home
-        homeViewController.setPlayer(player: self.player!)
+        homeViewController.setPlayer(player: self.playerSelf!)
         UIApplication.shared.keyWindow?.rootViewController = homeViewController
     }
     
     @objc func editCollectionView0() {
-        //        let storyboard: UIStoryboard = UIStoryboard(name: "EditSelf", bundle: nil)
-        //        let viewController = storyboard.instantiateViewController(withIdentifier: "EditSelf") as! EditSelf
-        //        viewController.setPlayer(player: self.player!)
-        //        viewController.setTitleText(titleText: "config. 0̸")
-        //        UIApplication.shared.keyWindow?.rootViewController = viewController
+        let storyboard: UIStoryboard = UIStoryboard(name: "EditSelf", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "EditSelf") as! EditSelf
+        viewController.setPlayerSelf(playerSelf: self.playerSelf!)
+        viewController.setTitleText(titleText: "config. 0̸")
+        UIApplication.shared.keyWindow?.rootViewController = viewController
     }
     
     @objc func editCollectionView1() {
-        //        let storyboard: UIStoryboard = UIStoryboard(name: "EditSelf", bundle: nil)
-        //        let viewController = storyboard.instantiateViewController(withIdentifier: "EditSelf") as! EditSelf
-        //        viewController.setPlayer(player: self.player!)
-        //        viewController.setTitleText(titleText: "config. 1")
-        //        UIApplication.shared.keyWindow?.rootViewController = viewController
+        let storyboard: UIStoryboard = UIStoryboard(name: "EditSelf", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "EditSelf") as! EditSelf
+        viewController.setPlayerSelf(playerSelf: self.playerSelf!)
+        viewController.setTitleText(titleText: "config. 1")
+        UIApplication.shared.keyWindow?.rootViewController = viewController
     }
     
     @objc func editCollectionView2() {
-        //        let storyboard: UIStoryboard = UIStoryboard(name: "EditSelf", bundle: nil)
-        //        let viewController = storyboard.instantiateViewController(withIdentifier: "EditSelf") as! EditSelf
-        //        viewController.setPlayer(player: self.player!)
-        //        viewController.setTitleText(titleText: "config. 2")
-        //        UIApplication.shared.keyWindow?.rootViewController = viewController
+        let storyboard: UIStoryboard = UIStoryboard(name: "EditSelf", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "EditSelf") as! EditSelf
+        viewController.setPlayerSelf(playerSelf: self.playerSelf!)
+        viewController.setTitleText(titleText: "config. 2")
+        UIApplication.shared.keyWindow?.rootViewController = viewController
     }
     
     public func renderHeader() {
-        self.avatarImageView.image = self.player!.getImageAvatar()
-        self.usernameLabel.text = self.player!.username
-        self.eloLabel.text = self.player!.getLabelTextElo()
-        self.rankLabel.text = self.player!.getLabelTextRank()
-        self.displacementLabel.text = self.player!.getLabelTextDisp()
-        self.displacementImage.image = self.player!.getImageDisp()!
+        self.avatarImageView.image = self.playerSelf!.getImageAvatar()
+        self.usernameLabel.text = self.playerSelf!.username
+        self.eloLabel.text = self.playerSelf!.getLabelTextElo()
+        self.rankLabel.text = self.playerSelf!.getLabelTextRank()
+        self.displacementLabel.text = self.playerSelf!.getLabelTextDisp()
+        self.displacementImage.image = self.playerSelf!.getImageDisp()!
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -163,9 +163,9 @@ UINavigationControllerDelegate, UIDropInteractionDelegate {
         
         self.renderHeader()
         
-        self.tschessElementMatrix0 = self.player!.getConfig(index: 0)
-        self.tschessElementMatrix1 = self.player!.getConfig(index: 1)
-        self.tschessElementMatrix2 = self.player!.getConfig(index: 2)
+        self.tschessElementMatrix0 = self.playerSelf!.getConfig(index: 0)
+        self.tschessElementMatrix1 = self.playerSelf!.getConfig(index: 1)
+        self.tschessElementMatrix2 = self.playerSelf!.getConfig(index: 2)
     }
     
     override func viewDidLayoutSubviews() {
@@ -358,14 +358,14 @@ extension Config: UICollectionViewDelegate {
             DispatchQueue.main.async {
                 let storyboard: UIStoryboard = UIStoryboard(name: "Fairies", bundle: nil)
                 let viewController = storyboard.instantiateViewController(withIdentifier: "Fairies") as! Fairies
-                viewController.setPlayer(player: self.player!)
+                viewController.setPlayer(player: self.playerSelf!)
                 UIApplication.shared.keyWindow?.rootViewController = viewController
             }
         default:
             DispatchQueue.main.async {
                 let storyboard: UIStoryboard = UIStoryboard(name: "Home", bundle: nil)
                 let viewController = storyboard.instantiateViewController(withIdentifier: "Home") as! Home
-                viewController.setPlayer(player: self.player!)
+                viewController.setPlayer(player: self.playerSelf!)
                 UIApplication.shared.keyWindow?.rootViewController = viewController
             }
         }

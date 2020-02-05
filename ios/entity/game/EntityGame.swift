@@ -209,4 +209,11 @@ class EntityGame: Equatable, Hashable {
         return false
     }
     
+    func getPlayerOther(username: String) -> EntityPlayer {
+        if(self.white.username == username){
+            return self.black
+        }
+        return self.white
+    }
+    
 }
