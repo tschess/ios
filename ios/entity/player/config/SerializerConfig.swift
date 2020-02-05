@@ -13,7 +13,7 @@ class SerializerConfig {
     func renderClient(config: [[String]]) -> [[Piece?]] {
         let row0: [Piece?] = self.getPiece(rowA: config[0])
         let row1: [Piece?] = self.getPiece(rowA: config[1])
-        return [row0, row1]
+        return [row1, row0]
     }
     
     func getPiece(rowA: [String]) -> [Piece?] {

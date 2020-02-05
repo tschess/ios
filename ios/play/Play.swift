@@ -325,20 +325,20 @@ class Play:
             self.flash()
             return
         }
-//        let storyboard: UIStoryboard = UIStoryboard(name: "EditOther", bundle: nil)
-//        let viewController = storyboard.instantiateViewController(withIdentifier: "EditOther") as! EditOther
-//        viewController.setTitleText(titleText: "quick play")
-//        viewController.setActiveConfigNumber(activeConfigNumber: 0)
-//        let numberString: String = self.activeConfigNumber.text!
-//        if(numberString == "1"){
-//            viewController.setActiveConfigNumber(activeConfigNumber: 1)
-//        }
-//        if(numberString == "2") {
-//            viewController.setActiveConfigNumber(activeConfigNumber: 2)
-//        }
-//        viewController.setPlayerOther(playerOther: self.opponent!)
-//        viewController.setPlayerSelf(playerSelf: self.player!)
-//        UIApplication.shared.keyWindow?.rootViewController = viewController
+        let storyboard: UIStoryboard = UIStoryboard(name: "EditOther", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "EditOther") as! EditOther
+        viewController.setTitleText(titleText: "quick play")
+        viewController.setActiveConfigNumber(activeConfigNumber: 0)
+        let numberString: String = self.activeConfigNumber.text!
+        if(numberString == "1"){
+            viewController.setActiveConfigNumber(activeConfigNumber: 1)
+        }
+        if(numberString == "2") {
+            viewController.setActiveConfigNumber(activeConfigNumber: 2)
+        }
+        viewController.setPlayerOther(playerOther: self.playerOther!)
+        viewController.setPlayerSelf(playerSelf: self.playerSelf!)
+        UIApplication.shared.keyWindow?.rootViewController = viewController
     }
     
     var swipeRightGesture: UISwipeGestureRecognizer?

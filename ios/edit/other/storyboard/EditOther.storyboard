@@ -125,7 +125,7 @@
                                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                 </collectionViewFlowLayout>
                                                 <cells>
-                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="square" id="h6V-6Z-nHq" customClass="ConfigCollectionViewCell" customModule="ios" customModuleProvider="target">
+                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="square" id="h6V-6Z-nHq" customClass="SquareCell" customModule="ios" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="78" height="55"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -441,8 +441,6 @@
                         <outlet property="backButton" destination="5qi-EH-0fj" id="T37-c0-SCb"/>
                         <outlet property="boardViewConfig" destination="cLt-qU-Ujd" id="5W9-lS-1Dt"/>
                         <outlet property="boardViewConfigHeight" destination="CcB-qU-k3t" id="WjF-vj-36K"/>
-                        <outlet property="configCollectionView" destination="cLt-qU-Ujd" id="o5R-Vg-LOy"/>
-                        <outlet property="configCollectionViewHeight" destination="CcB-qU-k3t" id="6Tg-VC-f3w"/>
                         <outlet property="contentView" destination="9wh-i1-2Qp" id="sp1-ft-tC4"/>
                         <outlet property="dateLabel" destination="1FV-SL-2zT" id="aGO-VL-k3j"/>
                         <outlet property="dropViewBottom0" destination="8OA-ca-ynY" id="TwY-Oa-Imn"/>
@@ -461,7 +459,6 @@
                         <outlet property="tabBarMenu" destination="lR1-2A-YPc" id="CDf-K6-4Hh"/>
                         <outlet property="titleLabel" destination="rh3-GT-zds" id="CUA-nm-eYa"/>
                         <outlet property="totalPointLabel" destination="bnj-gY-QC6" id="Jkc-fl-nvp"/>
-                        <outlet property="tschessElementCollectionView" destination="nQP-5X-zQQ" id="1cF-NF-axm"/>
                         <outlet property="usernameLabel" destination="5cD-8o-yjA" id="aRv-Y9-uOc"/>
                     </connections>
                 </viewController>
