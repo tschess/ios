@@ -130,6 +130,7 @@ class OtherMenuTable: UITableViewController {
 //            viewController.setPlayer(player: self.player!)
 //            viewController.setGameModel(gameModel: gameModel)
 //            UIApplication.shared.keyWindow?.rootViewController = viewController
+            
             success(true)
         })
         if #available(iOS 13.0, *) {
