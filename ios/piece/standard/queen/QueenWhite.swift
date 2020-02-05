@@ -6,4 +6,17 @@
 //  Copyright © 2020 bahlsenwitz. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+class QueenWhite: Queen {
+    
+    init() {
+        super.init(
+            name: "QueenWhite",
+            imageDefault: UIImage(named: "white_queen")!,
+            affiliation: "WHITE",
+            imageTarget: UIImage(named: "target_white_queen"),
+            imageSelection: UIImage(named: "selection_white_queen")
+        )
+    }
+}

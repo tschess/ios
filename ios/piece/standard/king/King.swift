@@ -34,19 +34,18 @@ class King: Piece {
     }
     
     public override func validate(present: [Int], proposed: [Int], state: [[Piece?]]) ->  Bool {
-        if(Castling().castle(kingCoordinate: present, proposed: proposed, state: state)){
-            return true
-        }
+//        if(Castle().castle(kingCoordinate: present, proposed: proposed, state: state)){
+//            return true
+//        }
         if(!kingMovement.movement(present: present, proposed: proposed)) {
             return false
         }
-        if(attack.evaluate(present: present, proposed: proposed, state: state)) {
-            return false
-        }
-        if(threat.evaluate(present: present, proposed: proposed, state: state)) {
-            return false
-        }
-        //let tschessElementMatrix = gamestate.getTschessElementMatrix()
+//        if(attack.evaluate(present: present, proposed: proposed, state: state)) {
+//            return false
+//        }
+//        if(threat.evaluate(present: present, proposed: proposed, state: state)) {
+//            return false
+//        }
         let elementDest = state[proposed[0]][proposed[1]]
         if(elementDest == nil) {
             return true

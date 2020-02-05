@@ -12,7 +12,7 @@ class KnightBlack: Knight {
     
     init() {
         super.init(
-            name: "BlackKnight",
+            name: "KnightBlack",
             imageDefault: UIImage(named: "black_knight")!,
             affiliation: "BLACK",
             imageTarget: UIImage(named: "target_black_knight"),
