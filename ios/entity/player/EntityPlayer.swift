@@ -18,14 +18,14 @@ class EntityPlayer: Equatable, Hashable {
     var disp: Int
     var date: String
     var avatar: String
-    var config0: [[TschessElement?]]
-    var config1: [[TschessElement?]]
-    var config2: [[TschessElement?]]
+    var config0: [[String?]]
+    var config1: [[String?]]
+    var config2: [[String?]]
     
-    //var notify: Bool
-    //var device: String
-    //var updated: String
-    //var created: String
+    var notify: Bool
+    var device: String
+    var updated: String
+    var created: String
     
     init(
         id_player: String,
@@ -36,9 +36,13 @@ class EntityPlayer: Equatable, Hashable {
         disp: Int,
         date: String,
         avatar: String,
-        config0: [[TschessElement?]],
-        config1: [[TschessElement?]],
-        config2: [[TschessElement?]]
+        config0: [[String?]],
+        config1: [[String?]],
+        config2: [[String?]],
+        notify: Bool,
+        device: String,
+        updated: String,
+        created: String
     ) {
         self.id_player = id_player
         self.username = username
@@ -51,6 +55,10 @@ class EntityPlayer: Equatable, Hashable {
         self.config0 = config0
         self.config1 = config1
         self.config2 = config2
+        self.notify = notify
+        self.device = device
+        self.updated = updated
+        self.created = created
     }
     
     func hash(into hasher: inout Hasher) {

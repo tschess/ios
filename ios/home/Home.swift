@@ -32,38 +32,38 @@ class Home: UIViewController, UITabBarDelegate {
     
     var activateProfileGestureRecognizer: UITapGestureRecognizer?
     
-    var player: Player?
+    //var player: Player?
     
-    func setPlayer(player: Player){
-        self.player = player
-    }
+//    func setPlayer(player: Player){
+//        self.player = player
+//    }
     
     public func renderHeader() {
         
-        let dataDecoded: Data = Data(base64Encoded: self.player!.getAvatar(), options: .ignoreUnknownCharacters)!
-        let decodedimage = UIImage(data: dataDecoded)
-        self.avatarImageView.image = decodedimage
-        self.usernameLabel.text = self.player!.getUsername()
-        self.eloLabel.text = self.player!.getElo()
-        self.rankLabel.text = self.player!.getRank()
-        self.dispLabel.text = String(abs(Int(self.player!.getDisp())!))
-        
-        let disp: Int = Int(self.player!.getDisp())!
-        
-        if(disp >= 0){
-            if #available(iOS 13.0, *) {
-                let image = UIImage(systemName: "arrow.up")!
-                self.dispImageView.image = image
-                self.dispImageView.tintColor = .green
-            }
-        }
-        else {
-            if #available(iOS 13.0, *) {
-                let image = UIImage(systemName: "arrow.down")!
-                self.dispImageView.image = image
-                self.dispImageView.tintColor = .red
-            }
-        }
+//        let dataDecoded: Data = Data(base64Encoded: self.player!.getAvatar(), options: .ignoreUnknownCharacters)!
+//        let decodedimage = UIImage(data: dataDecoded)
+//        self.avatarImageView.image = decodedimage
+//        self.usernameLabel.text = self.player!.getUsername()
+//        self.eloLabel.text = self.player!.getElo()
+//        self.rankLabel.text = self.player!.getRank()
+//        self.dispLabel.text = String(abs(Int(self.player!.getDisp())!))
+//
+//        let disp: Int = Int(self.player!.getDisp())!
+//
+//        if(disp >= 0){
+//            if #available(iOS 13.0, *) {
+//                let image = UIImage(systemName: "arrow.up")!
+//                self.dispImageView.image = image
+//                self.dispImageView.tintColor = .green
+//            }
+//        }
+//        else {
+//            if #available(iOS 13.0, *) {
+//                let image = UIImage(systemName: "arrow.down")!
+//                self.dispImageView.image = image
+//                self.dispImageView.tintColor = .red
+//            }
+//        }
     }
     
     override func viewDidLoad() {
@@ -72,7 +72,7 @@ class Home: UIViewController, UITabBarDelegate {
         self.tabBarMenu.delegate = self
         self.homeMenuTable = children.first as? HomeMenuTable
         
-        self.homeMenuTable!.setPlayer(player: self.player!)
+        //self.homeMenuTable!.setPlayer(player: self.player!)
         self.homeMenuTable!.setHeaderView(
             eloLabel: self.eloLabel,
             rankLabel: self.rankLabel,
@@ -105,7 +105,7 @@ class Home: UIViewController, UITabBarDelegate {
     }
     
     @objc func activateProfile() {
-        StoryboardSelector().profile(player: self.player!)
+        //StoryboardSelector().profile(player: self.player!)
     }
     
     // MARK: NOTIFICATION TIMER
@@ -125,19 +125,19 @@ class Home: UIViewController, UITabBarDelegate {
     }
     
     @objc func notificationTimerTask() {
-        GetNotify().execute(id: self.player!.getId()) { (notify) in
-            if(!notify){
-                return
-            }
-            DispatchQueue.main.async() {
-                self.tabBarMenu.selectedImageTintColor = UIColor.magenta
-                if #available(iOS 13.0, *) {
-                    let notify = self.tabBarMenu.items![1]
-                    notify.selectedImage = UIImage(systemName: "gamecontroller")!
-                    self.tabBarMenu.selectedItem = notify
-                }
-            }
-        }
+//        GetNotify().execute(id: self.player!.getId()) { (notify) in
+//            if(!notify){
+//                return
+//            }
+//            DispatchQueue.main.async() {
+//                self.tabBarMenu.selectedImageTintColor = UIColor.magenta
+//                if #available(iOS 13.0, *) {
+//                    let notify = self.tabBarMenu.items![1]
+//                    notify.selectedImage = UIImage(systemName: "gamecontroller")!
+//                    self.tabBarMenu.selectedItem = notify
+//                }
+//            }
+//        }
     }
     
     
@@ -151,7 +151,7 @@ class Home: UIViewController, UITabBarDelegate {
         case 0:
             print("skin")
             self.notificationTimerStop()
-            StoryboardSelector().purchase(player: self.player!, remaining: 13)
+            //StoryboardSelector().purchase(player: self.player!, remaining: 13)
         case 1:
             print("quick")
             self.notificationTimerStop()
@@ -159,32 +159,32 @@ class Home: UIViewController, UITabBarDelegate {
                 self.activityIndicator.isHidden = false
                 self.activityIndicator.startAnimating()
             }
-            RequestQuick().success(id: self.player!.getId()) { (result) in
-                
-                DispatchQueue.main.async() {
-                    self.activityIndicator.stopAnimating()
-                    self.activityIndicator.isHidden = true
-                    
-                    let opponent = result as! PlayerCore
-                    
-                    let storyboard: UIStoryboard = UIStoryboard(name: "Quick", bundle: nil)
-                    let viewController = storyboard.instantiateViewController(withIdentifier: "Quick") as! Quick
-                    viewController.setPlayer(player: self.player!)
-                    viewController.setOpponent(opponent: opponent)
-                    UIApplication.shared.keyWindow?.rootViewController = viewController
-                }
-            }
+//            RequestQuick().success(id: self.player!.getId()) { (result) in
+//
+//                DispatchQueue.main.async() {
+//                    self.activityIndicator.stopAnimating()
+//                    self.activityIndicator.isHidden = true
+//
+//                    let opponent = result as! PlayerCore
+//
+//                    let storyboard: UIStoryboard = UIStoryboard(name: "Quick", bundle: nil)
+//                    let viewController = storyboard.instantiateViewController(withIdentifier: "Quick") as! Quick
+//                    viewController.setPlayer(player: self.player!)
+//                    viewController.setOpponent(opponent: opponent)
+//                    UIApplication.shared.keyWindow?.rootViewController = viewController
+//                }
+//            }
         case 3:
             print("game")
             self.notificationTimerStop()
-            StoryboardSelector().actual(player: self.player!)
+            //StoryboardSelector().actual(player: self.player!)
         case 4:
             self.notificationTimerStop()
             print("overview") //OVERVIEW
-            let storyboard: UIStoryboard = UIStoryboard(name: "Config", bundle: nil)
-            let viewController = storyboard.instantiateViewController(withIdentifier: "Config") as! Config
-            viewController.setPlayer(player: self.player!)
-            UIApplication.shared.keyWindow?.rootViewController = viewController
+//            let storyboard: UIStoryboard = UIStoryboard(name: "Config", bundle: nil)
+//            let viewController = storyboard.instantiateViewController(withIdentifier: "Config") as! Config
+//            viewController.setPlayer(player: self.player!)
+//            UIApplication.shared.keyWindow?.rootViewController = viewController
         default:
             print("error")
         }

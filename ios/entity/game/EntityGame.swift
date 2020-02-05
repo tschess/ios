@@ -11,7 +11,7 @@ import UIKit
 class EntityGame: Equatable, Hashable {
     
     var id_game: String
-    var state: [[TschessElement?]]
+    var state: [[String?]]
     var moves: Int
     var status: String
     var outcome: String
@@ -33,7 +33,7 @@ class EntityGame: Equatable, Hashable {
     
     init(
         id_game: String,
-        state: [[TschessElement?]],
+        state: [[String?]],
         moves: Int,
         status: String,
         outcome: String,
