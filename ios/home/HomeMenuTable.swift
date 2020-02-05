@@ -29,18 +29,14 @@ class HomeMenuTable: UITableViewController {
         //        }
     }
     
-    //    func getGameModel(index: Int) -> Game {
-    //        return self.leaderboardList[index]
-    //    }
-    
     let REQUEST_PAGE_SIZE: Int
     var requestPageIndex: Int
-    //var leaderboardList: [Game]
+    var leaderboardList: [EntityPlayer]
     
     required init?(coder aDecoder: NSCoder) {
         self.REQUEST_PAGE_SIZE = 9
         self.requestPageIndex = 0
-        //self.leaderboardList = [Game]()
+        self.leaderboardList = [EntityPlayer]()
         super.init(coder: aDecoder)
         
         print("WEHAAT IS ` ` ` \(self.classForCoder.description())")
@@ -131,8 +127,8 @@ class HomeMenuTable: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //return leaderboardList.count
-        return 0
+        return leaderboardList.count
+        //return 0
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -208,16 +204,16 @@ class HomeMenuTable: UITableViewController {
             self.activityIndicator!.startAnimating()
         }
         let requestPayload = ["index": self.requestPageIndex, "size": REQUEST_PAGE_SIZE] as [String: Int]
-        //        RequestPage().execute(requestPayload: requestPayload) { (result) in
-        //            DispatchQueue.main.async() {
-        //                self.activityIndicator!.stopAnimating()
-        //                self.activityIndicator!.isHidden = true
-        //            }
-        //            if(result == nil){
-        //                return
-        //            }
-        //            self.appendToLeaderboardTableList(additionalCellList: result!)
-        //        }
+                RequestPage().execute(requestPayload: requestPayload) { (result) in
+                    DispatchQueue.main.async() {
+                        self.activityIndicator!.stopAnimating()
+                        self.activityIndicator!.isHidden = true
+                    }
+                    if(result == nil){
+                        return
+                    }
+                    self.appendToLeaderboardTableList(additionalCellList: result!)
+                }
     }
     
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
@@ -242,12 +238,12 @@ class HomeMenuTable: UITableViewController {
         return UISwipeActionsConfiguration(actions: [modifyAction])
     }
     
-    //    func appendToLeaderboardTableList(additionalCellList: [Game]) {
-    //        for game in additionalCellList {
-    //            self.leaderboardList.append(game)
-    //        }
-    //        DispatchQueue.main.async() {
-    //            self.tableView.reloadData()
-    //        }
-    //    }
+        func appendToLeaderboardTableList(additionalCellList: [EntityPlayer]) {
+            for game in additionalCellList {
+                self.leaderboardList.append(game)
+            }
+            DispatchQueue.main.async() {
+                self.tableView.reloadData()
+            }
+        }
 }
