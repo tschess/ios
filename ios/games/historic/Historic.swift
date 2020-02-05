@@ -36,6 +36,7 @@ class Historic: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate 
         self.tabBarMenu.delegate = self
         self.historicTable = children.first as? HistoricTable
         self.historicTable!.setPlayerSelf(playerSelf: self.playerSelf!)
+        self.historicTable!.fetchMenuTableList()
     }
     
     public func renderHeader() {

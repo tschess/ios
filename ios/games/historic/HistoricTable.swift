@@ -10,11 +10,21 @@ import UIKit
 
 class HistoricTable: UITableViewController {
     
+    var label: UILabel?
+    
     let DATE_TIME: DateTime = DateTime()
     
-    var gameMenuTableList: [Game] = [Game]()
-    var player: Player?
-    var label: UILabel?
+     var playerSelf: EntityPlayer?
+       
+       func setPlayerSelf(playerSelf: EntityPlayer){
+           self.playerSelf = playerSelf
+       }
+    
+       var gameMenuTableList: [EntityGame] = [EntityGame]()
+       
+       func getGameMenuTableList() -> [EntityGame] {
+           return gameMenuTableList
+       }
     
     public var pageFromWhichContentLoads: Int
     
@@ -27,16 +37,6 @@ class HistoricTable: UITableViewController {
         super.viewWillAppear(animated)
         
         tableView.tableFooterView = UIView()
-        
-        self.fetchMenuTableList(id: self.player!.getId())
-    }
-    
-    func getGameMenuTableList() -> [Game] {
-        return gameMenuTableList
-    }
-    
-    public func setPlayer(player: Player) {
-        self.player = player
     }
     
     var activityIndicator: UIActivityIndicatorView?
@@ -54,101 +54,15 @@ class HistoricTable: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let game = gameMenuTableList[indexPath.row]
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "HistoricCell", for: indexPath) as! HistoricCell
-        
-        let gameTableMenuItem = gameMenuTableList[indexPath.row]
-        cell.usernameLabel.text = gameTableMenuItem.getUsernameOpponent()
-        
-        let dataDecoded: Data = Data(base64Encoded: gameTableMenuItem.getOpponentAvatar(), options: .ignoreUnknownCharacters)!
-        let decodedimage = UIImage(data: dataDecoded)
-        cell.avatarImageView.image = decodedimage
-        
-//        let formatter = DateFormatter()
-//        formatter.dateFormat = "dd.MM.YY"
-//        var yayayaya = formatter.string(from: gameTableMenuItem.end!)
-//        yayayaya.insert("'", at: yayayaya.index(yayayaya.endIndex, offsetBy: -2))
-//        cell.terminalDateLabel.text = yayayaya //should be terminated date, not the created date
-//
-//        let dataDecoded: Data = Data(base64Encoded: gameTableMenuItem.getOpponentAvatar(), options: .ignoreUnknownCharacters)!
-//        let decodedimage = UIImage(data: dataDecoded)
-//        cell.avatarImageView.image = decodedimage
-//
-//        cell.usernameLabel.textColor = UIColor.black
-//
-//        if(gameTableMenuItem.winner == self.player!.getUsername()){
-//
-//            cell.contentView.backgroundColor = Colour().getWin()
-//            if(gameMenuTableList[indexPath.row].getDrawProposer().contains("TIMEOUT")){
-//                gameMenuTableList[indexPath.row].setOutcome(outcome: "TIMEOUT")
-//            } else {
-//                gameMenuTableList[indexPath.row].setOutcome(outcome: "WIN")
-//            }
-//        }
-//        else if(gameTableMenuItem.winner == "DRAW"){
-//            cell.contentView.backgroundColor = Colour().getDraw()
-//            gameMenuTableList[indexPath.row].setOutcome(outcome: "DRAW")
-//        } else {
-//            cell.contentView.backgroundColor = Colour().getLoss()
-//
-//            if(gameMenuTableList[indexPath.row].getDrawProposer().contains("TIMEOUT")){
-//                gameMenuTableList[indexPath.row].setOutcome(outcome: "TIMEOUT")
-//            } else {
-//                gameMenuTableList[indexPath.row].setOutcome(outcome: "LOSS")
-//            }
-//        }
-        
-        //cell.usernameLabel.text = gameTableMenuItem.getUsernameOpponent()
-            //cell.usernameLabel.textColor = UIColor.black
-            
-            
-            
-            
-            let formatter = DateFormatter()
-            formatter.dateFormat = "dd.MM.YY"
-            var yayayaya = formatter.string(from: DATE_TIME.toFormatDate(string: gameTableMenuItem.endDate))
-            yayayaya.insert("'", at: yayayaya.index(yayayaya.endIndex, offsetBy: -2))
-            cell.terminalDateLabel.text = yayayaya //should be terminated date, not the created date
-            
-        
-            let winnerInt: Int = gameTableMenuItem.winnerInt
-            
-            if(winnerInt == 1){
-                cell.contentView.backgroundColor = UIColor.black
-            }
-            if(winnerInt == -1){
-                cell.contentView.backgroundColor = UIColor.black
-            }
-            if(winnerInt == 0){
-                cell.contentView.backgroundColor = UIColor.black
-            }
-            
-            let oddsInt: Int = gameTableMenuItem.odds
-            
-            if(oddsInt >= 0){
-                cell.oddsLabel.text = "+"
-            } else {
-                cell.oddsLabel.text = "-"
-            }
-            
-            cell.displacementLabel.text = String(abs(gameTableMenuItem.disp))
-            
-            let disp: Int = gameTableMenuItem.disp
-            
-            if(disp >= 0){
-                if #available(iOS 13.0, *) {
-                    let image = UIImage(systemName: "arrow.up")!
-                    cell.displacementImage.image = image
-                    cell.displacementImage.tintColor = .green
-                }
-            }
-            else {
-                if #available(iOS 13.0, *) {
-                    let image = UIImage(systemName: "arrow.down")!
-                    cell.displacementImage.image = image
-                    cell.displacementImage.tintColor = .red
-                }
-            }
-        
+        cell.terminalDateLabel.text = game.getLabelTextDate(update: true)
+        cell.usernameLabel.text = game.getLabelTextUsernameOpponent(username: self.playerSelf!.username)
+        cell.avatarImageView.image = game.getImageAvatarOpponent(username: self.playerSelf!.username)
+        cell.displacementLabel.text = game.getLabelTextDisp(username: self.playerSelf!.username)
+        cell.displacementImage.image = game.getImageDisp(username: self.playerSelf!.username)
+        cell.oddsLabel.text = game.getOdds(username: self.playerSelf!.username)
         return cell
     }
     
@@ -164,66 +78,47 @@ class HistoricTable: UITableViewController {
     }
     
     override open func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if(tableView.selectionCount < 13 && self.pageFromWhichContentLoads > 0){
-            return
-        }
         if indexPath.row == self.gameMenuTableList.count - 1 {
             self.pageFromWhichContentLoads += 1
-            self.fetchMenuTableList(id: self.player!.getId())
+            self.fetchMenuTableList()
         }
     }
     
-    func appendToTableList(additionalCellList: [Game]) {
+    func appendToLeaderboardTableList(additionalCellList: [EntityGame]) {
         let currentCount = self.gameMenuTableList.count
+        
         for game in additionalCellList {
             if(!self.gameMenuTableList.contains(game)){
                 self.gameMenuTableList.append(game)
             }
         }
         if(currentCount != self.gameMenuTableList.count){
-            //self.gameMenuTableList = self.gameMenuTableList.sorted(by: { $0.created! > $1.created! })
             DispatchQueue.main.async() {
-                //self.activityIndicator!.stopAnimating()
-                //self.activityIndicator!.isHidden = true
                 self.tableView.reloadData()
             }
         }
     }
     
-    func fetchMenuTableList(id: String) {
-//        let pageHistoric = PageHistoric()
-//        pageHistoric.setName(name: self.player!.getUsername())
-//        pageHistoric.setMatrixDeserializer(name: self.player!.getUsername())
-//        pageHistoric.execute(id: self.player!.getId(), page: self.pageFromWhichContentLoads){ (result) in
-//            if(result == nil){
-//                return
-//            }
-//            let resultList: [Game] = result!
-//            if(resultList.count == 0) {
-//                self.renderShrug()
-//                return
-//            }
-//            if(self.label != nil) {
-//                self.label!.removeFromSuperview()
-//            }
-//            self.appendToTableList(additionalCellList: resultList)
-//        }
+    func fetchMenuTableList() {
+
+        DispatchQueue.main.async() {
+            self.activityIndicator!.isHidden = false
+            self.activityIndicator!.startAnimating()
+            
+        }
         let REQUEST_PAGE_SIZE: Int = 9
-        let requestPageIndex: Int = 0
+        
         let requestPayload = [
-            "id": self.player!.getId(),
-            "index": requestPageIndex,
+            "id": self.playerSelf!.id,
+            "index": self.pageFromWhichContentLoads,
             "size": REQUEST_PAGE_SIZE
             ] as [String: Any]
-        RequestHistoricSelf().execute(requestPayload: requestPayload) { (result) in
+        RequestHistoric().execute(requestPayload: requestPayload) { (result) in
             DispatchQueue.main.async() {
-                //self.activityIndicator!.stopAnimating()
-                //self.activityIndicator!.isHidden = true
+                self.activityIndicator!.stopAnimating()
+                self.activityIndicator!.isHidden = true
             }
-            if(result == nil){
-                return
-            }
-            self.appendToTableList(additionalCellList: result!)
+            self.appendToLeaderboardTableList(additionalCellList: result!)
         }
     }
     
@@ -254,12 +149,12 @@ class HistoricTable: UITableViewController {
             print("Update action ...")
             let gameModel = self.gameMenuTableList[indexPath.row]
             
-            let storyboard: UIStoryboard = UIStoryboard(name: "Challenge", bundle: nil)
-            let viewController = storyboard.instantiateViewController(withIdentifier: "Challenge") as! Challenge
-            viewController.setPlayer(player: self.player!)
-            viewController.setGameModel(gameModel: gameModel)
-            UIApplication.shared.keyWindow?.rootViewController = viewController
-            success(true)
+//            let storyboard: UIStoryboard = UIStoryboard(name: "Challenge", bundle: nil)
+//            let viewController = storyboard.instantiateViewController(withIdentifier: "Challenge") as! Challenge
+//            viewController.setPlayer(player: self.player!)
+//            viewController.setGameModel(gameModel: gameModel)
+//            UIApplication.shared.keyWindow?.rootViewController = viewController
+//            success(true)
         })
         if #available(iOS 13.0, *) { //xmark
             modifyAction.image = UIImage(systemName: "gamecontroller.fill")!

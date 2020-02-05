@@ -39,14 +39,14 @@ class Config:
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
-    @IBOutlet weak var configCollectionView0: DynamicCollectionView!
+    @IBOutlet weak var configCollectionView0: BoardView!
     @IBOutlet weak var configCollectionViewHeight0: NSLayoutConstraint!
     
     
-    @IBOutlet weak var configCollectionView1: DynamicCollectionView!
+    @IBOutlet weak var configCollectionView1: BoardView!
     @IBOutlet weak var configCollectionViewHeight1: NSLayoutConstraint!
     
-    @IBOutlet weak var configCollectionView2: DynamicCollectionView!
+    @IBOutlet weak var configCollectionView2: BoardView!
     @IBOutlet weak var configCollectionViewHeight2: NSLayoutConstraint!
     
     
@@ -76,20 +76,20 @@ class Config:
         "red_grasshopper",
         "red_arrow"]
     
-    var tschessElementMatrix0: [[TschessElement?]]?
-    var tschessElementMatrix1: [[TschessElement?]]?
-    var tschessElementMatrix2: [[TschessElement?]]?
+    var tschessElementMatrix0: [[Piece?]]?
+    var tschessElementMatrix1: [[Piece?]]?
+    var tschessElementMatrix2: [[Piece?]]?
     
     var selectionElementName: String?
-    var cacheCancelMatrix: [[TschessElement?]]?
-    var cacheMatrix: [[TschessElement?]]?
+    var cacheCancelMatrix: [[Piece?]]?
+    var cacheMatrix: [[Piece?]]?
     
     var points: Int?
     
     var deviceType: String?
-    var player: Player?
+    var player: EntityPlayer?
     
-    public func setPlayer(player: Player){
+    public func setPlayer(player: EntityPlayer){
         self.player = player
     }
     
@@ -99,8 +99,6 @@ class Config:
         super.viewDidLoad()
         
         self.activityIndicator.isHidden = true
-        
-        self.deviceType = StoryboardSelector().device()
         
         self.configCollectionView0.delegate = self
         self.configCollectionView0.dataSource = self
@@ -127,69 +125,47 @@ class Config:
         UIApplication.shared.keyWindow?.rootViewController = homeViewController
     }
     
-    var gameModel: Game?
-    
-    func setGameModel(gameModel: Game){
-        self.gameModel = gameModel
-    }
-    
     @objc func editCollectionView0() {
-        let storyboard: UIStoryboard = UIStoryboard(name: "EditSelf", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "EditSelf") as! EditSelf
-        viewController.setPlayer(player: self.player!)
-        viewController.setTitleText(titleText: "config. 0̸")
-        UIApplication.shared.keyWindow?.rootViewController = viewController
+//        let storyboard: UIStoryboard = UIStoryboard(name: "EditSelf", bundle: nil)
+//        let viewController = storyboard.instantiateViewController(withIdentifier: "EditSelf") as! EditSelf
+//        viewController.setPlayer(player: self.player!)
+//        viewController.setTitleText(titleText: "config. 0̸")
+//        UIApplication.shared.keyWindow?.rootViewController = viewController
     }
     
     @objc func editCollectionView1() {
-        let storyboard: UIStoryboard = UIStoryboard(name: "EditSelf", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "EditSelf") as! EditSelf
-        viewController.setPlayer(player: self.player!)
-        viewController.setTitleText(titleText: "config. 1")
-        UIApplication.shared.keyWindow?.rootViewController = viewController
+//        let storyboard: UIStoryboard = UIStoryboard(name: "EditSelf", bundle: nil)
+//        let viewController = storyboard.instantiateViewController(withIdentifier: "EditSelf") as! EditSelf
+//        viewController.setPlayer(player: self.player!)
+//        viewController.setTitleText(titleText: "config. 1")
+//        UIApplication.shared.keyWindow?.rootViewController = viewController
     }
     
     @objc func editCollectionView2() {
-        let storyboard: UIStoryboard = UIStoryboard(name: "EditSelf", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "EditSelf") as! EditSelf
-        viewController.setPlayer(player: self.player!)
-        viewController.setTitleText(titleText: "config. 2")
-        UIApplication.shared.keyWindow?.rootViewController = viewController
+//        let storyboard: UIStoryboard = UIStoryboard(name: "EditSelf", bundle: nil)
+//        let viewController = storyboard.instantiateViewController(withIdentifier: "EditSelf") as! EditSelf
+//        viewController.setPlayer(player: self.player!)
+//        viewController.setTitleText(titleText: "config. 2")
+//        UIApplication.shared.keyWindow?.rootViewController = viewController
+    }
+    
+    public func renderHeader() {
+        self.avatarImageView.image = self.player!.getImageAvatar()
+        self.usernameLabel.text = self.player!.username
+        self.eloLabel.text = self.player!.getLabelTextElo()
+        self.rankLabel.text = self.player!.getLabelTextRank()
+        self.displacementLabel.text = self.player!.getLabelTextDisp()
+        self.displacementImage.image = self.player!.getImageDisp()!
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        let dataDecoded: Data = Data(base64Encoded: self.player!.getAvatar(), options: .ignoreUnknownCharacters)!
-        let decodedimage = UIImage(data: dataDecoded)
-        self.avatarImageView.image = decodedimage
+        self.renderHeader()
         
-        self.usernameLabel.text = self.player!.getUsername()
-        
-        self.eloLabel.text = self.player!.getElo()
-        self.rankLabel.text = self.player!.getRank()
-        self.displacementLabel.text = String(abs(Int(self.player!.getDisp())!))
-        
-        let disp: Int = Int(self.player!.getDisp())!
-        
-        if(disp >= 0){
-            if #available(iOS 13.0, *) {
-                let image = UIImage(systemName: "arrow.up")!
-                self.displacementImage.image = image
-                self.displacementImage.tintColor = .green
-            }
-        }
-        else {
-            if #available(iOS 13.0, *) {
-                let image = UIImage(systemName: "arrow.down")!
-                self.displacementImage.image = image
-                self.displacementImage.tintColor = .red
-            }
-        }
-        
-        self.tschessElementMatrix0 = self.player!.getConfig0()
-        self.tschessElementMatrix1 = self.player!.getConfig1()
-        self.tschessElementMatrix2 = self.player!.getConfig2()
+        self.tschessElementMatrix0 = self.player!.getConfig(index: 0)
+        self.tschessElementMatrix1 = self.player!.getConfig(index: 1)
+        self.tschessElementMatrix2 = self.player!.getConfig(index: 2)
     }
     
     override func viewDidLayoutSubviews() {
@@ -243,7 +219,7 @@ extension Config: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == self.configCollectionView0 {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ConfigCollectionViewCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "square", for: indexPath) as! SquareCell
             
             if (indexPath.row % 2 == 0) {
                 if (indexPath.row / 8 == 0) {
@@ -282,7 +258,7 @@ extension Config: UICollectionViewDataSource {
             return cell
         }
         if collectionView == self.configCollectionView1 {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ConfigCollectionViewCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "square", for: indexPath) as! SquareCell
             
             if (indexPath.row % 2 == 0) {
                 if (indexPath.row / 8 == 0) {
@@ -315,7 +291,7 @@ extension Config: UICollectionViewDataSource {
             return cell
         }
         //if collectionView == self.configCollectionView2 {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ConfigCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "square", for: indexPath) as! SquareCell
         
         if (indexPath.row % 2 == 0) {
             if (indexPath.row / 8 == 0) {
@@ -379,13 +355,18 @@ extension Config: UICollectionViewDelegate {
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         switch item.tag {
         case 1:
-            //print("fairy")
-            let storyboard: UIStoryboard = UIStoryboard(name: "Fairy", bundle: nil)
-            let viewController = storyboard.instantiateViewController(withIdentifier: "Fairy") as! Fairy
-            viewController.setPlayer(player: self.player!)
-            UIApplication.shared.keyWindow?.rootViewController = viewController
+            print("~")
+//            let storyboard: UIStoryboard = UIStoryboard(name: "Fairy", bundle: nil)
+//            let viewController = storyboard.instantiateViewController(withIdentifier: "Fairy") as! Fairy
+//            viewController.setPlayer(player: self.player!)
+//            UIApplication.shared.keyWindow?.rootViewController = viewController
         default:
-            StoryboardSelector().home(player: self.player!)
+            DispatchQueue.main.async {
+                let storyboard: UIStoryboard = UIStoryboard(name: "Home", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "Home") as! Home
+                viewController.setPlayer(player: self.player!)
+                UIApplication.shared.keyWindow?.rootViewController = viewController
+            }
         }
     }
     
