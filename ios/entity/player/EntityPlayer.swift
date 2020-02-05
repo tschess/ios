@@ -23,7 +23,7 @@ class EntityPlayer: Equatable, Hashable {
     var config2: [[String]]
     
     var notify: Bool
-    var device: String
+    var device: String?
     var updated: String
     var created: String
     
@@ -40,7 +40,7 @@ class EntityPlayer: Equatable, Hashable {
         config1: [[String]],
         config2: [[String]],
         notify: Bool,
-        device: String,
+        device: String?,
         updated: String,
         created: String
     ) {

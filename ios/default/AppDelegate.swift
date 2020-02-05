@@ -12,11 +12,8 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
-    //let pushNotifications = PushNotifications.shared
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        //self.pushNotifications.start(instanceId: "33e7c056-ccd1-4bd1-ad69-0e2f0af28a69")
-        //self.pushNotifications.registerForRemoteNotifications()
         self.configureGlobalUI()
         return true
     }

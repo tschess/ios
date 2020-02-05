@@ -24,7 +24,7 @@ class ParsePlayer {
         let config1 = json["config1"]! as! [[String]]
         let config2 = json["config2"]! as! [[String]]
         let notify = json["notify"]! as! Bool
-        let device = json["device"]! as! String
+        let device = json["device"]! as? String
         let updated = json["updated"]! as! String
         let created = json["created"]! as! String
         

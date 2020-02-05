@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Initializer-->
+        <!--Init-->
         <scene sceneID="YLM-C1-L3E">
             <objects>
-                <viewController storyboardIdentifier="InitializerActivity" title="Initializer" useStoryboardIdentifierAsRestorationIdentifier="YES" id="kfN-iE-QHQ" customClass="Initializer" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Init" title="Init" useStoryboardIdentifierAsRestorationIdentifier="YES" id="kfN-iE-QHQ" customClass="Init" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wVR-n3-Ni5">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

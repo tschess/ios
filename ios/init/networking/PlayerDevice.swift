@@ -33,13 +33,14 @@ class PlayerDevice {
                     completion(nil)
                     return
                 }
-                
-                
+                if(json["info"] != nil){
+                    completion(nil)
+                    return
+                }
                 let player: EntityPlayer = ParsePlayer().execute(json: json)
                 completion(player)
                 
             } catch let error {
-           
                 completion(nil)
             }
         }).resume()
