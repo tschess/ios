@@ -10,7 +10,7 @@ import UIKit
 
 class EntityPlayer: Equatable, Hashable {
     
-    var id_player: String
+    var id: String
     var username: String
     var password: String
     var elo: Int
@@ -28,7 +28,7 @@ class EntityPlayer: Equatable, Hashable {
     var created: String
     
     init(
-        id_player: String,
+        id: String,
         username: String,
         password: String,
         elo: Int,
@@ -44,7 +44,7 @@ class EntityPlayer: Equatable, Hashable {
         updated: String,
         created: String
     ) {
-        self.id_player = id_player
+        self.id = id
         self.username = username
         self.password = password
         self.elo = elo
@@ -62,11 +62,11 @@ class EntityPlayer: Equatable, Hashable {
     }
     
     func hash(into hasher: inout Hasher) {
-        hasher.combine(self.id_player)
+        hasher.combine(self.id)
     }
     
     static func == (lhs: EntityPlayer, rhs: EntityPlayer) -> Bool {
-        return lhs.id_player == rhs.id_player
+        return lhs.id == rhs.id
     }
     
     func getImageAvatar() -> UIImage {

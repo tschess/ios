@@ -71,11 +71,7 @@ class RequestPage {
     private func generateLeaderboardPage(page: Int, size: Int, serverRespose: [[String: Any]]) -> [EntityPlayer] {
         var leaderboardPage = [EntityPlayer]()
         for index in stride(from: 0, to: serverRespose.count, by: 1) {
-            
-          
-            
              let player: EntityPlayer = ParsePlayer().execute(json: serverRespose[index])
-            //let game = Game(opponent: opponent)
             leaderboardPage.append(player)
         }
         return leaderboardPage

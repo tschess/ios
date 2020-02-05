@@ -33,13 +33,6 @@ class PlayerDevice {
                     completion(nil)
                     return
                 }
-                //print(json)
-
-                if(json["info"] != nil){
-                    print("D")
-                    completion(nil)
-                    return
-                }
                 
                 
                 //let player: EntityPlayer = PlayerDeserializer().execute(dictionary: json)

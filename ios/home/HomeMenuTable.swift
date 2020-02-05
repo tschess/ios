@@ -12,21 +12,15 @@ class HomeMenuTable: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        //        let discoverSelectionDictionary = ["leaderboard_index": indexPath.row]
-        //        NotificationCenter.default.post(
-        //            name: NSNotification.Name(rawValue: "HomeMenuTable"),
-        //            object: nil,
-        //            userInfo: discoverSelectionDictionary)
         
-        //let gameModel = self.leaderboardList[indexPath.row]
+        let player = self.leaderboardList[indexPath.row]
         
-        //        DispatchQueue.main.async {
-        //            let storyboard: UIStoryboard = UIStoryboard(name: "Other", bundle: nil)
-        //            let viewController = storyboard.instantiateViewController(withIdentifier: "Other") as! Other
-        //            viewController.setPlayer(player: self.player!)
-        //            viewController.setGameModel(gameModel: gameModel)
-        //            UIApplication.shared.keyWindow?.rootViewController = viewController
-        //        }
+        DispatchQueue.main.async {
+            let storyboard: UIStoryboard = UIStoryboard(name: "Other", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier: "Other") as! Other
+            viewController.setPlayer(player: player)
+            UIApplication.shared.keyWindow?.rootViewController = viewController
+        }
     }
     
     let REQUEST_PAGE_SIZE: Int
@@ -82,24 +76,23 @@ class HomeMenuTable: UITableViewController {
     }
     
     @objc func doSomething(refreshControl: UIRefreshControl) {
-        print("Hello World!")
         
         self.requestPageIndex = 0
         
-        //let requestPayload = ["id_player": self.player!.getId(), "size": REQUEST_PAGE_SIZE] as [String: Any]
+        let requestPayload = ["id_player": self.player!.id, "size": REQUEST_PAGE_SIZE] as [String: Any]
         
-        //        RequestRefresh().execute(requestPayload: requestPayload, player: self.player!) { (list, player) in
-        //
-        //            self.setPlayer(player: player)
-        //
-        //            DispatchQueue.main.async() {
-        //                self.renderHeader()
-        //                self.leaderboardList = [Game]()
-        //                self.tableView.reloadData()
-        //                self.appendToLeaderboardTableList(additionalCellList: list!)
-        //                refreshControl.endRefreshing()
-        //            }
-        //        }
+                RequestRefresh().execute(requestPayload: requestPayload) { (response) in
+                    
+                    self.setPlayer(player: response!.last!)
+        
+                    DispatchQueue.main.async() {
+                        self.renderHeader()
+                        self.leaderboardList = [EntityPlayer]()
+                        self.tableView.reloadData()
+                        self.appendToLeaderboardTableList(additionalCellList: response!)
+                        refreshControl.endRefreshing()
+                    }
+                }
     }
     
     override func viewWillAppear(_ animated: Bool) {

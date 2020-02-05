@@ -96,8 +96,10 @@ class Start: UIViewController, UITextFieldDelegate {
                     let viewController = storyboard.instantiateViewController(withIdentifier: "Home") as! Home
                     viewController.setPlayer(player: player)
                     UIApplication.shared.keyWindow?.rootViewController = viewController
+                    return
                 }
             }
+            print("fuq")
         }
     }
     

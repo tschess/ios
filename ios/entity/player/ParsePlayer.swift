@@ -14,8 +14,8 @@ class ParsePlayer {
         
         //let id_player = json["id_player"]! as! String
         //print("id_player: \(id_player)")
-        let id_player = json["id"]! as! String
-        print("id_player: \(id_player)")
+        let id = json["id"]! as! String
+        print("id: \(id)")
         
         //var username: String
         let username = json["username"]! as! String
@@ -75,7 +75,7 @@ class ParsePlayer {
         print("created: \(created)")
         
         let player: EntityPlayer = EntityPlayer(
-            id_player: id_player,
+            id: id,
             username: username,
             password: password,
             elo: elo,

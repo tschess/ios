@@ -11,24 +11,25 @@ import UIKit
 class Initializer: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
-        let device = UIDevice.current.identifierForVendor?.uuidString
-        if(device == nil) {
-            self.start()
-            return
-        }
-        PlayerDevice().execute(device: device!) { (result) in
-            if(result != nil) {
-                sleep(1)
-                DispatchQueue.main.async {
-                    let homeStoryboard: UIStoryboard = UIStoryboard(name: "Home", bundle: nil)
-                    let homeViewController = homeStoryboard.instantiateViewController(withIdentifier: "Home") as! Home
-                    //homeViewController.setPlayer(player: player)
-                    UIApplication.shared.keyWindow?.rootViewController = homeViewController
-                }
-                return
-            }
-            self.start()
-        }
+//        let device = UIDevice.current.identifierForVendor?.uuidString
+//        if(device == nil) {
+//            self.start()
+//            return
+//        }
+//        PlayerDevice().execute(device: device!) { (result) in
+//            if(result != nil) {
+//                sleep(1)
+//                DispatchQueue.main.async {
+//                    let homeStoryboard: UIStoryboard = UIStoryboard(name: "Home", bundle: nil)
+//                    let homeViewController = homeStoryboard.instantiateViewController(withIdentifier: "Home") as! Home
+//                    //homeViewController.setPlayer(player: player)
+//                    UIApplication.shared.keyWindow?.rootViewController = homeViewController
+//                }
+//                return
+//            }
+//            self.start()
+//        }
+        self.start()
     }
     
     private func start() {
