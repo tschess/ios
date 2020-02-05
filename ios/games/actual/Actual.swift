@@ -11,7 +11,7 @@ import UIKit
 class Actual: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate {
     
     @IBOutlet weak var displacementLabel: UILabel!
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet var activityIndicator: UIActivityIndicatorView!
     
     //MARK: Properties
     @IBOutlet weak var usernameLabel: UILabel!
@@ -38,6 +38,7 @@ class Actual: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate {
         actualTable!.setActual(actual: self)
         actualTable!.setPlayerSelf(playerSelf: self.playerSelf!)
         actualTable!.setIndicator(indicator: self.activityIndicator!)
+        actualTable!.fetchMenuTableList()
     }
     
     public func renderHeader() {

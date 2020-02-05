@@ -15,6 +15,8 @@ class RequestActual {
         
         //"id":"", "page":0, "size":13
         
+        print("requestPayload \(requestPayload)")
+        
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Accept")
@@ -27,13 +29,16 @@ class RequestActual {
         let session = URLSession.shared
         let task = session.dataTask(with: request, completionHandler: { data, response, error in
             guard error == nil else {
+                print("0")
                 return
             }
             guard let data = data else {
+                print("1")
                 return
             }
             do {
                 guard let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [[String: Any]] else {
+                    print("2")
                     return
                 }
                 print("*PageList* \n\n \(json.count)")

@@ -41,8 +41,6 @@ class ActualTable: UITableViewController, SwipeTableViewCellDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.tableFooterView = UIView()
-        
-        self.fetchMenuTableList(id: self.playerSelf!.id)
     }
     
     var activityIndicator: UIActivityIndicatorView?
@@ -211,15 +209,29 @@ class ActualTable: UITableViewController, SwipeTableViewCellDelegate {
         return cell.showSwipe(orientation: .left, animated: true)
     }
     
-    override open func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if(tableView.selectionCount < 13 && self.pageFromWhichContentLoads > 0){
+    override func viewDidLayoutSubviews() {
+           super.viewDidLayoutSubviews()
+           let visibleRows = self.tableView.indexPathsForVisibleRows
+           let lastRow = visibleRows?.last?.row
+           if(lastRow == nil){
+               return
+           }
+        let REQUEST_PAGE_SIZE: Int = 9
+        //let pageFromWhichContentLoads: Int = 0
+        
+           let index = self.pageFromWhichContentLoads
+           let size = REQUEST_PAGE_SIZE
+           let indexFrom: Int =  index * size
+           let indexTo: Int = indexFrom + REQUEST_PAGE_SIZE - 2
+        
+        if(lastRow! <= indexTo){
             return
         }
-        if indexPath.row == self.gameMenuTableList.count - 1 {
-            self.pageFromWhichContentLoads += 1
-            self.fetchMenuTableList(id: self.playerSelf!.id)
-        }
-    }
+           if lastRow == indexTo {
+               self.pageFromWhichContentLoads += 1
+               self.fetchMenuTableList()
+           }
+       }
     
     override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let gameTableMenuItem = gameMenuTableList[indexPath.row]
@@ -237,7 +249,7 @@ class ActualTable: UITableViewController, SwipeTableViewCellDelegate {
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let game = gameMenuTableList[indexPath.row]
         if(game.getInboundInvitation(username: self.playerSelf!.username)){
-            let modifyAction = UIContextualAction(style: .normal, title:  "ACK", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
+            let modifyAction = UIContextualAction(style: .normal, title:  "ACK", handler: { (ac:UIContextualAction, view: UIView, success: (Bool) -> Void) in
                 print("Update action ...")
                 success(true)
             })
@@ -265,7 +277,7 @@ class ActualTable: UITableViewController, SwipeTableViewCellDelegate {
            }
        }
        
-       func fetchMenuTableList(id: String) {
+       func fetchMenuTableList() {
         
         DispatchQueue.main.async() {
             self.activityIndicator!.isHidden = false
