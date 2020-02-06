@@ -132,11 +132,11 @@ class Eth: UIViewController, UITabBarDelegate, UITextFieldDelegate { //force peo
     }
     
     @IBAction func backButtonClick(_ sender: Any) {
-         DispatchQueue.main.async {
-        let storyboard: UIStoryboard = UIStoryboard(name: "Skins", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "Skins") as! Skins
-        viewController.setPlayer(player: self.player!)
-            UIApplication.shared.keyWindow?.rootViewController = viewController
+        DispatchQueue.main.async() {
+            let profileStoryboard: UIStoryboard = UIStoryboard(name: "Profile", bundle: nil)
+            let profileViewController = profileStoryboard.instantiateViewController(withIdentifier: "Profile") as! Profile
+            profileViewController.setPlayer(player: self.player!)
+            UIApplication.shared.keyWindow?.rootViewController = profileViewController
         }
     }
     
@@ -145,11 +145,11 @@ class Eth: UIViewController, UITabBarDelegate, UITextFieldDelegate { //force peo
         case 0:
             print("scanner")
             tabBar.selectedItem = nil
-             DispatchQueue.main.async {
-            let storyboard: UIStoryboard = UIStoryboard(name: "Scanner", bundle: nil)
-            let viewController = storyboard.instantiateViewController(withIdentifier: "Scanner") as! Scanner
-            viewController.setPlayer(player: self.player!)
-            UIApplication.shared.keyWindow?.rootViewController = viewController
+            DispatchQueue.main.async {
+                let storyboard: UIStoryboard = UIStoryboard(name: "Scanner", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "Scanner") as! Scanner
+                viewController.setPlayer(player: self.player!)
+                UIApplication.shared.keyWindow?.rootViewController = viewController
             }
             return
         default: // 1
@@ -171,13 +171,13 @@ class Eth: UIViewController, UITabBarDelegate, UITextFieldDelegate { //force peo
                 "updated": self.DATE_TIME.currentDateString()
                 ] as [String: Any]
             
-//            UpdateAddress().execute(updatePayload: updatePayload) { (result) in
-                DispatchQueue.main.async() {
-                    self.activityIndicator!.stopAnimating()
-                    self.activityIndicator!.isHidden = true
-                }
-//                print("UpdateAddress: \(result)")
-//            }
+            //            UpdateAddress().execute(updatePayload: updatePayload) { (result) in
+            DispatchQueue.main.async() {
+                self.activityIndicator!.stopAnimating()
+                self.activityIndicator!.isHidden = true
+            }
+            //                print("UpdateAddress: \(result)")
+            //            }
         }
     }
     
