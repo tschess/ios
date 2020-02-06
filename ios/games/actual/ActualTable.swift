@@ -53,9 +53,7 @@ class ActualTable: UITableViewController, SwipeTableViewCellDelegate {
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
         
-        
         let game = gameMenuTableList[indexPath.row]
-        
         if(game.status == "ONGOING"){
             print(" - Tschess - ")
             //            let requestPayload: [String: Any] = ["id_game": gameModel.getIdentifier(), "id_player": self.player!.getId()]
@@ -66,16 +64,14 @@ class ActualTable: UITableViewController, SwipeTableViewCellDelegate {
             //                /**
             //                 * ERROR HANDLING!!!
             //                 */
-            //                DispatchQueue.main.async {
-            //                    let storyboard: UIStoryboard = UIStoryboard(name: "Tschess", bundle: nil)
-            //                    let viewController = storyboard.instantiateViewController(withIdentifier: "Tschess") as! Tschess
-            //                    viewController.setGameTschess(gameTschess: gameTschess!)
-            //                    UIApplication.shared.keyWindow?.rootViewController = viewController
-            //                }
-            //            }
-            return nil
+            DispatchQueue.main.async {
+                let storyboard: UIStoryboard = UIStoryboard(name: "Tschess", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "Tschess") as! Tschess
+                viewController.setGameTschess(gameTschess: game)
+                UIApplication.shared.keyWindow?.rootViewController = viewController
+                return
+            }
         }
-        
         if(game.getInboundInvitation(username: self.playerSelf!.username)){
             
             guard orientation == .right else {
@@ -289,6 +285,9 @@ class ActualTable: UITableViewController, SwipeTableViewCellDelegate {
             DispatchQueue.main.async() {
                 self.activityIndicator!.stopAnimating()
                 self.activityIndicator!.isHidden = true
+            }
+            if(result == nil){
+                return
             }
             self.appendToTableList(additionalCellList: result!)
         }

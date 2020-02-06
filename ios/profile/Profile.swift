@@ -11,8 +11,7 @@ import UIKit
 class Profile: UIViewController, UITabBarDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate  {
     
     
-    func imagePickerController(_ picker: UIImagePickerController,
-                               didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         
         let selectedImage = info[.originalImage] as! UIImage
         let imageString = selectedImage.jpegData(compressionQuality: 0.1)!.base64EncodedString()

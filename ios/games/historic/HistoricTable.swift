@@ -133,6 +133,9 @@ class HistoricTable: UITableViewController {
                 self.activityIndicator!.stopAnimating()
                 self.activityIndicator!.isHidden = true
             }
+            if(result == nil){
+                return
+            }
             self.appendToLeaderboardTableList(additionalCellList: result!)
         }
     }
