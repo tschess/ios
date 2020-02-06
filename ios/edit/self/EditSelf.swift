@@ -22,12 +22,6 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
         self.activeConfigNumber = activeConfigNumber
     }
     
-    var playerOther: EntityPlayer?
-    
-    func setPlayerOther(playerOther: EntityPlayer){
-        self.playerOther = playerOther
-    }
-    
     var playerSelf: EntityPlayer?
     
     func setPlayerSelf(playerSelf: EntityPlayer){
@@ -44,15 +38,7 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var tabBarMenu: UITabBar!
     
-    
-    
-    
-    
-    
-    
-    
     //MARK: Layout: Core
-    
     @IBOutlet weak var displacementImage: UIImageView!
     @IBOutlet weak var displacementLabel: UILabel!
     @IBOutlet weak var eloLabel: UILabel!
@@ -67,6 +53,7 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
         self.eloLabel.text = self.playerSelf!.getLabelTextElo()
         self.rankLabel.text = self.playerSelf!.getLabelTextRank()
         self.displacementLabel.text = self.playerSelf!.getLabelTextDisp()
+        self.displacementImage.image = self.playerSelf!.getImageDisp()!
     }
     
     //MARK: Constant

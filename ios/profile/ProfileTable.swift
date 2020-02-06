@@ -52,7 +52,7 @@ class ProfileTable: UITableViewController {
         
         let optionSelectionDictionary = ["profile_selection": indexPath.row]
         NotificationCenter.default.post(
-            name: NSNotification.Name(rawValue: "ProfileSelection"),
+            name: NSNotification.Name(rawValue: "ProfileMenuSelection"),
             object: nil,
             userInfo: optionSelectionDictionary)
     }

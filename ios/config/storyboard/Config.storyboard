@@ -405,9 +405,9 @@
                         <outlet property="activityIndicator" destination="I34-eY-46l" id="NoA-Pl-9Sw"/>
                         <outlet property="avatarImageView" destination="f1L-Mt-Ur4" id="1O4-ud-sUU"/>
                         <outlet property="backButton" destination="5qi-EH-0fj" id="9nk-ly-Hln"/>
-                        <outlet property="configCollectionView0" destination="Goi-aY-r07" id="9gY-Cv-lQq"/>
-                        <outlet property="configCollectionView1" destination="vue-Z2-NUk" id="S8W-p9-rMM"/>
-                        <outlet property="configCollectionView2" destination="07z-zS-Mwk" id="hQ4-PA-02z"/>
+                        <outlet property="configCollectionView0" destination="Goi-aY-r07" id="dnh-dE-0NQ"/>
+                        <outlet property="configCollectionView1" destination="vue-Z2-NUk" id="p7p-iT-Azj"/>
+                        <outlet property="configCollectionView2" destination="07z-zS-Mwk" id="TT4-RO-J1T"/>
                         <outlet property="configCollectionViewHeight0" destination="LK2-OQ-Irl" id="BIY-Hi-TwL"/>
                         <outlet property="configCollectionViewHeight1" destination="V9x-le-ajT" id="i1r-Em-Ukt"/>
                         <outlet property="configCollectionViewHeight2" destination="gAg-lF-3PV" id="s0U-GV-Qrk"/>

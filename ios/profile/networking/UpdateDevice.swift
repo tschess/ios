@@ -18,23 +18,38 @@ class UpdateDevice {
         let session = URLSession.shared
         session.dataTask(with: request, completionHandler: { data, response, error in
             guard error == nil else {
+                
+         
+                
                 completion(nil)
                 return
             }
             guard let data = data else {
+                
+       
+                
                 completion(nil)
                 return
             }
             do {
                 guard let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any] else {
+                    
+                 
+                    
                     completion(nil)
                     return
                 }
                 if(json["error"] != nil){
+                    
+                
+                    
                     _ = json["error"]! as! String
                     completion(nil)
                     return
                 }
+                
+              
+                
                 completion(json)
                 
             } catch let error {

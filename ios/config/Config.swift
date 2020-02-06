@@ -40,13 +40,16 @@ UINavigationControllerDelegate, UIDropInteractionDelegate {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     @IBOutlet weak var configCollectionView0: BoardView!
+    //@IBOutlet weak var configCollectionView0: BoardView!
     @IBOutlet weak var configCollectionViewHeight0: NSLayoutConstraint!
     
     
     @IBOutlet weak var configCollectionView1: BoardView!
+    //@IBOutlet weak var configCollectionView1: BoardView!
     @IBOutlet weak var configCollectionViewHeight1: NSLayoutConstraint!
     
     @IBOutlet weak var configCollectionView2: BoardView!
+    //@IBOutlet weak var configCollectionView2: BoardView!
     @IBOutlet weak var configCollectionViewHeight2: NSLayoutConstraint!
     
     
@@ -130,6 +133,7 @@ UINavigationControllerDelegate, UIDropInteractionDelegate {
         let viewController = storyboard.instantiateViewController(withIdentifier: "EditSelf") as! EditSelf
         viewController.setPlayerSelf(playerSelf: self.playerSelf!)
         viewController.setTitleText(titleText: "config. 0̸")
+        viewController.setActiveConfigNumber(activeConfigNumber: 0)
         UIApplication.shared.keyWindow?.rootViewController = viewController
     }
     
@@ -138,6 +142,7 @@ UINavigationControllerDelegate, UIDropInteractionDelegate {
         let viewController = storyboard.instantiateViewController(withIdentifier: "EditSelf") as! EditSelf
         viewController.setPlayerSelf(playerSelf: self.playerSelf!)
         viewController.setTitleText(titleText: "config. 1")
+        viewController.setActiveConfigNumber(activeConfigNumber: 1)
         UIApplication.shared.keyWindow?.rootViewController = viewController
     }
     
@@ -146,6 +151,7 @@ UINavigationControllerDelegate, UIDropInteractionDelegate {
         let viewController = storyboard.instantiateViewController(withIdentifier: "EditSelf") as! EditSelf
         viewController.setPlayerSelf(playerSelf: self.playerSelf!)
         viewController.setTitleText(titleText: "config. 2")
+        viewController.setActiveConfigNumber(activeConfigNumber: 2)
         UIApplication.shared.keyWindow?.rootViewController = viewController
     }
     
