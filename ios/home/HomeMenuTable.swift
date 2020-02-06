@@ -126,7 +126,7 @@ class HomeMenuTable: UITableViewController {
         cell.dateLabel.text = player.getLabelTextDate()
         cell.dispLabel.text = player.getLabelTextDisp()
         cell.dispImage.image = player.getImageDisp()!
-        cell.dispImage.tintColor = player.tintColor!
+        cell.dispImage.tintColor = player.tintColor
         return cell
     }
     

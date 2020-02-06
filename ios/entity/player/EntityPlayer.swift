@@ -74,7 +74,7 @@ class EntityPlayer: Equatable, Hashable {
         return UIImage(data: data)!
     }
     
-    var tintColor: UIColor?
+    var tintColor: UIColor = UIColor.blue
     
     func getImageDisp() -> UIImage? {
         if(self.disp >= 0){
@@ -127,7 +127,6 @@ class EntityPlayer: Equatable, Hashable {
     func setConfig(index: Int, config: [[Piece?]]) {
         if(index == 2){
             self.config2 = SerializerConfig().renderServer(config: config)
-            //return SerializerConfig().renderClient(config: self.config2)
         }
         if(index == 1){
             self.config1 = SerializerConfig().renderServer(config: config)

@@ -54,6 +54,7 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
         self.rankLabel.text = self.playerSelf!.getLabelTextRank()
         self.displacementLabel.text = self.playerSelf!.getLabelTextDisp()
         self.displacementImage.image = self.playerSelf!.getImageDisp()!
+        self.displacementImage.tintColor = self.playerSelf!.tintColor
     }
     
     //MARK: Constant

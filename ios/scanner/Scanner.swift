@@ -39,17 +39,15 @@ class Scanner: UIViewController, UITabBarDelegate, AVCaptureMetadataOutputObject
         self.rankLabel.text = self.player!.getLabelTextRank()
         self.displacementLabel.text = self.player!.getLabelTextDisp()
         self.displacementImage.image = self.player!.getImageDisp()!
+        self.displacementImage.tintColor = self.player!.tintColor
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         self.renderHeader()
-        
         if (captureSession?.isRunning == false) {
             captureSession.startRunning()
         }
-        
         self.activityIndicator.isHidden = true
     }
     
