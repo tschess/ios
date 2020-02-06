@@ -110,7 +110,6 @@ class HomeMenuTable: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-       
         let player = self.leaderboardList[indexPath.row]
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "HomeMenuCell", for: indexPath) as! HomeMenuCell
@@ -120,6 +119,7 @@ class HomeMenuTable: UITableViewController {
         cell.dateLabel.text = player.getLabelTextDate()
         cell.dispLabel.text = player.getLabelTextDisp()
         cell.dispImage.image = player.getImageDisp()!
+        cell.dispImage.tintColor = player.tintColor!
         return cell
     }
     
@@ -159,7 +159,7 @@ class HomeMenuTable: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let modifyAction = UIContextualAction(style: .normal, title:  "CHALLENGE", handler: { (ac: UIContextualAction, view:UIView, success:(Bool) -> Void) in
+        let modifyAction = UIContextualAction(style: .normal, title:  "CHALLENGE", handler: { (ac: UIContextualAction, view: UIView, success: (Bool) -> Void) in
             
             
             //            //let gameModel = Game(opponent: self.player!)

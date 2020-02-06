@@ -37,6 +37,7 @@ class Skins: UIViewController, UITabBarDelegate {
         self.rankLabel.text = self.player!.getLabelTextRank()
         self.displacementLabel.text = self.player!.getLabelTextDisp()
         self.displacementImage.image = self.player!.getImageDisp()!
+        self.displacementImage.tintColor = self.player!.tintColor
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -39,6 +39,7 @@ class Home: UIViewController, UITabBarDelegate {
         self.rankLabel.text = self.player!.getLabelTextRank()
         self.dispLabel.text = self.player!.getLabelTextDisp()
         self.dispImageView.image = self.player!.getImageDisp()!
+        self.dispImageView.tintColor = self.player!.tintColor
     }
     
     override func viewDidLoad() {

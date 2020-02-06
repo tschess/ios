@@ -87,23 +87,29 @@ class EntityGame: Equatable, Hashable {
         if(self.white.username == username){
             if(self.white_disp! >= 0){
                 if #available(iOS 13.0, *) {
-                    return UIImage(systemName: "arrow.up")!.withTintColor(.green)
+                    self.tintColor = .green
+                    return UIImage(systemName: "arrow.up")!
                 }
             }
             if #available(iOS 13.0, *) {
-                return UIImage(systemName: "arrow.down")!.withTintColor(.red)
+                self.tintColor = .red
+                return UIImage(systemName: "arrow.down")!
             }
         }
         if(self.black_disp! >= 0){
             if #available(iOS 13.0, *) {
-                return UIImage(systemName: "arrow.up")!.withTintColor(.green)
+                self.tintColor = .green
+                return UIImage(systemName: "arrow.up")!
             }
         }
         if #available(iOS 13.0, *) {
-            return UIImage(systemName: "arrow.down")!.withTintColor(.red)
+            self.tintColor = .red
+            return UIImage(systemName: "arrow.down")!
         }
         return nil
     }
+    
+    var tintColor: UIColor?
     
     func getLabelTextDisp(username: String) -> String {
         if(self.white.username == username){
