@@ -404,7 +404,6 @@ extension Ack: UICollectionViewDelegateFlowLayout {
         switch item.tag {
         case 0:
             print("let's play")
-            
             self.activityIndicator.isHidden = false
             self.activityIndicator.startAnimating()
             
@@ -424,16 +423,16 @@ extension Ack: UICollectionViewDelegateFlowLayout {
             //                /**
             //                 * ERROR HANDLING!!!
             //                 */
-            //                DispatchQueue.main.async {
-            //                    let storyboard: UIStoryboard = UIStoryboard(name: "Tschess", bundle: nil)
-            //                    let viewController = storyboard.instantiateViewController(withIdentifier: "Tschess") as! Tschess
-            //                    viewController.setGameTschess(gameTschess: gameTschess!)
-            //                    UIApplication.shared.keyWindow?.rootViewController = viewController
-            //                }
-            //            }
+            DispatchQueue.main.async {
+                let storyboard: UIStoryboard = UIStoryboard(name: "Tschess", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "Tschess") as! Tschess
+                viewController.setGameTschess(gameTschess: self.gameTschess!)
+                viewController.setPlayerSelf(playerSelf: self.playerSelf!)
+                viewController.setPlayerOther(playerOther: self.gameTschess!.getPlayerOther(username: self.playerSelf!.username))
+                UIApplication.shared.keyWindow?.rootViewController = viewController
+            }
             return
         default:
-            
             DispatchQueue.main.async {
                 let storyboard: UIStoryboard = UIStoryboard(name: "Home", bundle: nil)
                 let viewController = storyboard.instantiateViewController(withIdentifier: "Home") as! Home
