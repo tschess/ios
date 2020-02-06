@@ -99,19 +99,19 @@ class Home: UIViewController, UITabBarDelegate {
     }
     
     @objc func notificationTimerTask() {
-        //        GetNotify().execute(id: self.player!.getId()) { (notify) in
-        //            if(!notify){
-        //                return
-        //            }
-        //            DispatchQueue.main.async() {
-        //                self.tabBarMenu.selectedImageTintColor = UIColor.magenta
-        //                if #available(iOS 13.0, *) {
-        //                    let notify = self.tabBarMenu.items![1]
-        //                    notify.selectedImage = UIImage(systemName: "gamecontroller")!
-        //                    self.tabBarMenu.selectedItem = notify
-        //                }
-        //            }
-        //        }
+        GetNotify().execute(id: self.player!.id) { (notify) in
+            if(!notify){
+                return
+            }
+            DispatchQueue.main.async() {
+                self.tabBarMenu.selectedImageTintColor = UIColor.magenta
+                if #available(iOS 13.0, *) {
+                    let notify = self.tabBarMenu.items![1]
+                    notify.selectedImage = UIImage(systemName: "gamecontroller")!
+                    self.tabBarMenu.selectedItem = notify
+                }
+            }
+        }
     }
     
     
