@@ -111,7 +111,10 @@ class EntityGame: Equatable, Hashable {
     
     var tintColor: UIColor?
     
-    func getLabelTextDisp(username: String) -> String {
+    func getLabelTextDisp(username: String) -> String? {
+        if(self.white_disp == nil || self.black_disp == nil){
+            return nil
+        }
         if(self.white.username == username){
             return String(abs(self.white_disp!))
         }
