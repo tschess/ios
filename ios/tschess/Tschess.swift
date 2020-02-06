@@ -401,7 +401,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
             }
         default:
             self.stopTimers()
-            print("lol")
+            //print("lol")
         }
     }
     

@@ -12,13 +12,31 @@ class Ack:
     UIViewController,
     UIPickerViewDataSource,
     UIPickerViewDelegate,
-    UITabBarDelegate, UIGestureRecognizerDelegate {
+UITabBarDelegate, UIGestureRecognizerDelegate {
     
-     var player: EntityPlayer?
-       
-       public func setPlayer(player: EntityPlayer){
-           self.player = player
-       }
+    var player: EntityPlayer?
+    
+    public func setPlayer(player: EntityPlayer){
+        self.player = player
+    }
+    
+    var playerSelf: EntityPlayer?
+    
+    func setPlayerSelf(playerSelf: EntityPlayer){
+        self.playerSelf = playerSelf
+    }
+    
+    var playerOther: EntityPlayer?
+    
+    func setPlayerOther(playerOther: EntityPlayer){
+        self.playerOther = playerOther
+    }
+    
+    var gameTschess: EntityGame?
+    
+    public func setGameTschess(gameTschess: EntityGame) {
+        self.gameTschess = gameTschess
+    }
     
     @IBOutlet weak var configCollectionView: BoardView!
     @IBOutlet weak var configCollectionViewHeight: NSLayoutConstraint!
@@ -48,7 +66,7 @@ class Ack:
     
     func renderConfig0() {
         self.tschessElementMatrix = self.player!.getConfig(index: 0)
-        
+        self.configActive = 0
         self.activeConfigNumber.text = "0̸"
         self.configCollectionView.reloadData()
         
@@ -67,7 +85,7 @@ class Ack:
     
     func renderConfig1() {
         self.tschessElementMatrix = self.player!.getConfig(index: 1)
-        
+        self.configActive = 1
         self.activeConfigNumber.text = "1"
         self.configCollectionView.reloadData()
         
@@ -86,7 +104,7 @@ class Ack:
     
     func renderConfig2() {
         self.tschessElementMatrix = self.player!.getConfig(index: 2)
-        
+        self.configActive = 2
         self.activeConfigNumber.text = "2"
         self.configCollectionView.reloadData()
         
@@ -121,18 +139,6 @@ class Ack:
     @IBOutlet weak var tabBarMenu: UITabBar!
     
     @IBOutlet weak var skinSelectionPicker: UIPickerView!
-    
-     var playerOther: EntityPlayer?
-       
-       func setPlayerOther(playerOther: EntityPlayer){
-           self.playerOther = playerOther
-       }
-       
-       var playerSelf: EntityPlayer?
-       
-       func setPlayerSelf(playerSelf: EntityPlayer){
-           self.playerSelf = playerSelf
-       }
     
     var skinSelectionPick: String = "iapetus"
     
@@ -170,12 +176,12 @@ class Ack:
     }
     
     public func renderHeader() {
-           self.avatarImageView.image = self.playerOther!.getImageAvatar()
-           self.usernameLabel.text = self.playerOther!.username
-           self.eloLabel.text = self.playerOther!.getLabelTextElo()
-           self.rankLabel.text = self.playerOther!.getLabelTextRank()
-           self.rankDateLabel.text = self.playerOther!.getLabelTextDate()
-       }
+        self.avatarImageView.image = self.playerOther!.getImageAvatar()
+        self.usernameLabel.text = self.playerOther!.username
+        self.eloLabel.text = self.playerOther!.getLabelTextElo()
+        self.rankLabel.text = self.playerOther!.getLabelTextRank()
+        self.rankDateLabel.text = self.playerOther!.getLabelTextDate()
+    }
     
     var attributeAlphaDotFull: [NSAttributedString.Key: NSObject]?
     var attributeAlphaDotHalf: [NSAttributedString.Key: NSObject]?
@@ -187,7 +193,6 @@ class Ack:
         
         self.renderHeader()
         
-        self.tschessElementMatrix = self.player!.getConfig(index: 0)
         
         
         self.configCollectionView.delegate = self
@@ -235,6 +240,17 @@ class Ack:
             backAlpha: 0.85)
         
         self.skinList = Array(arrayLiteral: iapetus, calypso, hyperion, neptune) //in actual fact default will come first...
+        
+        
+        if(self.configActive == 0){
+            self.tschessElementMatrix = self.player!.getConfig(index: 0)
+        }
+        if(self.configActive == 1){
+            self.tschessElementMatrix = self.player!.getConfig(index: 1)
+        }
+        if(self.configActive == 2){
+            self.tschessElementMatrix = self.player!.getConfig(index: 2)
+        }
     }
     
     var skinList: Array<EntitySkin>?
@@ -255,7 +271,7 @@ class Ack:
         
         self.skinSelectionPicker.delegate = self
         self.skinSelectionPicker.dataSource = self
-        //self.skinSelectionPicker.
+        
         
         self.swipeRightGesture = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
         swipeRightGesture!.direction = UISwipeGestureRecognizer.Direction.right
@@ -268,11 +284,23 @@ class Ack:
         self.configCollectionView.addGestureRecognizer(elementCollectionViewGesture)
     }
     
+    var configActive: Int = 0
+    
     @objc func renderElementCollectionView() {
+        
+        if(activeConfigNumber.text == "0̸"){
+            self.configActive = 0
+        }
+        if(activeConfigNumber.text == "1"){
+            self.configActive = 1
+        }
+        if(activeConfigNumber.text == "2"){
+            self.configActive = 2
+        }
         let storyboard: UIStoryboard = UIStoryboard(name: "EditOther", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "EditOther") as! EditOther
         viewController.setTitleText(titleText: "let's play!")
-        viewController.setActiveConfigNumber(activeConfigNumber: Int(self.activeConfigNumber.text!)!)
+        viewController.setActiveConfigNumber(activeConfigNumber: configActive)
         viewController.setPlayerOther(playerOther: self.playerOther!)
         viewController.setPlayerSelf(playerSelf: self.playerSelf!)
         UIApplication.shared.keyWindow?.rootViewController = viewController
@@ -383,26 +411,26 @@ extension Ack: UICollectionViewDelegateFlowLayout {
             
             //let idGame = self.gameModel!.getIdentifier()
             
-//            let requestPayload: [String: Any] = [
-//                "id_game": idGame,
-//                "id_player": self.player!.getId(),
-//                "skin": "DEFAULT",
-//                "config": 3]
+            //            let requestPayload: [String: Any] = [
+            //                "id_game": idGame,
+            //                "id_player": self.player!.getId(),
+            //                "skin": "DEFAULT",
+            //                "config": 3]
             
             //let gameAck: GameAck = GameAck(idGame: idGame, playerSelf: self.player!, playerOppo: self.opponent!)
             
-//            RequestAck().execute(requestPayload: requestPayload, gameAck: gameAck) { (gameTschess) in
-//                print("result: \(gameTschess)")
-//                /**
-//                 * ERROR HANDLING!!!
-//                 */
-//                DispatchQueue.main.async {
-//                    let storyboard: UIStoryboard = UIStoryboard(name: "Tschess", bundle: nil)
-//                    let viewController = storyboard.instantiateViewController(withIdentifier: "Tschess") as! Tschess
-//                    viewController.setGameTschess(gameTschess: gameTschess!)
-//                    UIApplication.shared.keyWindow?.rootViewController = viewController
-//                }
-//            }
+            //            RequestAck().execute(requestPayload: requestPayload, gameAck: gameAck) { (gameTschess) in
+            //                print("result: \(gameTschess)")
+            //                /**
+            //                 * ERROR HANDLING!!!
+            //                 */
+            //                DispatchQueue.main.async {
+            //                    let storyboard: UIStoryboard = UIStoryboard(name: "Tschess", bundle: nil)
+            //                    let viewController = storyboard.instantiateViewController(withIdentifier: "Tschess") as! Tschess
+            //                    viewController.setGameTschess(gameTschess: gameTschess!)
+            //                    UIApplication.shared.keyWindow?.rootViewController = viewController
+            //                }
+            //            }
             return
         default:
             

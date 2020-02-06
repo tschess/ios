@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Pawn Promotion-->
+        <!--Promotion-->
         <scene sceneID="LAn-pV-dbr">
             <objects>
-                <viewController storyboardIdentifier="PawnPromotion" modalPresentationStyle="overCurrentContext" id="KZp-pR-rDR" customClass="PawnPromotion" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Promotion" modalPresentationStyle="overCurrentContext" id="KZp-pR-rDR" customClass="Promotion" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="RRv-CF-dpA"/>
                         <viewControllerLayoutGuide type="bottom" id="A0B-ZU-VNy"/>

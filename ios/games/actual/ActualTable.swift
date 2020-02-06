@@ -67,10 +67,12 @@ class ActualTable: UITableViewController, SwipeTableViewCellDelegate {
             DispatchQueue.main.async {
                 let storyboard: UIStoryboard = UIStoryboard(name: "Tschess", bundle: nil)
                 let viewController = storyboard.instantiateViewController(withIdentifier: "Tschess") as! Tschess
+                viewController.setPlayerOther(playerOther: game.getPlayerOther(username: self.playerSelf!.username))
+                viewController.setPlayerSelf(playerSelf: self.playerSelf!)
                 viewController.setGameTschess(gameTschess: game)
                 UIApplication.shared.keyWindow?.rootViewController = viewController
-                return
             }
+            return nil
         }
         if(game.getInboundInvitation(username: self.playerSelf!.username)){
             
@@ -102,13 +104,19 @@ class ActualTable: UITableViewController, SwipeTableViewCellDelegate {
                 return [nAction]
             }
             let ackAction = SwipeAction(style: .default, title: "ACK") { action, indexPath in
+                
+                let game = self.gameMenuTableList[indexPath.row]
+                let playerOther: EntityPlayer = game.getPlayerOther(username: self.playerSelf!.username)
+                
                 //            print("ACK")
-                //            let storyboard: UIStoryboard = UIStoryboard(name: "Ack", bundle: nil)
-                //            let viewController = storyboard.instantiateViewController(withIdentifier: "Ack") as! Ack
-                //            viewController.setPlayer(player: self.player!)
-                //            viewController.setOpponent(opponent: actualMenuItem.getOpponent()) // <-- REDUNDANT
-                //            viewController.setGameModel(gameModel: actualMenuItem)
-                //            UIApplication.shared.keyWindow?.rootViewController = viewController
+                let storyboard: UIStoryboard = UIStoryboard(name: "Ack", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "Ack") as! Ack
+                viewController.setPlayerOther(playerOther: playerOther)
+                viewController.setPlayer(player: self.playerSelf!)
+                viewController.setPlayerSelf(playerSelf: self.playerSelf!)
+                viewController.setGameTschess(gameTschess: game)
+                
+                UIApplication.shared.keyWindow?.rootViewController = viewController
             }
             ackAction.backgroundColor = .green
             if #available(iOS 13.0, *) {

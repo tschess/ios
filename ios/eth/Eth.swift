@@ -172,10 +172,10 @@ class Eth: UIViewController, UITabBarDelegate, UITextFieldDelegate { //force peo
                 ] as [String: Any]
             
 //            UpdateAddress().execute(updatePayload: updatePayload) { (result) in
-//                DispatchQueue.main.async() {
-//                    self.activityIndicator!.stopAnimating()
-//                    self.activityIndicator!.isHidden = true
-//                }
+                DispatchQueue.main.async() {
+                    self.activityIndicator!.stopAnimating()
+                    self.activityIndicator!.isHidden = true
+                }
 //                print("UpdateAddress: \(result)")
 //            }
         }

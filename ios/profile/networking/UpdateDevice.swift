@@ -39,14 +39,17 @@ class UpdateDevice {
                     completion(nil)
                     return
                 }
-                if(json["error"] != nil){
-                    
                 
-                    
-                    _ = json["error"]! as! String
-                    completion(nil)
-                    return
-                }
+                print(json)
+                
+//                if(json["error"] != nil){
+//
+//
+//                    
+//                    _ = json["error"]! as! String
+//                    completion(nil)
+//                    return
+//                }
                 
               
                 

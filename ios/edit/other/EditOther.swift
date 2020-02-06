@@ -500,16 +500,13 @@ extension EditOther: UICollectionViewDelegate {
     
     @IBAction func backButtonClick(_ sender: Any) {
         if(self.titleText == "new challenge"){
-//            let storyboard: UIStoryboard = UIStoryboard(name: "Challenge", bundle: nil)
-//            let viewController = storyboard.instantiateViewController(withIdentifier: "Challenge") as! Challenge
-//            viewController.setPlayer(player: self.playerSelf!)
-//            viewController.setOpponent(opponent: self.playerOther!)
-//            viewController.setActivateBackConfig(activateBackConfig: self.activeConfigNumber!)
-//
-//            let gameModel = Game(opponent: self.playerOther!) //TODO: !!!
-//            viewController.setGameModel(gameModel: gameModel)
-//
-//            UIApplication.shared.keyWindow?.rootViewController = viewController
+            let storyboard: UIStoryboard = UIStoryboard(name: "Challenge", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier: "Challenge") as! Challenge
+            viewController.setActivateBackConfig(activateBackConfig: self.activeConfigNumber!)
+            viewController.setPlayerOther(playerOther: self.playerOther!)
+            viewController.setPlayerSelf(playerSelf: self.playerSelf!)
+            //viewController.setGameModel(gameModel: gameModel)
+            UIApplication.shared.keyWindow?.rootViewController = viewController
             return
         }
         if(self.titleText == "quick play"){
@@ -522,13 +519,20 @@ extension EditOther: UICollectionViewDelegate {
             return
         }
         //if(self.titleText!.contains("play!")){
-//        let storyboard: UIStoryboard = UIStoryboard(name: "Ack", bundle: nil)
-//        let viewController = storyboard.instantiateViewController(withIdentifier: "Ack") as! Ack
-//        viewController.setPlayer(player: self.playerSelf!)
-//        viewController.setOpponent(opponent: self.playerOther!) // <-- REDUNDANT
-//        let gameModel = Game(opponent: self.playerOther!) //TODO: !!! // <-- REDUNDANT
-//        viewController.setGameModel(gameModel: gameModel) // <-- REDUNDANT
-//        UIApplication.shared.keyWindow?.rootViewController = viewController
+        let storyboard: UIStoryboard = UIStoryboard(name: "Ack", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "Ack") as! Ack
+        if(self.activeConfigNumber! == 0){
+            viewController.activeConfigNumber.text = "0̸"
+        }
+        if(self.activeConfigNumber! == 1){
+            viewController.activeConfigNumber.text = "1"
+        }
+        if(self.activeConfigNumber! == 2){
+            viewController.activeConfigNumber.text = "2"
+        }
+        viewController.setPlayerOther(playerOther: self.playerOther!)
+        viewController.setPlayerSelf(playerSelf: self.playerSelf!)
+        UIApplication.shared.keyWindow?.rootViewController = viewController
         //return
         //}
     }
@@ -538,16 +542,12 @@ extension EditOther: UICollectionViewDelegate {
         case 0://back
             tabBar.selectedItem = nil
             if(self.titleText == "new challenge"){
-//                let storyboard: UIStoryboard = UIStoryboard(name: "Challenge", bundle: nil)
-//                let viewController = storyboard.instantiateViewController(withIdentifier: "Challenge") as! Challenge
-//                viewController.setPlayer(player: self.playerSelf!)
-//                viewController.setOpponent(opponent: self.playerOther!)
-//                viewController.setActivateBackConfig(activateBackConfig: self.activeConfigNumber!)
-//
-//                let gameModel = Game(opponent: self.playerOther!) //TODO: !!!
-//                viewController.setGameModel(gameModel: gameModel)
-//
-//                UIApplication.shared.keyWindow?.rootViewController = viewController
+                let storyboard: UIStoryboard = UIStoryboard(name: "Challenge", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "Challenge") as! Challenge
+                viewController.setPlayerSelf(playerSelf: self.playerSelf!)
+                viewController.setPlayerOther(playerOther: self.playerOther!)
+                viewController.setActivateBackConfig(activateBackConfig: self.activeConfigNumber!)
+                UIApplication.shared.keyWindow?.rootViewController = viewController
                 return
             }
             if(self.titleText == "quick play"){
@@ -560,13 +560,20 @@ extension EditOther: UICollectionViewDelegate {
                 return
             }
             //if(self.titleText!.contains("play!")){
-//            let storyboard: UIStoryboard = UIStoryboard(name: "Ack", bundle: nil)
-//            let viewController = storyboard.instantiateViewController(withIdentifier: "Ack") as! Ack
-//            viewController.setPlayer(player: self.playerSelf!)
-//            viewController.setOpponent(opponent: self.playerOther!) // <-- REDUNDANT
-//            let gameModel = Game(opponent: self.playerOther!) //TODO: !!! // <-- REDUNDANT
-//            viewController.setGameModel(gameModel: gameModel) // <-- REDUNDANT
-//            UIApplication.shared.keyWindow?.rootViewController = viewController
+            let storyboard: UIStoryboard = UIStoryboard(name: "Ack", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier: "Ack") as! Ack
+            viewController.setPlayerOther(playerOther: self.playerOther!)
+            viewController.setPlayerSelf(playerSelf: self.playerSelf!)
+            if(self.activeConfigNumber! == 0){
+                viewController.configActive = 0
+            }
+            if(self.activeConfigNumber! == 1){
+                viewController.configActive = 1
+            }
+            if(self.activeConfigNumber! == 2){
+                viewController.configActive = 2
+            }
+            UIApplication.shared.keyWindow?.rootViewController = viewController
             return
         //}
         default: //save...
@@ -592,49 +599,49 @@ extension EditOther: UICollectionViewDelegate {
                 index = 2
             }
             updateConfig["index"] = index
-//            UpdateConfig().execute(requestPayload: updateConfig, player: self.playerSelf!) { (result) in
-//                if result == nil {
-//                    print("error!") // print a popup
-//                }
-//                self.playerSelf = result!
-//                DispatchQueue.main.async() {
-//                    self.activityIndicator.stopAnimating()
-//                    self.activityIndicator.isHidden = true
-//                    if(self.titleText == "new challenge"){
-////                        let storyboard: UIStoryboard = UIStoryboard(name: "Challenge", bundle: nil)
-////                        let viewController = storyboard.instantiateViewController(withIdentifier: "Challenge") as! Challenge
-////                        viewController.setPlayer(player: self.playerSelf!)
-////                        viewController.setOpponent(opponent: self.playerOther!)
-////                        viewController.setActivateBackConfig(activateBackConfig: self.activeConfigNumber!)
-////                        //
-////                        let gameModel = Game(opponent: self.playerOther!) //TODO: !!!
-////                        viewController.setGameModel(gameModel: gameModel)
-////                        //
-////                        UIApplication.shared.keyWindow?.rootViewController = viewController
-//                        return
-//                    }
-//                    if(self.titleText == "quick play"){
-//                        let storyboard: UIStoryboard = UIStoryboard(name: "Play", bundle: nil)
-//                        let viewController = storyboard.instantiateViewController(withIdentifier: "Play") as! Play
-//                        viewController.setPlayerSelf(playerSelf: self.playerSelf!)
-//                        viewController.setPlayerOther(playerOther: self.playerOther!)
-//                        viewController.setActivateBackConfig(activateBackConfig: self.activeConfigNumber!)
-//                        UIApplication.shared.keyWindow?.rootViewController = viewController
-//                        return
-//                    }
-//                    //if(self.titleText!.contains("play!")){
-////                    let storyboard: UIStoryboard = UIStoryboard(name: "Ack", bundle: nil)
-////                    let viewController = storyboard.instantiateViewController(withIdentifier: "Ack") as! Ack
-////                    viewController.setPlayer(player: self.playerSelf!)
-////                    viewController.setOpponent(opponent: self.playerOther!) // <-- REDUNDANT
-////                    let gameModel = Game(opponent: self.playerOther!) //TODO: !!! // <-- REDUNDANT
-////                    viewController.setGameModel(gameModel: gameModel) // <-- REDUNDANT
-////                    UIApplication.shared.keyWindow?.rootViewController = viewController
-//                    //return
-//                    //}
-//                }
-//
-//            }
+            //            UpdateConfig().execute(requestPayload: updateConfig, player: self.playerSelf!) { (result) in
+            //                if result == nil {
+            //                    print("error!") // print a popup
+            //                }
+            //                self.playerSelf = result!
+            //                DispatchQueue.main.async() {
+            //                    self.activityIndicator.stopAnimating()
+            //                    self.activityIndicator.isHidden = true
+            //                    if(self.titleText == "new challenge"){
+            ////                        let storyboard: UIStoryboard = UIStoryboard(name: "Challenge", bundle: nil)
+            ////                        let viewController = storyboard.instantiateViewController(withIdentifier: "Challenge") as! Challenge
+            ////                        viewController.setPlayer(player: self.playerSelf!)
+            ////                        viewController.setOpponent(opponent: self.playerOther!)
+            ////                        viewController.setActivateBackConfig(activateBackConfig: self.activeConfigNumber!)
+            ////                        //
+            ////                        let gameModel = Game(opponent: self.playerOther!) //TODO: !!!
+            ////                        viewController.setGameModel(gameModel: gameModel)
+            ////                        //
+            ////                        UIApplication.shared.keyWindow?.rootViewController = viewController
+            //                        return
+            //                    }
+            //                    if(self.titleText == "quick play"){
+            //                        let storyboard: UIStoryboard = UIStoryboard(name: "Play", bundle: nil)
+            //                        let viewController = storyboard.instantiateViewController(withIdentifier: "Play") as! Play
+            //                        viewController.setPlayerSelf(playerSelf: self.playerSelf!)
+            //                        viewController.setPlayerOther(playerOther: self.playerOther!)
+            //                        viewController.setActivateBackConfig(activateBackConfig: self.activeConfigNumber!)
+            //                        UIApplication.shared.keyWindow?.rootViewController = viewController
+            //                        return
+            //                    }
+            //                    //if(self.titleText!.contains("play!")){
+            ////                    let storyboard: UIStoryboard = UIStoryboard(name: "Ack", bundle: nil)
+            ////                    let viewController = storyboard.instantiateViewController(withIdentifier: "Ack") as! Ack
+            ////                    viewController.setPlayer(player: self.playerSelf!)
+            ////                    viewController.setOpponent(opponent: self.playerOther!) // <-- REDUNDANT
+            ////                    let gameModel = Game(opponent: self.playerOther!) //TODO: !!! // <-- REDUNDANT
+            ////                    viewController.setGameModel(gameModel: gameModel) // <-- REDUNDANT
+            ////                    UIApplication.shared.keyWindow?.rootViewController = viewController
+            //                    //return
+            //                    //}
+            //                }
+            //
+            //            }
         }
     }
 }

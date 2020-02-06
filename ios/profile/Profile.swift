@@ -31,12 +31,10 @@ class Profile: UIViewController, UITabBarDelegate, UINavigationControllerDelegat
         let dataDecoded: Data = Data(base64Encoded: imageString, options: .ignoreUnknownCharacters)!
         let decodedimage = UIImage(data: dataDecoded)
         avatarImageView.image = decodedimage
-        //self.player!.setAvatar(avatar: imageString)
+        self.player!.avatar = imageString //now update it...
         
         dismiss(animated: true, completion: nil)
     }
-    
-    
     
     func changePhoto() {
         DispatchQueue.main.async() {
@@ -57,15 +55,7 @@ class Profile: UIViewController, UITabBarDelegate, UINavigationControllerDelegat
         dismiss(animated: true, completion: nil)
     }
     
-    
-    
-    
-    
-    
     @IBOutlet weak var backButton: UIButton!
-    
-
-    
     
     @IBOutlet weak var displacementImage: UIImageView!
     @IBOutlet weak var displacementLabel: UILabel!
@@ -74,9 +64,6 @@ class Profile: UIViewController, UITabBarDelegate, UINavigationControllerDelegat
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    
-    
-    
     
     @IBOutlet weak var tabBarMenu: UITabBar!
     
@@ -107,10 +94,10 @@ class Profile: UIViewController, UITabBarDelegate, UINavigationControllerDelegat
         ///
         
         NotificationCenter.default.addObserver(
-        self,
-        selector: #selector(self.onDidReceiveData(_:)),
-        name: NSNotification.Name(rawValue: "ProfileMenuSelection"),
-        object: nil)
+            self,
+            selector: #selector(self.onDidReceiveData(_:)),
+            name: NSNotification.Name(rawValue: "ProfileMenuSelection"),
+            object: nil)
     }
     
     @objc func onDidReceiveData(_ notification: NSNotification) {
@@ -119,6 +106,20 @@ class Profile: UIViewController, UITabBarDelegate, UINavigationControllerDelegat
         switch menuSelectionIndex {
         case 0:
             self.changePhoto()
+        case 1://skins
+            DispatchQueue.main.async {
+                let storyboard: UIStoryboard = UIStoryboard(name: "Skins", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "Skins") as! Skins
+                viewController.setPlayer(player: self.player!)
+                UIApplication.shared.keyWindow?.rootViewController = viewController
+            }
+        case 2://eth
+            DispatchQueue.main.async {
+                let storyboard: UIStoryboard = UIStoryboard(name: "Eth", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "Eth") as! Eth
+                viewController.setPlayer(player: self.player!)
+                UIApplication.shared.keyWindow?.rootViewController = viewController
+            }
         default:
             self.signOut()
         }

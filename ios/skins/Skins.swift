@@ -101,22 +101,23 @@ class Skins: UIViewController, UITabBarDelegate {
     }
     
     @IBAction func backButtonClick(_ sender: Any) {
-        let homeStoryboard: UIStoryboard = UIStoryboard(name: "Home", bundle: nil)
-        let homeViewController = homeStoryboard.instantiateViewController(withIdentifier: "Home") as! Home
-        homeViewController.setPlayer(player: self.player!)
-        UIApplication.shared.keyWindow?.rootViewController = homeViewController
+        DispatchQueue.main.async() {
+            let profileStoryboard: UIStoryboard = UIStoryboard(name: "Profile", bundle: nil)
+            let profileViewController = profileStoryboard.instantiateViewController(withIdentifier: "Profile") as! Profile
+            profileViewController.setPlayer(player: self.player!)
+            UIApplication.shared.keyWindow?.rootViewController = profileViewController
+        }
     }
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         switch item.tag {
         case 1:
-            DispatchQueue.main.async {
-                let storyboard: UIStoryboard = UIStoryboard(name: "Home", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "Home") as! Home
-                viewController.setPlayer(player: self.player!)
-                UIApplication.shared.keyWindow?.rootViewController = viewController
+            DispatchQueue.main.async() {
+                let profileStoryboard: UIStoryboard = UIStoryboard(name: "Profile", bundle: nil)
+                let profileViewController = profileStoryboard.instantiateViewController(withIdentifier: "Profile") as! Profile
+                profileViewController.setPlayer(player: self.player!)
+                UIApplication.shared.keyWindow?.rootViewController = profileViewController
             }
-            return
         default:
             DispatchQueue.main.async {
             let homeStoryboard: UIStoryboard = UIStoryboard(name: "Eth", bundle: nil)
