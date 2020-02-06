@@ -19,7 +19,7 @@ class Detail: UIViewController, UITabBarDelegate, UITextViewDelegate {
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
-    let DURATION_PLACEHOLDER: String = "17.01.2020_15:45:53.2060"
+    let DURATION_PLACEHOLDER: String = "18.01.2020_15:45:53.2060"
     
     var counter: String?
     var dateTime: DateTime?
@@ -197,35 +197,107 @@ class Detail: UIViewController, UITabBarDelegate, UITextViewDelegate {
     //    }
     
     @objc func cellForegroundClick() {
+        
+        let player: [String: Any] = [
+            "id": self.player!.id,
+            "username": self.player!.username,
+            "password": self.player!.password,
+            "elo": self.player!.elo,
+            "rank": self.player!.rank,
+            "disp": self.player!.disp,
+            "date": self.player!.date,
+            "avatar": self.player!.avatar,
+            "config0": self.player!.config0,
+            "config1": self.player!.config1,
+            "config2": self.player!.config2,
+            "notify": self.player!.notify,
+            "device": self.player!.device,
+            "updated": self.player!.updated,
+            "created": self.player!.created]
+        
+        let rowA: [String] = ["RookBlack", "KnightBlack", "BishopBlack", "QueenBlack", "KingBlack", "BishopBlack", "KnightBlack", "RookBlack"]
+        let rowB: [String] = ["PawnBlack", "PawnBlack", "PawnBlack", "PawnBlack", "PawnBlack", "PawnBlack", "PawnBlack", "PawnBlack"]
+        let rowC: [String] = [String](repeating: "", count: 8)
+        let rowD: [String] = [String](repeating: "", count: 8)
+        let rowE: [String] = [String](repeating: "", count: 8)
+        let rowF: [String] = [String](repeating: "", count: 8)
+        let rowG: [String] = ["PawnWhite", "PawnWhite", "PawnWhite", "PawnWhite", "PawnWhite", "PawnWhite", "PawnWhite", "PawnWhite"]
+        let rowH: [String] = ["RookWhite", "KnightWhite", "BishopWhite", "QueenWhite", "KingWhite", "BishopWhite", "KnightWhite", "RookWhite"]
+        
+        let id_game: String = "id"
+        let state: [[String]] = [rowH, rowG, rowF, rowE, rowD, rowC, rowB, rowA]
+        let moves: Int = 666
+        let status: String = "RESOLVED"
+        let outcome: String = "CHECKMATE"
+        let white: [String: Any] = player
+        let white_elo: Int = 13
+        let white_disp: Int = 13
+        let white_skin: String = "SKIN"
+        let black: [String: Any] = player
+        let black_elo: Int = 13
+        let black_disp: Int = 13
+        let black_skin: String = "SKIN"
+        let challenger: String = "WHITE"
+        let winner: String = "WHITE"
+        let turn: String = "WHITE"
+        let on_check: Bool = false
+        let highlight: String = "6669"
+        let updated_game: String = "17.01.2020_15:45:53.2060"
+        let created_game: String = "17.01.2020_15:45:53.2060"
+        
+        let dict: [String: Any] = [
+            "id": id_game,
+            "state": state,
+            "moves": moves,
+            "status": status,
+            "outcome": outcome,
+            "white": white,
+            "white_elo": white_elo,
+            "white_disp": white_disp,
+            "white_skin": white_skin,
+            "black": black,
+            "black_elo": black_elo,
+            "black_disp": black_disp,
+            "black_skin": black_skin,
+            "challenger": challenger,
+            "winner": winner,
+            "turn": turn,
+            "on_check": on_check,
+            "highlight": highlight,
+            "updated": updated_game,
+            "created": created_game]
+        
+        let game: EntityGame = ParseGame().execute(json: dict)
+        
         DispatchQueue.main.async {
             switch self.skin!.getName() {
             case "hyperion":
-                let storyboard: UIStoryboard = UIStoryboard(name: "Detail", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "Detail") as! Detail
+                let storyboard: UIStoryboard = UIStoryboard(name: "Snapshot", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "Snapshot") as! Snapshot
+                viewController.setGame(game: game)
                 viewController.setPlayer(player: self.player!)
-                viewController.setSkin(skin: self.skin!)
-                UIApplication.shared.keyWindow?.rootViewController = viewController
+                self.present(viewController, animated: false, completion: nil)
                 return
             case "calypso":
-                let storyboard: UIStoryboard = UIStoryboard(name: "Detail", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "Detail") as! Detail
+                let storyboard: UIStoryboard = UIStoryboard(name: "Snapshot", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "Snapshot") as! Snapshot
+                viewController.setGame(game: game)
                 viewController.setPlayer(player: self.player!)
-                viewController.setSkin(skin: self.skin!)
-                UIApplication.shared.keyWindow?.rootViewController = viewController
+                self.present(viewController, animated: false, completion: nil)
                 return
             case "neptune":
-                let storyboard: UIStoryboard = UIStoryboard(name: "Detail", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "Detail") as! Detail
+                let storyboard: UIStoryboard = UIStoryboard(name: "Snapshot", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "Snapshot") as! Snapshot
+                viewController.setGame(game: game)
                 viewController.setPlayer(player: self.player!)
-                viewController.setSkin(skin: self.skin!)
-                UIApplication.shared.keyWindow?.rootViewController = viewController
+                self.present(viewController, animated: false, completion: nil)
                 return
             case "iapetus":
-                let storyboard: UIStoryboard = UIStoryboard(name: "Detail", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "Detail") as! Detail
+                let storyboard: UIStoryboard = UIStoryboard(name: "Snapshot", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "Snapshot") as! Snapshot
+                viewController.setGame(game: game)
                 viewController.setPlayer(player: self.player!)
-                viewController.setSkin(skin: self.skin!)
-                UIApplication.shared.keyWindow?.rootViewController = viewController
+                self.present(viewController, animated: false, completion: nil)
                 return
             default:
                 return

@@ -84,6 +84,11 @@ class EntityGame: Equatable, Hashable {
     }
     
     func getImageDisp(username: String) -> UIImage? {
+        if(self.white_disp == nil || self.black_disp == nil){
+            if #available(iOS 13.0, *) {
+                return UIImage(systemName: "xmark")!
+            }
+        }
         if(self.white.username == username){
             if(self.white_disp! >= 0){
                 if #available(iOS 13.0, *) {
@@ -109,7 +114,7 @@ class EntityGame: Equatable, Hashable {
         return nil
     }
     
-    var tintColor: UIColor?
+    var tintColor: UIColor = UIColor.blue
     
     func getLabelTextDisp(username: String) -> String? {
         if(self.white_disp == nil || self.black_disp == nil){

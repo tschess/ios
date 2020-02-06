@@ -60,7 +60,6 @@ class Home: UIViewController, UITabBarDelegate {
     override func viewDidDisappear(_ animated: Bool){
         super.viewDidDisappear(animated)
         self.notificationTimerStop()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
