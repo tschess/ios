@@ -60,9 +60,9 @@ class OtherMenuTable: UITableViewController {
         cell.usernameLabel.text = game.getLabelTextUsernameOpponent(username: self.player!.username)
         cell.avatarImageView.image = game.getImageAvatarOpponent(username: self.player!.username)
         cell.displacementLabel.text = game.getLabelTextDisp(username: self.player!.username)
-        cell.displacementImage.image = game.getImageDisp(username: self.player!.username)
-        cell.displacementImage.tintColor = game.tintColor
         cell.oddsLabel.text = game.getOdds(username: self.player!.username)
+        cell.displacementImage.image = game.getImageDisp(username: self.player!.username)
+        cell.displacementImage.tintColor = game.getTint(username: self.player!.username)
         return cell
     }
     

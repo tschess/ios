@@ -10,6 +10,12 @@ import UIKit
 
 class Challenge: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITabBarDelegate, UIGestureRecognizerDelegate {
     
+    var BACK: String?
+    
+    public func setBACK(BACK: String){
+        self.BACK = BACK
+    }
+    
     var activateBackConfig: Int?
     
     public func setActivateBackConfig(activateBackConfig: Int){
@@ -380,14 +386,25 @@ class Challenge: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate,
         }
     }
     
-    func stayHandler(action: UIAlertAction) {
-        let homeStoryboard: UIStoryboard = UIStoryboard(name: "Home", bundle: nil)
-        let homeViewController = homeStoryboard.instantiateViewController(withIdentifier: "Home") as! Home
-        homeViewController.setPlayer(player: self.playerSelf!)
-        UIApplication.shared.keyWindow?.rootViewController = homeViewController
-    }
-    
     @IBAction func backButtonClick(_ sender: Any) {
+        if(self.BACK == "HOME"){
+            DispatchQueue.main.async {
+                let homeStoryboard: UIStoryboard = UIStoryboard(name: "Home", bundle: nil)
+                let homeViewController = homeStoryboard.instantiateViewController(withIdentifier: "Home") as! Home
+                homeViewController.setPlayer(player: self.playerSelf!)
+                UIApplication.shared.keyWindow?.rootViewController = homeViewController
+            }
+            return
+        }
+        if(self.BACK == "HISTORIC"){
+            DispatchQueue.main.async {
+                let storyboard: UIStoryboard = UIStoryboard(name: "Historic", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "Historic") as! Historic
+                viewController.setPlayerSelf(playerSelf: self.playerSelf!)
+                UIApplication.shared.keyWindow?.rootViewController = viewController
+            }
+            return
+        }
         let storyboard: UIStoryboard = UIStoryboard(name: "Other", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "Other") as! Other
         viewController.setPlayerSelf(playerSelf: self.playerSelf!)

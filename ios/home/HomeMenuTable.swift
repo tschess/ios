@@ -174,6 +174,7 @@ class HomeMenuTable: UITableViewController {
             let viewController = storyboard.instantiateViewController(withIdentifier: "Challenge") as! Challenge
             viewController.setPlayerSelf(playerSelf: self.player!)
             viewController.setPlayerOther(playerOther: playerOther)
+            viewController.setBACK(BACK: "HOME")
             UIApplication.shared.keyWindow?.rootViewController = viewController
             success(true)
         })

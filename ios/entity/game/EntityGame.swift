@@ -83,6 +83,16 @@ class EntityGame: Equatable, Hashable {
         return lhs.id == rhs.id
     }
     
+    var tintColorWhite: UIColor = UIColor.blue
+    var tintColorBlack: UIColor = UIColor.blue
+    
+    func getTint(username: String) -> UIColor {
+        if(self.white.username == username){
+            return tintColorWhite
+        }
+        return tintColorBlack
+    }
+    
     func getImageDisp(username: String) -> UIImage? {
         if(self.white_disp == nil || self.black_disp == nil){
             if #available(iOS 13.0, *) {
@@ -92,29 +102,33 @@ class EntityGame: Equatable, Hashable {
         if(self.white.username == username){
             if(self.white_disp! >= 0){
                 if #available(iOS 13.0, *) {
-                    self.tintColor = .green
+                    self.tintColorWhite = .green
+                    self.tintColorBlack = .red
                     return UIImage(systemName: "arrow.up")!
                 }
             }
             if #available(iOS 13.0, *) {
-                self.tintColor = .red
+                self.tintColorWhite = .red
+                self.tintColorBlack = .green
                 return UIImage(systemName: "arrow.down")!
             }
         }
         if(self.black_disp! >= 0){
             if #available(iOS 13.0, *) {
-                self.tintColor = .green
+                self.tintColorWhite = .green
+                self.tintColorBlack = .red
                 return UIImage(systemName: "arrow.up")!
             }
         }
         if #available(iOS 13.0, *) {
-            self.tintColor = .red
+            self.tintColorWhite = .red
+            self.tintColorBlack = .green
             return UIImage(systemName: "arrow.down")!
         }
         return nil
     }
     
-    var tintColor: UIColor = UIColor.blue
+    
     
     func getLabelTextDisp(username: String) -> String? {
         if(self.white_disp == nil || self.black_disp == nil){

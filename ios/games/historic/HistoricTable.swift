@@ -60,8 +60,9 @@ class HistoricTable: UITableViewController {
         cell.usernameLabel.text = game.getLabelTextUsernameOpponent(username: self.playerSelf!.username)
         cell.avatarImageView.image = game.getImageAvatarOpponent(username: self.playerSelf!.username)
         cell.displacementLabel.text = game.getLabelTextDisp(username: self.playerSelf!.username)
-        cell.displacementImage.image = game.getImageDisp(username: self.playerSelf!.username)
         cell.oddsLabel.text = game.getOdds(username: self.playerSelf!.username)
+        cell.displacementImage.image = game.getImageDisp(username: self.playerSelf!.username)
+        cell.displacementImage.tintColor = game.getTint(username: self.playerSelf!.username)
         return cell
     }
     
@@ -165,14 +166,19 @@ class HistoricTable: UITableViewController {
         //        }
         let modifyAction = UIContextualAction(style: .normal, title:  "REMATCH", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
             print("Update action ...")
-            let gameModel = self.gameMenuTableList[indexPath.row]
             
-            //            let storyboard: UIStoryboard = UIStoryboard(name: "Challenge", bundle: nil)
-            //            let viewController = storyboard.instantiateViewController(withIdentifier: "Challenge") as! Challenge
-            //            viewController.setPlayer(player: self.player!)
-            //            viewController.setGameModel(gameModel: gameModel)
-            //            UIApplication.shared.keyWindow?.rootViewController = viewController
-            //            success(true)
+            DispatchQueue.main.async() {
+                let storyboard: UIStoryboard = UIStoryboard(name: "Challenge", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "Challenge") as! Challenge
+                viewController.setPlayerSelf(playerSelf: self.playerSelf!)
+                viewController.setBACK(BACK: "HISTORIC")
+                let gameModel: EntityGame = self.gameMenuTableList[indexPath.row]
+                let playerOther: EntityPlayer = gameModel.getPlayerOther(username: self.playerSelf!.username)
+                
+                viewController.setPlayerOther(playerOther: playerOther)
+                UIApplication.shared.keyWindow?.rootViewController = viewController
+            }
+            success(true)
         })
         if #available(iOS 13.0, *) { //xmark
             modifyAction.image = UIImage(systemName: "gamecontroller.fill")!
