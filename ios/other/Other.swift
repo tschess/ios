@@ -93,18 +93,12 @@ class Other: UIViewController, UITabBarDelegate {
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         switch item.tag {
-//        case 1:
-//            let storyboard: UIStoryboard = UIStoryboard(name: "Challenge", bundle: nil)
-//            let viewController = storyboard.instantiateViewController(withIdentifier: "Challenge") as! Challenge
-//            viewController.setPlayer(player: self.player!)
-//            viewController.setOpponent(opponent: self.gameModel!.getOpponent())
-//            viewController.setGameModel(gameModel: self.gameModel!)
-//            UIApplication.shared.keyWindow?.rootViewController = viewController
         default:
-            let homeStoryboard: UIStoryboard = UIStoryboard(name: "Home", bundle: nil)
-            let homeViewController = homeStoryboard.instantiateViewController(withIdentifier: "Home") as! Home
-            homeViewController.setPlayer(player: self.playerSelf!)
-            UIApplication.shared.keyWindow?.rootViewController = homeViewController
+            let storyboard: UIStoryboard = UIStoryboard(name: "Challenge", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier: "Challenge") as! Challenge
+            viewController.setPlayerSelf(playerSelf: self.playerSelf!)
+            viewController.setPlayerOther(playerOther: self.playerOther!)
+            UIApplication.shared.keyWindow?.rootViewController = viewController
         }
     }
 }

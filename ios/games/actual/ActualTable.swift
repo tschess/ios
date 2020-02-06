@@ -132,17 +132,18 @@ class ActualTable: UITableViewController, SwipeTableViewCellDelegate {
             print("RESCIND")
             self.activityIndicator!.isHidden = false
             self.activityIndicator!.startAnimating()
-            //            let requestPayload: [String: Any] = ["id_game": game.identifier!, "id_player": self.player!.getId()]
-            //
-            //            UpdateRescind().execute(requestPayload: requestPayload) { (result) in
-            //                print("result: \(result)")
-            //                DispatchQueue.main.async {
-            //                    self.activityIndicator!.stopAnimating()
-            //                    self.activityIndicator!.isHidden = true
-            //                    self.gameMenuTableList.remove(at: indexPath.row)
-            //                    self.tableView!.reloadData()
-            //                }
-            //            }
+            let game = self.gameMenuTableList[indexPath.row]
+            let requestPayload: [String: Any] = ["id_game": game.id, "id_player": self.playerSelf!.id]
+            
+            UpdateRescind().execute(requestPayload: requestPayload) { (result) in
+                print("result: \(result)")
+                DispatchQueue.main.async {
+                    self.activityIndicator!.stopAnimating()
+                    self.activityIndicator!.isHidden = true
+                    self.gameMenuTableList.remove(at: indexPath.row)
+                    self.tableView!.reloadData()
+                }
+            }
         }
         rescind.backgroundColor = .orange
         if #available(iOS 13.0, *) {

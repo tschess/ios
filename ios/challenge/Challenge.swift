@@ -8,11 +8,7 @@
 
 import UIKit
 
-class Challenge:
-    UIViewController,
-    UIPickerViewDataSource,
-    UIPickerViewDelegate,
-UITabBarDelegate, UIGestureRecognizerDelegate {
+class Challenge: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITabBarDelegate, UIGestureRecognizerDelegate {
     
     var activateBackConfig: Int?
     
@@ -414,17 +410,13 @@ UITabBarDelegate, UIGestureRecognizerDelegate {
             
             RequestChallenge().execute(requestPayload: requestPayload) { (result) in
                 
-                print("result: \(result)")
-                
                 DispatchQueue.main.async {
-                    let storyboard: UIStoryboard = UIStoryboard(name: "Other", bundle: nil)
-                    let viewController = storyboard.instantiateViewController(withIdentifier: "Other") as! Other
-                    viewController.setPlayerSelf(playerSelf: self.playerSelf!)
-                    viewController.setPlayerOther(playerOther: self.playerOther!)
-                    UIApplication.shared.keyWindow?.rootViewController = viewController
+                    let homeStoryboard: UIStoryboard = UIStoryboard(name: "Home", bundle: nil)
+                    let homeViewController = homeStoryboard.instantiateViewController(withIdentifier: "Home") as! Home
+                    homeViewController.setPlayer(player: self.playerSelf!)
+                    UIApplication.shared.keyWindow?.rootViewController = homeViewController
                 }
             }
-            
         }
     }
 }

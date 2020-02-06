@@ -84,13 +84,20 @@ class HomeMenuTable: UITableViewController {
         
                 RequestRefresh().execute(requestPayload: requestPayload) { (response) in
                     
-                    self.setPlayer(player: response!.last!)
+                    if(response == nil){
+                        return
+                    }
+                    
+                    let playerSelf: EntityPlayer = response!.last!
+                    self.setPlayer(player: playerSelf)
+                    
+                    let list: [EntityPlayer] = response!.dropLast()
         
                     DispatchQueue.main.async() {
                         self.renderHeader()
                         self.leaderboardList = [EntityPlayer]()
                         self.tableView.reloadData()
-                        self.appendToLeaderboardTableList(additionalCellList: response!)
+                        self.appendToLeaderboardTableList(additionalCellList: list)
                         refreshControl.endRefreshing()
                     }
                 }
@@ -161,16 +168,13 @@ class HomeMenuTable: UITableViewController {
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let modifyAction = UIContextualAction(style: .normal, title:  "CHALLENGE", handler: { (ac: UIContextualAction, view: UIView, success: (Bool) -> Void) in
             
-            
-            //            //let gameModel = Game(opponent: self.player!)
-            //            let gameModel = self.leaderboardList[indexPath.row]
-            //
-            //            let storyboard: UIStoryboard = UIStoryboard(name: "Challenge", bundle: nil)
-            //            let viewController = storyboard.instantiateViewController(withIdentifier: "Challenge") as! Challenge
-            //            viewController.setPlayer(player: self.player!)
-            //            viewController.setOpponent(opponent: gameModel.getOpponent())
-            //            viewController.setGameModel(gameModel: gameModel)  //TODO: ???need this???
-            //            UIApplication.shared.keyWindow?.rootViewController = viewController
+            let playerOther = self.leaderboardList[indexPath.row]
+
+            let storyboard: UIStoryboard = UIStoryboard(name: "Challenge", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier: "Challenge") as! Challenge
+            viewController.setPlayerSelf(playerSelf: self.player!)
+            viewController.setPlayerOther(playerOther: playerOther)
+            UIApplication.shared.keyWindow?.rootViewController = viewController
             success(true)
         })
         if #available(iOS 13.0, *) { 
