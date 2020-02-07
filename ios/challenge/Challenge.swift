@@ -324,8 +324,9 @@ class Challenge: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate,
         }
         let storyboard: UIStoryboard = UIStoryboard(name: "EditOther", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "EditOther") as! EditOther
-        viewController.setTitleText(titleText: "new challenge")
+        viewController.setTitleText(titleText: "challenge")
         viewController.setActiveConfigNumber(activeConfigNumber: 0)
+        viewController.setBACK(BACK: self.BACK!)
         let numberString: String = self.activeConfigNumber.text!
         if(numberString == "1"){
             viewController.setActiveConfigNumber(activeConfigNumber: 1)
