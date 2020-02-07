@@ -282,7 +282,7 @@ class ActualTable: UITableViewController, SwipeTableViewCellDelegate {
             
         }
         let REQUEST_PAGE_SIZE: Int = 9
-        //let pageFromWhichContentLoads: Int = 0
+        
         let requestPayload = [
             "id": self.playerSelf!.id,
             "index": self.pageFromWhichContentLoads, //TODO ~ remove this...
@@ -314,3 +314,19 @@ extension UITableView {
         return rows
     }
 }
+
+//private func renderShrug(){  // thiis can exist in practice...
+//    DispatchQueue.main.async() {
+//        let frameSize: CGPoint = CGPoint(x: UIScreen.main.bounds.size.width*0.5, y: UIScreen.main.bounds.size.height*0.5)
+//        self.label = UILabel(frame: CGRect(x: UIScreen.main.bounds.size.width*0.5, y: UIScreen.main.bounds.size.height*0.5, width: UIScreen.main.bounds.width, height: 40))
+//        self.label!.center = frameSize
+//        self.label!.textAlignment = .center
+//        self.label!.font = UIFont.systemFont(ofSize: 30, weight: UIFont.Weight.light)
+//        self.label!.translatesAutoresizingMaskIntoConstraints = false
+//        let horizontalConstraint = NSLayoutConstraint(item: self.label!, attribute: NSLayoutConstraint.Attribute.centerX, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.view, attribute: NSLayoutConstraint.Attribute.centerX, multiplier: 1, constant: 0)
+//        let verticalConstraint = NSLayoutConstraint(item: self.label!, attribute: NSLayoutConstraint.Attribute.centerY, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.view, attribute: NSLayoutConstraint.Attribute.centerY, multiplier: 1, constant: 0)
+//        self.label!.text = "¯\\_( ͡° ͜ʖ ͡°)_/¯"
+//        self.view.addSubview(self.label!)
+//        self.view.addConstraints([horizontalConstraint, verticalConstraint])
+//    }
+//}

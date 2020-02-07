@@ -59,6 +59,7 @@ class HomeMenuTable: UITableViewController {
         self.rankLabel!.text = self.player!.getLabelTextRank()
         self.dispLabel!.text = self.player!.getLabelTextDisp()
         self.dispImageView!.image = self.player!.getImageDisp()!
+        self.dispImageView!.tintColor = self.player!.tintColor
     }
     
     var player: EntityPlayer?
@@ -71,36 +72,32 @@ class HomeMenuTable: UITableViewController {
         self.fetchGameList()
         
         let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: #selector(doSomething), for: .valueChanged)
+        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
         // this is the replacement of implementing: "collectionView.addSubview(refreshControl)"
         self.tableView.refreshControl = refreshControl
     }
     
-    @objc func doSomething(refreshControl: UIRefreshControl) {
+    @objc func refresh(refreshControl: UIRefreshControl) {
         
         self.requestPageIndex = 0
-        
         let requestPayload = ["id_player": self.player!.id, "size": REQUEST_PAGE_SIZE] as [String: Any]
-        
-                RequestRefresh().execute(requestPayload: requestPayload) { (response) in
-                    
-                    if(response == nil){
-                        return
-                    }
-                    
-                    let playerSelf: EntityPlayer = response!.last!
-                    self.setPlayer(player: playerSelf)
-                    
-                    let list: [EntityPlayer] = response!.dropLast()
-        
-                    DispatchQueue.main.async() {
-                        self.renderHeader()
-                        self.leaderboardList = [EntityPlayer]()
-                        self.tableView.reloadData()
-                        self.appendToLeaderboardTableList(additionalCellList: list)
-                        refreshControl.endRefreshing()
-                    }
-                }
+        RequestRefresh().execute(requestPayload: requestPayload) { (response) in
+            if(response == nil){
+                return
+            }
+            let playerSelf: EntityPlayer = response!.last!
+            self.setPlayer(player: playerSelf)
+            
+            let list: [EntityPlayer] = response!.dropLast()
+            
+            DispatchQueue.main.async() {
+                self.renderHeader()
+                self.leaderboardList = [EntityPlayer]()
+                self.tableView.reloadData()
+                self.appendToLeaderboardTableList(additionalCellList: list)
+                refreshControl.endRefreshing()
+            }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

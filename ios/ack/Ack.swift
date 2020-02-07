@@ -402,42 +402,38 @@ extension Ack: UICollectionViewDelegateFlowLayout {
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         switch item.tag {
-        case 0:
+        default:
             print("let's play")
             self.activityIndicator.isHidden = false
             self.activityIndicator.startAnimating()
             
+            let id_game = self.gameTschess!.id
+            let id_player = self.playerSelf!.id
+            let skin = "DEFAULT"
+            let CONFIG = 3 //!!!
             
-            //let idGame = self.gameModel!.getIdentifier()
+            let requestPayload: [String: Any] = [
+                "id_game": id_game,
+                "id_player": id_player,
+                "skin": skin,
+                "config": CONFIG]
             
-            //            let requestPayload: [String: Any] = [
-            //                "id_game": idGame,
-            //                "id_player": self.player!.getId(),
-            //                "skin": "DEFAULT",
-            //                "config": 3]
-            
-            //let gameAck: GameAck = GameAck(idGame: idGame, playerSelf: self.player!, playerOppo: self.opponent!)
-            
-            //            RequestAck().execute(requestPayload: requestPayload, gameAck: gameAck) { (gameTschess) in
-            //                print("result: \(gameTschess)")
-            //                /**
-            //                 * ERROR HANDLING!!!
-            //                 */
-            DispatchQueue.main.async {
-                let storyboard: UIStoryboard = UIStoryboard(name: "Tschess", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "Tschess") as! Tschess
-                viewController.setGameTschess(gameTschess: self.gameTschess!)
-                viewController.setPlayerSelf(playerSelf: self.playerSelf!)
-                viewController.setPlayerOther(playerOther: self.gameTschess!.getPlayerOther(username: self.playerSelf!.username))
-                UIApplication.shared.keyWindow?.rootViewController = viewController
-            }
-            return
-        default:
-            DispatchQueue.main.async {
-                let storyboard: UIStoryboard = UIStoryboard(name: "Home", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "Home") as! Home
-                viewController.setPlayer(player: self.player!)
-                UIApplication.shared.keyWindow?.rootViewController = viewController
+            RequestAck().execute(requestPayload: requestPayload) { (game) in
+                print("result: \(game)")
+                /**
+                 * ERROR HANDLING!!!
+                 */
+                if(game == nil){
+                    return
+                }
+                DispatchQueue.main.async {
+                    let storyboard: UIStoryboard = UIStoryboard(name: "Tschess", bundle: nil)
+                    let viewController = storyboard.instantiateViewController(withIdentifier: "Tschess") as! Tschess
+                    viewController.setGameTschess(gameTschess: game!)
+                    viewController.setPlayerSelf(playerSelf: self.playerSelf!)
+                    viewController.setPlayerOther(playerOther: game!.getPlayerOther(username: self.playerSelf!.username))
+                    UIApplication.shared.keyWindow?.rootViewController = viewController
+                }
             }
         }
     }

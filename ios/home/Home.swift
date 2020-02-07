@@ -114,7 +114,6 @@ class Home: UIViewController, UITabBarDelegate {
         }
     }
     
-    
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         self.tabBarMenu.selectedImageTintColor = UIColor.white
         if #available(iOS 13.0, *) {

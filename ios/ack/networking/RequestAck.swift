@@ -12,6 +12,8 @@ class RequestAck {
     
     func execute(requestPayload: [String: Any], completion: @escaping ((EntityGame?) -> Void)) {
         
+        print("ACK - requestPayload: \(requestPayload)")
+        
         let url = URL(string: "http://\(ServerAddress().IP):8080/game/ack")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
@@ -37,6 +39,8 @@ class RequestAck {
                     completion(nil)
                     return
                 }
+                
+                print("json: \(json)")
                 
                 let game: EntityGame = ParseGame().execute(json: json)
                 completion(game)
