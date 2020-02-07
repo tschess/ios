@@ -92,10 +92,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
-        
         self.counter = "00:00:00" //
-        
-        
         
         self.transitioner = Transitioner()
         
@@ -125,6 +122,8 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
         self.tabBarMenu.delegate = self
+        
+        print("ALALLA: \(self.gameTschess!.getStateClient(username: self.playerSelf!.username))")
     }
     
     var playerOther: EntityPlayer?
@@ -189,6 +188,8 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     
     private func assignCellTschessElement(indexPath: IndexPath) -> UIImage? {
         let tschessElementMatrix = self.gameTschess!.getStateClient(username: self.playerSelf!.username)
+        //self.game!.getStateClient(username: self.player!.username)
+        
         let x = indexPath.row / 8
         let y = indexPath.row % 8
         if(tschessElementMatrix[x][y] != nil){

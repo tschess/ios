@@ -419,7 +419,7 @@ extension Ack: UICollectionViewDelegateFlowLayout {
                 "config": CONFIG]
             
             RequestAck().execute(requestPayload: requestPayload) { (game) in
-                print("result: \(game)")
+                print("result: \(game!.state)")
                 /**
                  * ERROR HANDLING!!!
                  */
