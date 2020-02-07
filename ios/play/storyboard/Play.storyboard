@@ -16,7 +16,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="quick play" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rh3-GT-zds">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="setup" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rh3-GT-zds">
                                 <rect key="frame" x="0.0" y="44" width="414" height="40"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                                 <constraints>
@@ -51,7 +51,7 @@
                                     <constraint firstAttribute="height" constant="50" id="CtS-Ad-lXP"/>
                                 </constraints>
                                 <items>
-                                    <tabBarItem title="send" image="arrow.up.bin" catalog="system" selectedImage="arrow.up.bin.fill" id="6f1-4w-L4h">
+                                    <tabBarItem title="let's play!" image="gamecontroller" catalog="system" selectedImage="gamecontroller.fill" id="6f1-4w-L4h">
                                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tabBarItem>
                                 </items>
@@ -438,8 +438,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="arrow.up.bin" catalog="system" width="64" height="46"/>
-        <image name="arrow.up.bin.fill" catalog="system" width="64" height="46"/>
         <image name="avatar_default" width="320" height="320"/>
+        <image name="gamecontroller" catalog="system" width="64" height="40"/>
+        <image name="gamecontroller.fill" catalog="system" width="64" height="40"/>
     </resources>
 </document>
