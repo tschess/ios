@@ -16,11 +16,11 @@
                         <viewControllerLayoutGuide type="top" id="pQc-ag-3mC"/>
                         <viewControllerLayoutGuide type="bottom" id="jH8-cM-dEt"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="LEr-C7-m3Y" customClass="ThroughView" customModule="ios" customModuleProvider="target">
+                    <view key="view" contentMode="scaleToFill" id="LEr-C7-m3Y">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a78-Fj-Oza" customClass="ThroughView" customModule="ios" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a78-Fj-Oza">
                                 <rect key="frame" x="72" y="353" width="270" height="190"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="options" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MIb-Fw-3aJ">
@@ -73,10 +73,16 @@
                                             <action selector="proposeDrawButtonClick:" destination="A6v-yg-1nQ" eventType="touchUpInside" id="iji-QR-vQi"/>
                                         </connections>
                                     </button>
+                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="rf5-kU-ixz">
+                                        <rect key="frame" x="116.5" y="76.5" width="37" height="37"/>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </activityIndicatorView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.97647058819999999" green="0.97647058819999999" blue="0.97647058819999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="rf5-kU-ixz" firstAttribute="centerX" secondItem="a78-Fj-Oza" secondAttribute="centerX" id="8RT-E7-5Ld"/>
                                     <constraint firstAttribute="width" constant="270" id="Alr-2G-eNP"/>
                                     <constraint firstItem="MIb-Fw-3aJ" firstAttribute="leading" secondItem="a78-Fj-Oza" secondAttribute="leading" id="EHg-Ma-Gw7"/>
                                     <constraint firstItem="0uY-kq-0IJ" firstAttribute="leading" secondItem="a78-Fj-Oza" secondAttribute="leading" constant="2" id="GPQ-eI-fp5"/>
@@ -85,6 +91,7 @@
                                     <constraint firstAttribute="trailing" secondItem="0uY-kq-0IJ" secondAttribute="trailing" id="KNQ-cj-Ghx"/>
                                     <constraint firstAttribute="height" constant="190" id="RAv-zr-4eG"/>
                                     <constraint firstItem="jSr-ih-fKy" firstAttribute="leading" secondItem="a78-Fj-Oza" secondAttribute="leading" id="aiI-oh-sum"/>
+                                    <constraint firstItem="rf5-kU-ixz" firstAttribute="centerY" secondItem="a78-Fj-Oza" secondAttribute="centerY" id="haw-qM-hxE"/>
                                     <constraint firstItem="pyq-uB-O7i" firstAttribute="top" secondItem="MIb-Fw-3aJ" secondAttribute="bottom" constant="30" id="o3N-Ia-YYD"/>
                                     <constraint firstItem="jSr-ih-fKy" firstAttribute="top" secondItem="pyq-uB-O7i" secondAttribute="bottom" constant="30" id="p4t-LN-gyV"/>
                                     <constraint firstItem="pyq-uB-O7i" firstAttribute="leading" secondItem="a78-Fj-Oza" secondAttribute="leading" id="tiI-Vi-y0u"/>
@@ -103,6 +110,7 @@
                         <viewLayoutGuide key="safeArea" id="qNk-7O-b5x"/>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="rf5-kU-ixz" id="9bN-Us-n46"/>
                         <outlet property="backButton" destination="0uY-kq-0IJ" id="mG5-iB-gG4"/>
                         <outlet property="proposeDrawButton" destination="jSr-ih-fKy" id="DQI-dL-blZ"/>
                         <outlet property="surrenderButton" destination="pyq-uB-O7i" id="XFT-j9-iJh"/>

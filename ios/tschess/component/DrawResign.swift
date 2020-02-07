@@ -10,6 +10,12 @@ import UIKit
 
 class DrawResign: UIViewController  {
     
+    var tabBarMenu: UITabBar!
+    
+    public func setTabBar(tabBarMenu: UITabBar) {
+        self.tabBarMenu = tabBarMenu
+    }
+    
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     let dateTime: DateTime = DateTime()
     
@@ -86,6 +92,7 @@ class DrawResign: UIViewController  {
     
     @IBAction func backButtonClick(_ sender: Any) {
         self.presentingViewController!.dismiss(animated: false, completion: nil)
+        self.tabBarMenu.selectedItem = nil
     }
     
 }

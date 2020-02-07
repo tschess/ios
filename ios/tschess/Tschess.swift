@@ -76,7 +76,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var turnaryLabel: UILabel!
     
-    @IBOutlet weak var tabBarMenu: UITabBar!
+    @IBOutlet var tabBarMenu: UITabBar!
     
     var pollingTimer: Timer?
     var counterTimer: Timer?
@@ -123,7 +123,12 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         self.collectionView.delegate = self
         self.tabBarMenu.delegate = self
         
-        print("ALALLA: \(self.gameTschess!.getStateClient(username: self.playerSelf!.username))")
+        
+//        selectedImageTintColor = UIColor.white
+//        if #available(iOS 13.0, *) {
+//            let notify = self.tabBarMenu.items![1]
+//            notify.selectedImage
+        //print("ALALLA: \(self.gameTschess!.getStateClient(username: self.playerSelf!.username))")
     }
     
     var playerOther: EntityPlayer?
@@ -397,7 +402,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
             DispatchQueue.main.async {
                 let storyboard: UIStoryboard = UIStoryboard(name: "DrawResign", bundle: nil)
                 let viewController = storyboard.instantiateViewController(withIdentifier: "DrawResign") as! DrawResign
-                //viewController.setGameTschess(gameTschess: self.gameTschess!)
+                viewController.setTabBar(tabBarMenu: self.tabBarMenu!)
                 self.present(viewController, animated: true, completion: nil)
             }
         default:
