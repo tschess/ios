@@ -38,6 +38,37 @@ class Start: UIViewController, UITextFieldDelegate {
         super.init(coder: aDecoder)
     }
     
+    @objc func testTaskExecuter(){
+        view.removeGestureRecognizer(self.dismissKeyboardGesture!)
+        print(" - testTaskExecuter - ")
+        if(self.testTaskCounter == 1){
+            print("testTaskCounter: \(testTaskCounter)")
+            let defaultState = [[""]]
+            let requestPayload: [String: Any] = ["state": defaultState]
+            RequestTest().execute(requestPayload: requestPayload) { (game) in
+                DispatchQueue.main.async {
+                    let storyboard: UIStoryboard = UIStoryboard(name: "Tschess", bundle: nil)
+                    let viewController = storyboard.instantiateViewController(withIdentifier: "Tschess") as! Tschess
+                    viewController.setPlayerOther(playerOther: game!.getPlayerOther(username: game!.white.username))
+                    viewController.setPlayerSelf(playerSelf: game!.white)
+                    viewController.setGameTschess(gameTschess: game!)
+                    UIApplication.shared.keyWindow?.rootViewController = viewController
+                }
+            }
+        }
+        //if(self.testTaskCounter == 2){
+        print(" - testTaskCounter: \(testTaskCounter)")
+        //}
+    }
+    
+    @objc func testTaskIncrementer() {
+        if(self.testTaskLabel.isHidden){
+            self.testTaskLabel.isHidden = false
+        }
+        self.testTaskCounter += 1
+        self.testTaskLabel.text = String(testTaskCounter)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -50,11 +81,21 @@ class Start: UIViewController, UITextFieldDelegate {
                                                                           attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
         self.passwordTextField.attributedPlaceholder = NSAttributedString(string: "password",
                                                                           attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
-        let dismissKeyboard: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
-        view.addGestureRecognizer(dismissKeyboard)
+        
+        self.dismissKeyboardGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
+        view.addGestureRecognizer(dismissKeyboardGesture!)
         
         KeyboardAvoiding.avoidingView = self.contentView
+        
+        let testTaskIncrementer: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.testTaskIncrementer))
+        self.testTaskImageView.addGestureRecognizer(testTaskIncrementer)
+        self.testTaskImageView.isUserInteractionEnabled = true
+        let testTaskExecuter: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.testTaskExecuter))
+        self.testTaskLabel.addGestureRecognizer(testTaskExecuter)
+        self.testTaskLabel.isUserInteractionEnabled = true
     }
+    
+    var dismissKeyboardGesture: UITapGestureRecognizer?
     
     @objc func dismissKeyboard() {
         view.endEditing(true)
@@ -89,7 +130,7 @@ class Start: UIViewController, UITextFieldDelegate {
             "updated": updated
         ]
         
-        PlayerLogin().execute(requestPayload: requestPayload) { (player) in
+        RequestLogin().execute(requestPayload: requestPayload) { (player) in
             if let player = player {
                 DispatchQueue.main.async {
                     let storyboard: UIStoryboard = UIStoryboard(name: "Home", bundle: nil)
@@ -99,7 +140,7 @@ class Start: UIViewController, UITextFieldDelegate {
                     return
                 }
             }
-         
+            
         }
     }
     

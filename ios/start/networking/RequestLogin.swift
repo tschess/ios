@@ -8,7 +8,7 @@
 
 import Foundation
 
-class PlayerLogin {
+class RequestLogin {
     
     func execute(requestPayload: [String: String], completion: @escaping (EntityPlayer?) -> Void) {
         let url = URL(string: "http://\(ServerAddress().IP):8080/player/login")!

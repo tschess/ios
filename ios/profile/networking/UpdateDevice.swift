@@ -40,7 +40,7 @@ class UpdateDevice {
                     return
                 }
                 
-                print(json)
+                //print(json)
                 
 //                if(json["error"] != nil){
 //

@@ -9,10 +9,6 @@
 import Foundation
 
 class ServerAddress {
-    
-
     let IP: String = "3.12.121.89" //galena_vallandigham
-    
-    
 }
 
