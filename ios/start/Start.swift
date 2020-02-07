@@ -40,11 +40,11 @@ class Start: UIViewController, UITextFieldDelegate {
     
     @objc func testTaskExecuter(){
         view.removeGestureRecognizer(self.dismissKeyboardGesture!)
-        print(" - testTaskExecuter - ")
+        let defaultState = [[""]]
+        let requestPayload: [String: Any] = ["state": defaultState]
+        //print(" - testTaskExecuter - ")
         if(self.testTaskCounter == 1){
-            print("testTaskCounter: \(testTaskCounter)")
-            let defaultState = [[""]]
-            let requestPayload: [String: Any] = ["state": defaultState]
+            //print("testTaskCounter: \(testTaskCounter)")
             RequestTest().execute(requestPayload: requestPayload) { (game) in
                 DispatchQueue.main.async {
                     let storyboard: UIStoryboard = UIStoryboard(name: "Tschess", bundle: nil)
@@ -55,10 +55,21 @@ class Start: UIViewController, UITextFieldDelegate {
                     UIApplication.shared.keyWindow?.rootViewController = viewController
                 }
             }
+            return
         }
         //if(self.testTaskCounter == 2){
         print(" - testTaskCounter: \(testTaskCounter)")
         //}
+        RequestTest().execute(requestPayload: requestPayload) { (game) in
+            DispatchQueue.main.async {
+                let storyboard: UIStoryboard = UIStoryboard(name: "Tschess", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "Tschess") as! Tschess
+                viewController.setPlayerOther(playerOther: game!.getPlayerOther(username: game!.black.username))
+                viewController.setPlayerSelf(playerSelf: game!.black)
+                viewController.setGameTschess(gameTschess: game!)
+                UIApplication.shared.keyWindow?.rootViewController = viewController
+            }
+        }
     }
     
     @objc func testTaskIncrementer() {
