@@ -106,15 +106,10 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         
         self.counter = "00:00:00" //
         
-        self.transitioner = Transitioner()
-        
         self.castling = Castle()
-        self.castling!.setTransitioner(transitioner: transitioner!)
         
         self.pawnPromotionStoryboard = UIStoryboard(name: "Promotion", bundle: nil)
         self.pawnPromotion = pawnPromotionStoryboard!.instantiateViewController(withIdentifier: "Promotion") as? Promotion
-        self.pawnPromotion!.setTransitioner(transitioner: transitioner!)
-        self.pawnPromotion!.setChess(chess: self)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -148,6 +143,11 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         
         self.renderHeader()
         self.startTimers()
+        
+        self.transitioner = Transitioner(white: self.gameTschess!.getWhite(username: self.playerSelf!.username), collectionView: collectionView)
+        self.castling!.setTransitioner(transitioner: transitioner!)
+        self.pawnPromotion!.setTransitioner(transitioner: transitioner!)
+        self.pawnPromotion!.setChess(chess: self)
         
         self.tschessElementMatrix = self.gameTschess!.getStateClient(username: self.playerSelf!.username)
     }
@@ -353,7 +353,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         //        self.indicatorLabelUpdate()
         //        self.collectionView.reloadData()
         let state0 = self.gameTschess!.getStateClient(username: self.playerSelf!.username)
-        self.tschessElementMatrix = self.transitioner!.evaluateInput(coordinate: [x,y], state: state0)
+        self.tschessElementMatrix = self.transitioner!.evaluateInput(coordinate: [x,y], state0: state0)
         self.collectionView.reloadData()
     }
     

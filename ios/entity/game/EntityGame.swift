@@ -260,4 +260,8 @@ class EntityGame: Equatable, Hashable {
         let state0 = SerializerState(white: false).renderServer(state: state)
         self.state = state0
     }
+    
+    func getWhite(username: String) -> Bool {
+        return self.white.username == username
+    }
 }
