@@ -96,7 +96,19 @@ class Transitioner {
                 for j in (0 ..< 8) {
                     let piece = state1[self.coordinate![0]][self.coordinate![1]]!
                     if(piece.validate(present: coordinate, proposed: [i,j], state: state1)){
-                        state1[i][j] = PieceAnte()
+                        
+                        let square = state1[i][j]
+                        if(square == nil){
+                            state1[i][j] = PieceAnte()
+                            continue
+                        }
+                        if(square!.affiliation == piece.affiliation){
+                            continue
+                        }
+                        let imageTarget = square!.getImageTarget()
+                        square!.setImageVisible(imageVisible: imageTarget)
+                        square!.isTarget = true
+                        
                     }
                 }
             }
