@@ -35,11 +35,11 @@ class Transitioner {
     
     public func validMove(propose: [Int], state0: [[Piece?]]) -> Bool {
         var state1 = state0
-        let squarePresent = state1[self.coordinate![0]][self.coordinate![1]]
         let squarePropose = state1[propose[0]][propose[1]]
         if(self.movable(square: squarePropose)){
-            state1[self.coordinate![0]][self.coordinate![1]] = nil
+            let squarePresent = state1[self.coordinate![0]][self.coordinate![1]]
             state1[propose[0]][propose[1]] = squarePresent
+            state1[self.coordinate![0]][self.coordinate![1]] = nil
             return true
         }
         return false
@@ -49,7 +49,7 @@ class Transitioner {
         var state1 = state0
         for i in (0 ..< 8) {
             for j in (0 ..< 8) {
-                let square = state1[self.coordinate![0]][self.coordinate![1]]
+                let square = state1[i][j]
                 if(square != nil){
                     if(square!.name == "PieceAnte"){
                         state1[i][j] = nil
@@ -59,7 +59,6 @@ class Transitioner {
         }
         let imageDefault = state1[self.coordinate![0]][self.coordinate![1]]!.getImageDefault()
         state1[self.coordinate![0]][self.coordinate![1]]!.setImageVisible(imageVisible: imageDefault)
-        self.coordinate = nil
         return state1
     }
     

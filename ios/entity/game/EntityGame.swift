@@ -251,18 +251,15 @@ class EntityGame: Equatable, Hashable {
         return self.turn == "BLACK"
     }
     
-    func setState(username: String, state: [[Piece?]]) {
+    func getStateServer(username: String, state: [[Piece?]]) -> [[String]]{
         if(self.white.username == username){
-            let state0 = SerializerState(white: true).renderServer(state: state)
-            self.state = state0
-            return
+            return SerializerState(white: true).renderServer(state: state)
         }
-        let state0 = SerializerState(white: false).renderServer(state: state)
-        self.state = state0
+        return SerializerState(white: false).renderServer(state: state)
     }
     
     func getWhite(username: String) -> Bool {
-        print("self.white.username == username: \(self.white.username == username)")
+        //print("self.white.username == username: \(self.white.username == username)")
         return self.white.username == username
     }
 }
