@@ -99,14 +99,14 @@ class SerializerState {
                 let col1: Int = abs(self.offset - col0)
                 let row1: Int = abs(self.offset - row0)
                 
-                rowA[col1] = getName(piece: state[row1][col1])
-                rowB[col1] = getName(piece: state[row1][col1])
-                rowC[col1] = getName(piece: state[row1][col1])
-                rowD[col1] = getName(piece: state[row1][col1])
-                rowE[col1] = getName(piece: state[row1][col1])
-                rowF[col1] = getName(piece: state[row1][col1])
-                rowG[col1] = getName(piece: state[row1][col1])
-                rowH[col1] = getName(piece: state[row1][col1])
+                rowA[col1] = getName(piece: state[0][col0])
+                rowB[col1] = getName(piece: state[1][col0])
+                rowC[col1] = getName(piece: state[2][col0])
+                rowD[col1] = getName(piece: state[3][col0])
+                rowE[col1] = getName(piece: state[4][col0])
+                rowF[col1] = getName(piece: state[5][col0])
+                rowG[col1] = getName(piece: state[6][col0])
+                rowH[col1] = getName(piece: state[7][col0])
             }
         }
         if(self.white){

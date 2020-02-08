@@ -10,9 +10,50 @@ import Foundation
 
 class Transitioner {
     
+    var coordinate: [Int]?
+    
+    public func evaluateInput(coordinate: [Int], state: [[Piece?]]) -> [[Piece?]] {
+//        if(self.invalid(coordinate: coordinate, state: state)){
+//            Highlighter().restoreSelection(coordinate: coordinate, state: state)
+//            Highlighter().restoreSelection(coordinate: self.coordinate, state: state)
+//            Highlighter().neutralize(state: state)
+//            self.coordinate = nil
+//            return
+//        }
+        //if(self.coordinate == nil){
+            self.coordinate = coordinate
+            let imageSelection = state[self.coordinate![0]][self.coordinate![1]]!.getImageSelection()
+            state[self.coordinate![0]][self.coordinate![1]]!.setImageVisible(imageVisible: imageSelection)
+            
+            //Highlighter().selectLegalMoves(present0: coordinate, state0: state)
+            return state
+        //}
+        //Processor().execute(present: self.coordinate!, proposed: coordinate, state: state)
+        //Highlighter().restoreSelection(coordinate: coordinate, state: state)
+        //Highlighter().neutralize(state: state)
+        
+        //gamestate.setHighlight(coords: [self.coordinate![0],self.coordinate![1],coordinate[0],coordinate[1]])
+        
+        //self.coordinate = nil
+        //self.setLastMove(state: state)
+        //self.evaluateCheckMate(state: state)
+        
+        //gamestate.changeTurn()
+        //gamestate.setUpdated(updated: dateTime.currentDateString())
+        //gamestate.setDrawProposer(drawProposer: "NONE")
+        //let requestUpdate = GamestateSerializer().execute(gamestate: gamestate)
+        //UpdateGamestate().execute(requestPayload: requestUpdate)
+        //gamestate.setHighlight(coords: nil)
+        
+        
+        //return state
+    }
+    
+    
+    
     let dateTime: DateTime = DateTime()
     
-    var coordinate: [Int]?
+    
     
     public func getCoordinate() -> [Int]? {
         return coordinate
@@ -42,44 +83,6 @@ class Transitioner {
             }
         }
         return false
-    }
-    
-    public func evaluateInput(coordinate: [Int], state: [[Piece?]]) {
-        if(self.invalid(coordinate: coordinate, state: state)){
-            Highlighter().restoreSelection(coordinate: coordinate, state: state)
-            Highlighter().restoreSelection(coordinate: self.coordinate, state: state)
-            Highlighter().neutralize(state: state)
-            self.coordinate = nil
-            return
-        }
-        if(self.coordinate == nil){
-            self.coordinate = coordinate
-            //let tschessElementMatrix = gamestate.getTschessElementMatrix()
-            let tschessElement = state[self.coordinate![0]][self.coordinate![1]]!
-            //Highlighter().setImageSelection(tschessElement: tschessElement, state: state)
-            //if(gamestate.getCheckOn() == gamestate.getUsernameSelf()) {
-                //CanonicalCheck().circumscribedCheck(coordinate0: coordinate, state: state)
-                //return
-            //}
-            Highlighter().selectLegalMoves(present0: coordinate, state0: state)
-            return
-        }
-        Processor().execute(present: self.coordinate!, proposed: coordinate, state: state)
-        Highlighter().restoreSelection(coordinate: coordinate, state: state)
-        Highlighter().neutralize(state: state)
-        
-        //gamestate.setHighlight(coords: [self.coordinate![0],self.coordinate![1],coordinate[0],coordinate[1]])
-        
-        self.coordinate = nil
-        self.setLastMove(state: state)
-        self.evaluateCheckMate(state: state)
-        
-        //gamestate.changeTurn()
-        //gamestate.setUpdated(updated: dateTime.currentDateString())
-        //gamestate.setDrawProposer(drawProposer: "NONE")
-        //let requestUpdate = GamestateSerializer().execute(gamestate: gamestate)
-        //UpdateGamestate().execute(requestPayload: requestUpdate)
-        //gamestate.setHighlight(coords: nil)
     }
     
     private func setLastMove(state: [[Piece?]]) {

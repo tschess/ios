@@ -10,11 +10,6 @@ import Foundation
 
 class Highlighter {
     
-    public func setImageSelection(piece: Piece, state: [[Piece?]]) {
-        let imageSelection = piece.getImageSelection()
-        piece.setImageVisible(imageVisible: imageSelection)
-    }
-    
     public func restoreSelection(coordinate: [Int]?, state: [[Piece?]]) {
         if(coordinate == nil){
             return

@@ -10,6 +10,24 @@ import UIKit
 
 class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UITabBarDelegate {
     
+    var playerOther: EntityPlayer?
+    
+    func setPlayerOther(playerOther: EntityPlayer){
+        self.playerOther = playerOther
+    }
+    
+    var playerSelf: EntityPlayer?
+    
+    func setPlayerSelf(playerSelf: EntityPlayer){
+        self.playerSelf = playerSelf
+    }
+    
+    var gameTschess: EntityGame?
+    
+    public func setGameTschess(gameTschess: EntityGame) {
+        self.gameTschess = gameTschess
+    }
+    
     let DATE_TIME: DateTime = DateTime()
     
     private func updateCountdownTimer() {
@@ -42,12 +60,6 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         }
         
         self.timerLabel.text = String(format: "%02d:%02d:%02d", hour, min, sec)
-    }
-    
-    var gameTschess: EntityGame?
-    
-    public func setGameTschess(gameTschess: EntityGame) {
-        self.gameTschess = gameTschess
     }
     
     @IBOutlet weak var titleView: UIView!
@@ -108,12 +120,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.collectionView.reloadData()
-        
-        
-        
         self.collectionView.isHidden = false
-        
-        
         self.activityIndicator.isHidden = true
     }
     
@@ -122,19 +129,6 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
         self.tabBarMenu.delegate = self
-        
-        
-//        selectedImageTintColor = UIColor.white
-//        if #available(iOS 13.0, *) {
-//            let notify = self.tabBarMenu.items![1]
-//            notify.selectedImage
-        //print("ALALLA: \(self.gameTschess!.getStateClient(username: self.playerSelf!.username))")
-    }
-    
-    var playerOther: EntityPlayer?
-    
-    func setPlayerOther(playerOther: EntityPlayer){
-        self.playerOther = playerOther
     }
     
     public func renderHeader() {
@@ -153,19 +147,18 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         self.contentViewLabel.isHidden = true
         
         self.renderHeader()
-        
         self.startTimers()
     }
     
-    private func prohibited() -> Bool {
-        return false
+    private func getTurn() -> Bool {
+        return self.gameTschess!.getTurn(username: self.playerSelf!.username)
     }
     
     func flash() {
         let flashFrame = UIView(frame: collectionView.bounds)
-        flashFrame.backgroundColor = UIColor.black
+        flashFrame.backgroundColor = UIColor.white
         flashFrame.alpha = 0.7
-        collectionView.addSubview(flashFrame)
+        self.collectionView.addSubview(flashFrame)
         UIView.animate(withDuration: 0.1, animations: {
             flashFrame.alpha = 0.0
         }, completion: {(finished:Bool) in
@@ -189,27 +182,6 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
             return UIColor.brown
         }
         return UIColor.purple
-    }
-    
-    private func assignCellTschessElement(indexPath: IndexPath) -> UIImage? {
-        let tschessElementMatrix = self.gameTschess!.getStateClient(username: self.playerSelf!.username)
-        //self.game!.getStateClient(username: self.player!.username)
-        
-        let x = indexPath.row / 8
-        let y = indexPath.row % 8
-        if(tschessElementMatrix[x][y] != nil){
-            return tschessElementMatrix[x][y]!.getImageVisible()
-        }
-        return nil
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "square", for: indexPath) as! SquareCell
-        cell.backgroundColor = assignCellBackgroundColor(indexPath: indexPath)
-        cell.imageView.image = assignCellTschessElement(indexPath: indexPath)
-        cell.imageView.bounds = CGRect(origin: cell.bounds.origin, size: cell.bounds.size)
-        cell.imageView.center = CGPoint(x: cell.bounds.size.width/2, y: cell.bounds.size.height/2)
-        return self.highlightLastMoveCoords(indexPath: indexPath, cell: cell)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -248,12 +220,6 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         
         counterTimer?.invalidate()
         counterTimer = nil
-    }
-    
-    var playerSelf: EntityPlayer?
-    
-    func setPlayerSelf(playerSelf: EntityPlayer){
-        self.playerSelf = playerSelf
     }
     
     @IBAction func backButtonClick(_ sender: Any) {
@@ -341,13 +307,15 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     // MARK: prime mover
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if(self.prohibited()){
-            flash()
+        if(!self.getTurn()){
+            self.flash()
             return
         }
         let x = indexPath.item / 8
         let y = indexPath.item % 8
-        let coordinate = self.transitioner!.getCoordinate()
+        print("x: \(x), y: \(y)")
+        
+        //let coordinate = self.transitioner!.getCoordinate()
         //        if(coordinate != nil){
         //            let pawnPromotion = self.pawnPromotion!.evaluate(coordinate: coordinate!, proposed: [x,y])
         //            if(pawnPromotion){
@@ -380,6 +348,30 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         //        self.transitioner!.evaluateInput(coordinate: [x,y], gamestate: Gamestate())
         //        self.indicatorLabelUpdate()
         //        self.collectionView.reloadData()
+        let state0 = self.gameTschess!.getStateClient(username: self.playerSelf!.username)
+        let state1 = self.transitioner!.evaluateInput(coordinate: [x,y], state: state0)
+        self.gameTschess!.setState(username: self.playerSelf!.username, state: state1)
+        //
+        self.collectionView.reloadData()
+    }
+    
+    private func assignCellTschessElement(indexPath: IndexPath) -> UIImage? {
+        let tschessElementMatrix = self.gameTschess!.getStateClient(username: self.playerSelf!.username)
+        let x = indexPath.row / 8
+        let y = indexPath.row % 8
+        if(tschessElementMatrix[x][y] != nil){
+            return tschessElementMatrix[x][y]!.getImageVisible()
+        }
+        return nil
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "square", for: indexPath) as! SquareCell
+        cell.backgroundColor = assignCellBackgroundColor(indexPath: indexPath)
+        cell.imageView.image = self.assignCellTschessElement(indexPath: indexPath)
+        cell.imageView.bounds = CGRect(origin: cell.bounds.origin, size: cell.bounds.size)
+        cell.imageView.center = CGPoint(x: cell.bounds.size.width/2, y: cell.bounds.size.height/2)
+        return self.highlightLastMoveCoords(indexPath: indexPath, cell: cell)
     }
     
     override func viewDidLayoutSubviews() {
