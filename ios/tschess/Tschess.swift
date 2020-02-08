@@ -148,7 +148,11 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         
         self.renderHeader()
         self.startTimers()
+        
+        self.tschessElementMatrix = self.gameTschess!.getStateClient(username: self.playerSelf!.username)
     }
+    
+    var tschessElementMatrix: [[Piece?]]?
     
     private func getTurn() -> Bool {
         return self.gameTschess!.getTurn(username: self.playerSelf!.username)
@@ -349,18 +353,15 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         //        self.indicatorLabelUpdate()
         //        self.collectionView.reloadData()
         let state0 = self.gameTschess!.getStateClient(username: self.playerSelf!.username)
-        let state1 = self.transitioner!.evaluateInput(coordinate: [x,y], state: state0)
-        self.gameTschess!.setState(username: self.playerSelf!.username, state: state1)
-        //
+        self.tschessElementMatrix = self.transitioner!.evaluateInput(coordinate: [x,y], state: state0)
         self.collectionView.reloadData()
     }
     
     private func assignCellTschessElement(indexPath: IndexPath) -> UIImage? {
-        let tschessElementMatrix = self.gameTschess!.getStateClient(username: self.playerSelf!.username)
         let x = indexPath.row / 8
         let y = indexPath.row % 8
-        if(tschessElementMatrix[x][y] != nil){
-            return tschessElementMatrix[x][y]!.getImageVisible()
+        if(self.tschessElementMatrix![x][y] != nil){
+            return self.tschessElementMatrix![x][y]!.getImageVisible()
         }
         return nil
     }
