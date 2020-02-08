@@ -14,25 +14,14 @@ class Processor { //TODO: doesnt need to be its own class...
         //var tschessElementMatrix = gamestate.getTschessElementMatrix()
         let elementPresent = state[present[0]][present[1]]!
         let elementPropose = state[proposed[0]][proposed[1]]
-        if(self.validateElement(candidate: elementPropose)){
+//        if(self.validateElement(candidate: elementPropose)){
 //            state[present[0]][present[1]] = nil
 //            state[proposed[0]][proposed[1]] = elementPresent
             //gamestate.setTschessElementMatrix(tschessElementMatrix: tschessElementMatrix)
-        }
+//        }
         
     }
     
-    public func validateElement(candidate: Piece?) -> Bool {
-        if(candidate == nil){
-            return false
-        }
-        if(candidate!.isTarget){
-            return true
-        }
-        if(candidate!.name == "PieceAnte"){
-            return true
-        }
-        return false
-    }
+    
     
 }

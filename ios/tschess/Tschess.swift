@@ -352,8 +352,20 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         //        self.transitioner!.evaluateInput(coordinate: [x,y], gamestate: Gamestate())
         //        self.indicatorLabelUpdate()
         //        self.collectionView.reloadData()
+        let coordinate = self.transitioner!.getCoordinate()
+        if(coordinate != nil){
+            
+            let state0 = self.gameTschess!.getStateClient(username: self.playerSelf!.username)
+            if(self.transitioner!.validMove(propose: coordinate!, state0: state0)){
+                self.activityIndicator.isHidden = false
+                self.activityIndicator.stopAnimating()
+                self.tschessElementMatrix = self.transitioner!.deselectHighlight(state0: state0)
+                return
+            }
+            
+        }
         let state0 = self.gameTschess!.getStateClient(username: self.playerSelf!.username)
-        self.tschessElementMatrix = self.transitioner!.evaluateInput(coordinate: [x,y], state0: state0)
+        self.tschessElementMatrix = self.transitioner!.evaluateHighlightSelection(coordinate: [x,y], state0: state0)
         self.collectionView.reloadData()
     }
     

@@ -20,10 +20,52 @@ class Transitioner {
         self.coordinate = nil
     }
     
-    public func evaluateInput(coordinate: [Int], state0: [[Piece?]]) -> [[Piece?]] {
+    public func movable(square: Piece?) -> Bool {
+        if(square == nil){
+            return false
+        }
+        if(square!.isTarget){
+            return true
+        }
+        if(square!.name == "PieceAnte"){
+            return true
+        }
+        return false
+    }
+    
+    public func validMove(propose: [Int], state0: [[Piece?]]) -> Bool {
+        var state1 = state0
+        let squarePresent = state1[self.coordinate![0]][self.coordinate![1]]
+        let squarePropose = state1[propose[0]][propose[1]]
+        if(self.movable(square: squarePropose)){
+            state1[self.coordinate![0]][self.coordinate![1]] = nil
+            state1[propose[0]][propose[1]] = squarePresent
+            return true
+        }
+        return false
+    }
+    
+    public func deselectHighlight(state0: [[Piece?]]) -> [[Piece?]] {
+        var state1 = state0
+        for i in (0 ..< 8) {
+            for j in (0 ..< 8) {
+                let square = state1[self.coordinate![0]][self.coordinate![1]]
+                if(square != nil){
+                    if(square!.name == "PieceAnte"){
+                        state1[i][j] = nil
+                    }
+                }
+            }
+        }
+        let imageDefault = state1[self.coordinate![0]][self.coordinate![1]]!.getImageDefault()
+        state1[self.coordinate![0]][self.coordinate![1]]!.setImageVisible(imageVisible: imageDefault)
+        self.coordinate = nil
+        return state1
+    }
+    
+    public func evaluateHighlightSelection(coordinate: [Int], state0: [[Piece?]]) -> [[Piece?]] {
         if(self.invalid(coordinate: coordinate, state: state0)){
             if(self.coordinate == nil){
-                self.flash()
                 return state0
             }
             var state1 = state0
@@ -79,36 +121,36 @@ class Transitioner {
     }
     
     private func invalid(coordinate: [Int], state: [[Piece?]]) -> Bool {
-        let tschessElement = state[coordinate[0]][coordinate[1]]
-        if(self.coordinate == nil){
-            if(tschessElement == nil){
-                return true
-            }
-            if(self.white){
-                return tschessElement!.affiliation != "WHITE"
-            }
-            return tschessElement!.affiliation != "BLACK"
-        }
         if(self.coordinate != nil){
             if(self.coordinate! == coordinate){
                 return true
             }
-            //if(!Processor().validateElement(candidate: tschessElement)){
-                //return true
-            //}
         }
+        let tschessElement = state[coordinate[0]][coordinate[1]]
+        if(self.coordinate == nil){
+            if(tschessElement == nil){
+                self.flash()
+                return true
+            }
+            if(self.white){
+                if(tschessElement!.affiliation != "WHITE"){
+                    print("A")
+                    self.flash()
+                    return true
+                }
+            } else {
+                if(tschessElement!.affiliation != "BLACK"){
+                    print("B")
+                    self.flash()
+                    return true
+                }
+            }
+        }
+        //if(!Processor().validateElement(candidate: tschessElement)){
+        //return true
+        //}
         return false
     }
-    
-    
-    
-    let dateTime: DateTime = DateTime()
-    
-    
-    
-    
-    
-    
     
     private func setLastMove(state: [[Piece?]]) {
         //if(gamestate.getUsernameSelf() == gamestate.getUsernameWhite()) {

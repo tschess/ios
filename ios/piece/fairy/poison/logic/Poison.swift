@@ -26,20 +26,20 @@ class Poison {
             //print("D")
             return false
         }
-        if(Processor().validateElement(candidate: elementPropose)){
-            if(elementPresent!.name.contains("King")){
+//        if(Processor().validateElement(candidate: elementPropose)){
+//            if(elementPresent!.name.contains("King")){
 //                if(gamestate.getOrientationBlack()){
 //                    tschessElementMatrix[proposed[0]][proposed[1]] = WhiteReveal()
 //                } else {
 //                    tschessElementMatrix[proposed[0]][proposed[1]] = BlackReveal()
 //                }
-                state[coordinate[0]][coordinate[1]]!.setImageVisible(imageVisible: elementPresent!.imageDefault)
+//                state[coordinate[0]][coordinate[1]]!.setImageVisible(imageVisible: elementPresent!.imageDefault)
 //                gamestate.setTschessElementMatrix(tschessElementMatrix: tschessElementMatrix)
 //                gamestate.setWinner(winner: gamestate.getUsernameOpponent())
                 //let requestUpdate = GamestateSerializer().execute(gamestate: gamestate)
                 //UpdateGamestate().execute(requestPayload: requestUpdate)
-                return true
-            }
+//                return true
+//            }
 //            state[coordinate[0]][coordinate[1]] = nil
 //            state[proposed[0]][proposed[1]] = nil
 //            gamestate.setHighlight(coords: [proposed[0],proposed[1],coordinate[0],coordinate[1]])
@@ -47,8 +47,8 @@ class Poison {
 //            gamestate.setTschessElementMatrix(tschessElementMatrix: tschessElementMatrix)
             //let requestUpdate = GamestateSerializer().execute(gamestate: gamestate)
             //UpdateGamestate().execute(requestPayload: requestUpdate)
-            return true
-        }
+//            return true
+//        }
         //print("E")
         return false
     }
