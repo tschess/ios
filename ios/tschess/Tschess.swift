@@ -26,7 +26,6 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     
     public func setGameTschess(gameTschess: EntityGame) {
         self.gameTschess = gameTschess
-        self.tschessElementMatrix = self.gameTschess!.getStateClient(username: self.playerSelf!.username)
     }
     
     let DATE_TIME: DateTime = DateTime()
@@ -149,6 +148,8 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         self.castling!.setTransitioner(transitioner: transitioner!)
         self.pawnPromotion!.setTransitioner(transitioner: transitioner!)
         self.pawnPromotion!.setChess(chess: self)
+        
+        self.tschessElementMatrix = self.gameTschess!.getStateClient(username: self.playerSelf!.username)
     }
     
     var tschessElementMatrix: [[Piece?]]?
@@ -210,21 +211,21 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     }
     
     func startTimers() {
-        guard pollingTimer == nil else { return }
-        guard counterTimer == nil else { return }
-        
-        pollingTimer = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(pollingTask), userInfo: nil, repeats: true)
-        counterTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateCounter), userInfo: nil, repeats: true)
-        
-       
+        guard self.pollingTimer == nil else {
+            return
+        }
+        self.pollingTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(pollingTask), userInfo: nil, repeats: true)
+        guard self.counterTimer == nil else {
+            return
+        }
+        self.counterTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateCounter), userInfo: nil, repeats: true)
     }
     
     func stopTimers() {
-        pollingTimer?.invalidate()
-        pollingTimer = nil
-        
-        counterTimer?.invalidate()
-        counterTimer = nil
+        self.pollingTimer?.invalidate()
+        self.pollingTimer = nil
+        self.counterTimer?.invalidate()
+        self.counterTimer = nil
     }
     
     @IBAction func backButtonClick(_ sender: Any) {
@@ -290,18 +291,26 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     
     @objc func pollingTask() {
         GameRequest().execute(id: self.gameTschess!.id) { (game) in
-            
-            print("self.gameTschess!.updated: \(self.gameTschess!.updated)")
-            print("            game!.updated: \(game!.updated)")
-            
-            let dateLocal = self.DATE_TIME.toFormatDate(string: self.gameTschess!.updated)
-            let dateServer = self.DATE_TIME.toFormatDate(string: game!.updated)
-            if(dateServer <= dateLocal){
+            //print("            game!.updated: \(game!.updated)")
+            //print("self.gameTschess!.updated: \(self.gameTschess!.updated)")
+            let dateSEV: Date = self.DATE_TIME.toFormatDate(string: game!.updated)              //A
+            let dateLOC: Date = self.DATE_TIME.toFormatDate(string: self.gameTschess!.updated)  //B
+            switch dateSEV.compare(dateLOC) {
+            case .orderedAscending:
+                //print("Date A is earlier than date B")
                 return
-            }
-            self.setGameTschess(gameTschess: game!)
-            DispatchQueue.main.async {
-                self.collectionView.reloadData()
+            case .orderedSame:
+                //print("The two dates are the same")
+                return
+            case .orderedDescending:
+                //print("Date A is later than date B")
+                DispatchQueue.main.async {
+                    self.activityIndicator.stopAnimating()
+                    self.activityIndicator.isHidden = true
+                    self.setGameTschess(gameTschess: game!)
+                    self.tschessElementMatrix = game!.getStateClient(username: self.playerSelf!.username)
+                    self.collectionView.reloadData()
+                }
             }
         }
     }
@@ -352,28 +361,23 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         //        self.collectionView.reloadData()
         let coordinate = self.transitioner!.getCoordinate()
         if(coordinate != nil){
-            
             if(self.transitioner!.validMove(propose: [x,y], state0: self.tschessElementMatrix!)){
-                //print("zzzzz")
+                self.tschessElementMatrix = self.transitioner!.deselectHighlight(state0: self.tschessElementMatrix!)
+                let stateX: [[Piece?]] = self.transitioner!.executeMove(propose: [x,y], state0: self.tschessElementMatrix!)
+                let stateUpdate = SerializerState(white: self.gameTschess!.getWhite(username: self.playerSelf!.username)).renderServer(state: stateX)
+                let requestPayload: [String: Any] = ["id_game": self.gameTschess!.id, "state": stateUpdate]
                 DispatchQueue.main.async() {
                     self.activityIndicator.isHidden = false
                     self.activityIndicator.startAnimating()
                 }
-                self.tschessElementMatrix = self.transitioner!.deselectHighlight(state0: self.tschessElementMatrix!)
-                self.collectionView.reloadData()
-                self.transitioner!.clearCoordinate()
-                let stateUpdate = self.gameTschess!.getStateServer(username: self.playerSelf!.username, state: self.tschessElementMatrix!)
-                
-                let requestPayload: [String: Any] = ["id_game": self.gameTschess!.id, "state": stateUpdate]
-                GameUpdate().execute(requestPayload: requestPayload) { (game) in
-                    DispatchQueue.main.async() {
-                        self.activityIndicator.stopAnimating()
-                        self.activityIndicator.isHidden = true
+                GameUpdate().success(requestPayload: requestPayload) { (success) in
+                    if(!success){
+                        //error
                     }
+                    self.transitioner!.clearCoordinate()
                 }
                 return
             }
-            //print("oooooo")
         }
         let state0 = self.gameTschess!.getStateClient(username: self.playerSelf!.username)
         self.tschessElementMatrix = self.transitioner!.evaluateHighlightSelection(coordinate: [x,y], state0: state0)
@@ -406,14 +410,6 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         switch item.tag {
-        case 0:
-            self.stopTimers()
-            DispatchQueue.main.async() {
-                let storyboard: UIStoryboard = UIStoryboard(name: "Actual", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "Actual") as! Actual
-                viewController.setPlayerSelf(playerSelf: self.playerSelf!)
-                UIApplication.shared.keyWindow?.rootViewController = viewController
-            }
         case 1:
             DispatchQueue.main.async {
                 let storyboard: UIStoryboard = UIStoryboard(name: "DrawResign", bundle: nil)
@@ -421,9 +417,14 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
                 viewController.setTabBar(tabBarMenu: self.tabBarMenu!)
                 self.present(viewController, animated: true, completion: nil)
             }
-        default:
+        default: //0
             self.stopTimers()
-            //print("lol")
+            DispatchQueue.main.async() {
+                let storyboard: UIStoryboard = UIStoryboard(name: "Actual", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "Actual") as! Actual
+                viewController.setPlayerSelf(playerSelf: self.playerSelf!)
+                UIApplication.shared.keyWindow?.rootViewController = viewController
+            }
         }
     }
     

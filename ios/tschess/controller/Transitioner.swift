@@ -34,15 +34,19 @@ class Transitioner {
     }
     
     public func validMove(propose: [Int], state0: [[Piece?]]) -> Bool {
-        var state1 = state0
-        let squarePropose = state1[propose[0]][propose[1]]
+        let squarePropose = state0[propose[0]][propose[1]]
         if(self.movable(square: squarePropose)){
-            let squarePresent = state1[self.coordinate![0]][self.coordinate![1]]
-            state1[propose[0]][propose[1]] = squarePresent
-            state1[self.coordinate![0]][self.coordinate![1]] = nil
             return true
         }
         return false
+    }
+    
+    public func executeMove(propose: [Int], state0: [[Piece?]]) -> [[Piece?]] {
+        var state1 = state0
+        let squarePresent = state1[self.coordinate![0]][self.coordinate![1]]
+        state1[propose[0]][propose[1]] = squarePresent
+        state1[self.coordinate![0]][self.coordinate![1]] = nil
+        return state1
     }
     
     public func deselectHighlight(state0: [[Piece?]]) -> [[Piece?]] {

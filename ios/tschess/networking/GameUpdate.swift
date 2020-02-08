@@ -10,7 +10,7 @@ import Foundation
 
 class GameUpdate {
     
-    func execute(requestPayload: [String: Any], completion: @escaping (EntityGame?) -> Void) {
+    func success(requestPayload: [String: Any], completion: @escaping (Bool) -> Void) {
         let url = URL(string: "http://\(ServerAddress().IP):8080/game/update")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
@@ -19,30 +19,33 @@ class GameUpdate {
         do {
             request.httpBody = try JSONSerialization.data(withJSONObject: requestPayload, options: .prettyPrinted)
         } catch _ {
-            completion(nil)
+            completion(false)
         }
         let session = URLSession.shared
         let task = session.dataTask(with: request, completionHandler: { data, response, error in
             guard error == nil else {
-                completion(nil)
+                completion(false)
                 return
             }
             guard let data = data else {
-                completion(nil)
+                completion(false)
                 return
             }
             do {
                 guard let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any] else {
-                    completion(nil)
+                    completion(false)
                     return
                 }
+                if(json["success"] != nil){
+                    print("A")
+                    completion(true)
+                }
+                completion(false)
                 
-                let game: EntityGame = ParseGame().execute(json: json)
-                completion(game)
                 
             } catch let error {
                
-                completion(nil)
+                completion(false)
             }
         })
         task.resume()
