@@ -41,7 +41,8 @@ class Start: UIViewController, UITextFieldDelegate {
     @objc func testTaskExecuter(){
         view.removeGestureRecognizer(self.dismissKeyboardGesture!)
         let defaultState = [[""]]
-        let requestPayload: [String: Any] = ["state": defaultState]
+        let turn = "WHITE"
+        let requestPayload: [String: Any] = ["state": defaultState, "turn": turn]
         //print(" - testTaskExecuter - ")
         if(self.testTaskCounter == 1){
             //print("testTaskCounter: \(testTaskCounter)")

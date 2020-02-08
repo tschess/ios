@@ -291,6 +291,9 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     @objc func pollingTask() {
         GameRequest().execute(id: self.gameTschess!.id) { (game) in
             
+            print("self.gameTschess!.updated: \(self.gameTschess!.updated)")
+            print("            game!.updated: \(game!.updated)")
+            
             let dateLocal = self.DATE_TIME.toFormatDate(string: self.gameTschess!.updated)
             let dateServer = self.DATE_TIME.toFormatDate(string: game!.updated)
             if(dateServer <= dateLocal){
