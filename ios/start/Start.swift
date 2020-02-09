@@ -10,6 +10,8 @@ import IHKeyboardAvoiding
 
 class Start: UIViewController, UITextFieldDelegate {
     
+    @IBAction func createButtonClick(_ sender: UIButton) {}
+    
     //MARK: Constant
     let DATE_TIME: DateTime = DateTime()
     
@@ -36,41 +38,6 @@ class Start: UIViewController, UITextFieldDelegate {
     required init?(coder aDecoder: NSCoder) {
         self.testTaskCounter = 0
         super.init(coder: aDecoder)
-    }
-    
-    @objc func testTaskExecuter(){
-        view.removeGestureRecognizer(self.dismissKeyboardGesture!)
-        let defaultState = [[""]]
-        let turn = "WHITE"
-        let requestPayload: [String: Any] = ["state": defaultState, "turn": turn]
-        //print(" - testTaskExecuter - ")
-        if(self.testTaskCounter == 1){
-            //print("testTaskCounter: \(testTaskCounter)")
-            RequestTest().execute(requestPayload: requestPayload) { (game) in
-                DispatchQueue.main.async {
-                    let storyboard: UIStoryboard = UIStoryboard(name: "Tschess", bundle: nil)
-                    let viewController = storyboard.instantiateViewController(withIdentifier: "Tschess") as! Tschess
-                    viewController.setPlayerOther(playerOther: game!.getPlayerOther(username: game!.white.username))
-                    viewController.setPlayerSelf(playerSelf: game!.white)
-                    viewController.setGameTschess(gameTschess: game!)
-                    UIApplication.shared.keyWindow?.rootViewController = viewController
-                }
-            }
-            return
-        }
-        //if(self.testTaskCounter == 2){
-        print(" - testTaskCounter: \(testTaskCounter)")
-        //}
-        RequestTest().execute(requestPayload: requestPayload) { (game) in
-            DispatchQueue.main.async {
-                let storyboard: UIStoryboard = UIStoryboard(name: "Tschess", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "Tschess") as! Tschess
-                viewController.setPlayerOther(playerOther: game!.getPlayerOther(username: game!.black.username))
-                viewController.setPlayerSelf(playerSelf: game!.black)
-                viewController.setGameTschess(gameTschess: game!)
-                UIApplication.shared.keyWindow?.rootViewController = viewController
-            }
-        }
     }
     
     @objc func testTaskIncrementer() {
@@ -156,8 +123,71 @@ class Start: UIViewController, UITextFieldDelegate {
         }
     }
     
-    @IBAction func createButtonClick(_ sender: UIButton) {
-        
+    @objc func testTaskExecuter(){
+        view.removeGestureRecognizer(self.dismissKeyboardGesture!)
+        if(self.testTaskCounter == 1){
+            let STATE = [[""]]
+            let TURN = "WHITE"
+            let REQUEST: [String: Any] = ["state": STATE, "turn": TURN]
+            RequestTest().execute(requestPayload: REQUEST) { (game) in
+                DispatchQueue.main.async {
+                    let storyboard: UIStoryboard = UIStoryboard(name: "Tschess", bundle: nil)
+                    let viewController = storyboard.instantiateViewController(withIdentifier: "Tschess") as! Tschess
+                    viewController.setPlayerOther(playerOther: game!.getPlayerOther(username: game!.white.username))
+                    viewController.setPlayerSelf(playerSelf: game!.white)
+                    viewController.setGameTschess(gameTschess: game!)
+                    UIApplication.shared.keyWindow?.rootViewController = viewController
+                }
+            }
+            return
+        }
+        if(self.testTaskCounter == 2){
+        print(" - testTaskCounter: \(testTaskCounter)")
+            let STATE = [[""]]
+            let TURN = "BLACK"
+            let REQUEST: [String: Any] = ["state": STATE, "turn": TURN]
+            RequestTest().execute(requestPayload: REQUEST) { (game) in
+                DispatchQueue.main.async {
+                    let storyboard: UIStoryboard = UIStoryboard(name: "Tschess", bundle: nil)
+                    let viewController = storyboard.instantiateViewController(withIdentifier: "Tschess") as! Tschess
+                    viewController.setPlayerOther(playerOther: game!.getPlayerOther(username: game!.black.username))
+                    viewController.setPlayerSelf(playerSelf: game!.black)
+                    viewController.setGameTschess(gameTschess: game!)
+                    UIApplication.shared.keyWindow?.rootViewController = viewController
+                }
+            }
+        }
+        if(self.testTaskCounter == 3){
+            let STATE = [[""]]
+            let TURN = "WHITE"
+            let REQUEST: [String: Any] = ["state": STATE, "turn": TURN]
+            RequestTest().execute(requestPayload: REQUEST) { (game) in
+                DispatchQueue.main.async {
+                    let storyboard: UIStoryboard = UIStoryboard(name: "Tschess", bundle: nil)
+                    let viewController = storyboard.instantiateViewController(withIdentifier: "Tschess") as! Tschess
+                    viewController.setPlayerOther(playerOther: game!.getPlayerOther(username: game!.black.username))
+                    viewController.setPlayerSelf(playerSelf: game!.black)
+                    viewController.setGameTschess(gameTschess: game!)
+                    UIApplication.shared.keyWindow?.rootViewController = viewController
+                }
+            }
+            return
+        }
+        if(self.testTaskCounter == 4){
+            let STATE = [["DEFAULT"]]
+            let TURN = "WHITE"
+            let REQUEST: [String: Any] = ["state": STATE, "turn": TURN]
+            RequestTest().execute(requestPayload: REQUEST) { (game) in
+                DispatchQueue.main.async {
+                    let storyboard: UIStoryboard = UIStoryboard(name: "Tschess", bundle: nil)
+                    let viewController = storyboard.instantiateViewController(withIdentifier: "Tschess") as! Tschess
+                    viewController.setPlayerOther(playerOther: game!.getPlayerOther(username: game!.white.username))
+                    viewController.setPlayerSelf(playerSelf: game!.white)
+                    viewController.setGameTschess(gameTschess: game!)
+                    UIApplication.shared.keyWindow?.rootViewController = viewController
+                }
+            }
+        }
     }
     
 }

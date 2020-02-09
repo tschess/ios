@@ -138,6 +138,9 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         super.viewDidLoad()
         self.collectionView.isHidden = true
         
+        self.turnaryLabel.isHidden = true
+        self.setTurn()
+        
         self.timerLabel.isHidden = true
         self.contentViewLabel.isHidden = true
         
@@ -154,8 +157,19 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     
     var tschessElementMatrix: [[Piece?]]?
     
-    private func getTurn() -> Bool {
-        return self.gameTschess!.getTurn(username: self.playerSelf!.username)
+    var turn: Bool = false
+    
+    private func setTurn() {
+        if(self.turnaryLabel.isHidden){
+           self.turnaryLabel.isHidden = false
+        }
+        if(self.gameTschess!.getTurn(username: self.playerSelf!.username)){
+            self.turn = true
+            self.turnaryLabel.text = "\(self.playerSelf!.username) to move"
+            return
+        }
+        self.turn = false
+        self.turnaryLabel.text = "\(self.playerOther!.username) to move"
     }
     
     func flash() {
@@ -174,15 +188,14 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         return 64
     }
     
-    private func assignCellBackgroundColor(indexPath: IndexPath) -> UIColor {
-        if (indexPath.row % 2 == 0) {
-            if ((indexPath.row / 8) % 2 == 0) {
+    private func assignCellBackgroundColor(index: Int) -> UIColor {
+        if (index % 2 == 0) {
+            if ((index / 8) % 2 == 0) {
                 return UIColor.purple
-            } else {
-                return UIColor.brown
             }
+            return UIColor.brown
         }
-        if ((indexPath.row / 8) % 2 == 0) {
+        if ((index / 8) % 2 == 0) {
             return UIColor.brown
         }
         return UIColor.purple
@@ -253,7 +266,6 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     
     func resolveGameTimeout() {
         self.stopTimers()
-        
     }
     
     private func attributeString(red: String, black: String) -> NSMutableAttributedString {
@@ -310,6 +322,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
                     self.setGameTschess(gameTschess: game!)
                     self.tschessElementMatrix = game!.getStateClient(username: self.playerSelf!.username)
                     self.collectionView.reloadData()
+                    self.setTurn()
                 }
             }
         }
@@ -318,7 +331,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     // MARK: prime mover
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if(!self.getTurn()){
+        if(!self.turn){
             self.flash()
             return
         }
@@ -395,7 +408,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "square", for: indexPath) as! SquareCell
-        cell.backgroundColor = assignCellBackgroundColor(indexPath: indexPath)
+        cell.backgroundColor = assignCellBackgroundColor(index: indexPath.row)
         cell.imageView.image = self.assignCellTschessElement(indexPath: indexPath)
         cell.imageView.bounds = CGRect(origin: cell.bounds.origin, size: cell.bounds.size)
         cell.imageView.center = CGPoint(x: cell.bounds.size.width/2, y: cell.bounds.size.height/2)

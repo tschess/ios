@@ -259,7 +259,6 @@ class EntityGame: Equatable, Hashable {
     }
     
     func getWhite(username: String) -> Bool {
-        //print("self.white.username == username: \(self.white.username == username)")
         return self.white.username == username
     }
 }

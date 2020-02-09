@@ -197,9 +197,6 @@ UINavigationControllerDelegate, UIDropInteractionDelegate {
         self.configCollectionView2.bounces = false
         self.configCollectionView2.alwaysBounceVertical = false
         self.configCollectionViewHeight2.constant = configCollectionView2.contentSize.height
-        
-        
-        
     }
     
     @objc func renderElementCollectionView() {
