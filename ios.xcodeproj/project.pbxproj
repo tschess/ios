@@ -157,6 +157,8 @@
 		B7F541C423D51A9D00E89074 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7F541C323D51A9D00E89074 /* Home.storyboard */; };
 		B7F541C623D51ADD00E89074 /* HomeMenuTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F541C523D51ADD00E89074 /* HomeMenuTable.swift */; };
 		B7F541C823D51B0C00E89074 /* HomeMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F541C723D51B0C00E89074 /* HomeMenuCell.swift */; };
+		B7F6F9E623F0B544007D9151 /* UpdateProp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F6F9E523F0B544007D9151 /* UpdateProp.swift */; };
+		B7F6F9E823F0B55C007D9151 /* UpdateEval.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F6F9E723F0B55C007D9151 /* UpdateEval.swift */; };
 		B7FA7BFB23ECF79400E63045 /* UpdateConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7FA7BFA23ECF79400E63045 /* UpdateConfig.swift */; };
 /* End PBXBuildFile section */
 
@@ -336,6 +338,8 @@
 		B7F541C323D51A9D00E89074 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		B7F541C523D51ADD00E89074 /* HomeMenuTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMenuTable.swift; sourceTree = "<group>"; };
 		B7F541C723D51B0C00E89074 /* HomeMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMenuCell.swift; sourceTree = "<group>"; };
+		B7F6F9E523F0B544007D9151 /* UpdateProp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProp.swift; sourceTree = "<group>"; };
+		B7F6F9E723F0B55C007D9151 /* UpdateEval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateEval.swift; sourceTree = "<group>"; };
 		B7FA7BFA23ECF79400E63045 /* UpdateConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateConfig.swift; sourceTree = "<group>"; };
 		C061A60149C81DD0496B1CA3 /* Pods-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios.release.xcconfig"; path = "Target Support Files/Pods-ios/Pods-ios.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -1121,6 +1125,8 @@
 				B7BE128C23EB09B400ADA499 /* GameUpdate.swift */,
 				B7BE128E23EB09C700ADA499 /* GameRequest.swift */,
 				B7BE129023EB09FC00ADA499 /* UpdateResign.swift */,
+				B7F6F9E523F0B544007D9151 /* UpdateProp.swift */,
+				B7F6F9E723F0B55C007D9151 /* UpdateEval.swift */,
 			);
 			path = networking;
 			sourceTree = "<group>";
@@ -1557,6 +1563,7 @@
 				B7BE12BD23EB0E7C00ADA499 /* Highlighter.swift in Sources */,
 				B7BE11AD23EA9CC700ADA499 /* KingBlack.swift in Sources */,
 				B7F35E332309F6D6002018F7 /* DateTime.swift in Sources */,
+				B7F6F9E623F0B544007D9151 /* UpdateProp.swift in Sources */,
 				B7BE12C723EB70A900ADA499 /* Info.swift in Sources */,
 				B7BE11CC23EA9EE900ADA499 /* Knight.swift in Sources */,
 				B7BE11E823EAC40800ADA499 /* SerializerConfig.swift in Sources */,
@@ -1597,6 +1604,7 @@
 				B7BE11BE23EA9E2500ADA499 /* Pawn.swift in Sources */,
 				B7BE12B723EB0DCD00ADA499 /* Threat.swift in Sources */,
 				B7BE12B523EB0DA700ADA499 /* Attack.swift in Sources */,
+				B7F6F9E823F0B55C007D9151 /* UpdateEval.swift in Sources */,
 				B7BE121323EAD7BF00ADA499 /* Config.swift in Sources */,
 				B7BE11B723EA9DAC00ADA499 /* Bishop.swift in Sources */,
 				B7F541C623D51ADD00E89074 /* HomeMenuTable.swift in Sources */,

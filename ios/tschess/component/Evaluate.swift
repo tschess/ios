@@ -10,6 +10,24 @@ import UIKit
 
 class Evaluate: UIViewController {
     
+    var gameTschess: EntityGame?
+    
+    public func setGameTschess(gameTschess: EntityGame) {
+        self.gameTschess = gameTschess
+    }
+    
+    var playerOther: EntityPlayer?
+    
+    func setPlayerOther(playerOther: EntityPlayer){
+        self.playerOther = playerOther
+    }
+    
+    var playerSelf: EntityPlayer?
+    
+    func setPlayerSelf(playerSelf: EntityPlayer){
+        self.playerSelf = playerSelf
+    }
+    
     @IBOutlet weak var acceptButton: UIButton!
     @IBOutlet weak var rejectButton: UIButton!
     
@@ -44,22 +62,41 @@ class Evaluate: UIViewController {
     let dateTime: DateTime = DateTime()
     
     @IBAction func rejectButtonClick(_ sender: Any) {
-//        self.gamestate!.setDrawProposer(drawProposer: "NONE")
-//
-//        let requestPayload = GamestateSerializer().execute(gamestate: gamestate!, updated: self.gamestate!.getUpdated())
-//        UpdateGamestate().execute(requestPayload: requestPayload)
-//
-//        StoryboardSelector().chess(gamestate: self.gamestate!)
+        let requestPayload = [
+            "id_game": self.gameTschess!.id,
+            "id_self": self.playerSelf!.id,
+            "id_other": self.playerOther!.id,
+            "accept": false] as [String: Any]
+        
+        UpdateEval().execute(requestPayload: requestPayload) { (result) in
+            print("result: \(result)")
+            
+            DispatchQueue.main.async {
+                //self.activityIndicator!.stopAnimating()
+                //self.activityIndicator!.isHidden = true
+                self.presentingViewController!.dismiss(animated: false, completion: nil)
+            }
+        }
+        //self.presentingViewController!.dismiss(animated: false, completion: nil)
     }
     
     @IBAction func acceptButtonClick(_ sender: Any) {
-//        self.gamestate!.setDrawProposer(drawProposer: "NONE")
-//        self.gamestate!.setWinner(winner: "DRAW")
-//        
-//        let requestPayload = GamestateSerializer().execute(gamestate: gamestate!)
-//        UpdateGamestate().execute(requestPayload: requestPayload)
-//        
-//        StoryboardSelector().chess(gamestate: self.gamestate!)
-    }
+        let requestPayload = [
+            "id_game": self.gameTschess!.id,
+            "id_self": self.playerSelf!.id,
+            "id_other": self.playerOther!.id,
+           "accept": true] as [String: Any]
+        
+        UpdateEval().execute(requestPayload: requestPayload) { (result) in
+            print("result: \(result)")
+            
+            DispatchQueue.main.async {
+                        //self.activityIndicator!.stopAnimating()
+                        //self.activityIndicator!.isHidden = true
+                        self.presentingViewController!.dismiss(animated: false, completion: nil)
+                    }
+                }
+                //self.presentingViewController!.dismiss(animated: false, completion: nil)
+            }
     
 }
