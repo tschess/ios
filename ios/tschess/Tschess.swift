@@ -259,8 +259,40 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     }
     
     private func highlightLastMoveCoords(indexPath: IndexPath, cell: SquareCell) -> SquareCell {
-        cell.layer.borderWidth = 0
+        if(!self.turn){
+            cell.layer.borderWidth = 0
+            return cell
+        }
+        let white: Bool = self.gameTschess!.getWhite(username: self.playerSelf!.username)
         
+        let x: Int = white ? indexPath.item / 8 : 7 - (indexPath.item / 8)
+        let y: Int = white ? indexPath.item % 8 : 7 - (indexPath.item % 8)
+        let sq: [Int] = [x,y]
+        
+        let highlight: String = self.gameTschess!.highlight
+        if(highlight == "TBD"){
+            cell.layer.borderWidth = 0
+            return cell
+        }
+        let coords = Array(highlight)
+        
+        let h0a: Int = Int(String(coords[0]))!
+        let h0b: Int = Int(String(coords[1]))!
+        let h0: [Int] = [h0a,h0b]
+        if(sq == h0){
+            cell.layer.borderWidth = 1.5
+            cell.layer.borderColor = UIColor.magenta.cgColor
+            return cell
+        }
+        let h1a: Int = Int(String(coords[2]))!
+        let h1b: Int = Int(String(coords[3]))!
+        let h1: [Int] = [h1a,h1b]
+        if(sq == h1){
+            cell.layer.borderWidth = 1.5
+            cell.layer.borderColor = UIColor.magenta.cgColor
+            return cell
+        }
+        cell.layer.borderWidth = 0
         return cell
     }
     
@@ -320,9 +352,9 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
                     self.activityIndicator.stopAnimating()
                     self.activityIndicator.isHidden = true
                     self.setGameTschess(gameTschess: game!)
+                    self.setTurn()
                     self.tschessElementMatrix = game!.getStateClient(username: self.playerSelf!.username)
                     self.collectionView.reloadData()
-                    self.setTurn()
                 }
             }
         }
@@ -378,7 +410,18 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
                 self.tschessElementMatrix = self.transitioner!.deselectHighlight(state0: self.tschessElementMatrix!)
                 let stateX: [[Piece?]] = self.transitioner!.executeMove(propose: [x,y], state0: self.tschessElementMatrix!)
                 let stateUpdate = SerializerState(white: self.gameTschess!.getWhite(username: self.playerSelf!.username)).renderServer(state: stateX)
-                let requestPayload: [String: Any] = ["id_game": self.gameTschess!.id, "state": stateUpdate]
+                
+                let white: Bool = self.gameTschess!.getWhite(username: self.playerSelf!.username)
+                
+                let hx: Int = white ? x : 7 - x
+                let hy: Int = white ? y : 7 - y
+                let h0: Int = white ? coordinate![0] : 7 - coordinate![0]
+                let h1: Int = white ? coordinate![1] : 7 - coordinate![1]
+                
+                let highlight: String = "\(hx)\(hy)\(h0)\(h1)"
+                
+                //print("highlight: \(coordinate![0])\(coordinate![1])\(x)\(y)")
+                let requestPayload: [String: Any] = ["id_game": self.gameTschess!.id, "state": stateUpdate, "highlight": highlight]
                 DispatchQueue.main.async() {
                     self.activityIndicator.isHidden = false
                     self.activityIndicator.startAnimating()
