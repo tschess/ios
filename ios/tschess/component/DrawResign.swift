@@ -60,7 +60,7 @@ class DrawResign: UIViewController  {
         self.activityIndicator.isHidden = true
         
         if(!self.gameTschess!.getTurn(username: self.playerSelf!.username)){
-            proposeDrawButton.alpha = 0.5
+            proposeDrawButton.titleLabel!.alpha = 0.5
             proposeDrawButton.isUserInteractionEnabled = false
         }
     }
