@@ -37,6 +37,18 @@ class DrawResign: UIViewController  {
            self.gameTschess = gameTschess
        }
     
+    var playerOther: EntityPlayer?
+       
+       func setPlayerOther(playerOther: EntityPlayer){
+           self.playerOther = playerOther
+       }
+       
+       var playerSelf: EntityPlayer?
+       
+       func setPlayerSelf(playerSelf: EntityPlayer){
+           self.playerSelf = playerSelf
+       }
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.configure()
@@ -59,25 +71,21 @@ class DrawResign: UIViewController  {
         self.activityIndicator.isHidden = false
         self.activityIndicator.startAnimating()
         
-//        let requestPayload = [
-//            "id_game": self.gameTschess!.idGame,
-//            "id_self": self.gameTschess!.playerSelf.id,
-//            "id_oppo": self.gameTschess!.playerOppo.id,
-//            "white": self.gameTschess!.white!] as [String: Any]
+        let requestPayload = [
+            "id_game": self.gameTschess!.id,
+            "id_self": self.playerSelf!.id,
+            "id_oppo": self.playerOther!.id,
+            "white": self.gameTschess!.getWhite(username: self.playerSelf!.username)] as [String: Any]
         
-//        UpdateResign {
-//
-//            func execute(requestPayload: [String: Any],
-        
-//        UpdateResign().execute(requestPayload: requestPayload) { (result) in
-//            print("result: \(result)")
-//            
-//            DispatchQueue.main.async {
-//                self.activityIndicator!.stopAnimating()
-//                self.activityIndicator!.isHidden = true
-//                self.presentingViewController!.dismiss(animated: false, completion: nil)
-//            }
-//        }
+        UpdateResign().execute(requestPayload: requestPayload) { (result) in
+            print("result: \(result)")
+            
+            DispatchQueue.main.async {
+                self.activityIndicator!.stopAnimating()
+                self.activityIndicator!.isHidden = true
+                self.presentingViewController!.dismiss(animated: false, completion: nil)
+            }
+        }
     }
     
     @IBAction func proposeDrawButtonClick(_ sender: Any) {
@@ -92,7 +100,7 @@ class DrawResign: UIViewController  {
     
     @IBAction func backButtonClick(_ sender: Any) {
         self.presentingViewController!.dismiss(animated: false, completion: nil)
-        self.tabBarMenu.selectedItem = nil
+        //self.tabBarMenu.selectedItem = nil
     }
     
 }

@@ -429,9 +429,9 @@ extension Ack: UICollectionViewDelegateFlowLayout {
                 DispatchQueue.main.async {
                     let storyboard: UIStoryboard = UIStoryboard(name: "Tschess", bundle: nil)
                     let viewController = storyboard.instantiateViewController(withIdentifier: "Tschess") as! Tschess
-                    viewController.setGameTschess(gameTschess: game!)
                     viewController.setPlayerSelf(playerSelf: self.playerSelf!)
                     viewController.setPlayerOther(playerOther: game!.getPlayerOther(username: self.playerSelf!.username))
+                    viewController.setGameTschess(gameTschess: game!)
                     UIApplication.shared.keyWindow?.rootViewController = viewController
                 }
             }

@@ -58,7 +58,6 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         if(self.timerLabel.isHidden){
             self.timerLabel.isHidden = false
         }
-        
         self.timerLabel.text = String(format: "%02d:%02d:%02d", hour, min, sec)
     }
     
@@ -237,6 +236,8 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     func stopTimers() {
         self.pollingTimer?.invalidate()
         self.pollingTimer = nil
+        
+        self.timerLabel.isHidden = true
         self.counterTimer?.invalidate()
         self.counterTimer = nil
     }
@@ -297,7 +298,25 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     }
     
     func resolveGameTimeout() {
-        self.stopTimers()
+        if(self.gameTschess!.status == "RESOLVED"){
+            self.titleViewLabel.text = "game over"
+            self.contentViewLabel.isHidden = false
+            self.turnaryLabel.isHidden = true
+            self.stopTimers()
+            
+            if(self.gameTschess!.winner == "WHITE"){
+                if(self.gameTschess!.getWhite(username: self.playerSelf!.username)){
+                    self.contentViewLabel.text = "you win"
+                } else {
+                   self.contentViewLabel.text = "you lose"
+                }
+            }
+            if(self.gameTschess!.getWhite(username: self.playerSelf!.username)){
+                self.contentViewLabel.text = "you lose"
+            } else {
+               self.contentViewLabel.text = "you win"
+            }
+        }
     }
     
     private func attributeString(red: String, black: String) -> NSMutableAttributedString {
@@ -355,6 +374,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
                     self.setTurn()
                     self.tschessElementMatrix = game!.getStateClient(username: self.playerSelf!.username)
                     self.collectionView.reloadData()
+                    self.resolveGameTimeout()
                 }
             }
         }
@@ -470,7 +490,11 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
             DispatchQueue.main.async {
                 let storyboard: UIStoryboard = UIStoryboard(name: "DrawResign", bundle: nil)
                 let viewController = storyboard.instantiateViewController(withIdentifier: "DrawResign") as! DrawResign
-                viewController.setTabBar(tabBarMenu: self.tabBarMenu!)
+                //viewController.setTabBar(tabBarMenu: self.tabBarMenu!)
+                viewController.setPlayerSelf(playerSelf: self.playerSelf!)
+                viewController.setPlayerOther(playerOther: self.gameTschess!.getPlayerOther(username: self.playerSelf!.username))
+                viewController.setGameTschess(gameTschess: self.gameTschess!)
+                self.tabBarMenu.selectedItem = nil
                 self.present(viewController, animated: true, completion: nil)
             }
         default: //0

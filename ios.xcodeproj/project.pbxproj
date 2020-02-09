@@ -124,7 +124,7 @@
 		B7BE128A23EB095600ADA499 /* Tschess.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7BE128923EB095600ADA499 /* Tschess.storyboard */; };
 		B7BE128D23EB09B400ADA499 /* GameUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE128C23EB09B400ADA499 /* GameUpdate.swift */; };
 		B7BE128F23EB09C700ADA499 /* GameRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE128E23EB09C700ADA499 /* GameRequest.swift */; };
-		B7BE129123EB09FC00ADA499 /* ResolveUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE129023EB09FC00ADA499 /* ResolveUpdate.swift */; };
+		B7BE129123EB09FC00ADA499 /* UpdateResign.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE129023EB09FC00ADA499 /* UpdateResign.swift */; };
 		B7BE129523EB0A7900ADA499 /* DrawResign.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7BE129423EB0A7900ADA499 /* DrawResign.storyboard */; };
 		B7BE129723EB0A8B00ADA499 /* Evaluate.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7BE129623EB0A8B00ADA499 /* Evaluate.storyboard */; };
 		B7BE129923EB0A9E00ADA499 /* DrawResign.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE129823EB0A9E00ADA499 /* DrawResign.swift */; };
@@ -302,7 +302,7 @@
 		B7BE128923EB095600ADA499 /* Tschess.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Tschess.storyboard; sourceTree = "<group>"; };
 		B7BE128C23EB09B400ADA499 /* GameUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameUpdate.swift; sourceTree = "<group>"; };
 		B7BE128E23EB09C700ADA499 /* GameRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRequest.swift; sourceTree = "<group>"; };
-		B7BE129023EB09FC00ADA499 /* ResolveUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResolveUpdate.swift; sourceTree = "<group>"; };
+		B7BE129023EB09FC00ADA499 /* UpdateResign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateResign.swift; sourceTree = "<group>"; };
 		B7BE129423EB0A7900ADA499 /* DrawResign.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DrawResign.storyboard; sourceTree = "<group>"; };
 		B7BE129623EB0A8B00ADA499 /* Evaluate.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Evaluate.storyboard; sourceTree = "<group>"; };
 		B7BE129823EB0A9E00ADA499 /* DrawResign.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawResign.swift; sourceTree = "<group>"; };
@@ -1120,7 +1120,7 @@
 			children = (
 				B7BE128C23EB09B400ADA499 /* GameUpdate.swift */,
 				B7BE128E23EB09C700ADA499 /* GameRequest.swift */,
-				B7BE129023EB09FC00ADA499 /* ResolveUpdate.swift */,
+				B7BE129023EB09FC00ADA499 /* UpdateResign.swift */,
 			);
 			path = networking;
 			sourceTree = "<group>";
@@ -1498,7 +1498,7 @@
 				B7BE125323EB035000ADA499 /* ProfileTable.swift in Sources */,
 				B7BE120923EAD3DD00ADA499 /* Hunter.swift in Sources */,
 				B7BE11A923EA9C8800ADA499 /* King.swift in Sources */,
-				B7BE129123EB09FC00ADA499 /* ResolveUpdate.swift in Sources */,
+				B7BE129123EB09FC00ADA499 /* UpdateResign.swift in Sources */,
 				B7BE11B223EA9D7000ADA499 /* QueenWhite.swift in Sources */,
 				B7BE11A623EA97EC00ADA499 /* MovementKing.swift in Sources */,
 				B7BE128723EB091C00ADA499 /* Tschess.swift in Sources */,
