@@ -87,14 +87,16 @@ class DrawResign: UIViewController  {
     }
     
     @IBAction func proposeDrawButtonClick(_ sender: Any) {
+        self.activityIndicator.isHidden = false
+        self.activityIndicator.startAnimating()
         
-        let requestPayload = [
-            "id_game": self.gameTschess!.id,
-            "id_self": self.playerSelf!.id,
-            "id_other": self.playerOther!.id,
-            "white": self.gameTschess!.getWhite(username: self.playerSelf!.username)] as [String: Any]
+//        let requestPayload = [
+//            "id_game": ,
+//            "id_self": self.playerSelf!.id,
+//            "id_other": self.playerOther!.id,
+//            "white": self.gameTschess!.getWhite(username: self.playerSelf!.username)] as [String: Any]
         
-        UpdateProp().execute(requestPayload: requestPayload) { (result) in
+        UpdateProp().execute(id: self.gameTschess!.id) { (result) in
             print("result: \(result)")
             
             DispatchQueue.main.async {
@@ -103,8 +105,7 @@ class DrawResign: UIViewController  {
                 self.presentingViewController!.dismiss(animated: false, completion: nil)
             }
         }
-        
-        self.presentingViewController!.dismiss(animated: false, completion: nil)
+        //self.presentingViewController!.dismiss(animated: false, completion: nil)
     }
     
     @IBAction func backButtonClick(_ sender: Any) {

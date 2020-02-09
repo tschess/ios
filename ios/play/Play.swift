@@ -327,7 +327,7 @@ class Play:
         }
         let storyboard: UIStoryboard = UIStoryboard(name: "EditOther", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "EditOther") as! EditOther
-        viewController.setTitleText(titleText: "quick play")
+        viewController.setTitleText(titleText: "config. 0̸")
         viewController.setActiveConfigNumber(activeConfigNumber: 0)
         let numberString: String = self.activeConfigNumber.text!
         if(numberString == "1"){

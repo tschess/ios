@@ -17,6 +17,7 @@ extension EditOther: UICollectionViewDropDelegate {}
 class EditOther: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIDropInteractionDelegate {
     
     var BACK: String?
+    @IBOutlet weak var titleLabel: UILabel!
     
     public func setBACK(BACK: String){
         self.BACK = BACK
@@ -94,7 +95,7 @@ class EditOther: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate
         self.totalPointLabel.text = String(totalPointValue)
     }
     
-    @IBOutlet weak var titleLabel: UILabel!
+    
     var titleText: String?
     
     func setTitleText(titleText: String) {
@@ -336,6 +337,8 @@ class EditOther: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate
         self.headerView.addInteraction(UIDropInteraction(delegate: self))
         
         self.tabBarMenu.delegate = self
+        
+        self.titleLabel.text = "config. 0̸"
     }
     
     override func viewDidAppear(_ animated: Bool) {

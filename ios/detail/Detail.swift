@@ -121,6 +121,7 @@ class Detail: UIViewController, UITabBarDelegate, UITextViewDelegate {
         self.rankLabel.text = self.player!.getLabelTextRank()
         self.displacementLabel.text = self.player!.getLabelTextDisp()
         self.displacementImage.image = self.player!.getImageDisp()!
+        self.displacementImage.tintColor = self.player!.tintColor
     }
     
     var remaining: Int?

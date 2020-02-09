@@ -457,7 +457,7 @@
                         <outlet property="splitViewHeight1" destination="ZFw-IX-dWv" id="GcR-tZ-lxO"/>
                         <outlet property="splitViewHeight2" destination="Z8B-XP-7yQ" id="hhb-dK-EFH"/>
                         <outlet property="tabBarMenu" destination="lR1-2A-YPc" id="CDf-K6-4Hh"/>
-                        <outlet property="titleLabel" destination="rh3-GT-zds" id="CUA-nm-eYa"/>
+                        <outlet property="titleLabel" destination="rh3-GT-zds" id="dzR-9h-3Dp"/>
                         <outlet property="totalPointLabel" destination="bnj-gY-QC6" id="Jkc-fl-nvp"/>
                         <outlet property="usernameLabel" destination="5cD-8o-yjA" id="aRv-Y9-uOc"/>
                     </connections>
