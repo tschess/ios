@@ -307,15 +307,16 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
             if(self.gameTschess!.winner == "WHITE"){
                 if(self.gameTschess!.getWhite(username: self.playerSelf!.username)){
                     self.contentViewLabel.text = "you win"
-                } else {
-                   self.contentViewLabel.text = "you lose"
+                    return
                 }
+                self.contentViewLabel.text = "you lose"
+                return
             }
             if(self.gameTschess!.getWhite(username: self.playerSelf!.username)){
                 self.contentViewLabel.text = "you lose"
-            } else {
-               self.contentViewLabel.text = "you win"
+                return
             }
+            self.contentViewLabel.text = "you win"
         }
     }
     
