@@ -116,7 +116,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         self.collectionView.isHidden = false
         self.activityIndicator.isHidden = true
         
-        self.evalCheck()
+        self.evalCheck() //draw/resign also?
     }
     
     override func viewWillAppear(_ animated: Bool) {
