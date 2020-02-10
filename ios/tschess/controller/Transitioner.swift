@@ -34,11 +34,13 @@ class Transitioner {
     }
     
     public func validMove(propose: [Int], state0: [[Piece?]]) -> Bool {
+        if(self.coordinate! == propose){
+            return false
+        }
         let squarePropose = state0[propose[0]][propose[1]]
         if(self.movable(square: squarePropose)){
             return true
         }
-         self.coordinate = nil //???
         return false
     }
     
@@ -58,7 +60,7 @@ class Transitioner {
                 if(square != nil){
                     if(square!.name == "PieceAnte"){
                         state1[i][j] = nil
-                    }
+                    } //targs...
                 }
             }
         }
@@ -81,6 +83,7 @@ class Transitioner {
                             state1[i][j] = nil
                         }
                     }
+                    //targets...
                 }
             }
             let imageDefault = state1[self.coordinate![0]][self.coordinate![1]]!.getImageDefault()
@@ -115,35 +118,12 @@ class Transitioner {
             }
             return state1
         }
-        //Processor().execute(present: self.coordinate!, proposed: coordinate, state: state)
-        //Highlighter().restoreSelection(coordinate: coordinate, state: state)
-        //Highlighter().neutralize(state: state)
-        
-        //gamestate.setHighlight(coords: [self.coordinate![0],self.coordinate![1],coordinate[0],coordinate[1]])
-        
-        //self.coordinate = nil
-        //self.setLastMove(state: state)
-        //self.evaluateCheckMate(state: state)
-        
-        //gamestate.changeTurn()
-        //gamestate.setUpdated(updated: dateTime.currentDateString())
-        //gamestate.setDrawProposer(drawProposer: "NONE")
-        //let requestUpdate = GamestateSerializer().execute(gamestate: gamestate)
-        //UpdateGamestate().execute(requestPayload: requestUpdate)
-        //gamestate.setHighlight(coords: nil)
-        
-        
         return state0
     }
     
     private func invalid(coordinate: [Int], state: [[Piece?]]) -> Bool {
-        if(self.coordinate != nil){
-            if(self.coordinate! == coordinate){
-                return true
-            }
-        }
-        let tschessElement = state[coordinate[0]][coordinate[1]]
         if(self.coordinate == nil){
+            let tschessElement = state[coordinate[0]][coordinate[1]]
             if(tschessElement == nil){
                 self.flash()
                 return true
@@ -154,17 +134,14 @@ class Transitioner {
                     self.flash()
                     return true
                 }
-            } else {
-                if(tschessElement!.affiliation != "BLACK"){
-                    print("B")
-                    self.flash()
-                    return true
-                }
             }
+            else if(tschessElement!.affiliation != "BLACK"){
+                print("B")
+                self.flash()
+                return true
+            }
+            //return false
         }
-        //if(!Processor().validateElement(candidate: tschessElement)){
-        //return true
-        //}
         return false
     }
     

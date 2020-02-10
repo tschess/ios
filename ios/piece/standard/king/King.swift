@@ -11,7 +11,7 @@ import UIKit
 class King: Piece {
     
     let kingMovement = MovementKing()
-    //let attack = Attack()
+    let attack = Attack()
     //let threat = Threat()
     
     init(
@@ -46,9 +46,9 @@ class King: Piece {
         if(!kingMovement.movement(present: present, proposed: proposed)) {
             return false
         }
-//        if(attack.evaluate(present: present, proposed: proposed, state: state)) {
-//            return false
-//        }
+        if(attack.evaluate(present: present, proposed: proposed, state: state)) {
+            return false
+        }
 //        if(threat.evaluate(present: present, proposed: proposed, state: state)) {
 //            return false
 //        }

@@ -459,6 +459,11 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
                 }
                 return
             }
+            //otherwise invalid --> deselect...
+            self.tschessElementMatrix = self.transitioner!.deselectHighlight(state0: self.tschessElementMatrix!)
+            self.collectionView.reloadData()
+            self.transitioner!.clearCoordinate()
+            return
         }
         let state0 = self.gameTschess!.getStateClient(username: self.playerSelf!.username)
         self.tschessElementMatrix = self.transitioner!.evaluateHighlightSelection(coordinate: [x,y], state0: state0)
