@@ -12,6 +12,10 @@ class Promotion: UIViewController {
     
     var chess: Tschess?
     
+    public func setChess(chess: Tschess) {
+        self.chess = chess
+    }
+    
     @IBOutlet weak var imageViewKnight: UIImageView!
     @IBOutlet weak var imageViewBishop: UIImageView!
     @IBOutlet weak var imageViewQueen: UIImageView!
@@ -21,16 +25,12 @@ class Promotion: UIViewController {
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        configure()
+        self.configure()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        configure()
-    }
-    
-    public func setChess(chess: Tschess) {
-        self.chess = chess
+        self.configure()
     }
     
     func configure() {

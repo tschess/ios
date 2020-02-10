@@ -34,9 +34,15 @@ class King: Piece {
     }
     
     public override func validate(present: [Int], proposed: [Int], state: [[Piece?]]) ->  Bool {
-//        if(Castle().castle(kingCoordinate: present, proposed: proposed, state: state)){
-//            return true
-//        }
+        
+        var white: Bool = false
+        if(state[present[0]][present[1]]!.affiliation == "WHITE"){
+            white = true
+        }
+        if(Castle(white: white).castle(kingCoordinate: present, proposed: proposed, state: state)){
+            return true
+        }
+        
         if(!kingMovement.movement(present: present, proposed: proposed)) {
             return false
         }

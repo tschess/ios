@@ -105,8 +105,6 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         
         self.counter = "00:00:00" //
         
-        self.castling = Castle()
-        
         self.pawnPromotionStoryboard = UIStoryboard(name: "Promotion", bundle: nil)
         self.pawnPromotion = pawnPromotionStoryboard!.instantiateViewController(withIdentifier: "Promotion") as? Promotion
     }
@@ -125,6 +123,9 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         self.tabBarMenu.delegate = self
         
         self.processDrawProposal()
+        self.castling = Castle(white: self.gameTschess!.getWhite(username: self.playerSelf!.username))
+        self.castling!.setChess(chess: self)
+        self.castling!.setTransitioner(transitioner: transitioner!)
     }
     
     public func renderHeader() {
@@ -149,7 +150,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         self.startTimers()
         
         self.transitioner = Transitioner(white: self.gameTschess!.getWhite(username: self.playerSelf!.username), collectionView: collectionView)
-        self.castling!.setTransitioner(transitioner: transitioner!)
+        
         self.pawnPromotion!.setTransitioner(transitioner: transitioner!)
         self.pawnPromotion!.setChess(chess: self)
         
@@ -162,7 +163,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     
     private func setTurn() {
         if(self.turnaryLabel.isHidden){
-           self.turnaryLabel.isHidden = false
+            self.turnaryLabel.isHidden = false
         }
         if(self.gameTschess!.getTurn(username: self.playerSelf!.username)){
             self.turn = true
@@ -398,18 +399,8 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         
         //let coordinate = self.transitioner!.getCoordinate()
         //        if(coordinate != nil){
-        //            let pawnPromotion = self.pawnPromotion!.evaluate(coordinate: coordinate!, proposed: [x,y])
-        //            if(pawnPromotion){
-        //                self.transitioner!.clearCoordinate()
-        //                //self.gamestate!.setHighlight(coords: [x,y,coordinate![0],coordinate![1]])
-        //                self.pawnPromotion(proposed: [x,y])
-        //                return
-        //            }
-        //            let castling = self.castling!.execute(coordinate: coordinate!, proposed: [x,y], gamestate: self.gamestate!)
-        //            if(castling){
-        //                self.renderEffect()
-        //                return
-        //            }
+        
+
         //            let enPassant = EnPassant().evaluate(coordinate: coordinate!, proposed: [x,y], gamestate: Gamestate())
         //            if(enPassant){
         //                self.renderEffect()
@@ -435,6 +426,11 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
             let pawnPromotion = self.pawnPromotion!.evaluate(coordinate: coordinate!, proposed: [x,y])
             if(pawnPromotion){
                 self.pawnPromotion(proposed: [x,y])
+                return
+            }
+            
+            let castling = self.castling!.execute(coordinate: coordinate!, proposed: [x,y], state0: self.tschessElementMatrix!)
+            if(castling){
                 return
             }
             

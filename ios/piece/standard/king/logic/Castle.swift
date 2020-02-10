@@ -10,6 +10,12 @@ import UIKit
 
 class Castle {
     
+    var white: Bool
+    
+    init(white: Bool){
+        self.white = white
+    }
+    
     var transitioner: Transitioner?
     
     public func setTransitioner(transitioner: Transitioner) {
@@ -150,7 +156,7 @@ class Castle {
                     }
                     let spaceOccupant = state[space[0]][space[1]]
                     if(spaceOccupant != nil){
-                        if(spaceOccupant!.name != "LegalMove"){
+                        if(spaceOccupant!.name != "PieceAnte"){
                             return false
                         }
                     }
@@ -160,30 +166,41 @@ class Castle {
         return true
     }
     
-    public func execute(coordinate: [Int], proposed: [Int], state: [[Piece?]]) -> Bool {
+    var chess: Tschess?
+    
+    public func setChess(chess: Tschess) {
+        self.chess = chess
+    }
+    
+//    private func soLaLa() {
+//
+//    }
+    
+    public func execute(coordinate: [Int], proposed: [Int], state0: [[Piece?]]) -> Bool {
         if(coordinate[0] != 7 || proposed[0] != 7){
             return false
         }
-        //var tschessElementMatrix = gamestate.getTschessElementMatrix()
-        let tschessElement = state[coordinate[0]][coordinate[1]]
+        
+        var state1 = state0
+        let tschessElement = state1[coordinate[0]][coordinate[1]]
         if(tschessElement == nil){
             return false
         }
         if(!tschessElement!.name.contains("King")) {
             return false
         }
-        let tschessElementProposed = state[proposed[0]][proposed[1]]
+        let tschessElementProposed = state1[proposed[0]][proposed[1]]
         if(tschessElementProposed == nil){
             return false
         }
-        if(tschessElementProposed!.name != "LegalMove") {
+        if(tschessElementProposed!.name != "PieceAnte") {
             return false
         }
         let affiliation = tschessElement!.affiliation
         if(affiliation == "WHITE"){
             if(proposed == [7,6]){
                 
-                let rook = state[7][7]
+                let rook = state1[7][7]
                 if(rook == nil){
                     return false
                 }
@@ -191,70 +208,135 @@ class Castle {
                     return false
                 }
                 
-//                let imageDefault = tschessElement!.getImageDefault()
-//                tschessElement!.setImageVisible(imageVisible: imageDefault)
-//                state[7][6] = tschessElement
-//                state[7][6]!.setFirstTouch(firstTouch: false)
-//                state[coordinate[0]][coordinate[1]] = nil
-//                state[7][5] = rook!
-//                state[7][5]!.setFirstTouch(firstTouch: false)
-//                state[7][7] = nil
-//                gamestate.setTschessElementMatrix(tschessElementMatrix: state)
-//                gamestate.setDrawProposer(drawProposer: "CASTLE")
-//                gamestate.setHighlight(coords: [7,6,7,5])
+                let imageDefault = tschessElement!.getImageDefault()
+                tschessElement!.setImageVisible(imageVisible: imageDefault)
+                state1[7][6] = tschessElement
+                state1[7][6]!.setFirstTouch(firstTouch: false)
+                state1[coordinate[0]][coordinate[1]] = nil
+                state1[7][5] = rook!
+                state1[7][5]!.setFirstTouch(firstTouch: false)
+                state1[7][7] = nil
+                
+                self.chess!.tschessElementMatrix = self.transitioner!.deselectHighlight(state0: self.chess!.tschessElementMatrix!)
+                let stateUpdate = SerializerState(white: white).renderServer(state: state1)
+                
+                let hx: Int = white ? proposed[0] : 7 - proposed[0]
+                let hy: Int = white ? proposed[1] : 7 - proposed[1]
+                let h0: Int = white ? coordinate[0] : 7 - coordinate[0]
+                let h1: Int = white ? coordinate[1] : 7 - coordinate[1]
+                let highlight: String = "\(hx)\(hy)\(h0)\(h1)"
+                
+                let requestPayload: [String: Any] = ["id_game": self.chess!.gameTschess!.id, "state": stateUpdate, "highlight": highlight]
+                DispatchQueue.main.async() {
+                    self.chess!.activityIndicator.isHidden = false
+                    self.chess!.activityIndicator.startAnimating()
+                }
+                GameUpdate().success(requestPayload: requestPayload) { (success) in
+                    if(!success){
+                        //error
+                    }
+                    self.transitioner!.clearCoordinate()
+                }
+
                 return true
                 
             }
             if(proposed == [7,2]){
                 
-                let rook = state[7][0]
+                let rook = state1[7][0]
                 if(rook == nil){
                     return false
                 }
                 if(!rook!.name.contains("Rook")){
                     return false
                 }
-//                let imageDefault = tschessElement!.getImageDefault()
-//                tschessElement!.setImageVisible(imageVisible: imageDefault)
-//                tschessElementMatrix[7][2] = tschessElement
-//                tschessElementMatrix[7][2]!.setFirstTouch(firstTouch: false)
-//                tschessElementMatrix[coordinate[0]][coordinate[1]] = nil
-//                tschessElementMatrix[7][3] = rook!
-//                tschessElementMatrix[7][3]!.setFirstTouch(firstTouch: false)
-//                tschessElementMatrix[7][0] = nil
-//                gamestate.setTschessElementMatrix(tschessElementMatrix: tschessElementMatrix)
-//                gamestate.setDrawProposer(drawProposer: "CASTLE")
-//                gamestate.setHighlight(coords: [7,3,7,2])
+                let imageDefault = tschessElement!.getImageDefault()
+                tschessElement!.setImageVisible(imageVisible: imageDefault)
+                state1[7][2] = tschessElement
+                state1[7][2]!.setFirstTouch(firstTouch: false)
+                state1[coordinate[0]][coordinate[1]] = nil
+                state1[7][3] = rook!
+                state1[7][3]!.setFirstTouch(firstTouch: false)
+                state1[7][0] = nil
+                
+                
+                
+                self.chess!.tschessElementMatrix = self.transitioner!.deselectHighlight(state0: self.chess!.tschessElementMatrix!)
+                let stateUpdate = SerializerState(white: white).renderServer(state: state1)
+                
+                let hx: Int = white ? proposed[0] : 7 - proposed[0]
+                let hy: Int = white ? proposed[1] : 7 - proposed[1]
+                let h0: Int = white ? coordinate[0] : 7 - coordinate[0]
+                let h1: Int = white ? coordinate[1] : 7 - coordinate[1]
+                let highlight: String = "\(hx)\(hy)\(h0)\(h1)"
+                
+                let requestPayload: [String: Any] = ["id_game": self.chess!.gameTschess!.id, "state": stateUpdate, "highlight": highlight]
+                DispatchQueue.main.async() {
+                    self.chess!.activityIndicator.isHidden = false
+                    self.chess!.activityIndicator.startAnimating()
+                }
+                GameUpdate().success(requestPayload: requestPayload) { (success) in
+                    if(!success){
+                        //error
+                    }
+                    self.transitioner!.clearCoordinate()
+                }
+                
+                
+
                 return true
             }
         }
         if(affiliation == "BLACK"){
             if(proposed == [7,1]){
                 
-                let rook = state[7][0]
+                let rook = state1[7][0]
                 if(rook == nil){
                     return false
                 }
                 if(!rook!.name.contains("Rook")){
                     return false
                 }
-//                let imageDefault = tschessElement!.getImageDefault()
-//                tschessElement!.setImageVisible(imageVisible: imageDefault)
-//                tschessElementMatrix[7][1] = tschessElement
-//                tschessElementMatrix[7][1]!.setFirstTouch(firstTouch: false)
-//                tschessElementMatrix[coordinate[0]][coordinate[1]] = nil
-//                tschessElementMatrix[7][2] = rook!
-//                tschessElementMatrix[7][2]!.setFirstTouch(firstTouch: false)
-//                tschessElementMatrix[7][0] = nil
-//                gamestate.setTschessElementMatrix(tschessElementMatrix: tschessElementMatrix)
-//                gamestate.setDrawProposer(drawProposer: "CASTLE")
-//                gamestate.setHighlight(coords: [7,2,7,1])
+                let imageDefault = tschessElement!.getImageDefault()
+                tschessElement!.setImageVisible(imageVisible: imageDefault)
+                state1[7][1] = tschessElement
+                state1[7][1]!.setFirstTouch(firstTouch: false)
+                state1[coordinate[0]][coordinate[1]] = nil
+                state1[7][2] = rook!
+                state1[7][2]!.setFirstTouch(firstTouch: false)
+                state1[7][0] = nil
+                
+                
+                
+                self.chess!.tschessElementMatrix = self.transitioner!.deselectHighlight(state0: self.chess!.tschessElementMatrix!)
+                let stateUpdate = SerializerState(white: white).renderServer(state: state1)
+                
+                let hx: Int = white ? proposed[0] : 7 - proposed[0]
+                let hy: Int = white ? proposed[1] : 7 - proposed[1]
+                let h0: Int = white ? coordinate[0] : 7 - coordinate[0]
+                let h1: Int = white ? coordinate[1] : 7 - coordinate[1]
+                let highlight: String = "\(hx)\(hy)\(h0)\(h1)"
+                
+                let requestPayload: [String: Any] = ["id_game": self.chess!.gameTschess!.id, "state": stateUpdate, "highlight": highlight]
+                DispatchQueue.main.async() {
+                    self.chess!.activityIndicator.isHidden = false
+                    self.chess!.activityIndicator.startAnimating()
+                }
+                GameUpdate().success(requestPayload: requestPayload) { (success) in
+                    if(!success){
+                        //error
+                    }
+                    self.transitioner!.clearCoordinate()
+                }
+                
+                
+
                 return true
                 
             }
             if(proposed == [7,5]){
                 
-                let rook = state[7][7]
+                let rook = state1[7][7]
                 if(rook == nil){
                     return false
                 }
@@ -262,17 +344,39 @@ class Castle {
                    return false
                 }
                 
-//                let imageDefault = tschessElement!.getImageDefault()
-//                tschessElement!.setImageVisible(imageVisible: imageDefault)
-//                tschessElementMatrix[7][5] = tschessElement
-//                tschessElementMatrix[7][5]!.setFirstTouch(firstTouch: false)
-//                tschessElementMatrix[coordinate[0]][coordinate[1]] = nil
-//                tschessElementMatrix[7][4] = rook!
-//                tschessElementMatrix[7][4]!.setFirstTouch(firstTouch: false)
-//                tschessElementMatrix[7][7] = nil
-//                gamestate.setTschessElementMatrix(tschessElementMatrix: tschessElementMatrix)
-//                gamestate.setDrawProposer(drawProposer: "CASTLE")
-//                gamestate.setHighlight(coords: [7,4,7,5])
+                let imageDefault = tschessElement!.getImageDefault()
+                tschessElement!.setImageVisible(imageVisible: imageDefault)
+                state1[7][5] = tschessElement
+                state1[7][5]!.setFirstTouch(firstTouch: false)
+                state1[coordinate[0]][coordinate[1]] = nil
+                state1[7][4] = rook!
+                state1[7][4]!.setFirstTouch(firstTouch: false)
+                state1[7][7] = nil
+                
+                
+                self.chess!.tschessElementMatrix = self.transitioner!.deselectHighlight(state0: self.chess!.tschessElementMatrix!)
+                let stateUpdate = SerializerState(white: white).renderServer(state: state1)
+                
+                let hx: Int = white ? proposed[0] : 7 - proposed[0]
+                let hy: Int = white ? proposed[1] : 7 - proposed[1]
+                let h0: Int = white ? coordinate[0] : 7 - coordinate[0]
+                let h1: Int = white ? coordinate[1] : 7 - coordinate[1]
+                let highlight: String = "\(hx)\(hy)\(h0)\(h1)"
+                
+                let requestPayload: [String: Any] = ["id_game": self.chess!.gameTschess!.id, "state": stateUpdate, "highlight": highlight]
+                DispatchQueue.main.async() {
+                    self.chess!.activityIndicator.isHidden = false
+                    self.chess!.activityIndicator.startAnimating()
+                }
+                GameUpdate().success(requestPayload: requestPayload) { (success) in
+                    if(!success){
+                        //error
+                    }
+                    self.transitioner!.clearCoordinate()
+                }
+                
+                
+
                 return true
             }
         }
