@@ -12,7 +12,7 @@ class King: Piece {
     
     let kingMovement = MovementKing()
     let attack = Attack()
-    //let threat = Threat()
+    let threat = Threat()
     
     init(
         name: String = "King",
@@ -49,9 +49,9 @@ class King: Piece {
         if(attack.evaluate(present: present, proposed: proposed, state: state)) {
             return false
         }
-//        if(threat.evaluate(present: present, proposed: proposed, state: state)) {
-//            return false
-//        }
+        if(threat.evaluate(present: present, proposed: proposed, state: state)) {
+            return false
+        }
         let elementDest = state[proposed[0]][proposed[1]]
         if(elementDest == nil) {
             return true
