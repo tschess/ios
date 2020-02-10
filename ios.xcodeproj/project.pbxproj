@@ -1785,7 +1785,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.994;
+				MARKETING_VERSION = 0.995;
 				PRODUCT_BUNDLE_IDENTIFIER = io.bahlsenwitz.tschess;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1810,7 +1810,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.994;
+				MARKETING_VERSION = 0.995;
 				PRODUCT_BUNDLE_IDENTIFIER = io.bahlsenwitz.tschess;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
