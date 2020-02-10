@@ -136,7 +136,6 @@
 		B7BE12A523EB0BF700ADA499 /* Promotion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7BE12A423EB0BF700ADA499 /* Promotion.storyboard */; };
 		B7BE12A723EB0C2600ADA499 /* Promotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE12A623EB0C2600ADA499 /* Promotion.swift */; };
 		B7BE12AA23EB0C7F00ADA499 /* Poison.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE12A923EB0C7F00ADA499 /* Poison.swift */; };
-		B7BE12AC23EB0CC000ADA499 /* CheckMate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE12AB23EB0CC000ADA499 /* CheckMate.swift */; };
 		B7BE12AE23EB0CDB00ADA499 /* CheckCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE12AD23EB0CDB00ADA499 /* CheckCheck.swift */; };
 		B7BE12B123EB0D3100ADA499 /* KnightOffense.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE12B023EB0D3100ADA499 /* KnightOffense.swift */; };
 		B7BE12B323EB0D6900ADA499 /* PawnOffense.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE12B223EB0D6900ADA499 /* PawnOffense.swift */; };
@@ -316,7 +315,6 @@
 		B7BE12A423EB0BF700ADA499 /* Promotion.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Promotion.storyboard; sourceTree = "<group>"; };
 		B7BE12A623EB0C2600ADA499 /* Promotion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Promotion.swift; sourceTree = "<group>"; };
 		B7BE12A923EB0C7F00ADA499 /* Poison.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Poison.swift; sourceTree = "<group>"; };
-		B7BE12AB23EB0CC000ADA499 /* CheckMate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckMate.swift; sourceTree = "<group>"; };
 		B7BE12AD23EB0CDB00ADA499 /* CheckCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckCheck.swift; sourceTree = "<group>"; };
 		B7BE12B023EB0D3100ADA499 /* KnightOffense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnightOffense.swift; sourceTree = "<group>"; };
 		B7BE12B223EB0D6900ADA499 /* PawnOffense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PawnOffense.swift; sourceTree = "<group>"; };
@@ -1157,7 +1155,6 @@
 		B7BE129C23EB0AD000ADA499 /* controller */ = {
 			isa = PBXGroup;
 			children = (
-				B7BE12AB23EB0CC000ADA499 /* CheckMate.swift */,
 				B7BE12AD23EB0CDB00ADA499 /* CheckCheck.swift */,
 				B7BE12B823EB0E1200ADA499 /* Transitioner.swift */,
 			);
@@ -1528,7 +1525,6 @@
 				B7BE123C23EAFC0200ADA499 /* Challenge.swift in Sources */,
 				B7BE129E23EB0B2A00ADA499 /* HopperOffense.swift in Sources */,
 				B7BE11D523EAA18000ADA499 /* BoardView.swift in Sources */,
-				B7BE12AC23EB0CC000ADA499 /* CheckMate.swift in Sources */,
 				B7BE12C423EB6B9300ADA499 /* TransitioningDelegate.swift in Sources */,
 				B7BE115D23EA4FBE00ADA499 /* ParsePlayer.swift in Sources */,
 				B708D0E9236B369D00A899F9 /* Start.swift in Sources */,

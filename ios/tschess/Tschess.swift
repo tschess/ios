@@ -373,6 +373,16 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         }
     }
     
+    private func evalMate() {
+        
+        let kingCoord: [Int] = CheckCheck().kingCoordinate(affiliation: self.gameTschess!.turn, state: self.tschessElementMatrix!)
+        let mate: Bool = CheckCheck().mate(king: kingCoord, state: self.tschessElementMatrix!)
+        
+        if(mate){
+           print("FUCK x FUCK x FUCK")
+        }
+    }
+    
     // MARK: polling task
     
     @objc func pollingTask() {
@@ -400,6 +410,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
                     self.processDrawProposal()
                     self.resolveGameTimeout()
                     self.evalCheck()
+                    self.evalMate()
                 }
                 //print("Date A is later than date B")
             }
@@ -486,13 +497,6 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
             self.transitioner!.clearCoordinate()
             return
         }
-        //^!^!^!^!
-//        if(self.gameTschess!.outcome == "CHECK"){
-//            self.tschessElementMatrix = CheckCheck().highlightEscape(coordinate: [x,y], state0: self.tschessElementMatrix!)
-//            self.collectionView.reloadData()
-//            return
-//        }
-        //^!^!^!^!
         let state0 = self.gameTschess!.getStateClient(username: self.playerSelf!.username)
         self.tschessElementMatrix = self.transitioner!.evaluateHighlightSelection(coordinate: [x,y], state0: state0)
         self.collectionView.reloadData()
