@@ -9,53 +9,7 @@
 import Foundation
 
 class CheckCheck {
-    
-    public func highlightEscape(coordinate: [Int], state0: [[Piece?]]) -> [[Piece?]] {
-        var state1 = state0
-        let imageSelection = state1[coordinate[0]][coordinate[1]]!.getImageSelection()
-        state1[coordinate[0]][coordinate[1]]!.setImageVisible(imageVisible: imageSelection)
-        for i in (0 ..< 8) {
-            for j in (0 ..< 8) {
-                let piece = state1[coordinate[0]][coordinate[1]]!
-                
-                if(piece.validate(present: coordinate, proposed: [i,j], state: state1)){
-                    
-                    /*-*-*/
-                    let kgCrd: [Int] = CheckCheck().kingCoordinate(affiliation: piece.affiliation, state: state1)
-                    if(kgCrd == [i,j]){
-                        continue //THIS WAS THE EARLIER NULLIFICATION CRISIS!
-                    }
-                    
-                    var stateH: [[Piece?]] = state1
-                    let p = stateH[coordinate[0]][coordinate[1]]
-                    
-                    stateH[i][j] = p
-                    stateH[coordinate[0]][coordinate[1]] = nil //piece replacement???
-                    if(CheckCheck().check(coordinate: kgCrd, state: stateH)){
-                        continue
-                    }
-                    /*-*-*/
-                    
-                    
-                    let square = state1[i][j]
-                    if(square == nil){
-                        state1[i][j] = PieceAnte()
-                        continue
-                    }
-                    if(square!.affiliation == piece.affiliation){
-                        continue
-                    }
-                    let imageTarget = square!.getImageTarget()
-                    square!.setImageVisible(imageVisible: imageTarget)
-                    square!.isTarget = true
-                    
-                }
-            }
-        }
-        return state1
-        
-    }
-    
+
     func on(affiliation: String, state: [[Piece?]]) -> Bool {
         let kgCrd: [Int] = self.kingCoordinate(affiliation: affiliation, state: state)
         if(self.check(coordinate: kgCrd, state: state)){
@@ -83,9 +37,6 @@ class CheckCheck {
     }
     
     func check(coordinate: [Int], state: [[Piece?]]) -> Bool {
-        if(state[coordinate[0]][coordinate[1]] == nil){
-            return true
-        }
         let king = state[coordinate[0]][coordinate[1]]!
         let affiliation = king.affiliation
         for i in (0 ..< 8) {
@@ -107,41 +58,6 @@ class CheckCheck {
             }
         }
         return false
-    }
-    
-    public func circumscribedCheck(coordinate0: [Int], state: [[Piece?]]) {
-        
-        let orientation = true //FUCK
-        
-        var coordinate1: [Int]
-        if(orientation){
-            coordinate1 = [7-coordinate0[0],7-coordinate0[1]]
-        } else {
-            coordinate1 = [coordinate0[0],coordinate0[1]]
-        }
-        //var tschessElementMatrix0 = gamestate0.getTschessElementMatrix()
-        //let tschessElementMatrix1 = MatrixSerializer().canonicalGenerator(localMatrix: tschessElementMatrix0, orientation: orientation)
-        //let gamestate1 = gamestate0.copy()
-        //gamestate1.setTschessElementMatrix(tschessElementMatrix: tschessElementMatrix1)
-        
-        //let kingCoordinate = self.kingCoordinate(affiliation: gamestate0.getSelfAffiliation(), gamestate: gamestate1)
-        
-        //        let listLegalMove = self.listLegalMove(coordinate: coordinate1, gamestate: gamestate1, king: kingCoordinate)
-        //
-        //        for (element, moveList) in listLegalMove {
-        //            if(element == coordinate1){
-        //                for move in moveList {
-        //
-        //                    if(orientation){
-        //                        tschessElementMatrix0[7-move[0]][7-move[1]] = Highlighter().transformElement(tschessElement: tschessElementMatrix0[7-move[0]][7-move[1]])
-        //                    } else {
-        //                        tschessElementMatrix0[move[0]][move[1]] = Highlighter().transformElement(tschessElement: tschessElementMatrix0[move[0]][move[1]])
-        //                    }
-        //
-        //                }
-        //            }
-        //        }
-        //        gamestate0.setTschessElementMatrix(tschessElementMatrix: tschessElementMatrix0)
     }
     
     public func listLegalMove(coordinate: [Int], state: [[Piece?]], king: [Int]) -> [[Int]: Array<[Int]>] {

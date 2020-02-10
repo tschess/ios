@@ -90,15 +90,18 @@ class Transitioner {
                     
                     /*-*-*/
                     let kgCrd: [Int] = CheckCheck().kingCoordinate(affiliation: piece.affiliation, state: state1)
-                    if(kgCrd == [i,j]){
-                        continue //THIS WAS THE EARLIER NULLIFICATION CRISIS!
-                    }
+                    
                     var stateH: [[Piece?]] = state1
                     let p = stateH[self.coordinate![0]][self.coordinate![1]]
                     
                     stateH[i][j] = p
                     stateH[self.coordinate![0]][self.coordinate![1]] = nil //piece replacement???
-                    if(CheckCheck().check(coordinate: kgCrd, state: stateH)){
+                    if(coordinate == kgCrd){
+                        if(CheckCheck().check(coordinate: [i,j], state: stateH)){
+                            continue
+                        }
+                    }
+                    else if(CheckCheck().check(coordinate: kgCrd, state: stateH)){
                         continue
                     }
                     /*-*-*/
@@ -164,22 +167,5 @@ class Transitioner {
             flashFrame.removeFromSuperview()
         })
     }
-    
-    public func evaluateCheckMate(state: [[Piece?]]) {
-        //gamestate.setCheckOn(checkOn: "NONE")
-        //let elementMatrix = gamestate.getTschessElementMatrix()
-        //let orientationBlack = gamestate.getOrientationBlack()
-        //let elementMatrixCanonical = MatrixSerializer().canonicalGenerator(localMatrix: elementMatrix, orientation: orientationBlack)
-        //let gamestateCanonical = gamestate.copy()
-        //gamestateCanonical.setTschessElementMatrix(tschessElementMatrix: elementMatrixCanonical)
-        
-        //let king = CanonicalCheck().kingCoordinate(affiliation: gamestate.getOpponentAffiliation(), gamestate: gamestateCanonical)
-        //if(CanonicalCheck().check(coordinate: king, gamestate: gamestateCanonical)){
-        //if(CanonicalMate().mate(king: king, gamestate: gamestateCanonical)){
-        //gamestate.setWinner(winner: gamestate.getUsernameSelf())
-        //return
-        //}
-        //gamestate.setCheckOn(checkOn: gamestate.getUsernameOpponent())
-        //}
-    }
+
 }
