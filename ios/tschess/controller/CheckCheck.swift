@@ -10,6 +10,24 @@ import Foundation
 
 class CheckCheck {
     
+    func kingCoordinate(affiliation: String, state: [[Piece?]]) -> [Int] {
+        for i in (0 ..< 8) {
+            for j in (0 ..< 8) {
+                let tschessElement = state[i][j]
+                if (tschessElement == nil) {
+                    continue
+                }
+                if(!tschessElement!.name.contains("King")) {
+                    continue
+                }
+                if(tschessElement!.affiliation == affiliation) {
+                    return [i,j]
+                }
+            }
+        }
+        return []
+    }
+    
     func check(coordinate: [Int], state: [[Piece?]]) -> Bool {
         //let tschessElementMatrix = gamestate.getTschessElementMatrix()
         let king = state[coordinate[0]][coordinate[1]]!
@@ -32,30 +50,7 @@ class CheckCheck {
                 }
             }
         }
-        //special check for hopper...
-        if(HopperOffense().evaluate(present: coordinate, state: state, affiliation: "FUCK")){
-            return true
-        }
         return false
-    }
-    
-    func kingCoordinate(affiliation: String, state: [[Piece?]]) -> [Int] {
-        //let tschessElementMatrix = gamestate.getTschessElementMatrix()
-        for i in (0 ..< 8) {
-            for j in (0 ..< 8) {
-                let tschessElement = state[i][j]
-                if (tschessElement == nil) {
-                    continue
-                }
-                if(!tschessElement!.name.contains("King")) {
-                    continue
-                }
-                if(tschessElement!.affiliation == affiliation) {
-                    return [i,j]
-                }
-            }
-        }
-        return []
     }
     
     public func circumscribedCheck(coordinate0: [Int], state: [[Piece?]]) {

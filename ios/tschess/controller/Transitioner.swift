@@ -111,6 +111,19 @@ class Transitioner {
                     let piece = state1[self.coordinate![0]][self.coordinate![1]]!
                     if(piece.validate(present: coordinate, proposed: [i,j], state: state1)){
                         
+                       
+                        /***/
+                        let kgCrd: [Int] = CheckCheck().kingCoordinate(affiliation: piece.affiliation, state: state1)
+                        var stateH: [[Piece?]] = state1
+                        let p = stateH[self.coordinate![0]][self.coordinate![1]]
+                        stateH[i][j] = p
+                        stateH[self.coordinate![0]][self.coordinate![1]] = nil
+                        if(CheckCheck().check(coordinate: kgCrd, state: stateH)){
+                            continue
+                        }
+                        /***/
+                        
+                        
                         let square = state1[i][j]
                         if(square == nil){
                             state1[i][j] = PieceAnte()
@@ -154,32 +167,6 @@ class Transitioner {
         return false
     }
     
-    private func setLastMove(state: [[Piece?]]) {
-        //if(gamestate.getUsernameSelf() == gamestate.getUsernameWhite()) {
-        //gamestate.setLastMoveWhite(lastMoveWhite: dateTime.currentDateString())
-        //return
-        //}
-        //gamestate.setLastMoveBlack(lastMoveBlack: dateTime.currentDateString())
-    }
-    
-    public func evaluateCheckMate(state: [[Piece?]]) {
-        //gamestate.setCheckOn(checkOn: "NONE")
-        //let elementMatrix = gamestate.getTschessElementMatrix()
-        //let orientationBlack = gamestate.getOrientationBlack()
-        //let elementMatrixCanonical = MatrixSerializer().canonicalGenerator(localMatrix: elementMatrix, orientation: orientationBlack)
-        //let gamestateCanonical = gamestate.copy()
-        //gamestateCanonical.setTschessElementMatrix(tschessElementMatrix: elementMatrixCanonical)
-        
-        //let king = CanonicalCheck().kingCoordinate(affiliation: gamestate.getOpponentAffiliation(), gamestate: gamestateCanonical)
-        //if(CanonicalCheck().check(coordinate: king, gamestate: gamestateCanonical)){
-        //if(CanonicalMate().mate(king: king, gamestate: gamestateCanonical)){
-        //gamestate.setWinner(winner: gamestate.getUsernameSelf())
-        //return
-        //}
-        //gamestate.setCheckOn(checkOn: gamestate.getUsernameOpponent())
-        //}
-    }
-    
     var white: Bool
     var collectionView: BoardView
     
@@ -198,5 +185,23 @@ class Transitioner {
         }, completion: {(finished:Bool) in
             flashFrame.removeFromSuperview()
         })
+    }
+    
+    public func evaluateCheckMate(state: [[Piece?]]) {
+        //gamestate.setCheckOn(checkOn: "NONE")
+        //let elementMatrix = gamestate.getTschessElementMatrix()
+        //let orientationBlack = gamestate.getOrientationBlack()
+        //let elementMatrixCanonical = MatrixSerializer().canonicalGenerator(localMatrix: elementMatrix, orientation: orientationBlack)
+        //let gamestateCanonical = gamestate.copy()
+        //gamestateCanonical.setTschessElementMatrix(tschessElementMatrix: elementMatrixCanonical)
+        
+        //let king = CanonicalCheck().kingCoordinate(affiliation: gamestate.getOpponentAffiliation(), gamestate: gamestateCanonical)
+        //if(CanonicalCheck().check(coordinate: king, gamestate: gamestateCanonical)){
+        //if(CanonicalMate().mate(king: king, gamestate: gamestateCanonical)){
+        //gamestate.setWinner(winner: gamestate.getUsernameSelf())
+        //return
+        //}
+        //gamestate.setCheckOn(checkOn: gamestate.getUsernameOpponent())
+        //}
     }
 }

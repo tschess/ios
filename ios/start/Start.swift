@@ -124,9 +124,22 @@ class Start: UIViewController, UITextFieldDelegate {
     }
     
     @objc func testTaskExecuter(){
+        
+        let rowA: [String] = ["RookBlack", "KnightBlack", "BishopBlack", "", "KingBlack", "BishopBlack", "KnightBlack", "RookBlack"]
+        let rowB: [String] = ["PawnBlack", "PawnBlack", "", "PawnBlack", "PawnBlack", "PawnBlack", "PawnBlack", "PawnBlack"]
+        let rowC: [String] = [String](repeating: "", count: 8)
+        var rowD: [String] = [String](repeating: "", count: 8)
+        rowD[0] = "QueenBlack"
+        //rowD[7] = "QueenWhite"
+        
+        let rowE: [String] = [String](repeating: "", count: 8)
+        let rowF: [String] = [String](repeating: "", count: 8)
+        let rowG: [String] = ["PawnWhite", "PawnWhite", "PawnWhite", "PawnWhite", "PawnWhite", "PawnWhite", "PawnWhite", "PawnWhite"]
+        let rowH: [String] = ["RookWhite", "KnightWhite", "BishopWhite", "QueenWhite", "KingWhite", "BishopWhite", "KnightWhite", "RookWhite"]
+        
         view.removeGestureRecognizer(self.dismissKeyboardGesture!)
         if(self.testTaskCounter == 1){
-            let STATE = [[""]]
+            let STATE = [rowH, rowG, rowF, rowE, rowD, rowC, rowB, rowA]
             let TURN = "WHITE"
             let REQUEST: [String: Any] = ["state": STATE, "turn": TURN]
             RequestTest().execute(requestPayload: REQUEST) { (game) in
