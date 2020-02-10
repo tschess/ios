@@ -11,7 +11,6 @@ import UIKit
 class Promotion: UIViewController {
     
     var chess: Tschess?
-    var coordinate: [Int]?
     
     @IBOutlet weak var imageViewKnight: UIImageView!
     @IBOutlet weak var imageViewBishop: UIImageView!
@@ -32,16 +31,6 @@ class Promotion: UIViewController {
     
     public func setChess(chess: Tschess) {
         self.chess = chess
-    }
-    
-    var transitioner: Transitioner?
-    public func setTransitioner(transitioner: Transitioner) {
-        self.transitioner = transitioner
-    }
-    
-    var proposed: [Int]?
-    public func setProposed(proposed: [Int]) {
-        self.proposed = proposed
     }
     
     func configure() {
@@ -74,28 +63,28 @@ class Promotion: UIViewController {
         if (gesture.view as? UIImageView) == nil {
             return
         }
-        self.execute(white: KnightWhite(), black: KnightBlack())
+        self.execute(promotionWhite: KnightWhite(), promotionBlack: KnightBlack())
     }
     
     @objc func clickBishop(gesture: UIGestureRecognizer) {
         if (gesture.view as? UIImageView) == nil {
             return
         }
-        self.execute(white: BishopWhite(), black: BishopBlack())
+        self.execute(promotionWhite: BishopWhite(), promotionBlack: BishopBlack())
     }
     
     @objc func clickRook(gesture: UIGestureRecognizer) {
         if (gesture.view as? UIImageView) == nil {
             return
         }
-        self.execute(white: RookWhite(), black: RookBlack())
+        self.execute(promotionWhite: RookWhite(), promotionBlack: RookBlack())
     }
     
     @objc func clickQueen(gesture: UIGestureRecognizer) {
         if (gesture.view as? UIImageView) == nil {
             return
         }
-        self.execute(white: QueenWhite(), black: QueenBlack())
+        self.execute(promotionWhite: QueenWhite(), promotionBlack: QueenBlack())
     }
     
     public func evaluate(coordinate: [Int], proposed: [Int]) -> Bool {
@@ -108,38 +97,57 @@ class Promotion: UIViewController {
             let rank = proposed[0] == 0
             let move = coordinate[0] - proposed[0] == 1
             if(rank && move){
-                self.coordinate = coordinate
                 return true
             }
         }
         return false
     }
     
-    private func execute(white: Piece, black: Piece) {
-        let state = self.chess!.gameTschess!.getStateClient(username: self.chess!.playerSelf!.username)
-//        var tschessElementMatrix = gamestate.getTschessElementMatrix()
-//        var tschessElement: TschessElement = white
-//        let affiliation = gamestate.getSelfAffiliation()
-//        if(affiliation != "WHITE"){
-//            tschessElement = black
-//        }
-//        tschessElementMatrix[proposed![0]][proposed![1]] = tschessElement
-//        tschessElementMatrix[coordinate![0]][coordinate![1]] = nil
-//
-//        Highlighter().restoreSelection(coordinate: proposed!, gamestate: gamestate)
-//        Highlighter().neutralize(gamestate: gamestate)
-//
-//        // is this redundant from render effect????
-//        gamestate.setLastMoveUpdate(gamestate: gamestate)
-//        gamestate.changeTurn()
-//        gamestate.setTschessElementMatrix(tschessElementMatrix: tschessElementMatrix)
-//        gamestate.setDrawProposer(drawProposer: "NONE")
-//
-//        Transitioner().evaluateCheckMate(gamestate: gamestate)
-//
-//        let requestUpdate = GamestateSerializer().execute(gamestate: gamestate)
-//        UpdateGamestate().execute(requestPayload: requestUpdate)
-
+    var transitioner: Transitioner?
+    
+    public func setTransitioner(transitioner: Transitioner) {
+        self.transitioner = transitioner
+    }
+    
+    var proposed: [Int]?
+    
+    public func setProposed(proposed: [Int]) {
+        self.proposed = proposed
+    }
+    
+    private func execute(promotionWhite: Piece, promotionBlack: Piece) {
+        var promotionPiece: Piece = promotionWhite
+        
+        let white: Bool = self.chess!.gameTschess!.getWhite(username: self.chess!.playerSelf!.username)
+        if(!white){
+            promotionPiece = promotionBlack
+        }
+        
+        var state = self.chess!.gameTschess!.getStateClient(username: self.chess!.playerSelf!.username)
+        let coordinate: [Int]? = self.transitioner!.getCoordinate()
+        state[coordinate![0]][coordinate![1]] = nil
+        state[proposed![0]][proposed![1]] = promotionPiece
+        
+        self.chess!.tschessElementMatrix = self.transitioner!.deselectHighlight(state0: self.chess!.tschessElementMatrix!)
+        let stateUpdate = SerializerState(white: white).renderServer(state: state)
+        
+        let hx: Int = white ? proposed![0] : 7 - proposed![0]
+        let hy: Int = white ? proposed![1] : 7 - proposed![1]
+        let h0: Int = white ? coordinate![0] : 7 - coordinate![0]
+        let h1: Int = white ? coordinate![1] : 7 - coordinate![1]
+        let highlight: String = "\(hx)\(hy)\(h0)\(h1)"
+        
+        let requestPayload: [String: Any] = ["id_game": self.chess!.gameTschess!.id, "state": stateUpdate, "highlight": highlight]
+        DispatchQueue.main.async() {
+            self.chess!.activityIndicator.isHidden = false
+            self.chess!.activityIndicator.startAnimating()
+        }
+        GameUpdate().success(requestPayload: requestPayload) { (success) in
+            if(!success){
+                //error
+            }
+            self.transitioner!.clearCoordinate()
+        }
         self.presentingViewController!.dismiss(animated: false, completion: nil)
     }
     

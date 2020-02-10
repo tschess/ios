@@ -252,13 +252,6 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         }
     }
     
-    func pawnPromotion(proposed: [Int]) {
-        DispatchQueue.main.async {
-            self.pawnPromotion!.setProposed(proposed: proposed)
-            self.present(self.pawnPromotion!, animated: false, completion: nil)
-        }
-    }
-    
     private func highlightLastMoveCoords(indexPath: IndexPath, cell: SquareCell) -> SquareCell {
         if(!self.turn){
             cell.layer.borderWidth = 0
@@ -385,6 +378,13 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         }
     }
     
+    func pawnPromotion(proposed: [Int]) {
+        DispatchQueue.main.async {
+            self.pawnPromotion!.setProposed(proposed: proposed)
+            self.present(self.pawnPromotion!, animated: false, completion: nil)
+        }
+    }
+    
     // MARK: prime mover
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -434,10 +434,11 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
             
             let pawnPromotion = self.pawnPromotion!.evaluate(coordinate: coordinate!, proposed: [x,y])
             if(pawnPromotion){
-                self.transitioner!.clearCoordinate()
                 self.pawnPromotion(proposed: [x,y])
                 return
             }
+            
+            
             
             if(self.transitioner!.validMove(propose: [x,y], state0: self.tschessElementMatrix!)){
                 self.tschessElementMatrix = self.transitioner!.deselectHighlight(state0: self.tschessElementMatrix!)
