@@ -17,6 +17,8 @@
 		B72AF9E323E3BDBF003740CD /* GetNotify.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72AF9E223E3BDBF003740CD /* GetNotify.swift */; };
 		B7316D1123E8AA8E00119865 /* RequestRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7316D1023E8AA8E00119865 /* RequestRefresh.swift */; };
 		B74136C723DE34A0001B3D60 /* RequestLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74136C623DE34A0001B3D60 /* RequestLogin.swift */; };
+		B771364E23F1C118007F0962 /* UpdateCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = B771364D23F1C118007F0962 /* UpdateCheck.swift */; };
+		B771365223F1D5CF007F0962 /* MovementKing.swift in Sources */ = {isa = PBXBuildFile; fileRef = B771365123F1D5CF007F0962 /* MovementKing.swift */; };
 		B787C73122E970DD009C94F7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B787C73022E970DD009C94F7 /* Assets.xcassets */; };
 		B787C73F22E970DD009C94F7 /* iosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B787C73E22E970DD009C94F7 /* iosTests.swift */; };
 		B787C74A22E970DD009C94F7 /* iosUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B787C74922E970DD009C94F7 /* iosUITests.swift */; };
@@ -36,7 +38,6 @@
 		B7BE117723EA93A600ADA499 /* PieceAnte.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE117623EA93A600ADA499 /* PieceAnte.swift */; };
 		B7BE11A223EA965B00ADA499 /* HorizontalVertical.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE11A123EA965B00ADA499 /* HorizontalVertical.swift */; };
 		B7BE11A423EA972D00ADA499 /* Diagonal.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE11A323EA972D00ADA499 /* Diagonal.swift */; };
-		B7BE11A623EA97EC00ADA499 /* MovementKing.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE11A523EA97EC00ADA499 /* MovementKing.swift */; };
 		B7BE11A923EA9C8800ADA499 /* King.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE11A823EA9C8800ADA499 /* King.swift */; };
 		B7BE11AB23EA9C9C00ADA499 /* KingWhite.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE11AA23EA9C9C00ADA499 /* KingWhite.swift */; };
 		B7BE11AD23EA9CC700ADA499 /* KingBlack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE11AC23EA9CC700ADA499 /* KingBlack.swift */; };
@@ -191,6 +192,8 @@
 		B72AF9E223E3BDBF003740CD /* GetNotify.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetNotify.swift; sourceTree = "<group>"; };
 		B7316D1023E8AA8E00119865 /* RequestRefresh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestRefresh.swift; sourceTree = "<group>"; };
 		B74136C623DE34A0001B3D60 /* RequestLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestLogin.swift; sourceTree = "<group>"; };
+		B771364D23F1C118007F0962 /* UpdateCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateCheck.swift; sourceTree = "<group>"; };
+		B771365123F1D5CF007F0962 /* MovementKing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovementKing.swift; sourceTree = "<group>"; };
 		B787C72622E970DC009C94F7 /* ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ios.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B787C73022E970DD009C94F7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B787C73A22E970DD009C94F7 /* iosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iosTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -215,7 +218,6 @@
 		B7BE117623EA93A600ADA499 /* PieceAnte.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieceAnte.swift; sourceTree = "<group>"; };
 		B7BE11A123EA965B00ADA499 /* HorizontalVertical.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalVertical.swift; sourceTree = "<group>"; };
 		B7BE11A323EA972D00ADA499 /* Diagonal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Diagonal.swift; sourceTree = "<group>"; };
-		B7BE11A523EA97EC00ADA499 /* MovementKing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovementKing.swift; sourceTree = "<group>"; };
 		B7BE11A823EA9C8800ADA499 /* King.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = King.swift; sourceTree = "<group>"; };
 		B7BE11AA23EA9C9C00ADA499 /* KingWhite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KingWhite.swift; sourceTree = "<group>"; };
 		B7BE11AC23EA9CC700ADA499 /* KingBlack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KingBlack.swift; sourceTree = "<group>"; };
@@ -613,7 +615,6 @@
 			children = (
 				B7BE11A123EA965B00ADA499 /* HorizontalVertical.swift */,
 				B7BE11A323EA972D00ADA499 /* Diagonal.swift */,
-				B7BE11A523EA97EC00ADA499 /* MovementKing.swift */,
 			);
 			path = sense;
 			sourceTree = "<group>";
@@ -689,6 +690,7 @@
 				B7BE12B423EB0DA700ADA499 /* Attack.swift */,
 				B7BE12B623EB0DCD00ADA499 /* Threat.swift */,
 				B7BE12BE23EB0EC600ADA499 /* Evaluation.swift */,
+				B771365123F1D5CF007F0962 /* MovementKing.swift */,
 			);
 			path = logic;
 			sourceTree = "<group>";
@@ -1125,6 +1127,7 @@
 				B7BE129023EB09FC00ADA499 /* UpdateResign.swift */,
 				B7F6F9E523F0B544007D9151 /* UpdateProp.swift */,
 				B7F6F9E723F0B55C007D9151 /* UpdateEval.swift */,
+				B771364D23F1C118007F0962 /* UpdateCheck.swift */,
 			);
 			path = networking;
 			sourceTree = "<group>";
@@ -1503,7 +1506,6 @@
 				B7BE11A923EA9C8800ADA499 /* King.swift in Sources */,
 				B7BE129123EB09FC00ADA499 /* UpdateResign.swift in Sources */,
 				B7BE11B223EA9D7000ADA499 /* QueenWhite.swift in Sources */,
-				B7BE11A623EA97EC00ADA499 /* MovementKing.swift in Sources */,
 				B7BE128723EB091C00ADA499 /* Tschess.swift in Sources */,
 				B70A86CB2370989000D303F0 /* ServerAddress.swift in Sources */,
 				B7B74A55237DCC8600D07061 /* PlayerDevice.swift in Sources */,
@@ -1511,10 +1513,12 @@
 				B7BE116023EA71D100ADA499 /* Other.swift in Sources */,
 				B7BE11C223EA9E5700ADA499 /* PawnBlack.swift in Sources */,
 				B7EF702123EA28E300BAF2E2 /* EntityGame.swift in Sources */,
+				B771364E23F1C118007F0962 /* UpdateCheck.swift in Sources */,
 				B7BE12BF23EB0EC600ADA499 /* Evaluation.swift in Sources */,
 				B708D0DD236B351000A899F9 /* Init.swift in Sources */,
 				B7BE124823EB023700ADA499 /* Fairies.swift in Sources */,
 				B7BE11D323EAA0A600ADA499 /* Castle.swift in Sources */,
+				B771365223F1D5CF007F0962 /* MovementKing.swift in Sources */,
 				B7BE11AB23EA9C9C00ADA499 /* KingWhite.swift in Sources */,
 				B7BE11FF23EACCDE00ADA499 /* ConfigCell.swift in Sources */,
 				B7BE126D23EB065300ADA499 /* SkinsTable.swift in Sources */,

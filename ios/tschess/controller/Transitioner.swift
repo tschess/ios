@@ -76,72 +76,50 @@ class Transitioner {
     
     public func evaluateHighlightSelection(coordinate: [Int], state0: [[Piece?]]) -> [[Piece?]] {
         if(self.invalid(coordinate: coordinate, state: state0)){
-            if(self.coordinate == nil){
-                return state0
-            }
-            var state1 = state0
-            for i in (0 ..< 8) {
-                for j in (0 ..< 8) {
-                    let square = state1[self.coordinate![0]][self.coordinate![1]]
-                    if(square != nil){
-                        if(square!.name == "PieceAnte"){
-                            state1[i][j] = nil
-                        }
+            return state0
+        }
+        var state1 = state0
+        self.coordinate = coordinate
+        let imageSelection = state1[self.coordinate![0]][self.coordinate![1]]!.getImageSelection()
+        state1[self.coordinate![0]][self.coordinate![1]]!.setImageVisible(imageVisible: imageSelection)
+        for i in (0 ..< 8) {
+            for j in (0 ..< 8) {
+                let piece = state1[self.coordinate![0]][self.coordinate![1]]!
+                if(piece.validate(present: coordinate, proposed: [i,j], state: state1)){
+                    
+                    
+                    /*-*-*/
+                    let kgCrd: [Int] = CheckCheck().kingCoordinate(affiliation: piece.affiliation, state: state1)
+                    if(kgCrd == [i,j]){
+                        continue //THIS WAS THE EARLIER NULLIFICATION CRISIS!
                     }
-                    if(square!.isTarget == true) { //targets...
-                        let imageDefault = square!.getImageDefault()
-                        state1[i][j]!.setImageVisible(imageVisible: imageDefault)
-                        state1[i][j]!.isTarget = false
+                    var stateH: [[Piece?]] = state1
+                    let p = stateH[self.coordinate![0]][self.coordinate![1]]
+                    
+                    stateH[i][j] = p
+                    stateH[self.coordinate![0]][self.coordinate![1]] = nil //piece replacement???
+                    if(CheckCheck().check(coordinate: kgCrd, state: stateH)){
+                        continue
                     }
+                    /*-*-*/
+                    
+                    
+                    let square = state1[i][j]
+                    if(square == nil){
+                        state1[i][j] = PieceAnte()
+                        continue
+                    }
+                    if(square!.affiliation == piece.affiliation){
+                        continue
+                    }
+                    let imageTarget = square!.getImageTarget()
+                    square!.setImageVisible(imageVisible: imageTarget)
+                    square!.isTarget = true
                     
                 }
             }
-            let imageDefault = state1[self.coordinate![0]][self.coordinate![1]]!.getImageDefault()
-            state1[self.coordinate![0]][self.coordinate![1]]!.setImageVisible(imageVisible: imageDefault)
-            self.coordinate = nil
-            return state1
         }
-        if(self.coordinate == nil){
-            var state1 = state0
-            self.coordinate = coordinate
-            let imageSelection = state1[self.coordinate![0]][self.coordinate![1]]!.getImageSelection()
-            state1[self.coordinate![0]][self.coordinate![1]]!.setImageVisible(imageVisible: imageSelection)
-            for i in (0 ..< 8) {
-                for j in (0 ..< 8) {
-                    let piece = state1[self.coordinate![0]][self.coordinate![1]]!
-                    if(piece.validate(present: coordinate, proposed: [i,j], state: state1)){
-                        
-                       
-                        /***/
-                        let kgCrd: [Int] = CheckCheck().kingCoordinate(affiliation: piece.affiliation, state: state1)
-                        var stateH: [[Piece?]] = state1
-                        let p = stateH[self.coordinate![0]][self.coordinate![1]]
-                        stateH[i][j] = p
-                        stateH[self.coordinate![0]][self.coordinate![1]] = nil
-                        if(CheckCheck().check(coordinate: kgCrd, state: stateH)){
-                            continue
-                        }
-                        /***/
-                        
-                        
-                        let square = state1[i][j]
-                        if(square == nil){
-                            state1[i][j] = PieceAnte()
-                            continue
-                        }
-                        if(square!.affiliation == piece.affiliation){
-                            continue
-                        }
-                        let imageTarget = square!.getImageTarget()
-                        square!.setImageVisible(imageVisible: imageTarget)
-                        square!.isTarget = true
-                        
-                    }
-                }
-            }
-            return state1
-        }
-        return state0
+        return state1
     }
     
     private func invalid(coordinate: [Int], state: [[Piece?]]) -> Bool {

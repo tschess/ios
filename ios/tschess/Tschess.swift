@@ -353,6 +353,29 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         }
     }
     
+    private func evalCheck() {
+        if(self.gameTschess!.outcome != "CHECK"){
+            /* ~ */
+            var affl: String = "WHITE"
+            let white: Bool = self.gameTschess!.getWhite(username: self.playerSelf!.username)
+            if(!white){
+                affl = "BLACK"
+            }
+            if(CheckCheck().on(affiliation: affl, state: self.tschessElementMatrix!)){
+                UpdateCheck().execute(id: self.gameTschess!.id) { (success) in
+                    if(!success){
+                        //error
+                    }
+                }
+            }
+            /* ~ */
+            return
+        }
+        if(!turnaryLabel.text!.contains("check")){
+            self.turnaryLabel.text = "\(self.turnaryLabel.text!) (check)"
+        }
+    }
+    
     // MARK: polling task
     
     @objc func pollingTask() {
@@ -379,7 +402,9 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
                     self.collectionView.reloadData()
                     self.processDrawProposal()
                     self.resolveGameTimeout()
+                    self.evalCheck()
                 }
+                //print("Date A is later than date B")
             }
         }
     }
@@ -432,7 +457,6 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
                 return
             }
             
-            
             if(self.transitioner!.validMove(propose: [x,y], state0: self.tschessElementMatrix!)){
                 self.tschessElementMatrix = self.transitioner!.deselectHighlight(state0: self.tschessElementMatrix!)
                 let stateX: [[Piece?]] = self.transitioner!.executeMove(propose: [x,y], state0: self.tschessElementMatrix!)
@@ -465,6 +489,13 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
             self.transitioner!.clearCoordinate()
             return
         }
+        //^!^!^!^!
+//        if(self.gameTschess!.outcome == "CHECK"){
+//            self.tschessElementMatrix = CheckCheck().highlightEscape(coordinate: [x,y], state0: self.tschessElementMatrix!)
+//            self.collectionView.reloadData()
+//            return
+//        }
+        //^!^!^!^!
         let state0 = self.gameTschess!.getStateClient(username: self.playerSelf!.username)
         self.tschessElementMatrix = self.transitioner!.evaluateHighlightSelection(coordinate: [x,y], state0: state0)
         self.collectionView.reloadData()
