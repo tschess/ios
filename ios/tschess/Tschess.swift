@@ -115,6 +115,8 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         self.collectionView.reloadData()
         self.collectionView.isHidden = false
         self.activityIndicator.isHidden = true
+        
+        self.evalCheck()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -356,12 +358,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     private func evalCheck() {
         if(self.gameTschess!.outcome != "CHECK"){
             /* ~ */
-            var affl: String = "WHITE"
-            let white: Bool = self.gameTschess!.getWhite(username: self.playerSelf!.username)
-            if(!white){
-                affl = "BLACK"
-            }
-            if(CheckCheck().on(affiliation: affl, state: self.tschessElementMatrix!)){
+            if(CheckCheck().on(affiliation: self.gameTschess!.turn, state: self.tschessElementMatrix!)){
                 UpdateCheck().execute(id: self.gameTschess!.id) { (success) in
                     if(!success){
                         //error
