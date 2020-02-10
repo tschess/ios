@@ -60,7 +60,12 @@ class Transitioner {
                 if(square != nil){
                     if(square!.name == "PieceAnte"){
                         state1[i][j] = nil
-                    } //targs...
+                    }
+                    if(square!.isTarget == true) { //targets...
+                        let imageDefault = square!.getImageDefault()
+                        state1[i][j]!.setImageVisible(imageVisible: imageDefault)
+                        state1[i][j]!.isTarget = false
+                    }
                 }
             }
         }
@@ -83,7 +88,12 @@ class Transitioner {
                             state1[i][j] = nil
                         }
                     }
-                    //targets...
+                    if(square!.isTarget == true) { //targets...
+                        let imageDefault = square!.getImageDefault()
+                        state1[i][j]!.setImageVisible(imageVisible: imageDefault)
+                        state1[i][j]!.isTarget = false
+                    }
+                    
                 }
             }
             let imageDefault = state1[self.coordinate![0]][self.coordinate![1]]!.getImageDefault()
@@ -130,17 +140,16 @@ class Transitioner {
             }
             if(self.white){
                 if(tschessElement!.affiliation != "WHITE"){
-                    print("A")
+                    //print("A")
                     self.flash()
                     return true
                 }
             }
             else if(tschessElement!.affiliation != "BLACK"){
-                print("B")
+                //print("B")
                 self.flash()
                 return true
             }
-            //return false
         }
         return false
     }

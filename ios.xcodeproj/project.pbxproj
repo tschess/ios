@@ -142,7 +142,6 @@
 		B7BE12B523EB0DA700ADA499 /* Attack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE12B423EB0DA700ADA499 /* Attack.swift */; };
 		B7BE12B723EB0DCD00ADA499 /* Threat.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE12B623EB0DCD00ADA499 /* Threat.swift */; };
 		B7BE12B923EB0E1200ADA499 /* Transitioner.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE12B823EB0E1200ADA499 /* Transitioner.swift */; };
-		B7BE12BD23EB0E7C00ADA499 /* Highlighter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE12BC23EB0E7C00ADA499 /* Highlighter.swift */; };
 		B7BE12BF23EB0EC600ADA499 /* Evaluation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE12BE23EB0EC600ADA499 /* Evaluation.swift */; };
 		B7BE12C223EB15CC00ADA499 /* PurchaseRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE12C123EB15CC00ADA499 /* PurchaseRequest.swift */; };
 		B7BE12C423EB6B9300ADA499 /* TransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE12C323EB6B9300ADA499 /* TransitioningDelegate.swift */; };
@@ -322,7 +321,6 @@
 		B7BE12B423EB0DA700ADA499 /* Attack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Attack.swift; sourceTree = "<group>"; };
 		B7BE12B623EB0DCD00ADA499 /* Threat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Threat.swift; sourceTree = "<group>"; };
 		B7BE12B823EB0E1200ADA499 /* Transitioner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transitioner.swift; sourceTree = "<group>"; };
-		B7BE12BC23EB0E7C00ADA499 /* Highlighter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Highlighter.swift; sourceTree = "<group>"; };
 		B7BE12BE23EB0EC600ADA499 /* Evaluation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Evaluation.swift; sourceTree = "<group>"; };
 		B7BE12C123EB15CC00ADA499 /* PurchaseRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseRequest.swift; sourceTree = "<group>"; };
 		B7BE12C323EB6B9300ADA499 /* TransitioningDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitioningDelegate.swift; sourceTree = "<group>"; };
@@ -1159,7 +1157,6 @@
 				B7BE12AB23EB0CC000ADA499 /* CheckMate.swift */,
 				B7BE12AD23EB0CDB00ADA499 /* CheckCheck.swift */,
 				B7BE12B823EB0E1200ADA499 /* Transitioner.swift */,
-				B7BE12BC23EB0E7C00ADA499 /* Highlighter.swift */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -1560,7 +1557,6 @@
 				B7BE11F723EAC97200ADA499 /* EditOther.swift in Sources */,
 				B7BE116F23EA91CD00ADA499 /* Snapshot.swift in Sources */,
 				B7F541C123D51A5A00E89074 /* Home.swift in Sources */,
-				B7BE12BD23EB0E7C00ADA499 /* Highlighter.swift in Sources */,
 				B7BE11AD23EA9CC700ADA499 /* KingBlack.swift in Sources */,
 				B7F35E332309F6D6002018F7 /* DateTime.swift in Sources */,
 				B7F6F9E623F0B544007D9151 /* UpdateProp.swift in Sources */,
