@@ -96,6 +96,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     
     var transitioner: Transitioner?
     
+    var passant: Passant?
     var castling: Castle?
     var pawnPromotion: Promotion?
     var pawnPromotionStoryboard: UIStoryboard?
@@ -126,6 +127,10 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         self.castling = Castle(white: self.gameTschess!.getWhite(username: self.playerSelf!.username))
         self.castling!.setChess(chess: self)
         self.castling!.setTransitioner(transitioner: transitioner!)
+        
+        self.passant = Passant(white: self.gameTschess!.getWhite(username: self.playerSelf!.username))
+        self.passant!.setChess(chess: self)
+        self.passant!.setTransitioner(transitioner: transitioner!)
     }
     
     public func renderHeader() {
@@ -399,13 +404,6 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         
         //let coordinate = self.transitioner!.getCoordinate()
         //        if(coordinate != nil){
-        
-
-        //            let enPassant = EnPassant().evaluate(coordinate: coordinate!, proposed: [x,y], gamestate: Gamestate())
-        //            if(enPassant){
-        //                self.renderEffect()
-        //                return
-        //            }
         //            let landmine = Landmine().detonate(coordinate: coordinate!, proposed: [x,y], gamestate: Gamestate())
         //            if(landmine){
         //                self.renderEffect()
@@ -417,23 +415,22 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         //                return
         //            }
         //        }
-        //        self.transitioner!.evaluateInput(coordinate: [x,y], gamestate: Gamestate())
-        //        self.indicatorLabelUpdate()
-        //        self.collectionView.reloadData()
+      
         let coordinate = self.transitioner!.getCoordinate()
         if(coordinate != nil){
-            
             let pawnPromotion = self.pawnPromotion!.evaluate(coordinate: coordinate!, proposed: [x,y])
             if(pawnPromotion){
                 self.pawnPromotion(proposed: [x,y])
                 return
             }
-            
             let castling = self.castling!.execute(coordinate: coordinate!, proposed: [x,y], state0: self.tschessElementMatrix!)
             if(castling){
                 return
             }
-            
+            let enPassant = passant!.evaluate(coordinate: coordinate!, proposed: [x,y], state0: self.tschessElementMatrix!)
+            if(enPassant){
+                return
+            }
             
             
             if(self.transitioner!.validMove(propose: [x,y], state0: self.tschessElementMatrix!)){

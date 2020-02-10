@@ -128,7 +128,7 @@ class Castle {
         if(kingCoordinate[0] != 7 || proposed[0] != 7){
             return false
         }
-        //let tschessElementMatrix = gamestate.getTschessElementMatrix()
+        
         let king = state[kingCoordinate[0]][kingCoordinate[1]]
         if(king == nil){
             return false
@@ -171,10 +171,6 @@ class Castle {
     public func setChess(chess: Tschess) {
         self.chess = chess
     }
-    
-//    private func soLaLa() {
-//
-//    }
     
     public func execute(coordinate: [Int], proposed: [Int], state0: [[Piece?]]) -> Bool {
         if(coordinate[0] != 7 || proposed[0] != 7){
