@@ -123,6 +123,8 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
         self.tabBarMenu.delegate = self
+        
+        self.processDrawProposal()
     }
     
     public func renderHeader() {
@@ -236,8 +238,6 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     func stopTimers() {
         self.pollingTimer?.invalidate()
         self.pollingTimer = nil
-        
-        self.timerLabel.isHidden = true
         self.counterTimer?.invalidate()
         self.counterTimer = nil
     }
@@ -302,6 +302,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
             self.titleViewLabel.text = "game over"
             self.contentViewLabel.isHidden = false
             self.turnaryLabel.isHidden = true
+            self.timerLabel.isHidden = true
             self.stopTimers()
             
             if(self.gameTschess!.winner == "WHITE"){
@@ -320,34 +321,33 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         }
     }
     
-    private func attributeString(red: String, black: String) -> NSMutableAttributedString {
-        let attributeRed = [
-            NSAttributedString.Key.foregroundColor: UIColor.red,
-            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 22, weight: UIFont.Weight.light)]
-        let attributeBlack = [
-            NSAttributedString.Key.foregroundColor: UIColor.black,
-            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 22, weight: UIFont.Weight.light)]
-        let label = NSMutableAttributedString(string: red, attributes: attributeRed)
-        let content = NSMutableAttributedString(string: black, attributes: attributeBlack)
-        let attributeString = NSMutableAttributedString()
-        attributeString.append(label)
-        attributeString.append(content)
-        return attributeString
-    }
-    
-    private func evaluateDrawProposal() {
-        self.stopTimers()
-        DispatchQueue.main.async {
-            let evaluateProposalStoryboard: UIStoryboard = UIStoryboard(name: "Evaluate", bundle: nil)
-            let evaluateProposal = evaluateProposalStoryboard.instantiateViewController(withIdentifier: "Evaluate") as! Evaluate
-            evaluateProposal.modalTransitionStyle = .crossDissolve
-            self.present(evaluateProposal, animated: true, completion: nil)
-        }
-    }
-    
     private func processDrawProposal() {
-        DispatchQueue.main.async {
-            self.contentViewLabel.attributedText = self.attributeString(red: "", black: "awaiting result of draw proposal")
+        if(self.gameTschess!.outcome == "TBD"){
+            self.contentViewLabel.isHidden = true
+            return
+        }
+        if(self.gameTschess!.outcome == "PENDING"){
+            if(!self.turn){
+                self.contentViewLabel.isHidden = false
+                self.timerLabel.isHidden = false
+                self.contentViewLabel.text = "proposal pending"
+                self.turnaryLabel.text = "\(self.playerOther!.username) to respond"
+                return
+            }
+            self.contentViewLabel.isHidden = false
+            self.timerLabel.isHidden = false
+            self.contentViewLabel.text = "proposal pending"
+            self.turnaryLabel.text = "\(self.playerSelf!.username) to respond"
+            
+            DispatchQueue.main.async {
+                let storyboard: UIStoryboard = UIStoryboard(name: "Evaluate", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "Evaluate") as! Evaluate
+                viewController.modalTransitionStyle = .crossDissolve
+                viewController.setPlayerSelf(playerSelf: self.playerSelf!)
+                viewController.setPlayerOther(playerOther: self.gameTschess!.getPlayerOther(username: self.playerSelf!.username))
+                viewController.setGameTschess(gameTschess: self.gameTschess!)
+                self.present(viewController, animated: true, completion: nil)
+            }
         }
     }
     
@@ -375,6 +375,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
                     self.setTurn()
                     self.tschessElementMatrix = game!.getStateClient(username: self.playerSelf!.username)
                     self.collectionView.reloadData()
+                    self.processDrawProposal()
                     self.resolveGameTimeout()
                 }
             }
@@ -438,10 +439,8 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
                 let hy: Int = white ? y : 7 - y
                 let h0: Int = white ? coordinate![0] : 7 - coordinate![0]
                 let h1: Int = white ? coordinate![1] : 7 - coordinate![1]
-                
                 let highlight: String = "\(hx)\(hy)\(h0)\(h1)"
                 
-                //print("highlight: \(coordinate![0])\(coordinate![1])\(x)\(y)")
                 let requestPayload: [String: Any] = ["id_game": self.gameTschess!.id, "state": stateUpdate, "highlight": highlight]
                 DispatchQueue.main.async() {
                     self.activityIndicator.isHidden = false
@@ -491,7 +490,6 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
             DispatchQueue.main.async {
                 let storyboard: UIStoryboard = UIStoryboard(name: "DrawResign", bundle: nil)
                 let viewController = storyboard.instantiateViewController(withIdentifier: "DrawResign") as! DrawResign
-                //viewController.setTabBar(tabBarMenu: self.tabBarMenu!)
                 viewController.setPlayerSelf(playerSelf: self.playerSelf!)
                 viewController.setPlayerOther(playerOther: self.gameTschess!.getPlayerOther(username: self.playerSelf!.username))
                 viewController.setGameTschess(gameTschess: self.gameTschess!)

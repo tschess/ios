@@ -38,12 +38,6 @@ class Evaluate: UIViewController {
         configure()
     }
     
-    var state: [[Piece?]]?
-    
-    func setState(state: [[Piece?]]) {
-        self.state = state
-    }
-    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         configure()
@@ -58,8 +52,6 @@ class Evaluate: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    
-    let dateTime: DateTime = DateTime()
     
     @IBAction func rejectButtonClick(_ sender: Any) {
         let requestPayload = [

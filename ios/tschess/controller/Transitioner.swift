@@ -38,6 +38,7 @@ class Transitioner {
         if(self.movable(square: squarePropose)){
             return true
         }
+         self.coordinate = nil //???
         return false
     }
     
