@@ -304,7 +304,10 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
             self.turnaryLabel.isHidden = true
             self.timerLabel.isHidden = true
             self.stopTimers()
-            
+            if(self.gameTschess!.outcome == "DRAW"){
+                self.contentViewLabel.text = "draw"
+                return
+            }
             if(self.gameTschess!.winner == "WHITE"){
                 if(self.gameTschess!.getWhite(username: self.playerSelf!.username)){
                     self.contentViewLabel.text = "you win"
@@ -428,6 +431,14 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         //        self.collectionView.reloadData()
         let coordinate = self.transitioner!.getCoordinate()
         if(coordinate != nil){
+            
+            let pawnPromotion = self.pawnPromotion!.evaluate(coordinate: coordinate!, proposed: [x,y])
+            if(pawnPromotion){
+                self.transitioner!.clearCoordinate()
+                self.pawnPromotion(proposed: [x,y])
+                return
+            }
+            
             if(self.transitioner!.validMove(propose: [x,y], state0: self.tschessElementMatrix!)){
                 self.tschessElementMatrix = self.transitioner!.deselectHighlight(state0: self.tschessElementMatrix!)
                 let stateX: [[Piece?]] = self.transitioner!.executeMove(propose: [x,y], state0: self.tschessElementMatrix!)
