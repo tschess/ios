@@ -84,7 +84,7 @@ class ActualTable: UITableViewController, SwipeTableViewCellDelegate {
                     let requestPayload: [String: Any] = ["id_game": game.id, "id_player": self.playerSelf!.id]
                     
                     UpdateNack().execute(requestPayload: requestPayload) { (player) in
-                        print("player: \(player)")
+                        //print("player: \(player)")
                         //ERROR...
                         self.setPlayerSelf(playerSelf: player!)
                         
@@ -136,7 +136,7 @@ class ActualTable: UITableViewController, SwipeTableViewCellDelegate {
             let requestPayload: [String: Any] = ["id_game": game.id, "id_player": self.playerSelf!.id]
             
             UpdateRescind().execute(requestPayload: requestPayload) { (result) in
-                print("result: \(result)")
+                //print("result: \(result)")
                 DispatchQueue.main.async {
                     self.activityIndicator!.stopAnimating()
                     self.activityIndicator!.isHidden = true
@@ -231,7 +231,7 @@ class ActualTable: UITableViewController, SwipeTableViewCellDelegate {
     }
     
     override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let gameTableMenuItem = gameMenuTableList[indexPath.row]
+        //let gameTableMenuItem = gameMenuTableList[indexPath.row]
         let closeAction = UIContextualAction(style: .normal, title:  "nACK", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
             print("OK, marked as Closed")
             success(true)
@@ -268,8 +268,10 @@ class ActualTable: UITableViewController, SwipeTableViewCellDelegate {
             }
         }
         if(currentCount != self.gameMenuTableList.count){
-            DispatchQueue.main.async() {
-                self.tableView.reloadData()
+            DispatchQueue.main.async {
+                self.activityIndicator!.stopAnimating()
+                self.activityIndicator!.isHidden = true
+                self.tableView!.reloadData()
             }
         }
     }
@@ -298,6 +300,10 @@ class ActualTable: UITableViewController, SwipeTableViewCellDelegate {
                 return
             }
             self.appendToTableList(additionalCellList: result!)
+        }
+        DispatchQueue.main.async() {
+            self.activityIndicator!.stopAnimating()
+            self.activityIndicator!.isHidden = true
         }
     }
     
