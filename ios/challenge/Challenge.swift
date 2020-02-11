@@ -129,6 +129,8 @@ class Challenge: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate,
     @IBOutlet weak var indicatorLabelS: UILabel!
     
     func renderConfig0() {
+        self.selection = 0
+        
         self.tschessElementMatrix = self.playerSelf!.getConfig(index: 0)
         
         self.activeConfigNumber.text = "0̸"
