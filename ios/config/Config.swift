@@ -8,12 +8,7 @@
 
 import UIKit
 
-class Config:
-    UIViewController,
-    UITabBarDelegate,
-    UIGestureRecognizerDelegate,
-    UIImagePickerControllerDelegate,
-UINavigationControllerDelegate, UIDropInteractionDelegate {
+class Config: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIDropInteractionDelegate {
     
     var titleText: String?
     
@@ -40,30 +35,22 @@ UINavigationControllerDelegate, UIDropInteractionDelegate {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     @IBOutlet weak var configCollectionView0: BoardView!
-    //@IBOutlet weak var configCollectionView0: BoardView!
     @IBOutlet weak var configCollectionViewHeight0: NSLayoutConstraint!
     
-    
     @IBOutlet weak var configCollectionView1: BoardView!
-    //@IBOutlet weak var configCollectionView1: BoardView!
     @IBOutlet weak var configCollectionViewHeight1: NSLayoutConstraint!
     
     @IBOutlet weak var configCollectionView2: BoardView!
-    //@IBOutlet weak var configCollectionView2: BoardView!
     @IBOutlet weak var configCollectionViewHeight2: NSLayoutConstraint!
-    
     
     @IBOutlet weak var tabBarMenu: UITabBar!
     
-    let dateTime: DateTime = DateTime()
     var attributeAlphaDotFull: [NSAttributedString.Key: NSObject]?
     var attributeAlphaDotHalf: [NSAttributedString.Key: NSObject]?
     
     var updatePhotoGesture: UITapGestureRecognizer?
     var swipeRightGesture: UISwipeGestureRecognizer?
     var swipeLeftGesture: UISwipeGestureRecognizer?
-    
-    let reuseIdentifier = "cell"
     
     var items = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16"]
     
@@ -83,13 +70,6 @@ UINavigationControllerDelegate, UIDropInteractionDelegate {
     var tschessElementMatrix1: [[Piece?]]?
     var tschessElementMatrix2: [[Piece?]]?
     
-    var selectionElementName: String?
-    var cacheCancelMatrix: [[Piece?]]?
-    var cacheMatrix: [[Piece?]]?
-    
-    var points: Int?
-    
-    //var deviceType: String?
     var playerSelf: EntityPlayer?
     
     public func setPlayerSelf(playerSelf: EntityPlayer){
@@ -133,7 +113,8 @@ UINavigationControllerDelegate, UIDropInteractionDelegate {
         let viewController = storyboard.instantiateViewController(withIdentifier: "EditSelf") as! EditSelf
         viewController.setPlayerSelf(playerSelf: self.playerSelf!)
         viewController.setTitleText(titleText: "config. 0̸")
-        viewController.setActiveConfigNumber(activeConfigNumber: 0)
+        viewController.setSelection(selection: 0)
+        viewController.setBACK(BACK: "CONFIG")
         UIApplication.shared.keyWindow?.rootViewController = viewController
     }
     
@@ -142,7 +123,8 @@ UINavigationControllerDelegate, UIDropInteractionDelegate {
         let viewController = storyboard.instantiateViewController(withIdentifier: "EditSelf") as! EditSelf
         viewController.setPlayerSelf(playerSelf: self.playerSelf!)
         viewController.setTitleText(titleText: "config. 1")
-        viewController.setActiveConfigNumber(activeConfigNumber: 1)
+        viewController.setSelection(selection: 1)
+        viewController.setBACK(BACK: "CONFIG")
         UIApplication.shared.keyWindow?.rootViewController = viewController
     }
     
@@ -151,7 +133,8 @@ UINavigationControllerDelegate, UIDropInteractionDelegate {
         let viewController = storyboard.instantiateViewController(withIdentifier: "EditSelf") as! EditSelf
         viewController.setPlayerSelf(playerSelf: self.playerSelf!)
         viewController.setTitleText(titleText: "config. 2")
-        viewController.setActiveConfigNumber(activeConfigNumber: 2)
+        viewController.setSelection(selection: 2)
+        viewController.setBACK(BACK: "CONFIG")
         UIApplication.shared.keyWindow?.rootViewController = viewController
     }
     

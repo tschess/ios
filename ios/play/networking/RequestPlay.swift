@@ -1,46 +1,55 @@
 //
-//  RequestAck.swift
+//  RequestPlay.swift
 //  ios
 //
-//  Created by Matthew on 2/5/20.
+//  Created by Matthew on 2/11/20.
 //  Copyright © 2020 bahlsenwitz. All rights reserved.
 //
 
 import Foundation
 
-class RequestAck {
+class RequestPlay {
     
     func execute(requestPayload: [String: Any], completion: @escaping ((EntityGame?) -> Void)) {
         
-        print("ACK - requestPayload: \(requestPayload)")
+        //print("\n\nRequestChallenge: \(requestPayload)\n\n")
         
-        let url = URL(string: "http://\(ServerAddress().IP):8080/game/ack")!
+        let url = URL(string: "http://\(ServerAddress().IP):8080/game/quick")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
         do {
             request.httpBody = try JSONSerialization.data(withJSONObject: requestPayload, options: .prettyPrinted)
-        } catch let error {
-            print(error.localizedDescription)
+        } catch _ {
             completion(nil)
         }
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        
+        
         URLSession.shared.dataTask(with: request, completionHandler: { data, response, error in
+            
             guard error == nil else {
+                //print("b")
                 completion(nil)
                 return
             }
             guard let data = data else {
+                //print("c")
+                completion(nil)
+                return
+            }
+            if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {
+                //print("d")
                 completion(nil)
                 return
             }
             do {
-                guard let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any] else {
+                guard let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any] else {
+                    //print("e")
                     completion(nil)
                     return
                 }
-                
-                //print("json: \(json)")
                 
                 let game: EntityGame = ParseGame().execute(json: json)
                 completion(game)
@@ -51,4 +60,5 @@ class RequestAck {
             }
         }).resume()
     }
+    
 }

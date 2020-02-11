@@ -8,11 +8,23 @@
 
 import UIKit
 
-class Ack:
-    UIViewController,
-    UIPickerViewDataSource,
-    UIPickerViewDelegate,
-UITabBarDelegate, UIGestureRecognizerDelegate {
+class Ack: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITabBarDelegate, UIGestureRecognizerDelegate {
+    
+    /* - * - */
+    
+    var selection: Int? = nil  //var configActive: Int = 0
+    
+    public func setSelection(selection: Int){
+        self.selection = selection
+    }
+    
+    var BACK: String?
+    
+    public func setBACK(BACK: String){
+        self.BACK = BACK
+    }
+    
+    /* - * - */
     
     var player: EntityPlayer?
     
@@ -65,8 +77,9 @@ UITabBarDelegate, UIGestureRecognizerDelegate {
     @IBOutlet weak var indicatorLabelS: UILabel!
     
     func renderConfig0() {
+        self.selection = 0
+        
         self.tschessElementMatrix = self.player!.getConfig(index: 0)
-        self.configActive = 0
         self.activeConfigNumber.text = "0̸"
         self.configCollectionView.reloadData()
         
@@ -84,8 +97,9 @@ UITabBarDelegate, UIGestureRecognizerDelegate {
     }
     
     func renderConfig1() {
+        self.selection = 1
+        
         self.tschessElementMatrix = self.player!.getConfig(index: 1)
-        self.configActive = 1
         self.activeConfigNumber.text = "1"
         self.configCollectionView.reloadData()
         
@@ -103,8 +117,9 @@ UITabBarDelegate, UIGestureRecognizerDelegate {
     }
     
     func renderConfig2() {
+        self.selection = 2
+        
         self.tschessElementMatrix = self.player!.getConfig(index: 2)
-        self.configActive = 2
         self.activeConfigNumber.text = "2"
         self.configCollectionView.reloadData()
         
@@ -120,7 +135,6 @@ UITabBarDelegate, UIGestureRecognizerDelegate {
         self.indicatorLabel2.attributedText = activeConfigFull
         self.indicatorLabelS.attributedText = activeConfigNull
     }
-    
     
     var tschessElementMatrix: [[Piece?]]?
     
@@ -241,15 +255,26 @@ UITabBarDelegate, UIGestureRecognizerDelegate {
         
         self.skinList = Array(arrayLiteral: iapetus, calypso, hyperion, neptune) //in actual fact default will come first...
         
-        
-        if(self.configActive == 0){
-            self.tschessElementMatrix = self.player!.getConfig(index: 0)
+        if(self.selection == nil){
+            switch Int.random(in: 0 ... 2) {
+            //case 3:
+                //self.renderConfigS()
+            case 1:
+                self.renderConfig1()
+            case 2:
+                self.renderConfig2()
+            default:
+                self.renderConfig0()
+            }
+            return // !!! //
         }
-        if(self.configActive == 1){
-            self.tschessElementMatrix = self.player!.getConfig(index: 1)
-        }
-        if(self.configActive == 2){
-            self.tschessElementMatrix = self.player!.getConfig(index: 2)
+        switch self.selection! {
+        case 1:
+            self.renderConfig1()
+        case 2:
+            self.renderConfig2()
+        default:
+            self.renderConfig0()
         }
     }
     
@@ -284,25 +309,40 @@ UITabBarDelegate, UIGestureRecognizerDelegate {
         self.configCollectionView.addGestureRecognizer(elementCollectionViewGesture)
     }
     
-    var configActive: Int = 0
-    
     @objc func renderElementCollectionView() {
+    
+//        if(activeConfigNumber.text == "0̸"){
+//            self.configActive = 0
+//        }
+//        if(activeConfigNumber.text == "1"){
+//            self.configActive = 1
+//        }
+//        if(activeConfigNumber.text == "2"){
+//            self.configActive = 2
+//        }
+//        let storyboard: UIStoryboard = UIStoryboard(name: "EditOther", bundle: nil)
+//        let viewController = storyboard.instantiateViewController(withIdentifier: "EditOther") as! EditOther
+//        viewController.setTitleText(titleText: "let's play!")
+//        viewController.setActiveConfigNumber(activeConfigNumber: configActive)
+//        viewController.setPlayerOther(playerOther: self.playerOther!)
+//        viewController.setPlayerSelf(playerSelf: self.playerSelf!)
+//        UIApplication.shared.keyWindow?.rootViewController = viewController
         
-        if(activeConfigNumber.text == "0̸"){
-            self.configActive = 0
-        }
-        if(activeConfigNumber.text == "1"){
-            self.configActive = 1
-        }
-        if(activeConfigNumber.text == "2"){
-            self.configActive = 2
-        }
         let storyboard: UIStoryboard = UIStoryboard(name: "EditOther", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "EditOther") as! EditOther
-        viewController.setTitleText(titleText: "let's play!")
-        viewController.setActiveConfigNumber(activeConfigNumber: configActive)
+        
+        viewController.setBACK(BACK: "ACK")
         viewController.setPlayerOther(playerOther: self.playerOther!)
         viewController.setPlayerSelf(playerSelf: self.playerSelf!)
+        viewController.setSelection(selection: self.selection!)
+        
+        viewController.setTitleText(titleText: "config. 0̸")
+        if(self.selection! == 1){
+            viewController.setTitleText(titleText: "config. 1")
+        }
+        if(self.selection! == 2){
+            viewController.setTitleText(titleText: "config. 2")
+        }
         UIApplication.shared.keyWindow?.rootViewController = viewController
     }
     

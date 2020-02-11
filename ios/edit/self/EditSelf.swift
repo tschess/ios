@@ -8,19 +8,31 @@
 
 import UIKit
 
-//MARK: DragDelegate
-extension EditSelf: UICollectionViewDragDelegate {}
-
-//MARK: DropDelegate
-extension EditSelf: UICollectionViewDropDelegate {}
-
 class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIDropInteractionDelegate {
     
-    var activeConfigNumber: Int?
+    /* - * - */
     
-    public func setActiveConfigNumber(activeConfigNumber: Int){
-        self.activeConfigNumber = activeConfigNumber
+    var selection: Int? = nil
+    
+    public func setSelection(selection: Int){
+        self.selection = selection
     }
+    
+    var BACK: String?
+    
+    public func setBACK(BACK: String){
+        self.BACK = BACK
+    }
+    
+    @IBOutlet weak var titleLabel: UILabel!
+    
+    var titleText: String?
+    
+    func setTitleText(titleText: String) {
+        self.titleText = titleText
+    }
+    
+    /* - * - */
     
     var playerSelf: EntityPlayer?
     
@@ -84,13 +96,6 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
     private func setTotalPointValue() {
         let totalPointValue = self.getPointValue(config: self.configActiv!)
         self.totalPointLabel.text = String(totalPointValue)
-    }
-    
-    @IBOutlet weak var titleLabel: UILabel!
-    var titleText: String?
-    
-    func setTitleText(titleText: String) {
-        self.titleText = titleText
     }
     
     //MARK: Input
@@ -361,7 +366,7 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
         self.tschessElementCollectionView.isUserInteractionEnabled = true
         self.tschessElementCollectionView.dragInteractionEnabled = true
         
-        switch self.activeConfigNumber {
+        switch self.selection! {
         case 1:
             self.configActiv = self.playerSelf!.getConfig(index: 1)
             self.configAbort = self.configActiv
@@ -497,96 +502,48 @@ extension EditSelf: UICollectionViewDelegate {
     }
     
     @IBAction func backButtonClick(_ sender: Any) {
-        switch self.titleLabel.text {
-        case "config. 1":
-            self.playerSelf!.setConfig(index: 1, config: self.configAbort!)
-            //self.playerSelf!.config1 = SerializerConfig().renderServer(config: self.configAbort!)
-            //break
-        case "config. 2":
-            self.playerSelf!.setConfig(index: 2, config: self.configAbort!)
-            //self.playerSelf!.config2 = SerializerConfig().renderServer(config: self.configAbort!)
-            //break
-        default:
-            self.playerSelf!.setConfig(index: 0, config: self.configAbort!)
-            //self.playerSelf!.config0 = SerializerConfig().renderServer(config: self.configAbort!)
+        DispatchQueue.main.async() {
+            let storyboard: UIStoryboard = UIStoryboard(name: "Config", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier: "Config") as! Config
+            viewController.setPlayerSelf(playerSelf: self.playerSelf!)
+            UIApplication.shared.keyWindow?.rootViewController = viewController
         }
-        if(self.titleText == "select config"){
-            DispatchQueue.main.async() {
-                let storyboard: UIStoryboard = UIStoryboard(name: "Actual", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "Actual") as! Actual
-                viewController.setPlayerSelf(playerSelf: self.playerSelf!)
-                UIApplication.shared.keyWindow?.rootViewController = viewController
-            }
-            return
-        }
-        let storyboard: UIStoryboard = UIStoryboard(name: "Config", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "Config") as! Config
-        viewController.setPlayerSelf(playerSelf: self.playerSelf!)
-        UIApplication.shared.keyWindow?.rootViewController = viewController
     }
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        tabBar.selectedItem = nil
+        
         switch item.tag {
-        case 0://back
-            tabBar.selectedItem = nil
-            DispatchQueue.main.async() {
-                switch self.titleLabel.text {
-                case "config. 1":
-                    self.playerSelf!.setConfig(index: 1, config: self.configAbort!)
-                    //= SerializerConfig().renderServer(config: self.configAbort!)
-                //break
-                case "config. 2":
-                    self.playerSelf!.setConfig(index: 2, config: self.configAbort!)
-                    //self.playerSelf!.config2 = SerializerConfig().renderServer(config: self.configAbort!)
-                //break
-                default:
-                    self.playerSelf!.setConfig(index: 0, config: self.configAbort!)
-                    //self.playerSelf!.config0 = SerializerConfig().renderServer(config: self.configAbort!)
-                }
-                
-                let storyboard: UIStoryboard = UIStoryboard(name: "Config", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "Config") as! Config
-                viewController.setPlayerSelf(playerSelf: self.playerSelf!)
-                UIApplication.shared.keyWindow?.rootViewController = viewController
-            }
-        default: //save...
-            tabBar.selectedItem = nil
+        case 0:
+            self.backButtonClick("~")
             
+        default:
             DispatchQueue.main.async() {
                 self.activityIndicator!.isHidden = false
                 self.activityIndicator!.startAnimating()
             }
             let id = self.playerSelf!.id
-            //                let config = ConfigSerializer().serializeConfiguration(savedConfigurationMatrix: self.elementMatrixActiv!)
-            //                var updateConfig = [
-            //                    "id": id,
-            //                    "config": config,
-            //                    "updated": self.DATE_TIME.currentDateString()
-            //                    ] as [String: Any]
+            let config = self.playerSelf!.setConfig(index: self.selection!, config: self.configActiv!)
             
-            var index: Int = 0
-            if(self.titleLabel.text == "config. 1"){
-                index = 1
+            let updateConfig = ["id": id, "config": config] as [String: Any]
+            
+            UpdateConfig().execute(requestPayload: updateConfig) { (result) in
+                if result == nil {
+                    print("error!") // print a popup
+                }
+                DispatchQueue.main.async() {
+                    self.activityIndicator!.isHidden = true
+                    self.activityIndicator!.stopAnimating()
+                }
+                self.playerSelf = result!
             }
-            if(self.titleLabel.text == "config. 2"){
-                index = 2
-            }
-            //                updateConfig["index"] = index
-            //                UpdateConfig().execute(requestPayload: updateConfig, player: self.playerSelf!) { (result) in
-            //                    if result == nil {
-            //                        print("error!") // print a popup
-            //                    }
-            //                    self.player = result!
-            //                    DispatchQueue.main.async() {
-            //                        self.activityIndicator.stopAnimating()
-            //                        self.activityIndicator.isHidden = true
-            //                        let storyboard: UIStoryboard = UIStoryboard(name: "Config", bundle: nil)
-            //                        let viewController = storyboard.instantiateViewController(withIdentifier: "Config") as! Config
-            //                        viewController.setPlayer(player: self.playerSelf!)
-            //                        UIApplication.shared.keyWindow?.rootViewController = viewController
-            //                    }
-            //
-            //                }
         }
     }
 }
+
+
+//MARK: DragDelegate
+extension EditSelf: UICollectionViewDragDelegate {}
+
+//MARK: DropDelegate
+extension EditSelf: UICollectionViewDropDelegate {}

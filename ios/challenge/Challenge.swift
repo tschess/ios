@@ -10,20 +10,95 @@ import UIKit
 
 class Challenge: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITabBarDelegate, UIGestureRecognizerDelegate {
     
+    /* - * - */
+    
+    var selection: Int? = nil
+    
+    public func setSelection(selection: Int){
+        self.selection = selection
+    }
+    
     var BACK: String?
     
     public func setBACK(BACK: String){
         self.BACK = BACK
     }
     
-    var activateBackConfig: Int?
+    /* - * - */
     
-    public func setActivateBackConfig(activateBackConfig: Int){
-        self.activateBackConfig = activateBackConfig
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        tabBarMenu.delegate = self
+        
+        self.attributeAlphaDotFull = [
+            NSAttributedString.Key.foregroundColor: UIColor.black,
+            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 24, weight: UIFont.Weight.bold)]
+        self.attributeAlphaDotHalf = [
+            NSAttributedString.Key.foregroundColor: UIColor(red: 0/255.0, green: 0/255.0, blue: 0/255.0, alpha: 0.5),
+            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 24, weight: UIFont.Weight.bold)]
+        
+        self.alphaDotFull = NSMutableAttributedString(string: "•", attributes: self.attributeAlphaDotFull!)
+        self.alphaDotHalf = NSMutableAttributedString(string: "•", attributes: self.attributeAlphaDotHalf!)
+        
+        //
+        self.renderHeaderOther()
+        //
+        
+        self.configCollectionView.delegate = self
+        self.configCollectionView.dataSource = self
+        
+        self.configCollectionView.isUserInteractionEnabled = true
+        self.configCollectionView.dragInteractionEnabled = false
+        
+        
+        
+        self.activityIndicator.isHidden = true
+        
+        let orange: UIColor = UIColor(red: 255/255.0, green: 105/255.0, blue: 104/255.0, alpha: 1) //FF6968
+        let pink: UIColor = UIColor(red: 255/255.0, green: 105/255.0, blue: 180/255.0, alpha: 1)
+        let purple: UIColor = UIColor(red: 140/255.0, green: 0/255.0, blue: 192/255.0, alpha: 1)
+        let blue: UIColor = UIColor(red: 84/255.0, green: 140/255.0, blue: 240/255.0, alpha: 1)
+        let green: UIColor = UIColor(red: 0/255.0, green: 255/255.0, blue: 88/255.0, alpha: 1)
+        
+        let hyperion: EntitySkin = EntitySkin(name: "hyperion", foreColor: purple, backColor: blue)
+        let calypso: EntitySkin = EntitySkin(name: "calypso", foreColor: pink, backColor: UIColor.black)
+        let neptune: EntitySkin = EntitySkin(name: "neptune", foreColor: green, backColor: orange, backAlpha: 0.85)
+        
+        let iapetus: EntitySkin = EntitySkin(
+            name: "iapetus",
+            foreColor: UIColor.white,
+            foreImage: UIImage(named: "iapetus"),
+            backColor: UIColor.black,
+            backImage: UIImage(named: "iapetus"),
+            backAlpha: 0.85)
+        
+        self.skinList = Array(arrayLiteral: iapetus, calypso, hyperion, neptune)
+        
+        if(self.selection == nil){
+            switch Int.random(in: 0 ... 3) {
+            case 0:
+                self.renderConfig0()
+            case 1:
+                self.renderConfig1()
+            case 2:
+                self.renderConfig2()
+            default:
+                self.renderConfigS()
+            }
+            return // !!! //
+        }
+        switch self.selection! {
+        case 1:
+            self.renderConfig1()
+        case 2:
+            self.renderConfig2()
+        default:
+            self.renderConfig0()
+        }
     }
     
     func generateTraditionalMatrix() -> [[Piece]] {
-        
         let row0 = [Pawn(), Pawn(), Pawn(), Pawn(), Pawn(), Pawn(), Pawn(), Pawn()]
         let row1 = [Rook(), Knight(), Bishop(), Queen(), King(), Bishop(), Knight(), Rook()]
         return [row0, row1]
@@ -74,6 +149,8 @@ class Challenge: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate,
     }
     
     func renderConfig1() {
+        self.selection = 1
+        
         self.tschessElementMatrix = self.playerSelf!.getConfig(index: 1)
         
         self.activeConfigNumber.text = "1"
@@ -94,6 +171,8 @@ class Challenge: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate,
     }
     
     func renderConfig2() {
+        self.selection = 2
+        
         self.tschessElementMatrix = self.playerSelf!.getConfig(index: 2)
         
         self.activeConfigNumber.text = "2"
@@ -114,6 +193,8 @@ class Challenge: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate,
     }
     
     func renderConfigS() {
+        self.selection = 3
+        
         self.tschessElementMatrix = self.generateTraditionalMatrix()
         self.configCollectionView.reloadData()
         
@@ -140,8 +221,6 @@ class Challenge: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate,
         self.configCollectionView.alwaysBounceVertical = false
         self.configCollectionViewHeight.constant = configCollectionView.contentSize.height
     }
-    
-    let DATE_TIME: DateTime = DateTime()
     
     //MARK: Properties
     @IBOutlet weak var backButton: UIButton!
@@ -210,80 +289,6 @@ class Challenge: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate,
         self.rankDateLabel.text = self.playerOther!.getLabelTextDate()
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        tabBarMenu.delegate = self
-        
-        self.attributeAlphaDotFull = [
-            NSAttributedString.Key.foregroundColor: UIColor.black,
-            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 24, weight: UIFont.Weight.bold)]
-        self.attributeAlphaDotHalf = [
-            NSAttributedString.Key.foregroundColor: UIColor(red: 0/255.0, green: 0/255.0, blue: 0/255.0, alpha: 0.5),
-            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 24, weight: UIFont.Weight.bold)]
-        
-        self.alphaDotFull = NSMutableAttributedString(string: "•", attributes: self.attributeAlphaDotFull!)
-        self.alphaDotHalf = NSMutableAttributedString(string: "•", attributes: self.attributeAlphaDotHalf!)
-        
-        //
-        self.renderHeaderOther()
-        //
-        
-        self.configCollectionView.delegate = self
-        self.configCollectionView.dataSource = self
-        
-        self.configCollectionView.isUserInteractionEnabled = true
-        self.configCollectionView.dragInteractionEnabled = false
-        
-        
-        
-        self.activityIndicator.isHidden = true
-        
-        let orange: UIColor = UIColor(red: 255/255.0, green: 105/255.0, blue: 104/255.0, alpha: 1) //FF6968
-        let pink: UIColor = UIColor(red: 255/255.0, green: 105/255.0, blue: 180/255.0, alpha: 1)
-        let purple: UIColor = UIColor(red: 140/255.0, green: 0/255.0, blue: 192/255.0, alpha: 1)
-        let blue: UIColor = UIColor(red: 84/255.0, green: 140/255.0, blue: 240/255.0, alpha: 1)
-        let green: UIColor = UIColor(red: 0/255.0, green: 255/255.0, blue: 88/255.0, alpha: 1)
-        
-        let hyperion: EntitySkin = EntitySkin(name: "hyperion", foreColor: purple, backColor: blue)
-        let calypso: EntitySkin = EntitySkin(name: "calypso", foreColor: pink, backColor: UIColor.black)
-        let neptune: EntitySkin = EntitySkin(name: "neptune", foreColor: green, backColor: orange, backAlpha: 0.85)
-        
-        let iapetus: EntitySkin = EntitySkin(
-            name: "iapetus",
-            foreColor: UIColor.white,
-            foreImage: UIImage(named: "iapetus"),
-            backColor: UIColor.black,
-            backImage: UIImage(named: "iapetus"),
-            backAlpha: 0.85)
-        
-        self.skinList = Array(arrayLiteral: iapetus, calypso, hyperion, neptune)
-        
-        if(self.activateBackConfig != nil){
-            switch self.activateBackConfig! {
-            case 1:
-                self.renderConfig1()
-                return
-            case 2:
-                self.renderConfig2()
-                return
-            default:
-                self.renderConfig0()
-                return
-            }
-        }
-        switch Int.random(in: 0 ... 3) {
-        case 0:
-            self.renderConfig0()
-        case 1:
-            self.renderConfig1()
-        case 2:
-            self.renderConfig2()
-        default:
-            self.renderConfigS()
-        }
-    }
-    
     var skinList: Array<EntitySkin>?
     
     override func viewWillAppear(_ animated: Bool) {
@@ -324,18 +329,19 @@ class Challenge: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate,
         }
         let storyboard: UIStoryboard = UIStoryboard(name: "EditOther", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "EditOther") as! EditOther
-        viewController.setTitleText(titleText: "challenge")
-        viewController.setActiveConfigNumber(activeConfigNumber: 0)
-        viewController.setBACK(BACK: self.BACK!)
-        let numberString: String = self.activeConfigNumber.text!
-        if(numberString == "1"){
-            viewController.setActiveConfigNumber(activeConfigNumber: 1)
-        }
-        if(numberString == "2") {
-            viewController.setActiveConfigNumber(activeConfigNumber: 2)
-        }
+        
+        viewController.setBACK(BACK: "CHALLENGE")
         viewController.setPlayerOther(playerOther: self.playerOther!)
         viewController.setPlayerSelf(playerSelf: self.playerSelf!)
+        viewController.setSelection(selection: self.selection!)
+        
+        viewController.setTitleText(titleText: "config. 0̸")
+        if(self.selection! == 1){
+            viewController.setTitleText(titleText: "config. 1")
+        }
+        if(self.selection! == 2){
+            viewController.setTitleText(titleText: "config. 2")
+        }
         UIApplication.shared.keyWindow?.rootViewController = viewController
     }
     
@@ -421,10 +427,10 @@ class Challenge: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate,
             self.activityIndicator.startAnimating()
             
             let requestPayload: [String: Any] = [
-                "player_self": self.playerSelf!.id,
-                "player_oppo": self.playerOther!.id,
+                "id_self": self.playerSelf!.id,
+                "id_other": self.playerOther!.id,
                 "skin": "DEFAULT",
-                "config": 0]
+                "config": self.selection!]
             
             RequestChallenge().execute(requestPayload: requestPayload) { (result) in
                 

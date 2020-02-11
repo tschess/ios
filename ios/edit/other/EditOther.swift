@@ -8,26 +8,25 @@
 
 import UIKit
 
-//MARK: DragDelegate
-extension EditOther: UICollectionViewDragDelegate {}
-
-//MARK: DropDelegate
-extension EditOther: UICollectionViewDropDelegate {}
-
 class EditOther: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIDropInteractionDelegate {
     
+    /* - * - */
+    
+    var selection: Int? = nil
+    
+    public func setSelection(selection: Int){
+        self.selection = selection
+    }
+    
     var BACK: String?
-    @IBOutlet weak var titleLabel: UILabel!
     
     public func setBACK(BACK: String){
         self.BACK = BACK
     }
     
-    var activeConfigNumber: Int?
+    @IBOutlet weak var titleLabel: UILabel!
     
-    public func setActiveConfigNumber(activeConfigNumber: Int){
-        self.activeConfigNumber = activeConfigNumber
-    }
+    /* - * - */
     
     var playerOther: EntityPlayer?
     
@@ -372,7 +371,7 @@ class EditOther: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate
         self.pieceCollectionView.isUserInteractionEnabled = true
         self.pieceCollectionView.dragInteractionEnabled = true
         
-        switch self.activeConfigNumber {
+        switch self.selection! {
         case 1:
             self.configActiv = self.playerSelf!.getConfig(index: 1)
             self.configAbort = self.configActiv
@@ -508,162 +507,73 @@ extension EditOther: UICollectionViewDelegate {
     }
     
     @IBAction func backButtonClick(_ sender: Any) {
-        if(self.BACK == "HOME"){
+        if(self.BACK == "PLAY"){
             DispatchQueue.main.async {
-                let homeStoryboard: UIStoryboard = UIStoryboard(name: "Home", bundle: nil)
-                let homeViewController = homeStoryboard.instantiateViewController(withIdentifier: "Home") as! Home
-                homeViewController.setPlayer(player: self.playerSelf!)
-                UIApplication.shared.keyWindow?.rootViewController = homeViewController
-            }
-            return
-        }
-        if(self.titleText == "challenge"){
-            let storyboard: UIStoryboard = UIStoryboard(name: "Challenge", bundle: nil)
-            let viewController = storyboard.instantiateViewController(withIdentifier: "Challenge") as! Challenge
-            viewController.setActivateBackConfig(activateBackConfig: self.activeConfigNumber!)
-            viewController.setPlayerOther(playerOther: self.playerOther!)
-            viewController.setPlayerSelf(playerSelf: self.playerSelf!)
-            //viewController.setGameModel(gameModel: gameModel)
-            UIApplication.shared.keyWindow?.rootViewController = viewController
-            return
-        }
-        if(self.titleText == "quick play"){
-            let storyboard: UIStoryboard = UIStoryboard(name: "Play", bundle: nil)
-            let viewController = storyboard.instantiateViewController(withIdentifier: "Play") as! Play
-            viewController.setPlayerSelf(playerSelf: self.playerSelf!)
-            viewController.setPlayerOther(playerOther: self.playerOther!)
-            viewController.setActivateBackConfig(activateBackConfig: self.activeConfigNumber!)
-            UIApplication.shared.keyWindow?.rootViewController = viewController
-            return
-        }
-        //if(self.titleText!.contains("play!")){
-        let storyboard: UIStoryboard = UIStoryboard(name: "Ack", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "Ack") as! Ack
-        if(self.activeConfigNumber! == 0){
-            viewController.activeConfigNumber.text = "0̸"
-        }
-        if(self.activeConfigNumber! == 1){
-            viewController.activeConfigNumber.text = "1"
-        }
-        if(self.activeConfigNumber! == 2){
-            viewController.activeConfigNumber.text = "2"
-        }
-        viewController.setPlayerOther(playerOther: self.playerOther!)
-        viewController.setPlayerSelf(playerSelf: self.playerSelf!)
-        UIApplication.shared.keyWindow?.rootViewController = viewController
-        //return
-        //}
-    }
-    
-    
-    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-        switch item.tag {
-        case 0://back
-            tabBar.selectedItem = nil
-            if(self.titleText == "challenge"){
-                let storyboard: UIStoryboard = UIStoryboard(name: "Challenge", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "Challenge") as! Challenge
-                viewController.setPlayerSelf(playerSelf: self.playerSelf!)
-                viewController.setPlayerOther(playerOther: self.playerOther!)
-                viewController.setActivateBackConfig(activateBackConfig: self.activeConfigNumber!)
-                UIApplication.shared.keyWindow?.rootViewController = viewController
-                return
-            }
-            if(self.titleText == "quick play"){
                 let storyboard: UIStoryboard = UIStoryboard(name: "Play", bundle: nil)
                 let viewController = storyboard.instantiateViewController(withIdentifier: "Play") as! Play
+                viewController.setSelection(selection: self.selection!)
                 viewController.setPlayerSelf(playerSelf: self.playerSelf!)
                 viewController.setPlayerOther(playerOther: self.playerOther!)
-                viewController.setActivateBackConfig(activateBackConfig: self.activeConfigNumber!)
                 UIApplication.shared.keyWindow?.rootViewController = viewController
-                return
             }
-            //if(self.titleText!.contains("play!")){
-            let storyboard: UIStoryboard = UIStoryboard(name: "Ack", bundle: nil)
-            let viewController = storyboard.instantiateViewController(withIdentifier: "Ack") as! Ack
-            viewController.setPlayerOther(playerOther: self.playerOther!)
-            viewController.setPlayerSelf(playerSelf: self.playerSelf!)
-            if(self.activeConfigNumber! == 0){
-                viewController.configActive = 0
-            }
-            if(self.activeConfigNumber! == 1){
-                viewController.configActive = 1
-            }
-            if(self.activeConfigNumber! == 2){
-                viewController.configActive = 2
-            }
-            UIApplication.shared.keyWindow?.rootViewController = viewController
             return
-        //}
-        default: //save...
-            tabBar.selectedItem = nil
-            
+        }
+        if(self.BACK == "CHALLENGE"){
+            DispatchQueue.main.async {
+                let storyboard: UIStoryboard = UIStoryboard(name: "Challenge", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "Challenge") as! Challenge
+                viewController.setSelection(selection: self.selection!)
+                viewController.setPlayerSelf(playerSelf: self.playerSelf!)
+                viewController.setPlayerOther(playerOther: self.playerOther!)
+                UIApplication.shared.keyWindow?.rootViewController = viewController
+            }
+            return
+        }
+        if(self.BACK == "ACK"){
+            DispatchQueue.main.async {
+                let storyboard: UIStoryboard = UIStoryboard(name: "Ack", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "Ack") as! Ack
+                viewController.setSelection(selection: self.selection!)
+                viewController.setPlayer(player: self.playerSelf!)
+                viewController.setPlayerOther(playerOther: self.playerOther!)
+                UIApplication.shared.keyWindow?.rootViewController = viewController
+            }
+            return
+        }
+    }
+    
+    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        tabBar.selectedItem = nil
+        
+        switch item.tag {
+        case 0:
+            self.backButtonClick("~")
+        default:
             DispatchQueue.main.async() {
                 self.activityIndicator!.isHidden = false
                 self.activityIndicator!.startAnimating()
             }
             let id = self.playerSelf!.id
+            let config = self.playerSelf!.setConfig(index: self.selection!, config: self.configActiv!)
             
-            //let config = ConfigSerializer().serializeConfiguration(savedConfigurationMatrix: self.elementMatrixActiv!)
-            var updateConfig = [
-                "id": id,
-                "config": self.playerSelf!.setConfig(index: self.activeConfigNumber!, config: self.configActiv!),
-                "updated": self.DATE_TIME.currentDateString()
-                ] as [String: Any]
+            let updateConfig = ["id": id, "config": config] as [String: Any]
             
-            var index: Int = 0
-            if(self.activeConfigNumber! == 1){
-                index = 1
-            }
-            if(self.activeConfigNumber! == 2){
-                index = 2
-            }
-            updateConfig["index"] = index
             UpdateConfig().execute(requestPayload: updateConfig) { (result) in
                 if result == nil {
                     print("error!") // print a popup
                 }
-                self.playerSelf = result!
                 DispatchQueue.main.async() {
-                    self.activityIndicator.stopAnimating()
-                    self.activityIndicator.isHidden = true
-                    if(self.titleText == "new challenge"){
-                        
-                        let storyboard: UIStoryboard = UIStoryboard(name: "Challenge", bundle: nil)
-                        let viewController = storyboard.instantiateViewController(withIdentifier: "Challenge") as! Challenge
-                        viewController.setPlayerSelf(playerSelf: self.playerSelf!)
-                        viewController.setPlayerOther(playerOther: self.playerOther!)
-                        viewController.setActivateBackConfig(activateBackConfig: self.activeConfigNumber!)
-                        UIApplication.shared.keyWindow?.rootViewController = viewController
-                        
-                        return
-                    }
-                    if(self.titleText == "quick play"){
-                        let storyboard: UIStoryboard = UIStoryboard(name: "Play", bundle: nil)
-                        let viewController = storyboard.instantiateViewController(withIdentifier: "Play") as! Play
-                        viewController.setPlayerSelf(playerSelf: self.playerSelf!)
-                        viewController.setPlayerOther(playerOther: self.playerOther!)
-                        viewController.setActivateBackConfig(activateBackConfig: self.activeConfigNumber!)
-                        UIApplication.shared.keyWindow?.rootViewController = viewController
-                        return
-                    }
-                    let storyboard: UIStoryboard = UIStoryboard(name: "Ack", bundle: nil)
-                    let viewController = storyboard.instantiateViewController(withIdentifier: "Ack") as! Ack
-                    viewController.setPlayerOther(playerOther: self.playerOther!)
-                    viewController.setPlayerSelf(playerSelf: self.playerSelf!)
-                    if(self.activeConfigNumber! == 0){
-                        viewController.configActive = 0
-                    }
-                    if(self.activeConfigNumber! == 1){
-                        viewController.configActive = 1
-                    }
-                    if(self.activeConfigNumber! == 2){
-                        viewController.configActive = 2
-                    }
-                    UIApplication.shared.keyWindow?.rootViewController = viewController
-                    
+                    self.activityIndicator!.isHidden = true
+                    self.activityIndicator!.stopAnimating()
                 }
+                self.playerSelf = result!
             }
         }
     }
 }
+
+//MARK: DragDelegate
+extension EditOther: UICollectionViewDragDelegate {}
+
+//MARK: DropDelegate
+extension EditOther: UICollectionViewDropDelegate {}
