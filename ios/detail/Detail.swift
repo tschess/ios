@@ -83,9 +83,28 @@ class Detail: UIViewController, UITabBarDelegate, UITextViewDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.startTimers()
         
         self.activityIndicator.isHidden = true
+        
+        if(self.skin!.name != "iapetus"){
+            self.countdownTimerLabel.text = "00:00:00"
+            self.countdownTimerLabel.isHidden = false
+            self.priceLabel.text = "soldout"
+            return
+        }
+        Product.store.requestProducts{ [weak self] success, products in
+            guard let self = self else {
+                return
+            }
+            if success {
+                self.products = products!
+                let product: SKProduct = self.products[0]
+                DispatchQueue.main.async {
+                    self.priceLabel.text = "$\(product.price.floatValue)"
+                }
+            }
+        }
+        self.startTimers()
     }
     
     var skin: EntitySkin?
@@ -148,21 +167,6 @@ class Detail: UIViewController, UITabBarDelegate, UITextViewDelegate {
         self.descriptionTextView.textColor = UIColor.black
         self.descriptionTextView.text = description
         
-        //Product.store.requestProducts{ [weak self] success, products in
-        //guard let self = self else {
-        //return
-        //}
-        //if success {
-        //self.products = products!
-        //let product: SKProduct = self.products[0]
-        //DispatchQueue.main.async {
-        //self.purchaseButton.setTitle( "$\(product.price.floatValue)" , for: .normal)
-        //}
-        //}
-        //}
-        
-        
-        
         self.titleLabel.text = self.skin!.getName()
         
         self.cellForegroundView.backgroundColor = self.skin!.getForeColor()
@@ -180,22 +184,12 @@ class Detail: UIViewController, UITabBarDelegate, UITextViewDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        
-        
         self.renderHeader()
         
         let cellForegroundClick = UITapGestureRecognizer(target: self, action: #selector(self.cellForegroundClick))
         self.cellForegroundView.isUserInteractionEnabled = true
         self.cellForegroundView.addGestureRecognizer(cellForegroundClick)
     }
-    
-    //    @IBAction func purchaseButtonClick(_ sender: Any) {
-    //        if(self.products.isEmpty){
-    //            return
-    //        }
-    //        let product = self.products[0]
-    //        Product.store.buyProduct(product, player: self.player!)
-    //    }
     
     @objc func cellForegroundClick() {
         
@@ -317,20 +311,17 @@ class Detail: UIViewController, UITabBarDelegate, UITextViewDelegate {
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         switch item.tag {
-        case 0:
-            DispatchQueue.main.async {
-                let storyboard: UIStoryboard = UIStoryboard(name: "Skins", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "Skins") as! Skins
-                viewController.setPlayer(player: self.player!)
-                UIApplication.shared.keyWindow?.rootViewController = viewController
-            }
         default:
-            DispatchQueue.main.async {
-                let storyboard: UIStoryboard = UIStoryboard(name: "Home", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "Home") as! Home
-                viewController.setPlayer(player: self.player!)
-                UIApplication.shared.keyWindow?.rootViewController = viewController
+            
+            if(self.skin!.name != "iapetus"){
+                return
             }
+            
+            if(self.products.isEmpty){
+                return
+            }
+            let product = self.products[0]
+            Product.store.buyProduct(product, player: self.player!)
         }
     }
 }

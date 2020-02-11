@@ -48,7 +48,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="282-SC-i56" userLabel="ContentView">
-                                <rect key="frame" x="0.0" y="52" width="414" height="626"/>
+                                <rect key="frame" x="0.0" y="52" width="414" height="634"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="tschess" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="heM-vS-dHQ" userLabel="tschessLabel">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
@@ -60,14 +60,14 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tschess" translatesAutoresizingMaskIntoConstraints="NO" id="1U8-zE-lXb" userLabel="tschessLogo">
-                                        <rect key="frame" x="40.666666666666657" y="132" width="333" height="333"/>
+                                        <rect key="frame" x="40.666666666666657" y="140" width="333" height="333"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="333" id="AAJ-6H-Mc5"/>
                                             <constraint firstAttribute="width" constant="333" id="q8V-9P-vgY"/>
                                         </constraints>
                                     </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NyH-VF-R5g" userLabel="ChildView">
-                                        <rect key="frame" x="0.0" y="505" width="414" height="121"/>
+                                        <rect key="frame" x="0.0" y="513" width="414" height="121"/>
                                         <subviews>
                                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="yRs-Oy-ieF">
                                                 <rect key="frame" x="188.66666666666666" y="42" width="37" height="37"/>
@@ -159,7 +159,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="heM-vS-dHQ" firstAttribute="leading" secondItem="282-SC-i56" secondAttribute="leading" id="3gB-N1-Fj5"/>
-                                    <constraint firstItem="1U8-zE-lXb" firstAttribute="top" secondItem="heM-vS-dHQ" secondAttribute="bottom" constant="32" id="CNB-Kb-dFS"/>
+                                    <constraint firstItem="1U8-zE-lXb" firstAttribute="top" secondItem="heM-vS-dHQ" secondAttribute="bottom" constant="40" id="CNB-Kb-dFS"/>
                                     <constraint firstAttribute="trailing" secondItem="NyH-VF-R5g" secondAttribute="trailing" id="PNT-LL-388"/>
                                     <constraint firstAttribute="trailing" secondItem="heM-vS-dHQ" secondAttribute="trailing" id="anU-2R-t6m"/>
                                     <constraint firstItem="NyH-VF-R5g" firstAttribute="leading" secondItem="282-SC-i56" secondAttribute="leading" id="c5R-82-aAN"/>
@@ -191,10 +191,15 @@
                         <outlet property="buttonCreate" destination="NUq-7O-dcu" id="mwt-e9-HKR"/>
                         <outlet property="buttonLogin" destination="VtP-2Q-amp" id="bzV-hL-tf6"/>
                         <outlet property="buttonRecover" destination="13Q-ST-VzR" id="hsG-Wl-uTg"/>
+                        <outlet property="buttonWidthCreate" destination="MBN-m6-Rs5" id="zwX-W8-L77"/>
+                        <outlet property="buttonWidthLogin" destination="vfI-gR-Naq" id="r1H-Sv-3B5"/>
                         <outlet property="contentView" destination="282-SC-i56" id="LAU-wb-gEc"/>
+                        <outlet property="logoHeight" destination="AAJ-6H-Mc5" id="0I9-1j-l0S"/>
+                        <outlet property="logoWidth" destination="q8V-9P-vgY" id="eqB-a4-OA9"/>
                         <outlet property="passwordTextField" destination="iP2-rm-ezV" id="qvL-MI-C4Z"/>
                         <outlet property="testTaskImageView" destination="8th-jg-167" id="H5U-bI-dKI"/>
                         <outlet property="testTaskLabel" destination="d6V-ci-BVi" id="yMq-mh-qtQ"/>
+                        <outlet property="titleLabelHeight" destination="s0k-NJ-99C" id="vxw-at-MR8"/>
                         <outlet property="usernameTextField" destination="nRp-yq-OSS" id="sLH-kV-N8W"/>
                     </connections>
                 </viewController>

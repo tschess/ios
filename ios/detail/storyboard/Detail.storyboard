@@ -316,7 +316,7 @@
                         <outlet property="displacementImage" destination="Hdu-IT-Gl6" id="NXt-wO-GBy"/>
                         <outlet property="displacementLabel" destination="mpQ-gR-Bq9" id="Ju7-SI-YvR"/>
                         <outlet property="eloLabel" destination="0cz-Ye-0xH" id="20E-d9-tDg"/>
-                        <outlet property="priceLabel" destination="0sm-NE-aD2" id="ZKg-cT-eWs"/>
+                        <outlet property="priceLabel" destination="0sm-NE-aD2" id="lud-VZ-3s8"/>
                         <outlet property="rankLabel" destination="CtM-mg-jTD" id="PYt-pp-TNH"/>
                         <outlet property="tabBarMenu" destination="bQ7-aU-Zkj" id="FxI-9g-FFs"/>
                         <outlet property="titleLabel" destination="97Q-qZ-U6f" id="tT9-8p-fJ1"/>

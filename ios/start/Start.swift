@@ -10,6 +10,14 @@ import IHKeyboardAvoiding
 
 class Start: UIViewController, UITextFieldDelegate {
     
+    @IBOutlet weak var titleLabelHeight: NSLayoutConstraint!
+    
+    @IBOutlet weak var logoHeight: NSLayoutConstraint!
+    @IBOutlet weak var logoWidth: NSLayoutConstraint!
+    
+    @IBOutlet weak var buttonWidthLogin: NSLayoutConstraint!
+    @IBOutlet weak var buttonWidthCreate: NSLayoutConstraint!
+    
     @IBAction func createButtonClick(_ sender: UIButton) {}
     
     //MARK: Constant
@@ -48,9 +56,24 @@ class Start: UIViewController, UITextFieldDelegate {
         self.testTaskLabel.text = String(testTaskCounter)
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        let totalWide = self.view.frame.size.width
+        let totalHigh = self.view.frame.size.height
+        
+        self.titleLabelHeight.constant = totalHigh * 0.111
+        
+        self.logoHeight.constant = totalHigh * 0.371
+        self.logoWidth.constant = logoHeight.constant
+        
+        self.buttonWidthLogin.constant = totalWide/2
+        self.buttonWidthCreate.constant = totalWide/2
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+    
         self.activityIndicator.isHidden = true
         self.testTaskLabel.isHidden = true
         

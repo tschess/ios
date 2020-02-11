@@ -32,7 +32,7 @@ class SkinsTable: UITableViewController {
             backImage: UIImage(named: "iapetus"),
             backAlpha: 0.85)
         
-        self.skinList = Array(arrayLiteral: calypso, hyperion, neptune, iapetus)
+        self.skinList = Array(arrayLiteral: iapetus, calypso, hyperion, neptune)
         
         super.init(coder: aDecoder)
     }
