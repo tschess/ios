@@ -116,7 +116,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         self.collectionView.isHidden = false
         self.activityIndicator.isHidden = true
         
-        self.evalCheck() //draw/resign also?
+        self.evalCheckMate() //draw/resign also?
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -300,28 +300,40 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     
     func resolveGameTimeout() {
         if(self.gameTschess!.status == "RESOLVED"){
-            self.titleViewLabel.text = "game over"
-            self.contentViewLabel.isHidden = false
-            self.turnaryLabel.isHidden = true
-            self.timerLabel.isHidden = true
+            DispatchQueue.main.async {
+                self.titleViewLabel.text = "game over"
+                self.contentViewLabel.isHidden = false
+                self.turnaryLabel.isHidden = true
+                self.timerLabel.isHidden = true
+            }
             self.stopTimers()
             if(self.gameTschess!.outcome == "DRAW"){
-                self.contentViewLabel.text = "draw"
+                DispatchQueue.main.async {
+                    self.contentViewLabel.text = "draw"
+                }
                 return
             }
             if(self.gameTschess!.winner == "WHITE"){
                 if(self.gameTschess!.getWhite(username: self.playerSelf!.username)){
-                    self.contentViewLabel.text = "you win"
+                    DispatchQueue.main.async {
+                        self.contentViewLabel.text = "you win"
+                    }
                     return
                 }
-                self.contentViewLabel.text = "you lose"
+                DispatchQueue.main.async {
+                    self.contentViewLabel.text = "you lose"
+                }
                 return
             }
             if(self.gameTschess!.getWhite(username: self.playerSelf!.username)){
-                self.contentViewLabel.text = "you lose"
+                DispatchQueue.main.async {
+                    self.contentViewLabel.text = "you lose"
+                }
                 return
             }
-            self.contentViewLabel.text = "you win"
+            DispatchQueue.main.async {
+                self.contentViewLabel.text = "you win"
+            }
         }
     }
     
@@ -355,8 +367,21 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         }
     }
     
-    private func evalCheck() {
-        if(self.gameTschess!.outcome != "CHECK"){
+    private func evalCheckMate() {
+        let kingCoord: [Int] = CheckCheck().kingCoordinate(affiliation: self.gameTschess!.turn, state: self.tschessElementMatrix!)
+        let mate: Bool = CheckCheck().mate(king: kingCoord, state: self.tschessElementMatrix!)
+        
+        if(mate){
+            print("FUCK x FUCK x FUCK")
+            
+            UpdateMate().execute(id: self.gameTschess!.id) { (success) in
+                if(!success){
+                    //error
+                }
+                self.resolveGameTimeout()
+            }
+        }
+        else if(self.gameTschess!.outcome != "CHECK"){
             /* ~ */
             if(CheckCheck().on(affiliation: self.gameTschess!.turn, state: self.tschessElementMatrix!)){
                 UpdateCheck().execute(id: self.gameTschess!.id) { (success) in
@@ -370,22 +395,6 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         }
         if(!turnaryLabel.text!.contains("check")){
             self.turnaryLabel.text = "\(self.turnaryLabel.text!) (check)"
-        }
-    }
-    
-    private func evalMate() {
-        
-        let kingCoord: [Int] = CheckCheck().kingCoordinate(affiliation: self.gameTschess!.turn, state: self.tschessElementMatrix!)
-        let mate: Bool = CheckCheck().mate(king: kingCoord, state: self.tschessElementMatrix!)
-        
-        if(mate){
-           print("FUCK x FUCK x FUCK")
-            
-            UpdateMate().execute(id: self.gameTschess!.id) { (success) in
-                if(!success){
-                    //error
-                }
-            }
         }
     }
     
@@ -415,8 +424,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
                     self.collectionView.reloadData()
                     self.processDrawProposal()
                     self.resolveGameTimeout()
-                    self.evalCheck()
-                    self.evalMate()
+                    self.evalCheckMate()
                 }
                 //print("Date A is later than date B")
             }
@@ -454,7 +462,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         //                return
         //            }
         //        }
-      
+        
         let coordinate = self.transitioner!.getCoordinate()
         if(coordinate != nil){
             let pawnPromotion = self.pawnPromotion!.evaluate(coordinate: coordinate!, proposed: [x,y])
