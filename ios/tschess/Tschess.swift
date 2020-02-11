@@ -380,6 +380,12 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         
         if(mate){
            print("FUCK x FUCK x FUCK")
+            
+            UpdateMate().execute(id: self.gameTschess!.id) { (success) in
+                if(!success){
+                    //error
+                }
+            }
         }
     }
     
