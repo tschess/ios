@@ -78,6 +78,19 @@ class Snapshot: UIViewController, UICollectionViewDataSource, UICollectionViewDe
         boardView.dataSource = self
         boardView.delegate = self
         tabBarMenu.delegate = self
+        
+        //self.contentImage.image = UIImage(named: "iapetus")
+        //self.contentImage.isHidden = false
+        
+        self.contentImage.image = nil
+        self.statsImage.image = nil
+        self.headerImage.image = nil
+        self.titleBackImage.image = nil
+        
+        self.contentImage.isHidden = true
+        self.statsImage.isHidden = true
+        self.headerImage.isHidden = true
+        self.titleBackImage.isHidden = true
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
