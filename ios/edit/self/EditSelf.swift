@@ -525,7 +525,7 @@ extension EditSelf: UICollectionViewDelegate {
             let id = self.playerSelf!.id
             let config = self.playerSelf!.setConfig(index: self.selection!, config: self.configActiv!)
             
-            let updateConfig = ["id": id, "config": config] as [String: Any]
+            let updateConfig = ["id": id, "config": config, "index": self.selection!] as [String: Any]
             
             UpdateConfig().execute(requestPayload: updateConfig) { (result) in
                 if result == nil {

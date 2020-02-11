@@ -355,6 +355,7 @@ class Play: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITa
         }
         viewController.setPlayerOther(playerOther: self.playerOther!)
         viewController.setPlayerSelf(playerSelf: self.playerSelf!)
+        viewController.setBACK(BACK: "PLAY")
         UIApplication.shared.keyWindow?.rootViewController = viewController
     }
     
@@ -377,10 +378,6 @@ class Play: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITa
                     self.renderConfig0()
                     return
                 }
-                //                if(activeConfigNumber.text == "0̸"){
-                //                     self.renderConfigS()
-                //                    return
-            //                }
             case UISwipeGestureRecognizer.Direction.left:
                 if(activeConfigNumber.text == "0̸"){
                     self.renderConfig1()
@@ -394,23 +391,10 @@ class Play: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITa
                     self.renderConfigS()
                     return
                 }
-                //                if(self.configLabelView.isHidden == false){
-                //                    self.configLabelView.isHidden = true
-                //                    self.traditionalLabel.isHidden = false
-                //                    self.renderConfig0()
-                //                    return
-            //                }
             default:
                 break
             }
         }
-    }
-    
-    func stayHandler(action: UIAlertAction) {
-        let homeStoryboard: UIStoryboard = UIStoryboard(name: "Home", bundle: nil)
-        let homeViewController = homeStoryboard.instantiateViewController(withIdentifier: "Home") as! Home
-        homeViewController.setPlayer(player: self.playerSelf!)
-        UIApplication.shared.keyWindow?.rootViewController = homeViewController
     }
     
     @IBAction func backButtonClick(_ sender: Any) {

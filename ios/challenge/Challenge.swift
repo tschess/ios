@@ -117,7 +117,7 @@ class Challenge: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate,
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
-    let reuseIdentifier = "square"
+    //let reuseIdentifier = "square"
     
     @IBOutlet weak var activeConfigNumber: UILabel!
     
@@ -223,6 +223,12 @@ class Challenge: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate,
         self.configCollectionView.alwaysBounceVertical = false
         self.configCollectionViewHeight.constant = configCollectionView.contentSize.height
     }
+    
+//    var gameTschess: EntityGame?
+//    
+//    public func setGameTschess(gameTschess: EntityGame) {
+//        self.gameTschess = gameTschess
+//    }
     
     //MARK: Properties
     @IBOutlet weak var backButton: UIButton!
@@ -366,10 +372,6 @@ class Challenge: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate,
                     self.renderConfig0()
                     return
                 }
-                //                if(activeConfigNumber.text == "0̸"){
-                //                     self.renderConfigS()
-                //                    return
-            //                }
             case UISwipeGestureRecognizer.Direction.left:
                 if(activeConfigNumber.text == "0̸"){
                     self.renderConfig1()
@@ -383,12 +385,6 @@ class Challenge: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate,
                     self.renderConfigS()
                     return
                 }
-                //                if(self.configLabelView.isHidden == false){
-                //                    self.configLabelView.isHidden = true
-                //                    self.traditionalLabel.isHidden = false
-                //                    self.renderConfig0()
-                //                    return
-            //                }
             default:
                 break
             }

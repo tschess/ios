@@ -10,6 +10,9 @@ import UIKit
 
 class Ack: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITabBarDelegate, UIGestureRecognizerDelegate {
     
+    @IBOutlet weak var traditionalLabel: UILabel!
+    @IBOutlet weak var configLabelView: UIView!
+    
     /* - * - */
     
     var selection: Int? = nil  //var configActive: Int = 0
@@ -62,8 +65,6 @@ class Ack: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITab
     
     @IBOutlet weak var activeConfigNumber: UILabel!
     
-    let reuseIdentifier = "square"
-    
     @IBOutlet weak var contentView: UIView!
     
     @IBOutlet var splitViewHeight0: NSLayoutConstraint!
@@ -79,61 +80,93 @@ class Ack: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITab
     func renderConfig0() {
         self.selection = 0
         
-        self.tschessElementMatrix = self.player!.getConfig(index: 0)
+        self.tschessElementMatrix = self.playerSelf!.getConfig(index: 0)
+        
         self.activeConfigNumber.text = "0̸"
         self.configCollectionView.reloadData()
         
-        let alphaDotFull = NSMutableAttributedString(string: "•", attributes: self.attributeAlphaDotFull!)
-        let alphaDotHalf = NSMutableAttributedString(string: "•", attributes: self.attributeAlphaDotHalf!)
-        let activeConfigFull = NSMutableAttributedString()
-        activeConfigFull.append(alphaDotFull)
-        let activeConfigNull = NSMutableAttributedString()
-        activeConfigNull.append(alphaDotHalf)
+        self.configLabelView.isHidden = false
+        self.traditionalLabel.isHidden = true
         
-        self.indicatorLabel0.attributedText = activeConfigFull
-        self.indicatorLabel1.attributedText = activeConfigNull
+        let activeConfigFull = NSMutableAttributedString()
+        activeConfigFull.append(self.alphaDotFull!)
+        let activeConfigNull = NSMutableAttributedString()
+        activeConfigNull.append(self.alphaDotHalf!)
+        
+        self.indicatorLabelS.attributedText = activeConfigFull
         self.indicatorLabel2.attributedText = activeConfigNull
-        self.indicatorLabelS.attributedText = activeConfigNull
+        self.indicatorLabel1.attributedText = activeConfigNull
+        self.indicatorLabel0.attributedText = activeConfigNull
     }
     
-    func renderConfig1() {
+   func renderConfig1() {
         self.selection = 1
         
-        self.tschessElementMatrix = self.player!.getConfig(index: 1)
+        self.tschessElementMatrix = self.playerSelf!.getConfig(index: 1)
+        
         self.activeConfigNumber.text = "1"
         self.configCollectionView.reloadData()
         
-        let alphaDotFull = NSMutableAttributedString(string: "•", attributes: self.attributeAlphaDotFull!)
-        let alphaDotHalf = NSMutableAttributedString(string: "•", attributes: self.attributeAlphaDotHalf!)
-        let activeConfigFull = NSMutableAttributedString()
-        activeConfigFull.append(alphaDotFull)
-        let activeConfigNull = NSMutableAttributedString()
-        activeConfigNull.append(alphaDotHalf)
+        self.configLabelView.isHidden = false
+        self.traditionalLabel.isHidden = true
         
-        self.indicatorLabel0.attributedText = activeConfigNull
-        self.indicatorLabel1.attributedText = activeConfigFull
-        self.indicatorLabel2.attributedText = activeConfigNull
+        let activeConfigFull = NSMutableAttributedString()
+        activeConfigFull.append(self.alphaDotFull!)
+        let activeConfigNull = NSMutableAttributedString()
+        activeConfigNull.append(self.alphaDotHalf!)
+        
         self.indicatorLabelS.attributedText = activeConfigNull
+        self.indicatorLabel2.attributedText = activeConfigFull
+        self.indicatorLabel1.attributedText = activeConfigNull
+        self.indicatorLabel0.attributedText = activeConfigNull
     }
     
-    func renderConfig2() {
+   func renderConfig2() {
         self.selection = 2
         
-        self.tschessElementMatrix = self.player!.getConfig(index: 2)
+        self.tschessElementMatrix = self.playerSelf!.getConfig(index: 2)
+        
         self.activeConfigNumber.text = "2"
         self.configCollectionView.reloadData()
         
-        let alphaDotFull = NSMutableAttributedString(string: "•", attributes: self.attributeAlphaDotFull!)
-        let alphaDotHalf = NSMutableAttributedString(string: "•", attributes: self.attributeAlphaDotHalf!)
-        let activeConfigFull = NSMutableAttributedString()
-        activeConfigFull.append(alphaDotFull)
-        let activeConfigNull = NSMutableAttributedString()
-        activeConfigNull.append(alphaDotHalf)
+        self.configLabelView.isHidden = false
+        self.traditionalLabel.isHidden = true
         
-        self.indicatorLabel0.attributedText = activeConfigNull
-        self.indicatorLabel1.attributedText = activeConfigNull
-        self.indicatorLabel2.attributedText = activeConfigFull
+        let activeConfigFull = NSMutableAttributedString()
+        activeConfigFull.append(self.alphaDotFull!)
+        let activeConfigNull = NSMutableAttributedString()
+        activeConfigNull.append(self.alphaDotHalf!)
+        
         self.indicatorLabelS.attributedText = activeConfigNull
+        self.indicatorLabel2.attributedText = activeConfigNull
+        self.indicatorLabel1.attributedText = activeConfigFull
+        self.indicatorLabel0.attributedText = activeConfigNull
+    }
+    
+    func renderConfigS() {
+        self.selection = 3
+        
+        self.tschessElementMatrix = self.generateTraditionalMatrix()
+        self.configCollectionView.reloadData()
+        
+        self.configLabelView.isHidden = true
+        self.traditionalLabel.isHidden = false
+        
+        let activeConfigFull = NSMutableAttributedString()
+        activeConfigFull.append(self.alphaDotFull!)
+        let activeConfigNull = NSMutableAttributedString()
+        activeConfigNull.append(self.alphaDotHalf!)
+        
+        self.indicatorLabelS.attributedText = activeConfigNull
+        self.indicatorLabel2.attributedText = activeConfigNull
+        self.indicatorLabel1.attributedText = activeConfigNull
+        self.indicatorLabel0.attributedText = activeConfigFull
+    }
+    
+    func generateTraditionalMatrix() -> [[Piece]] {
+        let row0 = [Pawn(), Pawn(), Pawn(), Pawn(), Pawn(), Pawn(), Pawn(), Pawn()]
+        let row1 = [Rook(), Knight(), Bishop(), Queen(), King(), Bishop(), Knight(), Rook()]
+        return [row0, row1]
     }
     
     var tschessElementMatrix: [[Piece?]]?
@@ -200,6 +233,9 @@ class Ack: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITab
     var attributeAlphaDotFull: [NSAttributedString.Key: NSObject]?
     var attributeAlphaDotHalf: [NSAttributedString.Key: NSObject]?
     
+    var alphaDotFull: NSMutableAttributedString?
+    var alphaDotHalf: NSMutableAttributedString?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -216,22 +252,14 @@ class Ack: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITab
         self.configCollectionView.dragInteractionEnabled = false
         
         self.attributeAlphaDotFull = [
-            NSAttributedString.Key.foregroundColor: UIColor(red: 0/255.0, green: 0/255.0, blue: 0/255.0, alpha: 1.0),
+            NSAttributedString.Key.foregroundColor: UIColor.black,
             NSAttributedString.Key.font: UIFont.systemFont(ofSize: 24, weight: UIFont.Weight.bold)]
         self.attributeAlphaDotHalf = [
             NSAttributedString.Key.foregroundColor: UIColor(red: 0/255.0, green: 0/255.0, blue: 0/255.0, alpha: 0.5),
             NSAttributedString.Key.font: UIFont.systemFont(ofSize: 24, weight: UIFont.Weight.bold)]
-        let alphaDotFull = NSMutableAttributedString(string: "•", attributes: self.attributeAlphaDotFull!)
-        let alphaDotHalf = NSMutableAttributedString(string: "•", attributes: self.attributeAlphaDotHalf!)
-        let activeConfigFull = NSMutableAttributedString()
-        activeConfigFull.append(alphaDotFull)
-        let activeConfigNull = NSMutableAttributedString()
-        activeConfigNull.append(alphaDotHalf)
         
-        self.indicatorLabel0.attributedText = activeConfigFull
-        self.indicatorLabel1.attributedText = activeConfigNull
-        self.indicatorLabel2.attributedText = activeConfigNull
-        self.indicatorLabelS.attributedText = activeConfigNull
+        self.alphaDotFull = NSMutableAttributedString(string: "•", attributes: self.attributeAlphaDotFull!)
+        self.alphaDotHalf = NSMutableAttributedString(string: "•", attributes: self.attributeAlphaDotHalf!)
         
         self.activityIndicator.isHidden = true
         
@@ -256,15 +284,15 @@ class Ack: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITab
         self.skinList = Array(arrayLiteral: iapetus, calypso, hyperion, neptune) //in actual fact default will come first...
         
         if(self.selection == nil){
-            switch Int.random(in: 0 ... 2) {
-            //case 3:
-                //self.renderConfigS()
+            switch Int.random(in: 0 ... 3) {
+            case 0:
+                self.renderConfig0()
             case 1:
                 self.renderConfig1()
             case 2:
                 self.renderConfig2()
             default:
-                self.renderConfig0()
+                self.renderConfigS()
             }
             return // !!! //
         }
@@ -310,23 +338,6 @@ class Ack: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITab
     }
     
     @objc func renderElementCollectionView() {
-    
-//        if(activeConfigNumber.text == "0̸"){
-//            self.configActive = 0
-//        }
-//        if(activeConfigNumber.text == "1"){
-//            self.configActive = 1
-//        }
-//        if(activeConfigNumber.text == "2"){
-//            self.configActive = 2
-//        }
-//        let storyboard: UIStoryboard = UIStoryboard(name: "EditOther", bundle: nil)
-//        let viewController = storyboard.instantiateViewController(withIdentifier: "EditOther") as! EditOther
-//        viewController.setTitleText(titleText: "let's play!")
-//        viewController.setActiveConfigNumber(activeConfigNumber: configActive)
-//        viewController.setPlayerOther(playerOther: self.playerOther!)
-//        viewController.setPlayerSelf(playerSelf: self.playerSelf!)
-//        UIApplication.shared.keyWindow?.rootViewController = viewController
         
         let storyboard: UIStoryboard = UIStoryboard(name: "EditOther", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "EditOther") as! EditOther
@@ -335,6 +346,7 @@ class Ack: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITab
         viewController.setPlayerOther(playerOther: self.playerOther!)
         viewController.setPlayerSelf(playerSelf: self.playerSelf!)
         viewController.setSelection(selection: self.selection!)
+        viewController.setGameTschess(gameTschess: self.gameTschess!)
         
         viewController.setTitleText(titleText: "config. 0̸")
         if(self.selection! == 1){
@@ -353,6 +365,10 @@ class Ack: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITab
         if let swipeGesture = gesture as? UISwipeGestureRecognizer {
             switch swipeGesture.direction {
             case UISwipeGestureRecognizer.Direction.right:
+                if(self.traditionalLabel.isHidden == false){
+                    self.renderConfig2()
+                    return
+                }
                 if(activeConfigNumber.text == "2"){
                     self.renderConfig1()
                     return
@@ -368,6 +384,10 @@ class Ack: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITab
                 }
                 if(activeConfigNumber.text == "1"){
                     self.renderConfig2()
+                    return
+                }
+                if(activeConfigNumber.text == "2"){
+                    self.renderConfigS()
                     return
                 }
             default:
@@ -450,13 +470,12 @@ extension Ack: UICollectionViewDelegateFlowLayout {
             let id_game = self.gameTschess!.id
             let id_player = self.playerSelf!.id
             let skin = "DEFAULT"
-            let CONFIG = 3 //!!!
             
             let requestPayload: [String: Any] = [
                 "id_game": id_game,
                 "id_player": id_player,
                 "skin": skin,
-                "config": CONFIG]
+                "index": self.selection!]
             
             RequestAck().execute(requestPayload: requestPayload) { (game) in
                 print("result: \(game!.state)")

@@ -65,6 +65,16 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FXw-uz-53m" userLabel="SplitView0">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="192"/>
                                         <subviews>
+                                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="traditional" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="neN-po-xJe">
+                                                <rect key="frame" x="0.0" y="8" width="414" height="30"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="74j-cq-r0a"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="22"/>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xYU-1C-1h2" userLabel="ConfigLabelView">
                                                 <rect key="frame" x="165" y="8" width="84" height="30"/>
                                                 <subviews>
@@ -212,7 +222,11 @@
                                             <constraint firstItem="cLt-qU-Ujd" firstAttribute="leading" secondItem="FXw-uz-53m" secondAttribute="leading" id="Wnb-pl-leG"/>
                                             <constraint firstItem="mwi-KC-XMF" firstAttribute="top" secondItem="cLt-qU-Ujd" secondAttribute="bottom" constant="8" id="abv-7L-Gx0"/>
                                             <constraint firstItem="xYU-1C-1h2" firstAttribute="centerX" secondItem="FXw-uz-53m" secondAttribute="centerX" id="d7z-KI-IzN"/>
+                                            <constraint firstAttribute="trailing" secondItem="neN-po-xJe" secondAttribute="trailing" id="i5A-WU-Iwu"/>
+                                            <constraint firstItem="neN-po-xJe" firstAttribute="top" secondItem="FXw-uz-53m" secondAttribute="top" constant="8" id="n0a-lA-Kw5"/>
+                                            <constraint firstItem="neN-po-xJe" firstAttribute="leading" secondItem="FXw-uz-53m" secondAttribute="leading" id="oqu-bg-GvV"/>
                                             <constraint firstItem="xYU-1C-1h2" firstAttribute="top" secondItem="FXw-uz-53m" secondAttribute="top" constant="8" id="r1b-o9-0NO"/>
+                                            <constraint firstItem="cLt-qU-Ujd" firstAttribute="top" secondItem="neN-po-xJe" secondAttribute="bottom" constant="8" id="tdR-H0-0ck"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="heW-o1-yD8" userLabel="SplitView1">
@@ -403,6 +417,7 @@
                         <outlet property="backButton" destination="5qi-EH-0fj" id="9nk-ly-Hln"/>
                         <outlet property="configCollectionView" destination="cLt-qU-Ujd" id="o5R-Vg-LOy"/>
                         <outlet property="configCollectionViewHeight" destination="CcB-qU-k3t" id="6Tg-VC-f3w"/>
+                        <outlet property="configLabelView" destination="xYU-1C-1h2" id="LtW-gH-hRu"/>
                         <outlet property="contentView" destination="9wh-i1-2Qp" id="rzq-jQ-fO5"/>
                         <outlet property="eloLabel" destination="pa6-dh-9wq" id="DC6-MJ-HQL"/>
                         <outlet property="indicatorLabel0" destination="VPP-XL-5Tt" id="QsZ-hp-zLa"/>
@@ -415,6 +430,7 @@
                         <outlet property="splitViewHeight0" destination="MLS-mq-JDT" id="mjw-Qb-hHC"/>
                         <outlet property="splitViewHeight1" destination="sOF-QF-cE4" id="oep-mx-3yp"/>
                         <outlet property="tabBarMenu" destination="lR1-2A-YPc" id="CDf-K6-4Hh"/>
+                        <outlet property="traditionalLabel" destination="neN-po-xJe" id="LiT-cV-Abh"/>
                         <outlet property="usernameLabel" destination="dnK-3b-UvM" id="ZF6-fk-MhY"/>
                     </connections>
                 </viewController>

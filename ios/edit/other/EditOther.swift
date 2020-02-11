@@ -40,6 +40,12 @@ class EditOther: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate
         self.playerSelf = playerSelf
     }
     
+    var gameTschess: EntityGame?
+    
+    public func setGameTschess(gameTschess: EntityGame) {
+        self.gameTschess = gameTschess
+    }
+    
     @IBOutlet weak var dropViewTop0: UIView!
     @IBOutlet weak var dropViewTop1: UIView!
     @IBOutlet weak var dropViewBottom0: UIView!
@@ -511,9 +517,10 @@ extension EditOther: UICollectionViewDelegate {
             DispatchQueue.main.async {
                 let storyboard: UIStoryboard = UIStoryboard(name: "Play", bundle: nil)
                 let viewController = storyboard.instantiateViewController(withIdentifier: "Play") as! Play
-                viewController.setSelection(selection: self.selection!)
                 viewController.setPlayerSelf(playerSelf: self.playerSelf!)
                 viewController.setPlayerOther(playerOther: self.playerOther!)
+                //viewController.setGameTschess(gameTschess: self.gameTschess!)
+                viewController.setSelection(selection: self.selection!)
                 UIApplication.shared.keyWindow?.rootViewController = viewController
             }
             return
@@ -522,9 +529,10 @@ extension EditOther: UICollectionViewDelegate {
             DispatchQueue.main.async {
                 let storyboard: UIStoryboard = UIStoryboard(name: "Challenge", bundle: nil)
                 let viewController = storyboard.instantiateViewController(withIdentifier: "Challenge") as! Challenge
-                viewController.setSelection(selection: self.selection!)
                 viewController.setPlayerSelf(playerSelf: self.playerSelf!)
                 viewController.setPlayerOther(playerOther: self.playerOther!)
+                //viewController.setGameTschess(gameTschess: self.gameTschess!)
+                viewController.setSelection(selection: self.selection!)
                 UIApplication.shared.keyWindow?.rootViewController = viewController
             }
             return
@@ -533,9 +541,10 @@ extension EditOther: UICollectionViewDelegate {
             DispatchQueue.main.async {
                 let storyboard: UIStoryboard = UIStoryboard(name: "Ack", bundle: nil)
                 let viewController = storyboard.instantiateViewController(withIdentifier: "Ack") as! Ack
-                viewController.setSelection(selection: self.selection!)
-                viewController.setPlayer(player: self.playerSelf!)
+                viewController.setPlayerSelf(playerSelf: self.playerSelf!)
                 viewController.setPlayerOther(playerOther: self.playerOther!)
+                viewController.setGameTschess(gameTschess: self.gameTschess!)
+                viewController.setSelection(selection: self.selection!)
                 UIApplication.shared.keyWindow?.rootViewController = viewController
             }
             return
@@ -556,17 +565,19 @@ extension EditOther: UICollectionViewDelegate {
             let id = self.playerSelf!.id
             let config = self.playerSelf!.setConfig(index: self.selection!, config: self.configActiv!)
             
-            let updateConfig = ["id": id, "config": config] as [String: Any]
+            let updateConfig = ["id": id, "config": config, "index": self.selection!] as [String: Any]
             
             UpdateConfig().execute(requestPayload: updateConfig) { (result) in
                 if result == nil {
                     print("error!") // print a popup
+                    self.backButtonClick("~")
                 }
                 DispatchQueue.main.async() {
                     self.activityIndicator!.isHidden = true
                     self.activityIndicator!.stopAnimating()
                 }
                 self.playerSelf = result!
+                self.backButtonClick("~")
             }
         }
     }
