@@ -16,14 +16,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5B6-k7-X3H" userLabel="SafeSuperView">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5B6-k7-X3H" userLabel="SafeSuperView">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eq3-nU-4ur" userLabel="TitleBackView">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eq3-nU-4ur" userLabel="TitleBackView">
                                 <rect key="frame" x="0.0" y="44" width="414" height="40"/>
                                 <subviews>
-                                    <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uPS-Yh-Ujr" userLabel="TitleBackImage">
+                                    <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uPS-Yh-Ujr" userLabel="TitleBackImage">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="40"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -62,8 +62,8 @@
                                     <constraint firstItem="uPS-Yh-Ujr" firstAttribute="leading" secondItem="eq3-nU-4ur" secondAttribute="leading" id="6MN-Un-3no"/>
                                     <constraint firstAttribute="bottom" secondItem="rh3-GT-zds" secondAttribute="bottom" id="BrI-Pu-8zO"/>
                                     <constraint firstItem="5qi-EH-0fj" firstAttribute="top" secondItem="eq3-nU-4ur" secondAttribute="top" id="DTc-tV-dT4"/>
-                                    <constraint firstAttribute="bottom" secondItem="uPS-Yh-Ujr" secondAttribute="bottom" id="Opz-O1-bbX"/>
-                                    <constraint firstItem="uPS-Yh-Ujr" firstAttribute="top" secondItem="eq3-nU-4ur" secondAttribute="top" id="V2A-sy-HdT"/>
+                                    <constraint firstItem="uPS-Yh-Ujr" firstAttribute="top" secondItem="eq3-nU-4ur" secondAttribute="top" id="GnU-D4-nq6"/>
+                                    <constraint firstAttribute="bottom" secondItem="uPS-Yh-Ujr" secondAttribute="bottom" id="X31-03-TAe"/>
                                     <constraint firstAttribute="bottom" secondItem="5qi-EH-0fj" secondAttribute="bottom" id="eSN-FB-JWS"/>
                                     <constraint firstItem="rh3-GT-zds" firstAttribute="top" secondItem="eq3-nU-4ur" secondAttribute="top" id="jqd-9x-9ix"/>
                                     <constraint firstItem="rh3-GT-zds" firstAttribute="leading" secondItem="eq3-nU-4ur" secondAttribute="leading" id="khV-cZ-Hsh"/>
@@ -72,10 +72,10 @@
                                     <constraint firstAttribute="trailing" secondItem="uPS-Yh-Ujr" secondAttribute="trailing" id="y9i-FH-Tgi"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" ambiguous="YES" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YPS-Tp-PVu" userLabel="HeaderView">
+                            <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YPS-Tp-PVu" userLabel="HeaderView">
                                 <rect key="frame" x="0.0" y="84" width="414" height="138"/>
                                 <subviews>
-                                    <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9st-wg-KEa" userLabel="HeaderImage">
+                                    <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9st-wg-KEa" userLabel="HeaderImage">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="138"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </imageView>
@@ -165,7 +165,7 @@
                                         </constraints>
                                     </imageView>
                                     <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="RAM-33-HiP">
-                                        <rect key="frame" x="188.66666666666666" y="50.666666666666671" width="37" height="37"/>
+                                        <rect key="frame" x="188.66666666666666" y="50.666666666666657" width="37" height="37"/>
                                         <color key="tintColor" red="0.86923474069999995" green="0.012778783219999999" blue="0.00083617179190000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </activityIndicatorView>
@@ -191,10 +191,10 @@
                                     <constraint firstItem="RAM-33-HiP" firstAttribute="centerX" secondItem="YPS-Tp-PVu" secondAttribute="centerX" id="yYZ-Eb-lTp"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9wh-i1-2Qp" userLabel="ContentView">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9wh-i1-2Qp" userLabel="ContentView">
                                 <rect key="frame" x="0.0" y="222" width="414" height="590"/>
                                 <subviews>
-                                    <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zdw-QN-Ye3" userLabel="ContentImage">
+                                    <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Zdw-QN-Ye3" userLabel="ContentImage">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="590"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </imageView>
@@ -240,11 +240,11 @@
                                             </collectionViewCell>
                                         </cells>
                                     </collectionView>
-                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="J9V-JR-501" userLabel="LowerPartitionView">
-                                        <rect key="frame" x="0.0" y="350" width="414" height="128"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J9V-JR-501" userLabel="LowerPartitionView">
+                                        <rect key="frame" x="0.0" y="246" width="414" height="344"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wfP-tD-SfI" userLabel="StatsView">
-                                                <rect key="frame" x="104" y="34" width="206" height="60"/>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wfP-tD-SfI" userLabel="StatsView">
+                                                <rect key="frame" x="104" y="140" width="206" height="64"/>
                                                 <subviews>
                                                     <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8Xp-JA-KTW">
                                                         <rect key="frame" x="0.0" y="0.0" width="206" height="64"/>
@@ -361,10 +361,11 @@
                             <constraint firstItem="YPS-Tp-PVu" firstAttribute="top" secondItem="eq3-nU-4ur" secondAttribute="bottom" id="AXf-pk-0sc"/>
                             <constraint firstItem="Hog-c1-J9t" firstAttribute="bottom" secondItem="lR1-2A-YPc" secondAttribute="bottom" id="O5I-dU-VpA"/>
                             <constraint firstItem="9wh-i1-2Qp" firstAttribute="trailing" secondItem="Hog-c1-J9t" secondAttribute="trailing" id="TRi-HR-o4U"/>
+                            <constraint firstItem="eq3-nU-4ur" firstAttribute="top" secondItem="5B6-k7-X3H" secondAttribute="bottom" id="WwL-I8-xSe"/>
                             <constraint firstItem="YPS-Tp-PVu" firstAttribute="leading" secondItem="Hog-c1-J9t" secondAttribute="leading" id="aLS-2n-5sf"/>
                             <constraint firstItem="eq3-nU-4ur" firstAttribute="trailing" secondItem="Hog-c1-J9t" secondAttribute="trailing" id="bQH-qw-VBE"/>
                             <constraint firstItem="lR1-2A-YPc" firstAttribute="top" secondItem="9wh-i1-2Qp" secondAttribute="bottom" id="bar-yo-o0V"/>
-                            <constraint firstItem="eq3-nU-4ur" firstAttribute="top" secondItem="5B6-k7-X3H" secondAttribute="bottom" id="dTL-he-YCd"/>
+                            <constraint firstItem="eq3-nU-4ur" firstAttribute="top" secondItem="Hog-c1-J9t" secondAttribute="top" id="dTL-he-YCd"/>
                             <constraint firstItem="5B6-k7-X3H" firstAttribute="leading" secondItem="9gv-Ja-N4g" secondAttribute="leading" id="edw-BP-l9W"/>
                             <constraint firstItem="lR1-2A-YPc" firstAttribute="trailing" secondItem="Hog-c1-J9t" secondAttribute="trailing" id="eer-tD-N6w"/>
                             <constraint firstItem="YPS-Tp-PVu" firstAttribute="trailing" secondItem="Hog-c1-J9t" secondAttribute="trailing" id="fbH-F6-TwX"/>

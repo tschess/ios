@@ -124,15 +124,14 @@ class Snapshot: UIViewController, UICollectionViewDataSource, UICollectionViewDe
     private func assignCellBackgroundColor(indexPath: IndexPath) -> UIColor {
         if (indexPath.row % 2 == 0) {
             if ((indexPath.row / 8) % 2 == 0) {
-                return UIColor.brown
-            } else {
-                return  UIColor.purple
+                return UIColor.purple
             }
+            return UIColor.brown
         }
         if ((indexPath.row / 8) % 2 == 0) {
-            return UIColor.purple
+            return UIColor.brown
         }
-        return  UIColor.brown
+        return UIColor.purple
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

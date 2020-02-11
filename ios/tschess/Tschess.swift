@@ -370,10 +370,8 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     private func evalCheckMate() {
         let kingCoord: [Int] = CheckCheck().kingCoordinate(affiliation: self.gameTschess!.turn, state: self.tschessElementMatrix!)
         let mate: Bool = CheckCheck().mate(king: kingCoord, state: self.tschessElementMatrix!)
-        
         if(mate){
-            print("FUCK x FUCK x FUCK")
-            
+            //print("FUCK x FUCK x FUCK")
             UpdateMate().execute(id: self.gameTschess!.id) { (success) in
                 if(!success){
                     //error
