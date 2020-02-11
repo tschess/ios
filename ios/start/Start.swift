@@ -18,7 +18,41 @@ class Start: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var buttonWidthLogin: NSLayoutConstraint!
     @IBOutlet weak var buttonWidthCreate: NSLayoutConstraint!
     
-    @IBAction func createButtonClick(_ sender: UIButton) {}
+    @IBAction func createButtonClick(_ sender: UIButton) {
+        
+        self.usernameTextString = usernameTextField.text!
+        self.passwordTextString = passwordTextField.text!
+        
+        self.dismissKeyboard()
+        self.activityIndicator.isHidden = false
+        self.activityIndicator.startAnimating()
+        self.buttonLogin.isHidden = true
+        self.buttonCreate.isHidden = true
+        self.usernameTextField.isHidden = true
+        self.passwordTextField.isHidden = true
+        
+        let deviceId = UIDevice.current.identifierForVendor?.uuidString
+        
+        let requestPayload = [
+            "username": usernameTextString!,
+            "password": passwordTextString!,
+            "device": deviceId!
+        ]
+        
+        RequestCreate().execute(requestPayload: requestPayload) { (player) in
+            if let player = player {
+                DispatchQueue.main.async {
+                    let storyboard: UIStoryboard = UIStoryboard(name: "Home", bundle: nil)
+                    let viewController = storyboard.instantiateViewController(withIdentifier: "Home") as! Home
+                    viewController.setPlayer(player: player)
+                    UIApplication.shared.keyWindow?.rootViewController = viewController
+                    return
+                }
+            }
+            
+        }
+        
+    }
     
     //MARK: Constant
     let DATE_TIME: DateTime = DateTime()
@@ -73,7 +107,7 @@ class Start: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        
         self.activityIndicator.isHidden = true
         self.testTaskLabel.isHidden = true
         
@@ -178,7 +212,7 @@ class Start: UIViewController, UITextFieldDelegate {
             return
         }
         if(self.testTaskCounter == 2){
-        print(" - testTaskCounter: \(testTaskCounter)")
+            print(" - testTaskCounter: \(testTaskCounter)")
             let STATE = [[""]]
             let TURN = "WHITE"
             let REQUEST: [String: Any] = ["state": STATE, "turn": TURN]
@@ -211,7 +245,7 @@ class Start: UIViewController, UITextFieldDelegate {
             return
         }
         if(self.testTaskCounter == 4){
-           let STATE = [[""]]
+            let STATE = [[""]]
             let TURN = "BLACK"
             let REQUEST: [String: Any] = ["state": STATE, "turn": TURN]
             RequestTest().execute(requestPayload: REQUEST) { (game) in

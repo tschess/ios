@@ -1,52 +1,49 @@
 //
-//  UpdatePhoto.swift
+//  RequestCreate.swift
 //  ios
 //
-//  Created by Matthew on 2/5/20.
+//  Created by Matthew on 2/11/20.
 //  Copyright © 2020 bahlsenwitz. All rights reserved.
 //
 
 import Foundation
 
-class UpdatePhoto {
+class RequestCreate {
     
-    func execute(requestPayload: [String: Any], completion: @escaping (Error?) -> Void) {
-        
-        //print("UpdatePhoto - requestPayload: \(requestPayload)")
-        
-        let url = URL(string: "http://\(ServerAddress().IP):8080/player/avatar")!
+    func execute(requestPayload: [String: String], completion: @escaping (EntityPlayer?) -> Void) {
+        let url = URL(string: "http://\(ServerAddress().IP):8080/player/create")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         do {
             request.httpBody = try JSONSerialization.data(withJSONObject: requestPayload, options: .prettyPrinted)
-        } catch let error {
-            print(error.localizedDescription)
-            completion(error)
+        } catch _ {
+            completion(nil)
         }
         let session = URLSession.shared
         let task = session.dataTask(with: request, completionHandler: { data, response, error in
             guard error == nil else {
-                completion(error)
+                completion(nil)
                 return
             }
             guard let data = data else {
-                completion(NSError(domain: "dataNilError", code: -100001, userInfo: nil))
+                completion(nil)
                 return
             }
             do {
                 guard let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any] else {
-                    completion(NSError(domain: "invalidJSONTypeError", code: -100009, userInfo: nil))
+                    completion(nil)
                     return
                 }
                 
-                //print(json)
-              
-                completion(nil)
+                
+                let player: EntityPlayer = ParsePlayer().execute(json: json)
+                completion(player)
+                
             } catch let error {
-                print(error.localizedDescription)
-                completion(error)
+               
+                completion(nil)
             }
         })
         task.resume()
