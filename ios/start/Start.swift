@@ -83,19 +83,19 @@ class Start: UIViewController, UITextFieldDelegate {
         self.usernameTextString = usernameTextField.text!
         self.passwordTextString = passwordTextField.text!
         
-        if(usernameTextString!.isAlphanumeric && !passwordTextString!.isAlphanumeric){
-            DispatchQueue.main.async {
-                let storyboard: UIStoryboard = UIStoryboard(name: "Invalid", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "Invalid") as! ComponentStart
-                self.present(viewController, animated: true, completion: nil)
-            }
-            return
-        }
         if(!usernameTextString!.isAlphanumeric && !passwordTextString!.isAlphanumeric){
             DispatchQueue.main.async {
                 let storyboard: UIStoryboard = UIStoryboard(name: "Create", bundle: nil)
                 let viewController = storyboard.instantiateViewController(withIdentifier: "Create") as! Create
                 UIApplication.shared.keyWindow?.rootViewController = viewController
+            }
+            return
+        }
+        if(!usernameTextString!.isAlphanumeric || !passwordTextString!.isAlphanumeric){
+            DispatchQueue.main.async {
+                let storyboard: UIStoryboard = UIStoryboard(name: "Invalid", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "Invalid") as! ComponentStart
+                self.present(viewController, animated: true, completion: nil)
             }
             return
         }
