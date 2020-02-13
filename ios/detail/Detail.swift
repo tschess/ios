@@ -267,32 +267,16 @@ class Detail: UIViewController, UITabBarDelegate, UITextViewDelegate {
         DispatchQueue.main.async {
             switch self.skin!.getName() {
             case "hyperion":
-                let storyboard: UIStoryboard = UIStoryboard(name: "Snapshot", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "Snapshot") as! Snapshot
-                viewController.setGame(game: game)
-                viewController.setPlayer(player: self.player!)
-                self.present(viewController, animated: false, completion: nil)
+                SelectorSnapshot().snapshot(skin: "HYPERION", playerSelf: self.player!, game: game, presentor: self)
                 return
             case "calypso":
-                let storyboard: UIStoryboard = UIStoryboard(name: "Snapshot", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "Snapshot") as! Snapshot
-                viewController.setGame(game: game)
-                viewController.setPlayer(player: self.player!)
-                self.present(viewController, animated: false, completion: nil)
+                SelectorSnapshot().snapshot(skin: "CALYPSO", playerSelf: self.player!, game: game, presentor: self)
                 return
             case "neptune":
-                let storyboard: UIStoryboard = UIStoryboard(name: "Snapshot", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "Snapshot") as! Snapshot
-                viewController.setGame(game: game)
-                viewController.setPlayer(player: self.player!)
-                self.present(viewController, animated: false, completion: nil)
+                SelectorSnapshot().snapshot(skin: "NEPTUNE", playerSelf: self.player!, game: game, presentor: self)
                 return
             case "iapetus":
-                let storyboard: UIStoryboard = UIStoryboard(name: "Snapshot", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "Snapshot") as! Snapshot
-                viewController.setGame(game: game)
-                viewController.setPlayer(player: self.player!)
-                self.present(viewController, animated: false, completion: nil)
+                SelectorSnapshot().snapshot(skin: "IAPETUS", playerSelf: self.player!, game: game, presentor: self)
                 return
             default:
                 return

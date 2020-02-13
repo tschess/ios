@@ -162,8 +162,8 @@
 		B7BE12C423EB6B9300ADA499 /* TransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE12C323EB6B9300ADA499 /* TransitioningDelegate.swift */; };
 		B7BE12C723EB70A900ADA499 /* Info.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE12C623EB70A900ADA499 /* Info.swift */; };
 		B7BE12CA23EB70E900ADA499 /* Info.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7BE12C923EB70E900ADA499 /* Info.storyboard */; };
-		B7CA12C923F57ECE00569805 /* z.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7CA12C823F57ECE00569805 /* z.storyboard */; };
 		B7CA12CB23F5870000569805 /* SelectorTschess.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7CA12CA23F5870000569805 /* SelectorTschess.swift */; };
+		B7CA12CD23F5903000569805 /* SelectorSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7CA12CC23F5903000569805 /* SelectorSnapshot.swift */; };
 		B7CB62F6237BB10800E50204 /* Start.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7CB62F5237BB10800E50204 /* Start.storyboard */; };
 		B7E6C93023EE1FBB009711B8 /* RequestTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E6C92F23EE1FBB009711B8 /* RequestTest.swift */; };
 		B7ED646423F4D9D400292FBC /* Create.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7ED646323F4D9D400292FBC /* Create.storyboard */; };
@@ -360,8 +360,8 @@
 		B7BE12C323EB6B9300ADA499 /* TransitioningDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitioningDelegate.swift; sourceTree = "<group>"; };
 		B7BE12C623EB70A900ADA499 /* Info.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Info.swift; sourceTree = "<group>"; };
 		B7BE12C923EB70E900ADA499 /* Info.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Info.storyboard; sourceTree = "<group>"; };
-		B7CA12C823F57ECE00569805 /* z.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = z.storyboard; sourceTree = "<group>"; };
 		B7CA12CA23F5870000569805 /* SelectorTschess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectorTschess.swift; sourceTree = "<group>"; };
+		B7CA12CC23F5903000569805 /* SelectorSnapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectorSnapshot.swift; sourceTree = "<group>"; };
 		B7CB62F5237BB10800E50204 /* Start.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Start.storyboard; sourceTree = "<group>"; };
 		B7E6C92F23EE1FBB009711B8 /* RequestTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestTest.swift; sourceTree = "<group>"; };
 		B7ED646323F4D9D400292FBC /* Create.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Create.storyboard; sourceTree = "<group>"; };
@@ -696,6 +696,7 @@
 				B768471423F535E300F55D4A /* variant */,
 				B7BE117023EA924900ADA499 /* storyboard */,
 				B7BE116E23EA91CD00ADA499 /* Snapshot.swift */,
+				B7CA12CC23F5903000569805 /* SelectorSnapshot.swift */,
 			);
 			path = snapshot;
 			sourceTree = "<group>";
@@ -1255,7 +1256,6 @@
 				B768473423F54BFE00F55D4A /* hTschess.storyboard */,
 				B768473623F54C3700F55D4A /* cTschess.storyboard */,
 				B768473823F54C7000F55D4A /* nTschess.storyboard */,
-				B7CA12C823F57ECE00569805 /* z.storyboard */,
 				B7CA12CA23F5870000569805 /* SelectorTschess.swift */,
 			);
 			path = storyboard;
@@ -1561,7 +1561,6 @@
 				B7BE126B23EB061D00ADA499 /* Skins.storyboard in Resources */,
 				B768470723F4FAD400F55D4A /* Invalid.storyboard in Resources */,
 				B7BE122523EAD93900ADA499 /* Historic.storyboard in Resources */,
-				B7CA12C923F57ECE00569805 /* z.storyboard in Resources */,
 				B768473523F54BFE00F55D4A /* hTschess.storyboard in Resources */,
 				B7BE121623EAD7E700ADA499 /* Init.storyboard in Resources */,
 				B768472623F5427800F55D4A /* Neptune.storyboard in Resources */,
@@ -1646,6 +1645,7 @@
 			files = (
 				B7BE12B323EB0D6900ADA499 /* PawnOffense.swift in Sources */,
 				B7BE12A323EB0BB800ADA499 /* Passant.swift in Sources */,
+				B7CA12CD23F5903000569805 /* SelectorSnapshot.swift in Sources */,
 				B7BE128123EB085A00ADA499 /* Scanner.swift in Sources */,
 				B7BE11A423EA972D00ADA499 /* Diagonal.swift in Sources */,
 				B7BE11C023EA9E3D00ADA499 /* PawnWhite.swift in Sources */,

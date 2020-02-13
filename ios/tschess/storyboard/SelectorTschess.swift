@@ -10,8 +10,6 @@ import UIKit
 
 class SelectorTschess {
     
-    //
-    
     private func getSkin(username: String, game: EntityGame) -> String {
         if(game.white.username == username){
             return game.white_skin

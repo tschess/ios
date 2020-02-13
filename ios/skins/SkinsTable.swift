@@ -10,7 +10,7 @@ import UIKit
 
 class SkinsTable: UITableViewController {
     
-    var skinList: Array<EntitySkin>?
+    var skinList: [EntitySkin]
     
     required init?(coder aDecoder: NSCoder) {
         
@@ -32,7 +32,7 @@ class SkinsTable: UITableViewController {
             backImage: UIImage(named: "iapetus"),
             backAlpha: 0.85)
         
-        self.skinList = Array(arrayLiteral: iapetus, calypso, hyperion, neptune)
+        self.skinList = [iapetus, calypso, hyperion, neptune]
         
         super.init(coder: aDecoder)
     }
@@ -53,21 +53,21 @@ class SkinsTable: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return skinList!.count
+        return skinList.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let skinTableCell = tableView.dequeueReusableCell(withIdentifier: "SkinsCell", for: indexPath) as! SkinsCell
-        skinTableCell.cellNameLabel.text = self.skinList![indexPath.row].getName()
+        skinTableCell.cellNameLabel.text = self.skinList[indexPath.row].getName()
         
-        skinTableCell.cellForegroundView.backgroundColor = self.skinList![indexPath.row].getForeColor()
-        skinTableCell.cellForegroundView.alpha = self.skinList![indexPath.row].getForeAlpha()
-        let foreImage = self.skinList![indexPath.row].getForeImage()
+        skinTableCell.cellForegroundView.backgroundColor = self.skinList[indexPath.row].getForeColor()
+        skinTableCell.cellForegroundView.alpha = self.skinList[indexPath.row].getForeAlpha()
+        let foreImage = self.skinList[indexPath.row].getForeImage()
         skinTableCell.cellForegroundImage.image = foreImage
         
-        skinTableCell.cellBackgroundView.backgroundColor = self.skinList![indexPath.row].getBackColor()
-        skinTableCell.cellBackgroundView.alpha = self.skinList![indexPath.row].getBackAlpha()
-        let backImage = self.skinList![indexPath.row].getBackImage()
+        skinTableCell.cellBackgroundView.backgroundColor = self.skinList[indexPath.row].getBackColor()
+        skinTableCell.cellBackgroundView.alpha = self.skinList[indexPath.row].getBackAlpha()
+        let backImage = self.skinList[indexPath.row].getBackImage()
         skinTableCell.cellBackgroundImage.image = backImage
         
         return skinTableCell
@@ -76,7 +76,9 @@ class SkinsTable: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        let skinInfoSelectionDictionary = ["skin_selection": self.skinList![indexPath.row]]
+        print("self.skinList[indexPath.row]: \(self.skinList[indexPath.row].name)")
+        
+        let skinInfoSelectionDictionary = ["skin_selection": self.skinList[indexPath.row]]
         NotificationCenter.default.post(
             name: NSNotification.Name(rawValue: "SkinSelection"),
             object: nil,

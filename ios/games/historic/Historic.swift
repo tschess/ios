@@ -90,21 +90,9 @@ class Historic: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate 
         let gameMenuSelectionIndex = notification.userInfo!["historic_selection"] as! Int
         let game = self.historicTable!.getGameMenuTableList()[gameMenuSelectionIndex]
         
-        //Iapetus
-        //Calypso
-        //Hyperion
-        //Neptune
+        let skin: String = SelectorSnapshot().getSkinGame(username: self.playerSelf!.username, game: game)
+        SelectorSnapshot().snapshot(skin: skin, playerSelf: self.playerSelf!, game: game, presentor: self)
         
-        //        let storyboard: UIStoryboard = UIStoryboard(name: "Snapshot", bundle: nil)
-        //        let viewController = storyboard.instantiateViewController(withIdentifier: "Snapshot") as! Snapshot
-        //        viewController.setGame(game: game)
-        //        viewController.setPlayer(player: self.playerSelf!)
-        //        self.present(viewController, animated: false, completion: nil)
-        let storyboard: UIStoryboard = UIStoryboard(name: "Neptune", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "Neptune") as! Snapshot
-        viewController.setGame(game: game)
-        viewController.setPlayer(player: self.playerSelf!)
-        self.present(viewController, animated: false, completion: nil)
     }
     
     @IBAction func backButtonClick(_ sender: Any) {
