@@ -31,18 +31,23 @@ class Eth: UIViewController, UITabBarDelegate, UITextFieldDelegate { //force peo
         }
     }
     
-    @IBOutlet weak var handleTextField: UITextField!
-    @IBOutlet weak var handleImageView: UIImageView!
-    var handle: String?
+    //@IBOutlet weak var handleTextField: UITextField!
+    //@IBOutlet weak var handleImageView: UIImageView!
+    //var handle: String?
     
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var addressImageView: UIImageView!
     var address: String?
     
-    @IBOutlet weak var nameTextField: UITextField!
-    @IBOutlet weak var nameImageView: UIImageView!
-    var name: String?
     
+    
+    @IBOutlet weak var nameTextField: UITextField! //username
+       @IBOutlet weak var nameImageView: UIImageView!
+       var name: String?
+       
+       @IBOutlet weak var surnameTextField: UITextField! //name
+       @IBOutlet weak var surnameImageView: UIImageView!
+       var surname: String?
    
     
     @IBOutlet weak var emailTextField: UITextField!
@@ -86,33 +91,33 @@ class Eth: UIViewController, UITabBarDelegate, UITextFieldDelegate { //force peo
         
         self.tabBarMenu.delegate = self
         
-        self.handleTextField.delegate = self
-        self.handleTextField.attributedPlaceholder = NSAttributedString(
+        self.nameTextField.delegate = self
+        self.nameTextField.attributedPlaceholder = NSAttributedString(
             string: self.player!.username,
             attributes: [
-                NSAttributedString.Key.foregroundColor: UIColor.white
+                NSAttributedString.Key.foregroundColor: UIColor.black
         ])
-        self.handleTextField.isUserInteractionEnabled = false
+        self.nameTextField.isUserInteractionEnabled = false
         
-        self.nameTextField.delegate = self
+        self.surnameTextField.delegate = self
        
         self.emailTextField.delegate = self
-        self.nameTextField.attributedPlaceholder = NSAttributedString(
-            string: "name",
-            attributes: [
-                NSAttributedString.Key.foregroundColor: UIColor.lightGray
-        ])
+//        self.surnameTextField.attributedPlaceholder = NSAttributedString(
+//            string: "name",
+//            attributes: [
+//                NSAttributedString.Key.foregroundColor: UIColor.lightGray
+//        ])
         if #available(iOS 13.0, *) {
             let image = UIImage(systemName: "xmark")! //checkmark
-            self.nameImageView.image = image
-            self.nameImageView.tintColor = .red
+            self.surnameImageView.image = image
+            self.surnameImageView.tintColor = .red
         }
         
-        self.emailTextField.attributedPlaceholder = NSAttributedString(
-            string: "email",
-            attributes: [
-                NSAttributedString.Key.foregroundColor: UIColor.lightGray
-        ])
+//        self.emailTextField.attributedPlaceholder = NSAttributedString(
+//            string: "email",
+//            attributes: [
+//                NSAttributedString.Key.foregroundColor: UIColor.lightGray
+//        ])
         if #available(iOS 13.0, *) {
             let image = UIImage(systemName: "xmark")!
             self.emailImageView.image = image
