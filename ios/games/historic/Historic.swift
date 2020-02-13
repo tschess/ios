@@ -93,14 +93,15 @@ class Historic: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate 
         //Iapetus
         //Calypso
         //Hyperion
+        //Neptune
         
         //        let storyboard: UIStoryboard = UIStoryboard(name: "Snapshot", bundle: nil)
         //        let viewController = storyboard.instantiateViewController(withIdentifier: "Snapshot") as! Snapshot
         //        viewController.setGame(game: game)
         //        viewController.setPlayer(player: self.playerSelf!)
         //        self.present(viewController, animated: false, completion: nil)
-        let storyboard: UIStoryboard = UIStoryboard(name: "Hyperion", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "Hyperion") as! Snapshot
+        let storyboard: UIStoryboard = UIStoryboard(name: "Neptune", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "Neptune") as! Snapshot
         viewController.setGame(game: game)
         viewController.setPlayer(player: self.playerSelf!)
         self.present(viewController, animated: false, completion: nil)

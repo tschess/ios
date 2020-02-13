@@ -26,6 +26,7 @@
 		B768471A23F53A0200F55D4A /* Iapetus.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B768471923F53A0200F55D4A /* Iapetus.storyboard */; };
 		B768472023F53AA400F55D4A /* Calypso.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B768471F23F53AA400F55D4A /* Calypso.storyboard */; };
 		B768472323F53E7500F55D4A /* Hyperion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B768472223F53E7500F55D4A /* Hyperion.storyboard */; };
+		B768472623F5427800F55D4A /* Neptune.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B768472523F5427800F55D4A /* Neptune.storyboard */; };
 		B771364E23F1C118007F0962 /* UpdateCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = B771364D23F1C118007F0962 /* UpdateCheck.swift */; };
 		B771365223F1D5CF007F0962 /* MovementKing.swift in Sources */ = {isa = PBXBuildFile; fileRef = B771365123F1D5CF007F0962 /* MovementKing.swift */; };
 		B771365423F222AF007F0962 /* UpdateMate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B771365323F222AF007F0962 /* UpdateMate.swift */; };
@@ -212,6 +213,7 @@
 		B768471923F53A0200F55D4A /* Iapetus.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Iapetus.storyboard; sourceTree = "<group>"; };
 		B768471F23F53AA400F55D4A /* Calypso.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Calypso.storyboard; sourceTree = "<group>"; };
 		B768472223F53E7500F55D4A /* Hyperion.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Hyperion.storyboard; sourceTree = "<group>"; };
+		B768472523F5427800F55D4A /* Neptune.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Neptune.storyboard; sourceTree = "<group>"; };
 		B771364D23F1C118007F0962 /* UpdateCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateCheck.swift; sourceTree = "<group>"; };
 		B771365123F1D5CF007F0962 /* MovementKing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovementKing.swift; sourceTree = "<group>"; };
 		B771365323F222AF007F0962 /* UpdateMate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateMate.swift; sourceTree = "<group>"; };
@@ -528,6 +530,7 @@
 		B768471D23F53A7000F55D4A /* neptune */ = {
 			isa = PBXGroup;
 			children = (
+				B768472423F5426500F55D4A /* storyboard */,
 			);
 			path = neptune;
 			sourceTree = "<group>";
@@ -544,6 +547,14 @@
 			isa = PBXGroup;
 			children = (
 				B768472223F53E7500F55D4A /* Hyperion.storyboard */,
+			);
+			path = storyboard;
+			sourceTree = "<group>";
+		};
+		B768472423F5426500F55D4A /* storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				B768472523F5427800F55D4A /* Neptune.storyboard */,
 			);
 			path = storyboard;
 			sourceTree = "<group>";
@@ -1532,6 +1543,7 @@
 				B768470723F4FAD400F55D4A /* Invalid.storyboard in Resources */,
 				B7BE122523EAD93900ADA499 /* Historic.storyboard in Resources */,
 				B7BE121623EAD7E700ADA499 /* Init.storyboard in Resources */,
+				B768472623F5427800F55D4A /* Neptune.storyboard in Resources */,
 				B7BE12CA23EB70E900ADA499 /* Info.storyboard in Resources */,
 				B7BE127B23EB07BE00ADA499 /* Eth.storyboard in Resources */,
 				B7ED646423F4D9D400292FBC /* Create.storyboard in Resources */,
