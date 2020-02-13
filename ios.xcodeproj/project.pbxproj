@@ -28,6 +28,9 @@
 		B768472323F53E7500F55D4A /* Hyperion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B768472223F53E7500F55D4A /* Hyperion.storyboard */; };
 		B768472623F5427800F55D4A /* Neptune.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B768472523F5427800F55D4A /* Neptune.storyboard */; };
 		B768472923F5465C00F55D4A /* nTschess.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B768472823F5465C00F55D4A /* nTschess.storyboard */; };
+		B768472B23F548B200F55D4A /* cTschess.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B768472A23F548B200F55D4A /* cTschess.storyboard */; };
+		B768472D23F548C400F55D4A /* iTschess.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B768472C23F548C400F55D4A /* iTschess.storyboard */; };
+		B768472F23F548D800F55D4A /* hTschess.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B768472E23F548D800F55D4A /* hTschess.storyboard */; };
 		B771364E23F1C118007F0962 /* UpdateCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = B771364D23F1C118007F0962 /* UpdateCheck.swift */; };
 		B771365223F1D5CF007F0962 /* MovementKing.swift in Sources */ = {isa = PBXBuildFile; fileRef = B771365123F1D5CF007F0962 /* MovementKing.swift */; };
 		B771365423F222AF007F0962 /* UpdateMate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B771365323F222AF007F0962 /* UpdateMate.swift */; };
@@ -216,6 +219,9 @@
 		B768472223F53E7500F55D4A /* Hyperion.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Hyperion.storyboard; sourceTree = "<group>"; };
 		B768472523F5427800F55D4A /* Neptune.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Neptune.storyboard; sourceTree = "<group>"; };
 		B768472823F5465C00F55D4A /* nTschess.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = nTschess.storyboard; sourceTree = "<group>"; };
+		B768472A23F548B200F55D4A /* cTschess.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = cTschess.storyboard; sourceTree = "<group>"; };
+		B768472C23F548C400F55D4A /* iTschess.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = iTschess.storyboard; sourceTree = "<group>"; };
+		B768472E23F548D800F55D4A /* hTschess.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = hTschess.storyboard; sourceTree = "<group>"; };
 		B771364D23F1C118007F0962 /* UpdateCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateCheck.swift; sourceTree = "<group>"; };
 		B771365123F1D5CF007F0962 /* MovementKing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovementKing.swift; sourceTree = "<group>"; };
 		B771365323F222AF007F0962 /* UpdateMate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateMate.swift; sourceTree = "<group>"; };
@@ -565,6 +571,9 @@
 			isa = PBXGroup;
 			children = (
 				B768472823F5465C00F55D4A /* nTschess.storyboard */,
+				B768472A23F548B200F55D4A /* cTschess.storyboard */,
+				B768472C23F548C400F55D4A /* iTschess.storyboard */,
+				B768472E23F548D800F55D4A /* hTschess.storyboard */,
 			);
 			path = skins;
 			sourceTree = "<group>";
@@ -1535,6 +1544,7 @@
 				B7BE12A523EB0BF700ADA499 /* Promotion.storyboard in Resources */,
 				B7BE123E23EB00E200ADA499 /* Challenge.storyboard in Resources */,
 				B7BE122923EAD95600ADA499 /* Actual.storyboard in Resources */,
+				B768472F23F548D800F55D4A /* hTschess.storyboard in Resources */,
 				B787C73122E970DD009C94F7 /* Assets.xcassets in Resources */,
 				B768472023F53AA400F55D4A /* Calypso.storyboard in Resources */,
 				B768471A23F53A0200F55D4A /* Iapetus.storyboard in Resources */,
@@ -1542,6 +1552,7 @@
 				B7BE11EB23EAC66600ADA499 /* Play.storyboard in Resources */,
 				B7BE128A23EB095600ADA499 /* Tschess.storyboard in Resources */,
 				B7BE124323EB015700ADA499 /* Ack.storyboard in Resources */,
+				B768472B23F548B200F55D4A /* cTschess.storyboard in Resources */,
 				B7BE129723EB0A8B00ADA499 /* Evaluate.storyboard in Resources */,
 				B7BE121A23EAD84300ADA499 /* Config.storyboard in Resources */,
 				B7BE125823EB03C500ADA499 /* Profile.storyboard in Resources */,
@@ -1556,6 +1567,7 @@
 				B7BE121623EAD7E700ADA499 /* Init.storyboard in Resources */,
 				B768472923F5465C00F55D4A /* nTschess.storyboard in Resources */,
 				B768472623F5427800F55D4A /* Neptune.storyboard in Resources */,
+				B768472D23F548C400F55D4A /* iTschess.storyboard in Resources */,
 				B7BE12CA23EB70E900ADA499 /* Info.storyboard in Resources */,
 				B7BE127B23EB07BE00ADA499 /* Eth.storyboard in Resources */,
 				B7ED646423F4D9D400292FBC /* Create.storyboard in Resources */,

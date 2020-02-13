@@ -11,7 +11,7 @@
         <!--Tschess-->
         <scene sceneID="Uso-HT-uji">
             <objects>
-                <viewController storyboardIdentifier="nTschess" useStoryboardIdentifierAsRestorationIdentifier="YES" id="DAE-jB-YvD" customClass="Tschess" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="cTschess" useStoryboardIdentifierAsRestorationIdentifier="YES" id="DAE-jB-YvD" customClass="Tschess" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="9gv-Ja-N4g" userLabel="TschessView">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -20,7 +20,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eq3-nU-4ur" userLabel="TitleBackView">
+                            <view alpha="0.90000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eq3-nU-4ur" userLabel="TitleBackView">
                                 <rect key="frame" x="0.0" y="44" width="414" height="40"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5qi-EH-0fj">
@@ -48,7 +48,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="1" green="0.41176470590000003" blue="0.40784313729999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="0qa-yW-Mkf"/>
@@ -108,7 +108,7 @@
                                             <constraint firstAttribute="width" constant="47" id="vGl-q7-bau"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="22"/>
-                                        <color key="textColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="elo:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bSh-Zg-8Q1">
@@ -118,7 +118,7 @@
                                             <constraint firstAttribute="height" constant="30" id="ZaF-Y5-HdV"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="22"/>
-                                        <color key="textColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="28.03.'89" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kJX-GF-1X4">
@@ -138,7 +138,8 @@
                                         <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </activityIndicatorView>
                                 </subviews>
-                                <color key="backgroundColor" red="0.0" green="1" blue="0.34509803919999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="1" green="0.41176470590000003" blue="0.70588235290000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="tq9-Wz-0a6" firstAttribute="leading" secondItem="YPS-Tp-PVu" secondAttribute="leading" constant="8" id="0QT-iG-jwo"/>
                                     <constraint firstItem="YxI-dg-6nx" firstAttribute="top" secondItem="YPS-Tp-PVu" secondAttribute="top" constant="4" id="3my-Rw-wRa"/>
@@ -161,7 +162,7 @@
                                     <constraint firstItem="kJX-GF-1X4" firstAttribute="top" secondItem="7rM-GI-ans" secondAttribute="bottom" constant="4" id="zcW-ee-pra"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9wh-i1-2Qp" userLabel="ContentView">
+                            <view alpha="0.90000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9wh-i1-2Qp" userLabel="ContentView">
                                 <rect key="frame" x="0.0" y="222" width="414" height="590"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="notification_label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9bQ-DV-v2s">
@@ -170,7 +171,7 @@
                                             <constraint firstAttribute="height" constant="30" id="IFE-Ri-6bf"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="22"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="textColor" red="1" green="0.41176470590000003" blue="0.70588235290000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="v4N-X5-tXk" customClass="BoardView" customModule="ios" customModuleProvider="target">
@@ -216,7 +217,7 @@
                                                             <constraint firstAttribute="height" constant="30" id="uFH-Qh-eWv"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="22"/>
-                                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="textColor" red="1" green="0.41176470590000003" blue="0.70588235290000001" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="opponent's move" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aGC-U4-Jbg" userLabel="TurnaryLabel">
@@ -225,11 +226,11 @@
                                                             <constraint firstAttribute="height" constant="30" id="mcF-jm-NlP"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="22"/>
-                                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
-                                                <color key="backgroundColor" red="0.0" green="1" blue="0.34509803921568627" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstItem="aGC-U4-Jbg" firstAttribute="leading" secondItem="wfP-tD-SfI" secondAttribute="leading" id="3lR-aG-hwm"/>
                                                     <constraint firstAttribute="height" constant="60" id="IAw-pJ-Isz"/>
@@ -249,7 +250,7 @@
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" red="1" green="0.41176470588235292" blue="0.40784313725490196" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="J9V-JR-501" secondAttribute="bottom" id="4i2-oZ-bXL"/>
