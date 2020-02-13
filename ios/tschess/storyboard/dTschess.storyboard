@@ -242,6 +242,7 @@
                                             </view>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="wfP-tD-SfI" firstAttribute="centerY" secondItem="J9V-JR-501" secondAttribute="centerY" id="APZ-NI-GhZ"/>
                                             <constraint firstItem="wfP-tD-SfI" firstAttribute="centerX" secondItem="J9V-JR-501" secondAttribute="centerX" id="y63-33-aup"/>
