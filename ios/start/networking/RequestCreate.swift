@@ -36,13 +36,24 @@ class RequestCreate {
                     completion(nil)
                     return
                 }
-                
+                if (json["id"] as? String) == nil {
+                    //print("MIA")
+                    completion(nil)
+                    return
+                    
+                }
+                //print("json: \(json)")
                 
                 let player: EntityPlayer = ParsePlayer().execute(json: json)
                 completion(player)
+                return
+                
+                
+                
+                
                 
             } catch let error {
-               
+                
                 completion(nil)
             }
         })

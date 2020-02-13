@@ -23,30 +23,6 @@
                                     <constraint firstAttribute="height" constant="30" id="evD-ZK-mb5"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="13" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d6V-ci-BVi">
-                                <rect key="frame" x="366" y="814" width="40" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="40" id="AAY-J3-ff3"/>
-                                    <constraint firstAttribute="height" constant="40" id="pn1-SU-bpm"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="30"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" alpha="0.40000000000000002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="13Q-ST-VzR">
-                                <rect key="frame" x="107" y="832" width="200" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="5FK-Mi-q4L"/>
-                                    <constraint firstAttribute="width" constant="200" id="bZc-wb-6Xk"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="22"/>
-                                <state key="normal" title="recover account">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="recoverAccountButtonClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fIH-jq-9ZW"/>
-                                </connections>
-                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="282-SC-i56" userLabel="ContentView">
                                 <rect key="frame" x="0.0" y="52" width="414" height="634"/>
                                 <subviews>
@@ -59,6 +35,20 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yBi-fm-HTo">
+                                        <rect key="frame" x="8" y="0.0" width="406" height="40"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="SMk-iZ-Z4l"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="40"/>
+                                        <state key="normal" title="← ">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="buttonClickBack:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uvz-WW-01D"/>
+                                        </connections>
+                                    </button>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tschess" translatesAutoresizingMaskIntoConstraints="NO" id="1U8-zE-lXb" userLabel="tschessLogo">
                                         <rect key="frame" x="40.666666666666657" y="140" width="333" height="333"/>
                                         <constraints>
@@ -110,7 +100,6 @@
                                                         </state>
                                                         <connections>
                                                             <action selector="buttonClickSubmit:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YZd-ln-EzL"/>
-                                                            <action selector="createButtonClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WSR-vt-v0K"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -144,14 +133,17 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="yBi-fm-HTo" secondAttribute="trailing" id="0ei-Bk-p0R"/>
                                     <constraint firstItem="heM-vS-dHQ" firstAttribute="leading" secondItem="282-SC-i56" secondAttribute="leading" id="3gB-N1-Fj5"/>
                                     <constraint firstItem="1U8-zE-lXb" firstAttribute="top" secondItem="heM-vS-dHQ" secondAttribute="bottom" constant="40" id="CNB-Kb-dFS"/>
                                     <constraint firstAttribute="trailing" secondItem="NyH-VF-R5g" secondAttribute="trailing" id="PNT-LL-388"/>
                                     <constraint firstAttribute="trailing" secondItem="heM-vS-dHQ" secondAttribute="trailing" id="anU-2R-t6m"/>
                                     <constraint firstItem="NyH-VF-R5g" firstAttribute="leading" secondItem="282-SC-i56" secondAttribute="leading" id="c5R-82-aAN"/>
+                                    <constraint firstItem="yBi-fm-HTo" firstAttribute="leading" secondItem="282-SC-i56" secondAttribute="leading" constant="8" id="cBW-hB-OY4"/>
                                     <constraint firstItem="1U8-zE-lXb" firstAttribute="centerX" secondItem="282-SC-i56" secondAttribute="centerX" id="cxu-Tc-78e"/>
                                     <constraint firstAttribute="bottom" secondItem="NyH-VF-R5g" secondAttribute="bottom" id="g4L-hZ-gAL"/>
                                     <constraint firstItem="NyH-VF-R5g" firstAttribute="top" secondItem="1U8-zE-lXb" secondAttribute="bottom" constant="40" id="gag-Kv-jBn"/>
+                                    <constraint firstItem="yBi-fm-HTo" firstAttribute="top" secondItem="282-SC-i56" secondAttribute="top" id="rKD-W5-7kv"/>
                                     <constraint firstItem="heM-vS-dHQ" firstAttribute="top" secondItem="282-SC-i56" secondAttribute="top" id="sIR-AR-QfX"/>
                                 </constraints>
                             </view>
@@ -160,12 +152,8 @@
                         <constraints>
                             <constraint firstItem="282-SC-i56" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="4xb-bn-KLo"/>
                             <constraint firstItem="282-SC-i56" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="67s-2U-vke"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="d6V-ci-BVi" secondAttribute="bottom" constant="8" id="8nL-RC-HE8"/>
                             <constraint firstItem="8th-jg-167" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="A9Z-Ah-sUK"/>
-                            <constraint firstItem="13Q-ST-VzR" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Jin-6E-cmn"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="8th-jg-167" secondAttribute="bottom" constant="8" id="Jzd-8U-M5u"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="d6V-ci-BVi" secondAttribute="trailing" constant="8" id="LRV-5R-Mhs"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="13Q-ST-VzR" secondAttribute="bottom" id="YbP-QY-HXe"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="282-SC-i56" secondAttribute="trailing" id="aey-ld-24Z"/>
                             <constraint firstItem="282-SC-i56" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="snY-Z0-Up7"/>
                             <constraint firstItem="282-SC-i56" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="8" id="xkN-t5-2gS"/>
@@ -174,15 +162,12 @@
                     </view>
                     <connections>
                         <outlet property="activityIndicator" destination="yRs-Oy-ieF" id="b9Y-Gz-W6e"/>
-                        <outlet property="buttonCreate" destination="NUq-7O-dcu" id="mwt-e9-HKR"/>
-                        <outlet property="buttonRecover" destination="13Q-ST-VzR" id="hsG-Wl-uTg"/>
+                        <outlet property="backButton" destination="yBi-fm-HTo" id="Sfm-8D-PN2"/>
                         <outlet property="buttonSubmit" destination="NUq-7O-dcu" id="r8f-IM-F5N"/>
                         <outlet property="contentView" destination="282-SC-i56" id="LAU-wb-gEc"/>
                         <outlet property="logoHeight" destination="AAJ-6H-Mc5" id="0I9-1j-l0S"/>
                         <outlet property="logoWidth" destination="q8V-9P-vgY" id="eqB-a4-OA9"/>
                         <outlet property="passwordTextField" destination="iP2-rm-ezV" id="qvL-MI-C4Z"/>
-                        <outlet property="testTaskImageView" destination="8th-jg-167" id="H5U-bI-dKI"/>
-                        <outlet property="testTaskLabel" destination="d6V-ci-BVi" id="yMq-mh-qtQ"/>
                         <outlet property="titleLabelHeight" destination="s0k-NJ-99C" id="vxw-at-MR8"/>
                         <outlet property="usernameTextField" destination="nRp-yq-OSS" id="sLH-kV-N8W"/>
                     </connections>

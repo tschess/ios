@@ -18,10 +18,8 @@ class Start: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var buttonWidthLogin: NSLayoutConstraint!
     @IBOutlet weak var buttonWidthCreate: NSLayoutConstraint!
     
-    @IBAction func createButtonClick(_ sender: UIButton) {
-        
+    @IBAction func loginButtonClick(_ sender: UIButton) {
         self.dismissKeyboard()
-        
         self.usernameTextString = usernameTextField.text!
         self.passwordTextString = passwordTextField.text!
         
@@ -30,6 +28,74 @@ class Start: UIViewController, UITextFieldDelegate {
                 let storyboard: UIStoryboard = UIStoryboard(name: "Invalid", bundle: nil)
                 let viewController = storyboard.instantiateViewController(withIdentifier: "Invalid") as! ComponentStart
                 self.present(viewController, animated: true, completion: nil)
+            }
+            return
+        }
+        self.activityIndicator.isHidden = false
+        self.activityIndicator.startAnimating()
+        self.buttonLogin.isHidden = true
+        self.buttonCreate.isHidden = true
+        self.usernameTextField.isHidden = true
+        self.passwordTextField.isHidden = true
+        
+        let deviceId = UIDevice.current.identifierForVendor?.uuidString
+        
+        let requestPayload = [
+            "username": usernameTextString!,
+            "password": passwordTextString!,
+            "device": deviceId!
+        ]
+        
+        RequestLogin().execute(requestPayload: requestPayload) { (player) in
+            if let player = player {
+                DispatchQueue.main.async {
+                    let storyboard: UIStoryboard = UIStoryboard(name: "Home", bundle: nil)
+                    let viewController = storyboard.instantiateViewController(withIdentifier: "Home") as! Home
+                    viewController.setPlayer(player: player)
+                    UIApplication.shared.keyWindow?.rootViewController = viewController
+                }
+                return
+            }
+            DispatchQueue.main.async {
+                self.activityIndicator.isHidden = true
+                self.activityIndicator.stopAnimating()
+                self.buttonLogin.isHidden = false
+                self.buttonCreate.isHidden = false
+                self.usernameTextField.isHidden = false
+                self.passwordTextField.isHidden = false
+                self.usernameTextField.text?.removeAll()
+                self.usernameTextField.attributedPlaceholder = NSAttributedString(string: "username",
+                                                                                  attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+                self.passwordTextField.text?.removeAll()
+                self.passwordTextField.attributedPlaceholder = NSAttributedString(string: "password",
+                                                                                  attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+                let storyboard: UIStoryboard = UIStoryboard(name: "Invalid", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "Invalid") as! ComponentStart
+                self.present(viewController, animated: true, completion: nil)
+            }
+        }
+    }
+    
+    
+    @IBAction func createButtonClick(_ sender: UIButton) {
+        
+        self.dismissKeyboard()
+        self.usernameTextString = usernameTextField.text!
+        self.passwordTextString = passwordTextField.text!
+        
+        if(usernameTextString!.isAlphanumeric && !passwordTextString!.isAlphanumeric){
+            DispatchQueue.main.async {
+                let storyboard: UIStoryboard = UIStoryboard(name: "Invalid", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "Invalid") as! ComponentStart
+                self.present(viewController, animated: true, completion: nil)
+            }
+            return
+        }
+        if(!usernameTextString!.isAlphanumeric && !passwordTextString!.isAlphanumeric){
+            DispatchQueue.main.async {
+                let storyboard: UIStoryboard = UIStoryboard(name: "Create", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "Create") as! Create
+                UIApplication.shared.keyWindow?.rootViewController = viewController
             }
             return
         }
@@ -48,7 +114,6 @@ class Start: UIViewController, UITextFieldDelegate {
             "password": passwordTextString!,
             "device": deviceId!
         ]
-        
         RequestCreate().execute(requestPayload: requestPayload) { (player) in
             if let player = player {
                 DispatchQueue.main.async {
@@ -58,6 +123,23 @@ class Start: UIViewController, UITextFieldDelegate {
                     UIApplication.shared.keyWindow?.rootViewController = viewController
                     return
                 }
+            }
+            DispatchQueue.main.async {
+                self.activityIndicator.isHidden = true
+                self.activityIndicator.stopAnimating()
+                self.buttonLogin.isHidden = false
+                self.buttonCreate.isHidden = false
+                self.usernameTextField.isHidden = false
+                self.passwordTextField.isHidden = false
+                self.usernameTextField.text?.removeAll()
+                self.usernameTextField.attributedPlaceholder = NSAttributedString(string: "username",
+                                                                                  attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+                self.passwordTextField.text?.removeAll()
+                self.passwordTextField.attributedPlaceholder = NSAttributedString(string: "password",
+                                                                                  attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+                let storyboard: UIStoryboard = UIStoryboard(name: "Invalid", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "Invalid") as! ComponentStart
+                self.present(viewController, animated: true, completion: nil)
             }
             
         }
@@ -151,40 +233,7 @@ class Start: UIViewController, UITextFieldDelegate {
         return true
     }
     
-    @IBAction func loginButtonClick(_ sender: UIButton) {
-        self.usernameTextString = usernameTextField.text!
-        self.passwordTextString = passwordTextField.text!
-        
-        self.dismissKeyboard()
-        self.activityIndicator.isHidden = false
-        self.activityIndicator.startAnimating()
-        self.buttonLogin.isHidden = true
-        self.buttonCreate.isHidden = true
-        self.usernameTextField.isHidden = true
-        self.passwordTextField.isHidden = true
-        
-        //let updated = DATE_TIME.currentDateString() //this out to happen on the srver only...
-        let deviceId = UIDevice.current.identifierForVendor?.uuidString
-        
-        let requestPayload = [
-            "username": usernameTextString!,
-            "password": passwordTextString!,
-            "device": deviceId!
-        ]
-        
-        RequestLogin().execute(requestPayload: requestPayload) { (player) in
-            if let player = player {
-                DispatchQueue.main.async {
-                    let storyboard: UIStoryboard = UIStoryboard(name: "Home", bundle: nil)
-                    let viewController = storyboard.instantiateViewController(withIdentifier: "Home") as! Home
-                    viewController.setPlayer(player: player)
-                    UIApplication.shared.keyWindow?.rootViewController = viewController
-                    return
-                }
-            }
-            
-        }
-    }
+    
     
     @objc func testTaskExecuter(){
         
