@@ -152,6 +152,11 @@
 		B7BE12CA23EB70E900ADA499 /* Info.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7BE12C923EB70E900ADA499 /* Info.storyboard */; };
 		B7CB62F6237BB10800E50204 /* Start.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7CB62F5237BB10800E50204 /* Start.storyboard */; };
 		B7E6C93023EE1FBB009711B8 /* RequestTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E6C92F23EE1FBB009711B8 /* RequestTest.swift */; };
+		B7ED646423F4D9D400292FBC /* Create.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7ED646323F4D9D400292FBC /* Create.storyboard */; };
+		B7ED646623F4DB4C00292FBC /* Invalid.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7ED646523F4DB4C00292FBC /* Invalid.storyboard */; };
+		B7ED646823F4DC9B00292FBC /* Create.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7ED646723F4DC9B00292FBC /* Create.swift */; };
+		B7ED646A23F4DCA600292FBC /* Invalid.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7ED646923F4DCA600292FBC /* Invalid.swift */; };
+		B7ED646C23F4F58F00292FBC /* Recover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7ED646B23F4F58F00292FBC /* Recover.storyboard */; };
 		B7EF701E23EA28BA00BAF2E2 /* EntityPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7EF701D23EA28BA00BAF2E2 /* EntityPlayer.swift */; };
 		B7EF702123EA28E300BAF2E2 /* EntityGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7EF702023EA28E300BAF2E2 /* EntityGame.swift */; };
 		B7F35E332309F6D6002018F7 /* DateTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F35E322309F6D6002018F7 /* DateTime.swift */; };
@@ -334,6 +339,11 @@
 		B7BE12C923EB70E900ADA499 /* Info.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Info.storyboard; sourceTree = "<group>"; };
 		B7CB62F5237BB10800E50204 /* Start.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Start.storyboard; sourceTree = "<group>"; };
 		B7E6C92F23EE1FBB009711B8 /* RequestTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestTest.swift; sourceTree = "<group>"; };
+		B7ED646323F4D9D400292FBC /* Create.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Create.storyboard; sourceTree = "<group>"; };
+		B7ED646523F4DB4C00292FBC /* Invalid.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Invalid.storyboard; sourceTree = "<group>"; };
+		B7ED646723F4DC9B00292FBC /* Create.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Create.swift; sourceTree = "<group>"; };
+		B7ED646923F4DCA600292FBC /* Invalid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Invalid.swift; sourceTree = "<group>"; };
+		B7ED646B23F4F58F00292FBC /* Recover.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Recover.storyboard; sourceTree = "<group>"; };
 		B7EF701D23EA28BA00BAF2E2 /* EntityPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityPlayer.swift; sourceTree = "<group>"; };
 		B7EF702023EA28E300BAF2E2 /* EntityGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityGame.swift; sourceTree = "<group>"; };
 		B7EF705E23EA48E400BAF2E2 /* ios.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ios.entitlements; sourceTree = "<group>"; };
@@ -407,6 +417,9 @@
 			isa = PBXGroup;
 			children = (
 				B7CB62F5237BB10800E50204 /* Start.storyboard */,
+				B7ED646323F4D9D400292FBC /* Create.storyboard */,
+				B7ED646523F4DB4C00292FBC /* Invalid.storyboard */,
+				B7ED646B23F4F58F00292FBC /* Recover.storyboard */,
 			);
 			path = storyboard;
 			sourceTree = "<group>";
@@ -417,6 +430,8 @@
 				B714BF26237C9410000DD80E /* networking */,
 				B708D0F2236B4EDF00A899F9 /* storyboard */,
 				B708D0E8236B369D00A899F9 /* Start.swift */,
+				B7ED646723F4DC9B00292FBC /* Create.swift */,
+				B7ED646923F4DCA600292FBC /* Invalid.swift */,
 			);
 			path = start;
 			sourceTree = "<group>";
@@ -1414,7 +1429,9 @@
 				B7BE129723EB0A8B00ADA499 /* Evaluate.storyboard in Resources */,
 				B7BE121A23EAD84300ADA499 /* Config.storyboard in Resources */,
 				B7BE125823EB03C500ADA499 /* Profile.storyboard in Resources */,
+				B7ED646C23F4F58F00292FBC /* Recover.storyboard in Resources */,
 				B708D0E7236B366800A899F9 /* LaunchScreen.storyboard in Resources */,
+				B7ED646623F4DB4C00292FBC /* Invalid.storyboard in Resources */,
 				B7CB62F6237BB10800E50204 /* Start.storyboard in Resources */,
 				B7F541C423D51A9D00E89074 /* Home.storyboard in Resources */,
 				B7BE117223EA925E00ADA499 /* Snapshot.storyboard in Resources */,
@@ -1423,6 +1440,7 @@
 				B7BE121623EAD7E700ADA499 /* Init.storyboard in Resources */,
 				B7BE12CA23EB70E900ADA499 /* Info.storyboard in Resources */,
 				B7BE127B23EB07BE00ADA499 /* Eth.storyboard in Resources */,
+				B7ED646423F4D9D400292FBC /* Create.storyboard in Resources */,
 				B7BE11E323EAC25400ADA499 /* Skin.xib in Resources */,
 				B7BE129523EB0A7900ADA499 /* DrawResign.storyboard in Resources */,
 				B7BE11F423EAC94E00ADA499 /* EditSelf.storyboard in Resources */,
@@ -1544,6 +1562,7 @@
 				B7BE123A23EAFBF500ADA499 /* Ack.swift in Sources */,
 				B74136C723DE34A0001B3D60 /* RequestLogin.swift in Sources */,
 				B7BE123423EAE7EC00ADA499 /* HistoricTable.swift in Sources */,
+				B7ED646A23F4DCA600292FBC /* Invalid.swift in Sources */,
 				B7AF787323E0B9DA00BAD8EC /* RequestPage.swift in Sources */,
 				B7BE12AE23EB0CDB00ADA499 /* CheckCheck.swift in Sources */,
 				B745AD3523F353BF00E450EF /* RequestCreate.swift in Sources */,
@@ -1595,6 +1614,7 @@
 				B7BE12B123EB0D3100ADA499 /* KnightOffense.swift in Sources */,
 				B7BE123223EAE35B00ADA499 /* RequestActual.swift in Sources */,
 				B7BE122D23EADC9700ADA499 /* ActualTable.swift in Sources */,
+				B7ED646823F4DC9B00292FBC /* Create.swift in Sources */,
 				B7BE11C923EA9EB700ADA499 /* RookBlack.swift in Sources */,
 				B7BE120723EAD3D200ADA499 /* Amazon.swift in Sources */,
 				B7BE125D23EB042A00ADA499 /* UpdateDevice.swift in Sources */,
@@ -1793,7 +1813,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.998;
+				MARKETING_VERSION = 0.999;
 				PRODUCT_BUNDLE_IDENTIFIER = io.bahlsenwitz.tschess;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1818,7 +1838,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.998;
+				MARKETING_VERSION = 0.999;
 				PRODUCT_BUNDLE_IDENTIFIER = io.bahlsenwitz.tschess;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

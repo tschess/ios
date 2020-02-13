@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Evaluate-->
+        <!--Invalid-->
         <scene sceneID="kCP-qz-f3I">
             <objects>
-                <viewController storyboardIdentifier="Evaluate" modalPresentationStyle="overCurrentContext" id="Rh1-F9-UxD" customClass="Evaluate" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Invalid" modalPresentationStyle="overCurrentContext" id="Rh1-F9-UxD" customClass="Invalid" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="sl4-B8-bJs"/>
                         <viewControllerLayoutGuide type="bottom" id="yxw-7c-7Xt"/>
@@ -20,36 +20,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DIZ-Ol-ZnA" customClass="ThroughView" customModule="ios" customModuleProvider="target">
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DIZ-Ol-ZnA">
                                 <rect key="frame" x="72" y="353" width="270" height="190"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1ZP-x4-Z7S">
-                                        <rect key="frame" x="0.0" y="70" width="270" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="T33-Rn-zbX"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="22"/>
-                                        <state key="normal" title="accept">
-                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="acceptButtonClick:" destination="Rh1-F9-UxD" eventType="touchUpInside" id="CFf-8J-DCP"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uea-th-G1I">
                                         <rect key="frame" x="0.0" y="130" width="270" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="3Tz-rb-jdd"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="22"/>
-                                        <state key="normal" title="reject">
+                                        <state key="normal" title="ok">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
+                                            <action selector="buttonClickOk:" destination="Rh1-F9-UxD" eventType="touchUpInside" id="LW7-fN-RKH"/>
+                                            <action selector="buttonOk:" destination="Rh1-F9-UxD" eventType="touchUpInside" id="Zna-3U-TsX"/>
                                             <action selector="rejectButtonClick:" destination="Rh1-F9-UxD" eventType="touchUpInside" id="tVH-Mp-p8n"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="draw proposal" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HFf-Fl-uWx">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="error" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HFf-Fl-uWx">
                                         <rect key="frame" x="0.0" y="0.0" width="270" height="40"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -59,21 +48,31 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="invalid input. try again." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c6a-AY-KdC">
+                                        <rect key="frame" x="0.0" y="70" width="270" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="22"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.97647058819999999" green="0.97647058819999999" blue="0.97647058819999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="HFf-Fl-uWx" firstAttribute="top" secondItem="DIZ-Ol-ZnA" secondAttribute="top" id="23Z-at-vvf"/>
                                     <constraint firstItem="Uea-th-G1I" firstAttribute="leading" secondItem="DIZ-Ol-ZnA" secondAttribute="leading" id="5UI-lj-VOU"/>
-                                    <constraint firstItem="1ZP-x4-Z7S" firstAttribute="top" secondItem="HFf-Fl-uWx" secondAttribute="bottom" constant="30" id="GcS-tc-cLU"/>
+                                    <constraint firstItem="HFf-Fl-uWx" firstAttribute="top" secondItem="DIZ-Ol-ZnA" secondAttribute="top" id="CXb-9v-J0X"/>
                                     <constraint firstAttribute="height" constant="190" id="Jef-b4-XeZ"/>
                                     <constraint firstAttribute="trailing" secondItem="Uea-th-G1I" secondAttribute="trailing" id="PLi-YG-jjt"/>
-                                    <constraint firstItem="1ZP-x4-Z7S" firstAttribute="leading" secondItem="DIZ-Ol-ZnA" secondAttribute="leading" id="WKJ-p8-xnj"/>
+                                    <constraint firstItem="Uea-th-G1I" firstAttribute="top" secondItem="c6a-AY-KdC" secondAttribute="bottom" constant="30" id="RFU-wo-xcX"/>
+                                    <constraint firstAttribute="bottom" secondItem="Uea-th-G1I" secondAttribute="bottom" constant="30" id="Rwe-mu-F5i"/>
                                     <constraint firstAttribute="width" constant="270" id="YAZ-Ok-Z9p"/>
-                                    <constraint firstAttribute="trailing" secondItem="1ZP-x4-Z7S" secondAttribute="trailing" id="blz-8f-Wws"/>
+                                    <constraint firstItem="c6a-AY-KdC" firstAttribute="top" secondItem="HFf-Fl-uWx" secondAttribute="bottom" constant="30" id="eho-kx-z78"/>
                                     <constraint firstAttribute="trailing" secondItem="HFf-Fl-uWx" secondAttribute="trailing" id="g7i-OF-ayb"/>
-                                    <constraint firstItem="Uea-th-G1I" firstAttribute="top" secondItem="1ZP-x4-Z7S" secondAttribute="bottom" constant="30" id="gvr-He-KOP"/>
+                                    <constraint firstAttribute="trailing" secondItem="HFf-Fl-uWx" secondAttribute="trailing" id="ggK-qg-5mu"/>
+                                    <constraint firstItem="c6a-AY-KdC" firstAttribute="leading" secondItem="DIZ-Ol-ZnA" secondAttribute="leading" id="l6v-YB-yy4"/>
+                                    <constraint firstItem="HFf-Fl-uWx" firstAttribute="leading" secondItem="DIZ-Ol-ZnA" secondAttribute="leading" id="peo-yW-y1b"/>
                                     <constraint firstItem="HFf-Fl-uWx" firstAttribute="leading" secondItem="DIZ-Ol-ZnA" secondAttribute="leading" id="qej-at-R9l"/>
+                                    <constraint firstAttribute="trailing" secondItem="c6a-AY-KdC" secondAttribute="trailing" id="rxw-bB-6fA"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -82,8 +81,7 @@
                         <viewLayoutGuide key="safeArea" id="c6a-9T-uI7"/>
                     </view>
                     <connections>
-                        <outlet property="acceptButton" destination="1ZP-x4-Z7S" id="xBx-4B-een"/>
-                        <outlet property="rejectButton" destination="Uea-th-G1I" id="4Eb-uX-dXO"/>
+                        <outlet property="buttonOk" destination="Uea-th-G1I" id="ueO-JG-eyr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y2s-uX-9TR" userLabel="First Responder" sceneMemberID="firstResponder"/>

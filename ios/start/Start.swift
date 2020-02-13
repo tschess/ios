@@ -54,9 +54,6 @@ class Start: UIViewController, UITextFieldDelegate {
         
     }
     
-    //MARK: Constant
-    let DATE_TIME: DateTime = DateTime()
-    
     //MARK: Layout
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var contentView: UIView!
