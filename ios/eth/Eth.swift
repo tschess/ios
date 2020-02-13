@@ -25,15 +25,15 @@ class Eth: UIViewController, UITabBarDelegate, UITextFieldDelegate { //force peo
             nameTextField.placeholder = ""
             nameImageView.isHidden = true
         }
-        if surnameTextField.isFirstResponder == true {
-            surnameTextField.placeholder = ""
-            surnameImageView.isHidden = true
-        }
         if emailTextField.isFirstResponder == true {
             emailTextField.placeholder = ""
             emailImageView.isHidden = true
         }
     }
+    
+    @IBOutlet weak var handleTextField: UITextField!
+    @IBOutlet weak var handleImageView: UIImageView!
+    var handle: String?
     
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var addressImageView: UIImageView!
@@ -43,13 +43,12 @@ class Eth: UIViewController, UITabBarDelegate, UITextFieldDelegate { //force peo
     @IBOutlet weak var nameImageView: UIImageView!
     var name: String?
     
-    @IBOutlet weak var surnameTextField: UITextField!
-    @IBOutlet weak var surnameImageView: UIImageView!
-    var surname: String?
+   
     
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var emailImageView: UIImageView!
     var email: String?
+    
     
     var scan: Bool?
     
@@ -73,7 +72,7 @@ class Eth: UIViewController, UITabBarDelegate, UITextFieldDelegate { //force peo
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.nameTextField.resignFirstResponder()
-        self.surnameTextField.resignFirstResponder()
+        
         self.emailTextField.resignFirstResponder()
         return true
     }
@@ -87,11 +86,19 @@ class Eth: UIViewController, UITabBarDelegate, UITextFieldDelegate { //force peo
         
         self.tabBarMenu.delegate = self
         
+        self.handleTextField.delegate = self
+        self.handleTextField.attributedPlaceholder = NSAttributedString(
+            string: self.player!.username,
+            attributes: [
+                NSAttributedString.Key.foregroundColor: UIColor.white
+        ])
+        self.handleTextField.isUserInteractionEnabled = false
+        
         self.nameTextField.delegate = self
-        self.surnameTextField.delegate = self
+       
         self.emailTextField.delegate = self
         self.nameTextField.attributedPlaceholder = NSAttributedString(
-            string: "Max",
+            string: "name",
             attributes: [
                 NSAttributedString.Key.foregroundColor: UIColor.lightGray
         ])
@@ -101,19 +108,8 @@ class Eth: UIViewController, UITabBarDelegate, UITextFieldDelegate { //force peo
             self.nameImageView.tintColor = .red
         }
         
-        self.surnameTextField.attributedPlaceholder = NSAttributedString(
-            string: "Musterman",
-            attributes: [
-                NSAttributedString.Key.foregroundColor: UIColor.lightGray
-        ])
-        if #available(iOS 13.0, *) {
-            let image = UIImage(systemName: "xmark")!
-            self.surnameImageView.image = image
-            self.surnameImageView.tintColor = .red
-        }
-        
         self.emailTextField.attributedPlaceholder = NSAttributedString(
-            string: "max.musterman@gmx.com",
+            string: "email",
             attributes: [
                 NSAttributedString.Key.foregroundColor: UIColor.lightGray
         ])
