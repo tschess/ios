@@ -37,14 +37,14 @@ class Recent: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     }
     
     @IBOutlet weak var titleBackView: UIView!
-    // @IBOutlet weak var titleBackImage: UIImageView!
+    @IBOutlet weak var titleBackImage: UIImageView!
     
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var titleLabel: UILabel!
     
     /* * */
     @IBOutlet weak var headerView: UIView!
-    //@IBOutlet weak var headerImage: UIImageView!
+    @IBOutlet weak var headerImage: UIImageView!
     
     @IBOutlet weak var winnerImageView: UIImageView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
@@ -54,7 +54,7 @@ class Recent: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     
     /* * */
     @IBOutlet weak var contentView: UIView!
-    //@IBOutlet weak var contentImage: UIImageView!
+    @IBOutlet weak var contentImage: UIImageView!
     
     @IBOutlet weak var dateLabel: UILabel!
     
@@ -83,8 +83,6 @@ class Recent: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         tabBarMenu.delegate = self
         
     }
-    
-    //var INSTANTIATION: Bool = false
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

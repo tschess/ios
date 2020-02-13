@@ -46,7 +46,8 @@ class SelectRecent {
                 viewController.setRecentGameList(recentGameList: recentGameList1)
                 viewController.setPlayerOther(playerOther: playerOther)
                 viewController.setPlayerSelf(playerSelf: playerSelf)
-                presentor.present(viewController, animated: false, completion: nil)
+                //presentor.present(viewController, animated: false, completion: nil)
+                UIApplication.shared.keyWindow?.rootViewController = viewController
             }
             return
         case "CALYPSO":
@@ -57,7 +58,8 @@ class SelectRecent {
                 viewController.setRecentGameList(recentGameList: recentGameList1)
                 viewController.setPlayerOther(playerOther: playerOther)
                 viewController.setPlayerSelf(playerSelf: playerSelf)
-                presentor.present(viewController, animated: false, completion: nil)
+                //presentor.present(viewController, animated: false, completion: nil)
+                UIApplication.shared.keyWindow?.rootViewController = viewController
             }
             return
         case "HYPERION":
@@ -68,7 +70,8 @@ class SelectRecent {
                 viewController.setRecentGameList(recentGameList: recentGameList1)
                 viewController.setPlayerOther(playerOther: playerOther)
                 viewController.setPlayerSelf(playerSelf: playerSelf)
-                presentor.present(viewController, animated: false, completion: nil)
+                //presentor.present(viewController, animated: false, completion: nil)
+                UIApplication.shared.keyWindow?.rootViewController = viewController
             }
             return
         case "NEPTUNE":
@@ -79,7 +82,8 @@ class SelectRecent {
                 viewController.setRecentGameList(recentGameList: recentGameList1)
                 viewController.setPlayerOther(playerOther: playerOther)
                 viewController.setPlayerSelf(playerSelf: playerSelf)
-                presentor.present(viewController, animated: false, completion: nil)
+                //presentor.present(viewController, animated: false, completion: nil)
+                UIApplication.shared.keyWindow?.rootViewController = viewController
             }
             return
         default:
@@ -90,7 +94,8 @@ class SelectRecent {
                 viewController.setRecentGameList(recentGameList: recentGameList1)
                 viewController.setPlayerOther(playerOther: playerOther)
                 viewController.setPlayerSelf(playerSelf: playerSelf)
-                presentor.present(viewController, animated: false, completion: nil)
+                //presentor.present(viewController, animated: false, completion: nil)
+                UIApplication.shared.keyWindow?.rootViewController = viewController
             }
         }
         
