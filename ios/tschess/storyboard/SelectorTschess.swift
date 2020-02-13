@@ -37,7 +37,7 @@ class SelectorTschess {
         default:
             DispatchQueue.main.async {
                 let storyboard: UIStoryboard = UIStoryboard(name: "dTschess", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "Tdschess") as! Tschess
+                let viewController = storyboard.instantiateViewController(withIdentifier: "dTschess") as! Tschess
                 viewController.setPlayerOther(playerOther: game.getPlayerOther(username: playerSelf.username))
                 viewController.setPlayerSelf(playerSelf: playerSelf)
                 viewController.setGameTschess(gameTschess: game)
