@@ -37,14 +37,10 @@ class Play: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITa
                 if(game == nil){
                     return
                 }
-                DispatchQueue.main.async {
-                    let storyboard: UIStoryboard = UIStoryboard(name: "Tschess", bundle: nil)
-                    let viewController = storyboard.instantiateViewController(withIdentifier: "Tschess") as! Tschess
-                    viewController.setPlayerSelf(playerSelf: self.playerSelf!)
-                    viewController.setPlayerOther(playerOther: game!.getPlayerOther(username: self.playerSelf!.username))
-                    viewController.setGameTschess(gameTschess: game!)
-                    UIApplication.shared.keyWindow?.rootViewController = viewController
-                }
+                SelectorTschess().tschess(
+                playerSelf: self.playerSelf!,
+                playerOther: game!.getPlayerOther(username: self.playerSelf!.username),
+                game: game!)
             }
         }
     }

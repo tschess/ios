@@ -56,22 +56,11 @@ class ActualTable: UITableViewController, SwipeTableViewCellDelegate {
         let game = gameMenuTableList[indexPath.row]
         if(game.status == "ONGOING"){
             print(" - Tschess - ")
-            //            let requestPayload: [String: Any] = ["id_game": gameModel.getIdentifier(), "id_player": self.player!.getId()]
-            //            let gameAck: GameAck = GameAck(idGame: gameModel.getIdentifier(), playerSelf: self.player!, playerOppo: gameModel.getOpponent())
-            //            let gameConnect: GameConnect = GameConnect(gameAck: gameAck)
-            //            RequestConnect().execute(requestPayload: requestPayload, gameConnect: gameConnect) { (gameTschess) in
-            //                print("result: \(gameTschess)")
-            //                /**
-            //                 * ERROR HANDLING!!!
-            //                 */
-            DispatchQueue.main.async {
-                let storyboard: UIStoryboard = UIStoryboard(name: "Tschess", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "Tschess") as! Tschess
-                viewController.setPlayerOther(playerOther: game.getPlayerOther(username: self.playerSelf!.username))
-                viewController.setPlayerSelf(playerSelf: self.playerSelf!)
-                viewController.setGameTschess(gameTschess: game)
-                UIApplication.shared.keyWindow?.rootViewController = viewController
-            }
+            
+            SelectorTschess().tschess(
+                playerSelf: self.playerSelf!,
+                playerOther: game.getPlayerOther(username: self.playerSelf!.username),
+                game: game)
             return nil
         }
         if(game.getInboundInvitation(username: self.playerSelf!.username)){
