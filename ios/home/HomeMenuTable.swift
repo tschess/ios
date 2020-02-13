@@ -162,6 +162,22 @@ class HomeMenuTable: UITableViewController {
         }
     }
     
+    override func tableView(_ tableView: UITableView,
+                            leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let modifyAction = UIContextualAction(style: .normal, title:  "RECENT", handler: { (ac: UIContextualAction, view: UIView, success: (Bool) -> Void) in
+            
+            let playerOther = self.leaderboardList[indexPath.row]
+
+            print("RECENT SNAPS!")
+            success(true)
+        })
+        if #available(iOS 13.0, *) {
+            modifyAction.image = UIImage(systemName: "eye")!
+        }
+        modifyAction.backgroundColor = .orange
+        return UISwipeActionsConfiguration(actions: [modifyAction])
+    }
+    
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let modifyAction = UIContextualAction(style: .normal, title:  "CHALLENGE", handler: { (ac: UIContextualAction, view: UIView, success: (Bool) -> Void) in
             

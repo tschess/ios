@@ -164,6 +164,8 @@
 		B7BE12CA23EB70E900ADA499 /* Info.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7BE12C923EB70E900ADA499 /* Info.storyboard */; };
 		B7CA12CB23F5870000569805 /* SelectorTschess.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7CA12CA23F5870000569805 /* SelectorTschess.swift */; };
 		B7CA12CD23F5903000569805 /* SelectorSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7CA12CC23F5903000569805 /* SelectorSnapshot.swift */; };
+		B7CA12D123F5A13900569805 /* Recent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7CA12D023F5A13900569805 /* Recent.swift */; };
+		B7CA12D323F5A14400569805 /* Recent.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7CA12D223F5A14400569805 /* Recent.storyboard */; };
 		B7CB62F6237BB10800E50204 /* Start.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7CB62F5237BB10800E50204 /* Start.storyboard */; };
 		B7E6C93023EE1FBB009711B8 /* RequestTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E6C92F23EE1FBB009711B8 /* RequestTest.swift */; };
 		B7ED646423F4D9D400292FBC /* Create.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7ED646323F4D9D400292FBC /* Create.storyboard */; };
@@ -362,6 +364,8 @@
 		B7BE12C923EB70E900ADA499 /* Info.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Info.storyboard; sourceTree = "<group>"; };
 		B7CA12CA23F5870000569805 /* SelectorTschess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectorTschess.swift; sourceTree = "<group>"; };
 		B7CA12CC23F5903000569805 /* SelectorSnapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectorSnapshot.swift; sourceTree = "<group>"; };
+		B7CA12D023F5A13900569805 /* Recent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recent.swift; sourceTree = "<group>"; };
+		B7CA12D223F5A14400569805 /* Recent.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Recent.storyboard; sourceTree = "<group>"; };
 		B7CB62F5237BB10800E50204 /* Start.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Start.storyboard; sourceTree = "<group>"; };
 		B7E6C92F23EE1FBB009711B8 /* RequestTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestTest.swift; sourceTree = "<group>"; };
 		B7ED646323F4D9D400292FBC /* Create.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Create.storyboard; sourceTree = "<group>"; };
@@ -596,6 +600,7 @@
 		B787C72822E970DC009C94F7 /* ios */ = {
 			isa = PBXGroup;
 			children = (
+				B7CA12CE23F5A11500569805 /* recent */,
 				B7BE12C523EB708E00ADA499 /* info */,
 				B7BE128523EB08FE00ADA499 /* tschess */,
 				B7BE127F23EB083F00ADA499 /* scanner */,
@@ -1368,6 +1373,23 @@
 			path = util;
 			sourceTree = "<group>";
 		};
+		B7CA12CE23F5A11500569805 /* recent */ = {
+			isa = PBXGroup;
+			children = (
+				B7CA12CF23F5A12400569805 /* storyboard */,
+				B7CA12D023F5A13900569805 /* Recent.swift */,
+			);
+			path = recent;
+			sourceTree = "<group>";
+		};
+		B7CA12CF23F5A12400569805 /* storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				B7CA12D223F5A14400569805 /* Recent.storyboard */,
+			);
+			path = storyboard;
+			sourceTree = "<group>";
+		};
 		B7EF701723EA27E300BAF2E2 /* entity */ = {
 			isa = PBXGroup;
 			children = (
@@ -1576,6 +1598,7 @@
 				B7BE126523EB058800ADA499 /* Detail.storyboard in Resources */,
 				B7BE11FA23EAC98F00ADA499 /* EditOther.storyboard in Resources */,
 				B7BE124F23EB02DB00ADA499 /* Fairies.storyboard in Resources */,
+				B7CA12D323F5A14400569805 /* Recent.storyboard in Resources */,
 				B7BE116323EA722B00ADA499 /* Other.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1731,6 +1754,7 @@
 				B745AD3123F2FC2000E450EF /* RequestPlay.swift in Sources */,
 				B7BE129B23EB0AAE00ADA499 /* Evaluate.swift in Sources */,
 				B7BE11CE23EA9F1600ADA499 /* KnightWhite.swift in Sources */,
+				B7CA12D123F5A13900569805 /* Recent.swift in Sources */,
 				B7BE124A23EB027400ADA499 /* FairiesTable.swift in Sources */,
 				B7BE11B023EA9D2B00ADA499 /* Queen.swift in Sources */,
 				B7EF701E23EA28BA00BAF2E2 /* EntityPlayer.swift in Sources */,
