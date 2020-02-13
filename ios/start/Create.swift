@@ -121,19 +121,18 @@ class Create: UIViewController, UITextFieldDelegate {
         self.dismissKeyboard()
         self.activityIndicator.isHidden = false
         self.activityIndicator.startAnimating()
-        self.buttonLogin.isHidden = true
-        self.buttonCreate.isHidden = true
+        //self.buttonLogin.isHidden = true
+        //self.buttonCreate.isHidden = true
         self.usernameTextField.isHidden = true
         self.passwordTextField.isHidden = true
         
-        let updated = DATE_TIME.currentDateString() //this out to happen on the srver only...
+        //let updated = DATE_TIME.currentDateString() //this out to happen on the srver only...
         let deviceId = UIDevice.current.identifierForVendor?.uuidString
         
         let requestPayload = [
             "username": usernameTextString!,
             "password": passwordTextString!,
-            "device": deviceId!,
-            "updated": updated
+            "device": deviceId!
         ]
         
         RequestLogin().execute(requestPayload: requestPayload) { (player) in

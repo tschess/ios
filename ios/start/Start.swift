@@ -20,10 +20,20 @@ class Start: UIViewController, UITextFieldDelegate {
     
     @IBAction func createButtonClick(_ sender: UIButton) {
         
+        self.dismissKeyboard()
+        
         self.usernameTextString = usernameTextField.text!
         self.passwordTextString = passwordTextField.text!
         
-        self.dismissKeyboard()
+        if(!usernameTextString!.isAlphanumeric || !passwordTextString!.isAlphanumeric){
+            DispatchQueue.main.async {
+                let storyboard: UIStoryboard = UIStoryboard(name: "Invalid", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "Invalid") as! ComponentStart
+                self.present(viewController, animated: true, completion: nil)
+            }
+            return
+        }
+        
         self.activityIndicator.isHidden = false
         self.activityIndicator.startAnimating()
         self.buttonLogin.isHidden = true
@@ -153,14 +163,13 @@ class Start: UIViewController, UITextFieldDelegate {
         self.usernameTextField.isHidden = true
         self.passwordTextField.isHidden = true
         
-        let updated = DATE_TIME.currentDateString() //this out to happen on the srver only...
+        //let updated = DATE_TIME.currentDateString() //this out to happen on the srver only...
         let deviceId = UIDevice.current.identifierForVendor?.uuidString
         
         let requestPayload = [
             "username": usernameTextString!,
             "password": passwordTextString!,
-            "device": deviceId!,
-            "updated": updated
+            "device": deviceId!
         ]
         
         RequestLogin().execute(requestPayload: requestPayload) { (player) in
@@ -258,4 +267,18 @@ class Start: UIViewController, UITextFieldDelegate {
         }
     }
     
+    @IBAction func buttonClickRecover(_ sender: Any) {
+        DispatchQueue.main.async {
+            let storyboard: UIStoryboard = UIStoryboard(name: "Recover", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier: "Recover") as! ComponentStart
+            self.present(viewController, animated: true, completion: nil)
+        }
+    }
+    
+}
+
+extension String {
+    var isAlphanumeric: Bool {
+        return !isEmpty && range(of: "[^a-zA-Z0-9]", options: .regularExpression) == nil
+    }
 }

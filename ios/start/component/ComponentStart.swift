@@ -8,24 +8,12 @@
 
 import UIKit
 
-class Invalid: UIViewController {
+class ComponentStart: UIViewController {
     
-    @IBOutlet weak var buttonOk: UIButton!
+    @IBOutlet weak var buttonAccept: UIButton!
     
-   
- 
     
-   
-    
-    var playerSelf: EntityPlayer?
-    
-    func setPlayerSelf(playerSelf: EntityPlayer){
-        self.playerSelf = playerSelf
-    }
-    
-
-    
-    private var customTransitioningDelegate = TransitioningDelegate()
+    private var transitionStart = TransitionStart()
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -40,25 +28,23 @@ class Invalid: UIViewController {
     func configure() {
         modalPresentationStyle = .custom
         modalTransitionStyle = .crossDissolve
-        transitioningDelegate = customTransitioningDelegate
+        transitioningDelegate = transitionStart
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
-   
-    
-  
-    
-    @IBAction func buttonClickOk(_ sender: Any) {
-        
+    @IBAction func buttonClickAccept(_ sender: Any) {
         DispatchQueue.main.async {
-                //self.activityIndicator!.stopAnimating()
-                //self.activityIndicator!.isHidden = true
-             self.presentingViewController!.dismiss(animated: false, completion: nil)
-            }
+            
+            self.presentingViewController!.dismiss(animated: false, completion: nil)
         }
-        
+    }
+    
+    
+    
+    
+    
     
 }

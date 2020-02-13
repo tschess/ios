@@ -105,7 +105,7 @@
                                                             <constraint firstAttribute="height" constant="35" id="0hm-yX-J75"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" weight="thin" pointSize="22"/>
-                                                        <state key="normal" title="submit">
+                                                        <state key="normal" title="let's go!">
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         </state>
                                                         <connections>
