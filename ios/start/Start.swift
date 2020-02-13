@@ -41,7 +41,7 @@ class Start: UIViewController, UITextFieldDelegate {
         let deviceId = UIDevice.current.identifierForVendor?.uuidString
         
         let requestPayload = [
-            "username": usernameTextString!,
+            "username": usernameTextString!.lowercased(),
             "password": passwordTextString!,
             "device": deviceId!
         ]
@@ -110,7 +110,7 @@ class Start: UIViewController, UITextFieldDelegate {
         let deviceId = UIDevice.current.identifierForVendor?.uuidString
         
         let requestPayload = [
-            "username": usernameTextString!,
+            "username": usernameTextString!.lowercased(),
             "password": passwordTextString!,
             "device": deviceId!
         ]
