@@ -281,7 +281,10 @@ class Ack: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITab
             backImage: UIImage(named: "iapetus"),
             backAlpha: 0.85)
         
-        self.skinList = Array(arrayLiteral: iapetus, calypso, hyperion, neptune) //in actual fact default will come first...
+        let flip: UIColor = UIColor(red: 31/255.0, green: 33/255.0, blue: 36/255.0, alpha: 1)
+        let skinD: EntitySkin = EntitySkin(name: "default", foreColor: UIColor.lightGray, backColor:  flip)
+        self.skinList = Array(arrayLiteral: skinD, iapetus, calypso, hyperion, neptune)
+        //self.skinList = Array(arrayLiteral: iapetus, calypso, hyperion, neptune) //in actual fact default will come first...
         
         if(self.selection == nil){
             switch Int.random(in: 0 ... 3) {
