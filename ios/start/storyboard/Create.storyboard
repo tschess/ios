@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Start-->
+        <!--Create-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="Create" title="Start" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="Create" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Create" title="Create" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="Create" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -24,7 +24,7 @@
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="282-SC-i56" userLabel="ContentView">
-                                <rect key="frame" x="0.0" y="52" width="414" height="634"/>
+                                <rect key="frame" x="0.0" y="52" width="414" height="650"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="tschess" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="heM-vS-dHQ" userLabel="tschessLabel">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
@@ -141,7 +141,7 @@
                                     <constraint firstItem="NyH-VF-R5g" firstAttribute="leading" secondItem="282-SC-i56" secondAttribute="leading" id="c5R-82-aAN"/>
                                     <constraint firstItem="yBi-fm-HTo" firstAttribute="leading" secondItem="282-SC-i56" secondAttribute="leading" constant="8" id="cBW-hB-OY4"/>
                                     <constraint firstItem="1U8-zE-lXb" firstAttribute="centerX" secondItem="282-SC-i56" secondAttribute="centerX" id="cxu-Tc-78e"/>
-                                    <constraint firstAttribute="bottom" secondItem="NyH-VF-R5g" secondAttribute="bottom" id="g4L-hZ-gAL"/>
+                                    <constraint firstAttribute="bottom" secondItem="NyH-VF-R5g" secondAttribute="bottom" constant="16" id="g4L-hZ-gAL"/>
                                     <constraint firstItem="NyH-VF-R5g" firstAttribute="top" secondItem="1U8-zE-lXb" secondAttribute="bottom" constant="40" id="gag-Kv-jBn"/>
                                     <constraint firstItem="yBi-fm-HTo" firstAttribute="top" secondItem="282-SC-i56" secondAttribute="top" id="rKD-W5-7kv"/>
                                     <constraint firstItem="heM-vS-dHQ" firstAttribute="top" secondItem="282-SC-i56" secondAttribute="top" id="sIR-AR-QfX"/>
@@ -164,7 +164,7 @@
                         <outlet property="activityIndicator" destination="yRs-Oy-ieF" id="b9Y-Gz-W6e"/>
                         <outlet property="backButton" destination="yBi-fm-HTo" id="Sfm-8D-PN2"/>
                         <outlet property="buttonSubmit" destination="NUq-7O-dcu" id="r8f-IM-F5N"/>
-                        <outlet property="contentView" destination="282-SC-i56" id="LAU-wb-gEc"/>
+                        <outlet property="contentView" destination="282-SC-i56" id="NxW-3o-i7z"/>
                         <outlet property="logoHeight" destination="AAJ-6H-Mc5" id="0I9-1j-l0S"/>
                         <outlet property="logoWidth" destination="q8V-9P-vgY" id="eqB-a4-OA9"/>
                         <outlet property="passwordTextField" destination="iP2-rm-ezV" id="qvL-MI-C4Z"/>

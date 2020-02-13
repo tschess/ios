@@ -45,11 +45,10 @@
                                 </state>
                                 <connections>
                                     <action selector="buttonClickRecover:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6tC-Ao-sYc"/>
-                                    
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="282-SC-i56" userLabel="ContentView">
-                                <rect key="frame" x="0.0" y="52" width="414" height="634"/>
+                                <rect key="frame" x="0.0" y="52" width="414" height="650"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="tschess" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="heM-vS-dHQ" userLabel="tschessLabel">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
@@ -165,7 +164,7 @@
                                     <constraint firstAttribute="trailing" secondItem="heM-vS-dHQ" secondAttribute="trailing" id="anU-2R-t6m"/>
                                     <constraint firstItem="NyH-VF-R5g" firstAttribute="leading" secondItem="282-SC-i56" secondAttribute="leading" id="c5R-82-aAN"/>
                                     <constraint firstItem="1U8-zE-lXb" firstAttribute="centerX" secondItem="282-SC-i56" secondAttribute="centerX" id="cxu-Tc-78e"/>
-                                    <constraint firstAttribute="bottom" secondItem="NyH-VF-R5g" secondAttribute="bottom" id="g4L-hZ-gAL"/>
+                                    <constraint firstAttribute="bottom" secondItem="NyH-VF-R5g" secondAttribute="bottom" constant="16" id="g4L-hZ-gAL"/>
                                     <constraint firstItem="NyH-VF-R5g" firstAttribute="top" secondItem="1U8-zE-lXb" secondAttribute="bottom" constant="40" id="gag-Kv-jBn"/>
                                     <constraint firstItem="heM-vS-dHQ" firstAttribute="top" secondItem="282-SC-i56" secondAttribute="top" id="sIR-AR-QfX"/>
                                 </constraints>
