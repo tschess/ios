@@ -91,14 +91,16 @@ class Historic: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate 
         let game = self.historicTable!.getGameMenuTableList()[gameMenuSelectionIndex]
         
         //Iapetus
+        //Calypso
+        //Hyperion
         
         //        let storyboard: UIStoryboard = UIStoryboard(name: "Snapshot", bundle: nil)
         //        let viewController = storyboard.instantiateViewController(withIdentifier: "Snapshot") as! Snapshot
         //        viewController.setGame(game: game)
         //        viewController.setPlayer(player: self.playerSelf!)
         //        self.present(viewController, animated: false, completion: nil)
-        let storyboard: UIStoryboard = UIStoryboard(name: "Calypso", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "Calypso") as! Snapshot
+        let storyboard: UIStoryboard = UIStoryboard(name: "Hyperion", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "Hyperion") as! Snapshot
         viewController.setGame(game: game)
         viewController.setPlayer(player: self.playerSelf!)
         self.present(viewController, animated: false, completion: nil)
