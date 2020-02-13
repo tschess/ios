@@ -166,8 +166,39 @@ class HomeMenuTable: UITableViewController {
                             leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let modifyAction = UIContextualAction(style: .normal, title:  "RECENT", handler: { (ac: UIContextualAction, view: UIView, success: (Bool) -> Void) in
             
+            self.activityIndicator!.isHidden = false
+            self.activityIndicator!.startAnimating()
+            
             let playerOther = self.leaderboardList[indexPath.row]
-
+            
+            let REQUEST_PAGE_SIZE: Int = 9
+            
+            let requestPayload = [
+                "id": playerOther.id,
+                "index": 0,
+                "size": REQUEST_PAGE_SIZE
+                ] as [String: Any]
+            RequestHistoric().execute(requestPayload: requestPayload) { (result) in
+                DispatchQueue.main.async() {
+                    self.activityIndicator!.stopAnimating()
+                    self.activityIndicator!.isHidden = true
+                }
+                if(result == nil){
+                    return
+                }
+                //self.appendToLeaderboardTableList(additionalCellList: result!)
+                
+                DispatchQueue.main.async {
+                    let storyboard: UIStoryboard = UIStoryboard(name: "Other", bundle: nil)
+                    let viewController = storyboard.instantiateViewController(withIdentifier: "Other") as! Other
+                    viewController.setPlayerSelf(playerSelf: self.player!)
+                    viewController.setPlayerOther(playerOther: playerOther)
+                    viewController.setRecent0(recent0: true)
+                    UIApplication.shared.keyWindow?.rootViewController = viewController
+                }
+                
+            }
+            
             print("RECENT SNAPS!")
             success(true)
         })
@@ -182,7 +213,7 @@ class HomeMenuTable: UITableViewController {
         let modifyAction = UIContextualAction(style: .normal, title:  "CHALLENGE", handler: { (ac: UIContextualAction, view: UIView, success: (Bool) -> Void) in
             
             let playerOther = self.leaderboardList[indexPath.row]
-
+            
             let storyboard: UIStoryboard = UIStoryboard(name: "Challenge", bundle: nil)
             let viewController = storyboard.instantiateViewController(withIdentifier: "Challenge") as! Challenge
             viewController.setPlayerSelf(playerSelf: self.player!)

@@ -10,6 +10,12 @@ import UIKit
 
 class OtherMenuTable: UITableViewController {
     
+    var recent1: Bool?
+    
+    func setRecent1(recent1: Bool) {
+        self.recent1 = recent1
+    }
+    
     var player: EntityPlayer?
     
     func setPlayer(player: EntityPlayer){
@@ -41,6 +47,21 @@ class OtherMenuTable: UITableViewController {
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
+    }
+    
+    //recent1
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+//        if(self.recent1 != nil){
+//            return
+//        }
+        
+        //if(self.recent1!){
+            //if(gameMenuTableList.count > 0){
+               
+            //}
+        //}
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -136,6 +157,14 @@ class OtherMenuTable: UITableViewController {
         if(currentCount != self.gameMenuTableList.count){
             DispatchQueue.main.async() {
                 self.tableView.reloadData()
+                
+                let game = self.gameMenuTableList.last!
+                               
+                               let storyboard: UIStoryboard = UIStoryboard(name: "Snapshot", bundle: nil)
+                               let viewController = storyboard.instantiateViewController(withIdentifier: "Snapshot") as! Snapshot
+                               viewController.setGame(game: game)
+                               viewController.setPlayer(player: self.player!)
+                               self.present(viewController, animated: false, completion: nil)
             }
         }
     }
