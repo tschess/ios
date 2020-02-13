@@ -209,16 +209,21 @@ class HomeMenuTable: UITableViewController {
                     }
                     return
                 }
+                //var recentGameList =
                 
-                DispatchQueue.main.async() {
-                    let storyboard: UIStoryboard = UIStoryboard(name: "Recent", bundle: nil)
-                    let viewController = storyboard.instantiateViewController(withIdentifier: "Recent") as! Recent
-                    viewController.setRecentGameList(recentGameList: result!)
-                    viewController.setPlayerOther(playerOther: playerOther)
-                    viewController.setPlayerSelf(playerSelf: self.player!)
-                    //self.present(viewController, animated: false, completion: nil)
-                    UIApplication.shared.keyWindow?.rootViewController = viewController
-                }
+                //let game: EntityGame = recentGameList.removeLast()
+                //let skin: String = SelectRecent().getSkinGame(username: self.player!.username, game: game)
+                SelectRecent().snapshot(playerOther: playerOther, playerSelf: self.player!, recentGameList: result!, presentor: self)
+                
+//                DispatchQueue.main.async() {
+//                    let storyboard: UIStoryboard = UIStoryboard(name: "Recent", bundle: nil)
+//                    let viewController = storyboard.instantiateViewController(withIdentifier: "Recent") as! Recent
+//                    viewController.setRecentGameList(recentGameList: result!)
+//                    viewController.setPlayerOther(playerOther: playerOther)
+//                    viewController.setPlayerSelf(playerSelf: self.player!)
+//                    //self.present(viewController, animated: false, completion: nil)
+//                    UIApplication.shared.keyWindow?.rootViewController = viewController
+//                }
             }
             
             print("RECENT SNAPS!")

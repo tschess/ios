@@ -24,6 +24,12 @@ class Recent: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         self.playerSelf = playerSelf
     }
     
+    var game: EntityGame?
+
+    func setGame(game: EntityGame){
+        self.game = game
+    }
+    
     var recentGameList: [EntityGame]?
     
     func setRecentGameList(recentGameList: [EntityGame]){
@@ -78,27 +84,20 @@ class Recent: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         
     }
     
+    //var INSTANTIATION: Bool = false
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        if(self.recentGameList!.isEmpty){
-            DispatchQueue.main.async {
-                let storyboard: UIStoryboard = UIStoryboard(name: "Home", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "Home") as! Home
-                viewController.setPlayer(player: self.playerSelf!)
-                UIApplication.shared.keyWindow?.rootViewController = viewController
-            }
-            return
-        }
-        let game: EntityGame = self.recentGameList!.removeLast()
         
-        self.state = game.getStateClient(username: self.playerOther!.username)
-        self.winnerImageView!.image = game.getImageAvatarWinner()
-        self.usernameWinner.text = game.getUsernameWinner()
         
-        self.outcomeLabel.text = game.outcome
-        self.usernameLabelWhite.text = game.white.username
-        self.usernameLabelBlack.text = game.black.username
+        self.state = self.game!.getStateClient(username: self.playerOther!.username)
+        self.winnerImageView!.image = self.game!.getImageAvatarWinner()
+        self.usernameWinner.text = self.game!.getUsernameWinner()
+        
+        self.outcomeLabel.text = self.game!.outcome
+        self.usernameLabelWhite.text = self.game!.white.username
+        self.usernameLabelBlack.text = self.game!.black.username
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -182,8 +181,9 @@ class Recent: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         switch item.tag {
         case 1: //next game
-            self.viewWillAppear(true)
-            self.tabBarMenu.selectedItem = nil
+            
+            //let skin: String = SelectRecent().getSkinGame(username: self.playerSelf!.username, game: self.game!)
+            SelectRecent().snapshot(playerOther: self.playerOther!, playerSelf: self.playerSelf!, recentGameList: self.recentGameList!, presentor: self)
         default: //2 //home
             DispatchQueue.main.async {
                 let storyboard: UIStoryboard = UIStoryboard(name: "Home", bundle: nil)
