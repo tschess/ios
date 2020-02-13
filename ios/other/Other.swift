@@ -10,12 +10,6 @@ import UIKit
 
 class Other: UIViewController, UITabBarDelegate {
     
-    var recent0: Bool?
-    
-    func setRecent0(recent0: Bool) {
-        self.recent0 = recent0
-    }
-    
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     let DATE_TIME: DateTime = DateTime()
@@ -69,10 +63,6 @@ class Other: UIViewController, UITabBarDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        //if(self.recent0 != nil){
-            self.otherMenuTable!.setRecent1(recent1: true)
-        //}
     }
     
     override func viewDidAppear(_ animated: Bool) {

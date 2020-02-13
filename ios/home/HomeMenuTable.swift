@@ -162,6 +162,8 @@ class HomeMenuTable: UITableViewController {
         }
     }
     
+    
+    
     override func tableView(_ tableView: UITableView,
                             leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let modifyAction = UIContextualAction(style: .normal, title:  "RECENT", handler: { (ac: UIContextualAction, view: UIView, success: (Bool) -> Void) in
@@ -184,19 +186,39 @@ class HomeMenuTable: UITableViewController {
                     self.activityIndicator!.isHidden = true
                 }
                 if(result == nil){
+                    DispatchQueue.main.async() {
+                        let storyboard: UIStoryboard = UIStoryboard(name: "Challenge", bundle: nil)
+                        let viewController = storyboard.instantiateViewController(withIdentifier: "Challenge") as! Challenge
+                        viewController.setPlayerSelf(playerSelf: self.player!)
+                        viewController.setPlayerOther(playerOther: playerOther)
+                        viewController.setBACK(BACK: "HOME")
+                        UIApplication.shared.keyWindow?.rootViewController = viewController
+                    }
                     return
                 }
-                //self.appendToLeaderboardTableList(additionalCellList: result!)
                 
-                DispatchQueue.main.async {
-                    let storyboard: UIStoryboard = UIStoryboard(name: "Other", bundle: nil)
-                    let viewController = storyboard.instantiateViewController(withIdentifier: "Other") as! Other
-                    viewController.setPlayerSelf(playerSelf: self.player!)
-                    viewController.setPlayerOther(playerOther: playerOther)
-                    viewController.setRecent0(recent0: true)
-                    UIApplication.shared.keyWindow?.rootViewController = viewController
+                print("result.count: \(result!.count)")
+                if(result!.count == 0){
+                    DispatchQueue.main.async() {
+                        let storyboard: UIStoryboard = UIStoryboard(name: "Challenge", bundle: nil)
+                        let viewController = storyboard.instantiateViewController(withIdentifier: "Challenge") as! Challenge
+                        viewController.setPlayerSelf(playerSelf: self.player!)
+                        viewController.setPlayerOther(playerOther: playerOther)
+                        viewController.setBACK(BACK: "HOME")
+                        UIApplication.shared.keyWindow?.rootViewController = viewController
+                    }
+                    return
                 }
                 
+                DispatchQueue.main.async() {
+                    let storyboard: UIStoryboard = UIStoryboard(name: "Recent", bundle: nil)
+                    let viewController = storyboard.instantiateViewController(withIdentifier: "Recent") as! Recent
+                    viewController.setRecentGameList(recentGameList: result!)
+                    viewController.setPlayerOther(playerOther: playerOther)
+                    viewController.setPlayerSelf(playerSelf: self.player!)
+                    //self.present(viewController, animated: false, completion: nil)
+                    UIApplication.shared.keyWindow?.rootViewController = viewController
+                }
             }
             
             print("RECENT SNAPS!")
