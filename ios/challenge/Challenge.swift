@@ -307,7 +307,7 @@ class Challenge: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate,
         
         self.skinSelectionPicker.delegate = self
         self.skinSelectionPicker.dataSource = self
-        self.skinSelectionPicker.isUserInteractionEnabled = false //ought to flash...
+        //self.skinSelectionPicker.isUserInteractionEnabled = false //ought to flash...
         
         self.swipeRightGesture = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
         swipeRightGesture!.direction = UISwipeGestureRecognizer.Direction.right

@@ -81,11 +81,14 @@ class Other: UIViewController, UITabBarDelegate {
         let gameMenuSelectionIndex = notification.userInfo!["other_menu_selection"] as! Int
         let game = self.otherMenuTable!.getGameMenuTableList()[gameMenuSelectionIndex]
         
-        let storyboard: UIStoryboard = UIStoryboard(name: "Snapshot", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "Snapshot") as! Snapshot
-        viewController.setGame(game: game)
-        viewController.setPlayer(player: self.playerOther!)
-        self.present(viewController, animated: false, completion: nil)
+        let skin: String = SelectorSnapshot().getSkinGame(username: self.playerOther!.username, game: game)
+        SelectorSnapshot().snapshot(skin: skin, playerSelf: self.playerOther!, game: game, presentor: self)
+        
+        //let storyboard: UIStoryboard = UIStoryboard(name: "Snapshot", bundle: nil)
+        //let viewController = storyboard.instantiateViewController(withIdentifier: "Snapshot") as! Snapshot
+        //viewController.setGame(game: game)
+        //viewController.setPlayer(player: self.playerOther!)
+        //self.present(viewController, animated: false, completion: nil)
     }
     
     @IBAction func backButtonClick(_ sender: Any) {

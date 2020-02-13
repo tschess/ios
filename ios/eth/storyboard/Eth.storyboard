@@ -44,7 +44,7 @@
                                 <rect key="frame" x="0.0" y="84" width="414" height="138"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blockies" translatesAutoresizingMaskIntoConstraints="NO" id="XYJ-aV-Rc5">
-                                        <rect key="frame" x="157" y="4" width="100.00000000000006" height="100.00000000000006"/>
+                                        <rect key="frame" x="157" y="4" width="100" height="100"/>
                                         <color key="tintColor" red="0.86274509799999999" green="0.015686274510000001" blue="0.015686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="100" id="2Tw-xd-Qng"/>
