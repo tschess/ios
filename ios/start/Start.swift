@@ -228,8 +228,8 @@ class Start: UIViewController, UITextFieldDelegate {
     }
     
     @objc func testTaskIncrementer() {
+        self.testTaskCounter += 1
         if(self.testTaskCounter < 3){
-            self.testTaskCounter += 1
             return
         }
         if(self.testTaskLabel.isHidden){
@@ -279,8 +279,8 @@ class Start: UIViewController, UITextFieldDelegate {
             let REQUEST: [String: Any] = ["state": STATE, "turn": TURN]
             RequestTest().execute(requestPayload: REQUEST) { (game) in
                 DispatchQueue.main.async {
-                    let storyboard: UIStoryboard = UIStoryboard(name: "iTschess", bundle: nil)
-                    let viewController = storyboard.instantiateViewController(withIdentifier: "iTschess") as! Tschess
+                    let storyboard: UIStoryboard = UIStoryboard(name: "nTschess", bundle: nil)
+                    let viewController = storyboard.instantiateViewController(withIdentifier: "nTschess") as! Tschess
                     viewController.setPlayerOther(playerOther: game!.getPlayerOther(username: game!.black.username))
                     viewController.setPlayerSelf(playerSelf: game!.black)
                     viewController.setGameTschess(gameTschess: game!)
@@ -295,8 +295,8 @@ class Start: UIViewController, UITextFieldDelegate {
             let REQUEST: [String: Any] = ["state": STATE, "turn": TURN]
             RequestTest().execute(requestPayload: REQUEST) { (game) in
                 DispatchQueue.main.async {
-                    let storyboard: UIStoryboard = UIStoryboard(name: "Tschess", bundle: nil)
-                    let viewController = storyboard.instantiateViewController(withIdentifier: "Tschess") as! Tschess
+                    let storyboard: UIStoryboard = UIStoryboard(name: "cTschess", bundle: nil)
+                    let viewController = storyboard.instantiateViewController(withIdentifier: "cTschess") as! Tschess
                     viewController.setPlayerOther(playerOther: game!.getPlayerOther(username: game!.white.username))
                     viewController.setPlayerSelf(playerSelf: game!.white)
                     viewController.setGameTschess(gameTschess: game!)
@@ -311,8 +311,8 @@ class Start: UIViewController, UITextFieldDelegate {
             let REQUEST: [String: Any] = ["state": STATE, "turn": TURN]
             RequestTest().execute(requestPayload: REQUEST) { (game) in
                 DispatchQueue.main.async {
-                    let storyboard: UIStoryboard = UIStoryboard(name: "Tschess", bundle: nil)
-                    let viewController = storyboard.instantiateViewController(withIdentifier: "Tschess") as! Tschess
+                    let storyboard: UIStoryboard = UIStoryboard(name: "hTschess", bundle: nil)
+                    let viewController = storyboard.instantiateViewController(withIdentifier: "hTschess") as! Tschess
                     viewController.setPlayerOther(playerOther: game!.getPlayerOther(username: game!.black.username))
                     viewController.setPlayerSelf(playerSelf: game!.black)
                     viewController.setGameTschess(gameTschess: game!)
