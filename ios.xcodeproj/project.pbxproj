@@ -23,6 +23,8 @@
 		B768470923F4FAF900F55D4A /* Recover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B768470823F4FAF900F55D4A /* Recover.storyboard */; };
 		B768470D23F4FB4C00F55D4A /* ComponentStart.swift in Sources */ = {isa = PBXBuildFile; fileRef = B768470C23F4FB4C00F55D4A /* ComponentStart.swift */; };
 		B768470F23F4FEA400F55D4A /* TransitionStart.swift in Sources */ = {isa = PBXBuildFile; fileRef = B768470E23F4FEA400F55D4A /* TransitionStart.swift */; };
+		B768471A23F53A0200F55D4A /* Iapetus.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B768471923F53A0200F55D4A /* Iapetus.storyboard */; };
+		B768472023F53AA400F55D4A /* Calypso.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B768471F23F53AA400F55D4A /* Calypso.storyboard */; };
 		B771364E23F1C118007F0962 /* UpdateCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = B771364D23F1C118007F0962 /* UpdateCheck.swift */; };
 		B771365223F1D5CF007F0962 /* MovementKing.swift in Sources */ = {isa = PBXBuildFile; fileRef = B771365123F1D5CF007F0962 /* MovementKing.swift */; };
 		B771365423F222AF007F0962 /* UpdateMate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B771365323F222AF007F0962 /* UpdateMate.swift */; };
@@ -206,6 +208,8 @@
 		B768470823F4FAF900F55D4A /* Recover.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Recover.storyboard; sourceTree = "<group>"; };
 		B768470C23F4FB4C00F55D4A /* ComponentStart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentStart.swift; sourceTree = "<group>"; };
 		B768470E23F4FEA400F55D4A /* TransitionStart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionStart.swift; sourceTree = "<group>"; };
+		B768471923F53A0200F55D4A /* Iapetus.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Iapetus.storyboard; sourceTree = "<group>"; };
+		B768471F23F53AA400F55D4A /* Calypso.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Calypso.storyboard; sourceTree = "<group>"; };
 		B771364D23F1C118007F0962 /* UpdateCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateCheck.swift; sourceTree = "<group>"; };
 		B771365123F1D5CF007F0962 /* MovementKing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovementKing.swift; sourceTree = "<group>"; };
 		B771365323F222AF007F0962 /* UpdateMate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateMate.swift; sourceTree = "<group>"; };
@@ -476,6 +480,63 @@
 			path = storyboard;
 			sourceTree = "<group>";
 		};
+		B768471423F535E300F55D4A /* variant */ = {
+			isa = PBXGroup;
+			children = (
+				B768471D23F53A7000F55D4A /* neptune */,
+				B768471C23F53A5F00F55D4A /* hyperion */,
+				B768471B23F53A3E00F55D4A /* calypso */,
+				B768471723F539AB00F55D4A /* iapetus */,
+			);
+			path = variant;
+			sourceTree = "<group>";
+		};
+		B768471723F539AB00F55D4A /* iapetus */ = {
+			isa = PBXGroup;
+			children = (
+				B768471823F539B600F55D4A /* storyboard */,
+			);
+			path = iapetus;
+			sourceTree = "<group>";
+		};
+		B768471823F539B600F55D4A /* storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				B768471923F53A0200F55D4A /* Iapetus.storyboard */,
+			);
+			path = storyboard;
+			sourceTree = "<group>";
+		};
+		B768471B23F53A3E00F55D4A /* calypso */ = {
+			isa = PBXGroup;
+			children = (
+				B768471E23F53A8700F55D4A /* storyboard */,
+			);
+			path = calypso;
+			sourceTree = "<group>";
+		};
+		B768471C23F53A5F00F55D4A /* hyperion */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = hyperion;
+			sourceTree = "<group>";
+		};
+		B768471D23F53A7000F55D4A /* neptune */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = neptune;
+			sourceTree = "<group>";
+		};
+		B768471E23F53A8700F55D4A /* storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				B768471F23F53AA400F55D4A /* Calypso.storyboard */,
+			);
+			path = storyboard;
+			sourceTree = "<group>";
+		};
 		B787C71D22E970DC009C94F7 = {
 			isa = PBXGroup;
 			children = (
@@ -598,6 +659,7 @@
 		B7BE116D23EA91B700ADA499 /* snapshot */ = {
 			isa = PBXGroup;
 			children = (
+				B768471423F535E300F55D4A /* variant */,
 				B7BE117023EA924900ADA499 /* storyboard */,
 				B7BE116E23EA91CD00ADA499 /* Snapshot.swift */,
 			);
@@ -1441,6 +1503,8 @@
 				B7BE123E23EB00E200ADA499 /* Challenge.storyboard in Resources */,
 				B7BE122923EAD95600ADA499 /* Actual.storyboard in Resources */,
 				B787C73122E970DD009C94F7 /* Assets.xcassets in Resources */,
+				B768472023F53AA400F55D4A /* Calypso.storyboard in Resources */,
+				B768471A23F53A0200F55D4A /* Iapetus.storyboard in Resources */,
 				B7BE128423EB088F00ADA499 /* Scanner.storyboard in Resources */,
 				B7BE11EB23EAC66600ADA499 /* Play.storyboard in Resources */,
 				B7BE128A23EB095600ADA499 /* Tschess.storyboard in Resources */,

@@ -49,7 +49,6 @@ class Snapshot: UIViewController, UICollectionViewDataSource, UICollectionViewDe
     
     /* * */
     @IBOutlet weak var statsView: UIView!
-    @IBOutlet weak var statsImage: UIImageView!
     
     @IBOutlet weak var moveCountLabel: UILabel!
     @IBOutlet weak var outcomeLabel: UILabel!
@@ -82,15 +81,14 @@ class Snapshot: UIViewController, UICollectionViewDataSource, UICollectionViewDe
         //self.contentImage.image = UIImage(named: "iapetus")
         //self.contentImage.isHidden = false
         
-        self.contentImage.image = nil
-        self.statsImage.image = nil
-        self.headerImage.image = nil
-        self.titleBackImage.image = nil
-        
-        self.contentImage.isHidden = true
-        self.statsImage.isHidden = true
-        self.headerImage.isHidden = true
-        self.titleBackImage.isHidden = true
+//        self.contentImage.image = nil
+//        self.headerImage.image = nil
+//        self.titleBackImage.image = nil
+//
+//        self.contentImage.isHidden = true
+//        self.statsImage.isHidden = true
+//        self.headerImage.isHidden = true
+//        self.titleBackImage.isHidden = true
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
