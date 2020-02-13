@@ -171,13 +171,7 @@ class Start: UIViewController, UITextFieldDelegate {
         super.init(coder: aDecoder)
     }
     
-    @objc func testTaskIncrementer() {
-        if(self.testTaskLabel.isHidden){
-            self.testTaskLabel.isHidden = false
-        }
-        self.testTaskCounter += 1
-        self.testTaskLabel.text = String(testTaskCounter)
-    }
+    
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -233,9 +227,21 @@ class Start: UIViewController, UITextFieldDelegate {
         return true
     }
     
+    @objc func testTaskIncrementer() {
+        if(self.testTaskCounter < 3){
+            self.testTaskCounter += 1
+            return
+        }
+        if(self.testTaskLabel.isHidden){
+            self.testTaskLabel.isHidden = false
+        }
+        self.testTaskLabel.text = String(testTaskCounter)
+    }
     
     
     @objc func testTaskExecuter(){
+        
+       
         
         let rowA: [String] = ["RookBlack", "KnightBlack", "BishopBlack", "", "KingBlack", "BishopBlack", "KnightBlack", "RookBlack"]
         let rowB: [String] = ["PawnBlack", "PawnBlack", "PawnBlack", "PawnBlack", "PawnBlack", "PawnBlack", "PawnBlack", "PawnBlack"]
@@ -250,7 +256,7 @@ class Start: UIViewController, UITextFieldDelegate {
         let rowH: [String] = ["RookWhite", "KnightWhite", "BishopWhite", "", "KingWhite", "BishopWhite", "KnightWhite", "RookWhite"]
         
         view.removeGestureRecognizer(self.dismissKeyboardGesture!)
-        if(self.testTaskCounter == 1){
+        if(self.testTaskCounter == 3){
             let STATE = [rowH, rowG, rowF, rowE, rowD, rowC, rowB, rowA]
             let TURN = "WHITE"
             let REQUEST: [String: Any] = ["state": STATE, "turn": TURN]
@@ -266,7 +272,7 @@ class Start: UIViewController, UITextFieldDelegate {
             }
             return
         }
-        if(self.testTaskCounter == 2){
+        if(self.testTaskCounter == 4){
             print(" - testTaskCounter: \(testTaskCounter)")
             let STATE = [[""]]
             let TURN = "WHITE"
@@ -283,7 +289,7 @@ class Start: UIViewController, UITextFieldDelegate {
             }
             return
         }
-        if(self.testTaskCounter == 3){
+        if(self.testTaskCounter == 5){
             let STATE = [["DEFAULT"]]
             let TURN = "WHITE"
             let REQUEST: [String: Any] = ["state": STATE, "turn": TURN]
@@ -299,7 +305,7 @@ class Start: UIViewController, UITextFieldDelegate {
             }
             return
         }
-        if(self.testTaskCounter == 4){
+        if(self.testTaskCounter == 6){
             let STATE = [[""]]
             let TURN = "BLACK"
             let REQUEST: [String: Any] = ["state": STATE, "turn": TURN]
