@@ -1,19 +1,18 @@
 //
-//  Evaluate.swift
+//  Soldout.swift
 //  ios
 //
-//  Created by Matthew on 2/5/20.
+//  Created by Matthew on 2/18/20.
 //  Copyright © 2020 bahlsenwitz. All rights reserved.
 //
 
 import UIKit
 
-class ComponentStart: UIViewController {
+class CompOut: UIViewController {
     
     @IBOutlet weak var buttonAccept: UIButton!
     
-    
-    private var transitionStart = TransitionStart()
+    private var transOut = TransOut()
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -28,7 +27,7 @@ class ComponentStart: UIViewController {
     func configure() {
         modalPresentationStyle = .custom
         modalTransitionStyle = .crossDissolve
-        transitioningDelegate = transitionStart
+        transitioningDelegate = transOut
     }
     
     override func viewDidLoad() {
@@ -37,7 +36,6 @@ class ComponentStart: UIViewController {
     
     @IBAction func buttonClickAccept(_ sender: Any) {
         DispatchQueue.main.async {
-            
             self.presentingViewController!.dismiss(animated: false, completion: nil)
         }
     }

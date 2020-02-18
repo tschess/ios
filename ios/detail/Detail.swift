@@ -297,16 +297,20 @@ class Detail: UIViewController, UITabBarDelegate, UITextViewDelegate {
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         switch item.tag {
         default:
-            
-            if(self.skin!.name != "iapetus"){
-                return
+            //            if(self.skin!.name != "iapetus"){
+            //                return
+            //            }
+            //            if(self.products.isEmpty){
+            //                return
+            //            }
+            //            let product = self.products[0]
+            //            Product.store.buyProduct(product, player: self.player!)
+            DispatchQueue.main.async {
+                let storyboard: UIStoryboard = UIStoryboard(name: "Out", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "Out") as! CompOut
+                self.present(viewController, animated: true, completion: nil)
+                self.tabBarMenu.selectedItem = nil
             }
-            
-            if(self.products.isEmpty){
-                return
-            }
-            let product = self.products[0]
-            Product.store.buyProduct(product, player: self.player!)
         }
     }
 }

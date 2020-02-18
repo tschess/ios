@@ -15,6 +15,9 @@
 		B70149B223FC5661001A7D52 /* Calypso.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B70149B123FC5661001A7D52 /* Calypso.storyboard */; };
 		B70149B423FC568F001A7D52 /* Neptune.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B70149B323FC568F001A7D52 /* Neptune.storyboard */; };
 		B70149B623FC56C3001A7D52 /* Hyperion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B70149B523FC56C3001A7D52 /* Hyperion.storyboard */; };
+		B70149B923FC5723001A7D52 /* CompOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70149B823FC5723001A7D52 /* CompOut.swift */; };
+		B70149BB23FC5768001A7D52 /* TransOut.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70149BA23FC5768001A7D52 /* TransOut.swift */; };
+		B70149BE23FC577F001A7D52 /* Out.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B70149BD23FC577F001A7D52 /* Out.storyboard */; };
 		B70577F0234BD0A500A9E2CA /* TschessTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70577EF234BD0A500A9E2CA /* TschessTests.swift */; };
 		B708D0DD236B351000A899F9 /* Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = B708D0DC236B351000A899F9 /* Init.swift */; };
 		B708D0E7236B366800A899F9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B708D0E6236B366800A899F9 /* LaunchScreen.storyboard */; };
@@ -209,6 +212,9 @@
 		B70149B123FC5661001A7D52 /* Calypso.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Calypso.storyboard; sourceTree = "<group>"; };
 		B70149B323FC568F001A7D52 /* Neptune.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Neptune.storyboard; sourceTree = "<group>"; };
 		B70149B523FC56C3001A7D52 /* Hyperion.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Hyperion.storyboard; sourceTree = "<group>"; };
+		B70149B823FC5723001A7D52 /* CompOut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompOut.swift; sourceTree = "<group>"; };
+		B70149BA23FC5768001A7D52 /* TransOut.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransOut.swift; sourceTree = "<group>"; };
+		B70149BD23FC577F001A7D52 /* Out.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Out.storyboard; sourceTree = "<group>"; };
 		B70577EF234BD0A500A9E2CA /* TschessTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TschessTests.swift; sourceTree = "<group>"; };
 		B708D0DC236B351000A899F9 /* Init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Init.swift; sourceTree = "<group>"; };
 		B708D0E6236B366800A899F9 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -445,6 +451,24 @@
 				B70149AD23FC5023001A7D52 /* Skin.swift */,
 			);
 			path = view;
+			sourceTree = "<group>";
+		};
+		B70149B723FC56FF001A7D52 /* component */ = {
+			isa = PBXGroup;
+			children = (
+				B70149BC23FC576E001A7D52 /* storyboard */,
+				B70149B823FC5723001A7D52 /* CompOut.swift */,
+				B70149BA23FC5768001A7D52 /* TransOut.swift */,
+			);
+			path = component;
+			sourceTree = "<group>";
+		};
+		B70149BC23FC576E001A7D52 /* storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				B70149BD23FC577F001A7D52 /* Out.storyboard */,
+			);
+			path = storyboard;
 			sourceTree = "<group>";
 		};
 		B708D0DB236B34F000A899F9 /* init */ = {
@@ -1095,6 +1119,7 @@
 		B7BE126223EB056600ADA499 /* detail */ = {
 			isa = PBXGroup;
 			children = (
+				B70149B723FC56FF001A7D52 /* component */,
 				B7BE12C023EB15B700ADA499 /* networking */,
 				B7BE126323EB056F00ADA499 /* storyboard */,
 				B7BE126623EB05B200ADA499 /* Detail.swift */,
@@ -1490,6 +1515,7 @@
 				B768473123F54BAF00F55D4A /* iTschess.storyboard in Resources */,
 				B7BE129523EB0A7900ADA499 /* DrawResign.storyboard in Resources */,
 				B7BE11F423EAC94E00ADA499 /* EditSelf.storyboard in Resources */,
+				B70149BE23FC577F001A7D52 /* Out.storyboard in Resources */,
 				B768473723F54C3700F55D4A /* cTschess.storyboard in Resources */,
 				B7BE126523EB058800ADA499 /* Detail.storyboard in Resources */,
 				B7BE11FA23EAC98F00ADA499 /* EditOther.storyboard in Resources */,
@@ -1595,6 +1621,7 @@
 				B7BE11D323EAA0A600ADA499 /* Castle.swift in Sources */,
 				B771365223F1D5CF007F0962 /* MovementKing.swift in Sources */,
 				B7BE11AB23EA9C9C00ADA499 /* KingWhite.swift in Sources */,
+				B70149BB23FC5768001A7D52 /* TransOut.swift in Sources */,
 				B7BE11FF23EACCDE00ADA499 /* ConfigCell.swift in Sources */,
 				B7BE126D23EB065300ADA499 /* SkinsTable.swift in Sources */,
 				B7BE116C23EA750B00ADA499 /* ParseGame.swift in Sources */,
@@ -1646,6 +1673,7 @@
 				B7BE126F23EB068700ADA499 /* SkinsCell.swift in Sources */,
 				B7BE120D23EAD42C00ADA499 /* Fairy.swift in Sources */,
 				B70F0C0D22EBC075001415AE /* AppDelegate.swift in Sources */,
+				B70149B923FC5723001A7D52 /* CompOut.swift in Sources */,
 				B7BE12AA23EB0C7F00ADA499 /* Poison.swift in Sources */,
 				B745AD3123F2FC2000E450EF /* RequestPlay.swift in Sources */,
 				B7BE129B23EB0AAE00ADA499 /* Evaluate.swift in Sources */,
