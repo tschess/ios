@@ -11,6 +11,10 @@
 		B70149A923FC4FCC001A7D52 /* EntitySkin.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70149A823FC4FCC001A7D52 /* EntitySkin.swift */; };
 		B70149AC23FC4FF9001A7D52 /* Skin.xib in Resources */ = {isa = PBXBuildFile; fileRef = B70149AB23FC4FF9001A7D52 /* Skin.xib */; };
 		B70149AE23FC5023001A7D52 /* Skin.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70149AD23FC5023001A7D52 /* Skin.swift */; };
+		B70149B023FC562A001A7D52 /* Iapetus.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B70149AF23FC562A001A7D52 /* Iapetus.storyboard */; };
+		B70149B223FC5661001A7D52 /* Calypso.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B70149B123FC5661001A7D52 /* Calypso.storyboard */; };
+		B70149B423FC568F001A7D52 /* Neptune.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B70149B323FC568F001A7D52 /* Neptune.storyboard */; };
+		B70149B623FC56C3001A7D52 /* Hyperion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B70149B523FC56C3001A7D52 /* Hyperion.storyboard */; };
 		B70577F0234BD0A500A9E2CA /* TschessTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70577EF234BD0A500A9E2CA /* TschessTests.swift */; };
 		B708D0DD236B351000A899F9 /* Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = B708D0DC236B351000A899F9 /* Init.swift */; };
 		B708D0E7236B366800A899F9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B708D0E6236B366800A899F9 /* LaunchScreen.storyboard */; };
@@ -31,10 +35,6 @@
 		B768470923F4FAF900F55D4A /* Recover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B768470823F4FAF900F55D4A /* Recover.storyboard */; };
 		B768470D23F4FB4C00F55D4A /* ComponentStart.swift in Sources */ = {isa = PBXBuildFile; fileRef = B768470C23F4FB4C00F55D4A /* ComponentStart.swift */; };
 		B768470F23F4FEA400F55D4A /* TransitionStart.swift in Sources */ = {isa = PBXBuildFile; fileRef = B768470E23F4FEA400F55D4A /* TransitionStart.swift */; };
-		B768471A23F53A0200F55D4A /* Iapetus.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B768471923F53A0200F55D4A /* Iapetus.storyboard */; };
-		B768472023F53AA400F55D4A /* Calypso.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B768471F23F53AA400F55D4A /* Calypso.storyboard */; };
-		B768472323F53E7500F55D4A /* Hyperion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B768472223F53E7500F55D4A /* Hyperion.storyboard */; };
-		B768472623F5427800F55D4A /* Neptune.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B768472523F5427800F55D4A /* Neptune.storyboard */; };
 		B768473123F54BAF00F55D4A /* iTschess.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B768473023F54BAF00F55D4A /* iTschess.storyboard */; };
 		B768473323F54BCE00F55D4A /* dTschess.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B768473223F54BCE00F55D4A /* dTschess.storyboard */; };
 		B768473523F54BFE00F55D4A /* hTschess.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B768473423F54BFE00F55D4A /* hTschess.storyboard */; };
@@ -57,7 +57,7 @@
 		B7BE116A23EA74AE00ADA499 /* RequestHistoric.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE116923EA74AE00ADA499 /* RequestHistoric.swift */; };
 		B7BE116C23EA750B00ADA499 /* ParseGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE116B23EA750B00ADA499 /* ParseGame.swift */; };
 		B7BE116F23EA91CD00ADA499 /* Snapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE116E23EA91CD00ADA499 /* Snapshot.swift */; };
-		B7BE117223EA925E00ADA499 /* Snapshot.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7BE117123EA925E00ADA499 /* Snapshot.storyboard */; };
+		B7BE117223EA925E00ADA499 /* Default.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7BE117123EA925E00ADA499 /* Default.storyboard */; };
 		B7BE117523EA930F00ADA499 /* Piece.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE117423EA930F00ADA499 /* Piece.swift */; };
 		B7BE117723EA93A600ADA499 /* PieceAnte.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE117623EA93A600ADA499 /* PieceAnte.swift */; };
 		B7BE11A223EA965B00ADA499 /* HorizontalVertical.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE11A123EA965B00ADA499 /* HorizontalVertical.swift */; };
@@ -205,6 +205,10 @@
 		B70149A823FC4FCC001A7D52 /* EntitySkin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntitySkin.swift; sourceTree = "<group>"; };
 		B70149AB23FC4FF9001A7D52 /* Skin.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Skin.xib; sourceTree = "<group>"; };
 		B70149AD23FC5023001A7D52 /* Skin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Skin.swift; sourceTree = "<group>"; };
+		B70149AF23FC562A001A7D52 /* Iapetus.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Iapetus.storyboard; sourceTree = "<group>"; };
+		B70149B123FC5661001A7D52 /* Calypso.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Calypso.storyboard; sourceTree = "<group>"; };
+		B70149B323FC568F001A7D52 /* Neptune.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Neptune.storyboard; sourceTree = "<group>"; };
+		B70149B523FC56C3001A7D52 /* Hyperion.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Hyperion.storyboard; sourceTree = "<group>"; };
 		B70577EF234BD0A500A9E2CA /* TschessTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TschessTests.swift; sourceTree = "<group>"; };
 		B708D0DC236B351000A899F9 /* Init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Init.swift; sourceTree = "<group>"; };
 		B708D0E6236B366800A899F9 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -226,10 +230,6 @@
 		B768470823F4FAF900F55D4A /* Recover.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Recover.storyboard; sourceTree = "<group>"; };
 		B768470C23F4FB4C00F55D4A /* ComponentStart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentStart.swift; sourceTree = "<group>"; };
 		B768470E23F4FEA400F55D4A /* TransitionStart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionStart.swift; sourceTree = "<group>"; };
-		B768471923F53A0200F55D4A /* Iapetus.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Iapetus.storyboard; sourceTree = "<group>"; };
-		B768471F23F53AA400F55D4A /* Calypso.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Calypso.storyboard; sourceTree = "<group>"; };
-		B768472223F53E7500F55D4A /* Hyperion.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Hyperion.storyboard; sourceTree = "<group>"; };
-		B768472523F5427800F55D4A /* Neptune.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Neptune.storyboard; sourceTree = "<group>"; };
 		B768473023F54BAF00F55D4A /* iTschess.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = iTschess.storyboard; sourceTree = "<group>"; };
 		B768473223F54BCE00F55D4A /* dTschess.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = dTschess.storyboard; sourceTree = "<group>"; };
 		B768473423F54BFE00F55D4A /* hTschess.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = hTschess.storyboard; sourceTree = "<group>"; };
@@ -257,7 +257,7 @@
 		B7BE116923EA74AE00ADA499 /* RequestHistoric.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestHistoric.swift; sourceTree = "<group>"; };
 		B7BE116B23EA750B00ADA499 /* ParseGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParseGame.swift; sourceTree = "<group>"; };
 		B7BE116E23EA91CD00ADA499 /* Snapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Snapshot.swift; sourceTree = "<group>"; };
-		B7BE117123EA925E00ADA499 /* Snapshot.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Snapshot.storyboard; sourceTree = "<group>"; };
+		B7BE117123EA925E00ADA499 /* Default.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Default.storyboard; sourceTree = "<group>"; };
 		B7BE117423EA930F00ADA499 /* Piece.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Piece.swift; sourceTree = "<group>"; };
 		B7BE117623EA93A600ADA499 /* PieceAnte.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieceAnte.swift; sourceTree = "<group>"; };
 		B7BE11A123EA965B00ADA499 /* HorizontalVertical.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalVertical.swift; sourceTree = "<group>"; };
@@ -518,81 +518,6 @@
 			path = storyboard;
 			sourceTree = "<group>";
 		};
-		B768471423F535E300F55D4A /* variant */ = {
-			isa = PBXGroup;
-			children = (
-				B768471D23F53A7000F55D4A /* neptune */,
-				B768471C23F53A5F00F55D4A /* hyperion */,
-				B768471B23F53A3E00F55D4A /* calypso */,
-				B768471723F539AB00F55D4A /* iapetus */,
-			);
-			path = variant;
-			sourceTree = "<group>";
-		};
-		B768471723F539AB00F55D4A /* iapetus */ = {
-			isa = PBXGroup;
-			children = (
-				B768471823F539B600F55D4A /* storyboard */,
-			);
-			path = iapetus;
-			sourceTree = "<group>";
-		};
-		B768471823F539B600F55D4A /* storyboard */ = {
-			isa = PBXGroup;
-			children = (
-				B768471923F53A0200F55D4A /* Iapetus.storyboard */,
-			);
-			path = storyboard;
-			sourceTree = "<group>";
-		};
-		B768471B23F53A3E00F55D4A /* calypso */ = {
-			isa = PBXGroup;
-			children = (
-				B768471E23F53A8700F55D4A /* storyboard */,
-			);
-			path = calypso;
-			sourceTree = "<group>";
-		};
-		B768471C23F53A5F00F55D4A /* hyperion */ = {
-			isa = PBXGroup;
-			children = (
-				B768472123F53E5900F55D4A /* storyboard */,
-			);
-			path = hyperion;
-			sourceTree = "<group>";
-		};
-		B768471D23F53A7000F55D4A /* neptune */ = {
-			isa = PBXGroup;
-			children = (
-				B768472423F5426500F55D4A /* storyboard */,
-			);
-			path = neptune;
-			sourceTree = "<group>";
-		};
-		B768471E23F53A8700F55D4A /* storyboard */ = {
-			isa = PBXGroup;
-			children = (
-				B768471F23F53AA400F55D4A /* Calypso.storyboard */,
-			);
-			path = storyboard;
-			sourceTree = "<group>";
-		};
-		B768472123F53E5900F55D4A /* storyboard */ = {
-			isa = PBXGroup;
-			children = (
-				B768472223F53E7500F55D4A /* Hyperion.storyboard */,
-			);
-			path = storyboard;
-			sourceTree = "<group>";
-		};
-		B768472423F5426500F55D4A /* storyboard */ = {
-			isa = PBXGroup;
-			children = (
-				B768472523F5427800F55D4A /* Neptune.storyboard */,
-			);
-			path = storyboard;
-			sourceTree = "<group>";
-		};
 		B787C71D22E970DC009C94F7 = {
 			isa = PBXGroup;
 			children = (
@@ -713,7 +638,6 @@
 		B7BE116D23EA91B700ADA499 /* snapshot */ = {
 			isa = PBXGroup;
 			children = (
-				B768471423F535E300F55D4A /* variant */,
 				B7BE117023EA924900ADA499 /* storyboard */,
 				B7BE116E23EA91CD00ADA499 /* Snapshot.swift */,
 				B7CA12CC23F5903000569805 /* SelectorSnapshot.swift */,
@@ -724,7 +648,11 @@
 		B7BE117023EA924900ADA499 /* storyboard */ = {
 			isa = PBXGroup;
 			children = (
-				B7BE117123EA925E00ADA499 /* Snapshot.storyboard */,
+				B7BE117123EA925E00ADA499 /* Default.storyboard */,
+				B70149AF23FC562A001A7D52 /* Iapetus.storyboard */,
+				B70149B123FC5661001A7D52 /* Calypso.storyboard */,
+				B70149B323FC568F001A7D52 /* Neptune.storyboard */,
+				B70149B523FC56C3001A7D52 /* Hyperion.storyboard */,
 			);
 			path = storyboard;
 			sourceTree = "<group>";
@@ -1535,10 +1463,10 @@
 				B7BE122923EAD95600ADA499 /* Actual.storyboard in Resources */,
 				B70149AC23FC4FF9001A7D52 /* Skin.xib in Resources */,
 				B787C73122E970DD009C94F7 /* Assets.xcassets in Resources */,
-				B768472023F53AA400F55D4A /* Calypso.storyboard in Resources */,
-				B768471A23F53A0200F55D4A /* Iapetus.storyboard in Resources */,
 				B7215A6D23F5D57D00B86274 /* hRecent.storyboard in Resources */,
 				B7BE11EB23EAC66600ADA499 /* Play.storyboard in Resources */,
+				B70149B023FC562A001A7D52 /* Iapetus.storyboard in Resources */,
+				B70149B223FC5661001A7D52 /* Calypso.storyboard in Resources */,
 				B7BE124323EB015700ADA499 /* Ack.storyboard in Resources */,
 				B7BE129723EB0A8B00ADA499 /* Evaluate.storyboard in Resources */,
 				B7BE121A23EAD84300ADA499 /* Config.storyboard in Resources */,
@@ -1550,25 +1478,25 @@
 				B7215A7123F5D59A00B86274 /* iRecent.storyboard in Resources */,
 				B7F541C423D51A9D00E89074 /* Home.storyboard in Resources */,
 				B768473323F54BCE00F55D4A /* dTschess.storyboard in Resources */,
-				B7BE117223EA925E00ADA499 /* Snapshot.storyboard in Resources */,
+				B7BE117223EA925E00ADA499 /* Default.storyboard in Resources */,
+				B70149B423FC568F001A7D52 /* Neptune.storyboard in Resources */,
 				B7BE126B23EB061D00ADA499 /* Skins.storyboard in Resources */,
 				B768470723F4FAD400F55D4A /* Invalid.storyboard in Resources */,
 				B7BE122523EAD93900ADA499 /* Historic.storyboard in Resources */,
 				B768473523F54BFE00F55D4A /* hTschess.storyboard in Resources */,
 				B7BE121623EAD7E700ADA499 /* Init.storyboard in Resources */,
-				B768472623F5427800F55D4A /* Neptune.storyboard in Resources */,
 				B7BE12CA23EB70E900ADA499 /* Info.storyboard in Resources */,
 				B7ED646423F4D9D400292FBC /* Create.storyboard in Resources */,
 				B768473123F54BAF00F55D4A /* iTschess.storyboard in Resources */,
 				B7BE129523EB0A7900ADA499 /* DrawResign.storyboard in Resources */,
 				B7BE11F423EAC94E00ADA499 /* EditSelf.storyboard in Resources */,
-				B768472323F53E7500F55D4A /* Hyperion.storyboard in Resources */,
 				B768473723F54C3700F55D4A /* cTschess.storyboard in Resources */,
 				B7BE126523EB058800ADA499 /* Detail.storyboard in Resources */,
 				B7BE11FA23EAC98F00ADA499 /* EditOther.storyboard in Resources */,
 				B7BE124F23EB02DB00ADA499 /* Fairies.storyboard in Resources */,
 				B7CA12D323F5A14400569805 /* dRecent.storyboard in Resources */,
 				B7BE116323EA722B00ADA499 /* Other.storyboard in Resources */,
+				B70149B623FC56C3001A7D52 /* Hyperion.storyboard in Resources */,
 				B7215A6F23F5D58D00B86274 /* cRecent.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
