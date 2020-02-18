@@ -112,20 +112,12 @@ class Skins: UIViewController, UITabBarDelegate {
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         switch item.tag {
-        case 1:
+        default:
             DispatchQueue.main.async() {
                 let profileStoryboard: UIStoryboard = UIStoryboard(name: "Profile", bundle: nil)
                 let profileViewController = profileStoryboard.instantiateViewController(withIdentifier: "Profile") as! Profile
                 profileViewController.setPlayer(player: self.player!)
                 UIApplication.shared.keyWindow?.rootViewController = profileViewController
-            }
-        default:
-            DispatchQueue.main.async {
-            let homeStoryboard: UIStoryboard = UIStoryboard(name: "Eth", bundle: nil)
-            let homeViewController = homeStoryboard.instantiateViewController(withIdentifier: "Eth") as! Eth
-            homeViewController.setPlayer(player: self.player!)
-                UIApplication.shared.keyWindow?.rootViewController = homeViewController
-                
             }
         }
     }

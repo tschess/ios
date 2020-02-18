@@ -137,11 +137,6 @@
 		B7BE127123EB06AD00ADA499 /* Skins.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE127023EB06AD00ADA499 /* Skins.swift */; };
 		B7BE127323EB06FA00ADA499 /* InAppPurchase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE127223EB06FA00ADA499 /* InAppPurchase.swift */; };
 		B7BE127523EB072000ADA499 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE127423EB072000ADA499 /* Product.swift */; };
-		B7BE127823EB077A00ADA499 /* Eth.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE127723EB077A00ADA499 /* Eth.swift */; };
-		B7BE127B23EB07BE00ADA499 /* Eth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7BE127A23EB07BE00ADA499 /* Eth.storyboard */; };
-		B7BE127E23EB081800ADA499 /* UpdateEth.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE127D23EB081800ADA499 /* UpdateEth.swift */; };
-		B7BE128123EB085A00ADA499 /* Scanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE128023EB085A00ADA499 /* Scanner.swift */; };
-		B7BE128423EB088F00ADA499 /* Scanner.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7BE128323EB088F00ADA499 /* Scanner.storyboard */; };
 		B7BE128723EB091C00ADA499 /* Tschess.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE128623EB091C00ADA499 /* Tschess.swift */; };
 		B7BE128D23EB09B400ADA499 /* GameUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE128C23EB09B400ADA499 /* GameUpdate.swift */; };
 		B7BE128F23EB09C700ADA499 /* GameRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE128E23EB09C700ADA499 /* GameRequest.swift */; };
@@ -342,11 +337,6 @@
 		B7BE127023EB06AD00ADA499 /* Skins.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Skins.swift; sourceTree = "<group>"; };
 		B7BE127223EB06FA00ADA499 /* InAppPurchase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppPurchase.swift; sourceTree = "<group>"; };
 		B7BE127423EB072000ADA499 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
-		B7BE127723EB077A00ADA499 /* Eth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Eth.swift; sourceTree = "<group>"; };
-		B7BE127A23EB07BE00ADA499 /* Eth.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Eth.storyboard; sourceTree = "<group>"; };
-		B7BE127D23EB081800ADA499 /* UpdateEth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateEth.swift; sourceTree = "<group>"; };
-		B7BE128023EB085A00ADA499 /* Scanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scanner.swift; sourceTree = "<group>"; };
-		B7BE128323EB088F00ADA499 /* Scanner.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Scanner.storyboard; sourceTree = "<group>"; };
 		B7BE128623EB091C00ADA499 /* Tschess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tschess.swift; sourceTree = "<group>"; };
 		B7BE128C23EB09B400ADA499 /* GameUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameUpdate.swift; sourceTree = "<group>"; };
 		B7BE128E23EB09C700ADA499 /* GameRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRequest.swift; sourceTree = "<group>"; };
@@ -613,8 +603,6 @@
 				B7CA12CE23F5A11500569805 /* recent */,
 				B7BE12C523EB708E00ADA499 /* info */,
 				B7BE128523EB08FE00ADA499 /* tschess */,
-				B7BE127F23EB083F00ADA499 /* scanner */,
-				B7BE127623EB075E00ADA499 /* eth */,
 				B7BE126823EB05F400ADA499 /* skins */,
 				B7BE126223EB056600ADA499 /* detail */,
 				B7BE122B23EAD97E00ADA499 /* ack */,
@@ -1208,49 +1196,6 @@
 			path = storyboard;
 			sourceTree = "<group>";
 		};
-		B7BE127623EB075E00ADA499 /* eth */ = {
-			isa = PBXGroup;
-			children = (
-				B7BE127C23EB080100ADA499 /* networking */,
-				B7BE127923EB07AB00ADA499 /* storyboard */,
-				B7BE127723EB077A00ADA499 /* Eth.swift */,
-			);
-			path = eth;
-			sourceTree = "<group>";
-		};
-		B7BE127923EB07AB00ADA499 /* storyboard */ = {
-			isa = PBXGroup;
-			children = (
-				B7BE127A23EB07BE00ADA499 /* Eth.storyboard */,
-			);
-			path = storyboard;
-			sourceTree = "<group>";
-		};
-		B7BE127C23EB080100ADA499 /* networking */ = {
-			isa = PBXGroup;
-			children = (
-				B7BE127D23EB081800ADA499 /* UpdateEth.swift */,
-			);
-			path = networking;
-			sourceTree = "<group>";
-		};
-		B7BE127F23EB083F00ADA499 /* scanner */ = {
-			isa = PBXGroup;
-			children = (
-				B7BE128223EB087A00ADA499 /* storyboard */,
-				B7BE128023EB085A00ADA499 /* Scanner.swift */,
-			);
-			path = scanner;
-			sourceTree = "<group>";
-		};
-		B7BE128223EB087A00ADA499 /* storyboard */ = {
-			isa = PBXGroup;
-			children = (
-				B7BE128323EB088F00ADA499 /* Scanner.storyboard */,
-			);
-			path = storyboard;
-			sourceTree = "<group>";
-		};
 		B7BE128523EB08FE00ADA499 /* tschess */ = {
 			isa = PBXGroup;
 			children = (
@@ -1584,7 +1529,6 @@
 				B768472023F53AA400F55D4A /* Calypso.storyboard in Resources */,
 				B768471A23F53A0200F55D4A /* Iapetus.storyboard in Resources */,
 				B7215A6D23F5D57D00B86274 /* hRecent.storyboard in Resources */,
-				B7BE128423EB088F00ADA499 /* Scanner.storyboard in Resources */,
 				B7BE11EB23EAC66600ADA499 /* Play.storyboard in Resources */,
 				B7BE124323EB015700ADA499 /* Ack.storyboard in Resources */,
 				B7BE129723EB0A8B00ADA499 /* Evaluate.storyboard in Resources */,
@@ -1605,7 +1549,6 @@
 				B7BE121623EAD7E700ADA499 /* Init.storyboard in Resources */,
 				B768472623F5427800F55D4A /* Neptune.storyboard in Resources */,
 				B7BE12CA23EB70E900ADA499 /* Info.storyboard in Resources */,
-				B7BE127B23EB07BE00ADA499 /* Eth.storyboard in Resources */,
 				B7ED646423F4D9D400292FBC /* Create.storyboard in Resources */,
 				B768473123F54BAF00F55D4A /* iTschess.storyboard in Resources */,
 				B7BE11E323EAC25400ADA499 /* Skin.xib in Resources */,
@@ -1688,7 +1631,6 @@
 				B7BE12B323EB0D6900ADA499 /* PawnOffense.swift in Sources */,
 				B7BE12A323EB0BB800ADA499 /* Passant.swift in Sources */,
 				B7CA12CD23F5903000569805 /* SelectorSnapshot.swift in Sources */,
-				B7BE128123EB085A00ADA499 /* Scanner.swift in Sources */,
 				B7BE11A423EA972D00ADA499 /* Diagonal.swift in Sources */,
 				B7BE11C023EA9E3D00ADA499 /* PawnWhite.swift in Sources */,
 				B7BE11B923EA9DD400ADA499 /* BishopWhite.swift in Sources */,
@@ -1793,8 +1735,6 @@
 				B7BE11C923EA9EB700ADA499 /* RookBlack.swift in Sources */,
 				B7BE120723EAD3D200ADA499 /* Amazon.swift in Sources */,
 				B7BE125D23EB042A00ADA499 /* UpdateDevice.swift in Sources */,
-				B7BE127E23EB081800ADA499 /* UpdateEth.swift in Sources */,
-				B7BE127823EB077A00ADA499 /* Eth.swift in Sources */,
 				B7BE12A723EB0C2600ADA499 /* Promotion.swift in Sources */,
 				B7BE12B923EB0E1200ADA499 /* Transitioner.swift in Sources */,
 				B7BE126723EB05B200ADA499 /* Detail.swift in Sources */,

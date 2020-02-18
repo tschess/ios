@@ -121,9 +121,6 @@ class Home: UIViewController, UITabBarDelegate {
             notify.selectedImage = UIImage(systemName: "gamecontroller.fill")!
         }
         switch item.tag {
-            //case 0:
-            //self.notificationTimerStop()
-        //StoryboardSelector().purchase(player: self.player!, remaining: 13)
         case 1:
             self.notificationTimerStop()
             DispatchQueue.main.async() {

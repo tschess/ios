@@ -114,13 +114,6 @@ class Profile: UIViewController, UITabBarDelegate, UINavigationControllerDelegat
                 viewController.setPlayer(player: self.player!)
                 UIApplication.shared.keyWindow?.rootViewController = viewController
             }
-        case 2://eth
-            DispatchQueue.main.async {
-                let storyboard: UIStoryboard = UIStoryboard(name: "Eth", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "Eth") as! Eth
-                viewController.setPlayer(player: self.player!)
-                UIApplication.shared.keyWindow?.rootViewController = viewController
-            }
         default:
             self.signOut()
         }

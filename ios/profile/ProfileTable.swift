@@ -10,7 +10,7 @@ import UIKit
 
 class ProfileTable: UITableViewController {
     
-    let options = ["update photo", "game skins", "eth address", "sign out"]
+    let options = ["update photo", "game skins", "sign out"]
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -35,11 +35,6 @@ class ProfileTable: UITableViewController {
         case 1:
             if #available(iOS 13.0, *) {
                 return UIImage(systemName: "square.on.square")
-            }
-            return nil
-        case 2:
-            if #available(iOS 13.0, *) {
-                return UIImage(named: "eth")!
             }
             return nil
         default:
