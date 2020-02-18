@@ -53,28 +53,28 @@ class Skins: UIViewController, UITabBarDelegate {
         
         DispatchQueue.main.async {
             switch skinSelection.getName() {
-            case "hyperion":
+            case "HYPERION":
                 let storyboard: UIStoryboard = UIStoryboard(name: "Detail", bundle: nil)
                 let viewController = storyboard.instantiateViewController(withIdentifier: "Detail") as! Detail
                 viewController.setPlayer(player: self.player!)
                 viewController.setSkin(skin: skinSelection)
                 UIApplication.shared.keyWindow?.rootViewController = viewController
                 return
-            case "calypso":
+            case "CALYPSO":
                 let storyboard: UIStoryboard = UIStoryboard(name: "Detail", bundle: nil)
                 let viewController = storyboard.instantiateViewController(withIdentifier: "Detail") as! Detail
                 viewController.setPlayer(player: self.player!)
                 viewController.setSkin(skin: skinSelection)
                 UIApplication.shared.keyWindow?.rootViewController = viewController
                 return
-            case "neptune":
+            case "NEPTUNE":
                 let storyboard: UIStoryboard = UIStoryboard(name: "Detail", bundle: nil)
                 let viewController = storyboard.instantiateViewController(withIdentifier: "Detail") as! Detail
                 viewController.setPlayer(player: self.player!)
                 viewController.setSkin(skin: skinSelection)
                 UIApplication.shared.keyWindow?.rootViewController = viewController
                 return
-            case "iapetus":
+            case "IAPETUS":
                 let storyboard: UIStoryboard = UIStoryboard(name: "Detail", bundle: nil)
                 let viewController = storyboard.instantiateViewController(withIdentifier: "Detail") as! Detail
                 viewController.setPlayer(player: self.player!)

@@ -48,18 +48,24 @@ class Play: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITa
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let hyperion: EntitySkin = EntitySkin(name: "hyperion", foreColor: purple, backColor: blue)
-        let calypso: EntitySkin = EntitySkin(name: "calypso", foreColor: pink, backColor: UIColor.black)
-        let neptune: EntitySkin = EntitySkin(name: "neptune", foreColor: green, backColor: orange, backAlpha: 0.85)
+        let orange: UIColor = UIColor(red: 255/255.0, green: 105/255.0, blue: 104/255.0, alpha: 1) //FF6968
+        let pink: UIColor = UIColor(red: 255/255.0, green: 105/255.0, blue: 180/255.0, alpha: 1)
+        let purple: UIColor = UIColor(red: 140/255.0, green: 0/255.0, blue: 192/255.0, alpha: 1)
+        let blue: UIColor = UIColor(red: 84/255.0, green: 140/255.0, blue: 240/255.0, alpha: 1)
+        let green: UIColor = UIColor(red: 0/255.0, green: 255/255.0, blue: 88/255.0, alpha: 1)
+        
+        let hyperion: EntitySkin = EntitySkin(name: "HYPERION", foreColor: purple, backColor: blue)
+        let calypso: EntitySkin = EntitySkin(name: "CALYPSO", foreColor: pink, backColor: UIColor.black)
+        let neptune: EntitySkin = EntitySkin(name: "NEPTUNE", foreColor: green, backColor: orange, backAlpha: 0.85)
         let iapetus: EntitySkin = EntitySkin(
-            name: "iapetus",
+            name: "IAPETUS",
             foreColor: UIColor.white,
             foreImage: UIImage(named: "iapetus"),
             backColor: UIColor.black,
             backImage: UIImage(named: "iapetus"),
             backAlpha: 0.85)
         let flip: UIColor = UIColor(red: 31/255.0, green: 33/255.0, blue: 36/255.0, alpha: 1)
-        let skinD: EntitySkin = EntitySkin(name: "default", foreColor: UIColor.lightGray, backColor:  flip)
+        let skinD: EntitySkin = EntitySkin(name: "DEFAULT", foreColor: UIColor.lightGray, backColor:  flip)
         self.skinList = Array(arrayLiteral: skinD, iapetus, calypso, hyperion, neptune)
         
         self.attributeAlphaDotFull = [
@@ -257,7 +263,10 @@ class Play: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITa
         let skinAsset = self.skinList![row]
         
         let sampleView = Skin.instanceFromNib()
-        sampleView.nameLabel.text = skinAsset.getName()
+        sampleView.nameLabel.text = skinAsset.getName().lowercased()
+        if(!self.playerSelf!.skin.contains(skinAsset.name)){
+            sampleView.nameLabel.text = "unavailable"
+        }
         
         sampleView.backgroundView.backgroundColor = skinAsset.getBackColor()
         sampleView.backgroundView.alpha = skinAsset.getBackAlpha()
@@ -266,6 +275,10 @@ class Play: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITa
         sampleView.foregroundView.backgroundColor = skinAsset.getForeColor()
         sampleView.foregroundView.alpha = skinAsset.getForeAlpha()
         sampleView.foregroundImage.image = skinAsset.getForeImage()
+        
+        if(!self.playerSelf!.skin.contains(skinAsset.name)){
+            sampleView.alpha = 0.5
+        }
         
         return sampleView
     }

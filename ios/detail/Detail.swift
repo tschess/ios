@@ -167,7 +167,7 @@ class Detail: UIViewController, UITabBarDelegate, UITextViewDelegate {
         self.descriptionTextView.textColor = UIColor.black
         self.descriptionTextView.text = description
         
-        self.titleLabel.text = self.skin!.getName()
+        self.titleLabel.text = self.skin!.getName().lowercased()
         
         self.cellForegroundView.backgroundColor = self.skin!.getForeColor()
         self.cellForegroundView.alpha = self.skin!.getForeAlpha()
@@ -205,6 +205,7 @@ class Detail: UIViewController, UITabBarDelegate, UITextViewDelegate {
             "config0": self.player!.config0,
             "config1": self.player!.config1,
             "config2": self.player!.config2,
+            "skin": self.player!.skin,
             "notify": self.player!.notify,
             "device": self.player!.device,
             "updated": self.player!.updated,
@@ -266,16 +267,16 @@ class Detail: UIViewController, UITabBarDelegate, UITextViewDelegate {
         
         DispatchQueue.main.async {
             switch self.skin!.getName() {
-            case "hyperion":
+            case "HYPERION":
                 SelectorSnapshot().snapshot(skin: "HYPERION", playerSelf: self.player!, game: game, presentor: self)
                 return
-            case "calypso":
+            case "CALYPSO":
                 SelectorSnapshot().snapshot(skin: "CALYPSO", playerSelf: self.player!, game: game, presentor: self)
                 return
-            case "neptune":
+            case "NEPTUNE":
                 SelectorSnapshot().snapshot(skin: "NEPTUNE", playerSelf: self.player!, game: game, presentor: self)
                 return
-            case "iapetus":
+            case "IAPETUS":
                 SelectorSnapshot().snapshot(skin: "IAPETUS", playerSelf: self.player!, game: game, presentor: self)
                 return
             default:

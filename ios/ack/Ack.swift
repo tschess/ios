@@ -269,12 +269,11 @@ class Ack: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITab
         let blue: UIColor = UIColor(red: 84/255.0, green: 140/255.0, blue: 240/255.0, alpha: 1)
         let green: UIColor = UIColor(red: 0/255.0, green: 255/255.0, blue: 88/255.0, alpha: 1)
         
-        let hyperion: EntitySkin = EntitySkin(name: "hyperion", foreColor: purple, backColor: blue)
-        let calypso: EntitySkin = EntitySkin(name: "calypso", foreColor: pink, backColor: UIColor.black)
-        let neptune: EntitySkin = EntitySkin(name: "neptune", foreColor: green, backColor: orange, backAlpha: 0.85)
-        
+        let hyperion: EntitySkin = EntitySkin(name: "HYPERION", foreColor: purple, backColor: blue)
+        let calypso: EntitySkin = EntitySkin(name: "CALYPSO", foreColor: pink, backColor: UIColor.black)
+        let neptune: EntitySkin = EntitySkin(name: "NEPTUNE", foreColor: green, backColor: orange, backAlpha: 0.85)
         let iapetus: EntitySkin = EntitySkin(
-            name: "iapetus",
+            name: "IAPETUS",
             foreColor: UIColor.white,
             foreImage: UIImage(named: "iapetus"),
             backColor: UIColor.black,
