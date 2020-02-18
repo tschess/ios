@@ -20,7 +20,7 @@ class DrawResign: UIViewController  {
     @IBOutlet weak var imageDraw: UIImageView!
     @IBOutlet weak var activityIndicatorDraw: UIActivityIndicatorView!
     
-    private var customTransitioningDelegate = TransitioningDelegate()
+    private var customTransitioningDelegate = TransDraw()
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)

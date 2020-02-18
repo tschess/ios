@@ -24,6 +24,7 @@
 		B708D0E9236B369D00A899F9 /* Start.swift in Sources */ = {isa = PBXBuildFile; fileRef = B708D0E8236B369D00A899F9 /* Start.swift */; };
 		B70A86CB2370989000D303F0 /* ServerAddress.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70A86CA2370989000D303F0 /* ServerAddress.swift */; };
 		B70F0C0D22EBC075001415AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70F0C0C22EBC075001415AE /* AppDelegate.swift */; };
+		B71DD35723FC85B1008E8818 /* TransPro.swift in Sources */ = {isa = PBXBuildFile; fileRef = B71DD35623FC85B1008E8818 /* TransPro.swift */; };
 		B7215A6B23F5D56B00B86274 /* nRecent.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7215A6A23F5D56B00B86274 /* nRecent.storyboard */; };
 		B7215A6D23F5D57D00B86274 /* hRecent.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7215A6C23F5D57D00B86274 /* hRecent.storyboard */; };
 		B7215A6F23F5D58D00B86274 /* cRecent.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7215A6E23F5D58D00B86274 /* cRecent.storyboard */; };
@@ -162,7 +163,7 @@
 		B7BE12B923EB0E1200ADA499 /* Transitioner.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE12B823EB0E1200ADA499 /* Transitioner.swift */; };
 		B7BE12BF23EB0EC600ADA499 /* Evaluation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE12BE23EB0EC600ADA499 /* Evaluation.swift */; };
 		B7BE12C223EB15CC00ADA499 /* PurchaseRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE12C123EB15CC00ADA499 /* PurchaseRequest.swift */; };
-		B7BE12C423EB6B9300ADA499 /* TransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE12C323EB6B9300ADA499 /* TransitioningDelegate.swift */; };
+		B7BE12C423EB6B9300ADA499 /* TransDraw.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE12C323EB6B9300ADA499 /* TransDraw.swift */; };
 		B7BE12C723EB70A900ADA499 /* Info.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE12C623EB70A900ADA499 /* Info.swift */; };
 		B7BE12CA23EB70E900ADA499 /* Info.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7BE12C923EB70E900ADA499 /* Info.storyboard */; };
 		B7CA12CB23F5870000569805 /* SelectorTschess.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7CA12CA23F5870000569805 /* SelectorTschess.swift */; };
@@ -222,6 +223,7 @@
 		B70A86CA2370989000D303F0 /* ServerAddress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerAddress.swift; sourceTree = "<group>"; };
 		B70F0C0C22EBC075001415AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B70F0C1122EBC25C001415AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B71DD35623FC85B1008E8818 /* TransPro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransPro.swift; sourceTree = "<group>"; };
 		B7215A6A23F5D56B00B86274 /* nRecent.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = nRecent.storyboard; sourceTree = "<group>"; };
 		B7215A6C23F5D57D00B86274 /* hRecent.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = hRecent.storyboard; sourceTree = "<group>"; };
 		B7215A6E23F5D58D00B86274 /* cRecent.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = cRecent.storyboard; sourceTree = "<group>"; };
@@ -365,7 +367,7 @@
 		B7BE12B823EB0E1200ADA499 /* Transitioner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transitioner.swift; sourceTree = "<group>"; };
 		B7BE12BE23EB0EC600ADA499 /* Evaluation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Evaluation.swift; sourceTree = "<group>"; };
 		B7BE12C123EB15CC00ADA499 /* PurchaseRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseRequest.swift; sourceTree = "<group>"; };
-		B7BE12C323EB6B9300ADA499 /* TransitioningDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitioningDelegate.swift; sourceTree = "<group>"; };
+		B7BE12C323EB6B9300ADA499 /* TransDraw.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransDraw.swift; sourceTree = "<group>"; };
 		B7BE12C623EB70A900ADA499 /* Info.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Info.swift; sourceTree = "<group>"; };
 		B7BE12C923EB70E900ADA499 /* Info.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Info.storyboard; sourceTree = "<group>"; };
 		B7CA12CA23F5870000569805 /* SelectorTschess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectorTschess.swift; sourceTree = "<group>"; };
@@ -1202,7 +1204,8 @@
 				B7BE129823EB0A9E00ADA499 /* DrawResign.swift */,
 				B7BE129A23EB0AAE00ADA499 /* Evaluate.swift */,
 				B7BE12A623EB0C2600ADA499 /* Promotion.swift */,
-				B7BE12C323EB6B9300ADA499 /* TransitioningDelegate.swift */,
+				B7BE12C323EB6B9300ADA499 /* TransDraw.swift */,
+				B71DD35623FC85B1008E8818 /* TransPro.swift */,
 			);
 			path = component;
 			sourceTree = "<group>";
@@ -1630,7 +1633,7 @@
 				B7BE123C23EAFC0200ADA499 /* Challenge.swift in Sources */,
 				B7BE129E23EB0B2A00ADA499 /* HopperOffense.swift in Sources */,
 				B7BE11D523EAA18000ADA499 /* BoardView.swift in Sources */,
-				B7BE12C423EB6B9300ADA499 /* TransitioningDelegate.swift in Sources */,
+				B7BE12C423EB6B9300ADA499 /* TransDraw.swift in Sources */,
 				B7BE115D23EA4FBE00ADA499 /* ParsePlayer.swift in Sources */,
 				B708D0E9236B369D00A899F9 /* Start.swift in Sources */,
 				B771365423F222AF007F0962 /* UpdateMate.swift in Sources */,
@@ -1712,6 +1715,7 @@
 				B7F6F9E823F0B55C007D9151 /* UpdateEval.swift in Sources */,
 				B7BE121323EAD7BF00ADA499 /* Config.swift in Sources */,
 				B7BE11B723EA9DAC00ADA499 /* Bishop.swift in Sources */,
+				B71DD35723FC85B1008E8818 /* TransPro.swift in Sources */,
 				B7F541C623D51ADD00E89074 /* HomeMenuTable.swift in Sources */,
 				B70149AE23FC5023001A7D52 /* Skin.swift in Sources */,
 				B7BE125B23EB040600ADA499 /* UpdatePhoto.swift in Sources */,

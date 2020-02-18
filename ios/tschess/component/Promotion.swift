@@ -21,7 +21,7 @@ class Promotion: UIViewController {
     @IBOutlet weak var imageViewQueen: UIImageView!
     @IBOutlet weak var imageViewRook: UIImageView!
     
-    private var customTransitioningDelegate = TransitioningDelegate()
+    private var customTransitioningDelegate = TransPro()
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)

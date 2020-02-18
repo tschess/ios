@@ -8,13 +8,13 @@
 
 import UIKit
 
-class TransitioningDelegate: NSObject, UIViewControllerTransitioningDelegate {
+class TransDraw: NSObject, UIViewControllerTransitioningDelegate {
     func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
-        return PresentationController(presentedViewController: presented, presenting: presenting)
+        return PresDraw(presentedViewController: presented, presenting: presenting)
     }
 }
 
-class PresentationController: UIPresentationController {
+class PresDraw: UIPresentationController {
     
     override var frameOfPresentedViewInContainerView: CGRect {
         let bounds = presentingViewController.view.bounds

@@ -18,7 +18,7 @@ class Evaluate: UIViewController  {
     @IBOutlet weak var imageReject: UIImageView!
     @IBOutlet weak var activityIndicatorReject: UIActivityIndicatorView!
     
-    private var customTransitioningDelegate = TransitioningDelegate()
+    private var customTransitioningDelegate = TransDraw()
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
