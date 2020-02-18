@@ -62,8 +62,8 @@ class SelectorSnapshot {
             return
         default:
             DispatchQueue.main.async {
-                let storyboard: UIStoryboard = UIStoryboard(name: "Snapshot", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "Snapshot") as! Snapshot
+                let storyboard: UIStoryboard = UIStoryboard(name: "Default", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "Default") as! Snapshot
                 viewController.setGame(game: game)
                 viewController.setPlayer(player: playerSelf)
                 presentor.present(viewController, animated: false, completion: nil)

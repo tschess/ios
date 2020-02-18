@@ -84,8 +84,6 @@ class Historic: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate 
         }
     }
     
-    
-    
     @objc func onDidReceiveData(_ notification: NSNotification) {
         let gameMenuSelectionIndex = notification.userInfo!["historic_selection"] as! Int
         let game = self.historicTable!.getGameMenuTableList()[gameMenuSelectionIndex]
