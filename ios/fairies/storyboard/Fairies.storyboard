@@ -266,10 +266,11 @@
                                                 <constraint firstAttribute="height" constant="36" id="Sx4-0c-mpn"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="30"/>
-                                            <color key="textColor" red="0.86923474069999995" green="0.012778783219999999" blue="0.00083617179190000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstItem="3NA-qj-JnP" firstAttribute="leading" secondItem="QS4-PJ-kjd" secondAttribute="leading" id="G4j-qo-Dm8"/>
                                         <constraint firstAttribute="trailing" secondItem="3NA-qj-JnP" secondAttribute="trailing" id="akZ-az-UDI"/>

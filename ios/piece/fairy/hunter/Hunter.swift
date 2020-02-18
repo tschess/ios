@@ -23,7 +23,9 @@ class Hunter: Fairy {
             name: name,
             strength: "6",
             affiliation: affiliation,
-            description: "moves forward as bishop. moves backward as a knight.",
+            description:
+            "• moves forward as bishop.\r\r" +
+            "• moves backward as knight.\r\r",
             imageDefault: imageDefault,
             attackVectorList: Array<String>(["Diagonal", "Knight"]),
             tschxValue: String(4),

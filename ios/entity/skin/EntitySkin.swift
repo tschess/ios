@@ -18,6 +18,8 @@ class EntitySkin {
     var backImage: UIImage?
     var backAlpha: CGFloat
     
+    var description: String
+    
     func getName() -> String {
         return self.name
     }
@@ -53,8 +55,8 @@ class EntitySkin {
         foreAlpha: CGFloat = 1.0,
         backColor: UIColor,
         backImage: UIImage? = nil,
-        backAlpha: CGFloat = 1.0
-        ) {
+        backAlpha: CGFloat = 1.0,
+        description: String) {
         self.name = name
         self.foreColor = foreColor
         self.foreImage = foreImage
@@ -62,6 +64,7 @@ class EntitySkin {
         self.backColor = backColor
         self.backImage = backImage
         self.backAlpha = backAlpha
+        self.description = description
     }
     
 }

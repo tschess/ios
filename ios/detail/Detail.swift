@@ -156,16 +156,10 @@ class Detail: UIViewController, UITabBarDelegate, UITextViewDelegate {
         
         self.tabBarMenu.delegate = self
         
-        let description = "" +
-            "• freshly minted individual edition of the iapetus game skin, one of fifty\r\r" +
-            "• visible to oneself and opponent during gameplay\r\r" +
-            "• globally visible in leaderboard and on challenge/review endgame snapshot\r\r" +
-        "• design inspired by science fantasy novel \"the chessmen of mars\" by edgar rice burroughs\r\r"
-        
         self.descriptionTextView.isEditable = false
         self.descriptionTextView.backgroundColor = UIColor.white
         self.descriptionTextView.textColor = UIColor.black
-        self.descriptionTextView.text = description
+        self.descriptionTextView.text = self.skin!.description
         
         self.titleLabel.text = self.skin!.getName().lowercased()
         

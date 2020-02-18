@@ -45,6 +45,12 @@ class SerializerConfig {
         case "King":
             return King()
             /***/
+        case "Hunter":
+            return Hunter()
+            /***/
+        case "Amazon":
+            return Amazon()
+            /***/
         default:
             return nil
         }

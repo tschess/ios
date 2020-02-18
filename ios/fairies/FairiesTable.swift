@@ -16,7 +16,8 @@ class FairiesTable: UITableViewController {
         self.player = player
     }
     
-    var fairyListAdapter: Array<Fairy> = Array(arrayLiteral: Amazon(), PoisonPawn(), Hunter(), Grasshopper())
+    //var fairyListAdapter: Array<Fairy> = Array(arrayLiteral: Amazon(), PoisonPawn(), Hunter(), Grasshopper())
+    var fairyListAdapter: Array<Fairy> = Array(arrayLiteral: Amazon(), Hunter())
     
     var fairyListFilter: [Fairy]?
     

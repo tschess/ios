@@ -73,6 +73,16 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
     let DATE_TIME: DateTime = DateTime()
     let REUSE_IDENTIFIER = "square"
     let PLACEMENT_LIST = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16"]
+    //    let ELEMENT_LIST = [
+    //        "red_pawn",
+    //        "red_knight",
+    //        "red_bishop",
+    //        "red_rook",
+    //        "red_queen",
+    //        "red_amazon",
+    //        "red_landmine_pawn",
+    //        "red_hunter",
+    //        "red_grasshopper"]
     let ELEMENT_LIST = [
         "red_pawn",
         "red_knight",
@@ -80,9 +90,7 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
         "red_rook",
         "red_queen",
         "red_amazon",
-        "red_landmine_pawn",
-        "red_hunter",
-        "red_grasshopper"]
+        "red_hunter"]
     
     //MARK: Layout: Content
     @IBOutlet weak var notificationLabel: UILabel!

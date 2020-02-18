@@ -38,9 +38,9 @@ class Play: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITa
                     return
                 }
                 SelectorTschess().tschess(
-                playerSelf: self.playerSelf!,
-                playerOther: game!.getPlayerOther(username: self.playerSelf!.username),
-                game: game!)
+                    playerSelf: self.playerSelf!,
+                    playerOther: game!.getPlayerOther(username: self.playerSelf!.username),
+                    game: game!)
             }
         }
     }
@@ -54,18 +54,39 @@ class Play: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITa
         let blue: UIColor = UIColor(red: 84/255.0, green: 140/255.0, blue: 240/255.0, alpha: 1)
         let green: UIColor = UIColor(red: 0/255.0, green: 255/255.0, blue: 88/255.0, alpha: 1)
         
-        let hyperion: EntitySkin = EntitySkin(name: "HYPERION", foreColor: purple, backColor: blue)
-        let calypso: EntitySkin = EntitySkin(name: "CALYPSO", foreColor: pink, backColor: UIColor.black)
-        let neptune: EntitySkin = EntitySkin(name: "NEPTUNE", foreColor: green, backColor: orange, backAlpha: 0.85)
+        let hyperion: EntitySkin = EntitySkin(name: "HYPERION", foreColor: purple, backColor: blue,
+                                              description: "" +
+                                                "• one of one hundred.\r\r" +
+                                                "• visible to oneself during gameplay.\r\r" +
+                                                "• skin of winner is globally visible as historic endgame snapshot.\r\r" +
+            "• design inspired by the titan god of heavenly light.\r\r")
+        let calypso: EntitySkin = EntitySkin(name: "CALYPSO", foreColor: pink, backColor: UIColor.black,
+                                             description: "" +
+                                                "• one of one hundred.\r\r" +
+                                                "• visible to oneself during gameplay.\r\r" +
+                                                "• skin of winner is globally visible as historic endgame snapshot.\r\r" +
+            "• design inspired by the nymph of ogygia, who detained odysseus for seven years.\r\r")
+        let neptune: EntitySkin = EntitySkin(name: "NEPTUNE", foreColor: green, backColor: orange, backAlpha: 0.85,
+                                             description: "" +
+                                                "• one of one hundred.\r\r" +
+                                                "• visible to oneself during gameplay.\r\r" +
+                                                "• skin of winner is globally visible as historic endgame snapshot.\r\r" +
+            "• design inspired by the city of neptune beach in duval county, florida.\r\r")
         let iapetus: EntitySkin = EntitySkin(
             name: "IAPETUS",
             foreColor: UIColor.white,
             foreImage: UIImage(named: "iapetus"),
             backColor: UIColor.black,
             backImage: UIImage(named: "iapetus"),
-            backAlpha: 0.85)
+            backAlpha: 0.85,
+            description: "" +
+                "• one of fifty\r\r" +
+                "• visible to oneself during gameplay.\r\r" +
+                "• skin of winner is globally visible as historic endgame snapshot.\r\r" +
+            "• design inspired by science fantasy novel \"the chessmen of mars\" by edgar rice burroughs\r\r")
+        
         let flip: UIColor = UIColor(red: 31/255.0, green: 33/255.0, blue: 36/255.0, alpha: 1)
-        let skinD: EntitySkin = EntitySkin(name: "DEFAULT", foreColor: UIColor.lightGray, backColor:  flip)
+        let skinD: EntitySkin = EntitySkin(name: "DEFAULT", foreColor: UIColor.lightGray, backColor:  flip, description: "")
         self.skinList = Array(arrayLiteral: skinD, iapetus, calypso, hyperion, neptune)
         
         self.attributeAlphaDotFull = [
@@ -279,7 +300,6 @@ class Play: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITa
         if(!self.playerSelf!.skin.contains(skinAsset.name)){
             sampleView.alpha = 0.5
         }
-        
         return sampleView
     }
     

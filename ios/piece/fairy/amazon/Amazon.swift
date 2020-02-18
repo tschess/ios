@@ -21,7 +21,9 @@ class Amazon: Fairy {
             name: name,
             strength: "10",
             affiliation: affiliation,
-            description: "queen+knight compound",
+            description:
+            "• performs all moves available to standard queen.\r\r" +
+            "• performs all moves available to standard knight.\r\r",
             imageDefault: imageDefault,
             attackVectorList: Array<String>(["HorizontalVertical", "Diagonal", "Knight"]),
             tschxValue: String(4),
