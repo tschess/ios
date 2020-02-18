@@ -8,7 +8,22 @@
 
 import UIKit
 
-class Evaluate: UIViewController {
+class Evaluate: UIViewController  {
+    
+    @IBOutlet weak var imageAccept: UIImageView!
+    @IBOutlet weak var buttonAccept: UIButton!
+    @IBOutlet weak var activityIndicatorAccept: UIActivityIndicatorView!
+    
+    @IBOutlet weak var buttonReject: UIButton!
+    @IBOutlet weak var imageReject: UIImageView!
+    @IBOutlet weak var activityIndicatorReject: UIActivityIndicatorView!
+    
+    private var customTransitioningDelegate = TransitioningDelegate()
+    
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        self.configure()
+    }
     
     var gameTschess: EntityGame?
     
@@ -28,19 +43,9 @@ class Evaluate: UIViewController {
         self.playerSelf = playerSelf
     }
     
-    @IBOutlet weak var acceptButton: UIButton!
-    @IBOutlet weak var rejectButton: UIButton!
-    
-    private var customTransitioningDelegate = TransitioningDelegate()
-    
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        configure()
-    }
-    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        configure()
+        self.configure()
     }
     
     func configure() {
@@ -51,9 +56,47 @@ class Evaluate: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.activityIndicatorAccept!.isHidden = true
+        self.activityIndicatorReject!.isHidden = true
     }
     
-    @IBAction func rejectButtonClick(_ sender: Any) {
+    @objc func dismiss(gesture: UIGestureRecognizer) {
+        DispatchQueue.main.async {
+            self.presentingViewController!.dismiss(animated: false, completion: nil)
+        }
+    }
+    
+    @IBAction func buttonClickResign(_ sender: Any) {
+        self.activityIndicatorAccept.isHidden = false
+        self.activityIndicatorAccept.startAnimating()
+        
+        self.buttonAccept.isHidden = true
+        self.imageAccept.isHidden = true
+        
+        let requestPayload = [
+            "id_game": self.gameTschess!.id,
+            "id_self": self.playerSelf!.id,
+            "id_other": self.playerOther!.id,
+            "accept": true] as [String: Any]
+        
+        UpdateEval().execute(requestPayload: requestPayload) { (result) in
+            
+            DispatchQueue.main.async {
+                self.activityIndicatorAccept!.stopAnimating()
+                self.activityIndicatorAccept!.isHidden = true
+                self.presentingViewController!.dismiss(animated: false, completion: nil)
+            }
+        }
+        //self.presentingViewController!.dismiss(animated: false, completion: nil)
+    }
+    
+    @IBAction func buttonClickReject(_ sender: Any) {
+        self.activityIndicatorReject.isHidden = false
+        self.activityIndicatorReject.startAnimating()
+        
+        self.buttonReject.isHidden = true
+        self.imageReject.isHidden = true
+        
         let requestPayload = [
             "id_game": self.gameTschess!.id,
             "id_self": self.playerSelf!.id,
@@ -61,34 +104,13 @@ class Evaluate: UIViewController {
             "accept": false] as [String: Any]
         
         UpdateEval().execute(requestPayload: requestPayload) { (result) in
-            print("result: \(result)")
-            
             DispatchQueue.main.async {
-                //self.activityIndicator!.stopAnimating()
-                //self.activityIndicator!.isHidden = true
+                self.activityIndicatorReject!.stopAnimating()
+                self.activityIndicatorReject!.isHidden = true
                 self.presentingViewController!.dismiss(animated: false, completion: nil)
             }
         }
-        //self.presentingViewController!.dismiss(animated: false, completion: nil)
     }
     
-    @IBAction func acceptButtonClick(_ sender: Any) {
-        let requestPayload = [
-            "id_game": self.gameTschess!.id,
-            "id_self": self.playerSelf!.id,
-            "id_other": self.playerOther!.id,
-           "accept": true] as [String: Any]
-        
-        UpdateEval().execute(requestPayload: requestPayload) { (result) in
-            print("result: \(result)")
-            
-            DispatchQueue.main.async {
-                        //self.activityIndicator!.stopAnimating()
-                        //self.activityIndicator!.isHidden = true
-                        self.presentingViewController!.dismiss(animated: false, completion: nil)
-                    }
-                }
-                //self.presentingViewController!.dismiss(animated: false, completion: nil)
-            }
     
 }
