@@ -10,12 +10,15 @@ import UIKit
 
 class DrawResign: UIViewController  {
     
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var imageDismiss: UIImageView!
     
-    @IBOutlet weak var surrenderButton: UIButton!
-    @IBOutlet weak var proposeDrawButton: UIButton!
+    @IBOutlet weak var imageResign: UIImageView!
+    @IBOutlet weak var buttonResign: UIButton!
+    @IBOutlet weak var activityIndicatorResign: UIActivityIndicatorView!
     
-    @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var buttonDraw: UIButton!
+    @IBOutlet weak var imageDraw: UIImageView!
+    @IBOutlet weak var activityIndicatorDraw: UIActivityIndicatorView!
     
     private var customTransitioningDelegate = TransitioningDelegate()
     
@@ -45,7 +48,6 @@ class DrawResign: UIViewController  {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.configure()
-        
     }
     
     func configure() {
@@ -56,18 +58,30 @@ class DrawResign: UIViewController  {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.activityIndicator.isHidden = true
-        
+        self.activityIndicatorResign!.isHidden = true
+        self.activityIndicatorDraw!.isHidden = true
         if(!self.gameTschess!.getTurn(username: self.playerSelf!.username)){
-            proposeDrawButton.titleLabel!.alpha = 0.5
-            proposeDrawButton.isUserInteractionEnabled = false
+            buttonDraw.titleLabel!.alpha = 0.5
+            buttonDraw.isUserInteractionEnabled = false
+            imageDraw.alpha = 0.5
         }
+        let dismiss = UITapGestureRecognizer(target: self, action: #selector(self.dismiss(gesture:)))
+        self.imageDismiss.addGestureRecognizer(dismiss)
+        self.imageDismiss.isUserInteractionEnabled = true
     }
     
-    @IBAction func surrenderButtonClick(_ sender: Any) {
-        self.activityIndicator.isHidden = false
-        self.activityIndicator.startAnimating()
+    @objc func dismiss(gesture: UIGestureRecognizer) {
+        DispatchQueue.main.async {
+           self.presentingViewController!.dismiss(animated: false, completion: nil)
+        }
+    }
+   
+    @IBAction func buttonClickResign(_ sender: Any) {
+        self.activityIndicatorResign.isHidden = false
+        self.activityIndicatorResign.startAnimating()
+        
+        self.buttonResign.isHidden = true
+        self.imageResign.isHidden = true
         
         let requestPayload = [
             "id_game": self.gameTschess!.id,
@@ -77,39 +91,30 @@ class DrawResign: UIViewController  {
         
         UpdateResign().execute(requestPayload: requestPayload) { (result) in
             print("result: \(result)")
-            
             DispatchQueue.main.async {
-                self.activityIndicator!.stopAnimating()
-                self.activityIndicator!.isHidden = true
+                self.activityIndicatorResign!.stopAnimating()
+                self.activityIndicatorResign!.isHidden = true
                 self.presentingViewController!.dismiss(animated: false, completion: nil)
             }
         }
     }
     
-    @IBAction func proposeDrawButtonClick(_ sender: Any) {
-        self.activityIndicator.isHidden = false
-        self.activityIndicator.startAnimating()
+    @IBAction func buttonClickDraw(_ sender: Any) {
+        self.activityIndicatorDraw.isHidden = false
+        self.activityIndicatorDraw.startAnimating()
         
-//        let requestPayload = [
-//            "id_game": ,
-//            "id_self": self.playerSelf!.id,
-//            "id_other": self.playerOther!.id,
-//            "white": self.gameTschess!.getWhite(username: self.playerSelf!.username)] as [String: Any]
+        self.buttonDraw.isHidden = true
+        self.imageDraw.isHidden = true
         
         UpdateProp().execute(id: self.gameTschess!.id) { (result) in
             print("result: \(result)")
-            
             DispatchQueue.main.async {
-                self.activityIndicator!.stopAnimating()
-                self.activityIndicator!.isHidden = true
+                self.activityIndicatorDraw.isHidden = true
+                self.activityIndicatorDraw.stopAnimating()
                 self.presentingViewController!.dismiss(animated: false, completion: nil)
             }
         }
-        //self.presentingViewController!.dismiss(animated: false, completion: nil)
     }
     
-    @IBAction func backButtonClick(_ sender: Any) {
-        self.presentingViewController!.dismiss(animated: false, completion: nil)
-    }
     
 }

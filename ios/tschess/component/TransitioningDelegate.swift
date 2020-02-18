@@ -18,7 +18,7 @@ class PresentationController: UIPresentationController {
     
     override var frameOfPresentedViewInContainerView: CGRect {
         let bounds = presentingViewController.view.bounds
-        let size = CGSize(width: 270, height: 190)
+        let size = CGSize(width: 242, height: 176)
         let origin = CGPoint(x: bounds.midX - size.width / 2, y: bounds.midY - size.height / 2)
         return CGRect(origin: origin, size: size)
     }
