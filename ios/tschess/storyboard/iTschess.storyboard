@@ -337,11 +337,11 @@
                         <outlet property="collectionView" destination="v4N-X5-tXk" id="9XC-Wx-MWy"/>
                         <outlet property="collectionViewHeight" destination="UrR-TT-KiU" id="4JU-aD-FAf"/>
                         <outlet property="contentView" destination="9wh-i1-2Qp" id="yID-ON-Nbo"/>
-                        <outlet property="contentViewImage" destination="Zdw-QN-Ye3" id="sge-wz-Q9o"/>
+                       
                         <outlet property="contentViewLabel" destination="9bQ-DV-v2s" id="iDN-KY-P3k"/>
                         <outlet property="eloLabel" destination="YxI-dg-6nx" id="AfC-kj-wLX"/>
                         <outlet property="headerView" destination="YPS-Tp-PVu" id="3i6-Uh-42s"/>
-                        <outlet property="headerViewImage" destination="9st-wg-KEa" id="nYT-j7-NF7"/>
+                        
                         <outlet property="rankLabel" destination="7rM-GI-ans" id="YEC-dq-ZkA"/>
                         <outlet property="rankLabelDate" destination="kJX-GF-1X4" id="3eN-db-2jW"/>
                         <outlet property="tabBarMenu" destination="lR1-2A-YPc" id="ysK-SW-Hze"/>

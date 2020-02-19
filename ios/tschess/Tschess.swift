@@ -62,12 +62,10 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     }
     
     @IBOutlet weak var titleView: UIView!
-    @IBOutlet weak var titleViewImage: UIImageView!
     @IBOutlet weak var titleViewLabel: UILabel!
     @IBOutlet weak var backButton: UIButton!
     
     @IBOutlet weak var headerView: UIView!
-    @IBOutlet weak var headerViewImage: UIImageView!
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var eloLabel: UILabel!
     @IBOutlet weak var rankLabel: UILabel!
@@ -76,14 +74,12 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     @IBOutlet weak var usernameLabel: UILabel!
     
     @IBOutlet weak var contentView: UIView!
-    @IBOutlet weak var contentViewImage: UIImageView!
     @IBOutlet weak var contentViewLabel: UILabel!
     
     @IBOutlet weak var collectionView: BoardView!
     @IBOutlet weak var collectionViewHeight: NSLayoutConstraint!
     
     @IBOutlet weak var timerView: UIView!
-    @IBOutlet weak var timerImage: UIImageView!
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var turnaryLabel: UILabel!
     
