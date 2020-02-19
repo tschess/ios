@@ -24,6 +24,10 @@
 		B7021F1E23FDC8D900C9346A /* HistoricP.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7021F1D23FDC8D900C9346A /* HistoricP.storyboard */; };
 		B7021F2023FDC8EC00C9346A /* HistoricL.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7021F1F23FDC8EC00C9346A /* HistoricL.storyboard */; };
 		B7021F2223FDC95E00C9346A /* SelectHistoric.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7021F2123FDC95E00C9346A /* SelectHistoric.swift */; };
+		B7021F2423FDEE3400C9346A /* SelectHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7021F2323FDEE3400C9346A /* SelectHome.swift */; };
+		B7021F2723FDEE6100C9346A /* ConfigP.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7021F2623FDEE6100C9346A /* ConfigP.storyboard */; };
+		B7021F2A23FDEE8200C9346A /* ConfigL.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7021F2923FDEE8200C9346A /* ConfigL.storyboard */; };
+		B7021F2C23FDEFEA00C9346A /* SelectConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7021F2B23FDEFEA00C9346A /* SelectConfig.swift */; };
 		B70577F0234BD0A500A9E2CA /* TschessTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70577EF234BD0A500A9E2CA /* TschessTests.swift */; };
 		B708D0DD236B351000A899F9 /* Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = B708D0DC236B351000A899F9 /* Init.swift */; };
 		B708D0E7236B366800A899F9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B708D0E6236B366800A899F9 /* LaunchScreen.storyboard */; };
@@ -111,7 +115,6 @@
 		B7BE121023EAD64100ADA499 /* Hopper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE120F23EAD64100ADA499 /* Hopper.swift */; };
 		B7BE121323EAD7BF00ADA499 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE121223EAD7BF00ADA499 /* Config.swift */; };
 		B7BE121623EAD7E700ADA499 /* Init.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7BE121523EAD7E700ADA499 /* Init.storyboard */; };
-		B7BE121A23EAD84300ADA499 /* Config.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7BE121923EAD84300ADA499 /* Config.storyboard */; };
 		B7BE122323EAD92B00ADA499 /* Historic.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE122223EAD92B00ADA499 /* Historic.swift */; };
 		B7BE122723EAD94700ADA499 /* Actual.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE122623EAD94700ADA499 /* Actual.swift */; };
 		B7BE122D23EADC9700ADA499 /* ActualTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE122C23EADC9700ADA499 /* ActualTable.swift */; };
@@ -231,6 +234,10 @@
 		B7021F1D23FDC8D900C9346A /* HistoricP.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HistoricP.storyboard; sourceTree = "<group>"; };
 		B7021F1F23FDC8EC00C9346A /* HistoricL.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HistoricL.storyboard; sourceTree = "<group>"; };
 		B7021F2123FDC95E00C9346A /* SelectHistoric.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectHistoric.swift; sourceTree = "<group>"; };
+		B7021F2323FDEE3400C9346A /* SelectHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectHome.swift; sourceTree = "<group>"; };
+		B7021F2623FDEE6100C9346A /* ConfigP.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ConfigP.storyboard; sourceTree = "<group>"; };
+		B7021F2923FDEE8200C9346A /* ConfigL.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ConfigL.storyboard; sourceTree = "<group>"; };
+		B7021F2B23FDEFEA00C9346A /* SelectConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectConfig.swift; sourceTree = "<group>"; };
 		B70577EF234BD0A500A9E2CA /* TschessTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TschessTests.swift; sourceTree = "<group>"; };
 		B708D0DC236B351000A899F9 /* Init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Init.swift; sourceTree = "<group>"; };
 		B708D0E6236B366800A899F9 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -324,7 +331,6 @@
 		B7BE120F23EAD64100ADA499 /* Hopper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hopper.swift; sourceTree = "<group>"; };
 		B7BE121223EAD7BF00ADA499 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		B7BE121523EAD7E700ADA499 /* Init.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Init.storyboard; sourceTree = "<group>"; };
-		B7BE121923EAD84300ADA499 /* Config.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Config.storyboard; sourceTree = "<group>"; };
 		B7BE122223EAD92B00ADA499 /* Historic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Historic.swift; sourceTree = "<group>"; };
 		B7BE122623EAD94700ADA499 /* Actual.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Actual.swift; sourceTree = "<group>"; };
 		B7BE122C23EADC9700ADA499 /* ActualTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActualTable.swift; sourceTree = "<group>"; };
@@ -521,6 +527,22 @@
 				B7021F1D23FDC8D900C9346A /* HistoricP.storyboard */,
 			);
 			path = primary;
+			sourceTree = "<group>";
+		};
+		B7021F2523FDEE4900C9346A /* primary */ = {
+			isa = PBXGroup;
+			children = (
+				B7021F2623FDEE6100C9346A /* ConfigP.storyboard */,
+			);
+			path = primary;
+			sourceTree = "<group>";
+		};
+		B7021F2823FDEE6A00C9346A /* legacy */ = {
+			isa = PBXGroup;
+			children = (
+				B7021F2923FDEE8200C9346A /* ConfigL.storyboard */,
+			);
+			path = legacy;
 			sourceTree = "<group>";
 		};
 		B708D0DB236B34F000A899F9 /* init */ = {
@@ -1007,7 +1029,9 @@
 		B7BE121723EAD80E00ADA499 /* storyboard */ = {
 			isa = PBXGroup;
 			children = (
-				B7BE121923EAD84300ADA499 /* Config.storyboard */,
+				B7021F2823FDEE6A00C9346A /* legacy */,
+				B7021F2523FDEE4900C9346A /* primary */,
+				B7021F2B23FDEFEA00C9346A /* SelectConfig.swift */,
 			);
 			path = storyboard;
 			sourceTree = "<group>";
@@ -1442,6 +1466,7 @@
 			children = (
 				B7F3A13123FD95A3007B5663 /* primary */,
 				B7F3A13023FD9597007B5663 /* legacy */,
+				B7021F2323FDEE3400C9346A /* SelectHome.swift */,
 			);
 			path = storyboard;
 			sourceTree = "<group>";
@@ -1581,7 +1606,7 @@
 				B7BE124323EB015700ADA499 /* Ack.storyboard in Resources */,
 				B7BE129723EB0A8B00ADA499 /* Evaluate.storyboard in Resources */,
 				B7021F2023FDC8EC00C9346A /* HistoricL.storyboard in Resources */,
-				B7BE121A23EAD84300ADA499 /* Config.storyboard in Resources */,
+				B7021F2A23FDEE8200C9346A /* ConfigL.storyboard in Resources */,
 				B768473923F54C7000F55D4A /* nTschess.storyboard in Resources */,
 				B7BE125823EB03C500ADA499 /* Profile.storyboard in Resources */,
 				B768470923F4FAF900F55D4A /* Recover.storyboard in Resources */,
@@ -1615,6 +1640,7 @@
 				B7BE116323EA722B00ADA499 /* Other.storyboard in Resources */,
 				B70149B623FC56C3001A7D52 /* Hyperion.storyboard in Resources */,
 				B7215A6F23F5D58D00B86274 /* cRecent.storyboard in Resources */,
+				B7021F2723FDEE6100C9346A /* ConfigP.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1724,6 +1750,7 @@
 				B7BE12C423EB6B9300ADA499 /* TransDraw.swift in Sources */,
 				B7BE115D23EA4FBE00ADA499 /* ParsePlayer.swift in Sources */,
 				B708D0E9236B369D00A899F9 /* Start.swift in Sources */,
+				B7021F2423FDEE3400C9346A /* SelectHome.swift in Sources */,
 				B771365423F222AF007F0962 /* UpdateMate.swift in Sources */,
 				B7BE127123EB06AD00ADA499 /* Skins.swift in Sources */,
 				B7BE122723EAD94700ADA499 /* Actual.swift in Sources */,
@@ -1803,6 +1830,7 @@
 				B7021F1A23FDC8A200C9346A /* SelectActual.swift in Sources */,
 				B7BE12B723EB0DCD00ADA499 /* Threat.swift in Sources */,
 				B7BE12B523EB0DA700ADA499 /* Attack.swift in Sources */,
+				B7021F2C23FDEFEA00C9346A /* SelectConfig.swift in Sources */,
 				B7F6F9E823F0B55C007D9151 /* UpdateEval.swift in Sources */,
 				B7BE121323EAD7BF00ADA499 /* Config.swift in Sources */,
 				B7BE11B723EA9DAC00ADA499 /* Bishop.swift in Sources */,
