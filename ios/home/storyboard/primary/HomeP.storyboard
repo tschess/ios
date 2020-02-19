@@ -164,13 +164,13 @@
                                     <constraint firstAttribute="height" constant="50" id="3Aw-0g-FIT"/>
                                 </constraints>
                                 <items>
-                                    <tabBarItem tag="1" title="play" image="bolt" catalog="system" selectedImage="bolt.fill" id="Z5R-KS-Z6j">
+                                    <tabBarItem tag="1" title="" image="quick.grey" selectedImage="quick.white" id="Z5R-KS-Z6j">
                                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tabBarItem>
-                                    <tabBarItem tag="3" title="game" image="gamecontroller" catalog="system" selectedImage="gamecontroller.fill" id="Ccy-HC-zcU">
+                                    <tabBarItem tag="3" title="" image="game.grey" selectedImage="game.white" id="Ccy-HC-zcU">
                                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tabBarItem>
-                                    <tabBarItem tag="4" title="setup" image="hammer" catalog="system" selectedImage="hammer.fill" id="RmV-cI-lZG">
+                                    <tabBarItem tag="4" title="" image="setup.grey" selectedImage="setup.white" id="RmV-cI-lZG">
                                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tabBarItem>
                                 </items>
@@ -365,11 +365,11 @@
         <image name="arrow.up" catalog="system" width="60" height="64"/>
         <image name="avatar_default" width="320" height="320"/>
         <image name="avatar_inverse" width="320" height="320"/>
-        <image name="bolt" catalog="system" width="50" height="64"/>
-        <image name="bolt.fill" catalog="system" width="50" height="64"/>
-        <image name="gamecontroller" catalog="system" width="64" height="40"/>
-        <image name="gamecontroller.fill" catalog="system" width="64" height="40"/>
-        <image name="hammer" catalog="system" width="64" height="56"/>
-        <image name="hammer.fill" catalog="system" width="64" height="56"/>
+        <image name="game.grey" width="40" height="40"/>
+        <image name="game.white" width="512" height="512"/>
+        <image name="quick.grey" width="20" height="31"/>
+        <image name="quick.white" width="25" height="39"/>
+        <image name="setup.grey" width="40" height="40"/>
+        <image name="setup.white" width="40" height="40"/>
     </resources>
 </document>

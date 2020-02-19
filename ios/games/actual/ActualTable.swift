@@ -152,35 +152,40 @@ class ActualTable: UITableViewController, SwipeTableViewCellDelegate {
         if(game.status == "ONGOING"){
             cell.timeIndicatorLabel.text = game.getLabelTextDate(update: true)
             if(game.getInboundGame(username: self.playerSelf!.username)){
-                if #available(iOS 13.0, *) {
-                    let image = UIImage(systemName: "gamecontroller.fill")!
-                    cell.actionImageView.image = image.withRenderingMode(.alwaysTemplate)
-                    cell.actionImageView.tintColor = .black
-                }
-                return cell
-            }
-            if #available(iOS 13.0, *) {
-                let image = UIImage(systemName: "gamecontroller")!
+                //if #available(iOS 13.0, *) {
+                //let image = UIImage(systemName: "gamecontroller.fill")!
+                let image = UIImage(named: "turn.on")!
                 cell.actionImageView.image = image.withRenderingMode(.alwaysTemplate)
                 cell.actionImageView.tintColor = .black
+                //}
+                return cell
             }
+            //if #available(iOS 13.0, *) {
+            //let image = UIImage(systemName: "gamecontroller")!
+            let image = UIImage(named: "turn.off")!
+            cell.actionImageView.image = image.withRenderingMode(.alwaysTemplate)
+            cell.actionImageView.tintColor = .black
+            //}
             return cell
         }
         if(game.status == "PROPOSED"){
             cell.timeIndicatorLabel.text = game.getLabelTextDate(update: false)
             if(game.getInboundInvitation(username: self.playerSelf!.username)){
-                if #available(iOS 13.0, *) {
-                    cell.actionImageView.tintColor = .black
-                    let image = UIImage(systemName: "tray.and.arrow.down")!
-                    cell.actionImageView.image = image.withRenderingMode(.alwaysTemplate)
-                }
+                //if #available(iOS 13.0, *) {
+                cell.actionImageView.tintColor = .black
+                //let image = UIImage(systemName: "tray.and.arrow.down")!
+                let image = UIImage(named: "inbound")!
+                cell.actionImageView.image = image.withRenderingMode(.alwaysTemplate)
+                //}
+                
                 return cell
             }
-            if #available(iOS 13.0, *) {
-                cell.actionImageView.tintColor = .black
-                let image = UIImage(systemName: "tray.and.arrow.up")!
-                cell.actionImageView.image = image.withRenderingMode(.alwaysTemplate)
-            }
+            //if #available(iOS 13.0, *) {
+            cell.actionImageView.tintColor = .black
+            //let image = UIImage(systemName: "tray.and.arrow.up")!
+            let image = UIImage(named: "outbound")!
+            cell.actionImageView.image = image.withRenderingMode(.alwaysTemplate)
+            //}
         }
         return cell
     }

@@ -172,7 +172,7 @@
                                         <inset key="imageInsets" minX="1" minY="5" maxX="1" maxY="-5"/>
                                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tabBarItem>
-                                    <tabBarItem tag="4" title="" image="setup" id="RmV-cI-lZG">
+                                    <tabBarItem tag="4" title="" image="setup.grey" selectedImage="setup.white" id="RmV-cI-lZG">
                                         <inset key="imageInsets" minX="1" minY="5" maxX="1" maxY="-5"/>
                                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tabBarItem>
@@ -369,9 +369,10 @@
         <image name="avatar_default" width="320" height="320"/>
         <image name="avatar_inverse" width="320" height="320"/>
         <image name="game.grey" width="40" height="40"/>
-        <image name="game.white" width="256" height="256"/>
+        <image name="game.white" width="512" height="512"/>
         <image name="quick.grey" width="20" height="31"/>
-        <image name="quick.white" width="121" height="188"/>
-        <image name="setup" width="40" height="40"/>
+        <image name="quick.white" width="25" height="39"/>
+        <image name="setup.grey" width="40" height="40"/>
+        <image name="setup.white" width="40" height="40"/>
     </resources>
 </document>

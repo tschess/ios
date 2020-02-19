@@ -105,25 +105,24 @@ class Home: UIViewController, UITabBarDelegate {
             }
             DispatchQueue.main.async() {
                 self.tabBarMenu.selectedImageTintColor = UIColor.magenta
-                if #available(iOS 13.0, *) {
+                //if #available(iOS 13.0, *) {
                     let notify = self.tabBarMenu.items![1]
-                    notify.selectedImage = UIImage(systemName: "gamecontroller")!
+                    //notify.image = UIImage(named: "game.magenta")!
+                    notify.selectedImage = UIImage(named: "game.magenta")!
                     self.tabBarMenu.selectedItem = notify
-                }
+               // }
             }
         }
     }
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         self.tabBarMenu.selectedImageTintColor = UIColor.white
-        if #available(iOS 13.0, *) {
-            let notify = self.tabBarMenu.items![1]
-            notify.selectedImage = UIImage(systemName: "gamecontroller.fill")!
-        }
         switch item.tag {
         case 1:
             self.notificationTimerStop()
             DispatchQueue.main.async() {
+                let notify = self.tabBarMenu.items![1]
+                notify.selectedImage = UIImage(named: "game.white")!
                 self.activityIndicator.isHidden = false
                 self.activityIndicator.startAnimating()
             }
@@ -143,8 +142,8 @@ class Home: UIViewController, UITabBarDelegate {
         case 3:
             self.notificationTimerStop()
             DispatchQueue.main.async() {
-                let storyboard: UIStoryboard = UIStoryboard(name: "Actual", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "Actual") as! Actual
+                let storyboard: UIStoryboard = UIStoryboard(name: "ActualL", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "ActualL") as! Actual
                 viewController.setPlayerSelf(playerSelf: self.player!)
                 UIApplication.shared.keyWindow?.rootViewController = viewController
             }

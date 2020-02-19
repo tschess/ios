@@ -120,8 +120,8 @@ class Create: UIViewController, UITextFieldDelegate {
         self.usernameTextField.delegate = self
         self.passwordTextField.delegate = self
         
-        self.usernameTextField.tintColor = UIColor.magenta
-        self.passwordTextField.tintColor = UIColor.magenta
+        //self.usernameTextField.tintColor = UIColor.magenta
+        //self.passwordTextField.tintColor = UIColor.magenta
         
         self.usernameTextField.attributedPlaceholder = NSAttributedString(string: "username",
                                                                           attributes: [NSAttributedString.Key.foregroundColor: UIColor.magenta])

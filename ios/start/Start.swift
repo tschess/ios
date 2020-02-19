@@ -195,12 +195,12 @@ class Start: UIViewController, UITextFieldDelegate {
         self.testTaskLabel.isHidden = true
         
         self.usernameTextField.delegate = self
-        self.usernameTextField.tintColor = UIColor.magenta
+        //self.usernameTextField.tintColor = UIColor.magenta
         self.usernameTextField.attributedPlaceholder = NSAttributedString(string: "username",
                                                                           attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
         
         self.passwordTextField.delegate = self
-        self.passwordTextField.tintColor = UIColor.magenta
+        //self.passwordTextField.tintColor = UIColor.magenta
         self.passwordTextField.attributedPlaceholder = NSAttributedString(string: "password",
                                                                           attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
         
