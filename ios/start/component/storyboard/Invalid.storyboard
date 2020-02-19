@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Component Start-->
+        <!--Comp Invalid-->
         <scene sceneID="kCP-qz-f3I">
             <objects>
-                <viewController storyboardIdentifier="Invalid" modalPresentationStyle="overCurrentContext" id="Rh1-F9-UxD" customClass="ComponentStart" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Invalid" modalPresentationStyle="overCurrentContext" id="Rh1-F9-UxD" customClass="CompInvalid" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="sl4-B8-bJs"/>
                         <viewControllerLayoutGuide type="bottom" id="yxw-7c-7Xt"/>
@@ -21,13 +21,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QaH-nd-5Bw" userLabel="ShadowView">
-                                <rect key="frame" x="71" y="369" width="272" height="158"/>
+                                <rect key="frame" x="86" y="369" width="242" height="158"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DIZ-Ol-ZnA">
-                                        <rect key="frame" x="1" y="1" width="270" height="156"/>
+                                        <rect key="frame" x="1" y="1" width="240" height="156"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uea-th-G1I">
-                                                <rect key="frame" x="0.0" y="116" width="270" height="40"/>
+                                                <rect key="frame" x="0.0" y="116" width="240" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="3Tz-rb-jdd"/>
                                                 </constraints>
@@ -42,7 +42,7 @@
                                                 </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="invalid input" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HFf-Fl-uWx">
-                                                <rect key="frame" x="0.0" y="0.0" width="270" height="40"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="240" height="40"/>
                                                 <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="hTC-5F-gp5"/>
@@ -51,8 +51,8 @@
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="please re-evaluate, &amp;" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c6a-AY-KdC">
-                                                <rect key="frame" x="0.0" y="48" width="270" height="30"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="please re-evaluate," textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c6a-AY-KdC">
+                                                <rect key="frame" x="0.0" y="48" width="240" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="tvi-DT-Xrw"/>
                                                 </constraints>
@@ -60,8 +60,8 @@
                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="try again." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qo7-8Y-ryh">
-                                                <rect key="frame" x="0.0" y="78" width="270" height="30"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&amp; try again." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qo7-8Y-ryh">
+                                                <rect key="frame" x="0.0" y="78" width="240" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="hmA-Wi-9OP"/>
                                                 </constraints>
@@ -82,7 +82,7 @@
                                             <constraint firstItem="HFf-Fl-uWx" firstAttribute="top" secondItem="DIZ-Ol-ZnA" secondAttribute="top" id="HD0-yN-jc2"/>
                                             <constraint firstAttribute="trailing" secondItem="c6a-AY-KdC" secondAttribute="trailing" id="INB-dI-2jT"/>
                                             <constraint firstItem="Uea-th-G1I" firstAttribute="leading" secondItem="DIZ-Ol-ZnA" secondAttribute="leading" id="LLX-Hr-0dE"/>
-                                            <constraint firstAttribute="width" constant="270" id="heh-TQ-vRH"/>
+                                            <constraint firstAttribute="width" constant="240" id="heh-TQ-vRH"/>
                                             <constraint firstItem="qo7-8Y-ryh" firstAttribute="top" secondItem="c6a-AY-KdC" secondAttribute="bottom" id="kuG-o0-Eux"/>
                                             <constraint firstAttribute="trailing" secondItem="qo7-8Y-ryh" secondAttribute="trailing" id="mUQ-r9-5t2"/>
                                             <constraint firstItem="c6a-AY-KdC" firstAttribute="top" secondItem="HFf-Fl-uWx" secondAttribute="bottom" constant="8" id="mjr-jX-8PH"/>
@@ -95,7 +95,7 @@
                                 <constraints>
                                     <constraint firstItem="DIZ-Ol-ZnA" firstAttribute="top" secondItem="QaH-nd-5Bw" secondAttribute="top" constant="1" id="6Pd-UW-JxZ"/>
                                     <constraint firstAttribute="trailing" secondItem="DIZ-Ol-ZnA" secondAttribute="trailing" constant="1" id="B1b-Lf-ZDz"/>
-                                    <constraint firstAttribute="width" constant="272" id="VKO-rA-w4a"/>
+                                    <constraint firstAttribute="width" constant="242" id="VKO-rA-w4a"/>
                                     <constraint firstItem="DIZ-Ol-ZnA" firstAttribute="leading" secondItem="QaH-nd-5Bw" secondAttribute="leading" constant="1" id="eWY-Az-eCU"/>
                                     <constraint firstAttribute="bottom" secondItem="DIZ-Ol-ZnA" secondAttribute="bottom" constant="1" id="pxA-yf-ns4"/>
                                 </constraints>

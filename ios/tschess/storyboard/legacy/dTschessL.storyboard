@@ -29,7 +29,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="pgg-2n-hh9"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="35"/>
+                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="33"/>
                                         <state key="normal" title="← ">
                                             <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
@@ -49,6 +49,7 @@
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="0qa-yW-Mkf"/>
                                     <constraint firstAttribute="trailing" secondItem="5qi-EH-0fj" secondAttribute="trailing" id="3h4-LX-gzy"/>
@@ -138,6 +139,7 @@
                                     </activityIndicatorView>
                                 </subviews>
                                 <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="tq9-Wz-0a6" firstAttribute="leading" secondItem="YPS-Tp-PVu" secondAttribute="leading" constant="4" id="0QT-iG-jwo"/>
                                     <constraint firstItem="YxI-dg-6nx" firstAttribute="top" secondItem="YPS-Tp-PVu" secondAttribute="top" constant="2" id="3my-Rw-wRa"/>

@@ -28,8 +28,8 @@ class Init: UIViewController {
             }
             sleep(1)
             DispatchQueue.main.async {
-                let storyboard: UIStoryboard = UIStoryboard(name: "Home", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "Home") as! Home
+                let storyboard: UIStoryboard = UIStoryboard(name: "HomeL", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "HomeL") as! Home
                 viewController.setPlayer(player: result!)
                 UIApplication.shared.keyWindow?.rootViewController = viewController
             }

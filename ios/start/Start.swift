@@ -26,7 +26,7 @@ class Start: UIViewController, UITextFieldDelegate {
         if(!usernameTextString!.isAlphanumeric || !passwordTextString!.isAlphanumeric){
             DispatchQueue.main.async {
                 let storyboard: UIStoryboard = UIStoryboard(name: "Invalid", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "Invalid") as! ComponentStart
+                let viewController = storyboard.instantiateViewController(withIdentifier: "Invalid") as! CompInvalid
                 self.present(viewController, animated: true, completion: nil)
             }
             return
@@ -49,8 +49,8 @@ class Start: UIViewController, UITextFieldDelegate {
         RequestLogin().execute(requestPayload: requestPayload) { (player) in
             if let player = player {
                 DispatchQueue.main.async {
-                    let storyboard: UIStoryboard = UIStoryboard(name: "Home", bundle: nil)
-                    let viewController = storyboard.instantiateViewController(withIdentifier: "Home") as! Home
+                    let storyboard: UIStoryboard = UIStoryboard(name: "HomeL", bundle: nil)
+                    let viewController = storyboard.instantiateViewController(withIdentifier: "HomeL") as! Home
                     viewController.setPlayer(player: player)
                     UIApplication.shared.keyWindow?.rootViewController = viewController
                 }
@@ -70,7 +70,7 @@ class Start: UIViewController, UITextFieldDelegate {
                 self.passwordTextField.attributedPlaceholder = NSAttributedString(string: "password",
                                                                                   attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
                 let storyboard: UIStoryboard = UIStoryboard(name: "Invalid", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "Invalid") as! ComponentStart
+                let viewController = storyboard.instantiateViewController(withIdentifier: "Invalid") as! CompInvalid
                 self.present(viewController, animated: true, completion: nil)
             }
         }
@@ -94,7 +94,7 @@ class Start: UIViewController, UITextFieldDelegate {
         if(!usernameTextString!.isAlphanumeric || !passwordTextString!.isAlphanumeric){
             DispatchQueue.main.async {
                 let storyboard: UIStoryboard = UIStoryboard(name: "Invalid", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "Invalid") as! ComponentStart
+                let viewController = storyboard.instantiateViewController(withIdentifier: "Invalid") as! CompInvalid
                 self.present(viewController, animated: true, completion: nil)
             }
             return
@@ -138,7 +138,7 @@ class Start: UIViewController, UITextFieldDelegate {
                 self.passwordTextField.attributedPlaceholder = NSAttributedString(string: "password",
                                                                                   attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
                 let storyboard: UIStoryboard = UIStoryboard(name: "Invalid", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "Invalid") as! ComponentStart
+                let viewController = storyboard.instantiateViewController(withIdentifier: "Invalid") as! CompInvalid
                 self.present(viewController, animated: true, completion: nil)
             }
             
@@ -195,9 +195,12 @@ class Start: UIViewController, UITextFieldDelegate {
         self.testTaskLabel.isHidden = true
         
         self.usernameTextField.delegate = self
-        self.passwordTextField.delegate = self
+        self.usernameTextField.tintColor = UIColor.magenta
         self.usernameTextField.attributedPlaceholder = NSAttributedString(string: "username",
                                                                           attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+        
+        self.passwordTextField.delegate = self
+        self.passwordTextField.tintColor = UIColor.magenta
         self.passwordTextField.attributedPlaceholder = NSAttributedString(string: "password",
                                                                           attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
         
@@ -333,7 +336,7 @@ class Start: UIViewController, UITextFieldDelegate {
     @IBAction func buttonClickRecover(_ sender: Any) {
         DispatchQueue.main.async {
             let storyboard: UIStoryboard = UIStoryboard(name: "Recover", bundle: nil)
-            let viewController = storyboard.instantiateViewController(withIdentifier: "Recover") as! ComponentStart
+            let viewController = storyboard.instantiateViewController(withIdentifier: "Recover") as! CompRecov
             self.present(viewController, animated: true, completion: nil)
         }
     }

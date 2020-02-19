@@ -8,17 +8,17 @@
 
 import UIKit
 
-class TransitionStart: NSObject, UIViewControllerTransitioningDelegate {
+class TransInvalid: NSObject, UIViewControllerTransitioningDelegate {
     func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
-        return PresentationStart(presentedViewController: presented, presenting: presenting)
+        return PresInvalid(presentedViewController: presented, presenting: presenting)
     }
 }
 
-class PresentationStart: UIPresentationController {
+class PresInvalid: UIPresentationController {
     
     override var frameOfPresentedViewInContainerView: CGRect {
         let bounds = presentingViewController.view.bounds
-        let size = CGSize(width: 272, height: 158)
+        let size = CGSize(width: 242, height: 158)
         let origin = CGPoint(x: bounds.midX - size.width / 2, y: bounds.midY - size.height / 2)
         return CGRect(origin: origin, size: size)
     }

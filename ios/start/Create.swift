@@ -28,7 +28,7 @@ class Create: UIViewController, UITextFieldDelegate {
         if(!usernameTextString!.isAlphanumeric || !passwordTextString!.isAlphanumeric){
             DispatchQueue.main.async {
                 let storyboard: UIStoryboard = UIStoryboard(name: "Invalid", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "Invalid") as! ComponentStart
+                let viewController = storyboard.instantiateViewController(withIdentifier: "Invalid") as! CompInvalid
                 self.present(viewController, animated: true, completion: nil)
             }
             return
@@ -72,7 +72,7 @@ class Create: UIViewController, UITextFieldDelegate {
                 self.passwordTextField.attributedPlaceholder = NSAttributedString(string: "password",
                                                                                   attributes: [NSAttributedString.Key.foregroundColor: UIColor.magenta])
                 let storyboard: UIStoryboard = UIStoryboard(name: "Invalid", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "Invalid") as! ComponentStart
+                let viewController = storyboard.instantiateViewController(withIdentifier: "Invalid") as! CompInvalid
                 self.present(viewController, animated: true, completion: nil)
             }
             
@@ -95,10 +95,6 @@ class Create: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var passwordTextField: UITextField!
     var usernameTextString: String?
     var passwordTextString: String?
-    
-    
-    
-    
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -123,6 +119,10 @@ class Create: UIViewController, UITextFieldDelegate {
         
         self.usernameTextField.delegate = self
         self.passwordTextField.delegate = self
+        
+        self.usernameTextField.tintColor = UIColor.magenta
+        self.passwordTextField.tintColor = UIColor.magenta
+        
         self.usernameTextField.attributedPlaceholder = NSAttributedString(string: "username",
                                                                           attributes: [NSAttributedString.Key.foregroundColor: UIColor.magenta])
         self.passwordTextField.attributedPlaceholder = NSAttributedString(string: "password",

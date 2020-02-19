@@ -8,12 +8,12 @@
 
 import UIKit
 
-class ComponentStart: UIViewController {
+class CompRecov: UIViewController {
     
     @IBOutlet weak var buttonAccept: UIButton!
     
     
-    private var transitionStart = TransitionStart()
+    private var transitionStart = TransRecov()
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
