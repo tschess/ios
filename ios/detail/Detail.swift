@@ -86,7 +86,7 @@ class Detail: UIViewController, UITabBarDelegate, UITextViewDelegate {
         
         self.activityIndicator.isHidden = true
         
-        if(self.skin!.name != "iapetus"){
+        if(self.skin!.name != "iapetus"){ //IAPETUS
             self.countdownTimerLabel.text = "00:00:00"
             self.countdownTimerLabel.isHidden = false
             self.priceLabel.text = "soldout"
@@ -200,7 +200,7 @@ class Detail: UIViewController, UITabBarDelegate, UITextViewDelegate {
             "config1": self.player!.config1,
             "config2": self.player!.config2,
             "skin": self.player!.skin,
-            "notify": self.player!.notify,
+            "note": self.player!.notify,
             "device": self.player!.device,
             "updated": self.player!.updated,
             "created": self.player!.created]
