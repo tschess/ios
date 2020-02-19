@@ -164,13 +164,16 @@
                                     <constraint firstAttribute="height" constant="45" id="3Aw-0g-FIT"/>
                                 </constraints>
                                 <items>
-                                    <tabBarItem tag="1" title="play" image="bolt" catalog="system" selectedImage="bolt.fill" id="Z5R-KS-Z6j">
+                                    <tabBarItem tag="1" title="" image="quick.grey" selectedImage="quick.white" id="Z5R-KS-Z6j">
+                                        <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
                                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tabBarItem>
-                                    <tabBarItem tag="3" title="game" image="gamecontroller" catalog="system" selectedImage="gamecontroller.fill" id="Ccy-HC-zcU">
+                                    <tabBarItem tag="3" title="" image="game.grey" selectedImage="game.white" id="Ccy-HC-zcU">
+                                        <inset key="imageInsets" minX="1" minY="5" maxX="1" maxY="-5"/>
                                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tabBarItem>
-                                    <tabBarItem tag="4" title="setup" image="hammer" catalog="system" selectedImage="hammer.fill" id="RmV-cI-lZG">
+                                    <tabBarItem tag="4" title="" image="setup" id="RmV-cI-lZG">
+                                        <inset key="imageInsets" minX="1" minY="5" maxX="1" maxY="-5"/>
                                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tabBarItem>
                                 </items>
@@ -256,6 +259,7 @@
                                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="19"/>
                                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
+                                            <size key="shadowOffset" width="0.0" height="0.0"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OGP-Ay-XBh">
                                             <rect key="frame" x="256" y="23" width="60" height="20"/>
@@ -334,7 +338,6 @@
                                         <constraint firstItem="dIN-pV-xv0" firstAttribute="trailing" secondItem="XUX-ys-TYW" secondAttribute="trailing" constant="-4" id="h3V-P9-47W"/>
                                         <constraint firstAttribute="trailing" secondItem="OGP-Ay-XBh" secondAttribute="trailing" constant="4" id="jxh-8n-uQN"/>
                                         <constraint firstItem="R3e-v1-ztk" firstAttribute="top" secondItem="yMf-xa-Lp6" secondAttribute="bottom" id="k2Y-NE-BOO"/>
-                                        <constraint firstItem="dIN-pV-xv0" firstAttribute="top" secondItem="nKx-cM-yYc" secondAttribute="bottom" constant="1" id="nOG-Af-unb"/>
                                         <constraint firstItem="nKx-cM-yYc" firstAttribute="leading" secondItem="XUX-ys-TYW" secondAttribute="leading" constant="4" id="rUy-Ny-xjd"/>
                                     </constraints>
                                 </tableViewCellContentView>
@@ -365,11 +368,10 @@
         <image name="arrow.up" catalog="system" width="60" height="64"/>
         <image name="avatar_default" width="320" height="320"/>
         <image name="avatar_inverse" width="320" height="320"/>
-        <image name="bolt" catalog="system" width="50" height="64"/>
-        <image name="bolt.fill" catalog="system" width="50" height="64"/>
-        <image name="gamecontroller" catalog="system" width="64" height="40"/>
-        <image name="gamecontroller.fill" catalog="system" width="64" height="40"/>
-        <image name="hammer" catalog="system" width="64" height="56"/>
-        <image name="hammer.fill" catalog="system" width="64" height="56"/>
+        <image name="game.grey" width="40" height="40"/>
+        <image name="game.white" width="256" height="256"/>
+        <image name="quick.grey" width="20" height="31"/>
+        <image name="quick.white" width="121" height="188"/>
+        <image name="setup" width="40" height="40"/>
     </resources>
 </document>
