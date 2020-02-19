@@ -81,16 +81,16 @@ class EntityPlayer: Equatable, Hashable {
     
     func getImageDisp() -> UIImage? {
         if(self.disp >= 0){
-            self.tintColor = .green
-            if #available(iOS 13.0, *) {
-                return UIImage(systemName: "arrow.up")!
-            }
+            //self.tintColor = .green
+            //if #available(iOS 13.0, *) {
+                //return UIImage(systemName: "arrow.up")!
+            //}
             return UIImage(named: "upx")!
         }
-        self.tintColor = .red
-        if #available(iOS 13.0, *) {
-            return UIImage(systemName: "arrow.down")!
-        }
+        //self.tintColor = .red
+        //if #available(iOS 13.0, *) {
+            //return UIImage(systemName: "arrow.down")!
+        //}
         return UIImage(named: "dwn")!
     }
     

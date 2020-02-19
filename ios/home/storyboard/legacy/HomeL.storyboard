@@ -302,7 +302,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=":" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R3e-v1-ztk">
-                                            <rect key="frame" x="207.5" y="43" width="47" height="20"/>
+                                            <rect key="frame" x="207.5" y="44" width="47" height="20"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="20" id="Hdo-nv-2u0"/>
                                                 <constraint firstAttribute="width" constant="47" id="VrD-BB-OnN"/>
@@ -312,7 +312,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow.up" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="inX-hi-2ve">
-                                            <rect key="frame" x="232" y="44" width="20" height="18"/>
+                                            <rect key="frame" x="232" y="45" width="20" height="18"/>
                                             <color key="tintColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="20" id="hIK-9S-tCt"/>
@@ -322,7 +322,7 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="trailing" secondItem="OGP-Ay-XBh" secondAttribute="trailing" constant="4" id="0og-OQ-xmi"/>
-                                        <constraint firstItem="inX-hi-2ve" firstAttribute="top" secondItem="yMf-xa-Lp6" secondAttribute="bottom" id="Et0-FT-eph"/>
+                                        <constraint firstItem="inX-hi-2ve" firstAttribute="top" secondItem="yMf-xa-Lp6" secondAttribute="bottom" constant="1" id="Et0-FT-eph"/>
                                         <constraint firstAttribute="trailing" secondItem="QXK-mb-Sho" secondAttribute="trailing" constant="4" id="Jwv-hP-QG9"/>
                                         <constraint firstItem="0O4-Ti-Ubf" firstAttribute="top" secondItem="OGP-Ay-XBh" secondAttribute="bottom" constant="1" id="K2x-th-Qd8"/>
                                         <constraint firstItem="OGP-Ay-XBh" firstAttribute="leading" secondItem="yMf-xa-Lp6" secondAttribute="trailing" constant="1.5" id="KDp-qN-T8E"/>
@@ -337,7 +337,7 @@
                                         <constraint firstItem="QXK-mb-Sho" firstAttribute="top" secondItem="XUX-ys-TYW" secondAttribute="top" constant="2" id="ezn-Am-Zwq"/>
                                         <constraint firstItem="dIN-pV-xv0" firstAttribute="trailing" secondItem="XUX-ys-TYW" secondAttribute="trailing" constant="-4" id="h3V-P9-47W"/>
                                         <constraint firstAttribute="trailing" secondItem="OGP-Ay-XBh" secondAttribute="trailing" constant="4" id="jxh-8n-uQN"/>
-                                        <constraint firstItem="R3e-v1-ztk" firstAttribute="top" secondItem="yMf-xa-Lp6" secondAttribute="bottom" id="k2Y-NE-BOO"/>
+                                        <constraint firstItem="R3e-v1-ztk" firstAttribute="top" secondItem="yMf-xa-Lp6" secondAttribute="bottom" constant="1" id="k2Y-NE-BOO"/>
                                         <constraint firstItem="nKx-cM-yYc" firstAttribute="leading" secondItem="XUX-ys-TYW" secondAttribute="leading" constant="4" id="rUy-Ny-xjd"/>
                                     </constraints>
                                 </tableViewCellContentView>

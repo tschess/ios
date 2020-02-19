@@ -137,7 +137,7 @@
                                         <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </activityIndicatorView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TC7-mt-3N6">
-                                        <rect key="frame" x="258" y="46" width="60" height="20"/>
+                                        <rect key="frame" x="256" y="46" width="60" height="20"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -149,7 +149,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=":" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cPF-Al-rY6">
-                                        <rect key="frame" x="251" y="46" width="5" height="20"/>
+                                        <rect key="frame" x="249" y="46" width="5" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="5" id="Uez-qf-tgi"/>
                                             <constraint firstAttribute="height" constant="20" id="Ug5-MN-jf1"/>
@@ -187,7 +187,7 @@
                                     <constraint firstAttribute="trailing" secondItem="5Pa-Qr-U3z" secondAttribute="trailing" constant="4" id="lT5-uc-Xxa"/>
                                     <constraint firstItem="cPF-Al-rY6" firstAttribute="top" secondItem="EMM-dO-exx" secondAttribute="bottom" constant="2" id="mEA-eW-Xij"/>
                                     <constraint firstItem="r0d-hG-YKm" firstAttribute="leading" secondItem="PNG-eZ-TEg" secondAttribute="leading" constant="4" id="pfs-DH-1aT"/>
-                                    <constraint firstAttribute="trailing" secondItem="TC7-mt-3N6" secondAttribute="trailing" constant="2" id="ufv-o7-fRD"/>
+                                    <constraint firstAttribute="trailing" secondItem="TC7-mt-3N6" secondAttribute="trailing" constant="4" id="ufv-o7-fRD"/>
                                     <constraint firstItem="kBm-n0-cLd" firstAttribute="leading" secondItem="EMM-dO-exx" secondAttribute="trailing" constant="2" id="uoZ-td-NZY"/>
                                     <constraint firstItem="ADc-nn-Tmx" firstAttribute="centerY" secondItem="PNG-eZ-TEg" secondAttribute="centerY" id="wFn-FA-SuQ"/>
                                     <constraint firstItem="cPF-Al-rY6" firstAttribute="leading" secondItem="Db2-vI-7pN" secondAttribute="trailing" id="ySp-Ae-tVA"/>

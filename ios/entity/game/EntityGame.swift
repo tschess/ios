@@ -101,31 +101,34 @@ class EntityGame: Equatable, Hashable {
         }
         if(self.white.username == username){
             if(self.white_disp! >= 0){
-                if #available(iOS 13.0, *) {
-                    self.tintColorWhite = .green
-                    self.tintColorBlack = .red
-                    return UIImage(systemName: "arrow.up")!
-                }
+                return UIImage(named: "upx")!
+                //if #available(iOS 13.0, *) {
+                    //self.tintColorWhite = .green
+                    //self.tintColorBlack = .red
+                    //return UIImage(systemName: "arrow.up")!
+                //}
             }
-            if #available(iOS 13.0, *) {
-                self.tintColorWhite = .red
-                self.tintColorBlack = .green
-                return UIImage(systemName: "arrow.down")!
-            }
+            //if #available(iOS 13.0, *) {
+                //self.tintColorWhite = .red
+                //self.tintColorBlack = .green
+                //return UIImage(systemName: "arrow.down")!
+            //}
+            return UIImage(named: "dwn")!
         }
         if(self.black_disp! >= 0){
-            if #available(iOS 13.0, *) {
-                self.tintColorWhite = .green
-                self.tintColorBlack = .red
-                return UIImage(systemName: "arrow.up")!
-            }
+            //if #available(iOS 13.0, *) {
+                //self.tintColorWhite = .green
+                //self.tintColorBlack = .red
+                //return UIImage(systemName: "arrow.up")!
+            //}
+            return UIImage(named: "upx")!
         }
-        if #available(iOS 13.0, *) {
-            self.tintColorWhite = .red
-            self.tintColorBlack = .green
-            return UIImage(systemName: "arrow.down")!
-        }
-        return nil
+        //if #available(iOS 13.0, *) {
+            //self.tintColorWhite = .red
+            //self.tintColorBlack = .green
+            //return UIImage(systemName: "arrow.down")!
+        //}
+        return UIImage(named: "dwn")!
     }
     
     
