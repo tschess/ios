@@ -31,10 +31,10 @@
                                     <constraint firstAttribute="height" constant="50" id="VH7-5F-net"/>
                                 </constraints>
                                 <items>
-                                    <tabBarItem tag="1" title="game" image="arrowshape.turn.up.left" catalog="system" selectedImage="arrowshape.turn.up.left.fill" id="T6W-Pm-TWX">
+                                    <tabBarItem tag="1" title="" image="back.grey" selectedImage="back.white" id="T6W-Pm-TWX">
                                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tabBarItem>
-                                    <tabBarItem title="home" image="house" catalog="system" selectedImage="house.fill" id="KcG-ho-aJQ">
+                                    <tabBarItem title="" image="home.grey" selectedImage="home.white" id="KcG-ho-aJQ">
                                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tabBarItem>
                                 </items>
@@ -376,11 +376,11 @@
     <resources>
         <image name="arrow.down" catalog="system" width="60" height="64"/>
         <image name="arrow.up" catalog="system" width="60" height="64"/>
-        <image name="arrowshape.turn.up.left" catalog="system" width="64" height="52"/>
-        <image name="arrowshape.turn.up.left.fill" catalog="system" width="64" height="52"/>
         <image name="avatar_default" width="320" height="320"/>
         <image name="avatar_inverse" width="320" height="320"/>
-        <image name="house" catalog="system" width="64" height="54"/>
-        <image name="house.fill" catalog="system" width="64" height="52"/>
+        <image name="back.grey" width="40" height="40"/>
+        <image name="back.white" width="40" height="40"/>
+        <image name="home.grey" width="16" height="16"/>
+        <image name="home.white" width="16" height="16"/>
     </resources>
 </document>
