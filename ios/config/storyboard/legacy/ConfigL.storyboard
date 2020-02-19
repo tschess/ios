@@ -189,10 +189,10 @@
                                 <rect key="frame" x="0.0" y="116" width="320" height="407"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CIY-qY-ksd" userLabel="SplitView0">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="150"/>
+                                        <rect key="frame" x="0.0" y="4" width="320" height="150"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="config. 0̸" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y16-Vp-HKy">
-                                                <rect key="frame" x="0.0" y="4" width="320" height="20"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="320" height="20"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="PM7-JQ-7Py"/>
@@ -202,7 +202,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Goi-aY-r07" customClass="BoardView" customModule="ios" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="28" width="320" height="100"/>
+                                                <rect key="frame" x="0.0" y="24" width="320" height="100"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
@@ -237,7 +237,7 @@
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstItem="y16-Vp-HKy" firstAttribute="top" secondItem="CIY-qY-ksd" secondAttribute="top" constant="4" id="29T-ew-Kji"/>
+                                            <constraint firstItem="y16-Vp-HKy" firstAttribute="top" secondItem="CIY-qY-ksd" secondAttribute="top" id="29T-ew-Kji"/>
                                             <constraint firstItem="Goi-aY-r07" firstAttribute="top" secondItem="y16-Vp-HKy" secondAttribute="bottom" constant="4" id="C3D-ue-tzy"/>
                                             <constraint firstItem="y16-Vp-HKy" firstAttribute="leading" secondItem="CIY-qY-ksd" secondAttribute="leading" id="fcJ-os-IK6"/>
                                             <constraint firstAttribute="trailing" secondItem="Goi-aY-r07" secondAttribute="trailing" id="gIG-Wd-Ra7"/>
@@ -247,7 +247,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cNx-PV-88Q" userLabel="SplitView1">
-                                        <rect key="frame" x="0.0" y="150" width="320" height="125"/>
+                                        <rect key="frame" x="0.0" y="154" width="320" height="125"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="config. 1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iOr-Jz-jYu">
                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="20"/>
@@ -306,7 +306,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a5Q-EZ-5Ph" userLabel="SplitView2">
-                                        <rect key="frame" x="0.0" y="275" width="320" height="162"/>
+                                        <rect key="frame" x="0.0" y="279" width="320" height="162"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="config. 2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eRX-LD-sXT">
                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="20"/>
@@ -371,7 +371,7 @@
                                     <constraint firstAttribute="trailing" secondItem="CIY-qY-ksd" secondAttribute="trailing" id="FjF-X4-9op"/>
                                     <constraint firstAttribute="trailing" secondItem="a5Q-EZ-5Ph" secondAttribute="trailing" id="POF-Zy-epm"/>
                                     <constraint firstItem="cNx-PV-88Q" firstAttribute="leading" secondItem="zmw-2A-Fea" secondAttribute="leading" id="V1n-9y-tAV"/>
-                                    <constraint firstItem="CIY-qY-ksd" firstAttribute="top" secondItem="zmw-2A-Fea" secondAttribute="top" id="faF-Pe-O7r"/>
+                                    <constraint firstItem="CIY-qY-ksd" firstAttribute="top" secondItem="zmw-2A-Fea" secondAttribute="top" constant="4" id="faF-Pe-O7r"/>
                                     <constraint firstItem="CIY-qY-ksd" firstAttribute="leading" secondItem="zmw-2A-Fea" secondAttribute="leading" id="r7i-Tz-3nr"/>
                                     <constraint firstItem="cNx-PV-88Q" firstAttribute="top" secondItem="CIY-qY-ksd" secondAttribute="bottom" id="snZ-tl-02w"/>
                                     <constraint firstAttribute="trailing" secondItem="cNx-PV-88Q" secondAttribute="trailing" id="umZ-X3-6ON"/>

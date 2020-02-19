@@ -51,11 +51,10 @@
                                     <constraint firstAttribute="height" constant="50" id="CtS-Ad-lXP"/>
                                 </constraints>
                                 <items>
-                                    <tabBarItem title="home" image="arrowshape.turn.up.left" catalog="system" selectedImage="arrowshape.turn.up.left.fill" id="WH1-kp-AQb">
+                                    <tabBarItem title="" image="back.grey" selectedImage="back.white" id="WH1-kp-AQb">
                                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tabBarItem>
-                                    <tabBarItem tag="1" title="fairy pieces" image="wand.and.stars" catalog="system" selectedImage="wand.and.stars.inverse" id="fjf-cy-wGx">
-                                        <inset key="imageInsets" minX="195" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    <tabBarItem tag="1" title="" image="fg" selectedImage="fw" id="fjf-cy-wGx">
                                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tabBarItem>
                                 </items>
@@ -185,10 +184,10 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zmw-2A-Fea" userLabel="ContentView">
-                                <rect key="frame" x="0.0" y="230" width="414" height="582"/>
+                                <rect key="frame" x="0.0" y="222" width="414" height="590"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CIY-qY-ksd" userLabel="SplitView0">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="162"/>
+                                        <rect key="frame" x="0.0" y="8" width="414" height="162"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="config. 0̸" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y16-Vp-HKy">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="30"/>
@@ -246,7 +245,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cNx-PV-88Q" userLabel="SplitView1">
-                                        <rect key="frame" x="0.0" y="162" width="414" height="162"/>
+                                        <rect key="frame" x="0.0" y="170" width="414" height="162"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="config. 1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iOr-Jz-jYu">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="30"/>
@@ -304,7 +303,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a5Q-EZ-5Ph" userLabel="SplitView2">
-                                        <rect key="frame" x="0.0" y="324" width="414" height="162"/>
+                                        <rect key="frame" x="0.0" y="332" width="414" height="162"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="config. 2" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eRX-LD-sXT">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="30"/>
@@ -368,7 +367,7 @@
                                     <constraint firstAttribute="trailing" secondItem="CIY-qY-ksd" secondAttribute="trailing" id="FjF-X4-9op"/>
                                     <constraint firstAttribute="trailing" secondItem="a5Q-EZ-5Ph" secondAttribute="trailing" id="POF-Zy-epm"/>
                                     <constraint firstItem="cNx-PV-88Q" firstAttribute="leading" secondItem="zmw-2A-Fea" secondAttribute="leading" id="V1n-9y-tAV"/>
-                                    <constraint firstItem="CIY-qY-ksd" firstAttribute="top" secondItem="zmw-2A-Fea" secondAttribute="top" id="faF-Pe-O7r"/>
+                                    <constraint firstItem="CIY-qY-ksd" firstAttribute="top" secondItem="zmw-2A-Fea" secondAttribute="top" constant="8" id="faF-Pe-O7r"/>
                                     <constraint firstItem="CIY-qY-ksd" firstAttribute="leading" secondItem="zmw-2A-Fea" secondAttribute="leading" id="r7i-Tz-3nr"/>
                                     <constraint firstItem="cNx-PV-88Q" firstAttribute="top" secondItem="CIY-qY-ksd" secondAttribute="bottom" id="snZ-tl-02w"/>
                                     <constraint firstAttribute="trailing" secondItem="cNx-PV-88Q" secondAttribute="trailing" id="umZ-X3-6ON"/>
@@ -396,7 +395,7 @@
                             <constraint firstItem="lR1-2A-YPc" firstAttribute="leading" secondItem="Hog-c1-J9t" secondAttribute="leading" id="izm-JD-Ctu"/>
                             <constraint firstItem="zmw-2A-Fea" firstAttribute="trailing" secondItem="Hog-c1-J9t" secondAttribute="trailing" id="t8D-fA-Ued"/>
                             <constraint firstItem="5qi-EH-0fj" firstAttribute="trailing" secondItem="Hog-c1-J9t" secondAttribute="trailing" id="u2K-yW-c68"/>
-                            <constraint firstItem="zmw-2A-Fea" firstAttribute="top" secondItem="56Q-PK-JTt" secondAttribute="bottom" constant="8" id="yDo-5Z-6Id"/>
+                            <constraint firstItem="zmw-2A-Fea" firstAttribute="top" secondItem="56Q-PK-JTt" secondAttribute="bottom" id="yDo-5Z-6Id"/>
                             <constraint firstItem="56Q-PK-JTt" firstAttribute="top" secondItem="rh3-GT-zds" secondAttribute="bottom" id="z8j-9w-V2c"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Hog-c1-J9t"/>
@@ -431,10 +430,10 @@
     </scenes>
     <resources>
         <image name="arrow.down" catalog="system" width="60" height="64"/>
-        <image name="arrowshape.turn.up.left" catalog="system" width="64" height="52"/>
-        <image name="arrowshape.turn.up.left.fill" catalog="system" width="64" height="52"/>
         <image name="avatar_default" width="320" height="320"/>
-        <image name="wand.and.stars" catalog="system" width="64" height="56"/>
-        <image name="wand.and.stars.inverse" catalog="system" width="64" height="56"/>
+        <image name="back.grey" width="16" height="16"/>
+        <image name="back.white" width="16" height="16"/>
+        <image name="fg" width="16" height="16"/>
+        <image name="fw" width="16" height="16"/>
     </resources>
 </document>
