@@ -150,8 +150,8 @@ class Home: UIViewController, UITabBarDelegate {
         case 4:
             self.notificationTimerStop()
             DispatchQueue.main.async() {
-                let storyboard: UIStoryboard = UIStoryboard(name: "Config", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "Config") as! Config
+                let storyboard: UIStoryboard = UIStoryboard(name: "ConfigL", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "ConfigL") as! Config
                 viewController.setPlayerSelf(playerSelf: self.player!)
                 UIApplication.shared.keyWindow?.rootViewController = viewController
             }

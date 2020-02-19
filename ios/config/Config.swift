@@ -81,6 +81,8 @@ class Config: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate, U
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.tabBarMenu.delegate = self
+        
         self.activityIndicator.isHidden = true
         
         self.configCollectionView0.delegate = self
@@ -97,8 +99,6 @@ class Config: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate, U
         self.configCollectionView2.dataSource = self
         let editCollectionView2 = UITapGestureRecognizer(target: self, action: #selector(self.editCollectionView2))
         self.configCollectionView2.addGestureRecognizer(editCollectionView2)
-        
-        self.tabBarMenu.delegate = self
     }
     
     @IBAction func backButtonClick(_ sender: Any) {
@@ -161,7 +161,8 @@ class Config: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate, U
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        let totalContentHeight = self.contentView.frame.size.height - 8
+        //let totalContentHeight = self.contentView.frame.size.height - 8 // 4???
+        let totalContentHeight = self.contentView.frame.size.height
         
         self.splitViewHeight0.constant = totalContentHeight/3
         self.splitViewHeight1.constant = totalContentHeight/3
@@ -350,8 +351,8 @@ extension Config: UICollectionViewDelegate {
             }
         default:
             DispatchQueue.main.async {
-                let storyboard: UIStoryboard = UIStoryboard(name: "Home", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "Home") as! Home
+                let storyboard: UIStoryboard = UIStoryboard(name: "HomeL", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "HomeL") as! Home
                 viewController.setPlayer(player: self.playerSelf!)
                 UIApplication.shared.keyWindow?.rootViewController = viewController
             }
