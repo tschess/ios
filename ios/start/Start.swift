@@ -261,9 +261,17 @@ class Start: UIViewController, UITextFieldDelegate {
             let TURN = "WHITE"
             let REQUEST: [String: Any] = ["state": STATE, "turn": TURN]
             RequestTest().execute(requestPayload: REQUEST) { (game) in
+//                DispatchQueue.main.async {
+//                    let storyboard: UIStoryboard = UIStoryboard(name: "iTschess", bundle: nil)
+//                    let viewController = storyboard.instantiateViewController(withIdentifier: "iTschess") as! Tschess
+//                    viewController.setPlayerOther(playerOther: game!.getPlayerOther(username: game!.white.username))
+//                    viewController.setPlayerSelf(playerSelf: game!.white)
+//                    viewController.setGameTschess(gameTschess: game!)
+//                    UIApplication.shared.keyWindow?.rootViewController = viewController
+//                }
                 DispatchQueue.main.async {
-                    let storyboard: UIStoryboard = UIStoryboard(name: "iTschess", bundle: nil)
-                    let viewController = storyboard.instantiateViewController(withIdentifier: "iTschess") as! Tschess
+                    let storyboard: UIStoryboard = UIStoryboard(name: "dTschessL", bundle: nil)
+                    let viewController = storyboard.instantiateViewController(withIdentifier: "dTschessL") as! Tschess
                     viewController.setPlayerOther(playerOther: game!.getPlayerOther(username: game!.white.username))
                     viewController.setPlayerSelf(playerSelf: game!.white)
                     viewController.setGameTschess(gameTschess: game!)

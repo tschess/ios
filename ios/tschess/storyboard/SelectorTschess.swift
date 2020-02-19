@@ -22,20 +22,20 @@ class SelectorTschess {
         let skin: String = self.getSkin(username: playerSelf.username, game: game)
         
         switch skin {
-        case "IAPETUS":
-            DispatchQueue.main.async {
-                let storyboard: UIStoryboard = UIStoryboard(name: "iTschess", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "iTschess") as! Tschess
-                viewController.setPlayerOther(playerOther: game.getPlayerOther(username: playerSelf.username))
-                viewController.setPlayerSelf(playerSelf: playerSelf)
-                viewController.setGameTschess(gameTschess: game)
-                UIApplication.shared.keyWindow?.rootViewController = viewController
-            }
-            return
+//        case "IAPETUS":
+//            DispatchQueue.main.async {
+//                let storyboard: UIStoryboard = UIStoryboard(name: "iTschess", bundle: nil)
+//                let viewController = storyboard.instantiateViewController(withIdentifier: "iTschess") as! Tschess
+//                viewController.setPlayerOther(playerOther: game.getPlayerOther(username: playerSelf.username))
+//                viewController.setPlayerSelf(playerSelf: playerSelf)
+//                viewController.setGameTschess(gameTschess: game)
+//                UIApplication.shared.keyWindow?.rootViewController = viewController
+//            }
+//            return
         default:
             DispatchQueue.main.async {
-                let storyboard: UIStoryboard = UIStoryboard(name: "dTschess", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "dTschess") as! Tschess
+                let storyboard: UIStoryboard = UIStoryboard(name: "dTschessL", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "dTschessL") as! Tschess
                 viewController.setPlayerOther(playerOther: game.getPlayerOther(username: playerSelf.username))
                 viewController.setPlayerSelf(playerSelf: playerSelf)
                 viewController.setGameTschess(gameTschess: game)

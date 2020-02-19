@@ -74,7 +74,8 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     @IBOutlet weak var usernameLabel: UILabel!
     
     @IBOutlet weak var contentView: UIView!
-    @IBOutlet weak var contentViewLabel: UILabel!
+    //@IBOutlet weak var contentViewLabel: UILabel!
+    //self.titleViewLabel.text = "game over"
     
     @IBOutlet weak var collectionView: BoardView!
     @IBOutlet weak var collectionViewHeight: NSLayoutConstraint!
@@ -147,7 +148,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         self.setTurn()
         
         self.timerLabel.isHidden = true
-        self.contentViewLabel.isHidden = true
+        //self.contentViewLabel.isHidden = true
         
         self.renderHeader()
         self.startTimers()
@@ -298,57 +299,58 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         if(self.gameTschess!.status == "RESOLVED"){
             DispatchQueue.main.async {
                 self.titleViewLabel.text = "game over"
-                self.contentViewLabel.isHidden = false
+                //self.contentViewLabel.isHidden = false
                 self.turnaryLabel.isHidden = true
                 self.timerLabel.isHidden = true
             }
             self.stopTimers()
             if(self.gameTschess!.outcome == "DRAW"){
                 DispatchQueue.main.async {
-                    self.contentViewLabel.text = "draw"
+                    //self.contentViewLabel.text = "draw"
+                    self.titleViewLabel.text = "game over"
                 }
                 return
             }
             if(self.gameTschess!.winner == "WHITE"){
                 if(self.gameTschess!.getWhite(username: self.playerSelf!.username)){
                     DispatchQueue.main.async {
-                        self.contentViewLabel.text = "you win"
+                        //self.contentViewLabel.text = "you win"
                     }
                     return
                 }
                 DispatchQueue.main.async {
-                    self.contentViewLabel.text = "you lose"
+                    //self.contentViewLabel.text = "you lose"
                 }
                 return
             }
             if(self.gameTschess!.getWhite(username: self.playerSelf!.username)){
                 DispatchQueue.main.async {
-                    self.contentViewLabel.text = "you lose"
+                    //self.contentViewLabel.text = "you lose"
                 }
                 return
             }
             DispatchQueue.main.async {
-                self.contentViewLabel.text = "you win"
+                //self.contentViewLabel.text = "you win"
             }
         }
     }
     
     private func processDrawProposal() {
         if(self.gameTschess!.outcome == "TBD"){
-            self.contentViewLabel.isHidden = true
+            //self.contentViewLabel.isHidden = true
             return
         }
         if(self.gameTschess!.outcome == "PENDING"){
             if(!self.turn){
-                self.contentViewLabel.isHidden = false
+                //self.contentViewLabel.isHidden = false
                 self.timerLabel.isHidden = false
-                self.contentViewLabel.text = "proposal pending"
+                //self.contentViewLabel.text = "proposal pending"
                 self.turnaryLabel.text = "\(self.playerOther!.username) to respond"
                 return
             }
-            self.contentViewLabel.isHidden = false
+            //self.contentViewLabel.isHidden = false
             self.timerLabel.isHidden = false
-            self.contentViewLabel.text = "proposal pending"
+            //self.contentViewLabel.text = "proposal pending"
             self.turnaryLabel.text = "\(self.playerSelf!.username) to respond"
             
             DispatchQueue.main.async {

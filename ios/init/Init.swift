@@ -11,6 +11,11 @@ import UIKit
 class Init: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
+        
+        let height = self.view.frame.size.height
+        
+        print("\n\n~HEIGHT~ \(height)\n\n")
+        
         let device = UIDevice.current.identifierForVendor?.uuidString
         if(device == nil) {
             self.start()
