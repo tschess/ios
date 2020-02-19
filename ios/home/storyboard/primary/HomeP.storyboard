@@ -365,8 +365,8 @@
         <image name="arrow.up" catalog="system" width="60" height="64"/>
         <image name="avatar_default" width="320" height="320"/>
         <image name="avatar_inverse" width="320" height="320"/>
-        <image name="game.grey" width="40" height="40"/>
-        <image name="game.white" width="512" height="512"/>
+        <image name="game.grey" width="37" height="37"/>
+        <image name="game.white" width="37" height="37"/>
         <image name="quick.grey" width="20" height="31"/>
         <image name="quick.white" width="25" height="39"/>
         <image name="setup.grey" width="40" height="40"/>

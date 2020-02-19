@@ -31,10 +31,10 @@
                                     <constraint firstAttribute="height" constant="50" id="VH7-5F-net"/>
                                 </constraints>
                                 <items>
-                                    <tabBarItem title="home" image="arrowshape.turn.up.left" catalog="system" selectedImage="arrowshape.turn.up.left.fill" id="fYp-Rj-VM2">
+                                    <tabBarItem title="" image="back.grey" selectedImage="back.white" id="fYp-Rj-VM2">
                                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tabBarItem>
-                                    <tabBarItem tag="1" title="historic" image="book" catalog="system" selectedImage="book.fill" id="T6W-Pm-TWX">
+                                    <tabBarItem tag="1" title="" image="book.grey" selectedImage="book.white" id="T6W-Pm-TWX">
                                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tabBarItem>
                                 </items>
@@ -330,12 +330,12 @@
     </scenes>
     <resources>
         <image name="arrow.down" catalog="system" width="60" height="64"/>
-        <image name="arrowshape.turn.up.left" catalog="system" width="64" height="52"/>
-        <image name="arrowshape.turn.up.left.fill" catalog="system" width="64" height="52"/>
         <image name="avatar_default" width="320" height="320"/>
         <image name="avatar_inverse" width="320" height="320"/>
-        <image name="book" catalog="system" width="64" height="50"/>
-        <image name="book.fill" catalog="system" width="64" height="50"/>
+        <image name="back.grey" width="16" height="16"/>
+        <image name="back.white" width="40" height="40"/>
+        <image name="book.grey" width="16" height="16"/>
+        <image name="book.white" width="16" height="16"/>
         <image name="tray.and.arrow.down" catalog="system" width="64" height="54"/>
     </resources>
 </document>
