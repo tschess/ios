@@ -224,7 +224,7 @@
         <scene sceneID="hCS-rN-BBL">
             <objects>
                 <tableViewController id="ECz-mu-5JR" customClass="HomeMenuTable" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="79" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="11K-61-DIT">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="79" sectionHeaderHeight="28" sectionFooterHeight="28" id="11K-61-DIT">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="407"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -248,7 +248,7 @@
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="111" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dIN-pV-xv0">
-                                            <rect key="frame" x="4" y="58" width="199.5" height="20"/>
+                                            <rect key="frame" x="4" y="58" width="312" height="20"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="20" id="5tY-3P-y45"/>
@@ -268,7 +268,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0O4-Ti-Ubf">
-                                            <rect key="frame" x="256" y="43" width="60" height="20"/>
+                                            <rect key="frame" x="256" y="44" width="60" height="20"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="60" id="kgq-hV-0sd"/>
                                                 <constraint firstAttribute="height" constant="20" id="uwx-gU-eIG"/>
@@ -320,7 +320,7 @@
                                         <constraint firstAttribute="trailing" secondItem="OGP-Ay-XBh" secondAttribute="trailing" constant="4" id="0og-OQ-xmi"/>
                                         <constraint firstItem="inX-hi-2ve" firstAttribute="top" secondItem="yMf-xa-Lp6" secondAttribute="bottom" id="Et0-FT-eph"/>
                                         <constraint firstAttribute="trailing" secondItem="QXK-mb-Sho" secondAttribute="trailing" constant="4" id="Jwv-hP-QG9"/>
-                                        <constraint firstItem="0O4-Ti-Ubf" firstAttribute="top" secondItem="OGP-Ay-XBh" secondAttribute="bottom" id="K2x-th-Qd8"/>
+                                        <constraint firstItem="0O4-Ti-Ubf" firstAttribute="top" secondItem="OGP-Ay-XBh" secondAttribute="bottom" constant="1" id="K2x-th-Qd8"/>
                                         <constraint firstItem="OGP-Ay-XBh" firstAttribute="leading" secondItem="yMf-xa-Lp6" secondAttribute="trailing" constant="1.5" id="KDp-qN-T8E"/>
                                         <constraint firstAttribute="bottom" secondItem="dIN-pV-xv0" secondAttribute="bottom" constant="1" id="MAw-yP-pGi"/>
                                         <constraint firstItem="OGP-Ay-XBh" firstAttribute="top" secondItem="QXK-mb-Sho" secondAttribute="bottom" constant="1" id="NKQ-h4-gZr"/>
@@ -331,7 +331,7 @@
                                         <constraint firstItem="0O4-Ti-Ubf" firstAttribute="leading" secondItem="inX-hi-2ve" secondAttribute="trailing" constant="4" id="cXr-6Z-bd7"/>
                                         <constraint firstAttribute="trailing" secondItem="0O4-Ti-Ubf" secondAttribute="trailing" constant="4" id="cfG-SV-x9h"/>
                                         <constraint firstItem="QXK-mb-Sho" firstAttribute="top" secondItem="XUX-ys-TYW" secondAttribute="top" constant="2" id="ezn-Am-Zwq"/>
-                                        <constraint firstItem="R3e-v1-ztk" firstAttribute="leading" secondItem="dIN-pV-xv0" secondAttribute="trailing" constant="4" id="h3V-P9-47W"/>
+                                        <constraint firstItem="dIN-pV-xv0" firstAttribute="trailing" secondItem="XUX-ys-TYW" secondAttribute="trailing" constant="-4" id="h3V-P9-47W"/>
                                         <constraint firstAttribute="trailing" secondItem="OGP-Ay-XBh" secondAttribute="trailing" constant="4" id="jxh-8n-uQN"/>
                                         <constraint firstItem="R3e-v1-ztk" firstAttribute="top" secondItem="yMf-xa-Lp6" secondAttribute="bottom" id="k2Y-NE-BOO"/>
                                         <constraint firstItem="dIN-pV-xv0" firstAttribute="top" secondItem="nKx-cM-yYc" secondAttribute="bottom" constant="1" id="nOG-Af-unb"/>

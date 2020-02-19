@@ -81,17 +81,17 @@ class EntityPlayer: Equatable, Hashable {
     
     func getImageDisp() -> UIImage? {
         if(self.disp >= 0){
+            self.tintColor = .green
             if #available(iOS 13.0, *) {
-                self.tintColor = .green
                 return UIImage(systemName: "arrow.up")!
             }
-            return UIImage(named: "eth")!
+            return UIImage(named: "upx")!
         }
+        self.tintColor = .red
         if #available(iOS 13.0, *) {
-            self.tintColor = .red
             return UIImage(systemName: "arrow.down")!
         }
-        return UIImage(named: "eth")!
+        return UIImage(named: "dwn")!
     }
     
     func getLabelTextDisp() -> String{

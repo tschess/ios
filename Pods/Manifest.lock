@@ -1,24 +1,20 @@
 PODS:
-  - BlockiesSwift (0.1.2)
   - IHKeyboardAvoiding (4.7)
   - SwipeCellKit (2.7.1)
 
 DEPENDENCIES:
-  - BlockiesSwift
   - IHKeyboardAvoiding
   - SwipeCellKit
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
-    - BlockiesSwift
     - IHKeyboardAvoiding
     - SwipeCellKit
 
 SPEC CHECKSUMS:
-  BlockiesSwift: 22d8d56dd187e6bfd16cb8c8fbd4fd4896c3e65d
   IHKeyboardAvoiding: 4cae0880c3975feffa278495df894c5166e71ad0
   SwipeCellKit: 3972254a826da74609926daf59b08d6c72e619ea
 
-PODFILE CHECKSUM: 12bf7685e3ff25543764c6fc984d556a4da3797e
+PODFILE CHECKSUM: 31f505454f2e5b5680f9886be952366918f71afe
 
 COCOAPODS: 1.8.4
