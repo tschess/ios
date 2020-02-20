@@ -153,7 +153,6 @@
 		B7BE123623EAE80E00ADA499 /* HistoricCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE123523EAE80E00ADA499 /* HistoricCell.swift */; };
 		B7BE123A23EAFBF500ADA499 /* Ack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE123923EAFBF500ADA499 /* Ack.swift */; };
 		B7BE123C23EAFC0200ADA499 /* Challenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE123B23EAFC0200ADA499 /* Challenge.swift */; };
-		B7BE123E23EB00E200ADA499 /* Challenge.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7BE123D23EB00E200ADA499 /* Challenge.storyboard */; };
 		B7BE124123EB013400ADA499 /* RequestChallenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE124023EB013400ADA499 /* RequestChallenge.swift */; };
 		B7BE124323EB015700ADA499 /* Ack.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7BE124223EB015700ADA499 /* Ack.storyboard */; };
 		B7BE124623EB01CB00ADA499 /* RequestAck.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE124523EB01CB00ADA499 /* RequestAck.swift */; };
@@ -197,6 +196,9 @@
 		B7BE12C223EB15CC00ADA499 /* PurchaseRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE12C123EB15CC00ADA499 /* PurchaseRequest.swift */; };
 		B7BE12C423EB6B9300ADA499 /* TransDraw.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE12C323EB6B9300ADA499 /* TransDraw.swift */; };
 		B7BE12C723EB70A900ADA499 /* Info.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE12C623EB70A900ADA499 /* Info.swift */; };
+		B7C675FE23FF1E6E007EC71E /* ChallengeL.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7C675FD23FF1E6E007EC71E /* ChallengeL.storyboard */; };
+		B7C6760023FF1E80007EC71E /* ChallengeP.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7C675FF23FF1E80007EC71E /* ChallengeP.storyboard */; };
+		B7C6760223FF1E9A007EC71E /* SelectChallenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C6760123FF1E9A007EC71E /* SelectChallenge.swift */; };
 		B7CA12CB23F5870000569805 /* SelectorTschess.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7CA12CA23F5870000569805 /* SelectorTschess.swift */; };
 		B7CA12CD23F5903000569805 /* SelectorSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7CA12CC23F5903000569805 /* SelectorSnapshot.swift */; };
 		B7CA12D123F5A13900569805 /* Recent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7CA12D023F5A13900569805 /* Recent.swift */; };
@@ -393,7 +395,6 @@
 		B7BE123523EAE80E00ADA499 /* HistoricCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoricCell.swift; sourceTree = "<group>"; };
 		B7BE123923EAFBF500ADA499 /* Ack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ack.swift; sourceTree = "<group>"; };
 		B7BE123B23EAFC0200ADA499 /* Challenge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenge.swift; sourceTree = "<group>"; };
-		B7BE123D23EB00E200ADA499 /* Challenge.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Challenge.storyboard; sourceTree = "<group>"; };
 		B7BE124023EB013400ADA499 /* RequestChallenge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestChallenge.swift; sourceTree = "<group>"; };
 		B7BE124223EB015700ADA499 /* Ack.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Ack.storyboard; sourceTree = "<group>"; };
 		B7BE124523EB01CB00ADA499 /* RequestAck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestAck.swift; sourceTree = "<group>"; };
@@ -437,6 +438,9 @@
 		B7BE12C123EB15CC00ADA499 /* PurchaseRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseRequest.swift; sourceTree = "<group>"; };
 		B7BE12C323EB6B9300ADA499 /* TransDraw.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransDraw.swift; sourceTree = "<group>"; };
 		B7BE12C623EB70A900ADA499 /* Info.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Info.swift; sourceTree = "<group>"; };
+		B7C675FD23FF1E6E007EC71E /* ChallengeL.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChallengeL.storyboard; sourceTree = "<group>"; };
+		B7C675FF23FF1E80007EC71E /* ChallengeP.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChallengeP.storyboard; sourceTree = "<group>"; };
+		B7C6760123FF1E9A007EC71E /* SelectChallenge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectChallenge.swift; sourceTree = "<group>"; };
 		B7CA12CA23F5870000569805 /* SelectorTschess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectorTschess.swift; sourceTree = "<group>"; };
 		B7CA12CC23F5903000569805 /* SelectorSnapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectorSnapshot.swift; sourceTree = "<group>"; };
 		B7CA12D023F5A13900569805 /* Recent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recent.swift; sourceTree = "<group>"; };
@@ -1374,7 +1378,9 @@
 		B7BE123823EAFBE400ADA499 /* storybooard */ = {
 			isa = PBXGroup;
 			children = (
-				B7BE123D23EB00E200ADA499 /* Challenge.storyboard */,
+				B7C675FC23FF1E52007EC71E /* legacy */,
+				B7C675FB23FF1E43007EC71E /* primary */,
+				B7C6760123FF1E9A007EC71E /* SelectChallenge.swift */,
 			);
 			path = storybooard;
 			sourceTree = "<group>";
@@ -1604,6 +1610,22 @@
 			path = util;
 			sourceTree = "<group>";
 		};
+		B7C675FB23FF1E43007EC71E /* primary */ = {
+			isa = PBXGroup;
+			children = (
+				B7C675FF23FF1E80007EC71E /* ChallengeP.storyboard */,
+			);
+			path = primary;
+			sourceTree = "<group>";
+		};
+		B7C675FC23FF1E52007EC71E /* legacy */ = {
+			isa = PBXGroup;
+			children = (
+				B7C675FD23FF1E6E007EC71E /* ChallengeL.storyboard */,
+			);
+			path = legacy;
+			sourceTree = "<group>";
+		};
 		B7CA12CE23F5A11500569805 /* recent */ = {
 			isa = PBXGroup;
 			children = (
@@ -1828,7 +1850,6 @@
 				B7215A6B23F5D56B00B86274 /* nRecent.storyboard in Resources */,
 				B7BE12A523EB0BF700ADA499 /* Promotion.storyboard in Resources */,
 				B7021F3F23FE0AE600C9346A /* PlayL.storyboard in Resources */,
-				B7BE123E23EB00E200ADA499 /* Challenge.storyboard in Resources */,
 				B7021F6C23FE435D00C9346A /* SkinsP.storyboard in Resources */,
 				B7021F1623FDBA0300C9346A /* ActualP.storyboard in Resources */,
 				B787C73122E970DD009C94F7 /* Assets.xcassets in Resources */,
@@ -1856,6 +1877,8 @@
 				B7021F3723FE02FA00C9346A /* InfoL.storyboard in Resources */,
 				B7021F1E23FDC8D900C9346A /* HistoricP.storyboard in Resources */,
 				B7021F5223FE11D300C9346A /* EditOtherL.storyboard in Resources */,
+				B7C6760023FF1E80007EC71E /* ChallengeP.storyboard in Resources */,
+				B7C675FE23FF1E6E007EC71E /* ChallengeL.storyboard in Resources */,
 				B7021F1823FDBA2B00C9346A /* ActualL.storyboard in Resources */,
 				B7021F9823FE5D8F00C9346A /* OtherP.storyboard in Resources */,
 				B7021F8A23FE5A3300C9346A /* IapetusP.storyboard in Resources */,
@@ -2040,6 +2063,7 @@
 				B7BE11AD23EA9CC700ADA499 /* KingBlack.swift in Sources */,
 				B7F35E332309F6D6002018F7 /* DateTime.swift in Sources */,
 				B7F6F9E623F0B544007D9151 /* UpdateProp.swift in Sources */,
+				B7C6760223FF1E9A007EC71E /* SelectChallenge.swift in Sources */,
 				B7215A7323F5D78300B86274 /* SelectRecent.swift in Sources */,
 				B7BE12C723EB70A900ADA499 /* Info.swift in Sources */,
 				B7BE11CC23EA9EE900ADA499 /* Knight.swift in Sources */,
