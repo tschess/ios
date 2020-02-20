@@ -89,12 +89,15 @@ class Play: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITa
         let skinD: EntitySkin = EntitySkin(name: "DEFAULT", foreColor: UIColor.lightGray, backColor:  flip, description: "")
         self.skinList = Array(arrayLiteral: skinD, iapetus, calypso, hyperion, neptune)
         
+        
+        //TODO: set these fonts...
+        let fontSizeLegacy0: CGFloat = CGFloat(24)
         self.attributeAlphaDotFull = [
             NSAttributedString.Key.foregroundColor: UIColor.black,
-            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 24, weight: UIFont.Weight.bold)]
+            NSAttributedString.Key.font: UIFont.systemFont(ofSize: fontSizeLegacy0, weight: UIFont.Weight.bold)]
         self.attributeAlphaDotHalf = [
             NSAttributedString.Key.foregroundColor: UIColor(red: 0/255.0, green: 0/255.0, blue: 0/255.0, alpha: 0.5),
-            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 24, weight: UIFont.Weight.bold)]
+            NSAttributedString.Key.font: UIFont.systemFont(ofSize: fontSizeLegacy0, weight: UIFont.Weight.bold)]
         self.alphaDotFull = NSMutableAttributedString(string: "•", attributes: self.attributeAlphaDotFull!)
         self.alphaDotHalf = NSMutableAttributedString(string: "•", attributes: self.attributeAlphaDotHalf!)
         
@@ -374,8 +377,8 @@ class Play: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITa
             self.flash()
             return
         }
-        let storyboard: UIStoryboard = UIStoryboard(name: "EditOther", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "EditOther") as! EditOther
+        let storyboard: UIStoryboard = UIStoryboard(name: "EditOtherL", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "EditOtherL") as! EditOther
         viewController.setTitleText(titleText: "config. 0̸")
         viewController.setSelection(selection: self.selection!)
         if(self.selection! == 1){
@@ -429,8 +432,8 @@ class Play: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITa
     }
     
     @IBAction func backButtonClick(_ sender: Any) {
-        let homeStoryboard: UIStoryboard = UIStoryboard(name: "Home", bundle: nil)
-        let homeViewController = homeStoryboard.instantiateViewController(withIdentifier: "Home") as! Home
+        let homeStoryboard: UIStoryboard = UIStoryboard(name: "HomeL", bundle: nil)
+        let homeViewController = homeStoryboard.instantiateViewController(withIdentifier: "HomeL") as! Home
         homeViewController.setPlayer(player: self.playerSelf!)
         UIApplication.shared.keyWindow?.rootViewController = homeViewController
     }

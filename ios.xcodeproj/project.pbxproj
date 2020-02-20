@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		4E766FB2BBF9176550BB45F9 /* Pods_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45C0F287A16E70CE8A23A2EB /* Pods_ios.framework */; };
 		B70149A923FC4FCC001A7D52 /* EntitySkin.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70149A823FC4FCC001A7D52 /* EntitySkin.swift */; };
-		B70149AC23FC4FF9001A7D52 /* Skin.xib in Resources */ = {isa = PBXBuildFile; fileRef = B70149AB23FC4FF9001A7D52 /* Skin.xib */; };
 		B70149AE23FC5023001A7D52 /* Skin.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70149AD23FC5023001A7D52 /* Skin.swift */; };
 		B70149B023FC562A001A7D52 /* Iapetus.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B70149AF23FC562A001A7D52 /* Iapetus.storyboard */; };
 		B70149B223FC5661001A7D52 /* Calypso.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B70149B123FC5661001A7D52 /* Calypso.storyboard */; };
@@ -34,6 +33,14 @@
 		B7021F3723FE02FA00C9346A /* InfoL.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7021F3623FE02FA00C9346A /* InfoL.storyboard */; };
 		B7021F3A23FE031400C9346A /* InfoP.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7021F3923FE031400C9346A /* InfoP.storyboard */; };
 		B7021F3C23FE032D00C9346A /* SelectInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7021F3B23FE032D00C9346A /* SelectInfo.swift */; };
+		B7021F3F23FE0AE600C9346A /* PlayL.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7021F3E23FE0AE600C9346A /* PlayL.storyboard */; };
+		B7021F4223FE0B0700C9346A /* PlayP.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7021F4123FE0B0700C9346A /* PlayP.storyboard */; };
+		B7021F4423FE0B1C00C9346A /* SelectPlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7021F4323FE0B1C00C9346A /* SelectPlay.swift */; };
+		B7021F4C23FE103600C9346A /* SelectionSkin.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7021F4B23FE103600C9346A /* SelectionSkin.swift */; };
+		B7021F4E23FE114100C9346A /* Skin.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7021F4D23FE114100C9346A /* Skin.xib */; };
+		B7021F5223FE11D300C9346A /* EditOtherL.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7021F5123FE11D300C9346A /* EditOtherL.storyboard */; };
+		B7021F5423FE11E400C9346A /* EditOtherP.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7021F5323FE11E400C9346A /* EditOtherP.storyboard */; };
+		B7021F5623FE122D00C9346A /* SelectEditOther.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7021F5523FE122D00C9346A /* SelectEditOther.swift */; };
 		B70577F0234BD0A500A9E2CA /* TschessTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70577EF234BD0A500A9E2CA /* TschessTests.swift */; };
 		B708D0DD236B351000A899F9 /* Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = B708D0DC236B351000A899F9 /* Init.swift */; };
 		B708D0E7236B366800A899F9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B708D0E6236B366800A899F9 /* LaunchScreen.storyboard */; };
@@ -106,12 +113,10 @@
 		B7BE11DA23EAA4BF00ADA499 /* SerializerState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE11D923EAA4BF00ADA499 /* SerializerState.swift */; };
 		B7BE11DD23EABEC300ADA499 /* Play.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE11DC23EABEC300ADA499 /* Play.swift */; };
 		B7BE11E823EAC40800ADA499 /* SerializerConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE11E723EAC40800ADA499 /* SerializerConfig.swift */; };
-		B7BE11EB23EAC66600ADA499 /* Play.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7BE11EA23EAC66600ADA499 /* Play.storyboard */; };
 		B7BE11ED23EAC6CB00ADA499 /* RequestQuick.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE11EC23EAC6CB00ADA499 /* RequestQuick.swift */; };
 		B7BE11F123EAC92C00ADA499 /* EditSelf.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE11F023EAC92C00ADA499 /* EditSelf.swift */; };
 		B7BE11F423EAC94E00ADA499 /* EditSelf.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7BE11F323EAC94E00ADA499 /* EditSelf.storyboard */; };
 		B7BE11F723EAC97200ADA499 /* EditOther.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE11F623EAC97200ADA499 /* EditOther.swift */; };
-		B7BE11FA23EAC98F00ADA499 /* EditOther.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7BE11F923EAC98F00ADA499 /* EditOther.storyboard */; };
 		B7BE11FF23EACCDE00ADA499 /* ConfigCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE11FE23EACCDE00ADA499 /* ConfigCell.swift */; };
 		B7BE120523EAD3C600ADA499 /* PoisonPawn.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE120423EAD3C600ADA499 /* PoisonPawn.swift */; };
 		B7BE120723EAD3D200ADA499 /* Amazon.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE120623EAD3D200ADA499 /* Amazon.swift */; };
@@ -223,7 +228,6 @@
 		45C0F287A16E70CE8A23A2EB /* Pods_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD83F59EDBC27D005F033F41 /* Pods-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios.debug.xcconfig"; path = "Target Support Files/Pods-ios/Pods-ios.debug.xcconfig"; sourceTree = "<group>"; };
 		B70149A823FC4FCC001A7D52 /* EntitySkin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntitySkin.swift; sourceTree = "<group>"; };
-		B70149AB23FC4FF9001A7D52 /* Skin.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Skin.xib; sourceTree = "<group>"; };
 		B70149AD23FC5023001A7D52 /* Skin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Skin.swift; sourceTree = "<group>"; };
 		B70149AF23FC562A001A7D52 /* Iapetus.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Iapetus.storyboard; sourceTree = "<group>"; };
 		B70149B123FC5661001A7D52 /* Calypso.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Calypso.storyboard; sourceTree = "<group>"; };
@@ -248,6 +252,14 @@
 		B7021F3623FE02FA00C9346A /* InfoL.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = InfoL.storyboard; sourceTree = "<group>"; };
 		B7021F3923FE031400C9346A /* InfoP.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = InfoP.storyboard; sourceTree = "<group>"; };
 		B7021F3B23FE032D00C9346A /* SelectInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectInfo.swift; sourceTree = "<group>"; };
+		B7021F3E23FE0AE600C9346A /* PlayL.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PlayL.storyboard; sourceTree = "<group>"; };
+		B7021F4123FE0B0700C9346A /* PlayP.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PlayP.storyboard; sourceTree = "<group>"; };
+		B7021F4323FE0B1C00C9346A /* SelectPlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPlay.swift; sourceTree = "<group>"; };
+		B7021F4B23FE103600C9346A /* SelectionSkin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionSkin.swift; sourceTree = "<group>"; };
+		B7021F4D23FE114100C9346A /* Skin.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Skin.xib; sourceTree = "<group>"; };
+		B7021F5123FE11D300C9346A /* EditOtherL.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditOtherL.storyboard; sourceTree = "<group>"; };
+		B7021F5323FE11E400C9346A /* EditOtherP.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditOtherP.storyboard; sourceTree = "<group>"; };
+		B7021F5523FE122D00C9346A /* SelectEditOther.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectEditOther.swift; sourceTree = "<group>"; };
 		B70577EF234BD0A500A9E2CA /* TschessTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TschessTests.swift; sourceTree = "<group>"; };
 		B708D0DC236B351000A899F9 /* Init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Init.swift; sourceTree = "<group>"; };
 		B708D0E6236B366800A899F9 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -326,12 +338,10 @@
 		B7BE11D923EAA4BF00ADA499 /* SerializerState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerializerState.swift; sourceTree = "<group>"; };
 		B7BE11DC23EABEC300ADA499 /* Play.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Play.swift; sourceTree = "<group>"; };
 		B7BE11E723EAC40800ADA499 /* SerializerConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerializerConfig.swift; sourceTree = "<group>"; };
-		B7BE11EA23EAC66600ADA499 /* Play.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Play.storyboard; sourceTree = "<group>"; };
 		B7BE11EC23EAC6CB00ADA499 /* RequestQuick.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestQuick.swift; sourceTree = "<group>"; };
 		B7BE11F023EAC92C00ADA499 /* EditSelf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSelf.swift; sourceTree = "<group>"; };
 		B7BE11F323EAC94E00ADA499 /* EditSelf.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditSelf.storyboard; sourceTree = "<group>"; };
 		B7BE11F623EAC97200ADA499 /* EditOther.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditOther.swift; sourceTree = "<group>"; };
-		B7BE11F923EAC98F00ADA499 /* EditOther.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditOther.storyboard; sourceTree = "<group>"; };
 		B7BE11FE23EACCDE00ADA499 /* ConfigCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigCell.swift; sourceTree = "<group>"; };
 		B7BE120423EAD3C600ADA499 /* PoisonPawn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoisonPawn.swift; sourceTree = "<group>"; };
 		B7BE120623EAD3D200ADA499 /* Amazon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Amazon.swift; sourceTree = "<group>"; };
@@ -481,8 +491,9 @@
 		B70149AA23FC4FDF001A7D52 /* view */ = {
 			isa = PBXGroup;
 			children = (
-				B70149AB23FC4FF9001A7D52 /* Skin.xib */,
 				B70149AD23FC5023001A7D52 /* Skin.swift */,
+				B7021F4B23FE103600C9346A /* SelectionSkin.swift */,
+				B7021F4D23FE114100C9346A /* Skin.xib */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -583,6 +594,38 @@
 				B7021F3923FE031400C9346A /* InfoP.storyboard */,
 			);
 			path = primary;
+			sourceTree = "<group>";
+		};
+		B7021F3D23FE0AD300C9346A /* legacy */ = {
+			isa = PBXGroup;
+			children = (
+				B7021F3E23FE0AE600C9346A /* PlayL.storyboard */,
+			);
+			path = legacy;
+			sourceTree = "<group>";
+		};
+		B7021F4023FE0AEF00C9346A /* primary */ = {
+			isa = PBXGroup;
+			children = (
+				B7021F4123FE0B0700C9346A /* PlayP.storyboard */,
+			);
+			path = primary;
+			sourceTree = "<group>";
+		};
+		B7021F4F23FE11AC00C9346A /* primary */ = {
+			isa = PBXGroup;
+			children = (
+				B7021F5323FE11E400C9346A /* EditOtherP.storyboard */,
+			);
+			path = primary;
+			sourceTree = "<group>";
+		};
+		B7021F5023FE11B800C9346A /* legacy */ = {
+			isa = PBXGroup;
+			children = (
+				B7021F5123FE11D300C9346A /* EditOtherL.storyboard */,
+			);
+			path = legacy;
 			sourceTree = "<group>";
 		};
 		B708D0DB236B34F000A899F9 /* init */ = {
@@ -957,7 +1000,9 @@
 		B7BE11E923EAC64500ADA499 /* storyboard */ = {
 			isa = PBXGroup;
 			children = (
-				B7BE11EA23EAC66600ADA499 /* Play.storyboard */,
+				B7021F4023FE0AEF00C9346A /* primary */,
+				B7021F3D23FE0AD300C9346A /* legacy */,
+				B7021F4323FE0B1C00C9346A /* SelectPlay.swift */,
 			);
 			path = storyboard;
 			sourceTree = "<group>";
@@ -1001,7 +1046,9 @@
 		B7BE11F823EAC97800ADA499 /* storyboard */ = {
 			isa = PBXGroup;
 			children = (
-				B7BE11F923EAC98F00ADA499 /* EditOther.storyboard */,
+				B7021F5023FE11B800C9346A /* legacy */,
+				B7021F4F23FE11AC00C9346A /* primary */,
+				B7021F5523FE122D00C9346A /* SelectEditOther.swift */,
 			);
 			path = storyboard;
 			sourceTree = "<group>";
@@ -1639,15 +1686,15 @@
 			files = (
 				B7215A6B23F5D56B00B86274 /* nRecent.storyboard in Resources */,
 				B7BE12A523EB0BF700ADA499 /* Promotion.storyboard in Resources */,
+				B7021F3F23FE0AE600C9346A /* PlayL.storyboard in Resources */,
 				B7BE123E23EB00E200ADA499 /* Challenge.storyboard in Resources */,
 				B7021F1623FDBA0300C9346A /* ActualP.storyboard in Resources */,
-				B70149AC23FC4FF9001A7D52 /* Skin.xib in Resources */,
 				B787C73122E970DD009C94F7 /* Assets.xcassets in Resources */,
 				B7215A6D23F5D57D00B86274 /* hRecent.storyboard in Resources */,
-				B7BE11EB23EAC66600ADA499 /* Play.storyboard in Resources */,
 				B70149B023FC562A001A7D52 /* Iapetus.storyboard in Resources */,
 				B7021F3023FDFC5200C9346A /* FairiesL.storyboard in Resources */,
 				B70149B223FC5661001A7D52 /* Calypso.storyboard in Resources */,
+				B7021F5423FE11E400C9346A /* EditOtherP.storyboard in Resources */,
 				B7BE124323EB015700ADA499 /* Ack.storyboard in Resources */,
 				B7BE129723EB0A8B00ADA499 /* Evaluate.storyboard in Resources */,
 				B7021F2023FDC8EC00C9346A /* HistoricL.storyboard in Resources */,
@@ -1662,7 +1709,9 @@
 				B7F3A13523FD95E8007B5663 /* HomeL.storyboard in Resources */,
 				B7021F3723FE02FA00C9346A /* InfoL.storyboard in Resources */,
 				B7021F1E23FDC8D900C9346A /* HistoricP.storyboard in Resources */,
+				B7021F5223FE11D300C9346A /* EditOtherL.storyboard in Resources */,
 				B7021F1823FDBA2B00C9346A /* ActualL.storyboard in Resources */,
+				B7021F4E23FE114100C9346A /* Skin.xib in Resources */,
 				B768473323F54BCE00F55D4A /* dTschess.storyboard in Resources */,
 				B7BE117223EA925E00ADA499 /* Default.storyboard in Resources */,
 				B70149B423FC568F001A7D52 /* Neptune.storyboard in Resources */,
@@ -1677,11 +1726,11 @@
 				B7BE11F423EAC94E00ADA499 /* EditSelf.storyboard in Resources */,
 				B7021F3223FDFCC100C9346A /* FairiesP.storyboard in Resources */,
 				B7F3A13323FD95C8007B5663 /* HomeP.storyboard in Resources */,
+				B7021F4223FE0B0700C9346A /* PlayP.storyboard in Resources */,
 				B70149BE23FC577F001A7D52 /* Out.storyboard in Resources */,
 				B768473723F54C3700F55D4A /* cTschess.storyboard in Resources */,
 				B7F3A12F23FD8DA9007B5663 /* dTschessL.storyboard in Resources */,
 				B7BE126523EB058800ADA499 /* Detail.storyboard in Resources */,
-				B7BE11FA23EAC98F00ADA499 /* EditOther.storyboard in Resources */,
 				B7CA12D323F5A14400569805 /* dRecent.storyboard in Resources */,
 				B7BE116323EA722B00ADA499 /* Other.storyboard in Resources */,
 				B70149B623FC56C3001A7D52 /* Hyperion.storyboard in Resources */,
@@ -1793,6 +1842,7 @@
 				B7BE123C23EAFC0200ADA499 /* Challenge.swift in Sources */,
 				B7BE129E23EB0B2A00ADA499 /* HopperOffense.swift in Sources */,
 				B7BE11D523EAA18000ADA499 /* BoardView.swift in Sources */,
+				B7021F5623FE122D00C9346A /* SelectEditOther.swift in Sources */,
 				B7BE12C423EB6B9300ADA499 /* TransDraw.swift in Sources */,
 				B7BE115D23EA4FBE00ADA499 /* ParsePlayer.swift in Sources */,
 				B708D0E9236B369D00A899F9 /* Start.swift in Sources */,
@@ -1802,6 +1852,7 @@
 				B7021F3423FDFD0900C9346A /* SelectFairies.swift in Sources */,
 				B7BE127123EB06AD00ADA499 /* Skins.swift in Sources */,
 				B7BE122723EAD94700ADA499 /* Actual.swift in Sources */,
+				B7021F4C23FE103600C9346A /* SelectionSkin.swift in Sources */,
 				B7BE123A23EAFBF500ADA499 /* Ack.swift in Sources */,
 				B74136C723DE34A0001B3D60 /* RequestLogin.swift in Sources */,
 				B7BE123423EAE7EC00ADA499 /* HistoricTable.swift in Sources */,
@@ -1891,6 +1942,7 @@
 				B7F3A13723FD9E66007B5663 /* TransInvalid.swift in Sources */,
 				B7BE127523EB072000ADA499 /* Product.swift in Sources */,
 				B768470F23F4FEA400F55D4A /* TransRecov.swift in Sources */,
+				B7021F4423FE0B1C00C9346A /* SelectPlay.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

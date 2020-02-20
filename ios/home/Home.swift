@@ -132,8 +132,8 @@ class Home: UIViewController, UITabBarDelegate {
                     self.activityIndicator.stopAnimating()
                     self.activityIndicator.isHidden = true
                     
-                    let storyboard: UIStoryboard = UIStoryboard(name: "Play", bundle: nil)
-                    let viewController = storyboard.instantiateViewController(withIdentifier: "Play") as! Play
+                    let storyboard: UIStoryboard = UIStoryboard(name: "PlayL", bundle: nil)
+                    let viewController = storyboard.instantiateViewController(withIdentifier: "PlayL") as! Play
                     viewController.setPlayerSelf(playerSelf: self.player!)
                     viewController.setPlayerOther(playerOther: opponent!)
                     UIApplication.shared.keyWindow?.rootViewController = viewController
