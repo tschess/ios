@@ -109,8 +109,8 @@ class Profile: UIViewController, UITabBarDelegate, UINavigationControllerDelegat
             self.changePhoto()
         case 1://skins
             DispatchQueue.main.async {
-                let storyboard: UIStoryboard = UIStoryboard(name: "Skins", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "Skins") as! Skins
+                let storyboard: UIStoryboard = UIStoryboard(name: "SkinsL", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "SkinsL") as! Skins
                 viewController.setPlayer(player: self.player!)
                 UIApplication.shared.keyWindow?.rootViewController = viewController
             }
@@ -133,8 +133,8 @@ class Profile: UIViewController, UITabBarDelegate, UINavigationControllerDelegat
     
     @IBAction func backButtonClick(_ sender: Any) {
         DispatchQueue.main.async {
-            let storyboard: UIStoryboard = UIStoryboard(name: "Home", bundle: nil)
-            let viewController = storyboard.instantiateViewController(withIdentifier: "Home") as! Home
+            let storyboard: UIStoryboard = UIStoryboard(name: "HomeL", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier: "HomeL") as! Home
             viewController.setPlayer(player: self.player!)
             UIApplication.shared.keyWindow?.rootViewController = viewController
         }
@@ -144,8 +144,8 @@ class Profile: UIViewController, UITabBarDelegate, UINavigationControllerDelegat
         switch item.tag {
         default:
             DispatchQueue.main.async {
-                let storyboard: UIStoryboard = UIStoryboard(name: "Home", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "Home") as! Home
+                let storyboard: UIStoryboard = UIStoryboard(name: "HomeL", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "HomeL") as! Home
                 viewController.setPlayer(player: self.player!)
                 UIApplication.shared.keyWindow?.rootViewController = viewController
             }

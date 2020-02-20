@@ -11,7 +11,7 @@
         <!--Profile-->
         <scene sceneID="Q28-1V-CcY">
             <objects>
-                <viewController storyboardIdentifier="Profile" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ppG-Gz-AcZ" customClass="Profile" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProfileP" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ppG-Gz-AcZ" customClass="Profile" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="49s-YQ-uDd">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -46,9 +46,9 @@
                                     <constraint firstAttribute="height" constant="50" id="2HL-WR-1Yj"/>
                                 </constraints>
                                 <items>
-                                    <tabBarItem tag="2" title="home" image="arrowshape.turn.up.left" catalog="system" id="VMB-Hy-TLu">
+                                    <tabBarItem tag="2" title="" image="back.grey" selectedImage="back.white" id="VMB-Hy-TLu">
                                         <inset key="imageInsets" minX="2" minY="2" maxX="2" maxY="2"/>
-                                        <color key="badgeColor" red="0.86923474069999995" green="0.012778783219999999" blue="0.00083617179190000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tabBarItem>
                                 </items>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -250,7 +250,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="eth" translatesAutoresizingMaskIntoConstraints="NO" id="pXj-06-TZZ">
-                                            <rect key="frame" x="8" y="9.6666666666666643" width="45" height="45.000000000000114"/>
+                                            <rect key="frame" x="8" y="9.6666666666666643" width="45" height="45"/>
                                             <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="45" id="Wfm-4Y-AG9"/>
@@ -296,8 +296,9 @@
     </scenes>
     <resources>
         <image name="arrow.down" catalog="system" width="60" height="64"/>
-        <image name="arrowshape.turn.up.left" catalog="system" width="64" height="52"/>
         <image name="avatar_default" width="320" height="320"/>
+        <image name="back.grey" width="16" height="16"/>
+        <image name="back.white" width="36" height="27"/>
         <image name="eth" width="256" height="417"/>
     </resources>
 </document>
