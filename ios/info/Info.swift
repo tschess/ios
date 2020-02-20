@@ -42,7 +42,7 @@ class Info: UIViewController, UITabBarDelegate, UIPopoverPresentationControllerD
         self.fairyImageView.image = fairyElement!.getImageDefault()
         self.fairyNameLabel.text = fairyElement!.getName().lowercased()
         self.fairyPointsLabel.text = fairyElement!.getStrength()
-       
+        
         self.activityIndicator.isHidden = true
     }
     
@@ -53,7 +53,7 @@ class Info: UIViewController, UITabBarDelegate, UIPopoverPresentationControllerD
         
         self.tabBarMenu.delegate = self
         
-       
+        
         self.attributeTextView.isEditable = false
         self.attributeTextView.backgroundColor = UIColor.white
         self.attributeTextView.textColor = UIColor.black
@@ -80,11 +80,14 @@ class Info: UIViewController, UITabBarDelegate, UIPopoverPresentationControllerD
             }
             return
         default:
-            DispatchQueue.main.async {
-                let storyboard: UIStoryboard = UIStoryboard(name: "HomeL", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "HomeL") as! Home
-                viewController.setPlayer(player: self.player!)
-                UIApplication.shared.keyWindow?.rootViewController = viewController}
+            let height = self.view.frame.size.height
+            SelectHome().execute(player: self.player!, height: height)
+            //DispatchQueue.main.async {
+            //let storyboard: UIStoryboard = UIStoryboard(name: "HomeL", bundle: nil)
+            //let viewController = storyboard.instantiateViewController(withIdentifier: "HomeL") as! Home
+            //viewController.setPlayer(player: self.player!)
+            //UIApplication.shared.keyWindow?.rootViewController = viewController
+            //}
         }
     }
     

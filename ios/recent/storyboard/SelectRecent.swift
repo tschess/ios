@@ -21,12 +21,14 @@ class SelectRecent {
     public func snapshot(playerOther: EntityPlayer, playerSelf: EntityPlayer, recentGameList: [EntityGame], presentor: UIViewController) {
         
         if(recentGameList.isEmpty){
-            DispatchQueue.main.async {
-                let storyboard: UIStoryboard = UIStoryboard(name: "HomeL", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "HomeL") as! Home
-                viewController.setPlayer(player: playerSelf)
-                UIApplication.shared.keyWindow?.rootViewController = viewController
-            }
+            let height = presentor.view.frame.size.height
+            SelectHome().execute(player: playerSelf, height: height)
+            //DispatchQueue.main.async {
+                //let storyboard: UIStoryboard = UIStoryboard(name: "HomeL", bundle: nil)
+                //let viewController = storyboard.instantiateViewController(withIdentifier: "HomeL") as! Home
+                //viewController.setPlayer(player: playerSelf)
+                //UIApplication.shared.keyWindow?.rootViewController = viewController
+            //}
             return
         }
         

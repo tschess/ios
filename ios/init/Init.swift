@@ -12,10 +12,6 @@ class Init: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         
-        let height = self.view.frame.size.height
-        
-        print("\n\n~HEIGHT~ \(height)\n\n")
-        
         let device = UIDevice.current.identifierForVendor?.uuidString
         if(device == nil) {
             self.start()
@@ -27,11 +23,15 @@ class Init: UIViewController {
                 return
             }
             sleep(1)
+            //DispatchQueue.main.async {
+                //let storyboard: UIStoryboard = UIStoryboard(name: "HomeL", bundle: nil)
+                //let viewController = storyboard.instantiateViewController(withIdentifier: "HomeL") as! Home
+                //viewController.setPlayer(player: result!)
+                //UIApplication.shared.keyWindow?.rootViewController = viewController
+            //}
             DispatchQueue.main.async {
-                let storyboard: UIStoryboard = UIStoryboard(name: "HomeL", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "HomeL") as! Home
-                viewController.setPlayer(player: result!)
-                UIApplication.shared.keyWindow?.rootViewController = viewController
+                let height = self.view.frame.size.height
+                SelectHome().execute(player: result!, height: height)
             }
         }
     }

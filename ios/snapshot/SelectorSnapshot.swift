@@ -10,9 +10,6 @@ import UIKit
 
 class SelectorSnapshot {
     
-    //
-    
-    
     //todo - move to game entity itself...
     func getSkinGame(username: String, game: EntityGame) -> String {
         if(game.white.username == username){

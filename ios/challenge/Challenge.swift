@@ -421,12 +421,14 @@ class Challenge: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate,
     
     @IBAction func backButtonClick(_ sender: Any) {
         if(self.BACK == "HOME"){
-            DispatchQueue.main.async {
-                let homeStoryboard: UIStoryboard = UIStoryboard(name: "HomeL", bundle: nil)
-                let homeViewController = homeStoryboard.instantiateViewController(withIdentifier: "HomeL") as! Home
-                homeViewController.setPlayer(player: self.playerSelf!)
-                UIApplication.shared.keyWindow?.rootViewController = homeViewController
-            }
+            let height = self.view.frame.size.height
+            SelectHome().execute(player: self.playerSelf!, height: height)
+            //DispatchQueue.main.async {
+                //let homeStoryboard: UIStoryboard = UIStoryboard(name: "HomeL", bundle: nil)
+                //let homeViewController = homeStoryboard.instantiateViewController(withIdentifier: "HomeL") as! Home
+                //homeViewController.setPlayer(player: self.playerSelf!)
+                //UIApplication.shared.keyWindow?.rootViewController = homeViewController
+            //}
             return
         }
         if(self.BACK == "HISTORIC"){
