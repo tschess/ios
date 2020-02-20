@@ -34,7 +34,7 @@
                                 <rect key="frame" x="0.0" y="30" width="320" height="86"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n3B-YV-bLf">
-                                        <rect key="frame" x="8" y="65" width="304" height="20"/>
+                                        <rect key="frame" x="4" y="65" width="312" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="Whm-UI-TBe"/>
                                         </constraints>
@@ -120,13 +120,13 @@
                                 <constraints>
                                     <constraint firstItem="ERg-MD-Gxv" firstAttribute="leading" secondItem="fPO-nw-FP9" secondAttribute="trailing" id="5Zr-La-JF4"/>
                                     <constraint firstAttribute="bottom" secondItem="n3B-YV-bLf" secondAttribute="bottom" constant="1" id="5fF-SN-iCE"/>
-                                    <constraint firstAttribute="trailing" secondItem="n3B-YV-bLf" secondAttribute="trailing" constant="8" id="6Gc-Ge-gk4"/>
+                                    <constraint firstAttribute="trailing" secondItem="n3B-YV-bLf" secondAttribute="trailing" constant="4" id="6Gc-Ge-gk4"/>
                                     <constraint firstItem="pUJ-un-5Hg" firstAttribute="leading" secondItem="lXq-5I-URG" secondAttribute="trailing" constant="2" id="7HU-ik-Ihf"/>
                                     <constraint firstItem="JDT-f9-ELr" firstAttribute="leading" secondItem="ERg-MD-Gxv" secondAttribute="trailing" constant="2" id="BaJ-05-mnm"/>
                                     <constraint firstItem="JDT-f9-ELr" firstAttribute="top" secondItem="sGW-Ae-1In" secondAttribute="bottom" constant="2" id="LJQ-JK-Scf"/>
                                     <constraint firstAttribute="trailing" secondItem="pUJ-un-5Hg" secondAttribute="trailing" constant="4" id="Ls7-Ix-tgO"/>
                                     <constraint firstItem="fPO-nw-FP9" firstAttribute="top" secondItem="w0W-JM-jEB" secondAttribute="bottom" constant="2" id="PIs-o7-TVB"/>
-                                    <constraint firstItem="n3B-YV-bLf" firstAttribute="leading" secondItem="AlY-qh-cUb" secondAttribute="leading" constant="8" id="TN0-Oa-bLO"/>
+                                    <constraint firstItem="n3B-YV-bLf" firstAttribute="leading" secondItem="AlY-qh-cUb" secondAttribute="leading" constant="4" id="TN0-Oa-bLO"/>
                                     <constraint firstItem="pUJ-un-5Hg" firstAttribute="top" secondItem="AlY-qh-cUb" secondAttribute="top" constant="2" id="aBd-cn-xvE"/>
                                     <constraint firstItem="ERg-MD-Gxv" firstAttribute="leading" secondItem="fPO-nw-FP9" secondAttribute="trailing" id="gvW-ej-qsj"/>
                                     <constraint firstItem="ERg-MD-Gxv" firstAttribute="top" secondItem="w0W-JM-jEB" secondAttribute="bottom" constant="2" id="kLY-tc-wHZ"/>

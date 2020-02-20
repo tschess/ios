@@ -344,8 +344,8 @@ extension Config: UICollectionViewDelegate {
         switch item.tag {
         case 1:
             DispatchQueue.main.async {
-                let storyboard: UIStoryboard = UIStoryboard(name: "Fairies", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "Fairies") as! Fairies
+                let storyboard: UIStoryboard = UIStoryboard(name: "FairiesL", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "FairiesL") as! Fairies
                 viewController.setPlayer(player: self.playerSelf!)
                 UIApplication.shared.keyWindow?.rootViewController = viewController
             }

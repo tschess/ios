@@ -56,13 +56,13 @@
                                 <size key="shadowOffset" width="0.0" height="0.0"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3VQ-kH-eUV">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="30"/>
+                                <rect key="frame" x="4" y="0.0" width="316" height="30"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="w57-dQ-gdg"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="33"/>
-                                <state key="normal" title=" ← ">
+                                <state key="normal" title="← ">
                                     <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
@@ -207,7 +207,7 @@
                             <constraint firstItem="NkB-Gg-9dv" firstAttribute="top" secondItem="CH0-fz-8x4" secondAttribute="bottom" id="REF-sI-eFo"/>
                             <constraint firstItem="hn3-T4-iPY" firstAttribute="leading" secondItem="ckM-Fn-CxJ" secondAttribute="leading" id="RoM-Wy-nkO"/>
                             <constraint firstItem="1tb-Rn-g0D" firstAttribute="trailing" secondItem="ckM-Fn-CxJ" secondAttribute="trailing" id="VJd-YC-zx0"/>
-                            <constraint firstItem="3VQ-kH-eUV" firstAttribute="leading" secondItem="ckM-Fn-CxJ" secondAttribute="leading" id="X1g-yB-SRv"/>
+                            <constraint firstItem="3VQ-kH-eUV" firstAttribute="leading" secondItem="ckM-Fn-CxJ" secondAttribute="leading" constant="4" id="X1g-yB-SRv"/>
                             <constraint firstItem="CH0-fz-8x4" firstAttribute="trailing" secondItem="ckM-Fn-CxJ" secondAttribute="trailing" id="ZBD-Tc-ybf"/>
                             <constraint firstItem="CH0-fz-8x4" firstAttribute="top" secondItem="ckM-Fn-CxJ" secondAttribute="top" id="bTS-1N-wF5"/>
                             <constraint firstItem="1tb-Rn-g0D" firstAttribute="top" secondItem="NkB-Gg-9dv" secondAttribute="bottom" id="cnF-Vl-fGS"/>

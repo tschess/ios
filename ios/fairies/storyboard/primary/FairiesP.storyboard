@@ -11,14 +11,15 @@
         <!--Fairies-->
         <scene sceneID="w8Z-eh-HP1">
             <objects>
-                <viewController storyboardIdentifier="Fairies" useStoryboardIdentifierAsRestorationIdentifier="YES" id="5Zn-v9-j4N" customClass="Fairies" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FairiesP" useStoryboardIdentifierAsRestorationIdentifier="YES" id="5Zn-v9-j4N" customClass="Fairies" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="afL-uV-Nfo">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qbs-yh-rP3">
                                 <rect key="frame" x="0.0" y="222" width="414" height="590"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <segue destination="Mmr-Cq-zzT" kind="embed" id="4j6-9L-NE0"/>
                                 </connections>
@@ -30,10 +31,10 @@
                                     <constraint firstAttribute="height" constant="50" id="l5Z-67-pQ0"/>
                                 </constraints>
                                 <items>
-                                    <tabBarItem title="config" image="arrowshape.turn.up.left" catalog="system" selectedImage="arrowshape.turn.up.left.fill" id="kx7-zM-ipx">
+                                    <tabBarItem title="" image="back.grey" selectedImage="back.white" id="kx7-zM-ipx">
                                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tabBarItem>
-                                    <tabBarItem tag="1" title="home" image="house" catalog="system" selectedImage="house.fill" id="EpU-gU-ur4">
+                                    <tabBarItem tag="1" title="" image="home.grey" selectedImage="home.white" id="EpU-gU-ur4">
                                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tabBarItem>
                                 </items>
@@ -300,10 +301,10 @@
     </scenes>
     <resources>
         <image name="arrow.down" catalog="system" width="60" height="64"/>
-        <image name="arrowshape.turn.up.left" catalog="system" width="64" height="52"/>
-        <image name="arrowshape.turn.up.left.fill" catalog="system" width="64" height="52"/>
         <image name="avatar_default" width="320" height="320"/>
-        <image name="house" catalog="system" width="64" height="54"/>
-        <image name="house.fill" catalog="system" width="64" height="52"/>
+        <image name="back.grey" width="40" height="40"/>
+        <image name="back.white" width="40" height="40"/>
+        <image name="home.grey" width="40" height="38"/>
+        <image name="home.white" width="40" height="38"/>
     </resources>
 </document>

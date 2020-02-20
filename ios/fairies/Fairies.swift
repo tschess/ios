@@ -67,8 +67,8 @@ class Fairies: UIViewController, UITabBarDelegate {
     }
     
     @IBAction func backButtonClick(_ sender: Any) {
-        let storyboard: UIStoryboard = UIStoryboard(name: "Config", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "Config") as! Config
+        let storyboard: UIStoryboard = UIStoryboard(name: "ConfigL", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "ConfigL") as! Config
         viewController.setPlayerSelf(playerSelf: self.player!)
         UIApplication.shared.keyWindow?.rootViewController = viewController
     }
@@ -77,8 +77,8 @@ class Fairies: UIViewController, UITabBarDelegate {
         let squadUpDetailSelectionIndex = notification.userInfo!["fairies_table_selection"] as! Int
         let fairyElement = squadUpAdapter!.getFairyElementList()![squadUpDetailSelectionIndex]
         //StoryboardSelector().acquisition(player: self.player!, fairyElement: fairyElement)
-        let storyboard: UIStoryboard = UIStoryboard(name: "Info", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "Info") as! Info
+        let storyboard: UIStoryboard = UIStoryboard(name: "InfoL", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "InfoL") as! Info
         viewController.setPlayer(player: self.player!)
         viewController.setFairyElement(fairyElement: fairyElement)
         UIApplication.shared.keyWindow?.rootViewController = viewController
@@ -88,15 +88,15 @@ class Fairies: UIViewController, UITabBarDelegate {
         switch item.tag {
         case 1:
             DispatchQueue.main.async {
-                let storyboard: UIStoryboard = UIStoryboard(name: "Home", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "Home") as! Home
+                let storyboard: UIStoryboard = UIStoryboard(name: "HomeL", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "HomeL") as! Home
                 viewController.setPlayer(player: self.player!)
                 UIApplication.shared.keyWindow?.rootViewController = viewController
                 return
             }
         default:
-            let storyboard: UIStoryboard = UIStoryboard(name: "Config", bundle: nil)
-            let viewController = storyboard.instantiateViewController(withIdentifier: "Config") as! Config
+            let storyboard: UIStoryboard = UIStoryboard(name: "ConfigL", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier: "ConfigL") as! Config
             viewController.setPlayerSelf(playerSelf: self.player!)
             UIApplication.shared.keyWindow?.rootViewController = viewController
         }
