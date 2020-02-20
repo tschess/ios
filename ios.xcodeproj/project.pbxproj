@@ -49,6 +49,9 @@
 		B7021F6A23FE431300C9346A /* SelectSkins.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7021F6923FE431300C9346A /* SelectSkins.swift */; };
 		B7021F6C23FE435D00C9346A /* SkinsP.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7021F6B23FE435D00C9346A /* SkinsP.storyboard */; };
 		B7021F6E23FE436B00C9346A /* SkinsL.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7021F6D23FE436B00C9346A /* SkinsL.storyboard */; };
+		B7021F7623FE4F8B00C9346A /* SelectDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7021F7523FE4F8B00C9346A /* SelectDetail.swift */; };
+		B7021F7823FE530B00C9346A /* DetailP.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7021F7723FE530B00C9346A /* DetailP.storyboard */; };
+		B7021F7A23FE531700C9346A /* DetailL.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7021F7923FE531700C9346A /* DetailL.storyboard */; };
 		B70577F0234BD0A500A9E2CA /* TschessTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70577EF234BD0A500A9E2CA /* TschessTests.swift */; };
 		B708D0DD236B351000A899F9 /* Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = B708D0DC236B351000A899F9 /* Init.swift */; };
 		B708D0E7236B366800A899F9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B708D0E6236B366800A899F9 /* LaunchScreen.storyboard */; };
@@ -156,7 +159,6 @@
 		B7BE125D23EB042A00ADA499 /* UpdateDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE125C23EB042A00ADA499 /* UpdateDevice.swift */; };
 		B7BE125F23EB049000ADA499 /* UpdateNack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE125E23EB049000ADA499 /* UpdateNack.swift */; };
 		B7BE126123EB04B900ADA499 /* UpdateRescind.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE126023EB04B900ADA499 /* UpdateRescind.swift */; };
-		B7BE126523EB058800ADA499 /* Detail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7BE126423EB058800ADA499 /* Detail.storyboard */; };
 		B7BE126723EB05B200ADA499 /* Detail.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE126623EB05B200ADA499 /* Detail.swift */; };
 		B7BE126D23EB065300ADA499 /* SkinsTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE126C23EB065300ADA499 /* SkinsTable.swift */; };
 		B7BE126F23EB068700ADA499 /* SkinsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE126E23EB068700ADA499 /* SkinsCell.swift */; };
@@ -273,6 +275,9 @@
 		B7021F6923FE431300C9346A /* SelectSkins.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectSkins.swift; sourceTree = "<group>"; };
 		B7021F6B23FE435D00C9346A /* SkinsP.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SkinsP.storyboard; sourceTree = "<group>"; };
 		B7021F6D23FE436B00C9346A /* SkinsL.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SkinsL.storyboard; sourceTree = "<group>"; };
+		B7021F7523FE4F8B00C9346A /* SelectDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDetail.swift; sourceTree = "<group>"; };
+		B7021F7723FE530B00C9346A /* DetailP.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DetailP.storyboard; sourceTree = "<group>"; };
+		B7021F7923FE531700C9346A /* DetailL.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DetailL.storyboard; sourceTree = "<group>"; };
 		B70577EF234BD0A500A9E2CA /* TschessTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TschessTests.swift; sourceTree = "<group>"; };
 		B708D0DC236B351000A899F9 /* Init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Init.swift; sourceTree = "<group>"; };
 		B708D0E6236B366800A899F9 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -386,7 +391,6 @@
 		B7BE125C23EB042A00ADA499 /* UpdateDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateDevice.swift; sourceTree = "<group>"; };
 		B7BE125E23EB049000ADA499 /* UpdateNack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateNack.swift; sourceTree = "<group>"; };
 		B7BE126023EB04B900ADA499 /* UpdateRescind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateRescind.swift; sourceTree = "<group>"; };
-		B7BE126423EB058800ADA499 /* Detail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Detail.storyboard; sourceTree = "<group>"; };
 		B7BE126623EB05B200ADA499 /* Detail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Detail.swift; sourceTree = "<group>"; };
 		B7BE126C23EB065300ADA499 /* SkinsTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkinsTable.swift; sourceTree = "<group>"; };
 		B7BE126E23EB068700ADA499 /* SkinsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkinsCell.swift; sourceTree = "<group>"; };
@@ -683,6 +687,22 @@
 				B7021F6B23FE435D00C9346A /* SkinsP.storyboard */,
 			);
 			path = primary;
+			sourceTree = "<group>";
+		};
+		B7021F6F23FE4F0100C9346A /* primary */ = {
+			isa = PBXGroup;
+			children = (
+				B7021F7723FE530B00C9346A /* DetailP.storyboard */,
+			);
+			path = primary;
+			sourceTree = "<group>";
+		};
+		B7021F7023FE4F0C00C9346A /* legacy */ = {
+			isa = PBXGroup;
+			children = (
+				B7021F7923FE531700C9346A /* DetailL.storyboard */,
+			);
+			path = legacy;
 			sourceTree = "<group>";
 		};
 		B708D0DB236B34F000A899F9 /* init */ = {
@@ -1364,7 +1384,9 @@
 		B7BE126323EB056F00ADA499 /* storyboard */ = {
 			isa = PBXGroup;
 			children = (
-				B7BE126423EB058800ADA499 /* Detail.storyboard */,
+				B7021F7023FE4F0C00C9346A /* legacy */,
+				B7021F6F23FE4F0100C9346A /* primary */,
+				B7021F7523FE4F8B00C9346A /* SelectDetail.swift */,
 			);
 			path = storyboard;
 			sourceTree = "<group>";
@@ -1776,6 +1798,7 @@
 				B7021F1E23FDC8D900C9346A /* HistoricP.storyboard in Resources */,
 				B7021F5223FE11D300C9346A /* EditOtherL.storyboard in Resources */,
 				B7021F1823FDBA2B00C9346A /* ActualL.storyboard in Resources */,
+				B7021F7A23FE531700C9346A /* DetailL.storyboard in Resources */,
 				B7021F4E23FE114100C9346A /* Skin.xib in Resources */,
 				B768473323F54BCE00F55D4A /* dTschess.storyboard in Resources */,
 				B7BE117223EA925E00ADA499 /* Default.storyboard in Resources */,
@@ -1787,6 +1810,7 @@
 				B7021F3A23FE031400C9346A /* InfoP.storyboard in Resources */,
 				B7021F6223FE3B8E00C9346A /* ProfileP.storyboard in Resources */,
 				B7021F5C23FE304D00C9346A /* EditSelfP.storyboard in Resources */,
+				B7021F7823FE530B00C9346A /* DetailP.storyboard in Resources */,
 				B768473123F54BAF00F55D4A /* iTschess.storyboard in Resources */,
 				B7BE129523EB0A7900ADA499 /* DrawResign.storyboard in Resources */,
 				B7021F3223FDFCC100C9346A /* FairiesP.storyboard in Resources */,
@@ -1795,7 +1819,6 @@
 				B70149BE23FC577F001A7D52 /* Out.storyboard in Resources */,
 				B768473723F54C3700F55D4A /* cTschess.storyboard in Resources */,
 				B7F3A12F23FD8DA9007B5663 /* dTschessL.storyboard in Resources */,
-				B7BE126523EB058800ADA499 /* Detail.storyboard in Resources */,
 				B7CA12D323F5A14400569805 /* dRecent.storyboard in Resources */,
 				B7021F5923FE303000C9346A /* EditSelfL.storyboard in Resources */,
 				B7BE116323EA722B00ADA499 /* Other.storyboard in Resources */,
@@ -1932,6 +1955,7 @@
 				B7F541C823D51B0C00E89074 /* HomeMenuCell.swift in Sources */,
 				B7BE125123EB032E00ADA499 /* Profile.swift in Sources */,
 				B7BE117523EA930F00ADA499 /* Piece.swift in Sources */,
+				B7021F7623FE4F8B00C9346A /* SelectDetail.swift in Sources */,
 				B7BE120523EAD3C600ADA499 /* PoisonPawn.swift in Sources */,
 				B7BE11D723EAA23200ADA499 /* SquareCell.swift in Sources */,
 				B7BE116523EA727200ADA499 /* OtherMenuTable.swift in Sources */,
