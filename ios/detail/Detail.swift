@@ -281,8 +281,8 @@ class Detail: UIViewController, UITabBarDelegate, UITextViewDelegate {
     
     @IBAction func backButtonClick(_ sender: Any) {
         DispatchQueue.main.async {
-            let storyboard: UIStoryboard = UIStoryboard(name: "Skins", bundle: nil)
-            let viewController = storyboard.instantiateViewController(withIdentifier: "Skins") as! Skins
+            let storyboard: UIStoryboard = UIStoryboard(name: "SkinsL", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier: "SkinsL") as! Skins
             viewController.setPlayer(player: self.player!)
             UIApplication.shared.keyWindow?.rootViewController = viewController
         }

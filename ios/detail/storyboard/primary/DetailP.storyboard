@@ -331,7 +331,7 @@
     <resources>
         <image name="arrow.down" catalog="system" width="60" height="64"/>
         <image name="avatar_default" width="320" height="320"/>
-        <image name="purchase_grey" width="16" height="16"/>
-        <image name="purchase_white" width="16" height="16"/>
+        <image name="purchase_grey" width="38" height="36"/>
+        <image name="purchase_white" width="38" height="36"/>
     </resources>
 </document>

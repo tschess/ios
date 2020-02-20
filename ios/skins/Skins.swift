@@ -54,29 +54,29 @@ class Skins: UIViewController, UITabBarDelegate {
         DispatchQueue.main.async {
             switch skinSelection.getName() {
             case "HYPERION":
-                let storyboard: UIStoryboard = UIStoryboard(name: "Detail", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "Detail") as! Detail
+                let storyboard: UIStoryboard = UIStoryboard(name: "DetailL", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "DetailL") as! Detail
                 viewController.setPlayer(player: self.player!)
                 viewController.setSkin(skin: skinSelection)
                 UIApplication.shared.keyWindow?.rootViewController = viewController
                 return
             case "CALYPSO":
-                let storyboard: UIStoryboard = UIStoryboard(name: "Detail", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "Detail") as! Detail
+                let storyboard: UIStoryboard = UIStoryboard(name: "DetailL", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "DetailL") as! Detail
                 viewController.setPlayer(player: self.player!)
                 viewController.setSkin(skin: skinSelection)
                 UIApplication.shared.keyWindow?.rootViewController = viewController
                 return
             case "NEPTUNE":
-                let storyboard: UIStoryboard = UIStoryboard(name: "Detail", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "Detail") as! Detail
+                let storyboard: UIStoryboard = UIStoryboard(name: "DetailL", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "DetailL") as! Detail
                 viewController.setPlayer(player: self.player!)
                 viewController.setSkin(skin: skinSelection)
                 UIApplication.shared.keyWindow?.rootViewController = viewController
                 return
             case "IAPETUS":
-                let storyboard: UIStoryboard = UIStoryboard(name: "Detail", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "Detail") as! Detail
+                let storyboard: UIStoryboard = UIStoryboard(name: "DetailL", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "DetailL") as! Detail
                 viewController.setPlayer(player: self.player!)
                 viewController.setSkin(skin: skinSelection)
                 UIApplication.shared.keyWindow?.rootViewController = viewController
