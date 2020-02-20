@@ -541,8 +541,8 @@ extension EditOther: UICollectionViewDelegate {
         }
         if(self.BACK == "CHALLENGE"){
             DispatchQueue.main.async {
-                let storyboard: UIStoryboard = UIStoryboard(name: "Challenge", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "Challenge") as! Challenge
+                let storyboard: UIStoryboard = UIStoryboard(name: "ChallengeL", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "ChallengeL") as! Challenge
                 viewController.setPlayerSelf(playerSelf: self.playerSelf!)
                 viewController.setPlayerOther(playerOther: self.playerOther!)
                 //viewController.setGameTschess(gameTschess: self.gameTschess!)
@@ -553,8 +553,8 @@ extension EditOther: UICollectionViewDelegate {
         }
         if(self.BACK == "ACK"){
             DispatchQueue.main.async {
-                let storyboard: UIStoryboard = UIStoryboard(name: "Ack", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "Ack") as! Ack
+                let storyboard: UIStoryboard = UIStoryboard(name: "AckL", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "AckL") as! Ack
                 viewController.setPlayerSelf(playerSelf: self.playerSelf!)
                 viewController.setPlayerOther(playerOther: self.playerOther!)
                 viewController.setGameTschess(gameTschess: self.gameTschess!)

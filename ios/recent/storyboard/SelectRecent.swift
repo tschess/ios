@@ -22,8 +22,8 @@ class SelectRecent {
         
         if(recentGameList.isEmpty){
             DispatchQueue.main.async {
-                let storyboard: UIStoryboard = UIStoryboard(name: "Home", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "Home") as! Home
+                let storyboard: UIStoryboard = UIStoryboard(name: "HomeL", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "HomeL") as! Home
                 viewController.setPlayer(player: playerSelf)
                 UIApplication.shared.keyWindow?.rootViewController = viewController
             }
@@ -40,8 +40,8 @@ class SelectRecent {
         switch skin {
         case "IAPETUS":
             DispatchQueue.main.async {
-                let storyboard: UIStoryboard = UIStoryboard(name: "iRecent", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "iRecent") as! Recent
+                let storyboard: UIStoryboard = UIStoryboard(name: "iRecentL", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "iRecentL") as! Recent
                 viewController.setGame(game: game)
                 viewController.setRecentGameList(recentGameList: recentGameList1)
                 viewController.setPlayerOther(playerOther: playerOther)
@@ -52,8 +52,8 @@ class SelectRecent {
             return
         case "CALYPSO":
             DispatchQueue.main.async {
-                let storyboard: UIStoryboard = UIStoryboard(name: "cRecent", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "cRecent") as! Recent
+                let storyboard: UIStoryboard = UIStoryboard(name: "cRecentL", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "cRecentL") as! Recent
                 viewController.setGame(game: game)
                 viewController.setRecentGameList(recentGameList: recentGameList1)
                 viewController.setPlayerOther(playerOther: playerOther)
@@ -64,8 +64,8 @@ class SelectRecent {
             return
         case "HYPERION":
             DispatchQueue.main.async {
-                let storyboard: UIStoryboard = UIStoryboard(name: "hRecent", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "hRecent") as! Recent
+                let storyboard: UIStoryboard = UIStoryboard(name: "hRecentL", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "hRecentL") as! Recent
                 viewController.setGame(game: game)
                 viewController.setRecentGameList(recentGameList: recentGameList1)
                 viewController.setPlayerOther(playerOther: playerOther)
@@ -76,8 +76,8 @@ class SelectRecent {
             return
         case "NEPTUNE":
             DispatchQueue.main.async {
-                let storyboard: UIStoryboard = UIStoryboard(name: "nRecent", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "nRecent") as! Recent
+                let storyboard: UIStoryboard = UIStoryboard(name: "nRecentL", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "nRecentL") as! Recent
                 viewController.setGame(game: game)
                 viewController.setRecentGameList(recentGameList: recentGameList1)
                 viewController.setPlayerOther(playerOther: playerOther)
@@ -88,8 +88,8 @@ class SelectRecent {
             return
         default:
             DispatchQueue.main.async {
-                let storyboard: UIStoryboard = UIStoryboard(name: "dRecent", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "dRecent") as! Recent
+                let storyboard: UIStoryboard = UIStoryboard(name: "dRecentL", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "dRecentL") as! Recent
                 viewController.setGame(game: game)
                 viewController.setRecentGameList(recentGameList: recentGameList1)
                 viewController.setPlayerOther(playerOther: playerOther)

@@ -149,17 +149,15 @@ class OtherMenuTable: UITableViewController {
             
             let gameModel = self.gameMenuTableList[indexPath.row]
             
-            let storyboard: UIStoryboard = UIStoryboard(name: "Challenge", bundle: nil)
-            let viewController = storyboard.instantiateViewController(withIdentifier: "Challenge") as! Challenge
+            let storyboard: UIStoryboard = UIStoryboard(name: "ChallengeL", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier: "ChallengeL") as! Challenge
             viewController.setPlayerSelf(playerSelf: self.player!)
             viewController.setPlayerOther(playerOther: gameModel.getPlayerOther(username: self.player!.username))
             UIApplication.shared.keyWindow?.rootViewController = viewController
             
             success(true)
         })
-        if #available(iOS 13.0, *) {
-            modifyAction.image = UIImage(systemName: "gamecontroller.fill")!
-        }
+        modifyAction.image = UIImage(named: "game.white")!
         modifyAction.backgroundColor = .purple
         
         

@@ -16,8 +16,8 @@ class HomeMenuTable: UITableViewController {
         let playerOther = self.leaderboardList[indexPath.row]
         
         DispatchQueue.main.async {
-            let storyboard: UIStoryboard = UIStoryboard(name: "Other", bundle: nil)
-            let viewController = storyboard.instantiateViewController(withIdentifier: "Other") as! Other
+            let storyboard: UIStoryboard = UIStoryboard(name: "OtherL", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier: "OtherL") as! Other
             viewController.setPlayerSelf(playerSelf: self.player!)
             viewController.setPlayerOther(playerOther: playerOther)
             UIApplication.shared.keyWindow?.rootViewController = viewController
@@ -187,8 +187,8 @@ class HomeMenuTable: UITableViewController {
                 }
                 if(result == nil){
                     DispatchQueue.main.async() {
-                        let storyboard: UIStoryboard = UIStoryboard(name: "Challenge", bundle: nil)
-                        let viewController = storyboard.instantiateViewController(withIdentifier: "Challenge") as! Challenge
+                        let storyboard: UIStoryboard = UIStoryboard(name: "ChallengeL", bundle: nil)
+                        let viewController = storyboard.instantiateViewController(withIdentifier: "ChallengeL") as! Challenge
                         viewController.setPlayerSelf(playerSelf: self.player!)
                         viewController.setPlayerOther(playerOther: playerOther)
                         viewController.setBACK(BACK: "HOME")
@@ -200,8 +200,8 @@ class HomeMenuTable: UITableViewController {
                 print("result.count: \(result!.count)")
                 if(result!.count == 0){
                     DispatchQueue.main.async() {
-                        let storyboard: UIStoryboard = UIStoryboard(name: "Challenge", bundle: nil)
-                        let viewController = storyboard.instantiateViewController(withIdentifier: "Challenge") as! Challenge
+                        let storyboard: UIStoryboard = UIStoryboard(name: "ChallengeL", bundle: nil)
+                        let viewController = storyboard.instantiateViewController(withIdentifier: "ChallengeL") as! Challenge
                         viewController.setPlayerSelf(playerSelf: self.player!)
                         viewController.setPlayerOther(playerOther: playerOther)
                         viewController.setBACK(BACK: "HOME")
@@ -229,9 +229,7 @@ class HomeMenuTable: UITableViewController {
             print("RECENT SNAPS!")
             success(true)
         })
-        if #available(iOS 13.0, *) {
-            modifyAction.image = UIImage(systemName: "eye")!
-        }
+        modifyAction.image = UIImage(named: "eyeye")!
         modifyAction.backgroundColor = .orange
         return UISwipeActionsConfiguration(actions: [modifyAction])
     }
@@ -241,17 +239,15 @@ class HomeMenuTable: UITableViewController {
             
             let playerOther = self.leaderboardList[indexPath.row]
             
-            let storyboard: UIStoryboard = UIStoryboard(name: "Challenge", bundle: nil)
-            let viewController = storyboard.instantiateViewController(withIdentifier: "Challenge") as! Challenge
+            let storyboard: UIStoryboard = UIStoryboard(name: "ChallengeL", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier: "ChallengeL") as! Challenge
             viewController.setPlayerSelf(playerSelf: self.player!)
             viewController.setPlayerOther(playerOther: playerOther)
             viewController.setBACK(BACK: "HOME")
             UIApplication.shared.keyWindow?.rootViewController = viewController
             success(true)
         })
-        if #available(iOS 13.0, *) { 
-            modifyAction.image = UIImage(systemName: "gamecontroller.fill")!
-        }
+        modifyAction.image = UIImage(named: "game.white")!
         modifyAction.backgroundColor = .purple
         return UISwipeActionsConfiguration(actions: [modifyAction])
     }

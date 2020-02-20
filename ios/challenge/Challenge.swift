@@ -44,7 +44,7 @@ class Challenge: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate,
         //
         self.renderHeaderOther()
         //
-        
+        self.configCollectionView.isHidden = true
         self.configCollectionView.delegate = self
         self.configCollectionView.dataSource = self
         
@@ -245,6 +245,12 @@ class Challenge: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate,
         self.configCollectionViewHeight.constant = configCollectionView.contentSize.height
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.configCollectionView.reloadData()
+        self.configCollectionView.isHidden = false
+    }
+    
     //MARK: Properties
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var tabBarMenu: UITabBar!
@@ -357,8 +363,8 @@ class Challenge: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate,
             self.flash()
             return
         }
-        let storyboard: UIStoryboard = UIStoryboard(name: "EditOther", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "EditOther") as! EditOther
+        let storyboard: UIStoryboard = UIStoryboard(name: "EditOtherL", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "EditOtherL") as! EditOther
         
         viewController.setBACK(BACK: "CHALLENGE")
         viewController.setPlayerOther(playerOther: self.playerOther!)
@@ -416,8 +422,8 @@ class Challenge: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate,
     @IBAction func backButtonClick(_ sender: Any) {
         if(self.BACK == "HOME"){
             DispatchQueue.main.async {
-                let homeStoryboard: UIStoryboard = UIStoryboard(name: "Home", bundle: nil)
-                let homeViewController = homeStoryboard.instantiateViewController(withIdentifier: "Home") as! Home
+                let homeStoryboard: UIStoryboard = UIStoryboard(name: "HomeL", bundle: nil)
+                let homeViewController = homeStoryboard.instantiateViewController(withIdentifier: "HomeL") as! Home
                 homeViewController.setPlayer(player: self.playerSelf!)
                 UIApplication.shared.keyWindow?.rootViewController = homeViewController
             }
@@ -425,15 +431,15 @@ class Challenge: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate,
         }
         if(self.BACK == "HISTORIC"){
             DispatchQueue.main.async {
-                let storyboard: UIStoryboard = UIStoryboard(name: "Historic", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "Historic") as! Historic
+                let storyboard: UIStoryboard = UIStoryboard(name: "HistoricL", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "HistoricL") as! Historic
                 viewController.setPlayerSelf(playerSelf: self.playerSelf!)
                 UIApplication.shared.keyWindow?.rootViewController = viewController
             }
             return
         }
-        let storyboard: UIStoryboard = UIStoryboard(name: "Other", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "Other") as! Other
+        let storyboard: UIStoryboard = UIStoryboard(name: "OtherL", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "OtherL") as! Other
         viewController.setPlayerSelf(playerSelf: self.playerSelf!)
         viewController.setPlayerOther(playerOther: self.playerOther!)
         UIApplication.shared.keyWindow?.rootViewController = viewController
@@ -455,8 +461,8 @@ class Challenge: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate,
             RequestChallenge().execute(requestPayload: requestPayload) { (result) in
                 
                 DispatchQueue.main.async {
-                    let homeStoryboard: UIStoryboard = UIStoryboard(name: "Home", bundle: nil)
-                    let homeViewController = homeStoryboard.instantiateViewController(withIdentifier: "Home") as! Home
+                    let homeStoryboard: UIStoryboard = UIStoryboard(name: "HomeL", bundle: nil)
+                    let homeViewController = homeStoryboard.instantiateViewController(withIdentifier: "HomeL") as! Home
                     homeViewController.setPlayer(player: self.playerSelf!)
                     UIApplication.shared.keyWindow?.rootViewController = homeViewController
                 }

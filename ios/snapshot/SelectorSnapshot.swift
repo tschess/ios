@@ -26,8 +26,8 @@ class SelectorSnapshot {
         switch skin {
         case "IAPETUS":
             DispatchQueue.main.async {
-                let storyboard: UIStoryboard = UIStoryboard(name: "Iapetus", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "Iapetus") as! Snapshot
+                let storyboard: UIStoryboard = UIStoryboard(name: "IapetusL", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "IapetusL") as! Snapshot
                 viewController.setGame(game: game)
                 viewController.setPlayer(player: playerSelf)
                 presentor.present(viewController, animated: false, completion: nil)
@@ -35,8 +35,8 @@ class SelectorSnapshot {
             return
         case "CALYPSO":
             DispatchQueue.main.async {
-                let storyboard: UIStoryboard = UIStoryboard(name: "Calypso", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "Calypso") as! Snapshot
+                let storyboard: UIStoryboard = UIStoryboard(name: "CalypsoL", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "CalypsoL") as! Snapshot
                 viewController.setGame(game: game)
                 viewController.setPlayer(player: playerSelf)
                 presentor.present(viewController, animated: false, completion: nil)
@@ -44,8 +44,8 @@ class SelectorSnapshot {
             return
         case "HYPERION":
             DispatchQueue.main.async {
-                let storyboard: UIStoryboard = UIStoryboard(name: "Hyperion", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "Hyperion") as! Snapshot
+                let storyboard: UIStoryboard = UIStoryboard(name: "HyperionL", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "HyperionL") as! Snapshot
                 viewController.setGame(game: game)
                 viewController.setPlayer(player: playerSelf)
                 presentor.present(viewController, animated: false, completion: nil)
@@ -53,8 +53,8 @@ class SelectorSnapshot {
             return
         case "NEPTUNE":
             DispatchQueue.main.async {
-                let storyboard: UIStoryboard = UIStoryboard(name: "Neptune", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "Neptune") as! Snapshot
+                let storyboard: UIStoryboard = UIStoryboard(name: "NeptuneL", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "NeptuneL") as! Snapshot
                 viewController.setGame(game: game)
                 viewController.setPlayer(player: playerSelf)
                 presentor.present(viewController, animated: false, completion: nil)
@@ -62,8 +62,8 @@ class SelectorSnapshot {
             return
         default:
             DispatchQueue.main.async {
-                let storyboard: UIStoryboard = UIStoryboard(name: "Default", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "Default") as! Snapshot
+                let storyboard: UIStoryboard = UIStoryboard(name: "DefaultL", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "DefaultL") as! Snapshot
                 viewController.setGame(game: game)
                 viewController.setPlayer(player: playerSelf)
                 presentor.present(viewController, animated: false, completion: nil)

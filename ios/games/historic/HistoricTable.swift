@@ -168,8 +168,8 @@ class HistoricTable: UITableViewController {
             print("Update action ...")
             
             DispatchQueue.main.async() {
-                let storyboard: UIStoryboard = UIStoryboard(name: "Challenge", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "Challenge") as! Challenge
+                let storyboard: UIStoryboard = UIStoryboard(name: "ChallengeL", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "ChallengeL") as! Challenge
                 viewController.setPlayerSelf(playerSelf: self.playerSelf!)
                 viewController.setBACK(BACK: "HISTORIC")
                 let gameModel: EntityGame = self.gameMenuTableList[indexPath.row]
@@ -180,9 +180,7 @@ class HistoricTable: UITableViewController {
             }
             success(true)
         })
-        if #available(iOS 13.0, *) { //xmark
-            modifyAction.image = UIImage(systemName: "gamecontroller.fill")!
-        }
+        modifyAction.image = UIImage(named: "game.white")!
         modifyAction.backgroundColor = .purple
         return UISwipeActionsConfiguration(actions: [modifyAction])
     }

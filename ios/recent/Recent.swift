@@ -184,8 +184,8 @@ class Recent: UIViewController, UICollectionViewDataSource, UICollectionViewDele
             SelectRecent().snapshot(playerOther: self.playerOther!, playerSelf: self.playerSelf!, recentGameList: self.recentGameList!, presentor: self)
         default: //2 //home
             DispatchQueue.main.async {
-                let storyboard: UIStoryboard = UIStoryboard(name: "Home", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "Home") as! Home
+                let storyboard: UIStoryboard = UIStoryboard(name: "HomeL", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "HomeL") as! Home
                 viewController.setPlayer(player: self.playerSelf!)
                 UIApplication.shared.keyWindow?.rootViewController = viewController
             }
