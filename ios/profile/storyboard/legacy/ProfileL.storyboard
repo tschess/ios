@@ -47,7 +47,7 @@
                                 </constraints>
                                 <items>
                                     <tabBarItem tag="2" title="" image="back.grey" selectedImage="back.white" id="VMB-Hy-TLu">
-                                        <inset key="imageInsets" minX="2" minY="2" maxX="2" maxY="2"/>
+                                        <inset key="imageInsets" minX="1" minY="5" maxX="1" maxY="-5"/>
                                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tabBarItem>
                                 </items>
@@ -248,7 +248,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photo_white" translatesAutoresizingMaskIntoConstraints="NO" id="pXj-06-TZZ">
-                                            <rect key="frame" x="8" y="12.5" width="35" height="35"/>
+                                            <rect key="frame" x="265" y="12.5" width="35" height="35"/>
                                             <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="35" id="Wfm-4Y-AG9"/>
@@ -256,20 +256,21 @@
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="custom skins" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H8g-9w-PaC">
-                                            <rect key="frame" x="8" y="0.0" width="304" height="60"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
                                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="19"/>
-                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
-                                        <constraint firstItem="pXj-06-TZZ" firstAttribute="leading" secondItem="fhY-kg-IUt" secondAttribute="leading" constant="8" id="210-WL-DFz"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="pXj-06-TZZ" secondAttribute="trailing" constant="4" id="0hr-GW-Es6"/>
                                         <constraint firstAttribute="bottom" secondItem="H8g-9w-PaC" secondAttribute="bottom" id="L3U-HZ-KiA"/>
-                                        <constraint firstItem="H8g-9w-PaC" firstAttribute="leading" secondItem="fhY-kg-IUt" secondAttribute="leading" constant="8" id="SdP-Ka-OGx"/>
+                                        <constraint firstItem="H8g-9w-PaC" firstAttribute="leading" secondItem="fhY-kg-IUt" secondAttribute="leading" id="SdP-Ka-OGx"/>
                                         <constraint firstItem="pXj-06-TZZ" firstAttribute="centerY" secondItem="fhY-kg-IUt" secondAttribute="centerY" id="h0h-iE-Vz3"/>
-                                        <constraint firstAttribute="trailing" secondItem="H8g-9w-PaC" secondAttribute="trailing" constant="8" id="iMQ-T6-XL5"/>
+                                        <constraint firstAttribute="trailing" secondItem="H8g-9w-PaC" secondAttribute="trailing" id="iMQ-T6-XL5"/>
                                         <constraint firstItem="H8g-9w-PaC" firstAttribute="top" secondItem="fhY-kg-IUt" secondAttribute="top" id="sBp-B8-Afz"/>
+                                        <constraint firstItem="pXj-06-TZZ" firstAttribute="centerY" secondItem="fhY-kg-IUt" secondAttribute="centerY" id="u2A-vk-TrV"/>
                                         <constraint firstItem="H8g-9w-PaC" firstAttribute="centerY" secondItem="fhY-kg-IUt" secondAttribute="centerY" id="yPh-0T-tWA"/>
                                     </constraints>
                                 </tableViewCellContentView>
@@ -288,7 +289,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dak-t9-BK2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="540.57971014492762" y="164.73214285714286"/>
+            <point key="canvasLocation" x="540" y="164.2605633802817"/>
         </scene>
     </scenes>
     <resources>

@@ -105,15 +105,17 @@ class Profile: UIViewController, UITabBarDelegate, UINavigationControllerDelegat
         let menuSelectionIndex = notification.userInfo!["profile_selection"] as! Int
         
         switch menuSelectionIndex {
-        case 0:
-            self.changePhoto()
-        case 1://skins
+        case 0://skins
             DispatchQueue.main.async {
                 let storyboard: UIStoryboard = UIStoryboard(name: "SkinsL", bundle: nil)
                 let viewController = storyboard.instantiateViewController(withIdentifier: "SkinsL") as! Skins
                 viewController.setPlayer(player: self.player!)
                 UIApplication.shared.keyWindow?.rootViewController = viewController
             }
+            return
+        case 1:
+            self.changePhoto()
+            return
         default:
             self.signOut()
         }

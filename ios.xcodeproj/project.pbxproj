@@ -46,6 +46,9 @@
 		B7021F6223FE3B8E00C9346A /* ProfileP.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7021F6123FE3B8E00C9346A /* ProfileP.storyboard */; };
 		B7021F6423FE3B9E00C9346A /* ProfileL.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7021F6323FE3B9E00C9346A /* ProfileL.storyboard */; };
 		B7021F6623FE3BE800C9346A /* SelectProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7021F6523FE3BE800C9346A /* SelectProfile.swift */; };
+		B7021F6A23FE431300C9346A /* SelectSkins.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7021F6923FE431300C9346A /* SelectSkins.swift */; };
+		B7021F6C23FE435D00C9346A /* SkinsP.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7021F6B23FE435D00C9346A /* SkinsP.storyboard */; };
+		B7021F6E23FE436B00C9346A /* SkinsL.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7021F6D23FE436B00C9346A /* SkinsL.storyboard */; };
 		B70577F0234BD0A500A9E2CA /* TschessTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70577EF234BD0A500A9E2CA /* TschessTests.swift */; };
 		B708D0DD236B351000A899F9 /* Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = B708D0DC236B351000A899F9 /* Init.swift */; };
 		B708D0E7236B366800A899F9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B708D0E6236B366800A899F9 /* LaunchScreen.storyboard */; };
@@ -155,7 +158,6 @@
 		B7BE126123EB04B900ADA499 /* UpdateRescind.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE126023EB04B900ADA499 /* UpdateRescind.swift */; };
 		B7BE126523EB058800ADA499 /* Detail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7BE126423EB058800ADA499 /* Detail.storyboard */; };
 		B7BE126723EB05B200ADA499 /* Detail.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE126623EB05B200ADA499 /* Detail.swift */; };
-		B7BE126B23EB061D00ADA499 /* Skins.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7BE126A23EB061D00ADA499 /* Skins.storyboard */; };
 		B7BE126D23EB065300ADA499 /* SkinsTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE126C23EB065300ADA499 /* SkinsTable.swift */; };
 		B7BE126F23EB068700ADA499 /* SkinsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE126E23EB068700ADA499 /* SkinsCell.swift */; };
 		B7BE127123EB06AD00ADA499 /* Skins.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE127023EB06AD00ADA499 /* Skins.swift */; };
@@ -268,6 +270,9 @@
 		B7021F6123FE3B8E00C9346A /* ProfileP.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileP.storyboard; sourceTree = "<group>"; };
 		B7021F6323FE3B9E00C9346A /* ProfileL.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileL.storyboard; sourceTree = "<group>"; };
 		B7021F6523FE3BE800C9346A /* SelectProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectProfile.swift; sourceTree = "<group>"; };
+		B7021F6923FE431300C9346A /* SelectSkins.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectSkins.swift; sourceTree = "<group>"; };
+		B7021F6B23FE435D00C9346A /* SkinsP.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SkinsP.storyboard; sourceTree = "<group>"; };
+		B7021F6D23FE436B00C9346A /* SkinsL.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SkinsL.storyboard; sourceTree = "<group>"; };
 		B70577EF234BD0A500A9E2CA /* TschessTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TschessTests.swift; sourceTree = "<group>"; };
 		B708D0DC236B351000A899F9 /* Init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Init.swift; sourceTree = "<group>"; };
 		B708D0E6236B366800A899F9 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -383,7 +388,6 @@
 		B7BE126023EB04B900ADA499 /* UpdateRescind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateRescind.swift; sourceTree = "<group>"; };
 		B7BE126423EB058800ADA499 /* Detail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Detail.storyboard; sourceTree = "<group>"; };
 		B7BE126623EB05B200ADA499 /* Detail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Detail.swift; sourceTree = "<group>"; };
-		B7BE126A23EB061D00ADA499 /* Skins.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Skins.storyboard; sourceTree = "<group>"; };
 		B7BE126C23EB065300ADA499 /* SkinsTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkinsTable.swift; sourceTree = "<group>"; };
 		B7BE126E23EB068700ADA499 /* SkinsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkinsCell.swift; sourceTree = "<group>"; };
 		B7BE127023EB06AD00ADA499 /* Skins.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Skins.swift; sourceTree = "<group>"; };
@@ -661,6 +665,22 @@
 			isa = PBXGroup;
 			children = (
 				B7021F6123FE3B8E00C9346A /* ProfileP.storyboard */,
+			);
+			path = primary;
+			sourceTree = "<group>";
+		};
+		B7021F6723FE42E000C9346A /* legacy */ = {
+			isa = PBXGroup;
+			children = (
+				B7021F6D23FE436B00C9346A /* SkinsL.storyboard */,
+			);
+			path = legacy;
+			sourceTree = "<group>";
+		};
+		B7021F6823FE42EE00C9346A /* primary */ = {
+			isa = PBXGroup;
+			children = (
+				B7021F6B23FE435D00C9346A /* SkinsP.storyboard */,
 			);
 			path = primary;
 			sourceTree = "<group>";
@@ -1363,7 +1383,9 @@
 		B7BE126923EB060300ADA499 /* storyboard */ = {
 			isa = PBXGroup;
 			children = (
-				B7BE126A23EB061D00ADA499 /* Skins.storyboard */,
+				B7021F6823FE42EE00C9346A /* primary */,
+				B7021F6723FE42E000C9346A /* legacy */,
+				B7021F6923FE431300C9346A /* SelectSkins.swift */,
 			);
 			path = storyboard;
 			sourceTree = "<group>";
@@ -1729,6 +1751,7 @@
 				B7BE12A523EB0BF700ADA499 /* Promotion.storyboard in Resources */,
 				B7021F3F23FE0AE600C9346A /* PlayL.storyboard in Resources */,
 				B7BE123E23EB00E200ADA499 /* Challenge.storyboard in Resources */,
+				B7021F6C23FE435D00C9346A /* SkinsP.storyboard in Resources */,
 				B7021F1623FDBA0300C9346A /* ActualP.storyboard in Resources */,
 				B787C73122E970DD009C94F7 /* Assets.xcassets in Resources */,
 				B7021F6423FE3B9E00C9346A /* ProfileL.storyboard in Resources */,
@@ -1744,6 +1767,7 @@
 				B768473923F54C7000F55D4A /* nTschess.storyboard in Resources */,
 				B768470923F4FAF900F55D4A /* Recover.storyboard in Resources */,
 				B708D0E7236B366800A899F9 /* LaunchScreen.storyboard in Resources */,
+				B7021F6E23FE436B00C9346A /* SkinsL.storyboard in Resources */,
 				B7CB62F6237BB10800E50204 /* Start.storyboard in Resources */,
 				B7215A7123F5D59A00B86274 /* iRecent.storyboard in Resources */,
 				B7F3A12D23FD8D96007B5663 /* iTschessL.storyboard in Resources */,
@@ -1756,7 +1780,6 @@
 				B768473323F54BCE00F55D4A /* dTschess.storyboard in Resources */,
 				B7BE117223EA925E00ADA499 /* Default.storyboard in Resources */,
 				B70149B423FC568F001A7D52 /* Neptune.storyboard in Resources */,
-				B7BE126B23EB061D00ADA499 /* Skins.storyboard in Resources */,
 				B768470723F4FAD400F55D4A /* Invalid.storyboard in Resources */,
 				B768473523F54BFE00F55D4A /* hTschess.storyboard in Resources */,
 				B7BE121623EAD7E700ADA499 /* Init.storyboard in Resources */,
@@ -1903,6 +1926,7 @@
 				B7F3A13923FD9EE8007B5663 /* CompInvalid.swift in Sources */,
 				B7BE12AE23EB0CDB00ADA499 /* CheckCheck.swift in Sources */,
 				B745AD3523F353BF00E450EF /* RequestCreate.swift in Sources */,
+				B7021F6A23FE431300C9346A /* SelectSkins.swift in Sources */,
 				B7BE128D23EB09B400ADA499 /* GameUpdate.swift in Sources */,
 				B7BE121023EAD64100ADA499 /* Hopper.swift in Sources */,
 				B7F541C823D51B0C00E89074 /* HomeMenuCell.swift in Sources */,

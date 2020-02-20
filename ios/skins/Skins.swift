@@ -103,8 +103,8 @@ class Skins: UIViewController, UITabBarDelegate {
     
     @IBAction func backButtonClick(_ sender: Any) {
         DispatchQueue.main.async() {
-            let profileStoryboard: UIStoryboard = UIStoryboard(name: "Profile", bundle: nil)
-            let profileViewController = profileStoryboard.instantiateViewController(withIdentifier: "Profile") as! Profile
+            let profileStoryboard: UIStoryboard = UIStoryboard(name: "ProfileL", bundle: nil)
+            let profileViewController = profileStoryboard.instantiateViewController(withIdentifier: "ProfileL") as! Profile
             profileViewController.setPlayer(player: self.player!)
             UIApplication.shared.keyWindow?.rootViewController = profileViewController
         }
@@ -114,8 +114,8 @@ class Skins: UIViewController, UITabBarDelegate {
         switch item.tag {
         default:
             DispatchQueue.main.async() {
-                let profileStoryboard: UIStoryboard = UIStoryboard(name: "Profile", bundle: nil)
-                let profileViewController = profileStoryboard.instantiateViewController(withIdentifier: "Profile") as! Profile
+                let profileStoryboard: UIStoryboard = UIStoryboard(name: "ProfileL", bundle: nil)
+                let profileViewController = profileStoryboard.instantiateViewController(withIdentifier: "ProfileL") as! Profile
                 profileViewController.setPlayer(player: self.player!)
                 UIApplication.shared.keyWindow?.rootViewController = profileViewController
             }
