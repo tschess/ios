@@ -11,7 +11,7 @@
         <!--Recent-->
         <scene sceneID="Uso-HT-uji">
             <objects>
-                <viewController storyboardIdentifier="iRecent" useStoryboardIdentifierAsRestorationIdentifier="YES" id="DAE-jB-YvD" customClass="Recent" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="iRecentP" useStoryboardIdentifierAsRestorationIdentifier="YES" id="DAE-jB-YvD" customClass="Recent" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="9gv-Ja-N4g">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -357,10 +357,12 @@
                                     <constraint firstAttribute="height" constant="50" id="CtS-Ad-lXP"/>
                                 </constraints>
                                 <items>
-                                    <tabBarItem tag="1" title="next" image="arrowshape.turn.up.left" catalog="system" selectedImage="arrowshape.turn.up.left.fill" id="6f1-4w-L4h">
+                                    <tabBarItem tag="1" title="" image="bak_g" selectedImage="bak_w" id="6f1-4w-L4h">
+                                        <inset key="imageInsets" minX="0.0" minY="2" maxX="0.0" maxY="2"/>
                                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tabBarItem>
-                                    <tabBarItem tag="1" title="home" image="arrowshape.turn.up.right" catalog="system" selectedImage="arrowshape.turn.up.right.fill" id="52w-Ii-3y1">
+                                    <tabBarItem tag="1" title="" image="nxt_g" selectedImage="nxt_w" id="52w-Ii-3y1">
+                                        <inset key="imageInsets" minX="0.0" minY="2" maxX="0.0" maxY="2"/>
                                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tabBarItem>
                                 </items>
@@ -422,11 +424,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="arrowshape.turn.up.left" catalog="system" width="64" height="52"/>
-        <image name="arrowshape.turn.up.left.fill" catalog="system" width="64" height="52"/>
-        <image name="arrowshape.turn.up.right" catalog="system" width="64" height="52"/>
-        <image name="arrowshape.turn.up.right.fill" catalog="system" width="64" height="52"/>
         <image name="avatar_inverse" width="320" height="320"/>
+        <image name="bak_g" width="31" height="39"/>
+        <image name="bak_w" width="31" height="39"/>
         <image name="iapetus" width="761" height="800"/>
+        <image name="nxt_g" width="31" height="39"/>
+        <image name="nxt_w" width="31" height="39"/>
     </resources>
 </document>
