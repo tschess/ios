@@ -425,10 +425,10 @@
     </scenes>
     <resources>
         <image name="avatar_inverse" width="320" height="320"/>
-        <image name="bak_g" width="31" height="39"/>
-        <image name="bak_w" width="31" height="39"/>
+        <image name="bak_g" width="16" height="16"/>
+        <image name="bak_w" width="16" height="16"/>
         <image name="iapetus" width="761" height="800"/>
-        <image name="nxt_g" width="31" height="39"/>
-        <image name="nxt_w" width="31" height="39"/>
+        <image name="nxt_g" width="16" height="16"/>
+        <image name="nxt_w" width="16" height="16"/>
     </resources>
 </document>
