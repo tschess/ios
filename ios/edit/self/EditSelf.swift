@@ -43,7 +43,6 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
     @IBOutlet weak var dropViewTop0: UIView!
     @IBOutlet weak var dropViewTop1: UIView!
     @IBOutlet weak var dropViewBottom0: UIView!
-    @IBOutlet weak var splitView2: UIView!
     
     //MARK: Layout: Core
     @IBOutlet weak var backButton: UIButton!
@@ -57,6 +56,7 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
     @IBOutlet weak var rankLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var avatarImageView: UIImageView!
+    
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     public func renderHeader() {
@@ -324,6 +324,9 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
     //MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.configCollectionView.isHidden = true
+        
         self.configCollectionView.delegate = self
         self.configCollectionView.dataSource = self
         self.configCollectionView.dragDelegate = self
@@ -337,7 +340,7 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
         self.dropViewBottom0.addInteraction(UIDropInteraction(delegate: self))
         self.dropViewTop0.addInteraction(UIDropInteraction(delegate: self))
         self.dropViewTop1.addInteraction(UIDropInteraction(delegate: self))
-        self.splitView2.addInteraction(UIDropInteraction(delegate: self))
+        //self.splitView2.addInteraction(UIDropInteraction(delegate: self))
         self.headerView.addInteraction(UIDropInteraction(delegate: self))
         
         self.tabBarMenu.delegate = self
@@ -354,15 +357,17 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
         if let longPressRecognizer = self.tschessElementCollectionView.gestureRecognizers?.compactMap({ $0 as? UILongPressGestureRecognizer}).first {
             longPressRecognizer.minimumPressDuration = 0.1 // your custom value
         }
+        
+        self.configCollectionView.isHidden = false
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        let totalContentHeight = self.contentView.frame.size.height - 8
-        self.splitViewHeight0.constant = totalContentHeight/3
-        self.splitViewHeight1.constant = totalContentHeight/3
-        self.splitViewHeight2.constant = totalContentHeight/3
+        //let totalContentHeight = self.contentView.frame.size.height - 8
+        //self.splitViewHeight0.constant = totalContentHeight/3
+        //self.splitViewHeight1.constant = totalContentHeight/3
+        //self.splitViewHeight2.constant = totalContentHeight/3
         
         self.activityIndicator.isHidden = true
         
@@ -511,8 +516,8 @@ extension EditSelf: UICollectionViewDelegate {
     
     @IBAction func backButtonClick(_ sender: Any) {
         DispatchQueue.main.async() {
-            let storyboard: UIStoryboard = UIStoryboard(name: "Config", bundle: nil)
-            let viewController = storyboard.instantiateViewController(withIdentifier: "Config") as! Config
+            let storyboard: UIStoryboard = UIStoryboard(name: "ConfigL", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier: "ConfigL") as! Config
             viewController.setPlayerSelf(playerSelf: self.playerSelf!)
             UIApplication.shared.keyWindow?.rootViewController = viewController
         }

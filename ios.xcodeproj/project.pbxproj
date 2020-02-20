@@ -40,6 +40,9 @@
 		B7021F5223FE11D300C9346A /* EditOtherL.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7021F5123FE11D300C9346A /* EditOtherL.storyboard */; };
 		B7021F5423FE11E400C9346A /* EditOtherP.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7021F5323FE11E400C9346A /* EditOtherP.storyboard */; };
 		B7021F5623FE122D00C9346A /* SelectEditOther.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7021F5523FE122D00C9346A /* SelectEditOther.swift */; };
+		B7021F5923FE303000C9346A /* EditSelfL.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7021F5823FE303000C9346A /* EditSelfL.storyboard */; };
+		B7021F5C23FE304D00C9346A /* EditSelfP.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7021F5B23FE304D00C9346A /* EditSelfP.storyboard */; };
+		B7021F5E23FE30A100C9346A /* SelectEditSelf.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7021F5D23FE30A100C9346A /* SelectEditSelf.swift */; };
 		B70577F0234BD0A500A9E2CA /* TschessTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70577EF234BD0A500A9E2CA /* TschessTests.swift */; };
 		B708D0DD236B351000A899F9 /* Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = B708D0DC236B351000A899F9 /* Init.swift */; };
 		B708D0E7236B366800A899F9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B708D0E6236B366800A899F9 /* LaunchScreen.storyboard */; };
@@ -114,7 +117,6 @@
 		B7BE11E823EAC40800ADA499 /* SerializerConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE11E723EAC40800ADA499 /* SerializerConfig.swift */; };
 		B7BE11ED23EAC6CB00ADA499 /* RequestQuick.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE11EC23EAC6CB00ADA499 /* RequestQuick.swift */; };
 		B7BE11F123EAC92C00ADA499 /* EditSelf.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE11F023EAC92C00ADA499 /* EditSelf.swift */; };
-		B7BE11F423EAC94E00ADA499 /* EditSelf.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7BE11F323EAC94E00ADA499 /* EditSelf.storyboard */; };
 		B7BE11F723EAC97200ADA499 /* EditOther.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE11F623EAC97200ADA499 /* EditOther.swift */; };
 		B7BE11FF23EACCDE00ADA499 /* ConfigCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE11FE23EACCDE00ADA499 /* ConfigCell.swift */; };
 		B7BE120523EAD3C600ADA499 /* PoisonPawn.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE120423EAD3C600ADA499 /* PoisonPawn.swift */; };
@@ -258,6 +260,9 @@
 		B7021F5123FE11D300C9346A /* EditOtherL.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditOtherL.storyboard; sourceTree = "<group>"; };
 		B7021F5323FE11E400C9346A /* EditOtherP.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditOtherP.storyboard; sourceTree = "<group>"; };
 		B7021F5523FE122D00C9346A /* SelectEditOther.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectEditOther.swift; sourceTree = "<group>"; };
+		B7021F5823FE303000C9346A /* EditSelfL.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditSelfL.storyboard; sourceTree = "<group>"; };
+		B7021F5B23FE304D00C9346A /* EditSelfP.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditSelfP.storyboard; sourceTree = "<group>"; };
+		B7021F5D23FE30A100C9346A /* SelectEditSelf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectEditSelf.swift; sourceTree = "<group>"; };
 		B70577EF234BD0A500A9E2CA /* TschessTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TschessTests.swift; sourceTree = "<group>"; };
 		B708D0DC236B351000A899F9 /* Init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Init.swift; sourceTree = "<group>"; };
 		B708D0E6236B366800A899F9 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -338,7 +343,6 @@
 		B7BE11E723EAC40800ADA499 /* SerializerConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerializerConfig.swift; sourceTree = "<group>"; };
 		B7BE11EC23EAC6CB00ADA499 /* RequestQuick.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestQuick.swift; sourceTree = "<group>"; };
 		B7BE11F023EAC92C00ADA499 /* EditSelf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSelf.swift; sourceTree = "<group>"; };
-		B7BE11F323EAC94E00ADA499 /* EditSelf.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditSelf.storyboard; sourceTree = "<group>"; };
 		B7BE11F623EAC97200ADA499 /* EditOther.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditOther.swift; sourceTree = "<group>"; };
 		B7BE11FE23EACCDE00ADA499 /* ConfigCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigCell.swift; sourceTree = "<group>"; };
 		B7BE120423EAD3C600ADA499 /* PoisonPawn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoisonPawn.swift; sourceTree = "<group>"; };
@@ -623,6 +627,22 @@
 				B7021F5123FE11D300C9346A /* EditOtherL.storyboard */,
 			);
 			path = legacy;
+			sourceTree = "<group>";
+		};
+		B7021F5723FE300F00C9346A /* legacy */ = {
+			isa = PBXGroup;
+			children = (
+				B7021F5823FE303000C9346A /* EditSelfL.storyboard */,
+			);
+			path = legacy;
+			sourceTree = "<group>";
+		};
+		B7021F5A23FE303900C9346A /* primary */ = {
+			isa = PBXGroup;
+			children = (
+				B7021F5B23FE304D00C9346A /* EditSelfP.storyboard */,
+			);
+			path = primary;
 			sourceTree = "<group>";
 		};
 		B708D0DB236B34F000A899F9 /* init */ = {
@@ -1026,7 +1046,9 @@
 		B7BE11F223EAC93400ADA499 /* storyboard */ = {
 			isa = PBXGroup;
 			children = (
-				B7BE11F323EAC94E00ADA499 /* EditSelf.storyboard */,
+				B7021F5A23FE303900C9346A /* primary */,
+				B7021F5723FE300F00C9346A /* legacy */,
+				B7021F5D23FE30A100C9346A /* SelectEditSelf.swift */,
 			);
 			path = storyboard;
 			sourceTree = "<group>";
@@ -1718,9 +1740,9 @@
 				B7BE121623EAD7E700ADA499 /* Init.storyboard in Resources */,
 				B7ED646423F4D9D400292FBC /* Create.storyboard in Resources */,
 				B7021F3A23FE031400C9346A /* InfoP.storyboard in Resources */,
+				B7021F5C23FE304D00C9346A /* EditSelfP.storyboard in Resources */,
 				B768473123F54BAF00F55D4A /* iTschess.storyboard in Resources */,
 				B7BE129523EB0A7900ADA499 /* DrawResign.storyboard in Resources */,
-				B7BE11F423EAC94E00ADA499 /* EditSelf.storyboard in Resources */,
 				B7021F3223FDFCC100C9346A /* FairiesP.storyboard in Resources */,
 				B7F3A13323FD95C8007B5663 /* HomeP.storyboard in Resources */,
 				B7021F4223FE0B0700C9346A /* PlayP.storyboard in Resources */,
@@ -1729,6 +1751,7 @@
 				B7F3A12F23FD8DA9007B5663 /* dTschessL.storyboard in Resources */,
 				B7BE126523EB058800ADA499 /* Detail.storyboard in Resources */,
 				B7CA12D323F5A14400569805 /* dRecent.storyboard in Resources */,
+				B7021F5923FE303000C9346A /* EditSelfL.storyboard in Resources */,
 				B7BE116323EA722B00ADA499 /* Other.storyboard in Resources */,
 				B70149B623FC56C3001A7D52 /* Hyperion.storyboard in Resources */,
 				B7215A6F23F5D58D00B86274 /* cRecent.storyboard in Resources */,
@@ -1814,6 +1837,7 @@
 				B7BE125323EB035000ADA499 /* ProfileTable.swift in Sources */,
 				B7BE120923EAD3DD00ADA499 /* Hunter.swift in Sources */,
 				B7BE11A923EA9C8800ADA499 /* King.swift in Sources */,
+				B7021F5E23FE30A100C9346A /* SelectEditSelf.swift in Sources */,
 				B7BE129123EB09FC00ADA499 /* UpdateResign.swift in Sources */,
 				B7BE11B223EA9D7000ADA499 /* QueenWhite.swift in Sources */,
 				B7BE128723EB091C00ADA499 /* Tschess.swift in Sources */,

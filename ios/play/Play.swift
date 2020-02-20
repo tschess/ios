@@ -48,6 +48,8 @@ class Play: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITa
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.boardViewConfig.isHidden = true
+        
         let orange: UIColor = UIColor(red: 255/255.0, green: 105/255.0, blue: 104/255.0, alpha: 1) //FF6968
         let pink: UIColor = UIColor(red: 255/255.0, green: 105/255.0, blue: 180/255.0, alpha: 1)
         let purple: UIColor = UIColor(red: 140/255.0, green: 0/255.0, blue: 192/255.0, alpha: 1)
@@ -103,7 +105,7 @@ class Play: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITa
         
         self.renderHeaderOther()
         
-        self.boardViewConfig.isHidden = true
+        
         
         self.tabBarMenu.delegate = self
         self.boardViewConfig.delegate = self

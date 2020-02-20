@@ -102,15 +102,15 @@ class Config: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate, U
     }
     
     @IBAction func backButtonClick(_ sender: Any) {
-        let homeStoryboard: UIStoryboard = UIStoryboard(name: "Home", bundle: nil)
-        let homeViewController = homeStoryboard.instantiateViewController(withIdentifier: "Home") as! Home
+        let homeStoryboard: UIStoryboard = UIStoryboard(name: "HomeL", bundle: nil)
+        let homeViewController = homeStoryboard.instantiateViewController(withIdentifier: "HomeL") as! Home
         homeViewController.setPlayer(player: self.playerSelf!)
         UIApplication.shared.keyWindow?.rootViewController = homeViewController
     }
     
     @objc func editCollectionView0() {
-        let storyboard: UIStoryboard = UIStoryboard(name: "EditSelf", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "EditSelf") as! EditSelf
+        let storyboard: UIStoryboard = UIStoryboard(name: "EditSelfL", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "EditSelfL") as! EditSelf
         viewController.setPlayerSelf(playerSelf: self.playerSelf!)
         viewController.setTitleText(titleText: "config. 0̸")
         viewController.setSelection(selection: 0)
@@ -119,8 +119,8 @@ class Config: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate, U
     }
     
     @objc func editCollectionView1() {
-        let storyboard: UIStoryboard = UIStoryboard(name: "EditSelf", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "EditSelf") as! EditSelf
+        let storyboard: UIStoryboard = UIStoryboard(name: "EditSelfL", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "EditSelfL") as! EditSelf
         viewController.setPlayerSelf(playerSelf: self.playerSelf!)
         viewController.setTitleText(titleText: "config. 1")
         viewController.setSelection(selection: 1)
@@ -129,8 +129,8 @@ class Config: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate, U
     }
     
     @objc func editCollectionView2() {
-        let storyboard: UIStoryboard = UIStoryboard(name: "EditSelf", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "EditSelf") as! EditSelf
+        let storyboard: UIStoryboard = UIStoryboard(name: "EditSelfL", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "EditSelfL") as! EditSelf
         viewController.setPlayerSelf(playerSelf: self.playerSelf!)
         viewController.setTitleText(titleText: "config. 2")
         viewController.setSelection(selection: 2)
@@ -152,6 +152,10 @@ class Config: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate, U
         super.viewWillAppear(animated)
         
         self.renderHeader()
+        
+        self.configCollectionView0.isHidden = true
+        self.configCollectionView1.isHidden = true
+        self.configCollectionView2.isHidden = true
         
         self.tschessElementMatrix0 = self.playerSelf!.getConfig(index: 0)
         self.tschessElementMatrix1 = self.playerSelf!.getConfig(index: 1)
@@ -192,8 +196,11 @@ class Config: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate, U
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.configCollectionView0.reloadData()
+        self.configCollectionView0.isHidden = false
         self.configCollectionView1.reloadData()
+        self.configCollectionView1.isHidden = false
         self.configCollectionView2.reloadData()
+        self.configCollectionView2.isHidden = false
     }
 }
 

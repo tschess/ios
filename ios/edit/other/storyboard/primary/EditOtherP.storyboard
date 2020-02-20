@@ -300,10 +300,10 @@
                                     <constraint firstAttribute="height" constant="50" id="CtS-Ad-lXP"/>
                                 </constraints>
                                 <items>
-                                    <tabBarItem title="back" image="arrowshape.turn.up.left" catalog="system" selectedImage="arrowshape.turn.up.left.fill" id="cNg-v3-E35">
+                                    <tabBarItem title="" image="cancel_grey" selectedImage="cancel_white" id="cNg-v3-E35">
                                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tabBarItem>
-                                    <tabBarItem tag="1" title="save" image="checkmark.rectangle" catalog="system" selectedImage="checkmark.rectangle.fill" id="xqj-Cj-U3q">
+                                    <tabBarItem tag="1" title="" image="save_grey" selectedImage="save_white" id="xqj-Cj-U3q">
                                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tabBarItem>
                                 </items>
@@ -468,10 +468,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="arrowshape.turn.up.left" catalog="system" width="64" height="52"/>
-        <image name="arrowshape.turn.up.left.fill" catalog="system" width="64" height="52"/>
         <image name="avatar_default" width="320" height="320"/>
-        <image name="checkmark.rectangle" catalog="system" width="64" height="46"/>
-        <image name="checkmark.rectangle.fill" catalog="system" width="64" height="46"/>
+        <image name="cancel_grey" width="39" height="39"/>
+        <image name="cancel_white" width="39" height="39"/>
+        <image name="save_grey" width="39" height="39"/>
+        <image name="save_white" width="39" height="39"/>
     </resources>
 </document>
