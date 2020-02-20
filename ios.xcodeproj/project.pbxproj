@@ -36,7 +36,6 @@
 		B7021F3F23FE0AE600C9346A /* PlayL.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7021F3E23FE0AE600C9346A /* PlayL.storyboard */; };
 		B7021F4223FE0B0700C9346A /* PlayP.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7021F4123FE0B0700C9346A /* PlayP.storyboard */; };
 		B7021F4423FE0B1C00C9346A /* SelectPlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7021F4323FE0B1C00C9346A /* SelectPlay.swift */; };
-		B7021F4C23FE103600C9346A /* SelectionSkin.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7021F4B23FE103600C9346A /* SelectionSkin.swift */; };
 		B7021F4E23FE114100C9346A /* Skin.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7021F4D23FE114100C9346A /* Skin.xib */; };
 		B7021F5223FE11D300C9346A /* EditOtherL.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7021F5123FE11D300C9346A /* EditOtherL.storyboard */; };
 		B7021F5423FE11E400C9346A /* EditOtherP.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7021F5323FE11E400C9346A /* EditOtherP.storyboard */; };
@@ -255,7 +254,6 @@
 		B7021F3E23FE0AE600C9346A /* PlayL.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PlayL.storyboard; sourceTree = "<group>"; };
 		B7021F4123FE0B0700C9346A /* PlayP.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PlayP.storyboard; sourceTree = "<group>"; };
 		B7021F4323FE0B1C00C9346A /* SelectPlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPlay.swift; sourceTree = "<group>"; };
-		B7021F4B23FE103600C9346A /* SelectionSkin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionSkin.swift; sourceTree = "<group>"; };
 		B7021F4D23FE114100C9346A /* Skin.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Skin.xib; sourceTree = "<group>"; };
 		B7021F5123FE11D300C9346A /* EditOtherL.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditOtherL.storyboard; sourceTree = "<group>"; };
 		B7021F5323FE11E400C9346A /* EditOtherP.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditOtherP.storyboard; sourceTree = "<group>"; };
@@ -492,7 +490,6 @@
 			isa = PBXGroup;
 			children = (
 				B70149AD23FC5023001A7D52 /* Skin.swift */,
-				B7021F4B23FE103600C9346A /* SelectionSkin.swift */,
 				B7021F4D23FE114100C9346A /* Skin.xib */,
 			);
 			path = view;
@@ -1852,7 +1849,6 @@
 				B7021F3423FDFD0900C9346A /* SelectFairies.swift in Sources */,
 				B7BE127123EB06AD00ADA499 /* Skins.swift in Sources */,
 				B7BE122723EAD94700ADA499 /* Actual.swift in Sources */,
-				B7021F4C23FE103600C9346A /* SelectionSkin.swift in Sources */,
 				B7BE123A23EAFBF500ADA499 /* Ack.swift in Sources */,
 				B74136C723DE34A0001B3D60 /* RequestLogin.swift in Sources */,
 				B7BE123423EAE7EC00ADA499 /* HistoricTable.swift in Sources */,
