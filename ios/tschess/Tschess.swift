@@ -250,8 +250,8 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     @IBAction func backButtonClick(_ sender: Any) {
         self.stopTimers()
         DispatchQueue.main.async() {
-            let storyboard: UIStoryboard = UIStoryboard(name: "Actual", bundle: nil)
-            let viewController = storyboard.instantiateViewController(withIdentifier: "Actual") as! Actual
+            let storyboard: UIStoryboard = UIStoryboard(name: "ActualL", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier: "ActualL") as! Actual
             viewController.setPlayerSelf(playerSelf: self.playerSelf!)
             UIApplication.shared.keyWindow?.rootViewController = viewController
         }
@@ -551,8 +551,8 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         default: //0
             self.stopTimers()
             DispatchQueue.main.async() {
-                let storyboard: UIStoryboard = UIStoryboard(name: "Actual", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "Actual") as! Actual
+                let storyboard: UIStoryboard = UIStoryboard(name: "ActualL", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "ActualL") as! Actual
                 viewController.setPlayerSelf(playerSelf: self.playerSelf!)
                 UIApplication.shared.keyWindow?.rootViewController = viewController
             }

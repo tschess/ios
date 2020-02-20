@@ -73,16 +73,16 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="username" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tq9-Wz-0a6">
-                                        <rect key="frame" x="4" y="63" width="312" height="22"/>
+                                        <rect key="frame" x="4" y="65" width="312" height="20"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="22" id="GHp-cE-elZ"/>
+                                            <constraint firstAttribute="height" constant="20" id="GHp-cE-elZ"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="19"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7rM-GI-ans">
-                                        <rect key="frame" x="55" y="26" width="60" height="22"/>
+                                        <rect key="frame" x="53" y="24" width="60" height="22"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="22" id="NuM-ua-hiI"/>
                                             <constraint firstAttribute="width" constant="60" id="Zyh-Dn-dT9"/>
@@ -91,10 +91,10 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="1989" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YxI-dg-6nx">
-                                        <rect key="frame" x="59" y="3" width="60" height="22"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1989" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YxI-dg-6nx">
+                                        <rect key="frame" x="53" y="2" width="60" height="20"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="22" id="DSP-qF-fz7"/>
+                                            <constraint firstAttribute="height" constant="20" id="DSP-qF-fz7"/>
                                             <constraint firstAttribute="width" constant="60" id="nlH-Q9-Z6j"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="19"/>
@@ -102,7 +102,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="rank:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ghP-mp-e6F">
-                                        <rect key="frame" x="4" y="26" width="47" height="22"/>
+                                        <rect key="frame" x="4" y="24" width="47" height="22"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="22" id="3Zr-hf-soV"/>
                                             <constraint firstAttribute="width" constant="47" id="vGl-q7-bau"/>
@@ -112,20 +112,20 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="elo:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bSh-Zg-8Q1">
-                                        <rect key="frame" x="4" y="2" width="47" height="22"/>
+                                        <rect key="frame" x="4" y="2" width="47" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="47" id="LkK-yF-bvB"/>
-                                            <constraint firstAttribute="height" constant="22" id="ZaF-Y5-HdV"/>
+                                            <constraint firstAttribute="height" constant="20" id="ZaF-Y5-HdV"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="19"/>
                                         <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="28.03.'89" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kJX-GF-1X4">
-                                        <rect key="frame" x="4" y="50" width="107" height="22"/>
+                                        <rect key="frame" x="4" y="48" width="107" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="107" id="PEe-Vn-3xF"/>
-                                            <constraint firstAttribute="height" constant="22" id="R78-lv-MfN"/>
+                                            <constraint firstAttribute="height" constant="20" id="R78-lv-MfN"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="19"/>
                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -143,15 +143,15 @@
                                 <constraints>
                                     <constraint firstItem="tq9-Wz-0a6" firstAttribute="leading" secondItem="YPS-Tp-PVu" secondAttribute="leading" constant="4" id="0QT-iG-jwo"/>
                                     <constraint firstItem="YxI-dg-6nx" firstAttribute="top" secondItem="YPS-Tp-PVu" secondAttribute="top" constant="2" id="3my-Rw-wRa"/>
+                                    <constraint firstAttribute="height" constant="86" id="5EH-JR-quS"/>
                                     <constraint firstItem="kJX-GF-1X4" firstAttribute="leading" secondItem="YPS-Tp-PVu" secondAttribute="leading" constant="4" id="9Ea-cs-wxC"/>
-                                    <constraint firstItem="tq9-Wz-0a6" firstAttribute="top" secondItem="1vs-cy-tZZ" secondAttribute="bottom" constant="1" id="BJV-NF-w1C"/>
                                     <constraint firstItem="RAM-33-HiP" firstAttribute="centerX" secondItem="YPS-Tp-PVu" secondAttribute="centerX" id="KBW-d0-pbK"/>
                                     <constraint firstItem="kJX-GF-1X4" firstAttribute="top" secondItem="ghP-mp-e6F" secondAttribute="bottom" constant="2" id="L4m-HA-pQS"/>
                                     <constraint firstItem="ghP-mp-e6F" firstAttribute="leading" secondItem="YPS-Tp-PVu" secondAttribute="leading" constant="4" id="QyA-6v-55D"/>
-                                    <constraint firstItem="7rM-GI-ans" firstAttribute="leading" secondItem="ghP-mp-e6F" secondAttribute="trailing" constant="4" id="TXJ-kZ-tZY"/>
+                                    <constraint firstItem="7rM-GI-ans" firstAttribute="leading" secondItem="ghP-mp-e6F" secondAttribute="trailing" constant="2" id="TXJ-kZ-tZY"/>
                                     <constraint firstItem="RAM-33-HiP" firstAttribute="centerY" secondItem="YPS-Tp-PVu" secondAttribute="centerY" id="YJG-Au-zD6"/>
                                     <constraint firstItem="bSh-Zg-8Q1" firstAttribute="leading" secondItem="YPS-Tp-PVu" secondAttribute="leading" constant="4" id="YP3-mz-XBG"/>
-                                    <constraint firstItem="YxI-dg-6nx" firstAttribute="leading" secondItem="bSh-Zg-8Q1" secondAttribute="trailing" constant="4" id="aM6-cW-731"/>
+                                    <constraint firstItem="YxI-dg-6nx" firstAttribute="leading" secondItem="bSh-Zg-8Q1" secondAttribute="trailing" constant="2" id="aM6-cW-731"/>
                                     <constraint firstItem="ghP-mp-e6F" firstAttribute="top" secondItem="bSh-Zg-8Q1" secondAttribute="bottom" constant="2" id="h45-7V-uaT"/>
                                     <constraint firstAttribute="trailing" secondItem="1vs-cy-tZZ" secondAttribute="trailing" constant="4" id="jc6-6f-3WZ"/>
                                     <constraint firstItem="bSh-Zg-8Q1" firstAttribute="top" secondItem="YPS-Tp-PVu" secondAttribute="top" constant="2" id="kLy-rr-JCb"/>
@@ -260,10 +260,12 @@
                                     <constraint firstAttribute="height" constant="45" id="CtS-Ad-lXP"/>
                                 </constraints>
                                 <items>
-                                    <tabBarItem title="games" image="arrowshape.turn.up.left" catalog="system" selectedImage="arrowshape.turn.up.left.fill" id="6f1-4w-L4h">
+                                    <tabBarItem title="" image="back.grey" selectedImage="back.white" id="6f1-4w-L4h">
+                                        <inset key="imageInsets" minX="1" minY="6" maxX="1" maxY="-4"/>
                                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tabBarItem>
-                                    <tabBarItem tag="1" title="options" image="circle.grid.2x2" catalog="system" selectedImage="circle.grid.2x2.fill" id="ZJf-6D-pXa">
+                                    <tabBarItem tag="1" title="" image="options_grey" selectedImage="options_white" id="ZJf-6D-pXa">
+                                        <inset key="imageInsets" minX="1" minY="5" maxX="1" maxY="-5"/>
                                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tabBarItem>
                                 </items>
@@ -322,10 +324,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="arrowshape.turn.up.left" catalog="system" width="64" height="52"/>
-        <image name="arrowshape.turn.up.left.fill" catalog="system" width="64" height="52"/>
         <image name="avatar_default" width="320" height="320"/>
-        <image name="circle.grid.2x2" catalog="system" width="64" height="56"/>
-        <image name="circle.grid.2x2.fill" catalog="system" width="64" height="56"/>
+        <image name="back.grey" width="36" height="27"/>
+        <image name="back.white" width="36" height="27"/>
+        <image name="options_grey" width="36" height="36"/>
+        <image name="options_white" width="36" height="36"/>
     </resources>
 </document>

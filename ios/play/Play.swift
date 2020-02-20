@@ -103,6 +103,8 @@ class Play: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITa
         
         self.renderHeaderOther()
         
+        self.boardViewConfig.isHidden = true
+        
         self.tabBarMenu.delegate = self
         self.boardViewConfig.delegate = self
         self.boardViewConfig.dataSource = self
@@ -265,6 +267,8 @@ class Play: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITa
         self.boardViewConfig.bounces = false
         self.boardViewConfig.alwaysBounceVertical = false
         self.boardViewConfigHeight.constant = self.boardViewConfig.contentSize.height
+        
+        
     }
     
     //MARK: Properties
@@ -339,6 +343,7 @@ class Play: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITa
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.boardViewConfig.reloadData()
+        self.boardViewConfig.isHidden = false
     }
     
     override func viewWillAppear(_ animated: Bool) {

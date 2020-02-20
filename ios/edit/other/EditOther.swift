@@ -49,7 +49,7 @@ class EditOther: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate
     @IBOutlet weak var dropViewTop0: UIView!
     @IBOutlet weak var dropViewTop1: UIView!
     @IBOutlet weak var dropViewBottom0: UIView!
-    @IBOutlet weak var splitView2: UIView!
+    //@IBOutlet weak var splitView2: UIView!
     
     //MARK: Layout: Core
     @IBOutlet weak var backButton: UIButton!
@@ -333,6 +333,10 @@ class EditOther: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate
     //MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.boardViewConfig.isHidden = true
+        //self.pieceCollectionView.isHidden = true
+        
         self.boardViewConfig.delegate = self
         self.boardViewConfig.dataSource = self
         self.boardViewConfig.dragDelegate = self
@@ -346,7 +350,7 @@ class EditOther: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate
         self.dropViewBottom0.addInteraction(UIDropInteraction(delegate: self))
         self.dropViewTop0.addInteraction(UIDropInteraction(delegate: self))
         self.dropViewTop1.addInteraction(UIDropInteraction(delegate: self))
-        self.splitView2.addInteraction(UIDropInteraction(delegate: self))
+        //self.splitView2.addInteraction(UIDropInteraction(delegate: self))
         self.headerView.addInteraction(UIDropInteraction(delegate: self))
         
         self.tabBarMenu.delegate = self
@@ -365,15 +369,17 @@ class EditOther: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate
         if let longPressRecognizer = self.pieceCollectionView.gestureRecognizers?.compactMap({ $0 as? UILongPressGestureRecognizer}).first {
             longPressRecognizer.minimumPressDuration = 0.1 // your custom value
         }
+        
+        self.boardViewConfig.isHidden = false
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        let totalContentHeight = self.contentView.frame.size.height - 8
-        self.splitViewHeight0.constant = totalContentHeight/3
-        self.splitViewHeight1.constant = totalContentHeight/3
-        self.splitViewHeight2.constant = totalContentHeight/3
+        //let totalContentHeight = self.contentView.frame.size.height - 8
+        //self.splitViewHeight0.constant = totalContentHeight/3
+        //self.splitViewHeight1.constant = totalContentHeight/3
+        //self.splitViewHeight2.constant = totalContentHeight/3
         
         self.activityIndicator.isHidden = true
         
@@ -523,8 +529,8 @@ extension EditOther: UICollectionViewDelegate {
     @IBAction func backButtonClick(_ sender: Any) {
         if(self.BACK == "PLAY"){
             DispatchQueue.main.async {
-                let storyboard: UIStoryboard = UIStoryboard(name: "Play", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "Play") as! Play
+                let storyboard: UIStoryboard = UIStoryboard(name: "PlayL", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "PlayL") as! Play
                 viewController.setPlayerSelf(playerSelf: self.playerSelf!)
                 viewController.setPlayerOther(playerOther: self.playerOther!)
                 //viewController.setGameTschess(gameTschess: self.gameTschess!)
