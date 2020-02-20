@@ -154,7 +154,6 @@
 		B7BE123A23EAFBF500ADA499 /* Ack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE123923EAFBF500ADA499 /* Ack.swift */; };
 		B7BE123C23EAFC0200ADA499 /* Challenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE123B23EAFC0200ADA499 /* Challenge.swift */; };
 		B7BE124123EB013400ADA499 /* RequestChallenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE124023EB013400ADA499 /* RequestChallenge.swift */; };
-		B7BE124323EB015700ADA499 /* Ack.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7BE124223EB015700ADA499 /* Ack.storyboard */; };
 		B7BE124623EB01CB00ADA499 /* RequestAck.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE124523EB01CB00ADA499 /* RequestAck.swift */; };
 		B7BE124823EB023700ADA499 /* Fairies.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE124723EB023700ADA499 /* Fairies.swift */; };
 		B7BE124A23EB027400ADA499 /* FairiesTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE124923EB027400ADA499 /* FairiesTable.swift */; };
@@ -199,6 +198,9 @@
 		B7C675FE23FF1E6E007EC71E /* ChallengeL.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7C675FD23FF1E6E007EC71E /* ChallengeL.storyboard */; };
 		B7C6760023FF1E80007EC71E /* ChallengeP.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7C675FF23FF1E80007EC71E /* ChallengeP.storyboard */; };
 		B7C6760223FF1E9A007EC71E /* SelectChallenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C6760123FF1E9A007EC71E /* SelectChallenge.swift */; };
+		B7C6760623FF22E9007EC71E /* AckP.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7C6760523FF22E9007EC71E /* AckP.storyboard */; };
+		B7C6760823FF22F8007EC71E /* AckL.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7C6760723FF22F8007EC71E /* AckL.storyboard */; };
+		B7C6760A23FF230B007EC71E /* SelectAck.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C6760923FF230B007EC71E /* SelectAck.swift */; };
 		B7CA12CB23F5870000569805 /* SelectorTschess.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7CA12CA23F5870000569805 /* SelectorTschess.swift */; };
 		B7CA12CD23F5903000569805 /* SelectorSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7CA12CC23F5903000569805 /* SelectorSnapshot.swift */; };
 		B7CA12D123F5A13900569805 /* Recent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7CA12D023F5A13900569805 /* Recent.swift */; };
@@ -396,7 +398,6 @@
 		B7BE123923EAFBF500ADA499 /* Ack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ack.swift; sourceTree = "<group>"; };
 		B7BE123B23EAFC0200ADA499 /* Challenge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenge.swift; sourceTree = "<group>"; };
 		B7BE124023EB013400ADA499 /* RequestChallenge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestChallenge.swift; sourceTree = "<group>"; };
-		B7BE124223EB015700ADA499 /* Ack.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Ack.storyboard; sourceTree = "<group>"; };
 		B7BE124523EB01CB00ADA499 /* RequestAck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestAck.swift; sourceTree = "<group>"; };
 		B7BE124723EB023700ADA499 /* Fairies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fairies.swift; sourceTree = "<group>"; };
 		B7BE124923EB027400ADA499 /* FairiesTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FairiesTable.swift; sourceTree = "<group>"; };
@@ -441,6 +442,9 @@
 		B7C675FD23FF1E6E007EC71E /* ChallengeL.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChallengeL.storyboard; sourceTree = "<group>"; };
 		B7C675FF23FF1E80007EC71E /* ChallengeP.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChallengeP.storyboard; sourceTree = "<group>"; };
 		B7C6760123FF1E9A007EC71E /* SelectChallenge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectChallenge.swift; sourceTree = "<group>"; };
+		B7C6760523FF22E9007EC71E /* AckP.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AckP.storyboard; sourceTree = "<group>"; };
+		B7C6760723FF22F8007EC71E /* AckL.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AckL.storyboard; sourceTree = "<group>"; };
+		B7C6760923FF230B007EC71E /* SelectAck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectAck.swift; sourceTree = "<group>"; };
 		B7CA12CA23F5870000569805 /* SelectorTschess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectorTschess.swift; sourceTree = "<group>"; };
 		B7CA12CC23F5903000569805 /* SelectorSnapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectorSnapshot.swift; sourceTree = "<group>"; };
 		B7CA12D023F5A13900569805 /* Recent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recent.swift; sourceTree = "<group>"; };
@@ -1370,7 +1374,9 @@
 		B7BE123723EAFBCD00ADA499 /* storyboard */ = {
 			isa = PBXGroup;
 			children = (
-				B7BE124223EB015700ADA499 /* Ack.storyboard */,
+				B7C6760423FF22CE007EC71E /* primary */,
+				B7C6760323FF22C3007EC71E /* legacy */,
+				B7C6760923FF230B007EC71E /* SelectAck.swift */,
 			);
 			path = storyboard;
 			sourceTree = "<group>";
@@ -1626,6 +1632,22 @@
 			path = legacy;
 			sourceTree = "<group>";
 		};
+		B7C6760323FF22C3007EC71E /* legacy */ = {
+			isa = PBXGroup;
+			children = (
+				B7C6760723FF22F8007EC71E /* AckL.storyboard */,
+			);
+			path = legacy;
+			sourceTree = "<group>";
+		};
+		B7C6760423FF22CE007EC71E /* primary */ = {
+			isa = PBXGroup;
+			children = (
+				B7C6760523FF22E9007EC71E /* AckP.storyboard */,
+			);
+			path = primary;
+			sourceTree = "<group>";
+		};
 		B7CA12CE23F5A11500569805 /* recent */ = {
 			isa = PBXGroup;
 			children = (
@@ -1859,7 +1881,6 @@
 				B7215A6D23F5D57D00B86274 /* hRecent.storyboard in Resources */,
 				B7021F3023FDFC5200C9346A /* FairiesL.storyboard in Resources */,
 				B7021F5423FE11E400C9346A /* EditOtherP.storyboard in Resources */,
-				B7BE124323EB015700ADA499 /* Ack.storyboard in Resources */,
 				B7BE129723EB0A8B00ADA499 /* Evaluate.storyboard in Resources */,
 				B7021F2023FDC8EC00C9346A /* HistoricL.storyboard in Resources */,
 				B7021F2A23FDEE8200C9346A /* ConfigL.storyboard in Resources */,
@@ -1877,6 +1898,7 @@
 				B7021F3723FE02FA00C9346A /* InfoL.storyboard in Resources */,
 				B7021F1E23FDC8D900C9346A /* HistoricP.storyboard in Resources */,
 				B7021F5223FE11D300C9346A /* EditOtherL.storyboard in Resources */,
+				B7C6760823FF22F8007EC71E /* AckL.storyboard in Resources */,
 				B7C6760023FF1E80007EC71E /* ChallengeP.storyboard in Resources */,
 				B7C675FE23FF1E6E007EC71E /* ChallengeL.storyboard in Resources */,
 				B7021F1823FDBA2B00C9346A /* ActualL.storyboard in Resources */,
@@ -1884,6 +1906,7 @@
 				B7021F8A23FE5A3300C9346A /* IapetusP.storyboard in Resources */,
 				B7021F7A23FE531700C9346A /* DetailL.storyboard in Resources */,
 				B7021F4E23FE114100C9346A /* Skin.xib in Resources */,
+				B7C6760623FF22E9007EC71E /* AckP.storyboard in Resources */,
 				B7021F8223FE59B900C9346A /* CalypsoL.storyboard in Resources */,
 				B768473323F54BCE00F55D4A /* dTschess.storyboard in Resources */,
 				B768470723F4FAD400F55D4A /* Invalid.storyboard in Resources */,
@@ -2101,6 +2124,7 @@
 				B7BE126723EB05B200ADA499 /* Detail.swift in Sources */,
 				B7BE126123EB04B900ADA499 /* UpdateRescind.swift in Sources */,
 				B7BE122323EAD92B00ADA499 /* Historic.swift in Sources */,
+				B7C6760A23FF230B007EC71E /* SelectAck.swift in Sources */,
 				B7BE116723EA73DC00ADA499 /* OtherMenuCell.swift in Sources */,
 				B7BE11A223EA965B00ADA499 /* HorizontalVertical.swift in Sources */,
 				B7BE116A23EA74AE00ADA499 /* RequestHistoric.swift in Sources */,
