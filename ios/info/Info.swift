@@ -62,8 +62,8 @@ class Info: UIViewController, UITabBarDelegate, UIPopoverPresentationControllerD
     
     @IBAction func backButtonClick(_ sender: Any) {
         DispatchQueue.main.async {
-            let storyboard: UIStoryboard = UIStoryboard(name: "Fairies", bundle: nil)
-            let viewController = storyboard.instantiateViewController(withIdentifier: "Fairies") as! Fairies
+            let storyboard: UIStoryboard = UIStoryboard(name: "FairiesL", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier: "FairiesL") as! Fairies
             viewController.setPlayer(player: self.player!)
             UIApplication.shared.keyWindow?.rootViewController = viewController
         }
@@ -73,16 +73,16 @@ class Info: UIViewController, UITabBarDelegate, UIPopoverPresentationControllerD
         switch item.tag {
         case 0:
             DispatchQueue.main.async {
-                let storyboard: UIStoryboard = UIStoryboard(name: "Fairies", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "Fairies") as! Fairies
+                let storyboard: UIStoryboard = UIStoryboard(name: "FairiesL", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "FairiesL") as! Fairies
                 viewController.setPlayer(player: self.player!)
                 UIApplication.shared.keyWindow?.rootViewController = viewController
             }
             return
         default:
             DispatchQueue.main.async {
-                let storyboard: UIStoryboard = UIStoryboard(name: "Home", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "Home") as! Home
+                let storyboard: UIStoryboard = UIStoryboard(name: "HomeL", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "HomeL") as! Home
                 viewController.setPlayer(player: self.player!)
                 UIApplication.shared.keyWindow?.rootViewController = viewController}
         }
