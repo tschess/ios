@@ -95,16 +95,11 @@ class ActualTable: UITableViewController, SwipeTableViewCellDelegate {
                 
                 let game = self.gameMenuTableList[indexPath.row]
                 let playerOther: EntityPlayer = game.getPlayerOther(username: self.playerSelf!.username)
-                
-                //            print("ACK")
-                let storyboard: UIStoryboard = UIStoryboard(name: "Ack", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "Ack") as! Ack
-                viewController.setPlayerOther(playerOther: playerOther)
-                viewController.setPlayer(player: self.playerSelf!)
-                viewController.setPlayerSelf(playerSelf: self.playerSelf!)
-                viewController.setGameTschess(gameTschess: game)
-                
-                UIApplication.shared.keyWindow?.rootViewController = viewController
+                DispatchQueue.main.async {
+                    let screenSize: CGRect = UIScreen.main.bounds
+                    let height = screenSize.height
+                    SelectAck().execute(selection: Int.random(in: 0...3), playerSelf: self.playerSelf!, playerOther: playerOther, game: game, height: height)
+                }
             }
             ackAction.backgroundColor = .green
             if #available(iOS 13.0, *) {
@@ -135,9 +130,7 @@ class ActualTable: UITableViewController, SwipeTableViewCellDelegate {
             }
         }
         rescind.backgroundColor = .orange
-        if #available(iOS 13.0, *) {
-            rescind.image = UIImage(systemName: "xmark.rectangle.fill")!
-        }
+        rescind.image = UIImage(named: "close_w")!
         return [rescind]
     }
     
@@ -152,40 +145,31 @@ class ActualTable: UITableViewController, SwipeTableViewCellDelegate {
         if(game.status == "ONGOING"){
             cell.timeIndicatorLabel.text = game.getLabelTextDate(update: true)
             if(game.getInboundGame(username: self.playerSelf!.username)){
-                //if #available(iOS 13.0, *) {
-                //let image = UIImage(systemName: "gamecontroller.fill")!
+                
                 let image = UIImage(named: "turn.on")!
                 cell.actionImageView.image = image.withRenderingMode(.alwaysTemplate)
                 cell.actionImageView.tintColor = .black
-                //}
                 return cell
             }
-            //if #available(iOS 13.0, *) {
-            //let image = UIImage(systemName: "gamecontroller")!
+           
             let image = UIImage(named: "turn.off")!
             cell.actionImageView.image = image.withRenderingMode(.alwaysTemplate)
             cell.actionImageView.tintColor = .black
-            //}
             return cell
         }
         if(game.status == "PROPOSED"){
             cell.timeIndicatorLabel.text = game.getLabelTextDate(update: false)
             if(game.getInboundInvitation(username: self.playerSelf!.username)){
-                //if #available(iOS 13.0, *) {
+               
                 cell.actionImageView.tintColor = .black
-                //let image = UIImage(systemName: "tray.and.arrow.down")!
                 let image = UIImage(named: "inbound")!
                 cell.actionImageView.image = image.withRenderingMode(.alwaysTemplate)
-                //}
-                
                 return cell
             }
-            //if #available(iOS 13.0, *) {
+           
             cell.actionImageView.tintColor = .black
-            //let image = UIImage(systemName: "tray.and.arrow.up")!
             let image = UIImage(named: "outbound")!
             cell.actionImageView.image = image.withRenderingMode(.alwaysTemplate)
-            //}
         }
         return cell
     }

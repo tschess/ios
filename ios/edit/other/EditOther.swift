@@ -545,13 +545,9 @@ extension EditOther: UICollectionViewDelegate {
         }
         if(self.BACK == "ACK"){
             DispatchQueue.main.async {
-                let storyboard: UIStoryboard = UIStoryboard(name: "AckL", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "AckL") as! Ack
-                viewController.setPlayerSelf(playerSelf: self.playerSelf!)
-                viewController.setPlayerOther(playerOther: self.playerOther!)
-                viewController.setGameTschess(gameTschess: self.gameTschess!)
-                viewController.setSelection(selection: self.selection!)
-                UIApplication.shared.keyWindow?.rootViewController = viewController
+                let screenSize: CGRect = UIScreen.main.bounds
+                let height = screenSize.height
+                SelectAck().execute(selection: self.selection!, playerSelf: self.playerSelf!, playerOther: self.playerOther!, game: self.gameTschess!, height: height)
             }
             return
         }
