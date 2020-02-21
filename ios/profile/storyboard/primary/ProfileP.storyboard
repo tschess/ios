@@ -250,7 +250,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="eth" translatesAutoresizingMaskIntoConstraints="NO" id="pXj-06-TZZ">
-                                            <rect key="frame" x="8" y="9.6666666666666643" width="45" height="45"/>
+                                            <rect key="frame" x="361" y="9.6666666666666643" width="45" height="45"/>
                                             <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="45" id="Wfm-4Y-AG9"/>
@@ -269,7 +269,7 @@
                                     </subviews>
                                     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
-                                        <constraint firstItem="pXj-06-TZZ" firstAttribute="leading" secondItem="fhY-kg-IUt" secondAttribute="leading" constant="8" id="210-WL-DFz"/>
+                                        <constraint firstItem="pXj-06-TZZ" firstAttribute="trailing" secondItem="fhY-kg-IUt" secondAttribute="trailing" constant="-8" id="210-WL-DFz"/>
                                         <constraint firstItem="H8g-9w-PaC" firstAttribute="leading" secondItem="fhY-kg-IUt" secondAttribute="leading" constant="8" id="SdP-Ka-OGx"/>
                                         <constraint firstItem="pXj-06-TZZ" firstAttribute="centerY" secondItem="fhY-kg-IUt" secondAttribute="centerY" id="h0h-iE-Vz3"/>
                                         <constraint firstAttribute="trailing" secondItem="H8g-9w-PaC" secondAttribute="trailing" constant="8" id="iMQ-T6-XL5"/>
@@ -297,7 +297,7 @@
     <resources>
         <image name="arrow.down" catalog="system" width="60" height="64"/>
         <image name="avatar_default" width="320" height="320"/>
-        <image name="back.grey" width="16" height="16"/>
+        <image name="back.grey" width="36" height="27"/>
         <image name="back.white" width="36" height="27"/>
         <image name="eth" width="256" height="417"/>
     </resources>

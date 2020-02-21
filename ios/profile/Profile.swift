@@ -107,10 +107,8 @@ class Profile: UIViewController, UITabBarDelegate, UINavigationControllerDelegat
         switch menuSelectionIndex {
         case 0://skins
             DispatchQueue.main.async {
-                let storyboard: UIStoryboard = UIStoryboard(name: "SkinsL", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "SkinsL") as! Skins
-                viewController.setPlayer(player: self.player!)
-                UIApplication.shared.keyWindow?.rootViewController = viewController
+                let height: CGFloat = self.view.frame.size.height
+                SelectSkins().execute(player: self.player!, height: height)
             }
             return
         case 1:
@@ -135,22 +133,15 @@ class Profile: UIViewController, UITabBarDelegate, UINavigationControllerDelegat
     
     @IBAction func backButtonClick(_ sender: Any) {
         DispatchQueue.main.async {
-            let storyboard: UIStoryboard = UIStoryboard(name: "HomeL", bundle: nil)
-            let viewController = storyboard.instantiateViewController(withIdentifier: "HomeL") as! Home
-            viewController.setPlayer(player: self.player!)
-            UIApplication.shared.keyWindow?.rootViewController = viewController
+            let height: CGFloat = self.view.frame.size.height
+            SelectHome().execute(player: self.player!, height: height)
         }
     }
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-        switch item.tag {
-        default:
-            DispatchQueue.main.async {
-                let storyboard: UIStoryboard = UIStoryboard(name: "HomeL", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "HomeL") as! Home
-                viewController.setPlayer(player: self.player!)
-                UIApplication.shared.keyWindow?.rootViewController = viewController
-            }
+        DispatchQueue.main.async {
+            let height: CGFloat = self.view.frame.size.height
+            SelectHome().execute(player: self.player!, height: height)
         }
     }
     

@@ -49,41 +49,10 @@ class Skins: UIViewController, UITabBarDelegate {
     }
     
     @objc func onDidReceiveData(_ notification: NSNotification) {
-        let skinSelection = notification.userInfo!["skin_selection"] as! EntitySkin
-        
-        DispatchQueue.main.async {
-            switch skinSelection.getName() {
-            case "HYPERION":
-                let storyboard: UIStoryboard = UIStoryboard(name: "DetailL", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "DetailL") as! Detail
-                viewController.setPlayer(player: self.player!)
-                viewController.setSkin(skin: skinSelection)
-                UIApplication.shared.keyWindow?.rootViewController = viewController
-                return
-            case "CALYPSO":
-                let storyboard: UIStoryboard = UIStoryboard(name: "DetailL", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "DetailL") as! Detail
-                viewController.setPlayer(player: self.player!)
-                viewController.setSkin(skin: skinSelection)
-                UIApplication.shared.keyWindow?.rootViewController = viewController
-                return
-            case "NEPTUNE":
-                let storyboard: UIStoryboard = UIStoryboard(name: "DetailL", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "DetailL") as! Detail
-                viewController.setPlayer(player: self.player!)
-                viewController.setSkin(skin: skinSelection)
-                UIApplication.shared.keyWindow?.rootViewController = viewController
-                return
-            case "IAPETUS":
-                let storyboard: UIStoryboard = UIStoryboard(name: "DetailL", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "DetailL") as! Detail
-                viewController.setPlayer(player: self.player!)
-                viewController.setSkin(skin: skinSelection)
-                UIApplication.shared.keyWindow?.rootViewController = viewController
-                return
-            default:
-                return
-            }
+        let skin = notification.userInfo!["skin_selection"] as! EntitySkin
+        DispatchQueue.main.async() {
+            let height: CGFloat = self.view.frame.size.height
+            SelectDetail().execute(player: self.player!, skin: skin, height: height)
         }
         
     }
@@ -102,23 +71,16 @@ class Skins: UIViewController, UITabBarDelegate {
     }
     
     @IBAction func backButtonClick(_ sender: Any) {
-        DispatchQueue.main.async() {
-            let profileStoryboard: UIStoryboard = UIStoryboard(name: "ProfileL", bundle: nil)
-            let profileViewController = profileStoryboard.instantiateViewController(withIdentifier: "ProfileL") as! Profile
-            profileViewController.setPlayer(player: self.player!)
-            UIApplication.shared.keyWindow?.rootViewController = profileViewController
+       DispatchQueue.main.async() {
+            let height: CGFloat = self.view.frame.size.height
+            SelectProfile().execute(player: self.player!, height: height)
         }
     }
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-        switch item.tag {
-        default:
-            DispatchQueue.main.async() {
-                let profileStoryboard: UIStoryboard = UIStoryboard(name: "ProfileL", bundle: nil)
-                let profileViewController = profileStoryboard.instantiateViewController(withIdentifier: "ProfileL") as! Profile
-                profileViewController.setPlayer(player: self.player!)
-                UIApplication.shared.keyWindow?.rootViewController = profileViewController
-            }
+        DispatchQueue.main.async() {
+            let height: CGFloat = self.view.frame.size.height
+            SelectProfile().execute(player: self.player!, height: height)
         }
     }
 }
