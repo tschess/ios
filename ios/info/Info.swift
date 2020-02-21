@@ -62,10 +62,8 @@ class Info: UIViewController, UITabBarDelegate, UIPopoverPresentationControllerD
     
     @IBAction func backButtonClick(_ sender: Any) {
         DispatchQueue.main.async {
-            let storyboard: UIStoryboard = UIStoryboard(name: "FairiesL", bundle: nil)
-            let viewController = storyboard.instantiateViewController(withIdentifier: "FairiesL") as! Fairies
-            viewController.setPlayer(player: self.player!)
-            UIApplication.shared.keyWindow?.rootViewController = viewController
+            let height: CGFloat = self.view.frame.size.height
+            SelectFairies().execute(player: self.player!, height: height)
         }
     }
     
@@ -73,21 +71,15 @@ class Info: UIViewController, UITabBarDelegate, UIPopoverPresentationControllerD
         switch item.tag {
         case 0:
             DispatchQueue.main.async {
-                let storyboard: UIStoryboard = UIStoryboard(name: "FairiesL", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "FairiesL") as! Fairies
-                viewController.setPlayer(player: self.player!)
-                UIApplication.shared.keyWindow?.rootViewController = viewController
+                let height: CGFloat = self.view.frame.size.height
+                SelectFairies().execute(player: self.player!, height: height)
             }
             return
         default:
-            let height = self.view.frame.size.height
-            SelectHome().execute(player: self.player!, height: height)
-            //DispatchQueue.main.async {
-            //let storyboard: UIStoryboard = UIStoryboard(name: "HomeL", bundle: nil)
-            //let viewController = storyboard.instantiateViewController(withIdentifier: "HomeL") as! Home
-            //viewController.setPlayer(player: self.player!)
-            //UIApplication.shared.keyWindow?.rootViewController = viewController
-            //}
+            DispatchQueue.main.async {
+                let height: CGFloat = self.view.frame.size.height
+                SelectHome().execute(player: self.player!, height: height)
+            }
         }
     }
     
