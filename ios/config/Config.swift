@@ -109,33 +109,24 @@ class Config: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate, U
     }
     
     @objc func editCollectionView0() {
-        let storyboard: UIStoryboard = UIStoryboard(name: "EditSelfL", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "EditSelfL") as! EditSelf
-        viewController.setPlayerSelf(playerSelf: self.playerSelf!)
-        viewController.setTitleText(titleText: "config. 0̸")
-        viewController.setSelection(selection: 0)
-        viewController.setBACK(BACK: "CONFIG")
-        UIApplication.shared.keyWindow?.rootViewController = viewController
+        DispatchQueue.main.async {
+            let height: CGFloat = self.view.frame.size.height
+            SelectEditSelf().execute(player: self.playerSelf!, title: "config. 0̸", select: 0, height: height)
+        }
     }
     
     @objc func editCollectionView1() {
-        let storyboard: UIStoryboard = UIStoryboard(name: "EditSelfL", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "EditSelfL") as! EditSelf
-        viewController.setPlayerSelf(playerSelf: self.playerSelf!)
-        viewController.setTitleText(titleText: "config. 1")
-        viewController.setSelection(selection: 1)
-        viewController.setBACK(BACK: "CONFIG")
-        UIApplication.shared.keyWindow?.rootViewController = viewController
+        DispatchQueue.main.async {
+            let height: CGFloat = self.view.frame.size.height
+            SelectEditSelf().execute(player: self.playerSelf!, title: "config. 1", select: 1, height: height)
+        }
     }
     
     @objc func editCollectionView2() {
-        let storyboard: UIStoryboard = UIStoryboard(name: "EditSelfL", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "EditSelfL") as! EditSelf
-        viewController.setPlayerSelf(playerSelf: self.playerSelf!)
-        viewController.setTitleText(titleText: "config. 2")
-        viewController.setSelection(selection: 2)
-        viewController.setBACK(BACK: "CONFIG")
-        UIApplication.shared.keyWindow?.rootViewController = viewController
+        DispatchQueue.main.async {
+            let height: CGFloat = self.view.frame.size.height
+            SelectEditSelf().execute(player: self.playerSelf!, title: "config. 2", select: 2, height: height)
+        }
     }
     
     public func renderHeader() {
@@ -218,25 +209,15 @@ extension Config: UICollectionViewDataSource {
             
             if (indexPath.row % 2 == 0) {
                 if (indexPath.row / 8 == 0) {
-                    //cell.backgroundColor = UIColor(red: 220/255.0, green: 0/255.0, blue: 70/255.0, alpha: 0.65)
                     cell.backgroundColor = .black
-                    //cell.backgroundColor = .black
-                    //cell.alpha = 0.01
                 } else {
-                    //cell.backgroundColor = UIColor(red: 250/255.0, green: 250/255.0, blue: 250/255.0, alpha: 0.88)
                     cell.backgroundColor = .white
-                    //cell.alpha = 1
                 }
             } else {
                 if (indexPath.row / 8 == 0) {
-                    //cell.backgroundColor = UIColor(red: 250/255.0, green: 250/255.0, blue: 250/255.0, alpha: 0.88)
                     cell.backgroundColor = .white
-                    //cell.alpha = 1
                 } else {
-                    //cell.backgroundColor = UIColor(red: 220/255.0, green: 0/255.0, blue: 70/255.0, alpha: 0.65)
                     cell.backgroundColor = .black
-                    //cell.backgroundColor = .black
-                    //cell.alpha = 0.01
                 }
             }
             
@@ -257,18 +238,14 @@ extension Config: UICollectionViewDataSource {
             
             if (indexPath.row % 2 == 0) {
                 if (indexPath.row / 8 == 0) {
-                    //cell.backgroundColor = UIColor(red: 220/255.0, green: 0/255.0, blue: 70/255.0, alpha: 0.65)
                     cell.backgroundColor = .black
                 } else {
-                    //cell.backgroundColor = UIColor(red: 250/255.0, green: 250/255.0, blue: 250/255.0, alpha: 0.88)
                     cell.backgroundColor = .white
                 }
             } else {
                 if (indexPath.row / 8 == 0) {
-                    //cell.backgroundColor = UIColor(red: 250/255.0, green: 250/255.0, blue: 250/255.0, alpha: 0.88)
                     cell.backgroundColor = .white
                 } else {
-                    //cell.backgroundColor = UIColor(red: 220/255.0, green: 0/255.0, blue: 70/255.0, alpha: 0.65)
                     cell.backgroundColor = .black
                 }
             }
@@ -285,23 +262,18 @@ extension Config: UICollectionViewDataSource {
             cell.imageView.center = CGPoint(x: cell.bounds.size.width/2, y: cell.bounds.size.height/2)
             return cell
         }
-        //if collectionView == self.configCollectionView2 {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "square", for: indexPath) as! SquareCell
         
         if (indexPath.row % 2 == 0) {
             if (indexPath.row / 8 == 0) {
-                //cell.backgroundColor = UIColor(red: 220/255.0, green: 0/255.0, blue: 70/255.0, alpha: 0.65)
                 cell.backgroundColor = .black
             } else {
-                //cell.backgroundColor = UIColor(red: 250/255.0, green: 250/255.0, blue: 250/255.0, alpha: 0.88)
                 cell.backgroundColor = .white
             }
         } else {
             if (indexPath.row / 8 == 0) {
-                //cell.backgroundColor = UIColor(red: 250/255.0, green: 250/255.0, blue: 250/255.0, alpha: 0.88)
                 cell.backgroundColor = .white
             } else {
-                //cell.backgroundColor = UIColor(red: 220/255.0, green: 0/255.0, blue: 70/255.0, alpha: 0.65)
                 cell.backgroundColor = .black
             }
         }

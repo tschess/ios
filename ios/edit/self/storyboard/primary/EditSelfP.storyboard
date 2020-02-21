@@ -11,7 +11,7 @@
         <!--Edit Self-->
         <scene sceneID="Uso-HT-uji">
             <objects>
-                <viewController storyboardIdentifier="EditSelf" useStoryboardIdentifierAsRestorationIdentifier="YES" id="DAE-jB-YvD" customClass="EditSelf" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EditSelfP" useStoryboardIdentifierAsRestorationIdentifier="YES" id="DAE-jB-YvD" customClass="EditSelf" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="9gv-Ja-N4g">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -286,7 +286,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="beI-VC-LOn" userLabel="SplitView1">
-                                        <rect key="frame" x="0.0" y="146" width="414" height="216"/>
+                                        <rect key="frame" x="0.0" y="146" width="414" height="444"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R1c-Gi-vvO" userLabel="DropViewTop1">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="46"/>
@@ -388,28 +388,18 @@
                                             <constraint firstItem="nQP-5X-zQQ" firstAttribute="top" secondItem="R1c-Gi-vvO" secondAttribute="bottom" id="61C-qD-EoI"/>
                                             <constraint firstItem="R1c-Gi-vvO" firstAttribute="top" secondItem="beI-VC-LOn" secondAttribute="top" id="UfX-i4-g6t"/>
                                             <constraint firstItem="nQP-5X-zQQ" firstAttribute="leading" secondItem="beI-VC-LOn" secondAttribute="leading" id="Um4-Rv-9hq"/>
-                                            <constraint firstAttribute="height" constant="216" id="ZFw-IX-dWv"/>
                                             <constraint firstAttribute="trailing" secondItem="R1c-Gi-vvO" secondAttribute="trailing" id="lGU-tw-QuF"/>
                                             <constraint firstItem="R1c-Gi-vvO" firstAttribute="leading" secondItem="beI-VC-LOn" secondAttribute="leading" id="wwS-ZN-TJk"/>
-                                        </constraints>
-                                    </view>
-                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d9N-gl-keq" userLabel="SplitView2">
-                                        <rect key="frame" x="0.0" y="482" width="414" height="108"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="228" id="Z8B-XP-7yQ"/>
                                         </constraints>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="beI-VC-LOn" secondAttribute="trailing" id="AoL-Df-78o"/>
+                                    <constraint firstAttribute="bottom" secondItem="beI-VC-LOn" secondAttribute="bottom" id="IhO-Zb-Efs"/>
                                     <constraint firstItem="beI-VC-LOn" firstAttribute="leading" secondItem="9wh-i1-2Qp" secondAttribute="leading" id="M1e-dq-05x"/>
                                     <constraint firstItem="FXw-uz-53m" firstAttribute="leading" secondItem="9wh-i1-2Qp" secondAttribute="leading" id="PFW-PP-AbP"/>
-                                    <constraint firstItem="d9N-gl-keq" firstAttribute="leading" secondItem="9wh-i1-2Qp" secondAttribute="leading" id="Q5l-xX-qFe"/>
-                                    <constraint firstItem="d9N-gl-keq" firstAttribute="top" secondItem="beI-VC-LOn" secondAttribute="bottom" id="Zux-4e-9Yk"/>
                                     <constraint firstAttribute="trailing" secondItem="FXw-uz-53m" secondAttribute="trailing" id="erJ-Td-iqc"/>
-                                    <constraint firstAttribute="trailing" secondItem="d9N-gl-keq" secondAttribute="trailing" id="nE0-Tk-IT7"/>
                                     <constraint firstItem="FXw-uz-53m" firstAttribute="top" secondItem="9wh-i1-2Qp" secondAttribute="top" id="qUS-st-M6R"/>
                                     <constraint firstItem="beI-VC-LOn" firstAttribute="top" secondItem="FXw-uz-53m" secondAttribute="bottom" id="t6t-Sa-QhY"/>
                                 </constraints>
@@ -474,10 +464,7 @@
                         <outlet property="headerView" destination="cqz-eh-zNQ" id="Pun-9r-7pi"/>
                         <outlet property="notificationLabel" destination="GRP-if-aEY" id="sHO-vv-XsK"/>
                         <outlet property="rankLabel" destination="B8i-Jr-YEY" id="OuQ-lX-Qg2"/>
-                        <outlet property="splitView2" destination="d9N-gl-keq" id="FXM-ym-7MW"/>
                         <outlet property="splitViewHeight0" destination="qn9-WJ-rmO" id="USe-ic-XXQ"/>
-                        <outlet property="splitViewHeight1" destination="ZFw-IX-dWv" id="GcR-tZ-lxO"/>
-                        <outlet property="splitViewHeight2" destination="Z8B-XP-7yQ" id="hhb-dK-EFH"/>
                         <outlet property="tabBarMenu" destination="lR1-2A-YPc" id="CDf-K6-4Hh"/>
                         <outlet property="titleLabel" destination="rh3-GT-zds" id="CUA-nm-eYa"/>
                         <outlet property="totalPointLabel" destination="bnj-gY-QC6" id="Jkc-fl-nvp"/>
