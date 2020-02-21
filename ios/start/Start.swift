@@ -49,15 +49,9 @@ class Start: UIViewController, UITextFieldDelegate {
         RequestLogin().execute(requestPayload: requestPayload) { (player) in
             if let player = player {
                 DispatchQueue.main.async {
-                    let height = self.view.frame.size.height
+                    let height: CGFloat = self.view.frame.size.height
                     SelectHome().execute(player: player, height: height)
                 }
-                //DispatchQueue.main.async {
-                    //let storyboard: UIStoryboard = UIStoryboard(name: "HomeL", bundle: nil)
-                    //let viewController = storyboard.instantiateViewController(withIdentifier: "HomeL") as! Home
-                    //viewController.setPlayer(player: player)
-                    //UIApplication.shared.keyWindow?.rootViewController = viewController
-                //}
                 return
             }
             DispatchQueue.main.async {
@@ -120,15 +114,10 @@ class Start: UIViewController, UITextFieldDelegate {
         ]
         RequestCreate().execute(requestPayload: requestPayload) { (player) in
             if let player = player {
-                let height = self.view.frame.size.height
-                SelectHome().execute(player: player, height: height)
-                //DispatchQueue.main.async {
-                    //let storyboard: UIStoryboard = UIStoryboard(name: "Home", bundle: nil)
-                    //let viewController = storyboard.instantiateViewController(withIdentifier: "Home") as! Home
-                    //viewController.setPlayer(player: player)
-                    //UIApplication.shared.keyWindow?.rootViewController = viewController
-                    //return
-                //}
+                DispatchQueue.main.async {
+                    let height: CGFloat = self.view.frame.size.height
+                    SelectHome().execute(player: player, height: height)
+                }
                 return
             }
             DispatchQueue.main.async {

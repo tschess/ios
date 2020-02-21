@@ -23,14 +23,8 @@ class Init: UIViewController {
                 return
             }
             sleep(1)
-            //DispatchQueue.main.async {
-                //let storyboard: UIStoryboard = UIStoryboard(name: "HomeL", bundle: nil)
-                //let viewController = storyboard.instantiateViewController(withIdentifier: "HomeL") as! Home
-                //viewController.setPlayer(player: result!)
-                //UIApplication.shared.keyWindow?.rootViewController = viewController
-            //}
             DispatchQueue.main.async {
-                let height = self.view.frame.size.height
+                let height: CGFloat = self.view.frame.size.height
                 SelectHome().execute(player: result!, height: height)
             }
         }
