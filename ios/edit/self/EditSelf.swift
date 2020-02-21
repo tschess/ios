@@ -515,11 +515,9 @@ extension EditSelf: UICollectionViewDelegate {
     }
     
     @IBAction func backButtonClick(_ sender: Any) {
-        DispatchQueue.main.async() {
-            let storyboard: UIStoryboard = UIStoryboard(name: "ConfigL", bundle: nil)
-            let viewController = storyboard.instantiateViewController(withIdentifier: "ConfigL") as! Config
-            viewController.setPlayerSelf(playerSelf: self.playerSelf!)
-            UIApplication.shared.keyWindow?.rootViewController = viewController
+        DispatchQueue.main.async {
+            let height: CGFloat = self.view.frame.size.height
+            SelectConfig().execute(player: self.playerSelf!, height: height)
         }
     }
     
@@ -529,7 +527,7 @@ extension EditSelf: UICollectionViewDelegate {
         switch item.tag {
         case 0:
             self.backButtonClick("~")
-            
+            return
         default:
             DispatchQueue.main.async() {
                 self.activityIndicator!.isHidden = false
@@ -541,14 +539,20 @@ extension EditSelf: UICollectionViewDelegate {
             let updateConfig = ["id": id, "config": config, "index": self.selection!] as [String: Any]
             
             UpdateConfig().execute(requestPayload: updateConfig) { (result) in
-                if result == nil {
-                    print("error!") // print a popup
+                if result == result {
+                    DispatchQueue.main.async() {
+                        self.activityIndicator!.isHidden = true
+                        self.activityIndicator!.stopAnimating()
+                        self.playerSelf = result!
+                        self.backButtonClick("~")
+                    }
                 }
+                //ERROR
                 DispatchQueue.main.async() {
-                    self.activityIndicator!.isHidden = true
-                    self.activityIndicator!.stopAnimating()
+                    self.activityIndicator!.isHidden = false
+                    self.activityIndicator!.startAnimating()
+                    self.backButtonClick("~")
                 }
-                self.playerSelf = result!
             }
         }
     }

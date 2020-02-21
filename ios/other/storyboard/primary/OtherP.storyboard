@@ -11,7 +11,7 @@
         <!--Other-->
         <scene sceneID="Uso-HT-uji">
             <objects>
-                <viewController storyboardIdentifier="Other" useStoryboardIdentifierAsRestorationIdentifier="YES" id="DAE-jB-YvD" customClass="Other" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="OtherP" useStoryboardIdentifierAsRestorationIdentifier="YES" id="DAE-jB-YvD" customClass="Other" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="9gv-Ja-N4g">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -157,7 +157,7 @@
                                     <constraint firstAttribute="height" constant="50" id="CtS-Ad-lXP"/>
                                 </constraints>
                                 <items>
-                                    <tabBarItem tag="1" title="challenge" image="gamecontroller" catalog="system" selectedImage="gamecontroller.fill" id="fjf-cy-wGx">
+                                    <tabBarItem tag="1" title="" image="game.grey" selectedImage="game.white" id="fjf-cy-wGx">
                                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tabBarItem>
                                 </items>
@@ -353,7 +353,7 @@
         <image name="arrow.up" catalog="system" width="60" height="64"/>
         <image name="avatar_default" width="320" height="320"/>
         <image name="avatar_inverse" width="320" height="320"/>
-        <image name="gamecontroller" catalog="system" width="64" height="40"/>
-        <image name="gamecontroller.fill" catalog="system" width="64" height="40"/>
+        <image name="game.grey" width="37" height="37"/>
+        <image name="game.white" width="37" height="37"/>
     </resources>
 </document>

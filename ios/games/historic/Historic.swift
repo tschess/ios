@@ -59,8 +59,6 @@ class Historic: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate 
             name: NSNotification.Name(rawValue: "HistoricSelection"),
             object: nil)
         
-        //^^^is this needed???
-        
         self.activityIndicator.isHidden = true
         self.renderHeader()
     }
@@ -69,17 +67,13 @@ class Historic: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate 
         switch item.tag {
         case 0:
             DispatchQueue.main.async {
-                let storyboard: UIStoryboard = UIStoryboard(name: "HomeL", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "HomeL") as! Home
-                viewController.setPlayer(player: self.playerSelf!)
-                UIApplication.shared.keyWindow?.rootViewController = viewController
+                let height: CGFloat = self.view.frame.size.height
+                SelectHome().execute(player: self.playerSelf!, height: height)
             }
         default:
-            DispatchQueue.main.async() {
-                let storyboard: UIStoryboard = UIStoryboard(name: "ActualL", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "ActualL") as! Actual
-                viewController.setPlayerSelf(playerSelf: self.playerSelf!)
-                UIApplication.shared.keyWindow?.rootViewController = viewController
+            DispatchQueue.main.async {
+                let height: CGFloat = self.view.frame.size.height
+                SelectActual().execute(player: self.playerSelf!, height: height)
             }
         }
     }
@@ -88,17 +82,14 @@ class Historic: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate 
         let gameMenuSelectionIndex = notification.userInfo!["historic_selection"] as! Int
         let game = self.historicTable!.getGameMenuTableList()[gameMenuSelectionIndex]
         
-        let skin: String = SelectorSnapshot().getSkinGame(username: self.playerSelf!.username, game: game)
-        SelectorSnapshot().snapshot(skin: skin, playerSelf: self.playerSelf!, game: game, presentor: self)
-        
+        let skin: String = SelectSnapshot().getSkinGame(username: self.playerSelf!.username, game: game)
+        SelectSnapshot().snapshot(skin: skin, playerSelf: self.playerSelf!, game: game, presentor: self)
     }
     
     @IBAction func backButtonClick(_ sender: Any) {
-        DispatchQueue.main.async() {
-            let storyboard: UIStoryboard = UIStoryboard(name: "ActualL", bundle: nil)
-            let viewController = storyboard.instantiateViewController(withIdentifier: "ActualL") as! Actual
-            viewController.setPlayerSelf(playerSelf: self.playerSelf!)
-            UIApplication.shared.keyWindow?.rootViewController = viewController
+        DispatchQueue.main.async {
+            let height: CGFloat = self.view.frame.size.height
+            SelectActual().execute(player: self.playerSelf!, height: height)
         }
     }
 }

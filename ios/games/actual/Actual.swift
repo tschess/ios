@@ -60,27 +60,21 @@ class Actual: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate {
         switch item.tag {
         case 0:
             DispatchQueue.main.async {
-                let storyboard: UIStoryboard = UIStoryboard(name: "HomeL", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "HomeL") as! Home
-                viewController.setPlayer(player: self.playerSelf!)
-                UIApplication.shared.keyWindow?.rootViewController = viewController
+                let height: CGFloat = self.view.frame.size.height
+                SelectHome().execute(player: self.playerSelf!, height: height)
             }
         default:
             DispatchQueue.main.async {
-                let storyboard: UIStoryboard = UIStoryboard(name: "HistoricL", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "HistoricL") as! Historic
-                viewController.setPlayerSelf(playerSelf: self.playerSelf!)
-                UIApplication.shared.keyWindow?.rootViewController = viewController
+                let height: CGFloat = self.view.frame.size.height
+                SelectHistoric().execute(player: self.playerSelf!, height: height)
             }
         }
     }
     
     @IBAction func backButtonClick(_ sender: Any) {
         DispatchQueue.main.async {
-            let storyboard: UIStoryboard = UIStoryboard(name: "HomeL", bundle: nil)
-            let viewController = storyboard.instantiateViewController(withIdentifier: "HomeL") as! Home
-            viewController.setPlayer(player: self.playerSelf!)
-            UIApplication.shared.keyWindow?.rootViewController = viewController
+            let height: CGFloat = self.view.frame.size.height
+            SelectHome().execute(player: self.playerSelf!, height: height)
         }
     }
 }

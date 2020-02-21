@@ -73,39 +73,27 @@ class Other: UIViewController, UITabBarDelegate {
             selector: #selector(self.onDidReceiveData(_:)),
             name: NSNotification.Name(rawValue: "OtherMenuTable"),
             object: nil)
-        
-        
     }
     
     @objc func onDidReceiveData(_ notification: NSNotification) {
         let gameMenuSelectionIndex = notification.userInfo!["other_menu_selection"] as! Int
         let game = self.otherMenuTable!.getGameMenuTableList()[gameMenuSelectionIndex]
         
-        let skin: String = SelectorSnapshot().getSkinGame(username: self.playerOther!.username, game: game)
-        SelectorSnapshot().snapshot(skin: skin, playerSelf: self.playerOther!, game: game, presentor: self)
-        
-        //let storyboard: UIStoryboard = UIStoryboard(name: "Snapshot", bundle: nil)
-        //let viewController = storyboard.instantiateViewController(withIdentifier: "Snapshot") as! Snapshot
-        //viewController.setGame(game: game)
-        //viewController.setPlayer(player: self.playerOther!)
-        //self.present(viewController, animated: false, completion: nil)
+        let skin: String = SelectSnapshot().getSkinGame(username: self.playerOther!.username, game: game)
+        SelectSnapshot().snapshot(skin: skin, playerSelf: self.playerSelf!, game: game, presentor: self)
     }
     
     @IBAction func backButtonClick(_ sender: Any) {
-        let homeStoryboard: UIStoryboard = UIStoryboard(name: "Home", bundle: nil)
-        let homeViewController = homeStoryboard.instantiateViewController(withIdentifier: "Home") as! Home
-        homeViewController.setPlayer(player: self.playerSelf!)
-        UIApplication.shared.keyWindow?.rootViewController = homeViewController
+        DispatchQueue.main.async {
+            let height: CGFloat = self.view.frame.size.height
+            SelectHome().execute(player: self.playerSelf!, height: height)
+        }
     }
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-        switch item.tag {
-        default:
-            let storyboard: UIStoryboard = UIStoryboard(name: "Challenge", bundle: nil)
-            let viewController = storyboard.instantiateViewController(withIdentifier: "Challenge") as! Challenge
-            viewController.setPlayerSelf(playerSelf: self.playerSelf!)
-            viewController.setPlayerOther(playerOther: self.playerOther!)
-            UIApplication.shared.keyWindow?.rootViewController = viewController
+        DispatchQueue.main.async {
+            let height: CGFloat = self.view.frame.size.height
+            SelectChallenge().execute(playerSelf: self.playerSelf!, playerOther: self.playerOther!, BACK: "OTHER", height: height)
         }
     }
 }

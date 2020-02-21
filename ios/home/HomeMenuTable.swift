@@ -10,18 +10,19 @@ import UIKit
 
 class HomeMenuTable: UITableViewController {
     
+    func getOther(index: Int) -> EntityPlayer {
+        return self.leaderboardList[index]
+    }
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        let playerOther = self.leaderboardList[indexPath.row]
+        let discoverSelectionDictionary: [String: Any] = ["home_menu_selection": indexPath.row]
         
-        DispatchQueue.main.async {
-            let storyboard: UIStoryboard = UIStoryboard(name: "OtherL", bundle: nil)
-            let viewController = storyboard.instantiateViewController(withIdentifier: "OtherL") as! Other
-            viewController.setPlayerSelf(playerSelf: self.player!)
-            viewController.setPlayerOther(playerOther: playerOther)
-            UIApplication.shared.keyWindow?.rootViewController = viewController
-        }
+        NotificationCenter.default.post(
+            name: NSNotification.Name(rawValue: "HomeMenuSelection"),
+            object: nil,
+            userInfo: discoverSelectionDictionary)
     }
     
     let REQUEST_PAGE_SIZE: Int
@@ -186,46 +187,23 @@ class HomeMenuTable: UITableViewController {
                     self.activityIndicator!.isHidden = true
                 }
                 if(result == nil){
-                    DispatchQueue.main.async() {
-                        let storyboard: UIStoryboard = UIStoryboard(name: "ChallengeL", bundle: nil)
-                        let viewController = storyboard.instantiateViewController(withIdentifier: "ChallengeL") as! Challenge
-                        viewController.setPlayerSelf(playerSelf: self.player!)
-                        viewController.setPlayerOther(playerOther: playerOther)
-                        viewController.setBACK(BACK: "HOME")
-                        UIApplication.shared.keyWindow?.rootViewController = viewController
+                    DispatchQueue.main.async {
+                        let height: CGFloat = self.view.frame.size.height
+                        SelectChallenge().execute(playerSelf: self.player!, playerOther: playerOther, BACK: "HOME", height: height)
                     }
                     return
                 }
                 
-                print("result.count: \(result!.count)")
+                //print("result.count: \(result!.count)")
                 if(result!.count == 0){
-                    DispatchQueue.main.async() {
-                        let storyboard: UIStoryboard = UIStoryboard(name: "ChallengeL", bundle: nil)
-                        let viewController = storyboard.instantiateViewController(withIdentifier: "ChallengeL") as! Challenge
-                        viewController.setPlayerSelf(playerSelf: self.player!)
-                        viewController.setPlayerOther(playerOther: playerOther)
-                        viewController.setBACK(BACK: "HOME")
-                        UIApplication.shared.keyWindow?.rootViewController = viewController
+                    DispatchQueue.main.async {
+                        let height: CGFloat = self.view.frame.size.height
+                        SelectChallenge().execute(playerSelf: self.player!, playerOther: playerOther, BACK: "HOME", height: height)
                     }
                     return
                 }
-                //var recentGameList =
-                
-                //let game: EntityGame = recentGameList.removeLast()
-                //let skin: String = SelectRecent().getSkinGame(username: self.player!.username, game: game)
                 SelectRecent().snapshot(playerOther: playerOther, playerSelf: self.player!, recentGameList: result!, presentor: self)
-                
-//                DispatchQueue.main.async() {
-//                    let storyboard: UIStoryboard = UIStoryboard(name: "Recent", bundle: nil)
-//                    let viewController = storyboard.instantiateViewController(withIdentifier: "Recent") as! Recent
-//                    viewController.setRecentGameList(recentGameList: result!)
-//                    viewController.setPlayerOther(playerOther: playerOther)
-//                    viewController.setPlayerSelf(playerSelf: self.player!)
-//                    //self.present(viewController, animated: false, completion: nil)
-//                    UIApplication.shared.keyWindow?.rootViewController = viewController
-//                }
             }
-            
             print("RECENT SNAPS!")
             success(true)
         })
@@ -238,13 +216,10 @@ class HomeMenuTable: UITableViewController {
         let modifyAction = UIContextualAction(style: .normal, title:  "CHALLENGE", handler: { (ac: UIContextualAction, view: UIView, success: (Bool) -> Void) in
             
             let playerOther = self.leaderboardList[indexPath.row]
-            
-            let storyboard: UIStoryboard = UIStoryboard(name: "ChallengeL", bundle: nil)
-            let viewController = storyboard.instantiateViewController(withIdentifier: "ChallengeL") as! Challenge
-            viewController.setPlayerSelf(playerSelf: self.player!)
-            viewController.setPlayerOther(playerOther: playerOther)
-            viewController.setBACK(BACK: "HOME")
-            UIApplication.shared.keyWindow?.rootViewController = viewController
+            DispatchQueue.main.async {
+                let height: CGFloat = self.view.frame.size.height
+                SelectChallenge().execute(playerSelf: self.player!, playerOther: playerOther, BACK: "HOME", height: height)
+            }
             success(true)
         })
         modifyAction.image = UIImage(named: "game.white")!

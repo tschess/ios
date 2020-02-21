@@ -55,6 +55,12 @@ class Home: UIViewController, UITabBarDelegate {
             dispLabel: self.dispLabel,
             dispImageView: self.dispImageView,
             activityIndicator: self.activityIndicator)
+        
+        NotificationCenter.default.addObserver(
+        self,
+        selector: #selector(self.onDidReceiveData(_:)),
+        name: NSNotification.Name(rawValue: "HomeMenuSelection"),
+        object: nil)
     }
     
     override func viewDidDisappear(_ animated: Bool){
@@ -141,11 +147,9 @@ class Home: UIViewController, UITabBarDelegate {
             }
         case 3:
             self.notificationTimerStop()
-            DispatchQueue.main.async() {
-                let storyboard: UIStoryboard = UIStoryboard(name: "ActualL", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "ActualL") as! Actual
-                viewController.setPlayerSelf(playerSelf: self.player!)
-                UIApplication.shared.keyWindow?.rootViewController = viewController
+            DispatchQueue.main.async {
+                let height: CGFloat = self.view.frame.size.height
+                SelectActual().execute(player: self.player!, height: height)
             }
         case 4:
             self.notificationTimerStop()
@@ -155,6 +159,19 @@ class Home: UIViewController, UITabBarDelegate {
             }
         default:
             self.notificationTimerStop()
+        }
+    }
+    
+    @objc func onDidReceiveData(_ notification: NSNotification) {
+        let menuSelectionIndex = notification.userInfo!["home_menu_selection"] as! Int
+        
+        //let playerOther = self.leaderboardList[indexPath.row]
+        //let game = self.historicTable!.getGameMenuTableList()[gameMenuSelectionIndex]
+        
+        let playerOther: EntityPlayer = self.homeMenuTable!.getOther(index: menuSelectionIndex)
+        DispatchQueue.main.async {
+            let height: CGFloat = self.view.superview!.frame.size.height
+            SelectOther().execute(playerSelf: self.player!, playerOther: playerOther, height: height)
         }
     }
 }

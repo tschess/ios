@@ -262,16 +262,20 @@ class Detail: UIViewController, UITabBarDelegate, UITextViewDelegate {
         DispatchQueue.main.async {
             switch self.skin!.getName() {
             case "HYPERION":
-                SelectorSnapshot().snapshot(skin: "HYPERION", playerSelf: self.player!, game: game, presentor: self)
+                SelectSnapshot().snapshot(skin: "HYPERION", playerSelf: self.player!, game: game, presentor: self)
+                //SelectorSnapshot().snapshot(skin: "HYPERION", playerSelf: self.player!, game: game, presentor: self)
                 return
             case "CALYPSO":
-                SelectorSnapshot().snapshot(skin: "CALYPSO", playerSelf: self.player!, game: game, presentor: self)
+                SelectSnapshot().snapshot(skin: "CALYPSO", playerSelf: self.player!, game: game, presentor: self)
+                //SelectorSnapshot().snapshot(skin: "CALYPSO", playerSelf: self.player!, game: game, presentor: self)
                 return
             case "NEPTUNE":
-                SelectorSnapshot().snapshot(skin: "NEPTUNE", playerSelf: self.player!, game: game, presentor: self)
+                SelectSnapshot().snapshot(skin: "NEPTUNE", playerSelf: self.player!, game: game, presentor: self)
+                //SelectorSnapshot().snapshot(skin: "NEPTUNE", playerSelf: self.player!, game: game, presentor: self)
                 return
             case "IAPETUS":
-                SelectorSnapshot().snapshot(skin: "IAPETUS", playerSelf: self.player!, game: game, presentor: self)
+                SelectSnapshot().snapshot(skin: "IAPETUS", playerSelf: self.player!, game: game, presentor: self)
+                //SelectorSnapshot().snapshot(skin: "IAPETUS", playerSelf: self.player!, game: game, presentor: self)
                 return
             default:
                 return

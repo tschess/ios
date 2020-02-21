@@ -208,7 +208,6 @@
 		B7C6761E23FF3A16007EC71E /* cRecentL.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7C6761D23FF3A16007EC71E /* cRecentL.storyboard */; };
 		B7C6762023FF3A26007EC71E /* iRecentL.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7C6761F23FF3A26007EC71E /* iRecentL.storyboard */; };
 		B7CA12CB23F5870000569805 /* SelectorTschess.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7CA12CA23F5870000569805 /* SelectorTschess.swift */; };
-		B7CA12CD23F5903000569805 /* SelectorSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7CA12CC23F5903000569805 /* SelectorSnapshot.swift */; };
 		B7CA12D123F5A13900569805 /* Recent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7CA12D023F5A13900569805 /* Recent.swift */; };
 		B7CB62F6237BB10800E50204 /* Start.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7CB62F5237BB10800E50204 /* Start.storyboard */; };
 		B7E6C93023EE1FBB009711B8 /* RequestTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E6C92F23EE1FBB009711B8 /* RequestTest.swift */; };
@@ -457,7 +456,6 @@
 		B7C6761D23FF3A16007EC71E /* cRecentL.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = cRecentL.storyboard; sourceTree = "<group>"; };
 		B7C6761F23FF3A26007EC71E /* iRecentL.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = iRecentL.storyboard; sourceTree = "<group>"; };
 		B7CA12CA23F5870000569805 /* SelectorTschess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectorTschess.swift; sourceTree = "<group>"; };
-		B7CA12CC23F5903000569805 /* SelectorSnapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectorSnapshot.swift; sourceTree = "<group>"; };
 		B7CA12D023F5A13900569805 /* Recent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recent.swift; sourceTree = "<group>"; };
 		B7CB62F5237BB10800E50204 /* Start.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Start.storyboard; sourceTree = "<group>"; };
 		B7E6C92F23EE1FBB009711B8 /* RequestTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestTest.swift; sourceTree = "<group>"; };
@@ -976,7 +974,6 @@
 			children = (
 				B7BE117023EA924900ADA499 /* storyboard */,
 				B7BE116E23EA91CD00ADA499 /* Snapshot.swift */,
-				B7CA12CC23F5903000569805 /* SelectorSnapshot.swift */,
 			);
 			path = snapshot;
 			sourceTree = "<group>";
@@ -2037,7 +2034,6 @@
 			files = (
 				B7BE12B323EB0D6900ADA499 /* PawnOffense.swift in Sources */,
 				B7BE12A323EB0BB800ADA499 /* Passant.swift in Sources */,
-				B7CA12CD23F5903000569805 /* SelectorSnapshot.swift in Sources */,
 				B7BE11A423EA972D00ADA499 /* Diagonal.swift in Sources */,
 				B7BE11C023EA9E3D00ADA499 /* PawnWhite.swift in Sources */,
 				B7BE11B923EA9DD400ADA499 /* BishopWhite.swift in Sources */,

@@ -160,23 +160,12 @@ class HistoricTable: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        //        let gameTableMenuItem = gameMenuTableList[indexPath.row]
-        //        if(!gameTableMenuItem.inbound!){
-        //           return nil
-        //        }
         let modifyAction = UIContextualAction(style: .normal, title:  "REMATCH", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
-            print("Update action ...")
-            
-            DispatchQueue.main.async() {
-                let storyboard: UIStoryboard = UIStoryboard(name: "ChallengeL", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "ChallengeL") as! Challenge
-                viewController.setPlayerSelf(playerSelf: self.playerSelf!)
-                viewController.setBACK(BACK: "HISTORIC")
-                let gameModel: EntityGame = self.gameMenuTableList[indexPath.row]
-                let playerOther: EntityPlayer = gameModel.getPlayerOther(username: self.playerSelf!.username)
-                
-                viewController.setPlayerOther(playerOther: playerOther)
-                UIApplication.shared.keyWindow?.rootViewController = viewController
+            let gameModel: EntityGame = self.gameMenuTableList[indexPath.row]
+            let playerOther: EntityPlayer = gameModel.getPlayerOther(username: self.playerSelf!.username)
+            DispatchQueue.main.async {
+                let height: CGFloat = self.view.frame.size.height
+                SelectChallenge().execute(playerSelf: self.playerSelf!, playerOther: playerOther, BACK: "HISTORIC", height: height)
             }
             success(true)
         })
