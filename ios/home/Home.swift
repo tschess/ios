@@ -57,10 +57,10 @@ class Home: UIViewController, UITabBarDelegate {
             activityIndicator: self.activityIndicator)
         
         NotificationCenter.default.addObserver(
-        self,
-        selector: #selector(self.onDidReceiveData(_:)),
-        name: NSNotification.Name(rawValue: "HomeMenuSelection"),
-        object: nil)
+            self,
+            selector: #selector(self.onDidReceiveData(_:)),
+            name: NSNotification.Name(rawValue: "HomeMenuSelection"),
+            object: nil)
     }
     
     override func viewDidDisappear(_ animated: Bool){
@@ -81,10 +81,8 @@ class Home: UIViewController, UITabBarDelegate {
     
     @objc func activateProfile() {
         DispatchQueue.main.async() {
-            let profileStoryboard: UIStoryboard = UIStoryboard(name: "ProfileL", bundle: nil)
-            let profileViewController = profileStoryboard.instantiateViewController(withIdentifier: "ProfileL") as! Profile
-            profileViewController.setPlayer(player: self.player!)
-            UIApplication.shared.keyWindow?.rootViewController = profileViewController
+            let height: CGFloat = self.view.frame.size.height
+            SelectProfile().execute(player: self.player!, height: height)
         }
     }
     
@@ -111,12 +109,9 @@ class Home: UIViewController, UITabBarDelegate {
             }
             DispatchQueue.main.async() {
                 self.tabBarMenu.selectedImageTintColor = UIColor.magenta
-                //if #available(iOS 13.0, *) {
-                    let notify = self.tabBarMenu.items![1]
-                    //notify.image = UIImage(named: "game.magenta")!
-                    notify.selectedImage = UIImage(named: "game.magenta")!
-                    self.tabBarMenu.selectedItem = notify
-               // }
+                let notify = self.tabBarMenu.items![1]
+                notify.selectedImage = UIImage(named: "game.magenta")!
+                self.tabBarMenu.selectedItem = notify
             }
         }
     }
@@ -133,16 +128,11 @@ class Home: UIViewController, UITabBarDelegate {
                 self.activityIndicator.startAnimating()
             }
             RequestQuick().success(id: self.player!.id) { (opponent) in
-                
                 DispatchQueue.main.async() {
                     self.activityIndicator.stopAnimating()
                     self.activityIndicator.isHidden = true
-                    
-                    let storyboard: UIStoryboard = UIStoryboard(name: "PlayL", bundle: nil)
-                    let viewController = storyboard.instantiateViewController(withIdentifier: "PlayL") as! Play
-                    viewController.setPlayerSelf(playerSelf: self.player!)
-                    viewController.setPlayerOther(playerOther: opponent!)
-                    UIApplication.shared.keyWindow?.rootViewController = viewController
+                    let height: CGFloat = self.view.frame.size.height
+                    SelectPlay().execute(playerSelf: self.player!, playerOther: opponent!, height: height)
                 }
             }
         case 3:
@@ -164,9 +154,6 @@ class Home: UIViewController, UITabBarDelegate {
     
     @objc func onDidReceiveData(_ notification: NSNotification) {
         let menuSelectionIndex = notification.userInfo!["home_menu_selection"] as! Int
-        
-        //let playerOther = self.leaderboardList[indexPath.row]
-        //let game = self.historicTable!.getGameMenuTableList()[gameMenuSelectionIndex]
         
         let playerOther: EntityPlayer = self.homeMenuTable!.getOther(index: menuSelectionIndex)
         DispatchQueue.main.async {
