@@ -62,7 +62,7 @@ class Info: UIViewController, UITabBarDelegate, UIPopoverPresentationControllerD
     
     @IBAction func backButtonClick(_ sender: Any) {
         DispatchQueue.main.async {
-            let height: CGFloat = self.view.frame.size.height
+            let height: CGFloat = UIScreen.main.bounds.height
             SelectFairies().execute(player: self.player!, height: height)
         }
     }
@@ -71,13 +71,13 @@ class Info: UIViewController, UITabBarDelegate, UIPopoverPresentationControllerD
         switch item.tag {
         case 0:
             DispatchQueue.main.async {
-                let height: CGFloat = self.view.frame.size.height
+                let height: CGFloat = UIScreen.main.bounds.height
                 SelectFairies().execute(player: self.player!, height: height)
             }
             return
         default:
             DispatchQueue.main.async {
-                let height: CGFloat = self.view.frame.size.height
+                let height: CGFloat = UIScreen.main.bounds.height
                 SelectHome().execute(player: self.player!, height: height)
             }
         }

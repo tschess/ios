@@ -85,14 +85,14 @@ class Other: UIViewController, UITabBarDelegate {
     
     @IBAction func backButtonClick(_ sender: Any) {
         DispatchQueue.main.async {
-            let height: CGFloat = self.view.frame.size.height
+            let height: CGFloat = UIScreen.main.bounds.height
             SelectHome().execute(player: self.playerSelf!, height: height)
         }
     }
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         DispatchQueue.main.async {
-            let height: CGFloat = self.view.frame.size.height
+            let height: CGFloat = UIScreen.main.bounds.height
             SelectChallenge().execute(selection: Int.random(in: 0...3), playerSelf: self.playerSelf!, playerOther: self.playerOther!, BACK: "OTHER", height: height)
         }
     }

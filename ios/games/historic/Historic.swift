@@ -67,12 +67,12 @@ class Historic: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate 
         switch item.tag {
         case 0:
             DispatchQueue.main.async {
-                let height: CGFloat = self.view.frame.size.height
+                let height: CGFloat = UIScreen.main.bounds.height
                 SelectHome().execute(player: self.playerSelf!, height: height)
             }
         default:
             DispatchQueue.main.async {
-                let height: CGFloat = self.view.frame.size.height
+                let height: CGFloat = UIScreen.main.bounds.height
                 SelectActual().execute(player: self.playerSelf!, height: height)
             }
         }
@@ -88,7 +88,7 @@ class Historic: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate 
     
     @IBAction func backButtonClick(_ sender: Any) {
         DispatchQueue.main.async {
-            let height: CGFloat = self.view.frame.size.height
+            let height: CGFloat = UIScreen.main.bounds.height
             SelectActual().execute(player: self.playerSelf!, height: height)
         }
     }

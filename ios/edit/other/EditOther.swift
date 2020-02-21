@@ -347,7 +347,7 @@ class EditOther: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate
         self.pieceCollectionView.dragDelegate = self
         
         self.pieceCollectionView.addInteraction(UIDropInteraction(delegate: self))
-        self.dropViewBottom0.addInteraction(UIDropInteraction(delegate: self))
+        //self.dropViewBottom0.addInteraction(UIDropInteraction(delegate: self))
         self.dropViewTop0.addInteraction(UIDropInteraction(delegate: self))
         self.dropViewTop1.addInteraction(UIDropInteraction(delegate: self))
         //self.splitView2.addInteraction(UIDropInteraction(delegate: self))

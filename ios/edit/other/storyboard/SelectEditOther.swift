@@ -10,7 +10,7 @@ import UIKit
 
 class SelectEditOther {
     
-    public func execute(playerSelf: EntityPlayer, playerOther: EntityPlayer, title: String, selection: Int, BACK: String, height: CGFloat) {
+    public func execute(game: EntityGame? = nil, playerSelf: EntityPlayer, playerOther: EntityPlayer, title: String, selection: Int, BACK: String, height: CGFloat) {
         if(height.isLess(than: 750)){
             let storyboard: UIStoryboard = UIStoryboard(name: "EditOtherL", bundle: nil)
             let viewController = storyboard.instantiateViewController(withIdentifier: "EditOtherL") as! EditOther
@@ -19,6 +19,9 @@ class SelectEditOther {
             viewController.setPlayerSelf(playerSelf: playerSelf)
             viewController.setSelection(selection: selection)
             viewController.setTitleText(titleText: title)
+            if(game != nil){
+                viewController.setGameTschess(gameTschess: game!)
+            }
             UIApplication.shared.keyWindow?.rootViewController = viewController
             return
         }
@@ -29,6 +32,9 @@ class SelectEditOther {
         viewController.setPlayerSelf(playerSelf: playerSelf)
         viewController.setSelection(selection: selection)
         viewController.setTitleText(titleText: title)
+        if(game != nil){
+            viewController.setGameTschess(gameTschess: game!)
+        }
         UIApplication.shared.keyWindow?.rootViewController = viewController
     }
 }

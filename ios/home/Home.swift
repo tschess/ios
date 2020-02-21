@@ -81,7 +81,7 @@ class Home: UIViewController, UITabBarDelegate {
     
     @objc func activateProfile() {
         DispatchQueue.main.async() {
-            let height: CGFloat = self.view.frame.size.height
+            let height: CGFloat = UIScreen.main.bounds.height
             SelectProfile().execute(player: self.player!, height: height)
         }
     }
@@ -131,20 +131,20 @@ class Home: UIViewController, UITabBarDelegate {
                 DispatchQueue.main.async() {
                     self.activityIndicator.stopAnimating()
                     self.activityIndicator.isHidden = true
-                    let height: CGFloat = self.view.frame.size.height
+                    let height: CGFloat = UIScreen.main.bounds.height
                     SelectPlay().execute(selection: Int.random(in: 0...3), playerSelf: self.player!, playerOther: opponent!, height: height)
                 }
             }
         case 3:
             self.notificationTimerStop()
             DispatchQueue.main.async {
-                let height: CGFloat = self.view.frame.size.height
+                let height: CGFloat = UIScreen.main.bounds.height
                 SelectActual().execute(player: self.player!, height: height)
             }
         case 4:
             self.notificationTimerStop()
             DispatchQueue.main.async {
-                let height: CGFloat = self.view.frame.size.height
+                let height: CGFloat = UIScreen.main.bounds.height
                 SelectConfig().execute(player: self.player!, height: height)
             }
         default:

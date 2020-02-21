@@ -68,7 +68,7 @@ class Fairies: UIViewController, UITabBarDelegate {
     
     @IBAction func backButtonClick(_ sender: Any) {
         DispatchQueue.main.async {
-            let height: CGFloat = self.view.frame.size.height
+            let height: CGFloat = UIScreen.main.bounds.height
             SelectConfig().execute(player: self.player!, height: height)
         }
     }
@@ -77,7 +77,7 @@ class Fairies: UIViewController, UITabBarDelegate {
         let squadUpDetailSelectionIndex = notification.userInfo!["fairies_table_selection"] as! Int
         let fairy: Fairy = squadUpAdapter!.getFairyElementList()![squadUpDetailSelectionIndex]
         DispatchQueue.main.async {
-            let height: CGFloat = self.view.frame.size.height
+            let height: CGFloat = UIScreen.main.bounds.height
             SelectInfo().execute(player: self.player!, fairy: fairy, height: height)
         }
     }
@@ -86,12 +86,12 @@ class Fairies: UIViewController, UITabBarDelegate {
         switch item.tag {
         case 1:
             DispatchQueue.main.async {
-                let height: CGFloat = self.view.frame.size.height
+                let height: CGFloat = UIScreen.main.bounds.height
                 SelectHome().execute(player: self.player!, height: height)
             }
         default:
             DispatchQueue.main.async {
-                let height: CGFloat = self.view.frame.size.height
+                let height: CGFloat = UIScreen.main.bounds.height
                 SelectConfig().execute(player: self.player!, height: height)
             }
         }

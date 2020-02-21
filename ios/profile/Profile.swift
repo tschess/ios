@@ -107,7 +107,7 @@ class Profile: UIViewController, UITabBarDelegate, UINavigationControllerDelegat
         switch menuSelectionIndex {
         case 0://skins
             DispatchQueue.main.async {
-                let height: CGFloat = self.view.frame.size.height
+                let height: CGFloat = UIScreen.main.bounds.height
                 SelectSkins().execute(player: self.player!, height: height)
             }
             return
@@ -133,14 +133,14 @@ class Profile: UIViewController, UITabBarDelegate, UINavigationControllerDelegat
     
     @IBAction func backButtonClick(_ sender: Any) {
         DispatchQueue.main.async {
-            let height: CGFloat = self.view.frame.size.height
+            let height: CGFloat = UIScreen.main.bounds.height
             SelectHome().execute(player: self.player!, height: height)
         }
     }
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         DispatchQueue.main.async {
-            let height: CGFloat = self.view.frame.size.height
+            let height: CGFloat = UIScreen.main.bounds.height
             SelectHome().execute(player: self.player!, height: height)
         }
     }

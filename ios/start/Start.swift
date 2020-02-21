@@ -49,7 +49,7 @@ class Start: UIViewController, UITextFieldDelegate {
         RequestLogin().execute(requestPayload: requestPayload) { (player) in
             if let player = player {
                 DispatchQueue.main.async {
-                    let height: CGFloat = self.view.frame.size.height
+                    let height: CGFloat = UIScreen.main.bounds.height
                     SelectHome().execute(player: player, height: height)
                 }
                 return
@@ -115,7 +115,7 @@ class Start: UIViewController, UITextFieldDelegate {
         RequestCreate().execute(requestPayload: requestPayload) { (player) in
             if let player = player {
                 DispatchQueue.main.async {
-                    let height: CGFloat = self.view.frame.size.height
+                    let height: CGFloat = UIScreen.main.bounds.height
                     SelectHome().execute(player: player, height: height)
                 }
                 return
@@ -172,16 +172,16 @@ class Start: UIViewController, UITextFieldDelegate {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        let totalWide = self.view.frame.size.width
-        let totalHigh = self.view.frame.size.height
+        let width = UIScreen.main.bounds.width
+        let height: CGFloat = UIScreen.main.bounds.height
         
-        self.titleLabelHeight.constant = totalHigh * 0.111
+        self.titleLabelHeight.constant = height * 0.111
         
-        self.logoHeight.constant = totalHigh * 0.371
+        self.logoHeight.constant = height * 0.371
         self.logoWidth.constant = logoHeight.constant
         
-        self.buttonWidthLogin.constant = totalWide/2
-        self.buttonWidthCreate.constant = totalWide/2
+        self.buttonWidthLogin.constant = width/2
+        self.buttonWidthCreate.constant = width/2
     }
     
     override func viewDidLoad() {

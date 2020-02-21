@@ -365,20 +365,20 @@ class Challenge: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate,
         }
         if(self.selection! == 0){
             DispatchQueue.main.async() {
-                let height: CGFloat = self.view.frame.size.height
+                let height: CGFloat = UIScreen.main.bounds.height
                 SelectEditOther().execute(playerSelf: self.playerSelf!, playerOther: self.playerOther!, title: "config. 0̸", selection: 0, BACK: "CHALLENGE", height: height)
             }
             return
         }
         if(self.selection! == 1){
             DispatchQueue.main.async() {
-                let height: CGFloat = self.view.frame.size.height
+                let height: CGFloat = UIScreen.main.bounds.height
                 SelectEditOther().execute(playerSelf: self.playerSelf!, playerOther: self.playerOther!, title: "config. 1", selection: 1, BACK: "CHALLENGE", height: height)
             }
             return
         }
         DispatchQueue.main.async() {
-            let height: CGFloat = self.view.frame.size.height
+            let height: CGFloat = UIScreen.main.bounds.height
             SelectEditOther().execute(playerSelf: self.playerSelf!, playerOther: self.playerOther!, title: "config. 2", selection: 2, BACK: "CHALLENGE", height: height)
         }
     }

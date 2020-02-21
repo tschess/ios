@@ -285,7 +285,7 @@ class Detail: UIViewController, UITabBarDelegate, UITextViewDelegate {
     
     @IBAction func backButtonClick(_ sender: Any) {
         DispatchQueue.main.async {
-            let height: CGFloat = self.view.frame.size.height
+            let height: CGFloat = UIScreen.main.bounds.height
             SelectSkins().execute(player: self.player!, height: height)
         }
     }

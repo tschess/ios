@@ -95,8 +95,8 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
     //MARK: Layout: Content
     @IBOutlet weak var notificationLabel: UILabel!
     @IBOutlet weak var splitViewHeight0: NSLayoutConstraint!
-    @IBOutlet weak var splitViewHeight1: NSLayoutConstraint!
-    @IBOutlet weak var splitViewHeight2: NSLayoutConstraint!
+    //@IBOutlet weak var splitViewHeight1: NSLayoutConstraint!
+    //@IBOutlet weak var splitViewHeight2: NSLayoutConstraint!
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var totalPointLabel: UILabel!
     var totalPointValue: Int?
@@ -337,7 +337,7 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
         self.tschessElementCollectionView.dragDelegate = self
         
         self.tschessElementCollectionView.addInteraction(UIDropInteraction(delegate: self))
-        self.dropViewBottom0.addInteraction(UIDropInteraction(delegate: self))
+        //self.dropViewBottom0.addInteraction(UIDropInteraction(delegate: self))
         self.dropViewTop0.addInteraction(UIDropInteraction(delegate: self))
         self.dropViewTop1.addInteraction(UIDropInteraction(delegate: self))
         //self.splitView2.addInteraction(UIDropInteraction(delegate: self))
@@ -516,7 +516,7 @@ extension EditSelf: UICollectionViewDelegate {
     
     @IBAction func backButtonClick(_ sender: Any) {
         DispatchQueue.main.async {
-            let height: CGFloat = self.view.frame.size.height
+            let height: CGFloat = UIScreen.main.bounds.height
             SelectConfig().execute(player: self.playerSelf!, height: height)
         }
     }

@@ -55,7 +55,7 @@ class ActualTable: UITableViewController, SwipeTableViewCellDelegate {
         
         let game = gameMenuTableList[indexPath.row]
         if(game.status == "ONGOING"){
-            print(" - Tschess - ")
+            //print(" - Tschess - ")
             
             SelectorTschess().tschess(
                 playerSelf: self.playerSelf!,
@@ -86,9 +86,7 @@ class ActualTable: UITableViewController, SwipeTableViewCellDelegate {
                     }
                 }
                 nAction.backgroundColor = .red
-                if #available(iOS 13.0, *) {
-                    nAction.image = UIImage(systemName: "hand.thumbsdown.fill")!
-                }
+                nAction.image = UIImage(named: "td_w")!
                 return [nAction]
             }
             let ackAction = SwipeAction(style: .default, title: "ACK") { action, indexPath in
@@ -102,9 +100,7 @@ class ActualTable: UITableViewController, SwipeTableViewCellDelegate {
                 }
             }
             ackAction.backgroundColor = .green
-            if #available(iOS 13.0, *) {
-                ackAction.image = UIImage(systemName: "hand.thumbsup.fill")!
-            }
+            ackAction.image = UIImage(named: "tu_w")!
             return [ackAction]
             
         }
@@ -214,9 +210,7 @@ class ActualTable: UITableViewController, SwipeTableViewCellDelegate {
             print("OK, marked as Closed")
             success(true)
         })
-        if #available(iOS 13.0, *) {
-            closeAction.image = UIImage(systemName: "hand.thumbsdown.fill")!
-        }
+        closeAction.image = UIImage(named: "td_w")!
         closeAction.backgroundColor = .red
         return UISwipeActionsConfiguration(actions: [closeAction])
     }
@@ -228,9 +222,7 @@ class ActualTable: UITableViewController, SwipeTableViewCellDelegate {
                 print("Update action ...")
                 success(true)
             })
-            if #available(iOS 13.0, *) {
-                modifyAction.image = UIImage(systemName: "hand.thumbsup.fill")!
-            }
+            modifyAction.image = UIImage(named: "tu_w")!
             modifyAction.backgroundColor = .green
             return UISwipeActionsConfiguration(actions: [modifyAction])
         }

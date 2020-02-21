@@ -103,28 +103,28 @@ class Config: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate, U
     
     @IBAction func backButtonClick(_ sender: Any) {
         DispatchQueue.main.async {
-            let height: CGFloat = self.view.frame.size.height
+            let height: CGFloat = UIScreen.main.bounds.height
             SelectHome().execute(player: self.playerSelf!, height: height)
         }
     }
     
     @objc func editCollectionView0() {
         DispatchQueue.main.async {
-            let height: CGFloat = self.view.frame.size.height
+            let height: CGFloat = UIScreen.main.bounds.height
             SelectEditSelf().execute(player: self.playerSelf!, title: "config. 0̸", select: 0, height: height)
         }
     }
     
     @objc func editCollectionView1() {
         DispatchQueue.main.async {
-            let height: CGFloat = self.view.frame.size.height
+            let height: CGFloat = UIScreen.main.bounds.height
             SelectEditSelf().execute(player: self.playerSelf!, title: "config. 1", select: 1, height: height)
         }
     }
     
     @objc func editCollectionView2() {
         DispatchQueue.main.async {
-            let height: CGFloat = self.view.frame.size.height
+            let height: CGFloat = UIScreen.main.bounds.height
             SelectEditSelf().execute(player: self.playerSelf!, title: "config. 2", select: 2, height: height)
         }
     }
@@ -323,13 +323,13 @@ extension Config: UICollectionViewDelegate {
         switch item.tag {
         case 1:
             DispatchQueue.main.async {
-                let height: CGFloat = self.view.frame.size.height
+                let height: CGFloat = UIScreen.main.bounds.height
                 SelectFairies().execute(player: self.playerSelf!, height: height)
             }
             return
         default:
             DispatchQueue.main.async {
-                let height: CGFloat = self.view.frame.size.height
+                let height: CGFloat = UIScreen.main.bounds.height
                 SelectHome().execute(player: self.playerSelf!, height: height)
             }
         }

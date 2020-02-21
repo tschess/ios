@@ -67,8 +67,8 @@ class Ack: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITab
     
     @IBOutlet weak var contentView: UIView!
     
-    @IBOutlet var splitViewHeight0: NSLayoutConstraint!
-    @IBOutlet var splitViewHeight1: NSLayoutConstraint! //strong
+    //@IBOutlet var splitViewHeight0: NSLayoutConstraint!
+    //@IBOutlet var splitViewHeight1: NSLayoutConstraint! //strong
     
     var items = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16"]
     
@@ -179,7 +179,11 @@ class Ack: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITab
         self.configCollectionViewHeight.constant = configCollectionView.contentSize.height
     }
     
-    let dateTime: DateTime = DateTime()
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.configCollectionView.reloadData()
+        self.configCollectionView.isHidden = false
+    }
     
     //MARK: Properties
     @IBOutlet weak var backButton: UIButton!
@@ -201,7 +205,10 @@ class Ack: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITab
         let skinAsset = self.skinList![row]
         
         let sampleView = Skin.instanceFromNib()
-        sampleView.nameLabel.text = skinAsset.getName()
+        sampleView.nameLabel.text = skinAsset.getName().lowercased()
+        if(!self.playerSelf!.skin.contains(skinAsset.name)){
+            sampleView.nameLabel.text = "unavailable"
+        }
         
         sampleView.backgroundView.backgroundColor = skinAsset.getBackColor()
         sampleView.backgroundView.alpha = skinAsset.getBackAlpha()
@@ -211,6 +218,9 @@ class Ack: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITab
         sampleView.foregroundView.alpha = skinAsset.getForeAlpha()
         sampleView.foregroundImage.image = skinAsset.getForeImage()
         
+        if(!self.playerSelf!.skin.contains(skinAsset.name)){
+            sampleView.alpha = 0.5
+        }
         return sampleView
     }
     
@@ -243,7 +253,7 @@ class Ack: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITab
         
         self.renderHeader()
         
-        
+        self.configCollectionView.isHidden = true
         
         self.configCollectionView.delegate = self
         self.configCollectionView.dataSource = self
@@ -333,16 +343,14 @@ class Ack: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITab
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        let totalContentHeight = self.contentView.frame.size.height
-        
-        self.splitViewHeight0.isActive = false
-        self.splitViewHeight1.isActive = false
-        self.splitViewHeight0.constant = totalContentHeight/2
-        self.splitViewHeight1.constant = totalContentHeight/2
-        self.splitViewHeight0.isActive = true
-        self.splitViewHeight1.isActive = true
-        
-        
+//        let totalContentHeight = self.contentView.frame.size.height
+//
+//        self.splitViewHeight0.isActive = false
+//        self.splitViewHeight1.isActive = false
+//        self.splitViewHeight0.constant = totalContentHeight/2
+//        self.splitViewHeight1.constant = totalContentHeight/2
+//        self.splitViewHeight0.isActive = true
+//        self.splitViewHeight1.isActive = true
         
         self.skinSelectionPicker.delegate = self
         self.skinSelectionPicker.dataSource = self
@@ -360,24 +368,24 @@ class Ack: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITab
     }
     
     @objc func renderElementCollectionView() {
-        
-        let storyboard: UIStoryboard = UIStoryboard(name: "EditOther", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "EditOther") as! EditOther
-        
-        viewController.setBACK(BACK: "ACK")
-        viewController.setPlayerOther(playerOther: self.playerOther!)
-        viewController.setPlayerSelf(playerSelf: self.playerSelf!)
-        viewController.setSelection(selection: self.selection!)
-        viewController.setGameTschess(gameTschess: self.gameTschess!)
-        
-        viewController.setTitleText(titleText: "config. 0̸")
+        if(self.selection! == 0){
+            DispatchQueue.main.async() {
+                let height: CGFloat = UIScreen.main.bounds.height
+                SelectEditOther().execute(game: self.gameTschess!, playerSelf: self.playerSelf!, playerOther: self.playerOther!, title: "config. 0̸", selection: 0, BACK: "ACK", height: height)
+            }
+            return
+        }
         if(self.selection! == 1){
-            viewController.setTitleText(titleText: "config. 1")
+            DispatchQueue.main.async() {
+                let height: CGFloat = UIScreen.main.bounds.height
+                SelectEditOther().execute(game: self.gameTschess!, playerSelf: self.playerSelf!, playerOther: self.playerOther!, title: "config. 1", selection: 1, BACK: "ACK", height: height)
+            }
+            return
         }
-        if(self.selection! == 2){
-            viewController.setTitleText(titleText: "config. 2")
+        DispatchQueue.main.async() {
+            let height: CGFloat = UIScreen.main.bounds.height
+            SelectEditOther().execute(game: self.gameTschess!, playerSelf: self.playerSelf!, playerOther: self.playerOther!, title: "config. 2", selection: 2, BACK: "ACK", height: height)
         }
-        UIApplication.shared.keyWindow?.rootViewController = viewController
     }
     
     var swipeRightGesture: UISwipeGestureRecognizer?
@@ -419,10 +427,10 @@ class Ack: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITab
     }
     
     @IBAction func backButtonClick(_ sender: Any) {
-        let homeStoryboard: UIStoryboard = UIStoryboard(name: "Home", bundle: nil)
-        let homeViewController = homeStoryboard.instantiateViewController(withIdentifier: "Home") as! Home
-        homeViewController.setPlayer(player: self.playerSelf!)
-        UIApplication.shared.keyWindow?.rootViewController = homeViewController
+        DispatchQueue.main.async {
+            let height: CGFloat = UIScreen.main.bounds.height
+            SelectHome().execute(player: self.playerSelf!, height: height)
+        }
     }
     
 }

@@ -24,7 +24,7 @@ class Init: UIViewController {
             }
             sleep(1)
             DispatchQueue.main.async {
-                let height: CGFloat = self.view.frame.size.height
+                let height: CGFloat = UIScreen.main.bounds.height
                 SelectHome().execute(player: result!, height: height)
             }
         }

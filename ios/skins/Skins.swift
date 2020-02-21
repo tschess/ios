@@ -51,7 +51,7 @@ class Skins: UIViewController, UITabBarDelegate {
     @objc func onDidReceiveData(_ notification: NSNotification) {
         let skin = notification.userInfo!["skin_selection"] as! EntitySkin
         DispatchQueue.main.async() {
-            let height: CGFloat = self.view.frame.size.height
+            let height: CGFloat = UIScreen.main.bounds.height
             SelectDetail().execute(player: self.player!, skin: skin, height: height)
         }
         
@@ -72,14 +72,14 @@ class Skins: UIViewController, UITabBarDelegate {
     
     @IBAction func backButtonClick(_ sender: Any) {
        DispatchQueue.main.async() {
-            let height: CGFloat = self.view.frame.size.height
+            let height: CGFloat = UIScreen.main.bounds.height
             SelectProfile().execute(player: self.player!, height: height)
         }
     }
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         DispatchQueue.main.async() {
-            let height: CGFloat = self.view.frame.size.height
+            let height: CGFloat = UIScreen.main.bounds.height
             SelectProfile().execute(player: self.player!, height: height)
         }
     }
