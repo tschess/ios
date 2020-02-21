@@ -165,7 +165,7 @@ class HistoricTable: UITableViewController {
             let playerOther: EntityPlayer = gameModel.getPlayerOther(username: self.playerSelf!.username)
             DispatchQueue.main.async {
                 let height: CGFloat = self.view.frame.size.height
-                SelectChallenge().execute(playerSelf: self.playerSelf!, playerOther: playerOther, BACK: "HISTORIC", height: height)
+                SelectChallenge().execute(selection: Int.random(in: 0...3), playerSelf: self.playerSelf!, playerOther: playerOther, BACK: "HISTORIC", height: height)
             }
             success(true)
         })

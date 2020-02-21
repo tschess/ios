@@ -363,22 +363,24 @@ class Challenge: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate,
             self.flash()
             return
         }
-        let storyboard: UIStoryboard = UIStoryboard(name: "EditOtherL", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "EditOtherL") as! EditOther
-        
-        viewController.setBACK(BACK: "CHALLENGE")
-        viewController.setPlayerOther(playerOther: self.playerOther!)
-        viewController.setPlayerSelf(playerSelf: self.playerSelf!)
-        viewController.setSelection(selection: self.selection!)
-        
-        viewController.setTitleText(titleText: "config. 0̸")
+        if(self.selection! == 0){
+            DispatchQueue.main.async() {
+                let height: CGFloat = self.view.frame.size.height
+                SelectEditOther().execute(playerSelf: self.playerSelf!, playerOther: self.playerOther!, title: "config. 0̸", selection: 0, BACK: "CHALLENGE", height: height)
+            }
+            return
+        }
         if(self.selection! == 1){
-            viewController.setTitleText(titleText: "config. 1")
+            DispatchQueue.main.async() {
+                let height: CGFloat = self.view.frame.size.height
+                SelectEditOther().execute(playerSelf: self.playerSelf!, playerOther: self.playerOther!, title: "config. 1", selection: 1, BACK: "CHALLENGE", height: height)
+            }
+            return
         }
-        if(self.selection! == 2){
-            viewController.setTitleText(titleText: "config. 2")
+        DispatchQueue.main.async() {
+            let height: CGFloat = self.view.frame.size.height
+            SelectEditOther().execute(playerSelf: self.playerSelf!, playerOther: self.playerOther!, title: "config. 2", selection: 2, BACK: "CHALLENGE", height: height)
         }
-        UIApplication.shared.keyWindow?.rootViewController = viewController
     }
     
     var swipeRightGesture: UISwipeGestureRecognizer?
@@ -421,30 +423,26 @@ class Challenge: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate,
     
     @IBAction func backButtonClick(_ sender: Any) {
         if(self.BACK == "HOME"){
-            let height = self.view.frame.size.height
-            SelectHome().execute(player: self.playerSelf!, height: height)
-            //DispatchQueue.main.async {
-                //let homeStoryboard: UIStoryboard = UIStoryboard(name: "HomeL", bundle: nil)
-                //let homeViewController = homeStoryboard.instantiateViewController(withIdentifier: "HomeL") as! Home
-                //homeViewController.setPlayer(player: self.playerSelf!)
-                //UIApplication.shared.keyWindow?.rootViewController = homeViewController
-            //}
+            DispatchQueue.main.async {
+                let screenSize: CGRect = UIScreen.main.bounds
+                let height: CGFloat = screenSize.height
+                SelectHome().execute(player: self.playerSelf!, height: height)
+            }
             return
         }
         if(self.BACK == "HISTORIC"){
             DispatchQueue.main.async {
-                let storyboard: UIStoryboard = UIStoryboard(name: "HistoricL", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "HistoricL") as! Historic
-                viewController.setPlayerSelf(playerSelf: self.playerSelf!)
-                UIApplication.shared.keyWindow?.rootViewController = viewController
+                let screenSize: CGRect = UIScreen.main.bounds
+                let height: CGFloat = screenSize.height
+                SelectHistoric().execute(player: self.playerSelf!, height: height)
             }
             return
         }
-        let storyboard: UIStoryboard = UIStoryboard(name: "OtherL", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "OtherL") as! Other
-        viewController.setPlayerSelf(playerSelf: self.playerSelf!)
-        viewController.setPlayerOther(playerOther: self.playerOther!)
-        UIApplication.shared.keyWindow?.rootViewController = viewController
+        DispatchQueue.main.async {
+            let screenSize: CGRect = UIScreen.main.bounds
+            let height: CGFloat = screenSize.height
+            SelectOther().execute(playerSelf: self.playerSelf!, playerOther: self.playerOther!, height: height)
+        }
     }
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
@@ -463,10 +461,9 @@ class Challenge: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate,
             RequestChallenge().execute(requestPayload: requestPayload) { (result) in
                 
                 DispatchQueue.main.async {
-                    let homeStoryboard: UIStoryboard = UIStoryboard(name: "HomeL", bundle: nil)
-                    let homeViewController = homeStoryboard.instantiateViewController(withIdentifier: "HomeL") as! Home
-                    homeViewController.setPlayer(player: self.playerSelf!)
-                    UIApplication.shared.keyWindow?.rootViewController = homeViewController
+                    let screenSize: CGRect = UIScreen.main.bounds
+                    let height: CGFloat = screenSize.height
+                    SelectHome().execute(player: self.playerSelf!, height: height)
                 }
             }
         }

@@ -188,17 +188,21 @@ class HomeMenuTable: UITableViewController {
                 }
                 if(result == nil){
                     DispatchQueue.main.async {
-                        let height: CGFloat = self.view.frame.size.height
-                        SelectChallenge().execute(playerSelf: self.player!, playerOther: playerOther, BACK: "HOME", height: height)
+                        
+                        let screenSize: CGRect = UIScreen.main.bounds
+                        let screenHeight = screenSize.height
+                        
+                        SelectChallenge().execute(selection: Int.random(in: 0...3), playerSelf: self.player!, playerOther: playerOther, BACK: "HOME", height: screenHeight)
                     }
                     return
                 }
-                
                 //print("result.count: \(result!.count)")
                 if(result!.count == 0){
                     DispatchQueue.main.async {
-                        let height: CGFloat = self.view.frame.size.height
-                        SelectChallenge().execute(playerSelf: self.player!, playerOther: playerOther, BACK: "HOME", height: height)
+                        let screenSize: CGRect = UIScreen.main.bounds
+                        let screenHeight = screenSize.height
+                        
+                        SelectChallenge().execute(selection: Int.random(in: 0...3), playerSelf: self.player!, playerOther: playerOther, BACK: "HOME", height: screenHeight)
                     }
                     return
                 }
@@ -217,8 +221,9 @@ class HomeMenuTable: UITableViewController {
             
             let playerOther = self.leaderboardList[indexPath.row]
             DispatchQueue.main.async {
-                let height: CGFloat = self.view.frame.size.height
-                SelectChallenge().execute(playerSelf: self.player!, playerOther: playerOther, BACK: "HOME", height: height)
+                let screenSize: CGRect = UIScreen.main.bounds
+                let height = screenSize.height
+                SelectChallenge().execute(selection: Int.random(in: 0...3), playerSelf: self.player!, playerOther: playerOther, BACK: "HOME", height: height)
             }
             success(true)
         })

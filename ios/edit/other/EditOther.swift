@@ -529,25 +529,17 @@ extension EditOther: UICollectionViewDelegate {
     @IBAction func backButtonClick(_ sender: Any) {
         if(self.BACK == "PLAY"){
             DispatchQueue.main.async {
-                let storyboard: UIStoryboard = UIStoryboard(name: "PlayL", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "PlayL") as! Play
-                viewController.setPlayerSelf(playerSelf: self.playerSelf!)
-                viewController.setPlayerOther(playerOther: self.playerOther!)
-                //viewController.setGameTschess(gameTschess: self.gameTschess!)
-                viewController.setSelection(selection: self.selection!)
-                UIApplication.shared.keyWindow?.rootViewController = viewController
+                let screenSize: CGRect = UIScreen.main.bounds
+                let height = screenSize.height
+                SelectPlay().execute(selection: self.selection!, playerSelf: self.playerSelf!, playerOther: self.playerOther!, height: height)
             }
             return
         }
         if(self.BACK == "CHALLENGE"){
             DispatchQueue.main.async {
-                let storyboard: UIStoryboard = UIStoryboard(name: "ChallengeL", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "ChallengeL") as! Challenge
-                viewController.setPlayerSelf(playerSelf: self.playerSelf!)
-                viewController.setPlayerOther(playerOther: self.playerOther!)
-                //viewController.setGameTschess(gameTschess: self.gameTschess!)
-                viewController.setSelection(selection: self.selection!)
-                UIApplication.shared.keyWindow?.rootViewController = viewController
+                let screenSize: CGRect = UIScreen.main.bounds
+                let height = screenSize.height
+                SelectChallenge().execute(selection: self.selection!, playerSelf: self.playerSelf!, playerOther: self.playerOther!, BACK: "HOME", height: height)
             }
             return
         }

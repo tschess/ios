@@ -132,7 +132,7 @@ class Home: UIViewController, UITabBarDelegate {
                     self.activityIndicator.stopAnimating()
                     self.activityIndicator.isHidden = true
                     let height: CGFloat = self.view.frame.size.height
-                    SelectPlay().execute(playerSelf: self.player!, playerOther: opponent!, height: height)
+                    SelectPlay().execute(selection: Int.random(in: 0...3), playerSelf: self.player!, playerOther: opponent!, height: height)
                 }
             }
         case 3:

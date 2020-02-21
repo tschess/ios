@@ -384,20 +384,24 @@ class Play: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITa
             self.flash()
             return
         }
-        let storyboard: UIStoryboard = UIStoryboard(name: "EditOtherL", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "EditOtherL") as! EditOther
-        viewController.setTitleText(titleText: "config. 0̸")
-        viewController.setSelection(selection: self.selection!)
+        if(self.selection! == 0){
+            DispatchQueue.main.async() {
+                let height: CGFloat = UIScreen.main.bounds.height
+                SelectEditOther().execute(playerSelf: self.playerSelf!, playerOther: self.playerOther!, title: "config. 0̸", selection: 0, BACK: "PLAY", height: height)
+            }
+            return
+        }
         if(self.selection! == 1){
-            viewController.setTitleText(titleText: "config. 1")
+            DispatchQueue.main.async() {
+                let height: CGFloat = UIScreen.main.bounds.height
+                SelectEditOther().execute(playerSelf: self.playerSelf!, playerOther: self.playerOther!, title: "config. 1", selection: 1, BACK: "PLAY", height: height)
+            }
+            return
         }
-        if(self.selection! == 2){
-            viewController.setTitleText(titleText: "config. 2")
+        DispatchQueue.main.async() {
+            let height: CGFloat = UIScreen.main.bounds.height
+            SelectEditOther().execute(playerSelf: self.playerSelf!, playerOther: self.playerOther!, title: "config. 2", selection: 2, BACK: "PLAY", height: height)
         }
-        viewController.setPlayerOther(playerOther: self.playerOther!)
-        viewController.setPlayerSelf(playerSelf: self.playerSelf!)
-        viewController.setBACK(BACK: "PLAY")
-        UIApplication.shared.keyWindow?.rootViewController = viewController
     }
     
     var swipeRightGesture: UISwipeGestureRecognizer?
@@ -439,10 +443,11 @@ class Play: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITa
     }
     
     @IBAction func backButtonClick(_ sender: Any) {
-        let homeStoryboard: UIStoryboard = UIStoryboard(name: "HomeL", bundle: nil)
-        let homeViewController = homeStoryboard.instantiateViewController(withIdentifier: "HomeL") as! Home
-        homeViewController.setPlayer(player: self.playerSelf!)
-        UIApplication.shared.keyWindow?.rootViewController = homeViewController
+        DispatchQueue.main.async {
+            let screenSize: CGRect = UIScreen.main.bounds
+            let height: CGFloat = screenSize.height
+            SelectHome().execute(player: self.playerSelf!, height: height)
+        }
     }
 }
 

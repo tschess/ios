@@ -148,12 +148,11 @@ class OtherMenuTable: UITableViewController {
         let modifyAction = UIContextualAction(style: .normal, title:  "CHALLENGE", handler: { (ac: UIContextualAction, view: UIView, success:(Bool) -> Void) in
             
             let gameModel = self.gameMenuTableList[indexPath.row]
-            
-            let storyboard: UIStoryboard = UIStoryboard(name: "ChallengeL", bundle: nil)
-            let viewController = storyboard.instantiateViewController(withIdentifier: "ChallengeL") as! Challenge
-            viewController.setPlayerSelf(playerSelf: self.player!)
-            viewController.setPlayerOther(playerOther: gameModel.getPlayerOther(username: self.player!.username))
-            UIApplication.shared.keyWindow?.rootViewController = viewController
+            DispatchQueue.main.async {
+                let screenSize: CGRect = UIScreen.main.bounds
+                let height = screenSize.height
+                SelectChallenge().execute(selection: Int.random(in: 0...3), playerSelf: self.player!, playerOther: gameModel.getPlayerOther(username: self.player!.username), BACK: "HOME", height: height)
+            }
             
             success(true)
         })

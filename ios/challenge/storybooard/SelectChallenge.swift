@@ -10,12 +10,13 @@ import UIKit
 
 class SelectChallenge {
     
-    public func execute(playerSelf: EntityPlayer, playerOther: EntityPlayer, BACK: String, height: CGFloat) {
+    public func execute(selection: Int, playerSelf: EntityPlayer, playerOther: EntityPlayer, BACK: String, height: CGFloat) {
         if(height.isLess(than: 750)){
             let storyboard: UIStoryboard = UIStoryboard(name: "ChallengeL", bundle: nil)
             let viewController = storyboard.instantiateViewController(withIdentifier: "ChallengeL") as! Challenge
             viewController.setPlayerSelf(playerSelf: playerSelf)
             viewController.setPlayerOther(playerOther: playerOther)
+            viewController.setSelection(selection: selection)
             UIApplication.shared.keyWindow?.rootViewController = viewController
             return
         }
@@ -23,6 +24,7 @@ class SelectChallenge {
         let viewController = storyboard.instantiateViewController(withIdentifier: "ChallengeP") as! Challenge
         viewController.setPlayerSelf(playerSelf: playerSelf)
         viewController.setPlayerOther(playerOther: playerOther)
+        viewController.setSelection(selection: selection)
         UIApplication.shared.keyWindow?.rootViewController = viewController
     }
 }

@@ -93,7 +93,7 @@ class Other: UIViewController, UITabBarDelegate {
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         DispatchQueue.main.async {
             let height: CGFloat = self.view.frame.size.height
-            SelectChallenge().execute(playerSelf: self.playerSelf!, playerOther: self.playerOther!, BACK: "OTHER", height: height)
+            SelectChallenge().execute(selection: Int.random(in: 0...3), playerSelf: self.playerSelf!, playerOther: self.playerOther!, BACK: "OTHER", height: height)
         }
     }
 }
