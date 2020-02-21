@@ -14,7 +14,7 @@ class Fairies: UIViewController, UITabBarDelegate {
     
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var tabBarMenu: UITabBar!
-
+    
     @IBOutlet weak var displacementImage: UIImageView!
     @IBOutlet weak var displacementLabel: UILabel!
     @IBOutlet weak var eloLabel: UILabel!
@@ -53,7 +53,7 @@ class Fairies: UIViewController, UITabBarDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        
         self.tabBarMenu.delegate = self
         self.squadUpAdapter = children.first as? FairiesTable
         self.squadUpAdapter!.setPlayer(player: self.player!)
@@ -67,38 +67,33 @@ class Fairies: UIViewController, UITabBarDelegate {
     }
     
     @IBAction func backButtonClick(_ sender: Any) {
-        let storyboard: UIStoryboard = UIStoryboard(name: "ConfigL", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "ConfigL") as! Config
-        viewController.setPlayerSelf(playerSelf: self.player!)
-        UIApplication.shared.keyWindow?.rootViewController = viewController
+        DispatchQueue.main.async {
+            let height: CGFloat = self.view.frame.size.height
+            SelectConfig().execute(player: self.player!, height: height)
+        }
     }
     
     @objc func onDidReceiveData(_ notification: NSNotification) {
         let squadUpDetailSelectionIndex = notification.userInfo!["fairies_table_selection"] as! Int
-        let fairyElement = squadUpAdapter!.getFairyElementList()![squadUpDetailSelectionIndex]
-        //StoryboardSelector().acquisition(player: self.player!, fairyElement: fairyElement)
-        let storyboard: UIStoryboard = UIStoryboard(name: "InfoL", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "InfoL") as! Info
-        viewController.setPlayer(player: self.player!)
-        viewController.setFairyElement(fairyElement: fairyElement)
-        UIApplication.shared.keyWindow?.rootViewController = viewController
+        let fairy: Fairy = squadUpAdapter!.getFairyElementList()![squadUpDetailSelectionIndex]
+        DispatchQueue.main.async {
+            let height: CGFloat = self.view.frame.size.height
+            SelectInfo().execute(player: self.player!, fairy: fairy, height: height)
+        }
     }
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         switch item.tag {
         case 1:
             DispatchQueue.main.async {
-                let storyboard: UIStoryboard = UIStoryboard(name: "HomeL", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "HomeL") as! Home
-                viewController.setPlayer(player: self.player!)
-                UIApplication.shared.keyWindow?.rootViewController = viewController
-                return
+                let height: CGFloat = self.view.frame.size.height
+                SelectHome().execute(player: self.player!, height: height)
             }
         default:
-            let storyboard: UIStoryboard = UIStoryboard(name: "ConfigL", bundle: nil)
-            let viewController = storyboard.instantiateViewController(withIdentifier: "ConfigL") as! Config
-            viewController.setPlayerSelf(playerSelf: self.player!)
-            UIApplication.shared.keyWindow?.rootViewController = viewController
+            DispatchQueue.main.async {
+                let height: CGFloat = self.view.frame.size.height
+                SelectConfig().execute(player: self.player!, height: height)
+            }
         }
     }
 }

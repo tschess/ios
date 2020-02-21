@@ -102,10 +102,10 @@ class Config: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate, U
     }
     
     @IBAction func backButtonClick(_ sender: Any) {
-        let homeStoryboard: UIStoryboard = UIStoryboard(name: "HomeL", bundle: nil)
-        let homeViewController = homeStoryboard.instantiateViewController(withIdentifier: "HomeL") as! Home
-        homeViewController.setPlayer(player: self.playerSelf!)
-        UIApplication.shared.keyWindow?.rootViewController = homeViewController
+        DispatchQueue.main.async {
+            let height: CGFloat = self.view.frame.size.height
+            SelectHome().execute(player: self.playerSelf!, height: height)
+        }
     }
     
     @objc func editCollectionView0() {
@@ -351,17 +351,14 @@ extension Config: UICollectionViewDelegate {
         switch item.tag {
         case 1:
             DispatchQueue.main.async {
-                let storyboard: UIStoryboard = UIStoryboard(name: "FairiesL", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "FairiesL") as! Fairies
-                viewController.setPlayer(player: self.playerSelf!)
-                UIApplication.shared.keyWindow?.rootViewController = viewController
+                let height: CGFloat = self.view.frame.size.height
+                SelectFairies().execute(player: self.playerSelf!, height: height)
             }
+            return
         default:
             DispatchQueue.main.async {
-                let storyboard: UIStoryboard = UIStoryboard(name: "HomeL", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "HomeL") as! Home
-                viewController.setPlayer(player: self.playerSelf!)
-                UIApplication.shared.keyWindow?.rootViewController = viewController
+                let height: CGFloat = self.view.frame.size.height
+                SelectHome().execute(player: self.playerSelf!, height: height)
             }
         }
     }
