@@ -1,14 +1,14 @@
 //
-//  SelectorTschess.swift
+//  SelectTschess.swift
 //  ios
 //
-//  Created by Matthew on 2/13/20.
+//  Created by Matthew on 2/21/20.
 //  Copyright © 2020 bahlsenwitz. All rights reserved.
 //
 
 import UIKit
 
-class SelectorTschess {
+class SelectTschess {
     
     private func getSkin(username: String, game: EntityGame) -> String {
         if(game.white.username == username){
