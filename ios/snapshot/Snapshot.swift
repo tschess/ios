@@ -70,6 +70,15 @@ class Snapshot: UIViewController, UICollectionViewDataSource, UICollectionViewDe
         self.outcomeLabel.text = self.game!.outcome
         self.usernameLabelWhite.text = self.game!.white.username
         self.usernameLabelBlack.text = self.game!.black.username
+        //self.dateLabel.text = self.game!.updated
+        
+        let ddate: Date = DateTime().toFormatDate(string: self.game!.updated)
+        let dateFormatter: DateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd.MM.yyyy"
+        let sdate: String = dateFormatter.string(from: ddate)
+        self.dateLabel.text = sdate
+        
+        self.moveCountLabel.text = String(self.game!.moves)
     }
     
     override func viewWillAppear(_ animated: Bool) {

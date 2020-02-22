@@ -77,17 +77,13 @@ class Recent: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         self.activityIndicator.isHidden = true
         self.boardView.isHidden = true
         
-        
         boardView.dataSource = self
         boardView.delegate = self
         tabBarMenu.delegate = self
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        
         
         self.state = self.game!.getStateClient(username: self.playerOther!.username)
         self.winnerImageView!.image = self.game!.getImageAvatarWinner()
@@ -96,6 +92,14 @@ class Recent: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         self.outcomeLabel.text = self.game!.outcome
         self.usernameLabelWhite.text = self.game!.white.username
         self.usernameLabelBlack.text = self.game!.black.username
+        
+        let ddate: Date = DateTime().toFormatDate(string: self.game!.updated)
+        let dateFormatter: DateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd.MM.yyyy"
+        let sdate: String = dateFormatter.string(from: ddate)
+        self.dateLabel.text = sdate
+        
+        self.moveCountLabel.text = String(self.game!.moves)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

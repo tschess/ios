@@ -250,7 +250,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="eth" translatesAutoresizingMaskIntoConstraints="NO" id="pXj-06-TZZ">
-                                            <rect key="frame" x="361" y="9.6666666666666661" width="45" height="45"/>
+                                            <rect key="frame" x="361" y="9.6666666666666643" width="45" height="45"/>
                                             <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="45" id="Wfm-4Y-AG9"/>

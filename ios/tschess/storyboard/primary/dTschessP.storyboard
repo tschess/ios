@@ -11,7 +11,7 @@
         <!--Tschess-->
         <scene sceneID="Uso-HT-uji">
             <objects>
-                <viewController storyboardIdentifier="dTschess" useStoryboardIdentifierAsRestorationIdentifier="YES" id="DAE-jB-YvD" customClass="Tschess" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="dTschessP" useStoryboardIdentifierAsRestorationIdentifier="YES" id="DAE-jB-YvD" customClass="Tschess" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="9gv-Ja-N4g" userLabel="TschessView">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -270,10 +270,10 @@
                                     <constraint firstAttribute="height" constant="50" id="CtS-Ad-lXP"/>
                                 </constraints>
                                 <items>
-                                    <tabBarItem title="games" image="arrowshape.turn.up.left" catalog="system" selectedImage="arrowshape.turn.up.left.fill" id="6f1-4w-L4h">
+                                    <tabBarItem title="" image="back.grey" selectedImage="back.white" id="6f1-4w-L4h">
                                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tabBarItem>
-                                    <tabBarItem tag="1" title="options" image="circle.grid.2x2" catalog="system" selectedImage="circle.grid.2x2.fill" id="ZJf-6D-pXa">
+                                    <tabBarItem tag="1" title="" image="options_grey" selectedImage="options_white" id="ZJf-6D-pXa">
                                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tabBarItem>
                                 </items>
@@ -333,10 +333,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="arrowshape.turn.up.left" catalog="system" width="64" height="52"/>
-        <image name="arrowshape.turn.up.left.fill" catalog="system" width="64" height="52"/>
         <image name="avatar_default" width="320" height="320"/>
-        <image name="circle.grid.2x2" catalog="system" width="64" height="56"/>
-        <image name="circle.grid.2x2.fill" catalog="system" width="64" height="56"/>
+        <image name="back.grey" width="36" height="27"/>
+        <image name="back.white" width="36" height="27"/>
+        <image name="options_grey" width="36" height="36"/>
+        <image name="options_white" width="36" height="36"/>
     </resources>
 </document>
