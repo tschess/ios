@@ -157,7 +157,7 @@ class Home: UIViewController, UITabBarDelegate {
         
         let playerOther: EntityPlayer = self.homeMenuTable!.getOther(index: menuSelectionIndex)
         DispatchQueue.main.async {
-            let height: CGFloat = self.view.superview!.frame.size.height
+            let height: CGFloat = UIScreen.main.bounds.height
             SelectOther().execute(playerSelf: self.player!, playerOther: playerOther, height: height)
         }
     }

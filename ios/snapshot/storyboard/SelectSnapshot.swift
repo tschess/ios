@@ -23,7 +23,7 @@ class SelectSnapshot {
         switch skin {
         case "IAPETUS":
             DispatchQueue.main.async {
-                let height: CGFloat = presentor.view.frame.size.height
+                let height: CGFloat = UIScreen.main.bounds.height
                 if(height.isLess(than: 750)){
                     let storyboard: UIStoryboard = UIStoryboard(name: "IapetusL", bundle: nil)
                     let viewController = storyboard.instantiateViewController(withIdentifier: "IapetusL") as! Snapshot
@@ -41,7 +41,7 @@ class SelectSnapshot {
             }
         case "CALYPSO":
             DispatchQueue.main.async {
-                let height: CGFloat = presentor.view.frame.size.height
+                let height: CGFloat = UIScreen.main.bounds.height
                 if(height.isLess(than: 750)){
                     let storyboard: UIStoryboard = UIStoryboard(name: "CalypsoL", bundle: nil)
                     let viewController = storyboard.instantiateViewController(withIdentifier: "CalypsoL") as! Snapshot
@@ -59,7 +59,7 @@ class SelectSnapshot {
             }
         case "HYPERION":
             DispatchQueue.main.async {
-                let height: CGFloat = presentor.view.frame.size.height
+                let height: CGFloat = UIScreen.main.bounds.height
                 if(height.isLess(than: 750)){
                     let storyboard: UIStoryboard = UIStoryboard(name: "HyperionL", bundle: nil)
                     let viewController = storyboard.instantiateViewController(withIdentifier: "HyperionL") as! Snapshot
@@ -77,7 +77,7 @@ class SelectSnapshot {
             }
         case "NEPTUNE":
             DispatchQueue.main.async {
-                let height: CGFloat = presentor.view.frame.size.height
+                let height: CGFloat = UIScreen.main.bounds.height
                 if(height.isLess(than: 750)){
                     let storyboard: UIStoryboard = UIStoryboard(name: "NeptuneL", bundle: nil)
                     let viewController = storyboard.instantiateViewController(withIdentifier: "NeptuneL") as! Snapshot
@@ -95,7 +95,7 @@ class SelectSnapshot {
             }
         default:
             DispatchQueue.main.async {
-                let height: CGFloat = presentor.view.frame.size.height
+                let height: CGFloat = UIScreen.main.bounds.height
                 if(height.isLess(than: 750)){
                     let storyboard: UIStoryboard = UIStoryboard(name: "DefaultL", bundle: nil)
                     let viewController = storyboard.instantiateViewController(withIdentifier: "DefaultL") as! Snapshot

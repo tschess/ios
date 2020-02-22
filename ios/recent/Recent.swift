@@ -158,10 +158,8 @@ class Recent: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     
     @IBAction func backButtonClick(_ sender: Any) {
         DispatchQueue.main.async {
-            let storyboard: UIStoryboard = UIStoryboard(name: "Home", bundle: nil)
-            let viewController = storyboard.instantiateViewController(withIdentifier: "Home") as! Home
-            viewController.setPlayer(player: self.playerSelf!)
-            UIApplication.shared.keyWindow?.rootViewController = viewController
+            let height: CGFloat = UIScreen.main.bounds.height
+            SelectHome().execute(player: self.playerSelf!, height: height)
         }
     }
     
@@ -179,15 +177,12 @@ class Recent: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         switch item.tag {
         case 1: //next game
-            
             //let skin: String = SelectRecent().getSkinGame(username: self.playerSelf!.username, game: self.game!)
             SelectRecent().snapshot(playerOther: self.playerOther!, playerSelf: self.playerSelf!, recentGameList: self.recentGameList!, presentor: self)
         default: //2 //home
             DispatchQueue.main.async {
-                let storyboard: UIStoryboard = UIStoryboard(name: "HomeL", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "HomeL") as! Home
-                viewController.setPlayer(player: self.playerSelf!)
-                UIApplication.shared.keyWindow?.rootViewController = viewController
+                let height: CGFloat = UIScreen.main.bounds.height
+                SelectHome().execute(player: self.playerSelf!, height: height)
             }
         }
     }
