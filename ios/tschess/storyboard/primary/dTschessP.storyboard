@@ -11,7 +11,7 @@
         <!--Tschess-->
         <scene sceneID="Uso-HT-uji">
             <objects>
-                <viewController storyboardIdentifier="dTschessP" useStoryboardIdentifierAsRestorationIdentifier="YES" id="DAE-jB-YvD" customClass="Tschess" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="dTschess" useStoryboardIdentifierAsRestorationIdentifier="YES" id="DAE-jB-YvD" customClass="Tschess" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="9gv-Ja-N4g" userLabel="TschessView">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -163,6 +163,15 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9wh-i1-2Qp" userLabel="ContentView">
                                 <rect key="frame" x="0.0" y="222" width="414" height="590"/>
                                 <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="notification_label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9bQ-DV-v2s">
+                                        <rect key="frame" x="0.0" y="8" width="414" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="IFE-Ri-6bf"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="22"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="v4N-X5-tXk" customClass="BoardView" customModule="ios" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="46" width="414" height="200"/>
                                         <constraints>
@@ -245,9 +254,12 @@
                                     <constraint firstAttribute="bottom" secondItem="J9V-JR-501" secondAttribute="bottom" id="4i2-oZ-bXL"/>
                                     <constraint firstAttribute="trailing" secondItem="J9V-JR-501" secondAttribute="trailing" id="4sq-cR-MkR"/>
                                     <constraint firstAttribute="trailing" secondItem="v4N-X5-tXk" secondAttribute="trailing" id="CPR-dY-5Ht"/>
+                                    <constraint firstItem="9bQ-DV-v2s" firstAttribute="leading" secondItem="9wh-i1-2Qp" secondAttribute="leading" id="EHH-k7-rp7"/>
                                     <constraint firstItem="J9V-JR-501" firstAttribute="top" secondItem="v4N-X5-tXk" secondAttribute="bottom" id="JV8-Rv-ARX"/>
                                     <constraint firstItem="J9V-JR-501" firstAttribute="leading" secondItem="9wh-i1-2Qp" secondAttribute="leading" id="Kcf-q9-ul3"/>
-                                    <constraint firstItem="v4N-X5-tXk" firstAttribute="top" secondItem="9wh-i1-2Qp" secondAttribute="top" constant="46" id="gM4-Np-vy7"/>
+                                    <constraint firstAttribute="trailing" secondItem="9bQ-DV-v2s" secondAttribute="trailing" id="nU8-1b-z1n"/>
+                                    <constraint firstItem="v4N-X5-tXk" firstAttribute="top" secondItem="9bQ-DV-v2s" secondAttribute="bottom" constant="8" id="q90-bn-jQm"/>
+                                    <constraint firstItem="9bQ-DV-v2s" firstAttribute="top" secondItem="9wh-i1-2Qp" secondAttribute="top" constant="8" id="ukq-Lq-NBk"/>
                                     <constraint firstItem="v4N-X5-tXk" firstAttribute="leading" secondItem="9wh-i1-2Qp" secondAttribute="leading" id="xXC-71-YzS"/>
                                 </constraints>
                             </view>
@@ -301,6 +313,7 @@
                         <outlet property="collectionView" destination="v4N-X5-tXk" id="9XC-Wx-MWy"/>
                         <outlet property="collectionViewHeight" destination="UrR-TT-KiU" id="4JU-aD-FAf"/>
                         <outlet property="contentView" destination="9wh-i1-2Qp" id="yID-ON-Nbo"/>
+                        <outlet property="contentViewLabel" destination="9bQ-DV-v2s" id="iDN-KY-P3k"/>
                         <outlet property="eloLabel" destination="YxI-dg-6nx" id="AfC-kj-wLX"/>
                         <outlet property="headerView" destination="YPS-Tp-PVu" id="3i6-Uh-42s"/>
                         <outlet property="rankLabel" destination="7rM-GI-ans" id="YEC-dq-ZkA"/>

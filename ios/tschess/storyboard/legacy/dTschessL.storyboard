@@ -166,7 +166,7 @@
                                 <rect key="frame" x="0.0" y="116" width="320" height="407"/>
                                 <subviews>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="v4N-X5-tXk" customClass="BoardView" customModule="ios" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="24" width="320" height="200"/>
+                                        <rect key="frame" x="0.0" y="28" width="320" height="200"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="200" id="UrR-TT-KiU"/>
                                         </constraints>
@@ -197,10 +197,10 @@
                                         </cells>
                                     </collectionView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J9V-JR-501" userLabel="LowerPartitionView">
-                                        <rect key="frame" x="0.0" y="224" width="320" height="183"/>
+                                        <rect key="frame" x="0.0" y="228" width="320" height="179"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wfP-tD-SfI" userLabel="TimerView">
-                                                <rect key="frame" x="87.5" y="71.5" width="145.5" height="40"/>
+                                                <rect key="frame" x="87.5" y="69.5" width="145.5" height="40"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FDx-lr-9IC" userLabel="TimerLabel">
                                                         <rect key="frame" x="0.0" y="0.0" width="145.5" height="20"/>
@@ -241,15 +241,27 @@
                                             <constraint firstItem="wfP-tD-SfI" firstAttribute="centerX" secondItem="J9V-JR-501" secondAttribute="centerX" id="y63-33-aup"/>
                                         </constraints>
                                     </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="notification_label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BFc-FV-aMb" userLabel="TimerLabel">
+                                        <rect key="frame" x="0.0" y="4" width="320" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="1MR-we-0gq"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="19"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="v4N-X5-tXk" firstAttribute="top" secondItem="9wh-i1-2Qp" secondAttribute="top" constant="24" id="00o-fJ-qjv"/>
                                     <constraint firstAttribute="bottom" secondItem="J9V-JR-501" secondAttribute="bottom" id="4i2-oZ-bXL"/>
                                     <constraint firstAttribute="trailing" secondItem="J9V-JR-501" secondAttribute="trailing" id="4sq-cR-MkR"/>
+                                    <constraint firstItem="BFc-FV-aMb" firstAttribute="leading" secondItem="9wh-i1-2Qp" secondAttribute="leading" id="BR0-lf-Esg"/>
                                     <constraint firstAttribute="trailing" secondItem="v4N-X5-tXk" secondAttribute="trailing" id="CPR-dY-5Ht"/>
                                     <constraint firstItem="J9V-JR-501" firstAttribute="top" secondItem="v4N-X5-tXk" secondAttribute="bottom" id="JV8-Rv-ARX"/>
                                     <constraint firstItem="J9V-JR-501" firstAttribute="leading" secondItem="9wh-i1-2Qp" secondAttribute="leading" id="Kcf-q9-ul3"/>
+                                    <constraint firstAttribute="trailing" secondItem="BFc-FV-aMb" secondAttribute="trailing" id="ULH-IK-euU"/>
+                                    <constraint firstItem="BFc-FV-aMb" firstAttribute="top" secondItem="9wh-i1-2Qp" secondAttribute="top" constant="4" id="Xfv-oM-k8w"/>
+                                    <constraint firstItem="v4N-X5-tXk" firstAttribute="top" secondItem="BFc-FV-aMb" secondAttribute="bottom" constant="4" id="l0m-6Y-b00"/>
                                     <constraint firstItem="v4N-X5-tXk" firstAttribute="leading" secondItem="9wh-i1-2Qp" secondAttribute="leading" id="xXC-71-YzS"/>
                                 </constraints>
                             </view>
@@ -305,6 +317,7 @@
                         <outlet property="collectionView" destination="v4N-X5-tXk" id="9XC-Wx-MWy"/>
                         <outlet property="collectionViewHeight" destination="UrR-TT-KiU" id="4JU-aD-FAf"/>
                         <outlet property="contentView" destination="9wh-i1-2Qp" id="yID-ON-Nbo"/>
+                        <outlet property="contentViewLabel" destination="BFc-FV-aMb" id="Oik-ay-arI"/>
                         <outlet property="eloLabel" destination="YxI-dg-6nx" id="AfC-kj-wLX"/>
                         <outlet property="headerView" destination="YPS-Tp-PVu" id="3i6-Uh-42s"/>
                         <outlet property="rankLabel" destination="7rM-GI-ans" id="YEC-dq-ZkA"/>
