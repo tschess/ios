@@ -17,7 +17,7 @@ class SelectTschess {
         return game.black_skin
     }
     
-    public func tschess(playerSelf: EntityPlayer, playerOther: EntityPlayer, game: EntityGame) {
+    public func tschess(playerSelf: EntityPlayer, playerOther: EntityPlayer, game: EntityGame, height: CGFloat) {
         
         let skin: String = self.getSkin(username: playerSelf.username, game: game)
         
@@ -33,14 +33,21 @@ class SelectTschess {
 //            }
 //            return
         default:
-            DispatchQueue.main.async {
+            if(height.isLess(than: 750)){
                 let storyboard: UIStoryboard = UIStoryboard(name: "dTschessL", bundle: nil)
                 let viewController = storyboard.instantiateViewController(withIdentifier: "dTschessL") as! Tschess
                 viewController.setPlayerOther(playerOther: game.getPlayerOther(username: playerSelf.username))
                 viewController.setPlayerSelf(playerSelf: playerSelf)
                 viewController.setGameTschess(gameTschess: game)
                 UIApplication.shared.keyWindow?.rootViewController = viewController
+                return
             }
+            let storyboard: UIStoryboard = UIStoryboard(name: "dTschessP", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier: "dTschessP") as! Tschess
+            viewController.setPlayerOther(playerOther: game.getPlayerOther(username: playerSelf.username))
+            viewController.setPlayerSelf(playerSelf: playerSelf)
+            viewController.setGameTschess(gameTschess: game)
+            UIApplication.shared.keyWindow?.rootViewController = viewController
         }
         
         

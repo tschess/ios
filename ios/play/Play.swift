@@ -37,10 +37,11 @@ class Play: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITa
                 if(game == nil){
                     return
                 }
-                SelectorTschess().tschess(
-                    playerSelf: self.playerSelf!,
-                    playerOther: game!.getPlayerOther(username: self.playerSelf!.username),
-                    game: game!)
+                DispatchQueue.main.async {
+                    let height: CGFloat = UIScreen.main.bounds.height
+                    let playerOther: EntityPlayer = game!.getPlayerOther(username: self.playerSelf!.username)
+                    SelectTschess().tschess(playerSelf: self.playerSelf!, playerOther: playerOther, game: game!, height: height)
+                }
             }
         }
     }

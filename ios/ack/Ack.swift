@@ -99,7 +99,7 @@ class Ack: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITab
         self.indicatorLabel0.attributedText = activeConfigNull
     }
     
-   func renderConfig1() {
+    func renderConfig1() {
         self.selection = 1
         
         self.tschessElementMatrix = self.playerSelf!.getConfig(index: 1)
@@ -121,7 +121,7 @@ class Ack: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITab
         self.indicatorLabel0.attributedText = activeConfigNull
     }
     
-   func renderConfig2() {
+    func renderConfig2() {
         self.selection = 2
         
         self.tschessElementMatrix = self.playerSelf!.getConfig(index: 2)
@@ -343,14 +343,14 @@ class Ack: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITab
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-//        let totalContentHeight = self.contentView.frame.size.height
-//
-//        self.splitViewHeight0.isActive = false
-//        self.splitViewHeight1.isActive = false
-//        self.splitViewHeight0.constant = totalContentHeight/2
-//        self.splitViewHeight1.constant = totalContentHeight/2
-//        self.splitViewHeight0.isActive = true
-//        self.splitViewHeight1.isActive = true
+        //        let totalContentHeight = self.contentView.frame.size.height
+        //
+        //        self.splitViewHeight0.isActive = false
+        //        self.splitViewHeight1.isActive = false
+        //        self.splitViewHeight0.constant = totalContentHeight/2
+        //        self.splitViewHeight1.constant = totalContentHeight/2
+        //        self.splitViewHeight0.isActive = true
+        //        self.splitViewHeight1.isActive = true
         
         self.skinSelectionPicker.delegate = self
         self.skinSelectionPicker.dataSource = self
@@ -493,7 +493,7 @@ extension Ack: UICollectionViewDelegateFlowLayout {
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         switch item.tag {
         default:
-            print("let's play")
+            //print("let's play")
             self.activityIndicator.isHidden = false
             self.activityIndicator.startAnimating()
             
@@ -508,17 +508,19 @@ extension Ack: UICollectionViewDelegateFlowLayout {
                 "index": self.selection!]
             
             RequestAck().execute(requestPayload: requestPayload) { (game) in
-                print("result: \(game!.state)")
+                //print("result: \(game!.state)")
                 /**
                  * ERROR HANDLING!!!
                  */
                 if(game == nil){
                     return
                 }
-                SelectorTschess().tschess(
-                    playerSelf: self.playerSelf!,
-                    playerOther: game!.getPlayerOther(username: self.playerSelf!.username),
-                    game: game!)
+                
+                DispatchQueue.main.async {
+                    let height: CGFloat = UIScreen.main.bounds.height
+                    let playerOther: EntityPlayer = game!.getPlayerOther(username: self.playerSelf!.username)
+                    SelectTschess().tschess(playerSelf: self.playerSelf!, playerOther: playerOther, game: game!, height: height)
+                }
             }
         }
     }
