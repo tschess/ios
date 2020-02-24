@@ -13,7 +13,7 @@ class DateTime {
     let dateFormatter: DateFormatter = DateFormatter()
     
     init() {
-        dateFormatter.dateFormat = "dd.MM.yyyy_HH:mm:ss.SSSS"
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
         dateFormatter.timeZone = NSTimeZone(name: "America/New_York")! as TimeZone
     }
     
