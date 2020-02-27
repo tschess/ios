@@ -74,8 +74,8 @@ class SerializerState {
             }
             if(!name.contains("_x")){
                 rook.firstTouch = false
-                return rook
             }
+            return rook
         }
         if(name.contains("Pawn")){
             var pawn: Pawn
@@ -86,8 +86,8 @@ class SerializerState {
             }
             if(!name.contains("_x")){
                 pawn.firstTouch = false
-                return pawn
             }
+            return pawn
         }
         if(name.contains("King")){
             var king: King
@@ -98,14 +98,20 @@ class SerializerState {
             }
             if(!name.contains("_x")){
                 king.firstTouch = false
-                return king
             }
+            return king
         }
         if(name.contains("Poison")){
+            var poison: Poison
             if(name.contains("White")){
-                return PoisonWhite(white: self.white)
+                poison = PoisonWhite(white: self.white)
+            } else {
+                poison = PoisonBlack(white: self.white)
             }
-            return PoisonBlack(white: self.white)
+            if(!name.contains("_x")){
+                poison.firstTouch = false
+            }
+            return poison
         }
         if(name.contains("Hunter")){
             if(name.contains("White")){

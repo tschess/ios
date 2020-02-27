@@ -48,6 +48,9 @@ class Transitioner {
         var state1 = state0
         let squarePresent = state1[self.coordinate![0]][self.coordinate![1]]
         state1[propose[0]][propose[1]] = squarePresent
+        /* - * - */
+        state1[propose[0]][propose[1]]!.firstTouch = false
+        /* - * - */
         state1[self.coordinate![0]][self.coordinate![1]] = nil
         return state1
     }

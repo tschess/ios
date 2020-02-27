@@ -58,7 +58,7 @@ class Pawn: Piece {
     }
     
     public func advanceTwo(present: [Int], proposed: [Int], state: [[Piece?]]) ->  Bool {
-        if(present[0] != 6){
+        if(!self.firstTouch){
             return false
         }
         //let tschessElementMatrix = gamestate.getTschessElementMatrix()
