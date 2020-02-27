@@ -51,7 +51,7 @@ class SerializerConfig {
         case "Amazon":
             return Amazon()
             /***/
-        case "Poison Pawn":
+        case "Poison":
             return Poison()
             /***/
         default:

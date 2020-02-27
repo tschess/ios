@@ -53,9 +53,16 @@ class FairiesTable: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let squadUpAdapterCell = tableView.dequeueReusableCell(withIdentifier: "FairiesCell", for: indexPath) as! FairiesCell
         let squadUpFairyElement = fairyListFilter![indexPath.row]
-        squadUpAdapterCell.elementNameLabel.text = squadUpFairyElement.name.lowercased()
+        squadUpAdapterCell.elementNameLabel.text = self.getName(name: squadUpFairyElement.name)
         squadUpAdapterCell.elementImageView.image = squadUpFairyElement.getImageDefault()
         return squadUpAdapterCell
+    }
+    
+    func getName(name: String) -> String {
+        if(name == "Poison"){
+            return "poison pawn"
+        }
+        return name.lowercased()
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

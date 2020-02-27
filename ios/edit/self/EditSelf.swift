@@ -91,7 +91,7 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
         "red_queen",
         "red_amazon",
         "red_hunter",
-        "red_poison_pawn"]
+        "red_poison"]
     
     //MARK: Layout: Content
     @IBOutlet weak var notificationLabel: UILabel!

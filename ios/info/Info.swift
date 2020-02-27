@@ -40,7 +40,7 @@ class Info: UIViewController, UITabBarDelegate, UIPopoverPresentationControllerD
         super.viewWillAppear(animated)
         
         self.fairyImageView.image = fairyElement!.getImageDefault()
-        self.fairyNameLabel.text = fairyElement!.getName().lowercased()
+        self.fairyNameLabel.text = self.getName(name: fairyElement!.getName())
         self.fairyPointsLabel.text = fairyElement!.getStrength()
         
         self.activityIndicator.isHidden = true
@@ -58,6 +58,13 @@ class Info: UIViewController, UITabBarDelegate, UIPopoverPresentationControllerD
         self.attributeTextView.backgroundColor = UIColor.white
         self.attributeTextView.textColor = UIColor.black
         self.attributeTextView.text = self.fairyElement!.description
+    }
+    
+    func getName(name: String) -> String {
+        if(name == "Poison"){
+            return "poison pawn"
+        }
+        return name.lowercased()
     }
     
     @IBAction func backButtonClick(_ sender: Any) {

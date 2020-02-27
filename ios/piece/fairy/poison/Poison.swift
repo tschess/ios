@@ -27,7 +27,7 @@ class Poison: Fairy {
     }
     
     init(
-        name: String = "Poison Pawn",
+        name: String = "Poison",
         imageDefault: UIImage = UIImage(named: "red_poison")!,
         affiliation: String = "RED",
         imageTarget: UIImage? = nil,
