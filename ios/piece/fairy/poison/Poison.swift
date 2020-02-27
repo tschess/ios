@@ -10,21 +10,22 @@ import UIKit
 
 class Poison: Fairy {
     
-    var username: String?
-    var usernameWhite: String?
-    var usernameBlack: String?
-    
-    func setUsername(username: String) {
-        self.username = username
-    }
-    
-    func setUsernameWhite(username: String) {
-        self.usernameWhite = username
-    }
-    
-    func setUsernameBlack(username: String) {
-        self.usernameBlack = username
-    }
+//    var username: String?
+//    var usernameWhite: String?
+//    var usernameBlack: String?
+//    
+//    func setUsername(username: String) {
+//        self.username = username
+//    }
+//    
+//    func setUsernameWhite(username: String) {
+//        self.usernameWhite = username
+//    }
+//    
+//    func setUsernameBlack(username: String) {
+//        self.usernameBlack = username
+//    }
+    //var white: Bool
     
     init(
         name: String = "Poison",
