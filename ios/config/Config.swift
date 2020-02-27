@@ -54,18 +54,6 @@ class Config: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate, U
     
     var items = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16"]
     
-    var arrayFirst = [
-        "red_pawn",
-        "red_knight",
-        "red_bishop",
-        "red_rook",
-        "red_queen",
-        "red_amazon",
-        "red_landmine_pawn",
-        "red_hunter",
-        "red_grasshopper",
-        "red_arrow"]
-    
     var tschessElementMatrix0: [[Piece?]]?
     var tschessElementMatrix1: [[Piece?]]?
     var tschessElementMatrix2: [[Piece?]]?

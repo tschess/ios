@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Poison {
+class PoisonLogic {
     
     public func detonate(coordinate: [Int], proposed: [Int], state: [[Piece?]]) -> Bool {
         //var tschessElementMatrix = gamestate.getTschessElementMatrix()

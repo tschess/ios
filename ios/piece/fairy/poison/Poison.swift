@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PoisonPawn: Fairy {
+class Poison: Fairy {
     
     var username: String?
     var usernameWhite: String?
@@ -27,8 +27,8 @@ class PoisonPawn: Fairy {
     }
     
     init(
-        name: String = "LandminePawn",
-        imageDefault: UIImage = UIImage(named: "red_landmine_pawn")!,
+        name: String = "Poison Pawn",
+        imageDefault: UIImage = UIImage(named: "red_poison")!,
         affiliation: String = "RED",
         imageTarget: UIImage? = nil,
         imageSelection: UIImage? = nil
@@ -37,7 +37,10 @@ class PoisonPawn: Fairy {
             name: name,
             strength: "2",
             affiliation: affiliation,
-            description: "behaviour identical to a standard pawn with the caveat that when it is captured, the piece that captures it is also removed from the board. self-destructs on promotion. if captured by a king result is instant checkmate for taker",
+            description:
+            "• identical to a standard pawn with *one* caveat.\r\r" +
+            "• when captured, the opponent piece is also destroyed, i.e. eliminated from the game.\r\r" +
+            "• if king attempts to capture result is instant checkmate.\r\r",
             imageDefault: imageDefault,
             attackVectorList: Array<String>(["Pawn"]),
             tschxValue: String(4),

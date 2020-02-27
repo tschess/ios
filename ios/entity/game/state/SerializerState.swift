@@ -79,48 +79,63 @@ class SerializerState {
         case "KingBlack":
             return KingBlack()
             /***/
+        case "HunterWhite":
+            return HunterWhite()
+        case "HunterBlack":
+            return HunterBlack()
+            /***/
+        case "AmazonWhite":
+            return AmazonWhite()
+        case "AmazonBlack":
+            return AmazonBlack()
+            /***/
+        case "PoisonWhite":
+            return PoisonWhite()
+        case "PoisonBlack":
+            return PoisonBlack()
+            /***/
         default:
             return nil
         }
         
     }
     
-//    func renderServer(state: [[Piece?]]) -> [[String]] {
-//        var rowA: [String] = [String](repeating: "", count: 8) // 0
-//        var rowB: [String] = [String](repeating: "", count: 8) // 1
-//        var rowC: [String] = [String](repeating: "", count: 8) // 2
-//        var rowD: [String] = [String](repeating: "", count: 8) // 3
-//        var rowE: [String] = [String](repeating: "", count: 8) // 4
-//        var rowF: [String] = [String](repeating: "", count: 8) // 5
-//        var rowG: [String] = [String](repeating: "", count: 8) // 6
-//        var rowH: [String] = [String](repeating: "", count: 8) // 7
-//        //for row0 in (0 ..< 8) {
-//        for col0 in (0 ..< 8) {
-//            let col1: Int = abs(self.offset - col0)
-//            //let row1: Int = abs(self.offset - row0)
-//
-//            rowA[col1] = getName(piece: state[0][col0])
-//            rowB[col1] = getName(piece: state[1][col0])
-//            rowC[col1] = getName(piece: state[2][col0])
-//            rowD[col1] = getName(piece: state[3][col0])
-//            rowE[col1] = getName(piece: state[4][col0])
-//            rowF[col1] = getName(piece: state[5][col0])
-//            rowG[col1] = getName(piece: state[6][col0])
-//            rowH[col1] = getName(piece: state[7][col0])
-//        }
-//        //}
-//        if(self.white){
-//            return [rowH, rowG, rowF, rowE, rowD, rowC, rowB, rowA]
-//        }
-//        return [rowA, rowB, rowC, rowD, rowE, rowF, rowG, rowH]
-//    }
-//
-//    func getName(piece: Piece?) -> String {
-//        if(piece == nil){
-//            return ""
-//        }
-//        return piece!.name
-//    }
+    //    func renderServer(state: [[Piece?]]) -> [[String]] {
+    //        var rowA: [String] = [String](repeating: "", count: 8) // 0
+    //        var rowB: [String] = [String](repeating: "", count: 8) // 1
+    //        var rowC: [String] = [String](repeating: "", count: 8) // 2
+    //        var rowD: [String] = [String](repeating: "", count: 8) // 3
+    //        var rowE: [String] = [String](repeating: "", count: 8) // 4
+    //        var rowF: [String] = [String](repeating: "", count: 8) // 5
+    //        var rowG: [String] = [String](repeating: "", count: 8) // 6
+    //        var rowH: [String] = [String](repeating: "", count: 8) // 7
+    //        //for row0 in (0 ..< 8) {
+    //        for col0 in (0 ..< 8) {
+    //            let col1: Int = abs(self.offset - col0)
+    //            //let row1: Int = abs(self.offset - row0)
+    //
+    //            rowA[col1] = getName(piece: state[0][col0])
+    //            rowB[col1] = getName(piece: state[1][col0])
+    //            rowC[col1] = getName(piece: state[2][col0])
+    //            rowD[col1] = getName(piece: state[3][col0])
+    //            rowE[col1] = getName(piece: state[4][col0])
+    //            rowF[col1] = getName(piece: state[5][col0])
+    //            rowG[col1] = getName(piece: state[6][col0])
+    //            rowH[col1] = getName(piece: state[7][col0])
+    //        }
+    //        //}
+    //        if(self.white){
+    //            return [rowH, rowG, rowF, rowE, rowD, rowC, rowB, rowA]
+    //        }
+    //        return [rowA, rowB, rowC, rowD, rowE, rowF, rowG, rowH]
+    //    }
+    //
+    //    func getName(piece: Piece?) -> String {
+    //        if(piece == nil){
+    //            return ""
+    //        }
+    //        return piece!.name
+    //    }
     
     func renderServer(state: [[Piece?]]) -> [[String]] {
         let rowA: [String] = self.getName(row0: state[0])
@@ -146,11 +161,11 @@ class SerializerState {
         return row1
     }
     
-        func getX(x: Piece?) -> String {
-            if(x == nil){
-                return ""
-            }
-            return x!.name
+    func getX(x: Piece?) -> String {
+        if(x == nil){
+            return ""
         }
+        return x!.name
+    }
     
 }

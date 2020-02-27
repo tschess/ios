@@ -10,7 +10,7 @@ import UIKit
 
 class Fairies: UIViewController, UITabBarDelegate {
     
-    var fairyElementList: [Fairy] = [Amazon(), Grasshopper(), Hunter(), PoisonPawn()]
+    var fairyElementList: [Fairy] = [Amazon(), Grasshopper(), Hunter(), Poison()]
     
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var tabBarMenu: UITabBar!

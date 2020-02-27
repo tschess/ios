@@ -92,7 +92,8 @@ class EditOther: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate
         "red_rook",
         "red_queen",
         "red_amazon",
-        "red_hunter"]
+        "red_hunter",
+        "red_poison"]
     
     //MARK: Layout: Content
     @IBOutlet weak var notificationLabel: UILabel!
@@ -466,7 +467,7 @@ extension EditOther: UICollectionViewDelegate {
             return Hunter()
         }
         if(name.contains("poison")){
-            return PoisonPawn()
+            return Poison()
         }
         if(name.contains("amazon")){
             return Amazon()
@@ -499,7 +500,7 @@ extension EditOther: UICollectionViewDelegate {
         if(piece.name == Hunter().name){
             return "red_hunter"
         }
-        if(piece.name == PoisonPawn().name){
+        if(piece.name == Poison().name){
             return "red_landmine_pawn"
         }
         if(piece.name == Amazon().name){

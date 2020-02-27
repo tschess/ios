@@ -80,7 +80,7 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
     //        "red_rook",
     //        "red_queen",
     //        "red_amazon",
-    //        "red_landmine_pawn",
+    //        "red_poison_pawn",
     //        "red_hunter",
     //        "red_grasshopper"]
     let ELEMENT_LIST = [
@@ -90,13 +90,12 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
         "red_rook",
         "red_queen",
         "red_amazon",
-        "red_hunter"]
+        "red_hunter",
+        "red_poison_pawn"]
     
     //MARK: Layout: Content
     @IBOutlet weak var notificationLabel: UILabel!
     @IBOutlet weak var splitViewHeight0: NSLayoutConstraint!
-    //@IBOutlet weak var splitViewHeight1: NSLayoutConstraint!
-    //@IBOutlet weak var splitViewHeight2: NSLayoutConstraint!
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var totalPointLabel: UILabel!
     var totalPointValue: Int?
@@ -337,10 +336,8 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
         self.tschessElementCollectionView.dragDelegate = self
         
         self.tschessElementCollectionView.addInteraction(UIDropInteraction(delegate: self))
-        //self.dropViewBottom0.addInteraction(UIDropInteraction(delegate: self))
         self.dropViewTop0.addInteraction(UIDropInteraction(delegate: self))
         self.dropViewTop1.addInteraction(UIDropInteraction(delegate: self))
-        //self.splitView2.addInteraction(UIDropInteraction(delegate: self))
         self.headerView.addInteraction(UIDropInteraction(delegate: self))
         
         self.tabBarMenu.delegate = self
@@ -363,11 +360,6 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        //let totalContentHeight = self.contentView.frame.size.height - 8
-        //self.splitViewHeight0.constant = totalContentHeight/3
-        //self.splitViewHeight1.constant = totalContentHeight/3
-        //self.splitViewHeight2.constant = totalContentHeight/3
         
         self.activityIndicator.isHidden = true
         
@@ -454,7 +446,7 @@ extension EditSelf: UICollectionViewDelegate {
             return Hunter()
         }
         if(name.contains("poison")){
-            return PoisonPawn()
+            return Poison()
         }
         if(name.contains("amazon")){
             return Amazon()
@@ -487,8 +479,8 @@ extension EditSelf: UICollectionViewDelegate {
         if(piece.name == Hunter().name){
             return "red_hunter"
         }
-        if(piece.name == PoisonPawn().name){
-            return "red_landmine_pawn"
+        if(piece.name == Poison().name){
+            return "red_poison"
         }
         if(piece.name == Amazon().name){
             return "red_amazon"

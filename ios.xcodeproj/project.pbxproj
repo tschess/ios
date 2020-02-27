@@ -136,7 +136,7 @@
 		B7BE11F123EAC92C00ADA499 /* EditSelf.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE11F023EAC92C00ADA499 /* EditSelf.swift */; };
 		B7BE11F723EAC97200ADA499 /* EditOther.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE11F623EAC97200ADA499 /* EditOther.swift */; };
 		B7BE11FF23EACCDE00ADA499 /* ConfigCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE11FE23EACCDE00ADA499 /* ConfigCell.swift */; };
-		B7BE120523EAD3C600ADA499 /* PoisonPawn.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE120423EAD3C600ADA499 /* PoisonPawn.swift */; };
+		B7BE120523EAD3C600ADA499 /* Poison.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE120423EAD3C600ADA499 /* Poison.swift */; };
 		B7BE120723EAD3D200ADA499 /* Amazon.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE120623EAD3D200ADA499 /* Amazon.swift */; };
 		B7BE120923EAD3DD00ADA499 /* Hunter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE120823EAD3DD00ADA499 /* Hunter.swift */; };
 		B7BE120B23EAD3E900ADA499 /* Grasshopper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE120A23EAD3E900ADA499 /* Grasshopper.swift */; };
@@ -184,7 +184,7 @@
 		B7BE12A323EB0BB800ADA499 /* Passant.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE12A223EB0BB800ADA499 /* Passant.swift */; };
 		B7BE12A523EB0BF700ADA499 /* Promotion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7BE12A423EB0BF700ADA499 /* Promotion.storyboard */; };
 		B7BE12A723EB0C2600ADA499 /* Promotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE12A623EB0C2600ADA499 /* Promotion.swift */; };
-		B7BE12AA23EB0C7F00ADA499 /* Poison.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE12A923EB0C7F00ADA499 /* Poison.swift */; };
+		B7BE12AA23EB0C7F00ADA499 /* PoisonLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE12A923EB0C7F00ADA499 /* PoisonLogic.swift */; };
 		B7BE12AE23EB0CDB00ADA499 /* CheckCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE12AD23EB0CDB00ADA499 /* CheckCheck.swift */; };
 		B7BE12B123EB0D3100ADA499 /* KnightOffense.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE12B023EB0D3100ADA499 /* KnightOffense.swift */; };
 		B7BE12B323EB0D6900ADA499 /* PawnOffense.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE12B223EB0D6900ADA499 /* PawnOffense.swift */; };
@@ -213,6 +213,12 @@
 		B7C6762023FF3A26007EC71E /* iRecentL.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7C6761F23FF3A26007EC71E /* iRecentL.storyboard */; };
 		B7CA12D123F5A13900569805 /* Recent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7CA12D023F5A13900569805 /* Recent.swift */; };
 		B7CB62F6237BB10800E50204 /* Start.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7CB62F5237BB10800E50204 /* Start.storyboard */; };
+		B7D8ECD324082080001B5D2D /* PoisonWhite.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D8ECD224082080001B5D2D /* PoisonWhite.swift */; };
+		B7D8ECD524082096001B5D2D /* PoisonBlack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D8ECD424082096001B5D2D /* PoisonBlack.swift */; };
+		B7D8ECD7240820DD001B5D2D /* AmazonWhite.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D8ECD6240820DD001B5D2D /* AmazonWhite.swift */; };
+		B7D8ECD9240820EB001B5D2D /* AmazonBlack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D8ECD8240820EB001B5D2D /* AmazonBlack.swift */; };
+		B7D8ECDB240820F9001B5D2D /* HunterWhite.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D8ECDA240820F9001B5D2D /* HunterWhite.swift */; };
+		B7D8ECDD24082106001B5D2D /* HunterBlack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D8ECDC24082106001B5D2D /* HunterBlack.swift */; };
 		B7E6C93023EE1FBB009711B8 /* RequestTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E6C92F23EE1FBB009711B8 /* RequestTest.swift */; };
 		B7ED646423F4D9D400292FBC /* Create.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7ED646323F4D9D400292FBC /* Create.storyboard */; };
 		B7ED646823F4DC9B00292FBC /* Create.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7ED646723F4DC9B00292FBC /* Create.swift */; };
@@ -387,7 +393,7 @@
 		B7BE11F023EAC92C00ADA499 /* EditSelf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSelf.swift; sourceTree = "<group>"; };
 		B7BE11F623EAC97200ADA499 /* EditOther.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditOther.swift; sourceTree = "<group>"; };
 		B7BE11FE23EACCDE00ADA499 /* ConfigCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigCell.swift; sourceTree = "<group>"; };
-		B7BE120423EAD3C600ADA499 /* PoisonPawn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoisonPawn.swift; sourceTree = "<group>"; };
+		B7BE120423EAD3C600ADA499 /* Poison.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Poison.swift; sourceTree = "<group>"; };
 		B7BE120623EAD3D200ADA499 /* Amazon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Amazon.swift; sourceTree = "<group>"; };
 		B7BE120823EAD3DD00ADA499 /* Hunter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hunter.swift; sourceTree = "<group>"; };
 		B7BE120A23EAD3E900ADA499 /* Grasshopper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grasshopper.swift; sourceTree = "<group>"; };
@@ -435,7 +441,7 @@
 		B7BE12A223EB0BB800ADA499 /* Passant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Passant.swift; sourceTree = "<group>"; };
 		B7BE12A423EB0BF700ADA499 /* Promotion.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Promotion.storyboard; sourceTree = "<group>"; };
 		B7BE12A623EB0C2600ADA499 /* Promotion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Promotion.swift; sourceTree = "<group>"; };
-		B7BE12A923EB0C7F00ADA499 /* Poison.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Poison.swift; sourceTree = "<group>"; };
+		B7BE12A923EB0C7F00ADA499 /* PoisonLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoisonLogic.swift; sourceTree = "<group>"; };
 		B7BE12AD23EB0CDB00ADA499 /* CheckCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckCheck.swift; sourceTree = "<group>"; };
 		B7BE12B023EB0D3100ADA499 /* KnightOffense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnightOffense.swift; sourceTree = "<group>"; };
 		B7BE12B223EB0D6900ADA499 /* PawnOffense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PawnOffense.swift; sourceTree = "<group>"; };
@@ -464,6 +470,12 @@
 		B7C6761F23FF3A26007EC71E /* iRecentL.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = iRecentL.storyboard; sourceTree = "<group>"; };
 		B7CA12D023F5A13900569805 /* Recent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recent.swift; sourceTree = "<group>"; };
 		B7CB62F5237BB10800E50204 /* Start.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Start.storyboard; sourceTree = "<group>"; };
+		B7D8ECD224082080001B5D2D /* PoisonWhite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoisonWhite.swift; sourceTree = "<group>"; };
+		B7D8ECD424082096001B5D2D /* PoisonBlack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoisonBlack.swift; sourceTree = "<group>"; };
+		B7D8ECD6240820DD001B5D2D /* AmazonWhite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmazonWhite.swift; sourceTree = "<group>"; };
+		B7D8ECD8240820EB001B5D2D /* AmazonBlack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmazonBlack.swift; sourceTree = "<group>"; };
+		B7D8ECDA240820F9001B5D2D /* HunterWhite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HunterWhite.swift; sourceTree = "<group>"; };
+		B7D8ECDC24082106001B5D2D /* HunterBlack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HunterBlack.swift; sourceTree = "<group>"; };
 		B7E6C92F23EE1FBB009711B8 /* RequestTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestTest.swift; sourceTree = "<group>"; };
 		B7ED646323F4D9D400292FBC /* Create.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Create.storyboard; sourceTree = "<group>"; };
 		B7ED646723F4DC9B00292FBC /* Create.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Create.swift; sourceTree = "<group>"; };
@@ -1225,7 +1237,9 @@
 			isa = PBXGroup;
 			children = (
 				B7BE12A823EB0C7000ADA499 /* logic */,
-				B7BE120423EAD3C600ADA499 /* PoisonPawn.swift */,
+				B7BE120423EAD3C600ADA499 /* Poison.swift */,
+				B7D8ECD224082080001B5D2D /* PoisonWhite.swift */,
+				B7D8ECD424082096001B5D2D /* PoisonBlack.swift */,
 			);
 			path = poison;
 			sourceTree = "<group>";
@@ -1234,6 +1248,8 @@
 			isa = PBXGroup;
 			children = (
 				B7BE120623EAD3D200ADA499 /* Amazon.swift */,
+				B7D8ECD6240820DD001B5D2D /* AmazonWhite.swift */,
+				B7D8ECD8240820EB001B5D2D /* AmazonBlack.swift */,
 			);
 			path = amazon;
 			sourceTree = "<group>";
@@ -1242,6 +1258,8 @@
 			isa = PBXGroup;
 			children = (
 				B7BE120823EAD3DD00ADA499 /* Hunter.swift */,
+				B7D8ECDA240820F9001B5D2D /* HunterWhite.swift */,
+				B7D8ECDC24082106001B5D2D /* HunterBlack.swift */,
 			);
 			path = hunter;
 			sourceTree = "<group>";
@@ -1585,7 +1603,7 @@
 		B7BE12A823EB0C7000ADA499 /* logic */ = {
 			isa = PBXGroup;
 			children = (
-				B7BE12A923EB0C7F00ADA499 /* Poison.swift */,
+				B7BE12A923EB0C7F00ADA499 /* PoisonLogic.swift */,
 			);
 			path = logic;
 			sourceTree = "<group>";
@@ -2069,6 +2087,7 @@
 				B7BE11A923EA9C8800ADA499 /* King.swift in Sources */,
 				B7021F5E23FE30A100C9346A /* SelectEditSelf.swift in Sources */,
 				B7BE129123EB09FC00ADA499 /* UpdateResign.swift in Sources */,
+				B7D8ECD7240820DD001B5D2D /* AmazonWhite.swift in Sources */,
 				B7021F9223FE5C5100C9346A /* SelectSnapshot.swift in Sources */,
 				B7BE11B223EA9D7000ADA499 /* QueenWhite.swift in Sources */,
 				B7BE128723EB091C00ADA499 /* Tschess.swift in Sources */,
@@ -2078,6 +2097,7 @@
 				B7BE116023EA71D100ADA499 /* Other.swift in Sources */,
 				B7BE11C223EA9E5700ADA499 /* PawnBlack.swift in Sources */,
 				B7EF702123EA28E300BAF2E2 /* EntityGame.swift in Sources */,
+				B7D8ECDB240820F9001B5D2D /* HunterWhite.swift in Sources */,
 				B771364E23F1C118007F0962 /* UpdateCheck.swift in Sources */,
 				B7BE12BF23EB0EC600ADA499 /* Evaluation.swift in Sources */,
 				B708D0DD236B351000A899F9 /* Init.swift in Sources */,
@@ -2119,7 +2139,7 @@
 				B7BE125123EB032E00ADA499 /* Profile.swift in Sources */,
 				B7BE117523EA930F00ADA499 /* Piece.swift in Sources */,
 				B7021F7623FE4F8B00C9346A /* SelectDetail.swift in Sources */,
-				B7BE120523EAD3C600ADA499 /* PoisonPawn.swift in Sources */,
+				B7BE120523EAD3C600ADA499 /* Poison.swift in Sources */,
 				B7BE11D723EAA23200ADA499 /* SquareCell.swift in Sources */,
 				B7BE116523EA727200ADA499 /* OtherMenuTable.swift in Sources */,
 				B7BE124C23EB02A200ADA499 /* FairiesCell.swift in Sources */,
@@ -2130,10 +2150,12 @@
 				B7BE11C523EA9E7C00ADA499 /* Rook.swift in Sources */,
 				B7BE11ED23EAC6CB00ADA499 /* RequestQuick.swift in Sources */,
 				B7BE117723EA93A600ADA499 /* PieceAnte.swift in Sources */,
+				B7D8ECDD24082106001B5D2D /* HunterBlack.swift in Sources */,
 				B7FA7BFB23ECF79400E63045 /* UpdateConfig.swift in Sources */,
 				B7BE120B23EAD3E900ADA499 /* Grasshopper.swift in Sources */,
 				B7BE11F723EAC97200ADA499 /* EditOther.swift in Sources */,
 				B7BE116F23EA91CD00ADA499 /* Snapshot.swift in Sources */,
+				B7D8ECD524082096001B5D2D /* PoisonBlack.swift in Sources */,
 				B7F541C123D51A5A00E89074 /* Home.swift in Sources */,
 				B7BE11AD23EA9CC700ADA499 /* KingBlack.swift in Sources */,
 				B7F35E332309F6D6002018F7 /* DateTime.swift in Sources */,
@@ -2143,11 +2165,12 @@
 				B7BE12C723EB70A900ADA499 /* Info.swift in Sources */,
 				B7BE11CC23EA9EE900ADA499 /* Knight.swift in Sources */,
 				B7BE11E823EAC40800ADA499 /* SerializerConfig.swift in Sources */,
+				B7D8ECD324082080001B5D2D /* PoisonWhite.swift in Sources */,
 				B7BE126F23EB068700ADA499 /* SkinsCell.swift in Sources */,
 				B7BE120D23EAD42C00ADA499 /* Fairy.swift in Sources */,
 				B70F0C0D22EBC075001415AE /* AppDelegate.swift in Sources */,
 				B70149B923FC5723001A7D52 /* CompOut.swift in Sources */,
-				B7BE12AA23EB0C7F00ADA499 /* Poison.swift in Sources */,
+				B7BE12AA23EB0C7F00ADA499 /* PoisonLogic.swift in Sources */,
 				B745AD3123F2FC2000E450EF /* RequestPlay.swift in Sources */,
 				B7BE129B23EB0AAE00ADA499 /* Evaluate.swift in Sources */,
 				B7BE11CE23EA9F1600ADA499 /* KnightWhite.swift in Sources */,
@@ -2155,6 +2178,7 @@
 				B7BE124A23EB027400ADA499 /* FairiesTable.swift in Sources */,
 				B7BE11B023EA9D2B00ADA499 /* Queen.swift in Sources */,
 				B7EF701E23EA28BA00BAF2E2 /* EntityPlayer.swift in Sources */,
+				B7D8ECD9240820EB001B5D2D /* AmazonBlack.swift in Sources */,
 				B7BE125F23EB049000ADA499 /* UpdateNack.swift in Sources */,
 				B7BE11C723EA9EA700ADA499 /* RookWhite.swift in Sources */,
 				B7BE122F23EADCB900ADA499 /* ActualCell.swift in Sources */,
