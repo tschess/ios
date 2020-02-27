@@ -60,14 +60,27 @@ class DrawResign: UIViewController  {
         super.viewDidLoad()
         self.activityIndicatorResign!.isHidden = true
         self.activityIndicatorDraw!.isHidden = true
-        if(!self.gameTschess!.getTurn(username: self.playerSelf!.username)){
-            buttonDraw.titleLabel!.alpha = 0.5
-            buttonDraw.isUserInteractionEnabled = false
-            imageDraw.alpha = 0.5
-        }
+        
         let dismiss = UITapGestureRecognizer(target: self, action: #selector(self.dismiss(gesture:)))
         self.imageDismiss.addGestureRecognizer(dismiss)
         self.imageDismiss.isUserInteractionEnabled = true
+        
+        if(self.gameTschess!.status == "RESOLVED"){
+            self.decativateDraw()
+            self.buttonResign.titleLabel!.alpha = 0.5
+            self.buttonResign.isUserInteractionEnabled = false
+            self.imageResign.alpha = 0.5
+            return
+        }
+        if(!self.gameTschess!.getTurn(username: self.playerSelf!.username)){
+            self.decativateDraw()
+        }
+    }
+    
+    private func decativateDraw() {
+        self.buttonDraw.titleLabel!.alpha = 0.5
+        self.buttonDraw.isUserInteractionEnabled = false
+        self.imageDraw.alpha = 0.5
     }
     
     @objc func dismiss(gesture: UIGestureRecognizer) {
@@ -107,7 +120,6 @@ class DrawResign: UIViewController  {
         self.imageDraw.isHidden = true
         
         UpdateProp().execute(id: self.gameTschess!.id) { (result) in
-            print("result: \(result)")
             DispatchQueue.main.async {
                 self.activityIndicatorDraw.isHidden = true
                 self.activityIndicatorDraw.stopAnimating()
