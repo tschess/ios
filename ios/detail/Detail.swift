@@ -240,7 +240,7 @@ class Detail: UIViewController, UITabBarDelegate, UITextViewDelegate {
             "state": state,
             "moves": moves,
             "status": status,
-            "outcome": outcome,
+            "condition": outcome,
             "white": white,
             "white_elo": white_elo,
             "white_disp": white_disp,
