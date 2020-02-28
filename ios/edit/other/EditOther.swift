@@ -160,7 +160,7 @@ class EditOther: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate
             let elementImage: UIImage = UIImage(named: elementImageIdentifier)!
             elementCell.configureCell(image: elementImage)
             
-            let elementObject: Piece = self.generateTschessElement(name: self.ELEMENT_LIST[indexPath.row])!
+            let elementObject: Piece = Edit().generateTschessElement(name: self.ELEMENT_LIST[indexPath.row])!
             elementCell.nameLabel.text = elementObject.name
             elementCell.pointsLabel.text = elementObject.strength
             
@@ -210,7 +210,7 @@ class EditOther: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate
     func collectionView(_ collectionView: UICollectionView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
         self.configCache = self.configActiv!
         if collectionView == self.pieceCollectionView {
-            let tschessElement = generateTschessElement(name: self.ELEMENT_LIST[indexPath.row])
+            let tschessElement = Edit().generateTschessElement(name: self.ELEMENT_LIST[indexPath.row])
             
             if(self.inExcess(piece: tschessElement!, config: self.configActiv!)){
                 return []
@@ -218,7 +218,7 @@ class EditOther: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate
             let generator = UIImpactFeedbackGenerator(style: .light)
             generator.impactOccurred()
             
-            let imageName = self.imageNameFromPiece(piece: tschessElement!)!
+            let imageName = Edit().imageNameFromPiece(piece: tschessElement!)!
             self.selectionPieceName = imageName
             let itemProvider = NSItemProvider(object: UIImage(named: imageName)!)
             let dragItem = UIDragItem(itemProvider: itemProvider)
@@ -246,7 +246,7 @@ class EditOther: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate
         self.boardViewConfig.reloadData()
         self.pieceCollectionView.reloadData()
         /***/
-        let imageName = imageNameFromPiece(piece: tschessElement!)!
+        let imageName = Edit().imageNameFromPiece(piece: tschessElement!)!
         self.selectionPieceName = imageName
         let itemProvider = NSItemProvider(object: UIImage(named: imageName)!)
         let dragItem = UIDragItem(itemProvider: itemProvider)
@@ -304,7 +304,7 @@ class EditOther: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate
                 return
             }
         }
-        let tschessElement = generateTschessElement(name: self.selectionPieceName!)
+        let tschessElement = Edit().generateTschessElement(name: self.selectionPieceName!)
         self.configActiv![x][y] = tschessElement!
         self.setTotalPointValue()
         self.boardViewConfig.reloadData()
@@ -336,7 +336,6 @@ class EditOther: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate
         super.viewDidLoad()
         
         self.boardViewConfig.isHidden = true
-        //self.pieceCollectionView.isHidden = true
         
         self.boardViewConfig.delegate = self
         self.boardViewConfig.dataSource = self
@@ -348,15 +347,13 @@ class EditOther: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate
         self.pieceCollectionView.dragDelegate = self
         
         self.pieceCollectionView.addInteraction(UIDropInteraction(delegate: self))
-        //self.dropViewBottom0.addInteraction(UIDropInteraction(delegate: self))
+      
         self.dropViewTop0.addInteraction(UIDropInteraction(delegate: self))
         self.dropViewTop1.addInteraction(UIDropInteraction(delegate: self))
-        //self.splitView2.addInteraction(UIDropInteraction(delegate: self))
+      
         self.headerView.addInteraction(UIDropInteraction(delegate: self))
         
         self.tabBarMenu.delegate = self
-        
-        self.titleLabel.text = "config. 0̸"
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -376,11 +373,6 @@ class EditOther: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        //let totalContentHeight = self.contentView.frame.size.height - 8
-        //self.splitViewHeight0.constant = totalContentHeight/3
-        //self.splitViewHeight1.constant = totalContentHeight/3
-        //self.splitViewHeight2.constant = totalContentHeight/3
         
         self.activityIndicator.isHidden = true
         
@@ -458,74 +450,6 @@ extension EditOther: UICollectionViewDelegateFlowLayout {
 }
 
 extension EditOther: UICollectionViewDelegate {
-    
-    func generateTschessElement(name: String) -> Piece? {
-        if(name.contains("grasshopper")){
-            return Grasshopper()
-        }
-        if(name.contains("hunter")){
-            return Hunter()
-        }
-        if(name.contains("poison")){
-            return Poison()
-        }
-        if(name.contains("amazon")){
-            return Amazon()
-        }
-        if(name.contains("pawn")){
-            return Pawn()
-        }
-        if(name.contains("knight")){
-            return Knight()
-        }
-        if(name.contains("bishop")){
-            return Bishop()
-        }
-        if(name.contains("rook")){
-            return Rook()
-        }
-        if(name.contains("queen")){
-            return Queen()
-        }
-        if(name.contains("king")){
-            return King()
-        }
-        return nil
-    }
-    
-    func imageNameFromPiece(piece: Piece) -> String? {
-        if(piece.name == Grasshopper().name){
-            return "red_grasshopper"
-        }
-        if(piece.name == Hunter().name){
-            return "red_hunter"
-        }
-        if(piece.name == Poison().name){
-            return "red_landmine_pawn"
-        }
-        if(piece.name == Amazon().name){
-            return "red_amazon"
-        }
-        if(piece.name == Pawn().name){
-            return "red_pawn"
-        }
-        if(piece.name == Knight().name){
-            return "red_knight"
-        }
-        if(piece.name == Bishop().name){
-            return "red_bishop"
-        }
-        if(piece.name == Rook().name){
-            return "red_rook"
-        }
-        if(piece.name == Queen().name){
-            return "red_queen"
-        }
-        if(piece.name == King().name){
-            return "red_king"
-        }
-        return nil
-    }
     
     @IBAction func backButtonClick(_ sender: Any) {
         if(self.BACK == "PLAY"){

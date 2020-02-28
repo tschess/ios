@@ -160,7 +160,7 @@ class HistoricTable: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let modifyAction = UIContextualAction(style: .normal, title:  "REMATCH", handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
+        let modifyAction = UIContextualAction(style: .normal, title:  nil, handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
             let gameModel: EntityGame = self.gameMenuTableList[indexPath.row]
             let playerOther: EntityPlayer = gameModel.getPlayerOther(username: self.playerSelf!.username)
             DispatchQueue.main.async {
@@ -169,7 +169,7 @@ class HistoricTable: UITableViewController {
             }
             success(true)
         })
-        modifyAction.image = UIImage(named: "game.white")!
+        modifyAction.image = UIImage(named: "challenge")!
         modifyAction.backgroundColor = .purple
         return UISwipeActionsConfiguration(actions: [modifyAction])
     }

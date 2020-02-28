@@ -316,13 +316,13 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
                     return
                 }
                 DispatchQueue.main.async {
-                    self.contentViewLabel.text = "loser"
+                    self.contentViewLabel.text = "you lose"
                 }
                 return
             }
             if(self.gameTschess!.getWhite(username: self.playerSelf!.username)){
                 DispatchQueue.main.async {
-                    self.contentViewLabel.text = "loser"
+                    self.contentViewLabel.text = "you lose"
                 }
                 return
             }

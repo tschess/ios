@@ -2,11 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
+      "filename" : "phow-1.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "photo_white.png",
+      "filename" : "phow.png",
       "scale" : "2x"
     },
     {

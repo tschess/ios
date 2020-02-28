@@ -167,7 +167,7 @@ class HomeMenuTable: UITableViewController {
     
     override func tableView(_ tableView: UITableView,
                             leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let modifyAction = UIContextualAction(style: .normal, title:  "RECENT", handler: { (ac: UIContextualAction, view: UIView, success: (Bool) -> Void) in
+        let modifyAction = UIContextualAction(style: .normal, title:  nil, handler: { (ac: UIContextualAction, view: UIView, success: (Bool) -> Void) in
             
             self.activityIndicator!.isHidden = false
             self.activityIndicator!.startAnimating()
@@ -217,7 +217,7 @@ class HomeMenuTable: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let modifyAction = UIContextualAction(style: .normal, title:  "CHALLENGE", handler: { (ac: UIContextualAction, view: UIView, success: (Bool) -> Void) in
+        let modifyAction = UIContextualAction(style: .normal, title:  nil, handler: { (ac: UIContextualAction, view: UIView, success: (Bool) -> Void) in
             
             let playerOther = self.leaderboardList[indexPath.row]
             DispatchQueue.main.async {
@@ -227,7 +227,7 @@ class HomeMenuTable: UITableViewController {
             }
             success(true)
         })
-        modifyAction.image = UIImage(named: "game.white")!
+        modifyAction.image = UIImage(named: "challenge")!
         modifyAction.backgroundColor = .purple
         return UISwipeActionsConfiguration(actions: [modifyAction])
     }
