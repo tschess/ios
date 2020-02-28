@@ -88,7 +88,7 @@ class Promotion: UIViewController {
     }
     
     public func evaluate(coordinate: [Int], proposed: [Int]) -> Bool {
-        let state = self.chess!.gameTschess!.getStateClient(username: self.chess!.playerSelf!.username)
+        let state = self.chess!.game!.getStateClient(username: self.chess!.playerSelf!.username)
         let tschessElement = state[coordinate[0]][coordinate[1]]
         if(tschessElement == nil){
             return false
@@ -118,12 +118,12 @@ class Promotion: UIViewController {
     private func execute(promotionWhite: Piece, promotionBlack: Piece) {
         var promotionPiece: Piece = promotionWhite
         
-        let white: Bool = self.chess!.gameTschess!.getWhite(username: self.chess!.playerSelf!.username)
+        let white: Bool = self.chess!.game!.getWhite(username: self.chess!.playerSelf!.username)
         if(!white){
             promotionPiece = promotionBlack
         }
         
-        var state = self.chess!.gameTschess!.getStateClient(username: self.chess!.playerSelf!.username)
+        var state = self.chess!.game!.getStateClient(username: self.chess!.playerSelf!.username)
         let coordinate: [Int]? = self.transitioner!.getCoordinate()
         state[coordinate![0]][coordinate![1]] = nil
         state[proposed![0]][proposed![1]] = promotionPiece
@@ -137,7 +137,7 @@ class Promotion: UIViewController {
         let h1: Int = white ? coordinate![1] : 7 - coordinate![1]
         let highlight: String = "\(hx)\(hy)\(h0)\(h1)"
         
-        let requestPayload: [String: Any] = ["id_game": self.chess!.gameTschess!.id, "state": stateUpdate, "highlight": highlight, "condition": "TBD"]
+        let requestPayload: [String: Any] = ["id_game": self.chess!.game!.id, "state": stateUpdate, "highlight": highlight, "condition": "TBD"]
         DispatchQueue.main.async() {
             self.chess!.activityIndicator.isHidden = false
             self.chess!.activityIndicator.startAnimating()

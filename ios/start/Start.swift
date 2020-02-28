@@ -271,9 +271,9 @@ class Start: UIViewController, UITextFieldDelegate {
                 DispatchQueue.main.async {
                     let storyboard: UIStoryboard = UIStoryboard(name: "dTschessL", bundle: nil)
                     let viewController = storyboard.instantiateViewController(withIdentifier: "dTschessL") as! Tschess
-                    viewController.setPlayerOther(playerOther: game!.getPlayerOther(username: game!.white.username))
-                    viewController.setPlayerSelf(playerSelf: game!.white)
-                    viewController.setGameTschess(gameTschess: game!)
+                    viewController.setOther(player: game!.getPlayerOther(username: game!.white.username))
+                    viewController.setSelf(player: game!.white)
+                    viewController.setGame(game: game!)
                     UIApplication.shared.keyWindow?.rootViewController = viewController
                 }
             }
@@ -288,45 +288,16 @@ class Start: UIViewController, UITextFieldDelegate {
                 DispatchQueue.main.async {
                     let storyboard: UIStoryboard = UIStoryboard(name: "nTschess", bundle: nil)
                     let viewController = storyboard.instantiateViewController(withIdentifier: "nTschess") as! Tschess
-                    viewController.setPlayerOther(playerOther: game!.getPlayerOther(username: game!.black.username))
-                    viewController.setPlayerSelf(playerSelf: game!.black)
-                    viewController.setGameTschess(gameTschess: game!)
+                    viewController.setOther(player: game!.getPlayerOther(username: game!.black.username))
+                    viewController.setSelf(player: game!.black)
+                    viewController.setGame(game: game!)
                     UIApplication.shared.keyWindow?.rootViewController = viewController
                 }
             }
             return
         }
-        if(self.testTaskCounter == 5){
-            let STATE = [["DEFAULT"]]
-            let TURN = "WHITE"
-            let REQUEST: [String: Any] = ["state": STATE, "turn": TURN]
-            RequestTest().execute(requestPayload: REQUEST) { (game) in
-                DispatchQueue.main.async {
-                    let storyboard: UIStoryboard = UIStoryboard(name: "cTschess", bundle: nil)
-                    let viewController = storyboard.instantiateViewController(withIdentifier: "cTschess") as! Tschess
-                    viewController.setPlayerOther(playerOther: game!.getPlayerOther(username: game!.white.username))
-                    viewController.setPlayerSelf(playerSelf: game!.white)
-                    viewController.setGameTschess(gameTschess: game!)
-                    UIApplication.shared.keyWindow?.rootViewController = viewController
-                }
-            }
-            return
-        }
-        if(self.testTaskCounter == 6){
-            let STATE = [[""]]
-            let TURN = "BLACK"
-            let REQUEST: [String: Any] = ["state": STATE, "turn": TURN]
-            RequestTest().execute(requestPayload: REQUEST) { (game) in
-                DispatchQueue.main.async {
-                    let storyboard: UIStoryboard = UIStoryboard(name: "hTschess", bundle: nil)
-                    let viewController = storyboard.instantiateViewController(withIdentifier: "hTschess") as! Tschess
-                    viewController.setPlayerOther(playerOther: game!.getPlayerOther(username: game!.black.username))
-                    viewController.setPlayerSelf(playerSelf: game!.black)
-                    viewController.setGameTschess(gameTschess: game!)
-                    UIApplication.shared.keyWindow?.rootViewController = viewController
-                }
-            }
-        }
+        
+        
     }
     
     @IBAction func buttonClickRecover(_ sender: Any) {

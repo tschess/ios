@@ -63,7 +63,7 @@ class Passant {
                             let h1: Int = white ? coordinate![1] : 7 - coordinate![1]
                             let highlight: String = "\(hx)\(hy)\(h0)\(h1)"
                             
-                            let requestPayload: [String: Any] = ["id_game": self.chess!.gameTschess!.id, "state": stateUpdate, "highlight": highlight, "condition": "TBD"]
+                            let requestPayload: [String: Any] = ["id_game": self.chess!.game!.id, "state": stateUpdate, "highlight": highlight, "condition": "TBD"]
                             DispatchQueue.main.async() {
                                 self.chess!.activityIndicator.isHidden = false
                                 self.chess!.activityIndicator.startAnimating()
@@ -100,7 +100,7 @@ class Passant {
                             let h1: Int = white ? coordinate![1] : 7 - coordinate![1]
                             let highlight: String = "\(hx)\(hy)\(h0)\(h1)"
                             
-                            let requestPayload: [String: Any] = ["id_game": self.chess!.gameTschess!.id, "state": stateUpdate, "highlight": highlight, "condition": "TBD"]
+                            let requestPayload: [String: Any] = ["id_game": self.chess!.game!.id, "state": stateUpdate, "highlight": highlight, "condition": "TBD"]
                             DispatchQueue.main.async() {
                                 self.chess!.activityIndicator.isHidden = false
                                 self.chess!.activityIndicator.startAnimating()
