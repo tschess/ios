@@ -125,6 +125,12 @@ class SerializerState {
             }
             return AmazonBlack()
         }
+        if(name.contains("Reveal")){
+            if(name.contains("White")){
+                return RevealWhite()
+            }
+            return RevealBlack()
+        }
        return nil
     }
     

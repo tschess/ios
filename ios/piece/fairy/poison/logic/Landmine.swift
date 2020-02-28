@@ -53,25 +53,35 @@ class Landmine {
             return false
         }
         //they are attacking a poison pawn...
+        var stateX: [[Piece?]] = self.transitioner.deselectHighlight(state0: state0)
+        
+        
         if(elementAttacker!.name.contains("King")){
             if(!self.white){
-                //state1[proposed[0]][proposed[1]] = RevealWhite()
+                stateX[proposed[0]][proposed[1]] = RevealWhite()
             } else {
-                //state1[proposed[0]][proposed[1]] = RevealBlack()
+                stateX[proposed[0]][proposed[1]] = RevealBlack()
             }
             /**
              GTFO...
              */
-//            DispatchQueue.main.async {
-//                self.contentLabel.text = ".:*~ poison pawn ~*:."
-//            }
-            
-            print("x - 4")
+            let stateUpdate: [[String]] = SerializerState(white: self.white).renderServer(state: stateX)
+            let requestPayload: [String: Any] = ["id_game": self.game_id, "state": stateUpdate]
+            DispatchQueue.main.async() {
+                self.activityIndicator.isHidden = false
+                self.activityIndicator.startAnimating()
+            }
+            UpdateMine().success(requestPayload: requestPayload) { (success) in
+                if(!success){
+                    //error
+                    print("x - 5")
+                }
+                self.transitioner.clearCoordinate()
+            }
             
             return true
-            
         }
-        var stateX: [[Piece?]] = self.transitioner.deselectHighlight(state0: state0)
+        
         stateX[proposed[0]][proposed[1]] = nil
         stateX[coordinate![0]][coordinate![1]] = nil
         let stateUpdate: [[String]] = SerializerState(white: self.white).renderServer(state: stateX)
@@ -90,16 +100,11 @@ class Landmine {
         GameUpdate().success(requestPayload: requestPayload) { (success) in
             if(!success){
                 //error
-                
                 print("x - 5")
-                
             }
-
             self.transitioner.clearCoordinate()
         }
-        
         print("x - 6")
-        
         return true
     }
     
