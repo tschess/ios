@@ -82,7 +82,7 @@ class Landmine {
         let h1: Int = self.white ? coordinate![1] : 7 - coordinate![1]
         let highlight: String = "\(hx)\(hy)\(h0)\(h1)"
         
-        let requestPayload: [String: Any] = ["id_game": self.game_id, "state": stateUpdate, "highlight": highlight]
+        let requestPayload: [String: Any] = ["id_game": self.game_id, "state": stateUpdate, "highlight": highlight, "condition": "LANDMINE"]
         DispatchQueue.main.async() {
             self.activityIndicator.isHidden = false
             self.activityIndicator.startAnimating()

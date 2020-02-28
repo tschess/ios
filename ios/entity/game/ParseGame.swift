@@ -16,7 +16,7 @@ class ParseGame {
         let state = json["state"]! as! [[String]]
         let moves = json["moves"]! as! Int
         let status = json["status"]! as! String
-        let outcome = json["outcome"]! as! String
+        let outcome = json["condition"]! as! String
         let whiteX = json["white"]! as! [String: Any]
         let white: EntityPlayer = ParsePlayer().execute(json: whiteX)
         let white_elo = json["white_elo"]! as! Int

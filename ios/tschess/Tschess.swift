@@ -74,7 +74,9 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     @IBOutlet weak var usernameLabel: UILabel!
     
     @IBOutlet weak var contentView: UIView!
-    @IBOutlet weak var contentViewLabel: UILabel!
+    @IBOutlet weak var notificationLabel: UILabel!
+    //@IBOutlet weak var notificationLabel: UILabel!
+    //@IBOutlet weak var contentViewLabel: UILabel!
     
     @IBOutlet weak var collectionView: BoardView!
     @IBOutlet weak var collectionViewHeight: NSLayoutConstraint!
@@ -133,7 +135,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         self.setTurn()
         
         self.timerLabel.isHidden = true
-        self.contentViewLabel.isHidden = true
+        self.notificationLabel.isHidden = true
         
         self.renderHeader()
         self.startTimers()
@@ -243,7 +245,8 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     private func highlightLastMoveCoords(indexPath: IndexPath, cell: SquareCell) -> SquareCell {
         if(self.gameTschess!.outcome == "LANDMINE"){
             DispatchQueue.main.async {
-                self.contentViewLabel.text = ".:*~ poison pawn ~*:."
+                self.notificationLabel.isHidden = false
+                self.notificationLabel.text = ".:*~ poison pawn ~*:."
             }
             
             let white: Bool = self.gameTschess!.getWhite(username: self.playerSelf!.username)
@@ -263,16 +266,36 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
             let h0b: Int = Int(String(coords[1]))!
             let h0: [Int] = [h0a,h0b]
             if(sq == h0){
-                cell.layer.borderWidth = 1.5
-                cell.layer.borderColor = UIColor.magenta.cgColor
+                
+                if(!self.turn){
+                    if(white){
+                        cell.backgroundColor = UIColor.black
+                    } else {
+                        cell.backgroundColor = UIColor.white
+                    }
+                    //cell.layer.borderColor = UIColor.black.cgColor
+                } else {
+                    cell.layer.borderWidth = 1.5
+                   cell.layer.borderColor = UIColor.magenta.cgColor
+                }
                 return cell
             }
             let h1a: Int = Int(String(coords[2]))!
             let h1b: Int = Int(String(coords[3]))!
             let h1: [Int] = [h1a,h1b]
             if(sq == h1){
-                cell.layer.borderWidth = 1.5
-                cell.layer.borderColor = UIColor.magenta.cgColor
+                
+                if(!self.turn){
+                    if(white){
+                        cell.backgroundColor = UIColor.black
+                    } else {
+                        cell.backgroundColor = UIColor.white
+                    }
+                    //cell.layer.borderColor = UIColor.black.cgColor
+                } else {
+                    cell.layer.borderWidth = 1.5
+                   cell.layer.borderColor = UIColor.magenta.cgColor
+                }
                 return cell
             }
             cell.layer.borderWidth = 0
@@ -319,14 +342,14 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         if(self.gameTschess!.status == "RESOLVED"){
             DispatchQueue.main.async {
                 self.titleViewLabel.text = "game over"
-                self.contentViewLabel.isHidden = false
+                self.notificationLabel.isHidden = false
                 self.turnaryLabel.isHidden = true
                 self.timerLabel.isHidden = true
             }
             self.stopTimers()
             if(self.gameTschess!.outcome == "DRAW"){
                 DispatchQueue.main.async {
-                    self.contentViewLabel.text = "draw"
+                    self.notificationLabel.text = "draw"
                     self.titleViewLabel.text = "game over"
                 }
                 return
@@ -334,43 +357,43 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
             if(self.gameTschess!.winner == "WHITE"){
                 if(self.gameTschess!.getWhite(username: self.playerSelf!.username)){
                     DispatchQueue.main.async {
-                        self.contentViewLabel.text = "winner"
+                        self.notificationLabel.text = "winner"
                     }
                     return
                 }
                 DispatchQueue.main.async {
-                    self.contentViewLabel.text = "you lose"
+                    self.notificationLabel.text = "you lose"
                 }
                 return
             }
             if(self.gameTschess!.getWhite(username: self.playerSelf!.username)){
                 DispatchQueue.main.async {
-                    self.contentViewLabel.text = "you lose"
+                    self.notificationLabel.text = "you lose"
                 }
                 return
             }
             DispatchQueue.main.async {
-                self.contentViewLabel.text = "winner"
+                self.notificationLabel.text = "winner"
             }
         }
     }
     
     private func processDrawProposal() {
         if(self.gameTschess!.outcome == "TBD"){
-            self.contentViewLabel.isHidden = true
+            self.notificationLabel.isHidden = true
             return
         }
         if(self.gameTschess!.outcome == "PENDING"){
             if(!self.turn){
-                self.contentViewLabel.isHidden = false
+                self.notificationLabel.isHidden = false
                 self.timerLabel.isHidden = false
-                self.contentViewLabel.text = "proposal pending"
+                self.notificationLabel.text = "proposal pending"
                 self.turnaryLabel.text = "\(self.playerOther!.username) to respond"
                 return
             }
-            self.contentViewLabel.isHidden = false
+            self.notificationLabel.isHidden = false
             self.timerLabel.isHidden = false
-            self.contentViewLabel.text = "proposal pending"
+            self.notificationLabel.text = "proposal pending"
             self.turnaryLabel.text = "\(self.playerSelf!.username) to respond"
             
             DispatchQueue.main.async {
@@ -587,7 +610,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
                 let h1: Int = white ? coordinate![1] : 7 - coordinate![1]
                 let highlight: String = "\(hx)\(hy)\(h0)\(h1)"
                 
-                let requestPayload: [String: Any] = ["id_game": self.gameTschess!.id, "state": stateUpdate, "highlight": highlight]
+                let requestPayload: [String: Any] = ["id_game": self.gameTschess!.id, "state": stateUpdate, "highlight": highlight, "condition": "TBD"]
                 DispatchQueue.main.async() {
                     self.activityIndicator.isHidden = false
                     self.activityIndicator.startAnimating()

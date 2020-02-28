@@ -241,28 +241,31 @@
                                             <constraint firstItem="wfP-tD-SfI" firstAttribute="centerX" secondItem="J9V-JR-501" secondAttribute="centerX" id="y63-33-aup"/>
                                         </constraints>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="notification_label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BFc-FV-aMb" userLabel="TimerLabel">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="notification" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0DS-x4-h8l">
                                         <rect key="frame" x="0.0" y="4" width="320" height="20"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="20" id="1MR-we-0gq"/>
+                                            <constraint firstAttribute="height" constant="20" id="hyK-E2-gxl"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="19"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
+                                        <color key="shadowColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="J9V-JR-501" secondAttribute="bottom" id="4i2-oZ-bXL"/>
                                     <constraint firstAttribute="trailing" secondItem="J9V-JR-501" secondAttribute="trailing" id="4sq-cR-MkR"/>
-                                    <constraint firstItem="BFc-FV-aMb" firstAttribute="leading" secondItem="9wh-i1-2Qp" secondAttribute="leading" id="BR0-lf-Esg"/>
+                                    <constraint firstItem="v4N-X5-tXk" firstAttribute="top" secondItem="0DS-x4-h8l" secondAttribute="bottom" constant="4" id="A52-nH-Y0f"/>
                                     <constraint firstAttribute="trailing" secondItem="v4N-X5-tXk" secondAttribute="trailing" id="CPR-dY-5Ht"/>
                                     <constraint firstItem="J9V-JR-501" firstAttribute="top" secondItem="v4N-X5-tXk" secondAttribute="bottom" id="JV8-Rv-ARX"/>
                                     <constraint firstItem="J9V-JR-501" firstAttribute="leading" secondItem="9wh-i1-2Qp" secondAttribute="leading" id="Kcf-q9-ul3"/>
-                                    <constraint firstAttribute="trailing" secondItem="BFc-FV-aMb" secondAttribute="trailing" id="ULH-IK-euU"/>
-                                    <constraint firstItem="BFc-FV-aMb" firstAttribute="top" secondItem="9wh-i1-2Qp" secondAttribute="top" constant="4" id="Xfv-oM-k8w"/>
-                                    <constraint firstItem="v4N-X5-tXk" firstAttribute="top" secondItem="BFc-FV-aMb" secondAttribute="bottom" constant="4" id="l0m-6Y-b00"/>
+                                    <constraint firstItem="0DS-x4-h8l" firstAttribute="top" secondItem="9wh-i1-2Qp" secondAttribute="top" constant="4" id="Mc7-GV-Sxe"/>
+                                    <constraint firstAttribute="trailing" secondItem="0DS-x4-h8l" secondAttribute="trailing" id="fT6-hM-VR5"/>
                                     <constraint firstItem="v4N-X5-tXk" firstAttribute="leading" secondItem="9wh-i1-2Qp" secondAttribute="leading" id="xXC-71-YzS"/>
+                                    <constraint firstItem="0DS-x4-h8l" firstAttribute="leading" secondItem="9wh-i1-2Qp" secondAttribute="leading" id="zJE-Zl-1Nz"/>
                                 </constraints>
                             </view>
                             <tabBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lR1-2A-YPc">
@@ -317,9 +320,9 @@
                         <outlet property="collectionView" destination="v4N-X5-tXk" id="9XC-Wx-MWy"/>
                         <outlet property="collectionViewHeight" destination="UrR-TT-KiU" id="4JU-aD-FAf"/>
                         <outlet property="contentView" destination="9wh-i1-2Qp" id="yID-ON-Nbo"/>
-                        <outlet property="contentViewLabel" destination="BFc-FV-aMb" id="Oik-ay-arI"/>
                         <outlet property="eloLabel" destination="YxI-dg-6nx" id="AfC-kj-wLX"/>
                         <outlet property="headerView" destination="YPS-Tp-PVu" id="3i6-Uh-42s"/>
+                        <outlet property="notificationLabel" destination="0DS-x4-h8l" id="w2B-wO-BSo"/>
                         <outlet property="rankLabel" destination="7rM-GI-ans" id="YEC-dq-ZkA"/>
                         <outlet property="rankLabelDate" destination="kJX-GF-1X4" id="3eN-db-2jW"/>
                         <outlet property="tabBarMenu" destination="lR1-2A-YPc" id="ysK-SW-Hze"/>
@@ -338,8 +341,8 @@
     </scenes>
     <resources>
         <image name="avatar_default" width="320" height="320"/>
-        <image name="back.grey" width="36" height="27"/>
-        <image name="back.white" width="36" height="27"/>
+        <image name="back.grey" width="39" height="33"/>
+        <image name="back.white" width="39" height="33"/>
         <image name="options_grey" width="36" height="36"/>
         <image name="options_white" width="36" height="36"/>
     </resources>
