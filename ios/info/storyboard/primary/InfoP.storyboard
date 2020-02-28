@@ -180,8 +180,8 @@
     </scenes>
     <resources>
         <image name="avatar_default" width="320" height="320"/>
-        <image name="back.grey" width="36" height="27"/>
-        <image name="back.white" width="36" height="27"/>
+        <image name="back.grey" width="39" height="33"/>
+        <image name="back.white" width="39" height="33"/>
         <image name="home.grey" width="40" height="38"/>
         <image name="home.white" width="40" height="38"/>
     </resources>

@@ -70,7 +70,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     @IBOutlet weak var eloLabel: UILabel!
     @IBOutlet weak var rankLabel: UILabel!
     @IBOutlet weak var rankLabelDate: UILabel!
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet var activityIndicator: UIActivityIndicatorView! //strong
     @IBOutlet weak var usernameLabel: UILabel!
     
     @IBOutlet weak var contentView: UIView!
@@ -115,21 +115,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         self.evalCheckMate() //draw/resign also?
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.collectionView.dataSource = self
-        self.collectionView.delegate = self
-        self.tabBarMenu.delegate = self
-        
-        self.processDrawProposal()
-        self.castling = Castle(white: self.gameTschess!.getWhite(username: self.playerSelf!.username))
-        self.castling!.setChess(chess: self)
-        self.castling!.setTransitioner(transitioner: transitioner!)
-        
-        self.passant = Passant(white: self.gameTschess!.getWhite(username: self.playerSelf!.username))
-        self.passant!.setChess(chess: self)
-        self.passant!.setTransitioner(transitioner: transitioner!)
-    }
+    
     
     public func renderHeader() {
         self.avatarImageView.image = self.playerOther!.getImageAvatar()
@@ -255,6 +241,43 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     }
     
     private func highlightLastMoveCoords(indexPath: IndexPath, cell: SquareCell) -> SquareCell {
+        if(self.gameTschess!.outcome == "LANDMINE"){
+            DispatchQueue.main.async {
+                self.contentViewLabel.text = ".:*~ poison pawn ~*:."
+            }
+            
+            let white: Bool = self.gameTschess!.getWhite(username: self.playerSelf!.username)
+            
+            let x: Int = white ? indexPath.item / 8 : 7 - (indexPath.item / 8)
+            let y: Int = white ? indexPath.item % 8 : 7 - (indexPath.item % 8)
+            let sq: [Int] = [x,y]
+            
+            let highlight: String = self.gameTschess!.highlight
+            if(highlight == "TBD"){
+                cell.layer.borderWidth = 0
+                return cell
+            }
+            let coords = Array(highlight)
+            
+            let h0a: Int = Int(String(coords[0]))!
+            let h0b: Int = Int(String(coords[1]))!
+            let h0: [Int] = [h0a,h0b]
+            if(sq == h0){
+                cell.layer.borderWidth = 1.5
+                cell.layer.borderColor = UIColor.magenta.cgColor
+                return cell
+            }
+            let h1a: Int = Int(String(coords[2]))!
+            let h1b: Int = Int(String(coords[3]))!
+            let h1: [Int] = [h1a,h1b]
+            if(sq == h1){
+                cell.layer.borderWidth = 1.5
+                cell.layer.borderColor = UIColor.magenta.cgColor
+                return cell
+            }
+            cell.layer.borderWidth = 0
+            return cell
+        }
         if(!self.turn){
             cell.layer.borderWidth = 0
             return cell
@@ -476,83 +499,116 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         }
     }
     
+    var landmine: Landmine?
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.collectionView.dataSource = self
+        self.collectionView.delegate = self
+        self.tabBarMenu.delegate = self
+        
+        let white: Bool = self.gameTschess!.getWhite(username: self.playerSelf!.username)
+        
+        self.processDrawProposal()
+        self.castling = Castle(white: white)
+        self.castling!.setChess(chess: self)
+        self.castling!.setTransitioner(transitioner: self.transitioner!)
+        
+        self.passant = Passant(white: white)
+        self.passant!.setChess(chess: self)
+        self.passant!.setTransitioner(transitioner: self.transitioner!)
+        
+        self.landmine = Landmine(
+            game_id: self.gameTschess!.id,
+            white: white,
+            transitioner: self.transitioner!,
+            activityIndicator: self.activityIndicator)
+    }
+    
     
     // MARK: prime mover
-       
-       func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-           if(!self.turn){
-               self.flash()
-               return
-           }
-           let x = indexPath.item / 8
-           let y = indexPath.item % 8
-           print("x: \(x), y: \(y)")
-           
-           //let coordinate = self.transitioner!.getCoordinate()
-           //        if(coordinate != nil){
-           //            let landmine = Landmine().detonate(coordinate: coordinate!, proposed: [x,y], gamestate: Gamestate())
-           //            if(landmine){
-           //                self.renderEffect()
-           //                return
-           //            }
-           //            let hopped = Hopped().evaluate(coordinate: coordinate!, proposed: [x,y], gamestate: Gamestate())
-           //            if(hopped){
-           //                self.renderEffect()
-           //                return
-           //            }
-           //        }
-           
-           let coordinate = self.transitioner!.getCoordinate()
-           if(coordinate != nil){
-               let pawnPromotion = self.pawnPromotion!.evaluate(coordinate: coordinate!, proposed: [x,y])
-               if(pawnPromotion){
-                   self.pawnPromotion(proposed: [x,y])
-                   return
-               }
-               let castling = self.castling!.execute(coordinate: coordinate!, proposed: [x,y], state0: self.tschessElementMatrix!)
-               if(castling){
-                   return
-               }
-               let enPassant = passant!.evaluate(coordinate: coordinate!, proposed: [x,y], state0: self.tschessElementMatrix!)
-               if(enPassant){
-                   return
-               }
-               
-               if(self.transitioner!.validMove(propose: [x,y], state0: self.tschessElementMatrix!)){
-                   self.tschessElementMatrix = self.transitioner!.deselectHighlight(state0: self.tschessElementMatrix!)
-                   let stateX: [[Piece?]] = self.transitioner!.executeMove(propose: [x,y], state0: self.tschessElementMatrix!)
-                   let stateUpdate = SerializerState(white: self.gameTschess!.getWhite(username: self.playerSelf!.username)).renderServer(state: stateX)
-                   
-                   let white: Bool = self.gameTschess!.getWhite(username: self.playerSelf!.username)
-                   
-                   let hx: Int = white ? x : 7 - x
-                   let hy: Int = white ? y : 7 - y
-                   let h0: Int = white ? coordinate![0] : 7 - coordinate![0]
-                   let h1: Int = white ? coordinate![1] : 7 - coordinate![1]
-                   let highlight: String = "\(hx)\(hy)\(h0)\(h1)"
-                   
-                   let requestPayload: [String: Any] = ["id_game": self.gameTschess!.id, "state": stateUpdate, "highlight": highlight]
-                   DispatchQueue.main.async() {
-                       self.activityIndicator.isHidden = false
-                       self.activityIndicator.startAnimating()
-                   }
-                   GameUpdate().success(requestPayload: requestPayload) { (success) in
-                       if(!success){
-                           //error
-                       }
-                       self.transitioner!.clearCoordinate()
-                   }
-                   return
-               }
-               //otherwise invalid --> deselect...
-               self.tschessElementMatrix = self.transitioner!.deselectHighlight(state0: self.tschessElementMatrix!)
-               self.collectionView.reloadData()
-               self.transitioner!.clearCoordinate()
-               return
-           }
-           let state0 = self.gameTschess!.getStateClient(username: self.playerSelf!.username)
-           self.tschessElementMatrix = self.transitioner!.evaluateHighlightSelection(coordinate: [x,y], state0: state0)
-           self.collectionView.reloadData()
-       }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if(!self.turn){
+            self.flash()
+            return
+        }
+        let x = indexPath.item / 8
+        let y = indexPath.item % 8
+        print("x: \(x), y: \(y)")
+        
+        //let coordinate = self.transitioner!.getCoordinate()
+        //        if(coordinate != nil){
+        //            let landmine = Landmine().detonate(coordinate: coordinate!, proposed: [x,y], gamestate: Gamestate())
+        //            if(landmine){
+        //                self.renderEffect()
+        //                return
+        //            }
+        //            let hopped = Hopped().evaluate(coordinate: coordinate!, proposed: [x,y], gamestate: Gamestate())
+        //            if(hopped){
+        //                self.renderEffect()
+        //                return
+        //            }
+        //        }
+        
+        let coordinate = self.transitioner!.getCoordinate()
+        if(coordinate != nil){
+            let pawnPromotion = self.pawnPromotion!.evaluate(coordinate: coordinate!, proposed: [x,y])
+            if(pawnPromotion){
+                self.pawnPromotion(proposed: [x,y])
+                return
+            }
+            let castling = self.castling!.execute(coordinate: coordinate!, proposed: [x,y], state0: self.tschessElementMatrix!)
+            if(castling){
+                return
+            }
+            let enPassant = self.passant!.evaluate(coordinate: coordinate!, proposed: [x,y], state0: self.tschessElementMatrix!)
+            if(enPassant){
+                return
+            }
+            
+            
+            let landmine = self.landmine!.evaluate(coordinate: coordinate!, proposed: [x,y], state0: self.tschessElementMatrix!)
+            if(landmine){
+                return
+            }
+            
+            
+            if(self.transitioner!.validMove(propose: [x,y], state0: self.tschessElementMatrix!)){
+                self.tschessElementMatrix = self.transitioner!.deselectHighlight(state0: self.tschessElementMatrix!)
+                let stateX: [[Piece?]] = self.transitioner!.executeMove(propose: [x,y], state0: self.tschessElementMatrix!)
+                let stateUpdate = SerializerState(white: self.gameTschess!.getWhite(username: self.playerSelf!.username)).renderServer(state: stateX)
+                
+                let white: Bool = self.gameTschess!.getWhite(username: self.playerSelf!.username)
+                
+                let hx: Int = white ? x : 7 - x
+                let hy: Int = white ? y : 7 - y
+                let h0: Int = white ? coordinate![0] : 7 - coordinate![0]
+                let h1: Int = white ? coordinate![1] : 7 - coordinate![1]
+                let highlight: String = "\(hx)\(hy)\(h0)\(h1)"
+                
+                let requestPayload: [String: Any] = ["id_game": self.gameTschess!.id, "state": stateUpdate, "highlight": highlight]
+                DispatchQueue.main.async() {
+                    self.activityIndicator.isHidden = false
+                    self.activityIndicator.startAnimating()
+                }
+                GameUpdate().success(requestPayload: requestPayload) { (success) in
+                    if(!success){
+                        //error
+                    }
+                    self.transitioner!.clearCoordinate()
+                }
+                return
+            }
+            //otherwise invalid --> deselect...
+            self.tschessElementMatrix = self.transitioner!.deselectHighlight(state0: self.tschessElementMatrix!)
+            self.collectionView.reloadData()
+            self.transitioner!.clearCoordinate()
+            return
+        }
+        let state0 = self.gameTschess!.getStateClient(username: self.playerSelf!.username)
+        self.tschessElementMatrix = self.transitioner!.evaluateHighlightSelection(coordinate: [x,y], state0: state0)
+        self.collectionView.reloadData()
+    }
     
 }

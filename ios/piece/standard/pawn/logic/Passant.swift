@@ -54,8 +54,6 @@ class Passant {
                             state1[4][coordinate![1] - 1] = nil
                             state1[coordinate![0]][coordinate![1]] = nil
                             
-                            
-                            
                             self.chess!.tschessElementMatrix = self.transitioner!.deselectHighlight(state0: self.chess!.tschessElementMatrix!)
                             let stateUpdate = SerializerState(white: white).renderServer(state: state1)
                             

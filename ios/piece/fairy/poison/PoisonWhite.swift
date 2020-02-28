@@ -11,7 +11,6 @@ import UIKit
 class PoisonWhite: Poison {
     
     init(white: Bool) {
-        
         var imageDefault: UIImage = UIImage(named: "white_poison")!
         var imageTarget: UIImage = UIImage(named: "target_white_poison")!
         var imageSelection: UIImage = UIImage(named: "selection_white_poison")!

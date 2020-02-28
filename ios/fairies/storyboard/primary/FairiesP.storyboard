@@ -35,6 +35,7 @@
                                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tabBarItem>
                                     <tabBarItem tag="1" title="" image="home.grey" selectedImage="home.white" id="EpU-gU-ur4">
+                                        <inset key="imageInsets" minX="2" minY="2" maxX="2" maxY="2"/>
                                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tabBarItem>
                                 </items>
@@ -302,8 +303,8 @@
     <resources>
         <image name="arrow.down" catalog="system" width="60" height="64"/>
         <image name="avatar_default" width="320" height="320"/>
-        <image name="back.grey" width="36" height="27"/>
-        <image name="back.white" width="36" height="27"/>
+        <image name="back.grey" width="39" height="33"/>
+        <image name="back.white" width="39" height="33"/>
         <image name="home.grey" width="40" height="38"/>
         <image name="home.white" width="40" height="38"/>
     </resources>

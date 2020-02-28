@@ -184,7 +184,6 @@
 		B7BE12A323EB0BB800ADA499 /* Passant.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE12A223EB0BB800ADA499 /* Passant.swift */; };
 		B7BE12A523EB0BF700ADA499 /* Promotion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7BE12A423EB0BF700ADA499 /* Promotion.storyboard */; };
 		B7BE12A723EB0C2600ADA499 /* Promotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE12A623EB0C2600ADA499 /* Promotion.swift */; };
-		B7BE12AA23EB0C7F00ADA499 /* PoisonLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE12A923EB0C7F00ADA499 /* PoisonLogic.swift */; };
 		B7BE12AE23EB0CDB00ADA499 /* CheckCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE12AD23EB0CDB00ADA499 /* CheckCheck.swift */; };
 		B7BE12B123EB0D3100ADA499 /* KnightOffense.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE12B023EB0D3100ADA499 /* KnightOffense.swift */; };
 		B7BE12B323EB0D6900ADA499 /* PawnOffense.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE12B223EB0D6900ADA499 /* PawnOffense.swift */; };
@@ -220,6 +219,9 @@
 		B7D8ECDB240820F9001B5D2D /* HunterWhite.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D8ECDA240820F9001B5D2D /* HunterWhite.swift */; };
 		B7D8ECDD24082106001B5D2D /* HunterBlack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D8ECDC24082106001B5D2D /* HunterBlack.swift */; };
 		B7D8ECDF240887DB001B5D2D /* Edit.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D8ECDE240887DB001B5D2D /* Edit.swift */; };
+		B7D8ECE12408A917001B5D2D /* Landmine.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D8ECE02408A917001B5D2D /* Landmine.swift */; };
+		B7D8ECE92408B823001B5D2D /* RevealWhite.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D8ECE82408B823001B5D2D /* RevealWhite.swift */; };
+		B7D8ECEB2408B845001B5D2D /* RevealBlack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D8ECEA2408B845001B5D2D /* RevealBlack.swift */; };
 		B7E6C93023EE1FBB009711B8 /* RequestTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E6C92F23EE1FBB009711B8 /* RequestTest.swift */; };
 		B7ED646423F4D9D400292FBC /* Create.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7ED646323F4D9D400292FBC /* Create.storyboard */; };
 		B7ED646823F4DC9B00292FBC /* Create.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7ED646723F4DC9B00292FBC /* Create.swift */; };
@@ -442,7 +444,6 @@
 		B7BE12A223EB0BB800ADA499 /* Passant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Passant.swift; sourceTree = "<group>"; };
 		B7BE12A423EB0BF700ADA499 /* Promotion.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Promotion.storyboard; sourceTree = "<group>"; };
 		B7BE12A623EB0C2600ADA499 /* Promotion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Promotion.swift; sourceTree = "<group>"; };
-		B7BE12A923EB0C7F00ADA499 /* PoisonLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoisonLogic.swift; sourceTree = "<group>"; };
 		B7BE12AD23EB0CDB00ADA499 /* CheckCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckCheck.swift; sourceTree = "<group>"; };
 		B7BE12B023EB0D3100ADA499 /* KnightOffense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnightOffense.swift; sourceTree = "<group>"; };
 		B7BE12B223EB0D6900ADA499 /* PawnOffense.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PawnOffense.swift; sourceTree = "<group>"; };
@@ -478,6 +479,9 @@
 		B7D8ECDA240820F9001B5D2D /* HunterWhite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HunterWhite.swift; sourceTree = "<group>"; };
 		B7D8ECDC24082106001B5D2D /* HunterBlack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HunterBlack.swift; sourceTree = "<group>"; };
 		B7D8ECDE240887DB001B5D2D /* Edit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Edit.swift; sourceTree = "<group>"; };
+		B7D8ECE02408A917001B5D2D /* Landmine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Landmine.swift; sourceTree = "<group>"; };
+		B7D8ECE82408B823001B5D2D /* RevealWhite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RevealWhite.swift; sourceTree = "<group>"; };
+		B7D8ECEA2408B845001B5D2D /* RevealBlack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RevealBlack.swift; sourceTree = "<group>"; };
 		B7E6C92F23EE1FBB009711B8 /* RequestTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestTest.swift; sourceTree = "<group>"; };
 		B7ED646323F4D9D400292FBC /* Create.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Create.storyboard; sourceTree = "<group>"; };
 		B7ED646723F4DC9B00292FBC /* Create.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Create.swift; sourceTree = "<group>"; };
@@ -1606,7 +1610,8 @@
 		B7BE12A823EB0C7000ADA499 /* logic */ = {
 			isa = PBXGroup;
 			children = (
-				B7BE12A923EB0C7F00ADA499 /* PoisonLogic.swift */,
+				B7D8ECE72408B80D001B5D2D /* reveal */,
+				B7D8ECE02408A917001B5D2D /* Landmine.swift */,
 			);
 			path = logic;
 			sourceTree = "<group>";
@@ -1731,6 +1736,15 @@
 				B7215A7223F5D78300B86274 /* SelectRecent.swift */,
 			);
 			path = storyboard;
+			sourceTree = "<group>";
+		};
+		B7D8ECE72408B80D001B5D2D /* reveal */ = {
+			isa = PBXGroup;
+			children = (
+				B7D8ECE82408B823001B5D2D /* RevealWhite.swift */,
+				B7D8ECEA2408B845001B5D2D /* RevealBlack.swift */,
+			);
+			path = reveal;
 			sourceTree = "<group>";
 		};
 		B7EF701723EA27E300BAF2E2 /* entity */ = {
@@ -2135,10 +2149,12 @@
 				B7F3A13923FD9EE8007B5663 /* CompInvalid.swift in Sources */,
 				B7BE12AE23EB0CDB00ADA499 /* CheckCheck.swift in Sources */,
 				B745AD3523F353BF00E450EF /* RequestCreate.swift in Sources */,
+				B7D8ECEB2408B845001B5D2D /* RevealBlack.swift in Sources */,
 				B7021F6A23FE431300C9346A /* SelectSkins.swift in Sources */,
 				B7BE128D23EB09B400ADA499 /* GameUpdate.swift in Sources */,
 				B7BE121023EAD64100ADA499 /* Hopper.swift in Sources */,
 				B7F541C823D51B0C00E89074 /* HomeMenuCell.swift in Sources */,
+				B7D8ECE92408B823001B5D2D /* RevealWhite.swift in Sources */,
 				B7BE125123EB032E00ADA499 /* Profile.swift in Sources */,
 				B7D8ECDF240887DB001B5D2D /* Edit.swift in Sources */,
 				B7BE117523EA930F00ADA499 /* Piece.swift in Sources */,
@@ -2174,7 +2190,6 @@
 				B7BE120D23EAD42C00ADA499 /* Fairy.swift in Sources */,
 				B70F0C0D22EBC075001415AE /* AppDelegate.swift in Sources */,
 				B70149B923FC5723001A7D52 /* CompOut.swift in Sources */,
-				B7BE12AA23EB0C7F00ADA499 /* PoisonLogic.swift in Sources */,
 				B745AD3123F2FC2000E450EF /* RequestPlay.swift in Sources */,
 				B7BE129B23EB0AAE00ADA499 /* Evaluate.swift in Sources */,
 				B7BE11CE23EA9F1600ADA499 /* KnightWhite.swift in Sources */,
@@ -2213,6 +2228,7 @@
 				B7021F1A23FDC8A200C9346A /* SelectActual.swift in Sources */,
 				B7BE12B723EB0DCD00ADA499 /* Threat.swift in Sources */,
 				B7BE12B523EB0DA700ADA499 /* Attack.swift in Sources */,
+				B7D8ECE12408A917001B5D2D /* Landmine.swift in Sources */,
 				B7021F2C23FDEFEA00C9346A /* SelectConfig.swift in Sources */,
 				B7F6F9E823F0B55C007D9151 /* UpdateEval.swift in Sources */,
 				B7BE121323EAD7BF00ADA499 /* Config.swift in Sources */,
