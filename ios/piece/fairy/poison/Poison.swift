@@ -22,10 +22,10 @@ class Poison: Fairy {
             strength: "2",
             affiliation: affiliation,
             description:
-            "• identical to a standard pawn with *one* caveat.\r\r" +
+            "• behaviour identical to a standard pawn with *one* caveat.\r\r" +
                 "• when captured, the opponent piece is also destroyed, i.e. eliminated from the game.\r\r" +
-            "• if king attempts to capture result is instant checkmate.\r\r" +
-            "• appears to your opponent as a standard pawn.\r\r",
+            "• if king attempts to capture poison pawn the result is instant checkmate.\r\r" +
+            "• appears to your opponent throughout the game as a standard pawn.\r\r",
             imageDefault: imageDefault,
             attackVectorList: Array<String>(["Pawn"]),
             tschxValue: String(4),
