@@ -10,22 +10,14 @@ import UIKit
 
 class Passant {
     
-    var white: Bool
+    let white: Bool
+    let transitioner: Transitioner
+    var tschess: Tschess
     
-    init(white: Bool){
+    init(white: Bool, transitioner: Transitioner, tschess: Tschess){
         self.white = white
-    }
-    
-    var transitioner: Transitioner?
-    
-    public func setTransitioner(transitioner: Transitioner) {
         self.transitioner = transitioner
-    }
-    
-    var chess: Tschess?
-    
-    public func setChess(chess: Tschess) {
-        self.chess = chess
+        self.tschess = tschess
     }
     
     public func evaluate(coordinate: [Int]?, proposed: [Int], state0: [[Piece?]]) -> Bool {
@@ -54,25 +46,25 @@ class Passant {
                             state1[4][coordinate![1] - 1] = nil
                             state1[coordinate![0]][coordinate![1]] = nil
                             
-                            self.chess!.tschessElementMatrix = self.transitioner!.deselectHighlight(state0: self.chess!.tschessElementMatrix!)
-                            let stateUpdate = SerializerState(white: white).renderServer(state: state1)
+                            self.tschess.matrix = self.transitioner.deselectHighlight(state0: self.tschess.matrix!)
+                            let stateUpdate = SerializerState(white: self.white).renderServer(state: state1)
                             
-                            let hx: Int = white ? proposed[0] : 7 - proposed[0]
-                            let hy: Int = white ? proposed[1] : 7 - proposed[1]
-                            let h0: Int = white ? coordinate![0] : 7 - coordinate![0]
-                            let h1: Int = white ? coordinate![1] : 7 - coordinate![1]
+                            let hx: Int = self.white ? proposed[0] : 7 - proposed[0]
+                            let hy: Int = self.white ? proposed[1] : 7 - proposed[1]
+                            let h0: Int = self.white ? coordinate![0] : 7 - coordinate![0]
+                            let h1: Int = self.white ? coordinate![1] : 7 - coordinate![1]
                             let highlight: String = "\(hx)\(hy)\(h0)\(h1)"
                             
-                            let requestPayload: [String: Any] = ["id_game": self.chess!.game!.id, "state": stateUpdate, "highlight": highlight, "condition": "TBD"]
+                            let requestPayload: [String: Any] = ["id_game": self.tschess.game!.id, "state": stateUpdate, "highlight": highlight, "condition": "TBD"]
                             DispatchQueue.main.async() {
-                                self.chess!.activityIndicator.isHidden = false
-                                self.chess!.activityIndicator.startAnimating()
+                                self.tschess.activityIndicator.isHidden = false
+                                self.tschess.activityIndicator.startAnimating()
                             }
                             GameUpdate().success(requestPayload: requestPayload) { (success) in
                                 if(!success){
                                     //error
                                 }
-                                self.transitioner!.clearCoordinate()
+                                self.transitioner.clearCoordinate()
                             }
                             
                             
@@ -91,25 +83,25 @@ class Passant {
                             state1[coordinate![0]][coordinate![1]] = nil
                             
                             
-                            self.chess!.tschessElementMatrix = self.transitioner!.deselectHighlight(state0: self.chess!.tschessElementMatrix!)
-                            let stateUpdate = SerializerState(white: white).renderServer(state: state1)
+                            self.tschess.matrix = self.transitioner.deselectHighlight(state0: self.tschess.matrix!)
+                            let stateUpdate = SerializerState(white: self.white).renderServer(state: state1)
                             
-                            let hx: Int = white ? proposed[0] : 7 - proposed[0]
-                            let hy: Int = white ? proposed[1] : 7 - proposed[1]
-                            let h0: Int = white ? coordinate![0] : 7 - coordinate![0]
-                            let h1: Int = white ? coordinate![1] : 7 - coordinate![1]
+                            let hx: Int = self.white ? proposed[0] : 7 - proposed[0]
+                            let hy: Int = self.white ? proposed[1] : 7 - proposed[1]
+                            let h0: Int = self.white ? coordinate![0] : 7 - coordinate![0]
+                            let h1: Int = self.white ? coordinate![1] : 7 - coordinate![1]
                             let highlight: String = "\(hx)\(hy)\(h0)\(h1)"
                             
-                            let requestPayload: [String: Any] = ["id_game": self.chess!.game!.id, "state": stateUpdate, "highlight": highlight, "condition": "TBD"]
+                            let requestPayload: [String: Any] = ["id_game": self.tschess.game!.id, "state": stateUpdate, "highlight": highlight, "condition": "TBD"]
                             DispatchQueue.main.async() {
-                                self.chess!.activityIndicator.isHidden = false
-                                self.chess!.activityIndicator.startAnimating()
+                                self.tschess.activityIndicator.isHidden = false
+                                self.tschess.activityIndicator.startAnimating()
                             }
                             GameUpdate().success(requestPayload: requestPayload) { (success) in
                                 if(!success){
                                     //error
                                 }
-                                self.transitioner!.clearCoordinate()
+                                self.transitioner.clearCoordinate()
                             }
                             
                             

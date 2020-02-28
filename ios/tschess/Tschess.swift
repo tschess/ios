@@ -10,170 +10,239 @@ import UIKit
 
 class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UITabBarDelegate {
     
-    // MARK: MEMBER VARIABLE
+    // MARK: OUTLETS
+    @IBOutlet weak var buttonBack: UIButton!
+    @IBOutlet weak var viewTitle: UIView!
+    @IBOutlet weak var viewHeader: UIView!
+    @IBOutlet weak var viewContent: UIView!
+    @IBOutlet weak var viewCountdown: UIView!
+    @IBOutlet weak var viewBoardHeight: NSLayoutConstraint!
+    @IBOutlet weak var viewBoard: BoardView!
+    @IBOutlet weak var imageViewAvatar: UIImageView!
+    @IBOutlet weak var labelUsername: UILabel!
+    @IBOutlet weak var labelRankDate: UILabel!
+    @IBOutlet weak var labelRank: UILabel!
+    @IBOutlet weak var labelElo: UILabel!
     
+    @IBOutlet weak var labelNotification: UILabel!
+    @IBOutlet weak var labelCountdown: UILabel!
+    @IBOutlet weak var labelTurnary: UILabel!
+    @IBOutlet weak var labelTitle: UILabel!
+    
+    // STRONG
+    @IBOutlet var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet var tabBarMenu: UITabBar!
+    
+    @IBAction func backButtonClick(_ sender: Any) {
+        self.endTimer()
+        DispatchQueue.main.async {
+            let height: CGFloat = UIScreen.main.bounds.height
+            SelectActual().execute(player: self.playerSelf!, height: height)
+        }
+    }
+    
+    // MARK: MEMBER VARIABLES
     var playerSelf: EntityPlayer?
+    var playerOther: EntityPlayer?
+    var game: EntityGame?
     
     func setSelf(player: EntityPlayer){
         self.playerSelf = player
     }
-    
-    var playerOther: EntityPlayer?
-    
     func setOther(player: EntityPlayer){
         self.playerOther = player
     }
-    
-    var game: EntityGame?
-    
     func setGame(game: EntityGame) {
         self.game = game
     }
     
-    // MARK: PRIVATE FUNC
+    // MARK: LABEL UPDATE FUNCTIONS
+    private func setTurn() {
+        if(self.labelTurnary.isHidden){
+            self.labelTurnary.isHidden = false
+        }
+        let username: String = self.playerSelf!.username
+        let (turn, player) = self.game!.getTurn(username: username)
+        self.turn = turn
+        self.labelTurnary.text = "\(player) to move"
+    }
     
-    private func updateCountdown() {
+    private func setCountdown() {
         let dateUpdate: Date = self.dateTime.toFormatDate(string: self.game!.updated)
         let dateActual: Date = self.dateTime.currentDate()
         let intervalDifference: TimeInterval = dateActual.timeIntervalSince(dateUpdate)
         let intervalStandard: TimeInterval = Double(24) * 60 * 60
         let timeRemaining = intervalStandard - intervalDifference
-        self.counter = String(timeRemaining)
+        self.labelCountdown.text = String(timeRemaining)
     }
     
-    func renderCountdownFormat(_ countdownFormat: String) -> TimeInterval {
-        var interval: Double = 0
-        let componentValueSet = countdownFormat.components(separatedBy: ":")
+    @objc func decCountdown() {
+        var interval0: Double = 0
+        let componentValueSet = self.labelCountdown.text!.components(separatedBy: ":")
         for (index, component) in componentValueSet.reversed().enumerated() {
-            interval += (Double(component) ?? 0) * pow(Double(60), Double(index))
+            interval0 += (Double(component) ?? 0) * pow(Double(60), Double(index))
         }
-        return interval
+        let interval1: TimeInterval = interval0 - TimeInterval(1.0)
+        let sec = Int(interval1.truncatingRemainder(dividingBy: 60))
+        let min = Int(interval1.truncatingRemainder(dividingBy: 3600) / 60)
+        let hour = Int(interval1 / 3600)
+        if(self.labelCountdown.isHidden){
+            self.labelCountdown.isHidden = false
+        }
+        self.labelCountdown.text = String(format: "%02d:%02d:%02d", hour, min, sec)
     }
     
-    // MARK: @OBJC FUNC
+    // MARK: TIMER
+    var timerPolling: Timer?
+    var timerCountdown: Timer?
     
-    @objc func updateCounter() {
-        let countActual = self.renderCountdownFormat(self.counter!) - TimeInterval(1.0)
-        
-        let sec = Int(countActual.truncatingRemainder(dividingBy: 60))
-        let min = Int(countActual.truncatingRemainder(dividingBy: 3600) / 60)
-        let hour = Int(countActual / 3600)
-        
-        if(self.timerLabel.isHidden){
-            self.timerLabel.isHidden = false
+    func setTimer() {
+        guard self.timerPolling == nil else {
+            return
         }
-        self.timerLabel.text = String(format: "%02d:%02d:%02d", hour, min, sec)
+        self.timerPolling = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(pollingTask), userInfo: nil, repeats: true)
+        guard self.timerCountdown == nil else {
+            return
+        }
+        self.timerCountdown = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(decCountdown), userInfo: nil, repeats: true)
     }
     
-    @IBOutlet weak var titleView: UIView!
-    @IBOutlet weak var titleViewLabel: UILabel!
-    @IBOutlet weak var backButton: UIButton!
+    func endTimer() {
+        self.timerPolling?.invalidate()
+        self.timerPolling = nil
+        self.timerCountdown?.invalidate()
+        self.timerCountdown = nil
+    }
     
-    @IBOutlet weak var headerView: UIView!
-    @IBOutlet weak var avatarImageView: UIImageView!
-    @IBOutlet weak var eloLabel: UILabel!
-    @IBOutlet weak var rankLabel: UILabel!
-    @IBOutlet weak var rankLabelDate: UILabel!
-    @IBOutlet var activityIndicator: UIActivityIndicatorView! //strong
-    @IBOutlet weak var usernameLabel: UILabel!
-    
-    @IBOutlet weak var contentView: UIView!
-    @IBOutlet weak var notificationLabel: UILabel!
-    
-    @IBOutlet weak var collectionView: BoardView!
-    @IBOutlet weak var collectionViewHeight: NSLayoutConstraint!
-    
-    @IBOutlet weak var timerView: UIView!
-    @IBOutlet weak var timerLabel: UILabel!
-    @IBOutlet weak var turnaryLabel: UILabel!
-    
-    @IBOutlet var tabBarMenu: UITabBar!
-    
-    var pollingTimer: Timer?
-    var counterTimer: Timer?
-    
-    var counter: String?
-    
-     let dateTime: DateTime = DateTime()
-    
-    var transitioner: Transitioner?
-    
-    var passant: Passant?
-    var castling: Castle?
-    var pawnPromotion: Promotion?
-    var pawnPromotionStoryboard: UIStoryboard?
+    // MARK: CONSTRUCTOR
+    let dateTime: DateTime
+    let promotion: Promotion
     
     required init?(coder aDecoder: NSCoder) {
+        let storyboard: UIStoryboard = UIStoryboard(name: "Promotion", bundle: nil)
+        self.promotion = storyboard.instantiateViewController(withIdentifier: "Promotion") as! Promotion
+        self.dateTime = DateTime()
         super.init(coder: aDecoder)
-        
-        self.counter = "00:00:00" //
-        
-        self.pawnPromotionStoryboard = UIStoryboard(name: "Promotion", bundle: nil)
-        self.pawnPromotion = pawnPromotionStoryboard!.instantiateViewController(withIdentifier: "Promotion") as? Promotion
     }
+    
+    // MARK: LIFEECYCLE
+    var transitioner: Transitioner?
+    var passant: Passant?
+    var castle: Castle?
+    
+    // MARK: TSCHESS VARIABLES
+    var matrix: [[Piece?]]?
+    var turn: Bool?
+    
+    
+    private func processDrawProposal() {
+           if(self.game!.outcome == "TBD"){
+               self.labelNotification.isHidden = true
+               return
+           }
+           if(self.game!.outcome == "PENDING"){
+               if(!self.turn!){
+                   self.labelNotification.isHidden = false
+                   self.labelCountdown.isHidden = false
+                   self.labelNotification.text = "proposal pending"
+                   self.labelTurnary.text = "\(self.playerOther!.username) to respond"
+                   return
+               }
+               self.labelNotification.isHidden = false
+               self.labelCountdown.isHidden = false
+               self.labelNotification.text = "proposal pending"
+               self.labelTurnary.text = "\(self.playerSelf!.username) to respond"
+               
+               DispatchQueue.main.async {
+                   let storyboard: UIStoryboard = UIStoryboard(name: "Evaluate", bundle: nil)
+                   let viewController = storyboard.instantiateViewController(withIdentifier: "Evaluate") as! Evaluate
+                   viewController.modalTransitionStyle = .crossDissolve
+                   viewController.setPlayerSelf(playerSelf: self.playerSelf!)
+                   viewController.setPlayerOther(playerOther: self.game!.getPlayerOther(username: self.playerSelf!.username))
+                   viewController.setGameTschess(gameTschess: self.game!)
+                   self.present(viewController, animated: true, completion: nil)
+               }
+           }
+       }
+    
+    
+    
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.viewBoard.dataSource = self
+        self.viewBoard.delegate = self
+        self.tabBarMenu.delegate = self
+        
+        self.setTimer()
+        
+        self.setCountdown()
+        self.setTurn()
+        
+        let username: String = self.playerSelf!.username
+        let matrix: [[Piece?]] = self.game!.getStateClient(username: username)
+        self.matrix = matrix
+        
+        let white: Bool = self.game!.getWhite(username: username)
+        let transitioner = Transitioner(white: white, collectionView: self.viewBoard)
+        self.promotion.setTransitioner(transitioner: transitioner)
+        self.promotion.setTschess(tschess: self)
+        
+        let game_id: String = self.game!.id
+        self.landmine = Landmine(game_id: game_id, white: white, transitioner: transitioner, activityIndicator: self.activityIndicator)
+        self.passant = Passant(white: white, transitioner: transitioner, tschess: self)
+        self.castle = Castle(white: white, transitioner: transitioner, tschess: self)
+        self.transitioner = transitioner
+        
+        self.processDrawProposal()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.viewBoard.isHidden = true
+        self.labelTurnary.isHidden = true
+        self.labelCountdown.isHidden = true
+        self.labelNotification.isHidden = true
+        
+        self.renderHeader()
+    }
+    
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.collectionView.reloadData()
-        self.collectionView.isHidden = false
+        self.viewBoard.reloadData()
+        self.viewBoard.isHidden = false
         self.activityIndicator.isHidden = true
         
         self.evalCheckMate() //draw/resign also?
     }
     
+    override func viewDidLayoutSubviews() {
+           super.viewDidLayoutSubviews()
+           self.viewBoardHeight.constant = viewBoard.contentSize.height
+       }
     
     
     public func renderHeader() {
-        self.avatarImageView.image = self.playerOther!.getImageAvatar()
-        self.usernameLabel.text = self.playerOther!.username
-        self.eloLabel.text = self.playerOther!.getLabelTextElo()
-        self.rankLabel.text = self.playerOther!.getLabelTextRank()
-        self.rankLabelDate.text = self.playerOther!.getLabelTextDate()
+        self.imageViewAvatar.image = self.playerOther!.getImageAvatar()
+        self.labelUsername.text = self.playerOther!.username
+        self.labelElo.text = self.playerOther!.getLabelTextElo()
+        self.labelRank.text = self.playerOther!.getLabelTextRank()
+        self.labelRankDate.text = self.playerOther!.getLabelTextDate()
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.collectionView.isHidden = true
-        
-        self.turnaryLabel.isHidden = true
-        self.setTurn()
-        
-        self.timerLabel.isHidden = true
-        self.notificationLabel.isHidden = true
-        
-        self.renderHeader()
-        self.startTimers()
-        
-        self.transitioner = Transitioner(white: self.game!.getWhite(username: self.playerSelf!.username), collectionView: collectionView)
-        
-        self.pawnPromotion!.setTransitioner(transitioner: transitioner!)
-        self.pawnPromotion!.setChess(chess: self)
-        
-        self.tschessElementMatrix = self.game!.getStateClient(username: self.playerSelf!.username)
-    }
     
-    var tschessElementMatrix: [[Piece?]]?
     
-    var turn: Bool = false
     
-    private func setTurn() {
-        if(self.turnaryLabel.isHidden){
-            self.turnaryLabel.isHidden = false
-        }
-        if(self.game!.getTurn(username: self.playerSelf!.username)){
-            self.turn = true
-            self.turnaryLabel.text = "\(self.playerSelf!.username) to move"
-            return
-        }
-        self.turn = false
-        self.turnaryLabel.text = "\(self.playerOther!.username) to move"
-    }
+    
+    
     
     func flash() {
-        let flashFrame = UIView(frame: collectionView.bounds)
+        let flashFrame = UIView(frame: viewBoard.bounds)
         flashFrame.backgroundColor = UIColor.white
         flashFrame.alpha = 0.7
-        self.collectionView.addSubview(flashFrame)
+        self.viewBoard.addSubview(flashFrame)
         UIView.animate(withDuration: 0.1, animations: {
             flashFrame.alpha = 0.0
         }, completion: {(finished:Bool) in
@@ -220,37 +289,15 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         return 0
     }
     
-    func startTimers() {
-        guard self.pollingTimer == nil else {
-            return
-        }
-        self.pollingTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(pollingTask), userInfo: nil, repeats: true)
-        guard self.counterTimer == nil else {
-            return
-        }
-        self.counterTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateCounter), userInfo: nil, repeats: true)
-    }
     
-    func stopTimers() {
-        self.pollingTimer?.invalidate()
-        self.pollingTimer = nil
-        self.counterTimer?.invalidate()
-        self.counterTimer = nil
-    }
     
-    @IBAction func backButtonClick(_ sender: Any) {
-        self.stopTimers()
-        DispatchQueue.main.async {
-            let height: CGFloat = UIScreen.main.bounds.height
-            SelectActual().execute(player: self.playerSelf!, height: height)
-        }
-    }
+    
     
     private func highlightLastMoveCoords(indexPath: IndexPath, cell: SquareCell) -> SquareCell {
         if(self.game!.outcome == "LANDMINE"){
             DispatchQueue.main.async {
-                self.notificationLabel.isHidden = false
-                self.notificationLabel.text = ".:*~ poison pawn ~*:."
+                self.labelNotification.isHidden = false
+                self.labelNotification.text = ".:*~ poison pawn ~*:."
             }
             
             let white: Bool = self.game!.getWhite(username: self.playerSelf!.username)
@@ -271,7 +318,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
             let h0: [Int] = [h0a,h0b]
             if(sq == h0){
                 
-                if(!self.turn){
+                if(!self.turn!){
                     if(white){
                         cell.backgroundColor = UIColor.black
                     } else {
@@ -280,7 +327,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
                     //cell.layer.borderColor = UIColor.black.cgColor
                 } else {
                     cell.layer.borderWidth = 1.5
-                   cell.layer.borderColor = UIColor.magenta.cgColor
+                    cell.layer.borderColor = UIColor.magenta.cgColor
                 }
                 return cell
             }
@@ -289,7 +336,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
             let h1: [Int] = [h1a,h1b]
             if(sq == h1){
                 
-                if(!self.turn){
+                if(!self.turn!){
                     if(white){
                         cell.backgroundColor = UIColor.black
                     } else {
@@ -298,14 +345,14 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
                     //cell.layer.borderColor = UIColor.black.cgColor
                 } else {
                     cell.layer.borderWidth = 1.5
-                   cell.layer.borderColor = UIColor.magenta.cgColor
+                    cell.layer.borderColor = UIColor.magenta.cgColor
                 }
                 return cell
             }
             cell.layer.borderWidth = 0
             return cell
         }
-        if(!self.turn){
+        if(!self.turn!){
             cell.layer.borderWidth = 0
             return cell
         }
@@ -345,76 +392,48 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     func resolveGameTimeout() {
         if(self.game!.status == "RESOLVED"){
             DispatchQueue.main.async {
-                self.titleViewLabel.text = "game over"
-                self.notificationLabel.isHidden = false
-                self.turnaryLabel.isHidden = true
-                self.timerLabel.isHidden = true
+                self.labelTitle.text = "game over"
+                self.labelNotification.isHidden = false
+                self.labelTurnary.isHidden = true
+                self.labelCountdown.isHidden = true
             }
-            self.stopTimers()
+            self.endTimer()
             if(self.game!.outcome == "DRAW"){
                 DispatchQueue.main.async {
-                    self.notificationLabel.text = "draw"
-                    self.titleViewLabel.text = "game over"
+                    self.labelNotification.text = "draw"
+                    self.labelTitle.text = "game over"
                 }
                 return
             }
             if(self.game!.winner == "WHITE"){
                 if(self.game!.getWhite(username: self.playerSelf!.username)){
                     DispatchQueue.main.async {
-                        self.notificationLabel.text = "winner"
+                        self.labelNotification.text = "winner"
                     }
                     return
                 }
                 DispatchQueue.main.async {
-                    self.notificationLabel.text = "you lose"
+                    self.labelNotification.text = "you lose"
                 }
                 return
             }
             if(self.game!.getWhite(username: self.playerSelf!.username)){
                 DispatchQueue.main.async {
-                    self.notificationLabel.text = "you lose"
+                    self.labelNotification.text = "you lose"
                 }
                 return
             }
             DispatchQueue.main.async {
-                self.notificationLabel.text = "winner"
+                self.labelNotification.text = "winner"
             }
         }
     }
     
-    private func processDrawProposal() {
-        if(self.game!.outcome == "TBD"){
-            self.notificationLabel.isHidden = true
-            return
-        }
-        if(self.game!.outcome == "PENDING"){
-            if(!self.turn){
-                self.notificationLabel.isHidden = false
-                self.timerLabel.isHidden = false
-                self.notificationLabel.text = "proposal pending"
-                self.turnaryLabel.text = "\(self.playerOther!.username) to respond"
-                return
-            }
-            self.notificationLabel.isHidden = false
-            self.timerLabel.isHidden = false
-            self.notificationLabel.text = "proposal pending"
-            self.turnaryLabel.text = "\(self.playerSelf!.username) to respond"
-            
-            DispatchQueue.main.async {
-                let storyboard: UIStoryboard = UIStoryboard(name: "Evaluate", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "Evaluate") as! Evaluate
-                viewController.modalTransitionStyle = .crossDissolve
-                viewController.setPlayerSelf(playerSelf: self.playerSelf!)
-                viewController.setPlayerOther(playerOther: self.game!.getPlayerOther(username: self.playerSelf!.username))
-                viewController.setGameTschess(gameTschess: self.game!)
-                self.present(viewController, animated: true, completion: nil)
-            }
-        }
-    }
+   
     
     private func evalCheckMate() {
-        let kingCoord: [Int] = CheckCheck().kingCoordinate(affiliation: self.game!.turn, state: self.tschessElementMatrix!)
-        let mate: Bool = CheckCheck().mate(king: kingCoord, state: self.tschessElementMatrix!)
+        let kingCoord: [Int] = CheckCheck().kingCoordinate(affiliation: self.game!.turn, state: self.matrix!)
+        let mate: Bool = CheckCheck().mate(king: kingCoord, state: self.matrix!)
         if(mate){
             //print("FUCK x FUCK x FUCK")
             UpdateMate().execute(id: self.game!.id) { (success) in
@@ -426,7 +445,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         }
         else if(self.game!.outcome != "CHECK"){
             /* ~ */
-            if(CheckCheck().on(affiliation: self.game!.turn, state: self.tschessElementMatrix!)){
+            if(CheckCheck().on(affiliation: self.game!.turn, state: self.matrix!)){
                 UpdateCheck().execute(id: self.game!.id) { (success) in
                     if(!success){
                         //error
@@ -436,8 +455,8 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
             /* ~ */
             return
         }
-        if(!turnaryLabel.text!.contains("check")){
-            self.turnaryLabel.text = "\(self.turnaryLabel.text!) (check)"
+        if(!labelTurnary.text!.contains("check")){
+            self.labelTurnary.text = "\(self.labelTurnary.text!) (check)"
         }
     }
     
@@ -463,8 +482,8 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
                     self.activityIndicator.isHidden = true
                     self.setGame(game: game!)
                     self.setTurn()
-                    self.tschessElementMatrix = game!.getStateClient(username: self.playerSelf!.username)
-                    self.collectionView.reloadData()
+                    self.matrix = game!.getStateClient(username: self.playerSelf!.username)
+                    self.viewBoard.reloadData()
                     self.processDrawProposal()
                     self.resolveGameTimeout()
                     self.evalCheckMate()
@@ -476,16 +495,16 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     
     func pawnPromotion(proposed: [Int]) {
         DispatchQueue.main.async {
-            self.pawnPromotion!.setProposed(proposed: proposed)
-            self.present(self.pawnPromotion!, animated: false, completion: nil)
+            self.promotion.setProposed(proposed: proposed)
+            self.present(self.promotion, animated: false, completion: nil)
         }
     }
     
     private func assignCellTschessElement(indexPath: IndexPath) -> UIImage? {
         let x = indexPath.row / 8
         let y = indexPath.row % 8
-        if(self.tschessElementMatrix![x][y] != nil){
-            return self.tschessElementMatrix![x][y]!.getImageVisible()
+        if(self.matrix![x][y] != nil){
+            return self.matrix![x][y]!.getImageVisible()
         }
         return nil
     }
@@ -499,11 +518,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         return self.highlightLastMoveCoords(indexPath: indexPath, cell: cell)
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        self.collectionViewHeight.constant = collectionView.contentSize.height
-        self.updateCountdown()
-    }
+   
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         switch item.tag {
@@ -513,12 +528,12 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
                 let viewController = storyboard.instantiateViewController(withIdentifier: "DrawResign") as! DrawResign
                 viewController.setPlayerSelf(playerSelf: self.playerSelf!)
                 viewController.setPlayerOther(playerOther: self.game!.getPlayerOther(username: self.playerSelf!.username))
-                viewController.setGameTschess(gameTschess: self.game!)
+                viewController.setGame(game: self.game!)
                 self.tabBarMenu.selectedItem = nil
                 self.present(viewController, animated: true, completion: nil)
             }
         default: //0
-            self.stopTimers()
+            self.endTimer()
             DispatchQueue.main.async {
                 let height: CGFloat = UIScreen.main.bounds.height
                 SelectActual().execute(player: self.playerSelf!, height: height)
@@ -528,35 +543,13 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     
     var landmine: Landmine?
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.collectionView.dataSource = self
-        self.collectionView.delegate = self
-        self.tabBarMenu.delegate = self
-        
-        let white: Bool = self.game!.getWhite(username: self.playerSelf!.username)
-        
-        self.processDrawProposal()
-        self.castling = Castle(white: white)
-        self.castling!.setChess(chess: self)
-        self.castling!.setTransitioner(transitioner: self.transitioner!)
-        
-        self.passant = Passant(white: white)
-        self.passant!.setChess(chess: self)
-        self.passant!.setTransitioner(transitioner: self.transitioner!)
-        
-        self.landmine = Landmine(
-            game_id: self.game!.id,
-            white: white,
-            transitioner: self.transitioner!,
-            activityIndicator: self.activityIndicator)
-    }
+    
     
     
     // MARK: prime mover
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if(!self.turn){
+        if(!self.turn!){
             self.flash()
             return
         }
@@ -580,30 +573,30 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         
         let coordinate = self.transitioner!.getCoordinate()
         if(coordinate != nil){
-            let pawnPromotion = self.pawnPromotion!.evaluate(coordinate: coordinate!, proposed: [x,y])
+            let pawnPromotion = self.promotion.evaluate(coordinate: coordinate!, proposed: [x,y])
             if(pawnPromotion){
                 self.pawnPromotion(proposed: [x,y])
                 return
             }
-            let castling = self.castling!.execute(coordinate: coordinate!, proposed: [x,y], state0: self.tschessElementMatrix!)
+            let castling = self.castle!.execute(coordinate: coordinate!, proposed: [x,y], state0: self.matrix!)
             if(castling){
                 return
             }
-            let enPassant = self.passant!.evaluate(coordinate: coordinate!, proposed: [x,y], state0: self.tschessElementMatrix!)
+            let enPassant = self.passant!.evaluate(coordinate: coordinate!, proposed: [x,y], state0: self.matrix!)
             if(enPassant){
                 return
             }
             
             
-            let landmine = self.landmine!.evaluate(coordinate: coordinate!, proposed: [x,y], state0: self.tschessElementMatrix!)
+            let landmine = self.landmine!.evaluate(coordinate: coordinate!, proposed: [x,y], state0: self.matrix!)
             if(landmine){
                 return
             }
             
             
-            if(self.transitioner!.validMove(propose: [x,y], state0: self.tschessElementMatrix!)){
-                self.tschessElementMatrix = self.transitioner!.deselectHighlight(state0: self.tschessElementMatrix!)
-                let stateX: [[Piece?]] = self.transitioner!.executeMove(propose: [x,y], state0: self.tschessElementMatrix!)
+            if(self.transitioner!.validMove(propose: [x,y], state0: self.matrix!)){
+                self.matrix = self.transitioner!.deselectHighlight(state0: self.matrix!)
+                let stateX: [[Piece?]] = self.transitioner!.executeMove(propose: [x,y], state0: self.matrix!)
                 let stateUpdate = SerializerState(white: self.game!.getWhite(username: self.playerSelf!.username)).renderServer(state: stateX)
                 
                 let white: Bool = self.game!.getWhite(username: self.playerSelf!.username)
@@ -628,14 +621,14 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
                 return
             }
             //otherwise invalid --> deselect...
-            self.tschessElementMatrix = self.transitioner!.deselectHighlight(state0: self.tschessElementMatrix!)
-            self.collectionView.reloadData()
+            self.matrix = self.transitioner!.deselectHighlight(state0: self.matrix!)
+            self.viewBoard.reloadData()
             self.transitioner!.clearCoordinate()
             return
         }
         let state0 = self.game!.getStateClient(username: self.playerSelf!.username)
-        self.tschessElementMatrix = self.transitioner!.evaluateHighlightSelection(coordinate: [x,y], state0: state0)
-        self.collectionView.reloadData()
+        self.matrix = self.transitioner!.evaluateHighlightSelection(coordinate: [x,y], state0: state0)
+        self.viewBoard.reloadData()
     }
     
 }

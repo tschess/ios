@@ -27,10 +27,10 @@ class DrawResign: UIViewController  {
         self.configure()
     }
     
-    var gameTschess: EntityGame?
+    var game: EntityGame?
     
-    public func setGameTschess(gameTschess: EntityGame) {
-        self.gameTschess = gameTschess
+    public func setGame(game: EntityGame) {
+        self.game = game
     }
     
     var playerOther: EntityPlayer?
@@ -65,14 +65,16 @@ class DrawResign: UIViewController  {
         self.imageDismiss.addGestureRecognizer(dismiss)
         self.imageDismiss.isUserInteractionEnabled = true
         
-        if(self.gameTschess!.status == "RESOLVED"){
+        if(self.game!.status == "RESOLVED"){
             self.decativateDraw()
             self.buttonResign.titleLabel!.alpha = 0.5
             self.buttonResign.isUserInteractionEnabled = false
             self.imageResign.alpha = 0.5
             return
         }
-        if(!self.gameTschess!.getTurn(username: self.playerSelf!.username)){
+        let username: String = self.playerSelf!.username
+        let (turn, player) = self.game!.getTurn(username: username)
+        if(!turn){
             self.decativateDraw()
         }
     }
@@ -97,10 +99,10 @@ class DrawResign: UIViewController  {
         self.imageResign.isHidden = true
         
         let requestPayload = [
-            "id_game": self.gameTschess!.id,
+            "id_game": self.game!.id,
             "id_self": self.playerSelf!.id,
             "id_oppo": self.playerOther!.id,
-            "white": self.gameTschess!.getWhite(username: self.playerSelf!.username)] as [String: Any]
+            "white": self.game!.getWhite(username: self.playerSelf!.username)] as [String: Any]
         
         UpdateResign().execute(requestPayload: requestPayload) { (result) in
             print("result: \(result)")
@@ -119,7 +121,7 @@ class DrawResign: UIViewController  {
         self.buttonDraw.isHidden = true
         self.imageDraw.isHidden = true
         
-        UpdateProp().execute(id: self.gameTschess!.id) { (result) in
+        UpdateProp().execute(id: self.game!.id) { (result) in
             DispatchQueue.main.async {
                 self.activityIndicatorDraw.isHidden = true
                 self.activityIndicatorDraw.stopAnimating()

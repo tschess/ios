@@ -311,23 +311,23 @@
                     </view>
                     <connections>
                         <outlet property="activityIndicator" destination="RAM-33-HiP" id="ifP-re-Co7"/>
-                        <outlet property="avatarImageView" destination="1vs-cy-tZZ" id="2RZ-21-XND"/>
-                        <outlet property="backButton" destination="5qi-EH-0fj" id="wXD-HK-sMo"/>
-                        <outlet property="collectionView" destination="v4N-X5-tXk" id="9XC-Wx-MWy"/>
-                        <outlet property="collectionViewHeight" destination="UrR-TT-KiU" id="4JU-aD-FAf"/>
-                        <outlet property="contentView" destination="9wh-i1-2Qp" id="yID-ON-Nbo"/>
-                        <outlet property="eloLabel" destination="YxI-dg-6nx" id="AfC-kj-wLX"/>
-                        <outlet property="headerView" destination="YPS-Tp-PVu" id="3i6-Uh-42s"/>
-                        <outlet property="notificationLabel" destination="iZ0-5e-lOV" id="QhI-bU-lRV"/>
-                        <outlet property="rankLabel" destination="7rM-GI-ans" id="YEC-dq-ZkA"/>
-                        <outlet property="rankLabelDate" destination="kJX-GF-1X4" id="3eN-db-2jW"/>
+                        <outlet property="buttonBack" destination="5qi-EH-0fj" id="wXD-HK-sMo"/>
+                        <outlet property="imageViewAvatar" destination="1vs-cy-tZZ" id="2RZ-21-XND"/>
+                        <outlet property="labelCountdown" destination="FDx-lr-9IC" id="BGC-yL-PM3"/>
+                        <outlet property="labelElo" destination="YxI-dg-6nx" id="AfC-kj-wLX"/>
+                        <outlet property="labelNotification" destination="iZ0-5e-lOV" id="QhI-bU-lRV"/>
+                        <outlet property="labelRank" destination="7rM-GI-ans" id="YEC-dq-ZkA"/>
+                        <outlet property="labelRankDate" destination="kJX-GF-1X4" id="3eN-db-2jW"/>
+                        <outlet property="labelTitle" destination="rh3-GT-zds" id="ABW-Ok-eOt"/>
+                        <outlet property="labelTurnary" destination="aGC-U4-Jbg" id="CHH-Cd-IOa"/>
+                        <outlet property="labelUsername" destination="tq9-Wz-0a6" id="KbZ-6I-fGI"/>
                         <outlet property="tabBarMenu" destination="lR1-2A-YPc" id="ysK-SW-Hze"/>
-                        <outlet property="timerLabel" destination="FDx-lr-9IC" id="BGC-yL-PM3"/>
-                        <outlet property="timerView" destination="wfP-tD-SfI" id="EJQ-4f-orj"/>
-                        <outlet property="titleView" destination="eq3-nU-4ur" id="kIL-B2-iRG"/>
-                        <outlet property="titleViewLabel" destination="rh3-GT-zds" id="ABW-Ok-eOt"/>
-                        <outlet property="turnaryLabel" destination="aGC-U4-Jbg" id="CHH-Cd-IOa"/>
-                        <outlet property="usernameLabel" destination="tq9-Wz-0a6" id="KbZ-6I-fGI"/>
+                        <outlet property="viewBoard" destination="v4N-X5-tXk" id="9XC-Wx-MWy"/>
+                        <outlet property="viewBoardHeight" destination="UrR-TT-KiU" id="4JU-aD-FAf"/>
+                        <outlet property="viewContent" destination="9wh-i1-2Qp" id="yID-ON-Nbo"/>
+                        <outlet property="viewCountdown" destination="wfP-tD-SfI" id="EJQ-4f-orj"/>
+                        <outlet property="viewHeader" destination="YPS-Tp-PVu" id="3i6-Uh-42s"/>
+                        <outlet property="viewTitle" destination="eq3-nU-4ur" id="kIL-B2-iRG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sPR-ON-pUE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

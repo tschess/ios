@@ -10,10 +10,10 @@ import UIKit
 
 class Promotion: UIViewController {
     
-    var chess: Tschess?
+    var tschess: Tschess?
     
-    public func setChess(chess: Tschess) {
-        self.chess = chess
+    public func setTschess(tschess: Tschess) {
+        self.tschess = tschess
     }
     
     @IBOutlet weak var imageViewKnight: UIImageView!
@@ -88,12 +88,12 @@ class Promotion: UIViewController {
     }
     
     public func evaluate(coordinate: [Int], proposed: [Int]) -> Bool {
-        let state = self.chess!.game!.getStateClient(username: self.chess!.playerSelf!.username)
-        let tschessElement = state[coordinate[0]][coordinate[1]]
-        if(tschessElement == nil){
+        let state = self.tschess!.game!.getStateClient(username: self.tschess!.playerSelf!.username)
+        let tstschessElement = state[coordinate[0]][coordinate[1]]
+        if(tstschessElement == nil){
             return false
         }
-        if(tschessElement!.name.contains("Pawn")) {
+        if(tstschessElement!.name.contains("Pawn")) {
             let rank = proposed[0] == 0
             let move = coordinate[0] - proposed[0] == 1
             if(rank && move){
@@ -118,17 +118,17 @@ class Promotion: UIViewController {
     private func execute(promotionWhite: Piece, promotionBlack: Piece) {
         var promotionPiece: Piece = promotionWhite
         
-        let white: Bool = self.chess!.game!.getWhite(username: self.chess!.playerSelf!.username)
+        let white: Bool = self.tschess!.game!.getWhite(username: self.tschess!.playerSelf!.username)
         if(!white){
             promotionPiece = promotionBlack
         }
         
-        var state = self.chess!.game!.getStateClient(username: self.chess!.playerSelf!.username)
+        var state = self.tschess!.game!.getStateClient(username: self.tschess!.playerSelf!.username)
         let coordinate: [Int]? = self.transitioner!.getCoordinate()
         state[coordinate![0]][coordinate![1]] = nil
         state[proposed![0]][proposed![1]] = promotionPiece
         
-        self.chess!.tschessElementMatrix = self.transitioner!.deselectHighlight(state0: self.chess!.tschessElementMatrix!)
+        self.tschess!.matrix = self.transitioner!.deselectHighlight(state0: self.tschess!.matrix!)
         let stateUpdate = SerializerState(white: white).renderServer(state: state)
         
         let hx: Int = white ? proposed![0] : 7 - proposed![0]
@@ -137,10 +137,10 @@ class Promotion: UIViewController {
         let h1: Int = white ? coordinate![1] : 7 - coordinate![1]
         let highlight: String = "\(hx)\(hy)\(h0)\(h1)"
         
-        let requestPayload: [String: Any] = ["id_game": self.chess!.game!.id, "state": stateUpdate, "highlight": highlight, "condition": "TBD"]
+        let requestPayload: [String: Any] = ["id_game": self.tschess!.game!.id, "state": stateUpdate, "highlight": highlight, "condition": "TBD"]
         DispatchQueue.main.async() {
-            self.chess!.activityIndicator.isHidden = false
-            self.chess!.activityIndicator.startAnimating()
+            self.tschess!.activityIndicator.isHidden = false
+            self.tschess!.activityIndicator.startAnimating()
         }
         GameUpdate().success(requestPayload: requestPayload) { (success) in
             if(!success){

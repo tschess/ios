@@ -247,11 +247,17 @@ class EntityGame: Equatable, Hashable {
         return self.white
     }
     
-    func getTurn(username: String) -> Bool {
+    func getTurn(username: String) -> (Bool, String) {
         if(self.white.username == username){
-            return self.turn == "WHITE"
+            if(self.turn == "WHITE"){
+                return (true, self.white.username) //you are white, it's your turn
+            }
+            return (false, self.black.username) //you are white it's not your turn
         }
-        return self.turn == "BLACK"
+        if(self.turn == "WHITE"){
+            return (false, self.white.username) //you are black, iit's not uour turn
+        }
+        return (true, self.black.username) //you are black, its your turn
     }
     
     func getStateServer(username: String, state: [[Piece?]]) -> [[String]]{

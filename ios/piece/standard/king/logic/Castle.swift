@@ -10,16 +10,14 @@ import UIKit
 
 class Castle {
     
-    var white: Bool
+    let white: Bool
+    let transitioner: Transitioner?
+    var tschess: Tschess?
     
-    init(white: Bool){
+    init(white: Bool, transitioner: Transitioner? = nil, tschess: Tschess? = nil){
         self.white = white
-    }
-    
-    var transitioner: Transitioner?
-    
-    public func setTransitioner(transitioner: Transitioner) {
         self.transitioner = transitioner
+        self.tschess = tschess
     }
     
     func opponentCoordinateList(kingCoordinate: [Int], state: [[Piece?]]) -> Array<[Int]> {
@@ -166,12 +164,6 @@ class Castle {
         return true
     }
     
-    var chess: Tschess?
-    
-    public func setChess(chess: Tschess) {
-        self.chess = chess
-    }
-    
     public func execute(coordinate: [Int], proposed: [Int], state0: [[Piece?]]) -> Bool {
         if(coordinate[0] != 7 || proposed[0] != 7){
             return false
@@ -213,7 +205,7 @@ class Castle {
                 state1[7][5]!.setFirstTouch(firstTouch: false)
                 state1[7][7] = nil
                 
-                self.chess!.tschessElementMatrix = self.transitioner!.deselectHighlight(state0: self.chess!.tschessElementMatrix!)
+                self.tschess!.matrix = self.transitioner!.deselectHighlight(state0: self.tschess!.matrix!)
                 let stateUpdate = SerializerState(white: white).renderServer(state: state1)
                 
                 let hx: Int = white ? proposed[0] : 7 - proposed[0]
@@ -222,10 +214,10 @@ class Castle {
                 let h1: Int = white ? coordinate[1] : 7 - coordinate[1]
                 let highlight: String = "\(hx)\(hy)\(h0)\(h1)"
                 
-                let requestPayload: [String: Any] = ["id_game": self.chess!.game!.id, "state": stateUpdate, "highlight": highlight, "condition": "TBD"]
+                let requestPayload: [String: Any] = ["id_game": self.tschess!.game!.id, "state": stateUpdate, "highlight": highlight, "condition": "TBD"]
                 DispatchQueue.main.async() {
-                    self.chess!.activityIndicator.isHidden = false
-                    self.chess!.activityIndicator.startAnimating()
+                    self.tschess!.activityIndicator.isHidden = false
+                    self.tschess!.activityIndicator.startAnimating()
                 }
                 GameUpdate().success(requestPayload: requestPayload) { (success) in
                     if(!success){
@@ -257,7 +249,7 @@ class Castle {
                 
                 
                 
-                self.chess!.tschessElementMatrix = self.transitioner!.deselectHighlight(state0: self.chess!.tschessElementMatrix!)
+                self.tschess!.matrix = self.transitioner!.deselectHighlight(state0: self.tschess!.matrix!)
                 let stateUpdate = SerializerState(white: white).renderServer(state: state1)
                 
                 let hx: Int = white ? proposed[0] : 7 - proposed[0]
@@ -266,10 +258,10 @@ class Castle {
                 let h1: Int = white ? coordinate[1] : 7 - coordinate[1]
                 let highlight: String = "\(hx)\(hy)\(h0)\(h1)"
                 
-                let requestPayload: [String: Any] = ["id_game": self.chess!.game!.id, "state": stateUpdate, "highlight": highlight, "condition": "TBD"]
+                let requestPayload: [String: Any] = ["id_game": self.tschess!.game!.id, "state": stateUpdate, "highlight": highlight, "condition": "TBD"]
                 DispatchQueue.main.async() {
-                    self.chess!.activityIndicator.isHidden = false
-                    self.chess!.activityIndicator.startAnimating()
+                    self.tschess!.activityIndicator.isHidden = false
+                    self.tschess!.activityIndicator.startAnimating()
                 }
                 GameUpdate().success(requestPayload: requestPayload) { (success) in
                     if(!success){
@@ -304,7 +296,7 @@ class Castle {
                 
                 
                 
-                self.chess!.tschessElementMatrix = self.transitioner!.deselectHighlight(state0: self.chess!.tschessElementMatrix!)
+                self.tschess!.matrix = self.transitioner!.deselectHighlight(state0: self.tschess!.matrix!)
                 let stateUpdate = SerializerState(white: white).renderServer(state: state1)
                 
                 let hx: Int = white ? proposed[0] : 7 - proposed[0]
@@ -313,10 +305,10 @@ class Castle {
                 let h1: Int = white ? coordinate[1] : 7 - coordinate[1]
                 let highlight: String = "\(hx)\(hy)\(h0)\(h1)"
                 
-                let requestPayload: [String: Any] = ["id_game": self.chess!.game!.id, "state": stateUpdate, "highlight": highlight, "condition": "TBD"]
+                let requestPayload: [String: Any] = ["id_game": self.tschess!.game!.id, "state": stateUpdate, "highlight": highlight, "condition": "TBD"]
                 DispatchQueue.main.async() {
-                    self.chess!.activityIndicator.isHidden = false
-                    self.chess!.activityIndicator.startAnimating()
+                    self.tschess!.activityIndicator.isHidden = false
+                    self.tschess!.activityIndicator.startAnimating()
                 }
                 GameUpdate().success(requestPayload: requestPayload) { (success) in
                     if(!success){
@@ -350,7 +342,7 @@ class Castle {
                 state1[7][7] = nil
                 
                 
-                self.chess!.tschessElementMatrix = self.transitioner!.deselectHighlight(state0: self.chess!.tschessElementMatrix!)
+                self.tschess!.matrix = self.transitioner!.deselectHighlight(state0: self.tschess!.matrix!)
                 let stateUpdate = SerializerState(white: white).renderServer(state: state1)
                 
                 let hx: Int = white ? proposed[0] : 7 - proposed[0]
@@ -359,10 +351,10 @@ class Castle {
                 let h1: Int = white ? coordinate[1] : 7 - coordinate[1]
                 let highlight: String = "\(hx)\(hy)\(h0)\(h1)"
                 
-                let requestPayload: [String: Any] = ["id_game": self.chess!.game!.id, "state": stateUpdate, "highlight": highlight, "condition": "TBD"]
+                let requestPayload: [String: Any] = ["id_game": self.tschess!.game!.id, "state": stateUpdate, "highlight": highlight, "condition": "TBD"]
                 DispatchQueue.main.async() {
-                    self.chess!.activityIndicator.isHidden = false
-                    self.chess!.activityIndicator.startAnimating()
+                    self.tschess!.activityIndicator.isHidden = false
+                    self.tschess!.activityIndicator.startAnimating()
                 }
                 GameUpdate().success(requestPayload: requestPayload) { (success) in
                     if(!success){
