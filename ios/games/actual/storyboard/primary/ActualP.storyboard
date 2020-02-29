@@ -34,7 +34,7 @@
                                     <tabBarItem title="" image="back.grey" selectedImage="back.white" id="fYp-Rj-VM2">
                                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tabBarItem>
-                                    <tabBarItem tag="1" title="" image="book.grey" selectedImage="book.white" id="T6W-Pm-TWX">
+                                    <tabBarItem tag="1" title="" image="setup.grey" selectedImage="setup.white" id="T6W-Pm-TWX">
                                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tabBarItem>
                                 </items>
@@ -370,7 +370,14 @@
                                 <connections>
                                     <outlet property="actionImageView" destination="jDb-3F-Bd9" id="UIP-tD-s10"/>
                                     <outlet property="avatarImageView" destination="xuk-ae-wp5" id="Pcg-Rg-VnC"/>
-                                    <outlet property="timeIndicatorLabel" destination="aU2-HQ-a8m" id="aJH-ye-Poz"/>
+                                    <outlet property="contentView" destination="MGs-1w-KdX" id="RxR-0u-Ns0"/>
+                                    <outlet property="dispAdjacentLabel" destination="Q7e-8c-jGi" id="Wpc-fA-ylP"/>
+                                    <outlet property="dispImageView" destination="8xN-B8-Vvb" id="J1a-8e-bmj"/>
+                                    <outlet property="dispValueLabel" destination="Ljm-rN-kb0" id="gfe-SW-lRl"/>
+                                    <outlet property="oddsIndicatorLabel" destination="3o9-qw-Ohp" id="zeZ-ta-RrJ"/>
+                                    <outlet property="oddsValueLabel" destination="NXB-eg-spf" id="eTM-nu-y5T"/>
+                                    <outlet property="soLaLa" destination="MGs-1w-KdX" id="viY-81-Whl"/>
+                                    <outlet property="timeIndicatorLabel" destination="aU2-HQ-a8m" id="yzx-ay-3jx"/>
                                     <outlet property="usernameLabel" destination="WZt-Fa-Umr" id="qUZ-J5-jva"/>
                                 </connections>
                             </tableViewCell>
@@ -393,8 +400,8 @@
         <image name="avatar_inverse" width="320" height="320"/>
         <image name="back.grey" width="39" height="33"/>
         <image name="back.white" width="39" height="33"/>
-        <image name="book.grey" width="40" height="40"/>
-        <image name="book.white" width="40" height="40"/>
+        <image name="setup.grey" width="38" height="40"/>
+        <image name="setup.white" width="38" height="40"/>
         <image name="tray.and.arrow.down" catalog="system" width="64" height="54"/>
     </resources>
 </document>

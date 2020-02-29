@@ -155,7 +155,7 @@ class OtherMenuTable: UITableViewController {
             }
             success(true)
         })
-        modifyAction.image = UIImage(named: "game.white")!
+        modifyAction.image = UIImage(named: "challenge")!
         modifyAction.backgroundColor = .purple
         
         

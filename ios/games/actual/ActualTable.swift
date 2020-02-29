@@ -133,12 +133,11 @@ class ActualTable: UITableViewController, SwipeTableViewCellDelegate {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let game = gameMenuTableList[indexPath.row]
 
-        //let cell = CardActual.instanceFromNib()
         let cell = tableView.dequeueReusableCell(withIdentifier: "ActualCell", for: indexPath) as! ActualCell
         cell.delegate = self
         cell.usernameLabel.text = game.getLabelTextUsernameOpponent(username: self.playerSelf!.username)
         cell.avatarImageView.image = game.getImageAvatarOpponent(username: self.playerSelf!.username)
-
+        
         if(game.status == "ONGOING"){
             cell.timeIndicatorLabel.text = game.getLabelTextDate(update: true)
             if(game.getInboundGame(username: self.playerSelf!.username)){
@@ -168,7 +167,42 @@ class ActualTable: UITableViewController, SwipeTableViewCellDelegate {
             let image = UIImage(named: "outbound")!
             cell.actionImageView.image = image.withRenderingMode(.alwaysTemplate)
         }
-        
+        if(game.status == "RESOLVED"){
+            cell.timeIndicatorLabel.text = game.getLabelTextDate(update: true)
+            cell.soLaLa.backgroundColor = UIColor.black
+            cell.actionImageView.isHidden = true
+            cell.usernameLabel.textColor = UIColor.lightGray
+            cell.timeIndicatorLabel.isHidden = false
+            cell.timeIndicatorLabel.textColor = UIColor.darkGray
+            cell.oddsIndicatorLabel.isHidden = false
+            cell.oddsIndicatorLabel.textColor = UIColor.darkGray
+            
+            cell.oddsValueLabel.isHidden = false
+            cell.oddsValueLabel.textColor = UIColor.lightGray
+            cell.oddsValueLabel.text = game.getOdds(username: self.playerSelf!.username)
+            
+            cell.dispAdjacentLabel.isHidden = false
+            cell.dispAdjacentLabel.textColor = UIColor.darkGray
+            
+            cell.dispImageView.isHidden = false
+            cell.dispImageView.image = game.getImageDisp(username: self.playerSelf!.username)
+            cell.dispImageView.tintColor = game.getTint(username: self.playerSelf!.username)
+            
+            cell.dispValueLabel.isHidden = false
+            cell.dispValueLabel.textColor = UIColor.lightGray
+            cell.dispValueLabel.text = game.getLabelTextDisp(username: self.playerSelf!.username)
+//            if(game.getInboundInvitation(username: self.playerSelf!.username)){
+//
+//                cell.actionImageView.tintColor = .black
+//                let image = UIImage(named: "inbound")!
+//                cell.actionImageView.image = image.withRenderingMode(.alwaysTemplate)
+//                return cell
+//            }
+//
+//            cell.actionImageView.tintColor = .black
+//            let image = UIImage(named: "outbound")!
+//            cell.actionImageView.image = image.withRenderingMode(.alwaysTemplate)
+        }
         return cell
     }
     

@@ -73,8 +73,6 @@
 		B72AF9E323E3BDBF003740CD /* GetNotify.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72AF9E223E3BDBF003740CD /* GetNotify.swift */; };
 		B7316D1123E8AA8E00119865 /* RequestRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7316D1023E8AA8E00119865 /* RequestRefresh.swift */; };
 		B73410EE2408CFA20065B1AA /* UpdateMine.swift in Sources */ = {isa = PBXBuildFile; fileRef = B73410ED2408CFA20065B1AA /* UpdateMine.swift */; };
-		B73E0A31240A256400D243E4 /* GameCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = B73E0A30240A256400D243E4 /* GameCard.xib */; };
-		B73E0A35240A258E00D243E4 /* GameCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B73E0A34240A258E00D243E4 /* GameCard.swift */; };
 		B74136C723DE34A0001B3D60 /* RequestLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74136C623DE34A0001B3D60 /* RequestLogin.swift */; };
 		B745AD3123F2FC2000E450EF /* RequestPlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = B745AD3023F2FC2000E450EF /* RequestPlay.swift */; };
 		B745AD3523F353BF00E450EF /* RequestCreate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B745AD3423F353BF00E450EF /* RequestCreate.swift */; };
@@ -331,8 +329,6 @@
 		B72AF9E223E3BDBF003740CD /* GetNotify.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetNotify.swift; sourceTree = "<group>"; };
 		B7316D1023E8AA8E00119865 /* RequestRefresh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestRefresh.swift; sourceTree = "<group>"; };
 		B73410ED2408CFA20065B1AA /* UpdateMine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateMine.swift; sourceTree = "<group>"; };
-		B73E0A30240A256400D243E4 /* GameCard.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GameCard.xib; sourceTree = "<group>"; };
-		B73E0A34240A258E00D243E4 /* GameCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCard.swift; sourceTree = "<group>"; };
 		B74136C623DE34A0001B3D60 /* RequestLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestLogin.swift; sourceTree = "<group>"; };
 		B745AD3023F2FC2000E450EF /* RequestPlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestPlay.swift; sourceTree = "<group>"; };
 		B745AD3423F353BF00E450EF /* RequestCreate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestCreate.swift; sourceTree = "<group>"; };
@@ -859,15 +855,6 @@
 			path = networking;
 			sourceTree = "<group>";
 		};
-		B73E0A2B240A1E4100D243E4 /* component */ = {
-			isa = PBXGroup;
-			children = (
-				B73E0A30240A256400D243E4 /* GameCard.xib */,
-				B73E0A34240A258E00D243E4 /* GameCard.swift */,
-			);
-			path = component;
-			sourceTree = "<group>";
-		};
 		B768470423F4FAB300F55D4A /* component */ = {
 			isa = PBXGroup;
 			children = (
@@ -1357,7 +1344,6 @@
 		B7BE121D23EAD8E000ADA499 /* games */ = {
 			isa = PBXGroup;
 			children = (
-				B73E0A2B240A1E4100D243E4 /* component */,
 				B7BE121F23EAD8F500ADA499 /* historic */,
 				B7BE121E23EAD8EB00ADA499 /* actual */,
 			);
@@ -1980,7 +1966,6 @@
 				B7021F8023FE59A400C9346A /* IapetusL.storyboard in Resources */,
 				B7021F6423FE3B9E00C9346A /* ProfileL.storyboard in Resources */,
 				B7021F3023FDFC5200C9346A /* FairiesL.storyboard in Resources */,
-				B73E0A31240A256400D243E4 /* GameCard.xib in Resources */,
 				B7021F5423FE11E400C9346A /* EditOtherP.storyboard in Resources */,
 				B7BE129723EB0A8B00ADA499 /* Evaluate.storyboard in Resources */,
 				B7021F2023FDC8EC00C9346A /* HistoricL.storyboard in Resources */,
@@ -2230,7 +2215,6 @@
 				B7BE123223EAE35B00ADA499 /* RequestActual.swift in Sources */,
 				B7BE122D23EADC9700ADA499 /* ActualTable.swift in Sources */,
 				B7ED646823F4DC9B00292FBC /* Create.swift in Sources */,
-				B73E0A35240A258E00D243E4 /* GameCard.swift in Sources */,
 				B7BE11C923EA9EB700ADA499 /* RookBlack.swift in Sources */,
 				B7BE120723EAD3D200ADA499 /* Amazon.swift in Sources */,
 				B7BE125D23EB042A00ADA499 /* UpdateDevice.swift in Sources */,
