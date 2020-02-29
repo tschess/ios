@@ -138,8 +138,6 @@ class Challenge: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate,
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
-    //let reuseIdentifier = "square"
-    
     @IBOutlet weak var activeConfigNumber: UILabel!
     
     var items = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16"]

@@ -73,6 +73,11 @@
 		B72AF9E323E3BDBF003740CD /* GetNotify.swift in Sources */ = {isa = PBXBuildFile; fileRef = B72AF9E223E3BDBF003740CD /* GetNotify.swift */; };
 		B7316D1123E8AA8E00119865 /* RequestRefresh.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7316D1023E8AA8E00119865 /* RequestRefresh.swift */; };
 		B73410EE2408CFA20065B1AA /* UpdateMine.swift in Sources */ = {isa = PBXBuildFile; fileRef = B73410ED2408CFA20065B1AA /* UpdateMine.swift */; };
+		B73E0A2D240A1E6A00D243E4 /* CardActual.xib in Resources */ = {isa = PBXBuildFile; fileRef = B73E0A2C240A1E6A00D243E4 /* CardActual.xib */; };
+		B73E0A2F240A214500D243E4 /* CardActual.swift in Sources */ = {isa = PBXBuildFile; fileRef = B73E0A2E240A214500D243E4 /* CardActual.swift */; };
+		B73E0A31240A256400D243E4 /* CardHisto.xib in Resources */ = {isa = PBXBuildFile; fileRef = B73E0A30240A256400D243E4 /* CardHisto.xib */; };
+		B73E0A33240A257400D243E4 /* CardHisto.swift in Sources */ = {isa = PBXBuildFile; fileRef = B73E0A32240A257400D243E4 /* CardHisto.swift */; };
+		B73E0A35240A258E00D243E4 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = B73E0A34240A258E00D243E4 /* Card.swift */; };
 		B74136C723DE34A0001B3D60 /* RequestLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74136C623DE34A0001B3D60 /* RequestLogin.swift */; };
 		B745AD3123F2FC2000E450EF /* RequestPlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = B745AD3023F2FC2000E450EF /* RequestPlay.swift */; };
 		B745AD3523F353BF00E450EF /* RequestCreate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B745AD3423F353BF00E450EF /* RequestCreate.swift */; };
@@ -329,6 +334,11 @@
 		B72AF9E223E3BDBF003740CD /* GetNotify.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetNotify.swift; sourceTree = "<group>"; };
 		B7316D1023E8AA8E00119865 /* RequestRefresh.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestRefresh.swift; sourceTree = "<group>"; };
 		B73410ED2408CFA20065B1AA /* UpdateMine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateMine.swift; sourceTree = "<group>"; };
+		B73E0A2C240A1E6A00D243E4 /* CardActual.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardActual.xib; sourceTree = "<group>"; };
+		B73E0A2E240A214500D243E4 /* CardActual.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardActual.swift; sourceTree = "<group>"; };
+		B73E0A30240A256400D243E4 /* CardHisto.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardHisto.xib; sourceTree = "<group>"; };
+		B73E0A32240A257400D243E4 /* CardHisto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardHisto.swift; sourceTree = "<group>"; };
+		B73E0A34240A258E00D243E4 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		B74136C623DE34A0001B3D60 /* RequestLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestLogin.swift; sourceTree = "<group>"; };
 		B745AD3023F2FC2000E450EF /* RequestPlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestPlay.swift; sourceTree = "<group>"; };
 		B745AD3423F353BF00E450EF /* RequestCreate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestCreate.swift; sourceTree = "<group>"; };
@@ -855,6 +865,18 @@
 			path = networking;
 			sourceTree = "<group>";
 		};
+		B73E0A2B240A1E4100D243E4 /* component */ = {
+			isa = PBXGroup;
+			children = (
+				B73E0A2C240A1E6A00D243E4 /* CardActual.xib */,
+				B73E0A2E240A214500D243E4 /* CardActual.swift */,
+				B73E0A30240A256400D243E4 /* CardHisto.xib */,
+				B73E0A32240A257400D243E4 /* CardHisto.swift */,
+				B73E0A34240A258E00D243E4 /* Card.swift */,
+			);
+			path = component;
+			sourceTree = "<group>";
+		};
 		B768470423F4FAB300F55D4A /* component */ = {
 			isa = PBXGroup;
 			children = (
@@ -1344,6 +1366,7 @@
 		B7BE121D23EAD8E000ADA499 /* games */ = {
 			isa = PBXGroup;
 			children = (
+				B73E0A2B240A1E4100D243E4 /* component */,
 				B7BE121F23EAD8F500ADA499 /* historic */,
 				B7BE121E23EAD8EB00ADA499 /* actual */,
 			);
@@ -1966,6 +1989,7 @@
 				B7021F8023FE59A400C9346A /* IapetusL.storyboard in Resources */,
 				B7021F6423FE3B9E00C9346A /* ProfileL.storyboard in Resources */,
 				B7021F3023FDFC5200C9346A /* FairiesL.storyboard in Resources */,
+				B73E0A31240A256400D243E4 /* CardHisto.xib in Resources */,
 				B7021F5423FE11E400C9346A /* EditOtherP.storyboard in Resources */,
 				B7BE129723EB0A8B00ADA499 /* Evaluate.storyboard in Resources */,
 				B7021F2023FDC8EC00C9346A /* HistoricL.storyboard in Resources */,
@@ -1999,6 +2023,7 @@
 				B7021F4E23FE114100C9346A /* Skin.xib in Resources */,
 				B7A8B2A62400A8930092D2D6 /* cTschessP.storyboard in Resources */,
 				B7C6760623FF22E9007EC71E /* AckP.storyboard in Resources */,
+				B73E0A2D240A1E6A00D243E4 /* CardActual.xib in Resources */,
 				B7021F8223FE59B900C9346A /* CalypsoL.storyboard in Resources */,
 				B768470723F4FAD400F55D4A /* Invalid.storyboard in Resources */,
 				B7BE121623EAD7E700ADA499 /* Init.storyboard in Resources */,
@@ -2183,6 +2208,7 @@
 				B7F541C123D51A5A00E89074 /* Home.swift in Sources */,
 				B7BE11AD23EA9CC700ADA499 /* KingBlack.swift in Sources */,
 				B7F35E332309F6D6002018F7 /* DateTime.swift in Sources */,
+				B73E0A2F240A214500D243E4 /* CardActual.swift in Sources */,
 				B7F6F9E623F0B544007D9151 /* UpdateProp.swift in Sources */,
 				B7C6760223FF1E9A007EC71E /* SelectChallenge.swift in Sources */,
 				B7215A7323F5D78300B86274 /* SelectRecent.swift in Sources */,
@@ -2197,6 +2223,7 @@
 				B745AD3123F2FC2000E450EF /* RequestPlay.swift in Sources */,
 				B7BE129B23EB0AAE00ADA499 /* Evaluate.swift in Sources */,
 				B7BE11CE23EA9F1600ADA499 /* KnightWhite.swift in Sources */,
+				B73E0A33240A257400D243E4 /* CardHisto.swift in Sources */,
 				B7CA12D123F5A13900569805 /* Recent.swift in Sources */,
 				B7BE124A23EB027400ADA499 /* FairiesTable.swift in Sources */,
 				B7BE11B023EA9D2B00ADA499 /* Queen.swift in Sources */,
@@ -2215,6 +2242,7 @@
 				B7BE123223EAE35B00ADA499 /* RequestActual.swift in Sources */,
 				B7BE122D23EADC9700ADA499 /* ActualTable.swift in Sources */,
 				B7ED646823F4DC9B00292FBC /* Create.swift in Sources */,
+				B73E0A35240A258E00D243E4 /* Card.swift in Sources */,
 				B7BE11C923EA9EB700ADA499 /* RookBlack.swift in Sources */,
 				B7BE120723EAD3D200ADA499 /* Amazon.swift in Sources */,
 				B7BE125D23EB042A00ADA499 /* UpdateDevice.swift in Sources */,
