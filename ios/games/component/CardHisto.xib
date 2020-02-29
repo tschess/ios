@@ -114,6 +114,14 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="avatarImageView" destination="GsM-Fd-syK" id="kxo-q8-nNZ"/>
+                <outlet property="displacementImage" destination="GiX-Ai-e02" id="o4G-0j-G8O"/>
+                <outlet property="displacementLabel" destination="eFx-Qu-IUy" id="of9-yP-007"/>
+                <outlet property="oddsLabel" destination="dJf-9D-gC7" id="gX5-w2-X7z"/>
+                <outlet property="terminalDateLabel" destination="Usx-AW-hpR" id="uvV-sk-7G4"/>
+                <outlet property="usernameLabel" destination="Dol-Tq-dvm" id="ilH-aF-8ur"/>
+            </connections>
             <point key="canvasLocation" x="137.68115942028987" y="153.01339285714286"/>
         </view>
     </objects>
