@@ -73,7 +73,7 @@ class DrawResign: UIViewController  {
             return
         }
         let username: String = self.playerSelf!.username
-        let (turn, player) = self.game!.getTurn(username: username)
+        let turn: Bool = self.game!.getTurn(username: username)
         if(!turn){
             self.decativateDraw()
         }

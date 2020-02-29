@@ -8,7 +8,7 @@
 
 import Foundation
 
-class CheckCheck {
+class Checker {
 
     func on(affiliation: String, state: [[Piece?]]) -> Bool {
         let kgCrd: [Int] = self.kingCoordinate(affiliation: affiliation, state: state)
@@ -199,7 +199,7 @@ class CheckCheck {
                         state1[coordinateCompatriot[0]][coordinateCompatriot[1]] = nil
                         //gamestate.setTschessElementMatrix(tschessElementMatrix: state)
                         if(!attackerElement.validate(present: coordinateAttacker, proposed: king, state: state1)) {
-                            if(CheckCheck().check(coordinate: king, state: state1)){
+                            if(Checker().check(coordinate: king, state: state1)){
                                 return false
                             }
                             return true

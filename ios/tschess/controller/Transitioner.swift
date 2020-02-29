@@ -92,7 +92,7 @@ class Transitioner {
                     
                     
                     /*-*-*/
-                    let kgCrd: [Int] = CheckCheck().kingCoordinate(affiliation: piece.affiliation, state: state1)
+                    let kgCrd: [Int] = Checker().kingCoordinate(affiliation: piece.affiliation, state: state1)
                     
                     var stateH: [[Piece?]] = state1
                     let p = stateH[self.coordinate![0]][self.coordinate![1]]
@@ -100,11 +100,11 @@ class Transitioner {
                     stateH[i][j] = p
                     stateH[self.coordinate![0]][self.coordinate![1]] = nil //piece replacement???
                     if(coordinate == kgCrd){
-                        if(CheckCheck().check(coordinate: [i,j], state: stateH)){
+                        if(Checker().check(coordinate: [i,j], state: stateH)){
                             continue
                         }
                     }
-                    else if(CheckCheck().check(coordinate: kgCrd, state: stateH)){
+                    else if(Checker().check(coordinate: kgCrd, state: stateH)){
                         continue
                     }
                     /*-*-*/
