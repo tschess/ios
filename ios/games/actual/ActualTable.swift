@@ -134,47 +134,47 @@ class ActualTable: UITableViewController, SwipeTableViewCellDelegate {
         let game = gameMenuTableList[indexPath.row]
 
         //let cell = CardActual.instanceFromNib()
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Card", for: indexPath) as! Card
-//        cell.delegate = self
-//        cell.usernameLabel.text = game.getLabelTextUsernameOpponent(username: self.playerSelf!.username)
-//        cell.avatarImageView.image = game.getImageAvatarOpponent(username: self.playerSelf!.username)
-//
-//        if(game.status == "ONGOING"){
-//            cell.timeIndicatorLabel.text = game.getLabelTextDate(update: true)
-//            if(game.getInboundGame(username: self.playerSelf!.username)){
-//
-//                let image = UIImage(named: "turn.on")!
-//                cell.actionImageView.image = image.withRenderingMode(.alwaysTemplate)
-//                cell.actionImageView.tintColor = .black
-//                return cell
-//            }
-//
-//            let image = UIImage(named: "turn.off")!
-//            cell.actionImageView.image = image.withRenderingMode(.alwaysTemplate)
-//            cell.actionImageView.tintColor = .black
-//            return cell
-//        }
-//        if(game.status == "PROPOSED"){
-//            cell.timeIndicatorLabel.text = game.getLabelTextDate(update: false)
-//            if(game.getInboundInvitation(username: self.playerSelf!.username)){
-//
-//                cell.actionImageView.tintColor = .black
-//                let image = UIImage(named: "inbound")!
-//                cell.actionImageView.image = image.withRenderingMode(.alwaysTemplate)
-//                return cell
-//            }
-//
-//            cell.actionImageView.tintColor = .black
-//            let image = UIImage(named: "outbound")!
-//            cell.actionImageView.image = image.withRenderingMode(.alwaysTemplate)
-//        }
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ActualCell", for: indexPath) as! ActualCell
+        cell.delegate = self
+        cell.usernameLabel.text = game.getLabelTextUsernameOpponent(username: self.playerSelf!.username)
+        cell.avatarImageView.image = game.getImageAvatarOpponent(username: self.playerSelf!.username)
+
+        if(game.status == "ONGOING"){
+            cell.timeIndicatorLabel.text = game.getLabelTextDate(update: true)
+            if(game.getInboundGame(username: self.playerSelf!.username)){
+
+                let image = UIImage(named: "turn.on")!
+                cell.actionImageView.image = image.withRenderingMode(.alwaysTemplate)
+                cell.actionImageView.tintColor = .black
+                return cell
+            }
+
+            let image = UIImage(named: "turn.off")!
+            cell.actionImageView.image = image.withRenderingMode(.alwaysTemplate)
+            cell.actionImageView.tintColor = .black
+            return cell
+        }
+        if(game.status == "PROPOSED"){
+            cell.timeIndicatorLabel.text = game.getLabelTextDate(update: false)
+            if(game.getInboundInvitation(username: self.playerSelf!.username)){
+
+                cell.actionImageView.tintColor = .black
+                let image = UIImage(named: "inbound")!
+                cell.actionImageView.image = image.withRenderingMode(.alwaysTemplate)
+                return cell
+            }
+
+            cell.actionImageView.tintColor = .black
+            let image = UIImage(named: "outbound")!
+            cell.actionImageView.image = image.withRenderingMode(.alwaysTemplate)
+        }
         
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let cell = tableView.cellForRow(at: indexPath) as! CardActual
+        let cell = tableView.cellForRow(at: indexPath) as! ActualCell
         let game = gameMenuTableList[indexPath.row]
         if(game.getInboundInvitation(username: self.playerSelf!.username)){
             cell.showSwipe(orientation: .right, animated: true)
