@@ -306,13 +306,14 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         self.labelTurnary.isHidden = true
         if(self.game!.outcome == "DRAW"){
             self.labelNotification.text = "draw"
+            return
         }
         let username: String = self.playerSelf!.username
         if(self.game!.getWinner(username: username)){
             self.labelNotification.text = "winner"
-        } else {
-            self.labelNotification.text = "you lose"
+            return
         }
+        self.labelNotification.text = "you lose"
     }
     
     func pawnPromotion(proposed: [Int]) {
@@ -419,82 +420,65 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         return nil
     }
     
-    //if(self.game!.outcome == "LANDMINE"){
-        //cell1 = self.getLandineCell(coordNormal: coordNormal, coordHighlight: coordHighlight, cell: cell1)
-    //}
-    
     private func getHighlight(highlight: String) -> [[Int]] {
-           let coords = Array(highlight)
-           let h0a: Int = Int(String(coords[0]))!
-           let h0b: Int = Int(String(coords[1]))!
-           let h0: [Int] = [h0a,h0b]
-           let h1a: Int = Int(String(coords[2]))!
-           let h1b: Int = Int(String(coords[3]))!
-           let h1: [Int] = [h1a,h1b]
-           return [h0, h1]
-       }
-       
-       private func getNormalCoord(indexPath: IndexPath) -> [Int] {
-           let username: String = self.playerSelf!.username
-           let white: Bool = self.game!.getWhite(username: username)
-           let x: Int = white ? indexPath.item / 8 : 7 - (indexPath.item / 8)
-           let y: Int = white ? indexPath.item % 8 : 7 - (indexPath.item % 8)
-           return [x,y]
-       }
+        let coords = Array(highlight)
+        let h0a: Int = Int(String(coords[0]))!
+        let h0b: Int = Int(String(coords[1]))!
+        let h0: [Int] = [h0a,h0b]
+        let h1a: Int = Int(String(coords[2]))!
+        let h1b: Int = Int(String(coords[3]))!
+        let h1: [Int] = [h1a,h1b]
+        return [h0, h1]
+    }
     
-    private func getLandineCell(coordNormal: [Int], coordHighlight: [[Int]], cell: SquareCell) -> SquareCell {
-        self.labelNotification.isHidden = false
-        self.labelNotification.text = ".:*~ poison pawn ~*:."
+    private func getNormalCoord(indexPath: IndexPath) -> [Int] {
         let username: String = self.playerSelf!.username
-        let turn: Bool = self.game!.getTurn(username: username)
-        if(turn){
+        let white: Bool = self.game!.getWhite(username: username)
+        let x: Int = white ? indexPath.item / 8 : 7 - (indexPath.item / 8)
+        let y: Int = white ? indexPath.item % 8 : 7 - (indexPath.item % 8)
+        return [x,y]
+    }
+    
+    private func getOrnamentCell(highlight: Bool, cell: SquareCell) -> SquareCell{
+        if(highlight){
+            cell.layer.borderColor = UIColor.magenta.cgColor
+            cell.backgroundColor = cell.backgroundColor!.withAlphaComponent(0.7)
+            cell.layer.borderWidth = 0.25
             return cell
         }
-        let white: Bool = self.game!.getWhite(username: username)
-        for (_, coord) in coordHighlight.enumerated() {
-            if(coordNormal == coord){
-                if(white){
-                    cell.backgroundColor = UIColor.black
-                } else {
-                    cell.backgroundColor = UIColor.white
-                }
-            }
-        }
+        cell.layer.borderWidth = 0
+        cell.backgroundColor = cell.backgroundColor!.withAlphaComponent(1)
         return cell
     }
     
-    private func getHighlightCell(indexPath: IndexPath, cell0: SquareCell) -> SquareCell {
+    private func getHighlightCell(indexPath: IndexPath, cell: SquareCell) -> SquareCell {
+        let resolved: Bool = self.game!.status == "RESOLVED"
         let highlight: String = self.game!.highlight
-        if(highlight == "TBD"){
-            return cell0
-        }
-        var cell1 = cell0
-        let username: String = self.playerSelf!.username
-        let turn: Bool = self.game!.getTurn(username: username)
-        if(!turn){
-            cell1.layer.borderWidth = 0
-            cell1.backgroundColor = cell1.backgroundColor!.withAlphaComponent(1)
-            return cell1
+        if(highlight == "TBD" || resolved){
+            return self.getOrnamentCell(highlight: false, cell: cell)
         }
         let coordHighlight: [[Int]] = self.getHighlight(highlight: highlight)
         let coordNormal: [Int] = self.getNormalCoord(indexPath: indexPath)
-        
-        if(coordNormal == coordHighlight[0]){
-            cell1.layer.borderWidth = 0.4
-            cell1.layer.borderColor = UIColor.white.cgColor
-            cell1.backgroundColor = cell1.backgroundColor!.withAlphaComponent(0.6)
-            return cell1
-            
+        if(self.game!.outcome == "LANDMINE"){
+            self.labelNotification.isHidden = false
+            self.labelNotification.text = ".:*~ poison pawn ~*:."
+            return self.highlightCoord(coordNormal: coordNormal, coordHighlight: coordHighlight, cell: cell)
         }
-        if(coordNormal == coordHighlight[1]){
-            cell1.layer.borderWidth = 0.4
-            cell1.layer.borderColor = UIColor.white.cgColor
-           cell1.backgroundColor = cell1.backgroundColor!.withAlphaComponent(0.6)
-            return cell1
+        let username: String = self.playerSelf!.username
+        let turn: Bool = self.game!.getTurn(username: username)
+        if(!turn){
+            return self.getOrnamentCell(highlight: false, cell: cell)
         }
-        cell1.layer.borderWidth = 0
-        cell1.backgroundColor = cell1.backgroundColor!.withAlphaComponent(1)
-        return cell1
+        return self.highlightCoord(coordNormal: coordNormal, coordHighlight: coordHighlight, cell: cell)
+    }
+    
+    private func highlightCoord(coordNormal: [Int], coordHighlight: [[Int]], cell: SquareCell) -> SquareCell {
+        for (_, coord) in coordHighlight.enumerated() {
+            if(coord == coordNormal){
+                return self.getOrnamentCell(highlight: true, cell: cell)
+            }
+        }
+        return self.getOrnamentCell(highlight: false, cell: cell)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -503,7 +487,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         cell.imageView.image = self.assignCellTschessElement(indexPath: indexPath)
         cell.imageView.bounds = CGRect(origin: cell.bounds.origin, size: cell.bounds.size)
         cell.imageView.center = CGPoint(x: cell.bounds.size.width/2, y: cell.bounds.size.height/2)
-        return self.getHighlightCell(indexPath: indexPath, cell0: cell)
+        return self.getHighlightCell(indexPath: indexPath, cell: cell)
     }
     
     // MARK: PRIME MOVER

@@ -67,7 +67,7 @@ class ActualTable: UITableViewController, SwipeTableViewCellDelegate {
             
             guard orientation == .right else {
                 let nAction = SwipeAction(style: .default, title: nil) { action, indexPath in
-                    print("nACK")
+                    //print("nACK")
                     self.activityIndicator!.isHidden = false
                     self.activityIndicator!.startAnimating()
                     let requestPayload: [String: Any] = ["id_game": game.id, "id_player": self.playerSelf!.id]
@@ -207,24 +207,28 @@ class ActualTable: UITableViewController, SwipeTableViewCellDelegate {
     override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         //let gameTableMenuItem = gameMenuTableList[indexPath.row]
         let closeAction = UIContextualAction(style: .normal, title:  nil, handler: { (ac:UIContextualAction, view:UIView, success:(Bool) -> Void) in
-           
             success(true)
         })
         closeAction.image = UIImage(named: "td_w")!
         closeAction.backgroundColor = .red
-        return UISwipeActionsConfiguration(actions: [closeAction])
+        //return UISwipeActionsConfiguration(actions: [closeAction])
+        let config = UISwipeActionsConfiguration(actions: [closeAction])
+        config.performsFirstActionWithFullSwipe = false
+        return config
     }
     
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let game = gameMenuTableList[indexPath.row]
         if(game.getInboundInvitation(username: self.playerSelf!.username)){
             let modifyAction = UIContextualAction(style: .normal, title:  nil, handler: { (ac:UIContextualAction, view: UIView, success: (Bool) -> Void) in
-                
                 success(true)
             })
             modifyAction.image = UIImage(named: "tu_w")!
             modifyAction.backgroundColor = .green
-            return UISwipeActionsConfiguration(actions: [modifyAction])
+            //return UISwipeActionsConfiguration(actions: [modifyAction])
+            let config = UISwipeActionsConfiguration(actions: [modifyAction])
+            config.performsFirstActionWithFullSwipe = false
+            return config
         }
         return nil
     }

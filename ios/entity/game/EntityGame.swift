@@ -248,10 +248,13 @@ class EntityGame: Equatable, Hashable {
     }
     
     func getWinner(username: String) -> Bool {
-        if(self.winner == nil){
+        if(self.white.username == username){
+            if(self.winner! == "WHITE"){
+                return true
+            }
             return false
         }
-        if(self.winner! == username){
+        if(self.winner! == "BLACK"){
             return true
         }
         return false

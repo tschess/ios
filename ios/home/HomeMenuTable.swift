@@ -208,12 +208,15 @@ class HomeMenuTable: UITableViewController {
                 }
                 SelectRecent().snapshot(playerOther: playerOther, playerSelf: self.player!, recentGameList: result!, presentor: self)
             }
-            print("RECENT SNAPS!")
+            //print("RECENT SNAPS!")
             success(true)
         })
         modifyAction.image = UIImage(named: "eyeye")!
         modifyAction.backgroundColor = .orange
-        return UISwipeActionsConfiguration(actions: [modifyAction])
+        // return UISwipeActionsConfiguration(actions: [modifyAction])
+        let config = UISwipeActionsConfiguration(actions: [modifyAction])
+        config.performsFirstActionWithFullSwipe = false
+        return config
     }
     
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
@@ -229,8 +232,13 @@ class HomeMenuTable: UITableViewController {
         })
         modifyAction.image = UIImage(named: "challenge")!
         modifyAction.backgroundColor = .purple
-        return UISwipeActionsConfiguration(actions: [modifyAction])
+        // return UISwipeActionsConfiguration(actions: [modifyAction])
+        let config = UISwipeActionsConfiguration(actions: [modifyAction])
+        config.performsFirstActionWithFullSwipe = false
+        return config
     }
+    
+
     
     func appendToLeaderboardTableList(additionalCellList: [EntityPlayer]) {
         for game in additionalCellList {

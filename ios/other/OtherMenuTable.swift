@@ -145,7 +145,7 @@ class OtherMenuTable: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let modifyAction = UIContextualAction(style: .normal, title:  "CHALLENGE", handler: { (ac: UIContextualAction, view: UIView, success:(Bool) -> Void) in
+        let modifyAction = UIContextualAction(style: .normal, title:  nil, handler: { (ac: UIContextualAction, view: UIView, success:(Bool) -> Void) in
             
             let gameModel = self.gameMenuTableList[indexPath.row]
             DispatchQueue.main.async {
@@ -153,7 +153,6 @@ class OtherMenuTable: UITableViewController {
                 let height = screenSize.height
                 SelectChallenge().execute(selection: Int.random(in: 0...3), playerSelf: self.player!, playerOther: gameModel.getPlayerOther(username: self.player!.username), BACK: "HOME", height: height)
             }
-            
             success(true)
         })
         modifyAction.image = UIImage(named: "game.white")!
