@@ -66,7 +66,7 @@ class Actual: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate {
         default:
             DispatchQueue.main.async {
                 let height: CGFloat = UIScreen.main.bounds.height
-                SelectHistoric().execute(player: self.playerSelf!, height: height)
+                SelectFairies().execute(player: self.playerSelf!, height: height)
             }
         }
     }

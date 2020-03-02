@@ -29,7 +29,6 @@ class EntityGame: Equatable, Hashable {
     var on_check: Bool
     var highlight: String
     var updated: String
-    var created: String
     
     init(
         id: String,
@@ -50,8 +49,7 @@ class EntityGame: Equatable, Hashable {
         turn: String,
         on_check: Bool,
         highlight: String,
-        updated: String,
-        created: String
+        updated: String
     ) {
         self.id = id
         self.state = state
@@ -72,7 +70,6 @@ class EntityGame: Equatable, Hashable {
         self.on_check = on_check
         self.highlight = highlight
         self.updated = updated
-        self.created = created
     }
     
     func hash(into hasher: inout Hasher) {
@@ -102,32 +99,12 @@ class EntityGame: Equatable, Hashable {
         if(self.white.username == username){
             if(self.white_disp! >= 0){
                 return UIImage(named: "upx")!
-                //if #available(iOS 13.0, *) {
-                    //self.tintColorWhite = .green
-                    //self.tintColorBlack = .red
-                    //return UIImage(systemName: "arrow.up")!
-                //}
             }
-            //if #available(iOS 13.0, *) {
-                //self.tintColorWhite = .red
-                //self.tintColorBlack = .green
-                //return UIImage(systemName: "arrow.down")!
-            //}
             return UIImage(named: "dwn")!
         }
         if(self.black_disp! >= 0){
-            //if #available(iOS 13.0, *) {
-                //self.tintColorWhite = .green
-                //self.tintColorBlack = .red
-                //return UIImage(systemName: "arrow.up")!
-            //}
             return UIImage(named: "upx")!
         }
-        //if #available(iOS 13.0, *) {
-            //self.tintColorWhite = .red
-            //self.tintColorBlack = .green
-            //return UIImage(systemName: "arrow.down")!
-        //}
         return UIImage(named: "dwn")!
     }
     
@@ -174,17 +151,12 @@ class EntityGame: Equatable, Hashable {
         return DateTime().toFormatDate(string: self.updated)
     }
     
-    func getDateCreated() -> Date {
-        return DateTime().toFormatDate(string: self.created)
-    }
+//    func getDateCreated() -> Date {
+//        return DateTime().toFormatDate(string: self.created)
+//    }
     
     func getLabelTextDate(update: Bool) -> String {
-        var date: Date
-        if(update){
-            date = self.getDateUpdated()
-        } else {
-            date = self.getDateCreated()
-        }
+        let date: Date = self.getDateUpdated()
         let formatter = DateFormatter()
         formatter.dateFormat = "dd.MM.YY"
         var dateFormat = formatter.string(from: date)

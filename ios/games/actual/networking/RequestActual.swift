@@ -11,7 +11,7 @@ import Foundation
 class RequestActual {
     
     func execute(requestPayload: [String: Any], completion: @escaping (([EntityGame]?) -> Void)) {
-        let url = URL(string: "http://\(ServerAddress().IP):8080/game/actual")!
+        let url = URL(string: "http://\(ServerAddress().IP):8080/game/menu")!
         
         //"id":"", "page":0, "size":13
         

@@ -33,7 +33,6 @@ class ParseGame {
         let on_check = json["on_check"]! as! Bool
         let highlight = json["highlight"]! as! String
         let updated = json["updated"]! as! String
-        let created = json["created"]! as! String
         
         let game: EntityGame = EntityGame(
             id: id,
@@ -54,8 +53,7 @@ class ParseGame {
             turn: turn,
             on_check: on_check,
             highlight: highlight,
-            updated: updated,
-            created: created)
+            updated: updated)
         return game
     }
 }

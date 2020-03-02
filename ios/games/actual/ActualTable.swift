@@ -125,7 +125,7 @@ class ActualTable: UITableViewController, SwipeTableViewCellDelegate {
                 }
             }
         }
-        rescind.backgroundColor = .orange
+        rescind.backgroundColor = .red
         rescind.image = UIImage(named: "close_w")!
         return [rescind]
     }
@@ -298,7 +298,8 @@ class ActualTable: UITableViewController, SwipeTableViewCellDelegate {
         let requestPayload = [
             "id": self.playerSelf!.id,
             "index": self.pageFromWhichContentLoads, //TODO ~ remove this...
-            "size": REQUEST_PAGE_SIZE
+            "size": REQUEST_PAGE_SIZE,
+            "self": true
             ] as [String: Any]
         
         RequestActual().execute(requestPayload: requestPayload) { (result) in

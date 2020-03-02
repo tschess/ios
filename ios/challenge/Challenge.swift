@@ -432,7 +432,7 @@ class Challenge: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate,
             DispatchQueue.main.async {
                 let screenSize: CGRect = UIScreen.main.bounds
                 let height: CGFloat = screenSize.height
-                SelectHistoric().execute(player: self.playerSelf!, height: height)
+                //SelectHistoric().execute(player: self.playerSelf!, height: height)
             }
             return
         }
