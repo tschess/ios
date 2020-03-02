@@ -37,7 +37,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         self.endTimer()
         DispatchQueue.main.async {
             let height: CGFloat = UIScreen.main.bounds.height
-            SelectActual().execute(player: self.playerSelf!, height: height)
+            SelectMenu().execute(player: self.playerSelf!, height: height)
         }
     }
     
@@ -54,11 +54,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
                 self.present(viewController, animated: true, completion: nil)
             }
         default: //0
-            self.endTimer()
-            DispatchQueue.main.async {
-                let height: CGFloat = UIScreen.main.bounds.height
-                SelectActual().execute(player: self.playerSelf!, height: height)
-            }
+            self.backButtonClick("~")
         }
     }
     

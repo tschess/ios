@@ -9,7 +9,7 @@
 import UIKit
 import SwipeCellKit
 
-class ActualTable: UITableViewController, SwipeTableViewCellDelegate {
+class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
     
     var playerSelf: EntityPlayer?
     
@@ -133,7 +133,7 @@ class ActualTable: UITableViewController, SwipeTableViewCellDelegate {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let game = gameMenuTableList[indexPath.row]
 
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ActualCell", for: indexPath) as! ActualCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MenuCell", for: indexPath) as! MenuCell
         cell.delegate = self
         cell.usernameLabel.text = game.getLabelTextUsernameOpponent(username: self.playerSelf!.username)
         cell.avatarImageView.image = game.getImageAvatarOpponent(username: self.playerSelf!.username)
@@ -208,7 +208,7 @@ class ActualTable: UITableViewController, SwipeTableViewCellDelegate {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let cell = tableView.cellForRow(at: indexPath) as! ActualCell
+        let cell = tableView.cellForRow(at: indexPath) as! MenuCell
         let game = gameMenuTableList[indexPath.row]
         if(game.getInboundInvitation(username: self.playerSelf!.username)){
             cell.showSwipe(orientation: .right, animated: true)

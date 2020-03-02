@@ -173,49 +173,33 @@ class HomeMenuTable: UITableViewController {
             self.activityIndicator!.startAnimating()
             
             let playerOther = self.leaderboardList[indexPath.row]
-            
-            let REQUEST_PAGE_SIZE: Int = 9
-            
-            let requestPayload = [
-                "id": playerOther.id,
-                "index": 0,
-                "size": REQUEST_PAGE_SIZE
-                ] as [String: Any]
-            RequestHistoric().execute(requestPayload: requestPayload) { (result) in
+           
+            RequestRecent().execute(id: playerOther.id) { (game) in
                 DispatchQueue.main.async() {
                     self.activityIndicator!.stopAnimating()
                     self.activityIndicator!.isHidden = true
                 }
-                if(result == nil){
+                if(game == nil){
                     DispatchQueue.main.async {
-                        
                         let screenSize: CGRect = UIScreen.main.bounds
                         let screenHeight = screenSize.height
-                        
                         SelectChallenge().execute(selection: Int.random(in: 0...3), playerSelf: self.player!, playerOther: playerOther, BACK: "HOME", height: screenHeight)
                     }
                     return
                 }
-                //print("result.count: \(result!.count)")
-                if(result!.count == 0){
-                    DispatchQueue.main.async {
-                        let screenSize: CGRect = UIScreen.main.bounds
-                        let screenHeight = screenSize.height
-                        
-                        SelectChallenge().execute(selection: Int.random(in: 0...3), playerSelf: self.player!, playerOther: playerOther, BACK: "HOME", height: screenHeight)
-                    }
-                    return
+                //game
+                DispatchQueue.main.async() {
+                    let skin: String = SelectSnapshot().getSkinGame(username: playerOther.username, game: game!) //problem...
+                    SelectSnapshot().snapshot(skin: skin, playerSelf: self.player!, game: game!, presentor: self)
                 }
-                SelectRecent().snapshot(playerOther: playerOther, playerSelf: self.player!, recentGameList: result!, presentor: self)
             }
             //print("RECENT SNAPS!")
             success(true)
         })
         modifyAction.image = UIImage(named: "eyeye")!
         modifyAction.backgroundColor = .orange
-        // return UISwipeActionsConfiguration(actions: [modifyAction])
         let config = UISwipeActionsConfiguration(actions: [modifyAction])
-        config.performsFirstActionWithFullSwipe = false
+        //config.performsFirstActionWithFullSwipe = false
         return config
     }
     
@@ -232,9 +216,8 @@ class HomeMenuTable: UITableViewController {
         })
         modifyAction.image = UIImage(named: "challenge")!
         modifyAction.backgroundColor = .purple
-        // return UISwipeActionsConfiguration(actions: [modifyAction])
         let config = UISwipeActionsConfiguration(actions: [modifyAction])
-        config.performsFirstActionWithFullSwipe = false
+        //config.performsFirstActionWithFullSwipe = false
         return config
     }
     

@@ -157,7 +157,7 @@
                                     <constraint firstAttribute="height" constant="50" id="CtS-Ad-lXP"/>
                                 </constraints>
                                 <items>
-                                    <tabBarItem tag="1" title="" image="game.grey" selectedImage="game.white" id="fjf-cy-wGx">
+                                    <tabBarItem tag="1" title="" image="challenge" selectedImage="challenge" id="fjf-cy-wGx">
                                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tabBarItem>
                                 </items>
@@ -353,7 +353,6 @@
         <image name="arrow.up" catalog="system" width="60" height="64"/>
         <image name="avatar_default" width="320" height="320"/>
         <image name="avatar_inverse" width="320" height="320"/>
-        <image name="game.grey" width="39" height="39"/>
-        <image name="game.white" width="39" height="39"/>
+        <image name="challenge" width="39" height="39"/>
     </resources>
 </document>

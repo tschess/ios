@@ -15,7 +15,7 @@ class RequestActual {
         
         //"id":"", "page":0, "size":13
         
-        print("requestPayload \(requestPayload)")
+        //print("requestPayload \(requestPayload)")
         
         var request = URLRequest(url: url)
         request.httpMethod = "POST"

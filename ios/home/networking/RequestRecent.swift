@@ -32,6 +32,10 @@ class RequestRecent {
                     completion(nil)
                     return
                 }
+                if(json["error"] != nil){
+                    completion(nil)
+                    return
+                }
                 
                 let game: EntityGame = ParseGame().execute(json: json)
                 completion(game)

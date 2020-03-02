@@ -8,18 +8,18 @@
 
 import UIKit
 
-class SelectActual {
+class SelectMenu {
     
     public func execute(player: EntityPlayer, height: CGFloat) {
         if(height.isLess(than: 750)){
-            let storyboard: UIStoryboard = UIStoryboard(name: "ActualL", bundle: nil)
-            let viewController = storyboard.instantiateViewController(withIdentifier: "ActualL") as! Actual
+            let storyboard: UIStoryboard = UIStoryboard(name: "MenuL", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier: "MenuL") as! Menu
             viewController.setPlayerSelf(playerSelf: player)
             UIApplication.shared.keyWindow?.rootViewController = viewController
             return
         }
-        let storyboard: UIStoryboard = UIStoryboard(name: "ActualP", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "ActualP") as! Actual
+        let storyboard: UIStoryboard = UIStoryboard(name: "MenuP", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "MenuP") as! Menu
         viewController.setPlayerSelf(playerSelf: player)
         UIApplication.shared.keyWindow?.rootViewController = viewController
     }

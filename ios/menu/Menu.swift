@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Actual: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate {
+class Menu: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate {
     
     @IBOutlet weak var displacementLabel: UILabel!
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
@@ -23,7 +23,7 @@ class Actual: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate {
     @IBOutlet weak var tabBarMenu: UITabBar!
     @IBOutlet weak var rankDirectionImage: UIImageView!
     
-    var actualTable: ActualTable?
+    var actualTable: MenuTable?
     
     var playerSelf: EntityPlayer?
     
@@ -34,7 +34,7 @@ class Actual: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         tabBarMenu.delegate = self
-        actualTable = children.first as? ActualTable
+        actualTable = children.first as? MenuTable
         actualTable!.setPlayerSelf(playerSelf: self.playerSelf!)
         actualTable!.setIndicator(indicator: self.activityIndicator!)
         actualTable!.fetchMenuTableList()

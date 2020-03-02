@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Actual-->
+        <!--Menu-->
         <scene sceneID="3n7-Sy-fqM">
             <objects>
-                <viewController storyboardIdentifier="ActualL" useStoryboardIdentifierAsRestorationIdentifier="YES" id="aXR-9x-GXH" customClass="Actual" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MenuL" useStoryboardIdentifierAsRestorationIdentifier="YES" id="aXR-9x-GXH" customClass="Menu" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8ZF-eo-JIG">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -331,8 +331,8 @@
         <image name="arrow.down" catalog="system" width="60" height="64"/>
         <image name="avatar_default" width="320" height="320"/>
         <image name="avatar_inverse" width="320" height="320"/>
-        <image name="back.grey" width="40" height="40"/>
-        <image name="back.white" width="40" height="40"/>
+        <image name="back.grey" width="39" height="33"/>
+        <image name="back.white" width="39" height="33"/>
         <image name="book.grey" width="40" height="40"/>
         <image name="book.white" width="40" height="40"/>
         <image name="tray.and.arrow.down" catalog="system" width="64" height="54"/>

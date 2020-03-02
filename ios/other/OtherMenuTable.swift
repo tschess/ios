@@ -115,9 +115,10 @@ class OtherMenuTable: UITableViewController {
         let requestPayload = [
             "id": self.player!.id,
             "index": self.pageFromWhichContentLoads,
-            "size": REQUEST_PAGE_SIZE
+            "size": REQUEST_PAGE_SIZE,
+            "self": false
             ] as [String: Any]
-        RequestHistoric().execute(requestPayload: requestPayload) { (result) in
+        RequestActual().execute(requestPayload: requestPayload) { (result) in
             DispatchQueue.main.async() {
                 self.activityIndicator!.stopAnimating()
                 self.activityIndicator!.isHidden = true

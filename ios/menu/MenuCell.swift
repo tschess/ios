@@ -9,7 +9,7 @@
 import UIKit
 import SwipeCellKit
 
-class ActualCell: SwipeTableViewCell {
+class MenuCell: SwipeTableViewCell {
     
     @IBOutlet weak var soLaLa: UIView!
     @IBOutlet weak var timeIndicatorLabel: UILabel!

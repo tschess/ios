@@ -139,7 +139,7 @@ class Home: UIViewController, UITabBarDelegate {
             self.notificationTimerStop()
             DispatchQueue.main.async {
                 let height: CGFloat = UIScreen.main.bounds.height
-                SelectActual().execute(player: self.player!, height: height)
+                SelectMenu().execute(player: self.player!, height: height)
             }
         case 4:
             self.notificationTimerStop()
