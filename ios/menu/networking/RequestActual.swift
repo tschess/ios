@@ -30,15 +30,18 @@ class RequestActual {
         let task = session.dataTask(with: request, completionHandler: { data, response, error in
             guard error == nil else {
                 print("0")
+                completion(nil)
                 return
             }
             guard let data = data else {
                 print("1")
+                completion(nil)
                 return
             }
             do {
                 guard let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [[String: Any]] else {
                     print("2")
+                    completion(nil)
                     return
                 }
                 print("*PageList* \n\n \(json.count)")

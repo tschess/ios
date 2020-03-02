@@ -9,6 +9,7 @@
 import UIKit
 
 class Menu: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate {
+    @IBOutlet var containerView: UIView!
     
     @IBOutlet weak var displacementLabel: UILabel!
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
@@ -37,6 +38,7 @@ class Menu: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate {
         actualTable = children.first as? MenuTable
         actualTable!.setPlayerSelf(playerSelf: self.playerSelf!)
         actualTable!.setIndicator(indicator: self.activityIndicator!)
+        actualTable!.setContainerView(container: self.containerView!)
         actualTable!.fetchMenuTableList()
     }
     
@@ -55,6 +57,13 @@ class Menu: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate {
         self.activityIndicator.isHidden = true
         self.renderHeader()
     }
+    
+//    override func viewDidAppear(_ animated: Bool) {
+//        if(self.actualTable!.getGameMenuTableList().count == 0){
+//            let enter = Enter.instanceFromNib()
+//            self.containerView.addSubview(enter)
+//        }
+//    }
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         switch item.tag {

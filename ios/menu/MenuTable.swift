@@ -11,6 +11,8 @@ import SwipeCellKit
 
 class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
     
+    var containerView: UIView?
+    
     var playerSelf: EntityPlayer?
     
     func setPlayerSelf(playerSelf: EntityPlayer){
@@ -35,12 +37,22 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.tableFooterView = UIView()
+        
+        //self.containerView!.addSubview(self.enter)
+       
+        //if(self.containerView!.subviews.contains(self.enter)){
+            //self.enter.isHidden = true
+        //}
     }
     
     var activityIndicator: UIActivityIndicatorView?
     
     public func setIndicator(indicator: UIActivityIndicatorView){
         self.activityIndicator = indicator
+    }
+    
+    public func setContainerView(container: UIView){
+        self.containerView = container
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -54,6 +66,14 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
         
         let game = gameMenuTableList[indexPath.row]
+        if(game.status == "RESOLVED"){
+            //print(" - Tschess - ")
+            DispatchQueue.main.async {
+                let skin: String = SelectSnapshot().getSkinGame(username: self.playerSelf!.username, game: game)
+                SelectSnapshot().snapshot(skin: skin, playerSelf: self.playerSelf!, game: game, presentor: self)
+            }
+            return nil
+        }
         if(game.status == "ONGOING"){
             //print(" - Tschess - ")
             DispatchQueue.main.async {
@@ -109,7 +129,7 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
         }
         
         let rescind = SwipeAction(style: .default, title: nil) { action, indexPath in
-            print("RESCIND")
+            //print("RESCIND")
             self.activityIndicator!.isHidden = false
             self.activityIndicator!.startAnimating()
             let game = self.gameMenuTableList[indexPath.row]
@@ -132,7 +152,7 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let game = gameMenuTableList[indexPath.row]
-
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "MenuCell", for: indexPath) as! MenuCell
         cell.delegate = self
         cell.usernameLabel.text = game.getLabelTextUsernameOpponent(username: self.playerSelf!.username)
@@ -141,13 +161,13 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
         if(game.status == "ONGOING"){
             cell.timeIndicatorLabel.text = game.getLabelTextDate(update: true)
             if(game.getInboundGame(username: self.playerSelf!.username)){
-
+                
                 let image = UIImage(named: "turn.on")!
                 cell.actionImageView.image = image.withRenderingMode(.alwaysTemplate)
                 cell.actionImageView.tintColor = .black
                 return cell
             }
-
+            
             let image = UIImage(named: "turn.off")!
             cell.actionImageView.image = image.withRenderingMode(.alwaysTemplate)
             cell.actionImageView.tintColor = .black
@@ -156,13 +176,13 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
         if(game.status == "PROPOSED"){
             cell.timeIndicatorLabel.text = game.getLabelTextDate(update: false)
             if(game.getInboundInvitation(username: self.playerSelf!.username)){
-
+                
                 cell.actionImageView.tintColor = .black
                 let image = UIImage(named: "inbound")!
                 cell.actionImageView.image = image.withRenderingMode(.alwaysTemplate)
                 return cell
             }
-
+            
             cell.actionImageView.tintColor = .black
             let image = UIImage(named: "outbound")!
             cell.actionImageView.image = image.withRenderingMode(.alwaysTemplate)
@@ -191,17 +211,17 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
             cell.dispValueLabel.isHidden = false
             cell.dispValueLabel.textColor = UIColor.lightGray
             cell.dispValueLabel.text = game.getLabelTextDisp(username: self.playerSelf!.username)
-//            if(game.getInboundInvitation(username: self.playerSelf!.username)){
-//
-//                cell.actionImageView.tintColor = .black
-//                let image = UIImage(named: "inbound")!
-//                cell.actionImageView.image = image.withRenderingMode(.alwaysTemplate)
-//                return cell
-//            }
-//
-//            cell.actionImageView.tintColor = .black
-//            let image = UIImage(named: "outbound")!
-//            cell.actionImageView.image = image.withRenderingMode(.alwaysTemplate)
+            //            if(game.getInboundInvitation(username: self.playerSelf!.username)){
+            //
+            //                cell.actionImageView.tintColor = .black
+            //                let image = UIImage(named: "inbound")!
+            //                cell.actionImageView.image = image.withRenderingMode(.alwaysTemplate)
+            //                return cell
+            //            }
+            //
+            //            cell.actionImageView.tintColor = .black
+            //            let image = UIImage(named: "outbound")!
+            //            cell.actionImageView.image = image.withRenderingMode(.alwaysTemplate)
         }
         return cell
     }
@@ -219,6 +239,10 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        
+        
+        
+        
         let visibleRows = self.tableView.indexPathsForVisibleRows
         let lastRow = visibleRows?.last?.row
         if(lastRow == nil){
@@ -238,7 +262,12 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
             self.pageFromWhichContentLoads += 1
             self.fetchMenuTableList()
         }
+        
+        
+        
+        
     }
+    
     
     override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         //let gameTableMenuItem = gameMenuTableList[indexPath.row]
@@ -269,8 +298,27 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
         return nil
     }
     
+//    override func viewDidAppear(_ animated: Bool) {
+//if(self.gameMenuTableList.count == 0){
+//    DispatchQueue.main.async {
+//        self.containerView!.addSubview(self.enter)
+//    }
+//}
+//    }
+    
+    
+    
+    let enter: Enter = Enter.instanceFromNib()
+    
     func appendToTableList(additionalCellList: [EntityGame]) {
         let currentCount = self.gameMenuTableList.count
+        
+        print("self.gameMenuTableList.count \(self.gameMenuTableList.count)")
+        
+        //if(self.containerView!.subviews.contains(self.enter)){
+                   //self.enter.isHidden = true
+               //}
+       
         
         for game in additionalCellList {
             if(!self.gameMenuTableList.contains(game)){
@@ -279,9 +327,19 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
         }
         if(currentCount != self.gameMenuTableList.count){
             DispatchQueue.main.async {
+                
                 self.activityIndicator!.stopAnimating()
                 self.activityIndicator!.isHidden = true
                 self.tableView!.reloadData()
+            }
+        }
+        
+        print("self.gameMenuTableList.count \(self.gameMenuTableList.count)")
+        if(self.gameMenuTableList.count > 0){
+            DispatchQueue.main.async {
+                if(self.containerView!.subviews.contains(self.enter)){
+                    self.enter.removeFromSuperview()
+                }
             }
         }
     }
@@ -307,7 +365,12 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
                 self.activityIndicator!.stopAnimating()
                 self.activityIndicator!.isHidden = true
             }
+            print("result \(result)")
+            
             if(result == nil){
+                DispatchQueue.main.async {
+                    self.containerView!.addSubview(self.enter)
+                }
                 return
             }
             self.appendToTableList(additionalCellList: result!)
@@ -331,19 +394,3 @@ extension UITableView {
         return rows
     }
 }
-
-//private func renderShrug(){  // thiis can exist in practice...
-//    DispatchQueue.main.async() {
-//        let frameSize: CGPoint = CGPoint(x: UIScreen.main.bounds.size.width*0.5, y: UIScreen.main.bounds.size.height*0.5)
-//        self.label = UILabel(frame: CGRect(x: UIScreen.main.bounds.size.width*0.5, y: UIScreen.main.bounds.size.height*0.5, width: UIScreen.main.bounds.width, height: 40))
-//        self.label!.center = frameSize
-//        self.label!.textAlignment = .center
-//        self.label!.font = UIFont.systemFont(ofSize: 30, weight: UIFont.Weight.light)
-//        self.label!.translatesAutoresizingMaskIntoConstraints = false
-//        let horizontalConstraint = NSLayoutConstraint(item: self.label!, attribute: NSLayoutConstraint.Attribute.centerX, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.view, attribute: NSLayoutConstraint.Attribute.centerX, multiplier: 1, constant: 0)
-//        let verticalConstraint = NSLayoutConstraint(item: self.label!, attribute: NSLayoutConstraint.Attribute.centerY, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.view, attribute: NSLayoutConstraint.Attribute.centerY, multiplier: 1, constant: 0)
-//        self.label!.text = "¯\\_( ͡° ͜ʖ ͡°)_/¯"
-//        self.view.addSubview(self.label!)
-//        self.view.addConstraints([horizontalConstraint, verticalConstraint])
-//    }
-//}
