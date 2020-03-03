@@ -32,7 +32,9 @@ class Passant {
         }
         let affiliation = state1[coordinate![0]][coordinate![1]]!.affiliation
         
-        if(state1[coordinate![0]][coordinate![1]]!.name.contains("Pawn")) {
+        let pawn0: Bool = state1[coordinate![0]][coordinate![1]]!.name.contains("Pawn") ||
+                          state1[coordinate![0]][coordinate![1]]!.name.contains("Poison")
+        if(pawn0) {
             
             if(!Pawn().advanceTwo(present: coordinate!, proposed: proposed, state: state1)){
                 return false
@@ -40,7 +42,11 @@ class Passant {
             if(coordinate![1] - 1 >= 0){
                 let examinee = state1[4][coordinate![1] - 1]
                 if(examinee != nil) {
-                    if(examinee!.name.contains("Pawn")) {
+                    
+                    let pawn1: Bool = examinee!.name.contains("Pawn") ||
+                                      examinee!.name.contains("Poison")
+                    
+                    if(pawn1) {
                         if(examinee!.affiliation != affiliation){
                             state1[5][coordinate![1]] = examinee!
                             state1[4][coordinate![1] - 1] = nil
@@ -49,8 +55,8 @@ class Passant {
                             self.tschess.matrix = self.transitioner.deselectHighlight(state0: self.tschess.matrix!)
                             let stateUpdate = SerializerState(white: self.white).renderServer(state: state1)
                             
-                            let hx: Int = self.white ? proposed[0] : 7 - proposed[0]
-                            let hy: Int = self.white ? proposed[1] : 7 - proposed[1]
+                            let hx: Int = self.white ? 5 : 7 - 5
+                            let hy: Int = self.white ? coordinate![1] : 7 - coordinate![1]
                             let h0: Int = self.white ? coordinate![0] : 7 - coordinate![0]
                             let h1: Int = self.white ? coordinate![1] : 7 - coordinate![1]
                             let highlight: String = "\(hx)\(hy)\(h0)\(h1)"
@@ -76,7 +82,11 @@ class Passant {
             if(coordinate![1] + 1 <= 7){
                 let examinee = state1[4][coordinate![1] + 1]
                 if(examinee != nil) {
-                    if(examinee!.name.contains("Pawn")) {
+                   
+                    let pawn1: Bool = examinee!.name.contains("Pawn") ||
+                                      examinee!.name.contains("Poison")
+                    
+                    if(pawn1) {
                         if(examinee!.affiliation != affiliation){
                             state1[5][coordinate![1]] = examinee!
                             state1[4][coordinate![1] + 1] = nil
@@ -86,8 +96,8 @@ class Passant {
                             self.tschess.matrix = self.transitioner.deselectHighlight(state0: self.tschess.matrix!)
                             let stateUpdate = SerializerState(white: self.white).renderServer(state: state1)
                             
-                            let hx: Int = self.white ? proposed[0] : 7 - proposed[0]
-                            let hy: Int = self.white ? proposed[1] : 7 - proposed[1]
+                            let hx: Int = self.white ? 5 : 7 - 5
+                            let hy: Int = self.white ? coordinate![1] : 7 - coordinate![1]
                             let h0: Int = self.white ? coordinate![0] : 7 - coordinate![0]
                             let h1: Int = self.white ? coordinate![1] : 7 - coordinate![1]
                             let highlight: String = "\(hx)\(hy)\(h0)\(h1)"

@@ -67,7 +67,7 @@ class Snapshot: UIViewController, UICollectionViewDataSource, UICollectionViewDe
         self.winnerImageView!.image = self.game!.getImageAvatarWinner()
         self.usernameWinner.text = self.game!.getUsernameWinner()
         
-        self.outcomeLabel.text = self.game!.outcome
+        self.outcomeLabel.text = self.game!.condition
         self.usernameLabelWhite.text = self.game!.white.username
         self.usernameLabelBlack.text = self.game!.black.username
         //self.dateLabel.text = self.game!.updated

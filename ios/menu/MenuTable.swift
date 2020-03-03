@@ -68,6 +68,21 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
         let game = gameMenuTableList[indexPath.row]
         if(game.status == "RESOLVED"){
             //print(" - Tschess - ")
+
+            guard orientation == .left else {
+                let rematch = SwipeAction(style: .default, title: nil) { action, indexPath in
+                    
+                    let playerOther = self.gameMenuTableList[indexPath.row].getPlayerOther(username: self.playerSelf!.username)
+                    DispatchQueue.main.async {
+                        let screenSize: CGRect = UIScreen.main.bounds
+                        let height = screenSize.height
+                        SelectChallenge().execute(selection: Int.random(in: 0...3), playerSelf: self.playerSelf!, playerOther: playerOther, BACK: "HOME", height: height)
+                    }
+                }
+                rematch.backgroundColor = .purple
+                rematch.image = UIImage(named: "challenge")!
+                return [rematch]
+            }
             DispatchQueue.main.async {
                 let skin: String = SelectSnapshot().getSkinGame(username: self.playerSelf!.username, game: game)
                 SelectSnapshot().snapshot(skin: skin, playerSelf: self.playerSelf!, game: game, presentor: self)
@@ -211,17 +226,6 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
             cell.dispValueLabel.isHidden = false
             cell.dispValueLabel.textColor = UIColor.lightGray
             cell.dispValueLabel.text = game.getLabelTextDisp(username: self.playerSelf!.username)
-            //            if(game.getInboundInvitation(username: self.playerSelf!.username)){
-            //
-            //                cell.actionImageView.tintColor = .black
-            //                let image = UIImage(named: "inbound")!
-            //                cell.actionImageView.image = image.withRenderingMode(.alwaysTemplate)
-            //                return cell
-            //            }
-            //
-            //            cell.actionImageView.tintColor = .black
-            //            let image = UIImage(named: "outbound")!
-            //            cell.actionImageView.image = image.withRenderingMode(.alwaysTemplate)
         }
         return cell
     }
@@ -328,8 +332,6 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
                 self.tableView!.reloadData()
             }
         }
-        
-        //print("self.gameMenuTableList.count \(self.gameMenuTableList.count)")
         if(self.gameMenuTableList.count > 0){
             DispatchQueue.main.async {
                 if(self.containerView!.subviews.contains(self.enter)){

@@ -14,7 +14,7 @@ class EntityGame: Equatable, Hashable {
     var state: [[String]]
     var moves: Int
     var status: String
-    var outcome: String
+    var condition: String
     var white: EntityPlayer
     var white_elo: Int
     var white_disp: Int?
@@ -35,7 +35,7 @@ class EntityGame: Equatable, Hashable {
         state: [[String]],
         moves: Int,
         status: String,
-        outcome: String,
+        condition: String,
         white: EntityPlayer,
         white_elo: Int,
         white_disp: Int?,
@@ -55,7 +55,7 @@ class EntityGame: Equatable, Hashable {
         self.state = state
         self.moves = moves
         self.status = status
-        self.outcome = outcome
+        self.condition = condition
         self.white = white
         self.white_elo = white_elo
         self.white_disp = white_disp
@@ -151,10 +151,6 @@ class EntityGame: Equatable, Hashable {
         return DateTime().toFormatDate(string: self.updated)
     }
     
-//    func getDateCreated() -> Date {
-//        return DateTime().toFormatDate(string: self.created)
-//    }
-    
     func getLabelTextDate(update: Bool) -> String {
         let date: Date = self.getDateUpdated()
         let formatter = DateFormatter()
@@ -163,7 +159,6 @@ class EntityGame: Equatable, Hashable {
         dateFormat.insert("'", at: dateFormat.index(dateFormat.endIndex, offsetBy: -2))
         return dateFormat
     }
-    
     
     func getStateClient(username: String) -> [[Piece?]] {
         if(self.white.username == username){

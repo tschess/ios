@@ -51,7 +51,8 @@
                                     <constraint firstAttribute="height" constant="50" id="CtS-Ad-lXP"/>
                                 </constraints>
                                 <items>
-                                    <tabBarItem title="" image="game.grey" selectedImage="game.white" id="6f1-4w-L4h">
+                                    <tabBarItem title="" image="challenge_g" selectedImage="challenge" id="6f1-4w-L4h">
+                                        <inset key="imageInsets" minX="2" minY="2" maxX="2" maxY="2"/>
                                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tabBarItem>
                                 </items>
@@ -235,7 +236,7 @@
                                 <rect key="frame" x="0.0" y="198" width="414" height="207"/>
                                 <subviews>
                                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vKA-Qw-aUe">
-                                        <rect key="frame" x="8" y="0.0" width="398" height="207"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="207"/>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="207" id="o5U-mO-Jic"/>
@@ -272,9 +273,9 @@
                                     <constraint firstAttribute="bottom" secondItem="vKA-Qw-aUe" secondAttribute="bottom" id="Ggd-aR-FAg"/>
                                     <constraint firstItem="4ug-Aw-rl4" firstAttribute="top" secondItem="vKA-Qw-aUe" secondAttribute="top" id="Pk8-FU-5RB"/>
                                     <constraint firstAttribute="trailing" secondItem="4ug-Aw-rl4" secondAttribute="trailing" id="jbp-lY-DRG"/>
-                                    <constraint firstItem="vKA-Qw-aUe" firstAttribute="leading" secondItem="heW-o1-yD8" secondAttribute="leading" constant="8" id="q2h-Oq-JuG"/>
+                                    <constraint firstItem="vKA-Qw-aUe" firstAttribute="leading" secondItem="heW-o1-yD8" secondAttribute="leading" id="q2h-Oq-JuG"/>
                                     <constraint firstItem="4ug-Aw-rl4" firstAttribute="top" secondItem="heW-o1-yD8" secondAttribute="top" id="vNC-SR-al1"/>
-                                    <constraint firstAttribute="trailing" secondItem="vKA-Qw-aUe" secondAttribute="trailing" constant="8" id="zcG-Yb-tdD"/>
+                                    <constraint firstAttribute="trailing" secondItem="vKA-Qw-aUe" secondAttribute="trailing" id="zcG-Yb-tdD"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pTJ-z0-ayK" userLabel="HeaderView">
@@ -437,7 +438,7 @@
     </scenes>
     <resources>
         <image name="avatar_default" width="320" height="320"/>
-        <image name="game.grey" width="39" height="39"/>
-        <image name="game.white" width="39" height="39"/>
+        <image name="challenge" width="39" height="39"/>
+        <image name="challenge_g" width="39" height="52"/>
     </resources>
 </document>

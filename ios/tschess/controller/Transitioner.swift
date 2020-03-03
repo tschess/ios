@@ -96,31 +96,32 @@ class Transitioner {
                     
                     var stateH: [[Piece?]] = state1
                     let p = stateH[self.coordinate![0]][self.coordinate![1]]
-                    
                     stateH[i][j] = p
-                    stateH[self.coordinate![0]][self.coordinate![1]] = nil //piece replacement???
+                    
+                    stateH[self.coordinate![0]][self.coordinate![1]] = nil
+                    
                     if(coordinate == kgCrd){
                         if(Checker().check(coordinate: [i,j], state: stateH)){
                             continue
                         }
                     }
-                    else if(Checker().check(coordinate: kgCrd, state: stateH)){
-                        continue
+                    else if(!Checker().check(coordinate: kgCrd, state: stateH)){
+                        let square = state1[i][j]
+                        if(square == nil){
+                            state1[i][j] = PieceAnte()
+                            continue
+                        }
+                        if(square!.affiliation == piece.affiliation){
+                            continue
+                        }
+                        let imageTarget = square!.getImageTarget()
+                        square!.setImageVisible(imageVisible: imageTarget)
+                        square!.isTarget = true
                     }
                     /*-*-*/
                     
                     
-                    let square = state1[i][j]
-                    if(square == nil){
-                        state1[i][j] = PieceAnte()
-                        continue
-                    }
-                    if(square!.affiliation == piece.affiliation){
-                        continue
-                    }
-                    let imageTarget = square!.getImageTarget()
-                    square!.setImageVisible(imageVisible: imageTarget)
-                    square!.isTarget = true
+                    
                     
                 }
             }

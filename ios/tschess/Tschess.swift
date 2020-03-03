@@ -75,6 +75,10 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     
     // MARK: LABEL RENDER FUNC
     private func setLabelTurnary() {
+        let resolved: Bool = self.game!.status == "RESOLVED"
+        if(resolved){
+            return
+        }
         if(self.labelTurnary.isHidden){
             self.labelTurnary.isHidden = false
         }
@@ -83,15 +87,19 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     }
     
     private func setLabelNotification() {
-        if(self.game!.outcome == "TBD"){
+        if(self.game!.condition == "TBD"){
             self.labelNotification.isHidden = true
         }
-        if(self.game!.outcome == "PENDING"){
+        if(self.game!.condition == "PENDING"){
             self.drawProposal()
         }
     }
     
     private func drawProposal() {
+        let resolved: Bool = self.game!.status == "RESOLVED"
+        if(resolved){
+            return
+        }
         self.labelNotification.isHidden = false
         self.labelNotification.text = "proposal pending"
         let turn = self.game!.getTurn()
@@ -125,6 +133,10 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     }
     
     private func setLabelCountdown(update: String) {
+        let resolved: Bool = self.game!.status == "RESOLVED"
+        if(resolved){
+            return
+        }
         let dateUpdate: Date = self.dateTime.toFormatDate(string: update)
         let dateActual: Date = self.dateTime.currentDate()
         let intervalDifference: TimeInterval = dateActual.timeIntervalSince(dateUpdate)
@@ -258,11 +270,11 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     
     private func setLabelCheck() {
         let state: [[Piece?]] = self.matrix!
-        let color: String =  self.game!.turn //i.e. "WHITE" or "BLACK"
         let checker: Checker = Checker()
         
-        let king: [Int] = checker.kingCoordinate(affiliation: color, state: state)
-        let mate: Bool = checker.mate(king: king, state: state)
+        let kingWhite: [Int] = checker.kingCoordinate(affiliation: "WHITE", state: state)
+        let kingBlack: [Int] = checker.kingCoordinate(affiliation: "BLACK", state: state)
+        let mate: Bool = checker.mate(king: kingWhite, state: state) || checker.mate(king: kingBlack, state: state)
         if(mate){
             UpdateMate().execute(id: self.game!.id) { (success) in
                 if(!success){
@@ -271,12 +283,16 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
             }
             return
         }
-        let check0: Bool = self.game!.outcome == "CHECK"
-        let check1: Bool = checker.on(affiliation: color, state: state)
+        let check0: Bool = self.game!.on_check
+        let check1: Bool = checker.on(affiliation: "WHITE", state: state) || checker.on(affiliation: "BLACK", state: state)
         if(!check0 && !check1){
+            //the game WE KNOW is not check
+            //the game WE GOT is not check
             return
         }
         if(!check0 && check1){
+            //the game WE KNOW is not check
+            //the game WE GOT *~is~* check
             UpdateCheck().execute(id: self.game!.id) { (success) in
                 if(!success){
                     //error
@@ -300,7 +316,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         self.labelNotification.isHidden = false
         self.labelCountdown.isHidden = true
         self.labelTurnary.isHidden = true
-        if(self.game!.outcome == "DRAW"){
+        if(self.game!.condition == "DRAW"){
             self.labelNotification.text = "draw"
             return
         }
@@ -370,8 +386,6 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         return 0
     }
     
-    
-    
     // MARK: POLLING GAME
     
     @objc func pollingTask() {
@@ -395,13 +409,13 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
                     let username: String = self.playerSelf!.username
                     let matrix1: [[Piece?]] = game1.getStateClient(username: username)
                     self.matrix = matrix1
-                    
+                    // ~ * ~ //
                     self.viewBoard.reloadData()
+                    self.setLabelEndgame()
                     self.setLabelCountdown(update: game1.updated)
                     self.setLabelTurnary()
                     self.setLabelNotification()
                     self.setLabelCheck()
-                    self.setLabelEndgame()
                 }
             }
         }
@@ -440,20 +454,20 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
             let username: String = self.playerSelf!.username
             let white: Bool = self.game!.getWhite(username: username)
             if(white){
-                let snake = UIImageView(image: UIImage(named: "pinkmamba_w")!)
-                snake.bounds = CGRect(origin: cell.bounds.origin, size: cell.bounds.size)
-                snake.center = CGPoint(x: cell.bounds.size.width/2, y: cell.bounds.size.height/2)
-                snake.tag = 666
-                snake.alpha = 0.3
-                cell.insertSubview(snake, at: 0)
+                let ornament = UIImageView(image: UIImage(named: "pinkmamba_w")!)
+                ornament.bounds = CGRect(origin: cell.bounds.origin, size: cell.bounds.size)
+                ornament.center = CGPoint(x: cell.bounds.size.width/2, y: cell.bounds.size.height/2)
+                ornament.tag = 666
+                ornament.alpha = 0.3
+                cell.insertSubview(ornament, at: 0)
                 return cell
             }
-            let snake = UIImageView(image: UIImage(named: "pinkmamba_b")!)
-            snake.bounds = CGRect(origin: cell.bounds.origin, size: cell.bounds.size)
-            snake.center = CGPoint(x: cell.bounds.size.width/2, y: cell.bounds.size.height/2)
-            snake.tag = 666
-            snake.alpha = 0.3
-            cell.insertSubview(snake, at: 0)
+            let ornament = UIImageView(image: UIImage(named: "pinkmamba_b")!)
+            ornament.bounds = CGRect(origin: cell.bounds.origin, size: cell.bounds.size)
+            ornament.center = CGPoint(x: cell.bounds.size.width/2, y: cell.bounds.size.height/2)
+            ornament.tag = 666
+            ornament.alpha = 0.3
+            cell.insertSubview(ornament, at: 0)
             return cell
         }
         cell.subviews.forEach({
@@ -472,7 +486,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         }
         let coordHighlight: [[Int]] = self.getHighlight(highlight: highlight)
         let coordNormal: [Int] = self.getNormalCoord(indexPath: indexPath)
-        if(self.game!.outcome == "LANDMINE"){
+        if(self.game!.condition == "LANDMINE"){
             self.labelNotification.isHidden = false
             self.labelNotification.text = ".:*~ poison pawn ~*:."
             return self.highlightCoord(coordNormal: coordNormal, coordHighlight: coordHighlight, cell: cell)

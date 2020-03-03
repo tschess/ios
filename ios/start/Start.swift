@@ -240,19 +240,18 @@ class Start: UIViewController, UITextFieldDelegate {
     
     @objc func testTaskExecuter(){
         
-       
+        let rowA: [String] = ["RookBlack_x", "KnightBlack_x", "BishopBlack_x", "QueenBlack_x", "KingBlack_x", "BishopBlack_x", "KnightBlack_x", "RookBlack_x"]
+        let rowB: [String] = ["PawnBlack_x", "PawnBlack_x", "PawnBlack_x", "PawnBlack_x", "PawnBlack_x", "PawnBlack_x", "PawnBlack_x", "PawnBlack_x"]
+        var rowC: [String] = [String](repeating: "", count: 8)
+        let rowD: [String] = [String](repeating: "", count: 8)
+        //rowD[0] = "QueenBlack"
         
-        let rowA: [String] = ["RookBlack", "KnightBlack", "BishopBlack", "", "KingBlack", "BishopBlack", "KnightBlack", "RookBlack"]
-        let rowB: [String] = ["PawnBlack", "PawnBlack", "PawnBlack", "PawnBlack", "PawnBlack", "PawnBlack", "PawnBlack", "PawnBlack"]
-        let rowC: [String] = [String](repeating: "", count: 8)
-        var rowD: [String] = [String](repeating: "", count: 8)
-        rowD[0] = "QueenBlack"
-        rowD[7] = "QueenWhite"
+        rowC[6] = "PawnWhite"
         
         let rowE: [String] = [String](repeating: "", count: 8)
         let rowF: [String] = [String](repeating: "", count: 8)
-        let rowG: [String] = ["PawnWhite", "PawnWhite", "PawnWhite", "PawnWhite", "PawnWhite", "PawnWhite", "PawnWhite", "PawnWhite"]
-        let rowH: [String] = ["RookWhite", "KnightWhite", "BishopWhite", "", "KingWhite", "BishopWhite", "KnightWhite", "RookWhite"]
+        let rowG: [String] = ["PawnWhite_x", "PawnWhite_x", "PawnWhite_x", "PawnWhite_x", "PawnWhite_x", "PawnWhite_x", "PawnWhite_x", "PawnWhite_x"]
+        let rowH: [String] = ["RookWhite_x", "KnightWhite_x", "BishopWhite_x", "QueenWhite_x", "KingWhite_x", "BishopWhite_x", "KnightWhite_x", "RookWhite_x"]
         
         view.removeGestureRecognizer(self.dismissKeyboardGesture!)
         if(self.testTaskCounter == 3){
@@ -260,17 +259,9 @@ class Start: UIViewController, UITextFieldDelegate {
             let TURN = "WHITE"
             let REQUEST: [String: Any] = ["state": STATE, "turn": TURN]
             RequestTest().execute(requestPayload: REQUEST) { (game) in
-//                DispatchQueue.main.async {
-//                    let storyboard: UIStoryboard = UIStoryboard(name: "iTschess", bundle: nil)
-//                    let viewController = storyboard.instantiateViewController(withIdentifier: "iTschess") as! Tschess
-//                    viewController.setPlayerOther(playerOther: game!.getPlayerOther(username: game!.white.username))
-//                    viewController.setPlayerSelf(playerSelf: game!.white)
-//                    viewController.setGameTschess(gameTschess: game!)
-//                    UIApplication.shared.keyWindow?.rootViewController = viewController
-//                }
                 DispatchQueue.main.async {
-                    let storyboard: UIStoryboard = UIStoryboard(name: "dTschessL", bundle: nil)
-                    let viewController = storyboard.instantiateViewController(withIdentifier: "dTschessL") as! Tschess
+                    let storyboard: UIStoryboard = UIStoryboard(name: "dTschessP", bundle: nil)
+                    let viewController = storyboard.instantiateViewController(withIdentifier: "dTschessP") as! Tschess
                     viewController.setOther(player: game!.getPlayerOther(username: game!.white.username))
                     viewController.setSelf(player: game!.white)
                     viewController.setGame(game: game!)
@@ -286,8 +277,8 @@ class Start: UIViewController, UITextFieldDelegate {
             let REQUEST: [String: Any] = ["state": STATE, "turn": TURN]
             RequestTest().execute(requestPayload: REQUEST) { (game) in
                 DispatchQueue.main.async {
-                    let storyboard: UIStoryboard = UIStoryboard(name: "nTschess", bundle: nil)
-                    let viewController = storyboard.instantiateViewController(withIdentifier: "nTschess") as! Tschess
+                    let storyboard: UIStoryboard = UIStoryboard(name: "dTschessP", bundle: nil)
+                    let viewController = storyboard.instantiateViewController(withIdentifier: "dTschessP") as! Tschess
                     viewController.setOther(player: game!.getPlayerOther(username: game!.black.username))
                     viewController.setSelf(player: game!.black)
                     viewController.setGame(game: game!)
