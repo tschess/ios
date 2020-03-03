@@ -35,7 +35,7 @@
                                         <inset key="imageInsets" minX="1" minY="5" maxX="1" maxY="-5"/>
                                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tabBarItem>
-                                    <tabBarItem tag="1" title="" image="book.grey" selectedImage="book.white" id="T6W-Pm-TWX">
+                                    <tabBarItem tag="1" title="" image="setup.grey" selectedImage="setup.white" id="T6W-Pm-TWX">
                                         <inset key="imageInsets" minX="1" minY="5" maxX="1" maxY="-5"/>
                                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tabBarItem>
@@ -44,7 +44,7 @@
                                 <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="selectedImageTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tabBar>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="game" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CH0-fz-8x4">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="menu" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CH0-fz-8x4">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="30"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                                 <constraints>
@@ -224,6 +224,7 @@
                         <outlet property="activityIndicator" destination="ADc-nn-Tmx" id="nE6-v0-Gof"/>
                         <outlet property="avatarImageView" destination="r0d-hG-YKm" id="UEY-EA-tK0"/>
                         <outlet property="backButton" destination="3VQ-kH-eUV" id="lJy-R4-LhM"/>
+                        <outlet property="containerView" destination="1tb-Rn-g0D" id="pbU-B9-4sv"/>
                         <outlet property="displacementLabel" destination="TC7-mt-3N6" id="VC6-Jh-z3e"/>
                         <outlet property="eloLabel" destination="APs-oU-CuM" id="6nd-Zz-Usr"/>
                         <outlet property="rankDirectionImage" destination="Db2-vI-7pN" id="PLO-NJ-seP"/>
@@ -236,10 +237,10 @@
             </objects>
             <point key="canvasLocation" x="-118.125" y="63.380281690140848"/>
         </scene>
-        <!--Actual Table-->
+        <!--Menu Table-->
         <scene sceneID="1F6-8c-jD1">
             <objects>
-                <tableViewController id="Utn-pp-Zuc" customClass="ActualTable" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="Utn-pp-Zuc" customClass="MenuTable" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="79" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="4gp-xC-hkr">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="407"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -250,7 +251,7 @@
                         <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="sectionIndexTrackingBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ActualCell" rowHeight="79" id="uOQ-VQ-3fy" customClass="ActualCell" customModule="ios" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MenuCell" rowHeight="79" id="uOQ-VQ-3fy" customClass="MenuCell" customModule="ios" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="320" height="79"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="uOQ-VQ-3fy" id="MGs-1w-KdX">
@@ -333,8 +334,8 @@
         <image name="avatar_inverse" width="320" height="320"/>
         <image name="back.grey" width="39" height="33"/>
         <image name="back.white" width="39" height="33"/>
-        <image name="book.grey" width="40" height="40"/>
-        <image name="book.white" width="40" height="40"/>
+        <image name="setup.grey" width="38" height="40"/>
+        <image name="setup.white" width="38" height="40"/>
         <image name="tray.and.arrow.down" catalog="system" width="64" height="54"/>
     </resources>
 </document>

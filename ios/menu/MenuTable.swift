@@ -39,9 +39,9 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
         tableView.tableFooterView = UIView()
         
         //self.containerView!.addSubview(self.enter)
-       
+        
         //if(self.containerView!.subviews.contains(self.enter)){
-            //self.enter.isHidden = true
+        //self.enter.isHidden = true
         //}
     }
     
@@ -239,10 +239,6 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        
-        
-        
-        
         let visibleRows = self.tableView.indexPathsForVisibleRows
         let lastRow = visibleRows?.last?.row
         if(lastRow == nil){
@@ -262,12 +258,25 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
             self.pageFromWhichContentLoads += 1
             self.fetchMenuTableList()
         }
-        
-        
-        
-        
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        DispatchQueue.main.async {
+            if(self.containerView!.subviews.contains(self.enter)){
+                self.enter.translatesAutoresizingMaskIntoConstraints = false
+                //self.containerView!.translatesAutoresizingMaskIntoConstraints = false
+                //This will leave a marging of 50 on top
+                let top = NSLayoutConstraint(item: self.enter, attribute: NSLayoutConstraint.Attribute.top, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.containerView, attribute: NSLayoutConstraint.Attribute.top, multiplier: 1, constant: 0)
+                //This will be the height of the control
+                let bottom = NSLayoutConstraint(item: self.enter, attribute: NSLayoutConstraint.Attribute.bottom, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.containerView, attribute: NSLayoutConstraint.Attribute.bottom, multiplier: 1, constant: 0)
+                //This will leave a marging of 10 at the end
+                let trailing = NSLayoutConstraint(item: self.enter, attribute: NSLayoutConstraint.Attribute.trailing, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.containerView, attribute: NSLayoutConstraint.Attribute.trailing, multiplier: 1, constant: 0)
+                //This will leave a marging of 10 at the start
+                let leading = NSLayoutConstraint(item: self.enter, attribute: NSLayoutConstraint.Attribute.leading, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.containerView, attribute: NSLayoutConstraint.Attribute.leading, multiplier: 1, constant: 0)
+                self.view.addConstraints([top, bottom, trailing, leading])
+            }
+        }
+    }
     
     override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         //let gameTableMenuItem = gameMenuTableList[indexPath.row]
@@ -278,7 +287,7 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
         closeAction.backgroundColor = .red
         //return UISwipeActionsConfiguration(actions: [closeAction])
         let config = UISwipeActionsConfiguration(actions: [closeAction])
-        config.performsFirstActionWithFullSwipe = false
+        //config.performsFirstActionWithFullSwipe = false
         return config
     }
     
@@ -292,19 +301,11 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
             modifyAction.backgroundColor = .green
             //return UISwipeActionsConfiguration(actions: [modifyAction])
             let config = UISwipeActionsConfiguration(actions: [modifyAction])
-            config.performsFirstActionWithFullSwipe = false
+            //config.performsFirstActionWithFullSwipe = false
             return config
         }
         return nil
     }
-    
-//    override func viewDidAppear(_ animated: Bool) {
-//if(self.gameMenuTableList.count == 0){
-//    DispatchQueue.main.async {
-//        self.containerView!.addSubview(self.enter)
-//    }
-//}
-//    }
     
     
     
@@ -360,7 +361,6 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
                 self.activityIndicator!.isHidden = true
             }
             //print("result \(result)")
-            
             if(result == nil){
                 DispatchQueue.main.async {
                     self.containerView!.addSubview(self.enter)

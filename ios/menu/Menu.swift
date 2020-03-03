@@ -9,7 +9,8 @@
 import UIKit
 
 class Menu: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate {
-    @IBOutlet var containerView: UIView!
+    //@IBOutlet var containerView: UIView!
+    @IBOutlet weak var containerView: UIView!
     
     @IBOutlet weak var displacementLabel: UILabel!
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
