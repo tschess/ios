@@ -105,13 +105,16 @@ class Profile: UIViewController, UITabBarDelegate, UINavigationControllerDelegat
         let menuSelectionIndex = notification.userInfo!["profile_selection"] as! Int
         
         switch menuSelectionIndex {
-        case 0://skins
+        case 0://info..
+            print("info...")
+            return
+        case 1://skins
             DispatchQueue.main.async {
                 let height: CGFloat = UIScreen.main.bounds.height
                 SelectSkins().execute(player: self.player!, height: height)
             }
             return
-        case 1:
+        case 2:
             self.changePhoto()
             return
         default:
