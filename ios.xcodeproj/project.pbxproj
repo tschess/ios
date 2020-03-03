@@ -91,6 +91,11 @@
 		B7A6B8AD240D9B2300840156 /* RequestActual.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A6B8AC240D9B2300840156 /* RequestActual.swift */; };
 		B7A6B8B0240D9F8800840156 /* Enter.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7A6B8AF240D9F8800840156 /* Enter.xib */; };
 		B7A6B8B2240DA02F00840156 /* Enter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A6B8B1240DA02F00840156 /* Enter.swift */; };
+		B7A6B8B5240DF50F00840156 /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A6B8B4240DF50F00840156 /* Context.swift */; };
+		B7A6B8BA240DF55A00840156 /* ContextP.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7A6B8B9240DF55A00840156 /* ContextP.storyboard */; };
+		B7A6B8BC240DF5E400840156 /* ContextTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A6B8BB240DF5E400840156 /* ContextTable.swift */; };
+		B7A6B8BE240DF5F100840156 /* ContextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A6B8BD240DF5F100840156 /* ContextCell.swift */; };
+		B7A6B8C0240DF72100840156 /* SelectContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A6B8BF240DF72100840156 /* SelectContext.swift */; };
 		B7A8B2A22400A8210092D2D6 /* dTschessP.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7A8B2A12400A8210092D2D6 /* dTschessP.storyboard */; };
 		B7A8B2A42400A82F0092D2D6 /* iTschessP.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7A8B2A32400A82F0092D2D6 /* iTschessP.storyboard */; };
 		B7A8B2A62400A8930092D2D6 /* cTschessP.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7A8B2A52400A8930092D2D6 /* cTschessP.storyboard */; };
@@ -336,6 +341,11 @@
 		B7A6B8AC240D9B2300840156 /* RequestActual.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestActual.swift; sourceTree = "<group>"; };
 		B7A6B8AF240D9F8800840156 /* Enter.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Enter.xib; sourceTree = "<group>"; };
 		B7A6B8B1240DA02F00840156 /* Enter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enter.swift; sourceTree = "<group>"; };
+		B7A6B8B4240DF50F00840156 /* Context.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Context.swift; sourceTree = "<group>"; };
+		B7A6B8B9240DF55A00840156 /* ContextP.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ContextP.storyboard; sourceTree = "<group>"; };
+		B7A6B8BB240DF5E400840156 /* ContextTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextTable.swift; sourceTree = "<group>"; };
+		B7A6B8BD240DF5F100840156 /* ContextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextCell.swift; sourceTree = "<group>"; };
+		B7A6B8BF240DF72100840156 /* SelectContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectContext.swift; sourceTree = "<group>"; };
 		B7A8B2A12400A8210092D2D6 /* dTschessP.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = dTschessP.storyboard; sourceTree = "<group>"; };
 		B7A8B2A32400A82F0092D2D6 /* iTschessP.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = iTschessP.storyboard; sourceTree = "<group>"; };
 		B7A8B2A52400A8930092D2D6 /* cTschessP.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = cTschessP.storyboard; sourceTree = "<group>"; };
@@ -837,6 +847,7 @@
 		B787C72822E970DC009C94F7 /* ios */ = {
 			isa = PBXGroup;
 			children = (
+				B7A6B8B3240DF4F100840156 /* context */,
 				B7BE12C523EB708E00ADA499 /* info */,
 				B7BE128523EB08FE00ADA499 /* tschess */,
 				B7BE126823EB05F400ADA499 /* skins */,
@@ -914,6 +925,42 @@
 			isa = PBXGroup;
 			children = (
 				B7A6B8A6240D9A8E00840156 /* MenuL.storyboard */,
+			);
+			path = legacy;
+			sourceTree = "<group>";
+		};
+		B7A6B8B3240DF4F100840156 /* context */ = {
+			isa = PBXGroup;
+			children = (
+				B7A6B8B6240DF51900840156 /* storyboard */,
+				B7A6B8B4240DF50F00840156 /* Context.swift */,
+				B7A6B8BB240DF5E400840156 /* ContextTable.swift */,
+				B7A6B8BD240DF5F100840156 /* ContextCell.swift */,
+			);
+			path = context;
+			sourceTree = "<group>";
+		};
+		B7A6B8B6240DF51900840156 /* storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				B7A6B8B8240DF53200840156 /* legacy */,
+				B7A6B8B7240DF52500840156 /* primary */,
+				B7A6B8BF240DF72100840156 /* SelectContext.swift */,
+			);
+			path = storyboard;
+			sourceTree = "<group>";
+		};
+		B7A6B8B7240DF52500840156 /* primary */ = {
+			isa = PBXGroup;
+			children = (
+				B7A6B8B9240DF55A00840156 /* ContextP.storyboard */,
+			);
+			path = primary;
+			sourceTree = "<group>";
+		};
+		B7A6B8B8240DF53200840156 /* legacy */ = {
+			isa = PBXGroup;
+			children = (
 			);
 			path = legacy;
 			sourceTree = "<group>";
@@ -1843,6 +1890,7 @@
 				B708D0E7236B366800A899F9 /* LaunchScreen.storyboard in Resources */,
 				B7021F8423FE59CC00C9346A /* NeptuneL.storyboard in Resources */,
 				B7021F9023FE5A6C00C9346A /* HyperionP.storyboard in Resources */,
+				B7A6B8BA240DF55A00840156 /* ContextP.storyboard in Resources */,
 				B7021F6E23FE436B00C9346A /* SkinsL.storyboard in Resources */,
 				B7CB62F6237BB10800E50204 /* Start.storyboard in Resources */,
 				B7A6B8A4240D9A7300840156 /* MenuP.storyboard in Resources */,
@@ -1967,6 +2015,7 @@
 				B7BE120923EAD3DD00ADA499 /* Hunter.swift in Sources */,
 				B7BE11A923EA9C8800ADA499 /* King.swift in Sources */,
 				B7021F5E23FE30A100C9346A /* SelectEditSelf.swift in Sources */,
+				B7A6B8BC240DF5E400840156 /* ContextTable.swift in Sources */,
 				B7BE129123EB09FC00ADA499 /* UpdateResign.swift in Sources */,
 				B7D8ECD7240820DD001B5D2D /* AmazonWhite.swift in Sources */,
 				B7021F9223FE5C5100C9346A /* SelectSnapshot.swift in Sources */,
@@ -2002,6 +2051,7 @@
 				B7BE115D23EA4FBE00ADA499 /* ParsePlayer.swift in Sources */,
 				B708D0E9236B369D00A899F9 /* Start.swift in Sources */,
 				B7021F3C23FE032D00C9346A /* SelectInfo.swift in Sources */,
+				B7A6B8B5240DF50F00840156 /* Context.swift in Sources */,
 				B7021F2423FDEE3400C9346A /* SelectHome.swift in Sources */,
 				B7A6B8AB240D9B0100840156 /* UpdateNack.swift in Sources */,
 				B771365423F222AF007F0962 /* UpdateMate.swift in Sources */,
@@ -2036,6 +2086,7 @@
 				B7D8ECDD24082106001B5D2D /* HunterBlack.swift in Sources */,
 				B7FA7BFB23ECF79400E63045 /* UpdateConfig.swift in Sources */,
 				B7BE120B23EAD3E900ADA499 /* Grasshopper.swift in Sources */,
+				B7A6B8C0240DF72100840156 /* SelectContext.swift in Sources */,
 				B7A6B89D240D99E100840156 /* MenuCell.swift in Sources */,
 				B7BE11F723EAC97200ADA499 /* EditOther.swift in Sources */,
 				B7BE116F23EA91CD00ADA499 /* Snapshot.swift in Sources */,
@@ -2061,6 +2112,7 @@
 				B7A6B8A1240D9A3F00840156 /* SelectMenu.swift in Sources */,
 				B7BE124A23EB027400ADA499 /* FairiesTable.swift in Sources */,
 				B7BE11B023EA9D2B00ADA499 /* Queen.swift in Sources */,
+				B7A6B8BE240DF5F100840156 /* ContextCell.swift in Sources */,
 				B7EF701E23EA28BA00BAF2E2 /* EntityPlayer.swift in Sources */,
 				B7D8ECD9240820EB001B5D2D /* AmazonBlack.swift in Sources */,
 				B7BE11C723EA9EA700ADA499 /* RookWhite.swift in Sources */,
