@@ -297,8 +297,8 @@
     <resources>
         <image name="arrow.down" catalog="system" width="60" height="64"/>
         <image name="avatar_default" width="320" height="320"/>
-        <image name="back.grey" width="36" height="27"/>
-        <image name="back.white" width="36" height="27"/>
+        <image name="back.grey" width="39" height="33"/>
+        <image name="back.white" width="39" height="33"/>
         <image name="eth" width="256" height="417"/>
     </resources>
 </document>

@@ -308,7 +308,7 @@
                                     <constraint firstAttribute="height" constant="50" id="CtS-Ad-lXP"/>
                                 </constraints>
                                 <items>
-                                    <tabBarItem tag="1" title="" image="back.grey" selectedImage="back.white" id="6f1-4w-L4h">
+                                    <tabBarItem tag="1" title="" image="close_g" selectedImage="close_w" id="6f1-4w-L4h">
                                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tabBarItem>
                                 </items>
@@ -368,7 +368,7 @@
     </scenes>
     <resources>
         <image name="avatar_inverse" width="320" height="320"/>
-        <image name="back.grey" width="16" height="16"/>
-        <image name="back.white" width="36" height="27"/>
+        <image name="close_g" width="39" height="39"/>
+        <image name="close_w" width="50" height="50"/>
     </resources>
 </document>

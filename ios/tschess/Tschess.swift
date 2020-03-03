@@ -445,7 +445,6 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
                 snake.center = CGPoint(x: cell.bounds.size.width/2, y: cell.bounds.size.height/2)
                 snake.tag = 666
                 snake.alpha = 0.3
-                //cell.addSubview(snake)
                 cell.insertSubview(snake, at: 0)
                 return cell
             }
@@ -454,13 +453,14 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
             snake.center = CGPoint(x: cell.bounds.size.width/2, y: cell.bounds.size.height/2)
             snake.tag = 666
             snake.alpha = 0.3
-            //cell.addSubview(snake)
             cell.insertSubview(snake, at: 0)
             return cell
         }
-        cell.subviews.forEach({ if($0.tag == 666){
-            $0.removeFromSuperview()
-            } })
+        cell.subviews.forEach({
+            if($0.tag == 666){
+                $0.removeFromSuperview()
+            }
+        })
         return cell
     }
     
