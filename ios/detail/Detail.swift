@@ -232,8 +232,8 @@ class Detail: UIViewController, UITabBarDelegate, UITextViewDelegate {
         let turn: String = "WHITE"
         let on_check: Bool = false
         let highlight: String = "6669"
-        let updated_game: String = "2020-01-17 15:45:53" //"yyyy-MM-dd HH:mm:ss"
-        let created_game: String = "2020-01-17 15:45:53"
+        let updated_game: String = "2020-01-17 15:45:53.000" //"yyyy-MM-dd HH:mm:ss.SSS"
+        let created_game: String = "2020-01-17 15:45:53.000"
         
         let dict: [String: Any] = [
             "id": id_game,
