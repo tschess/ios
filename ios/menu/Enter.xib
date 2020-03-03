@@ -25,6 +25,7 @@
                                     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="60" id="Ack-g7-9Sp"/>
+                                        <constraint firstAttribute="width" constant="366" id="z0W-Hd-KPz"/>
                                     </constraints>
                                     <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -261,6 +262,7 @@
                 <outlet property="constraintHeightTextView3" destination="Ouz-mW-Kns" id="EzE-Hu-wXz"/>
                 <outlet property="constraintHeightTextView4" destination="eEi-10-3li" id="UXL-C2-u3c"/>
                 <outlet property="constraintHeightTextView5" destination="t9b-9o-tbt" id="nUR-gb-f16"/>
+                <outlet property="constraintWidthTextView0" destination="z0W-Hd-KPz" id="OXw-uJ-mmE"/>
                 <outlet property="imageViewIcon0" destination="puD-Y5-oOd" id="4h1-bB-rpL"/>
                 <outlet property="imageViewIcon1" destination="oiD-6Z-0L3" id="gjr-fi-5NW"/>
                 <outlet property="imageViewIcon2" destination="6q1-he-aUc" id="t32-xK-R3u"/>

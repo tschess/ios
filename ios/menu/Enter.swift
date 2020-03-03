@@ -10,10 +10,11 @@ import UIKit
 
 class Enter: UIView {
     
-    @IBOutlet weak var labelTitle: UILabel!
+    //@IBOutlet weak var labelTitle: UILabel!
     
     @IBOutlet weak var viewIcon0: UIView!
 
+    @IBOutlet weak var constraintWidthTextView0: NSLayoutConstraint!
     @IBOutlet weak var constraintHeightTextView0: NSLayoutConstraint!
     @IBOutlet weak var textViewIcon0: UITextView!
     @IBOutlet weak var imageViewIcon0: UIImageView!
