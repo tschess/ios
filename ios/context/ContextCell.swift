@@ -17,8 +17,8 @@ class ContextCell: UITableViewCell {
     
     //@IBOutlet weak var optionLabel: UILabel!
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
-    }
+//    override func layoutSubviews() {
+//        super.layoutSubviews()
+//    }
     
 }

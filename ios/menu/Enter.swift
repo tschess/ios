@@ -44,9 +44,7 @@ class Enter: UIView {
         super.willMove(toSuperview: newSuperview)
         let stringTitleMenu = "menu"
         let stringContentMenu = " contains your pending invitations, ongoing games, and historic endgame snapshots."
-        //       let stringContentMenu = " - contains your pending invitations, ongoing games, and historic endgame snapshots.\r" +
-        //                               "when you have an unseen invitation, or your opponent makes a new move " +
-        //                               "this menu icon will be colored "
+    
         
         let textMenu = "\(stringTitleMenu)\(stringContentMenu)"
         let attrText = NSMutableAttributedString(string: textMenu)
@@ -74,7 +72,7 @@ class Enter: UIView {
         attrText1.append(xxxx0)
         let zxxx1 = [NSAttributedString.Key.foregroundColor: UIColor.lightGray, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15, weight: UIFont.Weight.light)]
         let zxxx0 = NSAttributedString(string: " create your opening position, organizing pieces on the back two ranks however you see fit.", attributes: zxxx1)
-        //, with the caveat that the total points on the board is less than or equal to 39 - equivalent to that of the standard opening configuration in world federation chess
+       
         attrText1.append(zxxx0)
         self.textViewIcon1.attributedText = attrText1
         self.textViewIcon1.textContainer.lineBreakMode = .byCharWrapping
