@@ -58,24 +58,14 @@ class Menu: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate {
         self.renderHeader()
     }
     
-//    override func viewDidAppear(_ animated: Bool) {
-//        if(self.actualTable!.getGameMenuTableList().count == 0){
-//            let enter = Enter.instanceFromNib()
-//            self.containerView.addSubview(enter)
-//        }
-//    }
-    
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         switch item.tag {
         case 0:
-            DispatchQueue.main.async {
-                let height: CGFloat = UIScreen.main.bounds.height
-                SelectHome().execute(player: self.playerSelf!, height: height)
-            }
+            self.backButtonClick("~")
         default:
             DispatchQueue.main.async {
                 let height: CGFloat = UIScreen.main.bounds.height
-                SelectFairies().execute(player: self.playerSelf!, height: height)
+                SelectConfig().execute(player: self.playerSelf!, height: height)
             }
         }
     }

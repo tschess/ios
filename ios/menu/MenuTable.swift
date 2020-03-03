@@ -313,13 +313,7 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
     func appendToTableList(additionalCellList: [EntityGame]) {
         let currentCount = self.gameMenuTableList.count
         
-        print("self.gameMenuTableList.count \(self.gameMenuTableList.count)")
-        
-        //if(self.containerView!.subviews.contains(self.enter)){
-                   //self.enter.isHidden = true
-               //}
-       
-        
+        //print("self.gameMenuTableList.count \(self.gameMenuTableList.count)")
         for game in additionalCellList {
             if(!self.gameMenuTableList.contains(game)){
                 self.gameMenuTableList.append(game)
@@ -334,7 +328,7 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
             }
         }
         
-        print("self.gameMenuTableList.count \(self.gameMenuTableList.count)")
+        //print("self.gameMenuTableList.count \(self.gameMenuTableList.count)")
         if(self.gameMenuTableList.count > 0){
             DispatchQueue.main.async {
                 if(self.containerView!.subviews.contains(self.enter)){
@@ -365,7 +359,7 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
                 self.activityIndicator!.stopAnimating()
                 self.activityIndicator!.isHidden = true
             }
-            print("result \(result)")
+            //print("result \(result)")
             
             if(result == nil){
                 DispatchQueue.main.async {
