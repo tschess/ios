@@ -437,13 +437,30 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     
     private func getOrnamentCell(highlight: Bool, cell: SquareCell) -> SquareCell{
         if(highlight){
-            cell.layer.borderColor = UIColor.magenta.cgColor
-            cell.backgroundColor = cell.backgroundColor!.withAlphaComponent(0.7)
-            cell.layer.borderWidth = 0.25
+            let username: String = self.playerSelf!.username
+            let white: Bool = self.game!.getWhite(username: username)
+            if(white){
+                let snake = UIImageView(image: UIImage(named: "pinkmamba_w")!)
+                snake.bounds = CGRect(origin: cell.bounds.origin, size: cell.bounds.size)
+                snake.center = CGPoint(x: cell.bounds.size.width/2, y: cell.bounds.size.height/2)
+                snake.tag = 666
+                snake.alpha = 0.5
+                //cell.addSubview(snake)
+                cell.insertSubview(snake, at: 0)
+                return cell
+            }
+            let snake = UIImageView(image: UIImage(named: "pinkmamba_b")!)
+            snake.bounds = CGRect(origin: cell.bounds.origin, size: cell.bounds.size)
+            snake.center = CGPoint(x: cell.bounds.size.width/2, y: cell.bounds.size.height/2)
+            snake.tag = 666
+            snake.alpha = 0.5
+            //cell.addSubview(snake)
+            cell.insertSubview(snake, at: 0)
             return cell
         }
-        cell.layer.borderWidth = 0
-        cell.backgroundColor = cell.backgroundColor!.withAlphaComponent(1)
+        cell.subviews.forEach({ if($0.tag == 666){
+            $0.removeFromSuperview()
+            } })
         return cell
     }
     
@@ -478,12 +495,14 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "square", for: indexPath) as! SquareCell
+        var cell = collectionView.dequeueReusableCell(withReuseIdentifier: "square", for: indexPath) as! SquareCell
         cell.backgroundColor = assignCellBackgroundColor(index: indexPath.row)
+        cell = self.getHighlightCell(indexPath: indexPath, cell: cell)
+        
         cell.imageView.image = self.assignCellTschessElement(indexPath: indexPath)
         cell.imageView.bounds = CGRect(origin: cell.bounds.origin, size: cell.bounds.size)
         cell.imageView.center = CGPoint(x: cell.bounds.size.width/2, y: cell.bounds.size.height/2)
-        return self.getHighlightCell(indexPath: indexPath, cell: cell)
+        return cell
     }
     
     // MARK: PRIME MOVER
