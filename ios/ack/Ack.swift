@@ -207,7 +207,7 @@ class Ack: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITab
         let sampleView = Skin.instanceFromNib()
         sampleView.nameLabel.text = skinAsset.getName().lowercased()
         if(!self.playerSelf!.skin.contains(skinAsset.name)){
-            sampleView.nameLabel.text = "unavailable"
+            sampleView.nameLabel.text = "locked"
         }
         
         sampleView.backgroundView.backgroundColor = skinAsset.getBackColor()

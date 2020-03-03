@@ -94,6 +94,7 @@
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="4ug-Aw-rl4" firstAttribute="leading" secondItem="heW-o1-yD8" secondAttribute="leading" id="DAS-M3-Inv"/>
                                     <constraint firstAttribute="bottom" secondItem="vKA-Qw-aUe" secondAttribute="bottom" id="Ds7-om-6yg"/>
