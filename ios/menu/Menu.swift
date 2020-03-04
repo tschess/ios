@@ -79,6 +79,7 @@ class Menu: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate {
             return
         }
         DispatchQueue.main.async {
+            self.enter.enterWidthConstraint.constant = self.view.frame.width
             self.containerView!.addSubview(self.enter)
             self.enter.translatesAutoresizingMaskIntoConstraints = false
             let top = NSLayoutConstraint(item: self.enter, attribute: NSLayoutConstraint.Attribute.top, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.containerView, attribute: NSLayoutConstraint.Attribute.top, multiplier: 1, constant: 0)

@@ -10,6 +10,8 @@ import UIKit
 
 class Enter: UIView {
     
+    @IBOutlet weak var enterWidthConstraint: NSLayoutConstraint!
+    
     @IBOutlet weak var viewIcon0: UIView!
     
     @IBOutlet weak var constraintWidthTextView0: NSLayoutConstraint!
@@ -106,7 +108,7 @@ class Enter: UIView {
         let attrText4 = NSMutableAttributedString(string: "")
         let xxxxY0 = NSAttributedString(string: "quick play", attributes: xxxx2)
         attrText4.append(xxxxY0)
-        let zxxxFx = NSAttributedString(string: " randomly select oone player from the leaderboard with whom to initiate a new game, you play white with an opening configuration of your choice, they play black with the standard configuration. ", attributes: zxxx2)
+        let zxxxFx = NSAttributedString(string: " generates a new game with random player from leaderboard. determine your configuration, you play as white. opponent has traditional chess configuration. ", attributes: zxxx2)
         attrText4.append(zxxxFx)
         
         let secondAttributes = [NSAttributedString.Key.foregroundColor: UIColor.magenta, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15, weight: UIFont.Weight.light)]
