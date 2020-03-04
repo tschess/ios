@@ -85,8 +85,8 @@ class Transitioner {
         self.coordinate = coordinate
         let imageSelection = state1[self.coordinate![0]][self.coordinate![1]]!.getImageSelection()
         state1[self.coordinate![0]][self.coordinate![1]]!.setImageVisible(imageVisible: imageSelection)
-        for i in (0 ..< 8) {
-            for j in (0 ..< 8) {
+        loop0: for i in (0 ..< 8) {
+            loop1: for j in (0 ..< 8) {
                 let piece = state1[self.coordinate![0]][self.coordinate![1]]!
                 if(piece.validate(present: coordinate, proposed: [i,j], state: state1)){
                     
@@ -97,31 +97,30 @@ class Transitioner {
                     var stateH: [[Piece?]] = state1
                     let p = stateH[self.coordinate![0]][self.coordinate![1]]
                     stateH[i][j] = p
-                    
                     stateH[self.coordinate![0]][self.coordinate![1]] = nil
                     
                     if(coordinate == kgCrd){
                         if(Checker().check(coordinate: [i,j], state: stateH)){
-                            continue
+                            break loop1
                         }
                     }
-                    else if(!Checker().check(coordinate: kgCrd, state: stateH)){
-                        let square = state1[i][j]
-                        if(square == nil){
-                            state1[i][j] = PieceAnte()
-                            continue
-                        }
-                        if(square!.affiliation == piece.affiliation){
-                            continue
-                        }
-                        let imageTarget = square!.getImageTarget()
-                        square!.setImageVisible(imageVisible: imageTarget)
-                        square!.isTarget = true
+                    else if(Checker().check(coordinate: kgCrd, state: stateH)){
+                        break loop1
                     }
                     /*-*-*/
                     
                     
-                    
+                    let square = state1[i][j]
+                    if(square == nil){
+                        state1[i][j] = PieceAnte()
+                        break loop1
+                    }
+                    if(square!.affiliation == piece.affiliation){
+                        break loop1
+                    }
+                    let imageTarget = square!.getImageTarget()
+                    square!.setImageVisible(imageVisible: imageTarget)
+                    square!.isTarget = true
                     
                 }
             }
