@@ -584,12 +584,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
             return
         }
         let state0 = self.game!.getStateClient(username: self.playerSelf!.username)
-        //let check = self.game!.on_check
-        //if(check){
-            //self.matrix = self.transitioner!.checkHighlightSelection(coordinate: [x,y], state0: state0)
-        //} else {
-            self.matrix = self.transitioner!.evaluateHighlightSelection(coordinate: [x,y], state0: state0)
-        //}
+        self.matrix = self.transitioner!.evaluateHighlightSelection(coordinate: [x,y], state0: state0)
         self.viewBoard.reloadData()
     }
     
