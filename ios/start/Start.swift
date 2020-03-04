@@ -248,8 +248,11 @@ class Start: UIViewController, UITextFieldDelegate {
         
         rowC[6] = "PawnWhite"
         
+        
         let rowE: [String] = [String](repeating: "", count: 8)
-        let rowF: [String] = [String](repeating: "", count: 8)
+        var rowF: [String] = [String](repeating: "", count: 8)
+        rowF[6] = "PawnBlack"
+        
         let rowG: [String] = ["PawnWhite_x", "PawnWhite_x", "PawnWhite_x", "PawnWhite_x", "PawnWhite_x", "PawnWhite_x", "PawnWhite_x", "PawnWhite_x"]
         let rowH: [String] = ["RookWhite_x", "KnightWhite_x", "BishopWhite_x", "QueenWhite_x", "KingWhite_x", "BishopWhite_x", "KnightWhite_x", "RookWhite_x"]
         

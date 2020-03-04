@@ -90,38 +90,52 @@ class Transitioner {
                 let piece = state1[self.coordinate![0]][self.coordinate![1]]!
                 if(piece.validate(present: coordinate, proposed: [i,j], state: state1)){
                     
+                    /**
+                     * - - - - - - - - - - - - - - - -
+                     * - why does that make it work? -
+                     * - renderServer() with false   -
+                     * - renderClient() with true    -
+                     * - - - - - - - - - - - - - - - -
+                     */
                     
                     /*-*-*/
-                    let kgCrd: [Int] = Checker().kingCoordinate(affiliation: piece.affiliation, state: state1)
-                    
                     var stateH: [[Piece?]] = state1
-                    let p = stateH[self.coordinate![0]][self.coordinate![1]]
-                    stateH[i][j] = p
+                    let pieceH = stateH[self.coordinate![0]][self.coordinate![1]]
+                    stateH[i][j] = pieceH
                     stateH[self.coordinate![0]][self.coordinate![1]] = nil
-                    
-                    if(coordinate == kgCrd){
-                        if(Checker().check(coordinate: [i,j], state: stateH)){
-                            break loop1
+                    let kingH: [Int] = Checker().kingCoordinate(affiliation: piece.affiliation, state: stateH)
+                    // the king moved (avoiid nil)
+                    // if they match in the operational world...
+                    if(coordinate == kingH){
+                        let stateK0 = SerializerState(white: false).renderServer(state: stateH)
+                        let stateK1 = SerializerState(white: true).renderClient(state: stateK0)
+                        let hi: Int = white ? i : 7 - i
+                        let hj: Int = white ? j : 7 - j
+                        if(Checker().check(coordinate: [hi,hj], state: stateK1)){
+                            continue loop1
                         }
                     }
-                    else if(Checker().check(coordinate: kgCrd, state: stateH)){
-                        break loop1
+                    else {
+                        let stateK0 = SerializerState(white: false).renderServer(state: stateH)
+                        let stateK1 = SerializerState(white: true).renderClient(state: stateK0)
+                        let kingK: [Int] = Checker().kingCoordinate(affiliation: piece.affiliation, state: stateK1)
+                        if(Checker().check(coordinate: kingK, state: stateK1)){
+                            continue loop1
+                        }
                     }
                     /*-*-*/
-                    
                     
                     let square = state1[i][j]
                     if(square == nil){
                         state1[i][j] = PieceAnte()
-                        break loop1
+                        continue loop1
                     }
                     if(square!.affiliation == piece.affiliation){
-                        break loop1
+                        continue loop1
                     }
                     let imageTarget = square!.getImageTarget()
                     square!.setImageVisible(imageVisible: imageTarget)
                     square!.isTarget = true
-                    
                 }
             }
         }
@@ -170,5 +184,5 @@ class Transitioner {
             flashFrame.removeFromSuperview()
         })
     }
-
+    
 }

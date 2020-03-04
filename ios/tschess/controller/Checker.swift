@@ -12,7 +12,11 @@ class Checker {
 
     func on(affiliation: String, state: [[Piece?]]) -> Bool {
         let kgCrd: [Int] = self.kingCoordinate(affiliation: affiliation, state: state)
+        //print("~ king ~\n\(kgCrd)\n")
+        //print("\(state)")
+        
         if(self.check(coordinate: kgCrd, state: state)){
+            //print("\nTRUE\n\n")
             return true
         }
         return false
@@ -39,18 +43,18 @@ class Checker {
     func check(coordinate: [Int], state: [[Piece?]]) -> Bool {
         let king = state[coordinate[0]][coordinate[1]]!
         let affiliation = king.affiliation
-        for i in (0 ..< 8) {
-            for j in (0 ..< 8) {
+        loop0: for i in (0 ..< 8) {
+            loop1: for j in (0 ..< 8) {
                 let tschessElement = state[i][j]
                 if(tschessElement == nil) {
-                    continue
+                    continue loop1
                 }
                 if(tschessElement!.name == "PieceAnte") {
-                    continue
+                    continue loop1
                 }
                 let friendly = tschessElement!.affiliation == affiliation
                 if(friendly){
-                    continue
+                    continue loop1
                 }
                 if(tschessElement!.validate(present: [i,j], proposed: coordinate, state: state)) {
                     return true

@@ -100,8 +100,8 @@ class Piece {
         return false
     }
     
-    public func getBezierPath() -> UIBezierPath {
-        return UIBezierPath()
+    public func check(present: [Int], proposed: [Int], state: [[Piece?]]) ->  Bool {
+        return self.validate(present: present, proposed: proposed, state: state)
     }
 }
 

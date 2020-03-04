@@ -271,10 +271,10 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     private func setLabelCheck() {
         let state: [[Piece?]] = self.matrix!
         let checker: Checker = Checker()
+        let colour: String = self.game!.turn
+        let king: [Int] = checker.kingCoordinate(affiliation: colour, state: state)
         
-        let kingWhite: [Int] = checker.kingCoordinate(affiliation: "WHITE", state: state)
-        let kingBlack: [Int] = checker.kingCoordinate(affiliation: "BLACK", state: state)
-        let mate: Bool = checker.mate(king: kingWhite, state: state) || checker.mate(king: kingBlack, state: state)
+        let mate: Bool = checker.mate(king: king, state: state)
         if(mate){
             UpdateMate().execute(id: self.game!.id) { (success) in
                 if(!success){
@@ -284,7 +284,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
             return
         }
         let check0: Bool = self.game!.on_check
-        let check1: Bool = checker.on(affiliation: "WHITE", state: state) || checker.on(affiliation: "BLACK", state: state)
+        let check1: Bool = checker.on(affiliation: colour, state: state)
         if(!check0 && !check1){
             //the game WE KNOW is not check
             //the game WE GOT is not check
@@ -583,7 +583,12 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
             return
         }
         let state0 = self.game!.getStateClient(username: self.playerSelf!.username)
-        self.matrix = self.transitioner!.evaluateHighlightSelection(coordinate: [x,y], state0: state0)
+        //let check = self.game!.on_check
+        //if(check){
+            //self.matrix = self.transitioner!.checkHighlightSelection(coordinate: [x,y], state0: state0)
+        //} else {
+            self.matrix = self.transitioner!.evaluateHighlightSelection(coordinate: [x,y], state0: state0)
+        //}
         self.viewBoard.reloadData()
     }
     
