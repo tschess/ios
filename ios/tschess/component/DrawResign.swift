@@ -11,8 +11,8 @@ import UIKit
 class DrawResign: UIViewController  {
     
     @IBOutlet weak var imageDismiss: UIImageView!
-    
     @IBOutlet weak var imageResign: UIImageView!
+    
     @IBOutlet weak var buttonResign: UIButton!
     @IBOutlet weak var activityIndicatorResign: UIActivityIndicatorView!
     
@@ -72,17 +72,33 @@ class DrawResign: UIViewController  {
             self.imageResign.alpha = 0.5
             return
         }
+        let resign = UITapGestureRecognizer(target: self, action: #selector(self.resign))
+        self.imageResign.addGestureRecognizer(resign)
+        self.imageResign.isUserInteractionEnabled = true
+        
         let username: String = self.playerSelf!.username
         let turn: Bool = self.game!.getTurn(username: username)
         if(!turn){
             self.decativateDraw()
+            return
         }
+        let draw = UITapGestureRecognizer(target: self, action: #selector(self.draw))
+        self.imageDraw.addGestureRecognizer(draw)
+        self.imageDraw.isUserInteractionEnabled = true
     }
     
     private func decativateDraw() {
         self.buttonDraw.titleLabel!.alpha = 0.5
         self.buttonDraw.isUserInteractionEnabled = false
         self.imageDraw.alpha = 0.5
+    }
+    
+    @objc func draw(gesture: UIGestureRecognizer) {
+        self.buttonClickDraw("~")
+    }
+    
+    @objc func resign(gesture: UIGestureRecognizer) {
+        self.buttonClickResign("~")
     }
     
     @objc func dismiss(gesture: UIGestureRecognizer) {

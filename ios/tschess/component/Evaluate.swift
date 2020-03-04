@@ -48,6 +48,14 @@ class Evaluate: UIViewController  {
         self.configure()
     }
     
+    @objc func ack(gesture: UIGestureRecognizer) {
+           self.buttonClickResign("~")
+       }
+    
+    @objc func nack(gesture: UIGestureRecognizer) {
+        self.buttonClickReject("~")
+    }
+    
     func configure() {
         modalPresentationStyle = .custom
         modalTransitionStyle = .crossDissolve
@@ -58,6 +66,14 @@ class Evaluate: UIViewController  {
         super.viewDidLoad()
         self.activityIndicatorAccept!.isHidden = true
         self.activityIndicatorReject!.isHidden = true
+        
+        let ack = UITapGestureRecognizer(target: self, action: #selector(self.ack))
+        self.imageAccept.addGestureRecognizer(ack)
+        self.imageAccept.isUserInteractionEnabled = true
+        
+        let nack = UITapGestureRecognizer(target: self, action: #selector(self.nack))
+        self.imageReject.addGestureRecognizer(nack)
+        self.imageReject.isUserInteractionEnabled = true
     }
     
     @objc func dismiss(gesture: UIGestureRecognizer) {
