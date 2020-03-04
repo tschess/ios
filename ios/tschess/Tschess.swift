@@ -530,7 +530,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         }
         let x = indexPath.item / 8
         let y = indexPath.item % 8
-        print("x: \(x), y: \(y)")
+        //print("x: \(x), y: \(y)")
         
         let coordinate = self.transitioner!.getCoordinate()
         if(coordinate != nil){

@@ -12,6 +12,14 @@ class Transitioner {
     
     var coordinate: [Int]?
     
+    var white: Bool
+    var collectionView: BoardView
+    
+    init(white: Bool, collectionView: BoardView){
+        self.white = white
+        self.collectionView = collectionView
+    }
+    
     public func getCoordinate() -> [Int]? {
         return coordinate
     }
@@ -89,14 +97,19 @@ class Transitioner {
             loop1: for j in (0 ..< 8) {
                 let piece = state1[self.coordinate![0]][self.coordinate![1]]!
                 if(piece.validate(present: coordinate, proposed: [i,j], state: state1)){
+                   /**
+                    * - - - - - - - - - - - - - - - -
+                    * - why does that make it work? -
+                    * - renderServer() with false   -
+                    * - renderClient() with true    -
+                    * - - - - - - - - - - - - - - - -
+                    */
                     
-                    /**
-                     * - - - - - - - - - - - - - - - -
-                     * - why does that make it work? -
-                     * - renderServer() with false   -
-                     * - renderClient() with true    -
-                     * - - - - - - - - - - - - - - - -
-                     */
+                    //let affiliation: String = piece.affiliation
+                    //var white: Bool = true
+                    //if(affiliation != "WHITE"){
+                        //white = false
+                    //}
                     
                     /*-*-*/
                     var stateH: [[Piece?]] = state1
@@ -107,6 +120,7 @@ class Transitioner {
                     // the king moved (avoiid nil)
                     // if they match in the operational world...
                     if(coordinate == kingH){
+                        //let stateK0 = SerializerState(white: white).renderServer(state: stateH) <-- doesn't work
                         let stateK0 = SerializerState(white: false).renderServer(state: stateH)
                         let stateK1 = SerializerState(white: true).renderClient(state: stateK0)
                         let hi: Int = white ? i : 7 - i
@@ -116,6 +130,7 @@ class Transitioner {
                         }
                     }
                     else {
+                        //let stateK0 = SerializerState(white: white).renderServer(state: stateH) <-- doesn't work
                         let stateK0 = SerializerState(white: false).renderServer(state: stateH)
                         let stateK1 = SerializerState(white: true).renderClient(state: stateK0)
                         let kingK: [Int] = Checker().kingCoordinate(affiliation: piece.affiliation, state: stateK1)
@@ -163,14 +178,6 @@ class Transitioner {
             }
         }
         return false
-    }
-    
-    var white: Bool
-    var collectionView: BoardView
-    
-    init(white: Bool, collectionView: BoardView){
-        self.white = white
-        self.collectionView = collectionView
     }
     
     func flash() {

@@ -25,36 +25,21 @@ class Landmine {
     
     public func evaluate(coordinate: [Int]?, proposed: [Int], state0: [[Piece?]]) -> Bool {
         if(coordinate == nil){
-            
-            print("x - 0")
-            
             return false
         }
-        //var state1: [[Piece?]] = state0
-        
         let elementAttacker: Piece? = state0[coordinate![0]][coordinate![1]]
         if(elementAttacker == nil){
-            
-            print("x - 1")
-            
             return false
         }
         let elementAttacked: Piece? = state0[proposed[0]][proposed[1]]
         if(elementAttacked == nil){
-            
-            print("x - 2")
-            
             return false
         }
         if(!(elementAttacked!.name.contains("Poison") && elementAttacked!.isTarget)){
-            
-            print("x - 3")
-            
             return false
         }
         //they are attacking a poison pawn...
         var stateX: [[Piece?]] = self.transitioner.deselectHighlight(state0: state0)
-        
         
         if(elementAttacker!.name.contains("King")){
             if(!self.white){
@@ -74,7 +59,6 @@ class Landmine {
             UpdateMine().success(requestPayload: requestPayload) { (success) in
                 if(!success){
                     //error
-                    print("x - 5")
                 }
                 self.transitioner.clearCoordinate()
             }
@@ -100,11 +84,9 @@ class Landmine {
         GameUpdate().success(requestPayload: requestPayload) { (success) in
             if(!success){
                 //error
-                print("x - 5")
             }
             self.transitioner.clearCoordinate()
         }
-        print("x - 6")
         return true
     }
     

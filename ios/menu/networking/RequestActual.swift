@@ -29,31 +29,26 @@ class RequestActual {
         let session = URLSession.shared
         let task = session.dataTask(with: request, completionHandler: { data, response, error in
             guard error == nil else {
-                print("0")
+                //print("0")
                 completion(nil)
                 return
             }
             guard let data = data else {
-                print("1")
+                //print("1")
                 completion(nil)
                 return
             }
             do {
                 guard let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [[String: Any]] else {
-                    print("2")
+                    //print("2")
                     completion(nil)
                     return
                 }
-                print("*PageList* \n\n \(json.count)")
-              
-                
                var gameList = [EntityGame]()
                 for index in stride(from: 0, to: json.count, by: 1) {
                      let game: EntityGame = ParseGame().execute(json: json[index])
                     gameList.append(game)
                 }
-               
-                
                 completion(gameList)
                 
             } catch let error {
