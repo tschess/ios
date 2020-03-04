@@ -17,7 +17,7 @@ class SelectTschess {
         return game.black_skin
     }
     
-    public func tschess(playerSelf: EntityPlayer, playerOther: EntityPlayer, game: EntityGame, height: CGFloat) {
+    public func tschess(playerSelf: EntityPlayer, playerOther: EntityPlayer, game: EntityGame, list: [EntityGame]? = nil, height: CGFloat) {
         
         let skin: String = self.getSkin(username: playerSelf.username, game: game)
         
@@ -39,6 +39,7 @@ class SelectTschess {
                 viewController.setOther(player: game.getPlayerOther(username: playerSelf.username))
                 viewController.setSelf(player: playerSelf)
                 viewController.setGame(game: game)
+                viewController.list = list
                 UIApplication.shared.keyWindow?.rootViewController = viewController
                 return
             }
@@ -47,6 +48,7 @@ class SelectTschess {
             viewController.setOther(player: game.getPlayerOther(username: playerSelf.username))
             viewController.setSelf(player: playerSelf)
             viewController.setGame(game: game)
+            viewController.list = list
             UIApplication.shared.keyWindow?.rootViewController = viewController
         }
         

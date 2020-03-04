@@ -83,7 +83,6 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
         let visibleRows = self.tableView.indexPathsForVisibleRows
         let lastRow = visibleRows?.last?.row
         if(lastRow == nil){
-            //print(" L ")
             return
         }
         let index = self.pageCount
@@ -118,6 +117,7 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
     
     private func swipeResolved(orientation: SwipeActionsOrientation) -> [SwipeAction]? {
         if(orientation == .right) {
+            //self.tableView.backgroundColor = UIColor.black
             let rematch = SwipeAction(style: .default, title: nil) { action, indexPath in
                 let game: EntityGame = self.menu!.menuTableList![indexPath.row]
                 let username: String = self.menu!.playerSelf!.username
@@ -137,6 +137,7 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
     
     private func swipProposedInbound(orientation: SwipeActionsOrientation, game: EntityGame) -> [SwipeAction]? {
         if(orientation == .left) {
+            //self.tableView.backgroundColor = UIColor.white
             let nAction = SwipeAction(style: .default, title: nil) { action, indexPath in
                 self.menu!.setIndicator(on: true)
                 let requestPayload: [String: Any] = ["id_game": game.id, "id_player": self.menu!.playerSelf!.id]
@@ -150,6 +151,7 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
             nAction.image = UIImage(named: "td_w")!
             return [nAction]
         }
+        //self.tableView.backgroundColor = UIColor.white
         let ackAction = SwipeAction(style: .default, title: nil) { action, indexPath in
             let game: EntityGame = self.menu!.menuTableList![indexPath.row]
             let username: String = self.menu!.playerSelf!.username
@@ -167,6 +169,7 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
     
     private func swipProposedOutbound(orientation: SwipeActionsOrientation, game: EntityGame) -> [SwipeAction]? {
         if(orientation == .left) {
+            //self.tableView.backgroundColor = UIColor.white
             let rescind = SwipeAction(style: .default, title: nil) { action, indexPath in
                 self.menu!.setIndicator(on: true)
                 let game = self.menu!.menuTableList![indexPath.row]
@@ -290,7 +293,7 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
             DispatchQueue.main.async {
                 let height: CGFloat = UIScreen.main.bounds.height
                 let playerOther: EntityPlayer = game.getPlayerOther(username: self.menu!.playerSelf!.username)
-                SelectTschess().tschess(playerSelf: self.menu!.playerSelf!, playerOther: playerOther, game: game, height: height)
+                SelectTschess().tschess(playerSelf: self.menu!.playerSelf!, playerOther: playerOther, game: game, list: self.menu!.menuTableList!, height: height)
             }
             return
         }

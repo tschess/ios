@@ -33,16 +33,23 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
     @IBOutlet var tabBarMenu: UITabBar!
     
+    var list: [EntityGame]?
+    
     @IBAction func backButtonClick(_ sender: Any) {
         self.endTimer()
+        if(list != nil){
+            DispatchQueue.main.async {
+                let height: CGFloat = UIScreen.main.bounds.height
+                SelectMenu().execute(player: self.playerSelf!, list: self.list!, height: height)
+            }
+            return
+        }
         let request: [String: Any] = ["id": self.playerSelf!.id, "index": 0, "size": Const().PAGE_SIZE, "self": true]
         self.activityIndicator!.isHidden = false
         self.activityIndicator!.startAnimating()
         RequestActual().execute(requestPayload: request) { (result) in
             if(result != nil){
                 DispatchQueue.main.async {
-                    self.activityIndicator!.isHidden = true
-                    self.activityIndicator!.stopAnimating()
                     let height: CGFloat = UIScreen.main.bounds.height
                     SelectMenu().execute(player: self.playerSelf!, list: result!, height: height)
                 }

@@ -327,7 +327,7 @@
                                         <constraint firstItem="M6s-nP-07Q" firstAttribute="top" secondItem="Gru-Hl-8vV" secondAttribute="bottom" id="xrv-Tr-RVa"/>
                                     </constraints>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="avatarImageView" destination="eaF-37-5Tf" id="DKq-uK-Dcc"/>
                                     <outlet property="displacementImage" destination="M6s-nP-07Q" id="cEq-Qc-TA6"/>
