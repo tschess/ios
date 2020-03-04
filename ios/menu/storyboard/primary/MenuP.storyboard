@@ -364,7 +364,7 @@
                                         <constraint firstItem="NXB-eg-spf" firstAttribute="top" secondItem="aU2-HQ-a8m" secondAttribute="bottom" constant="2" id="zdj-ue-7Am"/>
                                     </constraints>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="actionImageView" destination="jDb-3F-Bd9" id="UIP-tD-s10"/>
                                     <outlet property="avatarImageView" destination="xuk-ae-wp5" id="Pcg-Rg-VnC"/>

@@ -116,10 +116,8 @@ class Profile: UIViewController, UITabBarDelegate, UINavigationControllerDelegat
             return
         case 2:// info
             DispatchQueue.main.async {
-                let storyboard: UIStoryboard = UIStoryboard(name: "ContextP", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "ContextP") as! Context
-                viewController.setPlayer(player: self.player!)
-                UIApplication.shared.keyWindow?.rootViewController = viewController
+                let height: CGFloat = UIScreen.main.bounds.height
+                SelectContext().execute(player: self.player!, height: height)
             }
             return
         default:

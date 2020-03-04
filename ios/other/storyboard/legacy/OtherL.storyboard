@@ -157,8 +157,8 @@
                                     <constraint firstAttribute="height" constant="45" id="CtS-Ad-lXP"/>
                                 </constraints>
                                 <items>
-                                    <tabBarItem tag="1" title="" image="game.grey" selectedImage="game.white" id="fjf-cy-wGx">
-                                        <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
+                                    <tabBarItem tag="1" title="" image="challenge_g" selectedImage="challenge" id="fjf-cy-wGx">
+                                        <inset key="imageInsets" minX="1" minY="5" maxX="1" maxY="-5"/>
                                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tabBarItem>
                                 </items>
@@ -298,6 +298,7 @@
                                         </label>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="arrow.up" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="M6s-nP-07Q">
                                             <rect key="frame" x="219" y="50.5" width="20" height="20"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <color key="tintColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="20" id="fPR-z7-S68"/>
@@ -326,7 +327,7 @@
                                         <constraint firstItem="M6s-nP-07Q" firstAttribute="top" secondItem="Gru-Hl-8vV" secondAttribute="bottom" constant="1" id="xrv-Tr-RVa"/>
                                     </constraints>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="avatarImageView" destination="eaF-37-5Tf" id="DKq-uK-Dcc"/>
                                     <outlet property="displacementImage" destination="M6s-nP-07Q" id="cEq-Qc-TA6"/>
@@ -352,7 +353,7 @@
         <image name="arrow.up" catalog="system" width="60" height="64"/>
         <image name="avatar_default" width="320" height="320"/>
         <image name="avatar_inverse" width="320" height="320"/>
-        <image name="game.grey" width="39" height="39"/>
-        <image name="game.white" width="39" height="39"/>
+        <image name="challenge" width="39" height="39"/>
+        <image name="challenge_g" width="39" height="52"/>
     </resources>
 </document>

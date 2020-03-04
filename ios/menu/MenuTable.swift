@@ -20,7 +20,7 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
     }
     
     func fetchMenuTableList() {
-        print("0 - self.pageCount: \(self.pageCount)")
+        //print("0 - self.pageCount: \(self.pageCount)")
         
         self.menu!.setIndicator(on: true)
         let request: [String: Any] = ["id": self.menu!.playerSelf!.id, "index": self.pageCount, "size": Const().PAGE_SIZE, "self": true]
@@ -65,7 +65,7 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
     }
     
     func getPageListNext() {
-        print("1 - self.pageCount: \(self.pageCount)")
+        //print("1 - self.pageCount: \(self.pageCount)")
         
         self.menu!.setIndicator(on: true)
         let request: [String: Any] = ["id": self.menu!.playerSelf!.id, "index": self.pageCount, "size": Const().PAGE_SIZE, "self": true]
@@ -83,7 +83,7 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
         let visibleRows = self.tableView.indexPathsForVisibleRows
         let lastRow = visibleRows?.last?.row
         if(lastRow == nil){
-            print(" L ")
+            //print(" L ")
             return
         }
         let index = self.pageCount
@@ -99,7 +99,7 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
         //}
         if lastRow == indexTo {
             
-            print(" -N- ")
+            //print(" -N- ")
             
             self.pageCount += 1
             self.getPageListNext()

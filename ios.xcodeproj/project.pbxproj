@@ -81,6 +81,7 @@
 		B787C73F22E970DD009C94F7 /* iosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B787C73E22E970DD009C94F7 /* iosTests.swift */; };
 		B787C74A22E970DD009C94F7 /* iosUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B787C74922E970DD009C94F7 /* iosUITests.swift */; };
 		B79D05DB2410272500B8A889 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79D05DA2410272500B8A889 /* Const.swift */; };
+		B79D05DD2410691000B8A889 /* ContextL.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B79D05DC2410691000B8A889 /* ContextL.storyboard */; };
 		B7A6B899240D999500840156 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A6B898240D999500840156 /* Menu.swift */; };
 		B7A6B89B240D99B500840156 /* MenuTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A6B89A240D99B500840156 /* MenuTable.swift */; };
 		B7A6B89D240D99E100840156 /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A6B89C240D99E100840156 /* MenuCell.swift */; };
@@ -332,6 +333,7 @@
 		B787C74922E970DD009C94F7 /* iosUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iosUITests.swift; sourceTree = "<group>"; };
 		B787C74B22E970DD009C94F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B79D05DA2410272500B8A889 /* Const.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
+		B79D05DC2410691000B8A889 /* ContextL.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ContextL.storyboard; sourceTree = "<group>"; };
 		B7A6B898240D999500840156 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		B7A6B89A240D99B500840156 /* MenuTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTable.swift; sourceTree = "<group>"; };
 		B7A6B89C240D99E100840156 /* MenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
@@ -963,6 +965,7 @@
 		B7A6B8B8240DF53200840156 /* legacy */ = {
 			isa = PBXGroup;
 			children = (
+				B79D05DC2410691000B8A889 /* ContextL.storyboard */,
 			);
 			path = legacy;
 			sourceTree = "<group>";
@@ -1933,6 +1936,7 @@
 				B7021F8C23FE5A4500C9346A /* CalypsoP.storyboard in Resources */,
 				B70149BE23FC577F001A7D52 /* Out.storyboard in Resources */,
 				B7F3A12F23FD8DA9007B5663 /* dTschessL.storyboard in Resources */,
+				B79D05DD2410691000B8A889 /* ContextL.storyboard in Resources */,
 				B7021F5923FE303000C9346A /* EditSelfL.storyboard in Resources */,
 				B7021F7E23FE597400C9346A /* DefaultL.storyboard in Resources */,
 				B7021F2723FDEE6100C9346A /* ConfigP.storyboard in Resources */,
