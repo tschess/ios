@@ -270,11 +270,15 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     
     private func setLabelCheck() {
         let state: [[Piece?]] = self.matrix!
-        let checker: Checker = Checker()
-        let colour: String = self.game!.turn
-        let king: [Int] = checker.kingCoordinate(affiliation: colour, state: state)
+        let username: String = self.playerSelf!.username
+        let white: Bool = self.game!.getWhite(username: username)
+        let stateK0 = SerializerState(white: white).renderServer(state: state)
+        let stateK1 = SerializerState(white: white).renderClient(state: stateK0)
+        let affiliation: String = self.game!.turn
+        let kingK: [Int] = Checker().kingCoordinate(affiliation: affiliation, state: stateK1)
         
-        let mate: Bool = checker.mate(king: king, state: state)
+        // - ? - ? - ? - //
+        let mate: Bool = Checker().mate(king: kingK, state: state) // does this work?
         if(mate){
             UpdateMate().execute(id: self.game!.id) { (success) in
                 if(!success){
@@ -283,21 +287,18 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
             }
             return
         }
+        // - ? - ? - ? - //
         let check0: Bool = self.game!.on_check
-        let check1: Bool = checker.on(affiliation: colour, state: state)
-        if(!check0 && !check1){
-            //the game WE KNOW is not check
-            //the game WE GOT is not check
-            return
-        }
+        let check1: Bool = Checker().check(coordinate: kingK, state: stateK1)
         if(!check0 && check1){
-            //the game WE KNOW is not check
-            //the game WE GOT *~is~* check
             UpdateCheck().execute(id: self.game!.id) { (success) in
                 if(!success){
                     //error
                 }
             }
+            return
+        }
+        if(!check0 && !check1){
             return
         }
         let indication: Bool = self.labelTurnary.text!.contains("check")
