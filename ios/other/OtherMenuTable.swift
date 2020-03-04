@@ -28,10 +28,10 @@ class OtherMenuTable: UITableViewController {
     
     var label: UILabel?
     
-    public var pageFromWhichContentLoads: Int
+    public var pageCount: Int
     
     required init?(coder aDecoder: NSCoder) {
-        self.pageFromWhichContentLoads = 0
+        self.pageCount = 0
         super.init(coder: aDecoder)
     }
     
@@ -60,7 +60,7 @@ class OtherMenuTable: UITableViewController {
         let game = gameMenuTableList[indexPath.row]
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "OtherMenuCell", for: indexPath) as! OtherMenuCell
-        cell.terminalDateLabel.text = game.getLabelTextDate(update: true)
+        cell.terminalDateLabel.text = game.getLabelTextDate()
         cell.usernameLabel.text = game.getLabelTextUsernameOpponent(username: self.player!.username)
         cell.avatarImageView.image = game.getImageAvatarOpponent(username: self.player!.username)
         cell.displacementLabel.text = game.getLabelTextDisp(username: self.player!.username)
@@ -89,7 +89,7 @@ class OtherMenuTable: UITableViewController {
            }
            let REQUEST_PAGE_SIZE: Int = 9
            
-           let index = self.pageFromWhichContentLoads
+           let index = self.pageCount
            let size = REQUEST_PAGE_SIZE
            let indexFrom: Int =  index * size
            let indexTo: Int = indexFrom + REQUEST_PAGE_SIZE - 2
@@ -98,7 +98,7 @@ class OtherMenuTable: UITableViewController {
                return
            }
            if lastRow == indexTo {
-               self.pageFromWhichContentLoads += 1
+               self.pageCount += 1
                self.fetchMenuTableList()
            }
        }
@@ -110,12 +110,11 @@ class OtherMenuTable: UITableViewController {
             self.activityIndicator!.startAnimating()
             
         }
-        let REQUEST_PAGE_SIZE: Int = 9
         
         let requestPayload = [
             "id": self.player!.id,
-            "index": self.pageFromWhichContentLoads,
-            "size": REQUEST_PAGE_SIZE,
+            "index": self.pageCount,
+            "size": Const().PAGE_SIZE,
             "self": false
             ] as [String: Any]
         RequestActual().execute(requestPayload: requestPayload) { (result) in

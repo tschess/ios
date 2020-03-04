@@ -74,7 +74,6 @@ class HomeMenuTable: UITableViewController {
         
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
-        // this is the replacement of implementing: "collectionView.addSubview(refreshControl)"
         self.tableView.refreshControl = refreshControl
     }
     

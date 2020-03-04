@@ -34,9 +34,6 @@
                                     <tabBarItem title="" image="back.grey" selectedImage="back.white" id="fYp-Rj-VM2">
                                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tabBarItem>
-                                    <tabBarItem tag="1" title="" image="setup.grey" selectedImage="setup.white" id="T6W-Pm-TWX">
-                                        <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </tabBarItem>
                                 </items>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -401,8 +398,6 @@
         <image name="avatar_inverse" width="320" height="320"/>
         <image name="back.grey" width="39" height="33"/>
         <image name="back.white" width="39" height="33"/>
-        <image name="setup.grey" width="38" height="40"/>
-        <image name="setup.white" width="38" height="40"/>
         <image name="tray.and.arrow.down" catalog="system" width="64" height="54"/>
     </resources>
 </document>

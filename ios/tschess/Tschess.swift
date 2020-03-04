@@ -35,9 +35,19 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     
     @IBAction func backButtonClick(_ sender: Any) {
         self.endTimer()
-        DispatchQueue.main.async {
-            let height: CGFloat = UIScreen.main.bounds.height
-            SelectMenu().execute(player: self.playerSelf!, height: height)
+        let request: [String: Any] = ["id": self.playerSelf!.id, "index": 0, "size": Const().PAGE_SIZE, "self": true]
+        self.activityIndicator!.isHidden = false
+        self.activityIndicator!.startAnimating()
+        RequestActual().execute(requestPayload: request) { (result) in
+            if(result != nil){
+                DispatchQueue.main.async {
+                    self.activityIndicator!.isHidden = true
+                    self.activityIndicator!.stopAnimating()
+                    let height: CGFloat = UIScreen.main.bounds.height
+                    SelectMenu().execute(player: self.playerSelf!, list: result!, height: height)
+                }
+            }
+            //error...
         }
     }
     

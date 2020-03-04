@@ -9,11 +9,9 @@
 import UIKit
 
 class Menu: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate {
-    //@IBOutlet var containerView: UIView!
-    @IBOutlet weak var containerView: UIView!
     
-    @IBOutlet weak var displacementLabel: UILabel!
-    @IBOutlet var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var containerView: UIView!
     
     //MARK: Properties
     @IBOutlet weak var usernameLabel: UILabel!
@@ -24,23 +22,26 @@ class Menu: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate {
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var tabBarMenu: UITabBar!
     @IBOutlet weak var rankDirectionImage: UIImageView!
-    
-    var actualTable: MenuTable?
+    @IBOutlet weak var displacementLabel: UILabel!
     
     var playerSelf: EntityPlayer?
-    
-    func setPlayerSelf(playerSelf: EntityPlayer){
-        self.playerSelf = playerSelf
+    func setSelf(player: EntityPlayer){
+        self.playerSelf = player
     }
+    
+    var menuTable: MenuTable?
+    var menuTableList: [EntityGame]?
+    func setMenuTableList(list: [EntityGame]){
+        self.menuTableList = list
+    }
+    
+    let enter: Enter = Enter.instanceFromNib()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tabBarMenu.delegate = self
-        actualTable = children.first as? MenuTable
-        actualTable!.setPlayerSelf(playerSelf: self.playerSelf!)
-        actualTable!.setIndicator(indicator: self.activityIndicator!)
-        actualTable!.setContainerView(container: self.containerView!)
-        actualTable!.fetchMenuTableList()
+        self.tabBarMenu.delegate = self
+        self.menuTable = children.first as? MenuTable
+        self.menuTable!.setSelf(menu: self)
     }
     
     public func renderHeader() {
@@ -61,13 +62,8 @@ class Menu: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate {
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         switch item.tag {
-        case 0:
-            self.backButtonClick("~")
         default:
-            DispatchQueue.main.async {
-                let height: CGFloat = UIScreen.main.bounds.height
-                SelectConfig().execute(player: self.playerSelf!, height: height)
-            }
+            self.backButtonClick("~")
         }
     }
     
@@ -75,6 +71,55 @@ class Menu: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate {
         DispatchQueue.main.async {
             let height: CGFloat = UIScreen.main.bounds.height
             SelectHome().execute(player: self.playerSelf!, height: height)
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if(self.menuTableList!.count > 0){
+            return
+        }
+        DispatchQueue.main.async {
+            self.containerView!.addSubview(self.enter)
+            self.enter.translatesAutoresizingMaskIntoConstraints = false
+            let top = NSLayoutConstraint(item: self.enter, attribute: NSLayoutConstraint.Attribute.top, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.containerView, attribute: NSLayoutConstraint.Attribute.top, multiplier: 1, constant: 0)
+            let bottom = NSLayoutConstraint(item: self.enter, attribute: NSLayoutConstraint.Attribute.bottom, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.containerView, attribute: NSLayoutConstraint.Attribute.bottom, multiplier: 1, constant: 0)
+            let trailing = NSLayoutConstraint(item: self.enter, attribute: NSLayoutConstraint.Attribute.trailing, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.containerView, attribute: NSLayoutConstraint.Attribute.trailing, multiplier: 1, constant: 0)
+            let leading = NSLayoutConstraint(item: self.enter, attribute: NSLayoutConstraint.Attribute.leading, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.containerView, attribute: NSLayoutConstraint.Attribute.leading, multiplier: 1, constant: 0)
+            self.view.addConstraints([top, bottom, trailing, leading])
+            
+            let quick = UITapGestureRecognizer(target: self, action: #selector(self.quick))
+            self.enter.addGestureRecognizer(quick)
+            self.enter.isUserInteractionEnabled = true
+        }
+    }
+    
+    @objc func quick(gesture: UIGestureRecognizer) {
+        self.setIndicator(on: true)
+        RequestQuick().success(id: self.playerSelf!.id) { (opponent) in
+            self.setIndicator(on: false)
+            DispatchQueue.main.async() {
+                let height: CGFloat = UIScreen.main.bounds.height
+                SelectPlay().execute(selection: Int.random(in: 0...3), playerSelf: self.playerSelf!, playerOther: opponent!, height: height)
+            }
+        }
+    }
+    
+    func setIndicator(on: Bool) {
+        if(on) {
+            DispatchQueue.main.async() {
+                if(self.activityIndicator!.isHidden){
+                   self.activityIndicator!.isHidden = false
+                }
+                if(!self.activityIndicator!.isAnimating){
+                   self.activityIndicator!.startAnimating()
+                }
+            }
+            return
+        }
+        DispatchQueue.main.async() {
+            self.activityIndicator!.isHidden = true
+            self.activityIndicator!.stopAnimating()
+            self.menuTable!.tableView.reloadData()
         }
     }
 }

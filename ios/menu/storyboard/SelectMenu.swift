@@ -10,17 +10,19 @@ import UIKit
 
 class SelectMenu {
     
-    public func execute(player: EntityPlayer, height: CGFloat) {
+    public func execute(player: EntityPlayer, list: [EntityGame], height: CGFloat) {
         if(height.isLess(than: 750)){
             let storyboard: UIStoryboard = UIStoryboard(name: "MenuL", bundle: nil)
             let viewController = storyboard.instantiateViewController(withIdentifier: "MenuL") as! Menu
-            viewController.setPlayerSelf(playerSelf: player)
+            viewController.setMenuTableList(list: list)
+            viewController.setSelf(player: player)
             UIApplication.shared.keyWindow?.rootViewController = viewController
             return
         }
         let storyboard: UIStoryboard = UIStoryboard(name: "MenuP", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "MenuP") as! Menu
-        viewController.setPlayerSelf(playerSelf: player)
+         viewController.setMenuTableList(list: list)
+        viewController.setSelf(player: player)
         UIApplication.shared.keyWindow?.rootViewController = viewController
     }
 }

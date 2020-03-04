@@ -121,25 +121,31 @@ class Home: UIViewController, UITabBarDelegate {
         switch item.tag {
         case 1:
             self.notificationTimerStop()
+            self.setIndicator(on: true)
             DispatchQueue.main.async() {
                 let notify = self.tabBarMenu.items![1]
                 notify.selectedImage = UIImage(named: "game.white")!
-                self.activityIndicator.isHidden = false
-                self.activityIndicator.startAnimating()
             }
             RequestQuick().success(id: self.player!.id) { (opponent) in
+                self.setIndicator(on: false)
                 DispatchQueue.main.async() {
-                    self.activityIndicator.stopAnimating()
-                    self.activityIndicator.isHidden = true
                     let height: CGFloat = UIScreen.main.bounds.height
                     SelectPlay().execute(selection: Int.random(in: 0...3), playerSelf: self.player!, playerOther: opponent!, height: height)
                 }
             }
         case 3:
+            let request: [String: Any] = ["id": self.player!.id, "index": 0, "size": Const().PAGE_SIZE, "self": true]
             self.notificationTimerStop()
-            DispatchQueue.main.async {
-                let height: CGFloat = UIScreen.main.bounds.height
-                SelectMenu().execute(player: self.player!, height: height)
+            self.setIndicator(on: true)
+            RequestActual().execute(requestPayload: request) { (result) in
+                self.setIndicator(on: false)
+                if(result == nil){
+                    //error...
+                }
+                DispatchQueue.main.async {
+                    let height: CGFloat = UIScreen.main.bounds.height
+                    SelectMenu().execute(player: self.player!, list: result!, height: height)
+                }
             }
         case 4:
             self.notificationTimerStop()
@@ -159,6 +165,24 @@ class Home: UIViewController, UITabBarDelegate {
         DispatchQueue.main.async {
             let height: CGFloat = UIScreen.main.bounds.height
             SelectOther().execute(playerSelf: self.player!, playerOther: playerOther, height: height)
+        }
+    }
+    
+    private func setIndicator(on: Bool) {
+        if(on) {
+            DispatchQueue.main.async() {
+                if(self.activityIndicator!.isHidden){
+                   self.activityIndicator!.isHidden = false
+                }
+                if(!self.activityIndicator!.isAnimating){
+                   self.activityIndicator!.startAnimating()
+                }
+            }
+            return
+        }
+        DispatchQueue.main.async() {
+            self.activityIndicator!.isHidden = true
+            self.activityIndicator!.stopAnimating()
         }
     }
 }

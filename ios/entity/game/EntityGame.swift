@@ -151,7 +151,7 @@ class EntityGame: Equatable, Hashable {
         return DateTime().toFormatDate(string: self.updated)
     }
     
-    func getLabelTextDate(update: Bool) -> String {
+    func getLabelTextDate() -> String {
         let date: Date = self.getDateUpdated()
         let formatter = DateFormatter()
         formatter.dateFormat = "dd.MM.YY"
