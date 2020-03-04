@@ -14,7 +14,6 @@ class Checker {
         let kgCrd: [Int] = self.kingCoordinate(affiliation: affiliation, state: state)
         //print("~ king ~\n\(kgCrd)\n")
         //print("\(state)")
-        
         if(self.check(coordinate: kgCrd, state: state)){
             //print("\nTRUE\n\n")
             return true

@@ -336,7 +336,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     }
     
     func flash() {
-        let flashFrame = UIView(frame: viewBoard.bounds)
+        let flashFrame = UIView(frame: self.viewBoard.bounds)
         flashFrame.backgroundColor = UIColor.white
         flashFrame.alpha = 0.7
         self.viewBoard.addSubview(flashFrame)
