@@ -278,10 +278,10 @@
                                         <rect key="frame" x="0.0" y="146" width="414" height="444"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R1c-Gi-vvO" userLabel="DropViewTop1">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="46"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="62"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="notification" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GRP-if-aEY">
-                                                        <rect key="frame" x="0.0" y="8" width="414" height="30"/>
+                                                        <rect key="frame" x="0.0" y="16" width="414" height="30"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
@@ -293,15 +293,16 @@
                                                     </label>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="bottom" secondItem="GRP-if-aEY" secondAttribute="bottom" constant="8" id="6D0-Hp-UX7"/>
+                                                    <constraint firstAttribute="bottom" secondItem="GRP-if-aEY" secondAttribute="bottom" constant="16" id="6D0-Hp-UX7"/>
                                                     <constraint firstAttribute="trailing" secondItem="GRP-if-aEY" secondAttribute="trailing" id="GQ5-wa-1rK"/>
-                                                    <constraint firstItem="GRP-if-aEY" firstAttribute="top" secondItem="R1c-Gi-vvO" secondAttribute="top" constant="8" id="bhW-3j-6vB"/>
+                                                    <constraint firstItem="GRP-if-aEY" firstAttribute="top" secondItem="R1c-Gi-vvO" secondAttribute="top" constant="16" id="bhW-3j-6vB"/>
                                                     <constraint firstItem="GRP-if-aEY" firstAttribute="leading" secondItem="R1c-Gi-vvO" secondAttribute="leading" id="u03-o4-Vye"/>
                                                 </constraints>
                                             </view>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="nQP-5X-zQQ">
-                                                <rect key="frame" x="0.0" y="46" width="414" height="150"/>
+                                                <rect key="frame" x="0.0" y="62" width="414" height="150"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>

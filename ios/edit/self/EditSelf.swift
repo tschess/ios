@@ -11,7 +11,6 @@ import UIKit
 class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIDropInteractionDelegate {
     
     /* - * - */
-    
     var selection: Int? = nil
     
     public func setSelection(selection: Int){
@@ -197,6 +196,7 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
     }
     
     func collectionView(_ collectionView: UICollectionView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
+        self.notificationLabel.isHidden = true
         self.configCache = self.configActiv!
         if collectionView == self.tschessElementCollectionView {
             let tschessElement = Edit().generateTschessElement(name: self.ELEMENT_LIST[indexPath.row])
@@ -254,6 +254,7 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
     internal func collectionView(_: UICollectionView, dragSessionDidEnd: UIDragSession){
         self.tschessElementCollectionView.reloadData()
         self.setTotalPointValue()
+        self.notificationLabel.isHidden = false
     }
     
     func collectionView(_ collectionView: UICollectionView,  dropSessionDidEnd session: UIDropSession) {
@@ -387,7 +388,8 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
         self.titleLabel.text = self.titleText
         self.renderHeader()
         
-        self.notificationLabel.isHidden = true
+        //self.notificationLabel.isHidden = true
+        self.notificationLabel.text = "click - hold to engage - drag"
         self.setTotalPointValue()
     }
     

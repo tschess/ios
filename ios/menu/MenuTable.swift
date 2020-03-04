@@ -37,12 +37,6 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.tableFooterView = UIView()
-        
-        //self.containerView!.addSubview(self.enter)
-        
-        //if(self.containerView!.subviews.contains(self.enter)){
-        //self.enter.isHidden = true
-        //}
     }
     
     var activityIndicator: UIActivityIndicatorView?
@@ -64,14 +58,10 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
-        
         let game = gameMenuTableList[indexPath.row]
         if(game.status == "RESOLVED"){
-            //print(" - Tschess - ")
-
             guard orientation == .left else {
                 let rematch = SwipeAction(style: .default, title: nil) { action, indexPath in
-                    
                     let playerOther = self.gameMenuTableList[indexPath.row].getPlayerOther(username: self.playerSelf!.username)
                     DispatchQueue.main.async {
                         let screenSize: CGRect = UIScreen.main.bounds
@@ -90,7 +80,6 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
             return nil
         }
         if(game.status == "ONGOING"){
-            //print(" - Tschess - ")
             DispatchQueue.main.async {
                 let height: CGFloat = UIScreen.main.bounds.height
                 let playerOther: EntityPlayer = game.getPlayerOther(username: self.playerSelf!.username)
@@ -98,20 +87,16 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
             }
             return nil
         }
+        //PROPOSED...
         if(game.getInboundInvitation(username: self.playerSelf!.username)){
-            
             guard orientation == .right else {
                 let nAction = SwipeAction(style: .default, title: nil) { action, indexPath in
-                    //print("nACK")
                     self.activityIndicator!.isHidden = false
                     self.activityIndicator!.startAnimating()
                     let requestPayload: [String: Any] = ["id_game": game.id, "id_player": self.playerSelf!.id]
-                    
                     UpdateNack().execute(requestPayload: requestPayload) { (player) in
                         //print("player: \(player)")
-                        //ERROR...
                         self.setPlayerSelf(playerSelf: player!)
-                        
                         DispatchQueue.main.async {
                             self.activityIndicator!.stopAnimating()
                             self.activityIndicator!.isHidden = true
@@ -125,7 +110,6 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
                 return [nAction]
             }
             let ackAction = SwipeAction(style: .default, title: nil) { action, indexPath in
-                
                 let game = self.gameMenuTableList[indexPath.row]
                 let playerOther: EntityPlayer = game.getPlayerOther(username: self.playerSelf!.username)
                 DispatchQueue.main.async {
@@ -142,7 +126,6 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
         guard orientation == .left else {
             return nil
         }
-        
         let rescind = SwipeAction(style: .default, title: nil) { action, indexPath in
             //print("RESCIND")
             self.activityIndicator!.isHidden = false
@@ -174,15 +157,23 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
         cell.avatarImageView.image = game.getImageAvatarOpponent(username: self.playerSelf!.username)
         
         if(game.status == "ONGOING"){
+            cell.soLaLa.backgroundColor = UIColor.white
+            cell.actionImageView.isHidden = false
+            cell.usernameLabel.textColor = UIColor.black
+            cell.timeIndicatorLabel.textColor = UIColor.black
+            cell.oddsValueLabel.isHidden = true
+            cell.dispAdjacentLabel.isHidden = true
+            cell.dispImageView.isHidden = true
+            cell.dispImageView.isHidden = true
+            cell.oddsIndicatorLabel.isHidden = true
             cell.timeIndicatorLabel.text = game.getLabelTextDate(update: true)
             if(game.getInboundGame(username: self.playerSelf!.username)){
-                
                 let image = UIImage(named: "turn.on")!
                 cell.actionImageView.image = image.withRenderingMode(.alwaysTemplate)
                 cell.actionImageView.tintColor = .black
+                
                 return cell
             }
-            
             let image = UIImage(named: "turn.off")!
             cell.actionImageView.image = image.withRenderingMode(.alwaysTemplate)
             cell.actionImageView.tintColor = .black
@@ -191,13 +182,11 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
         if(game.status == "PROPOSED"){
             cell.timeIndicatorLabel.text = game.getLabelTextDate(update: false)
             if(game.getInboundInvitation(username: self.playerSelf!.username)){
-                
                 cell.actionImageView.tintColor = .black
                 let image = UIImage(named: "inbound")!
                 cell.actionImageView.image = image.withRenderingMode(.alwaysTemplate)
                 return cell
             }
-            
             cell.actionImageView.tintColor = .black
             let image = UIImage(named: "outbound")!
             cell.actionImageView.image = image.withRenderingMode(.alwaysTemplate)
@@ -223,7 +212,7 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
             cell.dispImageView.image = game.getImageDisp(username: self.playerSelf!.username)
             cell.dispImageView.tintColor = game.getTint(username: self.playerSelf!.username)
             
-            cell.dispValueLabel.isHidden = false
+            cell.dispImageView.isHidden = false
             cell.dispValueLabel.textColor = UIColor.lightGray
             cell.dispValueLabel.text = game.getLabelTextDisp(username: self.playerSelf!.username)
         }
