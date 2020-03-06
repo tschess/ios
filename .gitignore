@@ -1,4 +1,6 @@
-*/xcuserdata/*
-
+#misc.
+Pods/Pods.xcodeproj/xcuserdata/*
+ios.xcodeproj/xcuserdata/*
+ios.xcworkspace/xcuserdata/*
 #sensitive
 ios/util/ServerAddress.swift
