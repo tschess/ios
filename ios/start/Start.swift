@@ -19,6 +19,7 @@ class Start: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var buttonWidthCreate: NSLayoutConstraint!
     
     @IBAction func loginButtonClick(_ sender: UIButton) {
+        //print("soalala")
         self.dismissKeyboard()
         self.usernameTextString = usernameTextField.text!
         self.passwordTextString = passwordTextField.text!
@@ -274,7 +275,7 @@ class Start: UIViewController, UITextFieldDelegate {
             return
         }
         if(self.testTaskCounter == 4){
-            print(" - testTaskCounter: \(testTaskCounter)")
+            //print(" - testTaskCounter: \(testTaskCounter)")
             let STATE = [[""]]
             let TURN = "WHITE"
             let REQUEST: [String: Any] = ["state": STATE, "turn": TURN]

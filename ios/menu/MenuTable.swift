@@ -255,14 +255,14 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
             return cell
         }
         cell = self.getCellActive(cell: cell)
-        let inbound: Bool = game.getInboundGame(username: username)
+        let inbound: Bool = game.getTurn(username: username)
         if(game.status == "ONGOING"){
             if(inbound){
                 let image: UIImage = UIImage(named: "turn.on")!
                 cell.actionImageView.image = image
                 return cell
             }
-            let image: UIImage = UIImage(named: "turn.on")!
+            let image: UIImage = UIImage(named: "turn.off")!
             cell.actionImageView.image = image
             return cell
         }

@@ -121,7 +121,7 @@ class DrawResign: UIViewController  {
             "white": self.game!.getWhite(username: self.playerSelf!.username)] as [String: Any]
         
         UpdateResign().execute(requestPayload: requestPayload) { (result) in
-            print("result: \(result)")
+            //print("result: \(result)")
             DispatchQueue.main.async {
                 self.activityIndicatorResign!.stopAnimating()
                 self.activityIndicatorResign!.isHidden = true

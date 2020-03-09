@@ -12,7 +12,7 @@ class RequestChallenge {
     
     func execute(requestPayload: [String: Any], completion: @escaping ((Bool) -> Void)) {
         
-        print("\n\nRequestChallenge: \(requestPayload)\n\n")
+        //print("\n\nRequestChallenge: \(requestPayload)\n\n")
         
         let url = URL(string: "http://\(ServerAddress().IP):8080/game/challenge")!
         var request = URLRequest(url: url)

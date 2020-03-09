@@ -92,9 +92,7 @@ class EntityGame: Equatable, Hashable {
     
     func getImageDisp(username: String) -> UIImage? {
         if(self.white_disp == nil || self.black_disp == nil){
-            if #available(iOS 13.0, *) {
-                return UIImage(systemName: "xmark")!
-            }
+                return UIImage(named: "close_b")!
         }
         if(self.white.username == username){
             if(self.white_disp! >= 0){
