@@ -70,7 +70,7 @@ class HomeMenuTable: UITableViewController {
     }
     
     override func viewDidLoad() {
-        self.fetchGameList()
+        //self.fetchGameList()
         
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)

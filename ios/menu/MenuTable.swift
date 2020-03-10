@@ -293,7 +293,7 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
             DispatchQueue.main.async {
                 let height: CGFloat = UIScreen.main.bounds.height
                 let playerOther: EntityPlayer = game.getPlayerOther(username: self.menu!.playerSelf!.username)
-                SelectTschess().tschess(playerSelf: self.menu!.playerSelf!, playerOther: playerOther, game: game, list: self.menu!.menuTableList!, height: height)
+                SelectTschess().tschess(playerSelf: self.menu!.playerSelf!, playerOther: playerOther, game: game, menuList: self.menu!.menuTableList!, homeList: self.menu!.homeList!, height: height)
             }
             return
         }

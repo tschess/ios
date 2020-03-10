@@ -438,7 +438,7 @@ class Challenge: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate,
                         self.activityIndicator!.isHidden = true
                         self.activityIndicator!.stopAnimating()
                         let height: CGFloat = UIScreen.main.bounds.height
-                        SelectMenu().execute(player: self.playerSelf!, list: result!, height: height)
+                        SelectMenu().execute(player: self.playerSelf!, menuList: result!, height: height)
                     }
                 }
                 //error...

@@ -29,6 +29,8 @@ class Menu: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate {
         self.playerSelf = player
     }
     
+    var homeList: [EntityPlayer]? 
+    
     var menuTable: MenuTable?
     var menuTableList: [EntityGame]?
     func setMenuTableList(list: [EntityGame]){
@@ -70,7 +72,7 @@ class Menu: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate {
     @IBAction func backButtonClick(_ sender: Any) {
         DispatchQueue.main.async {
             let height: CGFloat = UIScreen.main.bounds.height
-            SelectHome().execute(player: self.playerSelf!, height: height)
+            SelectHome().execute(player: self.playerSelf!, menuList: self.menuTableList, homeList: self.homeList, height: height)
         }
     }
     

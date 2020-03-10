@@ -33,14 +33,21 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
     @IBOutlet var tabBarMenu: UITabBar!
     
-    var list: [EntityGame]?
+    var menuList: [EntityGame]?
+    var homeList: [EntityPlayer]?
     
     @IBAction func backButtonClick(_ sender: Any) {
         self.endTimer()
-        if(list != nil){
+        if(self.menuList != nil){
+            for (index, game) in self.menuList!.enumerated() {
+                if(game.id == self.game!.id){
+                    self.menuList![index] = self.game!
+                }
+            }
             DispatchQueue.main.async {
                 let height: CGFloat = UIScreen.main.bounds.height
-                SelectMenu().execute(player: self.playerSelf!, list: self.list!, height: height)
+                //SelectMenu().execute(player: self.playerSelf!, menuList: self.menuList!, homeList: self.homeList!, height: height)
+                SelectMenu().execute(player: self.playerSelf!, menuList: self.menuList!, homeList: self.homeList, height: height)
             }
             return
         }
@@ -51,7 +58,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
             if(result != nil){
                 DispatchQueue.main.async {
                     let height: CGFloat = UIScreen.main.bounds.height
-                    SelectMenu().execute(player: self.playerSelf!, list: result!, height: height)
+                    SelectMenu().execute(player: self.playerSelf!, menuList: result!, homeList: self.homeList, height: height)
                 }
             }
             //error...
