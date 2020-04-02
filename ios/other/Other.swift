@@ -79,8 +79,8 @@ class Other: UIViewController, UITabBarDelegate {
         let gameMenuSelectionIndex = notification.userInfo!["other_menu_selection"] as! Int
         let game = self.otherMenuTable!.getGameMenuTableList()[gameMenuSelectionIndex]
         
-        let skin: String = SelectSnapshot().getSkinGame(username: self.playerOther!.username, game: game)
-        SelectSnapshot().snapshot(skin: skin, playerSelf: self.playerSelf!, game: game, presentor: self)
+       
+        SelectSnapshot().snapshot(playerSelf: self.playerSelf!, game: game, presentor: self)
     }
     
     @IBAction func backButtonClick(_ sender: Any) {

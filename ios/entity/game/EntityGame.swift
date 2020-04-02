@@ -18,11 +18,11 @@ class EntityGame: Equatable, Hashable {
     var white: EntityPlayer
     var white_elo: Int
     var white_disp: Int?
-    var white_skin: String
+   
     var black: EntityPlayer
     var black_elo: Int
     var black_disp: Int?
-    var black_skin: String
+    
     var challenger: String
     var winner: String?
     var turn: String
@@ -39,11 +39,11 @@ class EntityGame: Equatable, Hashable {
         white: EntityPlayer,
         white_elo: Int,
         white_disp: Int?,
-        white_skin: String,
+   
         black: EntityPlayer,
         black_elo: Int,
         black_disp: Int?,
-        black_skin: String,
+ 
         challenger: String,
         winner: String?,
         turn: String,
@@ -59,11 +59,11 @@ class EntityGame: Equatable, Hashable {
         self.white = white
         self.white_elo = white_elo
         self.white_disp = white_disp
-        self.white_skin = white_skin
+      
         self.black = black
         self.black_elo = black_elo
         self.black_disp = black_disp
-        self.black_skin = black_skin
+      
         self.challenger = challenger
         self.winner = winner
         self.turn = turn

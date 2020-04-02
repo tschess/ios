@@ -284,8 +284,8 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
         let game = self.menu!.menuTableList![indexPath.row]
         if(game.status == "RESOLVED"){
             DispatchQueue.main.async {
-                let skin: String = SelectSnapshot().getSkinGame(username: self.menu!.playerSelf!.username, game: game)
-                SelectSnapshot().snapshot(skin: skin, playerSelf: self.menu!.playerSelf!, game: game, presentor: self)
+                
+                SelectSnapshot().snapshot(playerSelf: self.menu!.playerSelf!, game: game, presentor: self)
             }
             return
         }

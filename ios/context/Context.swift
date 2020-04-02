@@ -22,7 +22,7 @@ class Context: UIViewController, UITabBarDelegate {
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var tabBarMenu: UITabBar!
     
-    var skinTableMenu: ContextTable?
+    var tableMenu: ContextTable?
     
     var player: EntityPlayer?
     
@@ -53,7 +53,7 @@ class Context: UIViewController, UITabBarDelegate {
         super.viewDidLoad()
         
         self.tabBarMenu.delegate = self
-        self.skinTableMenu = children.first as? ContextTable
+        self.tableMenu = children.first as? ContextTable
         
    
     }

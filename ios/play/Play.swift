@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Play: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITabBarDelegate, UIGestureRecognizerDelegate {
+class Play: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate {
     
     var config: [[Piece?]]?
     
@@ -51,46 +51,7 @@ class Play: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITa
         
         self.boardViewConfig.isHidden = true
         
-        let orange: UIColor = UIColor(red: 255/255.0, green: 105/255.0, blue: 104/255.0, alpha: 1) //FF6968
-        let pink: UIColor = UIColor(red: 255/255.0, green: 105/255.0, blue: 180/255.0, alpha: 1)
-        let purple: UIColor = UIColor(red: 140/255.0, green: 0/255.0, blue: 192/255.0, alpha: 1)
-        let blue: UIColor = UIColor(red: 84/255.0, green: 140/255.0, blue: 240/255.0, alpha: 1)
-        let green: UIColor = UIColor(red: 0/255.0, green: 255/255.0, blue: 88/255.0, alpha: 1)
-        
-        let hyperion: EntitySkin = EntitySkin(name: "HYPERION", foreColor: purple, backColor: blue,
-                                              description: "" +
-                                                "• one of one hundred.\r\r" +
-                                                "• visible to oneself during gameplay.\r\r" +
-                                                "• skin of winner is globally visible as historic endgame snapshot.\r\r" +
-            "• design inspired by the titan god of heavenly light.\r\r")
-        let calypso: EntitySkin = EntitySkin(name: "CALYPSO", foreColor: pink, backColor: UIColor.black,
-                                             description: "" +
-                                                "• one of one hundred.\r\r" +
-                                                "• visible to oneself during gameplay.\r\r" +
-                                                "• skin of winner is globally visible as historic endgame snapshot.\r\r" +
-            "• design inspired by the nymph of ogygia, who detained odysseus for seven years.\r\r")
-        let neptune: EntitySkin = EntitySkin(name: "NEPTUNE", foreColor: green, backColor: orange, backAlpha: 0.85,
-                                             description: "" +
-                                                "• one of one hundred.\r\r" +
-                                                "• visible to oneself during gameplay.\r\r" +
-                                                "• skin of winner is globally visible as historic endgame snapshot.\r\r" +
-            "• design inspired by the city of neptune beach in duval county, florida.\r\r")
-        let iapetus: EntitySkin = EntitySkin(
-            name: "IAPETUS",
-            foreColor: UIColor.white,
-            foreImage: UIImage(named: "iapetus"),
-            backColor: UIColor.black,
-            backImage: UIImage(named: "iapetus"),
-            backAlpha: 0.85,
-            description: "" +
-                "• one of fifty\r\r" +
-                "• visible to oneself during gameplay.\r\r" +
-                "• skin of winner is globally visible as historic endgame snapshot.\r\r" +
-            "• design inspired by science fantasy novel \"the chessmen of mars\" by edgar rice burroughs\r\r")
-        
-        let flip: UIColor = UIColor(red: 31/255.0, green: 33/255.0, blue: 36/255.0, alpha: 1)
-        let skinD: EntitySkin = EntitySkin(name: "DEFAULT", foreColor: UIColor.lightGray, backColor:  flip, description: "")
-        self.skinList = Array(arrayLiteral: skinD, iapetus, calypso, hyperion, neptune)
+       
         
         
         //TODO: set these fonts...
@@ -286,40 +247,7 @@ class Play: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITa
         return 1
     }
     
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return self.skinList!.count
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
-        let skinAsset = self.skinList![row]
-        
-        let sampleView = Skin.instanceFromNib()
-        sampleView.nameLabel.text = skinAsset.getName().lowercased()
-        if(!self.playerSelf!.skin.contains(skinAsset.name)){
-            sampleView.nameLabel.text = "locked"
-        }
-        
-        sampleView.backgroundView.backgroundColor = skinAsset.getBackColor()
-        sampleView.backgroundView.alpha = skinAsset.getBackAlpha()
-        sampleView.backgroundImage.image = skinAsset.getBackImage()
-        
-        sampleView.foregroundView.backgroundColor = skinAsset.getForeColor()
-        sampleView.foregroundView.alpha = skinAsset.getForeAlpha()
-        sampleView.foregroundImage.image = skinAsset.getForeImage()
-        
-        if(!self.playerSelf!.skin.contains(skinAsset.name)){
-            sampleView.alpha = 0.5
-        }
-        return sampleView
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
-        return 69
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        skinSelectionPick = self.skinList![row].getName()
-    }
+ 
     
     var attributeAlphaDotFull: [NSAttributedString.Key: NSObject]?
     var attributeAlphaDotHalf: [NSAttributedString.Key: NSObject]?
@@ -334,14 +262,7 @@ class Play: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITa
         self.rankLabel.text = self.playerOther!.getLabelTextRank()
         self.rankDateLabel.text = self.playerOther!.getLabelTextDate()
     }
-    
-    let orange: UIColor = UIColor(red: 255/255.0, green: 105/255.0, blue: 104/255.0, alpha: 1) //FF6968
-    let pink: UIColor = UIColor(red: 255/255.0, green: 105/255.0, blue: 180/255.0, alpha: 1)
-    let purple: UIColor = UIColor(red: 140/255.0, green: 0/255.0, blue: 192/255.0, alpha: 1)
-    let blue: UIColor = UIColor(red: 84/255.0, green: 140/255.0, blue: 240/255.0, alpha: 1)
-    let green: UIColor = UIColor(red: 0/255.0, green: 255/255.0, blue: 88/255.0, alpha: 1)
-    
-    var skinList: Array<EntitySkin>?
+
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)

@@ -21,12 +21,12 @@ class ParseGame {
         let white: EntityPlayer = ParsePlayer().execute(json: whiteX)
         let white_elo = json["white_elo"]! as! Int
         let white_disp = json["white_disp"]! as? Int
-        let white_skin = json["white_skin"]! as! String
+       
         let blackX = json["black"]! as! [String: Any]
         let black: EntityPlayer = ParsePlayer().execute(json: blackX)
         let black_elo = json["black_elo"]! as! Int
         let black_disp = json["black_disp"]! as? Int
-        let black_skin = json["black_skin"]! as! String
+       
         let challenger = json["challenger"]! as! String
         let winner = json["winner"]! as? String
         let turn = json["turn"]! as! String
@@ -43,11 +43,11 @@ class ParseGame {
             white: white,
             white_elo: white_elo,
             white_disp: white_disp,
-            white_skin: white_skin,
+           
             black: black,
             black_elo: black_elo,
             black_disp: black_disp,
-            black_skin: black_skin,
+           
             challenger: challenger,
             winner: winner,
             turn: turn,
