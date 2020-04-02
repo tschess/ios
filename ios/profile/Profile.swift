@@ -108,13 +108,7 @@ class Profile: UIViewController, UITabBarDelegate, UINavigationControllerDelegat
         case 0://photo
             self.changePhoto()
             return
-        case 1://skins
-            DispatchQueue.main.async {
-                let height: CGFloat = UIScreen.main.bounds.height
-                SelectSkins().execute(player: self.player!, height: height)
-            }
-            return
-        case 2:// info
+        case 1:// info
             DispatchQueue.main.async {
                 let height: CGFloat = UIScreen.main.bounds.height
                 SelectContext().execute(player: self.player!, height: height)

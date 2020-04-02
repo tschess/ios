@@ -189,7 +189,7 @@ class Ack: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITab
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var tabBarMenu: UITabBar!
     
-    @IBOutlet weak var skinSelectionPicker: UIPickerView!
+    //@IBOutlet weak var skinSelectionPicker: UIPickerView!
     
     var skinSelectionPick: String = "iapetus"
     
@@ -352,8 +352,8 @@ class Ack: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITab
         //        self.splitViewHeight0.isActive = true
         //        self.splitViewHeight1.isActive = true
         
-        self.skinSelectionPicker.delegate = self
-        self.skinSelectionPicker.dataSource = self
+        //self.skinSelectionPicker.delegate = self
+        //self.skinSelectionPicker.dataSource = self
         
         
         self.swipeRightGesture = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))

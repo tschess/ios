@@ -47,14 +47,7 @@ class Context: UIViewController, UITabBarDelegate {
         self.activityIndicator.isHidden = true
     }
     
-    @objc func onDidReceiveData(_ notification: NSNotification) {
-        let skin = notification.userInfo!["skin_selection"] as! EntitySkin
-        DispatchQueue.main.async() {
-            let height: CGFloat = UIScreen.main.bounds.height
-            SelectDetail().execute(player: self.player!, skin: skin, height: height)
-        }
-        
-    }
+  
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,11 +55,7 @@ class Context: UIViewController, UITabBarDelegate {
         self.tabBarMenu.delegate = self
         self.skinTableMenu = children.first as? ContextTable
         
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(self.onDidReceiveData(_:)),
-            name: NSNotification.Name(rawValue: "SkinSelection"),
-            object: nil)
+   
     }
     
     @IBAction func backButtonClick(_ sender: Any) {

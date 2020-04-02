@@ -253,7 +253,7 @@ class Challenge: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate,
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var tabBarMenu: UITabBar!
     
-    @IBOutlet weak var skinSelectionPicker: UIPickerView!
+    //@IBOutlet weak var skinSelectionPicker: UIPickerView!
     
     var playerOther: EntityPlayer?
     
@@ -327,8 +327,8 @@ class Challenge: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate,
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.skinSelectionPicker.delegate = self
-        self.skinSelectionPicker.dataSource = self
+        //self.skinSelectionPicker.delegate = self
+        //self.skinSelectionPicker.dataSource = self
         //self.skinSelectionPicker.isUserInteractionEnabled = false //ought to flash...
         
         self.swipeRightGesture = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))

@@ -278,7 +278,7 @@ class Play: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITa
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var tabBarMenu: UITabBar!
     
-    @IBOutlet weak var skinSelectionPicker: UIPickerView!
+    //@IBOutlet weak var skinSelectionPicker: UIPickerView!
     
     var skinSelectionPick: String = "iapetus"
     
@@ -352,8 +352,8 @@ class Play: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITa
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.skinSelectionPicker.delegate = self
-        self.skinSelectionPicker.dataSource = self
+        //self.skinSelectionPicker.delegate = self
+        //self.skinSelectionPicker.dataSource = self
         
         self.swipeRightGesture = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
         swipeRightGesture!.direction = UISwipeGestureRecognizer.Direction.right
