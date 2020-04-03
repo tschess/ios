@@ -27,7 +27,6 @@ class Play: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate {
             let requestPayload: [String: Any] = [
                 "id_self": self.playerSelf!.id,
                 "id_other": self.playerOther!.id,
-                "skin": "DEFAULT",
                 "config": self.selection!]
             
             RequestPlay().execute(requestPayload: requestPayload) { (game) in
@@ -239,9 +238,7 @@ class Play: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate {
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var tabBarMenu: UITabBar!
     
-    //@IBOutlet weak var skinSelectionPicker: UIPickerView!
-    
-    var skinSelectionPick: String = "iapetus"
+   
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -273,8 +270,7 @@ class Play: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        //self.skinSelectionPicker.delegate = self
-        //self.skinSelectionPicker.dataSource = self
+     
         
         self.swipeRightGesture = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
         swipeRightGesture!.direction = UISwipeGestureRecognizer.Direction.right

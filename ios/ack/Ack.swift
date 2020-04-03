@@ -10,6 +10,9 @@ import UIKit
 
 class Ack: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate {
     
+    var menuList: [EntityGame]?
+    var homeList: [EntityPlayer]?
+    
     @IBOutlet weak var traditionalLabel: UILabel!
     @IBOutlet weak var configLabelView: UIView!
     
@@ -191,9 +194,7 @@ class Ack: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate {
     
  
     
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
+
     
 
     
@@ -288,7 +289,12 @@ class Ack: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate {
         if(self.selection! == 0){
             DispatchQueue.main.async() {
                 let height: CGFloat = UIScreen.main.bounds.height
-                SelectEditOther().execute(game: self.gameTschess!, playerSelf: self.playerSelf!, playerOther: self.playerOther!, title: "config. 0̸", selection: 0, BACK: "ACK", height: height)
+                SelectEditOther().execute(game: self.gameTschess!,
+                                          playerSelf: self.playerSelf!,
+                                          playerOther: self.playerOther!,
+                                          title: "config. 0̸", selection: 0,
+                                          BACK: "ACK",
+                                          height: height)
             }
             return
         }

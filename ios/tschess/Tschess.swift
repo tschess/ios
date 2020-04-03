@@ -33,32 +33,23 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
     @IBOutlet var tabBarMenu: UITabBar!
     
-    var menuList: [EntityGame]?
-    var homeList: [EntityPlayer]?
+    //var menuList: [EntityGame]?
+    //var homeList: [EntityPlayer]?
     
     @IBAction func backButtonClick(_ sender: Any) {
         self.endTimer()
-        if(self.menuList != nil){
-            for (index, game) in self.menuList!.enumerated() {
-                if(game.id == self.game!.id){
-                    self.menuList![index] = self.game!
-                }
-            }
-            DispatchQueue.main.async {
-                let height: CGFloat = UIScreen.main.bounds.height
-                //SelectMenu().execute(player: self.playerSelf!, menuList: self.menuList!, homeList: self.homeList!, height: height)
-                SelectMenu().execute(player: self.playerSelf!, menuList: self.menuList!, homeList: self.homeList, height: height)
-            }
-            return
-        }
-        let request: [String: Any] = ["id": self.playerSelf!.id, "index": 0, "size": Const().PAGE_SIZE, "self": true]
+        
+        let request: [String: Any] = ["id": self.playerSelf!.id,
+                                      "index": 0, "size": Const().PAGE_SIZE,
+                                      "self": true]
         self.activityIndicator!.isHidden = false
         self.activityIndicator!.startAnimating()
         RequestActual().execute(requestPayload: request) { (result) in
             if(result != nil){
                 DispatchQueue.main.async {
                     let height: CGFloat = UIScreen.main.bounds.height
-                    SelectMenu().execute(player: self.playerSelf!, menuList: result!, homeList: self.homeList, height: height)
+                    SelectMenu().execute(player: self.playerSelf!,
+                                         height: height)
                 }
             }
             //error...

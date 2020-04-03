@@ -10,7 +10,6 @@ import UIKit
 
 class ProfileTable: UITableViewController {
     
-    //let options = ["update photo", "game skins", "information", "logout"]
     let options = ["update photo", "information", "logout"]
     
     override func viewWillAppear(_ animated: Bool) {

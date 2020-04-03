@@ -8,8 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4E766FB2BBF9176550BB45F9 /* Pods_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45C0F287A16E70CE8A23A2EB /* Pods_ios.framework */; };
-		B70149A923FC4FCC001A7D52 /* EntitySkin.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70149A823FC4FCC001A7D52 /* EntitySkin.swift */; };
-		B70149AE23FC5023001A7D52 /* Skin.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70149AD23FC5023001A7D52 /* Skin.swift */; };
+		832E99382437D33C003CD86D /* SelfPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832E99372437D33C003CD86D /* SelfPlayer.swift */; };
 		B7021F2423FDEE3400C9346A /* SelectHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7021F2323FDEE3400C9346A /* SelectHome.swift */; };
 		B7021F2723FDEE6100C9346A /* ConfigP.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7021F2623FDEE6100C9346A /* ConfigP.storyboard */; };
 		B7021F2A23FDEE8200C9346A /* ConfigL.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7021F2923FDEE8200C9346A /* ConfigL.storyboard */; };
@@ -23,7 +22,6 @@
 		B7021F3F23FE0AE600C9346A /* PlayL.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7021F3E23FE0AE600C9346A /* PlayL.storyboard */; };
 		B7021F4223FE0B0700C9346A /* PlayP.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7021F4123FE0B0700C9346A /* PlayP.storyboard */; };
 		B7021F4423FE0B1C00C9346A /* SelectPlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7021F4323FE0B1C00C9346A /* SelectPlay.swift */; };
-		B7021F4E23FE114100C9346A /* Skin.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7021F4D23FE114100C9346A /* Skin.xib */; };
 		B7021F5223FE11D300C9346A /* EditOtherL.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7021F5123FE11D300C9346A /* EditOtherL.storyboard */; };
 		B7021F5423FE11E400C9346A /* EditOtherP.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7021F5323FE11E400C9346A /* EditOtherP.storyboard */; };
 		B7021F5623FE122D00C9346A /* SelectEditOther.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7021F5523FE122D00C9346A /* SelectEditOther.swift */; };
@@ -221,9 +219,8 @@
 
 /* Begin PBXFileReference section */
 		45C0F287A16E70CE8A23A2EB /* Pods_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		832E99372437D33C003CD86D /* SelfPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfPlayer.swift; sourceTree = "<group>"; };
 		AD83F59EDBC27D005F033F41 /* Pods-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios.debug.xcconfig"; path = "Target Support Files/Pods-ios/Pods-ios.debug.xcconfig"; sourceTree = "<group>"; };
-		B70149A823FC4FCC001A7D52 /* EntitySkin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntitySkin.swift; sourceTree = "<group>"; };
-		B70149AD23FC5023001A7D52 /* Skin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Skin.swift; sourceTree = "<group>"; };
 		B7021F2323FDEE3400C9346A /* SelectHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectHome.swift; sourceTree = "<group>"; };
 		B7021F2623FDEE6100C9346A /* ConfigP.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ConfigP.storyboard; sourceTree = "<group>"; };
 		B7021F2923FDEE8200C9346A /* ConfigL.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ConfigL.storyboard; sourceTree = "<group>"; };
@@ -237,7 +234,6 @@
 		B7021F3E23FE0AE600C9346A /* PlayL.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PlayL.storyboard; sourceTree = "<group>"; };
 		B7021F4123FE0B0700C9346A /* PlayP.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PlayP.storyboard; sourceTree = "<group>"; };
 		B7021F4323FE0B1C00C9346A /* SelectPlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPlay.swift; sourceTree = "<group>"; };
-		B7021F4D23FE114100C9346A /* Skin.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Skin.xib; sourceTree = "<group>"; };
 		B7021F5123FE11D300C9346A /* EditOtherL.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditOtherL.storyboard; sourceTree = "<group>"; };
 		B7021F5323FE11E400C9346A /* EditOtherP.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditOtherP.storyboard; sourceTree = "<group>"; };
 		B7021F5523FE122D00C9346A /* SelectEditOther.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectEditOther.swift; sourceTree = "<group>"; };
@@ -467,24 +463,6 @@
 				45C0F287A16E70CE8A23A2EB /* Pods_ios.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		B70149A723FC4FB5001A7D52 /* skin */ = {
-			isa = PBXGroup;
-			children = (
-				B70149AA23FC4FDF001A7D52 /* view */,
-				B70149A823FC4FCC001A7D52 /* EntitySkin.swift */,
-			);
-			path = skin;
-			sourceTree = "<group>";
-		};
-		B70149AA23FC4FDF001A7D52 /* view */ = {
-			isa = PBXGroup;
-			children = (
-				B70149AD23FC5023001A7D52 /* Skin.swift */,
-				B7021F4D23FE114100C9346A /* Skin.xib */,
-			);
-			path = view;
 			sourceTree = "<group>";
 		};
 		B7021F2523FDEE4900C9346A /* primary */ = {
@@ -1498,7 +1476,6 @@
 		B7EF701723EA27E300BAF2E2 /* entity */ = {
 			isa = PBXGroup;
 			children = (
-				B70149A723FC4FB5001A7D52 /* skin */,
 				B7EF701F23EA28D200BAF2E2 /* game */,
 				B7EF701C23EA28A900BAF2E2 /* player */,
 			);
@@ -1511,6 +1488,7 @@
 				B7BE11E623EAC3E900ADA499 /* config */,
 				B7EF701D23EA28BA00BAF2E2 /* EntityPlayer.swift */,
 				B7BE115C23EA4FBE00ADA499 /* ParsePlayer.swift */,
+				832E99372437D33C003CD86D /* SelfPlayer.swift */,
 			);
 			path = player;
 			sourceTree = "<group>";
@@ -1717,7 +1695,6 @@
 				B7C675FE23FF1E6E007EC71E /* ChallengeL.storyboard in Resources */,
 				B7A6B8A7240D9A8E00840156 /* MenuL.storyboard in Resources */,
 				B7021F9823FE5D8F00C9346A /* OtherP.storyboard in Resources */,
-				B7021F4E23FE114100C9346A /* Skin.xib in Resources */,
 				B7C6760623FF22E9007EC71E /* AckP.storyboard in Resources */,
 				B768470723F4FAD400F55D4A /* Invalid.storyboard in Resources */,
 				B7BE121623EAD7E700ADA499 /* Init.storyboard in Resources */,
@@ -1857,6 +1834,7 @@
 				B771365423F222AF007F0962 /* UpdateMate.swift in Sources */,
 				B7021F3423FDFD0900C9346A /* SelectFairies.swift in Sources */,
 				B7BE123A23EAFBF500ADA499 /* Ack.swift in Sources */,
+				832E99382437D33C003CD86D /* SelfPlayer.swift in Sources */,
 				B74136C723DE34A0001B3D60 /* RequestLogin.swift in Sources */,
 				B7AF787323E0B9DA00BAD8EC /* RequestPage.swift in Sources */,
 				B7F3A13923FD9EE8007B5663 /* CompInvalid.swift in Sources */,
@@ -1941,9 +1919,7 @@
 				B7A6B8A9240D9AE200840156 /* UpdateRescind.swift in Sources */,
 				B71DD35723FC85B1008E8818 /* TransPro.swift in Sources */,
 				B7F541C623D51ADD00E89074 /* HomeMenuTable.swift in Sources */,
-				B70149AE23FC5023001A7D52 /* Skin.swift in Sources */,
 				B7BE125B23EB040600ADA499 /* UpdatePhoto.swift in Sources */,
-				B70149A923FC4FCC001A7D52 /* EntitySkin.swift in Sources */,
 				B7F3A13723FD9E66007B5663 /* TransInvalid.swift in Sources */,
 				B768470F23F4FEA400F55D4A /* TransRecov.swift in Sources */,
 				B7021F4423FE0B1C00C9346A /* SelectPlay.swift in Sources */,

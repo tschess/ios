@@ -19,7 +19,6 @@ class Start: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var buttonWidthCreate: NSLayoutConstraint!
     
     @IBAction func loginButtonClick(_ sender: UIButton) {
-        //print("soalala")
         self.dismissKeyboard()
         self.usernameTextString = usernameTextField.text!
         self.passwordTextString = passwordTextField.text!

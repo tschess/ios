@@ -32,9 +32,6 @@ class Home: UIViewController, UITabBarDelegate {
         self.player = player
     }
     
-    var menuList: [EntityGame]?
-    var homeList: [EntityPlayer]?
-    
     public func renderHeader() {
         self.avatarImageView.image = self.player!.getImageAvatar()
         self.usernameLabel.text = self.player!.username
@@ -58,13 +55,6 @@ class Home: UIViewController, UITabBarDelegate {
             dispLabel: self.dispLabel,
             dispImageView: self.dispImageView,
             activityIndicator: self.activityIndicator)
-        
-        if(self.homeList == nil){
-            self.homeMenuTable!.fetchGameList()
-        } else {
-            self.homeMenuTable!.leaderboardList = self.homeList!
-            self.homeMenuTable!.tableView.reloadData()
-        }
         
         NotificationCenter.default.addObserver(
             self,
@@ -144,29 +134,10 @@ class Home: UIViewController, UITabBarDelegate {
                 }
             }
         case 3:
-            let request: [String: Any] = ["id": self.player!.id, "index": 0, "size": Const().PAGE_SIZE, "self": true]
             self.notificationTimerStop()
-            self.setIndicator(on: true)
-            
-            //menuList
-            if(self.menuList != nil){
-                DispatchQueue.main.async {
-                    let height: CGFloat = UIScreen.main.bounds.height
-                    //SelectMenu().execute(player: self.playerSelf!, menuList: self.menuList!, homeList: self.homeList!, height: height)
-                    SelectMenu().execute(player: self.player!, menuList: self.menuList!, homeList: self.homeMenuTable!.leaderboardList, height: height)
-                }
-                return
-            }
-            RequestActual().execute(requestPayload: request) { (result) in
-                self.setIndicator(on: false)
-                if(result == nil){
-                    //error...
-                }
-                DispatchQueue.main.async {
-                    let height: CGFloat = UIScreen.main.bounds.height
-                    //SelectMenu().execute(player: self.player!, list: result!, height: height)
-                    SelectMenu().execute(player: self.player!, menuList: result!, homeList: self.homeMenuTable!.leaderboardList, height: height)
-                }
+            DispatchQueue.main.async {
+                let height: CGFloat = UIScreen.main.bounds.height
+                SelectMenu().execute(player: self.player!, height: height)
             }
         case 4:
             self.notificationTimerStop()

@@ -188,7 +188,7 @@ class HomeMenuTable: UITableViewController {
                 }
                 //game
                 DispatchQueue.main.async() {
-                  
+                    //let skin: String = SelectSnapshot().getSkinGame(username: playerOther.username, game: game!) //problem...
                     SelectSnapshot().snapshot(playerSelf: self.player!, game: game!, presentor: self)
                 }
             }
