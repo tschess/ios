@@ -361,7 +361,7 @@ class Challenge: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate
                         self.activityIndicator!.isHidden = true
                         self.activityIndicator!.stopAnimating()
                         let height: CGFloat = UIScreen.main.bounds.height
-                        SelectMenu().execute(player: self.playerSelf!, menuList: result!, height: height)
+                        SelectMenu().execute(player: self.playerSelf!, height: height)
                     }
                 }
                 //error...

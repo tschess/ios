@@ -17,6 +17,7 @@ class SelectChallenge {
             viewController.setPlayerSelf(playerSelf: playerSelf)
             viewController.setPlayerOther(playerOther: playerOther)
             viewController.setSelection(selection: selection)
+            viewController.BACK = BACK
             UIApplication.shared.keyWindow?.rootViewController = viewController
             return
         }
@@ -25,6 +26,7 @@ class SelectChallenge {
         viewController.setPlayerSelf(playerSelf: playerSelf)
         viewController.setPlayerOther(playerOther: playerOther)
         viewController.setSelection(selection: selection)
+        viewController.BACK = BACK
         UIApplication.shared.keyWindow?.rootViewController = viewController
     }
 }

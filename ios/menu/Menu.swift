@@ -25,7 +25,7 @@ class Menu: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate {
     @IBOutlet weak var tabBarMenu: UITabBar!
     @IBOutlet weak var rankDirectionImage: UIImageView!
     
-    var actualTable: MenuTable?
+    var menuTable: MenuTable?
     
     var playerSelf: EntityPlayer?
     
@@ -36,11 +36,9 @@ class Menu: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         tabBarMenu.delegate = self
-        actualTable = children.first as? MenuTable
-        actualTable!.setPlayerSelf(playerSelf: self.playerSelf!)
-        actualTable!.setIndicator(indicator: self.activityIndicator!)
-        actualTable!.setContainerView(container: self.containerView!)
-        actualTable!.fetchMenuTableList()
+        self.menuTable = children.first as? MenuTable
+        self.menuTable!.setSelf(menu: self)
+        self.menuTable!.fetchMenuTableList()
     }
     
     public func renderHeader() {
@@ -61,13 +59,8 @@ class Menu: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate {
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         switch item.tag {
-        case 0:
-            self.backButtonClick("~")
         default:
-            DispatchQueue.main.async {
-                let height: CGFloat = UIScreen.main.bounds.height
-                SelectConfig().execute(player: self.playerSelf!, height: height)
-            }
+            self.backButtonClick("~")
         }
     }
     
@@ -75,6 +68,45 @@ class Menu: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate {
         DispatchQueue.main.async {
             let height: CGFloat = UIScreen.main.bounds.height
             SelectHome().execute(player: self.playerSelf!, height: height)
+        }
+    }
+    
+    let enter: Enter = Enter.instanceFromNib()
+//    
+//    override func viewDidAppear(_ animated: Bool) {
+//        if(self.menuTable!.gameMenuTableList.count > 0){
+//            return
+//        }
+//        
+//    }
+    
+    @objc func quick(gesture: UIGestureRecognizer) {
+        self.setIndicator(on: true)
+        RequestQuick().success(id: self.playerSelf!.id) { (opponent) in
+            self.setIndicator(on: false)
+            DispatchQueue.main.async() {
+                let height: CGFloat = UIScreen.main.bounds.height
+                SelectPlay().execute(selection: Int.random(in: 0...3), playerSelf: self.playerSelf!, playerOther: opponent!, height: height)
+            }
+        }
+    }
+    
+    func setIndicator(on: Bool) {
+        if(on) {
+            DispatchQueue.main.async() {
+                if(self.activityIndicator!.isHidden){
+                   self.activityIndicator!.isHidden = false
+                }
+                if(!self.activityIndicator!.isAnimating){
+                   self.activityIndicator!.startAnimating()
+                }
+            }
+            return
+        }
+        DispatchQueue.main.async() {
+            self.activityIndicator!.isHidden = true
+            self.activityIndicator!.stopAnimating()
+            self.menuTable!.tableView.reloadData()
         }
     }
 }

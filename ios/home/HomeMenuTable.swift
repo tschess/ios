@@ -70,7 +70,7 @@ class HomeMenuTable: UITableViewController {
     }
     
     override func viewDidLoad() {
-        //self.fetchGameList()
+        self.fetchGameList()
         
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
@@ -80,7 +80,8 @@ class HomeMenuTable: UITableViewController {
     @objc func refresh(refreshControl: UIRefreshControl) {
         
         self.requestPageIndex = 0
-        let requestPayload = ["id_player": self.player!.id, "size": REQUEST_PAGE_SIZE] as [String: Any]
+        let requestPayload: [String: Any] = ["id_player": self.player!.id,
+                              "size": REQUEST_PAGE_SIZE]
         RequestRefresh().execute(requestPayload: requestPayload) { (response) in
             if(response == nil){
                 return
@@ -149,7 +150,8 @@ class HomeMenuTable: UITableViewController {
             self.activityIndicator!.isHidden = false
             self.activityIndicator!.startAnimating()
         }
-        let requestPayload = ["index": self.requestPageIndex, "size": REQUEST_PAGE_SIZE] as [String: Int]
+        let requestPayload = ["index": self.requestPageIndex,
+                              "size": REQUEST_PAGE_SIZE] as [String: Int]
         RequestPage().execute(requestPayload: requestPayload) { (result) in
             DispatchQueue.main.async() {
                 self.activityIndicator!.stopAnimating()
