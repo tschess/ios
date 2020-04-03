@@ -144,42 +144,4 @@ class OtherMenuTable: UITableViewController {
         }
     }
     
-    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let modifyAction = UIContextualAction(style: .normal, title:  nil, handler: { (ac: UIContextualAction, view: UIView, success:(Bool) -> Void) in
-            
-            let gameModel = self.gameMenuTableList[indexPath.row]
-            DispatchQueue.main.async {
-                let screenSize: CGRect = UIScreen.main.bounds
-                let height = screenSize.height
-                SelectChallenge().execute(selection: Int.random(in: 0...3), playerSelf: self.player!, playerOther: gameModel.getPlayerOther(username: self.player!.username), BACK: "HOME", height: height)
-            }
-            success(true)
-        })
-        modifyAction.image = UIImage(named: "challenge")!
-        modifyAction.backgroundColor = .purple
-        
-        
-        let config = UISwipeActionsConfiguration(actions: [modifyAction])
-        config.performsFirstActionWithFullSwipe = false
-       
-        
-        return config
-    }
-    
-    private func renderShrug(){  // this can exist in practice...
-        DispatchQueue.main.async() {
-            let frameSize: CGPoint = CGPoint(x: UIScreen.main.bounds.size.width*0.5, y: UIScreen.main.bounds.size.height*0.5)
-            let label = UILabel(frame: CGRect(x: UIScreen.main.bounds.size.width*0.5, y: UIScreen.main.bounds.size.height*0.5, width: UIScreen.main.bounds.width, height: 40))
-            label.textColor = UIColor.white
-            label.center = frameSize
-            label.textAlignment = .center
-            label.font = UIFont.systemFont(ofSize: 30, weight: UIFont.Weight.light)
-            label.translatesAutoresizingMaskIntoConstraints = false
-            let horizontalConstraint = NSLayoutConstraint(item: label, attribute: NSLayoutConstraint.Attribute.centerX, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.view, attribute: NSLayoutConstraint.Attribute.centerX, multiplier: 1, constant: 0)
-            let verticalConstraint = NSLayoutConstraint(item: label, attribute: NSLayoutConstraint.Attribute.centerY, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.view, attribute: NSLayoutConstraint.Attribute.centerY, multiplier: 1, constant: 0)
-            label.text = "¯\\_( ͡° ͜ʖ ͡°)_/¯"
-            self.view.addSubview(label)
-            self.view.addConstraints([horizontalConstraint, verticalConstraint])
-        }
-    }
 }
