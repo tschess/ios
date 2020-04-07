@@ -44,7 +44,11 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
         //print("0 - self.pageCount: \(self.pageCount)")
         
         self.menu!.setIndicator(on: true)
-        let request: [String: Any] = ["id": self.menu!.playerSelf!.id, "index": self.pageCount, "size": Const().PAGE_SIZE, "self": true]
+        let request: [String: Any] = [
+            "id": self.menu!.playerSelf!.id,
+            "index": self.pageCount,
+            "size": Const().PAGE_SIZE,
+            "self": true]
         RequestActual().execute(requestPayload: request) { (result) in
             self.menu!.setIndicator(on: false)
             if(result == nil){
