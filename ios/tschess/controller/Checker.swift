@@ -159,7 +159,13 @@ class Checker {
                         if(compatriotElement.validate(present: coordinateCompatriot, proposed: [i,j], state: state1)) {
                             let tschessElement = state1[i][j]
                             state1[i][j] = compatriotElement
-                            state1[coordinateCompatriot[0]][coordinateCompatriot[1]] = tschessElement
+                            
+                            //TODO: NOT NECESSARILY RIGHT!!!
+                            
+                            state1[coordinateCompatriot[0]][coordinateCompatriot[1]] = tschessElement //!!!!!!!!
+                            //!!!!
+                            
+                            
                             //gamestate.setTschessElementMatrix(tschessElementMatrix: state)
                             
                             if(!attackerElement.validate(present: coordinateAttacker, proposed: king, state: state1)) {
