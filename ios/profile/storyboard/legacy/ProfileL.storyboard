@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -46,8 +46,8 @@
                                     <constraint firstAttribute="height" constant="45" id="2HL-WR-1Yj"/>
                                 </constraints>
                                 <items>
-                                    <tabBarItem tag="2" title="" image="back.grey" selectedImage="back.white" id="VMB-Hy-TLu">
-                                        <inset key="imageInsets" minX="1" minY="5" maxX="1" maxY="-5"/>
+                                    <tabBarItem tag="2" title="HOME" image="back.grey" selectedImage="back.white" id="VMB-Hy-TLu">
+                                        <inset key="imageInsets" minX="5" minY="5" maxX="5" maxY="5"/>
                                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tabBarItem>
                                 </items>
@@ -295,8 +295,8 @@
     <resources>
         <image name="arrow.down" catalog="system" width="60" height="64"/>
         <image name="avatar_default" width="320" height="320"/>
-        <image name="back.grey" width="36" height="27"/>
-        <image name="back.white" width="36" height="27"/>
-        <image name="photo_white" width="170" height="132"/>
+        <image name="back.grey" width="39" height="33"/>
+        <image name="back.white" width="39" height="33"/>
+        <image name="photo_white" width="256" height="256"/>
     </resources>
 </document>

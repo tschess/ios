@@ -304,7 +304,7 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
         }
         let image: UIImage = UIImage(named: "outbound")!
         cell.actionImageView.image = image
-        cell.labelAction.text = "response pending"
+        cell.labelAction.text = "outbound"
         return cell
     }
     
