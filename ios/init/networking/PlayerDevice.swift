@@ -10,7 +10,7 @@ import UIKit
 
 class PlayerDevice {
     
-    func execute(device: String, completion: @escaping (EntityPlayer?) -> Void) {
+    func execute(device: String, completion: @escaping ([String: Any]) -> Void) {
         let url = URL(string: "http://\(ServerAddress().IP):8080/player/device/\(device)")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
@@ -18,27 +18,22 @@ class PlayerDevice {
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         URLSession.shared.dataTask(with: request, completionHandler: { data, response, error in
             guard error == nil else {
-                completion(nil)
+                completion(["fail": "0"])
                 return
             }
             guard let data = data else {
-                completion(nil)
+                completion(["fail": "1"])
                 return
             }
             do {
                 guard let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any] else {
-                    completion(nil)
+                    completion(["fail": "2"])
                     return
                 }
-                if(json["info"] != nil){
-                    completion(nil)
-                    return
-                }
-                let player: EntityPlayer = ParsePlayer().execute(json: json)
-                completion(player)
+                completion(json)
                 
-            } catch let error {
-                completion(nil)
+            } catch _ {
+                completion(["fail": "3"])
             }
         }).resume()
     }

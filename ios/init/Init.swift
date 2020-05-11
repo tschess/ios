@@ -18,14 +18,16 @@ class Init: UIViewController {
             return
         }
         PlayerDevice().execute(device: device!) { (result) in
-            if(result == nil) {
+            if(result["fail"] != nil) {
                 self.start()
                 return
             }
             //sleep(1)
             DispatchQueue.main.async {
+                let player: EntityPlayer = ParsePlayer().execute(json: result)
+                
                 let height: CGFloat = UIScreen.main.bounds.height
-                SelectHome().execute(player: result!, height: height)
+                SelectHome().execute(player: player, height: height)
             }
         }
     }
