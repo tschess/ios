@@ -4,3 +4,5 @@ ios.xcodeproj/xcuserdata/*
 ios.xcworkspace/xcuserdata/*
 #sensitive
 ios/util/ServerAddress.swift
+.DS_Store
+.gitignore
