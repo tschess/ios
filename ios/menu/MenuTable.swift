@@ -298,7 +298,7 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
             if(inbound){
                 let image: UIImage = UIImage(named: "inbound")!
                 cell.actionImageView.image = image
-                cell.labelAction.text = "new challenge!"
+                cell.labelAction.text = "new challenge"
                 return cell
             }
         }
