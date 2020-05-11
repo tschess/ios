@@ -286,21 +286,25 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
             if(inbound){
                 let image: UIImage = UIImage(named: "turn.on")!
                 cell.actionImageView.image = image
+                cell.labelAction.text = "action!"
                 return cell
             }
             let image: UIImage = UIImage(named: "turn.off")!
             cell.actionImageView.image = image
+            cell.labelAction.text = "update pending..."
             return cell
         }
         if(game.status == "PROPOSED"){
             if(inbound){
                 let image: UIImage = UIImage(named: "inbound")!
                 cell.actionImageView.image = image
+                cell.labelAction.text = "new challenge!"
                 return cell
             }
         }
         let image: UIImage = UIImage(named: "outbound")!
         cell.actionImageView.image = image
+        cell.labelAction.text = "response pending..."
         return cell
     }
     

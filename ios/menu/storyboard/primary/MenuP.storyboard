@@ -396,6 +396,7 @@
                                     <outlet property="dispAdjacentLabel" destination="Q7e-8c-jGi" id="Wpc-fA-ylP"/>
                                     <outlet property="dispImageView" destination="8xN-B8-Vvb" id="J1a-8e-bmj"/>
                                     <outlet property="dispValueLabel" destination="Ljm-rN-kb0" id="gfe-SW-lRl"/>
+                                    <outlet property="labelAction" destination="Vg9-pg-bpI" id="uU0-bs-kFy"/>
                                     <outlet property="oddsIndicatorLabel" destination="3o9-qw-Ohp" id="zeZ-ta-RrJ"/>
                                     <outlet property="oddsValueLabel" destination="NXB-eg-spf" id="eTM-nu-y5T"/>
                                     <outlet property="soLaLa" destination="MGs-1w-KdX" id="viY-81-Whl"/>
