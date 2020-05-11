@@ -47,8 +47,8 @@ class EditOther: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate
     }
     
     @IBOutlet weak var dropViewTop0: UIView!
-    @IBOutlet weak var dropViewTop1: UIView!
-    @IBOutlet weak var dropViewBottom0: UIView!
+    //@IBOutlet weak var dropViewTop1: UIView!
+    //@IBOutlet weak var dropViewBottom0: UIView!
     //@IBOutlet weak var splitView2: UIView!
     
     //MARK: Layout: Core
@@ -96,10 +96,10 @@ class EditOther: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate
         "red_poison"]
     
     //MARK: Layout: Content
-    @IBOutlet weak var notificationLabel: UILabel!
-    @IBOutlet weak var splitViewHeight0: NSLayoutConstraint!
-    @IBOutlet weak var splitViewHeight1: NSLayoutConstraint!
-    @IBOutlet weak var splitViewHeight2: NSLayoutConstraint!
+    //@IBOutlet weak var notificationLabel: UILabel!
+    //@IBOutlet weak var splitViewHeight0: NSLayoutConstraint!
+    //@IBOutlet weak var splitViewHeight1: NSLayoutConstraint!
+    //@IBOutlet weak var splitViewHeight2: NSLayoutConstraint!
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var totalPointLabel: UILabel!
     var totalPointValue: Int?
@@ -208,7 +208,7 @@ class EditOther: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate
     }
     
     func collectionView(_ collectionView: UICollectionView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
-        self.notificationLabel.isHidden = true
+        //self.notificationLabel.isHidden = true
         self.configCache = self.configActiv!
         if collectionView == self.pieceCollectionView {
             let tschessElement = Edit().generateTschessElement(name: self.ELEMENT_LIST[indexPath.row])
@@ -266,7 +266,7 @@ class EditOther: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate
     internal func collectionView(_: UICollectionView, dragSessionDidEnd: UIDragSession){
         self.pieceCollectionView.reloadData()
         self.setTotalPointValue()
-        self.notificationLabel.isHidden = false
+        //self.notificationLabel.isHidden = false
     }
     
     func collectionView(_ collectionView: UICollectionView,  dropSessionDidEnd session: UIDropSession) {
@@ -351,7 +351,7 @@ class EditOther: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate
         self.pieceCollectionView.addInteraction(UIDropInteraction(delegate: self))
       
         self.dropViewTop0.addInteraction(UIDropInteraction(delegate: self))
-        self.dropViewTop1.addInteraction(UIDropInteraction(delegate: self))
+        //self.dropViewTop1.addInteraction(UIDropInteraction(delegate: self))
       
         self.headerView.addInteraction(UIDropInteraction(delegate: self))
         
@@ -403,7 +403,7 @@ class EditOther: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate
         self.renderHeaderOther()
         
         //self.notificationLabel.isHidden = true
-        self.notificationLabel.text = "click - hold to engage - drag"
+        //self.notificationLabel.text = "click - hold to engage - drag"
         self.setTotalPointValue()
     }
     

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -277,32 +277,8 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="beI-VC-LOn" userLabel="SplitView1">
                                         <rect key="frame" x="0.0" y="146" width="414" height="444"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R1c-Gi-vvO" userLabel="DropViewTop1">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="62"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="notification" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GRP-if-aEY">
-                                                        <rect key="frame" x="0.0" y="16" width="414" height="30"/>
-                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="30" id="G9n-nM-7WT"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="22"/>
-                                                        <color key="textColor" red="0.86274509799999999" green="0.015686274510000001" blue="0.015686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                </subviews>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="bottom" secondItem="GRP-if-aEY" secondAttribute="bottom" constant="16" id="6D0-Hp-UX7"/>
-                                                    <constraint firstAttribute="trailing" secondItem="GRP-if-aEY" secondAttribute="trailing" id="GQ5-wa-1rK"/>
-                                                    <constraint firstItem="GRP-if-aEY" firstAttribute="top" secondItem="R1c-Gi-vvO" secondAttribute="top" constant="16" id="bhW-3j-6vB"/>
-                                                    <constraint firstItem="GRP-if-aEY" firstAttribute="leading" secondItem="R1c-Gi-vvO" secondAttribute="leading" id="u03-o4-Vye"/>
-                                                </constraints>
-                                            </view>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="nQP-5X-zQQ">
-                                                <rect key="frame" x="0.0" y="62" width="414" height="150"/>
+                                                <rect key="frame" x="0.0" y="147" width="414" height="150"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
@@ -375,11 +351,8 @@
                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="nQP-5X-zQQ" secondAttribute="trailing" id="2KT-Me-WHL"/>
-                                            <constraint firstItem="nQP-5X-zQQ" firstAttribute="top" secondItem="R1c-Gi-vvO" secondAttribute="bottom" id="61C-qD-EoI"/>
-                                            <constraint firstItem="R1c-Gi-vvO" firstAttribute="top" secondItem="beI-VC-LOn" secondAttribute="top" id="UfX-i4-g6t"/>
+                                            <constraint firstItem="nQP-5X-zQQ" firstAttribute="centerY" secondItem="beI-VC-LOn" secondAttribute="centerY" id="CyE-nB-Zej"/>
                                             <constraint firstItem="nQP-5X-zQQ" firstAttribute="leading" secondItem="beI-VC-LOn" secondAttribute="leading" id="Um4-Rv-9hq"/>
-                                            <constraint firstAttribute="trailing" secondItem="R1c-Gi-vvO" secondAttribute="trailing" id="lGU-tw-QuF"/>
-                                            <constraint firstItem="R1c-Gi-vvO" firstAttribute="leading" secondItem="beI-VC-LOn" secondAttribute="leading" id="wwS-ZN-TJk"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -401,10 +374,16 @@
                                     <constraint firstAttribute="height" constant="50" id="CtS-Ad-lXP"/>
                                 </constraints>
                                 <items>
-                                    <tabBarItem title="" image="cancel_grey" selectedImage="cancel_white" id="cNg-v3-E35">
+                                    <tabBarItem title="CANCEL" image="cancel_grey" selectedImage="cancel_white" id="cNg-v3-E35">
+                                        <inset key="imageInsets" minX="5" minY="5" maxX="5" maxY="5"/>
                                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tabBarItem>
-                                    <tabBarItem tag="1" title="" image="save_grey" selectedImage="save_white" id="xqj-Cj-U3q">
+                                    <tabBarItem tag="2" title="HELP" image="q_g" selectedImage="q_w" id="Xpt-F4-hWh">
+                                        <inset key="imageInsets" minX="5" minY="5" maxX="5" maxY="5"/>
+                                        <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </tabBarItem>
+                                    <tabBarItem tag="1" title="SAVE" image="save_grey" selectedImage="save_white" id="xqj-Cj-U3q">
+                                        <inset key="imageInsets" minX="5" minY="5" maxX="5" maxY="5"/>
                                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tabBarItem>
                                 </items>
@@ -448,10 +427,8 @@
                         <outlet property="displacementImage" destination="hpe-Rk-PpX" id="aVB-k5-slV"/>
                         <outlet property="displacementLabel" destination="oLQ-y7-8uA" id="q94-nQ-EY6"/>
                         <outlet property="dropViewTop0" destination="1Rf-ba-ghr" id="S4P-ZZ-Dsj"/>
-                        <outlet property="dropViewTop1" destination="R1c-Gi-vvO" id="xAA-Wt-rBG"/>
                         <outlet property="eloLabel" destination="bYp-mq-oaW" id="2iH-rn-Wsz"/>
                         <outlet property="headerView" destination="cqz-eh-zNQ" id="Pun-9r-7pi"/>
-                        <outlet property="notificationLabel" destination="GRP-if-aEY" id="sHO-vv-XsK"/>
                         <outlet property="rankLabel" destination="B8i-Jr-YEY" id="OuQ-lX-Qg2"/>
                         <outlet property="tabBarMenu" destination="lR1-2A-YPc" id="CDf-K6-4Hh"/>
                         <outlet property="titleLabel" destination="rh3-GT-zds" id="CUA-nm-eYa"/>
@@ -470,6 +447,8 @@
         <image name="avatar_default" width="320" height="320"/>
         <image name="cancel_grey" width="39" height="39"/>
         <image name="cancel_white" width="39" height="39"/>
+        <image name="q_g" width="39" height="39"/>
+        <image name="q_w" width="188" height="188"/>
         <image name="save_grey" width="39" height="39"/>
         <image name="save_white" width="39" height="39"/>
     </resources>
