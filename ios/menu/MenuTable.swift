@@ -290,7 +290,7 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
             }
             let image: UIImage = UIImage(named: "turn.off")!
             cell.actionImageView.image = image
-            cell.labelAction.text = "update pending"
+            cell.labelAction.text = "pending"
             return cell
         }
         if(game.status == "PROPOSED"){
