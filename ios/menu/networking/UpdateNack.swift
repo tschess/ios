@@ -10,7 +10,7 @@ import Foundation
 
 class UpdateNack {
     
-    func execute(requestPayload: [String: Any], completion: @escaping ((EntityPlayer?) -> Void)) {
+    func execute(requestPayload: [String: Any], completion: @escaping (([String: Any]) -> Void)) {
         
         
         
@@ -23,7 +23,7 @@ class UpdateNack {
         do {
             request.httpBody = try JSONSerialization.data(withJSONObject: requestPayload, options: .prettyPrinted)
         } catch _ {
-            completion(nil)
+            completion(["fail": "0"])
         }
         
         
@@ -31,32 +31,32 @@ class UpdateNack {
             
             guard error == nil else {
                 
-                completion(nil)
+                completion(["fail": "1"])
                 return
             }
             guard let data = data else {
                 
-                completion(nil)
+                completion(["fail": "2"])
                 return
             }
             if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {
                 
-                completion(nil)
+                completion(["fail": "3"])
                 return
             }
             do {
                 guard let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any] else {
                     
-                    completion(nil)
+                    completion(["fail": "4"])
                     return
                 }
                 
-                let player: EntityPlayer = ParsePlayer().execute(json: json)
-                completion(player)
+                
+                completion(json)
                 
             } catch let error {
                 print(error.localizedDescription)
-                completion(nil)
+                completion(["fail": "5"])
             }
         }).resume()
     }

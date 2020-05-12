@@ -163,13 +163,10 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
     
     private func swipProposedInbound(orientation: SwipeActionsOrientation, game: EntityGame) -> [SwipeAction]? {
         if(orientation == .left) {
-            //self.tableView.backgroundColor = UIColor.white
             let nAction = SwipeAction(style: .default, title: nil) { action, indexPath in
                 self.menu!.setIndicator(on: true)
-                let requestPayload: [String: Any] = ["id_game": game.id, "id_player": self.menu!.playerSelf!.id]
-                UpdateNack().execute(requestPayload: requestPayload) { (player) in
-                    //self.menu!.setSelf(player: player!)
-                    self.menu!.setPlayerSelf(playerSelf: player!)
+                let requestPayload: [String: Any] = ["id_game": game.id, "id_self": self.menu!.playerSelf!.id]
+                UpdateNack().execute(requestPayload: requestPayload) { (result) in
                     self.gameMenuTableList.remove(at: indexPath.row)
                     self.menu!.setIndicator(on: false)
                 }
@@ -179,7 +176,6 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
             nAction.title = "reject"
             return [nAction]
         }
-        //self.tableView.backgroundColor = UIColor.white
         let ackAction = SwipeAction(style: .default, title: nil) { action, indexPath in
             let game: EntityGame = self.gameMenuTableList[indexPath.row]
             let username: String = self.menu!.playerSelf!.username
@@ -198,11 +194,10 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
     
     private func swipProposedOutbound(orientation: SwipeActionsOrientation, game: EntityGame) -> [SwipeAction]? {
         if(orientation == .left) {
-            //self.tableView.backgroundColor = UIColor.white
             let rescind = SwipeAction(style: .default, title: nil) { action, indexPath in
                 self.menu!.setIndicator(on: true)
                 let game = self.gameMenuTableList[indexPath.row]
-                let requestPayload: [String: Any] = ["id_game": game.id, "id_player": self.menu!.playerSelf!.id]
+                let requestPayload: [String: Any] = ["id_game": game.id, "id_self": self.menu!.playerSelf!.id]
                 UpdateRescind().execute(requestPayload: requestPayload) { (result) in
                     self.gameMenuTableList.remove(at: indexPath.row)
                     self.menu!.setIndicator(on: false)
