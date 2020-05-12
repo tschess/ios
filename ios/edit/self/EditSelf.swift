@@ -39,7 +39,7 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
         self.playerSelf = playerSelf
     }
     
-    @IBOutlet weak var dropViewTop0: UIView!
+    //@IBOutlet weak var dropViewTop0: UIView!
     //@IBOutlet weak var dropViewTop1: UIView!
     //@IBOutlet weak var dropViewBottom0: UIView!
     
@@ -106,7 +106,7 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
     
     //MARK: Input
     @IBOutlet weak var tschessElementCollectionView: UICollectionView!
-    //@IBOutlet weak var tschessElementCollectionViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var tschessElementCollectionViewHeight: NSLayoutConstraint!
     @IBOutlet weak var configCollectionViewHeight: NSLayoutConstraint!
     @IBOutlet weak var configCollectionView: BoardView!
     
