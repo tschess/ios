@@ -358,17 +358,31 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     }
     
     private func getOrnamentCell(highlight: Bool, cell: SquareCell) -> SquareCell{
+        var presnt: Bool = false
         if(highlight){
-            //let username: String = self.playerSelf!.username
-            //let white: Bool = self.game!.getTurn()
-                //.getWhite(username: username)
             if(self.game!.turn == "WHITE"){
+                cell.subviews.forEach({
+                    if($0.tag == 666){
+                        presnt = true
+                    }
+                })
+                if(presnt){
+                    return cell
+                }
                 let ornament = UIImageView(image: UIImage(named: "pinkmamba_w")!)
                 ornament.bounds = CGRect(origin: cell.bounds.origin, size: cell.bounds.size)
                 ornament.center = CGPoint(x: cell.bounds.size.width/2, y: cell.bounds.size.height/2)
                 ornament.tag = 666
                 ornament.alpha = 0.3
                 cell.insertSubview(ornament, at: 0)
+                return cell
+            }
+            cell.subviews.forEach({
+                if($0.tag == 666){
+                    presnt = true
+                }
+            })
+            if(presnt){
                 return cell
             }
             let ornament = UIImageView(image: UIImage(named: "pinkmamba_b")!)

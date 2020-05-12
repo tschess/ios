@@ -31,6 +31,7 @@ class SelectSnapshot {
                 viewController.setPlayer(player: playerSelf)
                 presentor.present(viewController, animated: false, completion: nil)
                
+                //UIApplication.shared.keyWindow?.rootViewController = viewController
             }
         
         

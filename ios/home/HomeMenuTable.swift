@@ -11,13 +11,12 @@ import SwipeCellKit
 
 class HomeMenuTable: UITableViewController, SwipeTableViewCellDelegate {
     
-    
-    
-    
-    
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
         if(orientation == .left) {
             let modifyAction = SwipeAction(style: .default, title: nil) { action, indexPath in
+                
+                let cell = tableView.cellForRow(at: indexPath) as! SwipeTableViewCell
+                cell.hideSwipe(animated: false, completion: nil)
                 
                 self.activityIndicator!.isHidden = false
                 self.activityIndicator!.startAnimating()

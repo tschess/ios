@@ -164,6 +164,10 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
     private func swipProposedInbound(orientation: SwipeActionsOrientation, game: EntityGame) -> [SwipeAction]? {
         if(orientation == .left) {
             let nAction = SwipeAction(style: .default, title: nil) { action, indexPath in
+                
+                let cell = self.tableView.cellForRow(at: indexPath) as! SwipeTableViewCell
+                cell.hideSwipe(animated: false, completion: nil)
+                
                 self.menu!.setIndicator(on: true)
                 let requestPayload: [String: Any] = ["id_game": game.id, "id_self": self.menu!.playerSelf!.id]
                 UpdateNack().execute(requestPayload: requestPayload) { (result) in
@@ -195,6 +199,10 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
     private func swipProposedOutbound(orientation: SwipeActionsOrientation, game: EntityGame) -> [SwipeAction]? {
         if(orientation == .left) {
             let rescind = SwipeAction(style: .default, title: nil) { action, indexPath in
+                
+                let cell = self.tableView.cellForRow(at: indexPath) as! SwipeTableViewCell
+                cell.hideSwipe(animated: false, completion: nil)
+                
                 self.menu!.setIndicator(on: true)
                 let game = self.gameMenuTableList[indexPath.row]
                 let requestPayload: [String: Any] = ["id_game": game.id, "id_self": self.menu!.playerSelf!.id]
@@ -313,6 +321,10 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
         let game = self.gameMenuTableList[indexPath.row]
         if(game.status == "RESOLVED"){
             DispatchQueue.main.async {
+                
+                let cell = self.tableView.cellForRow(at: indexPath) as! SwipeTableViewCell
+                cell.hideSwipe(animated: false, completion: nil)
+                
                 //let skin: String = SelectSnapshot().getSkinGame(username: self.menu!.playerSelf!.username, game: game)
                 SelectSnapshot().snapshot(playerSelf: self.menu!.playerSelf!,
                                           game: game,
