@@ -10,7 +10,7 @@ import Foundation
 
 class UpdateRescind {
     
-    func execute(requestPayload: [String: Any], completion: @escaping ((EntityPlayer?) -> Void)) {
+    func execute(requestPayload: [String: Any], completion: @escaping (([String: Any]) -> Void)) {
         
         //print("\n\nRequestChallenge: \(requestPayload)\n\n")
         
@@ -23,40 +23,37 @@ class UpdateRescind {
         do {
             request.httpBody = try JSONSerialization.data(withJSONObject: requestPayload, options: .prettyPrinted)
         } catch _ {
-            completion(nil)
+             completion(["fail": "0"])
+            return
         }
         
         
         URLSession.shared.dataTask(with: request, completionHandler: { data, response, error in
             
             guard error == nil else {
-                print("b")
-                completion(nil)
+               completion(["fail": "0"])
                 return
             }
             guard let data = data else {
-                print("c")
-                completion(nil)
+               completion(["fail": "0"])
                 return
             }
             if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {
-                print("d")
-                completion(nil)
+                completion(["fail": "0"])
                 return
             }
             do {
                 guard let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any] else {
-                    print("e")
-                    completion(nil)
+                    completion(["fail": "0"])
                     return
                 }
                 
-                let player: EntityPlayer = ParsePlayer().execute(json: json)
-                completion(player)
+                
+                completion(json)
                 
             } catch let error {
-                print(error.localizedDescription)
-                completion(nil)
+                completion(["fail": "0"])
+                return
             }
         }).resume()
     }
