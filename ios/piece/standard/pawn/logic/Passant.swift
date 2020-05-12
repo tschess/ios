@@ -73,6 +73,7 @@ class Passant {
                                 self.transitioner.clearCoordinate()
                             }
                             
+                            self.tschess.renderDialogPassant()
                             
                             return true
                         }
@@ -114,6 +115,7 @@ class Passant {
                                 self.transitioner.clearCoordinate()
                             }
                             
+                            self.tschess.renderDialogPassant()
                             
                             return true
                         }

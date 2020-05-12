@@ -395,6 +395,14 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         }
     }
     
+    func renderDialogPassant() {
+        DispatchQueue.main.async {
+            let storyboard: UIStoryboard = UIStoryboard(name: "DialogPassant", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier: "DialogPassant") as! DialogPassant
+            self.present(viewController, animated: true, completion: nil)
+        }
+    }
+    
     private func getHighlightCell(indexPath: IndexPath, cell: SquareCell) -> SquareCell {
         let resolved: Bool = self.game!.status == "RESOLVED"
         let highlight: String = self.game!.highlight
