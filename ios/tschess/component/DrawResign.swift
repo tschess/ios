@@ -117,7 +117,6 @@ class DrawResign: UIViewController  {
         let requestPayload = [
             "id_game": self.game!.id,
             "id_self": self.playerSelf!.id,
-            "id_oppo": self.playerOther!.id,
             "white": self.game!.getWhite(username: self.playerSelf!.username)] as [String: Any]
         
         UpdateResign().execute(requestPayload: requestPayload) { (result) in
