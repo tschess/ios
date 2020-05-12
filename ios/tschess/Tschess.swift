@@ -552,10 +552,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         if(!check){
             return
         }
-        let indication: Bool = self.labelTurnary.text!.contains("check")
-        if(!indication){
-            self.labelTurnary.text = "\(self.labelTurnary.text!) (check)"
-        }
+        self.labelTurnary.text = "\(self.labelTurnary.text!) (check)"
     }
     
     func setLabelEndgame() {
@@ -585,13 +582,16 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         let affiliation: String = self.game!.getAffiliationOther(username: self.playerSelf!.username)
         let king: [Int] = czecher.kingCoordinate(affiliation: affiliation, state: self.matrix!)
         let mate: Bool = czecher.mate(king: king, state: self.matrix!)
+        let czech: Bool = czecher.other(coordinate: king, state: self.matrix!)
+        print("mate: \(mate)")
+        print("czech: \(czech)")
         if (mate) {
             UpdateMate().execute(id: self.game!.id) { (result) in
                print("result: 999 --> \(result)")
             }
             return
         }
-        let czech: Bool = czecher.other(coordinate: king, state: self.matrix!)
+        
         if (!czech) {
             return
         }

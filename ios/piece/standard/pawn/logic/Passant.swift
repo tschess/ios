@@ -57,8 +57,11 @@ class Passant {
                             
                             let hx: Int = self.white ? 5 : 7 - 5
                             let hy: Int = self.white ? coordinate![1] : 7 - coordinate![1]
-                            let h0: Int = self.white ? coordinate![0] : 7 - coordinate![0]
-                            let h1: Int = self.white ? coordinate![1] : 7 - coordinate![1]
+                            
+                            let h0: Int = self.white ? 4 : 7 - 4
+                            let h1: Int = self.white ? coordinate![1] - 1 : 7 - coordinate![1] - 1
+                    
+                            
                             let highlight: String = "\(hx)\(hy)\(h0)\(h1)"
                             
                             let requestPayload: [String: Any] = ["id_game": self.tschess.game!.id, "state": stateUpdate, "highlight": highlight, "condition": "TBD"]
@@ -97,10 +100,17 @@ class Passant {
                             self.tschess.matrix = self.transitioner.deselectHighlight(state0: self.tschess.matrix!)
                             let stateUpdate = SerializerState(white: self.white).renderServer(state: state1)
                             
+//                            let hx: Int = self.white ? 5 : 7 - 5
+//                            let hy: Int = self.white ? coordinate![1] : 7 - coordinate![1]
+//                            let h0: Int = self.white ? coordinate![0] : 7 - coordinate![0]
+//                            let h1: Int = self.white ? coordinate![1] : 7 - coordinate![1]
+                            
                             let hx: Int = self.white ? 5 : 7 - 5
                             let hy: Int = self.white ? coordinate![1] : 7 - coordinate![1]
-                            let h0: Int = self.white ? coordinate![0] : 7 - coordinate![0]
-                            let h1: Int = self.white ? coordinate![1] : 7 - coordinate![1]
+                            
+                            let h0: Int = self.white ? 4 : 7 - 4
+                            let h1: Int = self.white ? coordinate![1] + 1 : 7 - coordinate![1] + 1
+                            
                             let highlight: String = "\(hx)\(hy)\(h0)\(h1)"
                             
                             let requestPayload: [String: Any] = ["id_game": self.tschess.game!.id, "state": stateUpdate, "highlight": highlight, "condition": "TBD"]

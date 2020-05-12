@@ -92,7 +92,6 @@ class Evaluate: UIViewController  {
         let requestPayload = [
             "id_game": self.gameTschess!.id,
             "id_self": self.playerSelf!.id,
-            "id_other": self.playerOther!.id,
             "accept": true] as [String: Any]
         
         UpdateEval().execute(requestPayload: requestPayload) { (result) in
@@ -103,7 +102,6 @@ class Evaluate: UIViewController  {
                 self.presentingViewController!.dismiss(animated: false, completion: nil)
             }
         }
-        //self.presentingViewController!.dismiss(animated: false, completion: nil)
     }
     
     @IBAction func buttonClickReject(_ sender: Any) {
@@ -114,10 +112,9 @@ class Evaluate: UIViewController  {
         self.imageReject.isHidden = true
         
         let requestPayload = [
-            "id_game": self.gameTschess!.id,
-            "id_self": self.playerSelf!.id,
-            "id_other": self.playerOther!.id,
-            "accept": false] as [String: Any]
+        "id_game": self.gameTschess!.id,
+        "id_self": self.playerSelf!.id,
+        "accept": false] as [String: Any]
         
         UpdateEval().execute(requestPayload: requestPayload) { (result) in
             DispatchQueue.main.async {
