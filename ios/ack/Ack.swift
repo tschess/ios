@@ -416,7 +416,6 @@ extension Ack: UICollectionViewDelegateFlowLayout {
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         switch item.tag {
         default:
-            //print("let's play")
             self.activityIndicator.isHidden = false
             self.activityIndicator.startAnimating()
             
@@ -426,22 +425,15 @@ extension Ack: UICollectionViewDelegateFlowLayout {
             
             let requestPayload: [String: Any] = [
                 "id_game": id_game,
-                "id_player": id_player,
-                "index": self.selection!]
+                "id_self": id_player,
+                "config": self.selection!]
             
-            RequestAck().execute(requestPayload: requestPayload) { (game) in
-                //print("result: \(game!.state)")
-                /**
-                 * ERROR HANDLING!!!
-                 */
-                if(game == nil){
-                    return
-                }
-                
+            RequestAck().execute(requestPayload: requestPayload) { (result) in
+                let game: EntityGame = ParseGame().execute(json: result)
                 DispatchQueue.main.async {
                     let height: CGFloat = UIScreen.main.bounds.height
-                    let playerOther: EntityPlayer = game!.getPlayerOther(username: self.playerSelf!.username)
-                    SelectTschess().tschess(playerSelf: self.playerSelf!, playerOther: playerOther, game: game!, height: height)
+                    let playerOther: EntityPlayer = game.getPlayerOther(username: self.playerSelf!.username)
+                    SelectTschess().tschess(playerSelf: self.playerSelf!, playerOther: playerOther, game: game, height: height)
                 }
             }
         }

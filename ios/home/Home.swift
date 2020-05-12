@@ -108,16 +108,13 @@ class Home: UIViewController, UITabBarDelegate {
                 return
             }
             DispatchQueue.main.async() {
-                self.tabBarMenu.selectedImageTintColor = UIColor.magenta
                 let notify = self.tabBarMenu.items![1]
-                notify.selectedImage = UIImage(named: "game.magenta")!
-                self.tabBarMenu.selectedItem = notify
+                notify.image = UIImage(named: "note")!.withRenderingMode(.alwaysOriginal)
             }
         }
     }
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-        self.tabBarMenu.selectedImageTintColor = UIColor.white
         switch item.tag {
         case 1:
             self.notificationTimerStop()
