@@ -11,48 +11,43 @@ import SwipeCellKit
 
 class HomeMenuTable: UITableViewController, SwipeTableViewCellDelegate {
     
-  
-
+    
+    
     
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
         if(orientation == .left) {
-            //self.tableView.backgroundColor = UIColor.white
             let modifyAction = SwipeAction(style: .default, title: nil) { action, indexPath in
-
+                
                 self.activityIndicator!.isHidden = false
                 self.activityIndicator!.startAnimating()
-
+                
                 let playerOther = self.leaderboardList[indexPath.row]
-
-                RequestRecent().execute(id: playerOther.id) { (game) in
+                
+                RequestRecent().execute(id: playerOther.id) { (result) in
                     DispatchQueue.main.async() {
                         self.activityIndicator!.stopAnimating()
                         self.activityIndicator!.isHidden = true
                     }
-                    if(game == nil){
+                    if(result["fail"] != nil) {
                         DispatchQueue.main.async {
-                            let screenSize: CGRect = UIScreen.main.bounds
-                            let screenHeight = screenSize.height
-                            SelectChallenge().execute(selection: Int.random(in: 0...3), playerSelf: self.player!, playerOther: playerOther, BACK: "HOME", height: screenHeight)
+                            let storyboard: UIStoryboard = UIStoryboard(name: "Noop", bundle: nil)
+                            let viewController = storyboard.instantiateViewController(withIdentifier: "Noop") as! Noop
+                            self.present(viewController, animated: true, completion: nil)
                         }
                         return
                     }
-                    //game
+                    let game: EntityGame = ParseGame().execute(json: result)
                     DispatchQueue.main.async() {
-                        //let skin: String = SelectSnapshot().getSkinGame(username: playerOther.username, game: game!) //problem...
-                        SelectSnapshot().snapshot(playerSelf: self.player!, game: game!, presentor: self)
+                        SelectSnapshot().snapshot(playerSelf: self.player!, game: game, presentor: self)
                     }
                 }
-                //print("RECENT SNAPS!")
-                //success(true)
             }
             modifyAction.image = UIImage(named: "eyeye")!
             modifyAction.backgroundColor = .orange
             modifyAction.title = "recent"
             return [modifyAction]
         }
-        //self.tableView.backgroundColor = UIColor.white
         let modifyAction = SwipeAction(style: .default, title: nil) { action, indexPath in
             
             let playerOther = self.leaderboardList[indexPath.row]
@@ -61,7 +56,7 @@ class HomeMenuTable: UITableViewController, SwipeTableViewCellDelegate {
                 let height = screenSize.height
                 SelectChallenge().execute(selection: Int.random(in: 0...3), playerSelf: self.player!, playerOther: playerOther, BACK: "HOME", height: height)
             }
-         
+            
         }
         modifyAction.image = UIImage(named: "challenge")!
         modifyAction.title = "challenge"
@@ -141,7 +136,7 @@ class HomeMenuTable: UITableViewController, SwipeTableViewCellDelegate {
         
         self.requestPageIndex = 0
         let requestPayload: [String: Any] = ["id_player": self.player!.id,
-                              "size": REQUEST_PAGE_SIZE]
+                                             "size": REQUEST_PAGE_SIZE]
         RequestRefresh().execute(requestPayload: requestPayload) { (response) in
             if(response == nil){
                 return

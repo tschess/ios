@@ -10,7 +10,7 @@ import Foundation
 
 class RequestRecent {
     
-    func execute(id: String, completion: @escaping (EntityGame?) -> Void) {
+    func execute(id: String, completion: @escaping ([String: Any]) -> Void) {
         let url = URL(string: "http://\(ServerAddress().IP):8080/game/recent/\(id)")!
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
@@ -20,29 +20,23 @@ class RequestRecent {
         let session = URLSession.shared
         let task = session.dataTask(with: request, completionHandler: { data, response, error in
             guard error == nil else {
-                completion(nil)
+                completion(["fail": "0"])
                 return
             }
             guard let data = data else {
-                completion(nil)
+                completion(["fail": "1"])
                 return
             }
             do {
                 guard let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any] else {
-                    completion(nil)
+                    completion(["fail": "2"])
                     return
                 }
-                if(json["error"] != nil){
-                    completion(nil)
-                    return
-                }
+                completion(json)
                 
-                let game: EntityGame = ParseGame().execute(json: json)
-                completion(game)
-                
-            } catch let error {
+            } catch _ {
                
-                completion(nil)
+                completion(["fail": "3"])
             }
         })
         task.resume()

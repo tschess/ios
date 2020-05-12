@@ -12,6 +12,9 @@
 		8389C6A1246AEAA800DFE8F2 /* Help.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8389C6A0246AEAA800DFE8F2 /* Help.swift */; };
 		8389C6A4246AEAD000DFE8F2 /* Help.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8389C6A3246AEAD000DFE8F2 /* Help.storyboard */; };
 		8389C6A6246AED0B00DFE8F2 /* TransHelp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8389C6A5246AED0B00DFE8F2 /* TransHelp.swift */; };
+		8389C6A9246AFD2000DFE8F2 /* Noop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8389C6A8246AFD2000DFE8F2 /* Noop.swift */; };
+		8389C6AC246AFD3800DFE8F2 /* Noop.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8389C6AB246AFD3800DFE8F2 /* Noop.storyboard */; };
+		8389C6AE246AFDC200DFE8F2 /* TransNoop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8389C6AD246AFDC200DFE8F2 /* TransNoop.swift */; };
 		B7021F2423FDEE3400C9346A /* SelectHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7021F2323FDEE3400C9346A /* SelectHome.swift */; };
 		B7021F2723FDEE6100C9346A /* ConfigP.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7021F2623FDEE6100C9346A /* ConfigP.storyboard */; };
 		B7021F2A23FDEE8200C9346A /* ConfigL.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7021F2923FDEE8200C9346A /* ConfigL.storyboard */; };
@@ -226,6 +229,9 @@
 		8389C6A0246AEAA800DFE8F2 /* Help.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Help.swift; sourceTree = "<group>"; };
 		8389C6A3246AEAD000DFE8F2 /* Help.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Help.storyboard; sourceTree = "<group>"; };
 		8389C6A5246AED0B00DFE8F2 /* TransHelp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransHelp.swift; sourceTree = "<group>"; };
+		8389C6A8246AFD2000DFE8F2 /* Noop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Noop.swift; sourceTree = "<group>"; };
+		8389C6AB246AFD3800DFE8F2 /* Noop.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Noop.storyboard; sourceTree = "<group>"; };
+		8389C6AD246AFDC200DFE8F2 /* TransNoop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransNoop.swift; sourceTree = "<group>"; };
 		AD83F59EDBC27D005F033F41 /* Pods-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios.debug.xcconfig"; path = "Target Support Files/Pods-ios/Pods-ios.debug.xcconfig"; sourceTree = "<group>"; };
 		B7021F2323FDEE3400C9346A /* SelectHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectHome.swift; sourceTree = "<group>"; };
 		B7021F2623FDEE6100C9346A /* ConfigP.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ConfigP.storyboard; sourceTree = "<group>"; };
@@ -476,6 +482,24 @@
 			isa = PBXGroup;
 			children = (
 				8389C6A3246AEAD000DFE8F2 /* Help.storyboard */,
+			);
+			path = storyboard;
+			sourceTree = "<group>";
+		};
+		8389C6A7246AFCF300DFE8F2 /* component */ = {
+			isa = PBXGroup;
+			children = (
+				8389C6AA246AFD2700DFE8F2 /* storyboard */,
+				8389C6A8246AFD2000DFE8F2 /* Noop.swift */,
+				8389C6AD246AFDC200DFE8F2 /* TransNoop.swift */,
+			);
+			path = component;
+			sourceTree = "<group>";
+		};
+		8389C6AA246AFD2700DFE8F2 /* storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				8389C6AB246AFD3800DFE8F2 /* Noop.storyboard */,
 			);
 			path = storyboard;
 			sourceTree = "<group>";
@@ -1555,6 +1579,7 @@
 		B7F541BF23D51A4300E89074 /* home */ = {
 			isa = PBXGroup;
 			children = (
+				8389C6A7246AFCF300DFE8F2 /* component */,
 				B7AF787123E0B9BC00BAD8EC /* networking */,
 				B7F541C223D51A7800E89074 /* storyboard */,
 				B7F541C023D51A5A00E89074 /* Home.swift */,
@@ -1731,6 +1756,7 @@
 				B7021F5C23FE304D00C9346A /* EditSelfP.storyboard in Resources */,
 				B7BE129523EB0A7900ADA499 /* DrawResign.storyboard in Resources */,
 				B7021F3223FDFCC100C9346A /* FairiesP.storyboard in Resources */,
+				8389C6AC246AFD3800DFE8F2 /* Noop.storyboard in Resources */,
 				B7F3A13323FD95C8007B5663 /* HomeP.storyboard in Resources */,
 				B7021F4223FE0B0700C9346A /* PlayP.storyboard in Resources */,
 				B7F3A12F23FD8DA9007B5663 /* dTschessL.storyboard in Resources */,
@@ -1885,6 +1911,7 @@
 				B7BE11C523EA9E7C00ADA499 /* Rook.swift in Sources */,
 				B7BE11ED23EAC6CB00ADA499 /* RequestQuick.swift in Sources */,
 				B7BE117723EA93A600ADA499 /* PieceAnte.swift in Sources */,
+				8389C6A9246AFD2000DFE8F2 /* Noop.swift in Sources */,
 				B7D8ECDD24082106001B5D2D /* HunterBlack.swift in Sources */,
 				B7FA7BFB23ECF79400E63045 /* UpdateConfig.swift in Sources */,
 				B7BE120B23EAD3E900ADA499 /* Grasshopper.swift in Sources */,
@@ -1924,6 +1951,7 @@
 				B7021F6623FE3BE800C9346A /* SelectProfile.swift in Sources */,
 				B7BE12B123EB0D3100ADA499 /* KnightOffense.swift in Sources */,
 				B7ED646823F4DC9B00292FBC /* Create.swift in Sources */,
+				8389C6AE246AFDC200DFE8F2 /* TransNoop.swift in Sources */,
 				B7A6B89B240D99B500840156 /* MenuTable.swift in Sources */,
 				B7BE11C923EA9EB700ADA499 /* RookBlack.swift in Sources */,
 				B7BE120723EAD3D200ADA499 /* Amazon.swift in Sources */,
