@@ -166,13 +166,15 @@ class Snapshot: UIViewController, UICollectionViewDataSource, UICollectionViewDe
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        boardView.isHidden = false
-        boardView.reloadData()
+       
+        
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        boardView.isHidden = false
         boardViewHeight.constant = boardView.contentSize.height
+        boardView.reloadData()
     }
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {

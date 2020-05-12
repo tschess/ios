@@ -15,6 +15,11 @@
 		8389C6A9246AFD2000DFE8F2 /* Noop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8389C6A8246AFD2000DFE8F2 /* Noop.swift */; };
 		8389C6AC246AFD3800DFE8F2 /* Noop.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8389C6AB246AFD3800DFE8F2 /* Noop.storyboard */; };
 		8389C6AE246AFDC200DFE8F2 /* TransNoop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8389C6AD246AFDC200DFE8F2 /* TransNoop.swift */; };
+		8389C6B0246B15A800DFE8F2 /* DialogPoison.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8389C6AF246B15A800DFE8F2 /* DialogPoison.storyboard */; };
+		8389C6B2246B15B700DFE8F2 /* DialogPassant.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8389C6B1246B15B700DFE8F2 /* DialogPassant.storyboard */; };
+		8389C6B4246B17BE00DFE8F2 /* DialogPassant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8389C6B3246B17BE00DFE8F2 /* DialogPassant.swift */; };
+		8389C6B6246B17CC00DFE8F2 /* TransDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8389C6B5246B17CC00DFE8F2 /* TransDialog.swift */; };
+		8389C6B8246B17DA00DFE8F2 /* DialogPoison.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8389C6B7246B17DA00DFE8F2 /* DialogPoison.swift */; };
 		B7021F2423FDEE3400C9346A /* SelectHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7021F2323FDEE3400C9346A /* SelectHome.swift */; };
 		B7021F2723FDEE6100C9346A /* ConfigP.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7021F2623FDEE6100C9346A /* ConfigP.storyboard */; };
 		B7021F2A23FDEE8200C9346A /* ConfigL.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7021F2923FDEE8200C9346A /* ConfigL.storyboard */; };
@@ -232,6 +237,11 @@
 		8389C6A8246AFD2000DFE8F2 /* Noop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Noop.swift; sourceTree = "<group>"; };
 		8389C6AB246AFD3800DFE8F2 /* Noop.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Noop.storyboard; sourceTree = "<group>"; };
 		8389C6AD246AFDC200DFE8F2 /* TransNoop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransNoop.swift; sourceTree = "<group>"; };
+		8389C6AF246B15A800DFE8F2 /* DialogPoison.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DialogPoison.storyboard; sourceTree = "<group>"; };
+		8389C6B1246B15B700DFE8F2 /* DialogPassant.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DialogPassant.storyboard; sourceTree = "<group>"; };
+		8389C6B3246B17BE00DFE8F2 /* DialogPassant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogPassant.swift; sourceTree = "<group>"; };
+		8389C6B5246B17CC00DFE8F2 /* TransDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransDialog.swift; sourceTree = "<group>"; };
+		8389C6B7246B17DA00DFE8F2 /* DialogPoison.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogPoison.swift; sourceTree = "<group>"; };
 		AD83F59EDBC27D005F033F41 /* Pods-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios.debug.xcconfig"; path = "Target Support Files/Pods-ios/Pods-ios.debug.xcconfig"; sourceTree = "<group>"; };
 		B7021F2323FDEE3400C9346A /* SelectHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectHome.swift; sourceTree = "<group>"; };
 		B7021F2623FDEE6100C9346A /* ConfigP.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ConfigP.storyboard; sourceTree = "<group>"; };
@@ -1400,6 +1410,9 @@
 				B7BE12A623EB0C2600ADA499 /* Promotion.swift */,
 				B7BE12C323EB6B9300ADA499 /* TransDraw.swift */,
 				B71DD35623FC85B1008E8818 /* TransPro.swift */,
+				8389C6B3246B17BE00DFE8F2 /* DialogPassant.swift */,
+				8389C6B5246B17CC00DFE8F2 /* TransDialog.swift */,
+				8389C6B7246B17DA00DFE8F2 /* DialogPoison.swift */,
 			);
 			path = component;
 			sourceTree = "<group>";
@@ -1410,6 +1423,8 @@
 				B7BE129423EB0A7900ADA499 /* DrawResign.storyboard */,
 				B7BE129623EB0A8B00ADA499 /* Evaluate.storyboard */,
 				B7BE12A423EB0BF700ADA499 /* Promotion.storyboard */,
+				8389C6AF246B15A800DFE8F2 /* DialogPoison.storyboard */,
+				8389C6B1246B15B700DFE8F2 /* DialogPassant.storyboard */,
 			);
 			path = storyboard;
 			sourceTree = "<group>";
@@ -1749,8 +1764,10 @@
 				8389C6A4246AEAD000DFE8F2 /* Help.storyboard in Resources */,
 				B768470723F4FAD400F55D4A /* Invalid.storyboard in Resources */,
 				B7BE121623EAD7E700ADA499 /* Init.storyboard in Resources */,
+				8389C6B2246B15B700DFE8F2 /* DialogPassant.storyboard in Resources */,
 				B7A8B2A22400A8210092D2D6 /* dTschessP.storyboard in Resources */,
 				B7ED646423F4D9D400292FBC /* Create.storyboard in Resources */,
+				8389C6B0246B15A800DFE8F2 /* DialogPoison.storyboard in Resources */,
 				B7021F3A23FE031400C9346A /* InfoP.storyboard in Resources */,
 				B7021F6223FE3B8E00C9346A /* ProfileP.storyboard in Resources */,
 				B7021F5C23FE304D00C9346A /* EditSelfP.storyboard in Resources */,
@@ -1864,6 +1881,7 @@
 				B708D0DD236B351000A899F9 /* Init.swift in Sources */,
 				B7BE124823EB023700ADA499 /* Fairies.swift in Sources */,
 				B7021F9A23FE5DD800C9346A /* SelectOther.swift in Sources */,
+				8389C6B4246B17BE00DFE8F2 /* DialogPassant.swift in Sources */,
 				B7BE11D323EAA0A600ADA499 /* Castle.swift in Sources */,
 				B771365223F1D5CF007F0962 /* MovementKing.swift in Sources */,
 				B7BE11AB23EA9C9C00ADA499 /* KingWhite.swift in Sources */,
@@ -1874,6 +1892,7 @@
 				B7BE11D023EA9F2400ADA499 /* KnightBlack.swift in Sources */,
 				B7BE123C23EAFC0200ADA499 /* Challenge.swift in Sources */,
 				B7BE129E23EB0B2A00ADA499 /* HopperOffense.swift in Sources */,
+				8389C6B8246B17DA00DFE8F2 /* DialogPoison.swift in Sources */,
 				B7BE11D523EAA18000ADA499 /* BoardView.swift in Sources */,
 				B7021F5623FE122D00C9346A /* SelectEditOther.swift in Sources */,
 				B7BE12C423EB6B9300ADA499 /* TransDraw.swift in Sources */,
@@ -1902,6 +1921,7 @@
 				B7BE125123EB032E00ADA499 /* Profile.swift in Sources */,
 				B7D8ECDF240887DB001B5D2D /* Edit.swift in Sources */,
 				B7BE117523EA930F00ADA499 /* Piece.swift in Sources */,
+				8389C6B6246B17CC00DFE8F2 /* TransDialog.swift in Sources */,
 				B7BE120523EAD3C600ADA499 /* Poison.swift in Sources */,
 				B7BE11D723EAA23200ADA499 /* SquareCell.swift in Sources */,
 				B7BE116523EA727200ADA499 /* OtherMenuTable.swift in Sources */,

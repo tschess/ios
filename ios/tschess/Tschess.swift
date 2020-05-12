@@ -271,67 +271,6 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         self.viewBoardHeight.constant = viewBoard.contentSize.height
     }
     
-    private func setLabelCheck() {
-        let state: [[Piece?]] = self.matrix!
-        let username: String = self.playerSelf!.username
-        let white: Bool = self.game!.getWhite(username: username)
-        let stateK0 = SerializerState(white: white).renderServer(state: state)
-        let stateK1 = SerializerState(white: white).renderClient(state: stateK0)
-        let affiliation: String = self.game!.turn
-        let kingK: [Int] = Checker().kingCoordinate(affiliation: affiliation, state: stateK1)
-        
-        // - ? - ? - ? - //
-        let mate: Bool = Checker().mate(king: kingK, state: state) // does this work?
-        if(mate){
-            UpdateMate().execute(id: self.game!.id) { (success) in
-                if(!success){
-                    //error
-                }
-            }
-            return
-        }
-        // - ? - ? - ? - //
-        let check0: Bool = self.game!.on_check
-        let check1: Bool = Checker().check(coordinate: kingK, state: stateK1)
-        if(!check0 && check1){
-            UpdateCheck().execute(id: self.game!.id) { (success) in
-                if(!success){
-                    //error
-                }
-            }
-            return
-        }
-        if(!check0 && !check1){
-            return
-        }
-        let indication: Bool = self.labelTurnary.text!.contains("check")
-        if(!indication){
-            self.labelTurnary.text = "\(self.labelTurnary.text!) (check)"
-        }
-    }
-    
-    func setLabelEndgame() {
-        let resolved: Bool = self.game!.status == "RESOLVED"
-        if(!resolved){
-            return
-        }
-        self.labelTitle.text = "game over"
-        self.endTimer()
-        self.labelNotification.isHidden = false
-        self.labelCountdown.isHidden = true
-        self.labelTurnary.isHidden = true
-        if(self.game!.condition == "DRAW"){
-            self.labelNotification.text = "draw"
-            return
-        }
-        let username: String = self.playerSelf!.username
-        if(self.game!.getWinner(username: username)){
-            self.labelNotification.text = "winner"
-            return
-        }
-        self.labelNotification.text = "you lose"
-    }
-    
     func pawnPromotion(proposed: [Int]) {
         DispatchQueue.main.async {
             self.promotion.setProposed(proposed: proposed)
@@ -388,41 +327,6 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
-    }
-    
-    // MARK: POLLING GAME
-    
-    @objc func pollingTask() {
-        let id_game: String = self.game!.id
-        GameRequest().execute(id: id_game) { (game0) in
-            let updatedSv0: String = game0!.updated
-            let updatedSv1: Date = self.dateTime.toFormatDate(string: updatedSv0)
-            let updatedLc0: String = self.game!.updated
-            let updatedLc1: Date = self.dateTime.toFormatDate(string: updatedLc0)
-            switch updatedSv1.compare(updatedLc1) {
-            case .orderedAscending:
-                return
-            case .orderedSame:
-                return
-            case .orderedDescending:
-                DispatchQueue.main.async {
-                    self.activityIndicator.stopAnimating()
-                    self.activityIndicator.isHidden = true
-                    let game1 = game0!
-                    self.setGame(game: game1)
-                    let username: String = self.playerSelf!.username
-                    let matrix1: [[Piece?]] = game1.getStateClient(username: username)
-                    self.matrix = matrix1
-                    // ~ * ~ //
-                    self.viewBoard.reloadData()
-                    self.setLabelEndgame()
-                    self.setLabelCountdown(update: game1.updated)
-                    self.setLabelTurnary()
-                    self.setLabelNotification()
-                    self.setLabelCheck()
-                }
-            }
-        }
     }
     
     private func assignCellTschessElement(indexPath: IndexPath) -> UIImage? {
@@ -491,14 +395,11 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         let coordHighlight: [[Int]] = self.getHighlight(highlight: highlight)
         let coordNormal: [Int] = self.getNormalCoord(indexPath: indexPath)
         if(self.game!.condition == "LANDMINE"){
-            self.labelNotification.isHidden = false
-            self.labelNotification.text = ".:*~ poison pawn ~*:."
+            self.game!.condition = "TBD"
+            let storyboard: UIStoryboard = UIStoryboard(name: "DialogPoison", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier: "DialogPoison") as! DialogPoison
+            self.present(viewController, animated: true, completion: nil)
             return self.highlightCoord(coordNormal: coordNormal, coordHighlight: coordHighlight, cell: cell)
-        }
-        let username: String = self.playerSelf!.username
-        let turn: Bool = self.game!.getTurn(username: username)
-        if(!turn){
-            return self.getOrnamentCell(highlight: false, cell: cell)
         }
         return self.highlightCoord(coordNormal: coordNormal, coordHighlight: coordHighlight, cell: cell)
     }
@@ -593,6 +494,102 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         let state0 = self.game!.getStateClient(username: self.playerSelf!.username)
         self.matrix = self.transitioner!.evaluateHighlightSelection(coordinate: [x,y], state0: state0)
         self.viewBoard.reloadData()
+    }
+    
+    // MARK: POLLING GAME
+       
+       @objc func pollingTask() {
+           let id_game: String = self.game!.id
+           GameRequest().execute(id: id_game) { (game0) in
+               let updatedSv0: String = game0!.updated
+               let updatedSv1: Date = self.dateTime.toFormatDate(string: updatedSv0)
+               let updatedLc0: String = self.game!.updated
+               let updatedLc1: Date = self.dateTime.toFormatDate(string: updatedLc0)
+               switch updatedSv1.compare(updatedLc1) {
+               case .orderedAscending:
+                   return
+               case .orderedSame:
+                   return
+               case .orderedDescending:
+                   DispatchQueue.main.async {
+                       self.activityIndicator.stopAnimating()
+                       self.activityIndicator.isHidden = true
+                       let game1 = game0!
+                       self.setGame(game: game1)
+                       let username: String = self.playerSelf!.username
+                       let matrix1: [[Piece?]] = game1.getStateClient(username: username)
+                       self.matrix = matrix1
+                       // ~ * ~ //
+                       self.viewBoard.reloadData()
+                       self.setLabelEndgame()
+                       self.setLabelCountdown(update: game1.updated)
+                       self.setLabelTurnary()
+                       self.setLabelNotification()
+                       self.setLabelCheck()
+                   }
+               }
+           }
+       }
+    
+    private func setLabelCheck() {
+        let state: [[Piece?]] = self.matrix!
+        let username: String = self.playerSelf!.username
+        let white: Bool = self.game!.getWhite(username: username)
+        let stateK0 = SerializerState(white: white).renderServer(state: state)
+        let stateK1 = SerializerState(white: white).renderClient(state: stateK0)
+        let affiliation: String = self.game!.turn
+        let kingK: [Int] = Checker().kingCoordinate(affiliation: affiliation, state: stateK1)
+        
+        // - ? - ? - ? - //
+        let mate: Bool = Checker().mate(king: kingK, state: state) // does this work?
+        if(mate){
+            UpdateMate().execute(id: self.game!.id) { (success) in
+                if(!success){
+                    //error
+                }
+            }
+            return
+        }
+        // - ? - ? - ? - //
+        let check0: Bool = self.game!.on_check
+        let check1: Bool = Checker().check(coordinate: kingK, state: stateK1)
+        if(!check0 && check1){
+            UpdateCheck().execute(id: self.game!.id) { (success) in
+                if(!success){
+                    //error
+                }
+            }
+            return
+        }
+        if(!check0 && !check1){
+            return
+        }
+        let indication: Bool = self.labelTurnary.text!.contains("check")
+        if(!indication){
+            self.labelTurnary.text = "\(self.labelTurnary.text!) (check)"
+        }
+    }
+    
+    func setLabelEndgame() {
+        let resolved: Bool = self.game!.status == "RESOLVED"
+        if(!resolved){
+            return
+        }
+        self.labelTitle.text = "game over"
+        self.endTimer()
+        self.labelNotification.isHidden = false
+        self.labelCountdown.isHidden = true
+        self.labelTurnary.isHidden = true
+        if(self.game!.condition == "DRAW"){
+            self.labelNotification.text = "draw"
+            return
+        }
+        let username: String = self.playerSelf!.username
+        if(self.game!.getWinner(username: username)){
+            self.labelNotification.text = "winner"
+            return
+        }
+        self.labelNotification.text = "you lose"
     }
     
 }
