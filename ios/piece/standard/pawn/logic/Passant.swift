@@ -59,7 +59,7 @@ class Passant {
                             let hy: Int = self.white ? coordinate![1] : 7 - coordinate![1]
                             
                             let h0: Int = self.white ? 4 : 7 - 4
-                            let h1: Int = self.white ? coordinate![1] - 1 : 7 - coordinate![1] - 1
+                            let h1: Int = self.white ? coordinate![1] + 1 : 7 - coordinate![1] + 1
                     
                             
                             let highlight: String = "\(hx)\(hy)\(h0)\(h1)"
@@ -109,7 +109,7 @@ class Passant {
                             let hy: Int = self.white ? coordinate![1] : 7 - coordinate![1]
                             
                             let h0: Int = self.white ? 4 : 7 - 4
-                            let h1: Int = self.white ? coordinate![1] + 1 : 7 - coordinate![1] + 1
+                            let h1: Int = self.white ? coordinate![1] - 1 : 7 - coordinate![1] - 1
                             
                             let highlight: String = "\(hx)\(hy)\(h0)\(h1)"
                             
