@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import SwipeCellKit
 
-class HomeMenuCell: UITableViewCell {
+class HomeMenuCell: SwipeTableViewCell {
     
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var rankLabel: UILabel!

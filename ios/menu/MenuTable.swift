@@ -155,6 +155,7 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
             }
             rematch.backgroundColor = .purple
             rematch.image = UIImage(named: "challenge")!
+            rematch.title = "rematch"
             return [rematch]
         }
         return nil
@@ -175,6 +176,7 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
             }
             nAction.backgroundColor = .red
             nAction.image = UIImage(named: "td_w")!
+            nAction.title = "reject"
             return [nAction]
         }
         //self.tableView.backgroundColor = UIColor.white
@@ -189,6 +191,7 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
             }
         }
         ackAction.backgroundColor = .green
+        ackAction.title = "accept"
         ackAction.image = UIImage(named: "tu_w")!
         return [ackAction]
     }
@@ -207,6 +210,7 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
             }
             rescind.backgroundColor = .red
             rescind.image = UIImage(named: "close_w")!
+            rescind.title = "rescind"
             return [rescind]
         }
         return nil

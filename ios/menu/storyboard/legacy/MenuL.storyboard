@@ -264,7 +264,7 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nhu-fI-7kd" userLabel="ActionStack">
                                             <rect key="frame" x="0.0" y="12" width="320" height="55"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tray.and.arrow.down" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="jDb-3F-Bd9">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tray.and.arrow.down" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="jDb-3F-Bd9">
                                                     <rect key="frame" x="142.5" y="-0.5" width="35" height="35.5"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

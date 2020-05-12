@@ -7,8 +7,68 @@
 //
 
 import UIKit
+import SwipeCellKit
 
-class HomeMenuTable: UITableViewController {
+class HomeMenuTable: UITableViewController, SwipeTableViewCellDelegate {
+    
+  
+
+    
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
+        if(orientation == .left) {
+            //self.tableView.backgroundColor = UIColor.white
+            let modifyAction = SwipeAction(style: .default, title: nil) { action, indexPath in
+
+                self.activityIndicator!.isHidden = false
+                self.activityIndicator!.startAnimating()
+
+                let playerOther = self.leaderboardList[indexPath.row]
+
+                RequestRecent().execute(id: playerOther.id) { (game) in
+                    DispatchQueue.main.async() {
+                        self.activityIndicator!.stopAnimating()
+                        self.activityIndicator!.isHidden = true
+                    }
+                    if(game == nil){
+                        DispatchQueue.main.async {
+                            let screenSize: CGRect = UIScreen.main.bounds
+                            let screenHeight = screenSize.height
+                            SelectChallenge().execute(selection: Int.random(in: 0...3), playerSelf: self.player!, playerOther: playerOther, BACK: "HOME", height: screenHeight)
+                        }
+                        return
+                    }
+                    //game
+                    DispatchQueue.main.async() {
+                        //let skin: String = SelectSnapshot().getSkinGame(username: playerOther.username, game: game!) //problem...
+                        SelectSnapshot().snapshot(playerSelf: self.player!, game: game!, presentor: self)
+                    }
+                }
+                //print("RECENT SNAPS!")
+                //success(true)
+            }
+            modifyAction.image = UIImage(named: "eyeye")!
+            modifyAction.backgroundColor = .orange
+            modifyAction.title = "recent"
+            return [modifyAction]
+        }
+        //self.tableView.backgroundColor = UIColor.white
+        let modifyAction = SwipeAction(style: .default, title: nil) { action, indexPath in
+            
+            let playerOther = self.leaderboardList[indexPath.row]
+            DispatchQueue.main.async {
+                let screenSize: CGRect = UIScreen.main.bounds
+                let height = screenSize.height
+                SelectChallenge().execute(selection: Int.random(in: 0...3), playerSelf: self.player!, playerOther: playerOther, BACK: "HOME", height: height)
+            }
+         
+        }
+        modifyAction.image = UIImage(named: "challenge")!
+        modifyAction.title = "challenge"
+        modifyAction.backgroundColor = .purple
+        return [modifyAction]
+    }
+    
     
     func getOther(index: Int) -> EntityPlayer {
         return self.leaderboardList[index]
@@ -118,6 +178,7 @@ class HomeMenuTable: UITableViewController {
         let player = self.leaderboardList[indexPath.row]
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "HomeMenuCell", for: indexPath) as! HomeMenuCell
+        cell.delegate = self
         cell.avatarImageView.image = player.getImageAvatar()
         cell.rankLabel.text = player.getLabelTextRank()
         cell.usernameLabel.text = player.username
@@ -163,66 +224,6 @@ class HomeMenuTable: UITableViewController {
             self.appendToLeaderboardTableList(additionalCellList: result!)
         }
     }
-    
-    
-    
-    override func tableView(_ tableView: UITableView,
-                            leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let modifyAction = UIContextualAction(style: .normal, title:  nil, handler: { (ac: UIContextualAction, view: UIView, success: (Bool) -> Void) in
-            
-            self.activityIndicator!.isHidden = false
-            self.activityIndicator!.startAnimating()
-            
-            let playerOther = self.leaderboardList[indexPath.row]
-           
-            RequestRecent().execute(id: playerOther.id) { (game) in
-                DispatchQueue.main.async() {
-                    self.activityIndicator!.stopAnimating()
-                    self.activityIndicator!.isHidden = true
-                }
-                if(game == nil){
-                    DispatchQueue.main.async {
-                        let screenSize: CGRect = UIScreen.main.bounds
-                        let screenHeight = screenSize.height
-                        SelectChallenge().execute(selection: Int.random(in: 0...3), playerSelf: self.player!, playerOther: playerOther, BACK: "HOME", height: screenHeight)
-                    }
-                    return
-                }
-                //game
-                DispatchQueue.main.async() {
-                    //let skin: String = SelectSnapshot().getSkinGame(username: playerOther.username, game: game!) //problem...
-                    SelectSnapshot().snapshot(playerSelf: self.player!, game: game!, presentor: self)
-                }
-            }
-            //print("RECENT SNAPS!")
-            success(true)
-        })
-        modifyAction.image = UIImage(named: "eyeye")!
-        modifyAction.backgroundColor = .orange
-        let config = UISwipeActionsConfiguration(actions: [modifyAction])
-        //config.performsFirstActionWithFullSwipe = false
-        return config
-    }
-    
-    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let modifyAction = UIContextualAction(style: .normal, title:  nil, handler: { (ac: UIContextualAction, view: UIView, success: (Bool) -> Void) in
-            
-            let playerOther = self.leaderboardList[indexPath.row]
-            DispatchQueue.main.async {
-                let screenSize: CGRect = UIScreen.main.bounds
-                let height = screenSize.height
-                SelectChallenge().execute(selection: Int.random(in: 0...3), playerSelf: self.player!, playerOther: playerOther, BACK: "HOME", height: height)
-            }
-            success(true)
-        })
-        modifyAction.image = UIImage(named: "challenge")!
-        modifyAction.backgroundColor = .purple
-        let config = UISwipeActionsConfiguration(actions: [modifyAction])
-        //config.performsFirstActionWithFullSwipe = false
-        return config
-    }
-    
-
     
     func appendToLeaderboardTableList(additionalCellList: [EntityPlayer]) {
         for game in additionalCellList {

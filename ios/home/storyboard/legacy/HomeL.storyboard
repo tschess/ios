@@ -320,6 +320,8 @@
                                             </constraints>
                                         </imageView>
                                     </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="trailing" secondItem="OGP-Ay-XBh" secondAttribute="trailing" constant="4" id="0og-OQ-xmi"/>
                                         <constraint firstItem="inX-hi-2ve" firstAttribute="top" secondItem="yMf-xa-Lp6" secondAttribute="bottom" constant="1" id="Et0-FT-eph"/>
