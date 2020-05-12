@@ -23,14 +23,14 @@ class Snapshot: UIViewController, UICollectionViewDataSource, UICollectionViewDe
     }
     
     @IBOutlet weak var titleBackView: UIView!
-    @IBOutlet weak var titleBackImage: UIImageView!
+    //@IBOutlet weak var titleBackImage: UIImageView!
     
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var titleLabel: UILabel!
     
     /* * */
     @IBOutlet weak var headerView: UIView!
-    @IBOutlet weak var headerImage: UIImageView!
+    //@IBOutlet weak var headerImage: UIImageView!
     
     @IBOutlet weak var winnerImageView: UIImageView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
@@ -40,7 +40,7 @@ class Snapshot: UIViewController, UICollectionViewDataSource, UICollectionViewDe
     
     /* * */
     @IBOutlet weak var contentView: UIView!
-    @IBOutlet weak var contentImage: UIImageView!
+    //@IBOutlet weak var contentImage: UIImageView!
     
     @IBOutlet weak var dateLabel: UILabel!
     
@@ -99,6 +99,8 @@ class Snapshot: UIViewController, UICollectionViewDataSource, UICollectionViewDe
 //        self.headerImage.isHidden = true
 //        self.titleBackImage.isHidden = true
     }
+    
+    
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let cellsAcross: CGFloat = 8
