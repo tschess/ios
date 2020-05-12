@@ -337,9 +337,10 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
         self.tschessElementCollectionView.dragDelegate = self
         
         self.tschessElementCollectionView.addInteraction(UIDropInteraction(delegate: self))
-        self.dropViewTop0.addInteraction(UIDropInteraction(delegate: self))
-        //self.dropViewTop1.addInteraction(UIDropInteraction(delegate: self))
+        //self.dropViewTop0.addInteraction(UIDropInteraction(delegate: self))
+        //self.dropViewTop1
         self.headerView.addInteraction(UIDropInteraction(delegate: self))
+        self.contentView.addInteraction(UIDropInteraction(delegate: self))
         
         self.tabBarMenu.delegate = self
     }
@@ -453,7 +454,11 @@ extension EditSelf: UICollectionViewDelegate {
         switch item.tag {
         case 0:
             self.backButtonClick("~")
-            return
+        case 2:
+        //print("fuck") //show the popup...
+            let storyboard: UIStoryboard = UIStoryboard(name: "Help", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier: "Help") as! Help
+            self.present(viewController, animated: true, completion: nil)
         default:
             DispatchQueue.main.async() {
                 self.activityIndicator!.isHidden = false
