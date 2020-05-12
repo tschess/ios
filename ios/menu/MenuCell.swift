@@ -13,6 +13,7 @@ class MenuCell: SwipeTableViewCell {
     
     @IBOutlet weak var soLaLa: UIView!
     
+    //@IBOutlet weak var labelAction: UILabel!
     @IBOutlet weak var labelAction: UILabel!
     @IBOutlet weak var timeIndicatorLabel: UILabel!
     @IBOutlet weak var avatarImageView: UIImageView!

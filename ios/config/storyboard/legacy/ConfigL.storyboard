@@ -16,7 +16,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="overview" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rh3-GT-zds">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="config(s)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rh3-GT-zds">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="30"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                                 <constraints>
@@ -52,11 +52,11 @@
                                 </constraints>
                                 <items>
                                     <tabBarItem title="HOME" image="back.grey" selectedImage="back.white" id="WH1-kp-AQb">
-                                        <inset key="imageInsets" minX="7" minY="7" maxX="7" maxY="7"/>
+                                        <inset key="imageInsets" minX="3" minY="3" maxX="3" maxY="3"/>
                                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tabBarItem>
                                     <tabBarItem tag="1" title="FAIRY PIECES" image="fg" selectedImage="fw" id="fjf-cy-wGx">
-                                        <inset key="imageInsets" minX="7" minY="7" maxX="7" maxY="7"/>
+                                        <inset key="imageInsets" minX="3" minY="3" maxX="3" maxY="3"/>
                                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tabBarItem>
                                 </items>

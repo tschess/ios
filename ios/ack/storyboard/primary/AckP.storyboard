@@ -51,8 +51,8 @@
                                     <constraint firstAttribute="height" constant="50" id="CtS-Ad-lXP"/>
                                 </constraints>
                                 <items>
-                                    <tabBarItem title="" image="challenge_g" selectedImage="challenge" id="6f1-4w-L4h">
-                                        <inset key="imageInsets" minX="2" minY="2" maxX="2" maxY="2"/>
+                                    <tabBarItem title="LET'S PLAY" image="challenge_g" selectedImage="challenge" id="6f1-4w-L4h">
+                                        <inset key="imageInsets" minX="8" minY="8" maxX="8" maxY="8"/>
                                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tabBarItem>
                                 </items>

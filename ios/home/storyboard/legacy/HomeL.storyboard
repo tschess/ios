@@ -165,15 +165,15 @@
                                 </constraints>
                                 <items>
                                     <tabBarItem tag="1" title="QUICKPLAY" image="quick.grey" selectedImage="quick.white" id="Z5R-KS-Z6j">
-                                        <inset key="imageInsets" minX="3" minY="3" maxX="3" maxY="3"/>
+                                        <inset key="imageInsets" minX="1" minY="1" maxX="1" maxY="1"/>
                                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tabBarItem>
                                     <tabBarItem tag="3" title="GAMES" image="game.grey" selectedImage="game.white" id="Ccy-HC-zcU">
-                                        <inset key="imageInsets" minX="7" minY="7" maxX="7" maxY="7"/>
+                                        <inset key="imageInsets" minX="4" minY="4" maxX="4" maxY="4"/>
                                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tabBarItem>
                                     <tabBarItem tag="4" title="CONFIG(S)" image="setup.grey" selectedImage="setup.white" id="RmV-cI-lZG">
-                                        <inset key="imageInsets" minX="7" minY="7" maxX="7" maxY="7"/>
+                                        <inset key="imageInsets" minX="4" minY="4" maxX="4" maxY="4"/>
                                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tabBarItem>
                                 </items>
