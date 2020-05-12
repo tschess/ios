@@ -46,7 +46,7 @@ class EditOther: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate
         self.gameTschess = gameTschess
     }
     
-    @IBOutlet weak var dropViewTop0: UIView!
+    //@IBOutlet weak var dropViewTop0: UIView!
     //@IBOutlet weak var dropViewTop1: UIView!
     //@IBOutlet weak var dropViewBottom0: UIView!
     //@IBOutlet weak var splitView2: UIView!
@@ -350,7 +350,7 @@ class EditOther: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate
         
         self.pieceCollectionView.addInteraction(UIDropInteraction(delegate: self))
       
-        self.dropViewTop0.addInteraction(UIDropInteraction(delegate: self))
+        //self.dropViewTop0.addInteraction(UIDropInteraction(delegate: self))
         //self.dropViewTop1.addInteraction(UIDropInteraction(delegate: self))
       
         self.headerView.addInteraction(UIDropInteraction(delegate: self))

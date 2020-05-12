@@ -6,3 +6,4 @@ ios.xcworkspace/xcuserdata/*
 ios/util/ServerAddress.swift
 .DS_Store
 .gitignore
+ios/Assets.xcassets/.DS_Store
