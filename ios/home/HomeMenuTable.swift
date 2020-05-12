@@ -63,7 +63,6 @@ class HomeMenuTable: UITableViewController, SwipeTableViewCellDelegate {
         return [modifyAction]
     }
     
-    
     func getOther(index: Int) -> EntityPlayer {
         return self.leaderboardList[index]
     }
