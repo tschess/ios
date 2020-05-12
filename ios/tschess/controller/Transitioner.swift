@@ -10,6 +10,8 @@ import UIKit
 
 class Transitioner {
     
+    let checker: Checker = Checker()
+    
     var coordinate: [Int]?
     
     var white: Bool
@@ -97,60 +99,36 @@ class Transitioner {
             loop1: for j in (0 ..< 8) {
                 let piece = state1[self.coordinate![0]][self.coordinate![1]]!
                 if(piece.validate(present: coordinate, proposed: [i,j], state: state1)){
-                   /**
-                    * - - - - - - - - - - - - - - - -
-                    * - why does that make it work? -
-                    * - renderServer() with false   -
-                    * - renderClient() with true    -
-                    * - - - - - - - - - - - - - - - -
-                    */
-                    
-                    //let affiliation: String = piece.affiliation
-                    //var white: Bool = true
-                    //if(affiliation != "WHITE"){
-                        //white = false
-                    //}
-                    
                     /*-*-*/
-                    var stateH: [[Piece?]] = state1
-                    let pieceH = stateH[self.coordinate![0]][self.coordinate![1]]
-                    stateH[i][j] = pieceH
-                    stateH[self.coordinate![0]][self.coordinate![1]] = nil
-                    let kingH: [Int] = Checker().kingCoordinate(affiliation: piece.affiliation, state: stateH)
-                    // the king moved (avoiid nil)
-                    // if they match in the operational world...
-                    if(coordinate == kingH){
-                        //let stateK0 = SerializerState(white: white).renderServer(state: stateH) <-- doesn't work
-                        let stateK0 = SerializerState(white: false).renderServer(state: stateH)
-                        let stateK1 = SerializerState(white: true).renderClient(state: stateK0)
-                        let hi: Int = white ? i : 7 - i
-                        let hj: Int = white ? j : 7 - j
-                        if(Checker().check(coordinate: [hi,hj], state: stateK1)){
+                    let king: [Int] = checker.kingCoordinate(affiliation: piece.affiliation, state: state1)
+                    let hold = state1[i][j]
+                    
+                    state1[i][j] = piece
+                    state1[self.coordinate![0]][self.coordinate![1]] = nil
+                    
+                    let czech: Bool
+                    if(piece.name.contains("King")){
+                        czech = checker.auto(coordinate: [i,j], state: state1)
+                    } else {
+                        czech = checker.auto(coordinate: king, state: state1)
+                    }
+                    state1[i][j] = hold
+                    state1[self.coordinate![0]][self.coordinate![1]] = piece
+                    
+                    if(!czech){
+                        let square = state1[i][j]
+                        if(square == nil){
+                            state1[i][j] = PieceAnte()
                             continue loop1
                         }
-                    }
-                    else {
-                        //let stateK0 = SerializerState(white: white).renderServer(state: stateH) <-- doesn't work
-                        let stateK0 = SerializerState(white: false).renderServer(state: stateH)
-                        let stateK1 = SerializerState(white: true).renderClient(state: stateK0)
-                        let kingK: [Int] = Checker().kingCoordinate(affiliation: piece.affiliation, state: stateK1)
-                        if(Checker().check(coordinate: kingK, state: stateK1)){
+                        if(square!.affiliation == piece.affiliation){
                             continue loop1
                         }
+                        let imageTarget = square!.getImageTarget()
+                        square!.setImageVisible(imageVisible: imageTarget)
+                        square!.isTarget = true
                     }
                     /*-*-*/
-                    
-                    let square = state1[i][j]
-                    if(square == nil){
-                        state1[i][j] = PieceAnte()
-                        continue loop1
-                    }
-                    if(square!.affiliation == piece.affiliation){
-                        continue loop1
-                    }
-                    let imageTarget = square!.getImageTarget()
-                    square!.setImageVisible(imageVisible: imageTarget)
-                    square!.isTarget = true
                 }
             }
         }

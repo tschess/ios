@@ -107,5 +107,9 @@ class Poison: Fairy {
         return false
     }
     
+    public func auto(present: [Int], proposed: [Int], state: [[Piece?]]) ->  Bool {
+        return Pawn().auto(present: present, proposed: proposed, state: state)
+    }
+    
 }
 

@@ -118,4 +118,24 @@ class Pawn: Piece {
         return false
     }
     
+    public func auto(present: [Int], proposed: [Int], state: [[Piece?]]) ->  Bool {
+        if((present[0] + 1) - proposed[0] == 0 && ((present[1] + 1) - proposed[1] == 0)) {
+            if(state[present[0] + 1][present[1] + 1] != nil) {
+                if(state[present[0] + 1][present[1] + 1]!.name != "PieceAnte") {
+                    return state[present[0] + 1][present[1] + 1]!.affiliation !=
+                        state[present[0]][present[1]]!.affiliation
+                }
+            }
+        }
+        if((present[0] + 1) - proposed[0] == 0 && ((present[1] - 1) - proposed[1] == 0)) {
+            if(state[present[0] + 1][present[1] - 1] != nil) {
+                if(state[present[0] + 1][present[1] - 1]!.name != "PieceAnte") {
+                    return state[present[0] + 1][present[1] - 1]!.affiliation !=
+                        state[present[0]][present[1]]!.affiliation
+                }
+            }
+        }
+        return false
+    }
+    
 }

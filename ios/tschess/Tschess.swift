@@ -232,7 +232,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         self.promotion.setTschess(tschess: self)
         
         let game_id: String = self.game!.id
-        self.landmine = Landmine(game_id: game_id, white: white, transitioner: transitioner, activityIndicator: self.activityIndicator)
+        self.landmine = Landmine(game_id: game_id, white: white, transitioner: transitioner, activityIndicator: self.activityIndicator, tschess: self)
         self.passant = Passant(white: white, transitioner: transitioner, tschess: self)
         self.castle = Castle(white: white, transitioner: transitioner, tschess: self)
         self.transitioner = transitioner
@@ -359,9 +359,10 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     
     private func getOrnamentCell(highlight: Bool, cell: SquareCell) -> SquareCell{
         if(highlight){
-            let username: String = self.playerSelf!.username
-            let white: Bool = self.game!.getWhite(username: username)
-            if(white){
+            //let username: String = self.playerSelf!.username
+            //let white: Bool = self.game!.getTurn()
+                //.getWhite(username: username)
+            if(self.game!.turn == "WHITE"){
                 let ornament = UIImageView(image: UIImage(named: "pinkmamba_w")!)
                 ornament.bounds = CGRect(origin: cell.bounds.origin, size: cell.bounds.size)
                 ornament.center = CGPoint(x: cell.bounds.size.width/2, y: cell.bounds.size.height/2)
@@ -386,6 +387,14 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         return cell
     }
     
+    func renderDialogPoison() {
+        DispatchQueue.main.async {
+            let storyboard: UIStoryboard = UIStoryboard(name: "DialogPoison", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier: "DialogPoison") as! DialogPoison
+            self.present(viewController, animated: true, completion: nil)
+        }
+    }
+    
     private func getHighlightCell(indexPath: IndexPath, cell: SquareCell) -> SquareCell {
         let resolved: Bool = self.game!.status == "RESOLVED"
         let highlight: String = self.game!.highlight
@@ -394,13 +403,6 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         }
         let coordHighlight: [[Int]] = self.getHighlight(highlight: highlight)
         let coordNormal: [Int] = self.getNormalCoord(indexPath: indexPath)
-        if(self.game!.condition == "LANDMINE"){
-            self.game!.condition = "TBD"
-            let storyboard: UIStoryboard = UIStoryboard(name: "DialogPoison", bundle: nil)
-            let viewController = storyboard.instantiateViewController(withIdentifier: "DialogPoison") as! DialogPoison
-            self.present(viewController, animated: true, completion: nil)
-            return self.highlightCoord(coordNormal: coordNormal, coordHighlight: coordHighlight, cell: cell)
-        }
         return self.highlightCoord(coordNormal: coordNormal, coordHighlight: coordHighlight, cell: cell)
     }
     

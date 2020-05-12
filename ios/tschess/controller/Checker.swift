@@ -9,7 +9,7 @@
 import Foundation
 
 class Checker {
-
+    
     func on(affiliation: String, state: [[Piece?]]) -> Bool {
         let kgCrd: [Int] = self.kingCoordinate(affiliation: affiliation, state: state)
         //print("~ king ~\n\(kgCrd)\n")
@@ -256,6 +256,60 @@ class Checker {
         }
         if(!self.thwart(king: king, state0: state)){
             return true
+        }
+        return false
+    }
+    
+    func auto(coordinate: [Int], state: [[Piece?]]) -> Bool {
+        let king = state[coordinate[0]][coordinate[1]]!
+        let affiliation = king.affiliation
+        loop0: for i in (0 ..< 8) {
+            loop1: for j in (0 ..< 8) {
+                let candidate = state[i][j]
+                if(candidate == nil) {
+                    continue loop1
+                }
+                let friendly = candidate!.affiliation == affiliation
+                if(friendly){
+                    continue loop1
+                }
+                let name = candidate!.name
+                if(name == "PieceAnte") {
+                    continue loop1
+                }
+                /* * */
+                let pawn: Bool = name.contains("Pawn")
+                if (pawn) {
+                    if((candidate as! Pawn).auto(present: [i,j], proposed: coordinate, state: state)){
+                        return true
+                    }
+                    else {
+                        continue loop1
+                    }
+                }
+                let poison: Bool = name.contains("Poison")
+                if (poison) {
+                    if((candidate as! Poison).auto(present: [i,j], proposed: coordinate, state: state)){
+                        return true
+                    }
+                    else {
+                        continue loop1
+                    }
+                }
+                let  hunter: Bool = name.contains("Hunter")
+                if (hunter) {
+                    if((candidate as! Hunter).auto(present: [i,j], proposed: coordinate, state: state)){
+                        return true
+                    }
+                    else {
+                        continue loop1
+                    }
+                }
+                /* * */
+                if(candidate!.validate(present: [i,j], proposed: coordinate, state: state)) {
+                    return true
+                }
+            }
         }
         return false
     }

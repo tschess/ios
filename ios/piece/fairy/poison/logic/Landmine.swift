@@ -10,17 +10,20 @@ import UIKit
 
 class Landmine {
     
+    var tschess: Tschess
+    
     let game_id: String
     let white: Bool
   
     var transitioner: Transitioner
     var activityIndicator: UIActivityIndicatorView
     
-    init(game_id: String, white: Bool, transitioner: Transitioner, activityIndicator: UIActivityIndicatorView) {
+    init(game_id: String, white: Bool, transitioner: Transitioner, activityIndicator: UIActivityIndicatorView, tschess: Tschess) {
         self.game_id = game_id
         self.white = white
         self.transitioner = transitioner
         self.activityIndicator = activityIndicator
+        self.tschess = tschess
     }
     
     public func evaluate(coordinate: [Int]?, proposed: [Int], state0: [[Piece?]]) -> Bool {
@@ -62,7 +65,7 @@ class Landmine {
                 }
                 self.transitioner.clearCoordinate()
             }
-            
+            self.tschess.renderDialogPoison()
             return true
         }
         
@@ -87,6 +90,7 @@ class Landmine {
             }
             self.transitioner.clearCoordinate()
         }
+        self.tschess.renderDialogPoison()
         return true
     }
     
