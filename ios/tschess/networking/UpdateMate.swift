@@ -10,7 +10,7 @@ import Foundation
 
 class UpdateMate {
     
-    func execute(id: String, completion: @escaping (Bool) -> Void) {
+    func execute(id: String, completion: @escaping ([String: Any]) -> Void) {
         let url = URL(string: "http://\(ServerAddress().IP):8080/game/mate/\(id)")!
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
@@ -20,28 +20,24 @@ class UpdateMate {
         let session = URLSession.shared
         let task = session.dataTask(with: request, completionHandler: { data, response, error in
             guard error == nil else {
-                completion(false)
+                completion(["fail": "0"])
                 return
             }
             guard let data = data else {
-                completion(false)
+                completion(["fail": "0"])
                 return
             }
             do {
                 guard let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any] else {
-                    completion(false)
+                    completion(["fail": "0"])
                     return
                 }
                 
-                if(json["success"] != nil){
-                    //print("A")
-                    completion(true)
-                }
-                completion(false)
+                completion(json)
                 
             } catch let error {
                 
-                completion(false)
+                completion(["fail": "0"])
             }
         })
         task.resume()

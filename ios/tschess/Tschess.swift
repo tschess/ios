@@ -529,7 +529,13 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
                        let username: String = self.playerSelf!.username
                        let matrix1: [[Piece?]] = game1.getStateClient(username: username)
                        self.matrix = matrix1
-                       // ~ * ~ //
+                       
+                    
+                        // ~ * ~ //
+                        self.setCheckMate()
+                        // ~ * ~ //
+                    
+                    
                        self.viewBoard.reloadData()
                        self.setLabelEndgame()
                        self.setLabelCountdown(update: game1.updated)
@@ -542,36 +548,8 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
        }
     
     private func setLabelCheck() {
-        let state: [[Piece?]] = self.matrix!
-        let username: String = self.playerSelf!.username
-        let white: Bool = self.game!.getWhite(username: username)
-        let stateK0 = SerializerState(white: white).renderServer(state: state)
-        let stateK1 = SerializerState(white: white).renderClient(state: stateK0)
-        let affiliation: String = self.game!.turn
-        let kingK: [Int] = Checker().kingCoordinate(affiliation: affiliation, state: stateK1)
-        
-        // - ? - ? - ? - //
-        let mate: Bool = Checker().mate(king: kingK, state: state) // does this work?
-        if(mate){
-            UpdateMate().execute(id: self.game!.id) { (success) in
-                if(!success){
-                    //error
-                }
-            }
-            return
-        }
-        // - ? - ? - ? - //
-        let check0: Bool = self.game!.on_check
-        let check1: Bool = Checker().check(coordinate: kingK, state: stateK1)
-        if(!check0 && check1){
-            UpdateCheck().execute(id: self.game!.id) { (success) in
-                if(!success){
-                    //error
-                }
-            }
-            return
-        }
-        if(!check0 && !check1){
+        let check: Bool = self.game!.on_check
+        if(!check){
             return
         }
         let indication: Bool = self.labelTurnary.text!.contains("check")
@@ -600,6 +578,27 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
             return
         }
         self.labelNotification.text = "you lose"
+    }
+    
+    private func setCheckMate() {
+        let czecher: Checker = Checker()
+        let affiliation: String = self.game!.getAffiliationOther(username: self.playerSelf!.username)
+        let king: [Int] = czecher.kingCoordinate(affiliation: affiliation, state: self.matrix!)
+        let mate: Bool = czecher.mate(king: king, state: self.matrix!)
+        if (mate) {
+            UpdateMate().execute(id: self.game!.id) { (result) in
+               print("result: 999 --> \(result)")
+            }
+            return
+        }
+        let czech: Bool = czecher.other(coordinate: king, state: self.matrix!)
+        if (!czech) {
+            return
+        }
+        UpdateCheck().execute(id: self.game!.id) { (result) in
+            print("result: 1313 --> \(result)")
+        }
+        
     }
     
 }

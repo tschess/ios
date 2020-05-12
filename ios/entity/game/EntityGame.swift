@@ -212,6 +212,13 @@ class EntityGame: Equatable, Hashable {
         return self.white
     }
     
+    func getAffiliationOther(username: String) -> String {
+        if(self.white.username == username){
+            return "WHITE"
+        }
+        return "BLACK"
+    }
+    
     func getWinner(username: String) -> Bool {
         if(self.white.username == username){
             if(self.winner! == "WHITE"){
