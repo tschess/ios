@@ -123,11 +123,17 @@ class Home: UIViewController, UITabBarDelegate {
                 let notify = self.tabBarMenu.items![1]
                 notify.selectedImage = UIImage(named: "game.white")!
             }
-            RequestQuick().success(id: self.player!.id) { (opponent) in
+            RequestQuick().success(id: self.player!.id) { (json) in
+                
+                print("FUCK - - - \(json)")
+                
                 self.setIndicator(on: false)
+                
+                let opponent: EntityPlayer = ParsePlayer().execute(json: json)
+                
                 DispatchQueue.main.async() {
                     let height: CGFloat = UIScreen.main.bounds.height
-                    SelectPlay().execute(selection: Int.random(in: 0...3), playerSelf: self.player!, playerOther: opponent!, height: height)
+                    SelectPlay().execute(selection: Int.random(in: 0...3), playerSelf: self.player!, playerOther: opponent, height: height)
                 }
             }
         case 3:

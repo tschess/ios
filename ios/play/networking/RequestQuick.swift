@@ -10,7 +10,7 @@ import Foundation
 
 class RequestQuick {
     
-    func success(id: String, completion: @escaping (EntityPlayer?) -> Void) {
+    func success(id: String, completion: @escaping ([String: Any]) -> Void) {
         let url = URL(string: "http://\(ServerAddress().IP):8080/player/quick/\(id)")!
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
@@ -18,25 +18,23 @@ class RequestQuick {
         let session = URLSession.shared
         let task = session.dataTask(with: request, completionHandler: { data, response, error in
             guard error == nil else {
-                completion(nil)
+                completion(["fail": "0"])
                 return
             }
             guard let data = data else {
-                completion(nil)
+                completion(["fail": "0"])
                 return
             }
             do {
                 guard let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any] else {
-                    completion(nil)
+                    completion(["fail": "0"])
                     return
                 }
-                
-                let player: EntityPlayer = ParsePlayer().execute(json: json)
-                completion(player)
+                completion(json)
                 
             } catch let error {
                 print(error.localizedDescription)
-                completion(nil)
+                completion(["fail": "0"])
             }
         })
         task.resume()

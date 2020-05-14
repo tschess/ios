@@ -72,24 +72,7 @@ class Menu: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate {
     }
     
     let enter: Enter = Enter.instanceFromNib()
-//    
-//    override func viewDidAppear(_ animated: Bool) {
-//        if(self.menuTable!.gameMenuTableList.count > 0){
-//            return
-//        }
-//        
-//    }
-    
-    @objc func quick(gesture: UIGestureRecognizer) {
-        self.setIndicator(on: true)
-        RequestQuick().success(id: self.playerSelf!.id) { (opponent) in
-            self.setIndicator(on: false)
-            DispatchQueue.main.async() {
-                let height: CGFloat = UIScreen.main.bounds.height
-                SelectPlay().execute(selection: Int.random(in: 0...3), playerSelf: self.playerSelf!, playerOther: opponent!, height: height)
-            }
-        }
-    }
+
     
     func setIndicator(on: Bool) {
         if(on) {

@@ -381,8 +381,8 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
                 let leading = NSLayoutConstraint(item: self.menu!.enter, attribute: NSLayoutConstraint.Attribute.leading, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.menu!.containerView, attribute: NSLayoutConstraint.Attribute.leading, multiplier: 1, constant: 0)
                 self.menu!.view.addConstraints([top, bottom, trailing, leading])
                 
-                let quick = UITapGestureRecognizer(target: self, action: #selector(self.menu!.quick))
-                self.menu!.enter.addGestureRecognizer(quick)
+                //let quick = UITapGestureRecognizer(target: self, action: #selector(self.menu!.quick))
+                //self.menu!.enter.addGestureRecognizer(quick)
                 self.menu!.enter.isUserInteractionEnabled = true
             }
         }
