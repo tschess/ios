@@ -158,7 +158,7 @@
                                 </constraints>
                                 <items>
                                     <tabBarItem tag="1" title="CHALLENGE" image="challenge_g" selectedImage="challenge" id="fjf-cy-wGx">
-                                        <inset key="imageInsets" minX="5" minY="5" maxX="5" maxY="5"/>
+                                        <inset key="imageInsets" minX="4" minY="4" maxX="4" maxY="4"/>
                                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tabBarItem>
                                 </items>
@@ -354,6 +354,6 @@
         <image name="avatar_default" width="320" height="320"/>
         <image name="avatar_inverse" width="320" height="320"/>
         <image name="challenge" width="39" height="39"/>
-        <image name="challenge_g" width="39" height="52"/>
+        <image name="challenge_g" width="39" height="39"/>
     </resources>
 </document>
