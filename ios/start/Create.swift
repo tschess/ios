@@ -65,10 +65,10 @@ class Create: UIViewController, UITextFieldDelegate {
                 self.passwordTextField.isHidden = false
                 self.usernameTextField.text?.removeAll()
                 self.usernameTextField.attributedPlaceholder = NSAttributedString(string: "username",
-                                                                                  attributes: [NSAttributedString.Key.foregroundColor: UIColor.magenta])
+                                                                                  attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
                 self.passwordTextField.text?.removeAll()
                 self.passwordTextField.attributedPlaceholder = NSAttributedString(string: "password",
-                                                                                  attributes: [NSAttributedString.Key.foregroundColor: UIColor.magenta])
+                                                                                  attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
                 let storyboard: UIStoryboard = UIStoryboard(name: "Invalid", bundle: nil)
                 let viewController = storyboard.instantiateViewController(withIdentifier: "Invalid") as! CompInvalid
                 self.present(viewController, animated: true, completion: nil)
