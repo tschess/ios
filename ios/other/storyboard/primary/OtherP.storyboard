@@ -158,7 +158,7 @@
                                 </constraints>
                                 <items>
                                     <tabBarItem tag="1" title="CHALLENGE" image="challenge" selectedImage="challenge" id="fjf-cy-wGx">
-                                        <inset key="imageInsets" minX="4" minY="4" maxX="4" maxY="4"/>
+                                        <inset key="imageInsets" minX="5" minY="5" maxX="5" maxY="5"/>
                                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tabBarItem>
                                 </items>
