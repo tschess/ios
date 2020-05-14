@@ -14,7 +14,7 @@ class Profile: UIViewController, UITabBarDelegate, UINavigationControllerDelegat
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         
         let selectedImage = info[.originalImage] as! UIImage
-        let imageString = selectedImage.jpegData(compressionQuality: 0.1)!.base64EncodedString()
+        let imageString = selectedImage.jpegData(compressionQuality: 0.09)!.base64EncodedString()
         
         let updatePhoto = ["id": self.player!.id, "avatar": imageString] as [String: Any]
         UpdatePhoto().execute(requestPayload: updatePhoto) { (error) in
