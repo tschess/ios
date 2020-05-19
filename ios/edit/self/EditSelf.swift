@@ -86,9 +86,7 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
         self.tschessElementCollectionView.delegate = self
         self.tschessElementCollectionView.dataSource = self
         self.tschessElementCollectionView.dragDelegate = self
-        self.tschessElementCollectionView.addInteraction(UIDropInteraction(delegate: self))
-        self.headerView.addInteraction(UIDropInteraction(delegate: self))
-        self.contentView.addInteraction(UIDropInteraction(delegate: self))
+        
         self.tabBarMenu.delegate = self
         self.activityIndicator.isHidden = true
         self.configCollectionView.isUserInteractionEnabled = true
@@ -97,6 +95,12 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
         self.configCollectionView.bounces = false
         self.tschessElementCollectionView.isUserInteractionEnabled = true
         self.tschessElementCollectionView.dragInteractionEnabled = true
+        
+        
+        //self.view.addInteraction(UIDropInteraction(delegate: self))
+        self.tschessElementCollectionView.addInteraction(UIDropInteraction(delegate: self))
+        self.headerView.addInteraction(UIDropInteraction(delegate: self))
+        self.contentView.addInteraction(UIDropInteraction(delegate: self))
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -110,7 +114,7 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
         }
         self.tschessElementCollectionView.gestureRecognizers?.forEach { (recognizer) in
             if let longPressRecognizer = recognizer as? UILongPressGestureRecognizer {
-                longPressRecognizer.minimumPressDuration = 0.01
+                longPressRecognizer.minimumPressDuration = 0.1
             }
         }
     }
@@ -173,9 +177,9 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
         let pointValue0 = self.getPointValue(config: config)
         let pointValue1 = pointValue0 + pointIncrease
         if(pointValue1 > 39){
-            return true
+            return false
         }
-        return false
+        return true
     }
     
     //MARK: Render
@@ -194,7 +198,7 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
             elementCell.imageView.alpha = 1
             elementCell.nameLabel.alpha = 1
             elementCell.pointsLabel.alpha = 1
-            if(self.allocatable(piece: elementObject, config: self.configActiv!)){
+            if(!self.allocatable(piece: elementObject, config: self.configActiv!)){
                 elementCell.imageView.alpha = 0.5
                 elementCell.nameLabel.alpha = 0.5
                 elementCell.pointsLabel.alpha = 0.5
@@ -318,18 +322,26 @@ extension EditSelf: UICollectionViewDragDelegate {
     
     func collectionView(_ collectionView: UICollectionView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
         print("aa")
-        UIImpactFeedbackGenerator(style: .light).impactOccurred()
+        
         self.configCache = self.configActiv!
         
         let row: Int = indexPath.row
+        print("row: \(row)")
         
         if collectionView == self.tschessElementCollectionView {
             
             let piece: Piece = self.editCore.generateTschessElement(name: self.ELEMENT_LIST[row])!
+            
+            let xname: String = piece.name
+            print("name: \(xname)")
+            
             let allocatable: Bool = self.allocatable(piece: piece, config: self.configActiv!)
             if(!allocatable){
+                print("-")
                 return []
             }
+            print("*")
+            UIImpactFeedbackGenerator(style: .light).impactOccurred()
             
             let name: String = self.editCore.imageNameFromPiece(piece: piece)!
             self.candidate = name
@@ -338,7 +350,7 @@ extension EditSelf: UICollectionViewDragDelegate {
             let dragItem = UIDragItem(itemProvider: itemProvider)
             dragItem.previewProvider = {
                 () -> UIDragPreview? in
-                let imageView = UIImageView(image: image)
+                let imageView = UIImageView(image: UIImage(named: name)!)
                 imageView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
                 let previewParameters = UIDragPreviewParameters()
                 previewParameters.backgroundColor = UIColor.clear
@@ -353,6 +365,7 @@ extension EditSelf: UICollectionViewDragDelegate {
         if(tschessElement == nil) {
             return []
         }
+        UIImpactFeedbackGenerator(style: .light).impactOccurred()
         let name: String = self.editCore.imageNameFromPiece(piece: tschessElement!)!
         self.candidate = name
         let image: UIImage = UIImage(named: name)!
@@ -372,25 +385,26 @@ extension EditSelf: UICollectionViewDragDelegate {
             self.setTotalPointValue()
             return dragPreview
         }
+        //self.setTotalPointValue()
         return [dragItem]
     }
     
-    //func collectionView(_ collectionView: UICollectionView, dragPreviewParametersForItemAt indexPath: IndexPath) -> UIDragPreviewParameters?{
-        //let previewParameters = UIDragPreviewParameters()
-        //previewParameters.backgroundColor = UIColor.clear
-        //print("03")
-        //return previewParameters
-    //}
+    func collectionView(_ collectionView: UICollectionView, dragPreviewParametersForItemAt indexPath: IndexPath) -> UIDragPreviewParameters?{
+        let previewParameters = UIDragPreviewParameters()
+        previewParameters.backgroundColor = UIColor.clear
+        print("03")
+        return previewParameters
+    }
     
-    //func collectionView(_ collectionView: UICollectionView, itemsForAddingTo session: UIDragSession, at indexPath: IndexPath, point: CGPoint) -> [UIDragItem] {
-        //return self.collectionView(collectionView, itemsForBeginning: session, at: indexPath)
-        //print("02")
-        //return self.collectionView(collectionView, itemsForBeginning: session, at: indexPath)
-    //}
+    func collectionView(_ collectionView: UICollectionView, itemsForAddingTo session: UIDragSession, at indexPath: IndexPath, point: CGPoint) -> [UIDragItem] {
+        return self.collectionView(collectionView, itemsForBeginning: session, at: indexPath)
+        print("02")
+        return self.collectionView(collectionView, itemsForBeginning: session, at: indexPath)
+    }
     
     internal func collectionView(_: UICollectionView, dragSessionDidEnd: UIDragSession){ //last
-        //self.tschessElementCollectionView.reloadData()
-        //self.setTotalPointValue()
+        self.tschessElementCollectionView.reloadData()
+        self.setTotalPointValue()
         //LAST OF DRAG
         print("zz")
     }
@@ -400,79 +414,74 @@ extension EditSelf: UICollectionViewDragDelegate {
 //MARK: DropDelegate
 extension EditSelf: UICollectionViewDropDelegate {
     
-    func collectionView(_ collectionView: UICollectionView, performDropWith coordinator: UICollectionViewDropCoordinator) {
-        //
-        print("00")
-    }
-    
-    
     func dropInteraction(_ interaction: UIDropInteraction, canHandle session: UIDropSession) -> Bool {
         print("01")
         return true
     }
     
-    //func dropInteraction(_ interaction: UIDropInteraction, sessionDidUpdate session: UIDropSession) -> UIDropProposal {
-        //print("02")
-        //return UIDropProposal(operation: .move)
-    //}
+    func dropInteraction(_ interaction: UIDropInteraction, sessionDidUpdate session: UIDropSession) -> UIDropProposal {
+        print("02")
+        return UIDropProposal(operation: .move)
+    }
     
     func dropInteraction(_ interaction: UIDropInteraction, performDrop session: UIDropSession) {
         print("03")
+        if(self.candidate != nil){
+            if(self.candidate!.lowercased().contains("king")){
+                self.configActiv = self.configCache
+                self.configCollectionView.reloadData() //give a warning also... feedback
+            }
+        }
+        self.candidate = nil
+        self.configCollectionView.reloadData()
+        self.tschessElementCollectionView.reloadData()
     }
     
+    func collectionView(_ collectionView: UICollectionView, dropSessionDidUpdate session: UIDropSession, withDestinationIndexPath destinationIndexPath: IndexPath?) -> UICollectionViewDropProposal {
+        print("04")
+        return UICollectionViewDropProposal(operation: .move, intent: .insertIntoDestinationIndexPath)
+    }
     
-    //    func dropInteraction(_ interaction: UIDropInteraction, performDrop session: UIDropSession) {
-    //        if(self.selectionPieceName != nil){
-    //            if(self.selectionPieceName!.lowercased().contains("king")){
-    //                self.configActiv = self.configCache
-    //                configCollectionView.reloadData() //give a warning also... feedback
-    //            }
-    //        }
-    //        self.selectionPieceName = nil
-    //        self.configCollectionView.reloadData()
-    //        self.tschessElementCollectionView.reloadData()
-    //    }
-    //    func collectionView(_ collectionView: UICollectionView, dropSessionDidUpdate session: UIDropSession, withDestinationIndexPath destinationIndexPath: IndexPath?) -> UICollectionViewDropProposal {
-    //          return UICollectionViewDropProposal(operation: .move, intent: .insertIntoDestinationIndexPath)
-    //      }
-    //
-    //      func collectionView(_ collectionView: UICollectionView, performDropWith coordinator: UICollectionViewDropCoordinator) {
-    //          let x = coordinator.destinationIndexPath!.row / 8
-    //          let y = coordinator.destinationIndexPath!.row % 8
-    //
-    //          let occupant: Piece? = self.configActiv![x][y]
-    //          if(occupant != nil){
-    //              if(occupant!.name.lowercased().contains("king")){
-    //                  self.configActiv = self.configCache
-    //                  configCollectionView.reloadData()
-    //                  return
-    //              }
-    //          }
-    //          let tschessElement = Edit().generateTschessElement(name: self.selectionPieceName!)
-    //          self.configActiv![x][y] = tschessElement!
-    //          self.setTotalPointValue()
-    //          self.configCollectionView.reloadData()
-    //          self.tschessElementCollectionView.reloadData()
-    //      }
-    //    func collectionView(_ collectionView: UICollectionView,  dropSessionDidEnd session: UIDropSession) {
-    //        var kingAbsent: Bool = true
-    //        for row in self.configActiv! {
-    //            for tschessElement in row {
-    //                if(tschessElement == nil){
-    //                    continue
-    //                }
-    //                if(tschessElement!.name.lowercased().contains("king")){
-    //                    kingAbsent = false
-    //                }
-    //            }
-    //        }
-    //        if(!kingAbsent){
-    //            return
-    //        }
-    //        self.configActiv = self.configCache
-    //        self.configCollectionView.reloadData()
-    //        self.setTotalPointValue()
-    //        self.tschessElementCollectionView.reloadData()
-    //    }
+    func collectionView(_ collectionView: UICollectionView, performDropWith coordinator: UICollectionViewDropCoordinator) {
+        print("05")
+        let x = coordinator.destinationIndexPath!.row / 8
+        let y = coordinator.destinationIndexPath!.row % 8
+        
+        let occupant: Piece? = self.configActiv![x][y]
+        if(occupant != nil){
+            if(occupant!.name.lowercased().contains("king")){
+                self.configActiv = self.configCache
+                configCollectionView.reloadData()
+                return
+            }
+        }
+        let tschessElement = self.editCore.generateTschessElement(name: self.candidate!)
+        self.configActiv![x][y] = tschessElement!
+        self.setTotalPointValue()
+        self.configCollectionView.reloadData()
+        self.tschessElementCollectionView.reloadData()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,  dropSessionDidEnd session: UIDropSession) {
+        print("06")
+        var kingAbsent: Bool = true
+        for row in self.configActiv! {
+            for tschessElement in row {
+                if(tschessElement == nil){
+                    continue
+                }
+                if(tschessElement!.name.lowercased().contains("king")){
+                    kingAbsent = false
+                }
+            }
+        }
+        if(!kingAbsent){
+            return
+        }
+        self.configActiv = self.configCache
+        self.configCollectionView.reloadData()
+        self.setTotalPointValue()
+        self.tschessElementCollectionView.reloadData()
+    }
     
 }
