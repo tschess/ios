@@ -15,18 +15,18 @@ class SelectEditSelf {
             let storyboard: UIStoryboard = UIStoryboard(name: "EditSelfL", bundle: nil)
             let viewController = storyboard.instantiateViewController(withIdentifier: "EditSelfL") as! EditSelf
             viewController.playerSelf = player
-            viewController.titleText = title
+            //viewController.titleText = title
             viewController.selection = select
-            viewController.BACK = "CONFIG"
+            //viewController.BACK = "CONFIG"
             UIApplication.shared.keyWindow?.rootViewController = viewController
             return
         }
         let storyboard: UIStoryboard = UIStoryboard(name: "EditSelfP", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "EditSelfP") as! EditSelf
         viewController.playerSelf = player
-        viewController.titleText = title
+        //viewController.titleText = title
         viewController.selection = select
-        viewController.BACK = "CONFIG"
+        //viewController.BACK = "CONFIG"
         UIApplication.shared.keyWindow?.rootViewController = viewController
     }
 }

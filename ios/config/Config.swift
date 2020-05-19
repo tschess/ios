@@ -98,8 +98,12 @@ class Config: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate, U
     
     @objc func editCollectionView0() {
         DispatchQueue.main.async {
-            let height: CGFloat = UIScreen.main.bounds.height
-            SelectEditSelf().execute(player: self.playerSelf!, title: "config. 0̸", select: 0, height: height)
+            //let height: CGFloat = UIScreen.main.bounds.height
+            //SelectEditSelf().execute(player: self.playerSelf!, title: "config. 0̸", select: 0, height: height)
+            UIApplication.shared.keyWindow?.rootViewController = EditSelf.create(
+            player: self.playerSelf!,
+            select: 0,
+            height: UIScreen.main.bounds.height)
         }
     }
     
