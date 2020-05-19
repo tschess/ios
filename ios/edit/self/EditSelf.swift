@@ -97,8 +97,6 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
         self.tschessElementCollectionView.isUserInteractionEnabled = true
         self.tschessElementCollectionView.dragInteractionEnabled = true
         
-        
-        //self.view.addInteraction(UIDropInteraction(delegate: self))
         self.tschessElementCollectionView.addInteraction(UIDropInteraction(delegate: self))
         self.headerView.addInteraction(UIDropInteraction(delegate: self))
         self.contentView.addInteraction(UIDropInteraction(delegate: self))
@@ -184,7 +182,7 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
         return true
     }
     
-    //MARK: Render
+    //MARK: Render //gotta look at this...
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == self.tschessElementCollectionView {
             let elementCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ConfigCell", for: indexPath) as! ConfigCell
@@ -228,13 +226,6 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
         cell.imageView.center = CGPoint(x: cell.bounds.size.width/2, y: cell.bounds.size.height/2)
         return cell
     }
-    
-    
-    
-    
-    
-    
-    
     
 }
 
@@ -284,7 +275,8 @@ extension EditSelf: UICollectionViewDelegate {
         
         switch item.tag {
         case 0:
-            self.backButtonClick("~")
+            //dialog: x-configm, "exit w/o saving?"
+            self.backButtonClick("")
         case 2:
             let storyboard: UIStoryboard = UIStoryboard(name: "Help", bundle: nil)
             let viewController = storyboard.instantiateViewController(withIdentifier: "Help") as! Help
@@ -305,13 +297,13 @@ extension EditSelf: UICollectionViewDelegate {
                         self.activityIndicator!.isHidden = true
                         self.activityIndicator!.stopAnimating()
                         self.playerSelf = result!
-                        self.backButtonClick("~")
+                        self.backButtonClick("")
                     }
                 }
                 DispatchQueue.main.async() {
                     self.activityIndicator!.isHidden = false
                     self.activityIndicator!.startAnimating()
-                    self.backButtonClick("~")
+                    self.backButtonClick("")
                 }
             }
         }
@@ -326,30 +318,18 @@ extension EditSelf: UICollectionViewDragDelegate {
         print("aa")
         
         self.configCache = self.configActiv!
-        
         let row: Int = indexPath.row
-        print("row: \(row)")
-        
         if collectionView == self.tschessElementCollectionView {
-            
             let piece: Piece = self.editCore.generateTschessElement(name: self.ELEMENT_LIST[row])!
-            
-            let xname: String = piece.name
-            print("name: \(xname)")
-            
             let allocatable: Bool = self.allocatable(piece: piece, config: self.configActiv!)
             if(!allocatable){
-                print("-")
                 return []
             }
-            print("*")
             UIImpactFeedbackGenerator(style: .light).impactOccurred()
             
             let name: String = self.editCore.imageNameFromPiece(piece: piece)!
             self.candidateName = name
-            //let x = indexPath.row / 8
-            //let y = indexPath.row % 8
-            //self.candidateCoord = [x,y]
+            
             let image: UIImage = UIImage(named: name)!
             let itemProvider = NSItemProvider(object: image)
             let dragItem = UIDragItem(itemProvider: itemProvider)
@@ -384,16 +364,12 @@ extension EditSelf: UICollectionViewDragDelegate {
             let previewParameters = UIDragPreviewParameters()
             previewParameters.backgroundColor = UIColor.clear
             let dragPreview: UIDragPreview = UIDragPreview(view: imageView, parameters: previewParameters)
-            //self.configActiv![x][y] = nil
-            //self.configCollectionView.reloadData()
-            //self.tschessElementCollectionView.reloadData()
             
             self.candidateName = name
             self.candidateCoord = [x,y]
             self.setTotalPointValue()
             return dragPreview
         }
-        //self.setTotalPointValue()
         return [dragItem]
     }
     
@@ -405,28 +381,19 @@ extension EditSelf: UICollectionViewDragDelegate {
     }
     
     func collectionView(_ collectionView: UICollectionView, itemsForAddingTo session: UIDragSession, at indexPath: IndexPath, point: CGPoint) -> [UIDragItem] {
-        //return self.collectionView(collectionView, itemsForBeginning: session, at: indexPath)
         print("02")
         return self.collectionView(collectionView, itemsForBeginning: session, at: indexPath)
     }
     
     internal func collectionView(_: UICollectionView, dragSessionDidEnd: UIDragSession){ //last
-        
-        
         if(self.candidateCoord != nil){
             self.configActiv![self.candidateCoord![0]][self.candidateCoord![1]] = nil
         }
-        self.configCollectionView.reloadData()
-        self.tschessElementCollectionView.reloadData()
-        
-        //self.tschessElementCollectionView.reloadData()
-        self.setTotalPointValue()
-        
-        
         self.candidateName = nil
         self.candidateCoord = nil
         self.configCollectionView.reloadData()
         self.tschessElementCollectionView.reloadData()
+        self.setTotalPointValue()
         //LAST OF DRAG
         print("zz")
     }
@@ -448,13 +415,6 @@ extension EditSelf: UICollectionViewDropDelegate {
     
     func dropInteraction(_ interaction: UIDropInteraction, performDrop session: UIDropSession) {
         print("03")
-        //if(self.candidate != nil){
-            //if(self.candidate!.lowercased().contains("king")){
-                //self.configActiv = self.configCache
-                //self.configCollectionView.reloadData() //give a warning also... feedback
-            //}
-        //}
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, dropSessionDidUpdate session: UIDropSession, withDestinationIndexPath destinationIndexPath: IndexPath?) -> UICollectionViewDropProposal {
@@ -467,17 +427,8 @@ extension EditSelf: UICollectionViewDropDelegate {
         let x = coordinator.destinationIndexPath!.row / 8
         let y = coordinator.destinationIndexPath!.row % 8
         
-        //let occupant: Piece? = self.configActiv![x][y]
-        //if(occupant != nil){
-            //if(occupant!.name.lowercased().contains("king")){
-                //self.configActiv = self.configCache
-                //configCollectionView.reloadData()
-                //return
-            //}
-        //}
         let tschessElement = self.editCore.generateTschessElement(name: self.candidateName!)
         self.configActiv![x][y] = tschessElement!
-        //self.configActiv![self.candidateCoord![0]][self.candidateCoord![1]] = nil
         self.setTotalPointValue()
         self.configCollectionView.reloadData()
         self.tschessElementCollectionView.reloadData()
