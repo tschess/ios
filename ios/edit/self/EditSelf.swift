@@ -13,7 +13,6 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
     /* - * - */
     @IBOutlet weak var titleLabel: UILabel!
     var titleText: String?
-    
     var playerSelf: EntityPlayer?
     var selection: Int? = nil
     var BACK: String?
@@ -45,16 +44,6 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
     let DATE_TIME: DateTime = DateTime()
     let REUSE_IDENTIFIER = "square"
     let PLACEMENT_LIST = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16"]
-    //    let ELEMENT_LIST = [
-    //        "red_pawn",
-    //        "red_knight",
-    //        "red_bishop",
-    //        "red_rook",
-    //        "red_queen",
-    //        "red_amazon",
-    //        "red_poison_pawn",
-    //        "red_hunter",
-    //        "red_grasshopper"]
     let ELEMENT_LIST = [
         "red_pawn",
         "red_knight",
@@ -64,10 +53,6 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
         "red_amazon",
         "red_hunter",
         "red_poison"]
-    
-    //MARK: Layout: Content
-    //@IBOutlet weak var notificationLabel: UILabel!
-    //@IBOutlet weak var splitViewHeight0: NSLayoutConstraint!
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var totalPointLabel: UILabel!
     var totalPointValue: Int?
