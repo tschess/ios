@@ -109,7 +109,7 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
         self.configCollectionView.isHidden = false
         self.configCollectionView.gestureRecognizers?.forEach { (recognizer) in
             if let longPressRecognizer = recognizer as? UILongPressGestureRecognizer {
-                longPressRecognizer.minimumPressDuration = 0.01
+                longPressRecognizer.minimumPressDuration = 0.005
             }
         }
         self.tschessElementCollectionView.gestureRecognizers?.forEach { (recognizer) in
@@ -192,8 +192,9 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
             elementCell.configureCell(image: elementImage)
             
             let elementObject: Piece = self.editCore.generateTschessElement(name: self.ELEMENT_LIST[indexPath.row])!
-            elementCell.nameLabel.text = elementObject.name
-            elementCell.pointsLabel.text = elementObject.strength
+            elementCell.nameLabel.text = "\(elementObject.name.lowercased()): \(elementObject.strength)"
+            //elementCell.pointsLabel.text = elementObject.strength
+            elementCell.pointsLabel.isHidden = true
             
             elementCell.imageView.alpha = 1
             elementCell.nameLabel.alpha = 1
