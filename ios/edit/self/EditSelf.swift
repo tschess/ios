@@ -11,52 +11,25 @@ import UIKit
 class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIDropInteractionDelegate {
     
     /* - * - */
-    var selection: Int? = nil
-    
-    public func setSelection(selection: Int){
-        self.selection = selection
-    }
-    
-    var BACK: String?
-    
-    public func setBACK(BACK: String){
-        self.BACK = BACK
-    }
-    
     @IBOutlet weak var titleLabel: UILabel!
-    
     var titleText: String?
     
-    func setTitleText(titleText: String) {
-        self.titleText = titleText
-    }
-    
+    var playerSelf: EntityPlayer?
+    var selection: Int? = nil
+    var BACK: String?
     /* - * - */
     
-    var playerSelf: EntityPlayer?
-    
-    func setPlayerSelf(playerSelf: EntityPlayer){
-        self.playerSelf = playerSelf
-    }
-    
-    //@IBOutlet weak var dropViewTop0: UIView!
-    //@IBOutlet weak var dropViewTop1: UIView!
-    //@IBOutlet weak var dropViewBottom0: UIView!
-    
     //MARK: Layout: Core
-    @IBOutlet weak var backButton: UIButton!
-    @IBOutlet weak var headerView: UIView!
-    @IBOutlet weak var tabBarMenu: UITabBar!
-    
-    //MARK: Layout: Core
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var displacementImage: UIImageView!
     @IBOutlet weak var displacementLabel: UILabel!
     @IBOutlet weak var eloLabel: UILabel!
     @IBOutlet weak var rankLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var avatarImageView: UIImageView!
-    
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var headerView: UIView!
+    @IBOutlet weak var tabBarMenu: UITabBar!
     
     public func renderHeader() {
         self.avatarImageView.image = self.playerSelf!.getImageAvatar()
