@@ -23,14 +23,11 @@ class Snapshot: UIViewController, UICollectionViewDataSource, UICollectionViewDe
     }
     
     @IBOutlet weak var titleBackView: UIView!
-    //@IBOutlet weak var titleBackImage: UIImageView!
     
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var titleLabel: UILabel!
     
-    /* * */
     @IBOutlet weak var headerView: UIView!
-    //@IBOutlet weak var headerImage: UIImageView!
     
     @IBOutlet weak var winnerImageView: UIImageView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
@@ -38,18 +35,13 @@ class Snapshot: UIViewController, UICollectionViewDataSource, UICollectionViewDe
     @IBOutlet weak var usernameLabelBlack: UILabel!
     @IBOutlet weak var usernameWinner: UILabel!
     
-    /* * */
     @IBOutlet weak var contentView: UIView!
-    //@IBOutlet weak var contentImage: UIImageView!
     
     @IBOutlet weak var dateLabel: UILabel!
     
-    //@IBOutlet weak var viewBoardHeight: NSLayoutConstraint!
-    //@IBOutlet weak var viewBoard: BoardView!
     @IBOutlet weak var boardView: BoardView!
     @IBOutlet weak var boardViewHeight: NSLayoutConstraint!
     
-    /* * */
     @IBOutlet weak var statsView: UIView!
     
     @IBOutlet weak var moveCountLabel: UILabel!

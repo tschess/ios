@@ -33,9 +33,6 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
     @IBOutlet var tabBarMenu: UITabBar!
     
-    //var menuList: [EntityGame]?
-    //var homeList: [EntityPlayer]?
-    
     @IBAction func backButtonClick(_ sender: Any) {
         self.endTimer()
          DispatchQueue.main.async {
@@ -57,7 +54,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
                 self.present(viewController, animated: true, completion: nil)
             }
         default: //0
-            self.backButtonClick("~")
+            self.backButtonClick("")
         }
     }
     
@@ -122,16 +119,13 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         }
     }
     
-    private func timeout() { //what if these both go simultaneously...
+    private func timeout() {
         let id_game: String = self.game!.id
-        let resigner: String = self.game!.getTurn()
-        let winner: String = self.game!.getPlayerOther(username: resigner).username
-        let white: Bool = self.game!.getWhite(username: resigner)
-        let update: [String: Any] = ["id_game": id_game, "id_self": resigner, "id_oppo": winner, "white": white]
-        UpdateResign().execute(requestPayload: update) { (result) in
-            if(!result){
-                //error
-            }
+        let playerResign: EntityPlayer = self.game!.getTurnPlayer()
+        let white: Bool = self.game!.getWhite(username: playerResign.username)
+        let update: [String: Any] = ["id_game": id_game, "id_self": playerResign.id, "white": white]
+        UpdateTimeout().execute(requestPayload: update) { (result) in
+            // TODO: handle...
         }
     }
     
