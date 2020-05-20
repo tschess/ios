@@ -40,7 +40,6 @@
 		B7021F5623FE122D00C9346A /* SelectEditOther.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7021F5523FE122D00C9346A /* SelectEditOther.swift */; };
 		B7021F5923FE303000C9346A /* EditSelfL.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7021F5823FE303000C9346A /* EditSelfL.storyboard */; };
 		B7021F5C23FE304D00C9346A /* EditSelfP.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7021F5B23FE304D00C9346A /* EditSelfP.storyboard */; };
-		B7021F5E23FE30A100C9346A /* SelectEditSelf.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7021F5D23FE30A100C9346A /* SelectEditSelf.swift */; };
 		B7021F6223FE3B8E00C9346A /* ProfileP.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7021F6123FE3B8E00C9346A /* ProfileP.storyboard */; };
 		B7021F6423FE3B9E00C9346A /* ProfileL.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7021F6323FE3B9E00C9346A /* ProfileL.storyboard */; };
 		B7021F6623FE3BE800C9346A /* SelectProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7021F6523FE3BE800C9346A /* SelectProfile.swift */; };
@@ -265,7 +264,6 @@
 		B7021F5523FE122D00C9346A /* SelectEditOther.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectEditOther.swift; sourceTree = "<group>"; };
 		B7021F5823FE303000C9346A /* EditSelfL.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditSelfL.storyboard; sourceTree = "<group>"; };
 		B7021F5B23FE304D00C9346A /* EditSelfP.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditSelfP.storyboard; sourceTree = "<group>"; };
-		B7021F5D23FE30A100C9346A /* SelectEditSelf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectEditSelf.swift; sourceTree = "<group>"; };
 		B7021F6123FE3B8E00C9346A /* ProfileP.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileP.storyboard; sourceTree = "<group>"; };
 		B7021F6323FE3B9E00C9346A /* ProfileL.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileL.storyboard; sourceTree = "<group>"; };
 		B7021F6523FE3BE800C9346A /* SelectProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectProfile.swift; sourceTree = "<group>"; };
@@ -1148,7 +1146,6 @@
 			children = (
 				B7021F5A23FE303900C9346A /* primary */,
 				B7021F5723FE300F00C9346A /* legacy */,
-				B7021F5D23FE30A100C9346A /* SelectEditSelf.swift */,
 			);
 			path = storyboard;
 			sourceTree = "<group>";
@@ -1870,7 +1867,6 @@
 				B7BE125323EB035000ADA499 /* ProfileTable.swift in Sources */,
 				B7BE120923EAD3DD00ADA499 /* Hunter.swift in Sources */,
 				B7BE11A923EA9C8800ADA499 /* King.swift in Sources */,
-				B7021F5E23FE30A100C9346A /* SelectEditSelf.swift in Sources */,
 				B7A6B8BC240DF5E400840156 /* ContextTable.swift in Sources */,
 				B7BE129123EB09FC00ADA499 /* UpdateResign.swift in Sources */,
 				B7D8ECD7240820DD001B5D2D /* AmazonWhite.swift in Sources */,

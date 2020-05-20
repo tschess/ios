@@ -106,16 +106,12 @@ class Config: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate, U
     }
     
     @objc func editCollectionView1() {
-        //DispatchQueue.main.async {
-            //let height: CGFloat = UIScreen.main.bounds.height
-            //SelectEditSelf().execute(player: self.playerSelf!, title: "config. 1", select: 1, height: height)
         DispatchQueue.main.async {
             UIApplication.shared.keyWindow?.rootViewController = EditSelf.create(
                 player: self.playerSelf!,
                 select: 1,
                 height: UIScreen.main.bounds.height)
         }
-        //}
     }
     
     @objc func editCollectionView2() {
