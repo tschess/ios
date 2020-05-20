@@ -6,21 +6,6 @@
 //  Copyright © 2020 bahlsenwitz. All rights reserved.
 //
 
-//import UIKit
-//import SwipeCellKit
-//
-//class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
-//
-//    var containerView: UIView?
-//
-//    var playerSelf: EntityPlayer?
-//
-//    func setPlayerSelf(playerSelf: EntityPlayer){
-//        self.playerSelf = playerSelf
-//    }
-//
-
-
 import UIKit
 import SwipeCellKit
 

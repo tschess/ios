@@ -90,10 +90,11 @@ class Config: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate, U
     }
     
     @IBAction func backButtonClick(_ sender: Any) {
-        DispatchQueue.main.async {
-            let height: CGFloat = UIScreen.main.bounds.height
-            SelectHome().execute(player: self.playerSelf!, height: height)
-        }
+        //DispatchQueue.main.async {
+            //let height: CGFloat = UIScreen.main.bounds.height
+            //SelectHome().execute(player: self.playerSelf!, height: height)
+        //}
+        self.presentingViewController!.dismiss(animated: false, completion: nil)
     }
     
     @objc func editCollectionView0() {
@@ -322,10 +323,11 @@ extension Config: UICollectionViewDelegate {
             }
             return
         default:
-            DispatchQueue.main.async {
-                let height: CGFloat = UIScreen.main.bounds.height
-                SelectHome().execute(player: self.playerSelf!, height: height)
-            }
+            //DispatchQueue.main.async {
+                //let height: CGFloat = UIScreen.main.bounds.height
+                //SelectHome().execute(player: self.playerSelf!, height: height)
+            //}
+            self.presentingViewController!.dismiss(animated: false, completion: nil)
         }
     }
     

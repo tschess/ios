@@ -11,6 +11,25 @@ import SwipeCellKit
 
 class HomeMenuTable: UITableViewController, SwipeTableViewCellDelegate {
     
+    var home: Home?
+    
+    let REQUEST_PAGE_SIZE: Int
+    var requestPageIndex: Int
+    var leaderboardList: [EntityPlayer]
+    
+    required init?(coder aDecoder: NSCoder) {
+        self.REQUEST_PAGE_SIZE = 9
+        self.requestPageIndex = 0
+        self.leaderboardList = [EntityPlayer]()
+        super.init(coder: aDecoder)
+    }
+    
+    //var eloLabel: UILabel?
+    //var rankLabel: UILabel?
+    //var dispLabel: UILabel?
+    //var dispImageView: UIImageView?
+    //var activityIndicator: UIActivityIndicatorView?
+    
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
         if(orientation == .left) {
             let modifyAction = SwipeAction(style: .default, title: nil) { action, indexPath in
@@ -18,16 +37,19 @@ class HomeMenuTable: UITableViewController, SwipeTableViewCellDelegate {
                 let cell = tableView.cellForRow(at: indexPath) as! SwipeTableViewCell
                 cell.hideSwipe(animated: false, completion: nil)
                 
-                self.activityIndicator!.isHidden = false
-                self.activityIndicator!.startAnimating()
+                //self.activityIndicator!.isHidden = false
+                //self.activityIndicator!.startAnimating()
+                self.home!.setIndicator(on: true)
                 
                 let playerOther = self.leaderboardList[indexPath.row]
                 
                 RequestRecent().execute(id: playerOther.id) { (result) in
-                    DispatchQueue.main.async() {
-                        self.activityIndicator!.stopAnimating()
-                        self.activityIndicator!.isHidden = true
-                    }
+                    //DispatchQueue.main.async() {
+                        //self.activityIndicator!.stopAnimating()
+                        //self.activityIndicator!.isHidden = true
+                    //}
+                    self.home!.setIndicator(on: false)
+                    
                     if(result["fail"] != nil) {
                         DispatchQueue.main.async {
                             let storyboard: UIStoryboard = UIStoryboard(name: "Noop", bundle: nil)
@@ -38,7 +60,7 @@ class HomeMenuTable: UITableViewController, SwipeTableViewCellDelegate {
                     }
                     let game: EntityGame = ParseGame().execute(json: result)
                     DispatchQueue.main.async() {
-                        SelectSnapshot().snapshot(playerSelf: self.player!, game: game, presentor: self)
+                        SelectSnapshot().snapshot(playerSelf: self.home!.playerSelf!, game: game, presentor: self)
                     }
                 }
             }
@@ -53,7 +75,7 @@ class HomeMenuTable: UITableViewController, SwipeTableViewCellDelegate {
             DispatchQueue.main.async {
                 let screenSize: CGRect = UIScreen.main.bounds
                 let height = screenSize.height
-                SelectChallenge().execute(selection: Int.random(in: 0...3), playerSelf: self.player!, playerOther: playerOther, BACK: "HOME", height: height)
+                SelectChallenge().execute(selection: Int.random(in: 0...3), playerSelf: self.home!.playerSelf!, playerOther: playerOther, BACK: "HOME", height: height)
             }
             
         }
@@ -78,52 +100,35 @@ class HomeMenuTable: UITableViewController, SwipeTableViewCellDelegate {
             userInfo: discoverSelectionDictionary)
     }
     
-    let REQUEST_PAGE_SIZE: Int
-    var requestPageIndex: Int
-    var leaderboardList: [EntityPlayer]
+//    public func setHeaderView(
+//        eloLabel: UILabel,
+//        rankLabel: UILabel,
+//        dispLabel: UILabel,
+//        dispImageView: UIImageView,
+//        activityIndicator: UIActivityIndicatorView) {
+//        self.eloLabel = eloLabel
+//        self.rankLabel = rankLabel
+//        self.dispLabel = dispLabel
+//        self.dispImageView = dispImageView
+//        self.activityIndicator = activityIndicator
+//    }
     
-    required init?(coder aDecoder: NSCoder) {
-        self.REQUEST_PAGE_SIZE = 9
-        self.requestPageIndex = 0
-        self.leaderboardList = [EntityPlayer]()
-        super.init(coder: aDecoder)
-    }
+//    public func renderHeader() {
+//        self.eloLabel!.text = self.player!.getLabelTextElo()
+//        self.rankLabel!.text = self.player!.getLabelTextRank()
+//        self.dispLabel!.text = self.player!.getLabelTextDisp()
+//        self.dispImageView!.image = self.player!.getImageDisp()!
+//        self.dispImageView!.tintColor = self.player!.tintColor
+//    }
     
-    var eloLabel: UILabel?
-    var rankLabel: UILabel?
-    var dispLabel: UILabel?
-    var dispImageView: UIImageView?
-    var activityIndicator: UIActivityIndicatorView?
-    
-    public func setHeaderView(
-        eloLabel: UILabel,
-        rankLabel: UILabel,
-        dispLabel: UILabel,
-        dispImageView: UIImageView,
-        activityIndicator: UIActivityIndicatorView) {
-        self.eloLabel = eloLabel
-        self.rankLabel = rankLabel
-        self.dispLabel = dispLabel
-        self.dispImageView = dispImageView
-        self.activityIndicator = activityIndicator
-    }
-    
-    public func renderHeader() {
-        self.eloLabel!.text = self.player!.getLabelTextElo()
-        self.rankLabel!.text = self.player!.getLabelTextRank()
-        self.dispLabel!.text = self.player!.getLabelTextDisp()
-        self.dispImageView!.image = self.player!.getImageDisp()!
-        self.dispImageView!.tintColor = self.player!.tintColor
-    }
-    
-    var player: EntityPlayer?
-    
-    func setPlayer(player: EntityPlayer){
-        self.player = player
-    }
+//    var player: EntityPlayer?
+//
+//    func setPlayer(player: EntityPlayer){
+//        self.player = player
+//    }
     
     override func viewDidLoad() {
-        self.fetchGameList()
+        
         
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
@@ -133,19 +138,22 @@ class HomeMenuTable: UITableViewController, SwipeTableViewCellDelegate {
     @objc func refresh(refreshControl: UIRefreshControl) {
         
         self.requestPageIndex = 0
-        let requestPayload: [String: Any] = ["id_player": self.player!.id,
+        let requestPayload: [String: Any] = ["id_player": self.home!.playerSelf!.id,
                                              "size": REQUEST_PAGE_SIZE]
         RequestRefresh().execute(requestPayload: requestPayload) { (response) in
             if(response == nil){
                 return
             }
             let playerSelf: EntityPlayer = response!.last!
-            self.setPlayer(player: playerSelf)
-            
+            //self.setPlayer(player: playerSelf)
+            self.home!.playerSelf = playerSelf
             let list: [EntityPlayer] = response!.dropLast()
             
             DispatchQueue.main.async() {
-                self.renderHeader()
+                
+                self.home!.renderHeader()
+                
+                //self.renderHeader()
                 self.leaderboardList = [EntityPlayer]()
                 self.tableView.reloadData()
                 self.appendToLeaderboardTableList(additionalCellList: list)
@@ -200,17 +208,12 @@ class HomeMenuTable: UITableViewController, SwipeTableViewCellDelegate {
     }
     
     func fetchGameList() {
-        DispatchQueue.main.async() {
-            self.activityIndicator!.isHidden = false
-            self.activityIndicator!.startAnimating()
-        }
+        self.home!.setIndicator(on: true)
+        
         let requestPayload = ["index": self.requestPageIndex,
                               "size": REQUEST_PAGE_SIZE] as [String: Int]
         RequestPage().execute(requestPayload: requestPayload) { (result) in
-            DispatchQueue.main.async() {
-                self.activityIndicator!.stopAnimating()
-                self.activityIndicator!.isHidden = true
-            }
+            self.home!.setIndicator(on: false)
             if(result == nil){
                 return
             }

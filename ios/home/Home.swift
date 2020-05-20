@@ -26,20 +26,16 @@ class Home: UIViewController, UITabBarDelegate {
     
     var activateProfileGestureRecognizer: UITapGestureRecognizer?
     
-    var player: EntityPlayer?
-    
-    func setPlayer(player: EntityPlayer){
-        self.player = player
-    }
+    var playerSelf: EntityPlayer?
     
     public func renderHeader() {
-        self.avatarImageView.image = self.player!.getImageAvatar()
-        self.usernameLabel.text = self.player!.username
-        self.eloLabel.text = self.player!.getLabelTextElo()
-        self.rankLabel.text = self.player!.getLabelTextRank()
-        self.dispLabel.text = self.player!.getLabelTextDisp()
-        self.dispImageView.image = self.player!.getImageDisp()!
-        self.dispImageView.tintColor = self.player!.tintColor
+        self.avatarImageView.image = self.playerSelf!.getImageAvatar()
+        self.usernameLabel.text = self.playerSelf!.username
+        self.eloLabel.text = self.playerSelf!.getLabelTextElo()
+        self.rankLabel.text = self.playerSelf!.getLabelTextRank()
+        self.dispLabel.text = self.playerSelf!.getLabelTextDisp()
+        self.dispImageView.image = self.playerSelf!.getImageDisp()!
+        self.dispImageView.tintColor = self.playerSelf!.tintColor
     }
     
     override func viewDidLoad() {
@@ -47,14 +43,8 @@ class Home: UIViewController, UITabBarDelegate {
         
         self.tabBarMenu.delegate = self
         self.homeMenuTable = children.first as? HomeMenuTable
-        
-        self.homeMenuTable!.setPlayer(player: self.player!)
-        self.homeMenuTable!.setHeaderView(
-            eloLabel: self.eloLabel,
-            rankLabel: self.rankLabel,
-            dispLabel: self.dispLabel,
-            dispImageView: self.dispImageView,
-            activityIndicator: self.activityIndicator)
+        self.homeMenuTable!.home = self
+        self.homeMenuTable!.fetchGameList()
         
         NotificationCenter.default.addObserver(
             self,
@@ -76,13 +66,13 @@ class Home: UIViewController, UITabBarDelegate {
         
         self.renderHeader()
         
-        self.notificationTimerStart() //gotta stop it too...
+        self.notificationTimerStart()
     }
     
     @objc func activateProfile() {
         DispatchQueue.main.async() {
             let height: CGFloat = UIScreen.main.bounds.height
-            SelectProfile().execute(player: self.player!, height: height)
+            SelectProfile().execute(player: self.playerSelf!, height: height)
         }
     }
     
@@ -103,7 +93,7 @@ class Home: UIViewController, UITabBarDelegate {
     }
     
     @objc func notificationTimerTask() {
-        GetNotify().execute(id: self.player!.id) { (notify) in
+        GetNotify().execute(id: self.playerSelf!.id) { (notify) in
             if(!notify){
                 return
             }
@@ -124,26 +114,40 @@ class Home: UIViewController, UITabBarDelegate {
                 let notify = self.tabBarMenu.items![1]
                 notify.selectedImage = UIImage(named: "game.white")!
             }
-            RequestQuick().success(id: self.player!.id) { (json) in
+            RequestQuick().success(id: self.playerSelf!.id) { (json) in
                 self.setIndicator(on: false)
                 let opponent: EntityPlayer = ParsePlayer().execute(json: json)
                 DispatchQueue.main.async() {
                     let height: CGFloat = UIScreen.main.bounds.height
-                    SelectPlay().execute(selection: Int.random(in: 0...3), playerSelf: self.player!, playerOther: opponent, height: height)
+                    SelectPlay().execute(selection: Int.random(in: 0...3), playerSelf: self.playerSelf!, playerOther: opponent, height: height)
                 }
             }
         case 3:
             self.notificationTimerStop()
             DispatchQueue.main.async {
                 let height: CGFloat = UIScreen.main.bounds.height
-                SelectMenu().execute(player: self.player!, height: height)
+                SelectMenu().execute(player: self.playerSelf!, height: height)
             }
         case 4:
-            self.notificationTimerStop()
-            DispatchQueue.main.async {
-                let height: CGFloat = UIScreen.main.bounds.height
-                SelectConfig().execute(player: self.player!, height: height)
+            self.tabBarMenu.selectedItem = nil
+            
+            let height: CGFloat = UIScreen.main.bounds.height
+            if(height.isLess(than: 750)){
+                let root = UIApplication.shared.delegate! as! AppDelegate
+                let storyboard: UIStoryboard = UIStoryboard(name: "ConfigL", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "ConfigL") as! Config
+                viewController.setPlayerSelf(playerSelf: self.playerSelf!)
+                viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
+                root.window?.rootViewController?.present(viewController, animated: false , completion: nil)
+                return
             }
+            let root = UIApplication.shared.delegate! as! AppDelegate
+            let storyboard: UIStoryboard = UIStoryboard(name: "ConfigP", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier: "ConfigP") as! Config
+            viewController.setPlayerSelf(playerSelf: self.playerSelf!)
+            viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
+            root.window?.rootViewController?.present(viewController, animated: false , completion: nil)
+            
         default:
             self.notificationTimerStop()
         }
@@ -155,18 +159,18 @@ class Home: UIViewController, UITabBarDelegate {
         let playerOther: EntityPlayer = self.homeMenuTable!.getOther(index: menuSelectionIndex)
         DispatchQueue.main.async {
             let height: CGFloat = UIScreen.main.bounds.height
-            SelectOther().execute(playerSelf: self.player!, playerOther: playerOther, height: height)
+            SelectOther().execute(playerSelf: self.playerSelf!, playerOther: playerOther, height: height)
         }
     }
     
-    private func setIndicator(on: Bool) {
+    func setIndicator(on: Bool) {
         if(on) {
             DispatchQueue.main.async() {
                 if(self.activityIndicator!.isHidden){
-                   self.activityIndicator!.isHidden = false
+                    self.activityIndicator!.isHidden = false
                 }
                 if(!self.activityIndicator!.isAnimating){
-                   self.activityIndicator!.startAnimating()
+                    self.activityIndicator!.startAnimating()
                 }
             }
             return
@@ -174,6 +178,7 @@ class Home: UIViewController, UITabBarDelegate {
         DispatchQueue.main.async() {
             self.activityIndicator!.isHidden = true
             self.activityIndicator!.stopAnimating()
+            self.homeMenuTable!.tableView.reloadData()
         }
     }
 }

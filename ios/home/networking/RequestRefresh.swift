@@ -12,8 +12,6 @@ class RequestRefresh {
     
     func execute(requestPayload: [String: Any], completion: @escaping (([EntityPlayer]?) -> Void)) {
         
-    
-        
         let url = URL(string: "http://\(ServerAddress().IP):8080/player/refresh")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
@@ -23,14 +21,12 @@ class RequestRefresh {
         do {
             request.httpBody = try JSONSerialization.data(withJSONObject: requestPayload, options: .prettyPrinted)
         } catch _ {
-           completion(nil)
+            completion(nil)
         }
-        
-        
         URLSession.shared.dataTask(with: request, completionHandler: { data, response, error in
             
             guard error == nil else {
-               
+                
                 completion(nil)
                 return
             }
@@ -40,7 +36,7 @@ class RequestRefresh {
                 return
             }
             if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {
-               
+                
                 completion(nil)
                 return
             }
@@ -53,15 +49,15 @@ class RequestRefresh {
                 
                 var leaderboardPage = [EntityPlayer]()
                 for index in stride(from: 0, to: json.count, by: 1) {
-                     let player: EntityPlayer = ParsePlayer().execute(json: json[index])
+                    let player: EntityPlayer = ParsePlayer().execute(json: json[index])
                     leaderboardPage.append(player)
                 }
                 
                 completion(leaderboardPage)
-               
+                
                 
             } catch let error {
-             
+                
                 completion(nil)
             }
         }).resume()

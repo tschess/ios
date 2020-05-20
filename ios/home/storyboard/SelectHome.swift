@@ -14,7 +14,8 @@ class SelectHome {
         if(height.isLess(than: 750)){
             let storyboard: UIStoryboard = UIStoryboard(name: "HomeL", bundle: nil)
             let viewController = storyboard.instantiateViewController(withIdentifier: "HomeL") as! Home
-            viewController.setPlayer(player: player)
+            //viewController.setPlayer(player: player)
+            viewController.playerSelf = player
             //viewController.menuList = menuList
             //viewController.homeList = homeList
             UIApplication.shared.keyWindow?.rootViewController = viewController
@@ -22,7 +23,7 @@ class SelectHome {
         }
         let storyboard: UIStoryboard = UIStoryboard(name: "HomeP", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "HomeP") as! Home
-        viewController.setPlayer(player: player)
+        viewController.playerSelf = player
         //viewController.menuList = menuList
         //viewController.homeList = homeList
         UIApplication.shared.keyWindow?.rootViewController = viewController
