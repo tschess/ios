@@ -272,18 +272,16 @@ extension EditSelf: UICollectionViewDelegate {
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         tabBar.selectedItem = nil
-        
         switch item.tag {
         case 0:
-            //dialog: x-configm, "exit w/o saving?"
-            //if(condition){
+            if(!self.confirm){
+                self.backButtonClick("")
+                return
+            }
             let storyboard: UIStoryboard = UIStoryboard(name: "Cancel", bundle: nil)
             let viewController = storyboard.instantiateViewController(withIdentifier: "Cancel") as! Cancel
             viewController.playerSelf = self.playerSelf!
             self.present(viewController, animated: true, completion: nil)
-            //return
-            //}
-            //self.backButtonClick("")
         case 2:
             let storyboard: UIStoryboard = UIStoryboard(name: "Help", bundle: nil)
             let viewController = storyboard.instantiateViewController(withIdentifier: "Help") as! Help
@@ -473,6 +471,7 @@ extension EditSelf: UICollectionViewDropDelegate {
                 return
             }
         }
+        self.confirm = true
         let piece: Piece? = self.editCore.generateTschessElement(name: self.candidateName!)
         if(self.candidateCoord != nil){
             self.configActiv![self.candidateCoord![0]][self.candidateCoord![1]] = nil
