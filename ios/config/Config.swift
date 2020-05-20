@@ -98,8 +98,6 @@ class Config: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate, U
     
     @objc func editCollectionView0() {
         DispatchQueue.main.async {
-            //let height: CGFloat = UIScreen.main.bounds.height
-            //SelectEditSelf().execute(player: self.playerSelf!, title: "config. 0̸", select: 0, height: height)
             UIApplication.shared.keyWindow?.rootViewController = EditSelf.create(
             player: self.playerSelf!,
             select: 0,
@@ -108,16 +106,24 @@ class Config: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate, U
     }
     
     @objc func editCollectionView1() {
+        //DispatchQueue.main.async {
+            //let height: CGFloat = UIScreen.main.bounds.height
+            //SelectEditSelf().execute(player: self.playerSelf!, title: "config. 1", select: 1, height: height)
         DispatchQueue.main.async {
-            let height: CGFloat = UIScreen.main.bounds.height
-            SelectEditSelf().execute(player: self.playerSelf!, title: "config. 1", select: 1, height: height)
+            UIApplication.shared.keyWindow?.rootViewController = EditSelf.create(
+                player: self.playerSelf!,
+                select: 1,
+                height: UIScreen.main.bounds.height)
         }
+        //}
     }
     
     @objc func editCollectionView2() {
         DispatchQueue.main.async {
-            let height: CGFloat = UIScreen.main.bounds.height
-            SelectEditSelf().execute(player: self.playerSelf!, title: "config. 2", select: 2, height: height)
+            UIApplication.shared.keyWindow?.rootViewController = EditSelf.create(
+                player: self.playerSelf!,
+                select: 2,
+                height: UIScreen.main.bounds.height)
         }
     }
     

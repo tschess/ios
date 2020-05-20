@@ -425,15 +425,40 @@ extension EditSelf: UICollectionViewDropDelegate {
         return true
     }
     
+    func flash() {
+        UIImpactFeedbackGenerator(style: .light).impactOccurred()
+        let flashFrame = UIView(frame: self.configCollectionView.bounds)
+        flashFrame.backgroundColor = UIColor.white
+        flashFrame.alpha = 0.7
+        self.configCollectionView.addSubview(flashFrame)
+        UIView.animate(withDuration: 0.1, animations: {
+            flashFrame.alpha = 0.0
+        }, completion: {(finished:Bool) in
+            flashFrame.removeFromSuperview()
+        })
+    }
+    
     func dropInteraction(_ interaction: UIDropInteraction, performDrop session: UIDropSession) {
         print("x03")
         let revert: Bool = self.revert()
         if(revert == false){
            print("x03 - ")
-           self.configActiv![self.candidateCoord![0]][self.candidateCoord![1]] = nil
+            let candidate = self.configActiv![self.candidateCoord![0]][self.candidateCoord![1]]
+            if(candidate != nil){
+                if(!candidate!.name.lowercased().contains("king")){
+                    self.configActiv![self.candidateCoord![0]][self.candidateCoord![1]] = nil
+                } else {
+                    self.configActiv = self.configCache
+                    self.flash()
+                }
+            }
+           
            return
         }
+        
         self.configActiv = self.configCache
+        self.flash()
+       
         //self.configCollectionView.reloadData()
         //self.setTotalPointValue()
         //self.tschessElementCollectionView.reloadData()
@@ -458,24 +483,19 @@ extension EditSelf: UICollectionViewDropDelegate {
                 let candidate: Piece? = self.configActiv![x][y]
                 if(candidate != nil){
                     if(candidate!.name.lowercased().contains("king")){
+                        
                         self.configActiv = self.configCache
-                        //self.configCollectionView.reloadData()
-                        //self.setTotalPointValue()
-                        //self.tschessElementCollectionView.reloadData()
+                        self.flash()
                         return
                     }
                 }
-                
                 self.configActiv![x][y] = piece
                 self.configActiv![self.candidateCoord![0]][self.candidateCoord![1]] = nil
                 //}
+                return
             }
-        } else {
-           self.configActiv![self.candidateCoord![0]][self.candidateCoord![1]] = nil
         }
-        //self.setTotalPointValue()
-        //self.configCollectionView.reloadData()
-        //self.tschessElementCollectionView.reloadData()
+        self.configActiv![x][y] = piece
     }
     
     func collectionView(_ collectionView: UICollectionView,  dropSessionDidEnd session: UIDropSession) {
