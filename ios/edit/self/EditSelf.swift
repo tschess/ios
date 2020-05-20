@@ -315,8 +315,6 @@ extension EditSelf: UICollectionViewDelegate {
 extension EditSelf: UICollectionViewDragDelegate {
     
     func collectionView(_ collectionView: UICollectionView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
-        print("aa")
-        
         self.configCache = self.configActiv!
         let row: Int = indexPath.row
         if collectionView == self.tschessElementCollectionView {
@@ -376,12 +374,10 @@ extension EditSelf: UICollectionViewDragDelegate {
     func collectionView(_ collectionView: UICollectionView, dragPreviewParametersForItemAt indexPath: IndexPath) -> UIDragPreviewParameters?{
         let previewParameters = UIDragPreviewParameters()
         previewParameters.backgroundColor = UIColor.clear
-        print("03")
         return previewParameters
     }
     
     func collectionView(_ collectionView: UICollectionView, itemsForAddingTo session: UIDragSession, at indexPath: IndexPath, point: CGPoint) -> [UIDragItem] {
-        print("02")
         return self.collectionView(collectionView, itemsForBeginning: session, at: indexPath)
     }
     
@@ -391,7 +387,6 @@ extension EditSelf: UICollectionViewDragDelegate {
         self.configCollectionView.reloadData()
         self.tschessElementCollectionView.reloadData()
         self.setTotalPointValue()
-        print("zz")
     }
     
 }
@@ -400,12 +395,10 @@ extension EditSelf: UICollectionViewDragDelegate {
 extension EditSelf: UICollectionViewDropDelegate {
     
     func dropInteraction(_ interaction: UIDropInteraction, canHandle session: UIDropSession) -> Bool {
-        print("x01")
         return true
     }
     
     func dropInteraction(_ interaction: UIDropInteraction, sessionDidUpdate session: UIDropSession) -> UIDropProposal {
-        print("x02")
         return UIDropProposal(operation: .move)
     }
     
@@ -415,7 +408,7 @@ extension EditSelf: UICollectionViewDropDelegate {
                 if(piece == nil){
                     continue
                 }
-                if(piece!.name.lowercased().contains("king")){
+                if(piece!.name == "King"){
                     return false
                 }
             }
@@ -435,37 +428,32 @@ extension EditSelf: UICollectionViewDropDelegate {
             flashFrame.removeFromSuperview()
         })
     }
+    
     private func rollback() {
         self.configActiv = self.configCache
         self.flash()
-        
     }
     
     func dropInteraction(_ interaction: UIDropInteraction, performDrop session: UIDropSession) {
-        print("x03")
-        let revert: Bool = self.revert()
-        if(revert == false){
-           print("x03 - ")
-            if(self.candidateCoord == nil){
-                return
-            }
-            let candidate = self.configActiv![self.candidateCoord![0]][self.candidateCoord![1]]
-            if(candidate != nil){
-                if(!candidate!.name.lowercased().contains("king")){
-                    self.configActiv![self.candidateCoord![0]][self.candidateCoord![1]] = nil
-                } else {
-                    self.configActiv = self.configCache
-                    self.flash()
-                }
-            }
-           return
+        if(self.revert()){
+            self.rollback()
+            return
         }
-        self.configActiv = self.configCache
-        self.flash()
+        if(self.candidateCoord == nil){
+            return
+        }
+        let candidate = self.configActiv![self.candidateCoord![0]][self.candidateCoord![1]]
+        if(candidate == nil){
+            return
+        }
+        if(candidate!.name == "King"){
+            self.rollback()
+            return
+        }
+        self.configActiv![self.candidateCoord![0]][self.candidateCoord![1]] = nil
     }
     
     func collectionView(_ collectionView: UICollectionView, dropSessionDidUpdate session: UIDropSession, withDestinationIndexPath destinationIndexPath: IndexPath?) -> UICollectionViewDropProposal {
-        print("x04")
         return UICollectionViewDropProposal(operation: .move, intent: .insertIntoDestinationIndexPath)
     }
     
@@ -485,6 +473,4 @@ extension EditSelf: UICollectionViewDropDelegate {
         }
         self.configActiv![x][y] = piece
     }
-    
-    
 }
