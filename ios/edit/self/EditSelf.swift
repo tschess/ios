@@ -423,7 +423,7 @@ extension EditSelf: UICollectionViewDropDelegate {
         return true
     }
     
-    func flash() {
+    private func flash() {
         UIImpactFeedbackGenerator(style: .light).impactOccurred()
         let flashFrame = UIView(frame: self.configCollectionView.bounds)
         flashFrame.backgroundColor = UIColor.white
@@ -435,12 +435,20 @@ extension EditSelf: UICollectionViewDropDelegate {
             flashFrame.removeFromSuperview()
         })
     }
+    private func rollback() {
+        self.configActiv = self.configCache
+        self.flash()
+        
+    }
     
     func dropInteraction(_ interaction: UIDropInteraction, performDrop session: UIDropSession) {
         print("x03")
         let revert: Bool = self.revert()
         if(revert == false){
            print("x03 - ")
+            if(self.candidateCoord == nil){
+                return
+            }
             let candidate = self.configActiv![self.candidateCoord![0]][self.candidateCoord![1]]
             if(candidate != nil){
                 if(!candidate!.name.lowercased().contains("king")){
@@ -462,34 +470,21 @@ extension EditSelf: UICollectionViewDropDelegate {
     }
     
     func collectionView(_ collectionView: UICollectionView, performDropWith coordinator: UICollectionViewDropCoordinator) {
-        print("x05")
         let x = coordinator.destinationIndexPath!.row / 8
         let y = coordinator.destinationIndexPath!.row % 8
-        
-        let piece: Piece? = self.editCore.generateTschessElement(name: self.candidateName!)
-        
-        if(self.candidateCoord != nil){
-            if([x,y] != self.candidateCoord!){
-                
-                let candidate: Piece? = self.configActiv![x][y]
-                if(candidate != nil){
-                    if(candidate!.name.lowercased().contains("king")){
-                        
-                        self.configActiv = self.configCache
-                        self.flash()
-                        return
-                    }
-                }
-                self.configActiv![x][y] = piece
-                self.configActiv![self.candidateCoord![0]][self.candidateCoord![1]] = nil
+        let candidate: Piece? = self.configActiv![x][y]
+        if(candidate != nil){
+            if(candidate!.name == "King"){
+                self.rollback()
                 return
             }
+        }
+        let piece: Piece? = self.editCore.generateTschessElement(name: self.candidateName!)
+        if(self.candidateCoord != nil){
+            self.configActiv![self.candidateCoord![0]][self.candidateCoord![1]] = nil
         }
         self.configActiv![x][y] = piece
     }
     
-    func collectionView(_ collectionView: UICollectionView,  dropSessionDidEnd session: UIDropSession) {
-        print("x06")
-    }
     
 }
