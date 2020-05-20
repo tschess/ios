@@ -303,22 +303,42 @@ class Play: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate {
             return
         }
         if(self.selection! == 0){
+//            DispatchQueue.main.async() {
+//                let height: CGFloat = UIScreen.main.bounds.height
+//                SelectEditOther().execute(playerSelf: self.playerSelf!, playerOther: self.playerOther!, title: "config. 0̸", selection: 0, BACK: "PLAY", height: height)
+//            }
             DispatchQueue.main.async() {
-                let height: CGFloat = UIScreen.main.bounds.height
-                SelectEditOther().execute(playerSelf: self.playerSelf!, playerOther: self.playerOther!, title: "config. 0̸", selection: 0, BACK: "PLAY", height: height)
+                UIApplication.shared.keyWindow?.rootViewController = EditOther.create(
+                    playerSelf: self.playerSelf!,
+                    playerOther: self.playerOther!,
+                    select: 0,
+                    back: "PLAY",
+                    height: UIScreen.main.bounds.height)
             }
             return
         }
         if(self.selection! == 1){
+//            DispatchQueue.main.async() {
+//                let height: CGFloat = UIScreen.main.bounds.height
+//                SelectEditOther().execute(playerSelf: self.playerSelf!, playerOther: self.playerOther!, title: "config. 1", selection: 1, BACK: "PLAY", height: height)
+//            }
             DispatchQueue.main.async() {
-                let height: CGFloat = UIScreen.main.bounds.height
-                SelectEditOther().execute(playerSelf: self.playerSelf!, playerOther: self.playerOther!, title: "config. 1", selection: 1, BACK: "PLAY", height: height)
+                UIApplication.shared.keyWindow?.rootViewController = EditOther.create(
+                    playerSelf: self.playerSelf!,
+                    playerOther: self.playerOther!,
+                    select: 1,
+                    back: "PLAY",
+                    height: UIScreen.main.bounds.height)
             }
             return
         }
         DispatchQueue.main.async() {
-            let height: CGFloat = UIScreen.main.bounds.height
-            SelectEditOther().execute(playerSelf: self.playerSelf!, playerOther: self.playerOther!, title: "config. 2", selection: 2, BACK: "PLAY", height: height)
+            UIApplication.shared.keyWindow?.rootViewController = EditOther.create(
+                playerSelf: self.playerSelf!,
+                playerOther: self.playerOther!,
+                select: 2,
+                back: "PLAY",
+                height: UIScreen.main.bounds.height)
         }
     }
     

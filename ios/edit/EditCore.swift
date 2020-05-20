@@ -8,7 +8,41 @@
 
 import UIKit
 
-class Edit {
+class EditCore {
+    
+    //MARK: Constant
+    let ELEMENT_LIST = [
+        "red_pawn",
+        "red_knight",
+        "red_bishop",
+        "red_rook",
+        "red_queen",
+        "red_amazon",
+        "red_hunter",
+        "red_poison"]
+    
+    func allocatable(piece: Piece, config: [[Piece?]]) -> Bool {
+        let pointIncrease = Int(piece.strength)!
+        let pointValue0 = self.getPointValue(config: config)
+        let pointValue1 = pointValue0 + pointIncrease
+        if(pointValue1 > 39){
+            return false
+        }
+        return true
+    }
+    
+    func getPointValue(config: [[Piece?]]) -> Int {
+        var totalPointValue: Int = 0
+        for row in config {
+            for piece in row {
+                if(piece == nil) {
+                    continue
+                }
+                totalPointValue += Int(piece!.getStrength())!
+            }
+        }
+        return totalPointValue
+    }
     
     func generateTschessElement(name: String) -> Piece? {
         if(name.contains("grasshopper")){

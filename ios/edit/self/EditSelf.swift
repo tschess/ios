@@ -13,11 +13,10 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
     //MARK: Member
     var playerSelf: EntityPlayer!
     var selection: Int!
-    var editCore: Edit!
+    var editCore: EditCore!
     var confirm: Bool!
     
     //MARK: Variables
-    var configAbort: [[Piece?]]?
     var configCache: [[Piece?]]?
     var configActiv: [[Piece?]]?
     var candidateName: String?
@@ -54,17 +53,6 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
         }
     }
     
-    //MARK: Constant
-    let ELEMENT_LIST = [
-        "red_pawn",
-        "red_knight",
-        "red_bishop",
-        "red_rook",
-        "red_queen",
-        "red_amazon",
-        "red_hunter",
-        "red_poison"]
-    
     static func create(player: EntityPlayer, select: Int, height: CGFloat) -> EditSelf {
         let identifier: String = height.isLess(than: 750) ? "L" : "P"
         let storyboard: UIStoryboard = UIStoryboard(name: "EditSelf\(identifier)", bundle: nil)
@@ -72,7 +60,7 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
         viewController.playerSelf = player
         viewController.selection = select
         viewController.confirm = false
-        viewController.editCore = Edit()
+        viewController.editCore = EditCore()
         return viewController
     }
     
@@ -109,12 +97,12 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
         self.configCollectionView.isHidden = false
         self.configCollectionView.gestureRecognizers?.forEach { (recognizer) in
             if let longPressRecognizer = recognizer as? UILongPressGestureRecognizer {
-                longPressRecognizer.minimumPressDuration = 0.005
+                longPressRecognizer.minimumPressDuration = 0.004
             }
         }
         self.tschessElementCollectionView.gestureRecognizers?.forEach { (recognizer) in
             if let longPressRecognizer = recognizer as? UILongPressGestureRecognizer {
-                longPressRecognizer.minimumPressDuration = 0.07
+                longPressRecognizer.minimumPressDuration = 0.06
             }
         }
     }
@@ -139,12 +127,12 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
             self.configActiv = self.playerSelf!.getConfig(index: 0)
             self.titleLabel.text = "config. 0̸"
         }
-        self.configAbort = self.configActiv
+        self.configCache = self.configActiv
         self.renderHeader()
         self.setTotalPointValue()
     }
     
-    public func renderHeader() {
+    private func renderHeader() {
         self.avatarImageView.image = self.playerSelf!.getImageAvatar()
         self.usernameLabel.text = self.playerSelf!.username
         self.eloLabel.text = self.playerSelf!.getLabelTextElo()
@@ -155,7 +143,7 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
     }
     
     private func setTotalPointValue() {
-        let totalPointValue: Int = self.getPointValue(config: self.configActiv!)
+        let totalPointValue: Int = self.editCore.getPointValue(config: self.configActiv!)
         self.totalPointLabel.text = String(totalPointValue)
         if(totalPointValue < 39){
             self.viewPointLabel.isHidden = false
@@ -165,117 +153,6 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
         self.viewPointLabel.isHidden = true
         self.tschessElementCollectionView.isHidden = true
     }
-    
-    private func getPointValue(config: [[Piece?]]) -> Int {
-        var totalPointValue: Int = 0
-        for row in config {
-            for piece in row {
-                if(piece == nil) {
-                    continue
-                }
-                totalPointValue += Int(piece!.getStrength())!
-            }
-        }
-        return totalPointValue
-    }
-    
-    func allocatable(piece: Piece, config: [[Piece?]]) -> Bool {
-        let pointIncrease = Int(piece.strength)!
-        let pointValue0 = self.getPointValue(config: config)
-        let pointValue1 = pointValue0 + pointIncrease
-        if(pointValue1 > 39){
-            return false
-        }
-        return true
-    }
-    
-    //MARK: Render //gotta look at this...
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if collectionView == self.tschessElementCollectionView {
-            let elementCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ConfigCell", for: indexPath) as! ConfigCell
-            
-            let elementImageIdentifier: String = self.ELEMENT_LIST[indexPath.row]
-            let elementImage: UIImage = UIImage(named: elementImageIdentifier)!
-            elementCell.configureCell(image: elementImage)
-            
-            let elementObject: Piece = self.editCore.generateTschessElement(name: self.ELEMENT_LIST[indexPath.row])!
-            elementCell.nameLabel.text = "\(elementObject.name.lowercased()): \(elementObject.strength)"
-            elementCell.pointsLabel.isHidden = true
-            
-            elementCell.imageView.alpha = 1
-            elementCell.nameLabel.alpha = 1
-            elementCell.pointsLabel.alpha = 1
-            if(!self.allocatable(piece: elementObject, config: self.configActiv!)){
-                elementCell.imageView.alpha = 0.5
-                elementCell.nameLabel.alpha = 0.5
-                elementCell.pointsLabel.alpha = 0.5
-            }
-            return elementCell
-        }
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "square", for: indexPath) as! SquareCell
-        cell.backgroundColor = .black
-        if (indexPath.row / 8 == 0) {
-            cell.backgroundColor = .white
-        }
-        if (indexPath.row % 2 == 0) {
-            cell.backgroundColor = .white
-            if (indexPath.row / 8 == 0) {
-                cell.backgroundColor = .black
-            }
-        }
-        let x = indexPath.row / 8
-        let y = indexPath.row % 8
-        cell.imageView.image = nil
-        if(self.configActiv![x][y] != nil){
-            cell.imageView.image = self.configActiv![x][y]!.getImageDefault()
-        }
-        cell.imageView.bounds = CGRect(origin: cell.bounds.origin, size: cell.bounds.size)
-        cell.imageView.center = CGPoint(x: cell.bounds.size.width/2, y: cell.bounds.size.height/2)
-        return cell
-    }
-    
-}
-
-//MARK: DataSource
-extension EditSelf: UICollectionViewDataSource {
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if collectionView == self.tschessElementCollectionView {
-            return ELEMENT_LIST.count
-        }
-        return 16
-    }
-}
-
-//MARK: FlowLayout
-extension EditSelf: UICollectionViewDelegateFlowLayout {
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if collectionView == self.tschessElementCollectionView {
-            return CGSize(width: 100, height: 150)
-        }
-        let cellsAcross: CGFloat = 8
-        let dim = collectionView.frame.width / cellsAcross
-        return CGSize(width: dim, height: dim)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets.zero
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        if collectionView == self.tschessElementCollectionView {
-            return 8
-        }
-        return 0
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
-    }
-}
-
-extension EditSelf: UICollectionViewDelegate {
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         tabBar.selectedItem = nil
@@ -320,6 +197,94 @@ extension EditSelf: UICollectionViewDelegate {
             }
         }
     }
+    
+}
+
+//MARK: DataSource
+extension EditSelf: UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if collectionView == self.tschessElementCollectionView {
+            return self.editCore.ELEMENT_LIST.count
+        }
+        return 16
+    }
+}
+
+//MARK: FlowLayout
+extension EditSelf: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        if collectionView == self.tschessElementCollectionView {
+            return CGSize(width: 100, height: 150)
+        }
+        let cellsAcross: CGFloat = 8
+        let dim = collectionView.frame.width / cellsAcross
+        return CGSize(width: dim, height: dim)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets.zero
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        if collectionView == self.tschessElementCollectionView {
+            return 8
+        }
+        return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+}
+
+extension EditSelf: UICollectionViewDelegate {
+    
+    //MARK: Render //gotta look at this...
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if collectionView == self.tschessElementCollectionView {
+            let elementCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ConfigCell", for: indexPath) as! ConfigCell
+            
+            let elementImageIdentifier: String = self.editCore.ELEMENT_LIST[indexPath.row]
+            let elementImage: UIImage = UIImage(named: elementImageIdentifier)!
+            elementCell.configureCell(image: elementImage)
+            
+            let elementObject: Piece = self.editCore.generateTschessElement(name: self.editCore.ELEMENT_LIST[indexPath.row])!
+            elementCell.nameLabel.text = "\(elementObject.name.lowercased()): \(elementObject.strength)"
+            elementCell.pointsLabel.isHidden = true
+            
+            elementCell.imageView.alpha = 1
+            elementCell.nameLabel.alpha = 1
+            elementCell.pointsLabel.alpha = 1
+            if(!self.editCore.allocatable(piece: elementObject, config: self.configActiv!)){
+                elementCell.imageView.alpha = 0.5
+                elementCell.nameLabel.alpha = 0.5
+                elementCell.pointsLabel.alpha = 0.5
+            }
+            return elementCell
+        }
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "square", for: indexPath) as! SquareCell
+        cell.backgroundColor = .black
+        if (indexPath.row / 8 == 0) {
+            cell.backgroundColor = .white
+        }
+        if (indexPath.row % 2 == 0) {
+            cell.backgroundColor = .white
+            if (indexPath.row / 8 == 0) {
+                cell.backgroundColor = .black
+            }
+        }
+        let x = indexPath.row / 8
+        let y = indexPath.row % 8
+        cell.imageView.image = nil
+        if(self.configActiv![x][y] != nil){
+            cell.imageView.image = self.configActiv![x][y]!.getImageDefault()
+        }
+        cell.imageView.bounds = CGRect(origin: cell.bounds.origin, size: cell.bounds.size)
+        cell.imageView.center = CGPoint(x: cell.bounds.size.width/2, y: cell.bounds.size.height/2)
+        return cell
+    }
 }
 
 
@@ -330,8 +295,8 @@ extension EditSelf: UICollectionViewDragDelegate {
         self.configCache = self.configActiv!
         let row: Int = indexPath.row
         if collectionView == self.tschessElementCollectionView {
-            let piece: Piece = self.editCore.generateTschessElement(name: self.ELEMENT_LIST[row])!
-            let allocatable: Bool = self.allocatable(piece: piece, config: self.configActiv!)
+            let piece: Piece = self.editCore.generateTschessElement(name: self.editCore.ELEMENT_LIST[row])!
+            let allocatable: Bool = self.editCore.allocatable(piece: piece, config: self.configActiv!)
             if(!allocatable){
                 return []
             }
@@ -480,9 +445,11 @@ extension EditSelf: UICollectionViewDropDelegate {
         }
         self.confirm = true
         let piece: Piece? = self.editCore.generateTschessElement(name: self.candidateName!)
-        if(self.candidateCoord != nil){
-            self.configActiv![self.candidateCoord![0]][self.candidateCoord![1]] = nil
+        if(self.candidateCoord == nil){
+            self.configActiv![x][y] = piece
+            return
         }
+        self.configActiv![self.candidateCoord![0]][self.candidateCoord![1]] = nil
         self.configActiv![x][y] = piece
     }
 }

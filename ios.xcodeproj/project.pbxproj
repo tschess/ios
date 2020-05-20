@@ -37,7 +37,6 @@
 		B7021F4423FE0B1C00C9346A /* SelectPlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7021F4323FE0B1C00C9346A /* SelectPlay.swift */; };
 		B7021F5223FE11D300C9346A /* EditOtherL.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7021F5123FE11D300C9346A /* EditOtherL.storyboard */; };
 		B7021F5423FE11E400C9346A /* EditOtherP.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7021F5323FE11E400C9346A /* EditOtherP.storyboard */; };
-		B7021F5623FE122D00C9346A /* SelectEditOther.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7021F5523FE122D00C9346A /* SelectEditOther.swift */; };
 		B7021F5923FE303000C9346A /* EditSelfL.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7021F5823FE303000C9346A /* EditSelfL.storyboard */; };
 		B7021F5C23FE304D00C9346A /* EditSelfP.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7021F5B23FE304D00C9346A /* EditSelfP.storyboard */; };
 		B7021F6223FE3B8E00C9346A /* ProfileP.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7021F6123FE3B8E00C9346A /* ProfileP.storyboard */; };
@@ -189,7 +188,7 @@
 		B7D8ECD9240820EB001B5D2D /* AmazonBlack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D8ECD8240820EB001B5D2D /* AmazonBlack.swift */; };
 		B7D8ECDB240820F9001B5D2D /* HunterWhite.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D8ECDA240820F9001B5D2D /* HunterWhite.swift */; };
 		B7D8ECDD24082106001B5D2D /* HunterBlack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D8ECDC24082106001B5D2D /* HunterBlack.swift */; };
-		B7D8ECDF240887DB001B5D2D /* Edit.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D8ECDE240887DB001B5D2D /* Edit.swift */; };
+		B7D8ECDF240887DB001B5D2D /* EditCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D8ECDE240887DB001B5D2D /* EditCore.swift */; };
 		B7D8ECE12408A917001B5D2D /* Landmine.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D8ECE02408A917001B5D2D /* Landmine.swift */; };
 		B7D8ECE92408B823001B5D2D /* RevealWhite.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D8ECE82408B823001B5D2D /* RevealWhite.swift */; };
 		B7D8ECEB2408B845001B5D2D /* RevealBlack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D8ECEA2408B845001B5D2D /* RevealBlack.swift */; };
@@ -261,7 +260,6 @@
 		B7021F4323FE0B1C00C9346A /* SelectPlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPlay.swift; sourceTree = "<group>"; };
 		B7021F5123FE11D300C9346A /* EditOtherL.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditOtherL.storyboard; sourceTree = "<group>"; };
 		B7021F5323FE11E400C9346A /* EditOtherP.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditOtherP.storyboard; sourceTree = "<group>"; };
-		B7021F5523FE122D00C9346A /* SelectEditOther.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectEditOther.swift; sourceTree = "<group>"; };
 		B7021F5823FE303000C9346A /* EditSelfL.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditSelfL.storyboard; sourceTree = "<group>"; };
 		B7021F5B23FE304D00C9346A /* EditSelfP.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditSelfP.storyboard; sourceTree = "<group>"; };
 		B7021F6123FE3B8E00C9346A /* ProfileP.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileP.storyboard; sourceTree = "<group>"; };
@@ -419,7 +417,7 @@
 		B7D8ECD8240820EB001B5D2D /* AmazonBlack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmazonBlack.swift; sourceTree = "<group>"; };
 		B7D8ECDA240820F9001B5D2D /* HunterWhite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HunterWhite.swift; sourceTree = "<group>"; };
 		B7D8ECDC24082106001B5D2D /* HunterBlack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HunterBlack.swift; sourceTree = "<group>"; };
-		B7D8ECDE240887DB001B5D2D /* Edit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Edit.swift; sourceTree = "<group>"; };
+		B7D8ECDE240887DB001B5D2D /* EditCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCore.swift; sourceTree = "<group>"; };
 		B7D8ECE02408A917001B5D2D /* Landmine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Landmine.swift; sourceTree = "<group>"; };
 		B7D8ECE82408B823001B5D2D /* RevealWhite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RevealWhite.swift; sourceTree = "<group>"; };
 		B7D8ECEA2408B845001B5D2D /* RevealBlack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RevealBlack.swift; sourceTree = "<group>"; };
@@ -1127,7 +1125,7 @@
 				B7FA7BF923ECF78200E63045 /* networking */,
 				B7BE11F523EAC95900ADA499 /* other */,
 				B7BE11EF23EAC91B00ADA499 /* self */,
-				B7D8ECDE240887DB001B5D2D /* Edit.swift */,
+				B7D8ECDE240887DB001B5D2D /* EditCore.swift */,
 			);
 			path = edit;
 			sourceTree = "<group>";
@@ -1164,7 +1162,6 @@
 			children = (
 				B7021F5023FE11B800C9346A /* legacy */,
 				B7021F4F23FE11AC00C9346A /* primary */,
-				B7021F5523FE122D00C9346A /* SelectEditOther.swift */,
 			);
 			path = storyboard;
 			sourceTree = "<group>";
@@ -1898,7 +1895,6 @@
 				B7BE129E23EB0B2A00ADA499 /* HopperOffense.swift in Sources */,
 				8389C6B8246B17DA00DFE8F2 /* DialogPoison.swift in Sources */,
 				B7BE11D523EAA18000ADA499 /* BoardView.swift in Sources */,
-				B7021F5623FE122D00C9346A /* SelectEditOther.swift in Sources */,
 				B7BE12C423EB6B9300ADA499 /* TransDraw.swift in Sources */,
 				B7BE115D23EA4FBE00ADA499 /* ParsePlayer.swift in Sources */,
 				B708D0E9236B369D00A899F9 /* Start.swift in Sources */,
@@ -1923,7 +1919,7 @@
 				B7F541C823D51B0C00E89074 /* HomeMenuCell.swift in Sources */,
 				B7D8ECE92408B823001B5D2D /* RevealWhite.swift in Sources */,
 				B7BE125123EB032E00ADA499 /* Profile.swift in Sources */,
-				B7D8ECDF240887DB001B5D2D /* Edit.swift in Sources */,
+				B7D8ECDF240887DB001B5D2D /* EditCore.swift in Sources */,
 				B7BE117523EA930F00ADA499 /* Piece.swift in Sources */,
 				8389C6B6246B17CC00DFE8F2 /* TransDialog.swift in Sources */,
 				B7BE120523EAD3C600ADA499 /* Poison.swift in Sources */,

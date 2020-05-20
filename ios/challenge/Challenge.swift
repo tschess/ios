@@ -285,22 +285,42 @@ class Challenge: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate
             return
         }
         if(self.selection! == 0){
+//            DispatchQueue.main.async() {
+//                let height: CGFloat = UIScreen.main.bounds.height
+//                SelectEditOther().execute(playerSelf: self.playerSelf!, playerOther: self.playerOther!, title: "config. 0̸", selection: 0, BACK: "CHALLENGE", height: height)
+//            }
             DispatchQueue.main.async() {
-                let height: CGFloat = UIScreen.main.bounds.height
-                SelectEditOther().execute(playerSelf: self.playerSelf!, playerOther: self.playerOther!, title: "config. 0̸", selection: 0, BACK: "CHALLENGE", height: height)
+                UIApplication.shared.keyWindow?.rootViewController = EditOther.create(
+                    playerSelf: self.playerSelf!,
+                    playerOther: self.playerOther!,
+                    select: 0,
+                    back: "CHALLENGE",
+                    height: UIScreen.main.bounds.height)
             }
             return
         }
         if(self.selection! == 1){
+//            DispatchQueue.main.async() {
+//                let height: CGFloat = UIScreen.main.bounds.height
+//                SelectEditOther().execute(playerSelf: self.playerSelf!, playerOther: self.playerOther!, title: "config. 1", selection: 1, BACK: "CHALLENGE", height: height)
+//            }
             DispatchQueue.main.async() {
-                let height: CGFloat = UIScreen.main.bounds.height
-                SelectEditOther().execute(playerSelf: self.playerSelf!, playerOther: self.playerOther!, title: "config. 1", selection: 1, BACK: "CHALLENGE", height: height)
+                UIApplication.shared.keyWindow?.rootViewController = EditOther.create(
+                    playerSelf: self.playerSelf!,
+                    playerOther: self.playerOther!,
+                    select: 1,
+                    back: "CHALLENGE",
+                    height: UIScreen.main.bounds.height)
             }
             return
         }
         DispatchQueue.main.async() {
-            let height: CGFloat = UIScreen.main.bounds.height
-            SelectEditOther().execute(playerSelf: self.playerSelf!, playerOther: self.playerOther!, title: "config. 2", selection: 2, BACK: "CHALLENGE", height: height)
+            UIApplication.shared.keyWindow?.rootViewController = EditOther.create(
+                playerSelf: self.playerSelf!,
+                playerOther: self.playerOther!,
+                select: 2,
+                back: "CHALLENGE",
+                height: UIScreen.main.bounds.height)
         }
     }
     

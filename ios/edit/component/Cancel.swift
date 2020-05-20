@@ -11,6 +11,8 @@ import UIKit
 class Cancel: UIViewController {
     
     var playerSelf: EntityPlayer?
+    var other: Bool = false
+    var editOther: EditOther?
     
     @IBOutlet weak var buttonNo: UIButton!
     @IBOutlet weak var buttonYes: UIButton!
@@ -38,10 +40,17 @@ class Cancel: UIViewController {
     }
     
     @IBAction func buttonClickYes(_ sender: Any) {
-        DispatchQueue.main.async {
-            let height: CGFloat = UIScreen.main.bounds.height
-            SelectConfig().execute(player: self.playerSelf!, height: height)
+        if(!self.other){
+            DispatchQueue.main.async {
+                let height: CGFloat = UIScreen.main.bounds.height
+                SelectConfig().execute(player: self.playerSelf!, height: height)
+            }
+            return
         }
+        DispatchQueue.main.async {
+            self.presentingViewController!.dismiss(animated: false, completion: nil)
+        }
+        self.editOther!.backButtonClick("")
     }
     
     @IBAction func buttonClickNo(_ sender: Any) {

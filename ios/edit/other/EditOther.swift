@@ -10,66 +10,155 @@ import UIKit
 
 class EditOther: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIDropInteractionDelegate {
     
-    /* - * - */
-    
-    
-    
-    var playerSelf: EntityPlayer?
-    
-    
-    var gameTschess: EntityGame?
-    
-    
-    
-    var selection: Int? = nil
-    
-    public func setSelection(selection: Int){
-        self.selection = selection
+    @IBAction func backButtonClick(_ sender: Any) {
+        if(self.back == "PLAY"){
+            DispatchQueue.main.async {
+                let screenSize: CGRect = UIScreen.main.bounds
+                let height = screenSize.height
+                SelectPlay().execute(selection: self.selection!, playerSelf: self.playerSelf!, playerOther: self.playerOther!, height: height)
+            }
+            return
+        }
+        if(self.back == "CHALLENGE"){
+            DispatchQueue.main.async {
+                let screenSize: CGRect = UIScreen.main.bounds
+                let height = screenSize.height
+                SelectChallenge().execute(selection: self.selection!, playerSelf: self.playerSelf!, playerOther: self.playerOther!, BACK: "HOME", height: height)
+            }
+            return
+        }
+        if(self.back == "ACK"){
+            DispatchQueue.main.async {
+                let screenSize: CGRect = UIScreen.main.bounds
+                let height = screenSize.height
+                SelectAck().execute(selection: self.selection!, playerSelf: self.playerSelf!, playerOther: self.playerOther!, game: self.game!, height: height)
+            }
+            return
+        }
     }
     
-    public func setBACK(BACK: String){
-        self.BACK = BACK
+    static func create(playerSelf: EntityPlayer, playerOther: EntityPlayer? = nil, select: Int, back: String, height: CGFloat, game: EntityGame? = nil) -> EditOther {
+        let identifier: String = height.isLess(than: 750) ? "L" : "P"
+        let storyboard: UIStoryboard = UIStoryboard(name: "EditOther\(identifier)", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "EditOther\(identifier)") as! EditOther
+        viewController.playerSelf = playerSelf
+        viewController.selection = select
+        
+        viewController.game = game
+        viewController.back = back
+        viewController.playerOther = playerOther
+        
+        viewController.confirm = false
+        viewController.editCore = EditCore()
+        return viewController
     }
     
+    //MARK: Member - core
+    var playerSelf: EntityPlayer!
+    var selection: Int!
+    var editCore: EditCore!
+    var confirm: Bool!
     
-    
-    /* - * - */
-    
-    
-    
-    func setPlayerOther(playerOther: EntityPlayer){
-        self.playerOther = playerOther
-    }
-    
-    
-    
-    func setPlayerSelf(playerSelf: EntityPlayer){
-        self.playerSelf = playerSelf
-    }
-    
-    
-    
-    public func setGameTschess(gameTschess: EntityGame) {
-        self.gameTschess = gameTschess
-    }
-    
-    //MARK: Layout: Core
-    @IBOutlet weak var titleLabel: UILabel!
-    var titleText: String?
-    @IBOutlet weak var backButton: UIButton!
-    var BACK: String?
-    @IBOutlet weak var headerView: UIView!
+    //MARK: Member - unique
     var playerOther: EntityPlayer?
-    @IBOutlet weak var tabBarMenu: UITabBar!
+    var game: EntityGame?
+    var back: String?
     
+    //MARK: Variables
+    var configCache: [[Piece?]]?
+    var configActiv: [[Piece?]]?
+    var candidateName: String?
+    var candidateCoord: [Int]?
+    
+    //MARK: Layout - core
+    @IBOutlet weak var viewPointLabel: UIView!
+    @IBOutlet weak var pieceCollectionView: UICollectionView!
+    @IBOutlet weak var boardViewConfigHeight: NSLayoutConstraint!
+    @IBOutlet weak var boardViewConfig: BoardView!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var eloLabel: UILabel!
-    @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var rankLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var avatarImageView: UIImageView!
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var headerView: UIView!
+    @IBOutlet weak var tabBarMenu: UITabBar!
+    @IBOutlet weak var contentView: UIView!
+    @IBOutlet weak var totalPointLabel: UILabel!
     
-    public func renderHeaderOther() {
+    //MARK: Layout - unique
+    @IBOutlet weak var dateLabel: UILabel!
+    
+    //MARK: Lifecycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.boardViewConfig.isHidden = true
+        self.boardViewConfig.delegate = self
+        self.boardViewConfig.dataSource = self
+        self.boardViewConfig.dragDelegate = self
+        self.boardViewConfig.dropDelegate = self
+        self.pieceCollectionView.delegate = self
+        self.pieceCollectionView.dataSource = self
+        self.pieceCollectionView.dragDelegate = self
+        
+        self.tabBarMenu.delegate = self
+        self.activityIndicator.isHidden = true
+        self.boardViewConfig.isUserInteractionEnabled = true
+        self.boardViewConfig.dragInteractionEnabled = true
+        self.boardViewConfig.alwaysBounceVertical = false
+        self.boardViewConfig.bounces = false
+        self.pieceCollectionView.isUserInteractionEnabled = true
+        self.pieceCollectionView.dragInteractionEnabled = true
+        
+        self.pieceCollectionView.addInteraction(UIDropInteraction(delegate: self))
+        self.headerView.addInteraction(UIDropInteraction(delegate: self))
+        self.contentView.addInteraction(UIDropInteraction(delegate: self))
+        self.tabBarMenu.addInteraction(UIDropInteraction(delegate: self))
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.boardViewConfig.reloadData()
+        self.boardViewConfig.isHidden = false
+        self.boardViewConfig.gestureRecognizers?.forEach { (recognizer) in
+            if let longPressRecognizer = recognizer as? UILongPressGestureRecognizer {
+                longPressRecognizer.minimumPressDuration = 0.004
+            }
+        }
+        self.pieceCollectionView.gestureRecognizers?.forEach { (recognizer) in
+            if let longPressRecognizer = recognizer as? UILongPressGestureRecognizer {
+                longPressRecognizer.minimumPressDuration = 0.06
+            }
+        }
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        self.boardViewConfigHeight.constant = self.boardViewConfig.contentSize.height
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        switch self.selection! {
+        case 1:
+            self.configActiv = self.playerSelf!.getConfig(index: 1)
+            self.titleLabel.text = "config. 1"
+            break
+        case 2:
+            self.configActiv = self.playerSelf!.getConfig(index: 2)
+            self.titleLabel.text = "config. 2"
+            break
+        default:
+            self.configActiv = self.playerSelf!.getConfig(index: 0)
+            self.titleLabel.text = "config. 0̸"
+        }
+        self.configCache = self.configActiv
+        self.renderHeader()
+        self.setTotalPointValue()
+    }
+    
+    private func renderHeader() { // unique
         self.avatarImageView.image = self.playerOther!.getImageAvatar()
         self.usernameLabel.text = self.playerOther!.username
         self.eloLabel.text = self.playerOther!.getLabelTextElo()
@@ -77,327 +166,64 @@ class EditOther: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate
         self.dateLabel.text = self.playerOther!.getLabelTextDate()
     }
     
-    //MARK: Constant
-    let DATE_TIME: DateTime = DateTime()
-    let REUSE_IDENTIFIER = "square"
-    let PLACEMENT_LIST = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16"]
-    let ELEMENT_LIST = [
-        "red_pawn",
-        "red_knight",
-        "red_bishop",
-        "red_rook",
-        "red_queen",
-        "red_amazon",
-        "red_hunter",
-        "red_poison"]
-    
-    //MARK: Layout: Content
-    @IBOutlet weak var contentView: UIView!
-    @IBOutlet weak var totalPointLabel: UILabel!
-    var totalPointValue: Int?
-    
-    private func setTotalPointValue() {
-        let totalPointValue = self.getPointValue(config: self.configActiv!)
+    private func setTotalPointValue() { // common
+        let totalPointValue: Int = self.editCore.getPointValue(config: self.configActiv!)
         self.totalPointLabel.text = String(totalPointValue)
-    }
-    
-    func setTitleText(titleText: String) {
-        self.titleText = titleText
-    }
-    
-    //MARK: Input
-    @IBOutlet weak var pieceCollectionView: UICollectionView!
-    @IBOutlet weak var pieceCollectionViewHeight: NSLayoutConstraint!
-    @IBOutlet weak var boardViewConfigHeight: NSLayoutConstraint!
-    @IBOutlet weak var boardViewConfig: BoardView!
-    
-    //MARK: Variables
-    var configAbort: [[Piece?]]?
-    var configCache: [[Piece?]]?
-    var configActiv: [[Piece?]]?
-    var selectionPieceName: String?
-    
-    private func getPointValue(config: [[Piece?]]) -> Int {
-        var totalPointValue: Int = 0
-        for row in config {
-            for piece in row {
-                if(piece == nil) {
-                    continue
-                }
-                totalPointValue += Int(piece!.getStrength())!
-            }
-        }
-        return totalPointValue
-    }
-    
-    func inExcess(piece: Piece, config: [[Piece?]]) -> Bool {
-        let pointIncrease = Int(piece.strength)!
-        let pointValue0 = self.getPointValue(config: config)
-        let pointValue1 = pointValue0 + pointIncrease
-        if(pointValue1 > 39){
-            return true
-        }
-        return false
-    }
-    
-    //MARK: Render
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if collectionView == self.pieceCollectionView {
-            let elementCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ConfigCell", for: indexPath) as! ConfigCell
-            
-            let elementImageIdentifier: String = self.ELEMENT_LIST[indexPath.row]
-            let elementImage: UIImage = UIImage(named: elementImageIdentifier)!
-            elementCell.configureCell(image: elementImage)
-            
-            let elementObject: Piece = Edit().generateTschessElement(name: self.ELEMENT_LIST[indexPath.row])!
-            elementCell.nameLabel.text = elementObject.name
-            elementCell.pointsLabel.text = elementObject.strength
-            
-            elementCell.imageView.alpha = 1
-            elementCell.nameLabel.alpha = 1
-            elementCell.pointsLabel.alpha = 1
-            if(self.inExcess(piece: elementObject, config: self.configActiv!)){
-                elementCell.imageView.alpha = 0.5
-                elementCell.nameLabel.alpha = 0.5
-                elementCell.pointsLabel.alpha = 0.5
-            }
-            return elementCell
-        }
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "square", for: indexPath) as! SquareCell
-        cell.backgroundColor = .black
-        if (indexPath.row / 8 == 0) {
-            cell.backgroundColor = .white
-        }
-        if (indexPath.row % 2 == 0) {
-            cell.backgroundColor = .white
-            if (indexPath.row / 8 == 0) {
-                cell.backgroundColor = .black
-            }
-        }
-        let x = indexPath.row / 8
-        let y = indexPath.row % 8
-        cell.imageView.image = nil
-        if(self.configActiv![x][y] != nil){
-            cell.imageView.image = self.configActiv![x][y]!.getImageDefault()
-        }
-        cell.imageView.bounds = CGRect(origin: cell.bounds.origin, size: cell.bounds.size)
-        cell.imageView.center = CGPoint(x: cell.bounds.size.width/2, y: cell.bounds.size.height/2)
-        return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, dragPreviewParametersForItemAt indexPath: IndexPath) -> UIDragPreviewParameters?{
-        let previewParameters = UIDragPreviewParameters()
-        previewParameters.backgroundColor = UIColor.clear
-        return previewParameters
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, itemsForAddingTo session: UIDragSession, at indexPath: IndexPath, point: CGPoint) -> [UIDragItem] {
-        return self.collectionView(collectionView, itemsForBeginning: session, at: indexPath)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
-        //self.notificationLabel.isHidden = true
-        self.configCache = self.configActiv!
-        if collectionView == self.pieceCollectionView {
-            let tschessElement = Edit().generateTschessElement(name: self.ELEMENT_LIST[indexPath.row])
-            
-            if(self.inExcess(piece: tschessElement!, config: self.configActiv!)){
-                return []
-            }
-            let generator = UIImpactFeedbackGenerator(style: .light)
-            generator.impactOccurred()
-            
-            let imageName = Edit().imageNameFromPiece(piece: tschessElement!)!
-            self.selectionPieceName = imageName
-            let itemProvider = NSItemProvider(object: UIImage(named: imageName)!)
-            let dragItem = UIDragItem(itemProvider: itemProvider)
-            dragItem.previewProvider = {
-                () -> UIDragPreview? in
-                let imageView = UIImageView(image: UIImage(named: imageName)!)
-                imageView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
-                let previewParameters = UIDragPreviewParameters()
-                previewParameters.backgroundColor = UIColor.clear
-                return UIDragPreview(view: imageView, parameters: previewParameters)
-            }
-            self.setTotalPointValue()
-            return [dragItem]
-        }
-        let x = indexPath.row / 8
-        let y = indexPath.row % 8
-        let tschessElement = self.configActiv![x][y]
-        if(tschessElement == nil) {
-            return []
-        }
-        let generator = UIImpactFeedbackGenerator(style: .light)
-        generator.impactOccurred()
-        
-        self.configActiv![x][y] = nil
-        self.boardViewConfig.reloadData()
-        self.pieceCollectionView.reloadData()
-        /***/
-        let imageName = Edit().imageNameFromPiece(piece: tschessElement!)!
-        self.selectionPieceName = imageName
-        let itemProvider = NSItemProvider(object: UIImage(named: imageName)!)
-        let dragItem = UIDragItem(itemProvider: itemProvider)
-        dragItem.previewProvider = {
-            () -> UIDragPreview? in
-            let imageView = UIImageView(image: UIImage(named: imageName)!)
-            imageView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
-            let previewParameters = UIDragPreviewParameters()
-            previewParameters.backgroundColor = UIColor.clear
-            return UIDragPreview(view: imageView, parameters: previewParameters)
-        }
-        self.setTotalPointValue()
-        return [dragItem]
-    }
-    
-    internal func collectionView(_: UICollectionView, dragSessionDidEnd: UIDragSession){
-        self.pieceCollectionView.reloadData()
-        self.setTotalPointValue()
-        //self.notificationLabel.isHidden = false
-    }
-    
-    func collectionView(_ collectionView: UICollectionView,  dropSessionDidEnd session: UIDropSession) {
-        var kingAbsent: Bool = true
-        for row in self.configActiv! {
-            for tschessElement in row {
-                if(tschessElement == nil){
-                    continue
-                }
-                if(tschessElement!.name.lowercased().contains("king")){
-                    kingAbsent = false
-                }
-            }
-        }
-        if(!kingAbsent){
+        if(totalPointValue < 39){
+            self.viewPointLabel.isHidden = false
+            self.pieceCollectionView.isHidden = false
             return
         }
-        self.configActiv = self.configCache
-        self.boardViewConfig.reloadData()
-        self.setTotalPointValue()
-        self.pieceCollectionView.reloadData()
+        self.viewPointLabel.isHidden = true
+        self.pieceCollectionView.isHidden = true
     }
     
-    func collectionView(_ collectionView: UICollectionView, dropSessionDidUpdate session: UIDropSession, withDestinationIndexPath destinationIndexPath: IndexPath?) -> UICollectionViewDropProposal {
-        return UICollectionViewDropProposal(operation: .move, intent: .insertIntoDestinationIndexPath)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, performDropWith coordinator: UICollectionViewDropCoordinator) {
-        let x = coordinator.destinationIndexPath!.row / 8
-        let y = coordinator.destinationIndexPath!.row % 8
-        
-        let occupant: Piece? = self.configActiv![x][y]
-        if(occupant != nil){
-            if(occupant!.name.lowercased().contains("king")){
-                self.configActiv = self.configCache
-                boardViewConfig.reloadData()
+    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        tabBar.selectedItem = nil
+        switch item.tag {
+        case 0:
+            if(!self.confirm){
+                self.backButtonClick("")
                 return
             }
-        }
-        let tschessElement = Edit().generateTschessElement(name: self.selectionPieceName!)
-        self.configActiv![x][y] = tschessElement!
-        self.setTotalPointValue()
-        self.boardViewConfig.reloadData()
-        self.pieceCollectionView.reloadData()
-    }
-    
-    func dropInteraction(_ interaction: UIDropInteraction, canHandle session: UIDropSession) -> Bool {
-        return true
-    }
-    
-    func dropInteraction(_ interaction: UIDropInteraction, sessionDidUpdate session: UIDropSession) -> UIDropProposal {
-        return UIDropProposal(operation: .move)
-    }
-    
-    func dropInteraction(_ interaction: UIDropInteraction, performDrop session: UIDropSession) {
-        if(self.selectionPieceName != nil){
-            if(self.selectionPieceName!.lowercased().contains("king")){
-                self.configActiv = self.configCache
-                boardViewConfig.reloadData() //give a warning also... feedback
+            let storyboard: UIStoryboard = UIStoryboard(name: "Cancel", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier: "Cancel") as! Cancel
+            viewController.playerSelf = self.playerSelf!
+            viewController.editOther = self
+            viewController.other = true
+            self.present(viewController, animated: true, completion: nil)
+        case 2:
+            let storyboard: UIStoryboard = UIStoryboard(name: "Help", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier: "Help") as! Help
+            self.present(viewController, animated: true, completion: nil)
+        default:
+            DispatchQueue.main.async() {
+                self.activityIndicator!.isHidden = false
+                self.activityIndicator!.startAnimating()
+            }
+            let id = self.playerSelf!.id
+            let config = self.playerSelf!.setConfig(index: self.selection!, config: self.configActiv!)
+            
+            let updateConfig = ["id": id, "config": config, "index": self.selection!] as [String: Any]
+            
+            UpdateConfig().execute(requestPayload: updateConfig) { (result) in
+                if result == result {
+                    DispatchQueue.main.async() {
+                        self.activityIndicator!.isHidden = true
+                        self.activityIndicator!.stopAnimating()
+                        self.playerSelf = result!
+                        self.backButtonClick("")
+                    }
+                }
+                DispatchQueue.main.async() {
+                    self.activityIndicator!.isHidden = false
+                    self.activityIndicator!.startAnimating()
+                    self.backButtonClick("")
+                }
             }
         }
-        self.selectionPieceName = nil
-        self.boardViewConfig.reloadData()
-        self.pieceCollectionView.reloadData()
     }
     
-    //MARK: Lifecycle
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        self.boardViewConfig.isHidden = true
-        
-        self.boardViewConfig.delegate = self
-        self.boardViewConfig.dataSource = self
-        self.boardViewConfig.dragDelegate = self
-        self.boardViewConfig.dropDelegate = self
-        
-        self.pieceCollectionView.delegate = self
-        self.pieceCollectionView.dataSource = self
-        self.pieceCollectionView.dragDelegate = self
-        
-        self.pieceCollectionView.addInteraction(UIDropInteraction(delegate: self))
-      
-        self.contentView.addInteraction(UIDropInteraction(delegate: self))
-      
-        self.headerView.addInteraction(UIDropInteraction(delegate: self))
-        
-        self.tabBarMenu.delegate = self
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        self.boardViewConfig.reloadData()
-        
-        if let longPressRecognizer = self.boardViewConfig.gestureRecognizers?.compactMap({ $0 as? UILongPressGestureRecognizer}).first {
-            longPressRecognizer.minimumPressDuration = 0.1 // your custom value
-        }
-        
-        if let longPressRecognizer = self.pieceCollectionView.gestureRecognizers?.compactMap({ $0 as? UILongPressGestureRecognizer}).first {
-            longPressRecognizer.minimumPressDuration = 0.1 // your custom value
-        }
-        
-        self.boardViewConfig.isHidden = false
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        self.activityIndicator.isHidden = true
-        
-        self.boardViewConfig.isUserInteractionEnabled = true
-        self.boardViewConfig.dragInteractionEnabled = true
-        self.boardViewConfig.alwaysBounceVertical = false
-        self.boardViewConfig.bounces = false
-        
-        self.pieceCollectionView.isUserInteractionEnabled = true
-        self.pieceCollectionView.dragInteractionEnabled = true
-        
-        switch self.selection! {
-        case 1:
-            self.configActiv = self.playerSelf!.getConfig(index: 1)
-            self.configAbort = self.configActiv
-            break
-        case 2:
-            self.configActiv = self.playerSelf!.getConfig(index: 2)
-            self.configAbort = self.configActiv
-            break
-        default:
-            self.configActiv = self.playerSelf!.getConfig(index: 0)
-            self.configAbort = self.configActiv
-        }
-        self.titleLabel.text = self.titleText
-        self.renderHeaderOther()
-        
-        //self.notificationLabel.isHidden = true
-        //self.notificationLabel.text = "click - hold to engage - drag"
-        self.setTotalPointValue()
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        self.boardViewConfigHeight.constant = boardViewConfig.contentSize.height
-    }
 }
 
 //MARK: DataSource
@@ -405,9 +231,9 @@ extension EditOther: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == self.pieceCollectionView {
-            return ELEMENT_LIST.count
+            return self.editCore.ELEMENT_LIST.count
         }
-        return PLACEMENT_LIST.count
+        return 16
     }
 }
 
@@ -441,72 +267,214 @@ extension EditOther: UICollectionViewDelegateFlowLayout {
 
 extension EditOther: UICollectionViewDelegate {
     
-    @IBAction func backButtonClick(_ sender: Any) {
-        if(self.BACK == "PLAY"){
-            DispatchQueue.main.async {
-                let screenSize: CGRect = UIScreen.main.bounds
-                let height = screenSize.height
-                SelectPlay().execute(selection: self.selection!, playerSelf: self.playerSelf!, playerOther: self.playerOther!, height: height)
-            }
-            return
-        }
-        if(self.BACK == "CHALLENGE"){
-            DispatchQueue.main.async {
-                let screenSize: CGRect = UIScreen.main.bounds
-                let height = screenSize.height
-                SelectChallenge().execute(selection: self.selection!, playerSelf: self.playerSelf!, playerOther: self.playerOther!, BACK: "HOME", height: height)
-            }
-            return
-        }
-        if(self.BACK == "ACK"){
-            DispatchQueue.main.async {
-                let screenSize: CGRect = UIScreen.main.bounds
-                let height = screenSize.height
-                SelectAck().execute(selection: self.selection!, playerSelf: self.playerSelf!, playerOther: self.playerOther!, game: self.gameTschess!, height: height)
-            }
-            return
-        }
-    }
-    
-    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-        tabBar.selectedItem = nil
-        
-        switch item.tag {
-        case 0:
-            self.backButtonClick("~")
-        case 2:
-            //print("fuck") //show the popup...
-            let storyboard: UIStoryboard = UIStoryboard(name: "Help", bundle: nil)
-            let viewController = storyboard.instantiateViewController(withIdentifier: "Help") as! Help
-            self.present(viewController, animated: true, completion: nil)
-        default:
-            DispatchQueue.main.async() {
-                self.activityIndicator!.isHidden = false
-                self.activityIndicator!.startAnimating()
-            }
-            let id = self.playerSelf!.id
-            let config = self.playerSelf!.setConfig(index: self.selection!, config: self.configActiv!)
+    //MARK: Render //gotta look at this...
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        if collectionView == self.pieceCollectionView {
+            let elementCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ConfigCell", for: indexPath) as! ConfigCell
             
-            let updateConfig = ["id": id, "config": config, "index": self.selection!] as [String: Any]
+            let elementImageIdentifier: String = self.editCore.ELEMENT_LIST[indexPath.row]
+            let elementImage: UIImage = UIImage(named: elementImageIdentifier)!
+            elementCell.configureCell(image: elementImage)
             
-            UpdateConfig().execute(requestPayload: updateConfig) { (result) in
-                if result == nil {
-                    print("error!") // print a popup
-                    self.backButtonClick("~")
-                }
-                DispatchQueue.main.async() {
-                    self.activityIndicator!.isHidden = true
-                    self.activityIndicator!.stopAnimating()
-                }
-                self.playerSelf = result!
-                self.backButtonClick("~")
+            let elementObject: Piece = self.editCore.generateTschessElement(name: self.editCore.ELEMENT_LIST[indexPath.row])!
+            elementCell.nameLabel.text = "\(elementObject.name.lowercased()): \(elementObject.strength)"
+            elementCell.pointsLabel.isHidden = true
+            
+            elementCell.imageView.alpha = 1
+            elementCell.nameLabel.alpha = 1
+            elementCell.pointsLabel.alpha = 1
+            if(!self.editCore.allocatable(piece: elementObject, config: self.configActiv!)){
+                elementCell.imageView.alpha = 0.5
+                elementCell.nameLabel.alpha = 0.5
+                elementCell.pointsLabel.alpha = 0.5
+            }
+            return elementCell
+        }
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "square", for: indexPath) as! SquareCell
+        cell.backgroundColor = .black
+        if (indexPath.row / 8 == 0) {
+            cell.backgroundColor = .white
+        }
+        if (indexPath.row % 2 == 0) {
+            cell.backgroundColor = .white
+            if (indexPath.row / 8 == 0) {
+                cell.backgroundColor = .black
             }
         }
+        let x = indexPath.row / 8
+        let y = indexPath.row % 8
+        cell.imageView.image = nil
+        if(self.configActiv![x][y] != nil){
+            cell.imageView.image = self.configActiv![x][y]!.getImageDefault()
+        }
+        cell.imageView.bounds = CGRect(origin: cell.bounds.origin, size: cell.bounds.size)
+        cell.imageView.center = CGPoint(x: cell.bounds.size.width/2, y: cell.bounds.size.height/2)
+        return cell
     }
 }
 
 //MARK: DragDelegate
-extension EditOther: UICollectionViewDragDelegate {}
+extension EditOther: UICollectionViewDragDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
+        self.configCache = self.configActiv!
+        let row: Int = indexPath.row
+        if collectionView == self.pieceCollectionView {
+            let piece: Piece = self.editCore.generateTschessElement(name: self.editCore.ELEMENT_LIST[row])!
+            let allocatable: Bool = self.editCore.allocatable(piece: piece, config: self.configActiv!)
+            if(!allocatable){
+                return []
+            }
+            UIImpactFeedbackGenerator(style: .light).impactOccurred()
+            
+            let name: String = self.editCore.imageNameFromPiece(piece: piece)!
+            self.candidateName = name
+            
+            let image: UIImage = UIImage(named: name)!
+            let itemProvider = NSItemProvider(object: image)
+            let dragItem = UIDragItem(itemProvider: itemProvider)
+            dragItem.previewProvider = {
+                () -> UIDragPreview? in
+                let imageView = UIImageView(image: image)
+                imageView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+                let previewParameters = UIDragPreviewParameters()
+                previewParameters.backgroundColor = UIColor.clear
+                return UIDragPreview(view: imageView, parameters: previewParameters)
+            }
+            self.setTotalPointValue()
+            return [dragItem]
+        }
+        let x = indexPath.row / 8
+        let y = indexPath.row % 8
+        let tschessElement = self.configActiv![x][y]
+        if(tschessElement == nil) {
+            return []
+        }
+        UIImpactFeedbackGenerator(style: .light).impactOccurred()
+        
+        let name: String = self.editCore.imageNameFromPiece(piece: tschessElement!)!
+        let image: UIImage = UIImage(named: name)!
+        let itemProvider = NSItemProvider(object: image)
+        
+        let dragItem: UIDragItem = UIDragItem(itemProvider: itemProvider)
+        dragItem.previewProvider = {
+            () -> UIDragPreview? in
+            let imageView = UIImageView(image: image)
+            imageView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+            let previewParameters = UIDragPreviewParameters()
+            previewParameters.backgroundColor = UIColor.clear
+            let dragPreview: UIDragPreview = UIDragPreview(view: imageView, parameters: previewParameters)
+            self.candidateName = name
+            self.candidateCoord = [x,y]
+            self.setTotalPointValue()
+            return dragPreview
+        }
+        return [dragItem]
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, dragPreviewParametersForItemAt indexPath: IndexPath) -> UIDragPreviewParameters?{
+        let previewParameters = UIDragPreviewParameters()
+        previewParameters.backgroundColor = UIColor.clear
+        return previewParameters
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, itemsForAddingTo session: UIDragSession, at indexPath: IndexPath, point: CGPoint) -> [UIDragItem] {
+        return self.collectionView(collectionView, itemsForBeginning: session, at: indexPath)
+    }
+    
+    internal func collectionView(_: UICollectionView, dragSessionDidEnd: UIDragSession){
+        self.candidateName = nil
+        self.candidateCoord = nil
+        self.boardViewConfig.reloadData()
+        self.pieceCollectionView.reloadData()
+        self.setTotalPointValue()
+    }
+    
+}
 
 //MARK: DropDelegate
-extension EditOther: UICollectionViewDropDelegate {}
+extension EditOther: UICollectionViewDropDelegate {
+    
+    func dropInteraction(_ interaction: UIDropInteraction, canHandle session: UIDropSession) -> Bool {
+        return true
+    }
+    
+    func dropInteraction(_ interaction: UIDropInteraction, sessionDidUpdate session: UIDropSession) -> UIDropProposal {
+        return UIDropProposal(operation: .move)
+    }
+    
+    private func revert() -> Bool {
+        for row in self.configActiv! {
+            for piece: Piece? in row {
+                if(piece == nil){
+                    continue
+                }
+                if(piece!.name == "King"){
+                    return false
+                }
+            }
+        }
+        return true
+    }
+    
+    private func flash() {
+        UIImpactFeedbackGenerator(style: .light).impactOccurred()
+        let flashFrame = UIView(frame: self.boardViewConfig.bounds)
+        flashFrame.backgroundColor = UIColor.white
+        flashFrame.alpha = 0.7
+        self.boardViewConfig.addSubview(flashFrame)
+        UIView.animate(withDuration: 0.1, animations: {
+            flashFrame.alpha = 0.0
+        }, completion: {(finished:Bool) in
+            flashFrame.removeFromSuperview()
+        })
+    }
+    
+    private func rollback() {
+        self.configActiv = self.configCache
+        self.flash()
+    }
+    
+    func dropInteraction(_ interaction: UIDropInteraction, performDrop session: UIDropSession) {
+        if(self.revert()){
+            self.rollback()
+            return
+        }
+        if(self.candidateCoord == nil){
+            return
+        }
+        let candidate = self.configActiv![self.candidateCoord![0]][self.candidateCoord![1]]
+        if(candidate == nil){
+            return
+        }
+        if(candidate!.name == "King"){
+            self.rollback()
+            return
+        }
+        self.configActiv![self.candidateCoord![0]][self.candidateCoord![1]] = nil
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, dropSessionDidUpdate session: UIDropSession, withDestinationIndexPath destinationIndexPath: IndexPath?) -> UICollectionViewDropProposal {
+        return UICollectionViewDropProposal(operation: .move, intent: .insertIntoDestinationIndexPath)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, performDropWith coordinator: UICollectionViewDropCoordinator) {
+        let x = coordinator.destinationIndexPath!.row / 8
+        let y = coordinator.destinationIndexPath!.row % 8
+        let candidate: Piece? = self.configActiv![x][y]
+        if(candidate != nil){
+            if(candidate!.name == "King"){
+                self.rollback()
+                return
+            }
+        }
+        self.confirm = true
+        let piece: Piece? = self.editCore.generateTschessElement(name: self.candidateName!)
+        if(self.candidateCoord == nil){
+            self.configActiv![x][y] = piece
+            return
+        }
+        self.configActiv![self.candidateCoord![0]][self.candidateCoord![1]] = nil
+        self.configActiv![x][y] = piece
+    }
+}

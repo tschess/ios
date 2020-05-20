@@ -287,27 +287,50 @@ class Ack: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate {
     
     @objc func renderElementCollectionView() {
         if(self.selection! == 0){
+//            DispatchQueue.main.async {
+//                UIApplication.shared.keyWindow?.rootViewController = EditOther.create(
+//                    player: self.playerSelf!,
+//                    select: 0,
+//                    back: "ACK",
+//                    height: UIScreen.main.bounds.height,
+//                    game: self.gameTschess!)
+//            }
             DispatchQueue.main.async() {
-                let height: CGFloat = UIScreen.main.bounds.height
-                SelectEditOther().execute(game: self.gameTschess!,
-                                          playerSelf: self.playerSelf!,
-                                          playerOther: self.playerOther!,
-                                          title: "config. 0̸", selection: 0,
-                                          BACK: "ACK",
-                                          height: height)
+                UIApplication.shared.keyWindow?.rootViewController = EditOther.create(
+                    playerSelf: self.playerSelf!,
+                    select: 0,
+                    back: "ACK",
+                    height: UIScreen.main.bounds.height,
+                    game: self.gameTschess!)
             }
             return
         }
         if(self.selection! == 1){
+//            DispatchQueue.main.async {
+//                UIApplication.shared.keyWindow?.rootViewController = EditOther.create(
+//                    player: self.playerSelf!,
+//                    select: 1,
+//                    back: "ACK",
+//                    height: UIScreen.main.bounds.height,
+//                    game: self.gameTschess!)
+//            }
             DispatchQueue.main.async() {
-                let height: CGFloat = UIScreen.main.bounds.height
-                SelectEditOther().execute(game: self.gameTschess!, playerSelf: self.playerSelf!, playerOther: self.playerOther!, title: "config. 1", selection: 1, BACK: "ACK", height: height)
+                UIApplication.shared.keyWindow?.rootViewController = EditOther.create(
+                    playerSelf: self.playerSelf!,
+                    select: 1,
+                    back: "ACK",
+                    height: UIScreen.main.bounds.height,
+                    game: self.gameTschess!)
             }
             return
         }
         DispatchQueue.main.async() {
-            let height: CGFloat = UIScreen.main.bounds.height
-            SelectEditOther().execute(game: self.gameTschess!, playerSelf: self.playerSelf!, playerOther: self.playerOther!, title: "config. 2", selection: 2, BACK: "ACK", height: height)
+            UIApplication.shared.keyWindow?.rootViewController = EditOther.create(
+                playerSelf: self.playerSelf!,
+                select: 2,
+                back: "ACK",
+                height: UIScreen.main.bounds.height,
+                game: self.gameTschess!)
         }
     }
     
