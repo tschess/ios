@@ -26,10 +26,8 @@
 		B7021F2423FDEE3400C9346A /* SelectHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7021F2323FDEE3400C9346A /* SelectHome.swift */; };
 		B7021F2723FDEE6100C9346A /* ConfigP.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7021F2623FDEE6100C9346A /* ConfigP.storyboard */; };
 		B7021F2A23FDEE8200C9346A /* ConfigL.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7021F2923FDEE8200C9346A /* ConfigL.storyboard */; };
-		B7021F2C23FDEFEA00C9346A /* SelectConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7021F2B23FDEFEA00C9346A /* SelectConfig.swift */; };
 		B7021F3023FDFC5200C9346A /* FairiesL.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7021F2F23FDFC5200C9346A /* FairiesL.storyboard */; };
 		B7021F3223FDFCC100C9346A /* FairiesP.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7021F3123FDFCC100C9346A /* FairiesP.storyboard */; };
-		B7021F3423FDFD0900C9346A /* SelectFairies.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7021F3323FDFD0900C9346A /* SelectFairies.swift */; };
 		B7021F3723FE02FA00C9346A /* InfoL.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7021F3623FE02FA00C9346A /* InfoL.storyboard */; };
 		B7021F3A23FE031400C9346A /* InfoP.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7021F3923FE031400C9346A /* InfoP.storyboard */; };
 		B7021F3C23FE032D00C9346A /* SelectInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7021F3B23FE032D00C9346A /* SelectInfo.swift */; };
@@ -250,10 +248,8 @@
 		B7021F2323FDEE3400C9346A /* SelectHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectHome.swift; sourceTree = "<group>"; };
 		B7021F2623FDEE6100C9346A /* ConfigP.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ConfigP.storyboard; sourceTree = "<group>"; };
 		B7021F2923FDEE8200C9346A /* ConfigL.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ConfigL.storyboard; sourceTree = "<group>"; };
-		B7021F2B23FDEFEA00C9346A /* SelectConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectConfig.swift; sourceTree = "<group>"; };
 		B7021F2F23FDFC5200C9346A /* FairiesL.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FairiesL.storyboard; sourceTree = "<group>"; };
 		B7021F3123FDFCC100C9346A /* FairiesP.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FairiesP.storyboard; sourceTree = "<group>"; };
-		B7021F3323FDFD0900C9346A /* SelectFairies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectFairies.swift; sourceTree = "<group>"; };
 		B7021F3623FE02FA00C9346A /* InfoL.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = InfoL.storyboard; sourceTree = "<group>"; };
 		B7021F3923FE031400C9346A /* InfoP.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = InfoP.storyboard; sourceTree = "<group>"; };
 		B7021F3B23FE032D00C9346A /* SelectInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectInfo.swift; sourceTree = "<group>"; };
@@ -1239,7 +1235,6 @@
 			children = (
 				B7021F2823FDEE6A00C9346A /* legacy */,
 				B7021F2523FDEE4900C9346A /* primary */,
-				B7021F2B23FDEFEA00C9346A /* SelectConfig.swift */,
 			);
 			path = storyboard;
 			sourceTree = "<group>";
@@ -1342,7 +1337,6 @@
 			children = (
 				B7021F2E23FDFC3800C9346A /* legacy */,
 				B7021F2D23FDFC2D00C9346A /* primary */,
-				B7021F3323FDFD0900C9346A /* SelectFairies.swift */,
 			);
 			path = storyboard;
 			sourceTree = "<group>";
@@ -1907,7 +1901,6 @@
 				B7A6B8AB240D9B0100840156 /* UpdateNack.swift in Sources */,
 				B771365423F222AF007F0962 /* UpdateMate.swift in Sources */,
 				8389C6A6246AED0B00DFE8F2 /* TransHelp.swift in Sources */,
-				B7021F3423FDFD0900C9346A /* SelectFairies.swift in Sources */,
 				B7BE123A23EAFBF500ADA499 /* Ack.swift in Sources */,
 				832E99382437D33C003CD86D /* SelfPlayer.swift in Sources */,
 				B74136C723DE34A0001B3D60 /* RequestLogin.swift in Sources */,
@@ -1992,7 +1985,6 @@
 				B7BE12B723EB0DCD00ADA499 /* Threat.swift in Sources */,
 				B7BE12B523EB0DA700ADA499 /* Attack.swift in Sources */,
 				B7D8ECE12408A917001B5D2D /* Landmine.swift in Sources */,
-				B7021F2C23FDEFEA00C9346A /* SelectConfig.swift in Sources */,
 				B7F6F9E823F0B55C007D9151 /* UpdateEval.swift in Sources */,
 				B7BE121323EAD7BF00ADA499 /* Config.swift in Sources */,
 				B7BE11B723EA9DAC00ADA499 /* Bishop.swift in Sources */,

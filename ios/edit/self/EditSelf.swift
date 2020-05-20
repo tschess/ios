@@ -41,16 +41,17 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var totalPointLabel: UILabel!
     
-    /**
+    /** !!!!!!
      * finally this should live "modally" above config, since it's
      * a "top-level" activity, to return there we'll just kill this
-     * task...
+     * task... !!!!
      */
     @IBAction func backButtonClick(_ sender: Any) {
-        DispatchQueue.main.async {
-            let height: CGFloat = UIScreen.main.bounds.height
-            SelectConfig().execute(player: self.playerSelf!, height: height)
-        }
+        //DispatchQueue.main.async {
+            //let height: CGFloat = UIScreen.main.bounds.height
+            //SelectConfig().execute(player: self.playerSelf!, height: height)
+        //}
+        self.presentingViewController!.dismiss(animated: false, completion: nil)
     }
     
     static func create(player: EntityPlayer, select: Int, height: CGFloat) -> EditSelf {

@@ -23,20 +23,16 @@ class Fairies: UIViewController, UITabBarDelegate {
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var activityIndicatorLabel: UIActivityIndicatorView!
     
-    var player: EntityPlayer?
-    
-    func setPlayer(player: EntityPlayer){
-        self.player = player
-    }
+    var playerSelf: EntityPlayer?
     
     public func renderHeader() {
-        self.avatarImageView.image = self.player!.getImageAvatar()
-        self.usernameLabel.text = self.player!.username
-        self.eloLabel.text = self.player!.getLabelTextElo()
-        self.rankLabel.text = self.player!.getLabelTextRank()
-        self.displacementLabel.text = self.player!.getLabelTextDisp()
-        self.displacementImage.image = self.player!.getImageDisp()!
-        self.displacementImage.tintColor = self.player!.tintColor
+        self.avatarImageView.image = self.playerSelf!.getImageAvatar()
+        self.usernameLabel.text = self.playerSelf!.username
+        self.eloLabel.text = self.playerSelf!.getLabelTextElo()
+        self.rankLabel.text = self.playerSelf!.getLabelTextRank()
+        self.displacementLabel.text = self.playerSelf!.getLabelTextDisp()
+        self.displacementImage.image = self.playerSelf!.getImageDisp()!
+        self.displacementImage.tintColor = self.playerSelf!.tintColor
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -56,7 +52,7 @@ class Fairies: UIViewController, UITabBarDelegate {
         
         self.tabBarMenu.delegate = self
         self.squadUpAdapter = children.first as? FairiesTable
-        self.squadUpAdapter!.setPlayer(player: self.player!)
+        self.squadUpAdapter!.setPlayer(player: self.playerSelf!)
         self.squadUpAdapter!.setFairyElementList(fairyElementList: self.fairyElementList)
         
         NotificationCenter.default.addObserver(
@@ -67,10 +63,11 @@ class Fairies: UIViewController, UITabBarDelegate {
     }
     
     @IBAction func backButtonClick(_ sender: Any) {
-        DispatchQueue.main.async {
-            let height: CGFloat = UIScreen.main.bounds.height
-            SelectConfig().execute(player: self.player!, height: height)
-        }
+        //DispatchQueue.main.async {
+            //let height: CGFloat = UIScreen.main.bounds.height
+            //SelectConfig().execute(player: self.playerSelf!, height: height)
+        //}
+        self.presentingViewController!.dismiss(animated: false, completion: nil)
     }
     
     @objc func onDidReceiveData(_ notification: NSNotification) {
@@ -78,22 +75,70 @@ class Fairies: UIViewController, UITabBarDelegate {
         let fairy: Fairy = squadUpAdapter!.getFairyElementList()![squadUpDetailSelectionIndex]
         DispatchQueue.main.async {
             let height: CGFloat = UIScreen.main.bounds.height
-            SelectInfo().execute(player: self.player!, fairy: fairy, height: height)
+            SelectInfo().execute(player: self.playerSelf!, fairy: fairy, height: height)
         }
     }
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         switch item.tag {
         case 1:
-            DispatchQueue.main.async {
-                let height: CGFloat = UIScreen.main.bounds.height
-                SelectHome().execute(player: self.player!, height: height)
-            }
+            //DispatchQueue.main.async {
+                //let height: CGFloat = UIScreen.main.bounds.height
+                //SelectHome().execute(player: self.player!, height: height)
+            //}
+            //self.presentingViewController!.dismiss(animated: false, completion: nil)
+            
+            //let presentingViewController = self.presentingViewController
+            //self.dismiss(animated: false, completion: {
+                //presentingViewController?.dismiss(animated: false, completion: {})
+            //})
+            
+            //
+            //let vc00: UIViewController? = self.presentingViewController
+            //vc00!.modalTransitionStyle = .crossDissolve
+            //let vc01: UIViewController? = vc00!.presentingViewController
+            //vc01!.modalTransitionStyle = .crossDissolve
+            //vc01!.dismiss(animated: false, completion: nil)
+            //self.presentingViewController!.dismiss(animated: false, completion: nil)
+            
+            //var viewControllers = navigationController?.viewControllers
+            //viewControllers?.removeLast(2) //here 2 views to pop index numbers of views
+            //navigationController?.setViewControllers(viewControllers!, animated: false)
+            
+            //self.presentingViewController!.navigationController!.popToRootViewController(animated: false)
+            //popToViewController( self.navigationController!.viewControllers[0], animated: false)
+             //_ = navigationController?.popToRootViewController(animated: true)
+            
+            //self.view.window?.rootViewController?.dismiss(animated: false, completion: nil)
+            
+            //self.view.window!.rootViewController?.dismiss(animated: false, completion: nil)
+            
+//           if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+//               appDelegate.window?.rootViewController?.dismiss(animated: false, completion: nil)
+//               (appDelegate.window?.rootViewController as? UINavigationController)?.popToRootViewController(animated: false)
+//            }
+        //view.window?.rootViewController?.dismiss(animated: false, completion: nil)
+            
+            dismissAll(animated: false)
+            
         default:
-            DispatchQueue.main.async {
-                let height: CGFloat = UIScreen.main.bounds.height
-                SelectConfig().execute(player: self.player!, height: height)
+            self.presentingViewController!.dismiss(animated: false, completion: nil)
+        }
+    }
+}
+
+extension UIViewController {
+
+    func dismissAll(animated: Bool, completion: (() -> Void)? = nil) {
+        if let optionalWindow = UIApplication.shared.delegate?.window, let window = optionalWindow, let rootViewController = window.rootViewController, let presentedViewController = rootViewController.presentedViewController  {
+            if let snapshotView = window.snapshotView(afterScreenUpdates: false) {
+                presentedViewController.view.addSubview(snapshotView)
+                presentedViewController.modalTransitionStyle = .coverVertical
+            }
+            if !isBeingDismissed {
+                rootViewController.dismiss(animated: animated, completion: completion)
             }
         }
     }
+
 }

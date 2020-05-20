@@ -41,10 +41,14 @@ class Cancel: UIViewController {
     
     @IBAction func buttonClickYes(_ sender: Any) {
         if(!self.other){
-            DispatchQueue.main.async {
-                let height: CGFloat = UIScreen.main.bounds.height
-                SelectConfig().execute(player: self.playerSelf!, height: height)
-            }
+            //DispatchQueue.main.async {
+                //let height: CGFloat = UIScreen.main.bounds.height
+                //SelectConfig().execute(player: self.playerSelf!, height: height)
+            //}
+            let presentingViewController = self.presentingViewController
+            self.dismiss(animated: false, completion: {
+                presentingViewController?.dismiss(animated: false, completion: {})
+            })
             return
         }
         DispatchQueue.main.async {

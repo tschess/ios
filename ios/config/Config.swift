@@ -317,11 +317,38 @@ extension Config: UICollectionViewDelegate {
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         switch item.tag {
         case 1:
-            DispatchQueue.main.async {
-                let height: CGFloat = UIScreen.main.bounds.height
-                SelectFairies().execute(player: self.playerSelf!, height: height)
+            //DispatchQueue.main.async {
+                //let height: CGFloat = UIScreen.main.bounds.height
+                //SelectFairies().execute(player: self.playerSelf!, height: height)
+            //}
+            //return
+            self.tabBarMenu.selectedItem = nil
+            
+            
+            
+            //DispatchQueue.main.async {
+            let height: CGFloat = UIScreen.main.bounds.height
+            if(height.isLess(than: 750)){
+                let root = UIApplication.shared.delegate! as! AppDelegate
+                let storyboard: UIStoryboard = UIStoryboard(name: "FairiesL", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "FairiesL") as! Fairies
+                viewController.playerSelf = self.playerSelf!
+                viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
+                root.window?.rootViewController?.present(viewController, animated: false , completion: nil)
+                return
             }
-            return
+            //let root = UIApplication.shared.delegate! as! AppDelegate
+            let storyboard: UIStoryboard = UIStoryboard(name: "FairiesP", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier: "FairiesP") as! Fairies
+            viewController.playerSelf = self.playerSelf!
+            viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
+            self.present(viewController, animated: false , completion: nil)
+            
+            
+           
+            
+            
+            //}
         default:
             //DispatchQueue.main.async {
                 //let height: CGFloat = UIScreen.main.bounds.height
