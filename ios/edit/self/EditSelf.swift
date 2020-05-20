@@ -193,7 +193,6 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
             
             let elementObject: Piece = self.editCore.generateTschessElement(name: self.ELEMENT_LIST[indexPath.row])!
             elementCell.nameLabel.text = "\(elementObject.name.lowercased()): \(elementObject.strength)"
-            //elementCell.pointsLabel.text = elementObject.strength
             elementCell.pointsLabel.isHidden = true
             
             elementCell.imageView.alpha = 1
@@ -386,13 +385,12 @@ extension EditSelf: UICollectionViewDragDelegate {
         return self.collectionView(collectionView, itemsForBeginning: session, at: indexPath)
     }
     
-    internal func collectionView(_: UICollectionView, dragSessionDidEnd: UIDragSession){ //last
+    internal func collectionView(_: UICollectionView, dragSessionDidEnd: UIDragSession){ //LAST OF DRAG
         self.candidateName = nil
         self.candidateCoord = nil
         self.configCollectionView.reloadData()
         self.tschessElementCollectionView.reloadData()
         self.setTotalPointValue()
-        //LAST OF DRAG
         print("zz")
     }
     
@@ -452,16 +450,10 @@ extension EditSelf: UICollectionViewDropDelegate {
                     self.flash()
                 }
             }
-           
            return
         }
-        
         self.configActiv = self.configCache
         self.flash()
-       
-        //self.configCollectionView.reloadData()
-        //self.setTotalPointValue()
-        //self.tschessElementCollectionView.reloadData()
     }
     
     func collectionView(_ collectionView: UICollectionView, dropSessionDidUpdate session: UIDropSession, withDestinationIndexPath destinationIndexPath: IndexPath?) -> UICollectionViewDropProposal {
@@ -478,7 +470,6 @@ extension EditSelf: UICollectionViewDropDelegate {
         
         if(self.candidateCoord != nil){
             if([x,y] != self.candidateCoord!){
-                //if(self.candidateCoord != nil){
                 
                 let candidate: Piece? = self.configActiv![x][y]
                 if(candidate != nil){
@@ -491,7 +482,6 @@ extension EditSelf: UICollectionViewDropDelegate {
                 }
                 self.configActiv![x][y] = piece
                 self.configActiv![self.candidateCoord![0]][self.candidateCoord![1]] = nil
-                //}
                 return
             }
         }
