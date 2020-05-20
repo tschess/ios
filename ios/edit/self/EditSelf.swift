@@ -276,7 +276,14 @@ extension EditSelf: UICollectionViewDelegate {
         switch item.tag {
         case 0:
             //dialog: x-configm, "exit w/o saving?"
-            self.backButtonClick("")
+            //if(condition){
+            let storyboard: UIStoryboard = UIStoryboard(name: "Cancel", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier: "Cancel") as! Cancel
+            viewController.playerSelf = self.playerSelf!
+            self.present(viewController, animated: true, completion: nil)
+            //return
+            //}
+            //self.backButtonClick("")
         case 2:
             let storyboard: UIStoryboard = UIStoryboard(name: "Help", bundle: nil)
             let viewController = storyboard.instantiateViewController(withIdentifier: "Help") as! Help
@@ -362,7 +369,6 @@ extension EditSelf: UICollectionViewDragDelegate {
             let previewParameters = UIDragPreviewParameters()
             previewParameters.backgroundColor = UIColor.clear
             let dragPreview: UIDragPreview = UIDragPreview(view: imageView, parameters: previewParameters)
-            
             self.candidateName = name
             self.candidateCoord = [x,y]
             self.setTotalPointValue()
@@ -381,7 +387,7 @@ extension EditSelf: UICollectionViewDragDelegate {
         return self.collectionView(collectionView, itemsForBeginning: session, at: indexPath)
     }
     
-    internal func collectionView(_: UICollectionView, dragSessionDidEnd: UIDragSession){ //LAST OF DRAG
+    internal func collectionView(_: UICollectionView, dragSessionDidEnd: UIDragSession){
         self.candidateName = nil
         self.candidateCoord = nil
         self.configCollectionView.reloadData()
