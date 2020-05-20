@@ -82,45 +82,7 @@ class Fairies: UIViewController, UITabBarDelegate {
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         switch item.tag {
         case 1:
-            //DispatchQueue.main.async {
-                //let height: CGFloat = UIScreen.main.bounds.height
-                //SelectHome().execute(player: self.player!, height: height)
-            //}
-            //self.presentingViewController!.dismiss(animated: false, completion: nil)
-            
-            //let presentingViewController = self.presentingViewController
-            //self.dismiss(animated: false, completion: {
-                //presentingViewController?.dismiss(animated: false, completion: {})
-            //})
-            
-            //
-            //let vc00: UIViewController? = self.presentingViewController
-            //vc00!.modalTransitionStyle = .crossDissolve
-            //let vc01: UIViewController? = vc00!.presentingViewController
-            //vc01!.modalTransitionStyle = .crossDissolve
-            //vc01!.dismiss(animated: false, completion: nil)
-            //self.presentingViewController!.dismiss(animated: false, completion: nil)
-            
-            //var viewControllers = navigationController?.viewControllers
-            //viewControllers?.removeLast(2) //here 2 views to pop index numbers of views
-            //navigationController?.setViewControllers(viewControllers!, animated: false)
-            
-            //self.presentingViewController!.navigationController!.popToRootViewController(animated: false)
-            //popToViewController( self.navigationController!.viewControllers[0], animated: false)
-             //_ = navigationController?.popToRootViewController(animated: true)
-            
-            //self.view.window?.rootViewController?.dismiss(animated: false, completion: nil)
-            
-            //self.view.window!.rootViewController?.dismiss(animated: false, completion: nil)
-            
-//           if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
-//               appDelegate.window?.rootViewController?.dismiss(animated: false, completion: nil)
-//               (appDelegate.window?.rootViewController as? UINavigationController)?.popToRootViewController(animated: false)
-//            }
-        //view.window?.rootViewController?.dismiss(animated: false, completion: nil)
-            
             dismissAll(animated: false)
-            
         default:
             self.presentingViewController!.dismiss(animated: false, completion: nil)
         }
