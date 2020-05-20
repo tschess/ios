@@ -24,8 +24,8 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
     var candidateCoord: [Int]?
     
     //MARK: Layout
+    @IBOutlet weak var viewPointLabel: UIView!
     @IBOutlet weak var tschessElementCollectionView: UICollectionView!
-    @IBOutlet weak var tschessElementCollectionViewHeight: NSLayoutConstraint!
     @IBOutlet weak var configCollectionViewHeight: NSLayoutConstraint!
     @IBOutlet weak var configCollectionView: BoardView!
     @IBOutlet weak var titleLabel: UILabel!
@@ -155,8 +155,15 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
     }
     
     private func setTotalPointValue() {
-        let totalPointValue = self.getPointValue(config: self.configActiv!)
+        let totalPointValue: Int = self.getPointValue(config: self.configActiv!)
         self.totalPointLabel.text = String(totalPointValue)
+        if(totalPointValue < 39){
+            self.viewPointLabel.isHidden = false
+            self.tschessElementCollectionView.isHidden = false
+            return
+        }
+        self.viewPointLabel.isHidden = true
+        self.tschessElementCollectionView.isHidden = true
     }
     
     private func getPointValue(config: [[Piece?]]) -> Int {
