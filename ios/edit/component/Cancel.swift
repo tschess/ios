@@ -41,26 +41,25 @@ class Cancel: UIViewController {
     
     @IBAction func buttonClickYes(_ sender: Any) {
         if(!self.other){
-            //DispatchQueue.main.async {
-                //let height: CGFloat = UIScreen.main.bounds.height
-                //SelectConfig().execute(player: self.playerSelf!, height: height)
-            //}
-            let presentingViewController = self.presentingViewController
-            self.dismiss(animated: false, completion: {
-                presentingViewController?.dismiss(animated: false, completion: {})
+            let pvc: UIViewController = self.presentingViewController!
+            //
+            //pvc.dismiss(animated: true, completion: nil)
+            self.dismiss(animated: true, completion: {
+                //presentingViewController!.dismiss(animated: false, completion: nil)
+                //self.navigationController?.popViewController(animated: false)
+                pvc.dismiss(animated: false, completion: nil)
             })
+            
+            //
             return
         }
-        DispatchQueue.main.async {
-            self.presentingViewController!.dismiss(animated: false, completion: nil)
-        }
-        self.editOther!.backButtonClick("")
+        //self.presentingViewController!.dismiss(animated: false, completion: nil)
+        //self.editOther!.backButtonClick("")
+        // ^^^not good...
     }
     
     @IBAction func buttonClickNo(_ sender: Any) {
-        DispatchQueue.main.async {
-            self.presentingViewController!.dismiss(animated: false, completion: nil)
-        }
+        self.dismiss(animated: true, completion: nil)
     }
     
 }

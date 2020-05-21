@@ -73,10 +73,30 @@ class Fairies: UIViewController, UITabBarDelegate {
     @objc func onDidReceiveData(_ notification: NSNotification) {
         let squadUpDetailSelectionIndex = notification.userInfo!["fairies_table_selection"] as! Int
         let fairy: Fairy = squadUpAdapter!.getFairyElementList()![squadUpDetailSelectionIndex]
-        DispatchQueue.main.async {
-            let height: CGFloat = UIScreen.main.bounds.height
-            SelectInfo().execute(player: self.playerSelf!, fairy: fairy, height: height)
+        //DispatchQueue.main.async {
+            //let height: CGFloat = UIScreen.main.bounds.height
+            //SelectInfo().execute(player: self.playerSelf!, fairy: fairy, height: height)
+        //}
+        
+        let height: CGFloat = UIScreen.main.bounds.height
+        if(height.isLess(than: 750)){
+            //let root = UIApplication.shared.delegate! as! AppDelegate
+            let storyboard: UIStoryboard = UIStoryboard(name: "InfoL", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier: "InfoL") as! Info
+            viewController.setPlayer(player: self.playerSelf!)
+            viewController.setFairyElement(fairyElement: fairy)
+            viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
+            //root.window?.rootViewController?.present(viewController, animated: false , completion: nil)
+            self.present(viewController, animated: false , completion: nil)
+            return
         }
+        //let root = UIApplication.shared.delegate! as! AppDelegate
+        let storyboard: UIStoryboard = UIStoryboard(name: "InfoP", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "InfoP") as! Info
+        viewController.setPlayer(player: self.playerSelf!)
+        viewController.setFairyElement(fairyElement: fairy)
+        viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
+        self.present(viewController, animated: false , completion: nil)
     }
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {

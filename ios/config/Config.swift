@@ -90,38 +90,34 @@ class Config: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate, U
     }
     
     @IBAction func backButtonClick(_ sender: Any) {
-        //DispatchQueue.main.async {
-            //let height: CGFloat = UIScreen.main.bounds.height
-            //SelectHome().execute(player: self.playerSelf!, height: height)
-        //}
         self.presentingViewController!.dismiss(animated: false, completion: nil)
     }
     
     @objc func editCollectionView0() {
-        DispatchQueue.main.async {
-            UIApplication.shared.keyWindow?.rootViewController = EditSelf.create(
+        let viewController = EditSelf.create(
             player: self.playerSelf!,
             select: 0,
             height: UIScreen.main.bounds.height)
-        }
+        viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
+        self.present(viewController, animated: false , completion: nil)
     }
     
     @objc func editCollectionView1() {
-        DispatchQueue.main.async {
-            UIApplication.shared.keyWindow?.rootViewController = EditSelf.create(
-                player: self.playerSelf!,
-                select: 1,
-                height: UIScreen.main.bounds.height)
-        }
+        let viewController = EditSelf.create(
+                   player: self.playerSelf!,
+                   select: 1,
+                   height: UIScreen.main.bounds.height)
+               viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
+               self.present(viewController, animated: false , completion: nil)
     }
     
     @objc func editCollectionView2() {
-        DispatchQueue.main.async {
-            UIApplication.shared.keyWindow?.rootViewController = EditSelf.create(
-                player: self.playerSelf!,
-                select: 2,
-                height: UIScreen.main.bounds.height)
-        }
+        let viewController = EditSelf.create(
+                   player: self.playerSelf!,
+                   select: 2,
+                   height: UIScreen.main.bounds.height)
+               viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
+               self.present(viewController, animated: false , completion: nil)
     }
     
     public func renderHeader() {
@@ -318,8 +314,8 @@ extension Config: UICollectionViewDelegate {
         switch item.tag {
         case 1:
             //DispatchQueue.main.async {
-                //let height: CGFloat = UIScreen.main.bounds.height
-                //SelectFairies().execute(player: self.playerSelf!, height: height)
+            //let height: CGFloat = UIScreen.main.bounds.height
+            //SelectFairies().execute(player: self.playerSelf!, height: height)
             //}
             //return
             self.tabBarMenu.selectedItem = nil
@@ -329,12 +325,13 @@ extension Config: UICollectionViewDelegate {
             //DispatchQueue.main.async {
             let height: CGFloat = UIScreen.main.bounds.height
             if(height.isLess(than: 750)){
-                let root = UIApplication.shared.delegate! as! AppDelegate
+                //let root = UIApplication.shared.delegate! as! AppDelegate
                 let storyboard: UIStoryboard = UIStoryboard(name: "FairiesL", bundle: nil)
                 let viewController = storyboard.instantiateViewController(withIdentifier: "FairiesL") as! Fairies
                 viewController.playerSelf = self.playerSelf!
                 viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
-                root.window?.rootViewController?.present(viewController, animated: false , completion: nil)
+                //root.window?.rootViewController?.present(viewController, animated: false , completion: nil)
+                self.present(viewController, animated: false , completion: nil)
                 return
             }
             //let root = UIApplication.shared.delegate! as! AppDelegate
@@ -345,14 +342,14 @@ extension Config: UICollectionViewDelegate {
             self.present(viewController, animated: false , completion: nil)
             
             
-           
             
             
-            //}
+            
+        //}
         default:
             //DispatchQueue.main.async {
-                //let height: CGFloat = UIScreen.main.bounds.height
-                //SelectHome().execute(player: self.playerSelf!, height: height)
+            //let height: CGFloat = UIScreen.main.bounds.height
+            //SelectHome().execute(player: self.playerSelf!, height: height)
             //}
             self.presentingViewController!.dismiss(animated: false, completion: nil)
         }

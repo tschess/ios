@@ -47,10 +47,6 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
      * task... !!!!
      */
     @IBAction func backButtonClick(_ sender: Any) {
-        //DispatchQueue.main.async {
-            //let height: CGFloat = UIScreen.main.bounds.height
-            //SelectConfig().execute(player: self.playerSelf!, height: height)
-        //}
         self.presentingViewController!.dismiss(animated: false, completion: nil)
     }
     
@@ -68,6 +64,8 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
     //MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.confirm = false /// ???
+        
         self.configCollectionView.isHidden = true
         self.configCollectionView.delegate = self
         self.configCollectionView.dataSource = self
@@ -182,19 +180,17 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
             let updateConfig = ["id": id, "config": config, "index": self.selection!] as [String: Any]
             
             UpdateConfig().execute(requestPayload: updateConfig) { (result) in
-                if result == result {
-                    DispatchQueue.main.async() {
-                        self.activityIndicator!.isHidden = true
-                        self.activityIndicator!.stopAnimating()
-                        self.playerSelf = result!
-                        self.backButtonClick("")
-                    }
-                }
+                //if result == result {
                 DispatchQueue.main.async() {
-                    self.activityIndicator!.isHidden = false
-                    self.activityIndicator!.startAnimating()
-                    self.backButtonClick("")
+                    self.activityIndicator!.isHidden = true
+                    self.activityIndicator!.stopAnimating()
+                    self.playerSelf = result! //what about this?????
+                    self.dismiss(animated: false, completion: nil)
+                    //return
+                    //self.backButtonClick("")
+                    //}
                 }
+                
             }
         }
     }

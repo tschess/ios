@@ -121,10 +121,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     
     private func timeout() {
         let id_game: String = self.game!.id
-        let playerResign: EntityPlayer = self.game!.getTurnPlayer()
-        let white: Bool = self.game!.getWhite(username: playerResign.username)
-        let update: [String: Any] = ["id_game": id_game, "id_self": playerResign.id, "white": white]
-        UpdateTimeout().execute(requestPayload: update) { (result) in
+        UpdateTimeout().success(id_game: id_game) { (result) in
             // TODO: handle...
         }
     }

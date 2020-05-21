@@ -10,17 +10,14 @@ import Foundation
 
 class UpdateTimeout {
     
-    func execute(requestPayload: [String: Any], completion: @escaping (Bool) -> Void) {
-        let url = URL(string: "http://\(ServerAddress().IP):8080/game/timeout")!
+    func success(id_game: String, completion: @escaping (Bool) -> Void) {
+        let url = URL(string: "http://\(ServerAddress().IP):8080/game/timeout/\(id_game)")!
         var request = URLRequest(url: url)
-        request.httpMethod = "POST"
+        
+        request.httpMethod = "GET"
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        do {
-            request.httpBody = try JSONSerialization.data(withJSONObject: requestPayload, options: .prettyPrinted)
-        } catch _ {
-            completion(false)
-        }
+        
         let session = URLSession.shared
         let task = session.dataTask(with: request, completionHandler: { data, response, error in
             guard error == nil else {
@@ -36,14 +33,10 @@ class UpdateTimeout {
                     completion(false)
                     return
                 }
-                if(json["success"] != nil){
-                    //print("A")
-                    completion(true)
-                }
-                completion(false)
-                
+                completion(true)
                 
             } catch let error {
+                
                 completion(false)
             }
         })

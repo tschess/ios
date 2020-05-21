@@ -83,12 +83,14 @@ class Info: UIViewController, UITabBarDelegate, UIPopoverPresentationControllerD
                 //SelectFairies().execute(player: self.player!, height: height)
             //}
             //return
-            self.presentingViewController!.dismiss(animated: false, completion: nil)
+            self.dismiss(animated: false, completion: nil)
+            //self.presentingViewController!.dismiss(animated: false, completion: nil)
         default:
-            DispatchQueue.main.async {
-                let height: CGFloat = UIScreen.main.bounds.height
-                SelectHome().execute(player: self.player!, height: height)
-            }
+           // DispatchQueue.main.async {
+                //let height: CGFloat = UIScreen.main.bounds.height
+                //SelectHome().execute(player: self.player!, height: height)
+            //}
+            self.dismissAll(animated: false)
         }
     }
     
