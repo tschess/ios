@@ -118,7 +118,7 @@ class Home: UIViewController, UITabBarDelegate {
             RequestQuick().success(id: self.playerSelf!.id) { (json) in
                 self.setIndicator(on: false)
                 let opponent: EntityPlayer = ParsePlayer().execute(json: json)
-                //DispatchQueue.main.async() {
+                //
                 //let height: CGFloat = UIScreen.main.bounds.height
                 //SelectPlay().execute(selection: Int.random(in: 0...3), playerSelf: self.playerSelf!, playerOther: opponent, height: height)
                 //}
@@ -126,6 +126,7 @@ class Home: UIViewController, UITabBarDelegate {
                 
                 let height: CGFloat = UIScreen.main.bounds.height
                 if(height.isLess(than: 750)){
+                    DispatchQueue.main.async() {
                     let root = UIApplication.shared.delegate! as! AppDelegate
                     let storyboard: UIStoryboard = UIStoryboard(name: "PlayL", bundle: nil)
                     let viewController = storyboard.instantiateViewController(withIdentifier: "PlayL") as! Play
@@ -133,9 +134,10 @@ class Home: UIViewController, UITabBarDelegate {
                     viewController.setPlayerOther(playerOther: opponent)
                     viewController.setSelection(selection: Int.random(in: 0...3))
                     viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
-                    root.window?.rootViewController?.present(viewController, animated: false , completion: nil)
+                        root.window?.rootViewController?.present(viewController, animated: false , completion: nil)}
                     return
                 }
+                DispatchQueue.main.async() {
                 let root = UIApplication.shared.delegate! as! AppDelegate
                 let storyboard: UIStoryboard = UIStoryboard(name: "PlayP", bundle: nil)
                 let viewController = storyboard.instantiateViewController(withIdentifier: "PlayP") as! Play
@@ -144,7 +146,7 @@ class Home: UIViewController, UITabBarDelegate {
                 viewController.setSelection(selection: Int.random(in: 0...3))
                 viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
                 root.window?.rootViewController?.present(viewController, animated: false , completion: nil)
-            }
+                }}
         case 3:
             self.notificationTimerStop()
             DispatchQueue.main.async {

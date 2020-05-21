@@ -381,11 +381,13 @@ class Play: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate {
     }
     
     @IBAction func backButtonClick(_ sender: Any) {
-        DispatchQueue.main.async {
-            let screenSize: CGRect = UIScreen.main.bounds
-            let height: CGFloat = screenSize.height
-            SelectHome().execute(player: self.playerSelf!, height: height)
-        }
+        //DispatchQueue.main.async {
+            //let screenSize: CGRect = UIScreen.main.bounds
+            //let height: CGFloat = screenSize.height
+            //SelectHome().execute(player: self.playerSelf!, height: height)
+        //}
+        //self.presentingViewController!.dismiss(animated: false, completion: nil)
+        self.dismiss(animated: false, completion: nil)
     }
 }
 
