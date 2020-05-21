@@ -42,12 +42,14 @@ class Cancel: UIViewController {
     @IBAction func buttonClickYes(_ sender: Any) {
         if(!self.other){
             let pvc: UIViewController = self.presentingViewController!
+            //pvc.modalTransitionStyle = .crossDissolve
             //
             //pvc.dismiss(animated: true, completion: nil)
             self.dismiss(animated: true, completion: {
                 //presentingViewController!.dismiss(animated: false, completion: nil)
                 //self.navigationController?.popViewController(animated: false)
                 pvc.dismiss(animated: false, completion: nil)
+                //pvc.dismiss(animated: true, completion: nil)
             })
             
             //

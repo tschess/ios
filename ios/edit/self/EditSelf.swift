@@ -47,7 +47,9 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
      * task... !!!!
      */
     @IBAction func backButtonClick(_ sender: Any) {
-        self.presentingViewController!.dismiss(animated: false, completion: nil)
+        //self.presentingViewController!.dismiss(animated: false, completion: nil)
+        self.modalTransitionStyle = .crossDissolve
+        self.dismiss(animated: true, completion: nil)
     }
     
     static func create(player: EntityPlayer, select: Int, height: CGFloat) -> EditSelf {
@@ -185,7 +187,9 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
                     self.activityIndicator!.isHidden = true
                     self.activityIndicator!.stopAnimating()
                     self.playerSelf = result! //what about this?????
-                    self.dismiss(animated: false, completion: nil)
+                    self.modalTransitionStyle = .crossDissolve
+                    self.dismiss(animated: true, completion: nil)
+                    //self.dismiss(animated: false, completion: nil)
                     //return
                     //self.backButtonClick("")
                     //}

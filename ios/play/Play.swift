@@ -387,7 +387,8 @@ class Play: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate {
             //SelectHome().execute(player: self.playerSelf!, height: height)
         //}
         //self.presentingViewController!.dismiss(animated: false, completion: nil)
-        self.dismiss(animated: false, completion: nil)
+        self.modalTransitionStyle = .crossDissolve
+        self.dismiss(animated: true, completion: nil)
     }
 }
 

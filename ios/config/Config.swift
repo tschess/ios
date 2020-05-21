@@ -90,7 +90,9 @@ class Config: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate, U
     }
     
     @IBAction func backButtonClick(_ sender: Any) {
-        self.presentingViewController!.dismiss(animated: false, completion: nil)
+        //self.presentingViewController!.dismiss(animated: false, completion: nil)
+        self.modalTransitionStyle = .crossDissolve
+        self.dismiss(animated: true, completion: nil)
     }
     
     @objc func editCollectionView0() {
@@ -351,7 +353,9 @@ extension Config: UICollectionViewDelegate {
             //let height: CGFloat = UIScreen.main.bounds.height
             //SelectHome().execute(player: self.playerSelf!, height: height)
             //}
-            self.presentingViewController!.dismiss(animated: false, completion: nil)
+            //self.presentingViewController!.dismiss(animated: false, completion: nil)
+            self.modalTransitionStyle = .crossDissolve
+            self.dismiss(animated: true, completion: nil)
         }
     }
     

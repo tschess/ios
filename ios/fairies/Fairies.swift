@@ -67,7 +67,9 @@ class Fairies: UIViewController, UITabBarDelegate {
             //let height: CGFloat = UIScreen.main.bounds.height
             //SelectConfig().execute(player: self.playerSelf!, height: height)
         //}
-        self.presentingViewController!.dismiss(animated: false, completion: nil)
+        //self.presentingViewController!.dismiss(animated: false, completion: nil)
+        self.modalTransitionStyle = .crossDissolve
+        self.dismiss(animated: true, completion: nil)
     }
     
     @objc func onDidReceiveData(_ notification: NSNotification) {
@@ -102,9 +104,12 @@ class Fairies: UIViewController, UITabBarDelegate {
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         switch item.tag {
         case 1:
-            dismissAll(animated: false)
+            //dismissAll(animated: false)
+            dismissAll(animated: true)
         default:
-            self.presentingViewController!.dismiss(animated: false, completion: nil)
+            //self.presentingViewController!.dismiss(animated: false, completion: nil)
+            self.modalTransitionStyle = .crossDissolve
+            self.dismiss(animated: true, completion: nil)
         }
     }
 }
@@ -115,7 +120,9 @@ extension UIViewController {
         if let optionalWindow = UIApplication.shared.delegate?.window, let window = optionalWindow, let rootViewController = window.rootViewController, let presentedViewController = rootViewController.presentedViewController  {
             if let snapshotView = window.snapshotView(afterScreenUpdates: false) {
                 presentedViewController.view.addSubview(snapshotView)
-                presentedViewController.modalTransitionStyle = .coverVertical
+                //presentedViewController.modalTransitionStyle = .coverVertical
+                //self.modalTransitionStyle = .crossDissolve
+                presentedViewController.modalTransitionStyle = .crossDissolve
             }
             if !isBeingDismissed {
                 rootViewController.dismiss(animated: animated, completion: completion)
