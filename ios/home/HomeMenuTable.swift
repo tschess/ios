@@ -145,7 +145,7 @@ class HomeMenuTable: UITableViewController, SwipeTableViewCellDelegate {
                 return
             }
             let playerSelf: EntityPlayer = response!.last!
-            //self.setPlayer(player: playerSelf)
+            
             self.home!.playerSelf = playerSelf
             let list: [EntityPlayer] = response!.dropLast()
             
@@ -153,7 +153,6 @@ class HomeMenuTable: UITableViewController, SwipeTableViewCellDelegate {
                 
                 self.home!.renderHeader()
                 
-                //self.renderHeader()
                 self.leaderboardList = [EntityPlayer]()
                 self.tableView.reloadData()
                 self.appendToLeaderboardTableList(additionalCellList: list)

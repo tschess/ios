@@ -107,13 +107,28 @@ class Profile: UIViewController, UITabBarDelegate, UINavigationControllerDelegat
         switch menuSelectionIndex {
         case 0://photo
             self.changePhoto()
-            return
+            //return
         case 1:// info
-            DispatchQueue.main.async {
-                let height: CGFloat = UIScreen.main.bounds.height
-                SelectContext().execute(player: self.player!, height: height)
+            //DispatchQueue.main.async {
+                //let height: CGFloat = UIScreen.main.bounds.height
+                //SelectContext().execute(player: self.player!, height: height)
+            //}
+            //return
+            let height: CGFloat = UIScreen.main.bounds.height
+            if(height.isLess(than: 750)){
+                let storyboard: UIStoryboard = UIStoryboard(name: "ContextL", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "ContextL") as! Context
+                viewController.setPlayer(player: self.player!)
+                viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
+                self.present(viewController, animated: false , completion: nil)
+                return
             }
-            return
+            let storyboard: UIStoryboard = UIStoryboard(name: "ContextP", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier: "ContextP") as! Context
+            viewController.setPlayer(player: self.player!)
+            viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
+            self.present(viewController, animated: false , completion: nil)
+            
         default:
             self.signOut()
         }
@@ -126,23 +141,19 @@ class Profile: UIViewController, UITabBarDelegate, UINavigationControllerDelegat
             DispatchQueue.main.async {
                 let storyboard: UIStoryboard = UIStoryboard(name: "Start", bundle: nil)
                 let viewController = storyboard.instantiateViewController(withIdentifier: "Start") as! Start
+                self.dismissAll(animated: false)
                 UIApplication.shared.keyWindow?.rootViewController = viewController
             }
         }
     }
     
     @IBAction func backButtonClick(_ sender: Any) {
-        DispatchQueue.main.async {
-            let height: CGFloat = UIScreen.main.bounds.height
-            SelectHome().execute(player: self.player!, height: height)
-        }
+        self.modalTransitionStyle = .crossDissolve
+        self.dismiss(animated: true, completion: nil)
     }
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-        DispatchQueue.main.async {
-            let height: CGFloat = UIScreen.main.bounds.height
-            SelectHome().execute(player: self.player!, height: height)
-        }
+        self.backButtonClick("")
     }
     
 }

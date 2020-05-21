@@ -59,16 +59,19 @@ class Context: UIViewController, UITabBarDelegate {
     }
     
     @IBAction func backButtonClick(_ sender: Any) {
-        DispatchQueue.main.async() {
-            let height: CGFloat = UIScreen.main.bounds.height
-            SelectProfile().execute(player: self.player!, height: height)
-        }
+        //DispatchQueue.main.async() {
+            //let height: CGFloat = UIScreen.main.bounds.height
+            //SelectProfile().execute(player: self.player!, height: height)
+        //}
+        self.modalTransitionStyle = .crossDissolve
+        self.dismiss(animated: true, completion: nil)
     }
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-        DispatchQueue.main.async() {
-            let height: CGFloat = UIScreen.main.bounds.height
-            SelectProfile().execute(player: self.player!, height: height)
-        }
+        //DispatchQueue.main.async() {
+            //let height: CGFloat = UIScreen.main.bounds.height
+            //SelectProfile().execute(player: self.player!, height: height)
+        //}
+        self.backButtonClick("")
     }
 }

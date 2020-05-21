@@ -47,9 +47,16 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
      * task... !!!!
      */
     @IBAction func backButtonClick(_ sender: Any) {
-        //self.presentingViewController!.dismiss(animated: false, completion: nil)
-        self.modalTransitionStyle = .crossDissolve
-        self.dismiss(animated: true, completion: nil)
+        if(!self.confirm){
+            self.dismiss(animated: false, completion: nil)
+            let pvc: Config = self.presentingViewController! as! Config
+            pvc.playerSelf = self.playerSelf!
+            return
+        }
+        let storyboard: UIStoryboard = UIStoryboard(name: "Cancel", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "Cancel") as! Cancel
+        viewController.playerSelf = self.playerSelf!
+        self.present(viewController, animated: true, completion: nil)
     }
     
     static func create(player: EntityPlayer, select: Int, height: CGFloat) -> EditSelf {
@@ -66,7 +73,7 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
     //MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.confirm = false /// ???
+        //self.confirm = false /// ???
         
         self.configCollectionView.isHidden = true
         self.configCollectionView.delegate = self
@@ -159,14 +166,15 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
         tabBar.selectedItem = nil
         switch item.tag {
         case 0:
-            if(!self.confirm){
-                self.backButtonClick("")
-                return
-            }
-            let storyboard: UIStoryboard = UIStoryboard(name: "Cancel", bundle: nil)
-            let viewController = storyboard.instantiateViewController(withIdentifier: "Cancel") as! Cancel
-            viewController.playerSelf = self.playerSelf!
-            self.present(viewController, animated: true, completion: nil)
+            self.backButtonClick("")
+//            if(!self.confirm){
+//                self.backButtonClick("")
+//                return
+//            }
+//            let storyboard: UIStoryboard = UIStoryboard(name: "Cancel", bundle: nil)
+//            let viewController = storyboard.instantiateViewController(withIdentifier: "Cancel") as! Cancel
+//            viewController.playerSelf = self.playerSelf!
+//            self.present(viewController, animated: true, completion: nil)
         case 2:
             let storyboard: UIStoryboard = UIStoryboard(name: "Help", bundle: nil)
             let viewController = storyboard.instantiateViewController(withIdentifier: "Help") as! Help
@@ -182,17 +190,14 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
             let updateConfig = ["id": id, "config": config, "index": self.selection!] as [String: Any]
             
             UpdateConfig().execute(requestPayload: updateConfig) { (result) in
-                //if result == result {
                 DispatchQueue.main.async() {
                     self.activityIndicator!.isHidden = true
                     self.activityIndicator!.stopAnimating()
-                    self.playerSelf = result! //what about this?????
-                    self.modalTransitionStyle = .crossDissolve
-                    self.dismiss(animated: true, completion: nil)
-                    //self.dismiss(animated: false, completion: nil)
-                    //return
-                    //self.backButtonClick("")
-                    //}
+                    //self.playerSelf = result! //what about this?????
+                    //self.modalTransitionStyle = .crossDissolve
+                    self.dismiss(animated: false, completion: nil)
+                    let pvc: Config = self.presentingViewController! as! Config
+                    pvc.playerSelf = result!
                 }
                 
             }
@@ -427,6 +432,7 @@ extension EditSelf: UICollectionViewDropDelegate {
             self.rollback()
             return
         }
+        self.confirm = true
         self.configActiv![self.candidateCoord![0]][self.candidateCoord![1]] = nil
     }
     

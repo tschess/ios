@@ -70,9 +70,28 @@ class Home: UIViewController, UITabBarDelegate {
     }
     
     @objc func activateProfile() {
+        //DispatchQueue.main.async() {
+        //let height: CGFloat = UIScreen.main.bounds.height
+        //SelectProfile().execute(player: self.playerSelf!, height: height)
+        //}
+        let height: CGFloat = UIScreen.main.bounds.height
+        if(height.isLess(than: 750)){
+            DispatchQueue.main.async() {
+                
+                let storyboard: UIStoryboard = UIStoryboard(name: "ProfileL", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "ProfileL") as! Profile
+                viewController.setPlayer(player: self.playerSelf!)
+                viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
+                self.present(viewController, animated: false , completion: nil)}
+            return
+        }
         DispatchQueue.main.async() {
-            let height: CGFloat = UIScreen.main.bounds.height
-            SelectProfile().execute(player: self.playerSelf!, height: height)
+            
+            let storyboard: UIStoryboard = UIStoryboard(name: "ProfileP", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier: "ProfileP") as! Profile
+            viewController.setPlayer(player: self.playerSelf!)
+            viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
+            self.present(viewController, animated: false , completion: nil)
         }
     }
     
@@ -127,25 +146,25 @@ class Home: UIViewController, UITabBarDelegate {
                 let height: CGFloat = UIScreen.main.bounds.height
                 if(height.isLess(than: 750)){
                     DispatchQueue.main.async() {
-                    let root = UIApplication.shared.delegate! as! AppDelegate
-                    let storyboard: UIStoryboard = UIStoryboard(name: "PlayL", bundle: nil)
-                    let viewController = storyboard.instantiateViewController(withIdentifier: "PlayL") as! Play
+                        //let root = UIApplication.shared.delegate! as! AppDelegate
+                        let storyboard: UIStoryboard = UIStoryboard(name: "PlayL", bundle: nil)
+                        let viewController = storyboard.instantiateViewController(withIdentifier: "PlayL") as! Play
+                        viewController.setPlayerSelf(playerSelf: self.playerSelf!)
+                        viewController.setPlayerOther(playerOther: opponent)
+                        viewController.setSelection(selection: Int.random(in: 0...3))
+                        viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
+                        self.present(viewController, animated: false , completion: nil)}
+                    return
+                }
+                DispatchQueue.main.async() {
+                    //let root = UIApplication.shared.delegate! as! AppDelegate
+                    let storyboard: UIStoryboard = UIStoryboard(name: "PlayP", bundle: nil)
+                    let viewController = storyboard.instantiateViewController(withIdentifier: "PlayP") as! Play
                     viewController.setPlayerSelf(playerSelf: self.playerSelf!)
                     viewController.setPlayerOther(playerOther: opponent)
                     viewController.setSelection(selection: Int.random(in: 0...3))
                     viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
-                        root.window?.rootViewController?.present(viewController, animated: false , completion: nil)}
-                    return
-                }
-                DispatchQueue.main.async() {
-                let root = UIApplication.shared.delegate! as! AppDelegate
-                let storyboard: UIStoryboard = UIStoryboard(name: "PlayP", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "PlayP") as! Play
-                viewController.setPlayerSelf(playerSelf: self.playerSelf!)
-                viewController.setPlayerOther(playerOther: opponent)
-                viewController.setSelection(selection: Int.random(in: 0...3))
-                viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
-                root.window?.rootViewController?.present(viewController, animated: false , completion: nil)
+                    self.present(viewController, animated: false , completion: nil)
                 }}
         case 3:
             self.notificationTimerStop()
@@ -158,20 +177,18 @@ class Home: UIViewController, UITabBarDelegate {
             
             let height: CGFloat = UIScreen.main.bounds.height
             if(height.isLess(than: 750)){
-                let root = UIApplication.shared.delegate! as! AppDelegate
                 let storyboard: UIStoryboard = UIStoryboard(name: "ConfigL", bundle: nil)
                 let viewController = storyboard.instantiateViewController(withIdentifier: "ConfigL") as! Config
                 viewController.setPlayerSelf(playerSelf: self.playerSelf!)
                 viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
-                root.window?.rootViewController?.present(viewController, animated: false , completion: nil)
+                self.present(viewController, animated: false , completion: nil)
                 return
             }
-            let root = UIApplication.shared.delegate! as! AppDelegate
             let storyboard: UIStoryboard = UIStoryboard(name: "ConfigP", bundle: nil)
             let viewController = storyboard.instantiateViewController(withIdentifier: "ConfigP") as! Config
             viewController.setPlayerSelf(playerSelf: self.playerSelf!)
             viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
-            root.window?.rootViewController?.present(viewController, animated: false , completion: nil)
+            self.present(viewController, animated: false , completion: nil)
             
         default:
             self.notificationTimerStop()

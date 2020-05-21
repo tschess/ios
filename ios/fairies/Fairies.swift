@@ -68,8 +68,8 @@ class Fairies: UIViewController, UITabBarDelegate {
             //SelectConfig().execute(player: self.playerSelf!, height: height)
         //}
         //self.presentingViewController!.dismiss(animated: false, completion: nil)
-        self.modalTransitionStyle = .crossDissolve
-        self.dismiss(animated: true, completion: nil)
+        //self.modalTransitionStyle = .crossDissolve
+        self.dismiss(animated: false, completion: nil)
     }
     
     @objc func onDidReceiveData(_ notification: NSNotification) {
@@ -108,8 +108,8 @@ class Fairies: UIViewController, UITabBarDelegate {
             dismissAll(animated: true)
         default:
             //self.presentingViewController!.dismiss(animated: false, completion: nil)
-            self.modalTransitionStyle = .crossDissolve
-            self.dismiss(animated: true, completion: nil)
+            //self.modalTransitionStyle = .crossDissolve
+            self.dismiss(animated: false, completion: nil)
         }
     }
 }

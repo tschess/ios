@@ -72,7 +72,9 @@ class Info: UIViewController, UITabBarDelegate, UIPopoverPresentationControllerD
             //let height: CGFloat = UIScreen.main.bounds.height
             //SelectFairies().execute(player: self.player!, height: height)
         //}
-        self.presentingViewController!.dismiss(animated: false, completion: nil)
+        //self.presentingViewController!.dismiss(animated: false, completion: nil)
+        self.modalTransitionStyle = .crossDissolve
+        self.dismiss(animated: true, completion: nil)
     }
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
@@ -83,14 +85,15 @@ class Info: UIViewController, UITabBarDelegate, UIPopoverPresentationControllerD
                 //SelectFairies().execute(player: self.player!, height: height)
             //}
             //return
-            self.dismiss(animated: false, completion: nil)
+            self.modalTransitionStyle = .crossDissolve
+            self.dismiss(animated: true, completion: nil)
             //self.presentingViewController!.dismiss(animated: false, completion: nil)
         default:
            // DispatchQueue.main.async {
                 //let height: CGFloat = UIScreen.main.bounds.height
                 //SelectHome().execute(player: self.player!, height: height)
             //}
-            self.dismissAll(animated: false)
+            self.dismissAll(animated: true)
         }
     }
     
