@@ -57,27 +57,6 @@ class Challenge: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate
         
     
         
-        if(self.selection == nil){
-            switch Int.random(in: 0 ... 3) {
-            case 0:
-                self.renderConfig0()
-            case 1:
-                self.renderConfig1()
-            case 2:
-                self.renderConfig2()
-            default:
-                self.renderConfigS()
-            }
-            return // !!! //
-        }
-        switch self.selection! {
-        case 1:
-            self.renderConfig1()
-        case 2:
-            self.renderConfig2()
-        default:
-            self.renderConfig0()
-        }
     }
     
     func generateTraditionalMatrix() -> [[Piece]] {
@@ -111,11 +90,17 @@ class Challenge: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate
     func renderConfig0() {
         self.selection = 0
         
+        //self.config = self.playerSelf!.getConfig(index: 0)
         self.tschessElementMatrix = self.playerSelf!.getConfig(index: 0)
         
+        //self.activeConfigNumber.text = "0̸"
         self.activeConfigNumber.text = "0̸"
+        
+        //self.boardViewConfig.reloadData()
         self.configCollectionView.reloadData()
         
+        //self.configLabelView.isHidden = false
+        //self.traditionalLabel.isHidden = true
         self.configLabelView.isHidden = false
         self.traditionalLabel.isHidden = true
         
@@ -263,6 +248,30 @@ class Challenge: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate
         
         let elementCollectionViewGesture = UITapGestureRecognizer(target: self, action: #selector(self.renderElementCollectionView))
         self.configCollectionView.addGestureRecognizer(elementCollectionViewGesture)
+        
+        
+        
+        if(self.selection == nil){
+            switch Int.random(in: 0 ... 3) {
+            case 0:
+                self.renderConfig0()
+            case 1:
+                self.renderConfig1()
+            case 2:
+                self.renderConfig2()
+            default:
+                self.renderConfigS()
+            }
+            return // !!! //
+        }
+        switch self.selection! {
+        case 1:
+            self.renderConfig1()
+        case 2:
+            self.renderConfig2()
+        default:
+            self.renderConfig0()
+        }
     }
     
     func flash() {
@@ -279,49 +288,40 @@ class Challenge: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate
     
     @objc func renderElementCollectionView() {
         if(self.traditionalLabel.isHidden == false){
-            let generator = UIImpactFeedbackGenerator(style: .light)
-            generator.impactOccurred()
+            UIImpactFeedbackGenerator(style: .light).impactOccurred()
             self.flash()
             return
         }
         if(self.selection! == 0){
-//            DispatchQueue.main.async() {
-//                let height: CGFloat = UIScreen.main.bounds.height
-//                SelectEditOther().execute(playerSelf: self.playerSelf!, playerOther: self.playerOther!, title: "config. 0̸", selection: 0, BACK: "CHALLENGE", height: height)
-//            }
-            DispatchQueue.main.async() {
-                UIApplication.shared.keyWindow?.rootViewController = EditOther.create(
-                    playerSelf: self.playerSelf!,
-                    playerOther: self.playerOther!,
-                    select: 0,
-                    back: "CHALLENGE",
-                    height: UIScreen.main.bounds.height)
-            }
+            let viewController = EditOther.create(
+                playerSelf: self.playerSelf!,
+                playerOther: self.playerOther!,
+                select: 0,
+                back: "CHALLENGE",
+                height: UIScreen.main.bounds.height)
+            viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
+            self.present(viewController, animated: false , completion: nil)
             return
         }
         if(self.selection! == 1){
-//            DispatchQueue.main.async() {
-//                let height: CGFloat = UIScreen.main.bounds.height
-//                SelectEditOther().execute(playerSelf: self.playerSelf!, playerOther: self.playerOther!, title: "config. 1", selection: 1, BACK: "CHALLENGE", height: height)
-//            }
-            DispatchQueue.main.async() {
-                UIApplication.shared.keyWindow?.rootViewController = EditOther.create(
-                    playerSelf: self.playerSelf!,
-                    playerOther: self.playerOther!,
-                    select: 1,
-                    back: "CHALLENGE",
-                    height: UIScreen.main.bounds.height)
-            }
-            return
-        }
-        DispatchQueue.main.async() {
-            UIApplication.shared.keyWindow?.rootViewController = EditOther.create(
+            let viewController = EditOther.create(
                 playerSelf: self.playerSelf!,
                 playerOther: self.playerOther!,
-                select: 2,
+                select: 1,
                 back: "CHALLENGE",
                 height: UIScreen.main.bounds.height)
+            viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
+            self.present(viewController, animated: false , completion: nil)
+            return
         }
+        let viewController = EditOther.create(
+            playerSelf: self.playerSelf!,
+            playerOther: self.playerOther!,
+            select: 2,
+            back: "CHALLENGE",
+            height: UIScreen.main.bounds.height)
+        viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
+        self.present(viewController, animated: false , completion: nil)
     }
     
     var swipeRightGesture: UISwipeGestureRecognizer?
@@ -364,11 +364,8 @@ class Challenge: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate
     
     @IBAction func backButtonClick(_ sender: Any) {
         if(self.BACK == "HOME"){
-            DispatchQueue.main.async {
-                let screenSize: CGRect = UIScreen.main.bounds
-                let height: CGFloat = screenSize.height
-                SelectHome().execute(player: self.playerSelf!, height: height)
-            }
+            self.modalTransitionStyle = .crossDissolve
+            self.dismiss(animated: true, completion: nil)
             return
         }
         if(self.BACK == "MENU"){
@@ -409,10 +406,15 @@ class Challenge: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate
             
             RequestChallenge().execute(requestPayload: requestPayload) { (result) in
                 
+                //DispatchQueue.main.async {
+                    //let screenSize: CGRect = UIScreen.main.bounds
+                    //let height: CGFloat = screenSize.height
+                    //SelectHome().execute(player: self.playerSelf!, height: height)
+                //}
                 DispatchQueue.main.async {
-                    let screenSize: CGRect = UIScreen.main.bounds
-                    let height: CGFloat = screenSize.height
-                    SelectHome().execute(player: self.playerSelf!, height: height)
+                    self.modalTransitionStyle = .crossDissolve
+                    self.dismiss(animated: true, completion: nil)
+                    
                 }
             }
         }

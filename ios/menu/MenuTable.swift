@@ -169,11 +169,34 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
             let game: EntityGame = self.gameMenuTableList[indexPath.row]
             let username: String = self.menu!.playerSelf!.username
             let playerOther: EntityPlayer = game.getPlayerOther(username: username)
+            //DispatchQueue.main.async {
+                //let screenSize: CGRect = UIScreen.main.bounds
+                //let height = screenSize.height
+                //SelectAck().execute(selection: Int.random(in: 0...3), playerSelf: self.menu!.playerSelf!, playerOther: playerOther, game: game, height: height)
+            //}
             DispatchQueue.main.async {
-                let screenSize: CGRect = UIScreen.main.bounds
-                let height = screenSize.height
-                SelectAck().execute(selection: Int.random(in: 0...3), playerSelf: self.menu!.playerSelf!, playerOther: playerOther, game: game, height: height)
+                let height: CGFloat = UIScreen.main.bounds.height
+                if(height.isLess(than: 750)){
+                    let storyboard: UIStoryboard = UIStoryboard(name: "AckL", bundle: nil)
+                    let viewController = storyboard.instantiateViewController(withIdentifier: "AckL") as! Ack
+                    viewController.setPlayerSelf(playerSelf: self.menu!.playerSelf!)
+                    viewController.setPlayerOther(playerOther: playerOther)
+                    viewController.setGameTschess(gameTschess: game)
+                    viewController.setSelection(selection: Int.random(in: 0...3))
+                    viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
+                    self.present(viewController, animated: false , completion: nil)
+                    return
+                }
+                let storyboard: UIStoryboard = UIStoryboard(name: "AckP", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "AckP") as! Ack
+                viewController.setPlayerSelf(playerSelf: self.menu!.playerSelf!)
+                viewController.setPlayerOther(playerOther: playerOther)
+                viewController.setGameTschess(gameTschess: game)
+                viewController.setSelection(selection: Int.random(in: 0...3))
+                viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
+                self.present(viewController, animated: false , completion: nil)
             }
+            
         }
         ackAction.backgroundColor = .green
         ackAction.title = "accept"

@@ -30,7 +30,6 @@
 		B7021F3223FDFCC100C9346A /* FairiesP.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7021F3123FDFCC100C9346A /* FairiesP.storyboard */; };
 		B7021F3723FE02FA00C9346A /* InfoL.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7021F3623FE02FA00C9346A /* InfoL.storyboard */; };
 		B7021F3A23FE031400C9346A /* InfoP.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7021F3923FE031400C9346A /* InfoP.storyboard */; };
-		B7021F3C23FE032D00C9346A /* SelectInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7021F3B23FE032D00C9346A /* SelectInfo.swift */; };
 		B7021F3F23FE0AE600C9346A /* PlayL.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7021F3E23FE0AE600C9346A /* PlayL.storyboard */; };
 		B7021F4223FE0B0700C9346A /* PlayP.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7021F4123FE0B0700C9346A /* PlayP.storyboard */; };
 		B7021F4423FE0B1C00C9346A /* SelectPlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7021F4323FE0B1C00C9346A /* SelectPlay.swift */; };
@@ -88,7 +87,6 @@
 		B7A6B8BA240DF55A00840156 /* ContextP.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7A6B8B9240DF55A00840156 /* ContextP.storyboard */; };
 		B7A6B8BC240DF5E400840156 /* ContextTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A6B8BB240DF5E400840156 /* ContextTable.swift */; };
 		B7A6B8BE240DF5F100840156 /* ContextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A6B8BD240DF5F100840156 /* ContextCell.swift */; };
-		B7A6B8C0240DF72100840156 /* SelectContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A6B8BF240DF72100840156 /* SelectContext.swift */; };
 		B7A8B2A22400A8210092D2D6 /* dTschessP.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7A8B2A12400A8210092D2D6 /* dTschessP.storyboard */; };
 		B7A8B2B22400AA760092D2D6 /* SelectTschess.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A8B2B12400AA760092D2D6 /* SelectTschess.swift */; };
 		B7AF787323E0B9DA00BAD8EC /* RequestPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7AF787223E0B9DA00BAD8EC /* RequestPage.swift */; };
@@ -252,7 +250,6 @@
 		B7021F3123FDFCC100C9346A /* FairiesP.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FairiesP.storyboard; sourceTree = "<group>"; };
 		B7021F3623FE02FA00C9346A /* InfoL.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = InfoL.storyboard; sourceTree = "<group>"; };
 		B7021F3923FE031400C9346A /* InfoP.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = InfoP.storyboard; sourceTree = "<group>"; };
-		B7021F3B23FE032D00C9346A /* SelectInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectInfo.swift; sourceTree = "<group>"; };
 		B7021F3E23FE0AE600C9346A /* PlayL.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PlayL.storyboard; sourceTree = "<group>"; };
 		B7021F4123FE0B0700C9346A /* PlayP.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PlayP.storyboard; sourceTree = "<group>"; };
 		B7021F4323FE0B1C00C9346A /* SelectPlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPlay.swift; sourceTree = "<group>"; };
@@ -316,7 +313,6 @@
 		B7A6B8B9240DF55A00840156 /* ContextP.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ContextP.storyboard; sourceTree = "<group>"; };
 		B7A6B8BB240DF5E400840156 /* ContextTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextTable.swift; sourceTree = "<group>"; };
 		B7A6B8BD240DF5F100840156 /* ContextCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextCell.swift; sourceTree = "<group>"; };
-		B7A6B8BF240DF72100840156 /* SelectContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectContext.swift; sourceTree = "<group>"; };
 		B7A8B2A12400A8210092D2D6 /* dTschessP.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = dTschessP.storyboard; sourceTree = "<group>"; };
 		B7A8B2B12400AA760092D2D6 /* SelectTschess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectTschess.swift; sourceTree = "<group>"; };
 		B7AF787223E0B9DA00BAD8EC /* RequestPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestPage.swift; sourceTree = "<group>"; };
@@ -861,7 +857,6 @@
 			children = (
 				B7A6B8B8240DF53200840156 /* legacy */,
 				B7A6B8B7240DF52500840156 /* primary */,
-				B7A6B8BF240DF72100840156 /* SelectContext.swift */,
 			);
 			path = storyboard;
 			sourceTree = "<group>";
@@ -1475,7 +1470,6 @@
 			children = (
 				B7021F3823FE030100C9346A /* primary */,
 				B7021F3523FE02E800C9346A /* legacy */,
-				B7021F3B23FE032D00C9346A /* SelectInfo.swift */,
 			);
 			path = storyboard;
 			sourceTree = "<group>";
@@ -1895,7 +1889,6 @@
 				B7BE12C423EB6B9300ADA499 /* TransDraw.swift in Sources */,
 				B7BE115D23EA4FBE00ADA499 /* ParsePlayer.swift in Sources */,
 				B708D0E9236B369D00A899F9 /* Start.swift in Sources */,
-				B7021F3C23FE032D00C9346A /* SelectInfo.swift in Sources */,
 				B7A6B8B5240DF50F00840156 /* Context.swift in Sources */,
 				B7021F2423FDEE3400C9346A /* SelectHome.swift in Sources */,
 				B7A6B8AB240D9B0100840156 /* UpdateNack.swift in Sources */,
@@ -1931,7 +1924,6 @@
 				B7D8ECDD24082106001B5D2D /* HunterBlack.swift in Sources */,
 				B7FA7BFB23ECF79400E63045 /* UpdateConfig.swift in Sources */,
 				B7BE120B23EAD3E900ADA499 /* Grasshopper.swift in Sources */,
-				B7A6B8C0240DF72100840156 /* SelectContext.swift in Sources */,
 				B7A6B89D240D99E100840156 /* MenuCell.swift in Sources */,
 				B7BE11F723EAC97200ADA499 /* EditOther.swift in Sources */,
 				B7BE116F23EA91CD00ADA499 /* Snapshot.swift in Sources */,

@@ -68,11 +68,6 @@ class Info: UIViewController, UITabBarDelegate, UIPopoverPresentationControllerD
     }
     
     @IBAction func backButtonClick(_ sender: Any) {
-        //DispatchQueue.main.async {
-            //let height: CGFloat = UIScreen.main.bounds.height
-            //SelectFairies().execute(player: self.player!, height: height)
-        //}
-        //self.presentingViewController!.dismiss(animated: false, completion: nil)
         self.modalTransitionStyle = .crossDissolve
         self.dismiss(animated: true, completion: nil)
     }
@@ -80,19 +75,9 @@ class Info: UIViewController, UITabBarDelegate, UIPopoverPresentationControllerD
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         switch item.tag {
         case 0:
-            //DispatchQueue.main.async {
-                //let height: CGFloat = UIScreen.main.bounds.height
-                //SelectFairies().execute(player: self.player!, height: height)
-            //}
-            //return
             self.modalTransitionStyle = .crossDissolve
             self.dismiss(animated: true, completion: nil)
-            //self.presentingViewController!.dismiss(animated: false, completion: nil)
         default:
-           // DispatchQueue.main.async {
-                //let height: CGFloat = UIScreen.main.bounds.height
-                //SelectHome().execute(player: self.player!, height: height)
-            //}
             self.dismissAll(animated: true)
         }
     }

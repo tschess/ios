@@ -12,7 +12,7 @@ class Cancel: UIViewController {
     
     var playerSelf: EntityPlayer?
     var other: Bool = false
-    var editOther: EditOther?
+    //var editOther: EditOther?
     
     @IBOutlet weak var buttonNo: UIButton!
     @IBOutlet weak var buttonYes: UIButton!
@@ -50,6 +50,11 @@ class Cancel: UIViewController {
         //self.presentingViewController!.dismiss(animated: false, completion: nil)
         //self.editOther!.backButtonClick("")
         // ^^^not good...
+        let pvc: EditOther = self.presentingViewController! as! EditOther
+        pvc.confirm = false
+        self.dismiss(animated: true, completion: {
+            pvc.backButtonClick("")
+        })
     }
     
     @IBAction func buttonClickNo(_ sender: Any) {

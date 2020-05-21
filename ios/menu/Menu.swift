@@ -53,22 +53,24 @@ class Menu: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.activityIndicator.isHidden = true
+        //self.activityIndicator.isHidden = true
         self.renderHeader()
     }
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         switch item.tag {
         default:
-            self.backButtonClick("~")
+            self.backButtonClick("")
         }
     }
     
     @IBAction func backButtonClick(_ sender: Any) {
-        DispatchQueue.main.async {
-            let height: CGFloat = UIScreen.main.bounds.height
-            SelectHome().execute(player: self.playerSelf!, height: height)
-        }
+        //DispatchQueue.main.async {
+            //let height: CGFloat = UIScreen.main.bounds.height
+            //SelectHome().execute(player: self.playerSelf!, height: height)
+        //}
+        self.modalTransitionStyle = .crossDissolve
+        self.dismiss(animated: true, completion: nil)
     }
     
     let enter: Enter = Enter.instanceFromNib()

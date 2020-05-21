@@ -11,30 +11,31 @@ import UIKit
 class EditOther: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIDropInteractionDelegate {
     
     @IBAction func backButtonClick(_ sender: Any) {
-        if(self.back == "PLAY"){
-            DispatchQueue.main.async {
-                let screenSize: CGRect = UIScreen.main.bounds
-                let height = screenSize.height
-                SelectPlay().execute(selection: self.selection!, playerSelf: self.playerSelf!, playerOther: self.playerOther!, height: height)
+        if(!self.confirm){
+            if(self.back == "PLAY"){
+                self.dismiss(animated: false, completion: nil)
+                let pvc: Play = self.presentingViewController! as! Play
+                pvc.playerSelf = self.playerSelf!
+                return
             }
-            return
-        }
-        if(self.back == "CHALLENGE"){
-            DispatchQueue.main.async {
-                let screenSize: CGRect = UIScreen.main.bounds
-                let height = screenSize.height
-                SelectChallenge().execute(selection: self.selection!, playerSelf: self.playerSelf!, playerOther: self.playerOther!, BACK: "HOME", height: height)
+            if(self.back == "ACK"){
+                self.dismiss(animated: false, completion: nil)
+                let pvc: Ack = self.presentingViewController! as! Ack
+                pvc.playerSelf = self.playerSelf!
+                return
             }
-            return
-        }
-        if(self.back == "ACK"){
-            DispatchQueue.main.async {
-                let screenSize: CGRect = UIScreen.main.bounds
-                let height = screenSize.height
-                SelectAck().execute(selection: self.selection!, playerSelf: self.playerSelf!, playerOther: self.playerOther!, game: self.game!, height: height)
+            if(self.back == "CHALLENGE"){
+                self.dismiss(animated: false, completion: nil)
+                let pvc: Challenge = self.presentingViewController! as! Challenge
+                pvc.playerSelf = self.playerSelf!
+                return
             }
-            return
         }
+        let storyboard: UIStoryboard = UIStoryboard(name: "Cancel", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "Cancel") as! Cancel
+        viewController.playerSelf = self.playerSelf!
+        viewController.other = true
+        self.present(viewController, animated: true, completion: nil)
     }
     
     static func create(playerSelf: EntityPlayer, playerOther: EntityPlayer? = nil, select: Int, back: String, height: CGFloat, game: EntityGame? = nil) -> EditOther {
@@ -182,16 +183,7 @@ class EditOther: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate
         tabBar.selectedItem = nil
         switch item.tag {
         case 0:
-            if(!self.confirm){
-                self.backButtonClick("")
-                return
-            }
-            let storyboard: UIStoryboard = UIStoryboard(name: "Cancel", bundle: nil)
-            let viewController = storyboard.instantiateViewController(withIdentifier: "Cancel") as! Cancel
-            viewController.playerSelf = self.playerSelf!
-            viewController.editOther = self
-            viewController.other = true
-            self.present(viewController, animated: true, completion: nil)
+            self.backButtonClick("")
         case 2:
             let storyboard: UIStoryboard = UIStoryboard(name: "Help", bundle: nil)
             let viewController = storyboard.instantiateViewController(withIdentifier: "Help") as! Help
@@ -212,13 +204,9 @@ class EditOther: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate
                         self.activityIndicator!.isHidden = true
                         self.activityIndicator!.stopAnimating()
                         self.playerSelf = result!
+                        self.confirm = false
                         self.backButtonClick("")
                     }
-                }
-                DispatchQueue.main.async() {
-                    self.activityIndicator!.isHidden = false
-                    self.activityIndicator!.startAnimating()
-                    self.backButtonClick("")
                 }
             }
         }
@@ -451,6 +439,7 @@ extension EditOther: UICollectionViewDropDelegate {
             self.rollback()
             return
         }
+        self.confirm = true
         self.configActiv![self.candidateCoord![0]][self.candidateCoord![1]] = nil
     }
     

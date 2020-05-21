@@ -12,7 +12,7 @@ class Other: UIViewController, UITabBarDelegate {
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
-    let DATE_TIME: DateTime = DateTime()
+    //let DATE_TIME: DateTime = DateTime()
     
     //MARK: Properties
     @IBOutlet weak var backButton: UIButton!
@@ -84,10 +84,8 @@ class Other: UIViewController, UITabBarDelegate {
     }
     
     @IBAction func backButtonClick(_ sender: Any) {
-        DispatchQueue.main.async {
-            let height: CGFloat = UIScreen.main.bounds.height
-            SelectHome().execute(player: self.playerSelf!, height: height)
-        }
+        self.modalTransitionStyle = .crossDissolve
+        self.dismiss(animated: true, completion: nil)
     }
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {

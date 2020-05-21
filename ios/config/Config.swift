@@ -90,7 +90,6 @@ class Config: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate, U
     }
     
     @IBAction func backButtonClick(_ sender: Any) {
-        //self.presentingViewController!.dismiss(animated: false, completion: nil)
         self.modalTransitionStyle = .crossDissolve
         self.dismiss(animated: true, completion: nil)
     }
@@ -171,11 +170,11 @@ class Config: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate, U
         self.configCollectionViewHeight2.constant = configCollectionView2.contentSize.height
     }
     
-    @objc func renderElementCollectionView() {
-        self.avatarImageView.removeGestureRecognizer(self.updatePhotoGesture!)
-        self.view.removeGestureRecognizer(self.swipeRightGesture!)
-        self.view.removeGestureRecognizer(self.swipeLeftGesture!)
-    }
+    //@objc func renderElementCollectionView() {
+        //self.avatarImageView.removeGestureRecognizer(self.updatePhotoGesture!)
+        //self.view.removeGestureRecognizer(self.swipeRightGesture!)
+        //self.view.removeGestureRecognizer(self.swipeLeftGesture!)
+    //}
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)

@@ -71,12 +71,42 @@ class HomeMenuTable: UITableViewController, SwipeTableViewCellDelegate {
         }
         let modifyAction = SwipeAction(style: .default, title: nil) { action, indexPath in
             
+            let cell = tableView.cellForRow(at: indexPath) as! SwipeTableViewCell
+            cell.hideSwipe(animated: false, completion: nil)
+            
             let playerOther = self.leaderboardList[indexPath.row]
-            DispatchQueue.main.async {
-                let screenSize: CGRect = UIScreen.main.bounds
-                let height = screenSize.height
-                SelectChallenge().execute(selection: Int.random(in: 0...3), playerSelf: self.home!.playerSelf!, playerOther: playerOther, BACK: "HOME", height: height)
-            }
+            //DispatchQueue.main.async {
+                //let screenSize: CGRect = UIScreen.main.bounds
+                //let height = screenSize.height
+                //SelectChallenge().execute(selection: , playerSelf: , playerOther: playerOther, BACK: , height: height)
+            
+                DispatchQueue.main.async {
+                    let height: CGFloat = UIScreen.main.bounds.height
+                    if(height.isLess(than: 750)){
+                        let storyboard: UIStoryboard = UIStoryboard(name: "ChallengeL", bundle: nil)
+                        let viewController = storyboard.instantiateViewController(withIdentifier: "ChallengeL") as! Challenge
+                        viewController.setPlayerSelf(playerSelf: self.home!.playerSelf!)
+                        viewController.setPlayerOther(playerOther: playerOther)
+                        viewController.setSelection(selection: Int.random(in: 0...3))
+                        viewController.BACK = "HOME"
+                        viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
+                        //viewController.modalTransitionStyle = .crossDissolve
+                        self.home!.present(viewController, animated: false , completion: nil)
+                        return
+                    }
+                    let storyboard: UIStoryboard = UIStoryboard(name: "ChallengeP", bundle: nil)
+                    let viewController = storyboard.instantiateViewController(withIdentifier: "ChallengeP") as! Challenge
+                    viewController.setPlayerSelf(playerSelf: self.home!.playerSelf!)
+                    viewController.setPlayerOther(playerOther: playerOther)
+                    viewController.setSelection(selection: Int.random(in: 0...3))
+                    viewController.BACK = "HOME"
+                    viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
+                    //viewController.modalTransitionStyle = .crossDissolve
+                    self.home!.present(viewController, animated: false , completion: nil)
+                }
+            
+            
+            //}
             
         }
         modifyAction.image = UIImage(named: "challenge")!
@@ -99,33 +129,6 @@ class HomeMenuTable: UITableViewController, SwipeTableViewCellDelegate {
             object: nil,
             userInfo: discoverSelectionDictionary)
     }
-    
-//    public func setHeaderView(
-//        eloLabel: UILabel,
-//        rankLabel: UILabel,
-//        dispLabel: UILabel,
-//        dispImageView: UIImageView,
-//        activityIndicator: UIActivityIndicatorView) {
-//        self.eloLabel = eloLabel
-//        self.rankLabel = rankLabel
-//        self.dispLabel = dispLabel
-//        self.dispImageView = dispImageView
-//        self.activityIndicator = activityIndicator
-//    }
-    
-//    public func renderHeader() {
-//        self.eloLabel!.text = self.player!.getLabelTextElo()
-//        self.rankLabel!.text = self.player!.getLabelTextRank()
-//        self.dispLabel!.text = self.player!.getLabelTextDisp()
-//        self.dispImageView!.image = self.player!.getImageDisp()!
-//        self.dispImageView!.tintColor = self.player!.tintColor
-//    }
-    
-//    var player: EntityPlayer?
-//
-//    func setPlayer(player: EntityPlayer){
-//        self.player = player
-//    }
     
     override func viewDidLoad() {
         

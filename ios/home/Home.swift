@@ -70,10 +70,6 @@ class Home: UIViewController, UITabBarDelegate {
     }
     
     @objc func activateProfile() {
-        //DispatchQueue.main.async() {
-        //let height: CGFloat = UIScreen.main.bounds.height
-        //SelectProfile().execute(player: self.playerSelf!, height: height)
-        //}
         let height: CGFloat = UIScreen.main.bounds.height
         if(height.isLess(than: 750)){
             DispatchQueue.main.async() {
@@ -125,28 +121,21 @@ class Home: UIViewController, UITabBarDelegate {
     }
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        self.tabBarMenu.selectedItem = nil
+        
         switch item.tag {
         case 1:
-            self.tabBarMenu.selectedItem = nil
-            //self.notificationTimerStop()
             self.setIndicator(on: true)
             DispatchQueue.main.async() {
                 let notify = self.tabBarMenu.items![1]
-                notify.selectedImage = UIImage(named: "game.white")!
+                notify.selectedImage = UIImage(named: "game.grey")!
             }
             RequestQuick().success(id: self.playerSelf!.id) { (json) in
                 self.setIndicator(on: false)
                 let opponent: EntityPlayer = ParsePlayer().execute(json: json)
-                //
-                //let height: CGFloat = UIScreen.main.bounds.height
-                //SelectPlay().execute(selection: Int.random(in: 0...3), playerSelf: self.playerSelf!, playerOther: opponent, height: height)
-                //}
-                
-                
                 let height: CGFloat = UIScreen.main.bounds.height
                 if(height.isLess(than: 750)){
                     DispatchQueue.main.async() {
-                        //let root = UIApplication.shared.delegate! as! AppDelegate
                         let storyboard: UIStoryboard = UIStoryboard(name: "PlayL", bundle: nil)
                         let viewController = storyboard.instantiateViewController(withIdentifier: "PlayL") as! Play
                         viewController.setPlayerSelf(playerSelf: self.playerSelf!)
@@ -157,7 +146,6 @@ class Home: UIViewController, UITabBarDelegate {
                     return
                 }
                 DispatchQueue.main.async() {
-                    //let root = UIApplication.shared.delegate! as! AppDelegate
                     let storyboard: UIStoryboard = UIStoryboard(name: "PlayP", bundle: nil)
                     let viewController = storyboard.instantiateViewController(withIdentifier: "PlayP") as! Play
                     viewController.setPlayerSelf(playerSelf: self.playerSelf!)
@@ -167,11 +155,21 @@ class Home: UIViewController, UITabBarDelegate {
                     self.present(viewController, animated: false , completion: nil)
                 }}
         case 3:
-            self.notificationTimerStop()
-            DispatchQueue.main.async {
-                let height: CGFloat = UIScreen.main.bounds.height
-                SelectMenu().execute(player: self.playerSelf!, height: height)
+            self.tabBarMenu.selectedItem = nil
+            let height: CGFloat = UIScreen.main.bounds.height
+            if(height.isLess(than: 750)){
+                let storyboard: UIStoryboard = UIStoryboard(name: "MenuL", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "MenuL") as! Menu
+                viewController.setPlayerSelf(playerSelf: self.playerSelf!)
+                viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
+                self.present(viewController, animated: false , completion: nil)
+                return
             }
+            let storyboard: UIStoryboard = UIStoryboard(name: "MenuP", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier: "MenuP") as! Menu
+            viewController.setPlayerSelf(playerSelf: self.playerSelf!)
+            viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
+            self.present(viewController, animated: false , completion: nil)
         case 4:
             self.tabBarMenu.selectedItem = nil
             
@@ -201,7 +199,21 @@ class Home: UIViewController, UITabBarDelegate {
         let playerOther: EntityPlayer = self.homeMenuTable!.getOther(index: menuSelectionIndex)
         DispatchQueue.main.async {
             let height: CGFloat = UIScreen.main.bounds.height
-            SelectOther().execute(playerSelf: self.playerSelf!, playerOther: playerOther, height: height)
+            if(height.isLess(than: 750)){
+                let storyboard: UIStoryboard = UIStoryboard(name: "OtherL", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "OtherL") as! Other
+                viewController.setPlayerSelf(playerSelf: self.playerSelf!)
+                viewController.setPlayerOther(playerOther: playerOther)
+                viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
+                self.present(viewController, animated: false , completion: nil)
+                return
+            }
+            let storyboard: UIStoryboard = UIStoryboard(name: "OtherP", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier: "OtherP") as! Other
+            viewController.setPlayerSelf(playerSelf: self.playerSelf!)
+            viewController.setPlayerOther(playerOther: playerOther)
+            viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
+            self.present(viewController, animated: false , completion: nil)
         }
     }
     
