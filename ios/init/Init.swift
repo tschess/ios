@@ -27,7 +27,32 @@ class Init: UIViewController {
                 let player: EntityPlayer = ParsePlayer().execute(json: result)
                 
                 let height: CGFloat = UIScreen.main.bounds.height
-                SelectHome().execute(player: player, height: height)
+                //SelectHome().execute(player: player, height: height)
+                if(height.isLess(than: 750)){
+                    let storyboard: UIStoryboard = UIStoryboard(name: "HomeL", bundle: nil)
+                    let viewController = storyboard.instantiateViewController(withIdentifier: "HomeL") as! Home
+                    //viewController.setPlayer(player: player)
+                    viewController.playerSelf = player
+                    //viewController.menuList = menuList
+                    //viewController.homeList = homeList
+                    //UIApplication.shared.keyWindow?.rootViewController = viewController
+                    return
+                }
+                let storyboard: UIStoryboard = UIStoryboard(name: "HomeP", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "HomeP") as! Home
+                viewController.playerSelf = player
+                self.navigationController?.pushViewController(viewController, animated: false)
+                
+                if let viewControllers = self.navigationController?.viewControllers {
+                      for vc in viewControllers {
+                           //if vc.isKind(of: YourViewController.classForCoder()) {
+                        print("It is in stack \(String(describing: type(of: vc)))")
+                                //Your Process
+                           //}
+                      }
+                }
+                
+               
             }
         }
     }

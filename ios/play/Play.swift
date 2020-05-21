@@ -30,16 +30,50 @@ class Play: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate {
                 "config": self.selection!]
             
             RequestPlay().execute(requestPayload: requestPayload) { (game) in
-                /**
-                 * ERROR HANDLING!!!
-                 */
                 if(game == nil){
-                    return
+                    return //error...
                 }
+                
+                let playerOther: EntityPlayer = game!.getPlayerOther(username: self.playerSelf!.username)
+                
                 DispatchQueue.main.async {
                     let height: CGFloat = UIScreen.main.bounds.height
-                    let playerOther: EntityPlayer = game!.getPlayerOther(username: self.playerSelf!.username)
-                    SelectTschess().tschess(playerSelf: self.playerSelf!, playerOther: playerOther, game: game!, height: height)
+                    if(height.isLess(than: 750)){
+                        let storyboard: UIStoryboard = UIStoryboard(name: "dTschessL", bundle: nil)
+                        let viewController = storyboard.instantiateViewController(withIdentifier: "dTschessL") as! Tschess
+                        viewController.setOther(player: playerOther)
+                        viewController.setSelf(player: self.playerSelf!)
+                        viewController.setGame(game: game!)
+                        viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
+                        //self.present(viewController, animated: false , completion: nil)
+                        let pvc: UIViewController = self.presentingViewController!
+                        self.dismiss(animated: false, completion: {
+                            pvc.present(viewController, animated: false, completion: nil) //dismiss play present over home
+                        })
+                        return
+                    }
+                    let storyboard: UIStoryboard = UIStoryboard(name: "dTschessP", bundle: nil)
+                    let viewController = storyboard.instantiateViewController(withIdentifier: "dTschessP") as! Tschess
+                    viewController.setOther(player: playerOther)
+                    viewController.setSelf(player: self.playerSelf!)
+                    viewController.setGame(game: game!)
+                    viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
+                    viewController.modalTransitionStyle = .crossDissolve
+                    
+                  //UIApplication.shared.keyWindow?.rootViewController!.present(viewController, animated: false, completion: nil)
+                    //self.dismiss(animated: false)
+                    
+                      //self.navigationController?.popViewController(animated: true)
+                    //s
+                    
+                    
+                    //self.window = UIWindow(frame: UIScreen.main.bounds)
+                    let navigationController = UINavigationController()
+                    navigationController.viewControllers = [self]
+                    UIApplication.shared.keyWindow?.rootViewController = navigationController
+                    UIApplication.shared.keyWindow?.makeKeyAndVisible()
+                    navigationController.present(viewController, animated: false, completion: nil)
+                    
                 }
             }
         }
@@ -50,7 +84,7 @@ class Play: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate {
         
         self.boardViewConfig.isHidden = true
         
-       
+        
         
         
         //TODO: set these fonts...
@@ -218,13 +252,13 @@ class Play: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate {
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var tabBarMenu: UITabBar!
     
-   
+    
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
     
- 
+    
     
     var attributeAlphaDotFull: [NSAttributedString.Key: NSObject]?
     var attributeAlphaDotHalf: [NSAttributedString.Key: NSObject]?
@@ -239,7 +273,7 @@ class Play: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate {
         self.rankLabel.text = self.playerOther!.getLabelTextRank()
         self.rankDateLabel.text = self.playerOther!.getLabelTextDate()
     }
-
+    
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -250,7 +284,7 @@ class Play: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-     
+        
         
         self.swipeRightGesture = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
         swipeRightGesture!.direction = UISwipeGestureRecognizer.Direction.right
@@ -376,8 +410,7 @@ class Play: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate {
     }
     
     @IBAction func backButtonClick(_ sender: Any) {
-        self.modalTransitionStyle = .crossDissolve
-        self.dismiss(animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: false)
     }
 }
 
@@ -434,3 +467,6 @@ extension Play: UICollectionViewDelegateFlowLayout {
         return 0
     }
 }
+
+
+

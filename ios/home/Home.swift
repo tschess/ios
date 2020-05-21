@@ -41,6 +41,24 @@ class Home: UIViewController, UITabBarDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        guard let navigationController = self.navigationController else { return }
+        var navigationArray = navigationController.viewControllers // To get all UIViewController stack as Array
+        navigationArray.remove(at: navigationArray.count - 2) // To remove previous UIViewController
+        self.navigationController?.viewControllers = navigationArray
+        if let viewControllers = self.navigationController?.viewControllers {
+            for vc in viewControllers {
+                //if vc.isKind(of: YourViewController.classForCoder()) {
+                print("---")
+                print("It is in stack \(String(describing: type(of: vc)))")
+                print("---")
+                //Your Process
+                //}
+            }
+        }
+        
+        
+        
         self.tabBarMenu.delegate = self
         self.homeMenuTable = children.first as? HomeMenuTable
         self.homeMenuTable!.home = self
@@ -145,14 +163,18 @@ class Home: UIViewController, UITabBarDelegate {
                         self.present(viewController, animated: false , completion: nil)}
                     return
                 }
+                
+                
+                
+                
+                
                 DispatchQueue.main.async() {
                     let storyboard: UIStoryboard = UIStoryboard(name: "PlayP", bundle: nil)
                     let viewController = storyboard.instantiateViewController(withIdentifier: "PlayP") as! Play
                     viewController.setPlayerSelf(playerSelf: self.playerSelf!)
                     viewController.setPlayerOther(playerOther: opponent)
                     viewController.setSelection(selection: Int.random(in: 0...3))
-                    viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
-                    self.present(viewController, animated: false , completion: nil)
+                    self.navigationController?.pushViewController(viewController, animated: false)
                 }}
         case 3:
             self.tabBarMenu.selectedItem = nil

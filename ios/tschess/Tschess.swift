@@ -35,10 +35,12 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     
     @IBAction func backButtonClick(_ sender: Any) {
         self.endTimer()
-         DispatchQueue.main.async {
-             let height: CGFloat = UIScreen.main.bounds.height
-             SelectMenu().execute(player: self.playerSelf!, height: height)
-         }
+         //DispatchQueue.main.async {
+             //let height: CGFloat = UIScreen.main.bounds.height
+             //SelectMenu().execute(player: self.playerSelf!, height: height)
+         //}
+        self.modalTransitionStyle = .crossDissolve
+        self.dismiss(animated: true, completion: nil)
     }
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {

@@ -14,7 +14,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        let storyboard = UIStoryboard(name: "Init", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "Init") as! Init
+        
+        let navigationController = UINavigationController.init(rootViewController: viewController)
+        navigationController.isNavigationBarHidden = true
+        
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        self.window?.rootViewController = navigationController
+        self.window?.makeKeyAndVisible()
+        
         self.configureGlobalUI()
+        
         return true
     }
     
@@ -52,7 +63,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func configureGlobalUI() {
         UINavigationBar.appearance().tintColor = UIColor.white
     }
-
+    
 }
 
 //Development server: api.sandbox.push.apple.com:443
