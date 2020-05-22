@@ -35,12 +35,12 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     
     @IBAction func backButtonClick(_ sender: Any) {
         self.endTimer()
-         //DispatchQueue.main.async {
-             //let height: CGFloat = UIScreen.main.bounds.height
-             //SelectMenu().execute(player: self.playerSelf!, height: height)
-         //}
-        //self.modalTransitionStyle = .crossDissolve
-        //self.dismiss(animated: true, completion: nil)
+         let transition = CATransition()
+         transition.duration = 0.3
+         transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+         transition.type = CATransitionType.fade
+         self.navigationController?.view.layer.add(transition, forKey: nil)
+         _ = self.navigationController?.popViewController(animated: false)
         self.navigationController?.popViewController(animated: false)
     }
     
@@ -568,6 +568,19 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         if(!resolved){
             return
         }
+        DispatchQueue.main.async {
+            if let navigationController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController {
+                let viewControllers = navigationController.viewControllers
+                for vc in viewControllers {
+                    if vc.isKind(of: Menu.classForCoder()) {
+                        print("It is in stack")
+                        let menu: Menu = vc as! Menu
+                        menu.menuTable!.refresh(refreshControl: nil)
+                    }
+                }
+                
+            }
+        }
         self.labelTitle.text = "game over"
         self.endTimer()
         self.labelNotification.isHidden = false
@@ -596,6 +609,19 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         if (mate) {
             UpdateMate().execute(id: self.game!.id) { (result) in
                print("result: 999 --> \(result)")
+                DispatchQueue.main.async {
+                    if let navigationController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController {
+                        let viewControllers = navigationController.viewControllers
+                        for vc in viewControllers {
+                            if vc.isKind(of: Menu.classForCoder()) {
+                                print("It is in stack")
+                                let menu: Menu = vc as! Menu
+                                menu.menuTable!.refresh(refreshControl: nil)
+                            }
+                        }
+                        
+                    }
+                }
             }
             return
         }

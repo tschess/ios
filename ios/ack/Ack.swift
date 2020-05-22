@@ -287,50 +287,36 @@ class Ack: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate {
     
     @objc func renderElementCollectionView() {
         if(self.selection! == 0){
-//            DispatchQueue.main.async {
-//                UIApplication.shared.keyWindow?.rootViewController = EditOther.create(
-//                    player: self.playerSelf!,
-//                    select: 0,
-//                    back: "ACK",
-//                    height: UIScreen.main.bounds.height,
-//                    game: self.gameTschess!)
-//            }
+
             DispatchQueue.main.async() {
-                UIApplication.shared.keyWindow?.rootViewController = EditOther.create(
-                    playerSelf: self.playerSelf!,
-                    select: 0,
-                    back: "ACK",
-                    height: UIScreen.main.bounds.height,
-                    game: self.gameTschess!)
+                self.navigationController?.pushViewController(EditOther.create(
+                playerSelf: self.playerSelf!,
+                select: 0,
+                back: "ACK",
+                height: UIScreen.main.bounds.height,
+                game: self.gameTschess!), animated: false)
             }
+            
             return
         }
         if(self.selection! == 1){
-//            DispatchQueue.main.async {
-//                UIApplication.shared.keyWindow?.rootViewController = EditOther.create(
-//                    player: self.playerSelf!,
-//                    select: 1,
-//                    back: "ACK",
-//                    height: UIScreen.main.bounds.height,
-//                    game: self.gameTschess!)
-//            }
             DispatchQueue.main.async() {
-                UIApplication.shared.keyWindow?.rootViewController = EditOther.create(
-                    playerSelf: self.playerSelf!,
-                    select: 1,
-                    back: "ACK",
-                    height: UIScreen.main.bounds.height,
-                    game: self.gameTschess!)
+            self.navigationController?.pushViewController(EditOther.create(
+                playerSelf: self.playerSelf!,
+                select: 1,
+                back: "ACK",
+                height: UIScreen.main.bounds.height,
+                game: self.gameTschess!), animated: false)
             }
             return
         }
         DispatchQueue.main.async() {
-            UIApplication.shared.keyWindow?.rootViewController = EditOther.create(
-                playerSelf: self.playerSelf!,
-                select: 2,
-                back: "ACK",
-                height: UIScreen.main.bounds.height,
-                game: self.gameTschess!)
+            self.navigationController?.pushViewController(EditOther.create(
+            playerSelf: self.playerSelf!,
+            select: 2,
+            back: "ACK",
+            height: UIScreen.main.bounds.height,
+            game: self.gameTschess!), animated: false)
         }
     }
     
@@ -373,10 +359,11 @@ class Ack: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate {
     }
     
     @IBAction func backButtonClick(_ sender: Any) {
-        DispatchQueue.main.async {
-            let height: CGFloat = UIScreen.main.bounds.height
-            SelectHome().execute(player: self.playerSelf!, height: height)
-        }
+        //DispatchQueue.main.async {
+            //let height: CGFloat = UIScreen.main.bounds.height
+            //SelectHome().execute(player: self.playerSelf!, height: height)
+        //}
+        self.navigationController?.popViewController(animated: false)
     }
     
 }
@@ -456,7 +443,21 @@ extension Ack: UICollectionViewDelegateFlowLayout {
                 DispatchQueue.main.async {
                     let height: CGFloat = UIScreen.main.bounds.height
                     let playerOther: EntityPlayer = game.getPlayerOther(username: self.playerSelf!.username)
-                    SelectTschess().tschess(playerSelf: self.playerSelf!, playerOther: playerOther, game: game, height: height)
+                    if(height.isLess(than: 750)){
+                        let storyboard: UIStoryboard = UIStoryboard(name: "dTschessL", bundle: nil)
+                        let viewController = storyboard.instantiateViewController(withIdentifier: "dTschessL") as! Tschess
+                        viewController.setOther(player: playerOther)
+                        viewController.setSelf(player: self.playerSelf!)
+                        viewController.setGame(game: game)
+                        self.navigationController?.pushViewController(viewController, animated: false)
+                        return
+                    }
+                    let storyboard: UIStoryboard = UIStoryboard(name: "dTschessP", bundle: nil)
+                    let viewController = storyboard.instantiateViewController(withIdentifier: "dTschessP") as! Tschess
+                    viewController.setOther(player: playerOther)
+                    viewController.setSelf(player: self.playerSelf!)
+                    viewController.setGame(game: game)
+                    self.navigationController?.pushViewController(viewController, animated: false)
                 }
             }
         }

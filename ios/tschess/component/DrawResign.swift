@@ -121,7 +121,20 @@ class DrawResign: UIViewController  {
         
         UpdateResign().execute(requestPayload: requestPayload) { (result) in
             //print("result: \(result)")
+            
+           
             DispatchQueue.main.async {
+                if let navigationController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController {
+                    let viewControllers = navigationController.viewControllers
+                    for vc in viewControllers {
+                        if vc.isKind(of: Menu.classForCoder()) {
+                            print("It is in stack")
+                            let menu: Menu = vc as! Menu
+                            menu.menuTable!.refresh(refreshControl: nil)
+                        }
+                    }
+                    
+                }
                 self.activityIndicatorResign!.stopAnimating()
                 self.activityIndicatorResign!.isHidden = true
                 self.presentingViewController!.dismiss(animated: false, completion: nil)

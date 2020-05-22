@@ -37,7 +37,13 @@ class RequestActual {
                 return
             }
             do {
+                
+                print("x \(data)")
+                
                 guard let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [[String: Any]] else {
+                    
+                    //
+                    
                     print("- 2")
                     let json1 = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Bool]
                     if(json1 == nil){
@@ -64,6 +70,10 @@ class RequestActual {
                      let game: EntityGame = ParseGame().execute(json: json[index])
                     gameList.append(game)
                 }
+                
+                
+              //  print("z \(json)")
+                
                 completion(gameList)
                 
             } catch let error {

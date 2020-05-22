@@ -53,11 +53,11 @@ class Menu: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        //self.activityIndicator.isHidden = true
         self.renderHeader()
     }
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        self.tabBarMenu.selectedItem = nil
         switch item.tag {
         default:
             self.backButtonClick("")
@@ -65,32 +65,48 @@ class Menu: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate {
     }
     
     @IBAction func backButtonClick(_ sender: Any) {
-        //DispatchQueue.main.async {
-            //let height: CGFloat = UIScreen.main.bounds.height
-            //SelectHome().execute(player: self.playerSelf!, height: height)
-        //}
-        //self.modalTransitionStyle = .crossDissolve
-        //self.dismiss(animated: true, completion: nil)
+        
+        if let viewControllers = self.navigationController?.viewControllers {
+                   for vc in viewControllers {
+                       //if vc.isKind(of: YourViewController.classForCoder()) {
+                       print("---")
+                     
+                    let ty = String(describing: type(of: vc))
+                    
+                      print("99: It is in stack \(ty)")
+                    
+                    if(ty == "Home"){
+                        print("FUCK!!!")
+                        let home: Home = vc as! Home
+                        home.menu = self
+                    }
+                      
+                       //Your Process
+                       //}
+                   }
+               }
+        
+        
         let transition = CATransition()
         transition.duration = 0.3
         transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
         transition.type = CATransitionType.fade
         self.navigationController?.view.layer.add(transition, forKey: nil)
-        _ = self.navigationController?.popToRootViewController(animated: false)
+        _ = self.navigationController?.popViewController(animated: false)
         self.navigationController?.popViewController(animated: false)
+        //UIViewController
     }
     
     let enter: Enter = Enter.instanceFromNib()
-
     
     func setIndicator(on: Bool) {
         if(on) {
             DispatchQueue.main.async() {
                 if(self.activityIndicator!.isHidden){
-                   self.activityIndicator!.isHidden = false
+                    self.activityIndicator!.isHidden = false
                 }
                 if(!self.activityIndicator!.isAnimating){
-                   self.activityIndicator!.startAnimating()
+                    self.activityIndicator!.startAnimating()
                 }
             }
             return

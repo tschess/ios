@@ -58,18 +58,21 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
         self.tableView.refreshControl = refreshControl
     }
     
-    @objc func refresh(refreshControl: UIRefreshControl) {
+    @objc func refresh(refreshControl: UIRefreshControl?) {
         self.pageCount = 0
         let request: [String: Any] = ["id": self.menu!.playerSelf!.id, "index": self.pageCount, "size": Const().PAGE_SIZE, "self": true]
         RequestActual().execute(requestPayload: request) { (result) in
             self.menu!.setIndicator(on: false)
-            if(result == nil){
+            if(result != nil){
                 //error...
             }
             DispatchQueue.main.async {
                 self.gameMenuTableList = result!
                 self.tableView.reloadData()
-                refreshControl.endRefreshing()
+                if(refreshControl == nil){
+                    return
+                }
+                refreshControl!.endRefreshing()
             }
         }
     }
@@ -183,8 +186,9 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
                     viewController.setPlayerOther(playerOther: playerOther)
                     viewController.setGameTschess(gameTschess: game)
                     viewController.setSelection(selection: Int.random(in: 0...3))
-                    viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
-                    self.present(viewController, animated: false , completion: nil)
+                    //viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
+                    //self.present(viewController, animated: false , completion: nil)
+                    self.navigationController?.pushViewController(viewController, animated: false)
                     return
                 }
                 let storyboard: UIStoryboard = UIStoryboard(name: "AckP", bundle: nil)
@@ -193,8 +197,9 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
                 viewController.setPlayerOther(playerOther: playerOther)
                 viewController.setGameTschess(gameTschess: game)
                 viewController.setSelection(selection: Int.random(in: 0...3))
-                viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
-                self.present(viewController, animated: false , completion: nil)
+                //viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
+                //self.present(viewController, animated: false , completion: nil)
+                self.navigationController?.pushViewController(viewController, animated: false)
             }
             
         }
@@ -344,10 +349,24 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
             DispatchQueue.main.async {
                 let height: CGFloat = UIScreen.main.bounds.height
                 let playerOther: EntityPlayer = game.getPlayerOther(username: self.menu!.playerSelf!.username)
-                SelectTschess().tschess(playerSelf: self.menu!.playerSelf!,
-                                        playerOther: playerOther,
-                                        game: game,
-                                        height: height)
+                if(height.isLess(than: 750)){
+                    let storyboard: UIStoryboard = UIStoryboard(name: "dTschessL", bundle: nil)
+                    let viewController = storyboard.instantiateViewController(withIdentifier: "dTschessL") as! Tschess
+                    viewController.setOther(player: playerOther)
+                    viewController.setSelf(player: self.menu!.playerSelf!)
+                    viewController.setGame(game: game)
+                    //viewController.menuList = menuList
+                    //viewController.homeList = homeList
+                    //UIApplication.shared.keyWindow?.rootViewController = viewController
+                    self.navigationController?.pushViewController(viewController, animated: false)
+                    return
+                }
+                let storyboard: UIStoryboard = UIStoryboard(name: "dTschessP", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "dTschessP") as! Tschess
+                viewController.setOther(player: playerOther)
+                viewController.setSelf(player: self.menu!.playerSelf!)
+                viewController.setGame(game: game)
+                self.navigationController?.pushViewController(viewController, animated: false)
             }
             return
         }

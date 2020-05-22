@@ -10,6 +10,8 @@ import UIKit
 
 class Home: UIViewController, UITabBarDelegate {
     
+    var menu: Menu?
+    
     var homeMenuTable: HomeMenuTable?
     
     //MARK: Header
@@ -42,18 +44,12 @@ class Home: UIViewController, UITabBarDelegate {
         super.viewDidLoad()
         
         self.navigationController?.viewControllers = [self]
-        //self.navigationController!.viewControllers.first = self
-        //self.navigationController!.popToRootViewController(animated: false)
-        
-        //guard let navigationController = self.navigationController else { return }
-        //var navigationArray = navigationController.viewControllers // To get all UIViewController stack as Array
-        //navigationArray.remove(at: navigationArray.count - 2) // To remove previous UIViewController
-        //self.navigationController?.viewControllers = navigationArray
+       
         if let viewControllers = self.navigationController?.viewControllers {
             for vc in viewControllers {
                 //if vc.isKind(of: YourViewController.classForCoder()) {
                 print("---")
-                print("It is in stack \(String(describing: type(of: vc)))")
+                print("00: It is in stack \(String(describing: type(of: vc)))")
                 print("---")
                 //Your Process
                 //}
@@ -90,6 +86,9 @@ class Home: UIViewController, UITabBarDelegate {
         self.notificationTimerStart()
     }
     
+    override func viewDidAppear(_ animated: Bool) {}
+    
+    
     @objc func activateProfile() {
         let height: CGFloat = UIScreen.main.bounds.height
         if(height.isLess(than: 750)){
@@ -98,6 +97,12 @@ class Home: UIViewController, UITabBarDelegate {
                 let storyboard: UIStoryboard = UIStoryboard(name: "ProfileL", bundle: nil)
                 let viewController = storyboard.instantiateViewController(withIdentifier: "ProfileL") as! Profile
                 viewController.setPlayer(player: self.playerSelf!)
+                let transition = CATransition()
+                transition.duration = 0.3
+                transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+                transition.type = CATransitionType.fade
+                self.navigationController?.view.layer.add(transition, forKey: nil)
+                _ = self.navigationController?.popViewController(animated: false)
                 self.navigationController?.pushViewController(viewController, animated: false)
             }
             return
@@ -107,6 +112,12 @@ class Home: UIViewController, UITabBarDelegate {
             let storyboard: UIStoryboard = UIStoryboard(name: "ProfileP", bundle: nil)
             let viewController = storyboard.instantiateViewController(withIdentifier: "ProfileP") as! Profile
             viewController.setPlayer(player: self.playerSelf!)
+            let transition = CATransition()
+            transition.duration = 0.3
+            transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+            transition.type = CATransitionType.fade
+            self.navigationController?.view.layer.add(transition, forKey: nil)
+            _ = self.navigationController?.popViewController(animated: false)
             self.navigationController?.pushViewController(viewController, animated: false)
         }
     }
@@ -161,8 +172,6 @@ class Home: UIViewController, UITabBarDelegate {
                         viewController.setPlayerSelf(playerSelf: self.playerSelf!)
                         viewController.setPlayerOther(playerOther: opponent)
                         viewController.setSelection(selection: Int.random(in: 0...3))
-                        //viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
-                        //self.navigationController?.pushViewController(viewController, animated: false)
                         self.navigationController?.pushViewController(viewController, animated: false)
                     }
                     return
@@ -178,21 +187,29 @@ class Home: UIViewController, UITabBarDelegate {
                 }}
         case 3:
             self.tabBarMenu.selectedItem = nil
+            
+            if(self.menu != nil){
+                let transition = CATransition()
+                transition.duration = 0.3
+                transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+                transition.type = CATransitionType.fade
+                self.navigationController?.view.layer.add(transition, forKey: nil)
+                _ = self.navigationController?.popViewController(animated: false)
+                self.navigationController?.pushViewController(menu!, animated: false)
+                return
+            }
+            
             let height: CGFloat = UIScreen.main.bounds.height
             if(height.isLess(than: 750)){
                 let storyboard: UIStoryboard = UIStoryboard(name: "MenuL", bundle: nil)
                 let viewController = storyboard.instantiateViewController(withIdentifier: "MenuL") as! Menu
                 viewController.setPlayerSelf(playerSelf: self.playerSelf!)
-                //viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
-                //self.present(viewController, animated: false , completion: nil)
                 self.navigationController?.pushViewController(viewController, animated: false)
                 return
             }
             let storyboard: UIStoryboard = UIStoryboard(name: "MenuP", bundle: nil)
             let viewController = storyboard.instantiateViewController(withIdentifier: "MenuP") as! Menu
             viewController.setPlayerSelf(playerSelf: self.playerSelf!)
-            //viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
-            //self.present(viewController, animated: false , completion: nil)
             self.navigationController?.pushViewController(viewController, animated: false)
         case 4:
             self.tabBarMenu.selectedItem = nil

@@ -119,7 +119,7 @@ class Profile: UIViewController, UITabBarDelegate, UINavigationControllerDelegat
                 let storyboard: UIStoryboard = UIStoryboard(name: "ContextL", bundle: nil)
                 let viewController = storyboard.instantiateViewController(withIdentifier: "ContextL") as! Context
                 viewController.setPlayer(player: self.player!)
-                viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
+                //viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
                 self.navigationController?.pushViewController(viewController, animated: false)
                 return
             }

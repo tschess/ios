@@ -414,9 +414,9 @@ class Challenge: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate
                     //SelectHome().execute(player: self.playerSelf!, height: height)
                 //}
                 DispatchQueue.main.async {
-                    self.modalTransitionStyle = .crossDissolve
-                    self.dismiss(animated: true, completion: nil)
-                    
+                    //self.modalTransitionStyle = .crossDissolve
+                    //self.dismiss(animated: true, completion: nil)
+                    self.navigationController?.popViewController(animated: false)
                 }
             }
         }
