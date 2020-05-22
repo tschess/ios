@@ -44,12 +44,11 @@ class Play: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate {
                         viewController.setOther(player: playerOther)
                         viewController.setSelf(player: self.playerSelf!)
                         viewController.setGame(game: game!)
-                        viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
-                        //self.present(viewController, animated: false , completion: nil)
-                        let pvc: UIViewController = self.presentingViewController!
-                        self.dismiss(animated: false, completion: {
-                            pvc.present(viewController, animated: false, completion: nil) //dismiss play present over home
-                        })
+                        self.navigationController?.pushViewController(viewController, animated: false)
+                        guard let navigationController = self.navigationController else { return }
+                        var navigationArray = navigationController.viewControllers // To get all UIViewController stack as Array
+                        navigationArray.remove(at: navigationArray.count - 2) // To remove previous UIViewController
+                        self.navigationController?.viewControllers = navigationArray
                         return
                     }
                     let storyboard: UIStoryboard = UIStoryboard(name: "dTschessP", bundle: nil)
@@ -57,22 +56,13 @@ class Play: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate {
                     viewController.setOther(player: playerOther)
                     viewController.setSelf(player: self.playerSelf!)
                     viewController.setGame(game: game!)
-                    viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
-                    viewController.modalTransitionStyle = .crossDissolve
-                    
-                  //UIApplication.shared.keyWindow?.rootViewController!.present(viewController, animated: false, completion: nil)
-                    //self.dismiss(animated: false)
-                    
-                      //self.navigationController?.popViewController(animated: true)
-                    //s
-                    
-                    
-                    //self.window = UIWindow(frame: UIScreen.main.bounds)
-                    let navigationController = UINavigationController()
-                    navigationController.viewControllers = [self]
-                    UIApplication.shared.keyWindow?.rootViewController = navigationController
-                    UIApplication.shared.keyWindow?.makeKeyAndVisible()
-                    navigationController.present(viewController, animated: false, completion: nil)
+                    //viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
+                    //viewController.modalTransitionStyle = .crossDissolve
+                    self.navigationController?.pushViewController(viewController, animated: false)
+                    guard let navigationController = self.navigationController else { return }
+                    var navigationArray = navigationController.viewControllers // To get all UIViewController stack as Array
+                    navigationArray.remove(at: navigationArray.count - 2) // To remove previous UIViewController
+                    self.navigationController?.viewControllers = navigationArray
                     
                 }
             }

@@ -39,8 +39,9 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
              //let height: CGFloat = UIScreen.main.bounds.height
              //SelectMenu().execute(player: self.playerSelf!, height: height)
          //}
-        self.modalTransitionStyle = .crossDissolve
-        self.dismiss(animated: true, completion: nil)
+        //self.modalTransitionStyle = .crossDissolve
+        //self.dismiss(animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: false)
     }
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
