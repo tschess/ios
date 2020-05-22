@@ -120,15 +120,15 @@ class Profile: UIViewController, UITabBarDelegate, UINavigationControllerDelegat
                 let viewController = storyboard.instantiateViewController(withIdentifier: "ContextL") as! Context
                 viewController.setPlayer(player: self.player!)
                 viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
-                self.present(viewController, animated: false , completion: nil)
+                self.navigationController?.pushViewController(viewController, animated: false)
                 return
             }
             let storyboard: UIStoryboard = UIStoryboard(name: "ContextP", bundle: nil)
             let viewController = storyboard.instantiateViewController(withIdentifier: "ContextP") as! Context
             viewController.setPlayer(player: self.player!)
-            viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
-            self.present(viewController, animated: false , completion: nil)
-            
+            //viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
+            //self.present(viewController, animated: false , completion: nil)
+            self.navigationController?.pushViewController(viewController, animated: false)
         default:
             self.signOut()
         }

@@ -69,7 +69,8 @@ class Fairies: UIViewController, UITabBarDelegate {
         //}
         //self.presentingViewController!.dismiss(animated: false, completion: nil)
         //self.modalTransitionStyle = .crossDissolve
-        self.dismiss(animated: false, completion: nil)
+        //self.dismiss(animated: false, completion: nil)
+        self.navigationController?.popViewController(animated: false)
     }
     
     @objc func onDidReceiveData(_ notification: NSNotification) {
@@ -87,9 +88,10 @@ class Fairies: UIViewController, UITabBarDelegate {
             let viewController = storyboard.instantiateViewController(withIdentifier: "InfoL") as! Info
             viewController.setPlayer(player: self.playerSelf!)
             viewController.setFairyElement(fairyElement: fairy)
-            viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
+            //viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
             //root.window?.rootViewController?.present(viewController, animated: false , completion: nil)
-            self.present(viewController, animated: false , completion: nil)
+            //self.present(viewController, animated: false , completion: nil)
+            self.navigationController?.pushViewController(viewController, animated: false)
             return
         }
         //let root = UIApplication.shared.delegate! as! AppDelegate
@@ -97,8 +99,9 @@ class Fairies: UIViewController, UITabBarDelegate {
         let viewController = storyboard.instantiateViewController(withIdentifier: "InfoP") as! Info
         viewController.setPlayer(player: self.playerSelf!)
         viewController.setFairyElement(fairyElement: fairy)
-        viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
-        self.present(viewController, animated: false , completion: nil)
+        //viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
+        //self.present(viewController, animated: false , completion: nil)
+        self.navigationController?.pushViewController(viewController, animated: false)
     }
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
