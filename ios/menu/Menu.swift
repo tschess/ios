@@ -69,8 +69,15 @@ class Menu: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate {
             //let height: CGFloat = UIScreen.main.bounds.height
             //SelectHome().execute(player: self.playerSelf!, height: height)
         //}
-        self.modalTransitionStyle = .crossDissolve
-        self.dismiss(animated: true, completion: nil)
+        //self.modalTransitionStyle = .crossDissolve
+        //self.dismiss(animated: true, completion: nil)
+        let transition = CATransition()
+        transition.duration = 0.3
+        transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+        transition.type = CATransitionType.fade
+        self.navigationController?.view.layer.add(transition, forKey: nil)
+        _ = self.navigationController?.popToRootViewController(animated: false)
+        self.navigationController?.popViewController(animated: false)
     }
     
     let enter: Enter = Enter.instanceFromNib()

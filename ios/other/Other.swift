@@ -84,8 +84,12 @@ class Other: UIViewController, UITabBarDelegate {
     }
     
     @IBAction func backButtonClick(_ sender: Any) {
-        //self.modalTransitionStyle = .crossDissolve
-        //self.dismiss(animated: true, completion: nil)
+       let transition = CATransition()
+        transition.duration = 0.3
+        transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+        transition.type = CATransitionType.fade
+        self.navigationController?.view.layer.add(transition, forKey: nil)
+        _ = self.navigationController?.popToRootViewController(animated: false)
         self.navigationController?.popViewController(animated: false)
     }
     
