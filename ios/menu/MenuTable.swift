@@ -130,15 +130,50 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
     
     private func swipeResolved(orientation: SwipeActionsOrientation) -> [SwipeAction]? {
         if(orientation == .right) {
+            
+           
+            
             //self.tableView.backgroundColor = UIColor.black
             let rematch = SwipeAction(style: .default, title: nil) { action, indexPath in
+                
+                
+                let cell = self.tableView.cellForRow(at: indexPath) as! SwipeTableViewCell
+                           cell.hideSwipe(animated: false, completion: nil)
+                
+                
                 let game: EntityGame = self.gameMenuTableList[indexPath.row]
                 let username: String = self.menu!.playerSelf!.username
                 let playerOther: EntityPlayer = game.getPlayerOther(username: username)
+//                DispatchQueue.main.async {
+//                    let screenSize: CGRect = UIScreen.main.bounds
+//                    let height = screenSize.height
+//                    SelectChallenge().execute(selection: Int.random(in: 0...3), playerSelf: self.menu!.playerSelf!, playerOther: playerOther, BACK: "MENU", height: height)
+//                }
                 DispatchQueue.main.async {
-                    let screenSize: CGRect = UIScreen.main.bounds
-                    let height = screenSize.height
-                    SelectChallenge().execute(selection: Int.random(in: 0...3), playerSelf: self.menu!.playerSelf!, playerOther: playerOther, BACK: "MENU", height: height)
+                    let height: CGFloat = UIScreen.main.bounds.height
+                    if(height.isLess(than: 750)){
+                        let storyboard: UIStoryboard = UIStoryboard(name: "ChallengeL", bundle: nil)
+                        let viewController = storyboard.instantiateViewController(withIdentifier: "ChallengeL") as! Challenge
+                        viewController.setPlayerSelf(playerSelf: self.menu!.playerSelf!)
+                        viewController.setPlayerOther(playerOther: playerOther)
+                        viewController.setSelection(selection: Int.random(in: 0...3))
+                        viewController.BACK = "OTHER"
+                        //viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
+                        //viewController.modalTransitionStyle = .crossDissolve
+                        //self.home!.present(viewController, animated: false , completion: nil)
+                        self.navigationController?.pushViewController(viewController, animated: false)
+                        return
+                    }
+                    let storyboard: UIStoryboard = UIStoryboard(name: "ChallengeP", bundle: nil)
+                    let viewController = storyboard.instantiateViewController(withIdentifier: "ChallengeP") as! Challenge
+                    viewController.setPlayerSelf(playerSelf: self.menu!.playerSelf!)
+                    viewController.setPlayerOther(playerOther: playerOther)
+                    viewController.setSelection(selection: Int.random(in: 0...3))
+                    viewController.BACK = "OTHER"
+                    //viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
+                    //viewController.modalTransitionStyle = .crossDissolve
+                    //self.home!.present(viewController, animated: false , completion: nil)
+                    self.navigationController?.pushViewController(viewController, animated: false)
                 }
             }
             rematch.backgroundColor = .purple

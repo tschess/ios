@@ -94,9 +94,35 @@ class Other: UIViewController, UITabBarDelegate {
     }
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+//        DispatchQueue.main.async {
+//            let height: CGFloat = UIScreen.main.bounds.height
+//            SelectChallenge().execute(selection: Int.random(in: 0...3), playerSelf: self.playerSelf!, playerOther: self.playerOther!, BACK: "OTHER", height: height)
+//        }
         DispatchQueue.main.async {
             let height: CGFloat = UIScreen.main.bounds.height
-            SelectChallenge().execute(selection: Int.random(in: 0...3), playerSelf: self.playerSelf!, playerOther: self.playerOther!, BACK: "OTHER", height: height)
+            if(height.isLess(than: 750)){
+                let storyboard: UIStoryboard = UIStoryboard(name: "ChallengeL", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "ChallengeL") as! Challenge
+                viewController.setPlayerSelf(playerSelf: self.playerSelf!)
+                viewController.setPlayerOther(playerOther: self.playerOther!)
+                viewController.setSelection(selection: Int.random(in: 0...3))
+                viewController.BACK = "OTHER"
+                //viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
+                //viewController.modalTransitionStyle = .crossDissolve
+                //self.home!.present(viewController, animated: false , completion: nil)
+                self.navigationController?.pushViewController(viewController, animated: false)
+                return
+            }
+            let storyboard: UIStoryboard = UIStoryboard(name: "ChallengeP", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier: "ChallengeP") as! Challenge
+            viewController.setPlayerSelf(playerSelf: self.playerSelf!)
+            viewController.setPlayerOther(playerOther: self.playerOther!)
+            viewController.setSelection(selection: Int.random(in: 0...3))
+            viewController.BACK = "OTHER"
+            //viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
+            //viewController.modalTransitionStyle = .crossDissolve
+            //self.home!.present(viewController, animated: false , completion: nil)
+            self.navigationController?.pushViewController(viewController, animated: false)
         }
     }
 }

@@ -13,21 +13,42 @@ class EditOther: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate
     @IBAction func backButtonClick(_ sender: Any) {
         if(!self.confirm){
             if(self.back == "PLAY"){
-                self.dismiss(animated: false, completion: nil)
-                let pvc: Play = self.presentingViewController! as! Play
-                pvc.playerSelf = self.playerSelf!
+                if let viewControllers = self.navigationController?.viewControllers {
+                    for vc in viewControllers {
+                        let ty = String(describing: type(of: vc))
+                        if(ty == "Play"){
+                            let home: Play = vc as! Play
+                            home.playerSelf = self.playerSelf!
+                        }
+                    }
+                }
+                self.navigationController?.popViewController(animated: false)
                 return
             }
             if(self.back == "ACK"){
-                self.dismiss(animated: false, completion: nil)
-                let pvc: Ack = self.presentingViewController! as! Ack
-                pvc.playerSelf = self.playerSelf!
+                if let viewControllers = self.navigationController?.viewControllers {
+                    for vc in viewControllers {
+                        let ty = String(describing: type(of: vc))
+                        if(ty == "Ack"){
+                            let home: Ack = vc as! Ack
+                            home.playerSelf = self.playerSelf!
+                        }
+                    }
+                }
+                self.navigationController?.popViewController(animated: false)
                 return
             }
             if(self.back == "CHALLENGE"){
-                self.dismiss(animated: false, completion: nil)
-                let pvc: Challenge = self.presentingViewController! as! Challenge
-                pvc.playerSelf = self.playerSelf!
+                if let viewControllers = self.navigationController?.viewControllers {
+                    for vc in viewControllers {
+                        let ty = String(describing: type(of: vc))
+                        if(ty == "Challenge"){
+                            let home: Challenge = vc as! Challenge
+                            home.playerSelf = self.playerSelf!
+                        }
+                    }
+                }
+                self.navigationController?.popViewController(animated: false)
                 return
             }
         }

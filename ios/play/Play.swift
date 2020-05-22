@@ -337,7 +337,8 @@ class Play: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate {
                 back: "PLAY",
                 height: UIScreen.main.bounds.height)
             viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
-            self.present(viewController, animated: false , completion: nil)
+            //self.present(viewController, animated: false , completion: nil)
+            self.navigationController?.pushViewController(viewController, animated: false)
             return
         }
         if(self.selection! == 1){
@@ -348,7 +349,8 @@ class Play: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate {
                 back: "PLAY",
                 height: UIScreen.main.bounds.height)
             viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
-            self.present(viewController, animated: false , completion: nil)
+            //self.present(viewController, animated: false , completion: nil)
+            self.navigationController?.pushViewController(viewController, animated: false)
             return
         }
         let viewController = EditOther.create(
@@ -358,7 +360,8 @@ class Play: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate {
             back: "PLAY",
             height: UIScreen.main.bounds.height)
         viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
-        self.present(viewController, animated: false , completion: nil)
+        //self.present(viewController, animated: false , completion: nil)
+        self.navigationController?.pushViewController(viewController, animated: false)
     }
     
     var swipeRightGesture: UISwipeGestureRecognizer?

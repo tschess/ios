@@ -300,7 +300,8 @@ class Challenge: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate
                 back: "CHALLENGE",
                 height: UIScreen.main.bounds.height)
             viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
-            self.present(viewController, animated: false , completion: nil)
+            //self.present(viewController, animated: false , completion: nil)
+            self.navigationController?.pushViewController(viewController, animated: false)
             return
         }
         if(self.selection! == 1){
@@ -311,7 +312,8 @@ class Challenge: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate
                 back: "CHALLENGE",
                 height: UIScreen.main.bounds.height)
             viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
-            self.present(viewController, animated: false , completion: nil)
+            self.navigationController?.pushViewController(viewController, animated: false)
+            //self.present(viewController, animated: false , completion: nil)
             return
         }
         let viewController = EditOther.create(
@@ -321,7 +323,8 @@ class Challenge: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate
             back: "CHALLENGE",
             height: UIScreen.main.bounds.height)
         viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
-        self.present(viewController, animated: false , completion: nil)
+        //self.present(viewController, animated: false , completion: nil)
+        self.navigationController?.pushViewController(viewController, animated: false)
     }
     
     var swipeRightGesture: UISwipeGestureRecognizer?
@@ -414,6 +417,17 @@ class Challenge: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate
                     //SelectHome().execute(player: self.playerSelf!, height: height)
                 //}
                 DispatchQueue.main.async {
+                    if let navigationController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController {
+                        let viewControllers = navigationController.viewControllers
+                        for vc in viewControllers {
+                            if vc.isKind(of: Menu.classForCoder()) {
+                                print("It is in stack")
+                                let menu: Menu = vc as! Menu
+                                menu.menuTable!.refresh(refreshControl: nil)
+                            }
+                        }
+                        
+                    }
                     //self.modalTransitionStyle = .crossDissolve
                     //self.dismiss(animated: true, completion: nil)
                     self.navigationController?.popViewController(animated: false)

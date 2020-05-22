@@ -51,11 +51,33 @@ class Cancel: UIViewController {
         //self.presentingViewController!.dismiss(animated: false, completion: nil)
         //self.editOther!.backButtonClick("")
         // ^^^not good...
-        let pvc: EditOther = self.presentingViewController! as! EditOther
-        pvc.confirm = false
-        self.dismiss(animated: true, completion: {
-            pvc.backButtonClick("")
-        })
+        
+        if let navigationController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController {
+            navigationController.dismiss(animated: true, completion: {
+                
+                
+                if let viewControllers = self.navigationController?.viewControllers {
+                    for vc in viewControllers {
+                        let ty = String(describing: type(of: vc))
+                        if(ty == "Play"){
+                            let home: Play = vc as! Play
+                            home.playerSelf = self.playerSelf!
+                        }
+                        if(ty == "Ack"){
+                            let home: Ack = vc as! Ack
+                            home.playerSelf = self.playerSelf!
+                        }
+                        if(ty == "Challenge"){
+                            let home: Challenge = vc as! Challenge
+                            home.playerSelf = self.playerSelf!
+                        }
+                    }
+                }
+                navigationController.popViewController(animated: false)
+                
+                //navigationController.popViewController(animated: false)
+            })
+        }
     }
     
     @IBAction func buttonClickNo(_ sender: Any) {

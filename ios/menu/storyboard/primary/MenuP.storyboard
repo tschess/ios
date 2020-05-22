@@ -35,7 +35,7 @@
                                         <inset key="imageInsets" minX="3" minY="3" maxX="3" maxY="3"/>
                                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tabBarItem>
-                                    <tabBarItem title="QUICK PLAY" image="quick.grey" selectedImage="quick.white" id="dDN-WM-BKf">
+                                    <tabBarItem tag="1" title="QUICK PLAY" image="quick.grey" selectedImage="quick.white" id="dDN-WM-BKf">
                                         <inset key="imageInsets" minX="2" minY="2" maxX="2" maxY="2"/>
                                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tabBarItem>
