@@ -89,9 +89,10 @@ class HomeMenuTable: UITableViewController, SwipeTableViewCellDelegate {
                         viewController.setPlayerOther(playerOther: playerOther)
                         viewController.setSelection(selection: Int.random(in: 0...3))
                         viewController.BACK = "HOME"
-                        viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
+                        //viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
                         //viewController.modalTransitionStyle = .crossDissolve
-                        self.home!.present(viewController, animated: false , completion: nil)
+                        //self.home!.present(viewController, animated: false , completion: nil)
+                        self.navigationController?.pushViewController(viewController, animated: false)
                         return
                     }
                     let storyboard: UIStoryboard = UIStoryboard(name: "ChallengeP", bundle: nil)
@@ -100,9 +101,10 @@ class HomeMenuTable: UITableViewController, SwipeTableViewCellDelegate {
                     viewController.setPlayerOther(playerOther: playerOther)
                     viewController.setSelection(selection: Int.random(in: 0...3))
                     viewController.BACK = "HOME"
-                    viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
+                    //viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
                     //viewController.modalTransitionStyle = .crossDissolve
-                    self.home!.present(viewController, animated: false , completion: nil)
+                    //self.home!.present(viewController, animated: false , completion: nil)
+                    self.navigationController?.pushViewController(viewController, animated: false)
                 }
             
             

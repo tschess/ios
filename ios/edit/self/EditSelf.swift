@@ -48,15 +48,19 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
      */
     @IBAction func backButtonClick(_ sender: Any) {
         if(!self.confirm){
-            self.dismiss(animated: false, completion: nil)
-            let pvc: Config = self.presentingViewController! as! Config
-            pvc.playerSelf = self.playerSelf!
+            //guard let navigationController = self.navigationController else { return }
+            //let navigationArray: [UIViewController] = navigationController.viewControllers // To get all UIViewController stack as Array
+            //let config: Config = navigationArray[navigationArray.count - 2] as! Config
+            //config.playerSelf = result!
+            //self.navigationController?.viewControllers = navigationArray
+            self.navigationController?.popViewController(animated: false)
             return
         }
         let storyboard: UIStoryboard = UIStoryboard(name: "Cancel", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "Cancel") as! Cancel
         viewController.playerSelf = self.playerSelf!
-        self.present(viewController, animated: true, completion: nil)
+        self.navigationController?.present(viewController, animated: true, completion: nil)
+            //.present(viewController, animated: true, completion: nil)
     }
     
     static func create(player: EntityPlayer, select: Int, height: CGFloat) -> EditSelf {
@@ -193,11 +197,13 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
                 DispatchQueue.main.async() {
                     self.activityIndicator!.isHidden = true
                     self.activityIndicator!.stopAnimating()
-                    //self.playerSelf = result! //what about this?????
-                    //self.modalTransitionStyle = .crossDissolve
-                    self.dismiss(animated: false, completion: nil)
-                    let pvc: Config = self.presentingViewController! as! Config
-                    pvc.playerSelf = result!
+                    
+                    guard let navigationController = self.navigationController else { return }
+                    let navigationArray: [UIViewController] = navigationController.viewControllers // To get all UIViewController stack as Array
+                    let config: Config = navigationArray[navigationArray.count - 2] as! Config
+                    config.playerSelf = result!
+                    self.navigationController?.viewControllers = navigationArray
+                    self.navigationController?.popViewController(animated: false)
                 }
                 
             }

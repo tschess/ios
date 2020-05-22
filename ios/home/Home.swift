@@ -230,16 +230,18 @@ class Home: UIViewController, UITabBarDelegate {
                 let viewController = storyboard.instantiateViewController(withIdentifier: "OtherL") as! Other
                 viewController.setPlayerSelf(playerSelf: self.playerSelf!)
                 viewController.setPlayerOther(playerOther: playerOther)
-                viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
-                self.present(viewController, animated: false , completion: nil)
+                //viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
+                //self.present(viewController, animated: false , completion: nil)
+                self.navigationController?.pushViewController(viewController, animated: false)
                 return
             }
             let storyboard: UIStoryboard = UIStoryboard(name: "OtherP", bundle: nil)
             let viewController = storyboard.instantiateViewController(withIdentifier: "OtherP") as! Other
             viewController.setPlayerSelf(playerSelf: self.playerSelf!)
             viewController.setPlayerOther(playerOther: playerOther)
-            viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
-            self.present(viewController, animated: false , completion: nil)
+            //viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
+            //self.present(viewController, animated: false , completion: nil)
+            self.navigationController?.pushViewController(viewController, animated: false)
         }
     }
     

@@ -41,10 +41,11 @@ class Cancel: UIViewController {
     
     @IBAction func buttonClickYes(_ sender: Any) {
         if(!self.other){
-            let pvc: UIViewController = self.presentingViewController!
-            self.dismiss(animated: true, completion: {
-                pvc.dismiss(animated: false, completion: nil)
-            })
+            if let navigationController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController {
+                navigationController.dismiss(animated: true, completion: {
+                    navigationController.popViewController(animated: false)
+                })
+            }
             return
         }
         //self.presentingViewController!.dismiss(animated: false, completion: nil)

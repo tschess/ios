@@ -84,8 +84,9 @@ class Other: UIViewController, UITabBarDelegate {
     }
     
     @IBAction func backButtonClick(_ sender: Any) {
-        self.modalTransitionStyle = .crossDissolve
-        self.dismiss(animated: true, completion: nil)
+        //self.modalTransitionStyle = .crossDissolve
+        //self.dismiss(animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: false)
     }
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
