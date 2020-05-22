@@ -75,10 +75,12 @@ class Info: UIViewController, UITabBarDelegate, UIPopoverPresentationControllerD
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         switch item.tag {
         case 0:
-            self.modalTransitionStyle = .crossDissolve
-            self.dismiss(animated: true, completion: nil)
+            //self.modalTransitionStyle = .crossDissolve
+            //self.dismiss(animated: true, completion: nil)
+            self.navigationController?.popViewController(animated: false)
         default:
-            self.dismissAll(animated: true)
+            //self.dismissAll(animated: true)
+            self.navigationController!.popToRootViewController(animated: false)
         }
     }
     

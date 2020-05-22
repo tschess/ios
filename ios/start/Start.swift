@@ -50,7 +50,25 @@ class Start: UIViewController, UITextFieldDelegate {
             if let player = player {
                 DispatchQueue.main.async {
                     let height: CGFloat = UIScreen.main.bounds.height
-                    SelectHome().execute(player: player, height: height)
+                    //SelectHome().execute(player: player, height: height)
+                //}
+                if(height.isLess(than: 750)){
+                    let storyboard: UIStoryboard = UIStoryboard(name: "HomeL", bundle: nil)
+                    let viewController = storyboard.instantiateViewController(withIdentifier: "HomeL") as! Home
+                    viewController.playerSelf = player
+                    self.navigationController?.pushViewController(viewController, animated: false)
+                    
+                    //UIApplication.shared.keyWindow?.rootViewController = viewController
+                    //UIApplication.shared.keyWindow?.makeKeyAndVisible()
+                    
+                    return
+                }
+                let storyboard: UIStoryboard = UIStoryboard(name: "HomeP", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "HomeP") as! Home
+                viewController.playerSelf = player
+                self.navigationController?.pushViewController(viewController, animated: false)
+               //UIApplication.shared.keyWindow?.rootViewController = viewController
+               //self.navigationController!.popToRootViewController(animated: false)
                 }
                 return
             }
@@ -116,9 +134,23 @@ class Start: UIViewController, UITextFieldDelegate {
             if let player = player {
                 DispatchQueue.main.async {
                     let height: CGFloat = UIScreen.main.bounds.height
-                    SelectHome().execute(player: player, height: height)
+                    //SelectHome().execute(player: player, height: height)
+                //}
+                if(height.isLess(than: 750)){
+                    let storyboard: UIStoryboard = UIStoryboard(name: "HomeL", bundle: nil)
+                    let viewController = storyboard.instantiateViewController(withIdentifier: "HomeL") as! Home
+                    viewController.playerSelf = player
+                    self.navigationController?.pushViewController(viewController, animated: false)
+                    
+                    return
                 }
-                return
+                let storyboard: UIStoryboard = UIStoryboard(name: "HomeP", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "HomeP") as! Home
+                viewController.playerSelf = player
+                self.navigationController?.pushViewController(viewController, animated: false)
+                
+                }
+                    return
             }
             DispatchQueue.main.async {
                 self.activityIndicator.isHidden = true
@@ -186,6 +218,22 @@ class Start: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationController?.viewControllers = [self]
+        //guard let navigationController = self.navigationController else { return }
+        //var navigationArray = navigationController.viewControllers // To get all UIViewController stack as Array
+        //navigationArray.remove(at: navigationArray.count - 2) // To remove previous UIViewController
+        //self.navigationController?.viewControllers = navigationArray
+        if let viewControllers = self.navigationController?.viewControllers {
+            for vc in viewControllers {
+                //if vc.isKind(of: YourViewController.classForCoder()) {
+                print("---")
+                print("It is in stack \(String(describing: type(of: vc)))")
+                print("---")
+                //Your Process
+                //}
+            }
+        }
         
         self.activityIndicator.isHidden = true
         self.testTaskLabel.isHidden = true

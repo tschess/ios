@@ -141,15 +141,17 @@ class Profile: UIViewController, UITabBarDelegate, UINavigationControllerDelegat
             DispatchQueue.main.async {
                 let storyboard: UIStoryboard = UIStoryboard(name: "Start", bundle: nil)
                 let viewController = storyboard.instantiateViewController(withIdentifier: "Start") as! Start
-                self.dismissAll(animated: false)
-                UIApplication.shared.keyWindow?.rootViewController = viewController
-            }
+                //UIApplication.shared.keyWindow?.rootViewController = viewController
+                //self.navigationController!.popToRootViewController(animated: false)
+                //UIApplication.shared.keyWindow?.rootViewController = viewController
+                //UIApplication.shared.keyWindow?.makeKeyAndVisible()
+                self.navigationController?.viewControllers = [viewController]
+                }
         }
     }
     
     @IBAction func backButtonClick(_ sender: Any) {
-        self.modalTransitionStyle = .crossDissolve
-        self.dismiss(animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: false)
     }
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {

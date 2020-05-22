@@ -90,8 +90,7 @@ class Config: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate, U
     }
     
     @IBAction func backButtonClick(_ sender: Any) {
-        self.modalTransitionStyle = .crossDissolve
-        self.dismiss(animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: false)
     }
     
     @objc func editCollectionView0() {
@@ -99,8 +98,9 @@ class Config: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate, U
             player: self.playerSelf!,
             select: 0,
             height: UIScreen.main.bounds.height)
-        viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
-        self.present(viewController, animated: false , completion: nil)
+        //viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
+        //self.present(viewController, animated: false , completion: nil)
+        self.navigationController?.pushViewController(viewController, animated: false)
     }
     
     @objc func editCollectionView1() {
@@ -108,8 +108,9 @@ class Config: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate, U
                    player: self.playerSelf!,
                    select: 1,
                    height: UIScreen.main.bounds.height)
-               viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
-               self.present(viewController, animated: false , completion: nil)
+               //viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
+               //self.present(viewController, animated: false , completion: nil)
+        self.navigationController?.pushViewController(viewController, animated: false)
     }
     
     @objc func editCollectionView2() {
@@ -117,8 +118,9 @@ class Config: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate, U
                    player: self.playerSelf!,
                    select: 2,
                    height: UIScreen.main.bounds.height)
-               viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
-               self.present(viewController, animated: false , completion: nil)
+               //viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
+               //self.present(viewController, animated: false , completion: nil)
+        self.navigationController?.pushViewController(viewController, animated: false)
     }
     
     public func renderHeader() {
@@ -330,17 +332,19 @@ extension Config: UICollectionViewDelegate {
                 let storyboard: UIStoryboard = UIStoryboard(name: "FairiesL", bundle: nil)
                 let viewController = storyboard.instantiateViewController(withIdentifier: "FairiesL") as! Fairies
                 viewController.playerSelf = self.playerSelf!
-                viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
+                //viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
                 //root.window?.rootViewController?.present(viewController, animated: false , completion: nil)
-                self.present(viewController, animated: false , completion: nil)
+                //self.present(viewController, animated: false , completion: nil)
+                self.navigationController?.pushViewController(viewController, animated: false)
                 return
             }
             //let root = UIApplication.shared.delegate! as! AppDelegate
             let storyboard: UIStoryboard = UIStoryboard(name: "FairiesP", bundle: nil)
             let viewController = storyboard.instantiateViewController(withIdentifier: "FairiesP") as! Fairies
             viewController.playerSelf = self.playerSelf!
-            viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
-            self.present(viewController, animated: false , completion: nil)
+            //viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
+            //self.present(viewController, animated: false , completion: nil)
+            self.navigationController?.pushViewController(viewController, animated: false)
             
             
             
@@ -353,8 +357,7 @@ extension Config: UICollectionViewDelegate {
             //SelectHome().execute(player: self.playerSelf!, height: height)
             //}
             //self.presentingViewController!.dismiss(animated: false, completion: nil)
-            self.modalTransitionStyle = .crossDissolve
-            self.dismiss(animated: true, completion: nil)
+            self.navigationController?.popViewController(animated: false)
         }
     }
     

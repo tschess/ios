@@ -105,29 +105,15 @@ class Fairies: UIViewController, UITabBarDelegate {
         switch item.tag {
         case 1:
             //dismissAll(animated: false)
-            dismissAll(animated: true)
+            //dismissAll(animated: true)
+            self.navigationController!.popToRootViewController(animated: false)
         default:
             //self.presentingViewController!.dismiss(animated: false, completion: nil)
             //self.modalTransitionStyle = .crossDissolve
-            self.dismiss(animated: false, completion: nil)
+            //self.dismiss(animated: false, completion: nil)
+            self.navigationController?.popViewController(animated: false)
         }
     }
 }
 
-extension UIViewController {
 
-    func dismissAll(animated: Bool, completion: (() -> Void)? = nil) {
-        if let optionalWindow = UIApplication.shared.delegate?.window, let window = optionalWindow, let rootViewController = window.rootViewController, let presentedViewController = rootViewController.presentedViewController  {
-            if let snapshotView = window.snapshotView(afterScreenUpdates: false) {
-                presentedViewController.view.addSubview(snapshotView)
-                //presentedViewController.modalTransitionStyle = .coverVertical
-                //self.modalTransitionStyle = .crossDissolve
-                presentedViewController.modalTransitionStyle = .crossDissolve
-            }
-            if !isBeingDismissed {
-                rootViewController.dismiss(animated: animated, completion: completion)
-            }
-        }
-    }
-
-}

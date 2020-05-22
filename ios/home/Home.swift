@@ -41,11 +41,14 @@ class Home: UIViewController, UITabBarDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationController?.viewControllers = [self]
+        //self.navigationController!.viewControllers.first = self
+        //self.navigationController!.popToRootViewController(animated: false)
         
-        guard let navigationController = self.navigationController else { return }
-        var navigationArray = navigationController.viewControllers // To get all UIViewController stack as Array
-        navigationArray.remove(at: navigationArray.count - 2) // To remove previous UIViewController
-        self.navigationController?.viewControllers = navigationArray
+        //guard let navigationController = self.navigationController else { return }
+        //var navigationArray = navigationController.viewControllers // To get all UIViewController stack as Array
+        //navigationArray.remove(at: navigationArray.count - 2) // To remove previous UIViewController
+        //self.navigationController?.viewControllers = navigationArray
         if let viewControllers = self.navigationController?.viewControllers {
             for vc in viewControllers {
                 //if vc.isKind(of: YourViewController.classForCoder()) {
@@ -95,8 +98,8 @@ class Home: UIViewController, UITabBarDelegate {
                 let storyboard: UIStoryboard = UIStoryboard(name: "ProfileL", bundle: nil)
                 let viewController = storyboard.instantiateViewController(withIdentifier: "ProfileL") as! Profile
                 viewController.setPlayer(player: self.playerSelf!)
-                viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
-                self.present(viewController, animated: false , completion: nil)}
+                self.navigationController?.pushViewController(viewController, animated: false)
+            }
             return
         }
         DispatchQueue.main.async() {
@@ -104,8 +107,7 @@ class Home: UIViewController, UITabBarDelegate {
             let storyboard: UIStoryboard = UIStoryboard(name: "ProfileP", bundle: nil)
             let viewController = storyboard.instantiateViewController(withIdentifier: "ProfileP") as! Profile
             viewController.setPlayer(player: self.playerSelf!)
-            viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
-            self.present(viewController, animated: false , completion: nil)
+            self.navigationController?.pushViewController(viewController, animated: false)
         }
     }
     
@@ -159,21 +161,19 @@ class Home: UIViewController, UITabBarDelegate {
                         viewController.setPlayerSelf(playerSelf: self.playerSelf!)
                         viewController.setPlayerOther(playerOther: opponent)
                         viewController.setSelection(selection: Int.random(in: 0...3))
-                        viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
-                        self.present(viewController, animated: false , completion: nil)}
+                        //viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
+                        //self.navigationController?.pushViewController(viewController, animated: false)
+                        self.navigationController?.pushViewController(viewController, animated: false)
+                    }
                     return
                 }
-                
-                
-                
-                
-                
                 DispatchQueue.main.async() {
                     let storyboard: UIStoryboard = UIStoryboard(name: "PlayP", bundle: nil)
                     let viewController = storyboard.instantiateViewController(withIdentifier: "PlayP") as! Play
                     viewController.setPlayerSelf(playerSelf: self.playerSelf!)
                     viewController.setPlayerOther(playerOther: opponent)
                     viewController.setSelection(selection: Int.random(in: 0...3))
+                    //self.navigationController?.pushViewController(viewController, animated: false)
                     self.navigationController?.pushViewController(viewController, animated: false)
                 }}
         case 3:
@@ -183,15 +183,17 @@ class Home: UIViewController, UITabBarDelegate {
                 let storyboard: UIStoryboard = UIStoryboard(name: "MenuL", bundle: nil)
                 let viewController = storyboard.instantiateViewController(withIdentifier: "MenuL") as! Menu
                 viewController.setPlayerSelf(playerSelf: self.playerSelf!)
-                viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
-                self.present(viewController, animated: false , completion: nil)
+                //viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
+                //self.present(viewController, animated: false , completion: nil)
+                self.navigationController?.pushViewController(viewController, animated: false)
                 return
             }
             let storyboard: UIStoryboard = UIStoryboard(name: "MenuP", bundle: nil)
             let viewController = storyboard.instantiateViewController(withIdentifier: "MenuP") as! Menu
             viewController.setPlayerSelf(playerSelf: self.playerSelf!)
-            viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
-            self.present(viewController, animated: false , completion: nil)
+            //viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
+            //self.present(viewController, animated: false , completion: nil)
+            self.navigationController?.pushViewController(viewController, animated: false)
         case 4:
             self.tabBarMenu.selectedItem = nil
             
@@ -200,15 +202,17 @@ class Home: UIViewController, UITabBarDelegate {
                 let storyboard: UIStoryboard = UIStoryboard(name: "ConfigL", bundle: nil)
                 let viewController = storyboard.instantiateViewController(withIdentifier: "ConfigL") as! Config
                 viewController.setPlayerSelf(playerSelf: self.playerSelf!)
-                viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
-                self.present(viewController, animated: false , completion: nil)
+                //viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
+                //self.present(viewController, animated: false , completion: nil)
+                self.navigationController?.pushViewController(viewController, animated: false)
                 return
             }
             let storyboard: UIStoryboard = UIStoryboard(name: "ConfigP", bundle: nil)
             let viewController = storyboard.instantiateViewController(withIdentifier: "ConfigP") as! Config
             viewController.setPlayerSelf(playerSelf: self.playerSelf!)
-            viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
-            self.present(viewController, animated: false , completion: nil)
+            //viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
+            //self.present(viewController, animated: false , completion: nil)
+            self.navigationController?.pushViewController(viewController, animated: false)
             
         default:
             self.notificationTimerStop()
