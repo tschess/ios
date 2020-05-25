@@ -73,6 +73,8 @@ class Ack: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate {
     //@IBOutlet var splitViewHeight0: NSLayoutConstraint!
     //@IBOutlet var splitViewHeight1: NSLayoutConstraint! //strong
     
+   
+    
     var items = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16"]
     
     @IBOutlet weak var indicatorLabel0: UILabel!
@@ -184,7 +186,9 @@ class Ack: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.configCollectionView.reloadData()
+        //self.configCollectionView.reloadData()
+        //self.configCollectionView.isHidden = false
+        self.configCollectionView.layoutSubviews()
         self.configCollectionView.isHidden = false
     }
     
@@ -283,6 +287,8 @@ class Ack: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate {
         
         let elementCollectionViewGesture = UITapGestureRecognizer(target: self, action: #selector(self.renderElementCollectionView))
         self.configCollectionView.addGestureRecognizer(elementCollectionViewGesture)
+        
+       
     }
     
     @objc func renderElementCollectionView() {
@@ -291,6 +297,7 @@ class Ack: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate {
             DispatchQueue.main.async() {
                 self.navigationController?.pushViewController(EditOther.create(
                 playerSelf: self.playerSelf!,
+                playerOther: self.playerOther!,
                 select: 0,
                 back: "ACK",
                 height: UIScreen.main.bounds.height,
@@ -303,6 +310,7 @@ class Ack: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate {
             DispatchQueue.main.async() {
             self.navigationController?.pushViewController(EditOther.create(
                 playerSelf: self.playerSelf!,
+                 playerOther: self.playerOther!,
                 select: 1,
                 back: "ACK",
                 height: UIScreen.main.bounds.height,
@@ -313,6 +321,7 @@ class Ack: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate {
         DispatchQueue.main.async() {
             self.navigationController?.pushViewController(EditOther.create(
             playerSelf: self.playerSelf!,
+             playerOther: self.playerOther!,
             select: 2,
             back: "ACK",
             height: UIScreen.main.bounds.height,
@@ -403,7 +412,7 @@ extension Ack: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let cellsAcross: CGFloat = 8
-        let dim = collectionView.frame.width / cellsAcross
+        let dim = UIScreen.main.bounds.width / cellsAcross
         return CGSize(width: dim, height: dim)
     }
     
