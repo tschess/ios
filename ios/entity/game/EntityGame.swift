@@ -110,7 +110,7 @@ class EntityGame: Equatable, Hashable {
     
     func getLabelTextDisp(username: String) -> String? {
         if(self.white_disp == nil || self.black_disp == nil){
-            return nil
+            return "0"
         }
         if(self.white.username == username){
             return String(abs(self.white_disp!))

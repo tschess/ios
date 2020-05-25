@@ -13,6 +13,7 @@ class OtherMenuCell: UITableViewCell {
     @IBOutlet weak var displacementImage: UIImageView!
     @IBOutlet weak var avatarImageView: UIImageView!
     
+    @IBOutlet weak var dispLabelAdjacent: UILabel!
     @IBOutlet weak var displacementLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
     

@@ -318,7 +318,7 @@
                                             <constraint firstAttribute="height" constant="30" id="J7u-IJ-OdX"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="22"/>
-                                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -400,7 +400,7 @@
         <image name="cancel_grey" width="39" height="39"/>
         <image name="cancel_white" width="39" height="39"/>
         <image name="q_g" width="39" height="39"/>
-        <image name="q_w" width="188" height="188"/>
+        <image name="q_w" width="39" height="39"/>
         <image name="save_grey" width="39" height="39"/>
         <image name="save_white" width="39" height="39"/>
     </resources>

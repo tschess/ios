@@ -335,6 +335,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="avatarImageView" destination="eaF-37-5Tf" id="DKq-uK-Dcc"/>
+                                    <outlet property="dispLabelAdjacent" destination="WGR-ZE-RZd" id="Us6-24-DSE"/>
                                     <outlet property="displacementImage" destination="M6s-nP-07Q" id="cEq-Qc-TA6"/>
                                     <outlet property="displacementLabel" destination="yPL-IF-vl4" id="y8H-is-4OJ"/>
                                     <outlet property="oddsLabel" destination="dTO-FS-168" id="Hs8-fR-bI8"/>

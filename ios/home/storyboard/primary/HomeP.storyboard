@@ -347,6 +347,7 @@
                                     <outlet property="dateLabel" destination="QXK-mb-Sho" id="44A-Fx-dr0"/>
                                     <outlet property="dispImage" destination="inX-hi-2ve" id="6gB-Sj-6U0"/>
                                     <outlet property="dispLabel" destination="0O4-Ti-Ubf" id="tUg-y5-PeH"/>
+                                    <outlet property="dispLabelAlign" destination="R3e-v1-ztk" id="Cyi-D7-49a"/>
                                     <outlet property="rankLabel" destination="OGP-Ay-XBh" id="wTm-n3-2tD"/>
                                     <outlet property="usernameLabel" destination="dIN-pV-xv0" id="llr-gc-rGO"/>
                                 </connections>

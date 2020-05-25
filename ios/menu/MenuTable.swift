@@ -204,14 +204,14 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
             return [nAction]
         }
         let ackAction = SwipeAction(style: .default, title: nil) { action, indexPath in
+            
+            let cell = self.tableView.cellForRow(at: indexPath) as! SwipeTableViewCell
+            cell.hideSwipe(animated: false, completion: nil)
+            
             let game: EntityGame = self.gameMenuTableList[indexPath.row]
             let username: String = self.menu!.playerSelf!.username
             let playerOther: EntityPlayer = game.getPlayerOther(username: username)
-            //DispatchQueue.main.async {
-                //let screenSize: CGRect = UIScreen.main.bounds
-                //let height = screenSize.height
-                //SelectAck().execute(selection: Int.random(in: 0...3), playerSelf: self.menu!.playerSelf!, playerOther: playerOther, game: game, height: height)
-            //}
+            
             DispatchQueue.main.async {
                 let height: CGFloat = UIScreen.main.bounds.height
                 if(height.isLess(than: 750)){
@@ -221,8 +221,6 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
                     viewController.setPlayerOther(playerOther: playerOther)
                     viewController.setGameTschess(gameTschess: game)
                     viewController.setSelection(selection: Int.random(in: 0...3))
-                    //viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
-                    //self.present(viewController, animated: false , completion: nil)
                     self.navigationController?.pushViewController(viewController, animated: false)
                     return
                 }
@@ -232,8 +230,6 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
                 viewController.setPlayerOther(playerOther: playerOther)
                 viewController.setGameTschess(gameTschess: game)
                 viewController.setSelection(selection: Int.random(in: 0...3))
-                //viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
-                //self.present(viewController, animated: false , completion: nil)
                 self.navigationController?.pushViewController(viewController, animated: false)
             }
             
@@ -298,26 +294,26 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
         return cell
     }
     
-    private func getCellHisto(cell: MenuCell) -> MenuCell {
+    //let val: String = player.getLabelTextDisp()
+    private func getCellHisto(cell: MenuCell, disp: String) -> MenuCell {
         cell.soLaLa.backgroundColor = UIColor.black
-        //cell.usernameLabel.textColor = UIColor.lightGray
         cell.usernameLabel.textColor = UIColor.white
-        //cell.timeIndicatorLabel.textColor = UIColor.darkGray
         cell.timeIndicatorLabel.textColor = UIColor.lightGray
         cell.actionImageView.isHidden = true
         cell.dispImageView.isHidden = false
         cell.dispAdjacentLabel.isHidden = false
-        //cell.dispAdjacentLabel.textColor = UIColor.darkGray
         cell.dispAdjacentLabel.textColor = UIColor.lightGray
         cell.oddsIndicatorLabel.isHidden = false
-        //cell.oddsIndicatorLabel.textColor = UIColor.darkGray
         cell.oddsIndicatorLabel.textColor = UIColor.lightGray
         cell.oddsValueLabel.isHidden = false
-        //cell.oddsValueLabel.textColor = UIColor.lightGray
         cell.oddsValueLabel.textColor = UIColor.white
         cell.dispValueLabel.isHidden = false
-        //cell.dispValueLabel.textColor = UIColor.lightGray
         cell.dispValueLabel.textColor = UIColor.white
+        if(disp == "0"){
+            cell.dispValueLabel.isHidden = true
+            cell.dispAdjacentLabel.isHidden = true
+            cell.dispImageView.isHidden = true
+        }
         return cell
     }
     
@@ -335,10 +331,11 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
         cell.usernameLabel.text = usernameOther
         cell.avatarImageView.image = avatarImageOther
         if(game.status == "RESOLVED"){
-            cell = self.getCellHisto(cell: cell)
+            let disp: String = game.getLabelTextDisp(username: username)!
+            cell = self.getCellHisto(cell: cell, disp: disp)
             cell.dispImageView.image = game.getImageDisp(username: username)
             cell.oddsValueLabel.text = game.getOdds(username: username)
-            cell.dispValueLabel.text = game.getLabelTextDisp(username: username)
+            cell.dispValueLabel.text = disp
             return cell
         }
         cell = self.getCellActive(cell: cell)
@@ -379,7 +376,6 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
                 let cell = self.tableView.cellForRow(at: indexPath) as! SwipeTableViewCell
                 cell.hideSwipe(animated: false, completion: nil)
                 
-                //let skin: String = SelectSnapshot().getSkinGame(username: self.menu!.playerSelf!.username, game: game)
                 SelectSnapshot().snapshot(playerSelf: self.menu!.playerSelf!,
                                           game: game,
                                           presentor: self)
@@ -396,9 +392,6 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
                     viewController.setOther(player: playerOther)
                     viewController.setSelf(player: self.menu!.playerSelf!)
                     viewController.setGame(game: game)
-                    //viewController.menuList = menuList
-                    //viewController.homeList = homeList
-                    //UIApplication.shared.keyWindow?.rootViewController = viewController
                     self.navigationController?.pushViewController(viewController, animated: false)
                     return
                 }

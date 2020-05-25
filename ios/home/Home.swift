@@ -90,10 +90,12 @@ class Home: UIViewController, UITabBarDelegate {
             if(!notify){
                 return
             }
-            self.notificationTimerStop()
             DispatchQueue.main.async() {
                 let notify = self.tabBarMenu.items![1]
                 notify.image = UIImage(named: "note")!.withRenderingMode(.alwaysOriginal)
+                if(self.menu != nil){
+                    self.menu!.menuTable!.refresh(refreshControl: nil)
+                }
             }
         }
     }
@@ -102,7 +104,7 @@ class Home: UIViewController, UITabBarDelegate {
         self.tabBarMenu.selectedItem = nil
         DispatchQueue.main.async() {
             let notify = self.tabBarMenu.items![1]
-            notify.selectedImage = UIImage(named: "game.grey")!
+            notify.image = UIImage(named: "game.grey")!
         }
         switch item.tag {
         case 1:

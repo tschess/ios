@@ -34,13 +34,24 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     @IBOutlet var tabBarMenu: UITabBar!
     
     @IBAction func backButtonClick(_ sender: Any) {
-        self.endTimer()
-         let transition = CATransition()
-         transition.duration = 0.3
-         transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
-         transition.type = CATransitionType.fade
-         self.navigationController?.view.layer.add(transition, forKey: nil)
-         _ = self.navigationController?.popViewController(animated: false)
+        //self.endTimer()
+        if let navigationController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController {
+            let viewControllers = navigationController.viewControllers
+            for vc in viewControllers {
+                if vc.isKind(of: Menu.classForCoder()) {
+                    print("It is in stack")
+                    let menu: Menu = vc as! Menu
+                    menu.menuTable!.refresh(refreshControl: nil)
+                }
+            }
+            
+        }
+        let transition = CATransition()
+        transition.duration = 0.3
+        transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+        transition.type = CATransitionType.fade
+        self.navigationController?.view.layer.add(transition, forKey: nil)
+        _ = self.navigationController?.popViewController(animated: false)
         self.navigationController?.popViewController(animated: false)
     }
     
@@ -182,6 +193,21 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         self.timerCountdown = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(decCountdown), userInfo: nil, repeats: true)
     }
     
+    override func viewDidDisappear(_ animated: Bool){
+        super.viewDidDisappear(animated)
+        self.endTimer()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.viewBoard.reloadData()
+        self.viewBoard.isHidden = false
+        
+        self.setLabelCheck()
+        self.setLabelEndgame()
+        self.setTimer()
+    }
+    
     func endTimer() {
         self.timerPolling?.invalidate()
         self.timerPolling = nil
@@ -239,7 +265,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         self.setLabelNotification()
         
         self.activityIndicator.isHidden = true
-        self.setTimer()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -249,15 +275,6 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         self.labelRankDate.text = self.playerOther!.getLabelTextDate()
         self.labelUsername.text = self.playerOther!.username
         self.imageViewAvatar.image = self.playerOther!.getImageAvatar()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        self.viewBoard.reloadData()
-        self.viewBoard.isHidden = false
-        
-        self.setLabelCheck()
-        self.setLabelEndgame()
     }
     
     override func viewDidLayoutSubviews() {
@@ -515,45 +532,45 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     }
     
     // MARK: POLLING GAME
-       
-       @objc func pollingTask() {
-           let id_game: String = self.game!.id
-           GameRequest().execute(id: id_game) { (game0) in
-               let updatedSv0: String = game0!.updated
-               let updatedSv1: Date = self.dateTime.toFormatDate(string: updatedSv0)
-               let updatedLc0: String = self.game!.updated
-               let updatedLc1: Date = self.dateTime.toFormatDate(string: updatedLc0)
-               switch updatedSv1.compare(updatedLc1) {
-               case .orderedAscending:
-                   return
-               case .orderedSame:
-                   return
-               case .orderedDescending:
-                   DispatchQueue.main.async {
-                       self.activityIndicator.stopAnimating()
-                       self.activityIndicator.isHidden = true
-                       let game1 = game0!
-                       self.setGame(game: game1)
-                       let username: String = self.playerSelf!.username
-                       let matrix1: [[Piece?]] = game1.getStateClient(username: username)
-                       self.matrix = matrix1
-                       
-                    
-                        // ~ * ~ //
-                        self.setCheckMate()
-                        // ~ * ~ //
+    
+    @objc func pollingTask() {
+        let id_game: String = self.game!.id
+        GameRequest().execute(id: id_game) { (game0) in
+            let updatedSv0: String = game0!.updated
+            let updatedSv1: Date = self.dateTime.toFormatDate(string: updatedSv0)
+            let updatedLc0: String = self.game!.updated
+            let updatedLc1: Date = self.dateTime.toFormatDate(string: updatedLc0)
+            switch updatedSv1.compare(updatedLc1) {
+            case .orderedAscending:
+                return
+            case .orderedSame:
+                return
+            case .orderedDescending:
+                DispatchQueue.main.async {
+                    self.activityIndicator.stopAnimating()
+                    self.activityIndicator.isHidden = true
+                    let game1 = game0!
+                    self.setGame(game: game1)
+                    let username: String = self.playerSelf!.username
+                    let matrix1: [[Piece?]] = game1.getStateClient(username: username)
+                    self.matrix = matrix1
                     
                     
-                       self.viewBoard.reloadData()
-                       self.setLabelEndgame()
-                       self.setLabelCountdown(update: game1.updated)
-                       self.setLabelTurnary()
-                       self.setLabelNotification()
-                       self.setLabelCheck()
-                   }
-               }
-           }
-       }
+                    // ~ * ~ //
+                    self.setCheckMate()
+                    // ~ * ~ //
+                    
+                    
+                    self.viewBoard.reloadData()
+                    self.setLabelEndgame()
+                    self.setLabelCountdown(update: game1.updated)
+                    self.setLabelTurnary()
+                    self.setLabelNotification()
+                    self.setLabelCheck()
+                }
+            }
+        }
+    }
     
     private func setLabelCheck() {
         let check: Bool = self.game!.on_check
@@ -608,7 +625,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         print("czech: \(czech)")
         if (mate) {
             UpdateMate().execute(id: self.game!.id) { (result) in
-               print("result: 999 --> \(result)")
+                print("result: 999 --> \(result)")
                 DispatchQueue.main.async {
                     if let navigationController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController {
                         let viewControllers = navigationController.viewControllers

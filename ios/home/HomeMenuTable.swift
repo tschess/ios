@@ -24,12 +24,6 @@ class HomeMenuTable: UITableViewController, SwipeTableViewCellDelegate {
         super.init(coder: aDecoder)
     }
     
-    //var eloLabel: UILabel?
-    //var rankLabel: UILabel?
-    //var dispLabel: UILabel?
-    //var dispImageView: UIImageView?
-    //var activityIndicator: UIActivityIndicatorView?
-    
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
         if(orientation == .left) {
             let modifyAction = SwipeAction(style: .default, title: nil) { action, indexPath in
@@ -37,17 +31,11 @@ class HomeMenuTable: UITableViewController, SwipeTableViewCellDelegate {
                 let cell = tableView.cellForRow(at: indexPath) as! SwipeTableViewCell
                 cell.hideSwipe(animated: false, completion: nil)
                 
-                //self.activityIndicator!.isHidden = false
-                //self.activityIndicator!.startAnimating()
                 self.home!.setIndicator(on: true)
                 
                 let playerOther = self.leaderboardList[indexPath.row]
                 
                 RequestRecent().execute(id: playerOther.id) { (result) in
-                    //DispatchQueue.main.async() {
-                        //self.activityIndicator!.stopAnimating()
-                        //self.activityIndicator!.isHidden = true
-                    //}
                     self.home!.setIndicator(on: false)
                     
                     if(result["fail"] != nil) {
@@ -75,10 +63,7 @@ class HomeMenuTable: UITableViewController, SwipeTableViewCellDelegate {
             cell.hideSwipe(animated: false, completion: nil)
             
             let playerOther = self.leaderboardList[indexPath.row]
-            //DispatchQueue.main.async {
-                //let screenSize: CGRect = UIScreen.main.bounds
-                //let height = screenSize.height
-                //SelectChallenge().execute(selection: , playerSelf: , playerOther: playerOther, BACK: , height: height)
+            
             
                 DispatchQueue.main.async {
                     let height: CGFloat = UIScreen.main.bounds.height
@@ -89,9 +74,6 @@ class HomeMenuTable: UITableViewController, SwipeTableViewCellDelegate {
                         viewController.setPlayerOther(playerOther: playerOther)
                         viewController.setSelection(selection: Int.random(in: 0...3))
                         viewController.BACK = "HOME"
-                        //viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
-                        //viewController.modalTransitionStyle = .crossDissolve
-                        //self.home!.present(viewController, animated: false , completion: nil)
                         self.navigationController?.pushViewController(viewController, animated: false)
                         return
                     }
@@ -101,15 +83,8 @@ class HomeMenuTable: UITableViewController, SwipeTableViewCellDelegate {
                     viewController.setPlayerOther(playerOther: playerOther)
                     viewController.setSelection(selection: Int.random(in: 0...3))
                     viewController.BACK = "HOME"
-                    //viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
-                    //viewController.modalTransitionStyle = .crossDissolve
-                    //self.home!.present(viewController, animated: false , completion: nil)
                     self.navigationController?.pushViewController(viewController, animated: false)
                 }
-            
-            
-            //}
-            
         }
         modifyAction.image = UIImage(named: "challenge")!
         modifyAction.title = "challenge"
@@ -188,9 +163,21 @@ class HomeMenuTable: UITableViewController, SwipeTableViewCellDelegate {
         cell.rankLabel.text = player.getLabelTextRank()
         cell.usernameLabel.text = player.username
         cell.dateLabel.text = player.getLabelTextDate()
-        cell.dispLabel.text = player.getLabelTextDisp()
-        cell.dispImage.image = player.getImageDisp()!
-        cell.dispImage.tintColor = player.tintColor
+        
+        let val: String = player.getLabelTextDisp()
+        if(val == "0"){
+            cell.dispLabel.isHidden = true
+            cell.dispImage.isHidden = true
+            cell.dispLabelAlign.isHidden = true
+        } else {
+            cell.dispLabel.isHidden = false
+            cell.dispImage.isHidden = false
+            cell.dispLabelAlign.isHidden = false
+            cell.dispLabel.text = player.getLabelTextDisp()
+            cell.dispImage.image = player.getImageDisp()!
+            cell.dispImage.tintColor = player.tintColor
+        }
+        
         return cell
     }
     

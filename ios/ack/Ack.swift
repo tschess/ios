@@ -448,6 +448,10 @@ extension Ack: UICollectionViewDelegateFlowLayout {
                         viewController.setSelf(player: self.playerSelf!)
                         viewController.setGame(game: game)
                         self.navigationController?.pushViewController(viewController, animated: false)
+                        guard let navigationController = self.navigationController else { return }
+                        var navigationArray = navigationController.viewControllers // To get all UIViewController stack as Array
+                        navigationArray.remove(at: navigationArray.count - 2) // To remove previous UIViewController
+                        self.navigationController?.viewControllers = navigationArray
                         return
                     }
                     let storyboard: UIStoryboard = UIStoryboard(name: "dTschessP", bundle: nil)
@@ -456,6 +460,10 @@ extension Ack: UICollectionViewDelegateFlowLayout {
                     viewController.setSelf(player: self.playerSelf!)
                     viewController.setGame(game: game)
                     self.navigationController?.pushViewController(viewController, animated: false)
+                    guard let navigationController = self.navigationController else { return }
+                    var navigationArray = navigationController.viewControllers // To get all UIViewController stack as Array
+                    navigationArray.remove(at: navigationArray.count - 2) // To remove previous UIViewController
+                    self.navigationController?.viewControllers = navigationArray
                 }
             }
         }
