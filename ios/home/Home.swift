@@ -165,12 +165,24 @@ class Home: UIViewController, UITabBarDelegate {
                 let storyboard: UIStoryboard = UIStoryboard(name: "ConfigL", bundle: nil)
                 let viewController = storyboard.instantiateViewController(withIdentifier: "ConfigL") as! Config
                 viewController.setPlayerSelf(playerSelf: self.playerSelf!)
+                let transition = CATransition()
+                transition.duration = 0.3
+                transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+                transition.type = CATransitionType.fade
+                self.navigationController?.view.layer.add(transition, forKey: nil)
+                _ = self.navigationController?.popViewController(animated: false)
                 self.navigationController?.pushViewController(viewController, animated: false)
                 return
             }
             let storyboard: UIStoryboard = UIStoryboard(name: "ConfigP", bundle: nil)
             let viewController = storyboard.instantiateViewController(withIdentifier: "ConfigP") as! Config
             viewController.setPlayerSelf(playerSelf: self.playerSelf!)
+            let transition = CATransition()
+            transition.duration = 0.3
+            transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+            transition.type = CATransitionType.fade
+            self.navigationController?.view.layer.add(transition, forKey: nil)
+            _ = self.navigationController?.popViewController(animated: false)
             self.navigationController?.pushViewController(viewController, animated: false)
         default:
             print("fuck")
