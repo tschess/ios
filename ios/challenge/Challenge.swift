@@ -90,17 +90,12 @@ class Challenge: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate
     func renderConfig0() {
         self.selection = 0
         
-        //self.config = self.playerSelf!.getConfig(index: 0)
         self.tschessElementMatrix = self.playerSelf!.getConfig(index: 0)
         
-        //self.activeConfigNumber.text = "0̸"
         self.activeConfigNumber.text = "0̸"
         
-        //self.boardViewConfig.reloadData()
         self.configCollectionView.reloadData()
         
-        //self.configLabelView.isHidden = false
-        //self.traditionalLabel.isHidden = true
         self.configLabelView.isHidden = false
         self.traditionalLabel.isHidden = true
         
@@ -300,7 +295,6 @@ class Challenge: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate
                 back: "CHALLENGE",
                 height: UIScreen.main.bounds.height)
             viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
-            //self.present(viewController, animated: false , completion: nil)
             self.navigationController?.pushViewController(viewController, animated: false)
             return
         }
@@ -313,7 +307,6 @@ class Challenge: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate
                 height: UIScreen.main.bounds.height)
             viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
             self.navigationController?.pushViewController(viewController, animated: false)
-            //self.present(viewController, animated: false , completion: nil)
             return
         }
         let viewController = EditOther.create(
@@ -323,7 +316,6 @@ class Challenge: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate
             back: "CHALLENGE",
             height: UIScreen.main.bounds.height)
         viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
-        //self.present(viewController, animated: false , completion: nil)
         self.navigationController?.pushViewController(viewController, animated: false)
     }
     
@@ -367,40 +359,13 @@ class Challenge: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate
     
     @IBAction func backButtonClick(_ sender: Any) {
         self.navigationController?.popViewController(animated: false)
-        //if(self.BACK == "HOME"){
-            //self.modalTransitionStyle = .crossDissolve
-            //self.dismiss(animated: true, completion: nil)
-            //self.navigationController?.popViewController(animated: false)
-            //return
-        //}
-        //if(self.BACK == "MENU"){
-            //let request: [String: Any] = ["id": self.playerSelf!.id, "index": 0, "size": Const().PAGE_SIZE, "self": true]
-            //self.activityIndicator!.isHidden = false
-            //self.activityIndicator!.startAnimating()
-            //RequestActual().execute(requestPayload: request) { (result) in
-                //if(result != nil){
-                    //DispatchQueue.main.async {
-                        //self.activityIndicator!.isHidden = true
-                        //self.activityIndicator!.stopAnimating()
-                        //let height: CGFloat = UIScreen.main.bounds.height
-                        //SelectMenu().execute(player: self.playerSelf!, height: height)
-                    //}
-                //}
-                //error...
-            //}
-            //return
-        //}
-        //DispatchQueue.main.async {
-            //let screenSize: CGRect = UIScreen.main.bounds
-            //let height: CGFloat = screenSize.height
-            //SelectOther().execute(playerSelf: self.playerSelf!, playerOther: self.playerOther!, height: height)
-        //}
     }
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         switch item.tag {
-        default: //1
-            
+            case 0:
+                 self.backButtonClick("")
+        default:
             self.activityIndicator.isHidden = false
             self.activityIndicator.startAnimating()
             
@@ -410,12 +375,6 @@ class Challenge: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate
                 "config": self.selection!]
             
             RequestChallenge().execute(requestPayload: requestPayload) { (result) in
-                
-                //DispatchQueue.main.async {
-                    //let screenSize: CGRect = UIScreen.main.bounds
-                    //let height: CGFloat = screenSize.height
-                    //SelectHome().execute(player: self.playerSelf!, height: height)
-                //}
                 DispatchQueue.main.async {
                     if let navigationController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController {
                         let viewControllers = navigationController.viewControllers
@@ -428,8 +387,6 @@ class Challenge: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate
                         }
                         
                     }
-                    //self.modalTransitionStyle = .crossDissolve
-                    //self.dismiss(animated: true, completion: nil)
                     self.navigationController?.popViewController(animated: false)
                 }
             }

@@ -43,19 +43,6 @@ class Home: UIViewController, UITabBarDelegate {
         
         self.navigationController?.viewControllers = [self]
        
-        if let viewControllers = self.navigationController?.viewControllers {
-            for vc in viewControllers {
-                //if vc.isKind(of: YourViewController.classForCoder()) {
-                print("---")
-                print("00: It is in stack \(String(describing: type(of: vc)))")
-                print("---")
-                //Your Process
-                //}
-            }
-        }
-        
-        
-        
         self.tabBarMenu.delegate = self
         self.homeMenuTable = children.first as? HomeMenuTable
         self.homeMenuTable!.home = self
@@ -201,8 +188,6 @@ class Home: UIViewController, UITabBarDelegate {
                 let viewController = storyboard.instantiateViewController(withIdentifier: "OtherL") as! Other
                 viewController.setPlayerSelf(playerSelf: self.playerSelf!)
                 viewController.setPlayerOther(playerOther: playerOther)
-                //viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
-                //self.present(viewController, animated: false , completion: nil)
                 self.navigationController?.pushViewController(viewController, animated: false)
                 return
             }
@@ -210,8 +195,6 @@ class Home: UIViewController, UITabBarDelegate {
             let viewController = storyboard.instantiateViewController(withIdentifier: "OtherP") as! Other
             viewController.setPlayerSelf(playerSelf: self.playerSelf!)
             viewController.setPlayerOther(playerOther: playerOther)
-            //viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
-            //self.present(viewController, animated: false , completion: nil)
             self.navigationController?.pushViewController(viewController, animated: false)
         }
     }

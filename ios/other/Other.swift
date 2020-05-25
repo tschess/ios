@@ -12,8 +12,6 @@ class Other: UIViewController, UITabBarDelegate {
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
-    //let DATE_TIME: DateTime = DateTime()
-    
     //MARK: Properties
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var tabBarMenu: UITabBar!
@@ -79,12 +77,12 @@ class Other: UIViewController, UITabBarDelegate {
         let gameMenuSelectionIndex = notification.userInfo!["other_menu_selection"] as! Int
         let game = self.otherMenuTable!.getGameMenuTableList()[gameMenuSelectionIndex]
         
-       
+        
         SelectSnapshot().snapshot(playerSelf: self.playerSelf!, game: game, presentor: self)
     }
     
     @IBAction func backButtonClick(_ sender: Any) {
-       let transition = CATransition()
+        let transition = CATransition()
         transition.duration = 0.3
         transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
         transition.type = CATransitionType.fade
@@ -94,35 +92,32 @@ class Other: UIViewController, UITabBarDelegate {
     }
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-//        DispatchQueue.main.async {
-//            let height: CGFloat = UIScreen.main.bounds.height
-//            SelectChallenge().execute(selection: Int.random(in: 0...3), playerSelf: self.playerSelf!, playerOther: self.playerOther!, BACK: "OTHER", height: height)
-//        }
-        DispatchQueue.main.async {
-            let height: CGFloat = UIScreen.main.bounds.height
-            if(height.isLess(than: 750)){
-                let storyboard: UIStoryboard = UIStoryboard(name: "ChallengeL", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "ChallengeL") as! Challenge
+        self.tabBarMenu.selectedItem = nil
+        switch item.tag {
+        case 0:
+            self.backButtonClick("")
+        default:
+            DispatchQueue.main.async {
+                let height: CGFloat = UIScreen.main.bounds.height
+                if(height.isLess(than: 750)){
+                    let storyboard: UIStoryboard = UIStoryboard(name: "ChallengeL", bundle: nil)
+                    let viewController = storyboard.instantiateViewController(withIdentifier: "ChallengeL") as! Challenge
+                    viewController.setPlayerSelf(playerSelf: self.playerSelf!)
+                    viewController.setPlayerOther(playerOther: self.playerOther!)
+                    viewController.setSelection(selection: Int.random(in: 0...3))
+                    viewController.BACK = "OTHER"
+                    self.navigationController?.pushViewController(viewController, animated: false)
+                    return
+                }
+                let storyboard: UIStoryboard = UIStoryboard(name: "ChallengeP", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "ChallengeP") as! Challenge
                 viewController.setPlayerSelf(playerSelf: self.playerSelf!)
                 viewController.setPlayerOther(playerOther: self.playerOther!)
                 viewController.setSelection(selection: Int.random(in: 0...3))
                 viewController.BACK = "OTHER"
-                //viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
-                //viewController.modalTransitionStyle = .crossDissolve
-                //self.home!.present(viewController, animated: false , completion: nil)
                 self.navigationController?.pushViewController(viewController, animated: false)
-                return
             }
-            let storyboard: UIStoryboard = UIStoryboard(name: "ChallengeP", bundle: nil)
-            let viewController = storyboard.instantiateViewController(withIdentifier: "ChallengeP") as! Challenge
-            viewController.setPlayerSelf(playerSelf: self.playerSelf!)
-            viewController.setPlayerOther(playerOther: self.playerOther!)
-            viewController.setSelection(selection: Int.random(in: 0...3))
-            viewController.BACK = "OTHER"
-            //viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
-            //viewController.modalTransitionStyle = .crossDissolve
-            //self.home!.present(viewController, animated: false , completion: nil)
-            self.navigationController?.pushViewController(viewController, animated: false)
+            
         }
     }
 }

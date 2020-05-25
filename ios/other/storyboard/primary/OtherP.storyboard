@@ -157,8 +157,8 @@
                                     <constraint firstAttribute="height" constant="50" id="CtS-Ad-lXP"/>
                                 </constraints>
                                 <items>
-                                    <tabBarItem tag="1" title="HOME" image="back.grey" selectedImage="back.white" id="fjf-cy-wGx">
-                                        <inset key="imageInsets" minX="5" minY="5" maxX="5" maxY="5"/>
+                                    <tabBarItem title="HOME" image="back.grey" selectedImage="back.white" id="fjf-cy-wGx">
+                                        <inset key="imageInsets" minX="3" minY="3" maxX="3" maxY="3"/>
                                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tabBarItem>
                                     <tabBarItem tag="1" title="CHALLENGE" image="challenge_g" selectedImage="challenge" id="fZq-cE-gYf">
