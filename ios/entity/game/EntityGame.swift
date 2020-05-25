@@ -152,7 +152,7 @@ class EntityGame: Equatable, Hashable {
     func getLabelTextDate() -> String {
         let date: Date = self.getDateUpdated()
         let formatter = DateFormatter()
-        formatter.dateFormat = "dd.MM.YY"
+        formatter.dateFormat = "MM.dd.YY"
         var dateFormat = formatter.string(from: date)
         dateFormat.insert("'", at: dateFormat.index(dateFormat.endIndex, offsetBy: -2))
         return dateFormat

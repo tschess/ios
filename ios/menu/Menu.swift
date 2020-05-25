@@ -121,8 +121,6 @@ class Menu: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate {
         self.navigationController?.popViewController(animated: false)
     }
     
-    let enter: Enter = Enter.instanceFromNib()
-    
     func setIndicator(on: Bool) {
         if(on) {
             DispatchQueue.main.async() {

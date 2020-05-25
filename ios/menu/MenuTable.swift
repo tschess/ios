@@ -300,18 +300,24 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
     
     private func getCellHisto(cell: MenuCell) -> MenuCell {
         cell.soLaLa.backgroundColor = UIColor.black
-        cell.usernameLabel.textColor = UIColor.lightGray
-        cell.timeIndicatorLabel.textColor = UIColor.darkGray
+        //cell.usernameLabel.textColor = UIColor.lightGray
+        cell.usernameLabel.textColor = UIColor.white
+        //cell.timeIndicatorLabel.textColor = UIColor.darkGray
+        cell.timeIndicatorLabel.textColor = UIColor.lightGray
         cell.actionImageView.isHidden = true
         cell.dispImageView.isHidden = false
         cell.dispAdjacentLabel.isHidden = false
-        cell.dispAdjacentLabel.textColor = UIColor.darkGray
+        //cell.dispAdjacentLabel.textColor = UIColor.darkGray
+        cell.dispAdjacentLabel.textColor = UIColor.lightGray
         cell.oddsIndicatorLabel.isHidden = false
-        cell.oddsIndicatorLabel.textColor = UIColor.darkGray
+        //cell.oddsIndicatorLabel.textColor = UIColor.darkGray
+        cell.oddsIndicatorLabel.textColor = UIColor.lightGray
         cell.oddsValueLabel.isHidden = false
-        cell.oddsValueLabel.textColor = UIColor.lightGray
+        //cell.oddsValueLabel.textColor = UIColor.lightGray
+        cell.oddsValueLabel.textColor = UIColor.white
         cell.dispValueLabel.isHidden = false
-        cell.dispValueLabel.textColor = UIColor.lightGray
+        //cell.dispValueLabel.textColor = UIColor.lightGray
+        cell.dispValueLabel.textColor = UIColor.white
         return cell
     }
     
@@ -423,30 +429,6 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
         let count1 = gameMenuTableList.count
         if(count0 != count1){
             self.menu!.setIndicator(on: false)
-        }
-        if(count1 > 0){
-            DispatchQueue.main.async {
-                let tutorial: Bool = self.menu!.containerView!.subviews.contains(self.menu!.enter)
-                if(!tutorial){
-                    return
-                }
-                self.menu!.enter.removeFromSuperview()
-            }
-        } else {
-            DispatchQueue.main.async {
-                self.menu!.enter.enterWidthConstraint.constant = self.view.frame.width
-                self.menu!.containerView!.addSubview(self.menu!.enter)
-                self.menu!.enter.translatesAutoresizingMaskIntoConstraints = false
-                let top = NSLayoutConstraint(item: self.menu!.enter, attribute: NSLayoutConstraint.Attribute.top, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.menu!.containerView, attribute: NSLayoutConstraint.Attribute.top, multiplier: 1, constant: 0)
-                let bottom = NSLayoutConstraint(item: self.menu!.enter, attribute: NSLayoutConstraint.Attribute.bottom, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.menu!.containerView, attribute: NSLayoutConstraint.Attribute.bottom, multiplier: 1, constant: 0)
-                let trailing = NSLayoutConstraint(item: self.menu!.enter, attribute: NSLayoutConstraint.Attribute.trailing, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.menu!.containerView, attribute: NSLayoutConstraint.Attribute.trailing, multiplier: 1, constant: 0)
-                let leading = NSLayoutConstraint(item: self.menu!.enter, attribute: NSLayoutConstraint.Attribute.leading, relatedBy: NSLayoutConstraint.Relation.equal, toItem: self.menu!.containerView, attribute: NSLayoutConstraint.Attribute.leading, multiplier: 1, constant: 0)
-                self.menu!.view.addConstraints([top, bottom, trailing, leading])
-                
-                //let quick = UITapGestureRecognizer(target: self, action: #selector(self.menu!.quick))
-                //self.menu!.enter.addGestureRecognizer(quick)
-                self.menu!.enter.isUserInteractionEnabled = true
-            }
         }
     }
 }

@@ -164,15 +164,15 @@
                                     <constraint firstAttribute="height" constant="50" id="3Aw-0g-FIT"/>
                                 </constraints>
                                 <items>
-                                    <tabBarItem tag="1" title="PROFILE" image="quick.grey" selectedImage="quick.white" id="Z5R-KS-Z6j">
-                                        <inset key="imageInsets" minX="1" minY="1" maxX="1" maxY="1"/>
+                                    <tabBarItem tag="1" title="PROFILE" image="pro_g" selectedImage="pro_w" id="Z5R-KS-Z6j">
+                                        <inset key="imageInsets" minX="4" minY="4" maxX="4" maxY="4"/>
                                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tabBarItem>
                                     <tabBarItem tag="3" title="GAMES" image="game.grey" selectedImage="game.white" id="Ccy-HC-zcU">
                                         <inset key="imageInsets" minX="3" minY="3" maxX="3" maxY="3"/>
                                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tabBarItem>
-                                    <tabBarItem tag="4" title="CONFIG(S)" image="setup.grey" selectedImage="setup.white" id="RmV-cI-lZG">
+                                    <tabBarItem tag="4" title="CONFIG" image="setup.grey" selectedImage="setup.white" id="RmV-cI-lZG">
                                         <inset key="imageInsets" minX="3" minY="3" maxX="3" maxY="3"/>
                                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tabBarItem>
@@ -370,8 +370,8 @@
         <image name="avatar_inverse" width="320" height="320"/>
         <image name="game.grey" width="39" height="39"/>
         <image name="game.white" width="39" height="39"/>
-        <image name="quick.grey" width="20" height="31"/>
-        <image name="quick.white" width="25" height="39"/>
+        <image name="pro_g" width="39" height="39"/>
+        <image name="pro_w" width="39" height="39"/>
         <image name="setup.grey" width="38" height="40"/>
         <image name="setup.white" width="38" height="40"/>
     </resources>

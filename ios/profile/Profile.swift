@@ -108,27 +108,6 @@ class Profile: UIViewController, UITabBarDelegate, UINavigationControllerDelegat
         case 0://photo
             self.changePhoto()
             //return
-        case 1:// info
-            //DispatchQueue.main.async {
-                //let height: CGFloat = UIScreen.main.bounds.height
-                //SelectContext().execute(player: self.player!, height: height)
-            //}
-            //return
-            let height: CGFloat = UIScreen.main.bounds.height
-            if(height.isLess(than: 750)){
-                let storyboard: UIStoryboard = UIStoryboard(name: "ContextL", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "ContextL") as! Context
-                viewController.setPlayer(player: self.player!)
-                //viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
-                self.navigationController?.pushViewController(viewController, animated: false)
-                return
-            }
-            let storyboard: UIStoryboard = UIStoryboard(name: "ContextP", bundle: nil)
-            let viewController = storyboard.instantiateViewController(withIdentifier: "ContextP") as! Context
-            viewController.setPlayer(player: self.player!)
-            //viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
-            //self.present(viewController, animated: false , completion: nil)
-            self.navigationController?.pushViewController(viewController, animated: false)
         default:
             self.signOut()
         }

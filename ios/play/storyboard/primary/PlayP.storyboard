@@ -51,7 +51,11 @@
                                     <constraint firstAttribute="height" constant="50" id="CtS-Ad-lXP"/>
                                 </constraints>
                                 <items>
-                                    <tabBarItem title="LET'S PLAY!" image="challenge" selectedImage="challenge" id="6f1-4w-L4h">
+                                    <tabBarItem title="GAMES" image="back.grey" selectedImage="back.white" id="6f1-4w-L4h">
+                                        <inset key="imageInsets" minX="6" minY="6" maxX="6" maxY="6"/>
+                                        <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </tabBarItem>
+                                    <tabBarItem title="LET'S PLAY!" image="challenge_g" selectedImage="challenge" id="47g-W8-Or4">
                                         <inset key="imageInsets" minX="6" minY="6" maxX="6" maxY="6"/>
                                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tabBarItem>
@@ -380,6 +384,9 @@
     </scenes>
     <resources>
         <image name="avatar_default" width="320" height="320"/>
+        <image name="back.grey" width="39" height="33"/>
+        <image name="back.white" width="39" height="33"/>
         <image name="challenge" width="39" height="39"/>
+        <image name="challenge_g" width="39" height="39"/>
     </resources>
 </document>

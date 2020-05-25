@@ -26,8 +26,6 @@ class Home: UIViewController, UITabBarDelegate {
     
     @IBOutlet weak var tabBarMenu: UITabBar!
     
-    var activateProfileGestureRecognizer: UITapGestureRecognizer?
-    
     var playerSelf: EntityPlayer?
     
     public func renderHeader() {
@@ -77,49 +75,11 @@ class Home: UIViewController, UITabBarDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        self.activateProfileGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.activateProfile))
-        self.headerView.addGestureRecognizer(self.activateProfileGestureRecognizer!)
-        
         self.renderHeader()
-        
-        self.notificationTimerStart()
     }
     
-    override func viewDidAppear(_ animated: Bool) {}
-    
-    
-    @objc func activateProfile() {
-        let height: CGFloat = UIScreen.main.bounds.height
-        if(height.isLess(than: 750)){
-            DispatchQueue.main.async() {
-                
-                let storyboard: UIStoryboard = UIStoryboard(name: "ProfileL", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "ProfileL") as! Profile
-                viewController.setPlayer(player: self.playerSelf!)
-                let transition = CATransition()
-                transition.duration = 0.3
-                transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
-                transition.type = CATransitionType.fade
-                self.navigationController?.view.layer.add(transition, forKey: nil)
-                _ = self.navigationController?.popViewController(animated: false)
-                self.navigationController?.pushViewController(viewController, animated: false)
-            }
-            return
-        }
-        DispatchQueue.main.async() {
-            
-            let storyboard: UIStoryboard = UIStoryboard(name: "ProfileP", bundle: nil)
-            let viewController = storyboard.instantiateViewController(withIdentifier: "ProfileP") as! Profile
-            viewController.setPlayer(player: self.playerSelf!)
-            let transition = CATransition()
-            transition.duration = 0.3
-            transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
-            transition.type = CATransitionType.fade
-            self.navigationController?.view.layer.add(transition, forKey: nil)
-            _ = self.navigationController?.popViewController(animated: false)
-            self.navigationController?.pushViewController(viewController, animated: false)
-        }
+    override func viewDidAppear(_ animated: Bool) {
+        self.notificationTimerStart()
     }
     
     // MARK: NOTIFICATION TIMER
@@ -153,41 +113,42 @@ class Home: UIViewController, UITabBarDelegate {
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         self.tabBarMenu.selectedItem = nil
-        
+        DispatchQueue.main.async() {
+            let notify = self.tabBarMenu.items![1]
+            notify.selectedImage = UIImage(named: "game.grey")!
+        }
         switch item.tag {
         case 1:
-            self.setIndicator(on: true)
-            DispatchQueue.main.async() {
-                let notify = self.tabBarMenu.items![1]
-                notify.selectedImage = UIImage(named: "game.grey")!
-            }
-            RequestQuick().success(id: self.playerSelf!.id) { (json) in
-                self.setIndicator(on: false)
-                let opponent: EntityPlayer = ParsePlayer().execute(json: json)
-                let height: CGFloat = UIScreen.main.bounds.height
-                if(height.isLess(than: 750)){
-                    DispatchQueue.main.async() {
-                        let storyboard: UIStoryboard = UIStoryboard(name: "PlayL", bundle: nil)
-                        let viewController = storyboard.instantiateViewController(withIdentifier: "PlayL") as! Play
-                        viewController.setPlayerSelf(playerSelf: self.playerSelf!)
-                        viewController.setPlayerOther(playerOther: opponent)
-                        viewController.setSelection(selection: Int.random(in: 0...3))
-                        self.navigationController?.pushViewController(viewController, animated: false)
-                    }
-                    return
-                }
+            //self.setIndicator(on: true)
+            let height: CGFloat = UIScreen.main.bounds.height
+            if(height.isLess(than: 750)){
                 DispatchQueue.main.async() {
-                    let storyboard: UIStoryboard = UIStoryboard(name: "PlayP", bundle: nil)
-                    let viewController = storyboard.instantiateViewController(withIdentifier: "PlayP") as! Play
-                    viewController.setPlayerSelf(playerSelf: self.playerSelf!)
-                    viewController.setPlayerOther(playerOther: opponent)
-                    viewController.setSelection(selection: Int.random(in: 0...3))
-                    //self.navigationController?.pushViewController(viewController, animated: false)
+                    let storyboard: UIStoryboard = UIStoryboard(name: "ProfileL", bundle: nil)
+                    let viewController = storyboard.instantiateViewController(withIdentifier: "ProfileL") as! Profile
+                    viewController.setPlayer(player: self.playerSelf!)
+                    let transition = CATransition()
+                    transition.duration = 0.3
+                    transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+                    transition.type = CATransitionType.fade
+                    self.navigationController?.view.layer.add(transition, forKey: nil)
+                    _ = self.navigationController?.popViewController(animated: false)
                     self.navigationController?.pushViewController(viewController, animated: false)
-                }}
+                }
+                return
+            }
+            DispatchQueue.main.async() {
+                let storyboard: UIStoryboard = UIStoryboard(name: "ProfileP", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "ProfileP") as! Profile
+                viewController.setPlayer(player: self.playerSelf!)
+                let transition = CATransition()
+                transition.duration = 0.3
+                transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+                transition.type = CATransitionType.fade
+                self.navigationController?.view.layer.add(transition, forKey: nil)
+                _ = self.navigationController?.popViewController(animated: false)
+                self.navigationController?.pushViewController(viewController, animated: false)
+            }
         case 3:
-            self.tabBarMenu.selectedItem = nil
-            
             if(self.menu != nil){
                 let transition = CATransition()
                 transition.duration = 0.3
@@ -212,27 +173,20 @@ class Home: UIViewController, UITabBarDelegate {
             viewController.setPlayerSelf(playerSelf: self.playerSelf!)
             self.navigationController?.pushViewController(viewController, animated: false)
         case 4:
-            self.tabBarMenu.selectedItem = nil
-            
             let height: CGFloat = UIScreen.main.bounds.height
             if(height.isLess(than: 750)){
                 let storyboard: UIStoryboard = UIStoryboard(name: "ConfigL", bundle: nil)
                 let viewController = storyboard.instantiateViewController(withIdentifier: "ConfigL") as! Config
                 viewController.setPlayerSelf(playerSelf: self.playerSelf!)
-                //viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
-                //self.present(viewController, animated: false , completion: nil)
                 self.navigationController?.pushViewController(viewController, animated: false)
                 return
             }
             let storyboard: UIStoryboard = UIStoryboard(name: "ConfigP", bundle: nil)
             let viewController = storyboard.instantiateViewController(withIdentifier: "ConfigP") as! Config
             viewController.setPlayerSelf(playerSelf: self.playerSelf!)
-            //viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
-            //self.present(viewController, animated: false , completion: nil)
             self.navigationController?.pushViewController(viewController, animated: false)
-            
         default:
-            self.notificationTimerStop()
+            print("fuck")
         }
     }
     

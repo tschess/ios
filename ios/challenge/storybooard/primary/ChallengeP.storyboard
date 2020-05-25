@@ -51,7 +51,11 @@
                                     <constraint firstAttribute="height" constant="50" id="CtS-Ad-lXP"/>
                                 </constraints>
                                 <items>
-                                    <tabBarItem title="SEND" image="out_g" selectedImage="out_w" id="6f1-4w-L4h">
+                                    <tabBarItem title="HOME" image="back.grey" selectedImage="back.white" id="6f1-4w-L4h">
+                                        <inset key="imageInsets" minX="3" minY="3" maxX="3" maxY="3"/>
+                                        <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </tabBarItem>
+                                    <tabBarItem title="SEND" image="out_g" selectedImage="out_w" id="8cd-dC-LCW">
                                         <inset key="imageInsets" minX="3" minY="3" maxX="3" maxY="3"/>
                                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tabBarItem>
@@ -379,6 +383,8 @@
     </scenes>
     <resources>
         <image name="avatar_default" width="320" height="320"/>
+        <image name="back.grey" width="39" height="33"/>
+        <image name="back.white" width="39" height="33"/>
         <image name="out_g" width="39" height="39"/>
         <image name="out_w" width="39" height="39"/>
     </resources>
