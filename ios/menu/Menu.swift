@@ -86,10 +86,6 @@ class Menu: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate {
                         viewController.setPlayerOther(playerOther: opponent)
                         viewController.setSelection(selection: Int.random(in: 0...3))
                         self.navigationController?.pushViewController(viewController, animated: false)
-                        guard let navigationController = self.navigationController else { return }
-                        var navigationArray = navigationController.viewControllers // To get all UIViewController stack as Array
-                        navigationArray.remove(at: navigationArray.count - 2) // To remove previous UIViewController
-                        self.navigationController?.viewControllers = navigationArray
                     }
                     return
                 }
@@ -99,12 +95,7 @@ class Menu: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate {
                     viewController.setPlayerSelf(playerSelf: self.playerSelf!)
                     viewController.setPlayerOther(playerOther: opponent)
                     viewController.setSelection(selection: Int.random(in: 0...3))
-                    //self.navigationController?.pushViewController(viewController, animated: false)
                     self.navigationController?.pushViewController(viewController, animated: false)
-                    guard let navigationController = self.navigationController else { return }
-                    var navigationArray = navigationController.viewControllers // To get all UIViewController stack as Array
-                    navigationArray.remove(at: navigationArray.count - 2) // To remove previous UIViewController
-                    self.navigationController?.viewControllers = navigationArray
                 }}
         default:
             self.backButtonClick("")

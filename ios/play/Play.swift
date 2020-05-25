@@ -20,6 +20,9 @@ class Play: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate {
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         switch item.tag {
+            case 0:
+                self.tabBarMenu.selectedItem = nil
+            self.backButtonClick("")
         default: //1
             self.activityIndicator.isHidden = false
             self.activityIndicator.startAnimating()
@@ -30,6 +33,7 @@ class Play: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate {
                 "config": self.selection!]
             
             RequestPlay().execute(requestPayload: requestPayload) { (game) in
+                self.tabBarMenu.selectedItem = nil
                 if(game == nil){
                     return //error...
                 }
@@ -337,7 +341,6 @@ class Play: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate {
                 back: "PLAY",
                 height: UIScreen.main.bounds.height)
             viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
-            //self.present(viewController, animated: false , completion: nil)
             self.navigationController?.pushViewController(viewController, animated: false)
             return
         }
@@ -349,7 +352,6 @@ class Play: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate {
                 back: "PLAY",
                 height: UIScreen.main.bounds.height)
             viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
-            //self.present(viewController, animated: false , completion: nil)
             self.navigationController?.pushViewController(viewController, animated: false)
             return
         }
@@ -360,7 +362,6 @@ class Play: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate {
             back: "PLAY",
             height: UIScreen.main.bounds.height)
         viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
-        //self.present(viewController, animated: false , completion: nil)
         self.navigationController?.pushViewController(viewController, animated: false)
     }
     
