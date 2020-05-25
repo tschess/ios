@@ -67,25 +67,58 @@ class Config: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate, U
     //MARK: - lifecycle
     
     override func viewDidLoad() {
+         print("viewDidLoad")
         super.viewDidLoad()
         
         self.tabBarMenu.delegate = self
         
         self.activityIndicator.isHidden = true
         
+        
+        self.configCollectionView0.bounces = false
+        self.configCollectionView1.bounces = false
+        self.configCollectionView2.bounces = false
+        self.configCollectionView0.alwaysBounceVertical = false
+        self.configCollectionView1.alwaysBounceVertical = false
+        self.configCollectionView2.alwaysBounceVertical = false
+        
+        
         self.configCollectionView0.delegate = self
-        self.configCollectionView0.dataSource = self
-        let editCollectionView0 = UITapGestureRecognizer(target: self, action: #selector(self.editCollectionView0))
-        self.configCollectionView0.addGestureRecognizer(editCollectionView0)
-        
         self.configCollectionView1.delegate = self
-        self.configCollectionView1.dataSource = self
-        let editCollectionView1 = UITapGestureRecognizer(target: self, action: #selector(self.editCollectionView1))
-        self.configCollectionView1.addGestureRecognizer(editCollectionView1)
-        
         self.configCollectionView2.delegate = self
+        
+        self.configCollectionView0.dataSource = self
+        self.configCollectionView1.dataSource = self
         self.configCollectionView2.dataSource = self
+        
+        
+        
+        self.configCollectionView0.isHidden = true
+        self.configCollectionView1.isHidden = true
+        self.configCollectionView2.isHidden = true
+        
+        
+        
+        self.tschessElementMatrix0 = self.playerSelf!.getConfig(index: 0)
+        self.tschessElementMatrix1 = self.playerSelf!.getConfig(index: 1)
+        self.tschessElementMatrix2 = self.playerSelf!.getConfig(index: 2)
+        
+        
+        
+        
+        
+    
+        
+        
+        
+        
+        
+        
+        let editCollectionView0 = UITapGestureRecognizer(target: self, action: #selector(self.editCollectionView0))
+        let editCollectionView1 = UITapGestureRecognizer(target: self, action: #selector(self.editCollectionView1))
         let editCollectionView2 = UITapGestureRecognizer(target: self, action: #selector(self.editCollectionView2))
+        self.configCollectionView0.addGestureRecognizer(editCollectionView0)
+        self.configCollectionView1.addGestureRecognizer(editCollectionView1)
         self.configCollectionView2.addGestureRecognizer(editCollectionView2)
     }
     
@@ -98,8 +131,6 @@ class Config: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate, U
             player: self.playerSelf!,
             select: 0,
             height: UIScreen.main.bounds.height)
-        //viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
-        //self.present(viewController, animated: false , completion: nil)
         self.navigationController?.pushViewController(viewController, animated: false)
     }
     
@@ -108,8 +139,6 @@ class Config: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate, U
                    player: self.playerSelf!,
                    select: 1,
                    height: UIScreen.main.bounds.height)
-               //viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
-               //self.present(viewController, animated: false , completion: nil)
         self.navigationController?.pushViewController(viewController, animated: false)
     }
     
@@ -118,8 +147,6 @@ class Config: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate, U
                    player: self.playerSelf!,
                    select: 2,
                    height: UIScreen.main.bounds.height)
-               //viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
-               //self.present(viewController, animated: false , completion: nil)
         self.navigationController?.pushViewController(viewController, animated: false)
     }
     
@@ -134,57 +161,48 @@ class Config: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate, U
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        print("viewWillAppear")
         super.viewWillAppear(animated)
         
         self.renderHeader()
         
-        self.configCollectionView0.isHidden = true
-        self.configCollectionView1.isHidden = true
-        self.configCollectionView2.isHidden = true
+       
         
-        self.tschessElementMatrix0 = self.playerSelf!.getConfig(index: 0)
-        self.tschessElementMatrix1 = self.playerSelf!.getConfig(index: 1)
-        self.tschessElementMatrix2 = self.playerSelf!.getConfig(index: 2)
+        
+        
+        
+        //self.configCollectionView0.setNeedsLayout()
+        //self.configCollectionView1.setNeedsLayout()
+        //self.configCollectionView2.setNeedsLayout()
+        
     }
     
     override func viewDidLayoutSubviews() {
+        print("viewDidLayoutSubviews")
         super.viewDidLayoutSubviews()
         
-        //let totalContentHeight = self.contentView.frame.size.height - 8 // 4???
         let totalContentHeight = self.contentView.frame.size.height
         
         self.splitViewHeight0.constant = totalContentHeight/3
         self.splitViewHeight1.constant = totalContentHeight/3
         self.splitViewHeight2.constant = totalContentHeight/3
         
-        self.configCollectionView0.bounces = false
-        self.configCollectionView0.alwaysBounceVertical = false
-        self.configCollectionViewHeight0.constant = configCollectionView0.contentSize.height
-        
-        
-        self.configCollectionView1.bounces = false
-        self.configCollectionView1.alwaysBounceVertical = false
-        self.configCollectionViewHeight1.constant = configCollectionView1.contentSize.height
-        
-        
-        self.configCollectionView2.bounces = false
-        self.configCollectionView2.alwaysBounceVertical = false
-        self.configCollectionViewHeight2.constant = configCollectionView2.contentSize.height
+        self.configCollectionViewHeight0.constant = self.configCollectionView0.contentSize.height
+        self.configCollectionViewHeight1.constant = self.configCollectionView1.contentSize.height
+        self.configCollectionViewHeight2.constant = self.configCollectionView2.contentSize.height
     }
     
-    //@objc func renderElementCollectionView() {
-        //self.avatarImageView.removeGestureRecognizer(self.updatePhotoGesture!)
-        //self.view.removeGestureRecognizer(self.swipeRightGesture!)
-        //self.view.removeGestureRecognizer(self.swipeLeftGesture!)
-    //}
     
     override func viewDidAppear(_ animated: Bool) {
+        print("viewDidAppear")
         super.viewDidAppear(animated)
-        self.configCollectionView0.reloadData()
+        
+        self.configCollectionView0.layoutSubviews()
+        self.configCollectionView1.layoutSubviews()
+        self.configCollectionView2.layoutSubviews()
+        
         self.configCollectionView0.isHidden = false
-        self.configCollectionView1.reloadData()
         self.configCollectionView1.isHidden = false
-        self.configCollectionView2.reloadData()
         self.configCollectionView2.isHidden = false
     }
 }
@@ -193,7 +211,6 @@ class Config: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate, U
 extension Config: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
         return items.count
     }
     
@@ -293,7 +310,7 @@ extension Config: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let cellsAcross: CGFloat = 8
-        let dim = collectionView.frame.width / cellsAcross
+        let dim = UIScreen.main.bounds.width / cellsAcross
         return CGSize(width: dim, height: dim)
     }
     
@@ -302,7 +319,6 @@ extension Config: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        
         return 0
     }
     
@@ -316,47 +332,20 @@ extension Config: UICollectionViewDelegate {
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         switch item.tag {
         case 1:
-            //DispatchQueue.main.async {
-            //let height: CGFloat = UIScreen.main.bounds.height
-            //SelectFairies().execute(player: self.playerSelf!, height: height)
-            //}
-            //return
             self.tabBarMenu.selectedItem = nil
-            
-            
-            
-            //DispatchQueue.main.async {
             let height: CGFloat = UIScreen.main.bounds.height
             if(height.isLess(than: 750)){
-                //let root = UIApplication.shared.delegate! as! AppDelegate
                 let storyboard: UIStoryboard = UIStoryboard(name: "FairiesL", bundle: nil)
                 let viewController = storyboard.instantiateViewController(withIdentifier: "FairiesL") as! Fairies
                 viewController.playerSelf = self.playerSelf!
-                //viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
-                //root.window?.rootViewController?.present(viewController, animated: false , completion: nil)
-                //self.present(viewController, animated: false , completion: nil)
                 self.navigationController?.pushViewController(viewController, animated: false)
                 return
             }
-            //let root = UIApplication.shared.delegate! as! AppDelegate
             let storyboard: UIStoryboard = UIStoryboard(name: "FairiesP", bundle: nil)
             let viewController = storyboard.instantiateViewController(withIdentifier: "FairiesP") as! Fairies
             viewController.playerSelf = self.playerSelf!
-            //viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
-            //self.present(viewController, animated: false , completion: nil)
             self.navigationController?.pushViewController(viewController, animated: false)
-            
-            
-            
-            
-            
-        //}
         default:
-            //DispatchQueue.main.async {
-            //let height: CGFloat = UIScreen.main.bounds.height
-            //SelectHome().execute(player: self.playerSelf!, height: height)
-            //}
-            //self.presentingViewController!.dismiss(animated: false, completion: nil)
             self.navigationController?.popViewController(animated: false)
         }
     }
