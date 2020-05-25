@@ -200,12 +200,14 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.viewBoard.reloadData()
-        self.viewBoard.isHidden = false
         
         self.setLabelCheck()
         self.setLabelEndgame()
         self.setTimer()
+        
+        //self.viewBoard.reloadData()
+        self.viewBoard.layoutSubviews()
+        self.viewBoard.isHidden = false
     }
     
     func endTimer() {
@@ -275,6 +277,8 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         self.labelRankDate.text = self.playerOther!.getLabelTextDate()
         self.labelUsername.text = self.playerOther!.username
         self.imageViewAvatar.image = self.playerOther!.getImageAvatar()
+        
+        
     }
     
     override func viewDidLayoutSubviews() {
@@ -320,7 +324,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let cellsAcross: CGFloat = 8
-        let dim = collectionView.frame.width / cellsAcross
+        let dim = UIScreen.main.bounds.width / cellsAcross
         return CGSize(width: dim, height: dim)
     }
     

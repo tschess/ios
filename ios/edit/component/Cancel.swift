@@ -12,7 +12,6 @@ class Cancel: UIViewController {
     
     var playerSelf: EntityPlayer?
     var other: Bool = false
-    //var editOther: EditOther?
     
     @IBOutlet weak var buttonNo: UIButton!
     @IBOutlet weak var buttonYes: UIButton!
@@ -46,6 +45,7 @@ class Cancel: UIViewController {
                     navigationController.popViewController(animated: false)
                 })
             }
+
             return
         }
         

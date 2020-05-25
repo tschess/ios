@@ -141,8 +141,8 @@ class EditOther: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.boardViewConfig.reloadData()
-        self.boardViewConfig.isHidden = false
+        //self.boardViewConfig.reloadData()
+        //self.boardViewConfig.isHidden = false
         self.boardViewConfig.gestureRecognizers?.forEach { (recognizer) in
             if let longPressRecognizer = recognizer as? UILongPressGestureRecognizer {
                 longPressRecognizer.minimumPressDuration = 0.004
@@ -153,6 +153,8 @@ class EditOther: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate
                 longPressRecognizer.minimumPressDuration = 0.06
             }
         }
+        self.boardViewConfig.layoutSubviews()
+        self.boardViewConfig.isHidden = false
     }
     
     override func viewDidLayoutSubviews() {
@@ -254,7 +256,7 @@ extension EditOther: UICollectionViewDelegateFlowLayout {
             return CGSize(width: 100, height: 150)
         }
         let cellsAcross: CGFloat = 8
-        let dim = collectionView.frame.width / cellsAcross
+        let dim = UIScreen.main.bounds.width / cellsAcross
         return CGSize(width: dim, height: dim)
     }
     

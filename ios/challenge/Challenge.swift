@@ -187,6 +187,7 @@ class Challenge: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.configCollectionView.reloadData()
+        self.configCollectionView.layoutSubviews()
         self.configCollectionView.isHidden = false
     }
     
@@ -433,7 +434,7 @@ extension Challenge: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let cellsAcross: CGFloat = 8
-        let dim = collectionView.frame.width / cellsAcross
+        let dim = UIScreen.main.bounds.width / cellsAcross
         return CGSize(width: dim, height: dim)
     }
     

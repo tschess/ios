@@ -21,7 +21,9 @@ class Play: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate {
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         switch item.tag {
             case 0:
+                //DispatchQueue.main.async {
                 self.tabBarMenu.selectedItem = nil
+                //}
             self.backButtonClick("")
         default: //1
             self.activityIndicator.isHidden = false
@@ -32,7 +34,11 @@ class Play: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate {
                 "id_other": self.playerOther!.id,
                 "config": self.selection!]
             
+            //
+            
             RequestPlay().execute(requestPayload: requestPayload) { (game) in
+                
+                DispatchQueue.main.async {
                 self.tabBarMenu.selectedItem = nil
                 if(game == nil){
                     return //error...
@@ -40,7 +46,7 @@ class Play: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate {
                 
                 let playerOther: EntityPlayer = game!.getPlayerOther(username: self.playerSelf!.username)
                 
-                DispatchQueue.main.async {
+                
                     let height: CGFloat = UIScreen.main.bounds.height
                     if(height.isLess(than: 750)){
                         let storyboard: UIStoryboard = UIStoryboard(name: "dTschessL", bundle: nil)
@@ -271,7 +277,9 @@ class Play: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.boardViewConfig.reloadData()
+        //self.boardViewConfig.reloadData()
+        //self.boardViewConfig.isHidden = false
+        self.boardViewConfig.layoutSubviews()
         self.boardViewConfig.isHidden = false
     }
     
@@ -445,7 +453,7 @@ extension Play: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let cellsAcross: CGFloat = 8
-        let dim = collectionView.frame.width / cellsAcross
+        let dim = UIScreen.main.bounds.width / cellsAcross
         return CGSize(width: dim, height: dim)
     }
     

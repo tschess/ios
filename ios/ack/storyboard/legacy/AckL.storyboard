@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -51,7 +51,11 @@
                                     <constraint firstAttribute="height" constant="45" id="CtS-Ad-lXP"/>
                                 </constraints>
                                 <items>
-                                    <tabBarItem title="LET'S PLAY" image="challenge_g" selectedImage="challenge" id="6f1-4w-L4h">
+                                    <tabBarItem title="GAMES" image="back.grey" selectedImage="back.white" id="6f1-4w-L4h">
+                                        <inset key="imageInsets" minX="3" minY="3" maxX="3" maxY="3"/>
+                                        <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </tabBarItem>
+                                    <tabBarItem tag="1" title="LET'S PLAY!" image="challenge_g" selectedImage="challenge" id="bzX-ey-HP9">
                                         <inset key="imageInsets" minX="4" minY="4" maxX="4" maxY="4"/>
                                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tabBarItem>
@@ -309,7 +313,7 @@
                                             <constraint firstAttribute="height" constant="20" id="hTx-1f-9aF"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="19"/>
-                                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -391,6 +395,8 @@
     </scenes>
     <resources>
         <image name="avatar_default" width="320" height="320"/>
+        <image name="back.grey" width="39" height="33"/>
+        <image name="back.white" width="39" height="33"/>
         <image name="challenge" width="39" height="39"/>
         <image name="challenge_g" width="39" height="39"/>
     </resources>

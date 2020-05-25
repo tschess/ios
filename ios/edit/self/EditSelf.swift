@@ -103,9 +103,7 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
                 longPressRecognizer.minimumPressDuration = 0.06
             }
         }
-        
         self.configCollectionView.layoutSubviews()
-        
         self.configCollectionView.isHidden = false
     }
     

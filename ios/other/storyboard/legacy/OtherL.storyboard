@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -111,7 +111,7 @@
                                             <constraint firstAttribute="width" constant="107" id="jTo-O0-LXq"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="19"/>
-                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -157,7 +157,11 @@
                                     <constraint firstAttribute="height" constant="45" id="CtS-Ad-lXP"/>
                                 </constraints>
                                 <items>
-                                    <tabBarItem tag="1" title="CHALLENGE" image="challenge_g" selectedImage="challenge" id="fjf-cy-wGx">
+                                    <tabBarItem title="HOME" image="back.grey" selectedImage="back.white" id="fjf-cy-wGx">
+                                        <inset key="imageInsets" minX="3" minY="3" maxX="3" maxY="3"/>
+                                        <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </tabBarItem>
+                                    <tabBarItem tag="1" title="CHALLENGE" image="challenge_g" selectedImage="challenge" id="kcd-Qx-D0J">
                                         <inset key="imageInsets" minX="4" minY="4" maxX="4" maxY="4"/>
                                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tabBarItem>
@@ -241,7 +245,7 @@
                                                 <constraint firstAttribute="height" constant="20" id="jmw-zP-xlh"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="19"/>
-                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yPL-IF-vl4">
@@ -251,7 +255,7 @@
                                                 <constraint firstAttribute="width" constant="67" id="hC0-8F-OVL"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="19"/>
-                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+6669" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dTO-FS-168">
@@ -261,7 +265,7 @@
                                                 <constraint firstAttribute="height" constant="20" id="4Iq-S7-BLV"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="19"/>
-                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=":" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WGR-ZE-RZd">
@@ -271,7 +275,7 @@
                                                 <constraint firstAttribute="height" constant="20" id="l0B-dq-oQv"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="19"/>
-                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="odds:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gru-Hl-8vV">
@@ -281,7 +285,7 @@
                                                 <constraint firstAttribute="width" constant="53" id="vnR-XU-QM4"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="19"/>
-                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="28.03.'89" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VhR-Bh-eZs">
@@ -330,6 +334,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="avatarImageView" destination="eaF-37-5Tf" id="DKq-uK-Dcc"/>
+                                    <outlet property="dispLabelAdjacent" destination="WGR-ZE-RZd" id="CM2-4H-Ocn"/>
                                     <outlet property="displacementImage" destination="M6s-nP-07Q" id="cEq-Qc-TA6"/>
                                     <outlet property="displacementLabel" destination="yPL-IF-vl4" id="y8H-is-4OJ"/>
                                     <outlet property="oddsLabel" destination="dTO-FS-168" id="Hs8-fR-bI8"/>
@@ -350,9 +355,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="arrow.up" catalog="system" width="60" height="64"/>
+        <image name="arrow.up" catalog="system" width="120" height="128"/>
         <image name="avatar_default" width="320" height="320"/>
         <image name="avatar_inverse" width="320" height="320"/>
+        <image name="back.grey" width="39" height="33"/>
+        <image name="back.white" width="39" height="33"/>
         <image name="challenge" width="39" height="39"/>
         <image name="challenge_g" width="39" height="39"/>
     </resources>
