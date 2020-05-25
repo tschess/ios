@@ -67,13 +67,11 @@ class Config: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate, U
     //MARK: - lifecycle
     
     override func viewDidLoad() {
-         print("viewDidLoad")
         super.viewDidLoad()
         
         self.tabBarMenu.delegate = self
         
         self.activityIndicator.isHidden = true
-        
         
         self.configCollectionView0.bounces = false
         self.configCollectionView1.bounces = false
@@ -81,7 +79,6 @@ class Config: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate, U
         self.configCollectionView0.alwaysBounceVertical = false
         self.configCollectionView1.alwaysBounceVertical = false
         self.configCollectionView2.alwaysBounceVertical = false
-        
         
         self.configCollectionView0.delegate = self
         self.configCollectionView1.delegate = self
@@ -91,28 +88,13 @@ class Config: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate, U
         self.configCollectionView1.dataSource = self
         self.configCollectionView2.dataSource = self
         
-        
-        
         self.configCollectionView0.isHidden = true
         self.configCollectionView1.isHidden = true
         self.configCollectionView2.isHidden = true
         
-        
-        
         self.tschessElementMatrix0 = self.playerSelf!.getConfig(index: 0)
         self.tschessElementMatrix1 = self.playerSelf!.getConfig(index: 1)
         self.tschessElementMatrix2 = self.playerSelf!.getConfig(index: 2)
-        
-        
-        
-        
-        
-    
-        
-        
-        
-        
-        
         
         let editCollectionView0 = UITapGestureRecognizer(target: self, action: #selector(self.editCollectionView0))
         let editCollectionView1 = UITapGestureRecognizer(target: self, action: #selector(self.editCollectionView1))
@@ -136,17 +118,17 @@ class Config: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate, U
     
     @objc func editCollectionView1() {
         let viewController = EditSelf.create(
-                   player: self.playerSelf!,
-                   select: 1,
-                   height: UIScreen.main.bounds.height)
+            player: self.playerSelf!,
+            select: 1,
+            height: UIScreen.main.bounds.height)
         self.navigationController?.pushViewController(viewController, animated: false)
     }
     
     @objc func editCollectionView2() {
         let viewController = EditSelf.create(
-                   player: self.playerSelf!,
-                   select: 2,
-                   height: UIScreen.main.bounds.height)
+            player: self.playerSelf!,
+            select: 2,
+            height: UIScreen.main.bounds.height)
         self.navigationController?.pushViewController(viewController, animated: false)
     }
     
@@ -161,24 +143,12 @@ class Config: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate, U
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        print("viewWillAppear")
         super.viewWillAppear(animated)
         
         self.renderHeader()
-        
-       
-        
-        
-        
-        
-        //self.configCollectionView0.setNeedsLayout()
-        //self.configCollectionView1.setNeedsLayout()
-        //self.configCollectionView2.setNeedsLayout()
-        
     }
     
     override func viewDidLayoutSubviews() {
-        print("viewDidLayoutSubviews")
         super.viewDidLayoutSubviews()
         
         let totalContentHeight = self.contentView.frame.size.height
@@ -194,7 +164,6 @@ class Config: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate, U
     
     
     override func viewDidAppear(_ animated: Bool) {
-        print("viewDidAppear")
         super.viewDidAppear(animated)
         
         self.configCollectionView0.layoutSubviews()
