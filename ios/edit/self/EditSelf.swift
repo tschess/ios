@@ -41,18 +41,8 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var totalPointLabel: UILabel!
     
-    /** !!!!!!
-     * finally this should live "modally" above config, since it's
-     * a "top-level" activity, to return there we'll just kill this
-     * task... !!!!
-     */
     @IBAction func backButtonClick(_ sender: Any) {
         if(!self.confirm){
-            //guard let navigationController = self.navigationController else { return }
-            //let navigationArray: [UIViewController] = navigationController.viewControllers // To get all UIViewController stack as Array
-            //let config: Config = navigationArray[navigationArray.count - 2] as! Config
-            //config.playerSelf = result!
-            //self.navigationController?.viewControllers = navigationArray
             self.navigationController?.popViewController(animated: false)
             return
         }
@@ -60,7 +50,6 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
         let viewController = storyboard.instantiateViewController(withIdentifier: "Cancel") as! Cancel
         viewController.playerSelf = self.playerSelf!
         self.navigationController?.present(viewController, animated: true, completion: nil)
-            //.present(viewController, animated: true, completion: nil)
     }
     
     static func create(player: EntityPlayer, select: Int, height: CGFloat) -> EditSelf {
@@ -77,7 +66,6 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
     //MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        //self.confirm = false /// ???
         
         self.configCollectionView.isHidden = true
         self.configCollectionView.delegate = self
@@ -105,8 +93,6 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.configCollectionView.reloadData()
-        self.configCollectionView.isHidden = false
         self.configCollectionView.gestureRecognizers?.forEach { (recognizer) in
             if let longPressRecognizer = recognizer as? UILongPressGestureRecognizer {
                 longPressRecognizer.minimumPressDuration = 0.004
@@ -117,6 +103,10 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
                 longPressRecognizer.minimumPressDuration = 0.06
             }
         }
+        
+        self.configCollectionView.layoutSubviews()
+        
+        self.configCollectionView.isHidden = false
     }
     
     override func viewDidLayoutSubviews() {
@@ -171,14 +161,6 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
         switch item.tag {
         case 0:
             self.backButtonClick("")
-//            if(!self.confirm){
-//                self.backButtonClick("")
-//                return
-//            }
-//            let storyboard: UIStoryboard = UIStoryboard(name: "Cancel", bundle: nil)
-//            let viewController = storyboard.instantiateViewController(withIdentifier: "Cancel") as! Cancel
-//            viewController.playerSelf = self.playerSelf!
-//            self.present(viewController, animated: true, completion: nil)
         case 2:
             let storyboard: UIStoryboard = UIStoryboard(name: "Help", bundle: nil)
             let viewController = storyboard.instantiateViewController(withIdentifier: "Help") as! Help
@@ -231,7 +213,7 @@ extension EditSelf: UICollectionViewDelegateFlowLayout {
             return CGSize(width: 100, height: 150)
         }
         let cellsAcross: CGFloat = 8
-        let dim = collectionView.frame.width / cellsAcross
+        let dim = UIScreen.main.bounds.width / cellsAcross
         return CGSize(width: dim, height: dim)
     }
     

@@ -238,11 +238,11 @@
                                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tabBarItem>
                                     <tabBarItem tag="2" title="HELP" image="q_g" selectedImage="q_w" id="xqj-Cj-U3q">
-                                        <inset key="imageInsets" minX="4" minY="4" maxX="4" maxY="4"/>
+                                        <inset key="imageInsets" minX="3" minY="3" maxX="3" maxY="3"/>
                                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tabBarItem>
                                     <tabBarItem tag="1" title="SAVE" image="save_grey" selectedImage="save_white" id="J1t-ZX-e3t">
-                                        <inset key="imageInsets" minX="4" minY="4" maxX="4" maxY="4"/>
+                                        <inset key="imageInsets" minX="3" minY="3" maxX="3" maxY="3"/>
                                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tabBarItem>
                                 </items>
@@ -428,7 +428,7 @@
         <image name="cancel_grey" width="39" height="39"/>
         <image name="cancel_white" width="39" height="39"/>
         <image name="q_g" width="39" height="39"/>
-        <image name="q_w" width="188" height="188"/>
+        <image name="q_w" width="39" height="39"/>
         <image name="save_grey" width="39" height="39"/>
         <image name="save_white" width="39" height="39"/>
     </resources>

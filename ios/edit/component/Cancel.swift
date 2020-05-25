@@ -48,9 +48,6 @@ class Cancel: UIViewController {
             }
             return
         }
-        //self.presentingViewController!.dismiss(animated: false, completion: nil)
-        //self.editOther!.backButtonClick("")
-        // ^^^not good...
         
         if let navigationController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController {
             navigationController.dismiss(animated: true, completion: {
@@ -74,8 +71,6 @@ class Cancel: UIViewController {
                     }
                 }
                 navigationController.popViewController(animated: false)
-                
-                //navigationController.popViewController(animated: false)
             })
         }
     }
