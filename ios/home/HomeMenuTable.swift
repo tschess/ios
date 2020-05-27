@@ -108,10 +108,10 @@ class HomeMenuTable: UITableViewController, SwipeTableViewCellDelegate {
     }
     
     override func viewDidLoad() {
-        
-        
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        refreshControl.backgroundColor = UIColor.black
+        refreshControl.tintColor = UIColor.white
         self.tableView.refreshControl = refreshControl
     }
     

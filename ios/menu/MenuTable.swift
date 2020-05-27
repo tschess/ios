@@ -51,10 +51,11 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
     // MARK: LIFECYCLE
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        tableView.tableFooterView = UIView()
-        
+        self.tableView.tableFooterView = UIView()
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        refreshControl.backgroundColor = UIColor.black
+        refreshControl.tintColor = UIColor.white
         self.tableView.refreshControl = refreshControl
     }
     
