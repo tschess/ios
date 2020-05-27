@@ -22,12 +22,8 @@
 	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	<key>NSCameraUsageDescription</key>
-	<string>scan QR code</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Library</string>
-	<key>Privacy - Camera Usage Description</key>
-	<string>scan QR code</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>remote-notification</string>
