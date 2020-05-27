@@ -10,7 +10,7 @@ import UIKit
 import UserNotifications
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
     
     var window: UIWindow?
     
@@ -26,12 +26,55 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.makeKeyAndVisible()
         
         self.configureGlobalUI()
-        self.registerForPushNotifications()
+        
+        let center = UNUserNotificationCenter.current()
+        center.requestAuthorization(options:[.badge, .alert, .sound]) { (granted, error) in
+            // If granted comes true you can enabled features based on authorization.
+            guard granted else { return }
+            DispatchQueue.main.async {
+                application.registerForRemoteNotifications()
+            }
+        }
         return true
     }
     
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        print("000")
+        let tokenParts = deviceToken.map { data in String(format: "%02.2hhx", data) }
+        let token = tokenParts.joined()
+        print("Device Token: \(token)")
+    }
+    
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        print("111")
+        print("Failed to register: \(error)")
+    }
+    
+    /* {"aps":{"alert":"update available","badge":"1","content-available":1}} */
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        //self.pushNotifications.handleNotification(userInfo: userInfo)
+        print("notification recieved")
+        let state = application.applicationState
+        switch state {
+        case .inactive:
+            print(".inactive")
+        case .background:
+            print(".background")
+            let notification = userInfo["aps"] as? NSDictionary
+            guard let string: String = notification?["badge"] as? String else {
+                return
+            }
+            let badge: Int = Int(string)!
+            UIApplication.shared.applicationIconBadgeNumber = badge
+            completionHandler(UIBackgroundFetchResult.newData)
+        case .active:
+            print(".active")
+        default:
+            print("default")
+        }
+    }
+    
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        application.applicationIconBadgeNumber = 0 //reset badge count
     }
     
     func applicationWillResignActive(_ application: UIApplication) {
@@ -48,32 +91,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
     }
     
-    func applicationDidBecomeActive(_ application: UIApplication) {
-        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-    }
-    
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
     
     func configureGlobalUI() {
         UINavigationBar.appearance().tintColor = UIColor.white
-    }
-    
-    func registerForPushNotifications() {
-        //UNUserNotificationCenter.current() // 1
-        //.requestAuthorization(options: [.alert, .sound, .badge]) { // 2 :: remove .sound for sure, maybe also .alert
-        //granted, error in
-        //print("Permission granted: \(granted)") // 3
-        //}
-        UNUserNotificationCenter.current()
-            .requestAuthorization(options: [.alert, .sound, .badge]) {
-                [weak self] granted, error in
-                
-                print("Permission granted: \(granted)")
-                guard granted else { return }
-                self?.getNotificationSettings()
-        }
     }
     
     func getNotificationSettings() {
@@ -86,50 +109,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
-    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        
-        print("000")
-        
-        let tokenParts = deviceToken.map { data in String(format: "%02.2hhx", data) }
-        let token = tokenParts.joined()
-        print("Device Token: \(token)")
-        
-        let tokenString = deviceToken.reduce("", {$0 + String(format: "%02X", $1)})
-        print("this will return '32 bytes' in iOS 13+ rather than the token \(tokenString)")
-        
-        
-    }
-    
-    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
-        
-        print("111")
-        
-        print("Failed to register: \(error)")
-    }
-    
-    
 }
-
-//Development server: api.sandbox.push.apple.com:443
-//Production server: api.push.apple.com:443
-//
-//{
-//    “alg” : “ES256”,
-//    “kid” : “9FNJ959UW8”
-//}
-//{
-//    “iss”: “JZK98QUAAY”,
-//    “iat”: 1568134782
-//}
-
-//{
-//“aps” : {
-//“alert” : {
-//“title” : “Game Request”,
-//“subtitle” : “Five Card Draw”
-//“body” : “Bob wants to play poker”,
-//},
-//“category” : “GAME_INVITATION”
-//},
-//“gameID” : “12345678”
-//}
