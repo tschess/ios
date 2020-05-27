@@ -29,7 +29,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         let center = UNUserNotificationCenter.current()
         center.requestAuthorization(options:[.badge, .alert, .sound]) { (granted, error) in
-            // If granted comes true you can enabled features based on authorization.
             guard granted else { return }
             DispatchQueue.main.async {
                 application.registerForRemoteNotifications()
