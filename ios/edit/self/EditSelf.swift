@@ -46,6 +46,7 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
             self.navigationController?.popViewController(animated: false)
             return
         }
+        self.confirm = false
         let storyboard: UIStoryboard = UIStoryboard(name: "Cancel", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "Cancel") as! Cancel
         viewController.playerSelf = self.playerSelf!

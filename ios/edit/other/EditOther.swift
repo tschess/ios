@@ -52,6 +52,7 @@ class EditOther: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate
                 return
             }
         }
+        self.confirm = false
         let storyboard: UIStoryboard = UIStoryboard(name: "Cancel", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "Cancel") as! Cancel
         viewController.playerSelf = self.playerSelf!
