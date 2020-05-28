@@ -49,7 +49,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         print("Failed to register: \(error)")
     }
     
-    /* {"aps":{"alert":"update available","badge":"1","content-available":1}} */
+    /*
+     
+     {"aps":{"alert":"new update available","badge":"1","content-available":1}}
+     
+     */
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         print("notification recieved")
         let state = application.applicationState
