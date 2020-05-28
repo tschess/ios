@@ -12,7 +12,7 @@ class NoteKey {
     
     func execute(payload: [String: String], completion: @escaping (([String: String]) -> Void)) {
         
-        let url = URL(string: "http://\(ServerAddress().IP):8080/player/note_key")!
+        let url = URL(string: "http://\(ServerAddress().IP):8080/player/note")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Accept")
