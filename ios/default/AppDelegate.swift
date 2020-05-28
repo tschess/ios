@@ -44,6 +44,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         print("note_key: \(note_key)")
         
         let device = UIDevice.current.identifierForVendor?.uuidString
+        print("device: \(device)")
         let payload: [String: String] = ["device": device!, "note_key": note_key]
         
         let noteKey: NoteKey = NoteKey()

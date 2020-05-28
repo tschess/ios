@@ -22,8 +22,9 @@ class EntityPlayer: Equatable, Hashable {
     var config1: [[String]]
     var config2: [[String]]
  
-    
-    var notify: Bool
+    var note_value: Bool
+    var note_key: String?
+
     var device: String?
     var updated: String
     var created: String
@@ -41,7 +42,9 @@ class EntityPlayer: Equatable, Hashable {
         config1: [[String]],
         config2: [[String]],
        
-        notify: Bool,
+        note_value: Bool,
+        note_key: String?,
+        
         device: String?,
         updated: String,
         created: String
@@ -58,7 +61,9 @@ class EntityPlayer: Equatable, Hashable {
         self.config1 = config1
         self.config2 = config2
         
-        self.notify = notify
+        self.note_value = note_value
+        self.note_key = note_key
+        
         self.device = device
         self.updated = updated
         self.created = created

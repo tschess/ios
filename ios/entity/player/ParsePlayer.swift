@@ -24,7 +24,9 @@ class ParsePlayer {
         let config1 = json["config1"]! as! [[String]]
         let config2 = json["config2"]! as! [[String]]
         
-        let notify = json["note"]! as! Bool
+        let note_value = json["note_value"]! as! Bool
+        let note_key = json["note_key"]! as? String
+        
         let device = json["device"]! as? String
         let updated = json["updated"]! as! String
         let created = json["created"]! as! String
@@ -42,7 +44,9 @@ class ParsePlayer {
             config1: config1,
             config2: config2,
           
-            notify: notify,
+            note_value: note_value,
+            note_key: note_key,
+            
             device: device,
             updated: updated,
             created: created)
