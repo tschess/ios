@@ -51,7 +51,7 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
         self.tableView.tableFooterView = UIView()
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
-        refreshControl.backgroundColor = UIColor.black
+        refreshControl.backgroundColor = UIColor.clear
         refreshControl.tintColor = UIColor.white
         self.tableView.refreshControl = refreshControl
     }
