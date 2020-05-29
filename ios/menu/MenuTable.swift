@@ -36,10 +36,7 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
             "self": true]
         RequestActual().execute(requestPayload: request) { (result) in
             self.menu!.setIndicator(on: false)
-            if(result == nil){
-                return
-            }
-            self.menuTableListAppend(list: result!)
+            self.menuTableListAppend(list: result)
         }
     }
     
@@ -64,11 +61,8 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
         let request: [String: Any] = ["id": self.menu!.playerSelf!.id, "index": self.pageCount, "size": Const().PAGE_SIZE, "self": true]
         RequestActual().execute(requestPayload: request) { (result) in
             self.menu!.setIndicator(on: false)
-            if(result != nil){
-                //error...
-            }
             DispatchQueue.main.async {
-                self.gameMenuTableList = result!
+                self.gameMenuTableList = result
                 self.tableView.reloadData()
                 if(refreshControl == nil){
                     return
@@ -85,10 +79,7 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
         let request: [String: Any] = ["id": self.menu!.playerSelf!.id, "index": self.pageCount, "size": Const().PAGE_SIZE, "self": true]
         RequestActual().execute(requestPayload: request) { (result) in
             self.menu!.setIndicator(on: false)
-            if(result == nil){
-                return
-            }
-            self.menuTableListAppend(list: result!)
+            self.menuTableListAppend(list: result)
         }
     }
     

@@ -540,6 +540,9 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     @objc func pollingTask() {
         let id_game: String = self.game!.id
         GameRequest().execute(id: id_game) { (game0) in
+            if(game0 == nil){
+                return
+            }
             let updatedSv0: String = game0!.updated
             let updatedSv1: Date = self.dateTime.toFormatDate(string: updatedSv0)
             let updatedLc0: String = self.game!.updated

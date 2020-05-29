@@ -12,7 +12,10 @@ class RequestActual {
     
     //"id":"", "page":0, "size":13
     //print("requestPayload \(requestPayload)")
-    func execute(requestPayload: [String: Any], completion: @escaping (([EntityGame]?) -> Void)) {
+    func execute(requestPayload: [String: Any], completion: @escaping (([EntityGame]) -> Void)) {
+        
+        var gameList = [EntityGame]()
+        
         let url = URL(string: "http://\(ServerAddress().IP):8080/game/menu")!
         
         var request = URLRequest(url: url)
@@ -28,12 +31,12 @@ class RequestActual {
         let task = session.dataTask(with: request, completionHandler: { data, response, error in
             guard error == nil else {
                 print("0")
-                completion(nil)
+                completion(gameList)
                 return
             }
             guard let data = data else {
                 print("1")
-                completion(nil)
+                completion(gameList)
                 return
             }
             do {
@@ -48,24 +51,24 @@ class RequestActual {
                     let json1 = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Bool]
                     if(json1 == nil){
                         print("111")
-                        completion(nil)
+                        completion(gameList)
                         return
                     }
                     if(json1!["zero"] != nil){
                         print("d")
-                        completion([EntityGame]())
+                        completion(gameList)
                         return
                     }
                     if(json1!["eol"] != nil){
                         print("r")
-                        completion([EntityGame]())
+                        completion(gameList)
                         return
                     }
-                    completion(nil)
+                    completion(gameList)
                     return
                 }
                 print("v")
-               var gameList = [EntityGame]()
+               
                 for index in stride(from: 0, to: json.count, by: 1) {
                      let game: EntityGame = ParseGame().execute(json: json[index])
                     gameList.append(game)
@@ -78,7 +81,7 @@ class RequestActual {
                 
             } catch let error {
                 print(error.localizedDescription)
-                completion(nil)
+                completion(gameList)
             }
         })
         task.resume()

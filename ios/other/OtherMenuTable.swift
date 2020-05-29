@@ -131,10 +131,7 @@ class OtherMenuTable: UITableViewController {
                 self.activityIndicator!.stopAnimating()
                 self.activityIndicator!.isHidden = true
             }
-            if(result == nil){
-                return
-            }
-            self.appendToLeaderboardTableList(additionalCellList: result!)
+            self.appendToLeaderboardTableList(additionalCellList: result)
         }
     }
     
