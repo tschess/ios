@@ -43,11 +43,20 @@ class Create: UIViewController, UITextFieldDelegate {
         
         let deviceId = UIDevice.current.identifierForVendor?.uuidString
         
+        var value: String = "NULL"
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let note_key: String? = appDelegate.note_key
+        if(note_key != nil){
+            value = note_key!
+        }
+        
         let requestPayload = [
             "username": usernameTextString!.lowercased(),
             "password": passwordTextString!,
-            "device": deviceId!
+            "device": deviceId!,
+            "note_key": value
         ]
+        
         RequestCreate().execute(requestPayload: requestPayload) { (player) in
             if let player = player {
                 DispatchQueue.main.async {
