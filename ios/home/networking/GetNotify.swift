@@ -34,7 +34,7 @@ class GetNotify {
                     completion(false)
                     return
                 }
-                if(json["notify"] != nil){
+                if(json["success"] != nil){
                     completion(true)
                 }
                 completion(false)
