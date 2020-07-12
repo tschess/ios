@@ -10,7 +10,7 @@ import UIKit
 
 class ProfileTable: UITableViewController {
     
-    let options = ["update photo", "logout"]
+    let options = ["update photo", "notifications", "logout"]
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -29,6 +29,8 @@ class ProfileTable: UITableViewController {
         switch value {
         case 0:
             return UIImage(named: "photo_g")
+        case 1:
+            return UIImage(named: "notifications")
         default:
             return UIImage(named: "logout.grey")
         }
