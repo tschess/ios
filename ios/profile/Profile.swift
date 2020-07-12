@@ -76,6 +76,44 @@ class Profile: UIViewController, UITabBarDelegate, UINavigationControllerDelegat
         
         print("- NOTIFICATION -")
         
+        //UNUserNotificationCenter.current().getNotificationSettings(completionHandler: )
+        
+    
+        _ = UNUserNotificationCenter.current().getNotificationSettings { (settings) in
+            switch settings.authorizationStatus {
+            case .notDetermined:
+                UNUserNotificationCenter.current().requestAuthorization(options: [.sound, .alert, .badge]) {
+                    
+                    
+                    
+                    (granted, error) in
+                    
+                    print("- granted: \(granted)")
+                    print("- error: \(error)")
+                    
+                    
+                    
+                     if error == nil{
+                        DispatchQueue.main.async(execute: {
+                              UIApplication.shared.registerForRemoteNotifications()
+                        })
+                     }
+                }
+            
+            default:
+                DispatchQueue.main.async {
+                    let storyboard: UIStoryboard = UIStoryboard(name: "Note", bundle: nil)
+                    let viewController = storyboard.instantiateViewController(withIdentifier: "Note") as! CompNote
+                    self.present(viewController, animated: true, completion: nil)
+                }
+            }
+        }
+        
+        
+      
+        
+        
+        
     }
     
     public func renderHeader() {

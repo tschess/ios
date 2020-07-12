@@ -11,7 +11,6 @@ import UIKit
 class Home: UIViewController, UITabBarDelegate {
     
     var menu: Menu?
-    
     var homeMenuTable: HomeMenuTable?
     
     //MARK: Header
@@ -23,7 +22,6 @@ class Home: UIViewController, UITabBarDelegate {
     @IBOutlet weak var rankLabel: UILabel!
     @IBOutlet weak var dispImageView: UIImageView!
     @IBOutlet weak var dispLabel: UILabel!
-    
     @IBOutlet weak var tabBarMenu: UITabBar!
     
     var playerSelf: EntityPlayer?

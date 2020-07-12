@@ -27,19 +27,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         self.configureGlobalUI()
         
-        let center = UNUserNotificationCenter.current()
-        center.requestAuthorization(options:[.badge, .alert, .sound]) { (granted, error) in
-            guard granted else { return }
-            DispatchQueue.main.async {
-                application.registerForRemoteNotifications()
-            }
-        }
+        //let center = UNUserNotificationCenter.current()
+        //center.requestAuthorization(options:[.badge, .alert, .sound]) { (granted, error) in
+            //guard granted else { return }
+            //DispatchQueue.main.async {
+                //application.registerForRemoteNotifications()
+            //}
+        //}
         return true
     }
     
     var note_key: String?
     
-    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+    public func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         print("000")
         let tokenParts = deviceToken.map { data in String(format: "%02.2hhx", data) }
         self.note_key = tokenParts.joined()
