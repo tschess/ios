@@ -72,26 +72,17 @@ class Profile: UIViewController, UITabBarDelegate, UINavigationControllerDelegat
         self.player = player
     }
     
+    //
     func notification() {
-        
-        print("- NOTIFICATION -")
-        
-        //UNUserNotificationCenter.current().getNotificationSettings(completionHandler: )
-        
-    
+        //print("- NOTIFICATION -")
         _ = UNUserNotificationCenter.current().getNotificationSettings { (settings) in
             switch settings.authorizationStatus {
             case .notDetermined:
                 UNUserNotificationCenter.current().requestAuthorization(options: [.sound, .alert, .badge]) {
                     
-                    
-                    
                     (granted, error) in
-                    
-                    print("- granted: \(granted)")
-                    print("- error: \(error)")
-                    
-                    
+                    //print("- granted: \(granted)")
+                    //print("- error: \(error)")
                     
                      if error == nil{
                         DispatchQueue.main.async(execute: {
