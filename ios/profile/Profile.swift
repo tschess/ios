@@ -37,14 +37,14 @@ class Profile: UIViewController, UITabBarDelegate, UINavigationControllerDelegat
     }
     
     func changePhoto() {
-        DispatchQueue.main.async() {
-            self.activityIndicator.isHidden = false
-            self.activityIndicator.startAnimating()
-        }
+        self.activityIndicator.isHidden = false
+        self.activityIndicator.startAnimating()
         let imagePickerController = UIImagePickerController()
         imagePickerController.delegate = self
         imagePickerController.sourceType = .photoLibrary
-        present(imagePickerController, animated: true, completion: nil)
+        present(imagePickerController, animated: true, completion: {
+            self.activityIndicator.isHidden = true
+        })
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
@@ -56,7 +56,8 @@ class Profile: UIViewController, UITabBarDelegate, UINavigationControllerDelegat
     }
     
     @IBOutlet weak var backButton: UIButton!
-    
+    @IBOutlet weak var tabBarMenu: UITabBar!
+
     @IBOutlet weak var displacementImage: UIImageView!
     @IBOutlet weak var displacementLabel: UILabel!
     @IBOutlet weak var eloLabel: UILabel!
@@ -65,12 +66,16 @@ class Profile: UIViewController, UITabBarDelegate, UINavigationControllerDelegat
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
-    @IBOutlet weak var tabBarMenu: UITabBar!
-    
     var player: EntityPlayer?
     
     func setPlayer(player: EntityPlayer){
         self.player = player
+    }
+    
+    func notification() {
+        
+        print("- NOTIFICATION -")
+        
     }
     
     public func renderHeader() {
@@ -85,14 +90,9 @@ class Profile: UIViewController, UITabBarDelegate, UINavigationControllerDelegat
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tabBarMenu.delegate = self
-        
-        self.renderHeader()
-        
-        
-        ///
         self.activityIndicator.isHidden = true
-        ///
+        self.tabBarMenu.delegate = self
+        self.renderHeader()
         
         NotificationCenter.default.addObserver(
             self,
@@ -107,7 +107,8 @@ class Profile: UIViewController, UITabBarDelegate, UINavigationControllerDelegat
         switch menuSelectionIndex {
         case 0://photo
             self.changePhoto()
-            //return
+        case 1://notification
+            self.notification()
         default:
             self.signOut()
         }
@@ -120,12 +121,8 @@ class Profile: UIViewController, UITabBarDelegate, UINavigationControllerDelegat
             DispatchQueue.main.async {
                 let storyboard: UIStoryboard = UIStoryboard(name: "Start", bundle: nil)
                 let viewController = storyboard.instantiateViewController(withIdentifier: "Start") as! Start
-                //UIApplication.shared.keyWindow?.rootViewController = viewController
-                //self.navigationController!.popToRootViewController(animated: false)
-                //UIApplication.shared.keyWindow?.rootViewController = viewController
-                //UIApplication.shared.keyWindow?.makeKeyAndVisible()
                 self.navigationController?.viewControllers = [viewController]
-                }
+            }
         }
     }
     
