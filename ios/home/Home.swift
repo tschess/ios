@@ -191,6 +191,7 @@ class Home: UIViewController, UITabBarDelegate {
         }
     }
     
+    // TODO: IF SELF GO TO GAMES!!!!
     @objc func onDidReceiveData(_ notification: NSNotification) {
         let menuSelectionIndex = notification.userInfo!["home_menu_selection"] as! Int
         
