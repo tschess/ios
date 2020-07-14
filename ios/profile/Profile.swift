@@ -74,7 +74,12 @@ class Profile: UIViewController, UITabBarDelegate, UINavigationControllerDelegat
     
     //
     func notification() {
-        //print("- NOTIFICATION -")
+        print("- NOTIFICATION -")
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.id = self.player!.id
+        
+        
         _ = UNUserNotificationCenter.current().getNotificationSettings { (settings) in
             switch settings.authorizationStatus {
             case .notDetermined:

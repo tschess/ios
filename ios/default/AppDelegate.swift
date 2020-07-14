@@ -37,17 +37,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         return true
     }
     
-    var note_key: String?
+    public var id: String?
     
     public func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         print("000")
+        
+        print("id: \(id!)")
+        
         let tokenParts = deviceToken.map { data in String(format: "%02.2hhx", data) }
-        self.note_key = tokenParts.joined()
-        print("note_key: \(note_key)")
+        let note_key: String? = tokenParts.joined()
+        
+        print("note_key: \(note_key!)")
         
         //let device = UIDevice.current.identifierForVendor?.uuidString
         //print("device: \(device)")
-        //let payload: [String: String] = ["device": device!, "note_key": note_key]
+        let payload: [String: String] = ["id": id!, "note_key": note_key!]
+        
+        UpdatePush().execute(requestPayload: payload) { (response) in
+            
+            print("response: \(response)")
+            
+        }
     }
     
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
