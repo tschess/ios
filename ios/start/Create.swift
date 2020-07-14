@@ -43,13 +43,6 @@ class Create: UIViewController, UITextFieldDelegate {
         
         let deviceId = UIDevice.current.identifierForVendor?.uuidString
         
-        //var value: String = "NULL"
-        //let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        //let note_key: String? = appDelegate.note_key
-        //if(note_key != nil){
-            //value = note_key!
-        //}
-        
         let requestPayload = [
             "username": usernameTextString!.lowercased(),
             "password": passwordTextString!,
@@ -83,10 +76,10 @@ class Create: UIViewController, UITextFieldDelegate {
                 self.usernameTextField.isHidden = false
                 self.passwordTextField.isHidden = false
                 self.usernameTextField.text?.removeAll()
-                self.usernameTextField.attributedPlaceholder = NSAttributedString(string: "username",
+                self.usernameTextField.attributedPlaceholder = NSAttributedString(string: "username: 6 alphanumeric characters",
                                                                                   attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
                 self.passwordTextField.text?.removeAll()
-                self.passwordTextField.attributedPlaceholder = NSAttributedString(string: "password",
+                self.passwordTextField.attributedPlaceholder = NSAttributedString(string: "password: 6 alphanumeric characters",
                                                                                   attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
                 let storyboard: UIStoryboard = UIStoryboard(name: "Invalid", bundle: nil)
                 let viewController = storyboard.instantiateViewController(withIdentifier: "Invalid") as! CompInvalid
@@ -136,12 +129,9 @@ class Create: UIViewController, UITextFieldDelegate {
         self.usernameTextField.delegate = self
         self.passwordTextField.delegate = self
         
-        //self.usernameTextField.tintColor = UIColor.magenta
-        //self.passwordTextField.tintColor = UIColor.magenta
-        
-        self.usernameTextField.attributedPlaceholder = NSAttributedString(string: "username",
+        self.usernameTextField.attributedPlaceholder = NSAttributedString(string: "username (alphanumeric)",
                                                                           attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
-        self.passwordTextField.attributedPlaceholder = NSAttributedString(string: "password",
+        self.passwordTextField.attributedPlaceholder = NSAttributedString(string: "password (six characters)",
                                                                           attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
         
         self.dismissKeyboardGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))

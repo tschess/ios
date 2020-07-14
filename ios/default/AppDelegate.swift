@@ -27,13 +27,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         self.configureGlobalUI()
         
-        //let center = UNUserNotificationCenter.current()
-        //center.requestAuthorization(options:[.badge, .alert, .sound]) { (granted, error) in
-            //guard granted else { return }
-            //DispatchQueue.main.async {
-                //application.registerForRemoteNotifications()
-            //}
-        //}
         return true
     }
     
