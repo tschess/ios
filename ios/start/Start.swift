@@ -40,18 +40,11 @@ class Start: UIViewController, UITextFieldDelegate {
         
         let deviceId = UIDevice.current.identifierForVendor?.uuidString
         
-        //var value: String = "NULL"
-        //let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        //let note_key: String? = appDelegate.note_key
-        //if(note_key != nil){
-            //value = note_key!
-        //}
-        
         let requestPayload = [
             "username": usernameTextString!.lowercased(),
             "password": passwordTextString!,
             "device": deviceId!,
-            "note_key": "FUCK"
+            "note_key": "REMOVE_THIS___!!!"
         ]
         
         RequestLogin().execute(requestPayload: requestPayload) { (player) in

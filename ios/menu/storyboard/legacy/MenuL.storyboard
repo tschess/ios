@@ -224,7 +224,7 @@
                         <outlet property="activityIndicator" destination="ADc-nn-Tmx" id="nE6-v0-Gof"/>
                         <outlet property="avatarImageView" destination="r0d-hG-YKm" id="UEY-EA-tK0"/>
                         <outlet property="backButton" destination="3VQ-kH-eUV" id="lJy-R4-LhM"/>
-                        <outlet property="containerView" destination="1tb-Rn-g0D" id="pbU-B9-4sv"/>
+                       
                         <outlet property="displacementLabel" destination="TC7-mt-3N6" id="VC6-Jh-z3e"/>
                         <outlet property="eloLabel" destination="APs-oU-CuM" id="6nd-Zz-Usr"/>
                         <outlet property="rankDirectionImage" destination="Db2-vI-7pN" id="PLO-NJ-seP"/>

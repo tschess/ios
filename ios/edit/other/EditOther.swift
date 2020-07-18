@@ -19,6 +19,7 @@ class EditOther: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate
                         if(ty == "Play"){
                             let home: Play = vc as! Play
                             home.playerSelf = self.playerSelf!
+                            home.reloadInputViews()
                         }
                     }
                 }
@@ -32,6 +33,15 @@ class EditOther: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate
                         if(ty == "Ack"){
                             let home: Ack = vc as! Ack
                             home.playerSelf = self.playerSelf!
+                            //home.configCollectionView.reloadData()
+                            switch home.selection! {
+                            case 1:
+                                home.renderConfig1()
+                            case 2:
+                                home.renderConfig2()
+                            default:
+                                home.renderConfig0()
+                            }
                         }
                     }
                 }
@@ -45,6 +55,7 @@ class EditOther: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate
                         if(ty == "Challenge"){
                             let home: Challenge = vc as! Challenge
                             home.playerSelf = self.playerSelf!
+                            
                         }
                     }
                 }

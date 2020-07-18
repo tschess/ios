@@ -9,37 +9,18 @@
 import UIKit
 
 class Menu: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate {
-    //@IBOutlet var containerView: UIView!
-    @IBOutlet weak var containerView: UIView!
-    
-    @IBOutlet weak var displacementLabel: UILabel!
-    @IBOutlet var activityIndicator: UIActivityIndicatorView!
     
     //MARK: Properties
+    @IBOutlet var activityIndicator: UIActivityIndicatorView!
+    
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var rankLabel: UILabel!
     @IBOutlet weak var eloLabel: UILabel!
-    
-    @IBOutlet weak var backButton: UIButton!
-    @IBOutlet weak var tabBarMenu: UITabBar!
     @IBOutlet weak var rankDirectionImage: UIImageView!
-    
-    var menuTable: MenuTable?
+    @IBOutlet weak var displacementLabel: UILabel!
     
     var playerSelf: EntityPlayer?
-    
-    func setPlayerSelf(playerSelf: EntityPlayer){
-        self.playerSelf = playerSelf
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        tabBarMenu.delegate = self
-        self.menuTable = children.first as? MenuTable
-        self.menuTable!.setSelf(menu: self)
-        self.menuTable!.fetchMenuTableList()
-    }
     
     public func renderHeader() {
         self.avatarImageView.image = self.playerSelf!.getImageAvatar()
@@ -54,6 +35,19 @@ class Menu: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.renderHeader()
+    }
+    
+    @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var tabBarMenu: UITabBar!
+    
+    var menuTable: MenuTable?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.tabBarMenu.delegate = self
+        self.menuTable = children.first as? MenuTable
+        self.menuTable!.setSelf(menu: self)
+        self.menuTable!.fetchMenuTableList()
     }
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {

@@ -75,7 +75,7 @@ class RequestActual {
                 }
                 
                 
-              //  print("z \(json)")
+              //print("z \(json)")
                 
                 completion(gameList)
                 

@@ -37,9 +37,10 @@ class GameUpdate {
                     return
                 }
                 if(json["success"] != nil){
-                    //print("A")
+                    print("A")
                     completion(true)
                 }
+                print("B")
                 completion(false)
                 
                 

@@ -146,18 +146,17 @@ class Home: UIViewController, UITabBarDelegate {
                 self.navigationController?.pushViewController(menu!, animated: false)
                 return
             }
-            
             let height: CGFloat = UIScreen.main.bounds.height
             if(height.isLess(than: 750)){
                 let storyboard: UIStoryboard = UIStoryboard(name: "MenuL", bundle: nil)
                 let viewController = storyboard.instantiateViewController(withIdentifier: "MenuL") as! Menu
-                viewController.setPlayerSelf(playerSelf: self.playerSelf!)
+                viewController.playerSelf = self.playerSelf!
                 self.navigationController?.pushViewController(viewController, animated: false)
                 return
             }
             let storyboard: UIStoryboard = UIStoryboard(name: "MenuP", bundle: nil)
             let viewController = storyboard.instantiateViewController(withIdentifier: "MenuP") as! Menu
-            viewController.setPlayerSelf(playerSelf: self.playerSelf!)
+            viewController.playerSelf = self.playerSelf!
             self.navigationController?.pushViewController(viewController, animated: false)
         case 4:
             let height: CGFloat = UIScreen.main.bounds.height

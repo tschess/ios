@@ -10,6 +10,6 @@ import Foundation
 
 class Const {
     
-    let PAGE_SIZE: Int = 9
+    let PAGE_SIZE: Int = 13
     
 }
