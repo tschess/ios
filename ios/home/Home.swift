@@ -88,6 +88,7 @@ class Home: UIViewController, UITabBarDelegate {
             if(!notify){
                 return
             }
+            self.notificationTimerStop()
             DispatchQueue.main.async() {
                 let notify = self.tabBarMenu.items![1]
                 notify.image = UIImage(named: "note")!.withRenderingMode(.alwaysOriginal)

@@ -116,7 +116,6 @@ class HomeMenuTable: UITableViewController, SwipeTableViewCellDelegate {
     }
     
     @objc func refresh(refreshControl: UIRefreshControl) {
-        
         self.requestPageIndex = 0
         let requestPayload: [String: Any] = ["id_player": self.home!.playerSelf!.id,
                                              "size": REQUEST_PAGE_SIZE]

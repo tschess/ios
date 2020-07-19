@@ -34,6 +34,9 @@ class GetNotify {
                     completion(false)
                     return
                 }
+                
+                //print("json: \(json)")
+                
                 if(json["success"] != nil){
                     completion(true)
                 }
