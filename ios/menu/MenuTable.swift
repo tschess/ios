@@ -26,7 +26,7 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
     }
     
     func fetchMenuTableList() {
-        print("0 - self.pageCount: \(self.pageCount)")
+        //print("0 - self.pageCount: \(self.pageCount)")
         
         self.menu!.setIndicator(on: true)
         let request: [String: Any] = [
@@ -36,7 +36,7 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
             "self": true]
         
         
-        print("FUCK FUCK FUCK \(request)")
+        //print("FUCK FUCK FUCK \(request)")
         
         RequestActual().execute(requestPayload: request) { (result) in
             
@@ -81,7 +81,7 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
     }
     
     func getPageListNext() {
-        print("1 - self.pageCount: \(self.pageCount)")
+        //print("1 - self.pageCount: \(self.pageCount)")
         
         self.menu!.setIndicator(on: true)
         let request: [String: Any] = ["id": self.menu!.playerSelf!.id, "index": self.pageCount, "size": Const().PAGE_SIZE, "self": true]
@@ -99,24 +99,24 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
             return
         }
         let index = self.pageCount
-        print(" index \(index) ")
+        //print(" index \(index) ")
         let indexFrom: Int =  index * Const().PAGE_SIZE
-        print(" indexFrom \(indexFrom) ")
+        //print(" indexFrom \(indexFrom) ")
         let indexTo: Int = indexFrom + Const().PAGE_SIZE - 2
-        print(" indexTo \(indexTo) ")
-        print(" lastRow! \(lastRow!) ")
+        //print(" indexTo \(indexTo) ")
+        //print(" lastRow! \(lastRow!) ")
         //if(lastRow! <= indexTo){
         //print(" -M- ")
         //return
         //}
         if lastRow == indexTo {
             
-            print(" -N- ")
+            //print(" -N- ")
             
             self.pageCount += 1
             self.getPageListNext()
         }
-        print(" 0 ")
+        //print(" 0 ")
     }
     
     // MARK: TABLE

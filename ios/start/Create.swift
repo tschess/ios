@@ -16,7 +16,8 @@ class Create: UIViewController, UITextFieldDelegate {
         DispatchQueue.main.async {
             let storyboard: UIStoryboard = UIStoryboard(name: "Start", bundle: nil)
             let viewController = storyboard.instantiateViewController(withIdentifier: "Start") as! Start
-            UIApplication.shared.keyWindow?.rootViewController = viewController
+            //UIApplication.shared.keyWindow?.rootViewController = viewController
+            self.navigationController?.pushViewController(viewController, animated: false)
         }
     }
     
@@ -50,16 +51,27 @@ class Create: UIViewController, UITextFieldDelegate {
         ]
         
         RequestCreate().execute(requestPayload: requestPayload) { (player) in
+            
+            
+            
             if let player = player {
+                
+            print("88 - player: \(player)")
+                
                 DispatchQueue.main.async {
                     let height: CGFloat = UIScreen.main.bounds.height
                     if(height.isLess(than: 750)){
+                        
+                        print("~ A ~")
+                        
                         let storyboard: UIStoryboard = UIStoryboard(name: "HomeL", bundle: nil)
                         let viewController = storyboard.instantiateViewController(withIdentifier: "HomeL") as! Home
                         viewController.playerSelf = player
                         self.navigationController?.pushViewController(viewController, animated: false)
-                        return
                     }
+                    
+                    print("~ B ~")
+                    
                     let storyboard: UIStoryboard = UIStoryboard(name: "HomeP", bundle: nil)
                     let viewController = storyboard.instantiateViewController(withIdentifier: "HomeP") as! Home
                     viewController.playerSelf = player
@@ -67,6 +79,9 @@ class Create: UIViewController, UITextFieldDelegate {
                 }
                 return
             }
+            
+            //print("00 - player: \(player)")
+            
             DispatchQueue.main.async {
                 self.activityIndicator.isHidden = true
                 self.activityIndicator.stopAnimating()

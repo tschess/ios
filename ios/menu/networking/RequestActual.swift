@@ -30,44 +30,42 @@ class RequestActual {
         let session = URLSession.shared
         let task = session.dataTask(with: request, completionHandler: { data, response, error in
             guard error == nil else {
-                print("0")
+                //print("0")
                 completion(gameList)
                 return
             }
             guard let data = data else {
-                print("1")
+                //print("1")
                 completion(gameList)
                 return
             }
             do {
                 
-                print("x \(data)")
+                //print("x \(data)")
                 
                 guard let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [[String: Any]] else {
                     
-                    //
-                    
-                    print("- 2")
+                    //print("- 2")
                     let json1 = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Bool]
                     if(json1 == nil){
-                        print("111")
+                        //print("111")
                         completion(gameList)
                         return
                     }
                     if(json1!["zero"] != nil){
-                        print("d")
+                        //print("d")
                         completion(gameList)
                         return
                     }
                     if(json1!["eol"] != nil){
-                        print("r")
+                        //print("r")
                         completion(gameList)
                         return
                     }
                     completion(gameList)
                     return
                 }
-                print("v")
+                //print("v")
                
                 for index in stride(from: 0, to: json.count, by: 1) {
                      let game: EntityGame = ParseGame().execute(json: json[index])

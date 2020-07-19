@@ -98,7 +98,7 @@ class Start: UIViewController, UITextFieldDelegate {
             DispatchQueue.main.async {
                 let storyboard: UIStoryboard = UIStoryboard(name: "Create", bundle: nil)
                 let viewController = storyboard.instantiateViewController(withIdentifier: "Create") as! Create
-                UIApplication.shared.keyWindow?.rootViewController = viewController
+                self.navigationController?.pushViewController(viewController, animated: false)
             }
             return
         }
@@ -120,12 +120,7 @@ class Start: UIViewController, UITextFieldDelegate {
         
         let deviceId = UIDevice.current.identifierForVendor?.uuidString
         
-        //var value: String = "NULL"
-        //let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        //let note_key: String? = appDelegate.note_key
-        //if(note_key != nil){
-            //value = note_key!
-        //}
+        
         
         let requestPayload = [
             "username": usernameTextString!.lowercased(),

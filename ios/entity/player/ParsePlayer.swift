@@ -50,6 +50,13 @@ class ParsePlayer {
             device: device,
             updated: updated,
             created: created)
+        
+        //print("~")
+        //print("~")
+        //print("~")
+        //print("player: \(player)")
+        
+        
         return player
     }
 }

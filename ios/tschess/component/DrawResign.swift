@@ -128,7 +128,7 @@ class DrawResign: UIViewController  {
                     let viewControllers = navigationController.viewControllers
                     for vc in viewControllers {
                         if vc.isKind(of: Menu.classForCoder()) {
-                            print("It is in stack")
+                            //print("It is in stack")
                             let menu: Menu = vc as! Menu
                             menu.menuTable!.refresh(refreshControl: nil)
                         }

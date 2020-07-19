@@ -46,13 +46,16 @@ class RequestCreate {
                 
                 let player: EntityPlayer = ParsePlayer().execute(json: json)
                 completion(player)
-                return
+                
+                //return
                 
                 
                 
                 
                 
-            } catch let error {
+            } catch _ {
+                
+                //print("error: \(error)")
                 
                 completion(nil)
             }

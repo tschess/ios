@@ -11,6 +11,9 @@ import Foundation
 class GameUpdate {
     
     func success(requestPayload: [String: Any], completion: @escaping (Bool) -> Void) {
+        
+        print("requestPayload: \(requestPayload)")
+        
         let url = URL(string: "http://\(ServerAddress().IP):8080/game/update")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
@@ -40,7 +43,10 @@ class GameUpdate {
                     print("A")
                     completion(true)
                 }
-                print("B")
+                print("fail")
+                
+                print("json: \(json)")
+                
                 completion(false)
                 
                 

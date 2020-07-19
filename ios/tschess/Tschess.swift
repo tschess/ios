@@ -39,7 +39,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
             let viewControllers = navigationController.viewControllers
             for vc in viewControllers {
                 if vc.isKind(of: Menu.classForCoder()) {
-                    print("It is in stack")
+                    //print("It is in stack")
                     let menu: Menu = vc as! Menu
                     menu.menuTable!.refresh(refreshControl: nil)
                 }
@@ -597,7 +597,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
                 let viewControllers = navigationController.viewControllers
                 for vc in viewControllers {
                     if vc.isKind(of: Menu.classForCoder()) {
-                        print("It is in stack")
+                        //print("It is in stack")
                         let menu: Menu = vc as! Menu
                         menu.menuTable!.refresh(refreshControl: nil)
                     }
@@ -628,17 +628,17 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         let king: [Int] = czecher.kingCoordinate(affiliation: affiliation, state: self.matrix!)
         let mate: Bool = czecher.mate(king: king, state: self.matrix!)
         let czech: Bool = czecher.other(coordinate: king, state: self.matrix!)
-        print("mate: \(mate)")
-        print("czech: \(czech)")
+        //print("mate: \(mate)")
+        //print("czech: \(czech)")
         if (mate) {
             UpdateMate().execute(id: self.game!.id) { (result) in
-                print("result: 999 --> \(result)")
+                //print("result: 999 --> \(result)")
                 DispatchQueue.main.async {
                     if let navigationController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController {
                         let viewControllers = navigationController.viewControllers
                         for vc in viewControllers {
                             if vc.isKind(of: Menu.classForCoder()) {
-                                print("It is in stack")
+                                //print("It is in stack")
                                 let menu: Menu = vc as! Menu
                                 menu.menuTable!.refresh(refreshControl: nil)
                             }
@@ -654,7 +654,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
             return
         }
         UpdateCheck().execute(id: self.game!.id) { (result) in
-            print("result: 1313 --> \(result)")
+            //print("result: 1313 --> \(result)")
         }
         
     }
