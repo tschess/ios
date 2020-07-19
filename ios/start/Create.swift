@@ -56,21 +56,22 @@ class Create: UIViewController, UITextFieldDelegate {
             
             if let player = player {
                 
-            print("88 - player: \(player)")
+            //print("88 - player: \(player)")
                 
                 DispatchQueue.main.async {
                     let height: CGFloat = UIScreen.main.bounds.height
                     if(height.isLess(than: 750)){
                         
-                        print("~ A ~")
+                        //print("~ A ~")
                         
                         let storyboard: UIStoryboard = UIStoryboard(name: "HomeL", bundle: nil)
                         let viewController = storyboard.instantiateViewController(withIdentifier: "HomeL") as! Home
                         viewController.playerSelf = player
                         self.navigationController?.pushViewController(viewController, animated: false)
+                        return
                     }
                     
-                    print("~ B ~")
+                    //print("~ B ~")
                     
                     let storyboard: UIStoryboard = UIStoryboard(name: "HomeP", bundle: nil)
                     let viewController = storyboard.instantiateViewController(withIdentifier: "HomeP") as! Home
