@@ -46,8 +46,7 @@ class Create: UIViewController, UITextFieldDelegate {
         let requestPayload = [
             "username": usernameTextString!.lowercased(),
             "password": passwordTextString!,
-            "device": deviceId!,
-            "note_key": "FUQ~"
+            "device": deviceId!
         ]
         
         RequestCreate().execute(requestPayload: requestPayload) { (player) in

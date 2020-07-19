@@ -2,6 +2,9 @@
 //  ViewController.swift
 //  ios
 //
+
+// 8325c48c-a2ca-424e-b514-41b54a719140
+
 //  Created by Matthew on 7/25/19.
 //  Copyright © 2019 bahlsenwitz. All rights reserved.
 //
@@ -43,8 +46,7 @@ class Start: UIViewController, UITextFieldDelegate {
         let requestPayload = [
             "username": usernameTextString!.lowercased(),
             "password": passwordTextString!,
-            "device": deviceId!,
-            "note_key": "REMOVE_THIS___!!!"
+            "device": deviceId!
         ]
         
         RequestLogin().execute(requestPayload: requestPayload) { (player) in
@@ -128,8 +130,7 @@ class Start: UIViewController, UITextFieldDelegate {
         let requestPayload = [
             "username": usernameTextString!.lowercased(),
             "password": passwordTextString!,
-            "device": deviceId!,
-            "note_key": "FUCK"
+            "device": deviceId!
         ]
         
         RequestCreate().execute(requestPayload: requestPayload) { (player) in
