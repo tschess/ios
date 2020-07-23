@@ -2,9 +2,6 @@
 //  ViewController.swift
 //  ios
 //
-
-// 8325c48c-a2ca-424e-b514-41b54a719140
-
 //  Created by Matthew on 7/25/19.
 //  Copyright © 2019 bahlsenwitz. All rights reserved.
 //
@@ -12,6 +9,29 @@ import UIKit
 import IHKeyboardAvoiding
 
 class Start: UIViewController, UITextFieldDelegate {
+    
+    required init?(coder aDecoder: NSCoder) {
+        self.testCount = 0
+        self.core = CoreStart()
+        super.init(coder: aDecoder)
+    }
+    
+    //MARK: Override
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        let width = UIScreen.main.bounds.width
+        let height: CGFloat = UIScreen.main.bounds.height
+        
+        self.titleLabelHeight.constant = height * 0.111
+        
+        self.logoHeight.constant = height * 0.371
+        self.logoWidth.constant = logoHeight.constant
+        
+        self.buttonWidthLogin.constant = width/2
+        self.buttonWidthCreate.constant = width/2
+    }
     
     //MARK: Layout ~ View
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
@@ -35,22 +55,7 @@ class Start: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var buttonLogin: UIButton!
     @IBOutlet weak var buttonCreate: UIButton!
     
-    //MARK: Test
-    @IBOutlet weak var testTaskImageView: UIImageView!
-    @IBOutlet weak var testTaskLabel: UILabel!
-    
-    let core: CoreStart
-    
-    var testCount: Int
-    
-    required init?(coder aDecoder: NSCoder) {
-        self.testCount = 0
-        self.core = CoreStart()
-        super.init(coder: aDecoder)
-    }
-    
-    
-    
+    //MARK: Button ~ Login
     @IBAction func loginButtonClick(_ sender: UIButton) {
         self.dismissKeyboard()
         self.usernameTextString = usernameTextField.text!
@@ -64,13 +69,8 @@ class Start: UIViewController, UITextFieldDelegate {
             }
             return
         }
-        self.activityIndicator.isHidden = false
-        self.activityIndicator.startAnimating()
-        self.buttonLogin.isHidden = true
-        self.buttonCreate.isHidden = true
-        self.usernameTextField.isHidden = true
-        self.passwordTextField.isHidden = true
-        
+        self.activityIndicatorStart()
+    
         let request: [String: String] = core.requestPayload(
             username: usernameTextString!.lowercased(),
             password: passwordTextString!)
@@ -113,6 +113,23 @@ class Start: UIViewController, UITextFieldDelegate {
         }
     }
     
+    //MARK: Test
+    @IBOutlet weak var testTaskImageView: UIImageView!
+    @IBOutlet weak var testTaskLabel: UILabel!
+    var testCount: Int
+    
+    //MARK: Common
+    let core: CoreStart
+    
+    private func activityIndicatorStart() {
+        self.activityIndicator.isHidden = false
+        self.activityIndicator.startAnimating()
+        self.buttonLogin.isHidden = true
+        self.buttonCreate.isHidden = true
+        self.usernameTextField.isHidden = true
+        self.passwordTextField.isHidden = true
+    }
+    
     @IBAction func createButtonClick(_ sender: UIButton) {
         self.dismissKeyboard()
         self.usernameTextString = usernameTextField.text!
@@ -134,13 +151,7 @@ class Start: UIViewController, UITextFieldDelegate {
             }
             return
         }
-        
-        self.activityIndicator.isHidden = false
-        self.activityIndicator.startAnimating()
-        self.buttonLogin.isHidden = true
-        self.buttonCreate.isHidden = true
-        self.usernameTextField.isHidden = true
-        self.passwordTextField.isHidden = true
+        self.activityIndicatorStart()
         
         let request: [String: String] = core.requestPayload(
             username: usernameTextString!.lowercased(),
@@ -194,20 +205,7 @@ class Start: UIViewController, UITextFieldDelegate {
     
     
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        
-        let width = UIScreen.main.bounds.width
-        let height: CGFloat = UIScreen.main.bounds.height
-        
-        self.titleLabelHeight.constant = height * 0.111
-        
-        self.logoHeight.constant = height * 0.371
-        self.logoWidth.constant = logoHeight.constant
-        
-        self.buttonWidthLogin.constant = width/2
-        self.buttonWidthCreate.constant = width/2
-    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
