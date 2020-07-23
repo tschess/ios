@@ -22,12 +22,9 @@ class Init: UIViewController {
                 self.start()
                 return
             }
-            //sleep(1)
             DispatchQueue.main.async {
                 let player: EntityPlayer = ParsePlayer().execute(json: result)
-                
                 let height: CGFloat = UIScreen.main.bounds.height
-                //SelectHome().execute(player: player, height: height)
                 if(height.isLess(than: 750)){
                     let storyboard: UIStoryboard = UIStoryboard(name: "HomeL", bundle: nil)
                     let viewController = storyboard.instantiateViewController(withIdentifier: "HomeL") as! Home
@@ -40,15 +37,9 @@ class Init: UIViewController {
                 viewController.playerSelf = player
                 self.navigationController?.pushViewController(viewController, animated: false)
                 
-                //UIApplication.shared.keyWindow?.rootViewController = viewController
-                //self.navigationController!.popToRootViewController(animated: false)
-                
                 if let viewControllers = self.navigationController?.viewControllers {
                       for vc in viewControllers {
-                           //if vc.isKind(of: YourViewController.classForCoder()) {
                         print("It is in stack \(String(describing: type(of: vc)))")
-                                //Your Process
-                           //}
                       }
                 }
                 

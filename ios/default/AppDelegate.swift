@@ -26,7 +26,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         self.window?.makeKeyAndVisible()
         
         self.configureGlobalUI()
-        
         return true
     }
     
@@ -42,8 +41,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         print("note_key: \(note_key!)")
         
-        //let device = UIDevice.current.identifierForVendor?.uuidString
-        //print("device: \(device)")
         let payload: [String: String] = ["id": id!, "note_key": note_key!]
         
         UpdatePush().execute(requestPayload: payload) { (response) in
@@ -65,24 +62,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
      */
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         print("notification recieved")
-        let state = application.applicationState
-        switch state {
-        case .inactive:
-            print(".inactive")
-        case .background:
-            print(".background")
-            let notification = userInfo["aps"] as? NSDictionary
-            guard let string: String = notification?["badge"] as? String else {
-                return
-            }
-            let badge: Int = Int(string)!
-            UIApplication.shared.applicationIconBadgeNumber = badge
-            completionHandler(UIBackgroundFetchResult.newData)
-        case .active:
-            print(".active")
-        default:
-            print("default")
-        }
+        //let state = application.applicationState
+        //switch state {
+        //case .inactive:
+            //print(".inactive")
+            //UIApplication.shared.applicationIconBadgeNumber = 1
+            //completionHandler(UIBackgroundFetchResult.newData)
+        //case .background:
+            //print(".background")
+            //let notification = userInfo["aps"] as? NSDictionary
+            //guard let string: String = notification?["badge"] as? String else {
+                //return
+            //}
+            //let badge: Int = 1
+            //UIApplication.shared.applicationIconBadgeNumber = 1
+            //completionHandler(UIBackgroundFetchResult.newData)
+        //case .active:
+            //print(".active")
+        //default:
+            //print("default")
+            //UIApplication.shared.applicationIconBadgeNumber = 1
+            //completionHandler(UIBackgroundFetchResult.newData)
+        //}
+        application.applicationIconBadgeNumber = 1
+        completionHandler(UIBackgroundFetchResult.newData)
     }
     
     func applicationDidBecomeActive(_ application: UIApplication) {
@@ -95,12 +98,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     }
     
     func applicationDidEnterBackground(_ application: UIApplication) {
+        application.applicationIconBadgeNumber = 0
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
     }
     
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+        //application.applicationIconBadgeNumber = 0 //reset badge count
     }
     
     func applicationWillTerminate(_ application: UIApplication) {

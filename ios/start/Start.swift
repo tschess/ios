@@ -14,10 +14,8 @@ import IHKeyboardAvoiding
 class Start: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var titleLabelHeight: NSLayoutConstraint!
-    
     @IBOutlet weak var logoHeight: NSLayoutConstraint!
     @IBOutlet weak var logoWidth: NSLayoutConstraint!
-    
     @IBOutlet weak var buttonWidthLogin: NSLayoutConstraint!
     @IBOutlet weak var buttonWidthCreate: NSLayoutConstraint!
     
@@ -42,7 +40,6 @@ class Start: UIViewController, UITextFieldDelegate {
         self.passwordTextField.isHidden = true
         
         let deviceId = UIDevice.current.identifierForVendor?.uuidString
-        
         let requestPayload = [
             "username": usernameTextString!.lowercased(),
             "password": passwordTextString!,
@@ -87,9 +84,7 @@ class Start: UIViewController, UITextFieldDelegate {
         }
     }
     
-    
     @IBAction func createButtonClick(_ sender: UIButton) {
-        
         self.dismissKeyboard()
         self.usernameTextString = usernameTextField.text!
         self.passwordTextString = passwordTextField.text!
@@ -119,9 +114,6 @@ class Start: UIViewController, UITextFieldDelegate {
         self.passwordTextField.isHidden = true
         
         let deviceId = UIDevice.current.identifierForVendor?.uuidString
-        
-        
-        
         let requestPayload = [
             "username": usernameTextString!.lowercased(),
             "password": passwordTextString!,
@@ -285,15 +277,12 @@ class Start: UIViewController, UITextFieldDelegate {
     
     
     @objc func testTaskExecuter(){
-        
         let rowA: [String] = ["RookBlack_x", "KnightBlack_x", "BishopBlack_x", "QueenBlack_x", "KingBlack_x", "BishopBlack_x", "KnightBlack_x", "RookBlack_x"]
         let rowB: [String] = ["PawnBlack_x", "PawnBlack_x", "PawnBlack_x", "PawnBlack_x", "PawnBlack_x", "PawnBlack_x", "PawnBlack_x", "PawnBlack_x"]
         var rowC: [String] = [String](repeating: "", count: 8)
         let rowD: [String] = [String](repeating: "", count: 8)
-        //rowD[0] = "QueenBlack"
         
         rowC[6] = "PawnWhite"
-        
         
         let rowE: [String] = [String](repeating: "", count: 8)
         var rowF: [String] = [String](repeating: "", count: 8)
@@ -320,7 +309,6 @@ class Start: UIViewController, UITextFieldDelegate {
             return
         }
         if(self.testTaskCounter == 4){
-            //print(" - testTaskCounter: \(testTaskCounter)")
             let STATE = [[""]]
             let TURN = "WHITE"
             let REQUEST: [String: Any] = ["state": STATE, "turn": TURN]
