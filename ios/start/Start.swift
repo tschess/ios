@@ -33,6 +33,48 @@ class Start: UIViewController, UITextFieldDelegate {
         self.buttonWidthCreate.constant = width/2
     }
     
+    private func setHintText() {
+        let attributes = [NSAttributedString.Key.foregroundColor: UIColor.lightGray]
+        let usernameHint = NSAttributedString(string: "username", attributes: attributes)
+        let passwordHint = NSAttributedString(string: "password", attributes: attributes)
+        self.usernameTextField.text?.removeAll()
+        self.passwordTextField.text?.removeAll()
+        self.usernameTextField.attributedPlaceholder = usernameHint
+        self.passwordTextField.attributedPlaceholder = passwordHint
+    }
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // NAVIGATION
+        self.navigationController?.viewControllers = [self]
+        self.core.printNavigationStack()
+        
+        // DELEGATE
+        self.usernameTextField.delegate = self
+        self.passwordTextField.delegate = self
+        
+        // HIDE
+        self.activityIndicator.isHidden = true
+        self.testTaskLabel.isHidden = true
+        
+        // HINT
+        self.setHintText()
+        
+        self.dismissKeyboardGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
+        view.addGestureRecognizer(dismissKeyboardGesture!)
+        
+        KeyboardAvoiding.avoidingView = self.contentView
+        
+        let testTaskIncrementer: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.testTaskIncrementer))
+        self.testTaskImageView.addGestureRecognizer(testTaskIncrementer)
+        self.testTaskImageView.isUserInteractionEnabled = true
+        let testTaskExecuter: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.testTaskExecuter))
+        self.testTaskLabel.addGestureRecognizer(testTaskExecuter)
+        self.testTaskLabel.isUserInteractionEnabled = true
+    }
+    
     //MARK: Layout ~ View
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var contentView: UIView!
@@ -100,12 +142,11 @@ class Start: UIViewController, UITextFieldDelegate {
                 self.buttonCreate.isHidden = false
                 self.usernameTextField.isHidden = false
                 self.passwordTextField.isHidden = false
-                self.usernameTextField.text?.removeAll()
-                self.usernameTextField.attributedPlaceholder = NSAttributedString(string: "username",
-                                                                                  attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
-                self.passwordTextField.text?.removeAll()
-                self.passwordTextField.attributedPlaceholder = NSAttributedString(string: "password",
-                                                                                  attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+                
+                
+                // HINT
+                self.setHintText()
+                
                 let storyboard: UIStoryboard = UIStoryboard(name: "Invalid", bundle: nil)
                 let viewController = storyboard.instantiateViewController(withIdentifier: "Invalid") as! CompInvalid
                 self.present(viewController, animated: true, completion: nil)
@@ -199,57 +240,6 @@ class Start: UIViewController, UITextFieldDelegate {
             
         }
         
-    }
-    
-    
-    
-    
-    
-    
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        self.navigationController?.viewControllers = [self]
-        //guard let navigationController = self.navigationController else { return }
-        //var navigationArray = navigationController.viewControllers // To get all UIViewController stack as Array
-        //navigationArray.remove(at: navigationArray.count - 2) // To remove previous UIViewController
-        //self.navigationController?.viewControllers = navigationArray
-        if let viewControllers = self.navigationController?.viewControllers {
-            for vc in viewControllers {
-                //if vc.isKind(of: YourViewController.classForCoder()) {
-                print("---")
-                print("It is in stack \(String(describing: type(of: vc)))")
-                print("---")
-                //Your Process
-                //}
-            }
-        }
-        
-        self.activityIndicator.isHidden = true
-        self.testTaskLabel.isHidden = true
-        
-        self.usernameTextField.delegate = self
-        
-        self.usernameTextField.attributedPlaceholder = NSAttributedString(string: "username",
-                                                                          attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
-        
-        self.passwordTextField.delegate = self
-        
-        self.passwordTextField.attributedPlaceholder = NSAttributedString(string: "password",
-                                                                          attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
-        
-        self.dismissKeyboardGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
-        view.addGestureRecognizer(dismissKeyboardGesture!)
-        
-        KeyboardAvoiding.avoidingView = self.contentView
-        
-        let testTaskIncrementer: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.testTaskIncrementer))
-        self.testTaskImageView.addGestureRecognizer(testTaskIncrementer)
-        self.testTaskImageView.isUserInteractionEnabled = true
-        let testTaskExecuter: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.testTaskExecuter))
-        self.testTaskLabel.addGestureRecognizer(testTaskExecuter)
-        self.testTaskLabel.isUserInteractionEnabled = true
     }
     
     var dismissKeyboardGesture: UITapGestureRecognizer?

@@ -20,4 +20,15 @@ class CoreStart {
         return dict
     }
     
+    
+    func printNavigationStack() {
+        if let viewControllers = self.navigationController?.viewControllers {
+            for vc in viewControllers {
+                print("---")
+                print("It is in stack \(String(describing: type(of: vc)))")
+                print("---")
+            }
+        }
+    }
+    
 }
