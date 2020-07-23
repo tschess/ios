@@ -27,6 +27,7 @@
 		83D707A324BAB1F3008F308D /* CompNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D707A224BAB1F3008F308D /* CompNote.swift */; };
 		83D707A524BAB208008F308D /* TransNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D707A424BAB208008F308D /* TransNote.swift */; };
 		83D707A824BAB248008F308D /* Note.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83D707A724BAB248008F308D /* Note.storyboard */; };
+		83D758EC24CA0E79008DC4B5 /* CoreStart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D758EB24CA0E79008DC4B5 /* CoreStart.swift */; };
 		B7021F2723FDEE6100C9346A /* ConfigP.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7021F2623FDEE6100C9346A /* ConfigP.storyboard */; };
 		B7021F2A23FDEE8200C9346A /* ConfigL.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7021F2923FDEE8200C9346A /* ConfigL.storyboard */; };
 		B7021F3023FDFC5200C9346A /* FairiesL.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7021F2F23FDFC5200C9346A /* FairiesL.storyboard */; };
@@ -235,6 +236,7 @@
 		83D707A224BAB1F3008F308D /* CompNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompNote.swift; sourceTree = "<group>"; };
 		83D707A424BAB208008F308D /* TransNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransNote.swift; sourceTree = "<group>"; };
 		83D707A724BAB248008F308D /* Note.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Note.storyboard; sourceTree = "<group>"; };
+		83D758EB24CA0E79008DC4B5 /* CoreStart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreStart.swift; sourceTree = "<group>"; };
 		AD83F59EDBC27D005F033F41 /* Pods-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios.debug.xcconfig"; path = "Target Support Files/Pods-ios/Pods-ios.debug.xcconfig"; sourceTree = "<group>"; };
 		B7021F2623FDEE6100C9346A /* ConfigP.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ConfigP.storyboard; sourceTree = "<group>"; };
 		B7021F2923FDEE8200C9346A /* ConfigL.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ConfigL.storyboard; sourceTree = "<group>"; };
@@ -694,6 +696,7 @@
 				B708D0F2236B4EDF00A899F9 /* storyboard */,
 				B708D0E8236B369D00A899F9 /* Start.swift */,
 				B7ED646723F4DC9B00292FBC /* Create.swift */,
+				83D758EB24CA0E79008DC4B5 /* CoreStart.swift */,
 			);
 			path = start;
 			sourceTree = "<group>";
@@ -1839,6 +1842,7 @@
 				B7BE123C23EAFC0200ADA499 /* Challenge.swift in Sources */,
 				B7BE129E23EB0B2A00ADA499 /* HopperOffense.swift in Sources */,
 				8389C6B8246B17DA00DFE8F2 /* DialogPoison.swift in Sources */,
+				83D758EC24CA0E79008DC4B5 /* CoreStart.swift in Sources */,
 				B7BE11D523EAA18000ADA499 /* BoardView.swift in Sources */,
 				B7BE12C423EB6B9300ADA499 /* TransDraw.swift in Sources */,
 				B7BE115D23EA4FBE00ADA499 /* ParsePlayer.swift in Sources */,

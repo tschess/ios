@@ -13,11 +13,43 @@ import IHKeyboardAvoiding
 
 class Start: UIViewController, UITextFieldDelegate {
     
+    //MARK: Layout ~ View
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var contentView: UIView!
+    
+    //MARK: Layout ~ Constraint
     @IBOutlet weak var titleLabelHeight: NSLayoutConstraint!
     @IBOutlet weak var logoHeight: NSLayoutConstraint!
     @IBOutlet weak var logoWidth: NSLayoutConstraint!
     @IBOutlet weak var buttonWidthLogin: NSLayoutConstraint!
     @IBOutlet weak var buttonWidthCreate: NSLayoutConstraint!
+    
+    //MARK: Input
+    @IBOutlet weak var usernameTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    var usernameTextString: String?
+    var passwordTextString: String?
+    
+    //MARK: Button
+    @IBOutlet weak var buttonRecover: UIButton!
+    @IBOutlet weak var buttonLogin: UIButton!
+    @IBOutlet weak var buttonCreate: UIButton!
+    
+    //MARK: Test
+    @IBOutlet weak var testTaskImageView: UIImageView!
+    @IBOutlet weak var testTaskLabel: UILabel!
+    
+    let core: CoreStart
+    
+    var testCount: Int
+    
+    required init?(coder aDecoder: NSCoder) {
+        self.testCount = 0
+        self.core = CoreStart()
+        super.init(coder: aDecoder)
+    }
+    
+    
     
     @IBAction func loginButtonClick(_ sender: UIButton) {
         self.dismissKeyboard()
@@ -39,14 +71,11 @@ class Start: UIViewController, UITextFieldDelegate {
         self.usernameTextField.isHidden = true
         self.passwordTextField.isHidden = true
         
-        let deviceId = UIDevice.current.identifierForVendor?.uuidString
-        let requestPayload = [
-            "username": usernameTextString!.lowercased(),
-            "password": passwordTextString!,
-            "device": deviceId!
-        ]
+        let request: [String: String] = core.requestPayload(
+            username: usernameTextString!.lowercased(),
+            password: passwordTextString!)
         
-        RequestLogin().execute(requestPayload: requestPayload) { (player) in
+        RequestLogin().execute(requestPayload: request) { (player) in
             if let player = player {
                 DispatchQueue.main.async {
                     let height: CGFloat = UIScreen.main.bounds.height
@@ -113,14 +142,11 @@ class Start: UIViewController, UITextFieldDelegate {
         self.usernameTextField.isHidden = true
         self.passwordTextField.isHidden = true
         
-        let deviceId = UIDevice.current.identifierForVendor?.uuidString
-        let requestPayload = [
-            "username": usernameTextString!.lowercased(),
-            "password": passwordTextString!,
-            "device": deviceId!
-        ]
+        let request: [String: String] = core.requestPayload(
+            username: usernameTextString!.lowercased(),
+            password: passwordTextString!)
         
-        RequestCreate().execute(requestPayload: requestPayload) { (player) in
+        RequestCreate().execute(requestPayload: request) { (player) in
             if let player = player {
                 DispatchQueue.main.async {
                     let height: CGFloat = UIScreen.main.bounds.height
@@ -164,30 +190,7 @@ class Start: UIViewController, UITextFieldDelegate {
         
     }
     
-    //MARK: Layout
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    @IBOutlet weak var contentView: UIView!
     
-    //MARK: Input
-    @IBOutlet weak var usernameTextField: UITextField!
-    @IBOutlet weak var passwordTextField: UITextField!
-    var usernameTextString: String?
-    var passwordTextString: String?
-    
-    //MARK: Button
-    @IBOutlet weak var buttonRecover: UIButton!
-    @IBOutlet weak var buttonLogin: UIButton!
-    @IBOutlet weak var buttonCreate: UIButton!
-    
-    //MARK: Test
-    @IBOutlet weak var testTaskImageView: UIImageView!
-    @IBOutlet weak var testTaskLabel: UILabel!
-    var testTaskCounter: Int
-    
-    required init?(coder aDecoder: NSCoder) {
-        self.testTaskCounter = 0
-        super.init(coder: aDecoder)
-    }
     
     
     
@@ -265,14 +268,14 @@ class Start: UIViewController, UITextFieldDelegate {
     }
     
     @objc func testTaskIncrementer() {
-        self.testTaskCounter += 1
-        if(self.testTaskCounter < 3){
+        self.testCount += 1
+        if(self.testCount < 3){
             return
         }
         if(self.testTaskLabel.isHidden){
             self.testTaskLabel.isHidden = false
         }
-        self.testTaskLabel.text = String(testTaskCounter)
+        self.testTaskLabel.text = String(testCount)
     }
     
     
@@ -292,7 +295,7 @@ class Start: UIViewController, UITextFieldDelegate {
         let rowH: [String] = ["RookWhite_x", "KnightWhite_x", "BishopWhite_x", "QueenWhite_x", "KingWhite_x", "BishopWhite_x", "KnightWhite_x", "RookWhite_x"]
         
         view.removeGestureRecognizer(self.dismissKeyboardGesture!)
-        if(self.testTaskCounter == 3){
+        if(self.testCount == 3){
             let STATE = [rowH, rowG, rowF, rowE, rowD, rowC, rowB, rowA]
             let TURN = "WHITE"
             let REQUEST: [String: Any] = ["state": STATE, "turn": TURN]
@@ -308,7 +311,7 @@ class Start: UIViewController, UITextFieldDelegate {
             }
             return
         }
-        if(self.testTaskCounter == 4){
+        if(self.testCount == 4){
             let STATE = [[""]]
             let TURN = "WHITE"
             let REQUEST: [String: Any] = ["state": STATE, "turn": TURN]
