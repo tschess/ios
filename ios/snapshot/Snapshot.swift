@@ -115,16 +115,16 @@ class Snapshot: UIViewController, UICollectionViewDataSource, UICollectionViewDe
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "square", for: indexPath) as!  SquareCell
         if (indexPath.row % 2 == 0) {
             if ((indexPath.row / 8) % 2 == 0) {
-                cell.backgroundColor = UIColor.purple
+                cell.backgroundColor = UIColor.white
             } else {
-                cell.backgroundColor = UIColor.brown
+                cell.backgroundColor = UIColor.black
             }
             
         } else {
             if ((indexPath.row / 8) % 2 == 0) {
-                cell.backgroundColor = UIColor.brown
+                cell.backgroundColor = UIColor.black
             } else {
-                cell.backgroundColor = UIColor.purple
+                cell.backgroundColor = UIColor.white
             }
         }
         

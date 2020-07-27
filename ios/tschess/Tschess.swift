@@ -312,14 +312,14 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     private func assignCellBackgroundColor(index: Int) -> UIColor {
         if (index % 2 == 0) {
             if ((index / 8) % 2 == 0) {
-                return UIColor.purple
+                return UIColor.white
             }
-            return UIColor.brown
+            return UIColor.black
         }
         if ((index / 8) % 2 == 0) {
-            return UIColor.brown
+            return UIColor.black
         }
-        return UIColor.purple
+        return UIColor.white
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
