@@ -1,8 +1,8 @@
 {
   "images" : [
     {
+      "filename" : "hi.png",
       "idiom" : "universal",
-      "filename" : "pkm_w-1.png",
       "scale" : "1x"
     },
     {
@@ -15,7 +15,7 @@
     }
   ],
   "info" : {
-    "version" : 1,
-    "author" : "xcode"
+    "author" : "xcode",
+    "version" : 1
   }
 }
