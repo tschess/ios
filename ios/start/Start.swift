@@ -49,7 +49,7 @@ class Start: UIViewController, UITextFieldDelegate {
         
         // NAVIGATION
         self.navigationController?.viewControllers = [self]
-        self.core.printNavigationStack()
+        self.core.printNavigationStack(navigationController: navigationController)
         
         // DELEGATE
         self.usernameTextField.delegate = self

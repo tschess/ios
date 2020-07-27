@@ -21,8 +21,8 @@ class CoreStart {
     }
     
     
-    func printNavigationStack() {
-        if let viewControllers = self.navigationController?.viewControllers {
+    func printNavigationStack(navigationController: UINavigationController?) {
+        if let viewControllers = navigationController?.viewControllers {
             for vc in viewControllers {
                 print("---")
                 print("It is in stack \(String(describing: type(of: vc)))")
