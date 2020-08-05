@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -32,6 +32,10 @@
                                 </constraints>
                                 <items>
                                     <tabBarItem title="HOME" image="back.grey" selectedImage="back.white" id="fYp-Rj-VM2">
+                                        <inset key="imageInsets" minX="3" minY="3" maxX="3" maxY="3"/>
+                                        <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </tabBarItem>
+                                    <tabBarItem title="HISTORIC" image="book.grey" selectedImage="book.white" id="YEv-H2-ygj">
                                         <inset key="imageInsets" minX="3" minY="3" maxX="3" maxY="3"/>
                                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tabBarItem>
@@ -226,7 +230,6 @@
                         <outlet property="activityIndicator" destination="ADc-nn-Tmx" id="nE6-v0-Gof"/>
                         <outlet property="avatarImageView" destination="r0d-hG-YKm" id="UEY-EA-tK0"/>
                         <outlet property="backButton" destination="3VQ-kH-eUV" id="lJy-R4-LhM"/>
-                        
                         <outlet property="displacementLabel" destination="TC7-mt-3N6" id="VC6-Jh-z3e"/>
                         <outlet property="eloLabel" destination="APs-oU-CuM" id="6nd-Zz-Usr"/>
                         <outlet property="rankDirectionImage" destination="Db2-vI-7pN" id="PLO-NJ-seP"/>
@@ -427,6 +430,8 @@
         <image name="avatar_inverse" width="320" height="320"/>
         <image name="back.grey" width="39" height="33"/>
         <image name="back.white" width="39" height="33"/>
+        <image name="book.grey" width="40" height="40"/>
+        <image name="book.white" width="40" height="40"/>
         <image name="quick.grey" width="20" height="31"/>
         <image name="quick.white" width="25" height="39"/>
         <image name="tray.and.arrow.down" catalog="system" width="128" height="109"/>

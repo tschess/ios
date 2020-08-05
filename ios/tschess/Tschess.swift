@@ -277,8 +277,6 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         self.labelRankDate.text = self.playerOther!.getLabelTextDate()
         self.labelUsername.text = self.playerOther!.username
         self.imageViewAvatar.image = self.playerOther!.getImageAvatar()
-        
-        
     }
     
     override func viewDidLayoutSubviews() {
@@ -388,7 +386,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
                 ornament.bounds = CGRect(origin: cell.bounds.origin, size: cell.bounds.size)
                 ornament.center = CGPoint(x: cell.bounds.size.width/2, y: cell.bounds.size.height/2)
                 ornament.tag = 666
-                ornament.alpha = 0.3
+                //ornament.alpha = 0.9
                 cell.insertSubview(ornament, at: 0)
                 return cell
             }
@@ -404,7 +402,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
             ornament.bounds = CGRect(origin: cell.bounds.origin, size: cell.bounds.size)
             ornament.center = CGPoint(x: cell.bounds.size.width/2, y: cell.bounds.size.height/2)
             ornament.tag = 666
-            ornament.alpha = 0.3
+            //ornament.alpha = 0.9
             cell.insertSubview(ornament, at: 0)
             return cell
         }

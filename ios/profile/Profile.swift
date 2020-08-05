@@ -17,6 +17,7 @@ class Profile: UIViewController, UITabBarDelegate, UINavigationControllerDelegat
         let imageString = selectedImage.jpegData(compressionQuality: 0.09)!.base64EncodedString()
         
         let updatePhoto = ["id": self.player!.id, "avatar": imageString] as [String: Any]
+        
         UpdatePhoto().execute(requestPayload: updatePhoto) { (error) in
             if error != nil {
                 print("error: \(error!.localizedDescription)")
