@@ -283,14 +283,14 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
     private func getCellActive(cell: MenuCell) -> MenuCell {
         cell.soLaLa.backgroundColor = UIColor.white
         cell.usernameLabel.textColor = UIColor.black
-        cell.timeIndicatorLabel.textColor = UIColor.black
+        //cell.timeIndicatorLabel.textColor = UIColor.black
         cell.actionImageView.isHidden = false
-        cell.dispImageView.isHidden = true
-        cell.dispAdjacentLabel.isHidden = true
-        cell.oddsIndicatorLabel.isHidden = true
-        cell.oddsValueLabel.isHidden = true
-        cell.dispImageView.isHidden = true
-        cell.dispValueLabel.isHidden = true
+        //cell.dispImageView.isHidden = true
+        //cell.dispAdjacentLabel.isHidden = true
+        //cell.oddsIndicatorLabel.isHidden = true
+        //cell.oddsValueLabel.isHidden = true
+        //cell.dispImageView.isHidden = true
+        //cell.dispValueLabel.isHidden = true
         return cell
     }
     
@@ -322,11 +322,11 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
         let username: String = self.menu!.playerSelf!.username
         let usernameOther: String = game.getLabelTextUsernameOpponent(username: username)
         let avatarImageOther: UIImage = game.getImageAvatarOpponent(username: username)
-        let date: String = game.getLabelTextDate()
+        //let date: String = game.getLabelTextDate()
         
         var cell = tableView.dequeueReusableCell(withIdentifier: "MenuCell", for: indexPath) as! MenuCell
         cell.delegate = self
-        cell.timeIndicatorLabel.text = date
+        //cell.timeIndicatorLabel.text = date
         cell.usernameLabel.text = usernameOther
         cell.avatarImageView.image = avatarImageOther
         if(game.status == "RESOLVED"){

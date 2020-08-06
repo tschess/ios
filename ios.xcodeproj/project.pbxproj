@@ -24,6 +24,7 @@
 		8389C6B4246B17BE00DFE8F2 /* DialogPassant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8389C6B3246B17BE00DFE8F2 /* DialogPassant.swift */; };
 		8389C6B6246B17CC00DFE8F2 /* TransDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8389C6B5246B17CC00DFE8F2 /* TransDialog.swift */; };
 		8389C6B8246B17DA00DFE8F2 /* DialogPoison.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8389C6B7246B17DA00DFE8F2 /* DialogPoison.swift */; };
+		83A7392A24DCA7D700F81E1D /* HistoP.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83A7392924DCA7D700F81E1D /* HistoP.storyboard */; };
 		83D707A324BAB1F3008F308D /* CompNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D707A224BAB1F3008F308D /* CompNote.swift */; };
 		83D707A524BAB208008F308D /* TransNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D707A424BAB208008F308D /* TransNote.swift */; };
 		83D707A824BAB248008F308D /* Note.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83D707A724BAB248008F308D /* Note.storyboard */; };
@@ -233,6 +234,7 @@
 		8389C6B3246B17BE00DFE8F2 /* DialogPassant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogPassant.swift; sourceTree = "<group>"; };
 		8389C6B5246B17CC00DFE8F2 /* TransDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransDialog.swift; sourceTree = "<group>"; };
 		8389C6B7246B17DA00DFE8F2 /* DialogPoison.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogPoison.swift; sourceTree = "<group>"; };
+		83A7392924DCA7D700F81E1D /* HistoP.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HistoP.storyboard; sourceTree = "<group>"; };
 		83D707A224BAB1F3008F308D /* CompNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompNote.swift; sourceTree = "<group>"; };
 		83D707A424BAB208008F308D /* TransNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransNote.swift; sourceTree = "<group>"; };
 		83D707A724BAB248008F308D /* Note.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Note.storyboard; sourceTree = "<group>"; };
@@ -835,6 +837,7 @@
 			isa = PBXGroup;
 			children = (
 				B7A6B8A3240D9A7300840156 /* MenuP.storyboard */,
+				83A7392924DCA7D700F81E1D /* HistoP.storyboard */,
 			);
 			path = primary;
 			sourceTree = "<group>";
@@ -1703,6 +1706,7 @@
 				B708D0E7236B366800A899F9 /* LaunchScreen.storyboard in Resources */,
 				B7CB62F6237BB10800E50204 /* Start.storyboard in Resources */,
 				B7A6B8A4240D9A7300840156 /* MenuP.storyboard in Resources */,
+				83A7392A24DCA7D700F81E1D /* HistoP.storyboard in Resources */,
 				B7F3A13523FD95E8007B5663 /* HomeL.storyboard in Resources */,
 				B7021F3723FE02FA00C9346A /* InfoL.storyboard in Resources */,
 				B7021F5223FE11D300C9346A /* EditOtherL.storyboard in Resources */,
