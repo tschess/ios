@@ -184,32 +184,19 @@ class HomeMenuTable: UITableViewController, SwipeTableViewCellDelegate {
         return cell
     }
     
-    var hide: Int = 0
+    var swipeVisible: Bool = false
     
     @objc func imageTapped(sender: UITapGestureRecognizer) {
-
-        print("FUCK FUCK FUCK FUCK!!!")
-        //cell.showSwipe(orientation: .right, animated: true)
         guard let cell = sender.view?.superview?.superview as? HomeMenuCell else {
-            
-            //print("Gesture View value : \(sender.view?.superview)\n\n")
-            
-            //print("Gesture View value : \(sender.view?.superview?.superview)")
-            
-            print("x x x x!!!")
             return
         }
-        
-        if(hide == 0){
+        if(!self.swipeVisible){
             cell.showSwipe(orientation: .right, animated: true)
-            hide = 1
-        } else {
-            cell.hideSwipe(animated: true, completion: nil)
-            hide = 0
+            self.swipeVisible = true
+            return
         }
-        
-        
-
+        cell.hideSwipe(animated: true, completion: nil)
+        self.swipeVisible = false
     }
     
     override func viewDidLayoutSubviews() {

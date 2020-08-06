@@ -150,12 +150,10 @@ class EntityGame: Equatable, Hashable {
     }
     
     func getLabelTextDate() -> String {
-        let date: Date = self.getDateUpdated()
         let formatter = DateFormatter()
-        formatter.dateFormat = "MM.dd.YY"
-        var dateFormat = formatter.string(from: date)
-        dateFormat.insert("'", at: dateFormat.index(dateFormat.endIndex, offsetBy: -2))
-        return dateFormat
+        formatter.dateFormat = "MM/dd/YYYY"
+        let date: Date = self.getDateUpdated()
+        return formatter.string(from: date)
     }
     
     func getStateClient(username: String) -> [[Piece?]] {
