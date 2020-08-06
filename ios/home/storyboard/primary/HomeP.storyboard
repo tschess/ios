@@ -62,11 +62,11 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="elo:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lXq-5I-URG">
-                                        <rect key="frame" x="308" y="4" width="34" height="30"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="rate:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lXq-5I-URG">
+                                        <rect key="frame" x="295" y="4" width="47" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="5Gq-jU-abz"/>
-                                            <constraint firstAttribute="width" constant="34" id="HHa-zu-Llt"/>
+                                            <constraint firstAttribute="width" constant="47" id="HHa-zu-Llt"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="22"/>
                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -108,11 +108,11 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow.down" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="fPO-nw-FP9">
-                                        <rect key="frame" x="317" y="73.333333333333329" width="20" height="27.666666666666671"/>
+                                        <rect key="frame" x="317" y="77.333333333333329" width="20" height="19.666666666666671"/>
                                         <color key="tintColor" red="0.86274509799999999" green="0.015686274510000001" blue="0.015686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="20" id="S9S-ws-LUS"/>
-                                            <constraint firstAttribute="height" constant="30" id="T4q-0y-3c3"/>
+                                            <constraint firstAttribute="height" constant="22" id="T4q-0y-3c3"/>
                                         </constraints>
                                     </imageView>
                                 </subviews>
@@ -127,7 +127,7 @@
                                     <constraint firstItem="JDT-f9-ELr" firstAttribute="top" secondItem="sGW-Ae-1In" secondAttribute="bottom" constant="4" id="LJQ-JK-Scf"/>
                                     <constraint firstAttribute="trailing" secondItem="pUJ-un-5Hg" secondAttribute="trailing" constant="8" id="Ls7-Ix-tgO"/>
                                     <constraint firstItem="n3B-YV-bLf" firstAttribute="top" secondItem="AlY-qh-cUb" secondAttribute="top" constant="106" id="NuI-54-Vn1"/>
-                                    <constraint firstItem="fPO-nw-FP9" firstAttribute="top" secondItem="w0W-JM-jEB" secondAttribute="bottom" constant="4" id="PIs-o7-TVB"/>
+                                    <constraint firstItem="fPO-nw-FP9" firstAttribute="top" secondItem="w0W-JM-jEB" secondAttribute="bottom" constant="8" id="PIs-o7-TVB"/>
                                     <constraint firstItem="n3B-YV-bLf" firstAttribute="leading" secondItem="AlY-qh-cUb" secondAttribute="leading" constant="8" id="TN0-Oa-bLO"/>
                                     <constraint firstItem="79z-Oi-85T" firstAttribute="centerX" secondItem="AlY-qh-cUb" secondAttribute="centerX" id="Wer-lX-IRY"/>
                                     <constraint firstItem="pUJ-un-5Hg" firstAttribute="top" secondItem="AlY-qh-cUb" secondAttribute="top" constant="4" id="aBd-cn-xvE"/>
