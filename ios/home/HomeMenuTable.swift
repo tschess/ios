@@ -63,8 +63,6 @@ class HomeMenuTable: UITableViewController, SwipeTableViewCellDelegate {
             cell.hideSwipe(animated: false, completion: nil)
             
             let playerOther = self.leaderboardList[indexPath.row]
-            
-            
                 DispatchQueue.main.async {
                     let height: CGFloat = UIScreen.main.bounds.height
                     if(height.isLess(than: 750)){
@@ -177,7 +175,41 @@ class HomeMenuTable: UITableViewController, SwipeTableViewCellDelegate {
             cell.dispImage.tintColor = player.tintColor
         }
         
+        let pictureTap = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
+        cell.buttonSideSlide.addGestureRecognizer(pictureTap)
+        cell.buttonSideSlide.isUserInteractionEnabled = true
+        
+        
+        
         return cell
+    }
+    
+    var hide: Int = 0
+    
+    @objc func imageTapped(sender: UITapGestureRecognizer) {
+
+        print("FUCK FUCK FUCK FUCK!!!")
+        //cell.showSwipe(orientation: .right, animated: true)
+        guard let cell = sender.view?.superview?.superview as? HomeMenuCell else {
+            
+            //print("Gesture View value : \(sender.view?.superview)\n\n")
+            
+            //print("Gesture View value : \(sender.view?.superview?.superview)")
+            
+            print("x x x x!!!")
+            return
+        }
+        
+        if(hide == 0){
+            cell.showSwipe(orientation: .right, animated: true)
+            hide = 1
+        } else {
+            cell.hideSwipe(animated: true, completion: nil)
+            hide = 0
+        }
+        
+        
+
     }
     
     override func viewDidLayoutSubviews() {

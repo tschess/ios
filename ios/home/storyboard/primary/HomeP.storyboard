@@ -354,6 +354,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="avatarImageView" destination="nKx-cM-yYc" id="DE1-UN-nTD"/>
+                                    <outlet property="buttonSideSlide" destination="QMi-Vl-HZj" id="Rw0-3o-egU"/>
                                     <outlet property="dateLabel" destination="QXK-mb-Sho" id="44A-Fx-dr0"/>
                                     <outlet property="dispImage" destination="inX-hi-2ve" id="6gB-Sj-6U0"/>
                                     <outlet property="dispLabel" destination="0O4-Ti-Ubf" id="tUg-y5-PeH"/>

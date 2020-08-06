@@ -294,7 +294,6 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
         return cell
     }
     
-    //let val: String = player.getLabelTextDisp()
     private func getCellHisto(cell: MenuCell, disp: String) -> MenuCell {
         cell.soLaLa.backgroundColor = UIColor.black
         cell.usernameLabel.textColor = UIColor.white

@@ -18,8 +18,9 @@ class HomeMenuCell: SwipeTableViewCell {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var dispImage: UIImageView!
     @IBOutlet weak var dispLabel: UILabel!
-    //@IBOutlet weak var dispLabelAlign: UILabel!
     @IBOutlet weak var dispLabelAlign: UILabel!
+    
+    @IBOutlet weak var buttonSideSlide: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
