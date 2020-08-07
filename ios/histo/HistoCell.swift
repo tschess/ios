@@ -15,6 +15,8 @@ class HistoCell: SwipeTableViewCell {
     //@IBOutlet weak var labelUsername: UILabel!
     //@IBOutlet weak var labelUpdate: UILabel!
     
+    //cell.labelSideSlide.isHidden = true
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }

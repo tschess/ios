@@ -340,6 +340,7 @@
                                     <outlet property="avatarImageView" destination="xuk-ae-wp5" id="Pcg-Rg-VnC"/>
                                     <outlet property="contentView" destination="MGs-1w-KdX" id="RxR-0u-Ns0"/>
                                     <outlet property="labelAction" destination="Vg9-pg-bpI" id="uU0-bs-kFy"/>
+                                    <outlet property="labelSideSlide" destination="hVt-pa-FQT" id="fu8-Yh-7Z0"/>
                                     <outlet property="soLaLa" destination="MGs-1w-KdX" id="viY-81-Whl"/>
                                     <outlet property="usernameLabel" destination="WZt-Fa-Umr" id="qUZ-J5-jva"/>
                                 </connections>

@@ -14,8 +14,8 @@ class HistoTable: UITableViewController, SwipeTableViewCellDelegate {
     var pageCount: Int
     
     // MARK: ~
-    var menu: Menu?
-    func setSelf(menu: Menu) {
+    var menu: Histo?
+    func setSelf(menu: Histo) {
         self.menu = menu
     }
     
@@ -294,27 +294,7 @@ class HistoTable: UITableViewController, SwipeTableViewCellDelegate {
         return cell
     }
     
-    private func getCellHisto(cell: MenuCell, disp: String) -> MenuCell {
-        cell.soLaLa.backgroundColor = UIColor.black
-        cell.usernameLabel.textColor = UIColor.white
-        cell.timeIndicatorLabel.textColor = UIColor.lightGray
-        cell.actionImageView.isHidden = true
-        cell.dispImageView.isHidden = false
-        cell.dispAdjacentLabel.isHidden = false
-        cell.dispAdjacentLabel.textColor = UIColor.lightGray
-        cell.oddsIndicatorLabel.isHidden = false
-        cell.oddsIndicatorLabel.textColor = UIColor.lightGray
-        cell.oddsValueLabel.isHidden = false
-        cell.oddsValueLabel.textColor = UIColor.white
-        cell.dispValueLabel.isHidden = false
-        cell.dispValueLabel.textColor = UIColor.white
-        if(disp == "0"){
-            cell.dispValueLabel.isHidden = true
-            cell.dispAdjacentLabel.isHidden = true
-            cell.dispImageView.isHidden = true
-        }
-        return cell
-    }
+   
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let index: Int = indexPath.row
@@ -330,11 +310,9 @@ class HistoTable: UITableViewController, SwipeTableViewCellDelegate {
         cell.usernameLabel.text = usernameOther
         cell.avatarImageView.image = avatarImageOther
         if(game.status == "RESOLVED"){
-            let disp: String = game.getLabelTextDisp(username: username)!
-            cell = self.getCellHisto(cell: cell, disp: disp)
-            cell.dispImageView.image = game.getImageDisp(username: username)
-            cell.oddsValueLabel.text = game.getOdds(username: username)
-            cell.dispValueLabel.text = disp
+            //let disp: String = game.getLabelTextDisp(username: username)!
+            //cell = self.getCellHisto(cell: cell, disp: disp)
+            
             return cell
         }
         cell = self.getCellActive(cell: cell)

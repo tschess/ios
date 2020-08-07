@@ -340,6 +340,9 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
         cell = self.getCellActive(cell: cell)
         let inbound: Bool = game.getTurn(username: username)
         if(game.status == "ONGOING"){
+            
+            cell.labelSideSlide.isHidden = true
+            
             if(inbound){
                 let image: UIImage = UIImage(named: "turn.on")!
                 cell.actionImageView.image = image
