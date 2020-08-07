@@ -28,7 +28,8 @@
 		83A7392D24DDC81300F81E1D /* Histo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A7392C24DDC81300F81E1D /* Histo.swift */; };
 		83A7393124DDC84800F81E1D /* HistoP.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83A7393024DDC84800F81E1D /* HistoP.storyboard */; };
 		83A7393424DDC86F00F81E1D /* HistoL.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83A7393324DDC86F00F81E1D /* HistoL.storyboard */; };
-		83A7393724DDC89700F81E1D /* RequestHisto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A7393624DDC89700F81E1D /* RequestHisto.swift */; };
+		83A7393924DDE8FF00F81E1D /* HistoTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A7393824DDE8FF00F81E1D /* HistoTable.swift */; };
+		83A7393B24DDE90C00F81E1D /* HistoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A7393A24DDE90C00F81E1D /* HistoCell.swift */; };
 		83D707A324BAB1F3008F308D /* CompNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D707A224BAB1F3008F308D /* CompNote.swift */; };
 		83D707A524BAB208008F308D /* TransNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D707A424BAB208008F308D /* TransNote.swift */; };
 		83D707A824BAB248008F308D /* Note.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83D707A724BAB248008F308D /* Note.storyboard */; };
@@ -242,7 +243,8 @@
 		83A7392C24DDC81300F81E1D /* Histo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Histo.swift; sourceTree = "<group>"; };
 		83A7393024DDC84800F81E1D /* HistoP.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HistoP.storyboard; sourceTree = "<group>"; };
 		83A7393324DDC86F00F81E1D /* HistoL.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HistoL.storyboard; sourceTree = "<group>"; };
-		83A7393624DDC89700F81E1D /* RequestHisto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestHisto.swift; sourceTree = "<group>"; };
+		83A7393824DDE8FF00F81E1D /* HistoTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoTable.swift; sourceTree = "<group>"; };
+		83A7393A24DDE90C00F81E1D /* HistoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoCell.swift; sourceTree = "<group>"; };
 		83D707A224BAB1F3008F308D /* CompNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompNote.swift; sourceTree = "<group>"; };
 		83D707A424BAB208008F308D /* TransNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransNote.swift; sourceTree = "<group>"; };
 		83D707A724BAB248008F308D /* Note.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Note.storyboard; sourceTree = "<group>"; };
@@ -511,9 +513,10 @@
 		83A7392B24DDC7F300F81E1D /* histo */ = {
 			isa = PBXGroup;
 			children = (
-				83A7393524DDC87B00F81E1D /* networking */,
 				83A7392E24DDC82300F81E1D /* storyboard */,
 				83A7392C24DDC81300F81E1D /* Histo.swift */,
+				83A7393824DDE8FF00F81E1D /* HistoTable.swift */,
+				83A7393A24DDE90C00F81E1D /* HistoCell.swift */,
 			);
 			path = histo;
 			sourceTree = "<group>";
@@ -541,14 +544,6 @@
 				83A7393324DDC86F00F81E1D /* HistoL.storyboard */,
 			);
 			path = legacy;
-			sourceTree = "<group>";
-		};
-		83A7393524DDC87B00F81E1D /* networking */ = {
-			isa = PBXGroup;
-			children = (
-				83A7393624DDC89700F81E1D /* RequestHisto.swift */,
-			);
-			path = networking;
 			sourceTree = "<group>";
 		};
 		83D707A124BAB1D4008F308D /* component */ = {
@@ -1901,6 +1896,7 @@
 				B7BE129E23EB0B2A00ADA499 /* HopperOffense.swift in Sources */,
 				8389C6B8246B17DA00DFE8F2 /* DialogPoison.swift in Sources */,
 				83D758EC24CA0E79008DC4B5 /* CoreStart.swift in Sources */,
+				83A7393924DDE8FF00F81E1D /* HistoTable.swift in Sources */,
 				B7BE11D523EAA18000ADA499 /* BoardView.swift in Sources */,
 				B7BE12C423EB6B9300ADA499 /* TransDraw.swift in Sources */,
 				B7BE115D23EA4FBE00ADA499 /* ParsePlayer.swift in Sources */,
@@ -1914,7 +1910,6 @@
 				B7AF787323E0B9DA00BAD8EC /* RequestPage.swift in Sources */,
 				B7F3A13923FD9EE8007B5663 /* CompInvalid.swift in Sources */,
 				B7BE12AE23EB0CDB00ADA499 /* Checker.swift in Sources */,
-				83A7393724DDC89700F81E1D /* RequestHisto.swift in Sources */,
 				83A7392D24DDC81300F81E1D /* Histo.swift in Sources */,
 				B745AD3523F353BF00E450EF /* RequestCreate.swift in Sources */,
 				B7D8ECEB2408B845001B5D2D /* RevealBlack.swift in Sources */,
@@ -1929,6 +1924,7 @@
 				8389C6B6246B17CC00DFE8F2 /* TransDialog.swift in Sources */,
 				B7BE120523EAD3C600ADA499 /* Poison.swift in Sources */,
 				B7BE11D723EAA23200ADA499 /* SquareCell.swift in Sources */,
+				83A7393B24DDE90C00F81E1D /* HistoCell.swift in Sources */,
 				B7BE116523EA727200ADA499 /* OtherMenuTable.swift in Sources */,
 				B7BE124C23EB02A200ADA499 /* FairiesCell.swift in Sources */,
 				B7316D1123E8AA8E00119865 /* RequestRefresh.swift in Sources */,

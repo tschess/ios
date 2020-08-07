@@ -13,24 +13,11 @@ class MenuCell: SwipeTableViewCell {
     
     @IBOutlet weak var soLaLa: UIView!
     
-    //@IBOutlet weak var labelAction: UILabel!
     @IBOutlet weak var labelAction: UILabel!
-    @IBOutlet weak var timeIndicatorLabel: UILabel!
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var actionImageView: UIImageView!
    
     @IBOutlet weak var usernameLabel: UILabel!
-    
-    
-    @IBOutlet weak var oddsIndicatorLabel: UILabel!
-    
-    @IBOutlet weak var oddsValueLabel: UILabel!
-    
-   
-    @IBOutlet weak var dispImageView: UIImageView!
-    @IBOutlet weak var dispAdjacentLabel: UILabel!
-   
-    @IBOutlet weak var dispValueLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
