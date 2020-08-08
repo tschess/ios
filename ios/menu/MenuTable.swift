@@ -11,9 +11,9 @@ import SwipeCellKit
 
 class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
     
-    var pageCount: Int //REMOVE IT!!
+    var pageCount: Int
     
-    // MARK: ~
+    // MARK: CONTAINER (MENU)
     var menu: Menu?
     func setSelf(menu: Menu) {
         self.menu = menu
@@ -26,23 +26,13 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
     }
     
     func fetchMenuTableList() {
-        //print("0 - self.pageCount: \(self.pageCount)")
-        
         self.menu!.setIndicator(on: true)
         let request: [String: Any] = [
             "id": self.menu!.playerSelf!.id,
             "index": self.pageCount,
             "size": Const().PAGE_SIZE,
             "self": true]
-        
-        
-        //print("FUCK FUCK FUCK \(request)")
-        
         RequestActual().execute(requestPayload: request) { (result) in
-            
-            
-        
-            
             self.menu!.setIndicator(on: false)
             self.menuTableListAppend(list: result)
         }
@@ -81,8 +71,6 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
     }
     
     func getPageListNext() {
-        //print("1 - self.pageCount: \(self.pageCount)")
-        
         self.menu!.setIndicator(on: true)
         let request: [String: Any] = ["id": self.menu!.playerSelf!.id, "index": self.pageCount, "size": Const().PAGE_SIZE, "self": true]
         RequestActual().execute(requestPayload: request) { (result) in
@@ -99,24 +87,13 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
             return
         }
         let index = self.pageCount
-        //print(" index \(index) ")
         let indexFrom: Int =  index * Const().PAGE_SIZE
-        //print(" indexFrom \(indexFrom) ")
         let indexTo: Int = indexFrom + Const().PAGE_SIZE - 2
-        //print(" indexTo \(indexTo) ")
-        //print(" lastRow! \(lastRow!) ")
-        //if(lastRow! <= indexTo){
-        //print(" -M- ")
-        //return
-        //}
+    
         if lastRow == indexTo {
-            
-            //print(" -N- ")
-            
             self.pageCount += 1
             self.getPageListNext()
         }
-        //print(" 0 ")
     }
     
     // MARK: TABLE
@@ -128,27 +105,17 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
         return self.gameMenuTableList.count
     }
     
-    private func swipeResolved(orientation: SwipeActionsOrientation) -> [SwipeAction]? {
+    private func swipeResolved(orientation: SwipeActionsOrientation, game: EntityGame) -> [SwipeAction]? {
         if(orientation == .right) {
             
-           
-            
-            //self.tableView.backgroundColor = UIColor.black
             let rematch = SwipeAction(style: .default, title: nil) { action, indexPath in
-                
-                
                 let cell = self.tableView.cellForRow(at: indexPath) as! SwipeTableViewCell
-                           cell.hideSwipe(animated: false, completion: nil)
-                
+                cell.hideSwipe(animated: false, completion: nil)
                 
                 let game: EntityGame = self.gameMenuTableList[indexPath.row]
                 let username: String = self.menu!.playerSelf!.username
                 let playerOther: EntityPlayer = game.getPlayerOther(username: username)
-//                DispatchQueue.main.async {
-//                    let screenSize: CGRect = UIScreen.main.bounds
-//                    let height = screenSize.height
-//                    SelectChallenge().execute(selection: Int.random(in: 0...3), playerSelf: self.menu!.playerSelf!, playerOther: playerOther, BACK: "MENU", height: height)
-//                }
+
                 DispatchQueue.main.async {
                     let height: CGFloat = UIScreen.main.bounds.height
                     if(height.isLess(than: 750)){
@@ -158,9 +125,6 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
                         viewController.setPlayerOther(playerOther: playerOther)
                         viewController.setSelection(selection: Int.random(in: 0...3))
                         viewController.BACK = "OTHER"
-                        //viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
-                        //viewController.modalTransitionStyle = .crossDissolve
-                        //self.home!.present(viewController, animated: false , completion: nil)
                         self.navigationController?.pushViewController(viewController, animated: false)
                         return
                     }
@@ -170,18 +134,39 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
                     viewController.setPlayerOther(playerOther: playerOther)
                     viewController.setSelection(selection: Int.random(in: 0...3))
                     viewController.BACK = "OTHER"
-                    //viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
-                    //viewController.modalTransitionStyle = .crossDissolve
-                    //self.home!.present(viewController, animated: false , completion: nil)
                     self.navigationController?.pushViewController(viewController, animated: false)
                 }
             }
-            rematch.backgroundColor = .purple
+            
+            if(game.condition == "DRAW"){
+                rematch.backgroundColor = .yellow
+            } else {
+                if(game.getWinner(username: self.menu!.playerSelf!.username)){
+                    rematch.backgroundColor = .green
+                } else {
+                    rematch.backgroundColor = .red
+                }
+            }
             rematch.image = UIImage(named: "challenge")!
             rematch.title = "rematch"
             return [rematch]
         }
         return nil
+    }
+    
+    var swipeVisible: Bool = false
+    
+    @objc func imageTapped(sender: UITapGestureRecognizer) {
+        guard let cell = sender.view?.superview?.superview as? MenuCell else {
+            return
+        }
+        if(!self.swipeVisible){
+            cell.showSwipe(orientation: .right, animated: true)
+            self.swipeVisible = true
+            return
+        }
+        cell.hideSwipe(animated: true, completion: nil)
+        self.swipeVisible = false
     }
     
     private func swipProposedInbound(orientation: SwipeActionsOrientation, game: EntityGame) -> [SwipeAction]? {
@@ -271,9 +256,9 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
         if(game.status == "ONGOING"){
             return nil
         }
-        //if(game.status == "RESOLVED"){
-            //return self.swipeResolved(orientation: orientation)
-        //}
+        if(game.status == "RESOLVED"){
+            return self.swipeResolved(orientation: orientation, game: game)
+        }
         if(inbound){
             return self.swipProposedInbound(orientation: orientation, game: game)
         }
@@ -283,38 +268,19 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
     private func getCellActive(cell: MenuCell) -> MenuCell {
         cell.soLaLa.backgroundColor = UIColor.white
         cell.usernameLabel.textColor = UIColor.black
-        //cell.timeIndicatorLabel.textColor = UIColor.black
         cell.actionImageView.isHidden = false
-        //cell.dispImageView.isHidden = true
-        //cell.dispAdjacentLabel.isHidden = true
-        //cell.oddsIndicatorLabel.isHidden = true
-        //cell.oddsValueLabel.isHidden = true
-        //cell.dispImageView.isHidden = true
-        //cell.dispValueLabel.isHidden = true
+        //cell.labelUpdate.isHidden = true
         return cell
     }
     
-    //private func getCellHisto(cell: MenuCell, disp: String) -> MenuCell {
-        //cell.soLaLa.backgroundColor = UIColor.black
-        //cell.usernameLabel.textColor = UIColor.white
-        //cell.timeIndicatorLabel.textColor = UIColor.lightGray
-        //cell.actionImageView.isHidden = true
-        //cell.dispImageView.isHidden = false
-        //cell.dispAdjacentLabel.isHidden = false
-        //cell.dispAdjacentLabel.textColor = UIColor.lightGray
-        //cell.oddsIndicatorLabel.isHidden = false
-        //cell.oddsIndicatorLabel.textColor = UIColor.lightGray
-        //cell.oddsValueLabel.isHidden = false
-        //cell.oddsValueLabel.textColor = UIColor.white
-        //cell.dispValueLabel.isHidden = false
-        //cell.dispValueLabel.textColor = UIColor.white
-        //if(disp == "0"){
-            //cell.dispValueLabel.isHidden = true
-            //cell.dispAdjacentLabel.isHidden = true
-            //cell.dispImageView.isHidden = true
-        //}
-        //return cell
-    //}
+    private func getCellHisto(cell: MenuCell) -> MenuCell {
+        cell.soLaLa.backgroundColor = UIColor.black
+        cell.usernameLabel.textColor = UIColor.lightGray
+        cell.actionImageView.isHidden = true
+        cell.labelSideSlide.image = UIImage(named: "more_vert_w")
+        //cell.labelUpdate.textColor = UIColor.lightGray
+        return cell
+    }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let index: Int = indexPath.row
@@ -322,27 +288,31 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
         let username: String = self.menu!.playerSelf!.username
         let usernameOther: String = game.getLabelTextUsernameOpponent(username: username)
         let avatarImageOther: UIImage = game.getImageAvatarOpponent(username: username)
-        //let date: String = game.getLabelTextDate()
         
         var cell = tableView.dequeueReusableCell(withIdentifier: "MenuCell", for: indexPath) as! MenuCell
+        
+        
+        
         cell.delegate = self
-        //cell.timeIndicatorLabel.text = date
+        
+        
+        let pictureTap = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
+        cell.labelSideSlide.addGestureRecognizer(pictureTap)
+        cell.labelSideSlide.isUserInteractionEnabled = true
+        
+        //cell.labelUpdate.text = game.getLabelTextDate()
+        
         cell.usernameLabel.text = usernameOther
         cell.avatarImageView.image = avatarImageOther
-        //if(game.status == "RESOLVED"){
-            //let disp: String = game.getLabelTextDisp(username: username)!
-            //cell = self.getCellHisto(cell: cell, disp: disp)
-            //cell.dispImageView.image = game.getImageDisp(username: username)
-            //cell.oddsValueLabel.text = game.getOdds(username: username)
-            //cell.dispValueLabel.text = disp
-            //return cell
-        //}
+        if(game.status == "RESOLVED"){
+            cell = self.getCellHisto(cell: cell)
+            return cell
+        }
         cell = self.getCellActive(cell: cell)
         let inbound: Bool = game.getTurn(username: username)
         if(game.status == "ONGOING"){
-            
             cell.labelSideSlide.isHidden = true
-            
+    
             if(inbound){
                 let image: UIImage = UIImage(named: "turn.on")!
                 cell.actionImageView.image = image

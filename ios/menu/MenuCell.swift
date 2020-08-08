@@ -19,7 +19,7 @@ class MenuCell: SwipeTableViewCell {
    
     @IBOutlet weak var usernameLabel: UILabel!
     
-    
+    //@IBOutlet weak var labelUpdate: UILabel!
     @IBOutlet weak var labelSideSlide: UIImageView!
     
     override func awakeFromNib() {

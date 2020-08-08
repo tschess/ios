@@ -65,17 +65,17 @@ class OtherMenuTable: UITableViewController {
         cell.avatarImageView.image = game.getImageAvatarOpponent(username: self.player!.username)
         
         cell.oddsLabel.text = game.getOdds(username: self.player!.username)
-        cell.displacementImage.image = game.getImageDisp(username: self.player!.username)
+        //cell.displacementImage.image = game.getImageDisp(username: self.player!.username)
         cell.displacementImage.tintColor = game.getTint(username: self.player!.username)
         
-        let disp: String = game.getLabelTextDisp(username: self.player!.username)!
-        cell.displacementLabel.text = disp
-        if(disp == "0"){
-            cell.displacementImage.isHidden = true
-            cell.displacementLabel.isHidden = true
+        //let disp: String = game.getLabelTextDisp(username: self.player!.username)!
+        //cell.displacementLabel.text = disp
+        //if(disp == "0"){
+            //cell.displacementImage.isHidden = true
+            //cell.displacementLabel.isHidden = true
             //cell.dispImageView.isHidden = true
-            cell.dispLabelAdjacent.isHidden = true
-        }
+            //cell.dispLabelAdjacent.isHidden = true
+        //}
         return cell
     }
     

@@ -15,13 +15,9 @@ class EntityGame: Equatable, Hashable {
     var moves: Int
     var status: String
     var condition: String
+    
     var white: EntityPlayer
-    var white_elo: Int
-    var white_disp: Int?
-   
     var black: EntityPlayer
-    var black_elo: Int
-    var black_disp: Int?
     
     var challenger: String
     var winner: String?
@@ -36,13 +32,9 @@ class EntityGame: Equatable, Hashable {
         moves: Int,
         status: String,
         condition: String,
+        
         white: EntityPlayer,
-        white_elo: Int,
-        white_disp: Int?,
-   
         black: EntityPlayer,
-        black_elo: Int,
-        black_disp: Int?,
  
         challenger: String,
         winner: String?,
@@ -57,13 +49,7 @@ class EntityGame: Equatable, Hashable {
         self.status = status
         self.condition = condition
         self.white = white
-        self.white_elo = white_elo
-        self.white_disp = white_disp
-      
         self.black = black
-        self.black_elo = black_elo
-        self.black_disp = black_disp
-      
         self.challenger = challenger
         self.winner = winner
         self.turn = turn
@@ -88,34 +74,6 @@ class EntityGame: Equatable, Hashable {
             return tintColorWhite
         }
         return tintColorBlack
-    }
-    
-    func getImageDisp(username: String) -> UIImage? {
-        if(self.white_disp == nil || self.black_disp == nil){
-                return UIImage(named: "close_b")!
-        }
-        if(self.white.username == username){
-            if(self.white_disp! >= 0){
-                return UIImage(named: "upx")!
-            }
-            return UIImage(named: "dwn")!
-        }
-        if(self.black_disp! >= 0){
-            return UIImage(named: "upx")!
-        }
-        return UIImage(named: "dwn")!
-    }
-    
-    
-    
-    func getLabelTextDisp(username: String) -> String? {
-        if(self.white_disp == nil || self.black_disp == nil){
-            return "0"
-        }
-        if(self.white.username == username){
-            return String(abs(self.white_disp!))
-        }
-        return String(abs(self.black_disp!))
     }
     
     func getOdds(username: String) -> String {

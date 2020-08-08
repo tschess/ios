@@ -74,7 +74,7 @@ class Snapshot: UIViewController, UICollectionViewDataSource, UICollectionViewDe
         
         let ddate: Date = DateTime().toFormatDate(string: self.game!.updated)
         let dateFormatter: DateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MM.dd.yyyy"
+        dateFormatter.dateFormat = "MM/dd/yyyy"
         let sdate: String = dateFormatter.string(from: ddate)
         self.dateLabel.text = sdate
         

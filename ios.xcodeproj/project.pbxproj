@@ -24,12 +24,6 @@
 		8389C6B4246B17BE00DFE8F2 /* DialogPassant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8389C6B3246B17BE00DFE8F2 /* DialogPassant.swift */; };
 		8389C6B6246B17CC00DFE8F2 /* TransDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8389C6B5246B17CC00DFE8F2 /* TransDialog.swift */; };
 		8389C6B8246B17DA00DFE8F2 /* DialogPoison.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8389C6B7246B17DA00DFE8F2 /* DialogPoison.swift */; };
-		83A7392A24DCA7D700F81E1D /* HistoP.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83A7392924DCA7D700F81E1D /* HistoP.storyboard */; };
-		83A7392D24DDC81300F81E1D /* Histo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A7392C24DDC81300F81E1D /* Histo.swift */; };
-		83A7393124DDC84800F81E1D /* HistoP.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83A7393024DDC84800F81E1D /* HistoP.storyboard */; };
-		83A7393424DDC86F00F81E1D /* HistoL.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83A7393324DDC86F00F81E1D /* HistoL.storyboard */; };
-		83A7393924DDE8FF00F81E1D /* HistoTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A7393824DDE8FF00F81E1D /* HistoTable.swift */; };
-		83A7393B24DDE90C00F81E1D /* HistoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83A7393A24DDE90C00F81E1D /* HistoCell.swift */; };
 		83D707A324BAB1F3008F308D /* CompNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D707A224BAB1F3008F308D /* CompNote.swift */; };
 		83D707A524BAB208008F308D /* TransNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D707A424BAB208008F308D /* TransNote.swift */; };
 		83D707A824BAB248008F308D /* Note.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83D707A724BAB248008F308D /* Note.storyboard */; };
@@ -239,12 +233,6 @@
 		8389C6B3246B17BE00DFE8F2 /* DialogPassant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogPassant.swift; sourceTree = "<group>"; };
 		8389C6B5246B17CC00DFE8F2 /* TransDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransDialog.swift; sourceTree = "<group>"; };
 		8389C6B7246B17DA00DFE8F2 /* DialogPoison.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogPoison.swift; sourceTree = "<group>"; };
-		83A7392924DCA7D700F81E1D /* HistoP.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HistoP.storyboard; sourceTree = "<group>"; };
-		83A7392C24DDC81300F81E1D /* Histo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Histo.swift; sourceTree = "<group>"; };
-		83A7393024DDC84800F81E1D /* HistoP.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HistoP.storyboard; sourceTree = "<group>"; };
-		83A7393324DDC86F00F81E1D /* HistoL.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HistoL.storyboard; sourceTree = "<group>"; };
-		83A7393824DDE8FF00F81E1D /* HistoTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoTable.swift; sourceTree = "<group>"; };
-		83A7393A24DDE90C00F81E1D /* HistoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoCell.swift; sourceTree = "<group>"; };
 		83D707A224BAB1F3008F308D /* CompNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompNote.swift; sourceTree = "<group>"; };
 		83D707A424BAB208008F308D /* TransNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransNote.swift; sourceTree = "<group>"; };
 		83D707A724BAB248008F308D /* Note.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Note.storyboard; sourceTree = "<group>"; };
@@ -508,42 +496,6 @@
 				8389C6AB246AFD3800DFE8F2 /* Noop.storyboard */,
 			);
 			path = storyboard;
-			sourceTree = "<group>";
-		};
-		83A7392B24DDC7F300F81E1D /* histo */ = {
-			isa = PBXGroup;
-			children = (
-				83A7392E24DDC82300F81E1D /* storyboard */,
-				83A7392C24DDC81300F81E1D /* Histo.swift */,
-				83A7393824DDE8FF00F81E1D /* HistoTable.swift */,
-				83A7393A24DDE90C00F81E1D /* HistoCell.swift */,
-			);
-			path = histo;
-			sourceTree = "<group>";
-		};
-		83A7392E24DDC82300F81E1D /* storyboard */ = {
-			isa = PBXGroup;
-			children = (
-				83A7393224DDC85400F81E1D /* legacy */,
-				83A7392F24DDC82F00F81E1D /* primary */,
-			);
-			path = storyboard;
-			sourceTree = "<group>";
-		};
-		83A7392F24DDC82F00F81E1D /* primary */ = {
-			isa = PBXGroup;
-			children = (
-				83A7393024DDC84800F81E1D /* HistoP.storyboard */,
-			);
-			path = primary;
-			sourceTree = "<group>";
-		};
-		83A7393224DDC85400F81E1D /* legacy */ = {
-			isa = PBXGroup;
-			children = (
-				83A7393324DDC86F00F81E1D /* HistoL.storyboard */,
-			);
-			path = legacy;
 			sourceTree = "<group>";
 		};
 		83D707A124BAB1D4008F308D /* component */ = {
@@ -817,7 +769,6 @@
 		B787C72822E970DC009C94F7 /* ios */ = {
 			isa = PBXGroup;
 			children = (
-				83A7392B24DDC7F300F81E1D /* histo */,
 				B7BE12C523EB708E00ADA499 /* info */,
 				B7BE128523EB08FE00ADA499 /* tschess */,
 				B7BE122B23EAD97E00ADA499 /* ack */,
@@ -884,7 +835,6 @@
 			isa = PBXGroup;
 			children = (
 				B7A6B8A3240D9A7300840156 /* MenuP.storyboard */,
-				83A7392924DCA7D700F81E1D /* HistoP.storyboard */,
 			);
 			path = primary;
 			sourceTree = "<group>";
@@ -1753,7 +1703,6 @@
 				B708D0E7236B366800A899F9 /* LaunchScreen.storyboard in Resources */,
 				B7CB62F6237BB10800E50204 /* Start.storyboard in Resources */,
 				B7A6B8A4240D9A7300840156 /* MenuP.storyboard in Resources */,
-				83A7392A24DCA7D700F81E1D /* HistoP.storyboard in Resources */,
 				B7F3A13523FD95E8007B5663 /* HomeL.storyboard in Resources */,
 				B7021F3723FE02FA00C9346A /* InfoL.storyboard in Resources */,
 				B7021F5223FE11D300C9346A /* EditOtherL.storyboard in Resources */,
@@ -1773,9 +1722,7 @@
 				8389C6B0246B15A800DFE8F2 /* DialogPoison.storyboard in Resources */,
 				B7021F3A23FE031400C9346A /* InfoP.storyboard in Resources */,
 				B7021F6223FE3B8E00C9346A /* ProfileP.storyboard in Resources */,
-				83A7393424DDC86F00F81E1D /* HistoL.storyboard in Resources */,
 				B7021F5C23FE304D00C9346A /* EditSelfP.storyboard in Resources */,
-				83A7393124DDC84800F81E1D /* HistoP.storyboard in Resources */,
 				B7BE129523EB0A7900ADA499 /* DrawResign.storyboard in Resources */,
 				B7021F3223FDFCC100C9346A /* FairiesP.storyboard in Resources */,
 				8389C6AC246AFD3800DFE8F2 /* Noop.storyboard in Resources */,
@@ -1896,7 +1843,6 @@
 				B7BE129E23EB0B2A00ADA499 /* HopperOffense.swift in Sources */,
 				8389C6B8246B17DA00DFE8F2 /* DialogPoison.swift in Sources */,
 				83D758EC24CA0E79008DC4B5 /* CoreStart.swift in Sources */,
-				83A7393924DDE8FF00F81E1D /* HistoTable.swift in Sources */,
 				B7BE11D523EAA18000ADA499 /* BoardView.swift in Sources */,
 				B7BE12C423EB6B9300ADA499 /* TransDraw.swift in Sources */,
 				B7BE115D23EA4FBE00ADA499 /* ParsePlayer.swift in Sources */,
@@ -1910,7 +1856,6 @@
 				B7AF787323E0B9DA00BAD8EC /* RequestPage.swift in Sources */,
 				B7F3A13923FD9EE8007B5663 /* CompInvalid.swift in Sources */,
 				B7BE12AE23EB0CDB00ADA499 /* Checker.swift in Sources */,
-				83A7392D24DDC81300F81E1D /* Histo.swift in Sources */,
 				B745AD3523F353BF00E450EF /* RequestCreate.swift in Sources */,
 				B7D8ECEB2408B845001B5D2D /* RevealBlack.swift in Sources */,
 				B7BE128D23EB09B400ADA499 /* GameUpdate.swift in Sources */,
@@ -1924,7 +1869,6 @@
 				8389C6B6246B17CC00DFE8F2 /* TransDialog.swift in Sources */,
 				B7BE120523EAD3C600ADA499 /* Poison.swift in Sources */,
 				B7BE11D723EAA23200ADA499 /* SquareCell.swift in Sources */,
-				83A7393B24DDE90C00F81E1D /* HistoCell.swift in Sources */,
 				B7BE116523EA727200ADA499 /* OtherMenuTable.swift in Sources */,
 				B7BE124C23EB02A200ADA499 /* FairiesCell.swift in Sources */,
 				B7316D1123E8AA8E00119865 /* RequestRefresh.swift in Sources */,

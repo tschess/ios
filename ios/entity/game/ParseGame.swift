@@ -19,13 +19,9 @@ class ParseGame {
         let condition = json["condition"]! as! String
         let whiteX = json["white"]! as! [String: Any]
         let white: EntityPlayer = ParsePlayer().execute(json: whiteX)
-        let white_elo = json["white_elo"]! as! Int
-        let white_disp = json["white_disp"]! as? Int
        
         let blackX = json["black"]! as! [String: Any]
         let black: EntityPlayer = ParsePlayer().execute(json: blackX)
-        let black_elo = json["black_elo"]! as! Int
-        let black_disp = json["black_disp"]! as? Int
        
         let challenger = json["challenger"]! as! String
         let winner = json["winner"]! as? String
@@ -41,12 +37,8 @@ class ParseGame {
             status: status,
             condition: condition,
             white: white,
-            white_elo: white_elo,
-            white_disp: white_disp,
            
             black: black,
-            black_elo: black_elo,
-            black_disp: black_disp,
            
             challenger: challenger,
             winner: winner,

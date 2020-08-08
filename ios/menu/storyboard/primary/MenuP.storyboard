@@ -35,10 +35,6 @@
                                         <inset key="imageInsets" minX="3" minY="3" maxX="3" maxY="3"/>
                                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tabBarItem>
-                                    <tabBarItem title="HISTORIC" image="book.grey" selectedImage="book.white" id="YEv-H2-ygj">
-                                        <inset key="imageInsets" minX="3" minY="3" maxX="3" maxY="3"/>
-                                        <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </tabBarItem>
                                     <tabBarItem tag="1" title="QUICK PLAY" image="quick.grey" selectedImage="quick.white" id="dDN-WM-BKf">
                                         <inset key="imageInsets" minX="2" minY="2" maxX="2" maxY="2"/>
                                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -309,7 +305,7 @@
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="more_vert" translatesAutoresizingMaskIntoConstraints="NO" id="hVt-pa-FQT">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.59999999999999998" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="more_vert" translatesAutoresizingMaskIntoConstraints="NO" id="hVt-pa-FQT">
                                             <rect key="frame" x="376" y="0.0" width="30" height="102"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -363,8 +359,6 @@
         <image name="avatar_inverse" width="320" height="320"/>
         <image name="back.grey" width="39" height="33"/>
         <image name="back.white" width="39" height="33"/>
-        <image name="book.grey" width="40" height="40"/>
-        <image name="book.white" width="40" height="40"/>
         <image name="more_vert" width="256" height="256"/>
         <image name="quick.grey" width="20" height="31"/>
         <image name="quick.white" width="25" height="39"/>
