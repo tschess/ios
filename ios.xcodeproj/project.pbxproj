@@ -82,7 +82,6 @@
 		B7A6B8AD240D9B2300840156 /* RequestActual.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A6B8AC240D9B2300840156 /* RequestActual.swift */; };
 		B7A8B2A22400A8210092D2D6 /* dTschessP.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7A8B2A12400A8210092D2D6 /* dTschessP.storyboard */; };
 		B7AF787323E0B9DA00BAD8EC /* RequestPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7AF787223E0B9DA00BAD8EC /* RequestPage.swift */; };
-		B7B74A52237DCAF200D07061 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7B74A51237DCAF200D07061 /* StoreKit.framework */; };
 		B7B74A55237DCC8600D07061 /* PlayerDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7B74A54237DCC8600D07061 /* PlayerDevice.swift */; };
 		B7BE115D23EA4FBE00ADA499 /* ParsePlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE115C23EA4FBE00ADA499 /* ParsePlayer.swift */; };
 		B7BE116023EA71D100ADA499 /* Other.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE115F23EA71D100ADA499 /* Other.swift */; };
@@ -298,7 +297,6 @@
 		B7A6B8AC240D9B2300840156 /* RequestActual.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestActual.swift; sourceTree = "<group>"; };
 		B7A8B2A12400A8210092D2D6 /* dTschessP.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = dTschessP.storyboard; sourceTree = "<group>"; };
 		B7AF787223E0B9DA00BAD8EC /* RequestPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestPage.swift; sourceTree = "<group>"; };
-		B7B74A51237DCAF200D07061 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		B7B74A54237DCC8600D07061 /* PlayerDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerDevice.swift; sourceTree = "<group>"; };
 		B7BE115C23EA4FBE00ADA499 /* ParsePlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParsePlayer.swift; sourceTree = "<group>"; };
 		B7BE115F23EA71D100ADA499 /* Other.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Other.swift; sourceTree = "<group>"; };
@@ -422,7 +420,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				4E766FB2BBF9176550BB45F9 /* Pods_ios.framework in Frameworks */,
-				B7B74A52237DCAF200D07061 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -519,7 +516,6 @@
 		ABCDD5D6671D39DB5DBFE22A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				B7B74A51237DCAF200D07061 /* StoreKit.framework */,
 				45C0F287A16E70CE8A23A2EB /* Pods_ios.framework */,
 			);
 			name = Frameworks;

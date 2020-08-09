@@ -317,7 +317,7 @@
                                                 <constraint firstAttribute="height" constant="20" id="s42-zg-F8f"/>
                                             </constraints>
                                         </imageView>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.59999999999999998" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="more_vert" translatesAutoresizingMaskIntoConstraints="NO" id="QMi-Vl-HZj">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="more_vert_vfs" translatesAutoresizingMaskIntoConstraints="NO" id="QMi-Vl-HZj">
                                             <rect key="frame" x="376" y="0.0" width="30" height="102"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -381,7 +381,7 @@
         <image name="avatar_inverse" width="320" height="320"/>
         <image name="game.grey" width="39" height="39"/>
         <image name="game.white" width="39" height="39"/>
-        <image name="more_vert" width="256" height="256"/>
+        <image name="more_vert_vfs" width="256" height="256"/>
         <image name="pro_g" width="39" height="39"/>
         <image name="pro_w" width="39" height="39"/>
         <image name="setup.grey" width="38" height="40"/>

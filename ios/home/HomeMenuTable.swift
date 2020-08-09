@@ -53,8 +53,13 @@ class HomeMenuTable: UITableViewController, SwipeTableViewCellDelegate {
                 }
             }
             modifyAction.image = UIImage(named: "eyeye")!
-            modifyAction.backgroundColor = .orange
+            //modifyAction.image = UIImage(named: "eye_g")!
+            //modifyAction.backgroundColor = .orange
+            modifyAction.backgroundColor = UIColor(red: 39.0/255, green: 41.0/255, blue: 44.0/255, alpha: 1.0)
+            
             modifyAction.title = "recent"
+            //modifyAction.textColor = UIColor.lightGray
+            modifyAction.textColor = UIColor.white
             return [modifyAction]
         }
         let modifyAction = SwipeAction(style: .default, title: nil) { action, indexPath in
@@ -84,9 +89,13 @@ class HomeMenuTable: UITableViewController, SwipeTableViewCellDelegate {
                     self.navigationController?.pushViewController(viewController, animated: false)
                 }
         }
+        //modifyAction.image = UIImage(named: "challenge_g")!
         modifyAction.image = UIImage(named: "challenge")!
         modifyAction.title = "challenge"
-        modifyAction.backgroundColor = .purple
+        modifyAction.textColor = UIColor.white
+        //modifyAction.backgroundColor = .purple
+        modifyAction.backgroundColor = UIColor(red: 39.0/255, green: 41.0/255, blue: 44.0/255, alpha: 1.0)
+        
         return [modifyAction]
     }
     

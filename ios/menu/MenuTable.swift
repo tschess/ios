@@ -277,7 +277,8 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
         cell.soLaLa.backgroundColor = UIColor.black
         cell.usernameLabel.textColor = UIColor.lightGray
         cell.actionImageView.isHidden = true
-        cell.labelSideSlide.image = UIImage(named: "more_vert_w")
+        //cell.labelSideSlide.image = UIImage(named: "more_vert_w")
+        cell.labelSideSlide.image = UIImage(named: "more_vert_red")
         //cell.labelUpdate.textColor = UIColor.lightGray
         return cell
     }
