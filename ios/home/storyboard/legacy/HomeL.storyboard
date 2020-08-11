@@ -128,7 +128,6 @@
                                     <constraint firstItem="fPO-nw-FP9" firstAttribute="top" secondItem="w0W-JM-jEB" secondAttribute="bottom" constant="4" id="PIs-o7-TVB"/>
                                     <constraint firstItem="n3B-YV-bLf" firstAttribute="leading" secondItem="AlY-qh-cUb" secondAttribute="leading" constant="4" id="TN0-Oa-bLO"/>
                                     <constraint firstItem="pUJ-un-5Hg" firstAttribute="top" secondItem="AlY-qh-cUb" secondAttribute="top" constant="2" id="aBd-cn-xvE"/>
-                                    <constraint firstItem="ERg-MD-Gxv" firstAttribute="leading" secondItem="fPO-nw-FP9" secondAttribute="trailing" id="gvW-ej-qsj"/>
                                     <constraint firstItem="ERg-MD-Gxv" firstAttribute="top" secondItem="w0W-JM-jEB" secondAttribute="bottom" constant="2" id="kLY-tc-wHZ"/>
                                     <constraint firstAttribute="trailing" secondItem="sGW-Ae-1In" secondAttribute="trailing" constant="4" id="ljL-Re-77e"/>
                                     <constraint firstItem="lXq-5I-URG" firstAttribute="top" secondItem="AlY-qh-cUb" secondAttribute="top" constant="2" id="lyM-zj-AKI"/>
@@ -257,7 +256,7 @@
                                                 <constraint firstAttribute="height" constant="20" id="5tY-3P-y45"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
-                                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                             <size key="shadowOffset" width="0.0" height="0.0"/>
                                         </label>
@@ -319,7 +318,7 @@
                                                 <constraint firstAttribute="height" constant="15" id="s42-zg-F8f"/>
                                             </constraints>
                                         </imageView>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="more_vert" translatesAutoresizingMaskIntoConstraints="NO" id="dE6-lW-dcU">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="more_vert_vfs" translatesAutoresizingMaskIntoConstraints="NO" id="dE6-lW-dcU">
                                             <rect key="frame" x="286" y="0.0" width="30" height="79"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -384,7 +383,7 @@
         <image name="avatar_inverse" width="320" height="320"/>
         <image name="game.grey" width="39" height="39"/>
         <image name="game.white" width="39" height="39"/>
-        <image name="more_vert" width="256" height="256"/>
+        <image name="more_vert_vfs" width="256" height="256"/>
         <image name="pro_g" width="39" height="39"/>
         <image name="pro_w" width="39" height="39"/>
         <image name="setup.grey" width="38" height="40"/>
