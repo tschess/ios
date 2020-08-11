@@ -188,7 +188,8 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
                     self.menu!.setIndicator(on: false)
                 }
             }
-            nAction.backgroundColor = .red
+            //nAction.backgroundColor = .red
+            nAction.backgroundColor = UIColor(red: 39.0/255, green: 41.0/255, blue: 44.0/255, alpha: 1.0)
             nAction.image = UIImage(named: "td_w")!
             nAction.title = "reject"
             return [nAction]
@@ -224,7 +225,8 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
             }
             
         }
-        ackAction.backgroundColor = .green
+        ackAction.backgroundColor = UIColor(red: 39.0/255, green: 41.0/255, blue: 44.0/255, alpha: 1.0)
+        //ackAction.backgroundColor = .green
         ackAction.title = "accept"
         ackAction.image = UIImage(named: "tu_w")!
         return [ackAction]
@@ -245,7 +247,8 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
                     self.menu!.setIndicator(on: false)
                 }
             }
-            rescind.backgroundColor = .red
+            //rescind.backgroundColor = .red
+            rescind.backgroundColor = UIColor(red: 39.0/255, green: 41.0/255, blue: 44.0/255, alpha: 1.0)
             rescind.image = UIImage(named: "close_w")!
             rescind.title = "rescind"
             return [rescind]
@@ -292,8 +295,6 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
         cell.soLaLa.backgroundColor = UIColor.black
         cell.usernameLabel.textColor = UIColor.lightGray
         cell.actionImageView.isHidden = true
-        //cell.labelSideSlide.image = UIImage(named: "more_vert_w")
-        //cell.labelUpdate.textColor = UIColor.lightGray
         
         //
         if(game.condition == "DRAW"){
