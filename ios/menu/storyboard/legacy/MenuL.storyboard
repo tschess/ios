@@ -307,8 +307,8 @@
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="more_vert_vfs" translatesAutoresizingMaskIntoConstraints="NO" id="ReE-ed-4sD">
-                                            <rect key="frame" x="278" y="11" width="30" height="57"/>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="more_vert_vfs" translatesAutoresizingMaskIntoConstraints="NO" id="ReE-ed-4sD">
+                                            <rect key="frame" x="286" y="2" width="30" height="77"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="30" id="Miu-8T-4G5"/>
                                             </constraints>
@@ -318,13 +318,13 @@
                                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstItem="xuk-ae-wp5" firstAttribute="top" secondItem="MGs-1w-KdX" secondAttribute="top" constant="2" id="1vg-kk-qmD"/>
-                                        <constraint firstItem="ReE-ed-4sD" firstAttribute="trailing" secondItem="MGs-1w-KdX" secondAttribute="trailingMargin" constant="4" id="4Jq-9o-tEi"/>
+                                        <constraint firstItem="ReE-ed-4sD" firstAttribute="right" secondItem="MGs-1w-KdX" secondAttribute="right" constant="-4" id="4Jq-9o-tEi"/>
                                         <constraint firstItem="nhu-fI-7kd" firstAttribute="leading" secondItem="MGs-1w-KdX" secondAttribute="leading" id="A05-gv-sQt"/>
-                                        <constraint firstItem="ReE-ed-4sD" firstAttribute="top" secondItem="MGs-1w-KdX" secondAttribute="topMargin" id="Axy-OG-yqh"/>
+                                        <constraint firstItem="ReE-ed-4sD" firstAttribute="top" secondItem="MGs-1w-KdX" secondAttribute="top" id="Axy-OG-yqh"/>
                                         <constraint firstAttribute="bottom" secondItem="s4R-dy-eV8" secondAttribute="bottom" constant="1" id="B03-Wh-RSy"/>
                                         <constraint firstAttribute="trailing" secondItem="nhu-fI-7kd" secondAttribute="trailing" id="JjV-ce-xao"/>
                                         <constraint firstItem="nhu-fI-7kd" firstAttribute="centerY" secondItem="MGs-1w-KdX" secondAttribute="centerY" id="Y5U-D6-r7W"/>
-                                        <constraint firstItem="ReE-ed-4sD" firstAttribute="bottom" secondItem="MGs-1w-KdX" secondAttribute="bottomMargin" id="l7f-pL-g8R"/>
+                                        <constraint firstItem="ReE-ed-4sD" firstAttribute="bottom" secondItem="MGs-1w-KdX" secondAttribute="bottom" id="l7f-pL-g8R"/>
                                         <constraint firstItem="s4R-dy-eV8" firstAttribute="leading" secondItem="MGs-1w-KdX" secondAttribute="leading" constant="4" id="mP5-fg-9Fz"/>
                                         <constraint firstAttribute="trailing" secondItem="s4R-dy-eV8" secondAttribute="trailing" constant="4" id="mW2-K9-V8e"/>
                                         <constraint firstItem="xuk-ae-wp5" firstAttribute="leading" secondItem="MGs-1w-KdX" secondAttribute="leading" constant="4" id="npo-sj-uuZ"/>

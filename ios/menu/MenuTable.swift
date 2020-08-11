@@ -231,7 +231,7 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
     }
     
     private func swipProposedOutbound(orientation: SwipeActionsOrientation, game: EntityGame) -> [SwipeAction]? {
-        if(orientation == .left) {
+        if(orientation == .right) {
             let rescind = SwipeAction(style: .default, title: nil) { action, indexPath in
                 
                 let cell = self.tableView.cellForRow(at: indexPath) as! SwipeTableViewCell
@@ -275,6 +275,16 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
         cell.usernameLabel.textColor = UIColor.black
         cell.actionImageView.isHidden = false
         //cell.labelUpdate.isHidden = true
+        
+        //rematch.backgroundColor = UIColor(red: 39.0/255, green: 41.0/255, blue: 44.0/255, alpha: 1.0)
+        //cell.labelSideSlide.image = UIImage(named: "more_vert_red")
+        //if(game.condition == "DRAW"){
+            //rematch.backgroundColor = .yellow
+            //rematch.textColor = .yellow
+            //rematch.image = UIImage(named: "challenge_yel")!
+        
+        cell.labelSideSlide.image = UIImage(named: "more_vert_vfs")
+            
         return cell
     }
     
@@ -310,21 +320,17 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
         let avatarImageOther: UIImage = game.getImageAvatarOpponent(username: username)
         
         var cell = tableView.dequeueReusableCell(withIdentifier: "MenuCell", for: indexPath) as! MenuCell
-        
-        
-        
         cell.delegate = self
-        
         
         let pictureTap = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
         cell.labelSideSlide.addGestureRecognizer(pictureTap)
         cell.labelSideSlide.isUserInteractionEnabled = true
         
-        //cell.labelUpdate.text = game.getLabelTextDate()
         
         cell.usernameLabel.text = usernameOther
         cell.avatarImageView.image = avatarImageOther
         if(game.status == "RESOLVED"){
+            cell.labelSideSlide.isHidden = false
             cell = self.getCellHisto(cell: cell, game: game)
             return cell
         }
@@ -345,6 +351,7 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
             return cell
         }
         if(game.status == "PROPOSED"){
+            cell.labelSideSlide.isHidden = false
             if(inbound){
                 let image: UIImage = UIImage(named: "inbound")!
                 cell.actionImageView.image = image
