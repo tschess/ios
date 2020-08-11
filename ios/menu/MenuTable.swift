@@ -137,17 +137,22 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
                     self.navigationController?.pushViewController(viewController, animated: false)
                 }
             }
-            
+            rematch.backgroundColor = UIColor(red: 39.0/255, green: 41.0/255, blue: 44.0/255, alpha: 1.0)
+            //cell.labelSideSlide.image = UIImage(named: "more_vert_red")
             if(game.condition == "DRAW"){
-                rematch.backgroundColor = .yellow
+                //rematch.backgroundColor = .yellow
+                rematch.textColor = .yellow
+                rematch.image = UIImage(named: "challenge_yel")!
             } else {
                 if(game.getWinner(username: self.menu!.playerSelf!.username)){
-                    rematch.backgroundColor = .green
+                    rematch.textColor = .green
+                    rematch.image = UIImage(named: "challenge_grn")!
                 } else {
-                    rematch.backgroundColor = .red
+                    rematch.textColor = .red
+                    rematch.image = UIImage(named: "challenge_red")!
                 }
             }
-            rematch.image = UIImage(named: "challenge")!
+            
             rematch.title = "rematch"
             return [rematch]
         }
@@ -273,13 +278,27 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
         return cell
     }
     
-    private func getCellHisto(cell: MenuCell) -> MenuCell {
+    private func getCellHisto(cell: MenuCell, game: EntityGame) -> MenuCell {
         cell.soLaLa.backgroundColor = UIColor.black
         cell.usernameLabel.textColor = UIColor.lightGray
         cell.actionImageView.isHidden = true
         //cell.labelSideSlide.image = UIImage(named: "more_vert_w")
-        cell.labelSideSlide.image = UIImage(named: "more_vert_red")
         //cell.labelUpdate.textColor = UIColor.lightGray
+        
+        //
+        if(game.condition == "DRAW"){
+            //rematch.backgroundColor = .yellow
+            cell.labelSideSlide.image = UIImage(named: "more_vert_yel")
+        } else {
+            if(game.getWinner(username: self.menu!.playerSelf!.username)){
+                //rematch.backgroundColor = .green
+                cell.labelSideSlide.image = UIImage(named: "more_vert_grn")
+            } else {
+                //rematch.backgroundColor = .red
+                cell.labelSideSlide.image = UIImage(named: "more_vert_red")
+            }
+        }
+        
         return cell
     }
     
@@ -306,7 +325,7 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
         cell.usernameLabel.text = usernameOther
         cell.avatarImageView.image = avatarImageOther
         if(game.status == "RESOLVED"){
-            cell = self.getCellHisto(cell: cell)
+            cell = self.getCellHisto(cell: cell, game: game)
             return cell
         }
         cell = self.getCellActive(cell: cell)
