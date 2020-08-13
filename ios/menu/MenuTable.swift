@@ -159,20 +159,7 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
         return nil
     }
     
-    var swipeVisible: Bool = false
     
-    @objc func imageTapped(sender: UITapGestureRecognizer) {
-        guard let cell = sender.view?.superview?.superview as? MenuCell else {
-            return
-        }
-        if(!self.swipeVisible){
-            cell.showSwipe(orientation: .right, animated: true)
-            self.swipeVisible = true
-            return
-        }
-        cell.hideSwipe(animated: true, completion: nil)
-        self.swipeVisible = false
-    }
     
     private func swipProposedInbound(orientation: SwipeActionsOrientation, game: EntityGame) -> [SwipeAction]? {
         if(orientation == .left) {
@@ -273,46 +260,6 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
         return self.swipProposedOutbound(orientation: orientation, game: game)
     }
     
-    private func getCellActive(cell: MenuCell) -> MenuCell {
-        cell.viewContent.backgroundColor = UIColor.white
-        cell.labelUsername.textColor = UIColor.black
-        cell.imageViewAction.isHidden = false
-        //cell.labelUpdate.isHidden = true
-        
-        //rematch.backgroundColor = UIColor(red: 39.0/255, green: 41.0/255, blue: 44.0/255, alpha: 1.0)
-        //cell.labelSideSlide.image = UIImage(named: "more_vert_red")
-        //if(game.condition == "DRAW"){
-            //rematch.backgroundColor = .yellow
-            //rematch.textColor = .yellow
-            //rematch.image = UIImage(named: "challenge_yel")!
-        
-        cell.labelSideSlide.image = UIImage(named: "more_vert_vfs")
-            
-        return cell
-    }
-    
-    private func getCellHisto(cell: MenuCell, game: EntityGame) -> MenuCell {
-        cell.viewContent.backgroundColor = UIColor.black
-        cell.labelUsername.textColor = UIColor.lightGray
-        cell.imageViewAction.isHidden = true
-        
-        //
-        if(game.condition == "DRAW"){
-            //rematch.backgroundColor = .yellow
-            cell.labelSideSlide.image = UIImage(named: "more_vert_yel")
-        } else {
-            if(game.getWinner(username: self.menu!.playerSelf!.username)){
-                //rematch.backgroundColor = .green
-                cell.labelSideSlide.image = UIImage(named: "more_vert_grn")
-            } else {
-                //rematch.backgroundColor = .red
-                cell.labelSideSlide.image = UIImage(named: "more_vert_red")
-            }
-        }
-        
-        return cell
-    }
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let index: Int = indexPath.row
         let game: EntityGame = self.gameMenuTableList[index]
@@ -320,49 +267,11 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
         let usernameOther: String = game.getLabelTextUsernameOpponent(username: username)
         let avatarImageOther: UIImage = game.getImageAvatarOpponent(username: username)
         
-        var cell = tableView.dequeueReusableCell(withIdentifier: "MenuCell", for: indexPath) as! MenuCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MenuCell", for: indexPath) as! MenuCell
         cell.delegate = self
         
-        let pictureTap = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
-        cell.labelSideSlide.addGestureRecognizer(pictureTap)
-        cell.labelSideSlide.isUserInteractionEnabled = true
+        cell.setContent(usernameSelf: username, usernameOther: usernameOther, game: game, avatarImageOther: avatarImageOther)
         
-        
-        cell.labelUsername.text = usernameOther
-        cell.imageViewAvatar.image = avatarImageOther
-        if(game.status == "RESOLVED"){
-            cell.labelSideSlide.isHidden = false
-            cell = self.getCellHisto(cell: cell, game: game)
-            return cell
-        }
-        cell = self.getCellActive(cell: cell)
-        let inbound: Bool = game.getTurn(username: username)
-        if(game.status == "ONGOING"){
-            cell.labelSideSlide.isHidden = true
-    
-            if(inbound){
-                let image: UIImage = UIImage(named: "turn.on")!
-                cell.imageViewAction.image = image
-                cell.labelAction.text = "action!"
-                return cell
-            }
-            let image: UIImage = UIImage(named: "turn.off")!
-            cell.imageViewAction.image = image
-            cell.labelAction.text = "pending"
-            return cell
-        }
-        if(game.status == "PROPOSED"){
-            cell.labelSideSlide.isHidden = false
-            if(inbound){
-                let image: UIImage = UIImage(named: "inbound")!
-                cell.imageViewAction.image = image
-                cell.labelAction.text = "challenge"
-                return cell
-            }
-        }
-        let image: UIImage = UIImage(named: "outbound")!
-        cell.imageViewAction.image = image
-        cell.labelAction.text = "outbound"
         return cell
     }
     

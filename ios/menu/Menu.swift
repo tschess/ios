@@ -10,37 +10,36 @@ import UIKit
 
 class Menu: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate {
     
-    //MARK: Properties
-    @IBOutlet var activityIndicator: UIActivityIndicatorView!
+    //MARK: Properties - Strong
+    @IBOutlet var indicatorActivity: UIActivityIndicatorView!
     
-    @IBOutlet weak var usernameLabel: UILabel!
-    @IBOutlet weak var avatarImageView: UIImageView!
-    @IBOutlet weak var rankLabel: UILabel!
-    @IBOutlet weak var eloLabel: UILabel!
-    @IBOutlet weak var rankDirectionImage: UIImageView!
-    @IBOutlet weak var displacementLabel: UILabel!
+    //MARK: Properties - Header
+    @IBOutlet weak var labelName: UILabel!
+    @IBOutlet weak var labelRate: UILabel!
+    @IBOutlet weak var labelRank: UILabel!
+    @IBOutlet weak var labelDisp: UILabel!
+    @IBOutlet weak var imageViewDisp: UIImageView!
+    @IBOutlet weak var imageViewAvatar: UIImageView!
     
-    var playerSelf: EntityPlayer?
-    
-    public func renderHeader() {
-        self.avatarImageView.image = self.playerSelf!.getImageAvatar()
-        self.usernameLabel.text = self.playerSelf!.username
-        self.eloLabel.text = self.playerSelf!.getLabelTextElo()
-        self.rankLabel.text = self.playerSelf!.getLabelTextRank()
-        self.displacementLabel.text = self.playerSelf!.getLabelTextDisp()
-        self.rankDirectionImage.image = self.playerSelf!.getImageDisp()!
-        self.rankDirectionImage.tintColor = self.playerSelf!.tintColor
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.renderHeader()
-    }
-    
-    @IBOutlet weak var backButton: UIButton!
+    //MARK: Properties - UI
+    @IBOutlet weak var buttonBack: UIButton!
     @IBOutlet weak var tabBarMenu: UITabBar!
     
+    //MARK: Variables - Member
+    var playerSelf: EntityPlayer?
+    
+    //MARK: Variables - Component
     var menuTable: MenuTable?
+    
+    func renderHeader() {
+        self.imageViewAvatar.image = self.playerSelf!.getImageAvatar()
+        self.labelName.text = self.playerSelf!.username
+        self.labelRate.text = self.playerSelf!.getLabelTextElo()
+        self.labelRank.text = self.playerSelf!.getLabelTextRank()
+        self.labelDisp.text = self.playerSelf!.getLabelTextDisp()
+        self.imageViewDisp.image = self.playerSelf!.getImageDisp()!
+        self.imageViewDisp.tintColor = self.playerSelf!.tintColor
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +47,7 @@ class Menu: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate {
         self.menuTable = children.first as? MenuTable
         self.menuTable!.setSelf(menu: self)
         self.menuTable!.fetchMenuTableList()
+        self.renderHeader()
     }
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
@@ -108,19 +108,18 @@ class Menu: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate {
     
     func setIndicator(on: Bool) {
         if(on) {
+            if(self.indicatorActivity!.isHidden){
+                
+            }
+            self.indicatorActivity!.isHidden = false
             DispatchQueue.main.async() {
-                if(self.activityIndicator!.isHidden){
-                    self.activityIndicator!.isHidden = false
-                }
-                if(!self.activityIndicator!.isAnimating){
-                    self.activityIndicator!.startAnimating()
-                }
+                self.indicatorActivity!.startAnimating()
             }
             return
         }
         DispatchQueue.main.async() {
-            self.activityIndicator!.isHidden = true
-            self.activityIndicator!.stopAnimating()
+            self.indicatorActivity!.isHidden = true
+            self.indicatorActivity!.stopAnimating()
             self.menuTable!.tableView.reloadData()
         }
     }

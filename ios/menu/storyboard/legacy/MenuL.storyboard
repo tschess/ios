@@ -221,15 +221,15 @@
                         <viewLayoutGuide key="safeArea" id="ckM-Fn-CxJ"/>
                     </view>
                     <connections>
-                        <outlet property="activityIndicator" destination="ADc-nn-Tmx" id="nE6-v0-Gof"/>
-                        <outlet property="avatarImageView" destination="r0d-hG-YKm" id="UEY-EA-tK0"/>
-                        <outlet property="backButton" destination="3VQ-kH-eUV" id="lJy-R4-LhM"/>
-                        <outlet property="displacementLabel" destination="TC7-mt-3N6" id="VC6-Jh-z3e"/>
-                        <outlet property="eloLabel" destination="APs-oU-CuM" id="6nd-Zz-Usr"/>
-                        <outlet property="rankDirectionImage" destination="Db2-vI-7pN" id="PLO-NJ-seP"/>
-                        <outlet property="rankLabel" destination="kBm-n0-cLd" id="q6p-Mb-3EE"/>
+                        <outlet property="buttonBack" destination="3VQ-kH-eUV" id="lJy-R4-LhM"/>
+                        <outlet property="imageViewAvatar" destination="r0d-hG-YKm" id="UEY-EA-tK0"/>
+                        <outlet property="imageViewDisp" destination="Db2-vI-7pN" id="PLO-NJ-seP"/>
+                        <outlet property="indicatorActivity" destination="ADc-nn-Tmx" id="nE6-v0-Gof"/>
+                        <outlet property="labelDisp" destination="TC7-mt-3N6" id="VC6-Jh-z3e"/>
+                        <outlet property="labelName" destination="5Pa-Qr-U3z" id="RQJ-1c-CGw"/>
+                        <outlet property="labelRank" destination="kBm-n0-cLd" id="q6p-Mb-3EE"/>
+                        <outlet property="labelRate" destination="APs-oU-CuM" id="6nd-Zz-Usr"/>
                         <outlet property="tabBarMenu" destination="hn3-T4-iPY" id="dqn-h7-bcK"/>
-                        <outlet property="usernameLabel" destination="5Pa-Qr-U3z" id="RQJ-1c-CGw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dq7-Ib-05R" userLabel="First Responder" sceneMemberID="firstResponder"/>
