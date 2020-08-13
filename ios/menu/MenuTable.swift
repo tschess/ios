@@ -11,36 +11,37 @@ import SwipeCellKit
 
 class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
     
-    var pageCount: Int
-    
-    // MARK: CONTAINER (MENU)
     var menu: Menu?
-    func setSelf(menu: Menu) {
-        self.menu = menu
+    var indexPage: Int
+    var listEntityGame: [EntityGame]
+    
+    required init?(coder aDecoder: NSCoder) {
+        self.indexPage = 0
+        self.listEntityGame = [EntityGame]()
+        super.init(coder: aDecoder)
     }
     
-    var gameMenuTableList: [EntityGame] = [EntityGame]()
-    
-    func getGameMenuTableList() -> [EntityGame] {
-        return gameMenuTableList
-    }
-    
-    func fetchMenuTableList() {
-        self.menu!.setIndicator(on: true)
-        let request: [String: Any] = [
-            "id": self.menu!.playerSelf!.id,
-            "index": self.pageCount,
-            "size": Const().PAGE_SIZE,
-            "self": true]
+    func fetchList() {
+        self.menu!.setIndicator()
+        let request: [String: Any] = ["id": self.menu!.playerSelf!.id, "index": self.indexPage, "size": Const().PAGE_SIZE, "self": true]
         RequestActual().execute(requestPayload: request) { (result) in
             self.menu!.setIndicator(on: false)
             self.menuTableListAppend(list: result)
         }
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        self.pageCount = 0
-        super.init(coder: aDecoder)
+    func menuTableListAppend(list: [EntityGame]) {
+        let count0 = self.listEntityGame.count
+        for game: EntityGame in list {
+            if(self.listEntityGame.contains(game)){
+                continue
+            }
+            self.listEntityGame.append(game)
+        }
+        let count1 = listEntityGame.count
+        if(count0 != count1){
+            self.menu!.setIndicator(on: false)
+        }
     }
     
     // MARK: LIFECYCLE
@@ -55,27 +56,18 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
     }
     
     @objc func refresh(refreshControl: UIRefreshControl?) {
-        self.pageCount = 0
-        let request: [String: Any] = ["id": self.menu!.playerSelf!.id, "index": self.pageCount, "size": Const().PAGE_SIZE, "self": true]
+        self.indexPage = 0
+        let request: [String: Any] = ["id": self.menu!.playerSelf!.id, "index": self.indexPage, "size": Const().PAGE_SIZE, "self": true]
         RequestActual().execute(requestPayload: request) { (result) in
             self.menu!.setIndicator(on: false)
             DispatchQueue.main.async {
-                self.gameMenuTableList = result
+                self.listEntityGame = result
                 self.tableView.reloadData()
                 if(refreshControl == nil){
                     return
                 }
                 refreshControl!.endRefreshing()
             }
-        }
-    }
-    
-    func getPageListNext() {
-        self.menu!.setIndicator(on: true)
-        let request: [String: Any] = ["id": self.menu!.playerSelf!.id, "index": self.pageCount, "size": Const().PAGE_SIZE, "self": true]
-        RequestActual().execute(requestPayload: request) { (result) in
-            self.menu!.setIndicator(on: false)
-            self.menuTableListAppend(list: result)
         }
     }
     
@@ -86,13 +78,12 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
         if(lastRow == nil){
             return
         }
-        let index = self.pageCount
+        let index = self.indexPage
         let indexFrom: Int =  index * Const().PAGE_SIZE
         let indexTo: Int = indexFrom + Const().PAGE_SIZE - 2
-    
         if lastRow == indexTo {
-            self.pageCount += 1
-            self.getPageListNext()
+            self.indexPage += 1
+            self.fetchList()
         }
     }
     
@@ -102,7 +93,7 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.gameMenuTableList.count
+        return self.listEntityGame.count
     }
     
     private func swipeResolved(orientation: SwipeActionsOrientation, game: EntityGame) -> [SwipeAction]? {
@@ -112,7 +103,7 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
                 let cell = self.tableView.cellForRow(at: indexPath) as! SwipeTableViewCell
                 cell.hideSwipe(animated: false, completion: nil)
                 
-                let game: EntityGame = self.gameMenuTableList[indexPath.row]
+                let game: EntityGame = self.listEntityGame[indexPath.row]
                 let username: String = self.menu!.playerSelf!.username
                 let playerOther: EntityPlayer = game.getPlayerOther(username: username)
 
@@ -171,7 +162,7 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
                 self.menu!.setIndicator(on: true)
                 let requestPayload: [String: Any] = ["id_game": game.id, "id_self": self.menu!.playerSelf!.id]
                 UpdateNack().execute(requestPayload: requestPayload) { (result) in
-                    self.gameMenuTableList.remove(at: indexPath.row)
+                    self.listEntityGame.remove(at: indexPath.row)
                     self.menu!.setIndicator(on: false)
                 }
             }
@@ -186,7 +177,7 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
             let cell = self.tableView.cellForRow(at: indexPath) as! SwipeTableViewCell
             cell.hideSwipe(animated: false, completion: nil)
             
-            let game: EntityGame = self.gameMenuTableList[indexPath.row]
+            let game: EntityGame = self.listEntityGame[indexPath.row]
             let username: String = self.menu!.playerSelf!.username
             let playerOther: EntityPlayer = game.getPlayerOther(username: username)
             
@@ -227,10 +218,10 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
                 cell.hideSwipe(animated: false, completion: nil)
                 
                 self.menu!.setIndicator(on: true)
-                let game = self.gameMenuTableList[indexPath.row]
+                let game = self.listEntityGame[indexPath.row]
                 let requestPayload: [String: Any] = ["id_game": game.id, "id_self": self.menu!.playerSelf!.id]
                 UpdateRescind().execute(requestPayload: requestPayload) { (result) in
-                    self.gameMenuTableList.remove(at: indexPath.row)
+                    self.listEntityGame.remove(at: indexPath.row)
                     self.menu!.setIndicator(on: false)
                 }
             }
@@ -245,7 +236,7 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
         let username: String = self.menu!.playerSelf!.username
-        let game = self.gameMenuTableList[indexPath.row]
+        let game = self.listEntityGame[indexPath.row]
         let inbound: Bool = game.getInboundInvitation(username: username)
         
         if(game.status == "ONGOING"){
@@ -262,7 +253,7 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let index: Int = indexPath.row
-        let game: EntityGame = self.gameMenuTableList[index]
+        let game: EntityGame = self.listEntityGame[index]
         let username: String = self.menu!.playerSelf!.username
         let usernameOther: String = game.getLabelTextUsernameOpponent(username: username)
         let avatarImageOther: UIImage = game.getImageAvatarOpponent(username: username)
@@ -278,7 +269,7 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let cell = tableView.cellForRow(at: indexPath) as! MenuCell
-        let game = self.gameMenuTableList[indexPath.row]
+        let game = self.listEntityGame[indexPath.row]
         if(game.status == "RESOLVED"){
             DispatchQueue.main.async {
                 
@@ -318,19 +309,5 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
             return
         }
         return cell.showSwipe(orientation: .left, animated: true)
-    }
-    
-    func menuTableListAppend(list: [EntityGame]) {
-        let count0 = self.gameMenuTableList.count
-        for game: EntityGame in list {
-            if(self.gameMenuTableList.contains(game)){
-                continue
-            }
-            self.gameMenuTableList.append(game)
-        }
-        let count1 = gameMenuTableList.count
-        if(count0 != count1){
-            self.menu!.setIndicator(on: false)
-        }
     }
 }

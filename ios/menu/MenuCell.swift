@@ -11,14 +11,16 @@ import SwipeCellKit
 
 class MenuCell: SwipeTableViewCell {
     
+    //MARK: Properties
     @IBOutlet weak var viewContent: UIView!
-    
+    @IBOutlet weak var labelName: UILabel!
+    @IBOutlet weak var labelAction: UILabel!
     @IBOutlet weak var imageViewAvatar: UIImageView!
     @IBOutlet weak var imageViewAction: UIImageView!
+    @IBOutlet weak var imageViewSideSlide: UIImageView!
     
-    @IBOutlet weak var labelAction: UILabel!
-    @IBOutlet weak var labelUsername: UILabel!
-    @IBOutlet weak var labelSideSlide: UIImageView!
+    //MARK: Properties
+    var isSideSlide: Bool = false
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -28,27 +30,26 @@ class MenuCell: SwipeTableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    var swipeVisible: Bool = false
     
     @objc func imageTapped(sender: UITapGestureRecognizer) {
         guard let cell = sender.view?.superview?.superview as? MenuCell else {
             return
         }
-        if(!self.swipeVisible){
+        if(!self.isSideSlide){
             cell.showSwipe(orientation: .right, animated: true)
-            self.swipeVisible = true
+            self.isSideSlide = true
             return
         }
         cell.hideSwipe(animated: true, completion: nil)
-        self.swipeVisible = false
+        self.isSideSlide = false
     }
     
     func setContent(usernameSelf: String, usernameOther: String, game: EntityGame, avatarImageOther: UIImage) {
         let pictureTap = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
-        self.labelSideSlide.addGestureRecognizer(pictureTap)
-        self.labelSideSlide.isUserInteractionEnabled = true
+        self.imageViewSideSlide.addGestureRecognizer(pictureTap)
+        self.imageViewSideSlide.isUserInteractionEnabled = true
             
-        self.labelUsername.text = usernameOther
+        self.labelName.text = usernameOther
         self.imageViewAvatar.image = avatarImageOther
         if(game.status == "RESOLVED"){
             self.setHisto(game: game, username: usernameSelf)
@@ -57,7 +58,7 @@ class MenuCell: SwipeTableViewCell {
         self.setActive()
         let inbound: Bool = game.getTurn(username: usernameSelf)
         if(game.status == "ONGOING"){
-            self.labelSideSlide.isHidden = true
+            self.imageViewSideSlide.isHidden = true
     
             if(inbound){
                 let image: UIImage = UIImage(named: "turn.on")!
@@ -71,7 +72,7 @@ class MenuCell: SwipeTableViewCell {
             return
         }
         if(game.status == "PROPOSED"){
-            self.labelSideSlide.isHidden = false
+            self.imageViewSideSlide.isHidden = false
             if(inbound){
                 let image: UIImage = UIImage(named: "inbound")!
                 self.imageViewAction.image = image
@@ -86,25 +87,25 @@ class MenuCell: SwipeTableViewCell {
     
     func setActive() {
         self.viewContent.backgroundColor = UIColor.white
-        self.labelUsername.textColor = UIColor.black
+        self.labelName.textColor = UIColor.black
         self.imageViewAction.isHidden = false
-        self.labelSideSlide.image = UIImage(named: "more_vert_vfs")
+        self.imageViewSideSlide.image = UIImage(named: "more_vert_vfs")
     }
     
     func setHisto(game: EntityGame, username: String) {
         self.viewContent.backgroundColor = UIColor.black
-        self.labelUsername.textColor = UIColor.lightGray
+        self.labelName.textColor = UIColor.lightGray
         self.imageViewAction.isHidden = true
-        self.labelSideSlide.isHidden = false
+        self.imageViewSideSlide.isHidden = false
         if(game.condition == "DRAW"){
-            self.labelSideSlide.image = UIImage(named: "more_vert_yel")
+            self.imageViewSideSlide.image = UIImage(named: "more_vert_yel")
             return
         }
         let winner: Bool = game.getWinner(username: username)
         if(winner){
-            self.labelSideSlide.image = UIImage(named: "more_vert_grn")
+            self.imageViewSideSlide.image = UIImage(named: "more_vert_grn")
             return
         }
-        self.labelSideSlide.image = UIImage(named: "more_vert_red")
+        self.imageViewSideSlide.image = UIImage(named: "more_vert_red")
     }
 }

@@ -45,8 +45,8 @@ class Menu: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate {
         super.viewDidLoad()
         self.tabBarMenu.delegate = self
         self.menuTable = children.first as? MenuTable
-        self.menuTable!.setSelf(menu: self)
-        self.menuTable!.fetchMenuTableList()
+        self.menuTable!.menu = self
+        self.menuTable!.fetchList()
         self.renderHeader()
     }
     
@@ -106,7 +106,7 @@ class Menu: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate {
         self.navigationController?.popViewController(animated: false)
     }
     
-    func setIndicator(on: Bool) {
+    func setIndicator(on: Bool = true) {
         if(on) {
             if(self.indicatorActivity!.isHidden){
                 
