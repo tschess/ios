@@ -332,12 +332,12 @@
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
-                                    <outlet property="actionImageView" destination="jDb-3F-Bd9" id="UIP-tD-s10"/>
-                                    <outlet property="avatarImageView" destination="xuk-ae-wp5" id="Pcg-Rg-VnC"/>
+                                    <outlet property="imageViewAction" destination="jDb-3F-Bd9" id="UIP-tD-s10"/>
+                                    <outlet property="imageViewAvatar" destination="xuk-ae-wp5" id="Pcg-Rg-VnC"/>
                                     <outlet property="labelAction" destination="o43-yf-hIg" id="9AE-SN-lex"/>
                                     <outlet property="labelSideSlide" destination="ReE-ed-4sD" id="EEX-zO-uLQ"/>
-                                    <outlet property="soLaLa" destination="MGs-1w-KdX" id="UZC-BE-i71"/>
-                                    <outlet property="usernameLabel" destination="s4R-dy-eV8" id="MmD-UN-PGP"/>
+                                    <outlet property="labelUsername" destination="s4R-dy-eV8" id="MmD-UN-PGP"/>
+                                    <outlet property="viewContent" destination="MGs-1w-KdX" id="UZC-BE-i71"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

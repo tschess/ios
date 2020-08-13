@@ -11,15 +11,13 @@ import SwipeCellKit
 
 class MenuCell: SwipeTableViewCell {
     
-    @IBOutlet weak var soLaLa: UIView!
+    @IBOutlet weak var viewContent: UIView!
+    
+    @IBOutlet weak var imageViewAvatar: UIImageView!
+    @IBOutlet weak var imageViewAction: UIImageView!
     
     @IBOutlet weak var labelAction: UILabel!
-    @IBOutlet weak var avatarImageView: UIImageView!
-    @IBOutlet weak var actionImageView: UIImageView!
-   
-    @IBOutlet weak var usernameLabel: UILabel!
-    
-    //@IBOutlet weak var labelSideSlide: UIImageView!
+    @IBOutlet weak var labelUsername: UILabel!
     @IBOutlet weak var labelSideSlide: UIImageView!
     
     override func awakeFromNib() {

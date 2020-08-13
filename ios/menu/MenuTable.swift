@@ -274,9 +274,9 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
     }
     
     private func getCellActive(cell: MenuCell) -> MenuCell {
-        cell.soLaLa.backgroundColor = UIColor.white
-        cell.usernameLabel.textColor = UIColor.black
-        cell.actionImageView.isHidden = false
+        cell.viewContent.backgroundColor = UIColor.white
+        cell.labelUsername.textColor = UIColor.black
+        cell.imageViewAction.isHidden = false
         //cell.labelUpdate.isHidden = true
         
         //rematch.backgroundColor = UIColor(red: 39.0/255, green: 41.0/255, blue: 44.0/255, alpha: 1.0)
@@ -292,9 +292,9 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
     }
     
     private func getCellHisto(cell: MenuCell, game: EntityGame) -> MenuCell {
-        cell.soLaLa.backgroundColor = UIColor.black
-        cell.usernameLabel.textColor = UIColor.lightGray
-        cell.actionImageView.isHidden = true
+        cell.viewContent.backgroundColor = UIColor.black
+        cell.labelUsername.textColor = UIColor.lightGray
+        cell.imageViewAction.isHidden = true
         
         //
         if(game.condition == "DRAW"){
@@ -328,8 +328,8 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
         cell.labelSideSlide.isUserInteractionEnabled = true
         
         
-        cell.usernameLabel.text = usernameOther
-        cell.avatarImageView.image = avatarImageOther
+        cell.labelUsername.text = usernameOther
+        cell.imageViewAvatar.image = avatarImageOther
         if(game.status == "RESOLVED"){
             cell.labelSideSlide.isHidden = false
             cell = self.getCellHisto(cell: cell, game: game)
@@ -342,12 +342,12 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
     
             if(inbound){
                 let image: UIImage = UIImage(named: "turn.on")!
-                cell.actionImageView.image = image
+                cell.imageViewAction.image = image
                 cell.labelAction.text = "action!"
                 return cell
             }
             let image: UIImage = UIImage(named: "turn.off")!
-            cell.actionImageView.image = image
+            cell.imageViewAction.image = image
             cell.labelAction.text = "pending"
             return cell
         }
@@ -355,13 +355,13 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
             cell.labelSideSlide.isHidden = false
             if(inbound){
                 let image: UIImage = UIImage(named: "inbound")!
-                cell.actionImageView.image = image
+                cell.imageViewAction.image = image
                 cell.labelAction.text = "challenge"
                 return cell
             }
         }
         let image: UIImage = UIImage(named: "outbound")!
-        cell.actionImageView.image = image
+        cell.imageViewAction.image = image
         cell.labelAction.text = "outbound"
         return cell
     }
