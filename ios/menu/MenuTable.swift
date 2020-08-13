@@ -97,60 +97,47 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
     }
     
     private func swipeResolved(orientation: SwipeActionsOrientation, game: EntityGame) -> [SwipeAction]? {
+        let username: String = self.menu!.playerSelf!.username
         if(orientation == .right) {
-            
             let rematch = SwipeAction(style: .default, title: nil) { action, indexPath in
                 let cell = self.tableView.cellForRow(at: indexPath) as! SwipeTableViewCell
                 cell.hideSwipe(animated: false, completion: nil)
                 
                 let game: EntityGame = self.listEntityGame[indexPath.row]
-                let username: String = self.menu!.playerSelf!.username
                 let playerOther: EntityPlayer = game.getPlayerOther(username: username)
 
                 DispatchQueue.main.async {
-                    let height: CGFloat = UIScreen.main.bounds.height
-                    if(height.isLess(than: 750)){
-                        let storyboard: UIStoryboard = UIStoryboard(name: "ChallengeL", bundle: nil)
-                        let viewController = storyboard.instantiateViewController(withIdentifier: "ChallengeL") as! Challenge
-                        viewController.setPlayerSelf(playerSelf: self.menu!.playerSelf!)
-                        viewController.setPlayerOther(playerOther: playerOther)
-                        viewController.setSelection(selection: Int.random(in: 0...3))
-                        viewController.BACK = "OTHER"
-                        self.navigationController?.pushViewController(viewController, animated: false)
-                        return
+                    var storyboard: UIStoryboard = UIStoryboard(name: "ChallengeP", bundle: nil)
+                    var viewController = storyboard.instantiateViewController(withIdentifier: "ChallengeP") as! Challenge
+                    if(UIScreen.main.bounds.height.isLess(than: 750)){
+                        storyboard = UIStoryboard(name: "ChallengeL", bundle: nil)
+                        viewController = storyboard.instantiateViewController(withIdentifier: "ChallengeL") as! Challenge
                     }
-                    let storyboard: UIStoryboard = UIStoryboard(name: "ChallengeP", bundle: nil)
-                    let viewController = storyboard.instantiateViewController(withIdentifier: "ChallengeP") as! Challenge
-                    viewController.setPlayerSelf(playerSelf: self.menu!.playerSelf!)
-                    viewController.setPlayerOther(playerOther: playerOther)
-                    viewController.setSelection(selection: Int.random(in: 0...3))
+                    viewController.playerSelf = self.menu!.playerSelf!
+                    viewController.playerOther = playerOther
+                    viewController.selection = Int.random(in: 0...3)
                     viewController.BACK = "OTHER"
                     self.navigationController?.pushViewController(viewController, animated: false)
                 }
             }
             rematch.backgroundColor = UIColor(red: 39.0/255, green: 41.0/255, blue: 44.0/255, alpha: 1.0)
-            //cell.labelSideSlide.image = UIImage(named: "more_vert_red")
+            rematch.title = "rematch"
             if(game.condition == "DRAW"){
-                //rematch.backgroundColor = .yellow
                 rematch.textColor = .yellow
                 rematch.image = UIImage(named: "challenge_yel")!
-            } else {
-                if(game.getWinner(username: self.menu!.playerSelf!.username)){
-                    rematch.textColor = .green
-                    rematch.image = UIImage(named: "challenge_grn")!
-                } else {
-                    rematch.textColor = .red
-                    rematch.image = UIImage(named: "challenge_red")!
-                }
+                return [rematch]
             }
-            
-            rematch.title = "rematch"
+            if(game.getWinner(username: username)){
+                rematch.textColor = .green
+                rematch.image = UIImage(named: "challenge_grn")!
+                return [rematch]
+            }
+            rematch.textColor = .red
+            rematch.image = UIImage(named: "challenge_red")!
             return [rematch]
         }
         return nil
     }
-    
-    
     
     private func swipProposedInbound(orientation: SwipeActionsOrientation, game: EntityGame) -> [SwipeAction]? {
         if(orientation == .left) {
@@ -159,14 +146,13 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
                 let cell = self.tableView.cellForRow(at: indexPath) as! SwipeTableViewCell
                 cell.hideSwipe(animated: false, completion: nil)
                 
-                self.menu!.setIndicator(on: true)
+                self.menu!.setIndicator()
                 let requestPayload: [String: Any] = ["id_game": game.id, "id_self": self.menu!.playerSelf!.id]
                 UpdateNack().execute(requestPayload: requestPayload) { (result) in
                     self.listEntityGame.remove(at: indexPath.row)
                     self.menu!.setIndicator(on: false)
                 }
             }
-            //nAction.backgroundColor = .red
             nAction.backgroundColor = UIColor(red: 39.0/255, green: 41.0/255, blue: 44.0/255, alpha: 1.0)
             nAction.image = UIImage(named: "td_w")!
             nAction.title = "reject"
@@ -204,7 +190,6 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
             
         }
         ackAction.backgroundColor = UIColor(red: 39.0/255, green: 41.0/255, blue: 44.0/255, alpha: 1.0)
-        //ackAction.backgroundColor = .green
         ackAction.title = "accept"
         ackAction.image = UIImage(named: "tu_w")!
         return [ackAction]
