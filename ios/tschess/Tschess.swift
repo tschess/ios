@@ -20,7 +20,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     @IBOutlet weak var viewBoard: BoardView!
     @IBOutlet weak var imageViewAvatar: UIImageView!
     @IBOutlet weak var labelUsername: UILabel!
-    @IBOutlet weak var labelRankDate: UILabel!
+    
     @IBOutlet weak var labelRank: UILabel!
     @IBOutlet weak var labelElo: UILabel!
     
@@ -274,7 +274,6 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         super.viewWillAppear(animated)
         self.labelElo.text = self.playerOther!.getLabelTextElo()
         self.labelRank.text = self.playerOther!.getLabelTextRank()
-        self.labelRankDate.text = self.playerOther!.getLabelTextDate()
         self.labelUsername.text = self.playerOther!.username
         self.imageViewAvatar.image = self.playerOther!.getImageAvatar()
     }

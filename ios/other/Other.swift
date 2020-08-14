@@ -18,7 +18,7 @@ class Other: UIViewController, UITabBarDelegate {
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var rankLabel: UILabel!
     @IBOutlet weak var avatarImageView: UIImageView!
-    @IBOutlet weak var dateLabel: UILabel!
+    
     @IBOutlet weak var eloLabel: UILabel!
     
     var otherMenuTable: OtherMenuTable?
@@ -40,7 +40,7 @@ class Other: UIViewController, UITabBarDelegate {
         self.usernameLabel.text = self.playerOther!.username
         self.eloLabel.text = self.playerOther!.getLabelTextElo()
         self.rankLabel.text = self.playerOther!.getLabelTextRank()
-        self.dateLabel.text = self.playerOther!.getLabelTextDate()
+        
     }
     
     override func viewDidLoad() {
