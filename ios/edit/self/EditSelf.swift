@@ -10,6 +10,8 @@ import UIKit
 
 class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIDropInteractionDelegate {
     
+    @IBOutlet weak var labelHoldDrag: UILabel!
+    
     //MARK: Member
     var playerSelf: EntityPlayer!
     var selection: Int!

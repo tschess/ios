@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -204,6 +204,12 @@
                                                     </collectionViewCell>
                                                 </cells>
                                             </collectionView>
+                                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HOLD:DRAG" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="byj-LZ-Phu">
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="69"/>
+                                                <color key="textColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                             <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bUh-Du-Cy4" userLabel="PointsView">
                                                 <rect key="frame" x="130.66666666666666" y="115.99999999999999" width="152.99999999999997" height="26.333333333333329"/>
                                                 <subviews>
@@ -327,11 +333,15 @@
                                             <constraint firstItem="bUh-Du-Cy4" firstAttribute="centerX" secondItem="4B9-iJ-sgQ" secondAttribute="centerX" id="98m-Vh-aAI"/>
                                             <constraint firstItem="bUh-Du-Cy4" firstAttribute="top" secondItem="cLt-qU-Ujd" secondAttribute="bottom" constant="16" id="A13-A2-0l1"/>
                                             <constraint firstItem="nQP-5X-zQQ" firstAttribute="top" secondItem="bUh-Du-Cy4" secondAttribute="bottom" constant="16" id="ApE-La-vJS"/>
+                                            <constraint firstItem="cLt-qU-Ujd" firstAttribute="bottom" secondItem="byj-LZ-Phu" secondAttribute="bottom" id="IJ0-aZ-rqe"/>
                                             <constraint firstAttribute="trailing" secondItem="cLt-qU-Ujd" secondAttribute="trailing" id="IYk-4T-qSc"/>
                                             <constraint firstItem="cLt-qU-Ujd" firstAttribute="top" secondItem="4B9-iJ-sgQ" secondAttribute="top" id="KaF-Ba-3wb"/>
                                             <constraint firstItem="cLt-qU-Ujd" firstAttribute="leading" secondItem="4B9-iJ-sgQ" secondAttribute="leading" id="blo-bz-0q8"/>
                                             <constraint firstAttribute="bottom" secondItem="nQP-5X-zQQ" secondAttribute="bottom" id="eOj-hO-JC9"/>
+                                            <constraint firstItem="byj-LZ-Phu" firstAttribute="top" secondItem="cLt-qU-Ujd" secondAttribute="top" id="ef9-Tw-vCY"/>
+                                            <constraint firstItem="cLt-qU-Ujd" firstAttribute="trailing" secondItem="byj-LZ-Phu" secondAttribute="trailing" id="pVO-b9-a0L"/>
                                             <constraint firstAttribute="trailing" secondItem="nQP-5X-zQQ" secondAttribute="trailing" id="xgT-cJ-dV8"/>
+                                            <constraint firstItem="byj-LZ-Phu" firstAttribute="leading" secondItem="cLt-qU-Ujd" secondAttribute="leading" id="zzC-VJ-nAR"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -403,6 +413,7 @@
                         <outlet property="displacementLabel" destination="oLQ-y7-8uA" id="q94-nQ-EY6"/>
                         <outlet property="eloLabel" destination="bYp-mq-oaW" id="2iH-rn-Wsz"/>
                         <outlet property="headerView" destination="cqz-eh-zNQ" id="Pun-9r-7pi"/>
+                        <outlet property="labelHoldDrag" destination="byj-LZ-Phu" id="RfU-A6-egi"/>
                         <outlet property="rankLabel" destination="B8i-Jr-YEY" id="OuQ-lX-Qg2"/>
                         <outlet property="tabBarMenu" destination="lR1-2A-YPc" id="CDf-K6-4Hh"/>
                         <outlet property="titleLabel" destination="rh3-GT-zds" id="CUA-nm-eYa"/>
