@@ -107,27 +107,14 @@ class Home: UIViewController, UITabBarDelegate {
         }
         switch item.tag {
         case 1:
-            //self.setIndicator(on: true)
-            let height: CGFloat = UIScreen.main.bounds.height
-            if(height.isLess(than: 750)){
-                DispatchQueue.main.async() {
-                    let storyboard: UIStoryboard = UIStoryboard(name: "ProfileL", bundle: nil)
-                    let viewController = storyboard.instantiateViewController(withIdentifier: "ProfileL") as! Profile
-                    viewController.setPlayer(player: self.playerSelf!)
-                    let transition = CATransition()
-                    transition.duration = 0.3
-                    transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
-                    transition.type = CATransitionType.fade
-                    self.navigationController?.view.layer.add(transition, forKey: nil)
-                    _ = self.navigationController?.popViewController(animated: false)
-                    self.navigationController?.pushViewController(viewController, animated: false)
+             DispatchQueue.main.async() {
+                var storyboard: UIStoryboard = UIStoryboard(name: "ProfileP", bundle: nil)
+                var viewController = storyboard.instantiateViewController(withIdentifier: "ProfileP") as! Profile
+                if(UIScreen.main.bounds.height.isLess(than: 750)){
+                    storyboard = UIStoryboard(name: "ProfileL", bundle: nil)
+                    viewController = storyboard.instantiateViewController(withIdentifier: "ProfileL") as! Profile
                 }
-                return
-            }
-            DispatchQueue.main.async() {
-                let storyboard: UIStoryboard = UIStoryboard(name: "ProfileP", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "ProfileP") as! Profile
-                viewController.setPlayer(player: self.playerSelf!)
+                viewController.player = self.menu!.playerSelf!
                 let transition = CATransition()
                 transition.duration = 0.3
                 transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
@@ -135,7 +122,7 @@ class Home: UIViewController, UITabBarDelegate {
                 self.navigationController?.view.layer.add(transition, forKey: nil)
                 _ = self.navigationController?.popViewController(animated: false)
                 self.navigationController?.pushViewController(viewController, animated: false)
-            }
+             }
         case 3:
             if(self.menu != nil){
                 let transition = CATransition()
@@ -147,36 +134,22 @@ class Home: UIViewController, UITabBarDelegate {
                 self.navigationController?.pushViewController(menu!, animated: false)
                 return
             }
-            let height: CGFloat = UIScreen.main.bounds.height
-            if(height.isLess(than: 750)){
-                let storyboard: UIStoryboard = UIStoryboard(name: "MenuL", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "MenuL") as! Menu
-                viewController.playerSelf = self.playerSelf!
-                self.navigationController?.pushViewController(viewController, animated: false)
-                return
+            var storyboard: UIStoryboard = UIStoryboard(name: "MenuP", bundle: nil)
+            var viewController = storyboard.instantiateViewController(withIdentifier: "MenuP") as! Menu
+            if(UIScreen.main.bounds.height.isLess(than: 750)){
+                storyboard = UIStoryboard(name: "MenuL", bundle: nil)
+                viewController = storyboard.instantiateViewController(withIdentifier: "MenuL") as! Menu
             }
-            let storyboard: UIStoryboard = UIStoryboard(name: "MenuP", bundle: nil)
-            let viewController = storyboard.instantiateViewController(withIdentifier: "MenuP") as! Menu
             viewController.playerSelf = self.playerSelf!
             self.navigationController?.pushViewController(viewController, animated: false)
-        case 4:
-            let height: CGFloat = UIScreen.main.bounds.height
-            if(height.isLess(than: 750)){
-                let storyboard: UIStoryboard = UIStoryboard(name: "ConfigL", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "ConfigL") as! Config
-                viewController.setPlayerSelf(playerSelf: self.playerSelf!)
-                let transition = CATransition()
-                transition.duration = 0.3
-                transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
-                transition.type = CATransitionType.fade
-                self.navigationController?.view.layer.add(transition, forKey: nil)
-                _ = self.navigationController?.popViewController(animated: false)
-                self.navigationController?.pushViewController(viewController, animated: false)
-                return
+        default: //case 4:
+            var storyboard: UIStoryboard = UIStoryboard(name: "ConfigP", bundle: nil)
+            var viewController = storyboard.instantiateViewController(withIdentifier: "ConfigP") as! Config
+            if(UIScreen.main.bounds.height.isLess(than: 750)){
+                storyboard = UIStoryboard(name: "ConfigL", bundle: nil)
+                viewController = storyboard.instantiateViewController(withIdentifier: "ConfigL") as! Config
             }
-            let storyboard: UIStoryboard = UIStoryboard(name: "ConfigP", bundle: nil)
-            let viewController = storyboard.instantiateViewController(withIdentifier: "ConfigP") as! Config
-            viewController.setPlayerSelf(playerSelf: self.playerSelf!)
+            viewController.playerSelf = self.playerSelf!
             let transition = CATransition()
             transition.duration = 0.3
             transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
@@ -184,8 +157,6 @@ class Home: UIViewController, UITabBarDelegate {
             self.navigationController?.view.layer.add(transition, forKey: nil)
             _ = self.navigationController?.popViewController(animated: false)
             self.navigationController?.pushViewController(viewController, animated: false)
-        default:
-            print("fuck")
         }
     }
     

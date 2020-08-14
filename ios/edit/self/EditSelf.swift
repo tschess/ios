@@ -66,9 +66,18 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
         return viewController
     }
     
+    //
+    @objc func fire() {
+        print("FIRE!!!")
+        self.labelHoldDrag.isHidden = true
+    }
+    
+    
     //MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(fire), userInfo: nil, repeats: false)
         
         self.configCollectionView.isHidden = true
         self.configCollectionView.delegate = self
@@ -148,13 +157,14 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
     private func setTotalPointValue() {
         let totalPointValue: Int = self.editCore.getPointValue(config: self.configActiv!)
         self.totalPointLabel.text = String(totalPointValue)
-        if(totalPointValue < 39){
-            self.viewPointLabel.isHidden = false
-            self.tschessElementCollectionView.isHidden = false
-            return
-        }
-        self.viewPointLabel.isHidden = true
-        self.tschessElementCollectionView.isHidden = true
+        //if(totalPointValue < 39){
+            //self.labelHoldDrag.isHidden = true
+            //self.viewPointLabel.isHidden = false
+            //self.tschessElementCollectionView.isHidden = false
+            //return
+        //}
+        //self.viewPointLabel.isHidden = true
+        //self.tschessElementCollectionView.isHidden = true
     }
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {

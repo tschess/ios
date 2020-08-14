@@ -12,7 +12,6 @@ class Config: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate, U
     
     var titleText: String?
     
-    //@IBOutlet weak var labelTapHere: UILabel!
     @IBOutlet weak var labelTapHere: UILabel!
     
     func setTitleText(titleText: String) {
@@ -63,14 +62,21 @@ class Config: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate, U
     
     var playerSelf: EntityPlayer?
     
-    public func setPlayerSelf(playerSelf: EntityPlayer){
-        self.playerSelf = playerSelf
+    //public func setPlayerSelf(playerSelf: EntityPlayer){
+        //self.playerSelf = playerSelf
+    //}
+    
+    @objc func fire() {
+        print("FIRE!!!")
+        self.labelTapHere.isHidden = true
     }
     
     //MARK: - lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(fire), userInfo: nil, repeats: false)
         
         self.labelTapHere.adjustsFontSizeToFitWidth = true //maybe dont need this...
         self.labelTapHere.minimumScaleFactor = 0.2
