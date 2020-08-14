@@ -12,6 +12,7 @@ class Config: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate, U
     
     var titleText: String?
     
+    //@IBOutlet weak var labelTapHere: UILabel!
     @IBOutlet weak var labelTapHere: UILabel!
     
     func setTitleText(titleText: String) {
@@ -72,7 +73,7 @@ class Config: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate, U
         super.viewDidLoad()
         
         self.labelTapHere.adjustsFontSizeToFitWidth = true //maybe dont need this...
-        //self.labelTapHere.minimumScaleFactor = 0.2
+        self.labelTapHere.minimumScaleFactor = 0.2
         
         self.tabBarMenu.delegate = self
         

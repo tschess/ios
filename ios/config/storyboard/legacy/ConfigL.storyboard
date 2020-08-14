@@ -104,11 +104,11 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="elo:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A6m-J8-c04">
-                                        <rect key="frame" x="220" y="2" width="34" height="20"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="rate:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A6m-J8-c04">
+                                        <rect key="frame" x="207" y="2" width="47" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="d2J-fm-3Jc"/>
-                                            <constraint firstAttribute="width" constant="34" id="p9A-MX-TF4"/>
+                                            <constraint firstAttribute="width" constant="47" id="p9A-MX-TF4"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="19"/>
                                         <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -153,7 +153,7 @@
                                         <rect key="frame" x="229" y="47" width="20" height="20"/>
                                         <color key="tintColor" red="0.86274509799999999" green="0.015686274510000001" blue="0.015686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="20" id="PxI-dK-h2N"/>
+                                            <constraint firstAttribute="height" constant="19" id="PxI-dK-h2N"/>
                                             <constraint firstAttribute="width" constant="20" id="lOG-PM-KPf"/>
                                         </constraints>
                                     </imageView>
@@ -169,7 +169,7 @@
                                     <constraint firstAttribute="trailing" secondItem="rPY-lf-5D1" secondAttribute="trailing" constant="4" id="LFp-MQ-Os8"/>
                                     <constraint firstItem="43E-u6-x9M" firstAttribute="top" secondItem="A6m-J8-c04" secondAttribute="bottom" constant="2" id="OFL-gI-S49"/>
                                     <constraint firstItem="A6m-J8-c04" firstAttribute="top" secondItem="56Q-PK-JTt" secondAttribute="top" constant="2" id="R17-PU-vhR"/>
-                                    <constraint firstItem="jAu-5M-pJ7" firstAttribute="top" secondItem="43E-u6-x9M" secondAttribute="bottom" constant="2" id="TGz-ve-DI3"/>
+                                    <constraint firstItem="jAu-5M-pJ7" firstAttribute="top" secondItem="43E-u6-x9M" secondAttribute="bottom" constant="4" id="TGz-ve-DI3"/>
                                     <constraint firstItem="mgQ-t9-ybv" firstAttribute="leading" secondItem="jAu-5M-pJ7" secondAttribute="trailing" id="VhY-H9-0eF"/>
                                     <constraint firstItem="dEP-lD-NYJ" firstAttribute="top" secondItem="56Q-PK-JTt" secondAttribute="top" constant="2" id="Wrq-xi-YHO"/>
                                     <constraint firstAttribute="bottom" secondItem="Mye-Xt-jB3" secondAttribute="bottom" constant="1" id="Wx3-pu-5Sp"/>
@@ -292,11 +292,11 @@
                                                     </collectionViewCell>
                                                 </cells>
                                             </collectionView>
-                                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999998807907104" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TAP HERE" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NPh-0M-Tc1">
+                                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TAP HERE" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NPh-0M-Tc1">
                                                 <rect key="frame" x="0.0" y="24" width="320" height="100"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="70"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="69"/>
                                                 <color key="textColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>

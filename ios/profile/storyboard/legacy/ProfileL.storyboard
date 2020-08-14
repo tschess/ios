@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -106,11 +106,11 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="elo:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MKs-Vh-rra">
-                                        <rect key="frame" x="220" y="2" width="34" height="20"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="rate:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MKs-Vh-rra">
+                                        <rect key="frame" x="207" y="2" width="47" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="Ogq-0P-cNt"/>
-                                            <constraint firstAttribute="width" constant="34" id="pXE-kx-zKX"/>
+                                            <constraint firstAttribute="width" constant="47" id="pXE-kx-zKX"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="19"/>
                                         <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -156,7 +156,7 @@
                                         <color key="tintColor" red="0.86274509799999999" green="0.015686274510000001" blue="0.015686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="20" id="1tx-nr-BDN"/>
-                                            <constraint firstAttribute="height" constant="20" id="viG-BK-5O0"/>
+                                            <constraint firstAttribute="height" constant="19" id="viG-BK-5O0"/>
                                         </constraints>
                                     </imageView>
                                 </subviews>
@@ -170,7 +170,7 @@
                                     <constraint firstAttribute="bottom" secondItem="L7N-ql-NQj" secondAttribute="bottom" constant="1" id="HBs-VN-F4P"/>
                                     <constraint firstItem="2xv-QX-iBp" firstAttribute="top" secondItem="MKs-Vh-rra" secondAttribute="bottom" constant="2" id="Lla-ny-6Gd"/>
                                     <constraint firstAttribute="trailing" secondItem="IeS-nk-w6x" secondAttribute="trailing" constant="4" id="Rzg-7f-cLq"/>
-                                    <constraint firstItem="Rhy-p4-QeO" firstAttribute="top" secondItem="2xv-QX-iBp" secondAttribute="bottom" constant="2" id="SF4-xu-W26"/>
+                                    <constraint firstItem="Rhy-p4-QeO" firstAttribute="top" secondItem="2xv-QX-iBp" secondAttribute="bottom" constant="4" id="SF4-xu-W26"/>
                                     <constraint firstItem="nPu-pt-oQb" firstAttribute="leading" secondItem="MKs-Vh-rra" secondAttribute="trailing" constant="2" id="SGb-jf-0oG"/>
                                     <constraint firstItem="5eK-Ss-N2h" firstAttribute="leading" secondItem="SOQ-VB-q4g" secondAttribute="trailing" constant="2" id="bcN-RM-1L2"/>
                                     <constraint firstItem="vvM-bV-1Rm" firstAttribute="leading" secondItem="79G-Gn-uss" secondAttribute="leading" constant="4" id="cw5-Wc-w1N"/>
@@ -293,7 +293,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="arrow.down" catalog="system" width="60" height="64"/>
+        <image name="arrow.down" catalog="system" width="120" height="128"/>
         <image name="avatar_default" width="320" height="320"/>
         <image name="back.grey" width="39" height="33"/>
         <image name="back.white" width="39" height="33"/>
