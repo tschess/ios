@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -292,16 +292,28 @@
                                                     </collectionViewCell>
                                                 </cells>
                                             </collectionView>
+                                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999998807907104" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TAP HERE" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NPh-0M-Tc1">
+                                                <rect key="frame" x="0.0" y="24" width="320" height="100"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="70"/>
+                                                <color key="textColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="iOr-Jz-jYu" firstAttribute="leading" secondItem="cNx-PV-88Q" secondAttribute="leading" id="Pvo-Dm-L3c"/>
+                                            <constraint firstItem="vue-Z2-NUk" firstAttribute="trailing" secondItem="NPh-0M-Tc1" secondAttribute="trailing" id="bRO-7m-l8g"/>
                                             <constraint firstItem="vue-Z2-NUk" firstAttribute="leading" secondItem="cNx-PV-88Q" secondAttribute="leading" id="c38-t6-gch"/>
                                             <constraint firstItem="iOr-Jz-jYu" firstAttribute="top" secondItem="cNx-PV-88Q" secondAttribute="top" id="d3x-td-3tC"/>
                                             <constraint firstAttribute="trailing" secondItem="iOr-Jz-jYu" secondAttribute="trailing" id="imq-1X-Qf7"/>
                                             <constraint firstAttribute="height" constant="125" id="jIp-WA-l1f"/>
+                                            <constraint firstItem="NPh-0M-Tc1" firstAttribute="leading" secondItem="vue-Z2-NUk" secondAttribute="leading" id="mk0-0L-OfU"/>
                                             <constraint firstAttribute="trailing" secondItem="vue-Z2-NUk" secondAttribute="trailing" id="ndy-nN-rPb"/>
+                                            <constraint firstItem="vue-Z2-NUk" firstAttribute="bottom" secondItem="NPh-0M-Tc1" secondAttribute="bottom" id="nlh-Fk-aLK"/>
+                                            <constraint firstItem="NPh-0M-Tc1" firstAttribute="top" secondItem="vue-Z2-NUk" secondAttribute="top" id="pij-7M-49n"/>
                                             <constraint firstItem="vue-Z2-NUk" firstAttribute="top" secondItem="iOr-Jz-jYu" secondAttribute="bottom" constant="4" id="s7P-Zm-oku"/>
                                         </constraints>
                                     </view>
@@ -418,6 +430,7 @@
                         <outlet property="displacementImage" destination="jAu-5M-pJ7" id="ztZ-fz-6cb"/>
                         <outlet property="displacementLabel" destination="rPY-lf-5D1" id="cgj-5r-UQY"/>
                         <outlet property="eloLabel" destination="dEP-lD-NYJ" id="0zf-Zm-bhN"/>
+                        <outlet property="labelTapHere" destination="NPh-0M-Tc1" id="zJu-0F-CEs"/>
                         <outlet property="rankLabel" destination="5A8-yU-q4D" id="TuB-Md-KYX"/>
                         <outlet property="splitViewHeight0" destination="o9D-hs-DqX" id="1Cm-MB-Igf"/>
                         <outlet property="splitViewHeight1" destination="jIp-WA-l1f" id="b4M-kH-oPd"/>
@@ -429,7 +442,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sPR-ON-pUE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-523.1884057971015" y="64.955357142857139"/>
+            <point key="canvasLocation" x="-525" y="64.436619718309856"/>
         </scene>
     </scenes>
     <resources>
