@@ -114,7 +114,7 @@ class Home: UIViewController, UITabBarDelegate {
                     storyboard = UIStoryboard(name: "ProfileL", bundle: nil)
                     viewController = storyboard.instantiateViewController(withIdentifier: "ProfileL") as! Profile
                 }
-                viewController.player = self.menu!.playerSelf!
+                viewController.player = self.playerSelf!
                 let transition = CATransition()
                 transition.duration = 0.3
                 transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
