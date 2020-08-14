@@ -83,11 +83,11 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="elo:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tog-nZ-TQA">
-                                        <rect key="frame" x="308" y="4" width="34" height="30"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="rate:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tog-nZ-TQA">
+                                        <rect key="frame" x="295" y="4" width="47" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="2iy-Ua-a9Y"/>
-                                            <constraint firstAttribute="width" constant="34" id="XTK-A9-oGn"/>
+                                            <constraint firstAttribute="width" constant="47" id="XTK-A9-oGn"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="22"/>
                                         <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -133,7 +133,7 @@
                                         <color key="tintColor" red="0.86274509799999999" green="0.015686274510000001" blue="0.015686274510000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="20" id="6Jo-6T-aqW"/>
-                                            <constraint firstAttribute="height" constant="30" id="chf-Xk-uFy"/>
+                                            <constraint firstAttribute="height" constant="22" id="chf-Xk-uFy"/>
                                         </constraints>
                                     </imageView>
                                 </subviews>
@@ -159,7 +159,7 @@
                                     <constraint firstAttribute="bottom" secondItem="D16-MI-Hnw" secondAttribute="bottom" constant="2" id="neL-55-Mjc"/>
                                     <constraint firstItem="3Da-uv-ACF" firstAttribute="top" secondItem="Tog-nZ-TQA" secondAttribute="bottom" constant="4" id="oUv-JP-si2"/>
                                     <constraint firstItem="sl5-pQ-0V1" firstAttribute="centerX" secondItem="cqz-eh-zNQ" secondAttribute="centerX" id="p52-uX-yGU"/>
-                                    <constraint firstItem="hpe-Rk-PpX" firstAttribute="top" secondItem="3Da-uv-ACF" secondAttribute="bottom" constant="4" id="p6y-7a-hbp"/>
+                                    <constraint firstItem="hpe-Rk-PpX" firstAttribute="top" secondItem="3Da-uv-ACF" secondAttribute="bottom" constant="8" id="p6y-7a-hbp"/>
                                     <constraint firstItem="P3c-6f-1IR" firstAttribute="top" secondItem="3Da-uv-ACF" secondAttribute="bottom" constant="4" id="tka-zD-WoH"/>
                                     <constraint firstItem="bYp-mq-oaW" firstAttribute="top" secondItem="cqz-eh-zNQ" secondAttribute="top" constant="4" id="uuC-nZ-jYg"/>
                                     <constraint firstItem="sl5-pQ-0V1" firstAttribute="centerY" secondItem="cqz-eh-zNQ" secondAttribute="centerY" id="z2z-p9-fqw"/>
