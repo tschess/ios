@@ -76,7 +76,7 @@ class Config: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate, U
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(fire), userInfo: nil, repeats: false)
+        Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(fire), userInfo: nil, repeats: false)
         
         self.labelTapHere.adjustsFontSizeToFitWidth = true //maybe dont need this...
         self.labelTapHere.minimumScaleFactor = 0.2

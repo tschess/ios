@@ -67,17 +67,18 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
     }
     
     //
-    @objc func fire() {
-        print("FIRE!!!")
-        self.labelHoldDrag.isHidden = true
-    }
+    //@objc func fire() {
+        //print("FIRE!!!")
+        //self.labelHoldDrag.isHidden = true
+    //}
     
     
     //MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(fire), userInfo: nil, repeats: false)
+        self.labelHoldDrag.isHidden = true
+        //Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(fire), userInfo: nil, repeats: false)
         
         self.configCollectionView.isHidden = true
         self.configCollectionView.delegate = self
