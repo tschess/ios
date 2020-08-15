@@ -66,9 +66,12 @@ class Config: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate, U
         //self.playerSelf = playerSelf
     //}
     
-    @objc func fire() {
-        print("FIRE!!!")
-        self.labelTapHere.isHidden = true
+    @objc func fade() {
+        //print("FIRE!!!")
+        //self.labelTapHere.isHidden = true
+        UIView.animate(withDuration: 2.0, animations: {
+            self.labelTapHere.alpha = 0
+        })
     }
     
     //MARK: - lifecycle
@@ -76,7 +79,7 @@ class Config: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate, U
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(fire), userInfo: nil, repeats: false)
+        Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(fade), userInfo: nil, repeats: false)
         
         self.labelTapHere.adjustsFontSizeToFitWidth = true //maybe dont need this...
         self.labelTapHere.minimumScaleFactor = 0.2
