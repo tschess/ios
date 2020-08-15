@@ -60,13 +60,13 @@ class OtherMenuTable: UITableViewController {
         let game = gameMenuTableList[indexPath.row]
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "OtherMenuCell", for: indexPath) as! OtherMenuCell
-        cell.terminalDateLabel.text = game.getLabelTextDate()
+        //cell.terminalDateLabel.text = game.getLabelTextDate()
         cell.usernameLabel.text = game.getLabelTextUsernameOpponent(username: self.player!.username)
         cell.avatarImageView.image = game.getImageAvatarOpponent(username: self.player!.username)
         
-        cell.oddsLabel.text = game.getOdds(username: self.player!.username)
+        //cell.oddsLabel.text = game.getOdds(username: self.player!.username)
         //cell.displacementImage.image = game.getImageDisp(username: self.player!.username)
-        cell.displacementImage.tintColor = game.getTint(username: self.player!.username)
+        //cell.displacementImage.tintColor = game.getTint(username: self.player!.username)
         
         //let disp: String = game.getLabelTextDisp(username: self.player!.username)!
         //cell.displacementLabel.text = disp
