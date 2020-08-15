@@ -54,6 +54,8 @@ class Snapshot: UIViewController, UICollectionViewDataSource, UICollectionViewDe
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.tabBarMenu.delegate = self
+        
         self.state = self.game!.getStateClient(username: self.player!.username)
         
         
@@ -70,25 +72,11 @@ class Snapshot: UIViewController, UICollectionViewDataSource, UICollectionViewDe
         self.outcomeLabel.text = self.game!.condition
         self.usernameLabelWhite.text = self.game!.white.username
         self.usernameLabelBlack.text = self.game!.black.username
-        //self.dateLabel.text = self.game!.updated
-        
-        //let ddate: Date = DateTime().toFormatDate(string: self.game!.updated)
-        //let dateFormatter: DateFormatter = DateFormatter()
-        //dateFormatter.dateFormat = "MM/dd/yyyy"
-        //let sdate: String = dateFormatter.string(from: ddate)
-        //self.dateLabel.text = sdate
+       ////
         self.dateLabel.isHidden = true
-        
+       /////
         self.moveCountLabel.text = String(self.game!.moves)
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        self.tabBarMenu.delegate = self
-    }
-    
-    
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let cellsAcross: CGFloat = 8
