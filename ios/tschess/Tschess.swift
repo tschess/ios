@@ -655,5 +655,11 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         }
         
     }
+ 
+    
+    
+    
+    
+    
     
 }
