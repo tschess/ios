@@ -34,7 +34,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     @IBOutlet var tabBarMenu: UITabBar!
     
     @IBAction func backButtonClick(_ sender: Any) {
-        //self.endTimer()
+        
         if let navigationController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController {
             let viewControllers = navigationController.viewControllers
             for vc in viewControllers {
@@ -156,6 +156,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     override func viewDidDisappear(_ animated: Bool){
         super.viewDidDisappear(animated)
         self.endTimer()
+        self.countdown!.endTimer()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -226,13 +227,9 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         self.activityIndicator.isHidden = true
         
         
-        //
-        //self.setLabelCountdown(update: self.game!.updated)
-        //self.countdown.id = self.game!.id
-        
         
         self.countdown = Countdown(label: self.labelCountdown, date: self.dateTime, id: self.game!.id)
-        self.countdown!.setLabelCountdown(update: self.game!.updated)
+        self.countdown!.setLabelCountdown(update: self.game!.updated, resolved: self.game!.isResolved())
         self.countdown!.setTimer()
     }
     
@@ -537,7 +534,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
                     self.viewBoard.reloadData()
                     self.setLabelEndgame()
                     
-                    self.countdown!.setLabelCountdown(update: game1.updated)
+                    self.countdown!.setLabelCountdown(update: game1.updated, resolved: game1.isResolved())
                     
                     self.setLabelTurnary()
                     self.setLabelNotification()
@@ -574,7 +571,10 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
             }
         }
         self.labelTitle.text = "game over"
+        
         self.endTimer()
+        self.countdown!.endTimer()
+        
         self.labelNotification.isHidden = false
         self.labelCountdown.isHidden = true
         self.labelTurnary.isHidden = true

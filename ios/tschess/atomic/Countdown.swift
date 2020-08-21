@@ -10,7 +10,7 @@ import UIKit
 
 class Countdown {
     
-    var timerCountdown: Timer?
+    var timer: Timer?
     
     let label: UILabel
     let date: DateTime
@@ -21,40 +21,30 @@ class Countdown {
         self.date = date
         self.label = label
         self.setFont()
+        self.label.isHidden = true
     }
     
     func setTimer() {
-        guard self.timerCountdown == nil else {
-            
-            print("G - 0")
-            
+        guard self.timer == nil else {
             return
         }
-        
-        print("G - X")
-        
-        self.timerCountdown = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(decCountdown), userInfo: nil, repeats: true)
+        self.timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(decCountdown), userInfo: nil, repeats: true)
     }
     
     func endTimer() {
-        self.timerCountdown?.invalidate()
-        self.timerCountdown = nil
+        self.timer?.invalidate()
+        self.timer = nil
     }
     
     @objc func decCountdown() {
-        
-        print("G - 1313")
-        
-           var interval0: Double = 0
-           let componentValueSet = self.label.text!.components(separatedBy: ":")
-           for (index, component) in componentValueSet.reversed().enumerated() {
-               interval0 += (Double(component) ?? 0) * pow(Double(60), Double(index))
-           }
-           let interval1: TimeInterval = interval0 - TimeInterval(1.0)
-        //DispatchQueue.main.async {
-           self.label.text = self.formatString(interval: interval1)
-        //}
-       }
+        var interval0: Double = 0
+        let componentValueSet = self.label.text!.components(separatedBy: ":")
+        for (index, component) in componentValueSet.reversed().enumerated() {
+            interval0 += (Double(component) ?? 0) * pow(Double(60), Double(index))
+        }
+        let interval1: TimeInterval = interval0 - TimeInterval(1.0)
+        self.label.text = self.formatString(interval: interval1)
+    }
     
     private func formatString(interval: TimeInterval) -> String {
         let sec = Int(interval.truncatingRemainder(dividingBy: 60))
@@ -62,36 +52,25 @@ class Countdown {
         let hour = Int(interval / 3600)
         let timeout: Bool = hour < 1 && min < 1 && sec < 1
         if (timeout) {
-            
-            print("G - T0")
-            
             self.timeout()
             return "00:00:00"
         }
-        //DispatchQueue.main.async {
         if(self.label.isHidden){
             self.label.isHidden = false
         }
-        //}
         return String(format: "%02d:%02d:%02d", hour, min, sec)
     }
     
-    //let resolved: Bool = self.game!.status == "RESOLVED"
-    func setLabelCountdown(update: String) {
-        //if(self.game.isResolved()){
-            //return
-        //}
-        
-        print("G - update: \(update)")
-        
+    func setLabelCountdown(update: String, resolved: Bool) {
+        if(resolved){
+            return
+        }
         let dateUpdate: Date = self.date.toFormatDate(string: update)
         let dateActual: Date = self.date.currentDate()
         let intervalDifference: TimeInterval = dateActual.timeIntervalSince(dateUpdate)
         let intervalStandard: TimeInterval = Double(24) * 60 * 60
         let timeRemaining: TimeInterval = intervalStandard - intervalDifference
-        //DispatchQueue.main.async {
         self.label.text = self.formatString(interval: timeRemaining)
-        //}
     }
     
     private func timeout() {
