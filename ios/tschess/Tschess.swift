@@ -87,51 +87,9 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         self.game = game
     }
     
-    // MARK: LABEL RENDER FUNC
-    private func setLabelTurnary() {
-        let resolved: Bool = self.game!.status == "RESOLVED"
-        if(resolved){
-            return
-        }
-        if(self.labelTurnary.isHidden){
-            self.labelTurnary.isHidden = false
-        }
-        let turn = self.game!.getTurn()
-        self.labelTurnary.text = "\(turn) to move"
-    }
     
-    private func setLabelNotification() {
-        if(self.game!.condition == "TBD"){
-            self.labelNotification.isHidden = true
-        }
-        if(self.game!.condition == "PENDING"){
-            self.drawProposal()
-        }
-    }
     
-    private func drawProposal() {
-        let resolved: Bool = self.game!.status == "RESOLVED"
-        if(resolved){
-            return
-        }
-        self.labelNotification.isHidden = false
-        self.labelNotification.text = "proposal pending"
-        let turn = self.game!.getTurn()
-        self.labelTurnary.text = "\(turn) to respond"
-        
-        let username: String = self.playerSelf!.username
-        if(self.game!.getTurn(username: username)){
-            DispatchQueue.main.async {
-                let storyboard: UIStoryboard = UIStoryboard(name: "Evaluate", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "Evaluate") as! Evaluate
-                viewController.modalTransitionStyle = .crossDissolve
-                viewController.setPlayerSelf(playerSelf: self.playerSelf!)
-                viewController.setPlayerOther(playerOther: self.game!.getPlayerOther(username: self.playerSelf!.username))
-                viewController.setGameTschess(gameTschess: self.game!)
-                self.present(viewController, animated: true, completion: nil)
-            }
-        }
-    }
+    
     
     
     
@@ -316,16 +274,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         return nil
     }
     
-    private func getHighlight(highlight: String) -> [[Int]] {
-        let coords = Array(highlight)
-        let h0a: Int = Int(String(coords[0]))!
-        let h0b: Int = Int(String(coords[1]))!
-        let h0: [Int] = [h0a,h0b]
-        let h1a: Int = Int(String(coords[2]))!
-        let h1b: Int = Int(String(coords[3]))!
-        let h1: [Int] = [h1a,h1b]
-        return [h0, h1]
-    }
+    
     
     private func getNormalCoord(indexPath: IndexPath) -> [Int] {
         let username: String = self.playerSelf!.username
@@ -335,49 +284,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         return [x,y]
     }
     
-    private func getOrnamentCell(highlight: Bool, cell: SquareCell) -> SquareCell{
-        var presnt: Bool = false
-        if(highlight){
-            if(self.game!.turn == "WHITE"){
-                cell.subviews.forEach({
-                    if($0.tag == 666){
-                        presnt = true
-                    }
-                })
-                if(presnt){
-                    return cell
-                }
-                let ornament = UIImageView(image: UIImage(named: "pinkmamba_w")!)
-                ornament.bounds = CGRect(origin: cell.bounds.origin, size: cell.bounds.size)
-                ornament.center = CGPoint(x: cell.bounds.size.width/2, y: cell.bounds.size.height/2)
-                ornament.tag = 666
-                //ornament.alpha = 0.9
-                cell.insertSubview(ornament, at: 0)
-                return cell
-            }
-            cell.subviews.forEach({
-                if($0.tag == 666){
-                    presnt = true
-                }
-            })
-            if(presnt){
-                return cell
-            }
-            let ornament = UIImageView(image: UIImage(named: "pinkmamba_b")!)
-            ornament.bounds = CGRect(origin: cell.bounds.origin, size: cell.bounds.size)
-            ornament.center = CGPoint(x: cell.bounds.size.width/2, y: cell.bounds.size.height/2)
-            ornament.tag = 666
-            //ornament.alpha = 0.9
-            cell.insertSubview(ornament, at: 0)
-            return cell
-        }
-        cell.subviews.forEach({
-            if($0.tag == 666){
-                $0.removeFromSuperview()
-            }
-        })
-        return cell
-    }
+    
     
     func renderDialogPoison() {
         DispatchQueue.main.async {
@@ -395,25 +302,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         }
     }
     
-    private func getHighlightCell(indexPath: IndexPath, cell: SquareCell) -> SquareCell {
-        let resolved: Bool = self.game!.status == "RESOLVED"
-        let highlight: String = self.game!.highlight
-        if(highlight == "TBD" || resolved){
-            return self.getOrnamentCell(highlight: false, cell: cell)
-        }
-        let coordHighlight: [[Int]] = self.getHighlight(highlight: highlight)
-        let coordNormal: [Int] = self.getNormalCoord(indexPath: indexPath)
-        return self.highlightCoord(coordNormal: coordNormal, coordHighlight: coordHighlight, cell: cell)
-    }
     
-    private func highlightCoord(coordNormal: [Int], coordHighlight: [[Int]], cell: SquareCell) -> SquareCell {
-        for (_, coord) in coordHighlight.enumerated() {
-            if(coord == coordNormal){
-                return self.getOrnamentCell(highlight: true, cell: cell)
-            }
-        }
-        return self.getOrnamentCell(highlight: false, cell: cell)
-    }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         var cell = collectionView.dequeueReusableCell(withReuseIdentifier: "square", for: indexPath) as! SquareCell
@@ -544,51 +433,9 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         }
     }
     
-    private func setLabelCheck() {
-        let check: Bool = self.game!.on_check
-        if(!check){
-            return
-        }
-        self.labelTurnary.text = "\(self.labelTurnary.text!) (check)"
-    }
     
-    func setLabelEndgame() {
-        let resolved: Bool = self.game!.status == "RESOLVED"
-        if(!resolved){
-            return
-        }
-        DispatchQueue.main.async {
-            if let navigationController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController {
-                let viewControllers = navigationController.viewControllers
-                for vc in viewControllers {
-                    if vc.isKind(of: Menu.classForCoder()) {
-                        //print("It is in stack")
-                        let menu: Menu = vc as! Menu
-                        menu.menuTable!.refresh(refreshControl: nil)
-                    }
-                }
-                
-            }
-        }
-        self.labelTitle.text = "game over"
-        
-        self.endTimer()
-        self.countdown!.endTimer()
-        
-        self.labelNotification.isHidden = false
-        self.labelCountdown.isHidden = true
-        self.labelTurnary.isHidden = true
-        if(self.game!.condition == "DRAW"){
-            self.labelNotification.text = "draw"
-            return
-        }
-        let username: String = self.playerSelf!.username
-        if(self.game!.getWinner(username: username)){
-            self.labelNotification.text = "winner"
-            return
-        }
-        self.labelNotification.text = "you lose"
-    }
+    
+    
     
     private func setCheckMate() {
         let czecher: Checker = Checker()

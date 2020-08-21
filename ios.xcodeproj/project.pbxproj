@@ -14,6 +14,7 @@
 		835FADA524F00A910080A194 /* Countdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835FADA424F00A910080A194 /* Countdown.swift */; };
 		8362B98D24759AC500504573 /* Cancel.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8362B98C24759AC500504573 /* Cancel.storyboard */; };
 		8362B98F24759C1200504573 /* Cancel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8362B98E24759C1200504573 /* Cancel.swift */; };
+		8379820A24F05EE000254FBD /* Highlighter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8379820924F05EE000254FBD /* Highlighter.swift */; };
 		8389C6A1246AEAA800DFE8F2 /* Help.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8389C6A0246AEAA800DFE8F2 /* Help.swift */; };
 		8389C6A4246AEAD000DFE8F2 /* Help.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8389C6A3246AEAD000DFE8F2 /* Help.storyboard */; };
 		8389C6A6246AED0B00DFE8F2 /* TransHelp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8389C6A5246AED0B00DFE8F2 /* TransHelp.swift */; };
@@ -224,6 +225,7 @@
 		835FADA424F00A910080A194 /* Countdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Countdown.swift; sourceTree = "<group>"; };
 		8362B98C24759AC500504573 /* Cancel.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Cancel.storyboard; sourceTree = "<group>"; };
 		8362B98E24759C1200504573 /* Cancel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cancel.swift; sourceTree = "<group>"; };
+		8379820924F05EE000254FBD /* Highlighter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Highlighter.swift; sourceTree = "<group>"; };
 		8389C6A0246AEAA800DFE8F2 /* Help.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Help.swift; sourceTree = "<group>"; };
 		8389C6A3246AEAD000DFE8F2 /* Help.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Help.storyboard; sourceTree = "<group>"; };
 		8389C6A5246AED0B00DFE8F2 /* TransHelp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransHelp.swift; sourceTree = "<group>"; };
@@ -466,6 +468,7 @@
 			children = (
 				835FADA424F00A910080A194 /* Countdown.swift */,
 				83D6E87924F042810071D779 /* Labeler.swift */,
+				8379820924F05EE000254FBD /* Highlighter.swift */,
 			);
 			path = atomic;
 			sourceTree = "<group>";
@@ -1826,6 +1829,7 @@
 				B7BE129123EB09FC00ADA499 /* UpdateResign.swift in Sources */,
 				B7D8ECD7240820DD001B5D2D /* AmazonWhite.swift in Sources */,
 				B7021F9223FE5C5100C9346A /* SelectSnapshot.swift in Sources */,
+				8379820A24F05EE000254FBD /* Highlighter.swift in Sources */,
 				B7BE11B223EA9D7000ADA499 /* QueenWhite.swift in Sources */,
 				B7BE128723EB091C00ADA499 /* Tschess.swift in Sources */,
 				83D6E87A24F042810071D779 /* Labeler.swift in Sources */,
