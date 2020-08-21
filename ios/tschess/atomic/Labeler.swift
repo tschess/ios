@@ -17,10 +17,22 @@ class Labeler {
     
     init(labelNote: UILabel, labelTurn: UILabel, labelCount: UILabel, labelTitle: UILabel) {
         self.labelNote = labelNote
+        self.labelNote.isHidden = true
         self.labelTurn = labelTurn
+        self.labelTurn.isHidden = true
         self.labelCount = labelCount
         self.labelTitle = labelTitle
     }
+    
+    /* * */
+    var game: EntityGame?
+    var player: EntityPlayer?
+    /* * */
+    func removePopper(game: EntityGame, player: EntityPlayer) {
+        self.game = game
+        self.player = player
+    }
+    /* * */
     
     //let turn = self.game!.getTurn()
     private func setDraw(turn: String) {
@@ -28,23 +40,23 @@ class Labeler {
         self.labelNote.text = "proposal pending"
         self.labelTurn.text = "\(turn) to respond"
         
-        let username: String = self.playerSelf!.username
+        let username: String = self.player!.username
         if(self.game!.getTurn(username: username)){
-            
+            DispatchQueue.main.async {
                 let storyboard: UIStoryboard = UIStoryboard(name: "Evaluate", bundle: nil)
                 let viewController = storyboard.instantiateViewController(withIdentifier: "Evaluate") as! Evaluate
                 viewController.modalTransitionStyle = .crossDissolve
-                viewController.playerSelf = self.playerSelf
-                viewController.setPlayerOther(playerOther: self.game!.getPlayerOther(username: self.playerSelf!.username))
-                viewController.setGameTschess(gameTschess: self.game!)
-            DispatchQueue.main.async {
+                viewController.playerSelf = self.player
+                viewController.playerOther = self.game!.getPlayerOther(username: self.player!.username)
+                viewController.gameTschess = self.game!
+            
                 //self.present(viewController, animated: true, completion: nil)
                 
-                if var viewController = UIApplication.shared.keyWindow?.rootViewController {
+                if var viewControllerTop = UIApplication.shared.keyWindow?.rootViewController {
                     while let presentedViewController = viewController.presentedViewController {
-                        viewController = presentedViewController
+                        viewControllerTop = presentedViewController
                     }
-                    viewController
+                    viewControllerTop.present(viewController, animated: true, completion: nil)
                 }
             }
         }
@@ -75,7 +87,7 @@ class Labeler {
         self.labelNote.isHidden = true
     }
     
-    private func setCheck(check: Bool) {
+    func setCheck(check: Bool) {
         if(!check){
             return
         }
@@ -85,7 +97,7 @@ class Labeler {
     //let resolved: Bool = self.game!.status == "RESOLVED"
     //let username: String = self.playerSelf!.username
     //self.game!.getWinner(username: username)
-    func setLabelEndgame(condition: String, resolved: Bool, winner: Bool) {
+    func setResolve(condition: String, resolved: Bool, winner: Bool) {
         if(!resolved){
             return
         }

@@ -130,8 +130,15 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        self.setLabelCheck()
-        self.setLabelEndgame()
+        let check: Bool = self.game!.on_check
+        self.labeler!.setCheck(check: check)
+        
+        let condition: String = self.game!.condition
+        let resolved: Bool = self.game!.isResolved()
+        let username: String = self.playerSelf!.username
+        let winner: Bool = self.game!.getWinner(username: username)
+        self.labeler!.setResolve(condition: condition, resolved: resolved, winner: winner)
+        
         self.setTimer()
         
         self.viewBoard.layoutSubviews()
@@ -169,14 +176,24 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         self.castle = Castle(white: white, transitioner: transitioner, tschess: self)
         self.transitioner = transitioner
         
-        self.labelTurnary.isHidden = true
-        self.setLabelTurnary()
-        self.labelNotification.isHidden = true
-        self.setLabelNotification()
+        
         
         self.activityIndicator.isHidden = true
         
         
+        
+        //self.labelTurnary.isHidden = true
+        //self.setLabelTurnary()
+        //self.labelNotification.isHidden = true
+        //self.setLabelNotification()
+        
+        self.labeler = Labeler(
+            labelNote: self.labelNotification,
+            labelTurn: self.labelTurnary,
+            labelCount: self.labelCountdown,
+            labelTitle: self.labelTitle)
+        //TODO: REMOVE FOR POPPER
+        self.labeler!.removePopper(game: self.game!, player: self.playerSelf!)
         
         self.countdown = Countdown(label: self.labelCountdown, date: self.dateTime, id: self.game!.id)
         self.countdown!.setLabelCountdown(update: self.game!.updated, resolved: self.game!.isResolved())
@@ -184,6 +201,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     }
     
     // MARK: ATOMIC
+    var labeler: Labeler?
     var countdown: Countdown?
     
     override func viewWillAppear(_ animated: Bool) {
@@ -266,8 +284,6 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         return nil
     }
     
-    
-    
     private func getNormalCoord(indexPath: IndexPath) -> [Int] {
         let username: String = self.playerSelf!.username
         let white: Bool = self.game!.getWhite(username: username)
@@ -275,8 +291,6 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         let y: Int = white ? indexPath.item % 8 : 7 - (indexPath.item % 8)
         return [x,y]
     }
-    
-    
     
     func renderDialogPoison() {
         DispatchQueue.main.async {
