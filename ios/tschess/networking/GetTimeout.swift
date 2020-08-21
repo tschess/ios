@@ -8,7 +8,7 @@
 
 import Foundation
 
-class UpdateTimeout {
+class GetTimeout {
     
     func success(id_game: String, completion: @escaping (Bool) -> Void) {
         let url = URL(string: "http://\(ServerAddress().IP):8080/game/timeout/\(id_game)")!

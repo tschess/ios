@@ -95,7 +95,7 @@ class Countdown {
     }
     
     private func timeout() {
-        UpdateTimeout().success(id_game: self.id) { (result) in
+        GetTimeout().success(id_game: self.id) { (result) in
             // TODO: handle...
         }
     }
