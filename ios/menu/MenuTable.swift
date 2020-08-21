@@ -276,7 +276,7 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
                     let viewController = storyboard.instantiateViewController(withIdentifier: "dTschessL") as! Tschess
                     viewController.setOther(player: playerOther)
                     viewController.setSelf(player: self.menu!.playerSelf!)
-                    viewController.setGame(game: game)
+                    viewController.game = game
                     self.navigationController?.pushViewController(viewController, animated: false)
                     return
                 }
@@ -284,7 +284,7 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
                 let viewController = storyboard.instantiateViewController(withIdentifier: "dTschessP") as! Tschess
                 viewController.setOther(player: playerOther)
                 viewController.setSelf(player: self.menu!.playerSelf!)
-                viewController.setGame(game: game)
+                viewController.game = game
                 self.navigationController?.pushViewController(viewController, animated: false)
             }
             return

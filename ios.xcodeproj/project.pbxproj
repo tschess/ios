@@ -25,7 +25,6 @@
 		8389C6B4246B17BE00DFE8F2 /* DialogPassant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8389C6B3246B17BE00DFE8F2 /* DialogPassant.swift */; };
 		8389C6B6246B17CC00DFE8F2 /* TransDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8389C6B5246B17CC00DFE8F2 /* TransDialog.swift */; };
 		8389C6B8246B17DA00DFE8F2 /* DialogPoison.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8389C6B7246B17DA00DFE8F2 /* DialogPoison.swift */; };
-		83D6E87824F02D7B0071D779 /* PollingGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D6E87724F02D7B0071D779 /* PollingGame.swift */; };
 		83D707A324BAB1F3008F308D /* CompNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D707A224BAB1F3008F308D /* CompNote.swift */; };
 		83D707A524BAB208008F308D /* TransNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D707A424BAB208008F308D /* TransNote.swift */; };
 		83D707A824BAB248008F308D /* Note.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83D707A724BAB248008F308D /* Note.storyboard */; };
@@ -235,7 +234,6 @@
 		8389C6B3246B17BE00DFE8F2 /* DialogPassant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogPassant.swift; sourceTree = "<group>"; };
 		8389C6B5246B17CC00DFE8F2 /* TransDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransDialog.swift; sourceTree = "<group>"; };
 		8389C6B7246B17DA00DFE8F2 /* DialogPoison.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogPoison.swift; sourceTree = "<group>"; };
-		83D6E87724F02D7B0071D779 /* PollingGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollingGame.swift; sourceTree = "<group>"; };
 		83D707A224BAB1F3008F308D /* CompNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompNote.swift; sourceTree = "<group>"; };
 		83D707A424BAB208008F308D /* TransNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransNote.swift; sourceTree = "<group>"; };
 		83D707A724BAB248008F308D /* Note.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Note.storyboard; sourceTree = "<group>"; };
@@ -465,7 +463,6 @@
 			isa = PBXGroup;
 			children = (
 				835FADA424F00A910080A194 /* Countdown.swift */,
-				83D6E87724F02D7B0071D779 /* PollingGame.swift */,
 			);
 			path = atomic;
 			sourceTree = "<group>";
@@ -1812,7 +1809,6 @@
 				B7BE12B323EB0D6900ADA499 /* PawnOffense.swift in Sources */,
 				B7BE12A323EB0BB800ADA499 /* Passant.swift in Sources */,
 				B7BE11A423EA972D00ADA499 /* Diagonal.swift in Sources */,
-				83D6E87824F02D7B0071D779 /* PollingGame.swift in Sources */,
 				8362B98F24759C1200504573 /* Cancel.swift in Sources */,
 				B7BE11C023EA9E3D00ADA499 /* PawnWhite.swift in Sources */,
 				B7BE11B923EA9DD400ADA499 /* BishopWhite.swift in Sources */,

@@ -141,7 +141,17 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     
     
     
-   
+    // MARK: TIMER
+    var timerPolling: Timer?
+    
+    
+    func setTimer() {
+        guard self.timerPolling == nil else {
+            return
+        }
+        self.timerPolling = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(pollingTask), userInfo: nil, repeats: true)
+        
+    }
     
     override func viewDidDisappear(_ animated: Bool){
         super.viewDidDisappear(animated)
@@ -159,6 +169,11 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         //self.viewBoard.reloadData()
         self.viewBoard.layoutSubviews()
         self.viewBoard.isHidden = false
+    }
+    
+    func endTimer() {
+        self.timerPolling?.invalidate()
+        self.timerPolling = nil
     }
     
     // MARK: CONSTRUCTOR
@@ -485,7 +500,49 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     
     // MARK: POLLING GAME
     
-    
+    @objc func pollingTask() {
+        let id_game: String = self.game!.id
+        GameRequest().execute(id: id_game) { (game0) in
+            if(game0 == nil){
+                return
+            }
+            let updatedSv0: String = game0!.updated
+            let updatedSv1: Date = self.dateTime.toFormatDate(string: updatedSv0)
+            let updatedLc0: String = self.game!.updated
+            let updatedLc1: Date = self.dateTime.toFormatDate(string: updatedLc0)
+            switch updatedSv1.compare(updatedLc1) {
+            case .orderedAscending:
+                return
+            case .orderedSame:
+                return
+            case .orderedDescending:
+                DispatchQueue.main.async {
+                    self.activityIndicator.stopAnimating()
+                    self.activityIndicator.isHidden = true
+                    let game1 = game0!
+                    self.setGame(game: game1)
+                    let username: String = self.playerSelf!.username
+                    let matrix1: [[Piece?]] = game1.getStateClient(username: username)
+                    self.matrix = matrix1
+                    
+                    
+                    // ~ * ~ //
+                    self.setCheckMate()
+                    // ~ * ~ //
+                    
+                    
+                    self.viewBoard.reloadData()
+                    self.setLabelEndgame()
+                    
+                    self.countdown!.setLabelCountdown(update: game1.updated, resolved: game1.isResolved())
+                    
+                    self.setLabelTurnary()
+                    self.setLabelNotification()
+                    self.setLabelCheck()
+                }
+            }
+        }
+    }
     
     private func setLabelCheck() {
         let check: Bool = self.game!.on_check

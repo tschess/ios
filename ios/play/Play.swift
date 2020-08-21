@@ -53,7 +53,7 @@ class Play: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate {
                         let viewController = storyboard.instantiateViewController(withIdentifier: "dTschessL") as! Tschess
                         viewController.setOther(player: playerOther)
                         viewController.setSelf(player: self.playerSelf!)
-                        viewController.setGame(game: game!)
+                        viewController.game = game
                         self.navigationController?.pushViewController(viewController, animated: false)
                         guard let navigationController = self.navigationController else { return }
                         var navigationArray = navigationController.viewControllers // To get all UIViewController stack as Array
@@ -65,7 +65,7 @@ class Play: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate {
                     let viewController = storyboard.instantiateViewController(withIdentifier: "dTschessP") as! Tschess
                     viewController.setOther(player: playerOther)
                     viewController.setSelf(player: self.playerSelf!)
-                    viewController.setGame(game: game!)
+                    viewController.game = game
                     //viewController.modalPresentationStyle = UIModalPresentationStyle.fullScreen
                     //viewController.modalTransitionStyle = .crossDissolve
                     self.navigationController?.pushViewController(viewController, animated: false)

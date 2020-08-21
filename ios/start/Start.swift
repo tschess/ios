@@ -293,7 +293,7 @@ class Start: UIViewController, UITextFieldDelegate {
                     let viewController = storyboard.instantiateViewController(withIdentifier: "dTschessP") as! Tschess
                     viewController.setOther(player: game!.getPlayerOther(username: game!.white.username))
                     viewController.setSelf(player: game!.white)
-                    viewController.setGame(game: game!)
+                    viewController.game = game!
                     UIApplication.shared.keyWindow?.rootViewController = viewController
                 }
             }
@@ -309,7 +309,7 @@ class Start: UIViewController, UITextFieldDelegate {
                     let viewController = storyboard.instantiateViewController(withIdentifier: "dTschessP") as! Tschess
                     viewController.setOther(player: game!.getPlayerOther(username: game!.black.username))
                     viewController.setSelf(player: game!.black)
-                    viewController.setGame(game: game!)
+                    viewController.game = game!
                     UIApplication.shared.keyWindow?.rootViewController = viewController
                 }
             }
