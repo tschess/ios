@@ -130,14 +130,8 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        let check: Bool = self.game!.on_check
-        self.labeler!.setCheck(check: check)
-        
-        let condition: String = self.game!.condition
-        let resolved: Bool = self.game!.isResolved()
-        let username: String = self.playerSelf!.username
-        let winner: Bool = self.game!.getWinner(username: username)
-        self.labeler!.setResolve(condition: condition, resolved: resolved, winner: winner)
+        //self.setLabelResolve()
+        self.setLabel(game1: self.game!)
         
         self.setTimer()
         
@@ -325,7 +319,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let username: String = self.playerSelf!.username
-        if(!self.game!.getTurn(username: username)){
+        if(!self.game!.getTurnFlag(username: username)){
             self.flash()
             return
         }
@@ -426,16 +420,45 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
                     
                     
                     self.viewBoard.reloadData()
-                    self.setLabelEndgame()
                     
-                    self.countdown!.setLabelCountdown(update: game1.updated, resolved: game1.isResolved())
+                    self.setLabel(game1: game1)
                     
-                    self.setLabelTurnary()
-                    self.setLabelNotification()
-                    self.setLabelCheck()
+                    //self.setLabelEndgame()
+                    //self.setLabelResolve()
+                    
+                    //self.countdown!.setLabelCountdown(update: game1.updated, resolved: game1.isResolved())
+                    
+                    //self.setLabelTurnary()
+                    //self.setLabelNotification()
+                    
+                    //self.setLabelCheck()
                 }
             }
         }
+    }
+    
+    private func setLabel(game1: EntityGame) {
+        let condition: String = self.game!.condition
+        let resolved: Bool = self.game!.isResolved()
+        let username: String = self.playerSelf!.username
+        let winner: Bool = self.game!.getWinner(username: username)
+        self.labeler!.setResolve(condition: condition, resolved: resolved, winner: winner)
+        
+        self.countdown!.setLabelCountdown(update: game1.updated, resolved: game1.isResolved())
+        
+        let turnUser = self.game!.getTurnUser()
+        let turnFlag = self.game!.getTurnFlag(username: self.playerSelf!.username)
+        
+        //self.game!.getTurn(username: username)
+        
+        //let resolved: Bool = self.game!.isResolved()
+        self.labeler!.setTurn(resolved: resolved, turnUser: turnUser)
+        
+        //let condition: String = self.game!.condition
+        self.labeler!.setNote(condition: condition, resolved: resolved, turnUser: turnUser, turnFlag: turnFlag)
+        
+        let check: Bool = self.game!.on_check
+        self.labeler!.setCheck(check: check)
     }
     
     private func setCheckMate() {

@@ -56,7 +56,7 @@ class MenuCell: SwipeTableViewCell {
             return
         }
         self.setActive()
-        let inbound: Bool = game.getTurn(username: usernameSelf)
+        let inbound: Bool = game.getTurnFlag(username: usernameSelf)
         if(game.status == "ONGOING"){
             self.imageViewSideSlide.isHidden = true
     

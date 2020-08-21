@@ -77,7 +77,7 @@ class DrawResign: UIViewController  {
         self.imageResign.isUserInteractionEnabled = true
         
         let username: String = self.playerSelf!.username
-        let turn: Bool = self.game!.getTurn(username: username)
+        let turn: Bool = self.game!.getTurnFlag(username: username)
         if(!turn){
             self.decativateDraw()
             return

@@ -153,6 +153,9 @@ class EntityGame: Equatable, Hashable {
     }
     
     func getWinner(username: String) -> Bool {
+        if(self.winner == nil){
+            return false
+        }
         if(self.white.username == username){
             if(self.winner! == "WHITE"){
                 return true
@@ -165,14 +168,14 @@ class EntityGame: Equatable, Hashable {
         return false
     }
     
-    func getTurn(username: String) -> Bool {
+    func getTurnFlag(username: String) -> Bool {
         if(self.white.username == username){
             return self.turn == "WHITE"
         }
         return self.turn == "BLACK"
     }
     
-    func getTurn() -> String {
+    func getTurnUser() -> String {
         if(self.turn == "WHITE"){
             return self.white.username
         }

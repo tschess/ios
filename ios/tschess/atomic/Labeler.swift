@@ -35,13 +35,13 @@ class Labeler {
     /* * */
     
     //let turn = self.game!.getTurn()
-    private func setDraw(turn: String) {
+    private func setDraw(turnUser: String, turnFlag: Bool) {
         self.labelNote.isHidden = false
         self.labelNote.text = "proposal pending"
-        self.labelTurn.text = "\(turn) to respond"
+        self.labelTurn.text = "\(turnUser) to respond"
         
-        let username: String = self.player!.username
-        if(self.game!.getTurn(username: username)){
+        //let username: String = self.player!.username
+        if(turnFlag){
             DispatchQueue.main.async {
                 let storyboard: UIStoryboard = UIStoryboard(name: "Evaluate", bundle: nil)
                 let viewController = storyboard.instantiateViewController(withIdentifier: "Evaluate") as! Evaluate
@@ -63,17 +63,17 @@ class Labeler {
     }
     
     //let turn = self.game!.getTurn()
-    func setTurn(resolved: Bool, turn: String) {
+    func setTurn(resolved: Bool, turnUser: String) {
         if(resolved){
             return
         }
         if(self.labelTurn.isHidden){
             self.labelTurn.isHidden = false
         }
-        self.labelTurn.text = "\(turn) to move"
+        self.labelTurn.text = "\(turnUser) to move"
     }
     
-    func setNote(condition: String, resolved: Bool, turn: String) {
+    func setNote(condition: String, resolved: Bool, turnUser: String, turnFlag: Bool) {
         if(resolved){
             return
         }
@@ -81,7 +81,7 @@ class Labeler {
             //self.labelNote.isHidden = true
         //}
         if(condition == "PENDING"){
-            self.setDraw(turn: turn)
+            self.setDraw(turnUser: turnUser, turnFlag: turnFlag)
             return
         }
         self.labelNote.isHidden = true
