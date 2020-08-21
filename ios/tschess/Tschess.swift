@@ -10,9 +10,6 @@ import UIKit
 
 class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UITabBarDelegate {
     
-    // MARK: ATOMIC
-    let countdown: Countdown
-    
     // MARK: OUTLETS
     @IBOutlet weak var buttonBack: UIButton!
     @IBOutlet weak var viewTitle: UIView!
@@ -146,17 +143,14 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     
     // MARK: TIMER
     var timerPolling: Timer?
-    var timerCountdown: Timer?
+    
     
     func setTimer() {
         guard self.timerPolling == nil else {
             return
         }
         self.timerPolling = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(pollingTask), userInfo: nil, repeats: true)
-        guard self.timerCountdown == nil else {
-            return
-        }
-        self.timerCountdown = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(decCountdown), userInfo: nil, repeats: true)
+        
     }
     
     override func viewDidDisappear(_ animated: Bool){
@@ -179,8 +173,6 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     func endTimer() {
         self.timerPolling?.invalidate()
         self.timerPolling = nil
-        self.timerCountdown?.invalidate()
-        self.timerCountdown = nil
     }
     
     // MARK: CONSTRUCTOR
@@ -191,8 +183,6 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         let storyboard: UIStoryboard = UIStoryboard(name: "Promotion", bundle: nil)
         self.promotion = storyboard.instantiateViewController(withIdentifier: "Promotion") as! Promotion
         self.dateTime = DateTime()
-        
-        self.countdown = Countdown(label: labelCountdown, date: dateTime)
         
         super.init(coder: aDecoder)
     }
@@ -228,8 +218,6 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         self.castle = Castle(white: white, transitioner: transitioner, tschess: self)
         self.transitioner = transitioner
         
-        self.labelCountdown.isHidden = true
-        self.setLabelCountdown(update: self.game!.updated)
         self.labelTurnary.isHidden = true
         self.setLabelTurnary()
         self.labelNotification.isHidden = true
@@ -237,7 +225,19 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         
         self.activityIndicator.isHidden = true
         
+        
+        //
+        //self.setLabelCountdown(update: self.game!.updated)
+        //self.countdown.id = self.game!.id
+        
+        
+        self.countdown = Countdown(label: self.labelCountdown, date: self.dateTime, id: self.game!.id)
+        self.countdown!.setLabelCountdown(update: self.game!.updated)
+        self.countdown!.setTimer()
     }
+    
+    // MARK: ATOMIC
+    var countdown: Countdown?
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -536,7 +536,9 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
                     
                     self.viewBoard.reloadData()
                     self.setLabelEndgame()
-                    self.setLabelCountdown(update: game1.updated)
+                    
+                    self.countdown!.setLabelCountdown(update: game1.updated)
+                    
                     self.setLabelTurnary()
                     self.setLabelNotification()
                     self.setLabelCheck()
