@@ -10,11 +10,12 @@ import Foundation
 
 class DateTime {
     
-    let dateFormatter: DateFormatter = DateFormatter()
+    let formatter: DateFormatter
     
     init() {
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss.SSS"
-        dateFormatter.timeZone = NSTimeZone(name: "America/New_York")! as TimeZone
+        self.formatter = DateFormatter()
+        self.formatter.dateFormat = "yyyy-MM-dd HH:mm:ss.SSS"
+        self.formatter.timeZone = NSTimeZone(name: "America/New_York")! as TimeZone
     }
     
     func currentDate() -> Date {
@@ -22,10 +23,10 @@ class DateTime {
     }
     
     func currentDateString() -> String {
-        return dateFormatter.string(from: Date())
+        return formatter.string(from: Date())
     }
     
     func toFormatDate(string: String) -> Date {
-        return dateFormatter.date(from: string)!
+        return formatter.date(from: string)!
     }
 }

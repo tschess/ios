@@ -10,71 +10,108 @@ import UIKit
 
 class Labeler {
     
-    private func drawProposal() {
-        let resolved: Bool = self.game!.status == "RESOLVED"
-        if(resolved){
-            return
-        }
-        self.labelNotification.isHidden = false
-        self.labelNotification.text = "proposal pending"
-        let turn = self.game!.getTurn()
-        self.labelTurnary.text = "\(turn) to respond"
+    let labelNote: UILabel
+    let labelTurn: UILabel
+    let labelCount: UILabel
+    let labelTitle: UILabel
+    
+    init(labelNote: UILabel, labelTurn: UILabel, labelCount: UILabel, labelTitle: UILabel) {
+        self.labelNote = labelNote
+        self.labelTurn = labelTurn
+        self.labelCount = labelCount
+        self.labelTitle = labelTitle
+    }
+    
+    //let turn = self.game!.getTurn()
+    private func setDraw(turn: String) {
+        self.labelNote.isHidden = false
+        self.labelNote.text = "proposal pending"
+        self.labelTurn.text = "\(turn) to respond"
         
         let username: String = self.playerSelf!.username
         if(self.game!.getTurn(username: username)){
-            DispatchQueue.main.async {
+            
                 let storyboard: UIStoryboard = UIStoryboard(name: "Evaluate", bundle: nil)
                 let viewController = storyboard.instantiateViewController(withIdentifier: "Evaluate") as! Evaluate
                 viewController.modalTransitionStyle = .crossDissolve
-                viewController.setPlayerSelf(playerSelf: self.playerSelf!)
+                viewController.playerSelf = self.playerSelf
                 viewController.setPlayerOther(playerOther: self.game!.getPlayerOther(username: self.playerSelf!.username))
                 viewController.setGameTschess(gameTschess: self.game!)
-                self.present(viewController, animated: true, completion: nil)
+            DispatchQueue.main.async {
+                //self.present(viewController, animated: true, completion: nil)
+                
+                if var viewController = UIApplication.shared.keyWindow?.rootViewController {
+                    while let presentedViewController = viewController.presentedViewController {
+                        viewController = presentedViewController
+                    }
+                    viewController
+                }
             }
         }
     }
     
-    // MARK: LABEL RENDER FUNC
-    private func setLabelTurnary() {
-        let resolved: Bool = self.game!.status == "RESOLVED"
+    //let turn = self.game!.getTurn()
+    func setTurn(resolved: Bool, turn: String) {
         if(resolved){
             return
         }
-        if(self.labelTurnary.isHidden){
-            self.labelTurnary.isHidden = false
+        if(self.labelTurn.isHidden){
+            self.labelTurn.isHidden = false
         }
-        let turn = self.game!.getTurn()
-        self.labelTurnary.text = "\(turn) to move"
+        self.labelTurn.text = "\(turn) to move"
     }
     
-    private func setLabelNotification() {
-        if(self.game!.condition == "TBD"){
-            self.labelNotification.isHidden = true
+    func setNote(condition: String, resolved: Bool, turn: String) {
+        if(resolved){
+            return
         }
-        if(self.game!.condition == "PENDING"){
-            self.drawProposal()
+        //if(condition == "TBD"){
+            //self.labelNote.isHidden = true
+        //}
+        if(condition == "PENDING"){
+            self.setDraw(turn: turn)
+            return
         }
+        self.labelNote.isHidden = true
     }
     
-    private func setLabelCheck() {
-        let check: Bool = self.game!.on_check
+    private func setCheck(check: Bool) {
         if(!check){
             return
         }
-        self.labelTurnary.text = "\(self.labelTurnary.text!) (check)"
+        self.labelTurn.text = "\(self.labelTurn.text!) (✓)"
     }
     
-    func setLabelEndgame() {
-        let resolved: Bool = self.game!.status == "RESOLVED"
+    //let resolved: Bool = self.game!.status == "RESOLVED"
+    //let username: String = self.playerSelf!.username
+    //self.game!.getWinner(username: username)
+    func setLabelEndgame(condition: String, resolved: Bool, winner: Bool) {
         if(!resolved){
             return
         }
+        self.labelTitle.text = "game over"
+        self.labelCount.isHidden = true
+        self.labelTurn.isHidden = true
+        self.menuRefresh()
+        self.labelNote.isHidden = false
+        if(condition == "DRAW"){
+            self.labelNote.text = "draw"
+            return
+        }
+        if(winner){
+            self.labelNote.text = "winner"
+            return
+        }
+        self.labelNote.text = "you lose"
+    }
+    
+    //TODO: ought not be here...
+    func menuRefresh() {
         DispatchQueue.main.async {
             if let navigationController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController {
                 let viewControllers = navigationController.viewControllers
                 for vc in viewControllers {
                     if vc.isKind(of: Menu.classForCoder()) {
-                        //print("It is in stack")
                         let menu: Menu = vc as! Menu
                         menu.menuTable!.refresh(refreshControl: nil)
                     }
@@ -82,24 +119,6 @@ class Labeler {
                 
             }
         }
-        self.labelTitle.text = "game over"
-        
-        self.endTimer()
-        self.countdown!.endTimer()
-        
-        self.labelNotification.isHidden = false
-        self.labelCountdown.isHidden = true
-        self.labelTurnary.isHidden = true
-        if(self.game!.condition == "DRAW"){
-            self.labelNotification.text = "draw"
-            return
-        }
-        let username: String = self.playerSelf!.username
-        if(self.game!.getWinner(username: username)){
-            self.labelNotification.text = "winner"
-            return
-        }
-        self.labelNotification.text = "you lose"
     }
     
 }

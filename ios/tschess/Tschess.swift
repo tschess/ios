@@ -21,31 +21,48 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     @IBOutlet weak var imageViewAvatar: UIImageView!
     @IBOutlet weak var labelUsername: UILabel!
     
+    @IBOutlet weak var labelTitle: UILabel!
     @IBOutlet weak var labelRank: UILabel!
     @IBOutlet weak var labelElo: UILabel!
     
     @IBOutlet weak var labelNotification: UILabel!
     @IBOutlet weak var labelTurnary: UILabel!
-    @IBOutlet weak var labelTitle: UILabel!
     
     // STRONG
     @IBOutlet var labelCountdown: UILabel!
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
     @IBOutlet var tabBarMenu: UITabBar!
     
-    @IBAction func backButtonClick(_ sender: Any) {
+    // MARK: CONSTRUCTOR
+    let promotion: Promotion
+    let dateTime: DateTime
+    
+    required init?(coder aDecoder: NSCoder) {
+        let storyboard: UIStoryboard = UIStoryboard(name: "Promotion", bundle: nil)
+        self.promotion = storyboard.instantiateViewController(withIdentifier: "Promotion") as! Promotion
+        self.dateTime = DateTime()
         
-        if let navigationController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController {
-            let viewControllers = navigationController.viewControllers
-            for vc in viewControllers {
-                if vc.isKind(of: Menu.classForCoder()) {
-                    //print("It is in stack")
-                    let menu: Menu = vc as! Menu
-                    menu.menuTable!.refresh(refreshControl: nil)
+        super.init(coder: aDecoder)
+    }
+    
+    //TODO: ought not be here...
+    func menuRefresh() {
+        DispatchQueue.main.async {
+            if let navigationController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController {
+                let viewControllers = navigationController.viewControllers
+                for vc in viewControllers {
+                    if vc.isKind(of: Menu.classForCoder()) {
+                        let menu: Menu = vc as! Menu
+                        menu.menuTable!.refresh(refreshControl: nil)
+                    }
                 }
+                
             }
-            
         }
+    }
+    
+    @IBAction func backButtonClick(_ sender: Any) {
+        self.menuRefresh()
         let transition = CATransition()
         transition.duration = 0.3
         transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
@@ -61,9 +78,9 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
             DispatchQueue.main.async {
                 let storyboard: UIStoryboard = UIStoryboard(name: "DrawResign", bundle: nil)
                 let viewController = storyboard.instantiateViewController(withIdentifier: "DrawResign") as! DrawResign
-                viewController.setPlayerSelf(playerSelf: self.playerSelf!)
-                viewController.setPlayerOther(playerOther: self.game!.getPlayerOther(username: self.playerSelf!.username))
-                viewController.setGame(game: self.game!)
+                viewController.playerSelf = self.playerSelf!
+                viewController.playerOther = self.game!.getPlayerOther(username: self.playerSelf!.username)
+                viewController.game = self.game!
                 self.tabBarMenu.selectedItem = nil
                 self.present(viewController, animated: true, completion: nil)
             }
@@ -72,11 +89,13 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         }
     }
     
-    // MARK: MEMBER VARIABLES
+    
     var playerSelf: EntityPlayer?
     var playerOther: EntityPlayer?
     var game: EntityGame?
     
+    
+    // MARK: REMOVE THIS STUPID SHIT...
     func setSelf(player: EntityPlayer){
         self.playerSelf = player
     }
@@ -87,28 +106,19 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         self.game = game
     }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     // MARK: TIMER
     var timerPolling: Timer?
-    
     
     func setTimer() {
         guard self.timerPolling == nil else {
             return
         }
         self.timerPolling = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(pollingTask), userInfo: nil, repeats: true)
-        
+    }
+    
+    func endTimer() {
+        self.timerPolling?.invalidate()
+        self.timerPolling = nil
     }
     
     override func viewDidDisappear(_ animated: Bool){
@@ -124,26 +134,8 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         self.setLabelEndgame()
         self.setTimer()
         
-        //self.viewBoard.reloadData()
         self.viewBoard.layoutSubviews()
         self.viewBoard.isHidden = false
-    }
-    
-    func endTimer() {
-        self.timerPolling?.invalidate()
-        self.timerPolling = nil
-    }
-    
-    // MARK: CONSTRUCTOR
-    let promotion: Promotion
-    let dateTime: DateTime
-    
-    required init?(coder aDecoder: NSCoder) {
-        let storyboard: UIStoryboard = UIStoryboard(name: "Promotion", bundle: nil)
-        self.promotion = storyboard.instantiateViewController(withIdentifier: "Promotion") as! Promotion
-        self.dateTime = DateTime()
-        
-        super.init(coder: aDecoder)
     }
     
     // MARK: LIFEECYCLE
@@ -388,7 +380,6 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     }
     
     // MARK: POLLING GAME
-    
     @objc func pollingTask() {
         let id_game: String = self.game!.id
         GameRequest().execute(id: id_game) { (game0) in
@@ -433,39 +424,22 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         }
     }
     
-    
-    
-    
-    
     private func setCheckMate() {
         let czecher: Checker = Checker()
         let affiliation: String = self.game!.getAffiliationOther(username: self.playerSelf!.username)
         let king: [Int] = czecher.kingCoordinate(affiliation: affiliation, state: self.matrix!)
         let mate: Bool = czecher.mate(king: king, state: self.matrix!)
-        let czech: Bool = czecher.other(coordinate: king, state: self.matrix!)
+        let check: Bool = czecher.other(coordinate: king, state: self.matrix!)
         //print("mate: \(mate)")
         //print("czech: \(czech)")
         if (mate) {
             UpdateMate().execute(id: self.game!.id) { (result) in
                 //print("result: 999 --> \(result)")
-                DispatchQueue.main.async {
-                    if let navigationController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController {
-                        let viewControllers = navigationController.viewControllers
-                        for vc in viewControllers {
-                            if vc.isKind(of: Menu.classForCoder()) {
-                                //print("It is in stack")
-                                let menu: Menu = vc as! Menu
-                                menu.menuTable!.refresh(refreshControl: nil)
-                            }
-                        }
-                        
-                    }
-                }
+                self.menuRefresh()
             }
             return
         }
-        
-        if (!czech) {
+        if (!check) {
             return
         }
         UpdateCheck().execute(id: self.game!.id) { (result) in
@@ -474,4 +448,85 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         
     }
     
+    
+    
+    
+    
+    
+    
+    
+    private func getHighlight(highlight: String) -> [[Int]] {
+        let coords = Array(highlight)
+        let h0a: Int = Int(String(coords[0]))!
+        let h0b: Int = Int(String(coords[1]))!
+        let h0: [Int] = [h0a,h0b]
+        let h1a: Int = Int(String(coords[2]))!
+        let h1b: Int = Int(String(coords[3]))!
+        let h1: [Int] = [h1a,h1b]
+        return [h0, h1]
+    }
+    
+    private func getHighlightCell(indexPath: IndexPath, cell: SquareCell) -> SquareCell {
+        let resolved: Bool = self.game!.status == "RESOLVED"
+        let highlight: String = self.game!.highlight
+        if(highlight == "TBD" || resolved){
+            return self.getOrnamentCell(highlight: false, cell: cell)
+        }
+        let coordHighlight: [[Int]] = self.getHighlight(highlight: highlight)
+        let coordNormal: [Int] = self.getNormalCoord(indexPath: indexPath)
+        return self.highlightCoord(coordNormal: coordNormal, coordHighlight: coordHighlight, cell: cell)
+    }
+    
+    private func highlightCoord(coordNormal: [Int], coordHighlight: [[Int]], cell: SquareCell) -> SquareCell {
+        for (_, coord) in coordHighlight.enumerated() {
+            if(coord == coordNormal){
+                return self.getOrnamentCell(highlight: true, cell: cell)
+            }
+        }
+        return self.getOrnamentCell(highlight: false, cell: cell)
+    }
+    
+    private func getOrnamentCell(highlight: Bool, cell: SquareCell) -> SquareCell{
+        var presnt: Bool = false
+        if(highlight){
+            if(self.game!.turn == "WHITE"){
+                cell.subviews.forEach({
+                    if($0.tag == 666){
+                        presnt = true
+                    }
+                })
+                if(presnt){
+                    return cell
+                }
+                let ornament = UIImageView(image: UIImage(named: "pinkmamba_w")!)
+                ornament.bounds = CGRect(origin: cell.bounds.origin, size: cell.bounds.size)
+                ornament.center = CGPoint(x: cell.bounds.size.width/2, y: cell.bounds.size.height/2)
+                ornament.tag = 666
+                //ornament.alpha = 0.9
+                cell.insertSubview(ornament, at: 0)
+                return cell
+            }
+            cell.subviews.forEach({
+                if($0.tag == 666){
+                    presnt = true
+                }
+            })
+            if(presnt){
+                return cell
+            }
+            let ornament = UIImageView(image: UIImage(named: "pinkmamba_b")!)
+            ornament.bounds = CGRect(origin: cell.bounds.origin, size: cell.bounds.size)
+            ornament.center = CGPoint(x: cell.bounds.size.width/2, y: cell.bounds.size.height/2)
+            ornament.tag = 666
+            //ornament.alpha = 0.9
+            cell.insertSubview(ornament, at: 0)
+            return cell
+        }
+        cell.subviews.forEach({
+            if($0.tag == 666){
+                $0.removeFromSuperview()
+            }
+        })
+        return cell
+    }
 }
