@@ -66,29 +66,6 @@ class EntityGame: Equatable, Hashable {
         return lhs.id == rhs.id
     }
     
-    var tintColorWhite: UIColor = UIColor.blue
-    var tintColorBlack: UIColor = UIColor.blue
-    
-    func getTint(username: String) -> UIColor {
-        if(self.white.username == username){
-            return tintColorWhite
-        }
-        return tintColorBlack
-    }
-    
-    func getOdds(username: String) -> String {
-        var odds: Int
-        if(self.white.username == username){
-            odds = self.white.elo - self.black.elo
-        } else {
-            odds = self.black.elo - self.white.elo
-        }
-        if(odds >= 0){
-            return "+"
-        }
-        return "-"
-    }
-    
     func getImageAvatarOpponent(username: String) -> UIImage {
         if(self.white.username == username){
             return self.black.getImageAvatar()
@@ -218,5 +195,9 @@ class EntityGame: Equatable, Hashable {
     
     func getWhite(username: String) -> Bool {
         return self.white.username == username
+    }
+    
+    func isResolved() -> Bool {
+        return self.status == "RESOLVED"
     }
 }

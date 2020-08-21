@@ -10,6 +10,9 @@ import UIKit
 
 class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UITabBarDelegate {
     
+    // MARK: ATOMIC
+    let countdown: Countdown
+    
     // MARK: OUTLETS
     @IBOutlet weak var buttonBack: UIButton!
     @IBOutlet weak var viewTitle: UIView!
@@ -25,11 +28,11 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     @IBOutlet weak var labelElo: UILabel!
     
     @IBOutlet weak var labelNotification: UILabel!
-    @IBOutlet weak var labelCountdown: UILabel!
     @IBOutlet weak var labelTurnary: UILabel!
     @IBOutlet weak var labelTitle: UILabel!
     
     // STRONG
+    @IBOutlet var labelCountdown: UILabel!
     @IBOutlet var activityIndicator: UIActivityIndicatorView!
     @IBOutlet var tabBarMenu: UITabBar!
     
@@ -133,50 +136,13 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         }
     }
     
-    private func timeout() {
-        let id_game: String = self.game!.id
-        UpdateTimeout().success(id_game: id_game) { (result) in
-            // TODO: handle...
-        }
-    }
     
-    private func setLabelCountdown(update: String) {
-        let resolved: Bool = self.game!.status == "RESOLVED"
-        if(resolved){
-            return
-        }
-        let dateUpdate: Date = self.dateTime.toFormatDate(string: update)
-        let dateActual: Date = self.dateTime.currentDate()
-        let intervalDifference: TimeInterval = dateActual.timeIntervalSince(dateUpdate)
-        let intervalStandard: TimeInterval = Double(24) * 60 * 60
-        let timeRemaining: TimeInterval = intervalStandard - intervalDifference
-        self.labelCountdown.text = self.formatString(interval: timeRemaining)
-    }
     
-    private func formatString(interval: TimeInterval) -> String {
-        let sec = Int(interval.truncatingRemainder(dividingBy: 60))
-        let min = Int(interval.truncatingRemainder(dividingBy: 3600) / 60)
-        let hour = Int(interval / 3600)
-        let timeout: Bool = hour < 1 && min < 1 && sec < 1
-        if (timeout) {
-            self.timeout()
-            return "00:00:00"
-        }
-        if(self.labelCountdown.isHidden){
-            self.labelCountdown.isHidden = false
-        }
-        return String(format: "%02d:%02d:%02d", hour, min, sec)
-    }
     
-    @objc func decCountdown() {
-        var interval0: Double = 0
-        let componentValueSet = self.labelCountdown.text!.components(separatedBy: ":")
-        for (index, component) in componentValueSet.reversed().enumerated() {
-            interval0 += (Double(component) ?? 0) * pow(Double(60), Double(index))
-        }
-        let interval1: TimeInterval = interval0 - TimeInterval(1.0)
-        self.labelCountdown.text = self.formatString(interval: interval1)
-    }
+    
+    
+    
+    
     
     // MARK: TIMER
     var timerPolling: Timer?
@@ -225,6 +191,9 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         let storyboard: UIStoryboard = UIStoryboard(name: "Promotion", bundle: nil)
         self.promotion = storyboard.instantiateViewController(withIdentifier: "Promotion") as! Promotion
         self.dateTime = DateTime()
+        
+        self.countdown = Countdown(label: labelCountdown, date: dateTime)
+        
         super.init(coder: aDecoder)
     }
     
@@ -655,11 +624,5 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         }
         
     }
- 
-    
-    
-    
-    
-    
     
 }
