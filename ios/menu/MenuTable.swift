@@ -274,16 +274,16 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
                 if(height.isLess(than: 750)){
                     let storyboard: UIStoryboard = UIStoryboard(name: "dTschessL", bundle: nil)
                     let viewController = storyboard.instantiateViewController(withIdentifier: "dTschessL") as! Tschess
-                    viewController.setOther(player: playerOther)
-                    viewController.setSelf(player: self.menu!.playerSelf!)
+                    viewController.playerOther = playerOther
+                    viewController.playerSelf = self.menu!.playerSelf!
                     viewController.game = game
                     self.navigationController?.pushViewController(viewController, animated: false)
                     return
                 }
                 let storyboard: UIStoryboard = UIStoryboard(name: "dTschessP", bundle: nil)
                 let viewController = storyboard.instantiateViewController(withIdentifier: "dTschessP") as! Tschess
-                viewController.setOther(player: playerOther)
-                viewController.setSelf(player: self.menu!.playerSelf!)
+                viewController.playerOther = playerOther
+                viewController.playerSelf = self.menu!.playerSelf!
                 viewController.game = game
                 self.navigationController?.pushViewController(viewController, animated: false)
             }

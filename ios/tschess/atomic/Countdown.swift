@@ -63,6 +63,7 @@ class Countdown {
     
     func setLabelCountdown(update: String, resolved: Bool) {
         if(resolved){
+            self.label.isHidden = true
             return
         }
         let dateUpdate: Date = self.date.toFormatDate(string: update)

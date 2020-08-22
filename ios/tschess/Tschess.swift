@@ -89,22 +89,9 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         }
     }
     
-    
     var playerSelf: EntityPlayer?
     var playerOther: EntityPlayer?
     var game: EntityGame?
-    
-    
-    // MARK: REMOVE THIS STUPID SHIT...
-    func setSelf(player: EntityPlayer){
-        self.playerSelf = player
-    }
-    func setOther(player: EntityPlayer){
-        self.playerOther = player
-    }
-    func setGame(game: EntityGame) {
-        self.game = game
-    }
     
     // MARK: TIMER
     var timerPolling: Timer?
@@ -119,20 +106,18 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     func endTimer() {
         self.timerPolling?.invalidate()
         self.timerPolling = nil
+        self.countdown!.endTimer()
     }
     
     override func viewDidDisappear(_ animated: Bool){
         super.viewDidDisappear(animated)
         self.endTimer()
-        self.countdown!.endTimer()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        //self.setLabelResolve()
-        self.setLabel(game1: self.game!)
-        
+        self.setLabel()
         self.setTimer()
         
         self.viewBoard.layoutSubviews()
@@ -170,16 +155,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         self.castle = Castle(white: white, transitioner: transitioner, tschess: self)
         self.transitioner = transitioner
         
-        
-        
         self.activityIndicator.isHidden = true
-        
-        
-        
-        //self.labelTurnary.isHidden = true
-        //self.setLabelTurnary()
-        //self.labelNotification.isHidden = true
-        //self.setLabelNotification()
         
         self.labeler = Labeler(
             labelNote: self.labelNotification,
@@ -302,8 +278,6 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         }
     }
     
-    
-    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         var cell = collectionView.dequeueReusableCell(withReuseIdentifier: "square", for: indexPath) as! SquareCell
         cell.backgroundColor = assignCellBackgroundColor(index: indexPath.row)
@@ -407,57 +381,40 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
                 DispatchQueue.main.async {
                     self.activityIndicator.stopAnimating()
                     self.activityIndicator.isHidden = true
-                    let game1 = game0!
-                    self.setGame(game: game1)
-                    let username: String = self.playerSelf!.username
-                    let matrix1: [[Piece?]] = game1.getStateClient(username: username)
-                    self.matrix = matrix1
                     
+                    self.game = game0!
+                    
+                    let username: String = self.playerSelf!.username
+                    let matrix: [[Piece?]] = self.game!.getStateClient(username: username)
+                    self.matrix = matrix
                     
                     // ~ * ~ //
                     self.setCheckMate()
                     // ~ * ~ //
                     
-                    
                     self.viewBoard.reloadData()
-                    
-                    self.setLabel(game1: game1)
-                    
-                    //self.setLabelEndgame()
-                    //self.setLabelResolve()
-                    
-                    //self.countdown!.setLabelCountdown(update: game1.updated, resolved: game1.isResolved())
-                    
-                    //self.setLabelTurnary()
-                    //self.setLabelNotification()
-                    
-                    //self.setLabelCheck()
+            
+                    self.setLabel()
                 }
             }
         }
     }
     
-    private func setLabel(game1: EntityGame) {
-        let condition: String = self.game!.condition
-        let resolved: Bool = self.game!.isResolved()
-        let username: String = self.playerSelf!.username
-        let winner: Bool = self.game!.getWinner(username: username)
-        self.labeler!.setResolve(condition: condition, resolved: resolved, winner: winner)
-        
-        self.countdown!.setLabelCountdown(update: game1.updated, resolved: game1.isResolved())
-        
-        let turnUser = self.game!.getTurnUser()
-        let turnFlag = self.game!.getTurnFlag(username: self.playerSelf!.username)
-        
-        //self.game!.getTurn(username: username)
-        
-        //let resolved: Bool = self.game!.isResolved()
-        self.labeler!.setTurn(resolved: resolved, turnUser: turnUser)
-        
-        //let condition: String = self.game!.condition
-        self.labeler!.setNote(condition: condition, resolved: resolved, turnUser: turnUser, turnFlag: turnFlag)
-        
+    private func setLabel() {
         let check: Bool = self.game!.on_check
+        let username: String = self.playerSelf!.username
+        let condition: String = self.game!.condition
+        let winner: Bool = self.game!.getWinner(username: username)
+        let turnFlag = self.game!.getTurnFlag(username: username)
+        let turnUser = self.game!.getTurnUser()
+        let resolved: Bool = self.game!.isResolved()
+        if(resolved){
+            self.endTimer()
+        }
+        self.labeler!.setResolve(condition: condition, resolved: resolved, winner: winner)
+        self.countdown!.setLabelCountdown(update: self.game!.updated, resolved: resolved)
+        self.labeler!.setTurn(resolved: resolved, turnUser: turnUser)
+        self.labeler!.setNote(condition: condition, resolved: resolved, turnUser: turnUser, turnFlag: turnFlag)
         self.labeler!.setCheck(check: check)
     }
     
@@ -468,7 +425,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         let mate: Bool = czecher.mate(king: king, state: self.matrix!)
         let check: Bool = czecher.other(coordinate: king, state: self.matrix!)
         //print("mate: \(mate)")
-        //print("czech: \(czech)")
+        //print("check: \(check)")
         if (mate) {
             UpdateMate().execute(id: self.game!.id) { (result) in
                 //print("result: 999 --> \(result)")

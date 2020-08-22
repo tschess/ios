@@ -291,8 +291,8 @@ class Start: UIViewController, UITextFieldDelegate {
                 DispatchQueue.main.async {
                     let storyboard: UIStoryboard = UIStoryboard(name: "dTschessP", bundle: nil)
                     let viewController = storyboard.instantiateViewController(withIdentifier: "dTschessP") as! Tschess
-                    viewController.setOther(player: game!.getPlayerOther(username: game!.white.username))
-                    viewController.setSelf(player: game!.white)
+                    viewController.playerOther = game!.getPlayerOther(username: game!.white.username)
+                    viewController.playerSelf = game!.white
                     viewController.game = game!
                     UIApplication.shared.keyWindow?.rootViewController = viewController
                 }
@@ -307,8 +307,8 @@ class Start: UIViewController, UITextFieldDelegate {
                 DispatchQueue.main.async {
                     let storyboard: UIStoryboard = UIStoryboard(name: "dTschessP", bundle: nil)
                     let viewController = storyboard.instantiateViewController(withIdentifier: "dTschessP") as! Tschess
-                    viewController.setOther(player: game!.getPlayerOther(username: game!.black.username))
-                    viewController.setSelf(player: game!.black)
+                    viewController.playerOther = game!.getPlayerOther(username: game!.black.username)
+                    viewController.playerSelf = game!.black
                     viewController.game = game!
                     UIApplication.shared.keyWindow?.rootViewController = viewController
                 }
