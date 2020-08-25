@@ -146,5 +146,17 @@ class EntityPlayer: Equatable, Hashable {
         return self.config0
     }
     
+    func isPopup() -> Bool {
+        if(self.note_key == nil){
+            return false
+        }
+        if(self.note_key == "POPUP"){
+            return true
+        }
+        return false
+    }
+    
+    
+    
 }
 

@@ -15,6 +15,9 @@
 		8362B98D24759AC500504573 /* Cancel.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8362B98C24759AC500504573 /* Cancel.storyboard */; };
 		8362B98F24759C1200504573 /* Cancel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8362B98E24759C1200504573 /* Cancel.swift */; };
 		8379820A24F05EE000254FBD /* Highlighter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8379820924F05EE000254FBD /* Highlighter.swift */; };
+		837A795F24F5C1FB00AE4DDE /* DialogPopup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 837A795E24F5C1FB00AE4DDE /* DialogPopup.storyboard */; };
+		837A796124F5C20B00AE4DDE /* DialogPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837A796024F5C20B00AE4DDE /* DialogPopup.swift */; };
+		837A796324F5C27300AE4DDE /* TransPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 837A796224F5C27300AE4DDE /* TransPopup.swift */; };
 		8389C6A1246AEAA800DFE8F2 /* Help.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8389C6A0246AEAA800DFE8F2 /* Help.swift */; };
 		8389C6A4246AEAD000DFE8F2 /* Help.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8389C6A3246AEAD000DFE8F2 /* Help.storyboard */; };
 		8389C6A6246AED0B00DFE8F2 /* TransHelp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8389C6A5246AED0B00DFE8F2 /* TransHelp.swift */; };
@@ -226,6 +229,9 @@
 		8362B98C24759AC500504573 /* Cancel.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Cancel.storyboard; sourceTree = "<group>"; };
 		8362B98E24759C1200504573 /* Cancel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cancel.swift; sourceTree = "<group>"; };
 		8379820924F05EE000254FBD /* Highlighter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Highlighter.swift; sourceTree = "<group>"; };
+		837A795E24F5C1FB00AE4DDE /* DialogPopup.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DialogPopup.storyboard; sourceTree = "<group>"; };
+		837A796024F5C20B00AE4DDE /* DialogPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogPopup.swift; sourceTree = "<group>"; };
+		837A796224F5C27300AE4DDE /* TransPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransPopup.swift; sourceTree = "<group>"; };
 		8389C6A0246AEAA800DFE8F2 /* Help.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Help.swift; sourceTree = "<group>"; };
 		8389C6A3246AEAD000DFE8F2 /* Help.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Help.storyboard; sourceTree = "<group>"; };
 		8389C6A5246AED0B00DFE8F2 /* TransHelp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransHelp.swift; sourceTree = "<group>"; };
@@ -1382,6 +1388,8 @@
 				8389C6B3246B17BE00DFE8F2 /* DialogPassant.swift */,
 				8389C6B5246B17CC00DFE8F2 /* TransDialog.swift */,
 				8389C6B7246B17DA00DFE8F2 /* DialogPoison.swift */,
+				837A796024F5C20B00AE4DDE /* DialogPopup.swift */,
+				837A796224F5C27300AE4DDE /* TransPopup.swift */,
 			);
 			path = component;
 			sourceTree = "<group>";
@@ -1394,6 +1402,7 @@
 				B7BE12A423EB0BF700ADA499 /* Promotion.storyboard */,
 				8389C6AF246B15A800DFE8F2 /* DialogPoison.storyboard */,
 				8389C6B1246B15B700DFE8F2 /* DialogPassant.storyboard */,
+				837A795E24F5C1FB00AE4DDE /* DialogPopup.storyboard */,
 			);
 			path = storyboard;
 			sourceTree = "<group>";
@@ -1712,6 +1721,7 @@
 				B7BE129723EB0A8B00ADA499 /* Evaluate.storyboard in Resources */,
 				B7021F2A23FDEE8200C9346A /* ConfigL.storyboard in Resources */,
 				B7021F9623FE5D7F00C9346A /* OtherL.storyboard in Resources */,
+				837A795F24F5C1FB00AE4DDE /* DialogPopup.storyboard in Resources */,
 				B768470923F4FAF900F55D4A /* Recover.storyboard in Resources */,
 				B708D0E7236B366800A899F9 /* LaunchScreen.storyboard in Resources */,
 				B7CB62F6237BB10800E50204 /* Start.storyboard in Resources */,
@@ -1873,6 +1883,7 @@
 				B7F3A13923FD9EE8007B5663 /* CompInvalid.swift in Sources */,
 				B7BE12AE23EB0CDB00ADA499 /* Checker.swift in Sources */,
 				B745AD3523F353BF00E450EF /* RequestCreate.swift in Sources */,
+				837A796324F5C27300AE4DDE /* TransPopup.swift in Sources */,
 				B7D8ECEB2408B845001B5D2D /* RevealBlack.swift in Sources */,
 				B7BE128D23EB09B400ADA499 /* GameUpdate.swift in Sources */,
 				B7BE121023EAD64100ADA499 /* Hopper.swift in Sources */,
@@ -1892,6 +1903,7 @@
 				B7BE11C523EA9E7C00ADA499 /* Rook.swift in Sources */,
 				B7BE11ED23EAC6CB00ADA499 /* RequestQuick.swift in Sources */,
 				B7BE117723EA93A600ADA499 /* PieceAnte.swift in Sources */,
+				837A796124F5C20B00AE4DDE /* DialogPopup.swift in Sources */,
 				8389C6A9246AFD2000DFE8F2 /* Noop.swift in Sources */,
 				B7D8ECDD24082106001B5D2D /* HunterBlack.swift in Sources */,
 				B7FA7BFB23ECF79400E63045 /* UpdateConfig.swift in Sources */,
