@@ -91,7 +91,7 @@ class Labeler {
         if(!check){
             return
         }
-        self.labelTurn.text = "\(self.labelTurn.text!) (✓)"
+        self.labelTurn.text = "\(self.labelTurn.text!) (✔️)"
     }
     
     //let resolved: Bool = self.game!.status == "RESOLVED"
