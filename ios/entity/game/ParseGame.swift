@@ -28,6 +28,9 @@ class ParseGame {
         let turn = json["turn"]! as! String
         let on_check = json["on_check"]! as! Bool
         let highlight = json["highlight"]! as! String
+        
+        let confirm = json["confirm"]! as? String
+        
         let updated = json["updated"]! as! String
         
         let game: EntityGame = EntityGame(
@@ -37,14 +40,13 @@ class ParseGame {
             status: status,
             condition: condition,
             white: white,
-           
             black: black,
-           
             challenger: challenger,
             winner: winner,
             turn: turn,
             on_check: on_check,
             highlight: highlight,
+            confirm: confirm,
             updated: updated)
         return game
     }

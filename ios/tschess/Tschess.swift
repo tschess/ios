@@ -360,7 +360,6 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
                     
                     /* * */
                     if(self.playerSelf!.isPopup()){
-                        //self.notification()
                         self.renderDialogPopup()
                     }
                     /* * */

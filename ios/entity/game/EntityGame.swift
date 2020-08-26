@@ -24,6 +24,10 @@ class EntityGame: Equatable, Hashable {
     var turn: String
     var on_check: Bool
     var highlight: String
+
+    //confirm = json["confirm"]! as? String
+    var confirm: String?
+    
     var updated: String
     
     init(
@@ -32,15 +36,16 @@ class EntityGame: Equatable, Hashable {
         moves: Int,
         status: String,
         condition: String,
-        
         white: EntityPlayer,
         black: EntityPlayer,
- 
         challenger: String,
         winner: String?,
         turn: String,
         on_check: Bool,
         highlight: String,
+        
+        confirm: String?,
+        
         updated: String
     ) {
         self.id = id
@@ -55,6 +60,9 @@ class EntityGame: Equatable, Hashable {
         self.turn = turn
         self.on_check = on_check
         self.highlight = highlight
+        
+        self.confirm = confirm
+        
         self.updated = updated
     }
     
