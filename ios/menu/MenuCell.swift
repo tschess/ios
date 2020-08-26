@@ -86,6 +86,7 @@ class MenuCell: SwipeTableViewCell {
     }
     
     func setActive() {
+        self.labelAction.isHidden = false
         self.viewContent.backgroundColor = UIColor.white
         self.labelName.textColor = UIColor.black
         self.imageViewAction.isHidden = false
@@ -93,15 +94,49 @@ class MenuCell: SwipeTableViewCell {
     }
     
     func setHisto(game: EntityGame, username: String) {
+        let winner: Bool = game.getWinner(username: username)
+        let confirm: String? = game.confirm
+        if(confirm == nil) {
+            self.setConfirm(winner: winner, condition: game.condition)
+            return
+        } //not yet confirmed...
+        
+        let white: Bool = game.getWhite(username: username)
+        if(white){ // you are white...
+            if(confirm!.contains("WHITE")) {
+                self.getConfirm()
+                return
+            }
+            self.setConfirm(winner: winner, condition: game.condition)
+            return
+        }  // you aren't white...
+        if(confirm!.contains("BLACK")) {
+            self.getConfirm()
+            return
+        }
+        self.setConfirm(winner: winner, condition: game.condition)
+    }
+    
+    func getConfirm() {
+        self.viewContent.backgroundColor = UIColor.white
+        self.labelName.textColor = UIColor.black
+        self.imageViewAction.isHidden = true
+        self.imageViewSideSlide.isHidden = true
+        self.labelAction.isHidden = true
+    }
+    
+    func setConfirm(winner: Bool, condition: String) {
+        self.labelAction.isHidden = false
         self.viewContent.backgroundColor = UIColor.black
         self.labelName.textColor = UIColor.lightGray
         self.imageViewAction.isHidden = true
         self.imageViewSideSlide.isHidden = false
-        if(game.condition == "DRAW"){
+        if(condition == "DRAW"){
+        //if(game.condition == "DRAW"){
             self.imageViewSideSlide.image = UIImage(named: "more_vert_yel")
             return
         }
-        let winner: Bool = game.getWinner(username: username)
+        //let winner: Bool = game.getWinner(username: username)
         if(winner){
             self.imageViewSideSlide.image = UIImage(named: "more_vert_grn")
             return
