@@ -107,7 +107,7 @@ class Labeler {
         self.menuRefresh()
         self.labelNote.isHidden = false
         if(condition == "DRAW"){
-            self.labelNote.text = "draw"
+            self.labelNote.text = "😐 you draw. ✍️"
             return
         }
         if(winner){
