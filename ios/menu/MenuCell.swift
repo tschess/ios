@@ -11,6 +11,8 @@ import SwipeCellKit
 
 class MenuCell: SwipeTableViewCell {
     
+    var promptConfirm: Bool = false // 2 identical -- consolidate this...
+    
     //MARK: Properties
     @IBOutlet weak var viewContent: UIView!
     @IBOutlet weak var labelName: UILabel!
@@ -118,6 +120,7 @@ class MenuCell: SwipeTableViewCell {
     }
     
     func getConfirm() {
+        self.promptConfirm = true
         self.viewContent.backgroundColor = UIColor.white
         self.labelName.textColor = UIColor.black
         self.imageViewAction.isHidden = true

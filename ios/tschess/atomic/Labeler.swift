@@ -111,11 +111,14 @@ class Labeler {
             return
         }
         if(winner){
-            self.labelNote.text = "winner"
+            self.labelNote.text = "🙂 you win! 🎉"
             return
         }
-        self.labelNote.text = "you lose"
+        self.labelNote.text = "🙃 you lost. 🤝"
     }
+    
+    // let textWin: String = ""
+       //let textLost: String = ""
     
     //TODO: ought not be here...
     func menuRefresh() {

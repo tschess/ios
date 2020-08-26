@@ -11,7 +11,7 @@
         <!--Confirm-->
         <scene sceneID="kCP-qz-f3I">
             <objects>
-                <viewController storyboardIdentifier="Confirm" modalPresentationStyle="overCurrentContext" id="Rh1-F9-UxD" customClass="Confirm" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Confirm" modalPresentationStyle="overCurrentContext" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Rh1-F9-UxD" customClass="Confirm" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="sl4-B8-bJs"/>
                         <viewControllerLayoutGuide type="bottom" id="yxw-7c-7Xt"/>

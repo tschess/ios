@@ -258,10 +258,11 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
         if(game.status == "RESOLVED"){
             DispatchQueue.main.async {
                 
-                let cell = self.tableView.cellForRow(at: indexPath) as! SwipeTableViewCell
+                //let cell = self.tableView.cellForRow(at: indexPath) as! SwipeTableViewCell
                 cell.hideSwipe(animated: false, completion: nil)
                 
-                SelectSnapshot().snapshot(playerSelf: self.menu!.playerSelf!,
+                SelectSnapshot().snapshot(promptConfirm: cell.promptConfirm,
+                                          playerSelf: self.menu!.playerSelf!,
                                           game: game,
                                           presentor: self)
             }

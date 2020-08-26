@@ -12,7 +12,7 @@ class SelectSnapshot {
     
    
     
-    public func snapshot(playerSelf: EntityPlayer, game: EntityGame, presentor: UIViewController) {
+    public func snapshot(promptConfirm: Bool = false, playerSelf: EntityPlayer, game: EntityGame, presentor: UIViewController) {
         
        
             DispatchQueue.main.async {
@@ -22,6 +22,7 @@ class SelectSnapshot {
                     let viewController = storyboard.instantiateViewController(withIdentifier: "DefaultL") as! Snapshot
                     viewController.setGame(game: game)
                     viewController.setPlayer(player: playerSelf)
+                    viewController.promptConfirm = promptConfirm
                     presentor.present(viewController, animated: false, completion: nil)
                     return
                 }
@@ -29,6 +30,7 @@ class SelectSnapshot {
                 let viewController = storyboard.instantiateViewController(withIdentifier: "DefaultP") as! Snapshot
                 viewController.setGame(game: game)
                 viewController.setPlayer(player: playerSelf)
+                viewController.promptConfirm = promptConfirm
                 presentor.present(viewController, animated: false, completion: nil)
                
                 //UIApplication.shared.keyWindow?.rootViewController = viewController

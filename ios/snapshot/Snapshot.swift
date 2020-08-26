@@ -10,6 +10,8 @@ import UIKit
 
 class Snapshot: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UITabBarDelegate {
     
+    var promptConfirm: Bool = false
+    
     var player: EntityPlayer?
     
     func setPlayer(player: EntityPlayer){
@@ -124,7 +126,6 @@ class Snapshot: UIViewController, UICollectionViewDataSource, UICollectionViewDe
         } else {
             cell.imageView.image = nil
         }
-        
         cell.imageView.bounds = CGRect(origin: cell.bounds.origin, size: cell.bounds.size)
         cell.imageView.center = CGPoint(x: cell.bounds.size.width/2, y: cell.bounds.size.height/2)
         return cell
@@ -146,6 +147,18 @@ class Snapshot: UIViewController, UICollectionViewDataSource, UICollectionViewDe
         self.boardView.reloadData()
         self.boardView.isHidden = false
         
+        if(self.promptConfirm){
+            self.renderDialogConfirm()
+        }
+        
+    }
+    
+    func renderDialogConfirm() {
+        DispatchQueue.main.async {
+            let storyboard: UIStoryboard = UIStoryboard(name: "Confirm", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier: "Confirm") as! Confirm
+            self.present(viewController, animated: true, completion: nil)
+        }
     }
     
     override func viewDidLayoutSubviews() {
