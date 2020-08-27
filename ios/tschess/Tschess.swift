@@ -433,7 +433,6 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         let check: Bool = self.game!.on_check
         let username: String = self.playerSelf!.username
         let condition: String = self.game!.condition
-        //let winner: Bool = self.game!.getWinner(username: username)
         let turnFlag = self.game!.getTurnFlag(username: username)
         let turnUser = self.game!.getTurnUser()
         let resolved: Bool = self.game!.isResolved()
@@ -455,11 +454,8 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         let king: [Int] = czecher.kingCoordinate(affiliation: affiliation, state: self.matrix!)
         let mate: Bool = czecher.mate(king: king, state: self.matrix!)
         let check: Bool = czecher.other(coordinate: king, state: self.matrix!)
-        //print("mate: \(mate)")
-        //print("check: \(check)")
         if (mate) {
-            UpdateMate().execute(id: self.game!.id) { (result) in
-                //print("result: 999 --> \(result)")
+            UpdateMate().execute(id: self.game!.id) { (_) in
                 self.menuRefresh()
             }
             return
@@ -467,8 +463,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         if (!check) {
             return
         }
-        UpdateCheck().execute(id: self.game!.id) { (result) in
-            //print("result: 1313 --> \(result)")
+        UpdateCheck().execute(id: self.game!.id) { (_) in
         }
         
     }
