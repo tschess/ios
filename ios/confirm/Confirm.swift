@@ -72,13 +72,7 @@ class Confirm: UIViewController {
         DispatchQueue.main.async {
             self.presentingViewController!.dismiss(animated: false, completion: nil)
             
-        }
-        self.menuRefresh()
-    }
-    
-    //TODO: ought not be here...
-    func menuRefresh() {
-        DispatchQueue.main.async {
+            //TODO: ought not be here...
             if let navigationController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController {
                 let viewControllers = navigationController.viewControllers
                 for vc in viewControllers {
@@ -89,6 +83,7 @@ class Confirm: UIViewController {
                 }
                 
             }
+            
         }
     }
     
