@@ -10,6 +10,9 @@ import UIKit
 
 class Confirm: UIViewController {
     
+    var playerSelf: EntityPlayer?
+    var game: EntityGame?
+    
     let textWins: String = "🙂 you win! 🎉"
     let textLost: String = "🙃 you lost. 🤝"
     let textDraw: String = "😐 you draw. ✍️"
@@ -39,6 +42,12 @@ class Confirm: UIViewController {
     }
     
     @IBAction func buttonClickAccept(_ sender: Any) {
+        
+        let username: String = self.playerSelf!.username
+        let white: Bool = self.game!.getWhite(username: username)
+        
+        
+        
         DispatchQueue.main.async {
             self.presentingViewController!.dismiss(animated: false, completion: nil)
         
