@@ -90,7 +90,7 @@ class Labeler {
         if(!check){
             return
         }
-        self.labelTurn.text = "\(self.labelTurn.text!) (✔️)"
+        self.labelTurn.text = "\(self.labelTurn.text!) ✔️"
     }
     
     func setResolve(resolved: Bool) {
