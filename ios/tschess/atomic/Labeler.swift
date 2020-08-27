@@ -24,6 +24,8 @@ class Labeler {
         self.labelTitle = labelTitle
     }
     
+    
+    
     /* * */
     var game: EntityGame?
     var player: EntityPlayer?
@@ -34,13 +36,13 @@ class Labeler {
     }
     /* * */
     
-    //let turn = self.game!.getTurn()
+    
+    
     private func setDraw(turnUser: String, turnFlag: Bool) {
         self.labelNote.isHidden = false
         self.labelNote.text = "🤞 proposal pending... ⏳"
         self.labelTurn.text = "\(turnUser) to respond"
         
-        //let username: String = self.player!.username
         if(turnFlag){
             DispatchQueue.main.async {
                 let storyboard: UIStoryboard = UIStoryboard(name: "Evaluate", bundle: nil)
@@ -49,8 +51,6 @@ class Labeler {
                 viewController.playerSelf = self.player
                 viewController.playerOther = self.game!.getPlayerOther(username: self.player!.username)
                 viewController.gameTschess = self.game!
-            
-                //self.present(viewController, animated: true, completion: nil)
                 
                 if var viewControllerTop = UIApplication.shared.keyWindow?.rootViewController {
                     while let presentedViewController = viewController.presentedViewController {
@@ -62,7 +62,6 @@ class Labeler {
         }
     }
     
-    //let turn = self.game!.getTurn()
     func setTurn(resolved: Bool, turnUser: String) {
         if(resolved){
             return
@@ -95,9 +94,6 @@ class Labeler {
     }
     
     func setResolve(resolved: Bool) {
-        
-        //let resolved: Bool = game.condition == "RESOLVED"
-        
         if(!resolved){
             return
         }
@@ -105,35 +101,6 @@ class Labeler {
         self.labelCount.isHidden = true
         self.labelTurn.isHidden = true
         self.labelNote.isHidden = true
-        //if(game.isDraw()){
-            //self.labelNote.text = "😐 you draw. ✍️"
-            //return
-        //}
-        //let username: String = self.player!.username
-        //let wins: Bool = game.getWinner(username: username)
-        //if(wins){
-            //self.labelNote.text = "🙂 you win! 🎉"
-            //return
-        //}
-        //self.labelNote.text = "🙃 you lost. 🤝"
     }
-    
-    
-    
-    //TODO: ought not be here...
-    //func menuRefresh() {
-        //DispatchQueue.main.async {
-            //if let navigationController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController {
-                //let viewControllers = navigationController.viewControllers
-                //for vc in viewControllers {
-                    //if vc.isKind(of: Menu.classForCoder()) {
-                        //let menu: Menu = vc as! Menu
-                        //menu.menuTable!.refresh(refreshControl: nil)
-                    //}
-                //}
-                
-            //}
-        //}
-    //}
     
 }
