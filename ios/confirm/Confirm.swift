@@ -10,6 +10,9 @@ import UIKit
 
 class Confirm: UIViewController {
     
+    @IBOutlet weak var imageShare: UIImageView!
+    @IBOutlet weak var labelText: UILabel!
+    
     var playerSelf: EntityPlayer?
     var game: EntityGame?
     
@@ -39,6 +42,22 @@ class Confirm: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.game!.promptConfirm = false
+        self.game!.confirm = nil
+        
+        let draw: Bool = self.game!.getDraw()
+        if(draw){
+            self.labelText.text = self.textDraw
+            return
+        }
+        let username: String = self.playerSelf!.username
+        let wins: Bool = self.game!.getWinner(username: username)
+        if(wins){
+            self.labelText.text = self.textWins
+            return
+        }
+        self.labelText.text = self.textLost
     }
     
     @IBAction func buttonClickAccept(_ sender: Any) {
@@ -46,11 +65,30 @@ class Confirm: UIViewController {
         let username: String = self.playerSelf!.username
         let white: Bool = self.game!.getWhite(username: username)
         
+        let requestPayload: [String: Any] = ["id_game": game!.id, "white": white]
         
-        
+        UpdateConfirm().execute(requestPayload: requestPayload) { (_) in
+        }
         DispatchQueue.main.async {
             self.presentingViewController!.dismiss(animated: false, completion: nil)
-        
+            
+        }
+        self.menuRefresh()
+    }
+    
+    //TODO: ought not be here...
+    func menuRefresh() {
+        DispatchQueue.main.async {
+            if let navigationController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController {
+                let viewControllers = navigationController.viewControllers
+                for vc in viewControllers {
+                    if vc.isKind(of: Menu.classForCoder()) {
+                        let menu: Menu = vc as! Menu
+                        menu.menuTable!.refresh(refreshControl: nil)
+                    }
+                }
+                
+            }
         }
     }
     

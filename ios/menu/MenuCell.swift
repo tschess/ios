@@ -11,7 +11,7 @@ import SwipeCellKit
 
 class MenuCell: SwipeTableViewCell {
     
-    var promptConfirm: Bool = false // 2 identical -- consolidate this...
+    //var promptConfirm: Bool = false // 2 identical -- consolidate this...
     
     //MARK: Properties
     @IBOutlet weak var viewContent: UIView!
@@ -106,21 +106,21 @@ class MenuCell: SwipeTableViewCell {
         let white: Bool = game.getWhite(username: username)
         if(white){ // you are white...
             if(confirm!.contains("WHITE")) {
-                self.getConfirm()
+                self.getConfirm(game: game)
                 return
             }
             self.setConfirm(winner: winner, condition: game.condition)
             return
         }  // you aren't white...
         if(confirm!.contains("BLACK")) {
-            self.getConfirm()
+            self.getConfirm(game: game)
             return
         }
         self.setConfirm(winner: winner, condition: game.condition)
     }
     
-    func getConfirm() {
-        self.promptConfirm = true
+    func getConfirm(game: EntityGame) {
+        game.promptConfirm = true
         self.viewContent.backgroundColor = UIColor.white
         self.labelName.textColor = UIColor.black
         self.imageViewAction.isHidden = true

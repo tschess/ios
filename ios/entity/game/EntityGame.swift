@@ -10,6 +10,8 @@ import UIKit
 
 class EntityGame: Equatable, Hashable {
     
+    var promptConfirm: Bool
+    
     var id: String
     var state: [[String]]
     var moves: Int
@@ -64,6 +66,8 @@ class EntityGame: Equatable, Hashable {
         self.confirm = confirm
         
         self.updated = updated
+        
+        self.promptConfirm = false
     }
     
     func hash(into hasher: inout Hasher) {
@@ -171,6 +175,13 @@ class EntityGame: Equatable, Hashable {
             return false
         }
         if(self.winner! == "BLACK"){
+            return true
+        }
+        return false
+    }
+    
+    func getDraw() -> Bool {
+        if(self.condition == "DRAW"){
             return true
         }
         return false

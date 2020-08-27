@@ -37,7 +37,7 @@ class Labeler {
     //let turn = self.game!.getTurn()
     private func setDraw(turnUser: String, turnFlag: Bool) {
         self.labelNote.isHidden = false
-        self.labelNote.text = "proposal pending"
+        self.labelNote.text = "🤞 proposal pending... ⏳"
         self.labelTurn.text = "\(turnUser) to respond"
         
         //let username: String = self.player!.username
@@ -94,10 +94,10 @@ class Labeler {
         self.labelTurn.text = "\(self.labelTurn.text!) (✔️)"
     }
     
-    //let resolved: Bool = self.game!.status == "RESOLVED"
-    //let username: String = self.playerSelf!.username
-    //self.game!.getWinner(username: username)
-    func setResolve(condition: String, resolved: Bool, winner: Bool) {
+    func setResolve(game: EntityGame) {
+        
+        let resolved: Bool = game.condition == "RESOLVED"
+        
         if(!resolved){
             return
         }
@@ -107,18 +107,41 @@ class Labeler {
         self.menuRefresh()
         self.labelNote.isHidden = false
         if(condition == "DRAW"){
+            
+            self.renderDialogConfirm(game: game)
+            
             self.labelNote.text = "😐 you draw. ✍️"
             return
         }
         if(winner){
+            
+            self.renderDialogConfirm(game: game)
+            
             self.labelNote.text = "🙂 you win! 🎉"
             return
         }
         self.labelNote.text = "🙃 you lost. 🤝"
+        self.labelNote.isHidden = true
+        
+        self.renderDialogConfirm(game: game)
     }
     
-    // let textWin: String = ""
-       //let textLost: String = ""
+    func renderDialogConfirm(game: EntityGame) {
+        DispatchQueue.main.async {
+            let storyboard: UIStoryboard = UIStoryboard(name: "Confirm", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier: "Confirm") as! Confirm
+            viewController.game = game
+            viewController.playerSelf = self.player!
+            //self.present(viewController, animated: true, completion: nil)
+            
+            if var viewControllerTop = UIApplication.shared.keyWindow?.rootViewController {
+                while let presentedViewController = viewController.presentedViewController {
+                    viewControllerTop = presentedViewController
+                }
+                viewControllerTop.present(viewController, animated: true, completion: nil)
+            }
+        }
+    }
     
     //TODO: ought not be here...
     func menuRefresh() {

@@ -10,8 +10,6 @@ import UIKit
 
 class Snapshot: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UITabBarDelegate {
     
-    var promptConfirm: Bool = false
-    
     var player: EntityPlayer?
     
     func setPlayer(player: EntityPlayer){
@@ -147,7 +145,7 @@ class Snapshot: UIViewController, UICollectionViewDataSource, UICollectionViewDe
         self.boardView.reloadData()
         self.boardView.isHidden = false
         
-        if(self.promptConfirm){
+        if(self.game!.promptConfirm){
             self.renderDialogConfirm()
         }
         
@@ -157,6 +155,8 @@ class Snapshot: UIViewController, UICollectionViewDataSource, UICollectionViewDe
         DispatchQueue.main.async {
             let storyboard: UIStoryboard = UIStoryboard(name: "Confirm", bundle: nil)
             let viewController = storyboard.instantiateViewController(withIdentifier: "Confirm") as! Confirm
+            viewController.game = self.game!
+            viewController.playerSelf = self.player!
             self.present(viewController, animated: true, completion: nil)
         }
     }

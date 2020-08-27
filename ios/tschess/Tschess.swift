@@ -423,14 +423,14 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         let check: Bool = self.game!.on_check
         let username: String = self.playerSelf!.username
         let condition: String = self.game!.condition
-        let winner: Bool = self.game!.getWinner(username: username)
+        //let winner: Bool = self.game!.getWinner(username: username)
         let turnFlag = self.game!.getTurnFlag(username: username)
         let turnUser = self.game!.getTurnUser()
         let resolved: Bool = self.game!.isResolved()
         if(resolved){
             self.endTimer()
         }
-        self.labeler!.setResolve(condition: condition, resolved: resolved, winner: winner)
+        self.labeler!.setResolve(game: self.game!)
         self.countdown!.setLabelCountdown(update: self.game!.updated, resolved: resolved)
         self.labeler!.setTurn(resolved: resolved, turnUser: turnUser)
         self.labeler!.setNote(condition: condition, resolved: resolved, turnUser: turnUser, turnFlag: turnFlag)
