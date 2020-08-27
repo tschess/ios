@@ -10,8 +10,9 @@ import UIKit
 
 class Confirm: UIViewController {
     
-    let textWin: String = "🙂 you win! 🎉"
+    let textWins: String = "🙂 you win! 🎉"
     let textLost: String = "🙃 you lost. 🤝"
+    let textDraw: String = "😐 you draw. ✍️"
     
     @IBOutlet weak var buttonAccept: UIButton!
     
