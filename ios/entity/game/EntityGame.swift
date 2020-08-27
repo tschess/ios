@@ -180,7 +180,7 @@ class EntityGame: Equatable, Hashable {
         return false
     }
     
-    func getDraw() -> Bool {
+    func isDraw() -> Bool {
         if(self.condition == "DRAW"){
             return true
         }

@@ -94,9 +94,9 @@ class Labeler {
         self.labelTurn.text = "\(self.labelTurn.text!) (✔️)"
     }
     
-    func setResolve(game: EntityGame) {
+    func setResolve(resolved: Bool) {
         
-        let resolved: Bool = game.condition == "RESOLVED"
+        //let resolved: Bool = game.condition == "RESOLVED"
         
         if(!resolved){
             return
@@ -104,59 +104,36 @@ class Labeler {
         self.labelTitle.text = "game over"
         self.labelCount.isHidden = true
         self.labelTurn.isHidden = true
-        self.menuRefresh()
-        self.labelNote.isHidden = false
-        if(condition == "DRAW"){
-            
-            self.renderDialogConfirm(game: game)
-            
-            self.labelNote.text = "😐 you draw. ✍️"
-            return
-        }
-        if(winner){
-            
-            self.renderDialogConfirm(game: game)
-            
-            self.labelNote.text = "🙂 you win! 🎉"
-            return
-        }
-        self.labelNote.text = "🙃 you lost. 🤝"
         self.labelNote.isHidden = true
-        
-        self.renderDialogConfirm(game: game)
+        //if(game.isDraw()){
+            //self.labelNote.text = "😐 you draw. ✍️"
+            //return
+        //}
+        //let username: String = self.player!.username
+        //let wins: Bool = game.getWinner(username: username)
+        //if(wins){
+            //self.labelNote.text = "🙂 you win! 🎉"
+            //return
+        //}
+        //self.labelNote.text = "🙃 you lost. 🤝"
     }
     
-    func renderDialogConfirm(game: EntityGame) {
-        DispatchQueue.main.async {
-            let storyboard: UIStoryboard = UIStoryboard(name: "Confirm", bundle: nil)
-            let viewController = storyboard.instantiateViewController(withIdentifier: "Confirm") as! Confirm
-            viewController.game = game
-            viewController.playerSelf = self.player!
-            //self.present(viewController, animated: true, completion: nil)
-            
-            if var viewControllerTop = UIApplication.shared.keyWindow?.rootViewController {
-                while let presentedViewController = viewController.presentedViewController {
-                    viewControllerTop = presentedViewController
-                }
-                viewControllerTop.present(viewController, animated: true, completion: nil)
-            }
-        }
-    }
+    
     
     //TODO: ought not be here...
-    func menuRefresh() {
-        DispatchQueue.main.async {
-            if let navigationController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController {
-                let viewControllers = navigationController.viewControllers
-                for vc in viewControllers {
-                    if vc.isKind(of: Menu.classForCoder()) {
-                        let menu: Menu = vc as! Menu
-                        menu.menuTable!.refresh(refreshControl: nil)
-                    }
-                }
+    //func menuRefresh() {
+        //DispatchQueue.main.async {
+            //if let navigationController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController {
+                //let viewControllers = navigationController.viewControllers
+                //for vc in viewControllers {
+                    //if vc.isKind(of: Menu.classForCoder()) {
+                        //let menu: Menu = vc as! Menu
+                        //menu.menuTable!.refresh(refreshControl: nil)
+                    //}
+                //}
                 
-            }
-        }
-    }
+            //}
+        //}
+    //}
     
 }

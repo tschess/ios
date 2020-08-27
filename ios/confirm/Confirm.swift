@@ -46,7 +46,7 @@ class Confirm: UIViewController {
         self.game!.promptConfirm = false
         self.game!.confirm = nil
         
-        let draw: Bool = self.game!.getDraw()
+        let draw: Bool = self.game!.isDraw()
         if(draw){
             self.labelText.text = self.textDraw
             return

@@ -288,6 +288,16 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         }
     }
     
+    func renderDialogConfirm() {
+        DispatchQueue.main.async {
+            let storyboard: UIStoryboard = UIStoryboard(name: "Confirm", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier: "Confirm") as! Confirm
+            viewController.game = self.game!
+            viewController.playerSelf = self.playerSelf!
+            self.present(viewController, animated: true, completion: nil)
+        }
+    }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         var cell = collectionView.dequeueReusableCell(withReuseIdentifier: "square", for: indexPath) as! SquareCell
         cell.backgroundColor = assignCellBackgroundColor(index: indexPath.row)
@@ -429,8 +439,10 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         let resolved: Bool = self.game!.isResolved()
         if(resolved){
             self.endTimer()
+            self.renderDialogConfirm()
+            self.menuRefresh()
         }
-        self.labeler!.setResolve(game: self.game!)
+        self.labeler!.setResolve(resolved: resolved)
         self.countdown!.setLabelCountdown(update: self.game!.updated, resolved: resolved)
         self.labeler!.setTurn(resolved: resolved, turnUser: turnUser)
         self.labeler!.setNote(condition: condition, resolved: resolved, turnUser: turnUser, turnFlag: turnFlag)
