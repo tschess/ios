@@ -20,11 +20,6 @@ class Presenter: UIPresentationController {
         return CGRect(origin: origin, size: size)
     }
     
-    //init(width: Int, height: Int) {
-        //self.width = width
-        //self.height = height
-    //}
-    
     override init(presentedViewController: UIViewController, presenting presentingViewController: UIViewController?) {
         super.init(presentedViewController: presentedViewController, presenting: presentingViewController)
         
