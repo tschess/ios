@@ -13,17 +13,24 @@ import UIKit
 //TransInvalid
 class TransDelegate: NSObject, UIViewControllerTransitioningDelegate {
     
+    let width: Int// = 0 //242
+    let height: Int// = 0 //158
+    
+    init(width: Int, height: Int) {
+        self.width = width
+        self.height = height
+    }
+    
     func presentationController(
-        width: Int,
-        height: Int,
         forPresented presented: UIViewController,
         presenting: UIViewController?,
         source: UIViewController) -> UIPresentationController? {
         
-        let presenter: Presenter = Presenter(presentedViewController: presented, presenting: presenting) //PresInvalid
-        presenter.width = width
-        presenter.height = height
-        
+        let presenter: Presenter = Presenter(
+            width: self.width,
+            height: self.height,
+            presentedViewController: presented,
+            presenting: presenting) //PresInvalid
         return presenter
     }
 }

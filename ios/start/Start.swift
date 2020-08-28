@@ -106,13 +106,13 @@ class Start: UIViewController, UITextFieldDelegate {
         if(!usernameTextString!.isAlphanumeric || !passwordTextString!.isAlphanumeric){
             DispatchQueue.main.async {
                 let storyboard: UIStoryboard = UIStoryboard(name: "Invalid", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "Invalid") as! CompInvalid
+                let viewController = storyboard.instantiateViewController(withIdentifier: "Invalid") as! Invalid
                 self.present(viewController, animated: true, completion: nil)
             }
             return
         }
         self.activityIndicatorStart()
-    
+        
         let request: [String: String] = core.requestPayload(
             username: usernameTextString!.lowercased(),
             password: passwordTextString!)
@@ -148,7 +148,7 @@ class Start: UIViewController, UITextFieldDelegate {
                 self.setHintText()
                 
                 let storyboard: UIStoryboard = UIStoryboard(name: "Invalid", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "Invalid") as! CompInvalid
+                let viewController = storyboard.instantiateViewController(withIdentifier: "Invalid") as! Invalid
                 self.present(viewController, animated: true, completion: nil)
             }
         }
@@ -187,7 +187,7 @@ class Start: UIViewController, UITextFieldDelegate {
         if(!usernameTextString!.isAlphanumeric || !passwordTextString!.isAlphanumeric){
             DispatchQueue.main.async {
                 let storyboard: UIStoryboard = UIStoryboard(name: "Invalid", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "Invalid") as! CompInvalid
+                let viewController = storyboard.instantiateViewController(withIdentifier: "Invalid") as! Invalid
                 self.present(viewController, animated: true, completion: nil)
             }
             return
@@ -203,22 +203,22 @@ class Start: UIViewController, UITextFieldDelegate {
                 DispatchQueue.main.async {
                     let height: CGFloat = UIScreen.main.bounds.height
                     //SelectHome().execute(player: player, height: height)
-                //}
-                if(height.isLess(than: 750)){
-                    let storyboard: UIStoryboard = UIStoryboard(name: "HomeL", bundle: nil)
-                    let viewController = storyboard.instantiateViewController(withIdentifier: "HomeL") as! Home
+                    //}
+                    if(height.isLess(than: 750)){
+                        let storyboard: UIStoryboard = UIStoryboard(name: "HomeL", bundle: nil)
+                        let viewController = storyboard.instantiateViewController(withIdentifier: "HomeL") as! Home
+                        viewController.playerSelf = player
+                        self.navigationController?.pushViewController(viewController, animated: false)
+                        
+                        return
+                    }
+                    let storyboard: UIStoryboard = UIStoryboard(name: "HomeP", bundle: nil)
+                    let viewController = storyboard.instantiateViewController(withIdentifier: "HomeP") as! Home
                     viewController.playerSelf = player
                     self.navigationController?.pushViewController(viewController, animated: false)
                     
-                    return
                 }
-                let storyboard: UIStoryboard = UIStoryboard(name: "HomeP", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "HomeP") as! Home
-                viewController.playerSelf = player
-                self.navigationController?.pushViewController(viewController, animated: false)
-                
-                }
-                    return
+                return
             }
             DispatchQueue.main.async {
                 self.activityIndicator.isHidden = true
@@ -234,7 +234,7 @@ class Start: UIViewController, UITextFieldDelegate {
                 self.passwordTextField.attributedPlaceholder = NSAttributedString(string: "password",
                                                                                   attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
                 let storyboard: UIStoryboard = UIStoryboard(name: "Invalid", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "Invalid") as! CompInvalid
+                let viewController = storyboard.instantiateViewController(withIdentifier: "Invalid") as! Invalid
                 self.present(viewController, animated: true, completion: nil)
             }
             

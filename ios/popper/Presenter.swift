@@ -10,8 +10,8 @@ import UIKit
 
 class Presenter: UIPresentationController {
     
-    var width: Int = 0 //242
-    var height: Int = 0 //158
+    var width: Int
+    var height: Int
     
     override var frameOfPresentedViewInContainerView: CGRect {
         let bounds = presentingViewController.view.bounds
@@ -20,9 +20,16 @@ class Presenter: UIPresentationController {
         return CGRect(origin: origin, size: size)
     }
     
+    init(width: Int, height: Int, presentedViewController: UIViewController, presenting: UIViewController?) {
+        self.width = width
+        self.height = height
+        super.init(presentedViewController: presentedViewController, presenting: presenting)
+    }
+    
     override init(presentedViewController: UIViewController, presenting presentingViewController: UIViewController?) {
+        self.width = 0
+        self.height = 0
         super.init(presentedViewController: presentedViewController, presenting: presentingViewController)
-        
         presentedView?.autoresizingMask = [
             .flexibleTopMargin,
             .flexibleBottomMargin,

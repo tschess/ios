@@ -29,7 +29,7 @@ class Create: UIViewController, UITextFieldDelegate {
         if(!usernameTextString!.isAlphanumeric || !passwordTextString!.isAlphanumeric){
             DispatchQueue.main.async {
                 let storyboard: UIStoryboard = UIStoryboard(name: "Invalid", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "Invalid") as! CompInvalid
+                let viewController = storyboard.instantiateViewController(withIdentifier: "Invalid") as! Invalid
                 self.present(viewController, animated: true, completion: nil)
             }
             return
@@ -97,7 +97,7 @@ class Create: UIViewController, UITextFieldDelegate {
                 self.passwordTextField.attributedPlaceholder = NSAttributedString(string: "password: 6 alphanumeric characters",
                                                                                   attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
                 let storyboard: UIStoryboard = UIStoryboard(name: "Invalid", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "Invalid") as! CompInvalid
+                let viewController = storyboard.instantiateViewController(withIdentifier: "Invalid") as! Invalid
                 self.present(viewController, animated: true, completion: nil)
             }
             
