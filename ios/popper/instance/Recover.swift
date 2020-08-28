@@ -1,5 +1,5 @@
 //
-//  CompInvalid.swift
+//  Recover.swift
 //  ios
 //
 //  Created by S. Matthew English on 8/28/20.
@@ -8,30 +8,36 @@
 
 import UIKit
 
-class CompInvalid: UIViewController {
+class Recover: UIViewController {
     
-    private let transDelegate: TransDelegate = TransDelegate()
+    @IBOutlet weak var buttonAccept: UIButton!
+    
+    
+    private var transitionStart = TransRecov()
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        self.configure()
+        configure()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        self.configure()
+        configure()
     }
     
     func configure() {
-        self.modalPresentationStyle = .custom
-        self.modalTransitionStyle = .crossDissolve
-        self.transitioningDelegate = self.transDelegate
+        modalPresentationStyle = .custom
+        modalTransitionStyle = .crossDissolve
+        transitioningDelegate = transitionStart
     }
     
-    @IBOutlet weak var buttonAccept: UIButton!
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
     
     @IBAction func buttonClickAccept(_ sender: Any) {
         DispatchQueue.main.async {
+            
             self.presentingViewController!.dismiss(animated: false, completion: nil)
         }
     }

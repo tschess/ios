@@ -8,9 +8,22 @@
 
 import UIKit
 
+//presenter.width = 242
+//presenter.height = 158
 //TransInvalid
 class TransDelegate: NSObject, UIViewControllerTransitioningDelegate {
-    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
-        return Presenter(presentedViewController: presented, presenting: presenting) //PresInvalid
+    
+    func presentationController(
+        width: Int,
+        height: Int,
+        forPresented presented: UIViewController,
+        presenting: UIViewController?,
+        source: UIViewController) -> UIPresentationController? {
+        
+        let presenter: Presenter = Presenter(presentedViewController: presented, presenting: presenting) //PresInvalid
+        presenter.width = width
+        presenter.height = height
+        
+        return presenter
     }
 }

@@ -10,12 +10,20 @@ import UIKit
 
 class Presenter: UIPresentationController {
     
+    var width: Int = 0 //242
+    var height: Int = 0 //158
+    
     override var frameOfPresentedViewInContainerView: CGRect {
         let bounds = presentingViewController.view.bounds
-        let size = CGSize(width: 242, height: 158)
+        let size = CGSize(width: self.width, height: self.height)
         let origin = CGPoint(x: bounds.midX - size.width / 2, y: bounds.midY - size.height / 2)
         return CGRect(origin: origin, size: size)
     }
+    
+    //init(width: Int, height: Int) {
+        //self.width = width
+        //self.height = height
+    //}
     
     override init(presentedViewController: UIViewController, presenting presentingViewController: UIViewController?) {
         super.init(presentedViewController: presentedViewController, presenting: presentingViewController)
@@ -26,7 +34,6 @@ class Presenter: UIPresentationController {
             .flexibleLeftMargin,
             .flexibleRightMargin
         ]
-        
         presentedView?.translatesAutoresizingMaskIntoConstraints = true
     }
     
@@ -46,7 +53,7 @@ class Presenter: UIPresentationController {
             dimmingView.trailingAnchor.constraint(equalTo: superview.trailingAnchor),
             dimmingView.bottomAnchor.constraint(equalTo: superview.bottomAnchor),
             dimmingView.topAnchor.constraint(equalTo: superview.topAnchor)
-            ])
+        ])
         
         dimmingView.alpha = 0
         presentingViewController.transitionCoordinator?.animate(alongsideTransition: { _ in
