@@ -220,11 +220,22 @@
                                                     <constraint firstAttribute="trailing" secondItem="FDx-lr-9IC" secondAttribute="trailing" id="t4R-PQ-yDy"/>
                                                 </constraints>
                                             </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="✔️" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7bd-gT-WQm">
+                                                <rect key="frame" x="235" y="89.5" width="24" height="20"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="20" id="c6O-KB-uQa"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="19"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="wfP-tD-SfI" firstAttribute="centerY" secondItem="J9V-JR-501" secondAttribute="centerY" id="APZ-NI-GhZ"/>
+                                            <constraint firstItem="7bd-gT-WQm" firstAttribute="leading" secondItem="wfP-tD-SfI" secondAttribute="trailing" constant="2" id="qHe-dr-VGR"/>
+                                            <constraint firstItem="7bd-gT-WQm" firstAttribute="centerY" secondItem="J9V-JR-501" secondAttribute="centerY" constant="10" id="rVD-9c-lRB"/>
                                             <constraint firstItem="wfP-tD-SfI" firstAttribute="centerX" secondItem="J9V-JR-501" secondAttribute="centerX" id="y63-33-aup"/>
                                         </constraints>
                                     </view>

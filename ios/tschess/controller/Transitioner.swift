@@ -10,7 +10,7 @@ import UIKit
 
 class Transitioner {
     
-    let checker: Checker = Checker()
+    let checker: Checker
     
     var coordinate: [Int]?
     
@@ -20,6 +20,8 @@ class Transitioner {
     init(white: Bool, collectionView: BoardView){
         self.white = white
         self.collectionView = collectionView
+        
+        self.checker = Checker()
     }
     
     public func getCoordinate() -> [Int]? {

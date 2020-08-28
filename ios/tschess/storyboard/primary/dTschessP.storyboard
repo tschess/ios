@@ -218,11 +218,22 @@
                                                     <constraint firstAttribute="trailing" secondItem="FDx-lr-9IC" secondAttribute="trailing" id="t4R-PQ-yDy"/>
                                                 </constraints>
                                             </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="✔️" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uyw-K0-Cld">
+                                                <rect key="frame" x="289.33333333333331" y="172" width="26" height="30"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="30" id="6VD-a4-kwE"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="22"/>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
+                                            <constraint firstItem="uyw-K0-Cld" firstAttribute="leading" secondItem="wfP-tD-SfI" secondAttribute="trailing" constant="2" id="8xX-Jm-JOa"/>
                                             <constraint firstItem="wfP-tD-SfI" firstAttribute="centerY" secondItem="J9V-JR-501" secondAttribute="centerY" id="APZ-NI-GhZ"/>
+                                            <constraint firstItem="uyw-K0-Cld" firstAttribute="centerY" secondItem="J9V-JR-501" secondAttribute="centerY" constant="15" id="kyX-xe-2P3"/>
                                             <constraint firstItem="wfP-tD-SfI" firstAttribute="centerX" secondItem="J9V-JR-501" secondAttribute="centerX" id="y63-33-aup"/>
                                         </constraints>
                                     </view>

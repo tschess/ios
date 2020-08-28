@@ -11,28 +11,28 @@ import Foundation
 class Checker {
     
     func other(coordinate: [Int], state: [[Piece?]]) -> Bool {
-           let king = state[coordinate[0]][coordinate[1]]!
-           let affiliation = king.affiliation
-           loop0: for i in (0 ..< 8) {
-               loop1: for j in (0 ..< 8) {
-                   let tschessElement = state[i][j]
-                   if(tschessElement == nil) {
-                       continue loop1
-                   }
-                   if(tschessElement!.name == "PieceAnte") {
-                       continue loop1
-                   }
-                   let friendly = tschessElement!.affiliation == affiliation
-                   if(friendly){
-                       continue loop1
-                   }
-                   if(tschessElement!.validate(present: [i,j], proposed: coordinate, state: state)) {
-                       return true
-                   }
-               }
-           }
-           return false
-       }
+        let king = state[coordinate[0]][coordinate[1]]!
+        let affiliation = king.affiliation
+        loop0: for i in (0 ..< 8) {
+            loop1: for j in (0 ..< 8) {
+                let tschessElement = state[i][j]
+                if(tschessElement == nil) {
+                    continue loop1
+                }
+                if(tschessElement!.name == "PieceAnte") {
+                    continue loop1
+                }
+                let friendly = tschessElement!.affiliation == affiliation
+                if(friendly){
+                    continue loop1
+                }
+                if(tschessElement!.validate(present: [i,j], proposed: coordinate, state: state)) {
+                    return true
+                }
+            }
+        }
+        return false
+    }
     
     func kingCoordinate(affiliation: String, state: [[Piece?]]) -> [Int] {
         for i in (0 ..< 8) {
@@ -54,9 +54,15 @@ class Checker {
     
     public func listLegalMove(coordinate: [Int], state: [[Piece?]], king: [Int]) -> [[Int]: Array<[Int]>] {
         if(coordinate == king) {
-            return self.listKingMove(coordinate: king, state: state)
+            
+            let lkm = self.listKingMove(coordinate: king, state: state)
+            print("\(lkm.count)")
+            return lkm
         }
-        return self.thwartDict(king: king, state0: state)
+        
+        let td = self.thwartDict(king: king, state0: state)
+        print("\(td.count)")
+        return td
     }
     
     func listKingMove(coordinate: [Int], state: [[Piece?]]) -> [[Int]: Array<[Int]>] {
@@ -266,40 +272,53 @@ class Checker {
     }
     
     func mate(king: [Int], state: [[Piece?]]) -> Bool {
-           //let tschessElementMatrix = gamestate.getTschessElementMatrix()
-           let kingElement = state[king[0]][king[1]]!
-           var listValidateKing = Array<[Int]>()
-           for i in (0 ..< 8) {
-               for j in (0 ..< 8) {
-                   if(kingElement.validate(present: king, proposed: [i,j], state: state)){
-                       listValidateKing.append([i,j])
-                   }
-               }
-           }
-           let listOpponent = self.listOpponent(king: king, state: state)
-           
-           var listValidateKingOpponent = Array<[Int]>()
-           for move in listValidateKing {
-               for opponent in listOpponent {
-                   let opponentElement = state[opponent[0]][opponent[1]]!
-                   if(opponentElement.validate(present: opponent, proposed: move, state: state)) {
-                       listValidateKingOpponent.append(move)
-                   }
-               }
-           }
-           let listKingMove = listValidateKing.filter {!listValidateKingOpponent.contains($0)}
-           
-           if(listKingMove.count > 0){
-               return false
-           }
-           let listAttacker = self.listAttacker(king: king, state: state)
-           if(listAttacker.count > 1){
-               return true
-           }
-           if(!self.thwart(king: king, state0: state)){
-               return true
-           }
-           return false
-       }
+        //print("\n\n\n")
+        let kingElement = state[king[0]][king[1]]!
+        var listValidateKing = Array<[Int]>()
+        for i in (0 ..< 8) {
+            for j in (0 ..< 8) {
+                if(kingElement.validate(present: king, proposed: [i,j], state: state)){
+                    //let king: [Int] = checker.kingCoordinate(affiliation: piece.affiliation, state: state1)
+                    var stateX = state
+                    //let hold = stateX[i][j]
+                    stateX[i][j] = kingElement
+                    stateX[king[0]][king[1]] = nil
+                    let czech: Bool = self.auto(coordinate: [i,j], state: stateX)
+                    //stateX[i][j] = hold
+                    //stateX[king[0]][king[1]] = kingElement
+                    if(!czech){
+                        //print("[\(i),\(j)]")
+                        listValidateKing.append([i,j])
+                    }
+                }
+            }
+        }
+        let listOpponent = self.listOpponent(king: king, state: state)
+        var listValidateKingOpponent = Array<[Int]>()
+        for move in listValidateKing {
+            for opponent in listOpponent {
+                let opponentElement = state[opponent[0]][opponent[1]]!
+                if(opponentElement.validate(present: opponent, proposed: move, state: state)) {
+                    listValidateKingOpponent.append(move)
+                }
+            }
+        }
+        let listKingMove = listValidateKing.filter {!listValidateKingOpponent.contains($0)}
+        print("listKingMove: \(listKingMove.count)")
+        if(listKingMove.count > 0){
+            print("\n\n\n")
+            return false
+        }
+        let listAttacker = self.listAttacker(king: king, state: state)
+        print("listAttacker: \(listAttacker.count)")
+        if(listAttacker.count > 1){
+            return true
+        }
+        print("thwart(king: king, state0: state): \(self.thwart(king: king, state0: state))")
+        if(!self.thwart(king: king, state0: state)){
+            return true
+        }
+        return false
+    }
     
 }

@@ -280,12 +280,23 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     }
     
     func renderDialogPopup() {
-        DispatchQueue.main.async {
-            let storyboard: UIStoryboard = UIStoryboard(name: "DialogPopup", bundle: nil)
-            let viewController = storyboard.instantiateViewController(withIdentifier: "DialogPopup") as! DialogPopup
-            viewController.playerSelf = self.playerSelf!
-            self.present(viewController, animated: true, completion: nil)
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.id = self.playerSelf!.id
+        _ = UNUserNotificationCenter.current().getNotificationSettings { (settings) in
+            switch settings.authorizationStatus {
+            case .notDetermined:
+                DispatchQueue.main.async {
+                    let storyboard: UIStoryboard = UIStoryboard(name: "DialogPopup", bundle: nil)
+                    let viewController = storyboard.instantiateViewController(withIdentifier: "DialogPopup") as! DialogPopup
+                    viewController.playerSelf = self.playerSelf!
+                    self.present(viewController, animated: true, completion: nil)
+                }
+            default:
+                print("fuck")
+            }
         }
+        
+        
     }
     
     func renderDialogConfirm() {
@@ -455,11 +466,11 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         let king: [Int] = czecher.kingCoordinate(affiliation: affiliation, state: self.matrix!)
         let mate: Bool = czecher.mate(king: king, state: self.matrix!)
         let check: Bool = czecher.other(coordinate: king, state: self.matrix!)
-        //print("mate: \(mate)")
-        //print("check: \(check)")
+        print("mate: \(mate)")
+        print("check: \(check)")
         if (mate) {
             UpdateMate().execute(id: self.game!.id) { (result) in
-                //print("result: 999 --> \(result)")
+                print("result: 999 --> \(result)")
                 self.menuRefresh()
             }
             return
@@ -468,7 +479,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
             return
         }
         UpdateCheck().execute(id: self.game!.id) { (result) in
-            //print("result: 1313 --> \(result)")
+            print("result: 1313 --> \(result)")
         }
         
     }
