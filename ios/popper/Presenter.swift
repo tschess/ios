@@ -1,20 +1,14 @@
 //
-//  TransitioningDelegate.swift
+//  Presenter.swift
 //  ios
 //
-//  Created by Matthew on 2/5/20.
+//  Created by S. Matthew English on 8/28/20.
 //  Copyright © 2020 bahlsenwitz. All rights reserved.
 //
 
 import UIKit
 
-class TransInvalid: NSObject, UIViewControllerTransitioningDelegate {
-    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
-        return PresInvalid(presentedViewController: presented, presenting: presenting)
-    }
-}
-
-class PresInvalid: UIPresentationController {
+class Presenter: UIPresentationController {
     
     override var frameOfPresentedViewInContainerView: CGRect {
         let bounds = presentingViewController.view.bounds
@@ -71,3 +65,4 @@ class PresInvalid: UIPresentationController {
     }
     
 }
+

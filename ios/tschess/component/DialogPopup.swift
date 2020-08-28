@@ -10,31 +10,27 @@ import UIKit
 
 class DialogPopup: UIViewController {
     
-    var playerSelf: EntityPlayer?
-    
-    @IBOutlet weak var buttonAccept: UIButton!
-    
-    private var transitionStart = TransInvalid()
+    private let transDelegate: TransDelegate = TransDelegate()
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        configure()
+        self.configure()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        configure()
+        self.configure()
     }
     
     func configure() {
-        modalPresentationStyle = .custom
-        modalTransitionStyle = .crossDissolve
-        transitioningDelegate = transitionStart
+        self.modalPresentationStyle = .custom
+        self.modalTransitionStyle = .crossDissolve
+        self.transitioningDelegate = self.transDelegate
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
+    private var playerSelf: EntityPlayer?
+    
+    @IBOutlet weak var buttonAccept: UIButton!
     
     @IBAction func buttonClickAccept(_ sender: Any) {
         DispatchQueue.main.async {
@@ -44,7 +40,6 @@ class DialogPopup: UIViewController {
     }
     
     func notification() {
-        print("- NOTIFICATION -")
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.id = self.playerSelf!.id
         _ = UNUserNotificationCenter.current().getNotificationSettings { (settings) in
