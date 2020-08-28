@@ -43,6 +43,8 @@ class Confirm: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.imageShare.isHidden = true
+        
         self.game!.promptConfirm = false
         self.game!.confirm = nil
         
@@ -71,8 +73,16 @@ class Confirm: UIViewController {
         }
         DispatchQueue.main.async {
             self.presentingViewController!.dismiss(animated: false, completion: nil)
-            
-            //TODO: ought not be here...
+        }
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        self.menuRefresh()
+    }
+    
+    //TODO: ought not be here...
+    func menuRefresh() {
+        DispatchQueue.main.async {
             if let navigationController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController {
                 let viewControllers = navigationController.viewControllers
                 for vc in viewControllers {
@@ -83,7 +93,6 @@ class Confirm: UIViewController {
                 }
                 
             }
-            
         }
     }
     
