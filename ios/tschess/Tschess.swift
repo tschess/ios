@@ -21,6 +21,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     @IBOutlet weak var imageViewAvatar: UIImageView!
     @IBOutlet weak var labelUsername: UILabel!
     
+    @IBOutlet weak var labelCheck: UILabel!
     @IBOutlet weak var labelTitle: UILabel!
     @IBOutlet weak var labelRank: UILabel!
     @IBOutlet weak var labelElo: UILabel!
@@ -159,6 +160,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         self.activityIndicator.isHidden = true
         
         self.labeler = Labeler(
+            labelCheck: self.labelCheck,
             labelNote: self.labelNotification,
             labelTurn: self.labelTurnary,
             labelCount: self.labelCountdown,
@@ -280,22 +282,20 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     }
     
     func renderDialogPopup() {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        appDelegate.id = self.playerSelf!.id
-        _ = UNUserNotificationCenter.current().getNotificationSettings { (settings) in
-            switch settings.authorizationStatus {
-            case .notDetermined:
-                DispatchQueue.main.async {
-                    let storyboard: UIStoryboard = UIStoryboard(name: "DialogPopup", bundle: nil)
-                    let viewController = storyboard.instantiateViewController(withIdentifier: "DialogPopup") as! DialogPopup
-                    viewController.playerSelf = self.playerSelf!
-                    self.present(viewController, animated: true, completion: nil)
+        DispatchQueue.main.async {
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            appDelegate.id = self.playerSelf!.id
+            _ = UNUserNotificationCenter.current().getNotificationSettings { (settings) in
+                if (settings.authorizationStatus == .notDetermined) {
+                    DispatchQueue.main.async {
+                        let storyboard: UIStoryboard = UIStoryboard(name: "DialogPopup", bundle: nil)
+                        let viewController = storyboard.instantiateViewController(withIdentifier: "DialogPopup") as! DialogPopup
+                        viewController.playerSelf = self.playerSelf!
+                        self.present(viewController, animated: true, completion: nil)
+                    }
                 }
-            default:
-                print("fuck")
             }
         }
-        
         
     }
     
@@ -444,7 +444,6 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         let check: Bool = self.game!.on_check
         let username: String = self.playerSelf!.username
         let condition: String = self.game!.condition
-        //let winner: Bool = self.game!.getWinner(username: username)
         let turnFlag = self.game!.getTurnFlag(username: username)
         let turnUser = self.game!.getTurnUser()
         let resolved: Bool = self.game!.isResolved()
@@ -466,11 +465,8 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         let king: [Int] = czecher.kingCoordinate(affiliation: affiliation, state: self.matrix!)
         let mate: Bool = czecher.mate(king: king, state: self.matrix!)
         let check: Bool = czecher.other(coordinate: king, state: self.matrix!)
-        print("mate: \(mate)")
-        print("check: \(check)")
         if (mate) {
-            UpdateMate().execute(id: self.game!.id) { (result) in
-                print("result: 999 --> \(result)")
+            UpdateMate().execute(id: self.game!.id) { (_) in
                 self.menuRefresh()
             }
             return
@@ -478,8 +474,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         if (!check) {
             return
         }
-        UpdateCheck().execute(id: self.game!.id) { (result) in
-            print("result: 1313 --> \(result)")
+        UpdateCheck().execute(id: self.game!.id) { (_) in
         }
         
     }

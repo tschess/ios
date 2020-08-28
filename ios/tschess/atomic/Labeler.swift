@@ -14,8 +14,11 @@ class Labeler {
     let labelTurn: UILabel
     let labelCount: UILabel
     let labelTitle: UILabel
+    let labelCheck: UILabel
     
-    init(labelNote: UILabel, labelTurn: UILabel, labelCount: UILabel, labelTitle: UILabel) {
+    init(labelCheck: UILabel, labelNote: UILabel, labelTurn: UILabel, labelCount: UILabel, labelTitle: UILabel) {
+        self.labelCheck = labelCheck
+        self.labelCheck.isHidden = true
         self.labelNote = labelNote
         self.labelNote.isHidden = true
         self.labelTurn = labelTurn
@@ -88,9 +91,10 @@ class Labeler {
     
     func setCheck(check: Bool) {
         if(!check){
+            self.labelCheck.isHidden = true
             return
         }
-        self.labelTurn.text = "\(self.labelTurn.text!)"
+        self.labelCheck.isHidden = false
     }
     
     func setResolve(resolved: Bool) {

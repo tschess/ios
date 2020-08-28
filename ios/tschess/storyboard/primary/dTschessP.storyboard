@@ -313,6 +313,7 @@
                         <outlet property="activityIndicator" destination="RAM-33-HiP" id="ifP-re-Co7"/>
                         <outlet property="buttonBack" destination="5qi-EH-0fj" id="wXD-HK-sMo"/>
                         <outlet property="imageViewAvatar" destination="1vs-cy-tZZ" id="2RZ-21-XND"/>
+                        <outlet property="labelCheck" destination="uyw-K0-Cld" id="cC2-dl-qbF"/>
                         <outlet property="labelCountdown" destination="FDx-lr-9IC" id="BGC-yL-PM3"/>
                         <outlet property="labelElo" destination="YxI-dg-6nx" id="AfC-kj-wLX"/>
                         <outlet property="labelNotification" destination="iZ0-5e-lOV" id="QhI-bU-lRV"/>
