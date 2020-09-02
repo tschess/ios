@@ -65,7 +65,7 @@ class DrawResign: UIViewController  {
         self.imageDismiss.addGestureRecognizer(dismiss)
         self.imageDismiss.isUserInteractionEnabled = true
         
-        if(self.game!.status == "RESOLVED"){
+        if(self.game!.isResolved()){
             self.decativateDraw()
             self.buttonResign.titleLabel!.alpha = 0.5
             self.buttonResign.isUserInteractionEnabled = false

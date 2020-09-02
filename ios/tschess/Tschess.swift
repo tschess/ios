@@ -452,7 +452,9 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
             self.renderDialogConfirm()
             self.menuRefresh()
         }
-        self.labeler!.setResolve(resolved: resolved)
+        //self.labeler!.setResolve(resolved: resolved)
+        let winner: Bool = self.game!.getWinner(username: username)
+        self.labeler!.setResolve(resolved: resolved, condition: condition, winner: winner)
         self.countdown!.setLabelCountdown(update: self.game!.updated, resolved: resolved)
         self.labeler!.setTurn(resolved: resolved, turnUser: turnUser)
         self.labeler!.setNote(condition: condition, resolved: resolved, turnUser: turnUser, turnFlag: turnFlag)
@@ -480,7 +482,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     }
     
     private func getHighlightCell(indexPath: IndexPath, cell: SquareCell) -> SquareCell {
-        let resolved: Bool = self.game!.status == "RESOLVED"
+        let resolved: Bool = self.game!.isResolved()
         let highlight: String = self.game!.highlight
         if(highlight == "TBD" || resolved){
             return self.highlighter.getOrnamentCell(highlight: false, cell: cell)

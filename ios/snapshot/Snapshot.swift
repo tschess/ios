@@ -145,7 +145,7 @@ class Snapshot: UIViewController, UICollectionViewDataSource, UICollectionViewDe
         self.boardView.reloadData()
         self.boardView.isHidden = false
         
-        if(self.game!.promptConfirm){
+        if(self.game!.prompt){
             self.renderDialogConfirm()
         }
         

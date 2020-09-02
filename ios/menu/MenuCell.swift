@@ -50,10 +50,10 @@ class MenuCell: SwipeTableViewCell {
         let pictureTap = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
         self.imageViewSideSlide.addGestureRecognizer(pictureTap)
         self.imageViewSideSlide.isUserInteractionEnabled = true
-            
+        
         self.labelName.text = usernameOther
         self.imageViewAvatar.image = avatarImageOther
-        if(game.status == "RESOLVED"){
+        if(game.isResolved()){
             self.setHisto(game: game, username: usernameSelf)
             return
         }
@@ -61,7 +61,7 @@ class MenuCell: SwipeTableViewCell {
         let inbound: Bool = game.getTurnFlag(username: usernameSelf)
         if(game.status == "ONGOING"){
             self.imageViewSideSlide.isHidden = true
-    
+            
             if(inbound){
                 let image: UIImage = UIImage(named: "turn.on")!
                 self.imageViewAction.image = image
@@ -97,22 +97,8 @@ class MenuCell: SwipeTableViewCell {
     
     func setHisto(game: EntityGame, username: String) {
         let winner: Bool = game.getWinner(username: username)
-        let confirm: String? = game.confirm
-        if(confirm == nil) {
-            self.setConfirm(winner: winner, condition: game.condition)
-            return
-        } //not yet confirmed...
-        
-        let white: Bool = game.getWhite(username: username)
-        if(white){ // you are white...
-            if(confirm!.contains("WHITE")) {
-                self.getConfirm(game: game)
-                return
-            }
-            self.setConfirm(winner: winner, condition: game.condition)
-            return
-        }  // you aren't white...
-        if(confirm!.contains("BLACK")) {
+        let prompt: Bool = game.getPrompt(username: username)
+        if(prompt) {
             self.getConfirm(game: game)
             return
         }
@@ -120,7 +106,7 @@ class MenuCell: SwipeTableViewCell {
     }
     
     func getConfirm(game: EntityGame) {
-        game.promptConfirm = true
+        game.prompt = true
         self.viewContent.backgroundColor = UIColor.white
         self.labelName.textColor = UIColor.black
         self.imageViewAction.isHidden = true
@@ -135,11 +121,9 @@ class MenuCell: SwipeTableViewCell {
         self.imageViewAction.isHidden = true
         self.imageViewSideSlide.isHidden = false
         if(condition == "DRAW"){
-        //if(game.condition == "DRAW"){
             self.imageViewSideSlide.image = UIImage(named: "more_vert_yel")
             return
         }
-        //let winner: Bool = game.getWinner(username: username)
         if(winner){
             self.imageViewSideSlide.image = UIImage(named: "more_vert_grn")
             return

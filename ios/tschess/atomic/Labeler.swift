@@ -97,7 +97,8 @@ class Labeler {
         self.labelCheck.isHidden = false
     }
     
-    func setResolve(resolved: Bool) {
+    //func setResolve(resolved: Bool) {
+    func setResolve(resolved: Bool, condition: String, winner: Bool) {
         if(!resolved){
             return
         }
@@ -105,6 +106,22 @@ class Labeler {
         self.labelCount.isHidden = true
         self.labelTurn.isHidden = true
         self.labelNote.isHidden = true
+        /* * */
+        /* * */
+        /* * */
+        //self.labelTitle.text = "game over"
+        //self.labelCount.isHidden = true
+        //self.labelTurn.isHidden = true
+        //self.labelNote.isHidden = false
+        //if(condition == "DRAW"){
+            //self.labelNote.text = "😐 you draw. ✍️"
+            //return
+        //}
+        //if(winner){
+            //self.labelNote.text = "🙂 you win! 🎉"
+            //return
+        //}
+        //self.labelNote.text = "🙃 you lost. 🤝"
     }
     
 }

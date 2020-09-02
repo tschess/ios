@@ -29,7 +29,7 @@ class ParseGame {
         let on_check = json["on_check"]! as! Bool
         let highlight = json["highlight"]! as! String
         
-        let confirm = json["confirm"]! as? String
+        //let confirm = json["confirm"]! as? String
         
         let updated = json["updated"]! as! String
         
@@ -46,7 +46,7 @@ class ParseGame {
             turn: turn,
             on_check: on_check,
             highlight: highlight,
-            confirm: confirm,
+            //confirm: confirm,
             updated: updated)
         return game
     }

@@ -46,8 +46,7 @@ class Confirm: UIViewController {
         
         self.imageShare.isHidden = true
         
-        self.game!.promptConfirm = false
-        self.game!.confirm = nil
+        self.game!.prompt = false
         
         let draw: Bool = self.game!.isDraw()
         if(draw){

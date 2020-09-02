@@ -227,7 +227,16 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
         if(game.status == "ONGOING"){
             return nil
         }
-        if(game.status == "RESOLVED"){
+        /* * */
+        /* * */
+        /* * */
+        if(game.getPrompt(username: username)){
+            return nil
+        }
+        /* * */
+        /* * */
+        /* * */
+        if(game.isResolved()){
             return self.swipeResolved(orientation: orientation, game: game)
         }
         if(inbound){
@@ -255,7 +264,7 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         let cell = tableView.cellForRow(at: indexPath) as! MenuCell
         let game = self.listEntityGame[indexPath.row]
-        if(game.status == "RESOLVED"){
+        if(game.isResolved()){
             DispatchQueue.main.async {
                 cell.hideSwipe(animated: false, completion: nil)
                 

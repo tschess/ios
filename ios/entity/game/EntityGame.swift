@@ -10,27 +10,21 @@ import UIKit
 
 class EntityGame: Equatable, Hashable {
     
-    var promptConfirm: Bool
+    var prompt: Bool         //  A
     
-    var id: String
-    var state: [[String]]
-    var moves: Int
-    var status: String
-    var condition: String
-    
-    var white: EntityPlayer
-    var black: EntityPlayer
-    
-    var challenger: String
-    var winner: String?
-    var turn: String
-    var on_check: Bool
-    var highlight: String
-
-    //confirm = json["confirm"]! as? String
-    var confirm: String?
-    
-    var updated: String
+    var id: String           //  0
+    var state: [[String]]    //  1
+    var moves: Int           //  2
+    var status: String       //  3
+    var condition: String    //  4
+    var white: EntityPlayer  //  5
+    var black: EntityPlayer  //  6
+    var challenger: String   //  7
+    var winner: String?      //  8
+    var turn: String         //  9
+    var on_check: Bool       // 10
+    var highlight: String    // 11
+    var updated: String      // 12
     
     init(
         id: String,
@@ -45,9 +39,6 @@ class EntityGame: Equatable, Hashable {
         turn: String,
         on_check: Bool,
         highlight: String,
-        
-        confirm: String?,
-        
         updated: String
     ) {
         self.id = id
@@ -62,12 +53,9 @@ class EntityGame: Equatable, Hashable {
         self.turn = turn
         self.on_check = on_check
         self.highlight = highlight
-        
-        self.confirm = confirm
-        
         self.updated = updated
         
-        self.promptConfirm = false
+        self.prompt = false
     }
     
     func hash(into hasher: inout Hasher) {
@@ -220,6 +208,23 @@ class EntityGame: Equatable, Hashable {
     }
     
     func isResolved() -> Bool {
-        return self.status == "RESOLVED"
+        return self.status.contains("RESOLVED")
+    }
+    
+    func getPrompt(username: String) -> Bool {
+        let resolved: Bool = self.status == "RESOLVED"
+        if(resolved){
+            return false
+        }
+        let ongoing: Bool = self.status == "ONGOING"
+        let pending: Bool = self.status == "PENDING"
+        if(ongoing || pending) {
+            return false
+        }
+        let white: Bool = self.white.username == username
+        if(white){
+            return self.status.contains("WHITE")
+        }
+        return self.status.contains("BLACK")
     }
 }
