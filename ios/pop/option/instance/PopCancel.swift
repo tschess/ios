@@ -51,27 +51,29 @@ class PopCancel: UIViewController {
         
         if let navigationController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController {
             navigationController.dismiss(animated: true, completion: {
-                
-                
                 if let viewControllers = self.navigationController?.viewControllers {
                     for vc in viewControllers {
                         let ty = String(describing: type(of: vc))
                         if(ty == "Play"){
-                            let home: Play = vc as! Play
-                            home.playerSelf = self.playerSelf!
+                            let play: Play = vc as! Play
+                            play.playerSelf = self.playerSelf!
+                            //play.view.layoutIfNeeded()
                         }
                         if(ty == "Ack"){
-                            let home: Ack = vc as! Ack
-                            home.playerSelf = self.playerSelf!
+                            let ack: Ack = vc as! Ack
+                            ack.playerSelf = self.playerSelf!
+                            //ack.view.layoutIfNeeded()
                         }
                         if(ty == "Challenge"){
                             let home: Challenge = vc as! Challenge
                             home.playerSelf = self.playerSelf!
+                            //home.view.layoutIfNeeded()
                         }
-                        if(ty == "Config"){
-                            let config: Config = vc as! Config
-                            config.playerSelf = self.playerSelf!
-                        }
+                        //if(ty == "Config"){
+                            //let config: Config = vc as! Config
+                            //config.playerSelf = self.playerSelf!
+                            //config.view.layoutIfNeeded()
+                        //}
                     }
                 }
                 navigationController.popViewController(animated: false)

@@ -66,19 +66,11 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
         return viewController
     }
     
-    //
-    //@objc func fire() {
-        //print("FIRE!!!")
-        //self.labelHoldDrag.isHidden = true
-    //}
-    
-    
     //MARK: Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.labelHoldDrag.isHidden = true
-        //Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(fire), userInfo: nil, repeats: false)
         
         self.configCollectionView.isHidden = true
         self.configCollectionView.delegate = self
@@ -158,14 +150,6 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
     private func setTotalPointValue() {
         let totalPointValue: Int = self.editCore.getPointValue(config: self.configActiv!)
         self.totalPointLabel.text = String(totalPointValue)
-        //if(totalPointValue < 39){
-            //self.labelHoldDrag.isHidden = true
-            //self.viewPointLabel.isHidden = false
-            //self.tschessElementCollectionView.isHidden = false
-            //return
-        //}
-        //self.viewPointLabel.isHidden = true
-        //self.tschessElementCollectionView.isHidden = true
     }
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
@@ -178,6 +162,13 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
             let viewController = storyboard.instantiateViewController(withIdentifier: "PopHelp") as! PopDismiss
             self.present(viewController, animated: true, completion: nil)
         default:
+            
+            if let viewControllers = self.navigationController?.viewControllers {
+                for vc in viewControllers {
+                    print("o---> It is in stack \(String(describing: type(of: vc)))")
+                }
+            }
+            
             DispatchQueue.main.async() {
                 self.activityIndicator!.isHidden = false
                 self.activityIndicator!.startAnimating()
@@ -188,17 +179,57 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
             let updateConfig = ["id": id, "config": config, "index": self.selection!] as [String: Any]
             
             UpdateConfig().execute(requestPayload: updateConfig) { (result) in
+                
+                
                 DispatchQueue.main.async() {
                     self.activityIndicator!.isHidden = true
                     self.activityIndicator!.stopAnimating()
                     
+                    
                     guard let navigationController = self.navigationController else { return }
-                    let navigationArray: [UIViewController] = navigationController.viewControllers // To get all UIViewController stack as Array
-                    let config: Config = navigationArray[navigationArray.count - 2] as! Config
-                    config.playerSelf = result!
+                    var navigationArray = navigationController.viewControllers // To get all UIViewController stack as Array
+                    
+                    navigationArray.remove(at: 1) //config
                     self.navigationController?.viewControllers = navigationArray
-                    self.navigationController?.popViewController(animated: false)
+                    
+                    if let viewControllers = self.navigationController?.viewControllers {
+                        for vc in viewControllers {
+                            print("g---> It is in stack \(String(describing: type(of: vc)))")
+                        }
+                    }
+                    
+                    var storyboard: UIStoryboard = UIStoryboard(name: "ConfigP", bundle: nil)
+                    var viewController = storyboard.instantiateViewController(withIdentifier: "ConfigP") as! Config
+                    if(UIScreen.main.bounds.height.isLess(than: 750)){
+                        storyboard = UIStoryboard(name: "ConfigL", bundle: nil)
+                        viewController = storyboard.instantiateViewController(withIdentifier: "ConfigL") as! Config
+                    }
+                    viewController.playerSelf = result!
+                    viewController.labelTapHidden = true
+                    
+                    
+                    self.navigationController?.pushViewController(viewController, animated: false)
+                    
+                    
+                    guard let navigationController0 = self.navigationController else { return }
+                    var navigationArray0 = navigationController0.viewControllers // To get all UIViewController stack as Array
+                    
+                    navigationArray0.remove(at: 1) //config
+                    
+                    for vc in navigationArray0 {
+                        print("fff---> It is in stack \(String(describing: type(of: vc)))")
+                    }
+                    
+                    self.navigationController?.viewControllers = navigationArray0
+                    
+                    
+                    
+                    
                 }
+                
+                
+                
+                
                 
             }
         }
