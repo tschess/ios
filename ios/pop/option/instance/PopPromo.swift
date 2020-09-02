@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Promotion: UIViewController {
+class Promo: UIViewController {
     
     var tschess: Tschess?
     

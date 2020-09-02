@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DialogPopup: UIViewController {
+class PopUp: UIViewController {
     
     private let transDelegate: TransDelegate = TransDelegate(width: 242, height: 158)
     

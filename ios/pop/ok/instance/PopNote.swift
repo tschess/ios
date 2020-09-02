@@ -1,19 +1,18 @@
 //
-//  DialogPoison.swift
+//  Notification.swift
 //  ios
 //
-//  Created by S. Matthew English on 5/12/20.
+//  Created by S. Matthew English on 7/11/20.
 //  Copyright © 2020 bahlsenwitz. All rights reserved.
 //
 
 import UIKit
 
-class DialogPoison: UIViewController {
+class Note: UIViewController {
     
     @IBOutlet weak var buttonAccept: UIButton!
     
-    
-    private var transitionStart = TransDialog()
+    private var transitionStart = TransNote()
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)

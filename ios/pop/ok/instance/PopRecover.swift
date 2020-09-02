@@ -1,19 +1,18 @@
 //
-//  DialogPassant.swift
+//  Recover.swift
 //  ios
 //
-//  Created by S. Matthew English on 5/12/20.
+//  Created by S. Matthew English on 8/28/20.
 //  Copyright © 2020 bahlsenwitz. All rights reserved.
 //
 
 import UIKit
 
-class DialogPassant: UIViewController {
+class Recover: UIViewController {
     
     @IBOutlet weak var buttonAccept: UIButton!
     
-    
-    private var transitionStart = TransDialog()
+    private let transDelegate: TransDelegate = TransDelegate(width: 272, height: 158)
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -28,7 +27,7 @@ class DialogPassant: UIViewController {
     func configure() {
         modalPresentationStyle = .custom
         modalTransitionStyle = .crossDissolve
-        transitioningDelegate = transitionStart
+        transitioningDelegate = transDelegate
     }
     
     override func viewDidLoad() {

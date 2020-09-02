@@ -1,19 +1,19 @@
 //
-//  Evaluate.swift
+//  DialogPassant.swift
 //  ios
 //
-//  Created by Matthew on 2/5/20.
+//  Created by S. Matthew English on 5/12/20.
 //  Copyright © 2020 bahlsenwitz. All rights reserved.
 //
 
 import UIKit
 
-class CompRecov: UIViewController {
+class Passant: UIViewController {
     
     @IBOutlet weak var buttonAccept: UIButton!
     
     
-    private var transitionStart = TransRecov()
+    private var transitionStart = TransDialog()
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)

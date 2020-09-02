@@ -68,6 +68,10 @@ class Cancel: UIViewController {
                             let home: Challenge = vc as! Challenge
                             home.playerSelf = self.playerSelf!
                         }
+                        if(ty == "Config"){
+                            let config: Config = vc as! Config
+                            config.playerSelf = self.playerSelf!
+                        }
                     }
                 }
                 navigationController.popViewController(animated: false)

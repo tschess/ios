@@ -322,7 +322,7 @@ class Start: UIViewController, UITextFieldDelegate {
     @IBAction func buttonClickRecover(_ sender: Any) {
         DispatchQueue.main.async {
             let storyboard: UIStoryboard = UIStoryboard(name: "Recover", bundle: nil)
-            let viewController = storyboard.instantiateViewController(withIdentifier: "Recover") as! CompRecov
+            let viewController = storyboard.instantiateViewController(withIdentifier: "Recover") as! Recover
             self.present(viewController, animated: true, completion: nil)
         }
     }

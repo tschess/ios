@@ -1,18 +1,19 @@
 //
-//  Notification.swift
+//  DialogPoison.swift
 //  ios
 //
-//  Created by S. Matthew English on 7/11/20.
+//  Created by S. Matthew English on 5/12/20.
 //  Copyright © 2020 bahlsenwitz. All rights reserved.
 //
 
 import UIKit
 
-class CompNote: UIViewController {
+class PoisonPawn: UIViewController {
     
     @IBOutlet weak var buttonAccept: UIButton!
     
-    private var transitionStart = TransNote()
+    
+    private var transitionStart = TransDialog()
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
