@@ -268,7 +268,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     func renderDialogPoison() {
         DispatchQueue.main.async {
             let storyboard: UIStoryboard = UIStoryboard(name: "PopPoison", bundle: nil)
-            let viewController = storyboard.instantiateViewController(withIdentifier: "PopPoison") as! PopPoison
+            let viewController = storyboard.instantiateViewController(withIdentifier: "PopPoison") as! PopDismiss
             self.present(viewController, animated: true, completion: nil)
         }
     }
@@ -276,7 +276,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     func renderDialogPassant() {
         DispatchQueue.main.async {
             let storyboard: UIStoryboard = UIStoryboard(name: "PopPassant", bundle: nil)
-            let viewController = storyboard.instantiateViewController(withIdentifier: "PopPassant") as! PopPassant
+            let viewController = storyboard.instantiateViewController(withIdentifier: "PopPassant") as! PopDismiss
             self.present(viewController, animated: true, completion: nil)
         }
     }

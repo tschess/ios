@@ -106,7 +106,7 @@ class Start: UIViewController, UITextFieldDelegate {
         if(!usernameTextString!.isAlphanumeric || !passwordTextString!.isAlphanumeric){
             DispatchQueue.main.async {
                 let storyboard: UIStoryboard = UIStoryboard(name: "PopInvalid", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "PopInvalid") as! PopInvalid
+                let viewController = storyboard.instantiateViewController(withIdentifier: "PopInvalid") as! PopDismiss
                 self.present(viewController, animated: true, completion: nil)
             }
             return
@@ -148,7 +148,7 @@ class Start: UIViewController, UITextFieldDelegate {
                 self.setHintText()
                 
                 let storyboard: UIStoryboard = UIStoryboard(name: "PopInvalid", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "PopInvalid") as! PopInvalid
+                let viewController = storyboard.instantiateViewController(withIdentifier: "PopInvalid") as! PopDismiss
                 self.present(viewController, animated: true, completion: nil)
             }
         }
@@ -187,7 +187,7 @@ class Start: UIViewController, UITextFieldDelegate {
         if(!usernameTextString!.isAlphanumeric || !passwordTextString!.isAlphanumeric){
             DispatchQueue.main.async {
                 let storyboard: UIStoryboard = UIStoryboard(name: "PopInvalid", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "PopInvalid") as! PopInvalid
+                let viewController = storyboard.instantiateViewController(withIdentifier: "PopInvalid") as! PopDismiss
                 self.present(viewController, animated: true, completion: nil)
             }
             return
@@ -234,7 +234,7 @@ class Start: UIViewController, UITextFieldDelegate {
                 self.passwordTextField.attributedPlaceholder = NSAttributedString(string: "password",
                                                                                   attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
                 let storyboard: UIStoryboard = UIStoryboard(name: "PopInvalid", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "PopInvalid") as! PopInvalid
+                let viewController = storyboard.instantiateViewController(withIdentifier: "PopInvalid") as! PopDismiss
                 self.present(viewController, animated: true, completion: nil)
             }
             

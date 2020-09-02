@@ -221,7 +221,7 @@ class EditOther: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate
             self.backButtonClick("")
         case 2:
             let storyboard: UIStoryboard = UIStoryboard(name: "PopHelp", bundle: nil)
-            let viewController = storyboard.instantiateViewController(withIdentifier: "PopHelp") as! PopHelp
+            let viewController = storyboard.instantiateViewController(withIdentifier: "PopHelp") as! PopDismiss
             self.present(viewController, animated: true, completion: nil)
         default:
             DispatchQueue.main.async() {

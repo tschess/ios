@@ -22,13 +22,7 @@
 		83ACC67B250011A100D394D0 /* PopNoop.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83ACC67A250011A100D394D0 /* PopNoop.storyboard */; };
 		83ACC67D250011C700D394D0 /* PopPoison.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83ACC67C250011C700D394D0 /* PopPoison.storyboard */; };
 		83ACC67F2500120100D394D0 /* PopPassant.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83ACC67E2500120100D394D0 /* PopPassant.storyboard */; };
-		83ACC6832500126A00D394D0 /* PopInvalid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83ACC6822500126A00D394D0 /* PopInvalid.swift */; };
-		83ACC6852500128600D394D0 /* PopRecover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83ACC6842500128600D394D0 /* PopRecover.swift */; };
-		83ACC687250012B400D394D0 /* PopHelp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83ACC686250012B400D394D0 /* PopHelp.swift */; };
 		83ACC689250012CE00D394D0 /* PopCancel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83ACC688250012CE00D394D0 /* PopCancel.swift */; };
-		83ACC68B250012EF00D394D0 /* PopNoop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83ACC68A250012EF00D394D0 /* PopNoop.swift */; };
-		83ACC68D2500131400D394D0 /* PopPassant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83ACC68C2500131400D394D0 /* PopPassant.swift */; };
-		83ACC68F2500133000D394D0 /* PopPoison.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83ACC68E2500133000D394D0 /* PopPoison.swift */; };
 		83ACC6932500143900D394D0 /* PopPromo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83ACC6922500143900D394D0 /* PopPromo.swift */; };
 		83ACC6952500145200D394D0 /* PopPromo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83ACC6942500145200D394D0 /* PopPromo.storyboard */; };
 		83ACC6972500148C00D394D0 /* PopEval.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83ACC6962500148C00D394D0 /* PopEval.storyboard */; };
@@ -36,13 +30,13 @@
 		83ACC69B2500151200D394D0 /* PopOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83ACC69A2500151200D394D0 /* PopOption.swift */; };
 		83ACC69D2500152D00D394D0 /* PopEval.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83ACC69C2500152D00D394D0 /* PopEval.swift */; };
 		83ACC69F2500159C00D394D0 /* PopNote.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83ACC69E2500159C00D394D0 /* PopNote.storyboard */; };
-		83ACC6A1250015F000D394D0 /* PopNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83ACC6A0250015F000D394D0 /* PopNote.swift */; };
 		83ACC6A32500165500D394D0 /* PopConfirm.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83ACC6A22500165500D394D0 /* PopConfirm.storyboard */; };
 		83ACC6A52500171800D394D0 /* PopConfirm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83ACC6A42500171800D394D0 /* PopConfirm.swift */; };
 		83ACC6A82500173F00D394D0 /* UpdateConfirm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83ACC6A72500173F00D394D0 /* UpdateConfirm.swift */; };
 		83ACC6AE250021AE00D394D0 /* PopUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83ACC6AD250021AE00D394D0 /* PopUp.storyboard */; };
 		83ACC6B0250021DE00D394D0 /* PopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83ACC6AF250021DE00D394D0 /* PopUp.swift */; };
 		83ACC6B2250021FA00D394D0 /* PopDismiss.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83ACC6B1250021FA00D394D0 /* PopDismiss.swift */; };
+		83ACC6B4250023D100D394D0 /* PopRecover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83ACC6B3250023D100D394D0 /* PopRecover.swift */; };
 		83D6E87A24F042810071D779 /* Labeler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D6E87924F042810071D779 /* Labeler.swift */; };
 		83D758EC24CA0E79008DC4B5 /* CoreStart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D758EB24CA0E79008DC4B5 /* CoreStart.swift */; };
 		B7021F2723FDEE6100C9346A /* ConfigP.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7021F2623FDEE6100C9346A /* ConfigP.storyboard */; };
@@ -233,13 +227,7 @@
 		83ACC67A250011A100D394D0 /* PopNoop.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PopNoop.storyboard; sourceTree = "<group>"; };
 		83ACC67C250011C700D394D0 /* PopPoison.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PopPoison.storyboard; sourceTree = "<group>"; };
 		83ACC67E2500120100D394D0 /* PopPassant.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PopPassant.storyboard; sourceTree = "<group>"; };
-		83ACC6822500126A00D394D0 /* PopInvalid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopInvalid.swift; sourceTree = "<group>"; };
-		83ACC6842500128600D394D0 /* PopRecover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopRecover.swift; sourceTree = "<group>"; };
-		83ACC686250012B400D394D0 /* PopHelp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopHelp.swift; sourceTree = "<group>"; };
 		83ACC688250012CE00D394D0 /* PopCancel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopCancel.swift; sourceTree = "<group>"; };
-		83ACC68A250012EF00D394D0 /* PopNoop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopNoop.swift; sourceTree = "<group>"; };
-		83ACC68C2500131400D394D0 /* PopPassant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopPassant.swift; sourceTree = "<group>"; };
-		83ACC68E2500133000D394D0 /* PopPoison.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopPoison.swift; sourceTree = "<group>"; };
 		83ACC6922500143900D394D0 /* PopPromo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopPromo.swift; sourceTree = "<group>"; };
 		83ACC6942500145200D394D0 /* PopPromo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PopPromo.storyboard; sourceTree = "<group>"; };
 		83ACC6962500148C00D394D0 /* PopEval.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PopEval.storyboard; sourceTree = "<group>"; };
@@ -247,13 +235,13 @@
 		83ACC69A2500151200D394D0 /* PopOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopOption.swift; sourceTree = "<group>"; };
 		83ACC69C2500152D00D394D0 /* PopEval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopEval.swift; sourceTree = "<group>"; };
 		83ACC69E2500159C00D394D0 /* PopNote.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PopNote.storyboard; sourceTree = "<group>"; };
-		83ACC6A0250015F000D394D0 /* PopNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopNote.swift; sourceTree = "<group>"; };
 		83ACC6A22500165500D394D0 /* PopConfirm.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PopConfirm.storyboard; sourceTree = "<group>"; };
 		83ACC6A42500171800D394D0 /* PopConfirm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopConfirm.swift; sourceTree = "<group>"; };
 		83ACC6A72500173F00D394D0 /* UpdateConfirm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateConfirm.swift; sourceTree = "<group>"; };
 		83ACC6AD250021AE00D394D0 /* PopUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PopUp.storyboard; sourceTree = "<group>"; };
 		83ACC6AF250021DE00D394D0 /* PopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUp.swift; sourceTree = "<group>"; };
 		83ACC6B1250021FA00D394D0 /* PopDismiss.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopDismiss.swift; sourceTree = "<group>"; };
+		83ACC6B3250023D100D394D0 /* PopRecover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopRecover.swift; sourceTree = "<group>"; };
 		83D6E87924F042810071D779 /* Labeler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Labeler.swift; sourceTree = "<group>"; };
 		83D758EB24CA0E79008DC4B5 /* CoreStart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreStart.swift; sourceTree = "<group>"; };
 		AD83F59EDBC27D005F033F41 /* Pods-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios.debug.xcconfig"; path = "Target Support Files/Pods-ios/Pods-ios.debug.xcconfig"; sourceTree = "<group>"; };
@@ -477,21 +465,21 @@
 			isa = PBXGroup;
 			children = (
 				83ACC66D2500107400D394D0 /* option */,
-				83ACC66C2500106D00D394D0 /* ok */,
+				83ACC66C2500106D00D394D0 /* dismiss */,
 				8385908B24F98AD600BBC11C /* TransDelegate.swift */,
 				8385908D24F98B2A00BBC11C /* Presenter.swift */,
 			);
 			path = pop;
 			sourceTree = "<group>";
 		};
-		83ACC66C2500106D00D394D0 /* ok */ = {
+		83ACC66C2500106D00D394D0 /* dismiss */ = {
 			isa = PBXGroup;
 			children = (
-				83ACC66F2500108E00D394D0 /* instance */,
 				83ACC66E2500108200D394D0 /* storyboard */,
 				83ACC6B1250021FA00D394D0 /* PopDismiss.swift */,
+				83ACC6B3250023D100D394D0 /* PopRecover.swift */,
 			);
-			path = ok;
+			path = dismiss;
 			sourceTree = "<group>";
 		};
 		83ACC66D2500107400D394D0 /* option */ = {
@@ -515,20 +503,6 @@
 				83ACC69E2500159C00D394D0 /* PopNote.storyboard */,
 			);
 			path = storyboard;
-			sourceTree = "<group>";
-		};
-		83ACC66F2500108E00D394D0 /* instance */ = {
-			isa = PBXGroup;
-			children = (
-				83ACC6822500126A00D394D0 /* PopInvalid.swift */,
-				83ACC6842500128600D394D0 /* PopRecover.swift */,
-				83ACC686250012B400D394D0 /* PopHelp.swift */,
-				83ACC68A250012EF00D394D0 /* PopNoop.swift */,
-				83ACC68C2500131400D394D0 /* PopPassant.swift */,
-				83ACC68E2500133000D394D0 /* PopPoison.swift */,
-				83ACC6A0250015F000D394D0 /* PopNote.swift */,
-			);
-			path = instance;
 			sourceTree = "<group>";
 		};
 		83ACC6702500109700D394D0 /* storyboard */ = {
@@ -1798,14 +1772,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				83ACC687250012B400D394D0 /* PopHelp.swift in Sources */,
 				B7BE12B323EB0D6900ADA499 /* PawnOffense.swift in Sources */,
 				B7BE12A323EB0BB800ADA499 /* Passant.swift in Sources */,
 				83ACC6932500143900D394D0 /* PopPromo.swift in Sources */,
-				83ACC68F2500133000D394D0 /* PopPoison.swift in Sources */,
 				B7BE11A423EA972D00ADA499 /* Diagonal.swift in Sources */,
 				B7BE11C023EA9E3D00ADA499 /* PawnWhite.swift in Sources */,
-				83ACC6852500128600D394D0 /* PopRecover.swift in Sources */,
 				8385908C24F98AD600BBC11C /* TransDelegate.swift in Sources */,
 				B7BE11B923EA9DD400ADA499 /* BishopWhite.swift in Sources */,
 				B7BE128F23EB09C700ADA499 /* GameRequest.swift in Sources */,
@@ -1830,7 +1801,6 @@
 				B7EF702123EA28E300BAF2E2 /* EntityGame.swift in Sources */,
 				B7D8ECDB240820F9001B5D2D /* HunterWhite.swift in Sources */,
 				B771364E23F1C118007F0962 /* UpdateCheck.swift in Sources */,
-				83ACC6A1250015F000D394D0 /* PopNote.swift in Sources */,
 				B7BE12BF23EB0EC600ADA499 /* Evaluation.swift in Sources */,
 				B708D0DD236B351000A899F9 /* Init.swift in Sources */,
 				B7BE124823EB023700ADA499 /* Fairies.swift in Sources */,
@@ -1855,9 +1825,9 @@
 				B771365423F222AF007F0962 /* UpdateMate.swift in Sources */,
 				835FADA524F00A910080A194 /* Countdown.swift in Sources */,
 				B7BE123A23EAFBF500ADA499 /* Ack.swift in Sources */,
-				83ACC68B250012EF00D394D0 /* PopNoop.swift in Sources */,
 				8358928224BE65A0004F9703 /* UpdatePush.swift in Sources */,
 				B74136C723DE34A0001B3D60 /* RequestLogin.swift in Sources */,
+				83ACC6B4250023D100D394D0 /* PopRecover.swift in Sources */,
 				B7AF787323E0B9DA00BAD8EC /* RequestPage.swift in Sources */,
 				B7BE12AE23EB0CDB00ADA499 /* Checker.swift in Sources */,
 				B745AD3523F353BF00E450EF /* RequestCreate.swift in Sources */,
@@ -1885,7 +1855,6 @@
 				B7FA7BFB23ECF79400E63045 /* UpdateConfig.swift in Sources */,
 				B7BE120B23EAD3E900ADA499 /* Grasshopper.swift in Sources */,
 				B7A6B89D240D99E100840156 /* MenuCell.swift in Sources */,
-				83ACC68D2500131400D394D0 /* PopPassant.swift in Sources */,
 				B7BE11F723EAC97200ADA499 /* EditOther.swift in Sources */,
 				B7BE116F23EA91CD00ADA499 /* Snapshot.swift in Sources */,
 				B7D8ECD524082096001B5D2D /* PoisonBlack.swift in Sources */,
@@ -1901,7 +1870,6 @@
 				B7BE11E823EAC40800ADA499 /* SerializerConfig.swift in Sources */,
 				B7D8ECD324082080001B5D2D /* PoisonWhite.swift in Sources */,
 				B7BE120D23EAD42C00ADA499 /* Fairy.swift in Sources */,
-				83ACC6832500126A00D394D0 /* PopInvalid.swift in Sources */,
 				83085F28248048CD00D31CF0 /* NoteKey.swift in Sources */,
 				B70F0C0D22EBC075001415AE /* AppDelegate.swift in Sources */,
 				B745AD3123F2FC2000E450EF /* RequestPlay.swift in Sources */,

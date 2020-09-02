@@ -56,7 +56,7 @@ class PopUp: UIViewController {
             default:
                 DispatchQueue.main.async {
                     let storyboard: UIStoryboard = UIStoryboard(name: "PopNote", bundle: nil)
-                    let viewController = storyboard.instantiateViewController(withIdentifier: "PopNote") as! PopNote
+                    let viewController = storyboard.instantiateViewController(withIdentifier: "PopNote") as! PopDismiss
                     self.present(viewController, animated: true, completion: nil)
                 }
             }
