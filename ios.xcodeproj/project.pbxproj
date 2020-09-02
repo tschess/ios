@@ -16,7 +16,6 @@
 		8385908C24F98AD600BBC11C /* TransDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8385908B24F98AD600BBC11C /* TransDelegate.swift */; };
 		8385908E24F98B2A00BBC11C /* Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8385908D24F98B2A00BBC11C /* Presenter.swift */; };
 		83ACC673250010D400D394D0 /* PopInvalid.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83ACC672250010D400D394D0 /* PopInvalid.storyboard */; };
-		83ACC6752500110B00D394D0 /* PopRecover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83ACC6742500110B00D394D0 /* PopRecover.storyboard */; };
 		83ACC6772500113A00D394D0 /* PopHelp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83ACC6762500113A00D394D0 /* PopHelp.storyboard */; };
 		83ACC6792500116C00D394D0 /* PopCancel.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83ACC6782500116C00D394D0 /* PopCancel.storyboard */; };
 		83ACC67B250011A100D394D0 /* PopNoop.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83ACC67A250011A100D394D0 /* PopNoop.storyboard */; };
@@ -36,7 +35,8 @@
 		83ACC6AE250021AE00D394D0 /* PopUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83ACC6AD250021AE00D394D0 /* PopUp.storyboard */; };
 		83ACC6B0250021DE00D394D0 /* PopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83ACC6AF250021DE00D394D0 /* PopUp.swift */; };
 		83ACC6B2250021FA00D394D0 /* PopDismiss.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83ACC6B1250021FA00D394D0 /* PopDismiss.swift */; };
-		83ACC6B4250023D100D394D0 /* PopRecover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83ACC6B3250023D100D394D0 /* PopRecover.swift */; };
+		83ACC6B6250025E200D394D0 /* PopRecover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83ACC6B5250025E200D394D0 /* PopRecover.storyboard */; };
+		83ACC6B82500260A00D394D0 /* PopRecover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83ACC6B72500260A00D394D0 /* PopRecover.swift */; };
 		83D6E87A24F042810071D779 /* Labeler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D6E87924F042810071D779 /* Labeler.swift */; };
 		83D758EC24CA0E79008DC4B5 /* CoreStart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D758EB24CA0E79008DC4B5 /* CoreStart.swift */; };
 		B7021F2723FDEE6100C9346A /* ConfigP.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7021F2623FDEE6100C9346A /* ConfigP.storyboard */; };
@@ -221,7 +221,6 @@
 		8385908B24F98AD600BBC11C /* TransDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransDelegate.swift; sourceTree = "<group>"; };
 		8385908D24F98B2A00BBC11C /* Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presenter.swift; sourceTree = "<group>"; };
 		83ACC672250010D400D394D0 /* PopInvalid.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PopInvalid.storyboard; sourceTree = "<group>"; };
-		83ACC6742500110B00D394D0 /* PopRecover.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PopRecover.storyboard; sourceTree = "<group>"; };
 		83ACC6762500113A00D394D0 /* PopHelp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PopHelp.storyboard; sourceTree = "<group>"; };
 		83ACC6782500116C00D394D0 /* PopCancel.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PopCancel.storyboard; sourceTree = "<group>"; };
 		83ACC67A250011A100D394D0 /* PopNoop.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PopNoop.storyboard; sourceTree = "<group>"; };
@@ -241,7 +240,8 @@
 		83ACC6AD250021AE00D394D0 /* PopUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PopUp.storyboard; sourceTree = "<group>"; };
 		83ACC6AF250021DE00D394D0 /* PopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUp.swift; sourceTree = "<group>"; };
 		83ACC6B1250021FA00D394D0 /* PopDismiss.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopDismiss.swift; sourceTree = "<group>"; };
-		83ACC6B3250023D100D394D0 /* PopRecover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopRecover.swift; sourceTree = "<group>"; };
+		83ACC6B5250025E200D394D0 /* PopRecover.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PopRecover.storyboard; sourceTree = "<group>"; };
+		83ACC6B72500260A00D394D0 /* PopRecover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopRecover.swift; sourceTree = "<group>"; };
 		83D6E87924F042810071D779 /* Labeler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Labeler.swift; sourceTree = "<group>"; };
 		83D758EB24CA0E79008DC4B5 /* CoreStart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreStart.swift; sourceTree = "<group>"; };
 		AD83F59EDBC27D005F033F41 /* Pods-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios.debug.xcconfig"; path = "Target Support Files/Pods-ios/Pods-ios.debug.xcconfig"; sourceTree = "<group>"; };
@@ -477,7 +477,6 @@
 			children = (
 				83ACC66E2500108200D394D0 /* storyboard */,
 				83ACC6B1250021FA00D394D0 /* PopDismiss.swift */,
-				83ACC6B3250023D100D394D0 /* PopRecover.swift */,
 			);
 			path = dismiss;
 			sourceTree = "<group>";
@@ -495,7 +494,6 @@
 			isa = PBXGroup;
 			children = (
 				83ACC672250010D400D394D0 /* PopInvalid.storyboard */,
-				83ACC6742500110B00D394D0 /* PopRecover.storyboard */,
 				83ACC6762500113A00D394D0 /* PopHelp.storyboard */,
 				83ACC67A250011A100D394D0 /* PopNoop.storyboard */,
 				83ACC67C250011C700D394D0 /* PopPoison.storyboard */,
@@ -514,6 +512,7 @@
 				83ACC698250014DE00D394D0 /* PopOption.storyboard */,
 				83ACC6A22500165500D394D0 /* PopConfirm.storyboard */,
 				83ACC6AD250021AE00D394D0 /* PopUp.storyboard */,
+				83ACC6B5250025E200D394D0 /* PopRecover.storyboard */,
 			);
 			path = storyboard;
 			sourceTree = "<group>";
@@ -527,6 +526,7 @@
 				83ACC69C2500152D00D394D0 /* PopEval.swift */,
 				83ACC6A42500171800D394D0 /* PopConfirm.swift */,
 				83ACC6AF250021DE00D394D0 /* PopUp.swift */,
+				83ACC6B72500260A00D394D0 /* PopRecover.swift */,
 			);
 			path = instance;
 			sourceTree = "<group>";
@@ -1683,6 +1683,7 @@
 				B7C6760823FF22F8007EC71E /* AckL.storyboard in Resources */,
 				B7C6760023FF1E80007EC71E /* ChallengeP.storyboard in Resources */,
 				83ACC6972500148C00D394D0 /* PopEval.storyboard in Resources */,
+				83ACC6B6250025E200D394D0 /* PopRecover.storyboard in Resources */,
 				83ACC67B250011A100D394D0 /* PopNoop.storyboard in Resources */,
 				83ACC6952500145200D394D0 /* PopPromo.storyboard in Resources */,
 				B7C675FE23FF1E6E007EC71E /* ChallengeL.storyboard in Resources */,
@@ -1695,7 +1696,6 @@
 				B7021F3A23FE031400C9346A /* InfoP.storyboard in Resources */,
 				B7021F6223FE3B8E00C9346A /* ProfileP.storyboard in Resources */,
 				B7021F5C23FE304D00C9346A /* EditSelfP.storyboard in Resources */,
-				83ACC6752500110B00D394D0 /* PopRecover.storyboard in Resources */,
 				B7021F3223FDFCC100C9346A /* FairiesP.storyboard in Resources */,
 				B7F3A13323FD95C8007B5663 /* HomeP.storyboard in Resources */,
 				B7021F4223FE0B0700C9346A /* PlayP.storyboard in Resources */,
@@ -1827,7 +1827,7 @@
 				B7BE123A23EAFBF500ADA499 /* Ack.swift in Sources */,
 				8358928224BE65A0004F9703 /* UpdatePush.swift in Sources */,
 				B74136C723DE34A0001B3D60 /* RequestLogin.swift in Sources */,
-				83ACC6B4250023D100D394D0 /* PopRecover.swift in Sources */,
+				83ACC6B82500260A00D394D0 /* PopRecover.swift in Sources */,
 				B7AF787323E0B9DA00BAD8EC /* RequestPage.swift in Sources */,
 				B7BE12AE23EB0CDB00ADA499 /* Checker.swift in Sources */,
 				B745AD3523F353BF00E450EF /* RequestCreate.swift in Sources */,
