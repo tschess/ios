@@ -62,13 +62,7 @@ class Config: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate, U
     
     var playerSelf: EntityPlayer?
     
-    //public func setPlayerSelf(playerSelf: EntityPlayer){
-        //self.playerSelf = playerSelf
-    //}
-    
     @objc func fade() {
-        //print("FIRE!!!")
-        //self.labelTapHere.isHidden = true
         UIView.animate(withDuration: 2.0, animations: {
             self.labelTapHere.alpha = 0
         })
