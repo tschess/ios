@@ -66,8 +66,7 @@ class EditOther: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate
         self.confirm = false
         let storyboard: UIStoryboard = UIStoryboard(name: "PopCancel", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "PopCancel") as! PopCancel
-        viewController.playerSelf = self.playerSelf!
-        viewController.other = true
+        viewController.presentingController = self.navigationController
         self.present(viewController, animated: true, completion: nil)
     }
     

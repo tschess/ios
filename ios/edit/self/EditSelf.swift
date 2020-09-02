@@ -51,8 +51,8 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
         self.confirm = false
         let storyboard: UIStoryboard = UIStoryboard(name: "PopCancel", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "PopCancel") as! PopCancel
-        viewController.playerSelf = self.playerSelf!
-        self.navigationController?.present(viewController, animated: true, completion: nil)
+        viewController.presentingController = self.navigationController
+        self.present(viewController, animated: true, completion: nil)
     }
     
     static func create(player: EntityPlayer, select: Int, height: CGFloat) -> EditSelf {
@@ -162,41 +162,24 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
             let viewController = storyboard.instantiateViewController(withIdentifier: "PopHelp") as! PopDismiss
             self.present(viewController, animated: true, completion: nil)
         default:
-            
-            if let viewControllers = self.navigationController?.viewControllers {
-                for vc in viewControllers {
-                    print("o---> It is in stack \(String(describing: type(of: vc)))")
-                }
-            }
-            
             DispatchQueue.main.async() {
                 self.activityIndicator!.isHidden = false
                 self.activityIndicator!.startAnimating()
             }
             let id = self.playerSelf!.id
             let config = self.playerSelf!.setConfig(index: self.selection!, config: self.configActiv!)
-            
             let updateConfig = ["id": id, "config": config, "index": self.selection!] as [String: Any]
             
             UpdateConfig().execute(requestPayload: updateConfig) { (result) in
-                
                 
                 DispatchQueue.main.async() {
                     self.activityIndicator!.isHidden = true
                     self.activityIndicator!.stopAnimating()
                     
-                    
                     guard let navigationController = self.navigationController else { return }
-                    var navigationArray = navigationController.viewControllers // To get all UIViewController stack as Array
-                    
-                    navigationArray.remove(at: 1) //config
+                    var navigationArray = navigationController.viewControllers
+                    navigationArray.remove(at: 1) //Config
                     self.navigationController?.viewControllers = navigationArray
-                    
-                    if let viewControllers = self.navigationController?.viewControllers {
-                        for vc in viewControllers {
-                            print("g---> It is in stack \(String(describing: type(of: vc)))")
-                        }
-                    }
                     
                     var storyboard: UIStoryboard = UIStoryboard(name: "ConfigP", bundle: nil)
                     var viewController = storyboard.instantiateViewController(withIdentifier: "ConfigP") as! Config
@@ -206,35 +189,16 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
                     }
                     viewController.playerSelf = result!
                     viewController.labelTapHidden = true
-                    
-                    
                     self.navigationController?.pushViewController(viewController, animated: false)
                     
-                    
                     guard let navigationController0 = self.navigationController else { return }
-                    var navigationArray0 = navigationController0.viewControllers // To get all UIViewController stack as Array
-                    
-                    navigationArray0.remove(at: 1) //config
-                    
-                    for vc in navigationArray0 {
-                        print("fff---> It is in stack \(String(describing: type(of: vc)))")
-                    }
-                    
+                    var navigationArray0 = navigationController0.viewControllers
+                    navigationArray0.remove(at: 1) //EditSelf
                     self.navigationController?.viewControllers = navigationArray0
-                    
-                    
-                    
-                    
                 }
-                
-                
-                
-                
-                
             }
         }
     }
-    
 }
 
 //MARK: DataSource

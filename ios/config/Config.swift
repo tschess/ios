@@ -63,55 +63,12 @@ class Config: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate, U
     var playerSelf: EntityPlayer?
     
     @objc func fade() {
-        UIView.animate(withDuration: 2.0, animations: {
+        UIView.animate(withDuration: 1.5, animations: {
             self.labelTapHere.alpha = 0
         })
     }
     
     //MARK: - lifecycle
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-//        Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(fade), userInfo: nil, repeats: false)
-//
-//        self.labelTapHere.adjustsFontSizeToFitWidth = true //maybe dont need this...
-//        self.labelTapHere.minimumScaleFactor = 0.2
-//
-//        self.tabBarMenu.delegate = self
-//
-//        self.activityIndicator.isHidden = true
-//
-//        self.configCollectionView0.bounces = false
-//        self.configCollectionView1.bounces = false
-//        self.configCollectionView2.bounces = false
-//        self.configCollectionView0.alwaysBounceVertical = false
-//        self.configCollectionView1.alwaysBounceVertical = false
-//        self.configCollectionView2.alwaysBounceVertical = false
-//
-//        self.configCollectionView0.delegate = self
-//        self.configCollectionView1.delegate = self
-//        self.configCollectionView2.delegate = self
-//
-//        self.configCollectionView0.dataSource = self
-//        self.configCollectionView1.dataSource = self
-//        self.configCollectionView2.dataSource = self
-//
-//        self.configCollectionView0.isHidden = true
-//        self.configCollectionView1.isHidden = true
-//        self.configCollectionView2.isHidden = true
-//
-//        self.tschessElementMatrix0 = self.playerSelf!.getConfig(index: 0)
-//        self.tschessElementMatrix1 = self.playerSelf!.getConfig(index: 1)
-//        self.tschessElementMatrix2 = self.playerSelf!.getConfig(index: 2)
-//
-//        let editCollectionView0 = UITapGestureRecognizer(target: self, action: #selector(self.editCollectionView0))
-//        let editCollectionView1 = UITapGestureRecognizer(target: self, action: #selector(self.editCollectionView1))
-//        let editCollectionView2 = UITapGestureRecognizer(target: self, action: #selector(self.editCollectionView2))
-//        self.configCollectionView0.addGestureRecognizer(editCollectionView0)
-//        self.configCollectionView1.addGestureRecognizer(editCollectionView1)
-//        self.configCollectionView2.addGestureRecognizer(editCollectionView2)
-    }
     
     @IBAction func backButtonClick(_ sender: Any) {
         self.navigationController?.popViewController(animated: false)
@@ -160,7 +117,7 @@ class Config: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate, U
         if(self.labelTapHidden){
             self.labelTapHere.isHidden = true
         } else {
-            Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(fade), userInfo: nil, repeats: false)
+            Timer.scheduledTimer(timeInterval: 1.5, target: self, selector: #selector(fade), userInfo: nil, repeats: false)
         }
         
         

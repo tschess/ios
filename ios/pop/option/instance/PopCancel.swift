@@ -10,8 +10,7 @@ import UIKit
 
 class PopCancel: UIViewController {
     
-    var playerSelf: EntityPlayer?
-    var other: Bool = false
+    var presentingController: UINavigationController?
     
     @IBOutlet weak var buttonNo: UIButton!
     @IBOutlet weak var buttonYes: UIButton!
@@ -34,42 +33,9 @@ class PopCancel: UIViewController {
         transitioningDelegate = transDelegate
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
     @IBAction func buttonClickYes(_ sender: Any) {
-        if(!self.other){
-            if let navigationController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController {
-                navigationController.dismiss(animated: true, completion: {
-                    navigationController.popViewController(animated: false)
-                })
-            }
-
-            return
-        }
-        if let navigationController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController {
-            navigationController.dismiss(animated: true, completion: {
-                if let viewControllers = self.navigationController?.viewControllers {
-                    for vc in viewControllers {
-                        let ty = String(describing: type(of: vc))
-                        if(ty == "Play"){
-                            let play: Play = vc as! Play
-                            play.playerSelf = self.playerSelf!
-                        }
-                        if(ty == "Ack"){
-                            let ack: Ack = vc as! Ack
-                            ack.playerSelf = self.playerSelf!
-                        }
-                        if(ty == "Challenge"){
-                            let home: Challenge = vc as! Challenge
-                            home.playerSelf = self.playerSelf!
-                        }
-                    }
-                }
-                navigationController.popViewController(animated: false)
-            })
-        }
+        self.dismiss(animated: true, completion: nil)
+        self.presentingController!.popViewController(animated: false)
     }
     
     @IBAction func buttonClickNo(_ sender: Any) {
