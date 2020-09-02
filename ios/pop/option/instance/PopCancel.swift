@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Cancel: UIViewController {
+class PopCancel: UIViewController {
     
     var playerSelf: EntityPlayer?
     var other: Bool = false

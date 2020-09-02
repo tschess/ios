@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DrawResign: UIViewController  {
+class PopOption: UIViewController  {
     
     @IBOutlet weak var imageDismiss: UIImageView!
     @IBOutlet weak var imageResign: UIImageView!
@@ -20,7 +20,8 @@ class DrawResign: UIViewController  {
     @IBOutlet weak var imageDraw: UIImageView!
     @IBOutlet weak var activityIndicatorDraw: UIActivityIndicatorView!
     
-    private var customTransitioningDelegate = TransDraw()
+    //private var customTransitioningDelegate = TransDraw()
+    private let transDelegate: TransDelegate = TransDelegate(width: 242, height: 176)
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -53,7 +54,7 @@ class DrawResign: UIViewController  {
     func configure() {
         modalPresentationStyle = .custom
         modalTransitionStyle = .crossDissolve
-        transitioningDelegate = customTransitioningDelegate
+        transitioningDelegate = transDelegate
     }
     
     override func viewDidLoad() {

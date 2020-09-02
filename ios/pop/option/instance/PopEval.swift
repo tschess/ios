@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Evaluate: UIViewController  {
+class PopEval: UIViewController  {
     
     @IBOutlet weak var imageAccept: UIImageView!
     @IBOutlet weak var buttonAccept: UIButton!
@@ -18,7 +18,8 @@ class Evaluate: UIViewController  {
     @IBOutlet weak var imageReject: UIImageView!
     @IBOutlet weak var activityIndicatorReject: UIActivityIndicatorView!
     
-    private var customTransitioningDelegate = TransDraw()
+    //private var customTransitioningDelegate = TransDraw()
+    private let transDelegate: TransDelegate = TransDelegate(width: 242, height: 176)
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -59,7 +60,7 @@ class Evaluate: UIViewController  {
     func configure() {
         modalPresentationStyle = .custom
         modalTransitionStyle = .crossDissolve
-        transitioningDelegate = customTransitioningDelegate
+        transitioningDelegate = transDelegate
     }
     
     override func viewDidLoad() {

@@ -8,12 +8,13 @@
 
 import UIKit
 
-class Passant: UIViewController {
+class PopPassant: UIViewController {
     
     @IBOutlet weak var buttonAccept: UIButton!
     
     
-    private var transitionStart = TransDialog()
+    //private var transitionStart = TransDialog()
+    private let transDelegate: TransDelegate = TransDelegate(width: 242, height: 158)
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -28,7 +29,7 @@ class Passant: UIViewController {
     func configure() {
         modalPresentationStyle = .custom
         modalTransitionStyle = .crossDissolve
-        transitioningDelegate = transitionStart
+        transitioningDelegate = transDelegate
     }
     
     override func viewDidLoad() {

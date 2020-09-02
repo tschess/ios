@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Confirm: UIViewController {
+class PopConfirm: UIViewController {
     
     @IBOutlet weak var imageShare: UIImageView!
     @IBOutlet weak var labelText: UILabel!

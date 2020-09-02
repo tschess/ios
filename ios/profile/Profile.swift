@@ -99,8 +99,8 @@ class Profile: UIViewController, UITabBarDelegate, UINavigationControllerDelegat
             
             default:
                 DispatchQueue.main.async {
-                    let storyboard: UIStoryboard = UIStoryboard(name: "Note", bundle: nil)
-                    let viewController = storyboard.instantiateViewController(withIdentifier: "Note") as! CompNote
+                    let storyboard: UIStoryboard = UIStoryboard(name: "PopNote", bundle: nil)
+                    let viewController = storyboard.instantiateViewController(withIdentifier: "PopNote") as! PopNote
                     self.present(viewController, animated: true, completion: nil)
                 }
             }

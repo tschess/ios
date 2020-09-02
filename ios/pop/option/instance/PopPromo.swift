@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Promo: UIViewController {
+class PopPromo: UIViewController {
     
     var tschess: Tschess?
     
@@ -21,7 +21,8 @@ class Promo: UIViewController {
     @IBOutlet weak var imageViewQueen: UIImageView!
     @IBOutlet weak var imageViewRook: UIImageView!
     
-    private var customTransitioningDelegate = TransPro()
+    //private var customTransitioningDelegate = TransPro()
+    private let transDelegate: TransDelegate = TransDelegate(width: 230, height: 222)
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -36,7 +37,7 @@ class Promo: UIViewController {
     func configure() {
         modalPresentationStyle = .custom
         modalTransitionStyle = .crossDissolve
-        transitioningDelegate = customTransitioningDelegate
+        transitioningDelegate = transDelegate
     }
     
     override func viewDidLoad() {

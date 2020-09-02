@@ -8,11 +8,12 @@
 
 import UIKit
 
-class Note: UIViewController {
+class PopNote: UIViewController {
     
     @IBOutlet weak var buttonAccept: UIButton!
     
-    private var transitionStart = TransNote()
+    //private var transitionStart = TransNote()
+    private let transDelegate: TransDelegate = TransDelegate(width: 242, height: 158)
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -27,7 +28,7 @@ class Note: UIViewController {
     func configure() {
         modalPresentationStyle = .custom
         modalTransitionStyle = .crossDissolve
-        transitioningDelegate = transitionStart
+        transitioningDelegate = transDelegate
     }
     
     override func viewDidLoad() {

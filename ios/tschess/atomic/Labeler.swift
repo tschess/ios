@@ -48,8 +48,8 @@ class Labeler {
         
         if(turnFlag){
             DispatchQueue.main.async {
-                let storyboard: UIStoryboard = UIStoryboard(name: "Evaluate", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "Evaluate") as! Evaluate
+                let storyboard: UIStoryboard = UIStoryboard(name: "PopEval", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "PopEval") as! PopEval
                 viewController.modalTransitionStyle = .crossDissolve
                 viewController.playerSelf = self.player
                 viewController.playerOther = self.game!.getPlayerOther(username: self.player!.username)

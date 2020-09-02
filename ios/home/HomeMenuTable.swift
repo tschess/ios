@@ -40,8 +40,8 @@ class HomeMenuTable: UITableViewController, SwipeTableViewCellDelegate {
                     
                     if(result["fail"] != nil) {
                         DispatchQueue.main.async {
-                            let storyboard: UIStoryboard = UIStoryboard(name: "Noop", bundle: nil)
-                            let viewController = storyboard.instantiateViewController(withIdentifier: "Noop") as! Noop
+                            let storyboard: UIStoryboard = UIStoryboard(name: "PopNoop", bundle: nil)
+                            let viewController = storyboard.instantiateViewController(withIdentifier: "PopNoop") as! PopNoop
                             self.present(viewController, animated: true, completion: nil)
                         }
                         return

@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Poison Pawn-->
+        <!--Pop Poison-->
         <scene sceneID="kCP-qz-f3I">
             <objects>
-                <viewController storyboardIdentifier="DialogPoison" modalPresentationStyle="overCurrentContext" id="Rh1-F9-UxD" customClass="PoisonPawn" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PopPoison" modalPresentationStyle="overCurrentContext" id="Rh1-F9-UxD" customClass="PopPoison" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="sl4-B8-bJs"/>
                         <viewControllerLayoutGuide type="bottom" id="yxw-7c-7Xt"/>

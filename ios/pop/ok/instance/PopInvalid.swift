@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Invalid: UIViewController {
+class PopInvalid: UIViewController {
     
     private let transDelegate: TransDelegate = TransDelegate(width: 242, height: 158)
     

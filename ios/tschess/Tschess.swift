@@ -36,12 +36,12 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     
     // MARK: CONSTRUCTOR
     let highlighter: Highlighter
-    let promotion: Promotion
+    let promotion: PopPromo
     let dateTime: DateTime
     
     required init?(coder aDecoder: NSCoder) {
-        let storyboard: UIStoryboard = UIStoryboard(name: "Promotion", bundle: nil)
-        self.promotion = storyboard.instantiateViewController(withIdentifier: "Promotion") as! Promotion
+        let storyboard: UIStoryboard = UIStoryboard(name: "PopPromo", bundle: nil)
+        self.promotion = storyboard.instantiateViewController(withIdentifier: "PopPromo") as! PopPromo
         self.highlighter = Highlighter()
         self.dateTime = DateTime()
         super.init(coder: aDecoder)
@@ -78,8 +78,8 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         switch item.tag {
         case 1:
             DispatchQueue.main.async {
-                let storyboard: UIStoryboard = UIStoryboard(name: "DrawResign", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "DrawResign") as! DrawResign
+                let storyboard: UIStoryboard = UIStoryboard(name: "PopOption", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "PopOption") as! PopOption
                 viewController.playerSelf = self.playerSelf!
                 viewController.playerOther = self.game!.getPlayerOther(username: self.playerSelf!.username)
                 viewController.game = self.game!
@@ -267,16 +267,16 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     
     func renderDialogPoison() {
         DispatchQueue.main.async {
-            let storyboard: UIStoryboard = UIStoryboard(name: "DialogPoison", bundle: nil)
-            let viewController = storyboard.instantiateViewController(withIdentifier: "DialogPoison") as! DialogPoison
+            let storyboard: UIStoryboard = UIStoryboard(name: "PopPoison", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier: "PopPoison") as! PopPoison
             self.present(viewController, animated: true, completion: nil)
         }
     }
     
     func renderDialogPassant() {
         DispatchQueue.main.async {
-            let storyboard: UIStoryboard = UIStoryboard(name: "DialogPassant", bundle: nil)
-            let viewController = storyboard.instantiateViewController(withIdentifier: "DialogPassant") as! DialogPassant
+            let storyboard: UIStoryboard = UIStoryboard(name: "PopPassant", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier: "PopPassant") as! PopPassant
             self.present(viewController, animated: true, completion: nil)
         }
     }
@@ -288,8 +288,8 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
             _ = UNUserNotificationCenter.current().getNotificationSettings { (settings) in
                 if (settings.authorizationStatus == .notDetermined) {
                     DispatchQueue.main.async {
-                        let storyboard: UIStoryboard = UIStoryboard(name: "DialogPopup", bundle: nil)
-                        let viewController = storyboard.instantiateViewController(withIdentifier: "DialogPopup") as! DialogPopup
+                        let storyboard: UIStoryboard = UIStoryboard(name: "PopUp", bundle: nil)
+                        let viewController = storyboard.instantiateViewController(withIdentifier: "PopUp") as! PopUp
                         viewController.playerSelf = self.playerSelf!
                         self.present(viewController, animated: true, completion: nil)
                     }
@@ -301,8 +301,8 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     
     func renderDialogConfirm() {
         DispatchQueue.main.async {
-            let storyboard: UIStoryboard = UIStoryboard(name: "Confirm", bundle: nil)
-            let viewController = storyboard.instantiateViewController(withIdentifier: "Confirm") as! Confirm
+            let storyboard: UIStoryboard = UIStoryboard(name: "PopConfirm", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier: "PopConfirm") as! PopConfirm
             viewController.game = self.game!
             viewController.playerSelf = self.playerSelf!
             self.present(viewController, animated: true, completion: nil)

@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Draw Resign-->
+        <!--Pop Option-->
         <scene sceneID="2fS-pV-BoF">
             <objects>
-                <viewController storyboardIdentifier="DrawResign" modalPresentationStyle="overCurrentContext" id="A6v-yg-1nQ" customClass="DrawResign" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PopOption" modalPresentationStyle="overCurrentContext" id="A6v-yg-1nQ" customClass="PopOption" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="pQc-ag-3mC"/>
                         <viewControllerLayoutGuide type="bottom" id="jH8-cM-dEt"/>

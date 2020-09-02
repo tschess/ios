@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Noop: UIViewController {
+class PopNoop: UIViewController {
     
     @IBOutlet weak var buttonAccept: UIButton!
     

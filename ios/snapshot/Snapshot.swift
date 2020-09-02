@@ -153,8 +153,8 @@ class Snapshot: UIViewController, UICollectionViewDataSource, UICollectionViewDe
     
     func renderDialogConfirm() {
         DispatchQueue.main.async {
-            let storyboard: UIStoryboard = UIStoryboard(name: "Confirm", bundle: nil)
-            let viewController = storyboard.instantiateViewController(withIdentifier: "Confirm") as! Confirm
+            let storyboard: UIStoryboard = UIStoryboard(name: "PopConfirm", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier: "PopConfirm") as! PopConfirm
             viewController.game = self.game!
             viewController.playerSelf = self.player!
             self.present(viewController, animated: true, completion: nil)

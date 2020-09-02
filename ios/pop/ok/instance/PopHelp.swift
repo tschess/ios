@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Help: UIViewController {
+class PopHelp: UIViewController {
     
     @IBOutlet weak var buttonAccept: UIButton!
     

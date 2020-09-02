@@ -105,8 +105,8 @@ class Start: UIViewController, UITextFieldDelegate {
         
         if(!usernameTextString!.isAlphanumeric || !passwordTextString!.isAlphanumeric){
             DispatchQueue.main.async {
-                let storyboard: UIStoryboard = UIStoryboard(name: "Invalid", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "Invalid") as! Invalid
+                let storyboard: UIStoryboard = UIStoryboard(name: "PopInvalid", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "PopInvalid") as! PopInvalid
                 self.present(viewController, animated: true, completion: nil)
             }
             return
@@ -147,8 +147,8 @@ class Start: UIViewController, UITextFieldDelegate {
                 // HINT
                 self.setHintText()
                 
-                let storyboard: UIStoryboard = UIStoryboard(name: "Invalid", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "Invalid") as! Invalid
+                let storyboard: UIStoryboard = UIStoryboard(name: "PopInvalid", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "PopInvalid") as! PopInvalid
                 self.present(viewController, animated: true, completion: nil)
             }
         }
@@ -186,8 +186,8 @@ class Start: UIViewController, UITextFieldDelegate {
         }
         if(!usernameTextString!.isAlphanumeric || !passwordTextString!.isAlphanumeric){
             DispatchQueue.main.async {
-                let storyboard: UIStoryboard = UIStoryboard(name: "Invalid", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "Invalid") as! Invalid
+                let storyboard: UIStoryboard = UIStoryboard(name: "PopInvalid", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "PopInvalid") as! PopInvalid
                 self.present(viewController, animated: true, completion: nil)
             }
             return
@@ -233,8 +233,8 @@ class Start: UIViewController, UITextFieldDelegate {
                 self.passwordTextField.text?.removeAll()
                 self.passwordTextField.attributedPlaceholder = NSAttributedString(string: "password",
                                                                                   attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
-                let storyboard: UIStoryboard = UIStoryboard(name: "Invalid", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "Invalid") as! Invalid
+                let storyboard: UIStoryboard = UIStoryboard(name: "PopInvalid", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "PopInvalid") as! PopInvalid
                 self.present(viewController, animated: true, completion: nil)
             }
             
@@ -321,8 +321,8 @@ class Start: UIViewController, UITextFieldDelegate {
     
     @IBAction func buttonClickRecover(_ sender: Any) {
         DispatchQueue.main.async {
-            let storyboard: UIStoryboard = UIStoryboard(name: "Recover", bundle: nil)
-            let viewController = storyboard.instantiateViewController(withIdentifier: "Recover") as! Recover
+            let storyboard: UIStoryboard = UIStoryboard(name: "PopRecover", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier: "PopRecover") as! PopRecover
             self.present(viewController, animated: true, completion: nil)
         }
     }

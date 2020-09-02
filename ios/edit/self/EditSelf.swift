@@ -49,8 +49,8 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
             return
         }
         self.confirm = false
-        let storyboard: UIStoryboard = UIStoryboard(name: "Cancel", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "Cancel") as! Cancel
+        let storyboard: UIStoryboard = UIStoryboard(name: "PopCancel", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "PopCancel") as! PopCancel
         viewController.playerSelf = self.playerSelf!
         self.navigationController?.present(viewController, animated: true, completion: nil)
     }
@@ -174,8 +174,8 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
         case 0:
             self.backButtonClick("")
         case 2:
-            let storyboard: UIStoryboard = UIStoryboard(name: "Help", bundle: nil)
-            let viewController = storyboard.instantiateViewController(withIdentifier: "Help") as! Help
+            let storyboard: UIStoryboard = UIStoryboard(name: "PopHelp", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier: "PopHelp") as! PopHelp
             self.present(viewController, animated: true, completion: nil)
         default:
             DispatchQueue.main.async() {

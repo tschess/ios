@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Recover: UIViewController {
+class PopRecover: UIViewController {
     
     @IBOutlet weak var buttonAccept: UIButton!
     

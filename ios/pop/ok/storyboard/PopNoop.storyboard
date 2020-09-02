@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Noop-->
+        <!--Pop Noop-->
         <scene sceneID="kCP-qz-f3I">
             <objects>
-                <viewController storyboardIdentifier="Noop" modalPresentationStyle="overCurrentContext" id="Rh1-F9-UxD" customClass="Noop" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PopNoop" modalPresentationStyle="overCurrentContext" id="Rh1-F9-UxD" customClass="PopNoop" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="sl4-B8-bJs"/>
                         <viewControllerLayoutGuide type="bottom" id="yxw-7c-7Xt"/>
@@ -60,7 +60,7 @@
                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="a completed game⏱️" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qo7-8Y-ryh">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="completed a game⏱️" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qo7-8Y-ryh">
                                                 <rect key="frame" x="0.0" y="78" width="240" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="hmA-Wi-9OP"/>
