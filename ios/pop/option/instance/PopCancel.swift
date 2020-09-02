@@ -48,7 +48,6 @@ class PopCancel: UIViewController {
 
             return
         }
-        
         if let navigationController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController {
             navigationController.dismiss(animated: true, completion: {
                 if let viewControllers = self.navigationController?.viewControllers {
@@ -57,23 +56,15 @@ class PopCancel: UIViewController {
                         if(ty == "Play"){
                             let play: Play = vc as! Play
                             play.playerSelf = self.playerSelf!
-                            //play.view.layoutIfNeeded()
                         }
                         if(ty == "Ack"){
                             let ack: Ack = vc as! Ack
                             ack.playerSelf = self.playerSelf!
-                            //ack.view.layoutIfNeeded()
                         }
                         if(ty == "Challenge"){
                             let home: Challenge = vc as! Challenge
                             home.playerSelf = self.playerSelf!
-                            //home.view.layoutIfNeeded()
                         }
-                        //if(ty == "Config"){
-                            //let config: Config = vc as! Config
-                            //config.playerSelf = self.playerSelf!
-                            //config.view.layoutIfNeeded()
-                        //}
                     }
                 }
                 navigationController.popViewController(animated: false)
