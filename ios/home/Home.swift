@@ -39,6 +39,14 @@ class Home: UIViewController, UITabBarDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        let customView = Header().loadNib() as! Header
+        customView.frame = headerView.bounds
+        DispatchQueue.main.async() {
+            self.headerView.addSubview(customView)
+        }
+        
+        
         self.navigationController?.viewControllers = [self]
        
         self.tabBarMenu.delegate = self

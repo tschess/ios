@@ -32,8 +32,8 @@ class Init: UIViewController {
                     self.navigationController?.pushViewController(viewController, animated: false)
                     return
                 }
-                let storyboard: UIStoryboard = UIStoryboard(name: "Home", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "Home") as! Home
+                let storyboard: UIStoryboard = UIStoryboard(name: "HomeP", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "HomeP") as! Home
                 viewController.playerSelf = player
                 self.navigationController?.pushViewController(viewController, animated: false)
                 

@@ -38,6 +38,9 @@
 		83ACC6B2250021FA00D394D0 /* PopDismiss.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83ACC6B1250021FA00D394D0 /* PopDismiss.swift */; };
 		83ACC6B6250025E200D394D0 /* PopRecover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83ACC6B5250025E200D394D0 /* PopRecover.storyboard */; };
 		83ACC6B82500260A00D394D0 /* PopRecover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83ACC6B72500260A00D394D0 /* PopRecover.swift */; };
+		83B72B85256716C400FA5D8F /* Header.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83B72B84256716C400FA5D8F /* Header.xib */; };
+		83B72B872567185700FA5D8F /* NibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B72B862567185700FA5D8F /* NibView.swift */; };
+		83B72B892567190600FA5D8F /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B72B882567190600FA5D8F /* Header.swift */; };
 		83D6E87A24F042810071D779 /* Labeler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D6E87924F042810071D779 /* Labeler.swift */; };
 		83D758EC24CA0E79008DC4B5 /* CoreStart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D758EB24CA0E79008DC4B5 /* CoreStart.swift */; };
 		B7021F2723FDEE6100C9346A /* ConfigP.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7021F2623FDEE6100C9346A /* ConfigP.storyboard */; };
@@ -244,6 +247,9 @@
 		83ACC6B1250021FA00D394D0 /* PopDismiss.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopDismiss.swift; sourceTree = "<group>"; };
 		83ACC6B5250025E200D394D0 /* PopRecover.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PopRecover.storyboard; sourceTree = "<group>"; };
 		83ACC6B72500260A00D394D0 /* PopRecover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopRecover.swift; sourceTree = "<group>"; };
+		83B72B84256716C400FA5D8F /* Header.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Header.xib; sourceTree = "<group>"; };
+		83B72B862567185700FA5D8F /* NibView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibView.swift; sourceTree = "<group>"; };
+		83B72B882567190600FA5D8F /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
 		83D6E87924F042810071D779 /* Labeler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Labeler.swift; sourceTree = "<group>"; };
 		83D758EB24CA0E79008DC4B5 /* CoreStart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreStart.swift; sourceTree = "<group>"; };
 		AD83F59EDBC27D005F033F41 /* Pods-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios.debug.xcconfig"; path = "Target Support Files/Pods-ios/Pods-ios.debug.xcconfig"; sourceTree = "<group>"; };
@@ -541,6 +547,16 @@
 			path = networking;
 			sourceTree = "<group>";
 		};
+		83B72B83256716A900FA5D8F /* header */ = {
+			isa = PBXGroup;
+			children = (
+				83B72B84256716C400FA5D8F /* Header.xib */,
+				83B72B862567185700FA5D8F /* NibView.swift */,
+				83B72B882567190600FA5D8F /* Header.swift */,
+			);
+			path = header;
+			sourceTree = "<group>";
+		};
 		ABCDD5D6671D39DB5DBFE22A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -771,6 +787,7 @@
 		B787C72822E970DC009C94F7 /* ios */ = {
 			isa = PBXGroup;
 			children = (
+				83B72B83256716A900FA5D8F /* header */,
 				83ACC6A62500172C00D394D0 /* networking */,
 				8385908A24F98AB700BBC11C /* pop */,
 				B7BE12C523EB708E00ADA499 /* info */,
@@ -1667,6 +1684,7 @@
 				83ACC6A32500165500D394D0 /* PopConfirm.storyboard in Resources */,
 				830946872566D767003A1B9A /* Home.storyboard in Resources */,
 				B787C73122E970DD009C94F7 /* Assets.xcassets in Resources */,
+				83B72B85256716C400FA5D8F /* Header.xib in Resources */,
 				B7021F8823FE5A1C00C9346A /* DefaultP.storyboard in Resources */,
 				83ACC6772500113A00D394D0 /* PopHelp.storyboard in Resources */,
 				83ACC67D250011C700D394D0 /* PopPoison.storyboard in Resources */,
@@ -1784,6 +1802,7 @@
 				8385908C24F98AD600BBC11C /* TransDelegate.swift in Sources */,
 				B7BE11B923EA9DD400ADA499 /* BishopWhite.swift in Sources */,
 				B7BE128F23EB09C700ADA499 /* GameRequest.swift in Sources */,
+				83B72B872567185700FA5D8F /* NibView.swift in Sources */,
 				B7BE11BB23EA9DE200ADA499 /* BishopBlack.swift in Sources */,
 				B7BE11F123EAC92C00ADA499 /* EditSelf.swift in Sources */,
 				B7BE125523EB038700ADA499 /* ProfileCell.swift in Sources */,
@@ -1892,6 +1911,7 @@
 				B7BE12B123EB0D3100ADA499 /* KnightOffense.swift in Sources */,
 				B7ED646823F4DC9B00292FBC /* Create.swift in Sources */,
 				83ACC6B0250021DE00D394D0 /* PopUp.swift in Sources */,
+				83B72B892567190600FA5D8F /* Header.swift in Sources */,
 				B7A6B89B240D99B500840156 /* MenuTable.swift in Sources */,
 				B7BE11C923EA9EB700ADA499 /* RookBlack.swift in Sources */,
 				B7BE120723EAD3D200ADA499 /* Amazon.swift in Sources */,
