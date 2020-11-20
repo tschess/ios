@@ -39,7 +39,6 @@
 		83ACC6B6250025E200D394D0 /* PopRecover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83ACC6B5250025E200D394D0 /* PopRecover.storyboard */; };
 		83ACC6B82500260A00D394D0 /* PopRecover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83ACC6B72500260A00D394D0 /* PopRecover.swift */; };
 		83B72B85256716C400FA5D8F /* Header.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83B72B84256716C400FA5D8F /* Header.xib */; };
-		83B72B872567185700FA5D8F /* NibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B72B862567185700FA5D8F /* NibView.swift */; };
 		83B72B892567190600FA5D8F /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B72B882567190600FA5D8F /* Header.swift */; };
 		83D6E87A24F042810071D779 /* Labeler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D6E87924F042810071D779 /* Labeler.swift */; };
 		83D758EC24CA0E79008DC4B5 /* CoreStart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D758EB24CA0E79008DC4B5 /* CoreStart.swift */; };
@@ -248,7 +247,6 @@
 		83ACC6B5250025E200D394D0 /* PopRecover.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PopRecover.storyboard; sourceTree = "<group>"; };
 		83ACC6B72500260A00D394D0 /* PopRecover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopRecover.swift; sourceTree = "<group>"; };
 		83B72B84256716C400FA5D8F /* Header.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Header.xib; sourceTree = "<group>"; };
-		83B72B862567185700FA5D8F /* NibView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibView.swift; sourceTree = "<group>"; };
 		83B72B882567190600FA5D8F /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
 		83D6E87924F042810071D779 /* Labeler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Labeler.swift; sourceTree = "<group>"; };
 		83D758EB24CA0E79008DC4B5 /* CoreStart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreStart.swift; sourceTree = "<group>"; };
@@ -551,7 +549,6 @@
 			isa = PBXGroup;
 			children = (
 				83B72B84256716C400FA5D8F /* Header.xib */,
-				83B72B862567185700FA5D8F /* NibView.swift */,
 				83B72B882567190600FA5D8F /* Header.swift */,
 			);
 			path = header;
@@ -1802,7 +1799,6 @@
 				8385908C24F98AD600BBC11C /* TransDelegate.swift in Sources */,
 				B7BE11B923EA9DD400ADA499 /* BishopWhite.swift in Sources */,
 				B7BE128F23EB09C700ADA499 /* GameRequest.swift in Sources */,
-				83B72B872567185700FA5D8F /* NibView.swift in Sources */,
 				B7BE11BB23EA9DE200ADA499 /* BishopBlack.swift in Sources */,
 				B7BE11F123EAC92C00ADA499 /* EditSelf.swift in Sources */,
 				B7BE125523EB038700ADA499 /* ProfileCell.swift in Sources */,

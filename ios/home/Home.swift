@@ -18,37 +18,41 @@ class Home: UIViewController, UITabBarDelegate {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var usernameLabel: UILabel!
-    @IBOutlet weak var eloLabel: UILabel!
-    @IBOutlet weak var rankLabel: UILabel!
-    @IBOutlet weak var dispImageView: UIImageView!
-    @IBOutlet weak var dispLabel: UILabel!
+    //@IBOutlet weak var eloLabel: UILabel!
+    //@IBOutlet weak var rankLabel: UILabel!
+    //@IBOutlet weak var dispImageView: UIImageView!
+    //@IBOutlet weak var dispLabel: UILabel!
     @IBOutlet weak var tabBarMenu: UITabBar!
     
     var playerSelf: EntityPlayer?
     
     public func renderHeader() {
-        self.avatarImageView.image = self.playerSelf!.getImageAvatar()
-        self.usernameLabel.text = self.playerSelf!.username
-        self.eloLabel.text = self.playerSelf!.getLabelTextElo()
-        self.rankLabel.text = self.playerSelf!.getLabelTextRank()
-        self.dispLabel.text = self.playerSelf!.getLabelTextDisp()
-        self.dispImageView.image = self.playerSelf!.getImageDisp()!
-        self.dispImageView.tintColor = self.playerSelf!.tintColor
+        //self.avatarImageView.image = self.playerSelf!.getImageAvatar()
+        //self.usernameLabel.text = self.playerSelf!.username
+        //self.eloLabel.text = self.playerSelf!.getLabelTextElo()
+        //self.rankLabel.text = self.playerSelf!.getLabelTextRank()
+        //self.dispLabel.text = self.playerSelf!.getLabelTextDisp()
+        //self.dispImageView.image = self.playerSelf!.getImageDisp()!
+        //self.dispImageView.tintColor = self.playerSelf!.tintColor
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         
-        let customView = Header().loadNib() as! Header
-        customView.frame = headerView.bounds
+        let viewHeaderDynamic = Bundle.loadView(fromNib: "Header", withType: Header.self)
         DispatchQueue.main.async() {
-            self.headerView.addSubview(customView)
+            self.headerView.addSubview(viewHeaderDynamic)
+            viewHeaderDynamic.translatesAutoresizingMaskIntoConstraints = false
+            let attributes: [NSLayoutConstraint.Attribute] = [.top, .bottom, .right, .left]
+            NSLayoutConstraint.activate(attributes.map {
+                NSLayoutConstraint(item: viewHeaderDynamic, attribute: $0, relatedBy: .equal, toItem: viewHeaderDynamic.superview, attribute: $0, multiplier: 1, constant: 0)
+            })
         }
         
         
         self.navigationController?.viewControllers = [self]
-       
+        
         self.tabBarMenu.delegate = self
         self.homeMenuTable = children.first as? HomeMenuTable
         self.homeMenuTable!.home = self
@@ -115,7 +119,7 @@ class Home: UIViewController, UITabBarDelegate {
         }
         switch item.tag {
         case 1:
-             DispatchQueue.main.async() {
+            DispatchQueue.main.async() {
                 var storyboard: UIStoryboard = UIStoryboard(name: "ProfileP", bundle: nil)
                 var viewController = storyboard.instantiateViewController(withIdentifier: "ProfileP") as! Profile
                 if(UIScreen.main.bounds.height.isLess(than: 750)){
@@ -130,7 +134,7 @@ class Home: UIViewController, UITabBarDelegate {
                 self.navigationController?.view.layer.add(transition, forKey: nil)
                 _ = self.navigationController?.popViewController(animated: false)
                 self.navigationController?.pushViewController(viewController, animated: false)
-             }
+            }
         case 3:
             if(self.menu != nil){
                 let transition = CATransition()
@@ -192,22 +196,22 @@ class Home: UIViewController, UITabBarDelegate {
     }
     
     func setIndicator(on: Bool) {
-        if(on) {
-            DispatchQueue.main.async() {
-                if(self.activityIndicator!.isHidden){
-                    self.activityIndicator!.isHidden = false
-                }
-                if(!self.activityIndicator!.isAnimating){
-                    self.activityIndicator!.startAnimating()
-                }
-            }
-            return
-        }
-        DispatchQueue.main.async() {
-            self.activityIndicator!.isHidden = true
-            self.activityIndicator!.stopAnimating()
-            self.homeMenuTable!.tableView.reloadData()
-        }
+        //        if(on) {
+        //            DispatchQueue.main.async() {
+        //                if(self.activityIndicator!.isHidden){
+        //                    self.activityIndicator!.isHidden = false
+        //                }
+        //                if(!self.activityIndicator!.isAnimating){
+        //                    self.activityIndicator!.startAnimating()
+        //                }
+        //            }
+        //            return
+        //        }
+        //        DispatchQueue.main.async() {
+        //            self.activityIndicator!.isHidden = true
+        //            self.activityIndicator!.stopAnimating()
+        //            self.homeMenuTable!.tableView.reloadData()
+        //        }
     }
 }
 

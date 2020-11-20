@@ -84,6 +84,7 @@
             </subviews>
             <viewLayoutGuide key="safeArea" id="zaD-CE-khl"/>
             <color key="backgroundColor" systemColor="viewFlipsideBackgroundColor"/>
+            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="oq8-lQ-Bvq" firstAttribute="leading" secondItem="xZe-7X-UT8" secondAttribute="trailing" id="6SA-P2-5FI"/>
                 <constraint firstAttribute="trailing" secondItem="FAm-ic-hDo" secondAttribute="trailing" constant="8" id="7kh-oq-M91"/>
