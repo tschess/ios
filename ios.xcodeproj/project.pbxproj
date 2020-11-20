@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4E766FB2BBF9176550BB45F9 /* Pods_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45C0F287A16E70CE8A23A2EB /* Pods_ios.framework */; };
+		8300F3E925685A02006ABF07 /* Opponent.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8300F3E825685A02006ABF07 /* Opponent.xib */; };
 		83085F28248048CD00D31CF0 /* NoteKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83085F27248048CD00D31CF0 /* NoteKey.swift */; };
 		830946872566D767003A1B9A /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 830946862566D767003A1B9A /* Home.storyboard */; };
 		83295C472475C2DE00820C6C /* GetTimeout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83295C462475C2DE00820C6C /* GetTimeout.swift */; };
@@ -216,6 +217,7 @@
 
 /* Begin PBXFileReference section */
 		45C0F287A16E70CE8A23A2EB /* Pods_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8300F3E825685A02006ABF07 /* Opponent.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Opponent.xib; sourceTree = "<group>"; };
 		83085F27248048CD00D31CF0 /* NoteKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteKey.swift; sourceTree = "<group>"; };
 		830946862566D767003A1B9A /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		83295C462475C2DE00820C6C /* GetTimeout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTimeout.swift; sourceTree = "<group>"; };
@@ -1551,6 +1553,7 @@
 				830946862566D767003A1B9A /* Home.storyboard */,
 				B7F3A13123FD95A3007B5663 /* primary */,
 				B7F3A13023FD9597007B5663 /* legacy */,
+				8300F3E825685A02006ABF07 /* Opponent.xib */,
 			);
 			path = storyboard;
 			sourceTree = "<group>";
@@ -1680,6 +1683,7 @@
 				B7021F3F23FE0AE600C9346A /* PlayL.storyboard in Resources */,
 				83ACC6A32500165500D394D0 /* PopConfirm.storyboard in Resources */,
 				830946872566D767003A1B9A /* Home.storyboard in Resources */,
+				8300F3E925685A02006ABF07 /* Opponent.xib in Resources */,
 				B787C73122E970DD009C94F7 /* Assets.xcassets in Resources */,
 				83B72B85256716C400FA5D8F /* Header.xib in Resources */,
 				B7021F8823FE5A1C00C9346A /* DefaultP.storyboard in Resources */,

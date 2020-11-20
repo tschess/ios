@@ -137,7 +137,7 @@ class HomeMenuTable: UITableViewController, SwipeTableViewCellDelegate {
             
             DispatchQueue.main.async() {
                 
-                self.home!.renderHeader()
+                //self.home!.renderHeader()
                 
                 self.leaderboardList = [EntityPlayer]()
                 self.tableView.reloadData()
@@ -166,7 +166,7 @@ class HomeMenuTable: UITableViewController, SwipeTableViewCellDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "HomeMenuCell", for: indexPath) as! HomeMenuCell
         cell.delegate = self
         cell.avatarImageView.image = player.getImageAvatar()
-        cell.rankLabel.text = player.getLabelTextRank()
+        //cell.rankLabel.text = player.getLabelTextRank()
         cell.usernameLabel.text = player.username
         cell.dateLabel.text = player.getLabelTextDate()
         

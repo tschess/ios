@@ -26,15 +26,7 @@ class Home: UIViewController, UITabBarDelegate {
     
     var playerSelf: EntityPlayer?
     
-    public func renderHeader() {
-        //self.avatarImageView.image = self.playerSelf!.getImageAvatar()
-        //self.usernameLabel.text = self.playerSelf!.username
-        //self.eloLabel.text = self.playerSelf!.getLabelTextElo()
-        //self.rankLabel.text = self.playerSelf!.getLabelTextRank()
-        //self.dispLabel.text = self.playerSelf!.getLabelTextDisp()
-        //self.dispImageView.image = self.playerSelf!.getImageDisp()!
-        //self.dispImageView.tintColor = self.playerSelf!.tintColor
-    }
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +40,8 @@ class Home: UIViewController, UITabBarDelegate {
             NSLayoutConstraint.activate(attributes.map {
                 NSLayoutConstraint(item: viewHeaderDynamic, attribute: $0, relatedBy: .equal, toItem: viewHeaderDynamic.superview, attribute: $0, multiplier: 1, constant: 0)
             })
+            viewHeaderDynamic.set(player: self.playerSelf!)
+            
         }
         
         
@@ -72,7 +66,7 @@ class Home: UIViewController, UITabBarDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.renderHeader()
+        //self.renderHeader()
     }
     
     override func viewDidAppear(_ animated: Bool) {
