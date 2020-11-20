@@ -163,30 +163,31 @@ class HomeMenuTable: UITableViewController, SwipeTableViewCellDelegate {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let player = self.leaderboardList[indexPath.row]
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "HomeMenuCell", for: indexPath) as! HomeMenuCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MenuCellHome", for: indexPath) as! MenuCellHome
         cell.delegate = self
-        cell.avatarImageView.image = player.getImageAvatar()
+        //cell.avatarImageView.image = player.getImageAvatar()
         //cell.rankLabel.text = player.getLabelTextRank()
-        cell.usernameLabel.text = player.username
-        cell.dateLabel.text = player.getLabelTextDate()
+        //cell.labelUsername.text = player.username
+        //cell.dateLabel.text = player.getLabelTextDate()
+        cell.set(player: player)
         
         let val: String = player.getLabelTextDisp()
         if(val == "0"){
-            cell.dispLabel.isHidden = true
-            cell.dispImage.isHidden = true
-            cell.dispLabelAlign.isHidden = true
+            //cell.dispLabel.isHidden = true
+            //cell.dispImage.isHidden = true
+            //cell.dispLabelAlign.isHidden = true
         } else {
-            cell.dispLabel.isHidden = false
-            cell.dispImage.isHidden = false
-            cell.dispLabelAlign.isHidden = false
-            cell.dispLabel.text = player.getLabelTextDisp()
-            cell.dispImage.image = player.getImageDisp()!
-            cell.dispImage.tintColor = player.tintColor
+            //cell.dispLabel.isHidden = false
+            //cell.dispImage.isHidden = false
+            //cell.dispLabelAlign.isHidden = false
+            //cell.dispLabel.text = player.getLabelTextDisp()
+            //cell.dispImage.image = player.getImageDisp()!
+            //cell.dispImage.tintColor = player.tintColor
         }
         
         let pictureTap = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
-        cell.buttonSideSlide.addGestureRecognizer(pictureTap)
-        cell.buttonSideSlide.isUserInteractionEnabled = true
+        //cell.buttonSideSlide.addGestureRecognizer(pictureTap)
+        //cell.buttonSideSlide.isUserInteractionEnabled = true
         
         
         
@@ -196,7 +197,7 @@ class HomeMenuTable: UITableViewController, SwipeTableViewCellDelegate {
     var swipeVisible: Bool = false
     
     @objc func imageTapped(sender: UITapGestureRecognizer) {
-        guard let cell = sender.view?.superview?.superview as? HomeMenuCell else {
+        guard let cell = sender.view?.superview?.superview as? MenuCellHome else {
             return
         }
         if(!self.swipeVisible){

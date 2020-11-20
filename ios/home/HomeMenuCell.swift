@@ -11,16 +11,25 @@ import SwipeCellKit
 
 class MenuCellHome: SwipeTableViewCell {
     
-    //@IBOutlet weak var avatarImageView: UIImageView!
-    //@IBOutlet weak var rankLabel: UILabel!
-    //@IBOutlet weak var usernameLabel: UILabel!
+    @IBOutlet weak var imageAvatar: UIImageView!
+    @IBOutlet weak var labelIndicator: UILabel!
+    @IBOutlet weak var labelUsername: UILabel!
     
-    //@IBOutlet weak var dateLabel: UILabel!
-    //@IBOutlet weak var dispImage: UIImageView!
-    //@IBOutlet weak var dispLabel: UILabel!
-    //@IBOutlet weak var dispLabelAlign: UILabel!
+
+    @IBOutlet weak var viewAction: UIView!
+    @IBOutlet weak var labelAction: UILabel!
+    @IBOutlet weak var imageAction: UIImageView!
     
-    //@IBOutlet weak var buttonSideSlide: UIImageView!
+    @IBOutlet weak var imageSlide: UIImageView!
+    
+    public func set(player: EntityPlayer) {
+        
+        self.labelUsername.text = player.username
+        
+        self.imageAvatar.image = player.getImageAvatar()
+        imageAvatar.layer.cornerRadius = imageAvatar.frame.size.width/2
+        imageAvatar.clipsToBounds = true
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
