@@ -10,23 +10,17 @@ import UIKit
 
 class Home: UIViewController, UITabBarDelegate {
     
+    @IBOutlet weak var containerOpponent: UIView!
+    
     var menu: Menu?
     var homeMenuTable: HomeMenuTable?
     
     //MARK: Header
     @IBOutlet weak var headerView: UIView!
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    @IBOutlet weak var avatarImageView: UIImageView!
-    @IBOutlet weak var usernameLabel: UILabel!
-    //@IBOutlet weak var eloLabel: UILabel!
-    //@IBOutlet weak var rankLabel: UILabel!
-    //@IBOutlet weak var dispImageView: UIImageView!
-    //@IBOutlet weak var dispLabel: UILabel!
     @IBOutlet weak var tabBarMenu: UITabBar!
     
-    var playerSelf: EntityPlayer?
     
-   
+    var playerSelf: EntityPlayer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,8 +35,16 @@ class Home: UIViewController, UITabBarDelegate {
                 NSLayoutConstraint(item: viewHeaderDynamic, attribute: $0, relatedBy: .equal, toItem: viewHeaderDynamic.superview, attribute: $0, multiplier: 1, constant: 0)
             })
             viewHeaderDynamic.set(player: self.playerSelf!)
-            
         }
+        
+        let opponent = Bundle.loadView(fromNib: "Opponent", withType: Opponent.self)
+        self.containerOpponent.addSubview(opponent)
+        opponent.translatesAutoresizingMaskIntoConstraints = false
+        let attributes: [NSLayoutConstraint.Attribute] = [.top, .bottom, .right, .left]
+        NSLayoutConstraint.activate(attributes.map {
+            NSLayoutConstraint(item: opponent, attribute: $0, relatedBy: .equal, toItem: opponent.superview, attribute: $0, multiplier: 1, constant: 0)
+        })
+        opponent.set()
         
         
         self.navigationController?.viewControllers = [self]

@@ -8,12 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		4E766FB2BBF9176550BB45F9 /* Pods_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45C0F287A16E70CE8A23A2EB /* Pods_ios.framework */; };
-		8300F3E925685A02006ABF07 /* Opponent.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8300F3E825685A02006ABF07 /* Opponent.xib */; };
 		83085F28248048CD00D31CF0 /* NoteKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83085F27248048CD00D31CF0 /* NoteKey.swift */; };
 		830946872566D767003A1B9A /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 830946862566D767003A1B9A /* Home.storyboard */; };
 		83295C472475C2DE00820C6C /* GetTimeout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83295C462475C2DE00820C6C /* GetTimeout.swift */; };
 		8358928224BE65A0004F9703 /* UpdatePush.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8358928124BE65A0004F9703 /* UpdatePush.swift */; };
 		835FADA524F00A910080A194 /* Countdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835FADA424F00A910080A194 /* Countdown.swift */; };
+		8375E1E9256C0963001809FF /* Opponent.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8375E1E8256C0963001809FF /* Opponent.xib */; };
+		8375E1EB256C0AE9001809FF /* Opponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8375E1EA256C0AE9001809FF /* Opponent.swift */; };
 		8379820A24F05EE000254FBD /* Highlighter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8379820924F05EE000254FBD /* Highlighter.swift */; };
 		8385908C24F98AD600BBC11C /* TransDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8385908B24F98AD600BBC11C /* TransDelegate.swift */; };
 		8385908E24F98B2A00BBC11C /* Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8385908D24F98B2A00BBC11C /* Presenter.swift */; };
@@ -217,12 +218,13 @@
 
 /* Begin PBXFileReference section */
 		45C0F287A16E70CE8A23A2EB /* Pods_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		8300F3E825685A02006ABF07 /* Opponent.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Opponent.xib; sourceTree = "<group>"; };
 		83085F27248048CD00D31CF0 /* NoteKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteKey.swift; sourceTree = "<group>"; };
 		830946862566D767003A1B9A /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		83295C462475C2DE00820C6C /* GetTimeout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTimeout.swift; sourceTree = "<group>"; };
 		8358928124BE65A0004F9703 /* UpdatePush.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePush.swift; sourceTree = "<group>"; };
 		835FADA424F00A910080A194 /* Countdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Countdown.swift; sourceTree = "<group>"; };
+		8375E1E8256C0963001809FF /* Opponent.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Opponent.xib; sourceTree = "<group>"; };
+		8375E1EA256C0AE9001809FF /* Opponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Opponent.swift; sourceTree = "<group>"; };
 		8379820924F05EE000254FBD /* Highlighter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Highlighter.swift; sourceTree = "<group>"; };
 		8385908B24F98AD600BBC11C /* TransDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransDelegate.swift; sourceTree = "<group>"; };
 		8385908D24F98B2A00BBC11C /* Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presenter.swift; sourceTree = "<group>"; };
@@ -1543,6 +1545,7 @@
 				B7F541C023D51A5A00E89074 /* Home.swift */,
 				B7F541C523D51ADD00E89074 /* HomeMenuTable.swift */,
 				B7F541C723D51B0C00E89074 /* HomeMenuCell.swift */,
+				8375E1EA256C0AE9001809FF /* Opponent.swift */,
 			);
 			path = home;
 			sourceTree = "<group>";
@@ -1550,10 +1553,10 @@
 		B7F541C223D51A7800E89074 /* storyboard */ = {
 			isa = PBXGroup;
 			children = (
+				8375E1E8256C0963001809FF /* Opponent.xib */,
 				830946862566D767003A1B9A /* Home.storyboard */,
 				B7F3A13123FD95A3007B5663 /* primary */,
 				B7F3A13023FD9597007B5663 /* legacy */,
-				8300F3E825685A02006ABF07 /* Opponent.xib */,
 			);
 			path = storyboard;
 			sourceTree = "<group>";
@@ -1683,8 +1686,8 @@
 				B7021F3F23FE0AE600C9346A /* PlayL.storyboard in Resources */,
 				83ACC6A32500165500D394D0 /* PopConfirm.storyboard in Resources */,
 				830946872566D767003A1B9A /* Home.storyboard in Resources */,
-				8300F3E925685A02006ABF07 /* Opponent.xib in Resources */,
 				B787C73122E970DD009C94F7 /* Assets.xcassets in Resources */,
+				8375E1E9256C0963001809FF /* Opponent.xib in Resources */,
 				83B72B85256716C400FA5D8F /* Header.xib in Resources */,
 				B7021F8823FE5A1C00C9346A /* DefaultP.storyboard in Resources */,
 				83ACC6772500113A00D394D0 /* PopHelp.storyboard in Resources */,
@@ -1922,6 +1925,7 @@
 				B7A6B899240D999500840156 /* Menu.swift in Sources */,
 				B7BE124623EB01CB00ADA499 /* RequestAck.swift in Sources */,
 				B7BE11BE23EA9E2500ADA499 /* Pawn.swift in Sources */,
+				8375E1EB256C0AE9001809FF /* Opponent.swift in Sources */,
 				B7BE12B723EB0DCD00ADA499 /* Threat.swift in Sources */,
 				B7BE12B523EB0DA700ADA499 /* Attack.swift in Sources */,
 				B7D8ECE12408A917001B5D2D /* Landmine.swift in Sources */,
