@@ -20,7 +20,7 @@
                         <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="geX-7D-Yq9" userLabel="opponent00">
                             <rect key="frame" x="14" y="0.0" width="104" height="100"/>
                             <subviews>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="avatar_inverse" translatesAutoresizingMaskIntoConstraints="NO" id="CaL-rD-0Ce">
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="avatar_inverse" translatesAutoresizingMaskIntoConstraints="NO" id="CaL-rD-0Ce">
                                     <rect key="frame" x="8" y="0.0" width="83" height="75"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="75" id="VyY-fx-qcd"/>
@@ -67,7 +67,7 @@
                         <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="D4z-AZ-QJ0" userLabel="opponent01">
                             <rect key="frame" x="14" y="0.0" width="104" height="100"/>
                             <subviews>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="avatar_inverse" translatesAutoresizingMaskIntoConstraints="NO" id="cXM-53-wMU">
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="avatar_inverse" translatesAutoresizingMaskIntoConstraints="NO" id="cXM-53-wMU">
                                     <rect key="frame" x="8" y="0.0" width="83" height="75"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="75" id="Xbp-5I-xrE"/>
@@ -114,7 +114,7 @@
                         <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6My-ed-vaX" userLabel="opponent02">
                             <rect key="frame" x="14" y="0.0" width="104" height="100"/>
                             <subviews>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="avatar_inverse" translatesAutoresizingMaskIntoConstraints="NO" id="yDx-ub-Xdx">
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="avatar_inverse" translatesAutoresizingMaskIntoConstraints="NO" id="yDx-ub-Xdx">
                                     <rect key="frame" x="8" y="0.0" width="83" height="75"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="75" id="A03-ap-DXb"/>
@@ -161,7 +161,7 @@
                 </activityIndicatorView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="yNv-ER-N86" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="1bI-IM-EfJ"/>

@@ -44,7 +44,7 @@ class Home: UIViewController, UITabBarDelegate {
         NSLayoutConstraint.activate(attributes.map {
             NSLayoutConstraint(item: opponent, attribute: $0, relatedBy: .equal, toItem: opponent.superview, attribute: $0, multiplier: 1, constant: 0)
         })
-        opponent.set()
+        opponent.set(playerSelf: self.playerSelf!)
         
         
         self.navigationController?.viewControllers = [self]
