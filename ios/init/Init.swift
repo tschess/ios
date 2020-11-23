@@ -26,8 +26,8 @@ class Init: UIViewController {
                 let player: EntityPlayer = ParsePlayer().execute(json: result)
                 let height: CGFloat = UIScreen.main.bounds.height
                 if(height.isLess(than: 750)){
-                    let storyboard: UIStoryboard = UIStoryboard(name: "HomeL", bundle: nil)
-                    let viewController = storyboard.instantiateViewController(withIdentifier: "HomeL") as! Home
+                    let storyboard: UIStoryboard = UIStoryboard(name: "Home", bundle: nil)
+                    let viewController = storyboard.instantiateViewController(withIdentifier: "Home") as! Home
                     viewController.playerSelf = player
                     self.navigationController?.pushViewController(viewController, animated: false)
                     return

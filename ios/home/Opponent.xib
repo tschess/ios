@@ -109,7 +109,7 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DmB-Rf-JKP" userLabel="holder02">
-                    <rect key="frame" x="300" y="0.0" width="404" height="100"/>
+                    <rect key="frame" x="300" y="0.0" width="150" height="100"/>
                     <subviews>
                         <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6My-ed-vaX" userLabel="opponent02">
                             <rect key="frame" x="14" y="0.0" width="104" height="100"/>
@@ -156,8 +156,9 @@
                     </constraints>
                 </view>
                 <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="hTZ-m6-Fhk">
-                    <rect key="frame" x="333.5" y="41.5" width="37" height="37"/>
+                    <rect key="frame" x="206.5" y="31.5" width="37" height="37"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </activityIndicatorView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>

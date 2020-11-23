@@ -57,7 +57,7 @@ class Menu: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate {
                 let ty = String(describing: type(of: vc))
                 if(ty == "Home"){
                     let home: Home = vc as! Home
-                    home.menu = self
+                    //home.menu = self
                 }
             }
         }

@@ -15,12 +15,12 @@ class HomeMenuTable: UITableViewController, SwipeTableViewCellDelegate {
     
     let REQUEST_PAGE_SIZE: Int
     var requestPageIndex: Int
-    var leaderboardList: [EntityPlayer]
+    var leaderboardList: [EntityGame]
     
     required init?(coder aDecoder: NSCoder) {
         self.REQUEST_PAGE_SIZE = 9
         self.requestPageIndex = 0
-        self.leaderboardList = [EntityPlayer]()
+        self.leaderboardList = [EntityGame]()
         super.init(coder: aDecoder)
     }
     
@@ -68,26 +68,26 @@ class HomeMenuTable: UITableViewController, SwipeTableViewCellDelegate {
             cell.hideSwipe(animated: false, completion: nil)
             
             let playerOther = self.leaderboardList[indexPath.row]
-                DispatchQueue.main.async {
-                    let height: CGFloat = UIScreen.main.bounds.height
-                    if(height.isLess(than: 750)){
-                        let storyboard: UIStoryboard = UIStoryboard(name: "ChallengeL", bundle: nil)
-                        let viewController = storyboard.instantiateViewController(withIdentifier: "ChallengeL") as! Challenge
-                        viewController.setPlayerSelf(playerSelf: self.home!.playerSelf!)
-                        viewController.setPlayerOther(playerOther: playerOther)
-                        viewController.setSelection(selection: Int.random(in: 0...3))
-                        viewController.BACK = "HOME"
-                        self.navigationController?.pushViewController(viewController, animated: false)
-                        return
-                    }
-                    let storyboard: UIStoryboard = UIStoryboard(name: "ChallengeP", bundle: nil)
-                    let viewController = storyboard.instantiateViewController(withIdentifier: "ChallengeP") as! Challenge
-                    viewController.setPlayerSelf(playerSelf: self.home!.playerSelf!)
-                    viewController.setPlayerOther(playerOther: playerOther)
-                    viewController.setSelection(selection: Int.random(in: 0...3))
-                    viewController.BACK = "HOME"
-                    self.navigationController?.pushViewController(viewController, animated: false)
-                }
+            DispatchQueue.main.async {
+//                let height: CGFloat = UIScreen.main.bounds.height
+//                if(height.isLess(than: 750)){
+//                    let storyboard: UIStoryboard = UIStoryboard(name: "ChallengeL", bundle: nil)
+//                    let viewController = storyboard.instantiateViewController(withIdentifier: "ChallengeL") as! Challenge
+//                    viewController.setPlayerSelf(playerSelf: self.home!.playerSelf!)
+//                    viewController.setPlayerOther(playerOther: playerOther)
+//                    viewController.setSelection(selection: Int.random(in: 0...3))
+//                    viewController.BACK = "HOME"
+//                    self.navigationController?.pushViewController(viewController, animated: false)
+//                    return
+//                }
+//                let storyboard: UIStoryboard = UIStoryboard(name: "ChallengeP", bundle: nil)
+//                let viewController = storyboard.instantiateViewController(withIdentifier: "ChallengeP") as! Challenge
+//                viewController.setPlayerSelf(playerSelf: self.home!.playerSelf!)
+//                viewController.setPlayerOther(playerOther: playerOther)
+//                viewController.setSelection(selection: Int.random(in: 0...3))
+//                viewController.BACK = "HOME"
+//                self.navigationController?.pushViewController(viewController, animated: false)
+            }
         }
         //modifyAction.image = UIImage(named: "challenge_g")!
         modifyAction.image = UIImage(named: "challenge")!
@@ -99,10 +99,10 @@ class HomeMenuTable: UITableViewController, SwipeTableViewCellDelegate {
         return [modifyAction]
     }
     
-    func getOther(index: Int) -> EntityPlayer {
-        return self.leaderboardList[index]
-    }
-    
+//    func getOther(index: Int) -> EntityPlayer {
+//        return self.leaderboardList[index]
+//    }
+//
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
@@ -124,24 +124,25 @@ class HomeMenuTable: UITableViewController, SwipeTableViewCellDelegate {
     
     @objc func refresh(refreshControl: UIRefreshControl) {
         self.requestPageIndex = 0
-        let requestPayload: [String: Any] = ["id_player": self.home!.playerSelf!.id,
+        let requestPayload: [String: Any] = ["id": home!.playerSelf!.id,
+                                             "id_player": self.home!.playerSelf!.id,
                                              "size": REQUEST_PAGE_SIZE]
-        RequestRefresh().execute(requestPayload: requestPayload) { (response) in
-            if(response == nil){
-                return
-            }
-            let playerSelf: EntityPlayer = response!.last!
+        RequestActual().execute(requestPayload: requestPayload) { (response) in
+            //if(response == nil){
+                //return
+            //}
+            //let playerSelf: EntityPlayer = response!.last!
             
-            self.home!.playerSelf = playerSelf
-            let list: [EntityPlayer] = response!.dropLast()
+            //self.home!.playerSelf = playerSelf
+            //let list: [EntityGame] = response!.dropLast()
             
             DispatchQueue.main.async() {
                 
                 //self.home!.renderHeader()
                 
-                self.leaderboardList = [EntityPlayer]()
+                self.leaderboardList = [EntityGame]()
                 self.tableView.reloadData()
-                self.appendToLeaderboardTableList(additionalCellList: list)
+                self.appendToLeaderboardTableList(additionalCellList: response)
                 refreshControl.endRefreshing()
             }
         }
@@ -169,21 +170,21 @@ class HomeMenuTable: UITableViewController, SwipeTableViewCellDelegate {
         //cell.rankLabel.text = player.getLabelTextRank()
         //cell.labelUsername.text = player.username
         //cell.dateLabel.text = player.getLabelTextDate()
-        cell.set(player: player)
+        //cell.set(player: player)
         
-        let val: String = player.getLabelTextDisp()
-        if(val == "0"){
+        //let val: String = player.getLabelTextDisp()
+        //if(val == "0"){
             //cell.dispLabel.isHidden = true
             //cell.dispImage.isHidden = true
             //cell.dispLabelAlign.isHidden = true
-        } else {
+        //} else {
             //cell.dispLabel.isHidden = false
             //cell.dispImage.isHidden = false
             //cell.dispLabelAlign.isHidden = false
             //cell.dispLabel.text = player.getLabelTextDisp()
             //cell.dispImage.image = player.getImageDisp()!
             //cell.dispImage.tintColor = player.tintColor
-        }
+        //}
         
         let pictureTap = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
         //cell.buttonSideSlide.addGestureRecognizer(pictureTap)
@@ -227,20 +228,21 @@ class HomeMenuTable: UITableViewController, SwipeTableViewCellDelegate {
     }
     
     func fetchGameList() {
+        //RequestActual {
+        
+        //"id":"", "page":0, "size":13
         self.home!.setIndicator(on: true)
         
-        let requestPayload = ["index": self.requestPageIndex,
-                              "size": REQUEST_PAGE_SIZE] as [String: Int]
-        RequestPage().execute(requestPayload: requestPayload) { (result) in
+        let requestPayload = ["id": self.home!.playerSelf!.id,
+                              "index": self.requestPageIndex,
+                              "size": REQUEST_PAGE_SIZE] as [String: Any]
+        RequestActual().execute(requestPayload: requestPayload) { (result) in
             self.home!.setIndicator(on: false)
-            if(result == nil){
-                return
-            }
-            self.appendToLeaderboardTableList(additionalCellList: result!)
+            self.appendToLeaderboardTableList(additionalCellList: result)
         }
     }
     
-    func appendToLeaderboardTableList(additionalCellList: [EntityPlayer]) {
+    func appendToLeaderboardTableList(additionalCellList: [EntityGame]) {
         for game in additionalCellList {
             self.leaderboardList.append(game)
         }

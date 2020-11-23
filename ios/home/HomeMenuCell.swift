@@ -15,7 +15,6 @@ class MenuCellHome: SwipeTableViewCell {
     @IBOutlet weak var labelIndicator: UILabel!
     @IBOutlet weak var labelUsername: UILabel!
     
-
     @IBOutlet weak var viewAction: UIView!
     @IBOutlet weak var labelAction: UILabel!
     @IBOutlet weak var imageAction: UIImageView!
