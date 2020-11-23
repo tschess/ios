@@ -67,42 +67,42 @@ class HomeMenuTable: UITableViewController, SwipeTableViewCellDelegate {
             let cell = tableView.cellForRow(at: indexPath) as! SwipeTableViewCell
             cell.hideSwipe(animated: false, completion: nil)
             
-            let playerOther = self.leaderboardList[indexPath.row]
-            DispatchQueue.main.async {
-//                let height: CGFloat = UIScreen.main.bounds.height
-//                if(height.isLess(than: 750)){
-//                    let storyboard: UIStoryboard = UIStoryboard(name: "ChallengeL", bundle: nil)
-//                    let viewController = storyboard.instantiateViewController(withIdentifier: "ChallengeL") as! Challenge
-//                    viewController.setPlayerSelf(playerSelf: self.home!.playerSelf!)
-//                    viewController.setPlayerOther(playerOther: playerOther)
-//                    viewController.setSelection(selection: Int.random(in: 0...3))
-//                    viewController.BACK = "HOME"
-//                    self.navigationController?.pushViewController(viewController, animated: false)
-//                    return
-//                }
-//                let storyboard: UIStoryboard = UIStoryboard(name: "ChallengeP", bundle: nil)
-//                let viewController = storyboard.instantiateViewController(withIdentifier: "ChallengeP") as! Challenge
-//                viewController.setPlayerSelf(playerSelf: self.home!.playerSelf!)
-//                viewController.setPlayerOther(playerOther: playerOther)
-//                viewController.setSelection(selection: Int.random(in: 0...3))
-//                viewController.BACK = "HOME"
-//                self.navigationController?.pushViewController(viewController, animated: false)
-            }
+            
+            
         }
-        //modifyAction.image = UIImage(named: "challenge_g")!
-        modifyAction.image = UIImage(named: "challenge")!
-        modifyAction.title = "challenge"
-        modifyAction.textColor = UIColor.white
-        //modifyAction.backgroundColor = .purple
+        
+        let game = self.leaderboardList[indexPath.row]
+        let winner: Bool = game.getWinner(username: self.home!.playerSelf!.username)
+       
+        if(winner){
+            modifyAction.image = UIImage(named: "challenge_grn")!
+            modifyAction.textColor = UIColor.green
+            //self.imageSlide.image = UIImage(named: "more_vert_grn")
+            //return
+        } else {
+            modifyAction.image = UIImage(named: "challenge_red")!
+            //self.imageSlide.image = UIImage(named: "more_vert_red")
+            modifyAction.textColor = UIColor.red
+        }
+        if(game.condition == "DRAW"){
+            modifyAction.image = UIImage(named: "challenge_yel")!
+            
+            modifyAction.textColor = UIColor.yellow
+            //self.imageSlide.image = UIImage(named: "more_vert_yel")
+            //return
+        }
+        
+        
+        
+        modifyAction.title = "snapshot"
+     
+        
         modifyAction.backgroundColor = UIColor(red: 39.0/255, green: 41.0/255, blue: 44.0/255, alpha: 1.0)
         
         return [modifyAction]
     }
     
-//    func getOther(index: Int) -> EntityPlayer {
-//        return self.leaderboardList[index]
-//    }
-//
+
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
