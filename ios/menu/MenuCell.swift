@@ -11,8 +11,6 @@ import SwipeCellKit
 
 class MenuCell: SwipeTableViewCell {
     
-    //var promptConfirm: Bool = false // 2 identical -- consolidate this...
-    
     //MARK: Properties
     @IBOutlet weak var viewContent: UIView!
     @IBOutlet weak var labelName: UILabel!

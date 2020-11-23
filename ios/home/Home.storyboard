@@ -233,6 +233,7 @@
                                     <outlet property="labelIndicator" destination="fbw-9Y-9Do" id="D9M-ZA-uwA"/>
                                     <outlet property="labelUsername" destination="QXK-mb-Sho" id="hze-v2-7gq"/>
                                     <outlet property="viewAction" destination="byi-9Q-0wy" id="v9d-T6-ush"/>
+                                    <outlet property="viewContent" destination="XUX-ys-TYW" id="92O-x1-JKK"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

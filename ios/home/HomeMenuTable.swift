@@ -161,35 +161,19 @@ class HomeMenuTable: UITableViewController, SwipeTableViewCellDelegate {
         return leaderboardList.count
     }
     
+   
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let player = self.leaderboardList[indexPath.row]
+
+        let index: Int = indexPath.row
+        let game: EntityGame = self.leaderboardList[index]
+        let username: String = self.home!.playerSelf!.username
+        let usernameOther: String = game.getLabelTextUsernameOpponent(username: username)
+        let avatarImageOther: UIImage = game.getImageAvatarOpponent(username: username)
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "MenuCellHome", for: indexPath) as! MenuCellHome
         cell.delegate = self
-        //cell.avatarImageView.image = player.getImageAvatar()
-        //cell.rankLabel.text = player.getLabelTextRank()
-        //cell.labelUsername.text = player.username
-        //cell.dateLabel.text = player.getLabelTextDate()
-        //cell.set(player: player)
         
-        //let val: String = player.getLabelTextDisp()
-        //if(val == "0"){
-            //cell.dispLabel.isHidden = true
-            //cell.dispImage.isHidden = true
-            //cell.dispLabelAlign.isHidden = true
-        //} else {
-            //cell.dispLabel.isHidden = false
-            //cell.dispImage.isHidden = false
-            //cell.dispLabelAlign.isHidden = false
-            //cell.dispLabel.text = player.getLabelTextDisp()
-            //cell.dispImage.image = player.getImageDisp()!
-            //cell.dispImage.tintColor = player.tintColor
-        //}
-        
-        let pictureTap = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
-        //cell.buttonSideSlide.addGestureRecognizer(pictureTap)
-        //cell.buttonSideSlide.isUserInteractionEnabled = true
-        
+        cell.setContent(usernameSelf: username, usernameOther: usernameOther, game: game, avatarImageOther: avatarImageOther)
         
         
         return cell
