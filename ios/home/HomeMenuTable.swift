@@ -26,83 +26,36 @@ class HomeMenuTable: UITableViewController, SwipeTableViewCellDelegate {
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
         if(orientation == .left) {
-            let modifyAction = SwipeAction(style: .default, title: nil) { action, indexPath in
-                
-                let cell = tableView.cellForRow(at: indexPath) as! SwipeTableViewCell
-                cell.hideSwipe(animated: false, completion: nil)
-                
-                self.home!.setIndicator(on: true)
-                
-                let playerOther = self.leaderboardList[indexPath.row]
-                
-                RequestRecent().execute(id: playerOther.id) { (result) in
-                    self.home!.setIndicator(on: false)
-                    
-                    if(result["fail"] != nil) {
-                        DispatchQueue.main.async {
-                            let storyboard: UIStoryboard = UIStoryboard(name: "PopNoop", bundle: nil)
-                            let viewController = storyboard.instantiateViewController(withIdentifier: "PopNoop") as! PopDismiss
-                            self.present(viewController, animated: true, completion: nil)
-                        }
-                        return
-                    }
-                    let game: EntityGame = ParseGame().execute(json: result)
-                    DispatchQueue.main.async() {
-                        SelectSnapshot().snapshot(playerSelf: self.home!.playerSelf!, game: game, presentor: self)
-                    }
-                }
-            }
-            modifyAction.image = UIImage(named: "eyeye")!
-            //modifyAction.image = UIImage(named: "eye_g")!
-            //modifyAction.backgroundColor = .orange
-            modifyAction.backgroundColor = UIColor(red: 39.0/255, green: 41.0/255, blue: 44.0/255, alpha: 1.0)
-            
-            modifyAction.title = "recent"
-            //modifyAction.textColor = UIColor.lightGray
-            modifyAction.textColor = UIColor.white
-            return [modifyAction]
+            return nil
         }
+        let game = self.leaderboardList[indexPath.row]
+        let winner: Bool = game.getWinner(username: self.home!.playerSelf!.username)
+        
         let modifyAction = SwipeAction(style: .default, title: nil) { action, indexPath in
-            
             let cell = tableView.cellForRow(at: indexPath) as! SwipeTableViewCell
             cell.hideSwipe(animated: false, completion: nil)
             
-            
-            
+            DispatchQueue.main.async() {
+                SelectSnapshot().snapshot(playerSelf: self.home!.playerSelf!, game: game, presentor: self)
+            }
         }
-        
-        let game = self.leaderboardList[indexPath.row]
-        let winner: Bool = game.getWinner(username: self.home!.playerSelf!.username)
-       
         if(winner){
             modifyAction.image = UIImage(named: "challenge_grn")!
             modifyAction.textColor = UIColor.green
-            //self.imageSlide.image = UIImage(named: "more_vert_grn")
-            //return
         } else {
             modifyAction.image = UIImage(named: "challenge_red")!
-            //self.imageSlide.image = UIImage(named: "more_vert_red")
             modifyAction.textColor = UIColor.red
         }
         if(game.condition == "DRAW"){
             modifyAction.image = UIImage(named: "challenge_yel")!
-            
             modifyAction.textColor = UIColor.yellow
-            //self.imageSlide.image = UIImage(named: "more_vert_yel")
-            //return
         }
-        
-        
-        
         modifyAction.title = "snapshot"
-     
-        
         modifyAction.backgroundColor = UIColor(red: 39.0/255, green: 41.0/255, blue: 44.0/255, alpha: 1.0)
-        
         return [modifyAction]
     }
     
-
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
@@ -128,18 +81,8 @@ class HomeMenuTable: UITableViewController, SwipeTableViewCellDelegate {
                                              "id_player": self.home!.playerSelf!.id,
                                              "size": REQUEST_PAGE_SIZE]
         RequestActual().execute(requestPayload: requestPayload) { (response) in
-            //if(response == nil){
-                //return
-            //}
-            //let playerSelf: EntityPlayer = response!.last!
-            
-            //self.home!.playerSelf = playerSelf
-            //let list: [EntityGame] = response!.dropLast()
             
             DispatchQueue.main.async() {
-                
-                //self.home!.renderHeader()
-                
                 self.leaderboardList = [EntityGame]()
                 self.tableView.reloadData()
                 self.appendToLeaderboardTableList(additionalCellList: response)
@@ -161,9 +104,9 @@ class HomeMenuTable: UITableViewController, SwipeTableViewCellDelegate {
         return leaderboardList.count
     }
     
-   
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
+        
         let index: Int = indexPath.row
         let game: EntityGame = self.leaderboardList[index]
         let username: String = self.home!.playerSelf!.username

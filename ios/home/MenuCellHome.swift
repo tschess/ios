@@ -94,7 +94,7 @@ class MenuCellHome: SwipeTableViewCell {
     func setActive() {
         self.labelAction.isHidden = false
         self.viewAction.isHidden = false
-        //self.viewAction.backgroundColor = UIColor.white
+       
         self.viewContent.backgroundColor = UIColor.white
         self.labelUsername.textColor = UIColor.black
         self.imageAction.isHidden = false
