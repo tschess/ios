@@ -12,6 +12,7 @@
 		830946872566D767003A1B9A /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 830946862566D767003A1B9A /* Home.storyboard */; };
 		83295C472475C2DE00820C6C /* GetTimeout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83295C462475C2DE00820C6C /* GetTimeout.swift */; };
 		8358928224BE65A0004F9703 /* UpdatePush.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8358928124BE65A0004F9703 /* UpdatePush.swift */; };
+		835C1885256D68D300390AE8 /* HeaderSnapshot.xib in Resources */ = {isa = PBXBuildFile; fileRef = 835C1884256D68D300390AE8 /* HeaderSnapshot.xib */; };
 		835FADA524F00A910080A194 /* Countdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835FADA424F00A910080A194 /* Countdown.swift */; };
 		8375E1E9256C0963001809FF /* Opponent.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8375E1E8256C0963001809FF /* Opponent.xib */; };
 		8375E1EB256C0AE9001809FF /* Opponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8375E1EA256C0AE9001809FF /* Opponent.swift */; };
@@ -218,6 +219,7 @@
 		830946862566D767003A1B9A /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		83295C462475C2DE00820C6C /* GetTimeout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTimeout.swift; sourceTree = "<group>"; };
 		8358928124BE65A0004F9703 /* UpdatePush.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePush.swift; sourceTree = "<group>"; };
+		835C1884256D68D300390AE8 /* HeaderSnapshot.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderSnapshot.xib; sourceTree = "<group>"; };
 		835FADA424F00A910080A194 /* Countdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Countdown.swift; sourceTree = "<group>"; };
 		8375E1E8256C0963001809FF /* Opponent.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Opponent.xib; sourceTree = "<group>"; };
 		8375E1EA256C0AE9001809FF /* Opponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Opponent.swift; sourceTree = "<group>"; };
@@ -546,6 +548,7 @@
 			children = (
 				83B72B84256716C400FA5D8F /* Header.xib */,
 				83B72B882567190600FA5D8F /* Header.swift */,
+				835C1884256D68D300390AE8 /* HeaderSnapshot.xib */,
 			);
 			path = header;
 			sourceTree = "<group>";
@@ -1659,6 +1662,7 @@
 				83ACC6B6250025E200D394D0 /* PopRecover.storyboard in Resources */,
 				83ACC67B250011A100D394D0 /* PopNoop.storyboard in Resources */,
 				83ACC6952500145200D394D0 /* PopPromo.storyboard in Resources */,
+				835C1885256D68D300390AE8 /* HeaderSnapshot.xib in Resources */,
 				B7C675FE23FF1E6E007EC71E /* ChallengeL.storyboard in Resources */,
 				B7A6B8A7240D9A8E00840156 /* MenuL.storyboard in Resources */,
 				B7021F9823FE5D8F00C9346A /* OtherP.storyboard in Resources */,
