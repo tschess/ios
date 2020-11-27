@@ -13,6 +13,7 @@
 		83295C472475C2DE00820C6C /* GetTimeout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83295C462475C2DE00820C6C /* GetTimeout.swift */; };
 		8358928224BE65A0004F9703 /* UpdatePush.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8358928124BE65A0004F9703 /* UpdatePush.swift */; };
 		835C1885256D68D300390AE8 /* HeaderSnapshot.xib in Resources */ = {isa = PBXBuildFile; fileRef = 835C1884256D68D300390AE8 /* HeaderSnapshot.xib */; };
+		835C18872571573000390AE8 /* HeaderSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835C18862571573000390AE8 /* HeaderSnapshot.swift */; };
 		835FADA524F00A910080A194 /* Countdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835FADA424F00A910080A194 /* Countdown.swift */; };
 		8375E1E9256C0963001809FF /* Opponent.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8375E1E8256C0963001809FF /* Opponent.xib */; };
 		8375E1EB256C0AE9001809FF /* Opponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8375E1EA256C0AE9001809FF /* Opponent.swift */; };
@@ -220,6 +221,7 @@
 		83295C462475C2DE00820C6C /* GetTimeout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTimeout.swift; sourceTree = "<group>"; };
 		8358928124BE65A0004F9703 /* UpdatePush.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePush.swift; sourceTree = "<group>"; };
 		835C1884256D68D300390AE8 /* HeaderSnapshot.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderSnapshot.xib; sourceTree = "<group>"; };
+		835C18862571573000390AE8 /* HeaderSnapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderSnapshot.swift; sourceTree = "<group>"; };
 		835FADA424F00A910080A194 /* Countdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Countdown.swift; sourceTree = "<group>"; };
 		8375E1E8256C0963001809FF /* Opponent.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Opponent.xib; sourceTree = "<group>"; };
 		8375E1EA256C0AE9001809FF /* Opponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Opponent.swift; sourceTree = "<group>"; };
@@ -549,6 +551,7 @@
 				83B72B84256716C400FA5D8F /* Header.xib */,
 				83B72B882567190600FA5D8F /* Header.swift */,
 				835C1884256D68D300390AE8 /* HeaderSnapshot.xib */,
+				835C18862571573000390AE8 /* HeaderSnapshot.swift */,
 			);
 			path = header;
 			sourceTree = "<group>";
@@ -1764,6 +1767,7 @@
 				B7BE11A923EA9C8800ADA499 /* King.swift in Sources */,
 				B7BE129123EB09FC00ADA499 /* UpdateResign.swift in Sources */,
 				B7D8ECD7240820DD001B5D2D /* AmazonWhite.swift in Sources */,
+				835C18872571573000390AE8 /* HeaderSnapshot.swift in Sources */,
 				B7021F9223FE5C5100C9346A /* SelectSnapshot.swift in Sources */,
 				8379820A24F05EE000254FBD /* Highlighter.swift in Sources */,
 				B7BE11B223EA9D7000ADA499 /* QueenWhite.swift in Sources */,
