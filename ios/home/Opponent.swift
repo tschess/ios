@@ -28,9 +28,30 @@ class Opponent: UIView {
     @IBOutlet weak var indicatorActivity: UIActivityIndicatorView!
     
     
+    //func showErrorMessage() {
+    //
+    //}
+    
+    
+
+    @objc func checkAction(sender : UITapGestureRecognizer) {
+        // Do what you want
+        let alertWindow = UIWindow(frame: UIScreen.main.bounds)
+        alertWindow.rootViewController = UIViewController()
+
+        let alertController = UIAlertController(title: "Error", message: "fuck", preferredStyle: UIAlertController.Style.alert)
+        alertController.addAction(UIAlertAction(title: "Close", style: UIAlertAction.Style.cancel, handler: { _ in
+            alertWindow.isHidden = true
+        }))
+        
+        alertWindow.windowLevel = UIWindow.Level.alert + 1;
+        alertWindow.makeKeyAndVisible()
+        alertWindow.rootViewController?.present(alertController, animated: true, completion: nil)
+    }
     
     public func set(playerSelf: EntityPlayer) {
         
+        //showErrorMessage()
         
         
         let screenSize = UIScreen.main.bounds
@@ -50,6 +71,21 @@ class Opponent: UIView {
         indicatorActivity.startAnimating()
         
         
+       
+        let gesture00 = UITapGestureRecognizer(target: self, action:  #selector(self.checkAction))
+        self.viewHolder00.isUserInteractionEnabled = true
+        self.viewHolder00.addGestureRecognizer(gesture00)
+        
+        let gesture01 = UITapGestureRecognizer(target: self, action:  #selector(self.checkAction))
+        self.viewHolder01.isUserInteractionEnabled = true
+        self.viewHolder01.addGestureRecognizer(gesture01)
+        
+        let gesture02 = UITapGestureRecognizer(target: self, action:  #selector(self.checkAction))
+        self.viewHolder02.isUserInteractionEnabled = true
+        self.viewHolder02.addGestureRecognizer(gesture02)
+       
+        
+        
         print("!!!!!!")
         self.execute(id: playerSelf.id) { (result) in
             
@@ -65,6 +101,8 @@ class Opponent: UIView {
                 self.imageAvatar00.layer.cornerRadius = self.imageAvatar00.frame.size.width/2
                 self.imageAvatar00.clipsToBounds = true
                 self.viewHolder00.isHidden = false
+                
+                
             }
             
             let opponent01: EntityPlayer = ParsePlayer().execute(json: result[1])
@@ -74,6 +112,7 @@ class Opponent: UIView {
                 self.imageAvatar01.layer.cornerRadius = self.imageAvatar01.frame.size.width/2
                 self.imageAvatar01.clipsToBounds = true
                 self.viewHolder01.isHidden = false
+                
             }
             
             let opponent02: EntityPlayer = ParsePlayer().execute(json: result[2])
@@ -83,6 +122,7 @@ class Opponent: UIView {
                 self.imageAvatar02.layer.cornerRadius = self.imageAvatar02.frame.size.width/2
                 self.imageAvatar02.clipsToBounds = true
                 self.viewHolder02.isHidden = false
+                
             }
             
             
