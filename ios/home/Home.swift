@@ -65,6 +65,8 @@ class Home: UIViewController, UITabBarDelegate {
         //self.renderHeader()
     }
     
+    
+    
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         self.tabBarMenu.selectedItem = nil
         DispatchQueue.main.async() {
@@ -73,46 +75,64 @@ class Home: UIViewController, UITabBarDelegate {
         }
         switch item.tag {
         case 1:
-            DispatchQueue.main.async() {
-                var storyboard: UIStoryboard = UIStoryboard(name: "ProfileP", bundle: nil)
-                var viewController = storyboard.instantiateViewController(withIdentifier: "ProfileP") as! Profile
-                if(UIScreen.main.bounds.height.isLess(than: 750)){
-                    storyboard = UIStoryboard(name: "ProfileL", bundle: nil)
-                    viewController = storyboard.instantiateViewController(withIdentifier: "ProfileL") as! Profile
-                }
-                viewController.player = self.playerSelf!
-                let transition = CATransition()
-                transition.duration = 0.3
-                transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
-                transition.type = CATransitionType.fade
-                self.navigationController?.view.layer.add(transition, forKey: nil)
-                _ = self.navigationController?.popViewController(animated: false)
-                self.navigationController?.pushViewController(viewController, animated: false)
-            }
+            
+            print("SINGLE PLAYER")
+            
+            let alert = UIAlertController(title: "Did you bring your towel?", message: "It's recommended you bring your towel before continuing.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: nil))
+            alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+            alert.view.tintColor = .green
+            self.present(alert, animated: true)
+            
+            //DispatchQueue.main.async() {
+                //var storyboard: UIStoryboard = UIStoryboard(name: "ProfileP", bundle: nil)
+                //var viewController = storyboard.instantiateViewController(withIdentifier: "ProfileP") as! Profile
+                //if(UIScreen.main.bounds.height.isLess(than: 750)){
+                    //storyboard = UIStoryboard(name: "ProfileL", bundle: nil)
+                    //viewController = storyboard.instantiateViewController(withIdentifier: "ProfileL") as! Profile
+                //}
+                //viewController.player = self.playerSelf!
+                //let transition = CATransition()
+                //transition.duration = 0.3
+                //transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+                //transition.type = CATransitionType.fade
+                //self.navigationController?.view.layer.add(transition, forKey: nil)
+                //_ = self.navigationController?.popViewController(animated: false)
+                //self.navigationController?.pushViewController(viewController, animated: false)
+            //}
         case 3:
-            var storyboard: UIStoryboard = UIStoryboard(name: "MenuP", bundle: nil)
-            var viewController = storyboard.instantiateViewController(withIdentifier: "MenuP") as! Menu
-            if(UIScreen.main.bounds.height.isLess(than: 750)){
-                storyboard = UIStoryboard(name: "MenuL", bundle: nil)
-                viewController = storyboard.instantiateViewController(withIdentifier: "MenuL") as! Menu
-            }
-            viewController.playerSelf = self.playerSelf!
-            self.navigationController?.pushViewController(viewController, animated: false)
+            
+            print("MY CONFIG(S)")
+            
+        var storyboard: UIStoryboard = UIStoryboard(name: "ConfigP", bundle: nil)
+        var viewController = storyboard.instantiateViewController(withIdentifier: "ConfigP") as! Config
+        if(UIScreen.main.bounds.height.isLess(than: 750)){
+            storyboard = UIStoryboard(name: "ConfigL", bundle: nil)
+            viewController = storyboard.instantiateViewController(withIdentifier: "ConfigL") as! Config
+        }
+        viewController.playerSelf = self.playerSelf!
+        let transition = CATransition()
+        transition.duration = 0.3
+        transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+        transition.type = CATransitionType.fade
+        self.navigationController?.view.layer.add(transition, forKey: nil)
+        _ = self.navigationController?.popViewController(animated: false)
+        self.navigationController?.pushViewController(viewController, animated: false)
+            
+            
         default: //case 4:
-            var storyboard: UIStoryboard = UIStoryboard(name: "ConfigP", bundle: nil)
-            var viewController = storyboard.instantiateViewController(withIdentifier: "ConfigP") as! Config
-            if(UIScreen.main.bounds.height.isLess(than: 750)){
-                storyboard = UIStoryboard(name: "ConfigL", bundle: nil)
-                viewController = storyboard.instantiateViewController(withIdentifier: "ConfigL") as! Config
-            }
-            viewController.playerSelf = self.playerSelf!
-            let transition = CATransition()
-            transition.duration = 0.3
-            transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
-            transition.type = CATransitionType.fade
-            self.navigationController?.view.layer.add(transition, forKey: nil)
-            _ = self.navigationController?.popViewController(animated: false)
-            self.navigationController?.pushViewController(viewController, animated: false)
+        
+            print("LEADERBOARD !!!!!!!")
+        
+        //var storyboard: UIStoryboard = UIStoryboard(name: "MenuP", bundle: nil)
+        //var viewController = storyboard.instantiateViewController(withIdentifier: "MenuP") as! Menu
+        //if(UIScreen.main.bounds.height.isLess(than: 750)){
+            //storyboard = UIStoryboard(name: "MenuL", bundle: nil)
+            //viewController = storyboard.instantiateViewController(withIdentifier: "MenuL") as! Menu
+        //}
+        //viewController.playerSelf = self.playerSelf!
+        //self.navigationController?.pushViewController(viewController, animated: false)
+            
         }
     }
     
@@ -158,5 +178,6 @@ class Home: UIViewController, UITabBarDelegate {
 //                }
     }
 }
+
 
 
