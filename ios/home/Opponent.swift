@@ -40,9 +40,13 @@ class Opponent: UIView {
         alertWindow.rootViewController = UIViewController()
 
         let alertController = UIAlertController(title: "Error", message: "fuck", preferredStyle: UIAlertController.Style.alert)
-        alertController.addAction(UIAlertAction(title: "Close", style: UIAlertAction.Style.cancel, handler: { _ in
-            alertWindow.isHidden = true
-        }))
+       
+            let fuck = UIAlertAction(title: "Close", style: UIAlertAction.Style.cancel, handler: { _ in
+                alertWindow.isHidden = true
+            })
+        fuck.setValue(UIColor.red, forKey: "titleTextColor")
+        
+        alertController.addAction(fuck)
         
         alertWindow.windowLevel = UIWindow.Level.alert + 1;
         alertWindow.makeKeyAndVisible()
