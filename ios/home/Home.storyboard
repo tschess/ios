@@ -24,6 +24,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="tschess" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hzs-EN-kVs">
                                 <rect key="frame" x="0.0" y="44" width="414" height="30"/>
                                 <color key="backgroundColor" systemColor="viewFlipsideBackgroundColor"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Inr-Ze-1Do"/>
                                 </constraints>
@@ -54,7 +55,7 @@
                                 </constraints>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WxW-qA-faz">
-                                <rect key="frame" x="0.0" y="285" width="414" height="527"/>
+                                <rect key="frame" x="0.0" y="332" width="414" height="480"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
@@ -85,6 +86,14 @@
                                 <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="selectedImageTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tabBar>
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="e3Y-nl-uSZ">
+                                <rect key="frame" x="0.0" y="290" width="414" height="12"/>
+                                <color key="backgroundColor" red="0.12156862745098039" green="0.12156862745098039" blue="0.12156862745098039" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="4" id="NQj-xq-DU9"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="onu-DJ-h1h"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -104,15 +113,18 @@
                             <constraint firstItem="Kc6-7w-kWO" firstAttribute="top" secondItem="sfS-8a-jQx" secondAttribute="top" id="Vnc-TG-hFQ"/>
                             <constraint firstItem="AlY-qh-cUb" firstAttribute="trailing" secondItem="onu-DJ-h1h" secondAttribute="trailing" id="YCz-Sc-efo"/>
                             <constraint firstAttribute="trailing" secondItem="Hzs-EN-kVs" secondAttribute="trailing" id="a0C-Eu-cKl"/>
+                            <constraint firstItem="WxW-qA-faz" firstAttribute="top" secondItem="e3Y-nl-uSZ" secondAttribute="bottom" id="cEh-LK-7tR"/>
                             <constraint firstItem="ho8-tE-PTd" firstAttribute="leading" secondItem="onu-DJ-h1h" secondAttribute="leading" id="f7N-GT-qV3"/>
                             <constraint firstItem="nqq-3b-Do4" firstAttribute="leading" secondItem="onu-DJ-h1h" secondAttribute="leading" id="fQh-tv-4Yi"/>
+                            <constraint firstItem="e3Y-nl-uSZ" firstAttribute="top" secondItem="nqq-3b-Do4" secondAttribute="bottom" id="fjs-DJ-ceQ"/>
                             <constraint firstItem="nqq-3b-Do4" firstAttribute="trailing" secondItem="onu-DJ-h1h" secondAttribute="trailing" id="g8o-i8-gjX"/>
                             <constraint firstItem="ho8-tE-PTd" firstAttribute="trailing" secondItem="onu-DJ-h1h" secondAttribute="trailing" id="gMh-JT-HKB"/>
-                            <constraint firstItem="WxW-qA-faz" firstAttribute="top" secondItem="nqq-3b-Do4" secondAttribute="bottom" id="h2P-B2-fH3"/>
+                            <constraint firstItem="e3Y-nl-uSZ" firstAttribute="trailing" secondItem="sfS-8a-jQx" secondAttribute="trailing" id="gvK-K4-3LB"/>
                             <constraint firstAttribute="trailing" secondItem="Kc6-7w-kWO" secondAttribute="trailing" id="hwq-Kh-AKl"/>
                             <constraint firstItem="AlY-qh-cUb" firstAttribute="top" secondItem="Hzs-EN-kVs" secondAttribute="bottom" id="mug-ic-HCk"/>
                             <constraint firstItem="WKf-1J-vAW" firstAttribute="top" secondItem="WxW-qA-faz" secondAttribute="bottom" id="tsB-sc-cx7"/>
                             <constraint firstItem="WKf-1J-vAW" firstAttribute="leading" secondItem="onu-DJ-h1h" secondAttribute="leading" id="z2q-O0-s8Z"/>
+                            <constraint firstItem="e3Y-nl-uSZ" firstAttribute="leading" secondItem="sfS-8a-jQx" secondAttribute="leading" id="zO9-6V-Rcr"/>
                         </constraints>
                     </view>
                     <connections>
@@ -130,7 +142,7 @@
             <objects>
                 <tableViewController id="ECz-mu-5JR" customClass="HomeMenuTable" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="11K-61-DIT">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="527"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -142,7 +154,7 @@
                                 <rect key="frame" x="0.0" y="28" width="414" height="83"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0o7-4A-IZm" id="XUX-ys-TYW">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="83"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="83.333335876464844"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatar_inverse" translatesAutoresizingMaskIntoConstraints="NO" id="nKx-cM-yYc">
