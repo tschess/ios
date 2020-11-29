@@ -8,7 +8,25 @@
 
 import UIKit
 
-class Opponent: UIView {
+class Opponent: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int { return pickerSet.count }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {}
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? { return pickerSet[row] }
+    
+    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+        let titleData = pickerSet[row]
+        let myTitle = NSAttributedString(string: titleData, attributes: [NSAttributedString.Key.font:UIFont(name: "Verdana", size: 15.0)!,NSAttributedString.Key.foregroundColor:UIColor.white])
+        return myTitle
+    }
+    
+    let pickerSet = ["5","10","15","20","30","35","40","45","50","55","60", "65", "70", "75", "80", "85", "90"]
     
     @IBOutlet weak var viewHolder00: UIView!
     @IBOutlet weak var imageAvatar00: UIImageView!
@@ -29,24 +47,72 @@ class Opponent: UIView {
     
     @objc func checkAction(sender : UITapGestureRecognizer) {
         // Do what you want
-       
+        
         // create the alert
-        let alert = UIAlertController(title: "🤜 \(self.playerSelf!.username) vs. ${playerOther.username} 🤛", message: "Lauching this missile will destroy the entire universe. Is this what you intended to do?", preferredStyle: UIAlertController.Style.alert)
-        
-        
-        // add the actions (buttons)
+        //let alert = UIAlertController(title: "🤜 \(self.playerSelf!.username) vs. ${playerOther.username} 🤛", message: "Lauching this missile will destroy the entire universe. Is this what you intended to do?", preferredStyle: UIAlertController.Style.alert)
         
         //alert.addAction(UIAlertAction(title: "⚡ issue challenge ⚡", style: UIAlertAction.Style.default, handler: nil))
-        let option00 = UIAlertAction(title: "⚡ issue challenge ⚡", style: .default, handler: nil)
-        option00.setValue(UIColor.white, forKey: "titleTextColor")
-        alert.addAction(option00)
+        //let option00 = UIAlertAction(title: "⚡ issue challenge ⚡", style: .default, handler: nil)
+        //option00.setValue(UIColor.white, forKey: "titleTextColor")
+        //alert.addAction(option00)
         
-        let option01 = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        option01.setValue(UIColor.lightGray, forKey: "titleTextColor")
-        alert.addAction(option01)
+        //let option01 = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        //option01.setValue(UIColor.lightGray, forKey: "titleTextColor")
+        //alert.addAction(option01)
         
         // show the alert
+        //self.window?.rootViewController?.present(alert, animated: true, completion: nil)
+        
+        
+        //        let vc = UIViewController()
+        //        vc.preferredContentSize = CGSize(width: 250,height: 300)
+        //        let pickerView = UIPickerView(frame: CGRect(x: 0, y: 0, width: 250, height: 300))
+        //        pickerView.delegate = self
+        //        pickerView.dataSource = self
+        //        vc.view.addSubview(pickerView)
+        //        let editRadiusAlert = UIAlertController(title: "Choose distance", message: "", preferredStyle: UIAlertController.Style.alert)
+        //        editRadiusAlert.setValue(vc, forKey: "contentViewController")
+        //        editRadiusAlert.addAction(UIAlertAction(title: "Done", style: .default, handler: nil))
+        //        editRadiusAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        //        self.window?.rootViewController?.present(editRadiusAlert, animated: true, completion: nil)
+        
+        let message = "\n\n\n\n\n\n\n\n"
+        let alert = UIAlertController(title: "", message: message, preferredStyle: UIAlertController.Style.alert)
+        alert.isModalInPopover = true
+        
+        let attributedString = NSAttributedString(string: "Set Timer Minutes", attributes: [
+                                                    NSAttributedString.Key.font : UIFont.systemFont(ofSize: 20), //your font here,
+                                                    NSAttributedString.Key.foregroundColor : UIColor(red:0.29, green:0.45, blue:0.74, alpha:1.0) ])
+        alert.setValue(attributedString, forKey: "attributedTitle")
+        
+        //Create a frame (placeholder/wrapper) for the picker and then create the picker
+        //let pickerFrame: CGRect = CGRect(x: 35, y: 52, width: 200, height: 140) // CGRectMake(left, top, width, height) - left and top are like margins
+        //let picker: UIPickerView = UIPickerView(frame: pickerFrame)
+        //picker.backgroundColor = UIColor(red:0.29, green:0.45, blue:0.74, alpha:1.0)
+        
+        //set the pickers datasource and delegate
+        //picker.delegate = self
+        //picker.dataSource = self
+        
+        //Add the picker to the alert controller
+        //alert.view.addSubview(picker)
+        
+        let viewHeaderDynamic = Bundle.loadView(fromNib: "Header", withType: Header.self)
+        alert.view.addSubview(viewHeaderDynamic)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alert.addAction(cancelAction)
+        
+        //let okAction = UIAlertAction(title: "Start", style: .default, handler: {
+        //(alert: UIAlertAction!) -> Void in self.doSomethingWithValue(value: Int(self.pickerSet[picker.selectedRow(inComponent: 0)])!) })
+        //alert.addAction(okAction)
+        
+        //viewController.presentViewController(alert, animated: true, completion: nil)
         self.window?.rootViewController?.present(alert, animated: true, completion: nil)
+    }
+    
+    func doSomethingWithValue(value: Int) {
+        //self.selection = value
     }
     
     
