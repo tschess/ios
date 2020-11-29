@@ -15,6 +15,8 @@
 		835C1885256D68D300390AE8 /* HeaderSnapshot.xib in Resources */ = {isa = PBXBuildFile; fileRef = 835C1884256D68D300390AE8 /* HeaderSnapshot.xib */; };
 		835C18872571573000390AE8 /* HeaderSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835C18862571573000390AE8 /* HeaderSnapshot.swift */; };
 		835FADA524F00A910080A194 /* Countdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835FADA424F00A910080A194 /* Countdown.swift */; };
+		8367842F257429D1006F0C60 /* PickerConfig.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8367842E257429D1006F0C60 /* PickerConfig.xib */; };
+		83678431257429E6006F0C60 /* PickerConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83678430257429E6006F0C60 /* PickerConfig.swift */; };
 		8375E1E9256C0963001809FF /* Opponent.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8375E1E8256C0963001809FF /* Opponent.xib */; };
 		8375E1EB256C0AE9001809FF /* Opponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8375E1EA256C0AE9001809FF /* Opponent.swift */; };
 		8379820A24F05EE000254FBD /* Highlighter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8379820924F05EE000254FBD /* Highlighter.swift */; };
@@ -223,6 +225,8 @@
 		835C1884256D68D300390AE8 /* HeaderSnapshot.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderSnapshot.xib; sourceTree = "<group>"; };
 		835C18862571573000390AE8 /* HeaderSnapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderSnapshot.swift; sourceTree = "<group>"; };
 		835FADA424F00A910080A194 /* Countdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Countdown.swift; sourceTree = "<group>"; };
+		8367842E257429D1006F0C60 /* PickerConfig.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PickerConfig.xib; sourceTree = "<group>"; };
+		83678430257429E6006F0C60 /* PickerConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerConfig.swift; sourceTree = "<group>"; };
 		8375E1E8256C0963001809FF /* Opponent.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Opponent.xib; sourceTree = "<group>"; };
 		8375E1EA256C0AE9001809FF /* Opponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Opponent.swift; sourceTree = "<group>"; };
 		8379820924F05EE000254FBD /* Highlighter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Highlighter.swift; sourceTree = "<group>"; };
@@ -1244,6 +1248,8 @@
 				B7BE123F23EB010A00ADA499 /* networking */,
 				B7BE123823EAFBE400ADA499 /* storybooard */,
 				B7BE123B23EAFC0200ADA499 /* Challenge.swift */,
+				8367842E257429D1006F0C60 /* PickerConfig.xib */,
+				83678430257429E6006F0C60 /* PickerConfig.swift */,
 			);
 			path = challenge;
 			sourceTree = "<group>";
@@ -1670,6 +1676,7 @@
 				B7A6B8A7240D9A8E00840156 /* MenuL.storyboard in Resources */,
 				B7021F9823FE5D8F00C9346A /* OtherP.storyboard in Resources */,
 				B7C6760623FF22E9007EC71E /* AckP.storyboard in Resources */,
+				8367842F257429D1006F0C60 /* PickerConfig.xib in Resources */,
 				B7BE121623EAD7E700ADA499 /* Init.storyboard in Resources */,
 				B7A8B2A22400A8210092D2D6 /* dTschessP.storyboard in Resources */,
 				B7ED646423F4D9D400292FBC /* Create.storyboard in Resources */,
@@ -1759,6 +1766,7 @@
 				8385908C24F98AD600BBC11C /* TransDelegate.swift in Sources */,
 				B7BE11B923EA9DD400ADA499 /* BishopWhite.swift in Sources */,
 				B7BE128F23EB09C700ADA499 /* GameRequest.swift in Sources */,
+				83678431257429E6006F0C60 /* PickerConfig.swift in Sources */,
 				B7BE11BB23EA9DE200ADA499 /* BishopBlack.swift in Sources */,
 				B7BE11F123EAC92C00ADA499 /* EditSelf.swift in Sources */,
 				B7BE125523EB038700ADA499 /* ProfileCell.swift in Sources */,
