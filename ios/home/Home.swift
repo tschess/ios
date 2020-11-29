@@ -79,8 +79,17 @@ class Home: UIViewController, UITabBarDelegate {
             print("SINGLE PLAYER")
             
             let alert = UIAlertController(title: "Did you bring your towel?", message: "It's recommended you bring your towel before continuing.", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Yes 🐕", style: .default, handler: nil))
-            alert.addAction(UIAlertAction(title: "No 🍕", style: .cancel, handler: nil))
+            //alert.addAction(UIAlertAction(title: "Yes 🐕", style: .default, handler: nil))
+            
+            let fuck = UIAlertAction(title: "Yes 🐕", style: .default, handler: nil)
+            fuck.setValue(UIColor.magenta, forKey: "titleTextColor")
+            alert.addAction(fuck)
+            
+            //alert.addAction(UIAlertAction(title: "No 🍕", style: .cancel, handler: nil))
+            let shit = UIAlertAction(title: "No 🍕", style: .default, handler: nil)
+            shit.setValue(UIColor.green, forKey: "titleTextColor")
+            alert.addAction(shit)
+            
             alert.view.tintColor = .green
             self.present(alert, animated: true)
             

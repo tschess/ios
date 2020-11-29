@@ -27,34 +27,34 @@ class Opponent: UIView {
     
     @IBOutlet weak var indicatorActivity: UIActivityIndicatorView!
     
-    
-    //func showErrorMessage() {
-    //
-    //}
-    
-    
-
     @objc func checkAction(sender : UITapGestureRecognizer) {
         // Do what you want
-        let alertWindow = UIWindow(frame: UIScreen.main.bounds)
-        alertWindow.rootViewController = UIViewController()
-
-        let alertController = UIAlertController(title: "Error", message: "fuck", preferredStyle: UIAlertController.Style.alert)
        
-            let fuck = UIAlertAction(title: "Close", style: UIAlertAction.Style.cancel, handler: { _ in
-                alertWindow.isHidden = true
-            })
-        fuck.setValue(UIColor.red, forKey: "titleTextColor")
+        // create the alert
+        let alert = UIAlertController(title: "🤜 \(self.playerSelf!.username) vs. ${playerOther.username} 🤛", message: "Lauching this missile will destroy the entire universe. Is this what you intended to do?", preferredStyle: UIAlertController.Style.alert)
         
-        alertController.addAction(fuck)
         
-        alertWindow.windowLevel = UIWindow.Level.alert + 1;
-        alertWindow.makeKeyAndVisible()
-        alertWindow.rootViewController?.present(alertController, animated: true, completion: nil)
+        // add the actions (buttons)
+        
+        //alert.addAction(UIAlertAction(title: "⚡ issue challenge ⚡", style: UIAlertAction.Style.default, handler: nil))
+        let option00 = UIAlertAction(title: "⚡ issue challenge ⚡", style: .default, handler: nil)
+        option00.setValue(UIColor.white, forKey: "titleTextColor")
+        alert.addAction(option00)
+        
+        let option01 = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        option01.setValue(UIColor.lightGray, forKey: "titleTextColor")
+        alert.addAction(option01)
+        
+        // show the alert
+        self.window?.rootViewController?.present(alert, animated: true, completion: nil)
     }
+    
+    
+    var playerSelf: EntityPlayer?
     
     public func set(playerSelf: EntityPlayer) {
         
+        self.playerSelf = playerSelf
         //showErrorMessage()
         
         
@@ -75,7 +75,7 @@ class Opponent: UIView {
         indicatorActivity.startAnimating()
         
         
-       
+        
         let gesture00 = UITapGestureRecognizer(target: self, action:  #selector(self.checkAction))
         self.viewHolder00.isUserInteractionEnabled = true
         self.viewHolder00.addGestureRecognizer(gesture00)
@@ -87,7 +87,7 @@ class Opponent: UIView {
         let gesture02 = UITapGestureRecognizer(target: self, action:  #selector(self.checkAction))
         self.viewHolder02.isUserInteractionEnabled = true
         self.viewHolder02.addGestureRecognizer(gesture02)
-       
+        
         
         
         print("!!!!!!")
