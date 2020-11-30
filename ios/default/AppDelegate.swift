@@ -25,6 +25,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         self.window?.rootViewController = navigationController
         self.window?.makeKeyAndVisible()
         
+        self.window?.tintColor = .white
+        
         self.configureGlobalUI()
         return true
     }

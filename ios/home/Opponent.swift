@@ -63,20 +63,47 @@ class Opponent: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
         let pickerView = UIPickerView(frame: CGRect(x: 0, y: 0, width: 250, height: 100))
         pickerView.delegate = self
         pickerView.dataSource = self
+        pickerView.backgroundColor = .black
+        
+        pickerView.layer.cornerRadius = 10
+        pickerView.layer.masksToBounds = true
+        
         viewController.view.addSubview(pickerView)
         let alert = UIAlertController(title: "🤜 \(username) 🤛", message: "", preferredStyle: UIAlertController.Style.alert)
+        
+        //let attributedString = NSAttributedString(string: "🤜 \(username) 🤛", attributes: [
+            //NSAttributedString.Key.font : UIFont.systemFont(ofSize: 20, weight: UIFont.Weight.regular), //your font here
+            //NSAttributedString.Key.foregroundColor : UIColor.white
+        //])
+
+        //let alert = UIAlertController(title: "", message: "",  preferredStyle: .alert)
+
+        //alert.setValue(attributedString, forKey: "attributedTitle")
+        //alert.view.tintColor = UIColor.white
+        
+        
+        //let background: UIColor = UIColor(red: (31/255.0), green: (32/255.0), blue: (36/255.0), alpha: 1.0)
+        //alert.view.subviews.first?.subviews.first?.subviews.first?.backgroundColor = background
+        
         alert.setValue(viewController, forKey: "contentViewController")
         
         let option00 = UIAlertAction(title: "⚡ issue challenge ⚡", style: .default, handler: nil)
-        option00.setValue(UIColor.white, forKey: "titleTextColor")
+        //option00.setValue(UIColor.white, forKey: "titleTextColor")
         alert.addAction(option00)
         
         let option01 = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        option01.setValue(UIColor.lightGray, forKey: "titleTextColor")
+        //option01.setValue(UIColor.lightGray, forKey: "titleTextColor")
         alert.addAction(option01)
         
-        self.window?.rootViewController?.present(alert, animated: true, completion: nil)
+        //alert.view.tintColor = UIColor.green
+        // Accessing buttons tintcolor :
+        //alert.view.tintColor = UIColor.white
+        
+        self.window?.rootViewController?.present(alert, animated: false, completion: nil)
     }
+    
+    
+    
     
     @objc func checkAction00(sender: UITapGestureRecognizer) {
         self.execute(username: self.labelUsername00.text!)
@@ -215,3 +242,5 @@ class Opponent: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
     
     
 }
+
+
