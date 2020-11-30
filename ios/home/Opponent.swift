@@ -71,12 +71,6 @@ class Opponent: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
         viewController.view.addSubview(pickerView)
         let alert = UIAlertController(title: "🤜 \(username) 🤛", message: "", preferredStyle: UIAlertController.Style.alert)
         
-        let attributedString = NSAttributedString(string: "🤜 \(username) 🤛", attributes: [
-            NSAttributedString.Key.font : UIFont.systemFont(ofSize: 20, weight: UIFont.Weight.light), //your font here
-            NSAttributedString.Key.foregroundColor : UIColor.white
-        ])
-        alert.setValue(attributedString, forKey: "attributedTitle")
-        
         alert.setValue(viewController, forKey: "contentViewController")
         
         let option00 = UIAlertAction(title: "⚡ issue challenge ⚡", style: .default, handler: nil)
