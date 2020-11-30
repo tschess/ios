@@ -18,12 +18,10 @@ class Home: UIViewController, UITabBarDelegate {
     @IBOutlet weak var headerView: Header!
     @IBOutlet weak var tabBarMenu: UITabBar!
     
-    
     var playerSelf: EntityPlayer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         
         let viewHeaderDynamic = Bundle.loadView(fromNib: "Header", withType: Header.self)
         DispatchQueue.main.async() {
