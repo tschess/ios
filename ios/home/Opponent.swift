@@ -64,7 +64,7 @@ class Opponent: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
         pickerView.delegate = self
         pickerView.dataSource = self
         viewController.view.addSubview(pickerView)
-        let alert = UIAlertController(title: "🤜 \(self.playerSelf!.username) vs. \(username) 🤛", message: "", preferredStyle: UIAlertController.Style.alert)
+        let alert = UIAlertController(title: "🤜 \(username) 🤛", message: "", preferredStyle: UIAlertController.Style.alert)
         alert.setValue(viewController, forKey: "contentViewController")
         
         let option00 = UIAlertAction(title: "⚡ issue challenge ⚡", style: .default, handler: nil)
