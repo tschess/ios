@@ -28,10 +28,9 @@ class Opponent: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
         return 30
     }
     
-    let pickerSet = ["feelin' lucky (random)", "config. 0", "config. 1", "config. 2", "traditional (chess)"]
+    let pickerSet = ["chess", "i'm feelin' lucky", "config. 0", "config. 1", "config. 2"]
     
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
-        //let label = (view as? UILabel) ?? UILabel()
         let label = UILabel()
         label.textColor = .white
         label.textAlignment = .center
@@ -59,7 +58,7 @@ class Opponent: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
     
     func execute(username: String) {
         let viewController = UIViewController()
-        viewController.preferredContentSize = CGSize(width: 250, height: 100)
+        viewController.preferredContentSize = CGSize(width: 250, height: 108)
         let pickerView = UIPickerView(frame: CGRect(x: 0, y: 0, width: 250, height: 100))
         pickerView.delegate = self
         pickerView.dataSource = self
@@ -67,6 +66,9 @@ class Opponent: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
         
         pickerView.layer.cornerRadius = 10
         pickerView.layer.masksToBounds = true
+        
+        pickerView.selectRow(1, inComponent: 0, animated: true)
+        pickerView.layoutMargins = UIEdgeInsets(top: 0, left: 0, bottom: 8, right: 0)
         
         viewController.view.addSubview(pickerView)
         let alert = UIAlertController(title: "🤜 \(username) 🤛", message: "", preferredStyle: UIAlertController.Style.alert)
