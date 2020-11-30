@@ -20,13 +20,19 @@ class Opponent: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? { return pickerSet[row] }
     
-    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
-        let titleData = pickerSet[row]
-        let myTitle = NSAttributedString(string: titleData, attributes: [NSAttributedString.Key.font:UIFont(name: "Verdana", size: 15.0)!,NSAttributedString.Key.foregroundColor:UIColor.white])
-        return myTitle
-    }
     
-    let pickerSet = ["5","10","15","20","30","35","40","45","50","55","60", "65", "70", "75", "80", "85", "90"]
+    
+    let pickerSet = ["feelin' lucky (random)", "config. 0", "config. 1", "config. 2", "traditional (chess)"]
+    
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        let label = (view as? UILabel) ?? UILabel()
+        label.textColor = .white
+        label.textAlignment = .center
+        label.font = UIFont.systemFont(ofSize: 18, weight: UIFont.Weight.light)
+        label.text = pickerSet[row]
+        
+        return label
+    }
     
     @IBOutlet weak var viewHolder00: UIView!
     @IBOutlet weak var imageAvatar00: UIImageView!
@@ -44,6 +50,8 @@ class Opponent: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
     @IBOutlet weak var viewHolder02width: NSLayoutConstraint!
     
     @IBOutlet weak var indicatorActivity: UIActivityIndicatorView!
+    
+    
     
     @objc func checkAction(sender : UITapGestureRecognizer) {
         // Do what you want
@@ -76,39 +84,35 @@ class Opponent: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
         //        editRadiusAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         //        self.window?.rootViewController?.present(editRadiusAlert, animated: true, completion: nil)
         
-        let message = "\n\n\n\n\n\n\n\n"
-        let alert = UIAlertController(title: "", message: message, preferredStyle: UIAlertController.Style.alert)
-        alert.isModalInPopover = true
         
-        let attributedString = NSAttributedString(string: "Set Timer Minutes", attributes: [
-                                                    NSAttributedString.Key.font : UIFont.systemFont(ofSize: 20), //your font here,
-                                                    NSAttributedString.Key.foregroundColor : UIColor(red:0.29, green:0.45, blue:0.74, alpha:1.0) ])
-        alert.setValue(attributedString, forKey: "attributedTitle")
+        //666
         
-        //Create a frame (placeholder/wrapper) for the picker and then create the picker
-        //let pickerFrame: CGRect = CGRect(x: 35, y: 52, width: 200, height: 140) // CGRectMake(left, top, width, height) - left and top are like margins
-        //let picker: UIPickerView = UIPickerView(frame: pickerFrame)
-        //picker.backgroundColor = UIColor(red:0.29, green:0.45, blue:0.74, alpha:1.0)
         
-        //set the pickers datasource and delegate
-        //picker.delegate = self
-        //picker.dataSource = self
         
-        //Add the picker to the alert controller
-        //alert.view.addSubview(picker)
         
-        let viewHeaderDynamic = Bundle.loadView(fromNib: "Header", withType: Header.self)
-        alert.view.addSubview(viewHeaderDynamic)
+        let customView = Bundle.loadView(fromNib: "PickerConfig", withType: PickerConfig.self)
+        customView.delegate = self
+        customView.dataSource = self
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        alert.addAction(cancelAction)
         
-        //let okAction = UIAlertAction(title: "Start", style: .default, handler: {
-        //(alert: UIAlertAction!) -> Void in self.doSomethingWithValue(value: Int(self.pickerSet[picker.selectedRow(inComponent: 0)])!) })
-        //alert.addAction(okAction)
+        let vc = UIViewController()
+        vc.preferredContentSize = CGSize(width: 250,height: 300)
+        let pickerView = UIPickerView(frame: CGRect(x: 0, y: 0, width: 250, height: 300))
+        pickerView.delegate = self
+        pickerView.dataSource = self
+        vc.view.addSubview(pickerView)
+        let editRadiusAlert = UIAlertController(title: "Choose distance", message: "", preferredStyle: UIAlertController.Style.alert)
+        editRadiusAlert.setValue(vc, forKey: "contentViewController")
+        editRadiusAlert.addAction(UIAlertAction(title: "Done", style: .default, handler: nil))
+        editRadiusAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        //self.present(editRadiusAlert, animated: true)
         
-        //viewController.presentViewController(alert, animated: true, completion: nil)
-        self.window?.rootViewController?.present(alert, animated: true, completion: nil)
+        self.window?.rootViewController?.present(editRadiusAlert, animated: true, completion: nil)
+        
+        
+        
+        
+        
     }
     
     func doSomethingWithValue(value: Int) {
