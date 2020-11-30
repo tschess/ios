@@ -57,17 +57,14 @@ class Opponent: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
     
     @IBOutlet weak var indicatorActivity: UIActivityIndicatorView!
     
-    
-    
-    @objc func checkAction(sender : UITapGestureRecognizer) {
-      
+    func execute(username: String) {
         let viewController = UIViewController()
         viewController.preferredContentSize = CGSize(width: 250, height: 100)
         let pickerView = UIPickerView(frame: CGRect(x: 0, y: 0, width: 250, height: 100))
         pickerView.delegate = self
         pickerView.dataSource = self
         viewController.view.addSubview(pickerView)
-        let alert = UIAlertController(title: "🤜 \(self.playerSelf!.username) vs. ${playerOther.username} 🤛", message: "", preferredStyle: UIAlertController.Style.alert)
+        let alert = UIAlertController(title: "🤜 \(self.playerSelf!.username) vs. \(username) 🤛", message: "", preferredStyle: UIAlertController.Style.alert)
         alert.setValue(viewController, forKey: "contentViewController")
         
         let option00 = UIAlertAction(title: "⚡ issue challenge ⚡", style: .default, handler: nil)
@@ -79,6 +76,18 @@ class Opponent: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
         alert.addAction(option01)
         
         self.window?.rootViewController?.present(alert, animated: true, completion: nil)
+    }
+    
+    @objc func checkAction00(sender: UITapGestureRecognizer) {
+        self.execute(username: self.labelUsername00.text!)
+    }
+    
+    @objc func checkAction01(sender: UITapGestureRecognizer) {
+        self.execute(username: self.labelUsername01.text!)
+    }
+    
+    @objc func checkAction02(sender: UITapGestureRecognizer) {
+        self.execute(username: self.labelUsername02.text!)
     }
     
     func doSomethingWithValue(value: Int) {
@@ -112,15 +121,15 @@ class Opponent: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
         
         
         
-        let gesture00 = UITapGestureRecognizer(target: self, action:  #selector(self.checkAction))
+        let gesture00 = UITapGestureRecognizer(target: self, action:  #selector(self.checkAction00))
         self.viewHolder00.isUserInteractionEnabled = true
         self.viewHolder00.addGestureRecognizer(gesture00)
         
-        let gesture01 = UITapGestureRecognizer(target: self, action:  #selector(self.checkAction))
+        let gesture01 = UITapGestureRecognizer(target: self, action:  #selector(self.checkAction01))
         self.viewHolder01.isUserInteractionEnabled = true
         self.viewHolder01.addGestureRecognizer(gesture01)
         
-        let gesture02 = UITapGestureRecognizer(target: self, action:  #selector(self.checkAction))
+        let gesture02 = UITapGestureRecognizer(target: self, action:  #selector(self.checkAction02))
         self.viewHolder02.isUserInteractionEnabled = true
         self.viewHolder02.addGestureRecognizer(gesture02)
         
