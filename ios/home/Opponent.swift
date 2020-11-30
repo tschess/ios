@@ -20,7 +20,9 @@ class Opponent: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? { return pickerSet[row] }
     
-    
+    func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
+        return 30
+    }
     
     let pickerSet = ["feelin' lucky (random)", "config. 0", "config. 1", "config. 2", "traditional (chess)"]
     
@@ -60,13 +62,7 @@ class Opponent: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
         //let alert = UIAlertController(title: "🤜 \(self.playerSelf!.username) vs. ${playerOther.username} 🤛", message: "Lauching this missile will destroy the entire universe. Is this what you intended to do?", preferredStyle: UIAlertController.Style.alert)
         
         //alert.addAction(UIAlertAction(title: "⚡ issue challenge ⚡", style: UIAlertAction.Style.default, handler: nil))
-        //let option00 = UIAlertAction(title: "⚡ issue challenge ⚡", style: .default, handler: nil)
-        //option00.setValue(UIColor.white, forKey: "titleTextColor")
-        //alert.addAction(option00)
         
-        //let option01 = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        //option01.setValue(UIColor.lightGray, forKey: "titleTextColor")
-        //alert.addAction(option01)
         
         // show the alert
         //self.window?.rootViewController?.present(alert, animated: true, completion: nil)
@@ -96,18 +92,26 @@ class Opponent: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
         
         
         let vc = UIViewController()
-        vc.preferredContentSize = CGSize(width: 250,height: 300)
-        let pickerView = UIPickerView(frame: CGRect(x: 0, y: 0, width: 250, height: 300))
+        vc.preferredContentSize = CGSize(width: 250, height: 100)
+        let pickerView = UIPickerView(frame: CGRect(x: 0, y: 0, width: 250, height: 100))
         pickerView.delegate = self
         pickerView.dataSource = self
         vc.view.addSubview(pickerView)
-        let editRadiusAlert = UIAlertController(title: "Choose distance", message: "", preferredStyle: UIAlertController.Style.alert)
-        editRadiusAlert.setValue(vc, forKey: "contentViewController")
-        editRadiusAlert.addAction(UIAlertAction(title: "Done", style: .default, handler: nil))
-        editRadiusAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        let alert = UIAlertController(title: "🤜 \(self.playerSelf!.username) vs. ${playerOther.username} 🤛", message: "", preferredStyle: UIAlertController.Style.alert)
+        alert.setValue(vc, forKey: "contentViewController")
+        //editRadiusAlert.addAction(UIAlertAction(title: "Done", style: .default, handler: nil))
+        //editRadiusAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         //self.present(editRadiusAlert, animated: true)
         
-        self.window?.rootViewController?.present(editRadiusAlert, animated: true, completion: nil)
+        let option00 = UIAlertAction(title: "⚡ issue challenge ⚡", style: .default, handler: nil)
+        option00.setValue(UIColor.white, forKey: "titleTextColor")
+        alert.addAction(option00)
+        
+        let option01 = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        option01.setValue(UIColor.lightGray, forKey: "titleTextColor")
+        alert.addAction(option01)
+        
+        self.window?.rootViewController?.present(alert, animated: true, completion: nil)
         
         
         
