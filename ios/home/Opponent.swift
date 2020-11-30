@@ -14,11 +14,15 @@ class Opponent: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
         return 1
     }
     
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int { return pickerSet.count }
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return pickerSet.count
+    }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {}
     
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? { return pickerSet[row] }
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return pickerSet[row]
+    }
     
     func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
         return 30
@@ -27,12 +31,12 @@ class Opponent: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
     let pickerSet = ["feelin' lucky (random)", "config. 0", "config. 1", "config. 2", "traditional (chess)"]
     
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
-        let label = (view as? UILabel) ?? UILabel()
+        //let label = (view as? UILabel) ?? UILabel()
+        let label = UILabel()
         label.textColor = .white
         label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 18, weight: UIFont.Weight.light)
         label.text = pickerSet[row]
-        
         return label
     }
     
@@ -56,52 +60,15 @@ class Opponent: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
     
     
     @objc func checkAction(sender : UITapGestureRecognizer) {
-        // Do what you want
-        
-        // create the alert
-        //let alert = UIAlertController(title: "🤜 \(self.playerSelf!.username) vs. ${playerOther.username} 🤛", message: "Lauching this missile will destroy the entire universe. Is this what you intended to do?", preferredStyle: UIAlertController.Style.alert)
-        
-        //alert.addAction(UIAlertAction(title: "⚡ issue challenge ⚡", style: UIAlertAction.Style.default, handler: nil))
-        
-        
-        // show the alert
-        //self.window?.rootViewController?.present(alert, animated: true, completion: nil)
-        
-        
-        //        let vc = UIViewController()
-        //        vc.preferredContentSize = CGSize(width: 250,height: 300)
-        //        let pickerView = UIPickerView(frame: CGRect(x: 0, y: 0, width: 250, height: 300))
-        //        pickerView.delegate = self
-        //        pickerView.dataSource = self
-        //        vc.view.addSubview(pickerView)
-        //        let editRadiusAlert = UIAlertController(title: "Choose distance", message: "", preferredStyle: UIAlertController.Style.alert)
-        //        editRadiusAlert.setValue(vc, forKey: "contentViewController")
-        //        editRadiusAlert.addAction(UIAlertAction(title: "Done", style: .default, handler: nil))
-        //        editRadiusAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        //        self.window?.rootViewController?.present(editRadiusAlert, animated: true, completion: nil)
-        
-        
-        //666
-        
-        
-        
-        
-        let customView = Bundle.loadView(fromNib: "PickerConfig", withType: PickerConfig.self)
-        customView.delegate = self
-        customView.dataSource = self
-        
-        
-        let vc = UIViewController()
-        vc.preferredContentSize = CGSize(width: 250, height: 100)
+      
+        let viewController = UIViewController()
+        viewController.preferredContentSize = CGSize(width: 250, height: 100)
         let pickerView = UIPickerView(frame: CGRect(x: 0, y: 0, width: 250, height: 100))
         pickerView.delegate = self
         pickerView.dataSource = self
-        vc.view.addSubview(pickerView)
+        viewController.view.addSubview(pickerView)
         let alert = UIAlertController(title: "🤜 \(self.playerSelf!.username) vs. ${playerOther.username} 🤛", message: "", preferredStyle: UIAlertController.Style.alert)
-        alert.setValue(vc, forKey: "contentViewController")
-        //editRadiusAlert.addAction(UIAlertAction(title: "Done", style: .default, handler: nil))
-        //editRadiusAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        //self.present(editRadiusAlert, animated: true)
+        alert.setValue(viewController, forKey: "contentViewController")
         
         let option00 = UIAlertAction(title: "⚡ issue challenge ⚡", style: .default, handler: nil)
         option00.setValue(UIColor.white, forKey: "titleTextColor")
@@ -112,11 +79,6 @@ class Opponent: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
         alert.addAction(option01)
         
         self.window?.rootViewController?.present(alert, animated: true, completion: nil)
-        
-        
-        
-        
-        
     }
     
     func doSomethingWithValue(value: Int) {
