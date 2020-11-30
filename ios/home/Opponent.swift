@@ -68,7 +68,6 @@ class Opponent: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
         pickerView.layer.masksToBounds = true
         
         pickerView.selectRow(1, inComponent: 0, animated: true)
-        pickerView.layoutMargins = UIEdgeInsets(top: 0, left: 0, bottom: 8, right: 0)
         
         viewController.view.addSubview(pickerView)
         let alert = UIAlertController(title: "🤜 \(username) 🤛", message: "", preferredStyle: UIAlertController.Style.alert)
