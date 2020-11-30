@@ -62,10 +62,7 @@ class Home: UIViewController, UITabBarDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        //self.renderHeader()
     }
-    
-    
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         self.tabBarMenu.selectedItem = nil

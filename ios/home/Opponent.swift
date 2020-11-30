@@ -18,7 +18,9 @@ class Opponent: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
         return pickerSet.count
     }
     
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {}
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        
+    }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return pickerSet[row]
@@ -56,25 +58,34 @@ class Opponent: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
     
     @IBOutlet weak var indicatorActivity: UIActivityIndicatorView!
     
-    func execute(username: String) {
+    
+    var pickerView: UIPickerView?
+    
+    
+    func execute(opponent: EntityPlayer) {
         let viewController = UIViewController()
         viewController.preferredContentSize = CGSize(width: 250, height: 108)
-        let pickerView = UIPickerView(frame: CGRect(x: 0, y: 0, width: 250, height: 100))
-        pickerView.delegate = self
-        pickerView.dataSource = self
-        pickerView.backgroundColor = .black
+        //let pickerView = UIPickerView(frame: CGRect(x: 0, y: 0, width: 250, height: 100))
+        self.pickerView = UIPickerView(frame: CGRect(x: 0, y: 0, width: 250, height: 100))
+        pickerView!.delegate = self
+        pickerView!.dataSource = self
+        pickerView!.backgroundColor = .black
         
-        pickerView.layer.cornerRadius = 10
-        pickerView.layer.masksToBounds = true
+        pickerView!.layer.cornerRadius = 10
+        pickerView!.layer.masksToBounds = true
         
-        pickerView.selectRow(1, inComponent: 0, animated: true)
+        pickerView!.selectRow(1, inComponent: 0, animated: true)
         
-        viewController.view.addSubview(pickerView)
-        let alert = UIAlertController(title: "🤜 \(username) 🤛", message: "", preferredStyle: UIAlertController.Style.alert)
+        viewController.view.addSubview(self.pickerView!)
+        let alert = UIAlertController(title: "🤜 \(opponent.username) 🤛", message: "", preferredStyle: UIAlertController.Style.alert)
         
         alert.setValue(viewController, forKey: "contentViewController")
         
-        let option00 = UIAlertAction(title: "⚡ issue challenge ⚡", style: .default, handler: nil)
+        let option00 = UIAlertAction(title: "⚡ issue challenge ⚡", style: .default, handler:{ _ in
+            let value = self.pickerView?.selectedRow(inComponent: 0)
+            
+            self.challenge(config: value!, id_other: opponent.id)
+        })
         alert.addAction(option00)
         
         let option01 = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
@@ -85,23 +96,65 @@ class Opponent: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     
+    func challenge(config: Int, id_other: String) {
+        print("\n\nYAYAYAYA: \(config) <-- config")
+        print("\n\nYAYAYAYA: \(id_other) <-- id_other \n\n")
+        
+        let url = URL(string: "http://\(ServerAddress().IP):8080/game/challenge")!
+        
+        let payload: [String: Any] = [
+            "id_self": self.playerSelf!.id,
+            "id_other": id_other,
+            "config": config
+        ]
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        do {
+            request.httpBody = try JSONSerialization.data(withJSONObject: payload, options: .prettyPrinted)
+        } catch let error {
+            print(error.localizedDescription)
+        }
+        URLSession.shared.dataTask(with: request, completionHandler: { data, response, error in
+            guard error == nil else {
+                //completion([["fail": "0"]])
+                return
+            }
+            guard let data = data else {
+                //completion([["fail": "1"]])
+                return
+            }
+            do {
+                guard let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [[String: Any]] else {
+                    //completion([["fail": "2"]])
+                    return
+                }
+                //completion(json)
+            } catch _ {
+                //completion([["fail": "3"]])
+            }
+        }).resume()
+    }
     
     
+    var opponent00: EntityPlayer?
     @objc func checkAction00(sender: UITapGestureRecognizer) {
-        self.execute(username: self.labelUsername00.text!)
+        self.execute(opponent: self.opponent00!)
     }
     
+    var opponent01: EntityPlayer?
     @objc func checkAction01(sender: UITapGestureRecognizer) {
-        self.execute(username: self.labelUsername01.text!)
+        self.execute(opponent: self.opponent01!)
     }
     
+    var opponent02: EntityPlayer?
     @objc func checkAction02(sender: UITapGestureRecognizer) {
-        self.execute(username: self.labelUsername02.text!)
+        self.execute(opponent: self.opponent02!)
     }
     
-    func doSomethingWithValue(value: Int) {
-        //self.selection = value
-    }
+    
     
     
     var playerSelf: EntityPlayer?
@@ -153,6 +206,7 @@ class Opponent: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
             }
             
             let opponent00: EntityPlayer = ParsePlayer().execute(json: result[0])
+            self.opponent00 = opponent00
             DispatchQueue.main.async() {
                 self.labelUsername00.text = opponent00.username
                 self.imageAvatar00.image = opponent00.getImageAvatar()
@@ -164,6 +218,7 @@ class Opponent: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
             }
             
             let opponent01: EntityPlayer = ParsePlayer().execute(json: result[1])
+            self.opponent01 = opponent01
             DispatchQueue.main.async() {
                 self.labelUsername01.text = opponent01.username
                 self.imageAvatar01.image = opponent01.getImageAvatar()
@@ -174,6 +229,7 @@ class Opponent: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
             }
             
             let opponent02: EntityPlayer = ParsePlayer().execute(json: result[2])
+            self.opponent02 = opponent02
             DispatchQueue.main.async() {
                 self.labelUsername02.text = opponent02.username
                 self.imageAvatar02.image = opponent02.getImageAvatar()
