@@ -9,7 +9,7 @@
 import UIKit
 import SwipeCellKit
 
-class MenuCellHome: SwipeTableViewCell {
+class HomeCell: SwipeTableViewCell {
     
     @IBOutlet weak var viewContent: UIView!
     

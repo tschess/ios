@@ -12,7 +12,7 @@ class Home: UIViewController, UITabBarDelegate {
     
     @IBOutlet weak var containerOpponent: UIView!
     
-    var homeMenuTable: HomeMenuTable?
+    var homeMenuTable: HomeTable?
     
     //MARK: Header
     @IBOutlet weak var headerView: Header!
@@ -47,7 +47,7 @@ class Home: UIViewController, UITabBarDelegate {
         self.navigationController?.viewControllers = [self]
         
         self.tabBarMenu.delegate = self
-        self.homeMenuTable = children.first as? HomeMenuTable
+        self.homeMenuTable = children.first as? HomeTable
         self.homeMenuTable!.home = self
         self.homeMenuTable!.fetchGameList()
         

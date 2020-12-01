@@ -9,7 +9,7 @@
 import UIKit
 import SwipeCellKit
 
-class HomeMenuTable: UITableViewController, SwipeTableViewCellDelegate {
+class HomeTable: UITableViewController, SwipeTableViewCellDelegate {
     
     var home: Home?
     
@@ -115,7 +115,7 @@ class HomeMenuTable: UITableViewController, SwipeTableViewCellDelegate {
         let usernameOther: String = game.getLabelTextUsernameOpponent(username: username)
         let avatarImageOther: UIImage = game.getImageAvatarOpponent(username: username)
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MenuCellHome", for: indexPath) as! MenuCellHome
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MenuCellHome", for: indexPath) as! HomeCell
         cell.delegate = self
         
         cell.setContent(usernameSelf: username, usernameOther: usernameOther, game: game, avatarImageOther: avatarImageOther)
@@ -127,7 +127,7 @@ class HomeMenuTable: UITableViewController, SwipeTableViewCellDelegate {
     var swipeVisible: Bool = false
     
     @objc func imageTapped(sender: UITapGestureRecognizer) {
-        guard let cell = sender.view?.superview?.superview as? MenuCellHome else {
+        guard let cell = sender.view?.superview?.superview as? HomeCell else {
             return
         }
         if(!self.swipeVisible){
