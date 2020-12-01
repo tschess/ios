@@ -44,8 +44,8 @@ class HomeActivity: UIViewController, UITabBarDelegate {
         
         //TODO: Table
         self.table = children.first as? HomeTable
-        self.table!.home = self
-        self.table!.fetchGameList()
+        self.table!.activity = self
+        self.table!.fetch()
         
         NotificationCenter.default.addObserver(
             self,
@@ -103,22 +103,22 @@ class HomeActivity: UIViewController, UITabBarDelegate {
     }
     
     func setIndicator(on: Bool) {
-        //                if(on) {
-        //                    DispatchQueue.main.async() {
-        //                        if(self.headerView.indicatorActivity!.isHidden){
-        //                            self.headerView.indicatorActivity!.isHidden = false
-        //                        }
-        //                        if(!self.headerView.indicatorActivity!.isAnimating){
-        //                            self.headerView.indicatorActivity!.startAnimating()
-        //                        }
-        //                    }
-        //                    return
-        //                }
-        //                DispatchQueue.main.async() {
-        //                    self.headerView.indicatorActivity!.isHidden = true
-        //                    self.headerView.indicatorActivity!.stopAnimating()
-        //                    self.homeMenuTable!.tableView.reloadData()
-        //                }
+        //if(on) {
+        //    DispatchQueue.main.async() {
+        //        if(self.headerView.indicatorActivity!.isHidden){
+        //            self.headerView.indicatorActivity!.isHidden = false
+        //        }
+        //        if(!self.headerView.indicatorActivity!.isAnimating){
+        //            self.headerView.indicatorActivity!.startAnimating()
+        //        }
+        //    }
+        //    return
+        //}
+        //DispatchQueue.main.async() {
+        //    self.headerView.indicatorActivity!.isHidden = true
+        //    self.headerView.indicatorActivity!.stopAnimating()
+        //    self.homeMenuTable!.tableView.reloadData()
+        //}
     }
 }
 
