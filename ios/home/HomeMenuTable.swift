@@ -77,10 +77,17 @@ class HomeMenuTable: UITableViewController, SwipeTableViewCellDelegate {
     
     @objc func refresh(refreshControl: UIRefreshControl) {
         self.requestPageIndex = 0
-        let requestPayload: [String: Any] = ["id": home!.playerSelf!.id,
-                                             "id_player": self.home!.playerSelf!.id,
-                                             "size": REQUEST_PAGE_SIZE]
-        RequestActual().execute(requestPayload: requestPayload) { (response) in
+        //let requestPayload: [String: Any] = [
+        //"id": home!.playerSelf!.id,
+        //"id_player": self.home!.playerSelf!.id,
+        //"size": REQUEST_PAGE_SIZE]
+        let payload = ["id": self.home!.playerSelf!.id,
+                       "index": self.requestPageIndex,
+                       "size": REQUEST_PAGE_SIZE,
+                       "self": true
+        ] as [String: Any]
+        
+        RequestActual().execute(requestPayload: payload) { (response) in
             
             DispatchQueue.main.async() {
                 self.leaderboardList = [EntityGame]()

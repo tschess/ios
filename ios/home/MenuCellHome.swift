@@ -57,38 +57,38 @@ class MenuCellHome: SwipeTableViewCell {
         imageAvatar.layer.cornerRadius = imageAvatar.frame.size.width/2
         imageAvatar.clipsToBounds = true
         
-        //if(game.isResolved()){
-            //self.setHisto(game: game, username: usernameSelf)
-            //return
-        //}
-        //self.setActive()
-        //let inbound: Bool = game.getTurnFlag(username: usernameSelf)
-        //if(game.status == "ONGOING"){
-            //self.imageSlide.isHidden = true
+        if(game.isResolved()){
+            self.setHisto(game: game, username: usernameSelf)
+            return
+        }
+        self.setActive()
+        let inbound: Bool = game.getTurnFlag(username: usernameSelf)
+        if(game.status == "ONGOING"){
+            self.imageSlide.isHidden = true
             
-            //if(inbound){
-                //let image: UIImage = UIImage(named: "turn.on")!
-                //self.imageAction.image = image
-                //self.labelAction.text = "game"
-                //return
-            //}
-            //let image: UIImage = UIImage(named: "turn.off")!
-            //self.imageAction.image = image
-            //self.labelAction.text = "game"
-            //return
-        //}
-        //if(game.status == "PROPOSED"){
-            //self.imageSlide.isHidden = false
-            //if(inbound){
-                //let image: UIImage = UIImage(named: "inbound")!
-                //self.imageAction.image = image
-                //self.labelAction.text = "invite"
-                //return
-            //}
-        //}
-        //let image: UIImage = UIImage(named: "outbound")!
-        //self.imageAction.image = image
-        //self.labelAction.text = "invite"
+            if(inbound){
+                let image: UIImage = UIImage(named: "turn.on")!
+                self.imageAction.image = image
+                self.labelAction.text = "game"
+                return
+            }
+            let image: UIImage = UIImage(named: "turn.off")!
+            self.imageAction.image = image
+            self.labelAction.text = "game"
+            return
+        }
+        if(game.status == "PROPOSED"){
+            self.imageSlide.isHidden = false
+            if(inbound){
+                let image: UIImage = UIImage(named: "inbound")!
+                self.imageAction.image = image
+                self.labelAction.text = "invite"
+                return
+            }
+        }
+        let image: UIImage = UIImage(named: "outbound")!
+        self.imageAction.image = image
+        self.labelAction.text = "invite"
     }
     
     func setActive() {
