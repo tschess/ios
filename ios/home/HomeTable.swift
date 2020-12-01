@@ -29,14 +29,14 @@ class HomeTable: UITableViewController, SwipeTableViewCellDelegate {
             return nil
         }
         let game = self.leaderboardList[indexPath.row]
-        let winner: Bool = game.getWinner(username: self.home!.playerSelf!.username)
+        let winner: Bool = game.getWinner(username: self.home!.player!.username)
         
         let modifyAction = SwipeAction(style: .default, title: nil) { action, indexPath in
             let cell = tableView.cellForRow(at: indexPath) as! SwipeTableViewCell
             cell.hideSwipe(animated: false, completion: nil)
             
             DispatchQueue.main.async() {
-                SelectSnapshot().snapshot(playerSelf: self.home!.playerSelf!, game: game, presentor: self)
+                SelectSnapshot().snapshot(playerSelf: self.home!.player!, game: game, presentor: self)
             }
         }
         if(winner){
@@ -77,7 +77,7 @@ class HomeTable: UITableViewController, SwipeTableViewCellDelegate {
     
     @objc func refresh(refreshControl: UIRefreshControl) {
         self.requestPageIndex = 0
-        let payload = ["id": self.home!.playerSelf!.id,
+        let payload = ["id": self.home!.player!.id,
                        "index": self.requestPageIndex,
                        "size": REQUEST_PAGE_SIZE,
                        "self": true
@@ -111,7 +111,7 @@ class HomeTable: UITableViewController, SwipeTableViewCellDelegate {
         
         let index: Int = indexPath.row
         let game: EntityGame = self.leaderboardList[index]
-        let username: String = self.home!.playerSelf!.username
+        let username: String = self.home!.player!.username
         let usernameOther: String = game.getLabelTextUsernameOpponent(username: username)
         let avatarImageOther: UIImage = game.getImageAvatarOpponent(username: username)
         
@@ -159,7 +159,7 @@ class HomeTable: UITableViewController, SwipeTableViewCellDelegate {
     func fetchGameList() {
         self.home!.setIndicator(on: true)
         
-        let payload = ["id": self.home!.playerSelf!.id,
+        let payload = ["id": self.home!.player!.id,
                        "index": self.requestPageIndex,
                        "size": REQUEST_PAGE_SIZE,
                        "self": true

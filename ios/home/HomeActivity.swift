@@ -10,7 +10,7 @@ import UIKit
 
 class HomeActivity: UIViewController, UITabBarDelegate {
     
-    var playerSelf: EntityPlayer?
+    var player: EntityPlayer?
     var table: HomeTable?
     
     //MARK: OUTLET
@@ -29,7 +29,7 @@ class HomeActivity: UIViewController, UITabBarDelegate {
             NSLayoutConstraint.activate(attributes.map {
                 NSLayoutConstraint(item: viewHeaderDynamic, attribute: $0, relatedBy: .equal, toItem: viewHeaderDynamic.superview, attribute: $0, multiplier: 1, constant: 0)
             })
-            viewHeaderDynamic.set(player: self.playerSelf!)
+            viewHeaderDynamic.set(player: self.player!)
         //}
         
         let opponent = Bundle.loadView(fromNib: "Opponent", withType: Opponent.self)
@@ -39,7 +39,7 @@ class HomeActivity: UIViewController, UITabBarDelegate {
         NSLayoutConstraint.activate(attributes.map {
             NSLayoutConstraint(item: opponent, attribute: $0, relatedBy: .equal, toItem: opponent.superview, attribute: $0, multiplier: 1, constant: 0)
         })
-        opponent.set(playerSelf: self.playerSelf!)
+        opponent.set(playerSelf: self.player!)
         
         
         self.navigationController?.viewControllers = [self]
@@ -112,7 +112,7 @@ class HomeActivity: UIViewController, UITabBarDelegate {
             storyboard = UIStoryboard(name: "ConfigL", bundle: nil)
             viewController = storyboard.instantiateViewController(withIdentifier: "ConfigL") as! Config
         }
-        viewController.playerSelf = self.playerSelf!
+        viewController.playerSelf = self.player!
         let transition = CATransition()
         transition.duration = 0.3
         transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
