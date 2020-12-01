@@ -25,7 +25,7 @@ class Init: UIViewController {
             DispatchQueue.main.async {
                 let player: EntityPlayer = ParsePlayer().execute(json: result)
                 let storyboard: UIStoryboard = UIStoryboard(name: "Home", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "Home") as! Home
+                let viewController = storyboard.instantiateViewController(withIdentifier: "Home") as! HomeActivity
                 viewController.playerSelf = player
                 self.navigationController?.pushViewController(viewController, animated: false)
                 

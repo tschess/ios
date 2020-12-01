@@ -121,7 +121,7 @@ class Start: UIViewController, UITextFieldDelegate {
             if let player = player {
                 DispatchQueue.main.async {
                     let storyboard: UIStoryboard = UIStoryboard(name: "Home", bundle: nil)
-                    let viewController = storyboard.instantiateViewController(withIdentifier: "Home") as! Home
+                    let viewController = storyboard.instantiateViewController(withIdentifier: "Home") as! HomeActivity
                     viewController.playerSelf = player
                     self.navigationController?.pushViewController(viewController, animated: false)
                 }
@@ -194,7 +194,7 @@ class Start: UIViewController, UITextFieldDelegate {
             if let player = player {
                 DispatchQueue.main.async {
                     let storyboard: UIStoryboard = UIStoryboard(name: "Home", bundle: nil)
-                    let viewController = storyboard.instantiateViewController(withIdentifier: "Home") as! Home
+                    let viewController = storyboard.instantiateViewController(withIdentifier: "Home") as! HomeActivity
                     viewController.playerSelf = player
                     self.navigationController?.pushViewController(viewController, animated: false)
                     

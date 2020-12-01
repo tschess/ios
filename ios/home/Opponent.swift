@@ -64,8 +64,7 @@ class Opponent: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
     
     func execute(opponent: EntityPlayer) {
         let viewController = UIViewController()
-        viewController.preferredContentSize = CGSize(width: 250, height: 108)
-        //let pickerView = UIPickerView(frame: CGRect(x: 0, y: 0, width: 250, height: 100))
+        viewController.preferredContentSize = CGSize(width: 250, height: 108) //108
         self.pickerView = UIPickerView(frame: CGRect(x: 0, y: 0, width: 250, height: 100))
         pickerView!.delegate = self
         pickerView!.dataSource = self

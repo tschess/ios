@@ -8,36 +8,34 @@
 
 import UIKit
 
-class Home: UIViewController, UITabBarDelegate {
-    
-    @IBOutlet weak var containerOpponent: UIView!
-    
-    var homeMenuTable: HomeTable?
-    
-    //MARK: Header
-    @IBOutlet weak var headerView: Header!
-    @IBOutlet weak var tabBarMenu: UITabBar!
+class HomeActivity: UIViewController, UITabBarDelegate {
     
     var playerSelf: EntityPlayer?
+    var table: HomeTable?
+    
+    //MARK: OUTLET
+    @IBOutlet weak var tabBar: UITabBar!
+    @IBOutlet weak var componentHeader: Header!
+    @IBOutlet weak var componentOpponent: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let viewHeaderDynamic = Bundle.loadView(fromNib: "Header", withType: Header.self)
-        DispatchQueue.main.async() {
-            self.headerView.addSubview(viewHeaderDynamic)
+        //DispatchQueue.main.async() {
+            self.componentHeader.addSubview(viewHeaderDynamic)
             viewHeaderDynamic.translatesAutoresizingMaskIntoConstraints = false
             let attributes: [NSLayoutConstraint.Attribute] = [.top, .bottom, .right, .left]
             NSLayoutConstraint.activate(attributes.map {
                 NSLayoutConstraint(item: viewHeaderDynamic, attribute: $0, relatedBy: .equal, toItem: viewHeaderDynamic.superview, attribute: $0, multiplier: 1, constant: 0)
             })
             viewHeaderDynamic.set(player: self.playerSelf!)
-        }
+        //}
         
         let opponent = Bundle.loadView(fromNib: "Opponent", withType: Opponent.self)
-        self.containerOpponent.addSubview(opponent)
+        self.componentOpponent.addSubview(opponent)
         opponent.translatesAutoresizingMaskIntoConstraints = false
-        let attributes: [NSLayoutConstraint.Attribute] = [.top, .bottom, .right, .left]
+        //let attributes: [NSLayoutConstraint.Attribute] = [.top, .bottom, .right, .left]
         NSLayoutConstraint.activate(attributes.map {
             NSLayoutConstraint(item: opponent, attribute: $0, relatedBy: .equal, toItem: opponent.superview, attribute: $0, multiplier: 1, constant: 0)
         })
@@ -46,10 +44,10 @@ class Home: UIViewController, UITabBarDelegate {
         
         self.navigationController?.viewControllers = [self]
         
-        self.tabBarMenu.delegate = self
-        self.homeMenuTable = children.first as? HomeTable
-        self.homeMenuTable!.home = self
-        self.homeMenuTable!.fetchGameList()
+        self.tabBar.delegate = self
+        self.table = children.first as? HomeTable
+        self.table!.home = self
+        self.table!.fetchGameList()
         
         NotificationCenter.default.addObserver(
             self,
@@ -63,9 +61,9 @@ class Home: UIViewController, UITabBarDelegate {
     }
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-        self.tabBarMenu.selectedItem = nil
+        self.tabBar.selectedItem = nil
         DispatchQueue.main.async() {
-            let notify = self.tabBarMenu.items![1]
+            let notify = self.tabBar.items![1]
             notify.image = UIImage(named: "game.grey")!
         }
         switch item.tag {

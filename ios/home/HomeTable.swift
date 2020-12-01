@@ -11,7 +11,7 @@ import SwipeCellKit
 
 class HomeTable: UITableViewController, SwipeTableViewCellDelegate {
     
-    var home: Home?
+    var home: HomeActivity?
     
     let REQUEST_PAGE_SIZE: Int
     var requestPageIndex: Int
