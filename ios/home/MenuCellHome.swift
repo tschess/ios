@@ -65,13 +65,14 @@ class MenuCellHome: SwipeTableViewCell {
         let inbound: Bool = game.getTurnFlag(username: usernameSelf)
         if(game.status == "ONGOING"){
             self.imageSlide.isHidden = true
-            
             if(inbound){
+                self.labelIndicator.text = "⭐"
                 let image: UIImage = UIImage(named: "turn.on")!
                 self.imageAction.image = image
                 self.labelAction.text = "game"
                 return
             }
+            self.labelIndicator.text = "⌛"
             let image: UIImage = UIImage(named: "turn.off")!
             self.imageAction.image = image
             self.labelAction.text = "game"
@@ -80,18 +81,22 @@ class MenuCellHome: SwipeTableViewCell {
         if(game.status == "PROPOSED"){
             self.imageSlide.isHidden = false
             if(inbound){
+                self.labelIndicator.text = "⭐"
                 let image: UIImage = UIImage(named: "inbound")!
                 self.imageAction.image = image
                 self.labelAction.text = "invite"
-                return
+                return //0̸
             }
         }
+        self.labelIndicator.text = "⌛"
         let image: UIImage = UIImage(named: "outbound")!
         self.imageAction.image = image
         self.labelAction.text = "invite"
     }
     
     func setActive() {
+        self.labelIndicator.isHidden = false
+        
         self.labelAction.isHidden = false
         self.viewAction.isHidden = false
        
@@ -104,8 +109,8 @@ class MenuCellHome: SwipeTableViewCell {
     func setHisto(game: EntityGame, username: String) {
         let winner: Bool = game.getWinner(username: username)
     
-
         self.viewAction.isHidden = true
+        self.labelIndicator.isHidden = true
         
         self.viewContent.backgroundColor = UIColor.black
         self.labelUsername.textColor = UIColor.lightGray

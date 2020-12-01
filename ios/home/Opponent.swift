@@ -30,7 +30,7 @@ class Opponent: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
         return 30
     }
     
-    let pickerSet = ["chess", "i'm feelin' lucky", "config. 0", "config. 1", "config. 2"]
+    let pickerSet = ["chess", "i'm feelin' lucky", "config. 0̸", "config. 1", "config. 2"]
     
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         let label = UILabel()
