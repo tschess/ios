@@ -7,9 +7,10 @@
 //
 
 import UIKit
-import SwipeCellKit
+//import SwipeCellKit
 
-class HomeTable: UITableViewController, SwipeTableViewCellDelegate {
+
+class HomeTable: UITableViewController {
     
     var swiped: Bool
     var index: Int
@@ -59,7 +60,9 @@ class HomeTable: UITableViewController, SwipeTableViewCellDelegate {
         RequestActual().execute(requestPayload: payload) { (result) in
             if(refreshControl != nil){
                 self.list = [EntityGame]()
-                refreshControl!.endRefreshing()
+                DispatchQueue.main.async {
+                    refreshControl!.endRefreshing()
+                }
             } else {
                 self.activity!.setIndicator(on: false)
             }
@@ -76,55 +79,34 @@ class HomeTable: UITableViewController, SwipeTableViewCellDelegate {
             userInfo: selection)
     }
     
-    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
-        if(orientation == .left) {
-            return nil
-        }
-        let game = self.list[indexPath.row]
-        let winner: Bool = game.getWinner(username: self.activity!.player!.username)
-        
-        let modifyAction = SwipeAction(style: .default, title: nil) { action, indexPath in
-            let cell = tableView.cellForRow(at: indexPath) as! SwipeTableViewCell
-            cell.hideSwipe(animated: false, completion: nil)
-            
-            DispatchQueue.main.async() {
-                SelectSnapshot().snapshot(playerSelf: self.activity!.player!, game: game, presentor: self)
-            }
-        }
-        if(winner){
-            modifyAction.image = UIImage(named: "challenge_grn")!
-            modifyAction.textColor = UIColor.green
-        } else {
-            modifyAction.image = UIImage(named: "challenge_red")!
-            modifyAction.textColor = UIColor.red
-        }
-        if(game.condition == "DRAW"){
-            modifyAction.image = UIImage(named: "challenge_yel")!
-            modifyAction.textColor = UIColor.yellow
-        }
-        modifyAction.title = "snapshot"
-        modifyAction.backgroundColor = UIColor(red: 39.0/255, green: 41.0/255, blue: 44.0/255, alpha: 1.0)
-        return [modifyAction]
-    }
+    //func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
+        //let username: String = self.activity!.player!.username
+        //let game = self.list[indexPath.row]
+        //if(game.status == "ONGOING"){
+            //return nil
+        //}
+        //if(game.isResolved()){
+            //return self.swipeResolved(orientation: orientation, game: game)
+        //}
+        //let inbound: Bool = game.getInboundInvitation(username: username)
+        //if(inbound){
+            //return self.swipProposedInbound(orientation: orientation, game: game)
+        //}
+        //return self.swipProposedOutbound(orientation: orientation, game: game)
+    //}
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let index: Int = indexPath.row
         let game: EntityGame = self.list[index]
         let username: String = self.activity!.player!.username
         let usernameOther: String = game.getLabelTextUsernameOpponent(username: username)
         let avatarImageOther: UIImage = game.getImageAvatarOpponent(username: username)
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MenuCellHome", for: indexPath) as! HomeCell
-        cell.delegate = self
-        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "HomeCell", for: indexPath) as! HomeCell
+        //cell.delegate = self
         cell.setContent(usernameSelf: username, usernameOther: usernameOther, game: game, avatarImageOther: avatarImageOther)
-        
-        
         return cell
     }
-    
-    
     
     @objc func imageTapped(sender: UITapGestureRecognizer) {
         guard let cell = sender.view?.superview?.superview as? HomeCell else {
@@ -156,8 +138,6 @@ class HomeTable: UITableViewController, SwipeTableViewCellDelegate {
         }
     }
     
-    
-    
     func appendToLeaderboardTableList(additionalCellList: [EntityGame]) {
         for game in additionalCellList {
             self.list.append(game)
@@ -166,4 +146,124 @@ class HomeTable: UITableViewController, SwipeTableViewCellDelegate {
             self.tableView.reloadData()
         }
     }
+    
+    //private func swipeResolved(orientation: SwipeActionsOrientation, game: EntityGame) -> [SwipeAction]? {
+        //let username: String = self.activity!.player!.username
+        //if(orientation == .right) {
+            //let rematch = SwipeAction(style: .default, title: nil) { action, indexPath in
+                //let cell = self.tableView.cellForRow(at: indexPath) as! SwipeTableViewCell
+                //cell.hideSwipe(animated: false, completion: nil)
+                
+                //let game: EntityGame = self.list[indexPath.row]
+                //let opponent: EntityPlayer = game.getPlayerOther(username: username)
+                //DispatchQueue.main.async {
+                //var storyboard: UIStoryboard = UIStoryboard(name: "ChallengeP", bundle: nil)
+                //var viewController = storyboard.instantiateViewController(withIdentifier: "ChallengeP") as! Challenge
+                //if(UIScreen.main.bounds.height.isLess(than: 750)){
+                //storyboard = UIStoryboard(name: "ChallengeL", bundle: nil)
+                //viewController = storyboard.instantiateViewController(withIdentifier: "ChallengeL") as! Challenge
+                //}
+                //viewController.playerSelf = self.activity!.player!
+                //viewController.playerOther = playerOther
+                //viewController.selection = Int.random(in: 0...3)
+                //viewController.BACK = "OTHER"
+                //self.navigationController?.pushViewController(viewController, animated: false)
+                //}
+            //}
+            //rematch.backgroundColor = UIColor(red: 39.0/255, green: 41.0/255, blue: 44.0/255, alpha: 1.0)
+            //rematch.title = "rematch"
+            //if(game.condition == "DRAW"){
+                //rematch.textColor = .yellow
+                //rematch.image = UIImage(named: "challenge_yel")!
+                //return [rematch]
+            //}
+            //if(game.getWinner(username: username)){
+                //rematch.textColor = .green
+                //rematch.image = UIImage(named: "challenge_grn")!
+                //return [rematch]
+            //}
+            //rematch.textColor = .red
+            //rematch.image = UIImage(named: "challenge_red")!
+            //return [rematch]
+        //}
+        //return nil
+    //}
+    
+    //private func swipProposedInbound(orientation: SwipeActionsOrientation, game: EntityGame) -> [SwipeAction]? {
+        //if(orientation == .left) {
+            //let nAction = SwipeAction(style: .default, title: nil) { action, indexPath in
+                
+                //let cell = self.tableView.cellForRow(at: indexPath) as! SwipeTableViewCell
+                //cell.hideSwipe(animated: false, completion: nil)
+                
+                //self.activity!.setIndicator(on: true)
+                //let requestPayload: [String: Any] = ["id_game": game.id, "id_self": self.activity!.player!.id]
+                //UpdateNack().execute(requestPayload: requestPayload) { (result) in
+                    //self.list.remove(at: indexPath.row)
+                    //self.activity!.setIndicator(on: false)
+                //}
+            //}
+            //nAction.backgroundColor = UIColor(red: 39.0/255, green: 41.0/255, blue: 44.0/255, alpha: 1.0)
+            //nAction.image = UIImage(named: "td_w")!
+            //nAction.title = "reject"
+            //return [nAction]
+        //}
+        //let ackAction = SwipeAction(style: .default, title: nil) { action, indexPath in
+            
+            //let cell = self.tableView.cellForRow(at: indexPath) as! SwipeTableViewCell
+            //cell.hideSwipe(animated: false, completion: nil)
+            
+            //let game: EntityGame = self.list[indexPath.row]
+            //let username: String = self.activity!.player!.username
+            //let playerOther: EntityPlayer = game.getPlayerOther(username: username)
+            
+            //DispatchQueue.main.async {
+                //let height: CGFloat = UIScreen.main.bounds.height
+                //if(height.isLess(than: 750)){
+                    //let storyboard: UIStoryboard = UIStoryboard(name: "AckL", bundle: nil)
+                    //let viewController = storyboard.instantiateViewController(withIdentifier: "AckL") as! Ack
+                    //viewController.setPlayerSelf(playerSelf: self.activity!.player!)
+                    //viewController.setPlayerOther(playerOther: playerOther)
+                    //viewController.setGameTschess(gameTschess: game)
+                    //viewController.setSelection(selection: Int.random(in: 0...3))
+                    //self.navigationController?.pushViewController(viewController, animated: false)
+                    //return
+                //}
+                //let storyboard: UIStoryboard = UIStoryboard(name: "AckP", bundle: nil)
+                //let viewController = storyboard.instantiateViewController(withIdentifier: "AckP") as! Ack
+                //viewController.setPlayerSelf(playerSelf: self.activity!.player!)
+                //viewController.setPlayerOther(playerOther: playerOther)
+                //viewController.setGameTschess(gameTschess: game)
+                //viewController.setSelection(selection: Int.random(in: 0...3))
+                //self.navigationController?.pushViewController(viewController, animated: false)
+            //}
+        //}
+        //ackAction.backgroundColor = UIColor(red: 39.0/255, green: 41.0/255, blue: 44.0/255, alpha: 1.0)
+        //ackAction.title = "accept"
+        //ackAction.image = UIImage(named: "tu_w")!
+        //return [ackAction]
+    //}
+    
+    //private func swipProposedOutbound(orientation: SwipeActionsOrientation, game: EntityGame) -> [SwipeAction]? {
+        //if(orientation == .right) {
+            //let rescind = SwipeAction(style: .default, title: nil) { action, indexPath in
+                
+                //let cell = self.tableView.cellForRow(at: indexPath) as! SwipeTableViewCell
+                //cell.hideSwipe(animated: false, completion: nil)
+                
+                //self.activity!.setIndicator(on: true)
+                //let game = self.list[indexPath.row]
+                //let requestPayload: [String: Any] = ["id_game": game.id, "id_self": self.activity!.player!.id]
+                //UpdateRescind().execute(requestPayload: requestPayload) { (result) in
+                    //self.list.remove(at: indexPath.row)
+                    //self.activity!.setIndicator(on: false)
+                //}
+            //}
+            //rescind.backgroundColor = UIColor(red: 39.0/255, green: 41.0/255, blue: 44.0/255, alpha: 1.0)
+            //rescind.image = UIImage(named: "close_w")!
+            //rescind.title = "rescind"
+            //return [rescind]
+        //}
+        //return nil
+    //}
 }

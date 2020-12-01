@@ -10,6 +10,10 @@ import UIKit
 import SwipeCellKit
 
 class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
+        print("lol")
+        return nil
+    }
     
     var menu: Menu?
     var indexPage: Int
@@ -96,154 +100,13 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
         return self.listEntityGame.count
     }
     
-    private func swipeResolved(orientation: SwipeActionsOrientation, game: EntityGame) -> [SwipeAction]? {
-        let username: String = self.menu!.playerSelf!.username
-        if(orientation == .right) {
-            let rematch = SwipeAction(style: .default, title: nil) { action, indexPath in
-                let cell = self.tableView.cellForRow(at: indexPath) as! SwipeTableViewCell
-                cell.hideSwipe(animated: false, completion: nil)
-                
-                let game: EntityGame = self.listEntityGame[indexPath.row]
-                let playerOther: EntityPlayer = game.getPlayerOther(username: username)
-
-                DispatchQueue.main.async {
-                    var storyboard: UIStoryboard = UIStoryboard(name: "ChallengeP", bundle: nil)
-                    var viewController = storyboard.instantiateViewController(withIdentifier: "ChallengeP") as! Challenge
-                    if(UIScreen.main.bounds.height.isLess(than: 750)){
-                        storyboard = UIStoryboard(name: "ChallengeL", bundle: nil)
-                        viewController = storyboard.instantiateViewController(withIdentifier: "ChallengeL") as! Challenge
-                    }
-                    viewController.playerSelf = self.menu!.playerSelf!
-                    viewController.playerOther = playerOther
-                    viewController.selection = Int.random(in: 0...3)
-                    viewController.BACK = "OTHER"
-                    self.navigationController?.pushViewController(viewController, animated: false)
-                }
-            }
-            rematch.backgroundColor = UIColor(red: 39.0/255, green: 41.0/255, blue: 44.0/255, alpha: 1.0)
-            rematch.title = "rematch"
-            if(game.condition == "DRAW"){
-                rematch.textColor = .yellow
-                rematch.image = UIImage(named: "challenge_yel")!
-                return [rematch]
-            }
-            if(game.getWinner(username: username)){
-                rematch.textColor = .green
-                rematch.image = UIImage(named: "challenge_grn")!
-                return [rematch]
-            }
-            rematch.textColor = .red
-            rematch.image = UIImage(named: "challenge_red")!
-            return [rematch]
-        }
-        return nil
-    }
     
-    private func swipProposedInbound(orientation: SwipeActionsOrientation, game: EntityGame) -> [SwipeAction]? {
-        if(orientation == .left) {
-            let nAction = SwipeAction(style: .default, title: nil) { action, indexPath in
-                
-                let cell = self.tableView.cellForRow(at: indexPath) as! SwipeTableViewCell
-                cell.hideSwipe(animated: false, completion: nil)
-                
-                self.menu!.setIndicator()
-                let requestPayload: [String: Any] = ["id_game": game.id, "id_self": self.menu!.playerSelf!.id]
-                UpdateNack().execute(requestPayload: requestPayload) { (result) in
-                    self.listEntityGame.remove(at: indexPath.row)
-                    self.menu!.setIndicator(on: false)
-                }
-            }
-            nAction.backgroundColor = UIColor(red: 39.0/255, green: 41.0/255, blue: 44.0/255, alpha: 1.0)
-            nAction.image = UIImage(named: "td_w")!
-            nAction.title = "reject"
-            return [nAction]
-        }
-        let ackAction = SwipeAction(style: .default, title: nil) { action, indexPath in
-            
-            let cell = self.tableView.cellForRow(at: indexPath) as! SwipeTableViewCell
-            cell.hideSwipe(animated: false, completion: nil)
-            
-            let game: EntityGame = self.listEntityGame[indexPath.row]
-            let username: String = self.menu!.playerSelf!.username
-            let playerOther: EntityPlayer = game.getPlayerOther(username: username)
-            
-            DispatchQueue.main.async {
-                let height: CGFloat = UIScreen.main.bounds.height
-                if(height.isLess(than: 750)){
-                    let storyboard: UIStoryboard = UIStoryboard(name: "AckL", bundle: nil)
-                    let viewController = storyboard.instantiateViewController(withIdentifier: "AckL") as! Ack
-                    viewController.setPlayerSelf(playerSelf: self.menu!.playerSelf!)
-                    viewController.setPlayerOther(playerOther: playerOther)
-                    viewController.setGameTschess(gameTschess: game)
-                    viewController.setSelection(selection: Int.random(in: 0...3))
-                    self.navigationController?.pushViewController(viewController, animated: false)
-                    return
-                }
-                let storyboard: UIStoryboard = UIStoryboard(name: "AckP", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "AckP") as! Ack
-                viewController.setPlayerSelf(playerSelf: self.menu!.playerSelf!)
-                viewController.setPlayerOther(playerOther: playerOther)
-                viewController.setGameTschess(gameTschess: game)
-                viewController.setSelection(selection: Int.random(in: 0...3))
-                self.navigationController?.pushViewController(viewController, animated: false)
-            }
-            
-        }
-        ackAction.backgroundColor = UIColor(red: 39.0/255, green: 41.0/255, blue: 44.0/255, alpha: 1.0)
-        ackAction.title = "accept"
-        ackAction.image = UIImage(named: "tu_w")!
-        return [ackAction]
-    }
     
-    private func swipProposedOutbound(orientation: SwipeActionsOrientation, game: EntityGame) -> [SwipeAction]? {
-        if(orientation == .right) {
-            let rescind = SwipeAction(style: .default, title: nil) { action, indexPath in
-                
-                let cell = self.tableView.cellForRow(at: indexPath) as! SwipeTableViewCell
-                cell.hideSwipe(animated: false, completion: nil)
-                
-                self.menu!.setIndicator(on: true)
-                let game = self.listEntityGame[indexPath.row]
-                let requestPayload: [String: Any] = ["id_game": game.id, "id_self": self.menu!.playerSelf!.id]
-                UpdateRescind().execute(requestPayload: requestPayload) { (result) in
-                    self.listEntityGame.remove(at: indexPath.row)
-                    self.menu!.setIndicator(on: false)
-                }
-            }
-            //rescind.backgroundColor = .red
-            rescind.backgroundColor = UIColor(red: 39.0/255, green: 41.0/255, blue: 44.0/255, alpha: 1.0)
-            rescind.image = UIImage(named: "close_w")!
-            rescind.title = "rescind"
-            return [rescind]
-        }
-        return nil
-    }
     
-    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
-        let username: String = self.menu!.playerSelf!.username
-        let game = self.listEntityGame[indexPath.row]
-        let inbound: Bool = game.getInboundInvitation(username: username)
-        
-        if(game.status == "ONGOING"){
-            return nil
-        }
-        /* * */
-        /* * */
-        /* * */
-        if(game.getPrompt(username: username)){
-            return nil
-        }
-        /* * */
-        /* * */
-        /* * */
-        if(game.isResolved()){
-            return self.swipeResolved(orientation: orientation, game: game)
-        }
-        if(inbound){
-            return self.swipProposedInbound(orientation: orientation, game: game)
-        }
-        return self.swipProposedOutbound(orientation: orientation, game: game)
-    }
+    
+    
+    
+    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let index: Int = indexPath.row
