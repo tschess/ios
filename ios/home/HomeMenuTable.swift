@@ -160,10 +160,12 @@ class HomeMenuTable: UITableViewController, SwipeTableViewCellDelegate {
         //"id":"", "page":0, "size":13
         self.home!.setIndicator(on: true)
         
-        let requestPayload = ["id": self.home!.playerSelf!.id,
-                              "index": self.requestPageIndex,
-                              "size": REQUEST_PAGE_SIZE] as [String: Any]
-        RequestActual().execute(requestPayload: requestPayload) { (result) in
+        let payload = ["id": self.home!.playerSelf!.id,
+                       "index": self.requestPageIndex,
+                       "size": REQUEST_PAGE_SIZE,
+                       "self": true
+        ] as [String: Any]
+        RequestActual().execute(requestPayload: payload) { (result) in
             self.home!.setIndicator(on: false)
             self.appendToLeaderboardTableList(additionalCellList: result)
         }
