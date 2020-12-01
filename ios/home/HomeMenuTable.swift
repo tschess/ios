@@ -77,10 +77,6 @@ class HomeMenuTable: UITableViewController, SwipeTableViewCellDelegate {
     
     @objc func refresh(refreshControl: UIRefreshControl) {
         self.requestPageIndex = 0
-        //let requestPayload: [String: Any] = [
-        //"id": home!.playerSelf!.id,
-        //"id_player": self.home!.playerSelf!.id,
-        //"size": REQUEST_PAGE_SIZE]
         let payload = ["id": self.home!.playerSelf!.id,
                        "index": self.requestPageIndex,
                        "size": REQUEST_PAGE_SIZE,
@@ -110,7 +106,6 @@ class HomeMenuTable: UITableViewController, SwipeTableViewCellDelegate {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return leaderboardList.count
     }
-    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -162,9 +157,6 @@ class HomeMenuTable: UITableViewController, SwipeTableViewCellDelegate {
     }
     
     func fetchGameList() {
-        //RequestActual {
-        
-        //"id":"", "page":0, "size":13
         self.home!.setIndicator(on: true)
         
         let payload = ["id": self.home!.playerSelf!.id,

@@ -85,7 +85,7 @@ class MenuCellHome: SwipeTableViewCell {
                 let image: UIImage = UIImage(named: "inbound")!
                 self.imageAction.image = image
                 self.labelAction.text = "invite"
-                return //0̸
+                return
             }
         }
         self.labelIndicator.text = "⌛"
