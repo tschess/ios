@@ -56,56 +56,24 @@ class HomeActivity: UIViewController, UITabBarDelegate {
         self.tabBar.delegate = self
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    }
-    
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        
         self.tabBar.selectedItem = nil
-        DispatchQueue.main.async() {
-            let notify = self.tabBar.items![1]
-            notify.image = UIImage(named: "game.grey")!
-        }
         switch item.tag {
+        
         case 1:
-            
-            print("SINGLE PLAYER")
-            
             let alert = UIAlertController(title: "Did you bring your towel?", message: "It's recommended you bring your towel before continuing.", preferredStyle: .alert)
-            //alert.addAction(UIAlertAction(title: "Yes 🐕", style: .default, handler: nil))
-            
             let fuck = UIAlertAction(title: "Yes 🐕", style: .default, handler: nil)
             fuck.setValue(UIColor.magenta, forKey: "titleTextColor")
             alert.addAction(fuck)
-            
-            //alert.addAction(UIAlertAction(title: "No 🍕", style: .cancel, handler: nil))
             let shit = UIAlertAction(title: "No 🍕", style: .default, handler: nil)
             shit.setValue(UIColor.green, forKey: "titleTextColor")
             alert.addAction(shit)
             
             alert.view.tintColor = .green
             self.present(alert, animated: true)
-            
-        //DispatchQueue.main.async() {
-        //var storyboard: UIStoryboard = UIStoryboard(name: "ProfileP", bundle: nil)
-        //var viewController = storyboard.instantiateViewController(withIdentifier: "ProfileP") as! Profile
-        //if(UIScreen.main.bounds.height.isLess(than: 750)){
-        //storyboard = UIStoryboard(name: "ProfileL", bundle: nil)
-        //viewController = storyboard.instantiateViewController(withIdentifier: "ProfileL") as! Profile
-        //}
-        //viewController.player = self.playerSelf!
-        //let transition = CATransition()
-        //transition.duration = 0.3
-        //transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
-        //transition.type = CATransitionType.fade
-        //self.navigationController?.view.layer.add(transition, forKey: nil)
-        //_ = self.navigationController?.popViewController(animated: false)
-        //self.navigationController?.pushViewController(viewController, animated: false)
-        //}
+        
         case 3:
-            
-            print("MY CONFIG(S)")
-            
             var storyboard: UIStoryboard = UIStoryboard(name: "ConfigP", bundle: nil)
             var viewController = storyboard.instantiateViewController(withIdentifier: "ConfigP") as! Config
             if(UIScreen.main.bounds.height.isLess(than: 750)){
@@ -121,44 +89,17 @@ class HomeActivity: UIViewController, UITabBarDelegate {
             _ = self.navigationController?.popViewController(animated: false)
             self.navigationController?.pushViewController(viewController, animated: false)
             
-            
-        default: //case 4:
-            
+        default:
             print("LEADERBOARD !!!!!!!")
-            
-        //var storyboard: UIStoryboard = UIStoryboard(name: "MenuP", bundle: nil)
-        //var viewController = storyboard.instantiateViewController(withIdentifier: "MenuP") as! Menu
-        //if(UIScreen.main.bounds.height.isLess(than: 750)){
-        //storyboard = UIStoryboard(name: "MenuL", bundle: nil)
-        //viewController = storyboard.instantiateViewController(withIdentifier: "MenuL") as! Menu
-        //}
-        //viewController.playerSelf = self.playerSelf!
-        //self.navigationController?.pushViewController(viewController, animated: false)
-        
         }
     }
     
-    // TODO: IF SELF GO TO GAMES!!!!
+    // TODO:
     @objc func onDidReceiveData(_ notification: NSNotification) {
-        let menuSelectionIndex = notification.userInfo!["home_menu_selection"] as! Int
+        let index: Int = notification.userInfo!["home_menu_selection"] as! Int
+        let game: EntityGame = self.table!.list[index]
         
-        //let playerOther: EntityPlayer = self.homeMenuTable!.getOther(index: menuSelectionIndex)
-        DispatchQueue.main.async {
-            //            let height: CGFloat = UIScreen.main.bounds.height
-            //            if(height.isLess(than: 750)){
-            //                let storyboard: UIStoryboard = UIStoryboard(name: "OtherL", bundle: nil)
-            //                let viewController = storyboard.instantiateViewController(withIdentifier: "OtherL") as! Other
-            //                viewController.setPlayerSelf(playerSelf: self.playerSelf!)
-            //                viewController.setPlayerOther(playerOther: playerOther)
-            //                self.navigationController?.pushViewController(viewController, animated: false)
-            //                return
-            //            }
-            //            let storyboard: UIStoryboard = UIStoryboard(name: "OtherP", bundle: nil)
-            //            let viewController = storyboard.instantiateViewController(withIdentifier: "OtherP") as! Other
-            //            viewController.setPlayerSelf(playerSelf: self.playerSelf!)
-            //            viewController.setPlayerOther(playerOther: playerOther)
-            //            self.navigationController?.pushViewController(viewController, animated: false)
-        }
+        
     }
     
     func setIndicator(on: Bool) {

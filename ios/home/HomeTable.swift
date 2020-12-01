@@ -15,12 +15,12 @@ class HomeTable: UITableViewController, SwipeTableViewCellDelegate {
     
     let REQUEST_PAGE_SIZE: Int
     var requestPageIndex: Int
-    var leaderboardList: [EntityGame]
+    var list: [EntityGame]
     
     required init?(coder aDecoder: NSCoder) {
         self.REQUEST_PAGE_SIZE = 9
         self.requestPageIndex = 0
-        self.leaderboardList = [EntityGame]()
+        self.list = [EntityGame]()
         super.init(coder: aDecoder)
     }
     
@@ -28,7 +28,7 @@ class HomeTable: UITableViewController, SwipeTableViewCellDelegate {
         if(orientation == .left) {
             return nil
         }
-        let game = self.leaderboardList[indexPath.row]
+        let game = self.list[indexPath.row]
         let winner: Bool = game.getWinner(username: self.home!.player!.username)
         
         let modifyAction = SwipeAction(style: .default, title: nil) { action, indexPath in
@@ -86,7 +86,7 @@ class HomeTable: UITableViewController, SwipeTableViewCellDelegate {
         RequestActual().execute(requestPayload: payload) { (response) in
             
             DispatchQueue.main.async() {
-                self.leaderboardList = [EntityGame]()
+                self.list = [EntityGame]()
                 self.tableView.reloadData()
                 self.appendToLeaderboardTableList(additionalCellList: response)
                 refreshControl.endRefreshing()
@@ -104,13 +104,13 @@ class HomeTable: UITableViewController, SwipeTableViewCellDelegate {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return leaderboardList.count
+        return list.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let index: Int = indexPath.row
-        let game: EntityGame = self.leaderboardList[index]
+        let game: EntityGame = self.list[index]
         let username: String = self.home!.player!.username
         let usernameOther: String = game.getLabelTextUsernameOpponent(username: username)
         let avatarImageOther: UIImage = game.getImageAvatarOpponent(username: username)
@@ -172,7 +172,7 @@ class HomeTable: UITableViewController, SwipeTableViewCellDelegate {
     
     func appendToLeaderboardTableList(additionalCellList: [EntityGame]) {
         for game in additionalCellList {
-            self.leaderboardList.append(game)
+            self.list.append(game)
         }
         DispatchQueue.main.async() {
             self.tableView.reloadData()

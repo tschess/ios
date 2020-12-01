@@ -26,7 +26,7 @@ class Init: UIViewController {
                 let player: EntityPlayer = ParsePlayer().execute(json: result)
                 let storyboard: UIStoryboard = UIStoryboard(name: "Home", bundle: nil)
                 let viewController = storyboard.instantiateViewController(withIdentifier: "Home") as! HomeActivity
-                viewController.playerSelf = player
+                viewController.player = player
                 self.navigationController?.pushViewController(viewController, animated: false)
                 
                 if let viewControllers = self.navigationController?.viewControllers {

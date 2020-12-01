@@ -66,7 +66,7 @@ class Create: UIViewController, UITextFieldDelegate {
                         
                         let storyboard: UIStoryboard = UIStoryboard(name: "HomeL", bundle: nil)
                         let viewController = storyboard.instantiateViewController(withIdentifier: "HomeL") as! HomeActivity
-                        viewController.playerSelf = player
+                        viewController.player = player
                         self.navigationController?.pushViewController(viewController, animated: false)
                         return
                     }
@@ -75,7 +75,7 @@ class Create: UIViewController, UITextFieldDelegate {
                     
                     let storyboard: UIStoryboard = UIStoryboard(name: "HomeP", bundle: nil)
                     let viewController = storyboard.instantiateViewController(withIdentifier: "HomeP") as! HomeActivity
-                    viewController.playerSelf = player
+                    viewController.player = player
                     self.navigationController?.pushViewController(viewController, animated: false)
                 }
                 return
