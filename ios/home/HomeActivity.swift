@@ -21,30 +21,28 @@ class HomeActivity: UIViewController, UITabBarDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let viewHeaderDynamic = Bundle.loadView(fromNib: "Header", withType: Header.self)
-        //DispatchQueue.main.async() {
-            self.componentHeader.addSubview(viewHeaderDynamic)
-            viewHeaderDynamic.translatesAutoresizingMaskIntoConstraints = false
-            let attributes: [NSLayoutConstraint.Attribute] = [.top, .bottom, .right, .left]
-            NSLayoutConstraint.activate(attributes.map {
-                NSLayoutConstraint(item: viewHeaderDynamic, attribute: $0, relatedBy: .equal, toItem: viewHeaderDynamic.superview, attribute: $0, multiplier: 1, constant: 0)
-            })
-            viewHeaderDynamic.set(player: self.player!)
-        //}
+        self.navigationController?.viewControllers = [self]
         
+        //TODO: Header
+        let viewHeaderDynamic = Bundle.loadView(fromNib: "Header", withType: Header.self)
+        self.componentHeader.addSubview(viewHeaderDynamic)
+        viewHeaderDynamic.translatesAutoresizingMaskIntoConstraints = false
+        let attributes: [NSLayoutConstraint.Attribute] = [.top, .bottom, .right, .left]
+        NSLayoutConstraint.activate(attributes.map {
+            NSLayoutConstraint(item: viewHeaderDynamic, attribute: $0, relatedBy: .equal, toItem: viewHeaderDynamic.superview, attribute: $0, multiplier: 1, constant: 0)
+        })
+        viewHeaderDynamic.set(player: self.player!)
+        
+        //TODO: Opponent
         let opponent = Bundle.loadView(fromNib: "Opponent", withType: Opponent.self)
         self.componentOpponent.addSubview(opponent)
         opponent.translatesAutoresizingMaskIntoConstraints = false
-        //let attributes: [NSLayoutConstraint.Attribute] = [.top, .bottom, .right, .left]
         NSLayoutConstraint.activate(attributes.map {
             NSLayoutConstraint(item: opponent, attribute: $0, relatedBy: .equal, toItem: opponent.superview, attribute: $0, multiplier: 1, constant: 0)
         })
         opponent.set(playerSelf: self.player!)
         
-        
-        self.navigationController?.viewControllers = [self]
-        
-        self.tabBar.delegate = self
+        //TODO: Table
         self.table = children.first as? HomeTable
         self.table!.home = self
         self.table!.fetchGameList()
@@ -54,6 +52,8 @@ class HomeActivity: UIViewController, UITabBarDelegate {
             selector: #selector(self.onDidReceiveData(_:)),
             name: NSNotification.Name(rawValue: "HomeMenuSelection"),
             object: nil)
+        
+        self.tabBar.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -86,55 +86,55 @@ class HomeActivity: UIViewController, UITabBarDelegate {
             alert.view.tintColor = .green
             self.present(alert, animated: true)
             
-            //DispatchQueue.main.async() {
-                //var storyboard: UIStoryboard = UIStoryboard(name: "ProfileP", bundle: nil)
-                //var viewController = storyboard.instantiateViewController(withIdentifier: "ProfileP") as! Profile
-                //if(UIScreen.main.bounds.height.isLess(than: 750)){
-                    //storyboard = UIStoryboard(name: "ProfileL", bundle: nil)
-                    //viewController = storyboard.instantiateViewController(withIdentifier: "ProfileL") as! Profile
-                //}
-                //viewController.player = self.playerSelf!
-                //let transition = CATransition()
-                //transition.duration = 0.3
-                //transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
-                //transition.type = CATransitionType.fade
-                //self.navigationController?.view.layer.add(transition, forKey: nil)
-                //_ = self.navigationController?.popViewController(animated: false)
-                //self.navigationController?.pushViewController(viewController, animated: false)
-            //}
+        //DispatchQueue.main.async() {
+        //var storyboard: UIStoryboard = UIStoryboard(name: "ProfileP", bundle: nil)
+        //var viewController = storyboard.instantiateViewController(withIdentifier: "ProfileP") as! Profile
+        //if(UIScreen.main.bounds.height.isLess(than: 750)){
+        //storyboard = UIStoryboard(name: "ProfileL", bundle: nil)
+        //viewController = storyboard.instantiateViewController(withIdentifier: "ProfileL") as! Profile
+        //}
+        //viewController.player = self.playerSelf!
+        //let transition = CATransition()
+        //transition.duration = 0.3
+        //transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+        //transition.type = CATransitionType.fade
+        //self.navigationController?.view.layer.add(transition, forKey: nil)
+        //_ = self.navigationController?.popViewController(animated: false)
+        //self.navigationController?.pushViewController(viewController, animated: false)
+        //}
         case 3:
             
             print("MY CONFIG(S)")
             
-        var storyboard: UIStoryboard = UIStoryboard(name: "ConfigP", bundle: nil)
-        var viewController = storyboard.instantiateViewController(withIdentifier: "ConfigP") as! Config
-        if(UIScreen.main.bounds.height.isLess(than: 750)){
-            storyboard = UIStoryboard(name: "ConfigL", bundle: nil)
-            viewController = storyboard.instantiateViewController(withIdentifier: "ConfigL") as! Config
-        }
-        viewController.playerSelf = self.player!
-        let transition = CATransition()
-        transition.duration = 0.3
-        transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
-        transition.type = CATransitionType.fade
-        self.navigationController?.view.layer.add(transition, forKey: nil)
-        _ = self.navigationController?.popViewController(animated: false)
-        self.navigationController?.pushViewController(viewController, animated: false)
+            var storyboard: UIStoryboard = UIStoryboard(name: "ConfigP", bundle: nil)
+            var viewController = storyboard.instantiateViewController(withIdentifier: "ConfigP") as! Config
+            if(UIScreen.main.bounds.height.isLess(than: 750)){
+                storyboard = UIStoryboard(name: "ConfigL", bundle: nil)
+                viewController = storyboard.instantiateViewController(withIdentifier: "ConfigL") as! Config
+            }
+            viewController.playerSelf = self.player!
+            let transition = CATransition()
+            transition.duration = 0.3
+            transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+            transition.type = CATransitionType.fade
+            self.navigationController?.view.layer.add(transition, forKey: nil)
+            _ = self.navigationController?.popViewController(animated: false)
+            self.navigationController?.pushViewController(viewController, animated: false)
             
             
         default: //case 4:
-        
+            
             print("LEADERBOARD !!!!!!!")
-        
+            
         //var storyboard: UIStoryboard = UIStoryboard(name: "MenuP", bundle: nil)
         //var viewController = storyboard.instantiateViewController(withIdentifier: "MenuP") as! Menu
         //if(UIScreen.main.bounds.height.isLess(than: 750)){
-            //storyboard = UIStoryboard(name: "MenuL", bundle: nil)
-            //viewController = storyboard.instantiateViewController(withIdentifier: "MenuL") as! Menu
+        //storyboard = UIStoryboard(name: "MenuL", bundle: nil)
+        //viewController = storyboard.instantiateViewController(withIdentifier: "MenuL") as! Menu
         //}
         //viewController.playerSelf = self.playerSelf!
         //self.navigationController?.pushViewController(viewController, animated: false)
-            
+        
         }
     }
     
@@ -144,40 +144,40 @@ class HomeActivity: UIViewController, UITabBarDelegate {
         
         //let playerOther: EntityPlayer = self.homeMenuTable!.getOther(index: menuSelectionIndex)
         DispatchQueue.main.async {
-//            let height: CGFloat = UIScreen.main.bounds.height
-//            if(height.isLess(than: 750)){
-//                let storyboard: UIStoryboard = UIStoryboard(name: "OtherL", bundle: nil)
-//                let viewController = storyboard.instantiateViewController(withIdentifier: "OtherL") as! Other
-//                viewController.setPlayerSelf(playerSelf: self.playerSelf!)
-//                viewController.setPlayerOther(playerOther: playerOther)
-//                self.navigationController?.pushViewController(viewController, animated: false)
-//                return
-//            }
-//            let storyboard: UIStoryboard = UIStoryboard(name: "OtherP", bundle: nil)
-//            let viewController = storyboard.instantiateViewController(withIdentifier: "OtherP") as! Other
-//            viewController.setPlayerSelf(playerSelf: self.playerSelf!)
-//            viewController.setPlayerOther(playerOther: playerOther)
-//            self.navigationController?.pushViewController(viewController, animated: false)
+            //            let height: CGFloat = UIScreen.main.bounds.height
+            //            if(height.isLess(than: 750)){
+            //                let storyboard: UIStoryboard = UIStoryboard(name: "OtherL", bundle: nil)
+            //                let viewController = storyboard.instantiateViewController(withIdentifier: "OtherL") as! Other
+            //                viewController.setPlayerSelf(playerSelf: self.playerSelf!)
+            //                viewController.setPlayerOther(playerOther: playerOther)
+            //                self.navigationController?.pushViewController(viewController, animated: false)
+            //                return
+            //            }
+            //            let storyboard: UIStoryboard = UIStoryboard(name: "OtherP", bundle: nil)
+            //            let viewController = storyboard.instantiateViewController(withIdentifier: "OtherP") as! Other
+            //            viewController.setPlayerSelf(playerSelf: self.playerSelf!)
+            //            viewController.setPlayerOther(playerOther: playerOther)
+            //            self.navigationController?.pushViewController(viewController, animated: false)
         }
     }
     
     func setIndicator(on: Bool) {
-//                if(on) {
-//                    DispatchQueue.main.async() {
-//                        if(self.headerView.indicatorActivity!.isHidden){
-//                            self.headerView.indicatorActivity!.isHidden = false
-//                        }
-//                        if(!self.headerView.indicatorActivity!.isAnimating){
-//                            self.headerView.indicatorActivity!.startAnimating()
-//                        }
-//                    }
-//                    return
-//                }
-//                DispatchQueue.main.async() {
-//                    self.headerView.indicatorActivity!.isHidden = true
-//                    self.headerView.indicatorActivity!.stopAnimating()
-//                    self.homeMenuTable!.tableView.reloadData()
-//                }
+        //                if(on) {
+        //                    DispatchQueue.main.async() {
+        //                        if(self.headerView.indicatorActivity!.isHidden){
+        //                            self.headerView.indicatorActivity!.isHidden = false
+        //                        }
+        //                        if(!self.headerView.indicatorActivity!.isAnimating){
+        //                            self.headerView.indicatorActivity!.startAnimating()
+        //                        }
+        //                    }
+        //                    return
+        //                }
+        //                DispatchQueue.main.async() {
+        //                    self.headerView.indicatorActivity!.isHidden = true
+        //                    self.headerView.indicatorActivity!.stopAnimating()
+        //                    self.homeMenuTable!.tableView.reloadData()
+        //                }
     }
 }
 
