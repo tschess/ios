@@ -32,13 +32,13 @@
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="suggested opponents" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ho8-tE-PTd">
-                                <rect key="frame" x="0.0" y="168" width="414" height="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="rivals:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ho8-tE-PTd">
+                                <rect key="frame" x="8" y="168" width="406" height="30"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="5w6-HB-Wzd"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="20"/>
                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -114,7 +114,7 @@
                             <constraint firstItem="AlY-qh-cUb" firstAttribute="trailing" secondItem="onu-DJ-h1h" secondAttribute="trailing" id="YCz-Sc-efo"/>
                             <constraint firstAttribute="trailing" secondItem="Hzs-EN-kVs" secondAttribute="trailing" id="a0C-Eu-cKl"/>
                             <constraint firstItem="WxW-qA-faz" firstAttribute="top" secondItem="e3Y-nl-uSZ" secondAttribute="bottom" id="cEh-LK-7tR"/>
-                            <constraint firstItem="ho8-tE-PTd" firstAttribute="leading" secondItem="onu-DJ-h1h" secondAttribute="leading" id="f7N-GT-qV3"/>
+                            <constraint firstItem="ho8-tE-PTd" firstAttribute="leading" secondItem="onu-DJ-h1h" secondAttribute="leading" constant="8" id="f7N-GT-qV3"/>
                             <constraint firstItem="nqq-3b-Do4" firstAttribute="leading" secondItem="onu-DJ-h1h" secondAttribute="leading" id="fQh-tv-4Yi"/>
                             <constraint firstItem="e3Y-nl-uSZ" firstAttribute="top" secondItem="nqq-3b-Do4" secondAttribute="bottom" id="fjs-DJ-ceQ"/>
                             <constraint firstItem="nqq-3b-Do4" firstAttribute="trailing" secondItem="onu-DJ-h1h" secondAttribute="trailing" id="g8o-i8-gjX"/>
