@@ -93,7 +93,6 @@
 		B7A6B8A9240D9AE200840156 /* UpdateRescind.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A6B8A8240D9AE200840156 /* UpdateRescind.swift */; };
 		B7A6B8AB240D9B0100840156 /* UpdateNack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A6B8AA240D9B0100840156 /* UpdateNack.swift */; };
 		B7A6B8AD240D9B2300840156 /* RequestActual.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A6B8AC240D9B2300840156 /* RequestActual.swift */; };
-		B7A8B2A22400A8210092D2D6 /* dTschessP.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7A8B2A12400A8210092D2D6 /* dTschessP.storyboard */; };
 		B7AF787323E0B9DA00BAD8EC /* RequestPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7AF787223E0B9DA00BAD8EC /* RequestPage.swift */; };
 		B7BE115D23EA4FBE00ADA499 /* ParsePlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE115C23EA4FBE00ADA499 /* ParsePlayer.swift */; };
 		B7BE116023EA71D100ADA499 /* Other.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BE115F23EA71D100ADA499 /* Other.swift */; };
@@ -189,7 +188,6 @@
 		B7EF701E23EA28BA00BAF2E2 /* EntityPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7EF701D23EA28BA00BAF2E2 /* EntityPlayer.swift */; };
 		B7EF702123EA28E300BAF2E2 /* EntityGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7EF702023EA28E300BAF2E2 /* EntityGame.swift */; };
 		B7F35E332309F6D6002018F7 /* DateTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F35E322309F6D6002018F7 /* DateTime.swift */; };
-		B7F3A12F23FD8DA9007B5663 /* dTschessL.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7F3A12E23FD8DA9007B5663 /* dTschessL.storyboard */; };
 		B7F541C123D51A5A00E89074 /* HomeActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F541C023D51A5A00E89074 /* HomeActivity.swift */; };
 		B7F541C623D51ADD00E89074 /* HomeTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F541C523D51ADD00E89074 /* HomeTable.swift */; };
 		B7F541C823D51B0C00E89074 /* HomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F541C723D51B0C00E89074 /* HomeCell.swift */; };
@@ -309,7 +307,6 @@
 		B7A6B8A8240D9AE200840156 /* UpdateRescind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateRescind.swift; sourceTree = "<group>"; };
 		B7A6B8AA240D9B0100840156 /* UpdateNack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateNack.swift; sourceTree = "<group>"; };
 		B7A6B8AC240D9B2300840156 /* RequestActual.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestActual.swift; sourceTree = "<group>"; };
-		B7A8B2A12400A8210092D2D6 /* dTschessP.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = dTschessP.storyboard; sourceTree = "<group>"; };
 		B7AF787223E0B9DA00BAD8EC /* RequestPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestPage.swift; sourceTree = "<group>"; };
 		B7BE115C23EA4FBE00ADA499 /* ParsePlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParsePlayer.swift; sourceTree = "<group>"; };
 		B7BE115F23EA71D100ADA499 /* Other.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Other.swift; sourceTree = "<group>"; };
@@ -406,7 +403,6 @@
 		B7EF702023EA28E300BAF2E2 /* EntityGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityGame.swift; sourceTree = "<group>"; };
 		B7EF705E23EA48E400BAF2E2 /* ios.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ios.entitlements; sourceTree = "<group>"; };
 		B7F35E322309F6D6002018F7 /* DateTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTime.swift; sourceTree = "<group>"; };
-		B7F3A12E23FD8DA9007B5663 /* dTschessL.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = dTschessL.storyboard; sourceTree = "<group>"; };
 		B7F541C023D51A5A00E89074 /* HomeActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeActivity.swift; sourceTree = "<group>"; };
 		B7F541C523D51ADD00E89074 /* HomeTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTable.swift; sourceTree = "<group>"; };
 		B7F541C723D51B0C00E89074 /* HomeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCell.swift; sourceTree = "<group>"; };
@@ -867,14 +863,6 @@
 			path = legacy;
 			sourceTree = "<group>";
 		};
-		B7A8B2A02400A8060092D2D6 /* primary */ = {
-			isa = PBXGroup;
-			children = (
-				B7A8B2A12400A8210092D2D6 /* dTschessP.storyboard */,
-			);
-			path = primary;
-			sourceTree = "<group>";
-		};
 		B7AF787123E0B9BC00BAD8EC /* networking */ = {
 			isa = PBXGroup;
 			children = (
@@ -1328,20 +1316,10 @@
 				835FADA324F00A7B0080A194 /* atomic */,
 				B7BE129C23EB0AD000ADA499 /* controller */,
 				B7BE128B23EB098A00ADA499 /* networking */,
-				B7BE128823EB093B00ADA499 /* storyboard */,
 				B7BE128623EB091C00ADA499 /* Tschess.swift */,
 				8307D802257835880054FDDE /* Tschess.storyboard */,
 			);
 			path = tschess;
-			sourceTree = "<group>";
-		};
-		B7BE128823EB093B00ADA499 /* storyboard */ = {
-			isa = PBXGroup;
-			children = (
-				B7A8B2A02400A8060092D2D6 /* primary */,
-				B7F3A12B23FD8D74007B5663 /* legacy */,
-			);
-			path = storyboard;
 			sourceTree = "<group>";
 		};
 		B7BE128B23EB098A00ADA499 /* networking */ = {
@@ -1494,14 +1472,6 @@
 				B7BE116B23EA750B00ADA499 /* ParseGame.swift */,
 			);
 			path = game;
-			sourceTree = "<group>";
-		};
-		B7F3A12B23FD8D74007B5663 /* legacy */ = {
-			isa = PBXGroup;
-			children = (
-				B7F3A12E23FD8DA9007B5663 /* dTschessL.storyboard */,
-			);
-			path = legacy;
 			sourceTree = "<group>";
 		};
 		B7F541BF23D51A4300E89074 /* home */ = {
@@ -1675,14 +1645,12 @@
 				B7021F9823FE5D8F00C9346A /* OtherP.storyboard in Resources */,
 				B7C6760623FF22E9007EC71E /* AckP.storyboard in Resources */,
 				B7BE121623EAD7E700ADA499 /* Init.storyboard in Resources */,
-				B7A8B2A22400A8210092D2D6 /* dTschessP.storyboard in Resources */,
 				B7ED646423F4D9D400292FBC /* Create.storyboard in Resources */,
 				B7021F3A23FE031400C9346A /* InfoP.storyboard in Resources */,
 				B7021F6223FE3B8E00C9346A /* ProfileP.storyboard in Resources */,
 				B7021F5C23FE304D00C9346A /* EditSelfP.storyboard in Resources */,
 				B7021F3223FDFCC100C9346A /* FairiesP.storyboard in Resources */,
 				B7021F4223FE0B0700C9346A /* PlayP.storyboard in Resources */,
-				B7F3A12F23FD8DA9007B5663 /* dTschessL.storyboard in Resources */,
 				B7021F5923FE303000C9346A /* EditSelfL.storyboard in Resources */,
 				83ACC699250014DE00D394D0 /* PopOption.storyboard in Resources */,
 				B7021F7E23FE597400C9346A /* DefaultL.storyboard in Resources */,

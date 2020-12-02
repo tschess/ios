@@ -64,8 +64,8 @@ class HomeTable: UITableViewController, SwipeTableViewCellDelegate, UIPickerView
                 let height: CGFloat = UIScreen.main.bounds.height
                 let playerOther: EntityPlayer = game.getPlayerOther(username: self.activity!.player!.username)
                 if(height.isLess(than: 750)){
-                    let storyboard: UIStoryboard = UIStoryboard(name: "dTschessL", bundle: nil)
-                    let viewController = storyboard.instantiateViewController(withIdentifier: "dTschessL") as! Tschess
+                    let storyboard: UIStoryboard = UIStoryboard(name: "Tschess", bundle: nil)
+                    let viewController = storyboard.instantiateViewController(withIdentifier: "Tschess") as! Tschess
                     viewController.playerOther = playerOther
                     viewController.player = self.activity!.player!
                     viewController.game = game
@@ -76,8 +76,8 @@ class HomeTable: UITableViewController, SwipeTableViewCellDelegate, UIPickerView
                     self.navigationController?.viewControllers = navigationArray
                     return
                 }
-                let storyboard: UIStoryboard = UIStoryboard(name: "dTschessP", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "dTschessP") as! Tschess
+                let storyboard: UIStoryboard = UIStoryboard(name: "Tschess", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "Tschess") as! Tschess
                 viewController.playerOther = playerOther
                 viewController.player = self.activity!.player!
                 viewController.game = game

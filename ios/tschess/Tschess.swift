@@ -165,7 +165,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         self.promotion.setTschess(tschess: self)
         
         let game_id: String = self.game!.id
-        //self.landmine = Landmine(game_id: game_id, white: white, transitioner: transitioner, activityIndicator: self.activityIndicator, tschess: self)
+        self.landmine = Landmine(game_id: game_id, white: white, transitioner: transitioner, activityIndicator: viewHeaderDynamic.indicatorActivity, tschess: self)
         self.passant = Passant(white: white, transitioner: transitioner, tschess: self)
         self.castle = Castle(white: white, transitioner: transitioner, tschess: self)
         self.transitioner = transitioner
