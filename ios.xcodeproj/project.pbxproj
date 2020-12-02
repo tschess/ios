@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4E766FB2BBF9176550BB45F9 /* Pods_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45C0F287A16E70CE8A23A2EB /* Pods_ios.framework */; };
+		8307D803257835880054FDDE /* Tschess.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8307D802257835880054FDDE /* Tschess.storyboard */; };
 		83085F28248048CD00D31CF0 /* NoteKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83085F27248048CD00D31CF0 /* NoteKey.swift */; };
 		830946872566D767003A1B9A /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 830946862566D767003A1B9A /* Home.storyboard */; };
 		83295C472475C2DE00820C6C /* GetTimeout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83295C462475C2DE00820C6C /* GetTimeout.swift */; };
@@ -216,6 +217,7 @@
 
 /* Begin PBXFileReference section */
 		45C0F287A16E70CE8A23A2EB /* Pods_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8307D802257835880054FDDE /* Tschess.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Tschess.storyboard; sourceTree = "<group>"; };
 		83085F27248048CD00D31CF0 /* NoteKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteKey.swift; sourceTree = "<group>"; };
 		830946862566D767003A1B9A /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		83295C462475C2DE00820C6C /* GetTimeout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTimeout.swift; sourceTree = "<group>"; };
@@ -1328,6 +1330,7 @@
 				B7BE128B23EB098A00ADA499 /* networking */,
 				B7BE128823EB093B00ADA499 /* storyboard */,
 				B7BE128623EB091C00ADA499 /* Tschess.swift */,
+				8307D802257835880054FDDE /* Tschess.storyboard */,
 			);
 			path = tschess;
 			sourceTree = "<group>";
@@ -1658,6 +1661,7 @@
 				B7A6B8A4240D9A7300840156 /* MenuP.storyboard in Resources */,
 				83ACC6AE250021AE00D394D0 /* PopUp.storyboard in Resources */,
 				B7021F3723FE02FA00C9346A /* InfoL.storyboard in Resources */,
+				8307D803257835880054FDDE /* Tschess.storyboard in Resources */,
 				B7021F5223FE11D300C9346A /* EditOtherL.storyboard in Resources */,
 				B7C6760823FF22F8007EC71E /* AckL.storyboard in Resources */,
 				B7C6760023FF1E80007EC71E /* ChallengeP.storyboard in Resources */,

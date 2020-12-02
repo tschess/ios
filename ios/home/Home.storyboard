@@ -18,20 +18,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kc6-7w-kWO" userLabel="TopView">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="14"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="tschess" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hzs-EN-kVs">
-                                <rect key="frame" x="0.0" y="44" width="414" height="30"/>
-                                <color key="backgroundColor" systemColor="viewFlipsideBackgroundColor"/>
-                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="Inr-Ze-1Do"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="20"/>
-                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="rivals:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ho8-tE-PTd">
                                 <rect key="frame" x="8" y="168" width="406" height="30"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -105,18 +94,16 @@
                         <constraints>
                             <constraint firstItem="Kc6-7w-kWO" firstAttribute="leading" secondItem="sfS-8a-jQx" secondAttribute="leading" id="2xB-0R-cmm"/>
                             <constraint firstItem="AlY-qh-cUb" firstAttribute="leading" secondItem="onu-DJ-h1h" secondAttribute="leading" id="3zl-ob-Ned"/>
-                            <constraint firstItem="Hzs-EN-kVs" firstAttribute="top" secondItem="Kc6-7w-kWO" secondAttribute="bottom" id="5bX-HE-A3j"/>
-                            <constraint firstItem="Hzs-EN-kVs" firstAttribute="leading" secondItem="onu-DJ-h1h" secondAttribute="leading" id="Awu-ab-m0t"/>
+                            <constraint firstItem="AlY-qh-cUb" firstAttribute="top" secondItem="Kc6-7w-kWO" secondAttribute="bottom" constant="30" id="5bX-HE-A3j"/>
                             <constraint firstItem="nqq-3b-Do4" firstAttribute="top" secondItem="ho8-tE-PTd" secondAttribute="bottom" id="D7D-zY-etQ"/>
                             <constraint firstItem="WxW-qA-faz" firstAttribute="leading" secondItem="onu-DJ-h1h" secondAttribute="leading" id="Irp-gP-FJE"/>
-                            <constraint firstItem="Hzs-EN-kVs" firstAttribute="top" secondItem="onu-DJ-h1h" secondAttribute="top" id="Kab-HN-hxg"/>
+                            <constraint firstItem="AlY-qh-cUb" firstAttribute="top" secondItem="onu-DJ-h1h" secondAttribute="top" id="Jqm-1M-Vua"/>
                             <constraint firstItem="WxW-qA-faz" firstAttribute="trailing" secondItem="onu-DJ-h1h" secondAttribute="trailing" id="Kry-GU-g9M"/>
                             <constraint firstItem="ho8-tE-PTd" firstAttribute="top" secondItem="AlY-qh-cUb" secondAttribute="bottom" id="MMa-Ku-ffT"/>
                             <constraint firstItem="WKf-1J-vAW" firstAttribute="trailing" secondItem="onu-DJ-h1h" secondAttribute="trailing" id="Th3-zk-UBa"/>
                             <constraint firstItem="onu-DJ-h1h" firstAttribute="bottom" secondItem="WKf-1J-vAW" secondAttribute="bottom" id="VCB-qQ-OQm"/>
                             <constraint firstItem="Kc6-7w-kWO" firstAttribute="top" secondItem="sfS-8a-jQx" secondAttribute="top" id="Vnc-TG-hFQ"/>
                             <constraint firstItem="AlY-qh-cUb" firstAttribute="trailing" secondItem="onu-DJ-h1h" secondAttribute="trailing" id="YCz-Sc-efo"/>
-                            <constraint firstAttribute="trailing" secondItem="Hzs-EN-kVs" secondAttribute="trailing" id="a0C-Eu-cKl"/>
                             <constraint firstItem="WxW-qA-faz" firstAttribute="top" secondItem="e3Y-nl-uSZ" secondAttribute="bottom" id="cEh-LK-7tR"/>
                             <constraint firstItem="ho8-tE-PTd" firstAttribute="leading" secondItem="onu-DJ-h1h" secondAttribute="leading" constant="8" id="f7N-GT-qV3"/>
                             <constraint firstItem="nqq-3b-Do4" firstAttribute="leading" secondItem="onu-DJ-h1h" secondAttribute="leading" id="fQh-tv-4Yi"/>
@@ -125,7 +112,6 @@
                             <constraint firstItem="ho8-tE-PTd" firstAttribute="trailing" secondItem="onu-DJ-h1h" secondAttribute="trailing" id="gMh-JT-HKB"/>
                             <constraint firstItem="e3Y-nl-uSZ" firstAttribute="trailing" secondItem="sfS-8a-jQx" secondAttribute="trailing" id="gvK-K4-3LB"/>
                             <constraint firstAttribute="trailing" secondItem="Kc6-7w-kWO" secondAttribute="trailing" id="hwq-Kh-AKl"/>
-                            <constraint firstItem="AlY-qh-cUb" firstAttribute="top" secondItem="Hzs-EN-kVs" secondAttribute="bottom" id="mug-ic-HCk"/>
                             <constraint firstItem="WKf-1J-vAW" firstAttribute="top" secondItem="WxW-qA-faz" secondAttribute="bottom" id="tsB-sc-cx7"/>
                             <constraint firstItem="WKf-1J-vAW" firstAttribute="leading" secondItem="onu-DJ-h1h" secondAttribute="leading" id="z2q-O0-s8Z"/>
                             <constraint firstItem="e3Y-nl-uSZ" firstAttribute="leading" secondItem="sfS-8a-jQx" secondAttribute="leading" id="zO9-6V-Rcr"/>
@@ -280,9 +266,6 @@
         </systemColor>
         <systemColor name="systemTealColor">
             <color red="0.35294117647058826" green="0.78431372549019607" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="viewFlipsideBackgroundColor">
-            <color red="0.1215686274509804" green="0.12941176470588239" blue="0.14117647058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
