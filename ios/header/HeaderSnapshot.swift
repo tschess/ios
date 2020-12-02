@@ -10,31 +10,19 @@ import UIKit
 
 class HeaderSnapshot: UIView {
     
-    //@IBOutlet weak var labelRank: UILabel!
-    //@IBOutlet weak var labelRating: UILabel!
-    //@IBOutlet weak var labelUsername: UILabel!
+    @IBOutlet weak var labelResult: UILabel!
+    @IBOutlet weak var labelMoves: UILabel!
+    @IBOutlet weak var labelWinner: UILabel!
     
-    //@IBOutlet weak var imageDisplacementRank: UIImageView!
-    
-    //@IBOutlet weak var imageAvatar: UIImageView!
-    
-    //@IBOutlet weak var indicatorActivity: UIActivityIndicatorView!
-
+    @IBOutlet weak var imageAvatar: UIImageView!
    
-    public func set(player: EntityPlayer) {
+    public func set(game: EntityGame) {
+        self.labelResult.text = game.condition
+        self.labelMoves.text = String(game.moves)
+        self.labelWinner.text = game.getUsernameWinner()
         
-        //self.labelUsername.text = player.username
-        //self.labelRating.text = player.getLabelTextElo()
-        //self.labelRank.text = player.getLabelTextRank()
-        
-        //self.imageDisplacementRank.image = player.getImageDisp()!
-        //self.imageDisplacementRank.tintColor = player.tintColor
-        
-        //self.imageAvatar.image = player.getImageAvatar()
-        //imageAvatar.layer.cornerRadius = imageAvatar.frame.size.width/2
-        //imageAvatar.clipsToBounds = true
+        self.imageAvatar!.image = game.getImageAvatarWinner()
+        imageAvatar.layer.cornerRadius = imageAvatar.frame.size.width/2
+        imageAvatar.clipsToBounds = true
     }
-
-
-        
 }

@@ -68,29 +68,29 @@ class Menu: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate {
                 let notify = self.tabBarMenu.items![1]
                 notify.selectedImage = UIImage(named: "game.grey")!
             }
-            RequestQuick().success(id: self.playerSelf!.id) { (json) in
-                self.setIndicator(on: false)
-                let opponent: EntityPlayer = ParsePlayer().execute(json: json)
-                let height: CGFloat = UIScreen.main.bounds.height
-                if(height.isLess(than: 750)){
-                    DispatchQueue.main.async() {
-                        let storyboard: UIStoryboard = UIStoryboard(name: "PlayL", bundle: nil)
-                        let viewController = storyboard.instantiateViewController(withIdentifier: "PlayL") as! Play
-                        viewController.setPlayerSelf(playerSelf: self.playerSelf!)
-                        viewController.setPlayerOther(playerOther: opponent)
-                        viewController.setSelection(selection: Int.random(in: 0...3))
-                        self.navigationController?.pushViewController(viewController, animated: false)
-                    }
-                    return
-                }
-                DispatchQueue.main.async() {
-                    let storyboard: UIStoryboard = UIStoryboard(name: "PlayP", bundle: nil)
-                    let viewController = storyboard.instantiateViewController(withIdentifier: "PlayP") as! Play
-                    viewController.setPlayerSelf(playerSelf: self.playerSelf!)
-                    viewController.setPlayerOther(playerOther: opponent)
-                    viewController.setSelection(selection: Int.random(in: 0...3))
-                    self.navigationController?.pushViewController(viewController, animated: false)
-                }}
+            //RequestQuick().success(id: self.playerSelf!.id) { (json) in
+                //self.setIndicator(on: false)
+                //let opponent: EntityPlayer = ParsePlayer().execute(json: json)
+                //let height: CGFloat = UIScreen.main.bounds.height
+                //if(height.isLess(than: 750)){
+                    //DispatchQueue.main.async() {
+                        //let storyboard: UIStoryboard = UIStoryboard(name: "PlayL", bundle: nil)
+                        //let viewController = storyboard.instantiateViewController(withIdentifier: "PlayL") as! Play
+                        //viewController.setPlayerSelf(playerSelf: self.playerSelf!)
+                        //viewController.setPlayerOther(playerOther: opponent)
+                        //viewController.setSelection(selection: Int.random(in: 0...3))
+                        //self.navigationController?.pushViewController(viewController, animated: false)
+                    //}
+                    //return
+                //}
+                //DispatchQueue.main.async() {
+                    //let storyboard: UIStoryboard = UIStoryboard(name: "PlayP", bundle: nil)
+                    //let viewController = storyboard.instantiateViewController(withIdentifier: "PlayP") as! Play
+                    //viewController.setPlayerSelf(playerSelf: self.playerSelf!)
+                    //viewController.setPlayerOther(playerOther: opponent)
+                    //viewController.setSelection(selection: Int.random(in: 0...3))
+                    //self.navigationController?.pushViewController(viewController, animated: false)
+                //}}
         default:
             self.backButtonClick("")
         }

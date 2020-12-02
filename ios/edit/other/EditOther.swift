@@ -17,9 +17,9 @@ class EditOther: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate
                     for vc in viewControllers {
                         let ty = String(describing: type(of: vc))
                         if(ty == "Play"){
-                            let home: Play = vc as! Play
-                            home.playerSelf = self.playerSelf!
-                            home.reloadInputViews()
+                            //let home: Play = vc as! Play
+                            //home.playerSelf = self.playerSelf!
+                            //home.reloadInputViews()
                         }
                     }
                 }
