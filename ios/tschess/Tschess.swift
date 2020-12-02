@@ -165,8 +165,8 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
             labelCheck: self.labelCheck,
             labelNote: self.labelNotification,
             labelTurn: self.labelTurnary,
-            labelCount: self.labelCountdown)
-            //labelTitle: self.labelTitle)
+            labelCount: self.labelCountdown,
+            labelTitle: viewHeaderDynamic.labelTitle)
         
         //TODO: REMOVE FOR POPPER
         self.labeler!.removePopper(game: self.game!, player: self.player!)
@@ -182,10 +182,6 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        //self.labelElo.text = self.playerOther!.getLabelTextElo()
-        //self.labelRank.text = self.playerOther!.getLabelTextRank()
-        //self.labelUsername.text = self.playerOther!.username
-        //self.imageViewAvatar.image = self.playerOther!.getImageAvatar()
     }
     
     override func viewDidLayoutSubviews() {

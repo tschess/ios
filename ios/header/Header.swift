@@ -11,6 +11,7 @@ import UIKit
 class Header: UIView {
     
     @IBOutlet weak var labelRank: UILabel!
+    @IBOutlet weak var labelTitle: UILabel!
     @IBOutlet weak var labelRating: UILabel!
     @IBOutlet weak var labelUsername: UILabel!
     

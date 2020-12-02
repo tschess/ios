@@ -84,12 +84,12 @@ class Countdown {
         guard #available(iOS 13, *) else {
             return
         }
-        let height: CGFloat = UIScreen.main.bounds.height
-        if(height.isLess(than: 750)){
-            self.label.font = UIFont.monospacedSystemFont(ofSize: 19.0, weight: .light)
-            return
-        }
-        self.label.font = UIFont.monospacedSystemFont(ofSize: 22.0, weight: .light)
+        //let height: CGFloat = UIScreen.main.bounds.height
+        //if(height.isLess(than: 750)){
+            //self.label.font = UIFont.monospacedSystemFont(ofSize: 18.0, weight: .light)
+            //return
+        //}
+        self.label.font = UIFont.monospacedSystemFont(ofSize: 20.0, weight: .light)
     }
     
 }

@@ -141,6 +141,7 @@
                 <outlet property="indicatorActivity" destination="pZF-4e-kJn" id="mOf-uJ-2Wx"/>
                 <outlet property="labelRank" destination="4LA-h8-htp" id="5jb-So-ykC"/>
                 <outlet property="labelRating" destination="oq8-lQ-Bvq" id="zcf-M0-Mnu"/>
+                <outlet property="labelTitle" destination="cN5-jg-iJI" id="Kbp-AS-KfG"/>
                 <outlet property="labelUsername" destination="pTU-Y8-jel" id="w16-82-9un"/>
             </connections>
             <point key="canvasLocation" x="240.57971014492756" y="-453.34821428571428"/>
