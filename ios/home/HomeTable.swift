@@ -254,22 +254,21 @@ class HomeTable: UITableViewController, SwipeTableViewCellDelegate, UIPickerView
         let username: String = self.activity!.player!.username
         if(orientation == .right) {
             let rematch = SwipeAction(style: .default, title: nil) { action, indexPath in
+                
                 let cell = self.tableView.cellForRow(at: indexPath) as! SwipeTableViewCell
+                
                 cell.hideSwipe(animated: false, completion: nil)
                 
                 let game: EntityGame = self.list[indexPath.row]
-                //let opponent: EntityPlayer = game.getPlayerOther(username: username)
                 
-                //viewController.playerSelf = self.activity!.player!
-                //viewController.playerOther = opponent
-                //viewController.selection = Int.random(in: 0...3)
-                //self.rematch(opponent: opponent)
                 DispatchQueue.main.async {
-                    cell.hideSwipe(animated: false, completion: nil)
+                    //cell.hideSwipe(animated: false, completion: nil)
                     
-                    SelectSnapshot().snapshot(playerSelf: self.activity!.player!,
-                                              game: game,
-                                              presentor: self.activity!)
+                    let storyboard: UIStoryboard = UIStoryboard(name: "Snapshot", bundle: nil)
+                    let viewController = storyboard.instantiateViewController(withIdentifier: "Snapshot") as! Snapshot
+                    viewController.setGame(game: game)
+                    viewController.setPlayer(player: self.activity!.player!)
+                    self.activity!.present(viewController, animated: false, completion: nil)
                 }
             }
             rematch.backgroundColor = UIColor(red: 39.0/255, green: 41.0/255, blue: 44.0/255, alpha: 1.0)

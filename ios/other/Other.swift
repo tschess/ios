@@ -78,7 +78,7 @@ class Other: UIViewController, UITabBarDelegate {
         let game = self.otherMenuTable!.getGameMenuTableList()[gameMenuSelectionIndex]
         
         
-        SelectSnapshot().snapshot(playerSelf: self.playerSelf!, game: game, presentor: self)
+        //SelectSnapshot().snapshot(playerSelf: self.playerSelf!, game: game, presentor: self)
     }
     
     @IBAction func backButtonClick(_ sender: Any) {

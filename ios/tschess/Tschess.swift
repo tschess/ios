@@ -11,27 +11,18 @@ import UIKit
 class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UITabBarDelegate {
     
     // MARK: OUTLETS
-    //@IBOutlet weak var buttonBack: UIButton!
-    //@IBOutlet weak var viewTitle: UIView!
-    @IBOutlet weak var viewHeader: UIView!
-    @IBOutlet weak var viewContent: UIView!
-    @IBOutlet weak var viewCountdown: UIView!
-    @IBOutlet weak var viewBoardHeight: NSLayoutConstraint!
     @IBOutlet weak var viewBoard: BoardView!
-    //@IBOutlet weak var imageViewAvatar: UIImageView!
-    //@IBOutlet weak var labelUsername: UILabel!
+    @IBOutlet weak var viewBoardHeight: NSLayoutConstraint!
+    @IBOutlet weak var viewCountdown: UIView!
+    @IBOutlet weak var viewContent: UIView!
+    @IBOutlet weak var viewHeader: UIView!
     
     @IBOutlet weak var labelCheck: UILabel!
-    //@IBOutlet weak var labelTitle: UILabel!
-    //@IBOutlet weak var labelRank: UILabel!
-    //@IBOutlet weak var labelElo: UILabel!
-    
-    @IBOutlet weak var labelNotification: UILabel!
     @IBOutlet weak var labelTurnary: UILabel!
+    @IBOutlet weak var labelNotification: UILabel!
     
     // STRONG
     @IBOutlet var labelCountdown: UILabel!
-    //@IBOutlet var activityIndicator: UIActivityIndicatorView!
     @IBOutlet var tabBarMenu: UITabBar!
     
     // MARK: CONSTRUCTOR
@@ -75,9 +66,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
                 self.tabBarMenu.selectedItem = nil
                 self.present(viewController, animated: true, completion: nil)
             }
-        default: //0
-            //self.backButtonClick("")
-            //print("lol")
+        default:
             self.menuRefresh()
             let transition = CATransition()
             transition.duration = 0.3

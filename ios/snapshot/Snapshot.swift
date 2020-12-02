@@ -27,13 +27,13 @@ class Snapshot: UIViewController, UICollectionViewDataSource, UICollectionViewDe
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var titleLabel: UILabel!
     
-    @IBOutlet weak var headerView: UIView!
+    @IBOutlet weak var viewHeader: UIView!
     
-    @IBOutlet weak var winnerImageView: UIImageView!
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    //@IBOutlet weak var winnerImageView: UIImageView!
+    //@IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var usernameLabelWhite: UILabel!
     @IBOutlet weak var usernameLabelBlack: UILabel!
-    @IBOutlet weak var usernameWinner: UILabel!
+    //@IBOutlet weak var usernameWinner: UILabel!
     
     @IBOutlet weak var contentView: UIView!
     
@@ -44,8 +44,8 @@ class Snapshot: UIViewController, UICollectionViewDataSource, UICollectionViewDe
     
     @IBOutlet weak var statsView: UIView!
     
-    @IBOutlet weak var moveCountLabel: UILabel!
-    @IBOutlet weak var outcomeLabel: UILabel!
+    //@IBOutlet weak var moveCountLabel: UILabel!
+    //@IBOutlet weak var outcomeLabel: UILabel!
     
     @IBOutlet weak var tabBarMenu: UITabBar!
     
@@ -58,24 +58,33 @@ class Snapshot: UIViewController, UICollectionViewDataSource, UICollectionViewDe
         
         self.state = self.game!.getStateClient(username: self.player!.username)
         
-        
         self.boardView.delegate = self
         self.boardView.dataSource = self
         self.boardView.isHidden = true
         
-        self.activityIndicator.isHidden = true
+        //self.activityIndicator.isHidden = true
+        //self.winnerImageView!.image = self.game!.getImageAvatarWinner()
+        //self.usernameWinner.text = self.game!.getUsernameWinner()
+        self.dateLabel.text = self.game!.getLabelTextDate()
+        //self.moveCountLabel.text = String(self.game!.moves)
+        //self.outcomeLabel.text = self.game!.condition
         
         
-        self.winnerImageView!.image = self.game!.getImageAvatarWinner()
-        self.usernameWinner.text = self.game!.getUsernameWinner()
+        //let opponent: EntityPlayer = self.game!.getPlayerOther(username: self.player!.username)
+        //TODO: Header
+        let viewHeaderDynamic = Bundle.loadView(fromNib: "HeaderSnapshot", withType: HeaderSnapshot.self)
+        self.viewHeader.addSubview(viewHeaderDynamic)
+        viewHeaderDynamic.translatesAutoresizingMaskIntoConstraints = false
+        let attributes: [NSLayoutConstraint.Attribute] = [.top, .bottom, .right, .left]
+        NSLayoutConstraint.activate(attributes.map {
+            NSLayoutConstraint(item: viewHeaderDynamic, attribute: $0, relatedBy: .equal, toItem: viewHeaderDynamic.superview, attribute: $0, multiplier: 1, constant: 0)
+        })
+        viewHeaderDynamic.set(game: self.game!)
         
-        self.outcomeLabel.text = self.game!.condition
+        
+        
         self.usernameLabelWhite.text = self.game!.white.username
         self.usernameLabelBlack.text = self.game!.black.username
-       ////
-        self.dateLabel.isHidden = true
-       /////
-        self.moveCountLabel.text = String(self.game!.moves)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

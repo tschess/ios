@@ -131,9 +131,9 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
             DispatchQueue.main.async {
                 cell.hideSwipe(animated: false, completion: nil)
                 
-                SelectSnapshot().snapshot(playerSelf: self.menu!.playerSelf!,
-                                          game: game,
-                                          presentor: self)
+                //SelectSnapshot().snapshot(playerSelf: self.menu!.playerSelf!,
+                                          //game: game,
+                                          //presentor: self)
             }
             return
         }
