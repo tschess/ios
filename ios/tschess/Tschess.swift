@@ -11,27 +11,27 @@ import UIKit
 class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UITabBarDelegate {
     
     // MARK: OUTLETS
-    @IBOutlet weak var buttonBack: UIButton!
-    @IBOutlet weak var viewTitle: UIView!
+    //@IBOutlet weak var buttonBack: UIButton!
+    //@IBOutlet weak var viewTitle: UIView!
     @IBOutlet weak var viewHeader: UIView!
     @IBOutlet weak var viewContent: UIView!
     @IBOutlet weak var viewCountdown: UIView!
     @IBOutlet weak var viewBoardHeight: NSLayoutConstraint!
     @IBOutlet weak var viewBoard: BoardView!
-    @IBOutlet weak var imageViewAvatar: UIImageView!
-    @IBOutlet weak var labelUsername: UILabel!
+    //@IBOutlet weak var imageViewAvatar: UIImageView!
+    //@IBOutlet weak var labelUsername: UILabel!
     
     @IBOutlet weak var labelCheck: UILabel!
-    @IBOutlet weak var labelTitle: UILabel!
-    @IBOutlet weak var labelRank: UILabel!
-    @IBOutlet weak var labelElo: UILabel!
+    //@IBOutlet weak var labelTitle: UILabel!
+    //@IBOutlet weak var labelRank: UILabel!
+    //@IBOutlet weak var labelElo: UILabel!
     
     @IBOutlet weak var labelNotification: UILabel!
     @IBOutlet weak var labelTurnary: UILabel!
     
     // STRONG
     @IBOutlet var labelCountdown: UILabel!
-    @IBOutlet var activityIndicator: UIActivityIndicatorView!
+    //@IBOutlet var activityIndicator: UIActivityIndicatorView!
     @IBOutlet var tabBarMenu: UITabBar!
     
     // MARK: CONSTRUCTOR
@@ -63,35 +63,33 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         }
     }
     
-    @IBAction func backButtonClick(_ sender: Any) {
-        self.menuRefresh()
-        let transition = CATransition()
-        transition.duration = 0.3
-        transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
-        transition.type = CATransitionType.fade
-        self.navigationController?.view.layer.add(transition, forKey: nil)
-        _ = self.navigationController?.popViewController(animated: false)
-        self.navigationController?.popViewController(animated: false)
-    }
-    
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         switch item.tag {
         case 1:
             DispatchQueue.main.async {
                 let storyboard: UIStoryboard = UIStoryboard(name: "PopOption", bundle: nil)
                 let viewController = storyboard.instantiateViewController(withIdentifier: "PopOption") as! PopOption
-                viewController.playerSelf = self.playerSelf!
-                viewController.playerOther = self.game!.getPlayerOther(username: self.playerSelf!.username)
+                viewController.playerSelf = self.player!
+                viewController.playerOther = self.game!.getPlayerOther(username: self.player!.username)
                 viewController.game = self.game!
                 self.tabBarMenu.selectedItem = nil
                 self.present(viewController, animated: true, completion: nil)
             }
         default: //0
-            self.backButtonClick("")
+            //self.backButtonClick("")
+            //print("lol")
+            self.menuRefresh()
+            let transition = CATransition()
+            transition.duration = 0.3
+            transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+            transition.type = CATransitionType.fade
+            self.navigationController?.view.layer.add(transition, forKey: nil)
+            _ = self.navigationController?.popViewController(animated: false)
+            self.navigationController?.popViewController(animated: false)
         }
     }
     
-    var playerSelf: EntityPlayer?
+    var player: EntityPlayer?
     var playerOther: EntityPlayer?
     var game: EntityGame?
     
@@ -141,7 +139,21 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         self.viewBoard.delegate = self
         self.tabBarMenu.delegate = self
         
-        let username: String = self.playerSelf!.username
+        
+        
+        //TODO: Header
+        let viewHeaderDynamic = Bundle.loadView(fromNib: "Header", withType: Header.self)
+        self.viewHeader.addSubview(viewHeaderDynamic)
+        viewHeaderDynamic.translatesAutoresizingMaskIntoConstraints = false
+        let attributes: [NSLayoutConstraint.Attribute] = [.top, .bottom, .right, .left]
+        NSLayoutConstraint.activate(attributes.map {
+            NSLayoutConstraint(item: viewHeaderDynamic, attribute: $0, relatedBy: .equal, toItem: viewHeaderDynamic.superview, attribute: $0, multiplier: 1, constant: 0)
+        })
+        viewHeaderDynamic.set(player: self.player!)
+        
+        
+        
+        let username: String = self.player!.username
         let matrix: [[Piece?]] = self.game!.getStateClient(username: username)
         self.matrix = matrix
         self.viewBoard.isHidden = true
@@ -152,21 +164,22 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         self.promotion.setTschess(tschess: self)
         
         let game_id: String = self.game!.id
-        self.landmine = Landmine(game_id: game_id, white: white, transitioner: transitioner, activityIndicator: self.activityIndicator, tschess: self)
+        //self.landmine = Landmine(game_id: game_id, white: white, transitioner: transitioner, activityIndicator: self.activityIndicator, tschess: self)
         self.passant = Passant(white: white, transitioner: transitioner, tschess: self)
         self.castle = Castle(white: white, transitioner: transitioner, tschess: self)
         self.transitioner = transitioner
         
-        self.activityIndicator.isHidden = true
+        //self.activityIndicator.isHidden = true
         
         self.labeler = Labeler(
             labelCheck: self.labelCheck,
             labelNote: self.labelNotification,
             labelTurn: self.labelTurnary,
-            labelCount: self.labelCountdown,
-            labelTitle: self.labelTitle)
+            labelCount: self.labelCountdown)
+            //labelTitle: self.labelTitle)
+        
         //TODO: REMOVE FOR POPPER
-        self.labeler!.removePopper(game: self.game!, player: self.playerSelf!)
+        self.labeler!.removePopper(game: self.game!, player: self.player!)
         
         self.countdown = Countdown(label: self.labelCountdown, date: self.dateTime, id: self.game!.id)
         self.countdown!.setLabelCountdown(update: self.game!.updated, resolved: self.game!.isResolved())
@@ -179,10 +192,10 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.labelElo.text = self.playerOther!.getLabelTextElo()
-        self.labelRank.text = self.playerOther!.getLabelTextRank()
-        self.labelUsername.text = self.playerOther!.username
-        self.imageViewAvatar.image = self.playerOther!.getImageAvatar()
+        //self.labelElo.text = self.playerOther!.getLabelTextElo()
+        //self.labelRank.text = self.playerOther!.getLabelTextRank()
+        //self.labelUsername.text = self.playerOther!.username
+        //self.imageViewAvatar.image = self.playerOther!.getImageAvatar()
     }
     
     override func viewDidLayoutSubviews() {
@@ -258,7 +271,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     }
     
     private func getNormalCoord(indexPath: IndexPath) -> [Int] {
-        let username: String = self.playerSelf!.username
+        let username: String = self.player!.username
         let white: Bool = self.game!.getWhite(username: username)
         let x: Int = white ? indexPath.item / 8 : 7 - (indexPath.item / 8)
         let y: Int = white ? indexPath.item % 8 : 7 - (indexPath.item % 8)
@@ -284,13 +297,13 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     func renderDialogPopup() {
         DispatchQueue.main.async {
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            appDelegate.id = self.playerSelf!.id
+            appDelegate.id = self.player!.id
             _ = UNUserNotificationCenter.current().getNotificationSettings { (settings) in
                 if (settings.authorizationStatus == .notDetermined) {
                     DispatchQueue.main.async {
                         let storyboard: UIStoryboard = UIStoryboard(name: "PopUp", bundle: nil)
                         let viewController = storyboard.instantiateViewController(withIdentifier: "PopUp") as! PopUp
-                        viewController.playerSelf = self.playerSelf!
+                        viewController.playerSelf = self.player!
                         self.present(viewController, animated: true, completion: nil)
                     }
                 }
@@ -304,7 +317,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
             let storyboard: UIStoryboard = UIStoryboard(name: "PopConfirm", bundle: nil)
             let viewController = storyboard.instantiateViewController(withIdentifier: "PopConfirm") as! PopConfirm
             viewController.game = self.game!
-            viewController.playerSelf = self.playerSelf!
+            viewController.playerSelf = self.player!
             self.present(viewController, animated: true, completion: nil)
         }
     }
@@ -323,7 +336,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     // MARK: PRIME MOVER
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let username: String = self.playerSelf!.username
+        let username: String = self.player!.username
         if(!self.game!.getTurnFlag(username: username)){
             self.flash()
             return
@@ -354,9 +367,9 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
             if(self.transitioner!.validMove(propose: [x,y], state0: self.matrix!)){
                 self.matrix = self.transitioner!.deselectHighlight(state0: self.matrix!)
                 let stateX: [[Piece?]] = self.transitioner!.executeMove(propose: [x,y], state0: self.matrix!)
-                let stateUpdate = SerializerState(white: self.game!.getWhite(username: self.playerSelf!.username)).renderServer(state: stateX)
+                let stateUpdate = SerializerState(white: self.game!.getWhite(username: self.player!.username)).renderServer(state: stateX)
                 
-                let white: Bool = self.game!.getWhite(username: self.playerSelf!.username)
+                let white: Bool = self.game!.getWhite(username: self.player!.username)
                 
                 let hx: Int = white ? x : 7 - x
                 let hy: Int = white ? y : 7 - y
@@ -370,8 +383,8 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
                     "highlight": highlight,
                     "condition": "TBD"]
                 DispatchQueue.main.async() {
-                    self.activityIndicator.isHidden = false
-                    self.activityIndicator.startAnimating()
+                    //self.activityIndicator.isHidden = false
+                    //self.activityIndicator.startAnimating()
                 }
                 GameUpdate().success(requestPayload: requestPayload) { (success) in
                     if(!success){
@@ -380,7 +393,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
                     self.transitioner!.clearCoordinate()
                     
                     /* * */
-                    if(self.playerSelf!.isPopup()){
+                    if(self.player!.isPopup()){
                         self.renderDialogPopup()
                     }
                     /* * */
@@ -394,7 +407,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
             self.transitioner!.clearCoordinate()
             return
         }
-        let state0 = self.game!.getStateClient(username: self.playerSelf!.username)
+        let state0 = self.game!.getStateClient(username: self.player!.username)
         self.matrix = self.transitioner!.evaluateHighlightSelection(coordinate: [x,y], state0: state0)
         self.viewBoard.reloadData()
     }
@@ -419,12 +432,12 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
                 return
             case .orderedDescending:
                 DispatchQueue.main.async {
-                    self.activityIndicator.stopAnimating()
-                    self.activityIndicator.isHidden = true
+                    //self.activityIndicator.stopAnimating()
+                    //self.activityIndicator.isHidden = true
                     
                     self.game = game0!
                     
-                    let username: String = self.playerSelf!.username
+                    let username: String = self.player!.username
                     let matrix: [[Piece?]] = self.game!.getStateClient(username: username)
                     self.matrix = matrix
                     
@@ -442,7 +455,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     
     private func setLabel() {
         let check: Bool = self.game!.on_check
-        let username: String = self.playerSelf!.username
+        let username: String = self.player!.username
         let condition: String = self.game!.condition
         let turnFlag = self.game!.getTurnFlag(username: username)
         let turnUser = self.game!.getTurnUser()
@@ -463,7 +476,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     
     private func setCheckMate() {
         let czecher: Checker = Checker()
-        let affiliation: String = self.game!.getAffiliationOther(username: self.playerSelf!.username)
+        let affiliation: String = self.game!.getAffiliationOther(username: self.player!.username)
         let king: [Int] = czecher.kingCoordinate(affiliation: affiliation, state: self.matrix!)
         let mate: Bool = czecher.mate(king: king, state: self.matrix!)
         let check: Bool = czecher.other(coordinate: king, state: self.matrix!)

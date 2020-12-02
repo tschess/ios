@@ -89,7 +89,7 @@ class PopPromo: UIViewController {
     }
     
     public func evaluate(coordinate: [Int], proposed: [Int]) -> Bool {
-        let state = self.tschess!.game!.getStateClient(username: self.tschess!.playerSelf!.username)
+        let state = self.tschess!.game!.getStateClient(username: self.tschess!.player!.username)
         let tstschessElement = state[coordinate[0]][coordinate[1]]
         if(tstschessElement == nil){
             return false
@@ -119,12 +119,12 @@ class PopPromo: UIViewController {
     private func execute(promotionWhite: Piece, promotionBlack: Piece) {
         var promotionPiece: Piece = promotionWhite
         
-        let white: Bool = self.tschess!.game!.getWhite(username: self.tschess!.playerSelf!.username)
+        let white: Bool = self.tschess!.game!.getWhite(username: self.tschess!.player!.username)
         if(!white){
             promotionPiece = promotionBlack
         }
         
-        var state = self.tschess!.game!.getStateClient(username: self.tschess!.playerSelf!.username)
+        var state = self.tschess!.game!.getStateClient(username: self.tschess!.player!.username)
         let coordinate: [Int]? = self.transitioner!.getCoordinate()
         state[coordinate![0]][coordinate![1]] = nil
         state[proposed![0]][proposed![1]] = promotionPiece
@@ -140,8 +140,8 @@ class PopPromo: UIViewController {
         
         let requestPayload: [String: Any] = ["id_game": self.tschess!.game!.id, "state": stateUpdate, "highlight": highlight, "condition": "TBD"]
         DispatchQueue.main.async() {
-            self.tschess!.activityIndicator.isHidden = false
-            self.tschess!.activityIndicator.startAnimating()
+            //self.tschess!.activityIndicator.isHidden = false
+            //self.tschess!.activityIndicator.startAnimating()
         }
         GameUpdate().success(requestPayload: requestPayload) { (success) in
             if(!success){

@@ -67,7 +67,7 @@ class HomeTable: UITableViewController, SwipeTableViewCellDelegate, UIPickerView
                     let storyboard: UIStoryboard = UIStoryboard(name: "dTschessL", bundle: nil)
                     let viewController = storyboard.instantiateViewController(withIdentifier: "dTschessL") as! Tschess
                     viewController.playerOther = playerOther
-                    viewController.playerSelf = self.activity!.player!
+                    viewController.player = self.activity!.player!
                     viewController.game = game
                     self.navigationController?.pushViewController(viewController, animated: false)
                     guard let navigationController = self.navigationController else { return }
@@ -79,7 +79,7 @@ class HomeTable: UITableViewController, SwipeTableViewCellDelegate, UIPickerView
                 let storyboard: UIStoryboard = UIStoryboard(name: "dTschessP", bundle: nil)
                 let viewController = storyboard.instantiateViewController(withIdentifier: "dTschessP") as! Tschess
                 viewController.playerOther = playerOther
-                viewController.playerSelf = self.activity!.player!
+                viewController.player = self.activity!.player!
                 viewController.game = game
                 self.navigationController?.pushViewController(viewController, animated: false)
                 guard let navigationController = self.navigationController else { return }
@@ -363,25 +363,34 @@ class HomeTable: UITableViewController, SwipeTableViewCellDelegate, UIPickerView
             return
         }
         if(game.status == "ONGOING"){
+            let opponent: EntityPlayer = game.getPlayerOther(username: self.activity!.player!.username)
             DispatchQueue.main.async {
-                let height: CGFloat = UIScreen.main.bounds.height
-                let playerOther: EntityPlayer = game.getPlayerOther(username: self.activity!.player!.username)
-                if(height.isLess(than: 750)){
-                    let storyboard: UIStoryboard = UIStoryboard(name: "dTschessL", bundle: nil)
-                    let viewController = storyboard.instantiateViewController(withIdentifier: "dTschessL") as! Tschess
-                    viewController.playerOther = playerOther
-                    viewController.playerSelf = self.activity!.player!
-                    viewController.game = game
-                    self.navigationController?.pushViewController(viewController, animated: false)
-                    return
-                }
-                let storyboard: UIStoryboard = UIStoryboard(name: "dTschessP", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "dTschessP") as! Tschess
-                viewController.playerOther = playerOther
-                viewController.playerSelf = self.activity!.player!
+                let storyboard: UIStoryboard = UIStoryboard(name: "Tschess", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "Tschess") as! Tschess
+                viewController.playerOther = opponent
+                viewController.player = self.activity!.player!
                 viewController.game = game
                 self.navigationController?.pushViewController(viewController, animated: false)
             }
+            //DispatchQueue.main.async {
+                //let height: CGFloat = UIScreen.main.bounds.height
+                //let playerOther: EntityPlayer = game.getPlayerOther(username: self.activity!.player!.username)
+                //if(height.isLess(than: 750)){
+                    //let storyboard: UIStoryboard = UIStoryboard(name: "dTschessL", bundle: nil)
+                    //let viewController = storyboard.instantiateViewController(withIdentifier: "dTschessL") as! Tschess
+                    //viewController.playerOther = playerOther
+                    //viewController.playerSelf = self.activity!.player!
+                    //viewController.game = game
+                    //self.navigationController?.pushViewController(viewController, animated: false)
+                    //return
+                //}
+                //let storyboard: UIStoryboard = UIStoryboard(name: "dTschessP", bundle: nil)
+                //let viewController = storyboard.instantiateViewController(withIdentifier: "dTschessP") as! Tschess
+                //viewController.playerOther = playerOther
+                //viewController.playerSelf = self.activity!.player!
+                //viewController.game = game
+                //self.navigationController?.pushViewController(viewController, animated: false)
+            //}
         }
     }
     

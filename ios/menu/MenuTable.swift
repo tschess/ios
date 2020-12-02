@@ -145,7 +145,7 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
                     let storyboard: UIStoryboard = UIStoryboard(name: "dTschessL", bundle: nil)
                     let viewController = storyboard.instantiateViewController(withIdentifier: "dTschessL") as! Tschess
                     viewController.playerOther = playerOther
-                    viewController.playerSelf = self.menu!.playerSelf!
+                    viewController.player = self.menu!.playerSelf!
                     viewController.game = game
                     self.navigationController?.pushViewController(viewController, animated: false)
                     return
@@ -153,7 +153,7 @@ class MenuTable: UITableViewController, SwipeTableViewCellDelegate {
                 let storyboard: UIStoryboard = UIStoryboard(name: "dTschessP", bundle: nil)
                 let viewController = storyboard.instantiateViewController(withIdentifier: "dTschessP") as! Tschess
                 viewController.playerOther = playerOther
-                viewController.playerSelf = self.menu!.playerSelf!
+                viewController.player = self.menu!.playerSelf!
                 viewController.game = game
                 self.navigationController?.pushViewController(viewController, animated: false)
             }

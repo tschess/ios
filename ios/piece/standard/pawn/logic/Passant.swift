@@ -66,8 +66,8 @@ class Passant {
                             
                             let requestPayload: [String: Any] = ["id_game": self.tschess.game!.id, "state": stateUpdate, "highlight": highlight, "condition": "TBD"]
                             DispatchQueue.main.async() {
-                                self.tschess.activityIndicator.isHidden = false
-                                self.tschess.activityIndicator.startAnimating()
+                                //self.tschess.activityIndicator.isHidden = false
+                                //self.tschess.activityIndicator.startAnimating()
                             }
                             GameUpdate().success(requestPayload: requestPayload) { (success) in
                                 if(!success){
@@ -115,8 +115,8 @@ class Passant {
                             
                             let requestPayload: [String: Any] = ["id_game": self.tschess.game!.id, "state": stateUpdate, "highlight": highlight, "condition": "TBD"]
                             DispatchQueue.main.async() {
-                                self.tschess.activityIndicator.isHidden = false
-                                self.tschess.activityIndicator.startAnimating()
+                                //self.tschess.activityIndicator.isHidden = false
+                                //self.tschess.activityIndicator.startAnimating()
                             }
                             GameUpdate().success(requestPayload: requestPayload) { (success) in
                                 if(!success){

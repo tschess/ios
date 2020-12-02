@@ -13,10 +13,10 @@ class Labeler {
     let labelNote: UILabel
     let labelTurn: UILabel
     let labelCount: UILabel
-    let labelTitle: UILabel
+    let labelTitle: UILabel?
     let labelCheck: UILabel
     
-    init(labelCheck: UILabel, labelNote: UILabel, labelTurn: UILabel, labelCount: UILabel, labelTitle: UILabel) {
+    init(labelCheck: UILabel, labelNote: UILabel, labelTurn: UILabel, labelCount: UILabel, labelTitle: UILabel? = nil) {
         self.labelCheck = labelCheck
         self.labelCheck.isHidden = true
         self.labelNote = labelNote
@@ -102,7 +102,7 @@ class Labeler {
         if(!resolved){
             return
         }
-        self.labelTitle.text = "game over"
+        self.labelTitle!.text = "game over"
         self.labelCount.isHidden = true
         self.labelTurn.isHidden = true
         self.labelNote.isHidden = true

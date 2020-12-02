@@ -454,7 +454,7 @@ extension Ack: UICollectionViewDelegateFlowLayout {
                         let storyboard: UIStoryboard = UIStoryboard(name: "dTschessL", bundle: nil)
                         let viewController = storyboard.instantiateViewController(withIdentifier: "dTschessL") as! Tschess
                         viewController.playerOther = playerOther
-                        viewController.playerSelf = self.playerSelf!
+                        viewController.player = self.playerSelf!
                         viewController.game = game
                         self.navigationController?.pushViewController(viewController, animated: false)
                         guard let navigationController = self.navigationController else { return }
@@ -466,7 +466,7 @@ extension Ack: UICollectionViewDelegateFlowLayout {
                     let storyboard: UIStoryboard = UIStoryboard(name: "dTschessP", bundle: nil)
                     let viewController = storyboard.instantiateViewController(withIdentifier: "dTschessP") as! Tschess
                     viewController.playerOther = playerOther
-                    viewController.playerSelf = self.playerSelf!
+                    viewController.player = self.playerSelf!
                     viewController.game = game
                     self.navigationController?.pushViewController(viewController, animated: false)
                     guard let navigationController = self.navigationController else { return }

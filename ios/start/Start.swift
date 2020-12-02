@@ -273,7 +273,7 @@ class Start: UIViewController, UITextFieldDelegate {
                     let storyboard: UIStoryboard = UIStoryboard(name: "dTschessP", bundle: nil)
                     let viewController = storyboard.instantiateViewController(withIdentifier: "dTschessP") as! Tschess
                     viewController.playerOther = game!.getPlayerOther(username: game!.white.username)
-                    viewController.playerSelf = game!.white
+                    viewController.player = game!.white
                     viewController.game = game!
                     UIApplication.shared.keyWindow?.rootViewController = viewController
                 }
@@ -289,7 +289,7 @@ class Start: UIViewController, UITextFieldDelegate {
                     let storyboard: UIStoryboard = UIStoryboard(name: "dTschessP", bundle: nil)
                     let viewController = storyboard.instantiateViewController(withIdentifier: "dTschessP") as! Tschess
                     viewController.playerOther = game!.getPlayerOther(username: game!.black.username)
-                    viewController.playerSelf = game!.black
+                    viewController.player = game!.black
                     viewController.game = game!
                     UIApplication.shared.keyWindow?.rootViewController = viewController
                 }
