@@ -102,7 +102,7 @@ class HomeTable: UITableViewController, SwipeTableViewCellDelegate, UIPickerView
         return self.swipProposedOutbound(orientation: orientation, game: game)
     }
     
-    func execute(opponent: EntityPlayer) {
+    func ack(opponent: EntityPlayer) {
         let viewController = UIViewController()
         viewController.preferredContentSize = CGSize(width: 250, height: 108) //108
         self.pickerView = UIPickerView(frame: CGRect(x: 0, y: 0, width: 250, height: 100))
@@ -121,6 +121,38 @@ class HomeTable: UITableViewController, SwipeTableViewCellDelegate, UIPickerView
         alert.setValue(viewController, forKey: "contentViewController")
         
         let option00 = UIAlertAction(title: "🎉 let's play 🎉", style: .default, handler:{ _ in
+            let value = self.pickerView?.selectedRow(inComponent: 0)
+            
+            self.challenge(config: value!, id_other: opponent.id)
+        })
+        alert.addAction(option00)
+        
+        let option01 = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        option01.setValue(UIColor.lightGray, forKey: "titleTextColor")
+        alert.addAction(option01)
+        
+        self.activity!.present(alert, animated: true, completion: nil)
+    }
+    
+    func rematch(opponent: EntityPlayer) {
+        let viewController = UIViewController()
+        viewController.preferredContentSize = CGSize(width: 250, height: 108) //108
+        self.pickerView = UIPickerView(frame: CGRect(x: 0, y: 0, width: 250, height: 100))
+        pickerView!.delegate = self
+        pickerView!.dataSource = self
+        pickerView!.backgroundColor = .black
+        
+        pickerView!.layer.cornerRadius = 10
+        pickerView!.layer.masksToBounds = true
+        
+        pickerView!.selectRow(1, inComponent: 0, animated: true)
+        
+        viewController.view.addSubview(self.pickerView!)
+        let alert = UIAlertController(title: "🤜 \(opponent.username) 🤛", message: "", preferredStyle: UIAlertController.Style.alert)
+        
+        alert.setValue(viewController, forKey: "contentViewController")
+        
+        let option00 = UIAlertAction(title: "⚡ rematch ⚡", style: .default, handler:{ _ in
             let value = self.pickerView?.selectedRow(inComponent: 0)
             
             self.challenge(config: value!, id_other: opponent.id)
@@ -165,28 +197,11 @@ class HomeTable: UITableViewController, SwipeTableViewCellDelegate, UIPickerView
             let username: String = self.activity!.player!.username
             let opponent: EntityPlayer = game.getPlayerOther(username: username)
             
-            self.execute(opponent: opponent)
-            
-            //DispatchQueue.main.async {
-                //let height: CGFloat = UIScreen.main.bounds.height
-                //if(height.isLess(than: 750)){
-                    //let storyboard: UIStoryboard = UIStoryboard(name: "AckL", bundle: nil)
-                    //let viewController = storyboard.instantiateViewController(withIdentifier: "AckL") as! Ack
-                    //viewController.setPlayerSelf(playerSelf: self.activity!.player!)
-                    //viewController.setPlayerOther(playerOther: playerOther)
-                    //viewController.setGameTschess(gameTschess: game)
-                    //viewController.setSelection(selection: Int.random(in: 0...3))
-                    //self.navigationController?.pushViewController(viewController, animated: false)
-                    //return
-                //}
-                //let storyboard: UIStoryboard = UIStoryboard(name: "AckP", bundle: nil)
-                //let viewController = storyboard.instantiateViewController(withIdentifier: "AckP") as! Ack
-                //viewController.setPlayerSelf(playerSelf: self.activity!.player!)
-                //viewController.setPlayerOther(playerOther: playerOther)
-                //viewController.setGameTschess(gameTschess: game)
-                //viewController.setSelection(selection: Int.random(in: 0...3))
-                //self.navigationController?.pushViewController(viewController, animated: false)
-            //}
+            //viewController.setPlayerSelf(playerSelf: self.activity!.player!)
+            //viewController.setPlayerOther(playerOther: playerOther)
+            //viewController.setGameTschess(gameTschess: game)
+            //viewController.setSelection(selection: Int.random(in: 0...3))
+            self.ack(opponent: opponent)
         }
         ackAction.backgroundColor = UIColor(red: 39.0/255, green: 41.0/255, blue: 44.0/255, alpha: 1.0)
         ackAction.title = "accept"
@@ -226,19 +241,11 @@ class HomeTable: UITableViewController, SwipeTableViewCellDelegate, UIPickerView
                 
                 let game: EntityGame = self.list[indexPath.row]
                 let opponent: EntityPlayer = game.getPlayerOther(username: username)
-                DispatchQueue.main.async {
-                var storyboard: UIStoryboard = UIStoryboard(name: "ChallengeP", bundle: nil)
-                var viewController = storyboard.instantiateViewController(withIdentifier: "ChallengeP") as! Challenge
-                if(UIScreen.main.bounds.height.isLess(than: 750)){
-                storyboard = UIStoryboard(name: "ChallengeL", bundle: nil)
-                viewController = storyboard.instantiateViewController(withIdentifier: "ChallengeL") as! Challenge
-                }
-                viewController.playerSelf = self.activity!.player!
-                viewController.playerOther = opponent
-                viewController.selection = Int.random(in: 0...3)
-                viewController.BACK = "OTHER"
-                self.navigationController?.pushViewController(viewController, animated: false)
-                }
+    
+                //viewController.playerSelf = self.activity!.player!
+                //viewController.playerOther = opponent
+                //viewController.selection = Int.random(in: 0...3)
+                self.rematch(opponent: opponent)
             }
             rematch.backgroundColor = UIColor(red: 39.0/255, green: 41.0/255, blue: 44.0/255, alpha: 1.0)
             rematch.title = "rematch"
