@@ -10,6 +10,8 @@ import UIKit
 
 class Opponent: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
     
+    //var table: HomeTable?
+    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -131,6 +133,11 @@ class Opponent: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
                     return
                 }
                 //completion(json)
+                
+                //DispatchQueue.main.async {
+                    //self.table!.tableView.reloadData()
+                //}
+                
             } catch _ {
                 //completion([["fail": "3"]])
             }

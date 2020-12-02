@@ -69,7 +69,7 @@
                                     <constraint firstAttribute="height" constant="50" id="3Aw-0g-FIT"/>
                                 </constraints>
                                 <items>
-                                    <tabBarItem title="SINGLE PLAYER" image="tab_gray_singleplayer" selectedImage="tab_gray_singleplayer" id="Z5R-KS-Z6j">
+                                    <tabBarItem title="SINGLE-PLAYER" image="tab_gray_singleplayer" selectedImage="tab_gray_singleplayer" id="Z5R-KS-Z6j">
                                         <inset key="imageInsets" minX="4" minY="4" maxX="4" maxY="4"/>
                                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tabBarItem>

@@ -41,6 +41,7 @@ class HomeActivity: UIViewController, UITabBarDelegate {
             NSLayoutConstraint(item: opponent, attribute: $0, relatedBy: .equal, toItem: opponent.superview, attribute: $0, multiplier: 1, constant: 0)
         })
         opponent.set(playerSelf: self.player!)
+        //opponent.table = self.table
         
         //TODO: Table
         self.table = children.first as? HomeTable
@@ -61,19 +62,13 @@ class HomeActivity: UIViewController, UITabBarDelegate {
         self.tabBar.selectedItem = nil
         switch item.tag {
         
-        case 1:
-            let alert = UIAlertController(title: "Did you bring your towel?", message: "It's recommended you bring your towel before continuing.", preferredStyle: .alert)
-            let fuck = UIAlertAction(title: "Yes 🐕", style: .default, handler: nil)
-            fuck.setValue(UIColor.magenta, forKey: "titleTextColor")
-            alert.addAction(fuck)
-            let shit = UIAlertAction(title: "No 🍕", style: .default, handler: nil)
-            shit.setValue(UIColor.green, forKey: "titleTextColor")
-            alert.addAction(shit)
-            
-            alert.view.tintColor = .green
+        case 0:
+            let alert = UIAlertController(title: "⏱️ hang tight 🤖", message: "\nSingle-player mode coming soon!", preferredStyle: .alert)
+            let action = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+            action.setValue(UIColor.lightGray, forKey: "titleTextColor")
+            alert.addAction(action)
             self.present(alert, animated: true)
-        
-        case 3:
+        case 1:
             var storyboard: UIStoryboard = UIStoryboard(name: "ConfigP", bundle: nil)
             var viewController = storyboard.instantiateViewController(withIdentifier: "ConfigP") as! Config
             if(UIScreen.main.bounds.height.isLess(than: 750)){
@@ -88,9 +83,10 @@ class HomeActivity: UIViewController, UITabBarDelegate {
             self.navigationController?.view.layer.add(transition, forKey: nil)
             _ = self.navigationController?.popViewController(animated: false)
             self.navigationController?.pushViewController(viewController, animated: false)
-            
-        default:
+        case 2:
             print("LEADERBOARD !!!!!!!")
+        default:
+            print("PROFILE !!!!!!!")
         }
     }
     
