@@ -76,6 +76,8 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
                 self.present(viewController, animated: true, completion: nil)
             }
         default: //0
+            //self.backButtonClick("")
+            //print("lol")
             self.menuRefresh()
             let transition = CATransition()
             transition.duration = 0.3
@@ -139,6 +141,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         
         
         
+        let opponent: EntityPlayer = self.game!.getPlayerOther(username: self.player!.username)
         //TODO: Header
         let viewHeaderDynamic = Bundle.loadView(fromNib: "Header", withType: Header.self)
         self.viewHeader.addSubview(viewHeaderDynamic)
@@ -147,7 +150,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         NSLayoutConstraint.activate(attributes.map {
             NSLayoutConstraint(item: viewHeaderDynamic, attribute: $0, relatedBy: .equal, toItem: viewHeaderDynamic.superview, attribute: $0, multiplier: 1, constant: 0)
         })
-        viewHeaderDynamic.set(player: self.player!)
+        viewHeaderDynamic.set(player: opponent)
         
         
         
