@@ -385,18 +385,16 @@ class HomeTable: UITableViewController, SwipeTableViewCellDelegate, UIPickerView
         }
     }
     
-    
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let index: Int = indexPath.row
         let game: EntityGame = self.list[index]
         let username: String = self.activity!.player!.username
-        let usernameOther: String = game.getLabelTextUsernameOpponent(username: username)
-        let avatarImageOther: UIImage = game.getImageAvatarOpponent(username: username)
+        let opponentUsername: String = game.getLabelTextUsernameOpponent(username: username)
+        let opponentAvatar: UIImage = game.getImageAvatarOpponent(username: username)
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "HomeCell", for: indexPath) as! HomeCell
         cell.delegate = self
-        cell.setContent(usernameSelf: username, usernameOther: usernameOther, game: game, avatarImageOther: avatarImageOther)
+        cell.setContent(usernameSelf: username, usernameOther: opponentUsername, game: game, avatarImageOther: opponentAvatar)
         return cell
     }
     
@@ -415,16 +413,16 @@ class HomeTable: UITableViewController, SwipeTableViewCellDelegate, UIPickerView
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        let visibleRows = self.tableView.indexPathsForVisibleRows
-        let lastRow = visibleRows?.last?.row
-        if(lastRow == nil){
+        let listRowVisible: [IndexPath]? = self.tableView.indexPathsForVisibleRows
+        let rowLast = listRowVisible?.last?.row
+        if(rowLast == nil){
             return
         }
         let index = self.index
         let size = Const().PAGE_SIZE
         let indexFrom: Int =  index * size
         let indexTo: Int = indexFrom + Const().PAGE_SIZE - 2
-        if lastRow == indexTo {
+        if rowLast == indexTo {
             self.index += 1
             self.fetch()
         }
