@@ -76,8 +76,6 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
                 self.present(viewController, animated: true, completion: nil)
             }
         default: //0
-            //self.backButtonClick("")
-            //print("lol")
             self.menuRefresh()
             let transition = CATransition()
             transition.duration = 0.3
