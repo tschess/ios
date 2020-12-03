@@ -16,6 +16,9 @@ class ProfileCell: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        
+        optionImageView.layer.cornerRadius = optionImageView.frame.size.width/2
+        optionImageView.clipsToBounds = true
     }
     
 }
