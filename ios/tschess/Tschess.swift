@@ -39,14 +39,14 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     }
     
     //TODO: ought not be here...
-    func menuRefresh() {
+    func homeRefresh() {
         DispatchQueue.main.async {
             if let navigationController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController {
                 let viewControllers = navigationController.viewControllers
                 for vc in viewControllers {
-                    if vc.isKind(of: Menu.classForCoder()) {
-                        let menu: Menu = vc as! Menu
-                        menu.menuTable!.refresh(refreshControl: nil)
+                    if vc.isKind(of: HomeActivity.classForCoder()) {
+                        let menu: HomeActivity = vc as! HomeActivity
+                        menu.table!.refresh(refreshControl: nil)
                     }
                 }
                 
@@ -67,7 +67,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
                 self.present(viewController, animated: true, completion: nil)
             }
         default:
-            self.menuRefresh()
+            self.homeRefresh()
             let transition = CATransition()
             transition.duration = 0.3
             transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
@@ -449,7 +449,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         if(resolved){
             self.endTimer()
             self.renderDialogConfirm()
-            self.menuRefresh()
+            self.homeRefresh()
         }
         //self.labeler!.setResolve(resolved: resolved)
         let winner: Bool = self.game!.getWinner(username: username)
@@ -468,7 +468,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         let check: Bool = czecher.other(coordinate: king, state: self.matrix!)
         if (mate) {
             UpdateMate().execute(id: self.game!.id) { (_) in
-                self.menuRefresh()
+                self.homeRefresh()
             }
             return
         }

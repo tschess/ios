@@ -127,13 +127,13 @@ class PopOption: UIViewController  {
             DispatchQueue.main.async {
                 if let navigationController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController {
                     let viewControllers = navigationController.viewControllers
-                    for vc in viewControllers {
-                        if vc.isKind(of: Menu.classForCoder()) {
-                            //print("It is in stack")
-                            let menu: Menu = vc as! Menu
-                            menu.menuTable!.refresh(refreshControl: nil)
-                        }
-                    }
+//                    for vc in viewControllers {
+//                        if vc.isKind(of: Menu.classForCoder()) {
+//                            //print("It is in stack")
+//                            let menu: Menu = vc as! Menu
+//                            menu.menuTable!.refresh(refreshControl: nil)
+//                        }
+//                    }
                     
                 }
                 self.activityIndicatorResign!.stopAnimating()

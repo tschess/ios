@@ -380,11 +380,11 @@ class Challenge: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate
                     if let navigationController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController {
                         let viewControllers = navigationController.viewControllers
                         for vc in viewControllers {
-                            if vc.isKind(of: Menu.classForCoder()) {
-                                print("It is in stack")
-                                let menu: Menu = vc as! Menu
-                                menu.menuTable!.refresh(refreshControl: nil)
-                            }
+//                            if vc.isKind(of: Menu.classForCoder()) {
+//                                print("It is in stack")
+//                                let menu: Menu = vc as! Menu
+//                                menu.menuTable!.refresh(refreshControl: nil)
+//                            }
                         }
                         
                     }

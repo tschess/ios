@@ -77,23 +77,23 @@ class PopConfirm: UIViewController {
     }
     
     override func viewDidDisappear(_ animated: Bool) {
-        self.menuRefresh()
+        //self.menuRefresh()
     }
     
     //TODO: ought not be here...
-    func menuRefresh() {
-        DispatchQueue.main.async {
-            if let navigationController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController {
-                let viewControllers = navigationController.viewControllers
-                for vc in viewControllers {
-                    if vc.isKind(of: Menu.classForCoder()) {
-                        let menu: Menu = vc as! Menu
-                        menu.menuTable!.refresh(refreshControl: nil)
-                    }
-                }
-                
-            }
-        }
-    }
+//    func menuRefresh() {
+//        DispatchQueue.main.async {
+//            if let navigationController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController {
+//                let viewControllers = navigationController.viewControllers
+//                for vc in viewControllers {
+//                    if vc.isKind(of: Menu.classForCoder()) {
+//                        let menu: Menu = vc as! Menu
+//                        menu.menuTable!.refresh(refreshControl: nil)
+//                    }
+//                }
+//
+//            }
+//        }
+//    }
     
 }

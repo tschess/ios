@@ -35,7 +35,7 @@ class HomeCell: SwipeTableViewCell {
     }
     
     @objc func imageTapped(sender: UITapGestureRecognizer) {
-        guard let cell = sender.view?.superview?.superview as? MenuCell else {
+        guard let cell = sender.view?.superview?.superview as? HomeCell else {
             return
         }
         if(!self.isSideSlide){
