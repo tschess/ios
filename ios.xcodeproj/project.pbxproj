@@ -158,7 +158,7 @@
 		B7EF701E23EA28BA00BAF2E2 /* EntityPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7EF701D23EA28BA00BAF2E2 /* EntityPlayer.swift */; };
 		B7EF702123EA28E300BAF2E2 /* EntityGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7EF702023EA28E300BAF2E2 /* EntityGame.swift */; };
 		B7F35E332309F6D6002018F7 /* DateTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F35E322309F6D6002018F7 /* DateTime.swift */; };
-		B7F541C123D51A5A00E89074 /* HomeActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F541C023D51A5A00E89074 /* HomeActivity.swift */; };
+		B7F541C123D51A5A00E89074 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F541C023D51A5A00E89074 /* Home.swift */; };
 		B7F541C623D51ADD00E89074 /* HomeTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F541C523D51ADD00E89074 /* HomeTable.swift */; };
 		B7F541C823D51B0C00E89074 /* HomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F541C723D51B0C00E89074 /* HomeCell.swift */; };
 		B7F6F9E623F0B544007D9151 /* UpdateProp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F6F9E523F0B544007D9151 /* UpdateProp.swift */; };
@@ -343,7 +343,7 @@
 		B7EF702023EA28E300BAF2E2 /* EntityGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityGame.swift; sourceTree = "<group>"; };
 		B7EF705E23EA48E400BAF2E2 /* ios.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ios.entitlements; sourceTree = "<group>"; };
 		B7F35E322309F6D6002018F7 /* DateTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTime.swift; sourceTree = "<group>"; };
-		B7F541C023D51A5A00E89074 /* HomeActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeActivity.swift; sourceTree = "<group>"; };
+		B7F541C023D51A5A00E89074 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		B7F541C523D51ADD00E89074 /* HomeTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTable.swift; sourceTree = "<group>"; };
 		B7F541C723D51B0C00E89074 /* HomeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCell.swift; sourceTree = "<group>"; };
 		B7F6F9E523F0B544007D9151 /* UpdateProp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateProp.swift; sourceTree = "<group>"; };
@@ -1094,7 +1094,7 @@
 				830946862566D767003A1B9A /* Home.storyboard */,
 				8375E1E8256C0963001809FF /* Opponent.xib */,
 				B7AF787123E0B9BC00BAD8EC /* networking */,
-				B7F541C023D51A5A00E89074 /* HomeActivity.swift */,
+				B7F541C023D51A5A00E89074 /* Home.swift */,
 				B7F541C523D51ADD00E89074 /* HomeTable.swift */,
 				B7F541C723D51B0C00E89074 /* HomeCell.swift */,
 				8375E1EA256C0AE9001809FF /* Opponent.swift */,
@@ -1400,7 +1400,7 @@
 				B7BE116F23EA91CD00ADA499 /* Snapshot.swift in Sources */,
 				B7D8ECD524082096001B5D2D /* PoisonBlack.swift in Sources */,
 				B73410EE2408CFA20065B1AA /* UpdateMine.swift in Sources */,
-				B7F541C123D51A5A00E89074 /* HomeActivity.swift in Sources */,
+				B7F541C123D51A5A00E89074 /* Home.swift in Sources */,
 				B7BE11AD23EA9CC700ADA499 /* KingBlack.swift in Sources */,
 				B7F35E332309F6D6002018F7 /* DateTime.swift in Sources */,
 				83295C472475C2DE00820C6C /* GetTimeout.swift in Sources */,

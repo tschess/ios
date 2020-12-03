@@ -58,36 +58,36 @@ class HomeTable: UITableViewController, SwipeTableViewCellDelegate, UIPickerView
             "id_self": id_player,
             "config": config]
         
-        RequestAck().execute(requestPayload: payload) { (result) in
-            let game: EntityGame = ParseGame().execute(json: result)
-            DispatchQueue.main.async {
-                let height: CGFloat = UIScreen.main.bounds.height
-                let playerOther: EntityPlayer = game.getPlayerOther(username: self.activity!.player!.username)
-                if(height.isLess(than: 750)){
-                    let storyboard: UIStoryboard = UIStoryboard(name: "Tschess", bundle: nil)
-                    let viewController = storyboard.instantiateViewController(withIdentifier: "Tschess") as! Tschess
-                    viewController.playerOther = playerOther
-                    viewController.player = self.activity!.player!
-                    viewController.game = game
-                    self.navigationController?.pushViewController(viewController, animated: false)
-                    guard let navigationController = self.navigationController else { return }
-                    var navigationArray = navigationController.viewControllers // To get all UIViewController stack as Array
-                    navigationArray.remove(at: navigationArray.count - 2) // To remove previous UIViewController
-                    self.navigationController?.viewControllers = navigationArray
-                    return
-                }
-                let storyboard: UIStoryboard = UIStoryboard(name: "Tschess", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "Tschess") as! Tschess
-                viewController.playerOther = playerOther
-                viewController.player = self.activity!.player!
-                viewController.game = game
-                self.navigationController?.pushViewController(viewController, animated: false)
-                guard let navigationController = self.navigationController else { return }
-                var navigationArray = navigationController.viewControllers // To get all UIViewController stack as Array
-                navigationArray.remove(at: navigationArray.count - 2) // To remove previous UIViewController
-                self.navigationController?.viewControllers = navigationArray
-            }
-        }
+//        RequestAck().execute(requestPayload: payload) { (result) in
+//            let game: EntityGame = ParseGame().execute(json: result)
+//            DispatchQueue.main.async {
+//                let height: CGFloat = UIScreen.main.bounds.height
+//                let playerOther: EntityPlayer = game.getPlayerOther(username: self.activity!.player!.username)
+//                if(height.isLess(than: 750)){
+//                    let storyboard: UIStoryboard = UIStoryboard(name: "Tschess", bundle: nil)
+//                    let viewController = storyboard.instantiateViewController(withIdentifier: "Tschess") as! Tschess
+//                    viewController.playerOther = playerOther
+//                    viewController.player = self.activity!.player!
+//                    viewController.game = game
+//                    self.navigationController?.pushViewController(viewController, animated: false)
+//                    guard let navigationController = self.navigationController else { return }
+//                    var navigationArray = navigationController.viewControllers // To get all UIViewController stack as Array
+//                    navigationArray.remove(at: navigationArray.count - 2) // To remove previous UIViewController
+//                    self.navigationController?.viewControllers = navigationArray
+//                    return
+//                }
+//                let storyboard: UIStoryboard = UIStoryboard(name: "Tschess", bundle: nil)
+//                let viewController = storyboard.instantiateViewController(withIdentifier: "Tschess") as! Tschess
+//                viewController.playerOther = playerOther
+//                viewController.player = self.activity!.player!
+//                viewController.game = game
+//                self.navigationController?.pushViewController(viewController, animated: false)
+//                guard let navigationController = self.navigationController else { return }
+//                var navigationArray = navigationController.viewControllers // To get all UIViewController stack as Array
+//                navigationArray.remove(at: navigationArray.count - 2) // To remove previous UIViewController
+//                self.navigationController?.viewControllers = navigationArray
+//            }
+//        }
         
         
         
@@ -294,7 +294,7 @@ class HomeTable: UITableViewController, SwipeTableViewCellDelegate, UIPickerView
     var swiped: Bool
     var index: Int
     var list: [EntityGame]
-    var activity: HomeActivity?
+    var activity: Home?
     
     required init?(coder aDecoder: NSCoder) {
         self.swiped = false

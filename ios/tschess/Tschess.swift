@@ -44,8 +44,8 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
             if let navigationController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController {
                 let viewControllers = navigationController.viewControllers
                 for vc in viewControllers {
-                    if vc.isKind(of: HomeActivity.classForCoder()) {
-                        let menu: HomeActivity = vc as! HomeActivity
+                    if vc.isKind(of: Home.classForCoder()) {
+                        let menu: Home = vc as! Home
                         menu.table!.refresh(refreshControl: nil)
                     }
                 }

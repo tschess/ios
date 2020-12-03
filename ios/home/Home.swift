@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HomeActivity: UIViewController, UITabBarDelegate {
+class Home: UIViewController, UITabBarDelegate {
     
     var player: EntityPlayer?
     var table: HomeTable?
@@ -69,12 +69,12 @@ class HomeActivity: UIViewController, UITabBarDelegate {
             alert.addAction(action)
             self.present(alert, animated: true)
         case 1:
-            var storyboard: UIStoryboard = UIStoryboard(name: "ConfigP", bundle: nil)
-            var viewController = storyboard.instantiateViewController(withIdentifier: "ConfigP") as! Config
-            if(UIScreen.main.bounds.height.isLess(than: 750)){
-                storyboard = UIStoryboard(name: "ConfigL", bundle: nil)
-                viewController = storyboard.instantiateViewController(withIdentifier: "ConfigL") as! Config
-            }
+            let storyboard: UIStoryboard = UIStoryboard(name: "Config", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier: "Config") as! Config
+            //if(UIScreen.main.bounds.height.isLess(than: 750)){
+                //storyboard = UIStoryboard(name: "ConfigL", bundle: nil)
+                //viewController = storyboard.instantiateViewController(withIdentifier: "ConfigL") as! Config
+            //}
             viewController.playerSelf = self.player!
             let transition = CATransition()
             transition.duration = 0.3

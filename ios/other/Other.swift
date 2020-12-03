@@ -97,26 +97,27 @@ class Other: UIViewController, UITabBarDelegate {
         case 0:
             self.backButtonClick("")
         default:
-            DispatchQueue.main.async {
-                let height: CGFloat = UIScreen.main.bounds.height
-                if(height.isLess(than: 750)){
-                    let storyboard: UIStoryboard = UIStoryboard(name: "ChallengeL", bundle: nil)
-                    let viewController = storyboard.instantiateViewController(withIdentifier: "ChallengeL") as! Challenge
-                    viewController.setPlayerSelf(playerSelf: self.playerSelf!)
-                    viewController.setPlayerOther(playerOther: self.playerOther!)
-                    viewController.setSelection(selection: Int.random(in: 0...3))
-                    viewController.BACK = "OTHER"
-                    self.navigationController?.pushViewController(viewController, animated: false)
-                    return
-                }
-                let storyboard: UIStoryboard = UIStoryboard(name: "ChallengeP", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "ChallengeP") as! Challenge
-                viewController.setPlayerSelf(playerSelf: self.playerSelf!)
-                viewController.setPlayerOther(playerOther: self.playerOther!)
-                viewController.setSelection(selection: Int.random(in: 0...3))
-                viewController.BACK = "OTHER"
-                self.navigationController?.pushViewController(viewController, animated: false)
-            }
+            print("ugh")
+//            DispatchQueue.main.async {
+//                let height: CGFloat = UIScreen.main.bounds.height
+//                if(height.isLess(than: 750)){
+//                    let storyboard: UIStoryboard = UIStoryboard(name: "ChallengeL", bundle: nil)
+//                    let viewController = storyboard.instantiateViewController(withIdentifier: "ChallengeL") as! Challenge
+//                    viewController.setPlayerSelf(playerSelf: self.playerSelf!)
+//                    viewController.setPlayerOther(playerOther: self.playerOther!)
+//                    viewController.setSelection(selection: Int.random(in: 0...3))
+//                    viewController.BACK = "OTHER"
+//                    self.navigationController?.pushViewController(viewController, animated: false)
+//                    return
+//                }
+//                let storyboard: UIStoryboard = UIStoryboard(name: "ChallengeP", bundle: nil)
+//                let viewController = storyboard.instantiateViewController(withIdentifier: "ChallengeP") as! Challenge
+//                viewController.setPlayerSelf(playerSelf: self.playerSelf!)
+//                viewController.setPlayerOther(playerOther: self.playerOther!)
+//                viewController.setSelection(selection: Int.random(in: 0...3))
+//                viewController.BACK = "OTHER"
+//                self.navigationController?.pushViewController(viewController, animated: false)
+//            }
             
         }
     }

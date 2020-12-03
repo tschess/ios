@@ -11,8 +11,9 @@ import UIKit
 class Config: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIDropInteractionDelegate {
     
     var titleText: String?
+    @IBOutlet weak var viewHeader: UIView!
     
-    @IBOutlet weak var labelTapHere: UILabel!
+    //@IBOutlet weak var labelTapHere: UILabel!
     
     func setTitleText(titleText: String) {
         self.titleText = titleText
@@ -28,13 +29,13 @@ class Config: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate, U
     
     @IBOutlet weak var backButton: UIButton!
     
-    @IBOutlet weak var displacementImage: UIImageView!
-    @IBOutlet weak var displacementLabel: UILabel!
-    @IBOutlet weak var eloLabel: UILabel!
-    @IBOutlet weak var rankLabel: UILabel!
-    @IBOutlet weak var usernameLabel: UILabel!
-    @IBOutlet weak var avatarImageView: UIImageView!
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+//    @IBOutlet weak var displacementImage: UIImageView!
+//    @IBOutlet weak var displacementLabel: UILabel!
+//    @IBOutlet weak var eloLabel: UILabel!
+//    @IBOutlet weak var rankLabel: UILabel!
+//    @IBOutlet weak var usernameLabel: UILabel!
+//    @IBOutlet weak var avatarImageView: UIImageView!
+//    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     @IBOutlet weak var configCollectionView0: BoardView!
     @IBOutlet weak var configCollectionViewHeight0: NSLayoutConstraint!
@@ -64,7 +65,7 @@ class Config: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate, U
     
     @objc func fade() {
         UIView.animate(withDuration: 1.5, animations: {
-            self.labelTapHere.alpha = 0
+            //self.labelTapHere.alpha = 0
         })
     }
     
@@ -98,15 +99,15 @@ class Config: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate, U
         self.navigationController?.pushViewController(viewController, animated: false)
     }
     
-    public func renderHeader() {
-        self.avatarImageView.image = self.playerSelf!.getImageAvatar()
-        self.usernameLabel.text = self.playerSelf!.username
-        self.eloLabel.text = self.playerSelf!.getLabelTextElo()
-        self.rankLabel.text = self.playerSelf!.getLabelTextRank()
-        self.displacementLabel.text = self.playerSelf!.getLabelTextDisp()
-        self.displacementImage.image = self.playerSelf!.getImageDisp()!
-        self.displacementImage.tintColor = self.playerSelf!.tintColor
-    }
+//    public func renderHeader() {
+//        self.avatarImageView.image = self.playerSelf!.getImageAvatar()
+//        self.usernameLabel.text = self.playerSelf!.username
+//        self.eloLabel.text = self.playerSelf!.getLabelTextElo()
+//        self.rankLabel.text = self.playerSelf!.getLabelTextRank()
+//        self.displacementLabel.text = self.playerSelf!.getLabelTextDisp()
+//        self.displacementImage.image = self.playerSelf!.getImageDisp()!
+//        self.displacementImage.tintColor = self.playerSelf!.tintColor
+//    }
     
     var labelTapHidden: Bool = false
     
@@ -115,19 +116,19 @@ class Config: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate, U
         
         
         if(self.labelTapHidden){
-            self.labelTapHere.isHidden = true
+            //self.labelTapHere.isHidden = true
         } else {
             Timer.scheduledTimer(timeInterval: 1.5, target: self, selector: #selector(fade), userInfo: nil, repeats: false)
         }
         
         
         
-        self.labelTapHere.adjustsFontSizeToFitWidth = true //maybe dont need this...
-        self.labelTapHere.minimumScaleFactor = 0.2
+        //self.labelTapHere.adjustsFontSizeToFitWidth = true //maybe dont need this...
+        //self.labelTapHere.minimumScaleFactor = 0.2
         
         self.tabBarMenu.delegate = self
         
-        self.activityIndicator.isHidden = true
+        //self.activityIndicator.isHidden = true
         
         self.configCollectionView0.bounces = false
         self.configCollectionView1.bounces = false
@@ -159,7 +160,16 @@ class Config: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate, U
         self.configCollectionView1.addGestureRecognizer(editCollectionView1)
         self.configCollectionView2.addGestureRecognizer(editCollectionView2)
         
-        self.renderHeader()
+        //self.renderHeader()
+        //TODO: Header
+        let viewHeaderDynamic = Bundle.loadView(fromNib: "Header", withType: Header.self)
+        self.viewHeader!.addSubview(viewHeaderDynamic)
+        viewHeaderDynamic.translatesAutoresizingMaskIntoConstraints = false
+        let attributes: [NSLayoutConstraint.Attribute] = [.top, .bottom, .right, .left]
+        NSLayoutConstraint.activate(attributes.map {
+            NSLayoutConstraint(item: viewHeaderDynamic, attribute: $0, relatedBy: .equal, toItem: viewHeaderDynamic.superview, attribute: $0, multiplier: 1, constant: 0)
+        })
+        viewHeaderDynamic.set(player: self.playerSelf!)
     }
     
     override func viewDidLayoutSubviews() {
