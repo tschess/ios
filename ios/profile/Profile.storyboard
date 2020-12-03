@@ -124,31 +124,31 @@
         <scene sceneID="nOf-70-oD6">
             <objects>
                 <tableViewController id="6lQ-GQ-oYe" customClass="ProfileTable" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="64" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="U8B-RQ-Tre">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="U8B-RQ-Tre">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="644"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="separatorColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ProfileCell" rowHeight="64" id="chw-qD-YHE" customClass="ProfileCell" customModule="ios" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="64"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ProfileCell" id="chw-qD-YHE" customClass="ProfileCell" customModule="ios" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="73.333335876464844"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="chw-qD-YHE" id="fhY-kg-IUt">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="64"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="73.333335876464844"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="eth" translatesAutoresizingMaskIntoConstraints="NO" id="pXj-06-TZZ">
-                                            <rect key="frame" x="8" y="9.6666666666666643" width="45" height="45"/>
+                                            <rect key="frame" x="8" y="4" width="65" height="65"/>
                                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="45" id="Wfm-4Y-AG9"/>
-                                                <constraint firstAttribute="height" constant="45" id="cbx-iE-23U"/>
+                                                <constraint firstAttribute="width" constant="65" id="Wfm-4Y-AG9"/>
+                                                <constraint firstAttribute="height" constant="65" id="cbx-iE-23U"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="custom skins" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H8g-9w-PaC">
-                                            <rect key="frame" x="57" y="34" width="349" height="30"/>
+                                            <rect key="frame" x="77" y="43.333333333333336" width="329" height="30.000000000000007"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="30" id="Ymh-Hk-Yds"/>
@@ -162,10 +162,11 @@
                                     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstItem="pXj-06-TZZ" firstAttribute="leading" secondItem="fhY-kg-IUt" secondAttribute="leading" constant="8" id="210-WL-DFz"/>
+                                        <constraint firstAttribute="bottom" secondItem="pXj-06-TZZ" secondAttribute="bottom" constant="4" id="Jj8-q7-gvH"/>
                                         <constraint firstItem="H8g-9w-PaC" firstAttribute="leading" secondItem="pXj-06-TZZ" secondAttribute="trailing" constant="4" id="SdP-Ka-OGx"/>
-                                        <constraint firstItem="pXj-06-TZZ" firstAttribute="centerY" secondItem="fhY-kg-IUt" secondAttribute="centerY" id="h0h-iE-Vz3"/>
                                         <constraint firstAttribute="trailing" secondItem="H8g-9w-PaC" secondAttribute="trailing" constant="8" id="iMQ-T6-XL5"/>
                                         <constraint firstAttribute="bottom" secondItem="H8g-9w-PaC" secondAttribute="bottom" id="spQ-ZN-n7l"/>
+                                        <constraint firstItem="pXj-06-TZZ" firstAttribute="top" secondItem="fhY-kg-IUt" secondAttribute="top" constant="4" id="z3n-7u-0r4"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
