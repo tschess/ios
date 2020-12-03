@@ -50,6 +50,10 @@
 		83D758EC24CA0E79008DC4B5 /* CoreStart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D758EB24CA0E79008DC4B5 /* CoreStart.swift */; };
 		83DFCF7825795948007088E5 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83DFCF7725795948007088E5 /* Profile.storyboard */; };
 		83DFCF7A25797492007088E5 /* Config.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83DFCF7925797492007088E5 /* Config.storyboard */; };
+		83DFCF7D25797DC3007088E5 /* Leaderboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83DFCF7C25797DC3007088E5 /* Leaderboard.storyboard */; };
+		83DFCF7F25797DD5007088E5 /* Leaderboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DFCF7E25797DD5007088E5 /* Leaderboard.swift */; };
+		83DFCF812579812B007088E5 /* LeaderboardTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DFCF802579812B007088E5 /* LeaderboardTable.swift */; };
+		83DFCF832579813E007088E5 /* LeaderboardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DFCF822579813E007088E5 /* LeaderboardCell.swift */; };
 		B7021F3023FDFC5200C9346A /* FairiesL.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7021F2F23FDFC5200C9346A /* FairiesL.storyboard */; };
 		B7021F3223FDFCC100C9346A /* FairiesP.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7021F3123FDFCC100C9346A /* FairiesP.storyboard */; };
 		B7021F5923FE303000C9346A /* EditSelfL.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7021F5823FE303000C9346A /* EditSelfL.storyboard */; };
@@ -227,6 +231,10 @@
 		83D758EB24CA0E79008DC4B5 /* CoreStart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreStart.swift; sourceTree = "<group>"; };
 		83DFCF7725795948007088E5 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		83DFCF7925797492007088E5 /* Config.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Config.storyboard; sourceTree = "<group>"; };
+		83DFCF7C25797DC3007088E5 /* Leaderboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Leaderboard.storyboard; sourceTree = "<group>"; };
+		83DFCF7E25797DD5007088E5 /* Leaderboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Leaderboard.swift; sourceTree = "<group>"; };
+		83DFCF802579812B007088E5 /* LeaderboardTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardTable.swift; sourceTree = "<group>"; };
+		83DFCF822579813E007088E5 /* LeaderboardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardCell.swift; sourceTree = "<group>"; };
 		AD83F59EDBC27D005F033F41 /* Pods-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios.debug.xcconfig"; path = "Target Support Files/Pods-ios/Pods-ios.debug.xcconfig"; sourceTree = "<group>"; };
 		B7021F2F23FDFC5200C9346A /* FairiesL.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FairiesL.storyboard; sourceTree = "<group>"; };
 		B7021F3123FDFCC100C9346A /* FairiesP.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FairiesP.storyboard; sourceTree = "<group>"; };
@@ -494,6 +502,17 @@
 			path = header;
 			sourceTree = "<group>";
 		};
+		83DFCF7B25797DB1007088E5 /* leaderboard */ = {
+			isa = PBXGroup;
+			children = (
+				83DFCF7C25797DC3007088E5 /* Leaderboard.storyboard */,
+				83DFCF7E25797DD5007088E5 /* Leaderboard.swift */,
+				83DFCF802579812B007088E5 /* LeaderboardTable.swift */,
+				83DFCF822579813E007088E5 /* LeaderboardCell.swift */,
+			);
+			path = leaderboard;
+			sourceTree = "<group>";
+		};
 		ABCDD5D6671D39DB5DBFE22A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -627,6 +646,7 @@
 		B787C72822E970DC009C94F7 /* ios */ = {
 			isa = PBXGroup;
 			children = (
+				83DFCF7B25797DB1007088E5 /* leaderboard */,
 				83B72B83256716A900FA5D8F /* header */,
 				83ACC6A62500172C00D394D0 /* networking */,
 				8385908A24F98AB700BBC11C /* pop */,
@@ -1236,6 +1256,7 @@
 				83ACC69F2500159C00D394D0 /* PopNote.storyboard in Resources */,
 				B7021F9623FE5D7F00C9346A /* OtherL.storyboard in Resources */,
 				83ACC67F2500120100D394D0 /* PopPassant.storyboard in Resources */,
+				83DFCF7D25797DC3007088E5 /* Leaderboard.storyboard in Resources */,
 				B708D0E7236B366800A899F9 /* LaunchScreen.storyboard in Resources */,
 				B7CB62F6237BB10800E50204 /* Start.storyboard in Resources */,
 				83ACC6AE250021AE00D394D0 /* PopUp.storyboard in Resources */,
@@ -1324,6 +1345,7 @@
 			files = (
 				B7BE12B323EB0D6900ADA499 /* PawnOffense.swift in Sources */,
 				B7BE12A323EB0BB800ADA499 /* Passant.swift in Sources */,
+				83DFCF812579812B007088E5 /* LeaderboardTable.swift in Sources */,
 				83ACC6932500143900D394D0 /* PopPromo.swift in Sources */,
 				B7BE11A423EA972D00ADA499 /* Diagonal.swift in Sources */,
 				B7BE11C023EA9E3D00ADA499 /* PawnWhite.swift in Sources */,
@@ -1331,6 +1353,7 @@
 				B7BE11B923EA9DD400ADA499 /* BishopWhite.swift in Sources */,
 				B7BE128F23EB09C700ADA499 /* GameRequest.swift in Sources */,
 				B7BE11BB23EA9DE200ADA499 /* BishopBlack.swift in Sources */,
+				83DFCF7F25797DD5007088E5 /* Leaderboard.swift in Sources */,
 				B7BE11F123EAC92C00ADA499 /* EditSelf.swift in Sources */,
 				B7BE125523EB038700ADA499 /* ProfileCell.swift in Sources */,
 				B7BE125323EB035000ADA499 /* ProfileTable.swift in Sources */,
@@ -1393,6 +1416,7 @@
 				B7BE124C23EB02A200ADA499 /* FairiesCell.swift in Sources */,
 				B7316D1123E8AA8E00119865 /* RequestRefresh.swift in Sources */,
 				B7BE11C523EA9E7C00ADA499 /* Rook.swift in Sources */,
+				83DFCF832579813E007088E5 /* LeaderboardCell.swift in Sources */,
 				B7BE117723EA93A600ADA499 /* PieceAnte.swift in Sources */,
 				B7D8ECDD24082106001B5D2D /* HunterBlack.swift in Sources */,
 				B7FA7BFB23ECF79400E63045 /* UpdateConfig.swift in Sources */,

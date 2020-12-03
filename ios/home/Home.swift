@@ -85,6 +85,16 @@ class Home: UIViewController, UITabBarDelegate {
             self.navigationController?.pushViewController(viewController, animated: false)
         case 2:
             print("LEADERBOARD !!!!!!!")
+            let storyboard: UIStoryboard = UIStoryboard(name: "Leaderboard", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier: "Leaderboard") as! Leaderboard
+            viewController.playerSelf = self.player!
+            let transition = CATransition()
+            transition.duration = 0.3
+            transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+            transition.type = CATransitionType.fade
+            self.navigationController?.view.layer.add(transition, forKey: nil)
+            _ = self.navigationController?.popViewController(animated: false)
+            self.navigationController?.pushViewController(viewController, animated: false)
         default:
             print("PROFILE !!!!!!!")
             let storyboard: UIStoryboard = UIStoryboard(name: "Profile", bundle: nil)
