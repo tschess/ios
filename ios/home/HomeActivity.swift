@@ -87,6 +87,16 @@ class HomeActivity: UIViewController, UITabBarDelegate {
             print("LEADERBOARD !!!!!!!")
         default:
             print("PROFILE !!!!!!!")
+            let storyboard: UIStoryboard = UIStoryboard(name: "Profile", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier: "Profile") as! Profile
+            viewController.player = self.player!
+            let transition = CATransition()
+            transition.duration = 0.3
+            transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+            transition.type = CATransitionType.fade
+            self.navigationController?.view.layer.add(transition, forKey: nil)
+            _ = self.navigationController?.popViewController(animated: false)
+            self.navigationController?.pushViewController(viewController, animated: false)
         }
     }
     

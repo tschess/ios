@@ -28,11 +28,23 @@ class ProfileTable: UITableViewController {
     func generateIcon(value: Int) -> UIImage? {
         switch value {
         case 0:
-            return UIImage(named: "photo_g")
+            if #available(iOS 13.0, *) {
+                return UIImage(named: "photo_g")!.withTintColor(.black)
+            } else {
+                return UIImage(named: "photo_g")
+            }
         case 1:
-            return UIImage(named: "notifications")
+            if #available(iOS 13.0, *) {
+                return UIImage(named: "notifications")!.withTintColor(.black)
+            } else {
+                return UIImage(named: "notifications")
+            }
         default:
-            return UIImage(named: "logout.grey")
+            if #available(iOS 13.0, *) {
+                return UIImage(named: "logout.grey")!.withTintColor(.black)
+            } else {
+                return UIImage(named: "logout.grey")
+            }
         }
     }
     

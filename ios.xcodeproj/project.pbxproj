@@ -48,6 +48,7 @@
 		83B72B892567190600FA5D8F /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83B72B882567190600FA5D8F /* Header.swift */; };
 		83D6E87A24F042810071D779 /* Labeler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D6E87924F042810071D779 /* Labeler.swift */; };
 		83D758EC24CA0E79008DC4B5 /* CoreStart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D758EB24CA0E79008DC4B5 /* CoreStart.swift */; };
+		83DFCF7825795948007088E5 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83DFCF7725795948007088E5 /* Profile.storyboard */; };
 		B7021F2723FDEE6100C9346A /* ConfigP.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7021F2623FDEE6100C9346A /* ConfigP.storyboard */; };
 		B7021F2A23FDEE8200C9346A /* ConfigL.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7021F2923FDEE8200C9346A /* ConfigL.storyboard */; };
 		B7021F3023FDFC5200C9346A /* FairiesL.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7021F2F23FDFC5200C9346A /* FairiesL.storyboard */; };
@@ -245,6 +246,7 @@
 		83B72B882567190600FA5D8F /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
 		83D6E87924F042810071D779 /* Labeler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Labeler.swift; sourceTree = "<group>"; };
 		83D758EB24CA0E79008DC4B5 /* CoreStart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreStart.swift; sourceTree = "<group>"; };
+		83DFCF7725795948007088E5 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		AD83F59EDBC27D005F033F41 /* Pods-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios.debug.xcconfig"; path = "Target Support Files/Pods-ios/Pods-ios.debug.xcconfig"; sourceTree = "<group>"; };
 		B7021F2623FDEE6100C9346A /* ConfigP.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ConfigP.storyboard; sourceTree = "<group>"; };
 		B7021F2923FDEE8200C9346A /* ConfigL.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ConfigL.storyboard; sourceTree = "<group>"; };
@@ -1104,6 +1106,7 @@
 				B7BE125023EB032E00ADA499 /* Profile.swift */,
 				B7BE125223EB035000ADA499 /* ProfileTable.swift */,
 				B7BE125423EB038700ADA499 /* ProfileCell.swift */,
+				83DFCF7725795948007088E5 /* Profile.storyboard */,
 			);
 			path = profile;
 			sourceTree = "<group>";
@@ -1489,6 +1492,7 @@
 				B787C73122E970DD009C94F7 /* Assets.xcassets in Resources */,
 				8375E1E9256C0963001809FF /* Opponent.xib in Resources */,
 				83B72B85256716C400FA5D8F /* Header.xib in Resources */,
+				83DFCF7825795948007088E5 /* Profile.storyboard in Resources */,
 				83ACC6772500113A00D394D0 /* PopHelp.storyboard in Resources */,
 				83ACC67D250011C700D394D0 /* PopPoison.storyboard in Resources */,
 				B7021F6423FE3B9E00C9346A /* ProfileL.storyboard in Resources */,

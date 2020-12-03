@@ -10,6 +10,8 @@ import UIKit
 
 class Profile: UIViewController, UITabBarDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate  {
     
+    var header: Header?
+    @IBOutlet weak var viewHeader: UIView!
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         
@@ -24,48 +26,48 @@ class Profile: UIViewController, UITabBarDelegate, UINavigationControllerDelegat
             }
             else {
                 DispatchQueue.main.async() {
-                    self.activityIndicator.stopAnimating()
-                    self.activityIndicator.isHidden = true
+                    self.header!.indicatorActivity!.stopAnimating()
+                    self.header!.indicatorActivity.isHidden = true
                 }
             }
         }
         let dataDecoded: Data = Data(base64Encoded: imageString, options: .ignoreUnknownCharacters)!
         let decodedimage = UIImage(data: dataDecoded)
-        avatarImageView.image = decodedimage
+        self.header!.imageAvatar.image = decodedimage
         self.player!.avatar = imageString //now update it...
         
         dismiss(animated: true, completion: nil)
     }
     
     func changePhoto() {
-        self.activityIndicator.isHidden = false
-        self.activityIndicator.startAnimating()
+        self.header!.indicatorActivity!.isHidden = false
+        self.header!.indicatorActivity!.startAnimating()
         let imagePickerController = UIImagePickerController()
         imagePickerController.delegate = self
         imagePickerController.sourceType = .photoLibrary
         present(imagePickerController, animated: true, completion: {
-            self.activityIndicator.isHidden = true
+            self.header!.indicatorActivity!.isHidden = true
         })
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         DispatchQueue.main.async() {
-            self.activityIndicator.stopAnimating()
-            self.activityIndicator.isHidden = true
+            self.header!.indicatorActivity!.stopAnimating()
+            self.header!.indicatorActivity!.isHidden = true
         }
         dismiss(animated: true, completion: nil)
     }
     
-    @IBOutlet weak var backButton: UIButton!
+    //@IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var tabBarMenu: UITabBar!
 
-    @IBOutlet weak var displacementImage: UIImageView!
-    @IBOutlet weak var displacementLabel: UILabel!
-    @IBOutlet weak var eloLabel: UILabel!
-    @IBOutlet weak var rankLabel: UILabel!
-    @IBOutlet weak var usernameLabel: UILabel!
-    @IBOutlet weak var avatarImageView: UIImageView!
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    //@IBOutlet weak var displacementImage: UIImageView!
+    //@IBOutlet weak var displacementLabel: UILabel!
+    //@IBOutlet weak var eloLabel: UILabel!
+    //@IBOutlet weak var rankLabel: UILabel!
+    //@IBOutlet weak var usernameLabel: UILabel!
+    //@IBOutlet weak var avatarImageView: UIImageView!
+    //@IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     var player: EntityPlayer?
     
@@ -113,21 +115,22 @@ class Profile: UIViewController, UITabBarDelegate, UINavigationControllerDelegat
         
     }
     
-    public func renderHeader() {
-        self.avatarImageView.image = self.player!.getImageAvatar()
-        self.usernameLabel.text = self.player!.username
-        self.eloLabel.text = self.player!.getLabelTextElo()
-        self.rankLabel.text = self.player!.getLabelTextRank()
-        self.displacementLabel.text = self.player!.getLabelTextDisp()
-        self.displacementImage.image = self.player!.getImageDisp()!
-        self.displacementImage.tintColor = self.player!.tintColor
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.activityIndicator.isHidden = true
+        //self.activityIndicator.isHidden = true
         self.tabBarMenu.delegate = self
-        self.renderHeader()
+        //self.renderHeader()
+        
+        //TODO: Header
+        self.header = Bundle.loadView(fromNib: "Header", withType: Header.self)
+        self.viewHeader.addSubview(self.header!)
+        self.header!.translatesAutoresizingMaskIntoConstraints = false
+        let attributes: [NSLayoutConstraint.Attribute] = [.top, .bottom, .right, .left]
+        NSLayoutConstraint.activate(attributes.map {
+            NSLayoutConstraint(item: self.header!, attribute: $0, relatedBy: .equal, toItem: self.header!.superview, attribute: $0, multiplier: 1, constant: 0)
+        })
+        self.header!.set(player: self.player!)
+        
         
         NotificationCenter.default.addObserver(
             self,
@@ -161,12 +164,8 @@ class Profile: UIViewController, UITabBarDelegate, UINavigationControllerDelegat
         }
     }
     
-    @IBAction func backButtonClick(_ sender: Any) {
-        self.navigationController?.popViewController(animated: false)
-    }
-    
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-        self.backButtonClick("")
+        self.navigationController?.popViewController(animated: false)
     }
     
 }
