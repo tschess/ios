@@ -76,7 +76,7 @@ class Config: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate, U
     }
     
     @objc func editCollectionView0() {
-        let viewController = EditSelf.create(
+        let viewController = Edit.create(
             player: self.playerSelf!,
             select: 0,
             height: UIScreen.main.bounds.height)
@@ -84,7 +84,7 @@ class Config: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate, U
     }
     
     @objc func editCollectionView1() {
-        let viewController = EditSelf.create(
+        let viewController = Edit.create(
             player: self.playerSelf!,
             select: 1,
             height: UIScreen.main.bounds.height)
@@ -92,7 +92,7 @@ class Config: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate, U
     }
     
     @objc func editCollectionView2() {
-        let viewController = EditSelf.create(
+        let viewController = Edit.create(
             player: self.playerSelf!,
             select: 2,
             height: UIScreen.main.bounds.height)

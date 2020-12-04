@@ -17,22 +17,22 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WdO-73-S40">
-                                <rect key="frame" x="107" y="413" width="200" height="70"/>
+                                <rect key="frame" x="107" y="418" width="200" height="60"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bahlsenwitz LLC" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6nS-R4-2Zt">
-                                        <rect key="frame" x="0.0" y="0.0" width="200" height="35"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="200" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="200" id="IUw-nD-Ad6"/>
-                                            <constraint firstAttribute="height" constant="35" id="dTh-8n-aVE"/>
+                                            <constraint firstAttribute="height" constant="30" id="dTh-8n-aVE"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" weight="thin" pointSize="20"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🇺🇸 Made in the USA 🦅" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KGz-y1-BSZ">
-                                        <rect key="frame" x="0.0" y="35" width="200" height="35"/>
+                                        <rect key="frame" x="0.0" y="30" width="200" height="30"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="35" id="7Su-Ba-ppR"/>
+                                            <constraint firstAttribute="height" constant="30" id="7Su-Ba-ppR"/>
                                             <constraint firstAttribute="width" constant="200" id="Vme-HX-0qE"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" weight="thin" pointSize="20"/>
@@ -43,7 +43,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="KGz-y1-BSZ" firstAttribute="leading" secondItem="WdO-73-S40" secondAttribute="leading" id="00V-ze-N3R"/>
-                                    <constraint firstAttribute="height" constant="70" id="9U5-Dp-a2Z"/>
+                                    <constraint firstAttribute="height" constant="60" id="9U5-Dp-a2Z"/>
                                     <constraint firstAttribute="trailing" secondItem="6nS-R4-2Zt" secondAttribute="trailing" id="EVV-6J-Aox"/>
                                     <constraint firstAttribute="width" constant="200" id="O86-M6-bGo"/>
                                     <constraint firstItem="6nS-R4-2Zt" firstAttribute="top" secondItem="WdO-73-S40" secondAttribute="top" id="S2f-bb-WBD"/>

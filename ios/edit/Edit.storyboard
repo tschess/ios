@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Edit Self-->
+        <!--Edit-->
         <scene sceneID="Uso-HT-uji">
             <objects>
-                <viewController storyboardIdentifier="EditSelfP" useStoryboardIdentifierAsRestorationIdentifier="YES" id="DAE-jB-YvD" customClass="EditSelf" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Edit" useStoryboardIdentifierAsRestorationIdentifier="YES" id="DAE-jB-YvD" customClass="Edit" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="9gv-Ja-N4g">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -205,22 +205,22 @@
                                                 </cells>
                                             </collectionView>
                                             <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bUh-Du-Cy4" userLabel="PointsView">
-                                                <rect key="frame" x="8" y="116" width="141" height="24"/>
+                                                <rect key="frame" x="8" y="116" width="141.66666666666666" height="24"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="allocated: " textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WcM-os-Mz1">
-                                                        <rect key="frame" x="0.0" y="0.0" width="88.333333333333329" height="24"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="88.666666666666671" height="24"/>
                                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="20"/>
                                                         <color key="textColor" systemColor="darkTextColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="39" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bnj-gY-QC6">
-                                                        <rect key="frame" x="88.333333333333329" y="0.0" width="23.666666666666671" height="24"/>
+                                                        <rect key="frame" x="88.666666666666671" y="0.0" width="24" height="24"/>
                                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="20"/>
                                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="/39" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7d7-SF-oFI">
-                                                        <rect key="frame" x="112" y="0.0" width="29" height="24"/>
+                                                        <rect key="frame" x="112.66666666666667" y="0.0" width="29.000000000000014" height="24"/>
                                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="20"/>
                                                         <color key="textColor" systemColor="darkTextColor"/>
                                                         <nil key="highlightedColor"/>

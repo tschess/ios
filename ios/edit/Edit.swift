@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIDropInteractionDelegate {
+class Edit: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIDropInteractionDelegate {
     
     //MARK: Constant
     let ELEMENT_LIST = [
@@ -117,7 +117,7 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
     //MARK: Member
     var playerSelf: EntityPlayer!
     var selection: Int!
-    var editCore: EditCore!
+    //var editCore: EditCore!
     var confirm: Bool!
     
     //MARK: Variables
@@ -157,14 +157,12 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
         self.present(viewController, animated: true, completion: nil)
     }
     
-    static func create(player: EntityPlayer, select: Int, height: CGFloat) -> EditSelf {
-        let identifier: String = height.isLess(than: 750) ? "L" : "P"
-        let storyboard: UIStoryboard = UIStoryboard(name: "EditSelf\(identifier)", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "EditSelf\(identifier)") as! EditSelf
+    static func create(player: EntityPlayer, select: Int, height: CGFloat) -> Edit {
+        let storyboard: UIStoryboard = UIStoryboard(name: "Edit", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "Edit") as! Edit
         viewController.playerSelf = player
         viewController.selection = select
         viewController.confirm = false
-        viewController.editCore = EditCore()
         return viewController
     }
     
@@ -172,7 +170,7 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.labelHoldDrag.isHidden = true
+        //self.labelHoldDrag.isHidden = true
         
         self.configCollectionView.isHidden = true
         self.configCollectionView.delegate = self
@@ -250,7 +248,7 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
     }
     
     private func setTotalPointValue() {
-        let totalPointValue: Int = self.editCore.getPointValue(config: self.configActiv!)
+        let totalPointValue: Int = self.getPointValue(config: self.configActiv!)
         self.totalPointLabel.text = String(totalPointValue)
     }
     
@@ -304,18 +302,18 @@ class EditSelf: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate,
 }
 
 //MARK: DataSource
-extension EditSelf: UICollectionViewDataSource {
+extension Edit: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == self.tschessElementCollectionView {
-            return self.editCore.ELEMENT_LIST.count
+            return self.ELEMENT_LIST.count
         }
         return 16
     }
 }
 
 //MARK: FlowLayout
-extension EditSelf: UICollectionViewDelegateFlowLayout {
+extension Edit: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if collectionView == self.tschessElementCollectionView {
@@ -342,25 +340,25 @@ extension EditSelf: UICollectionViewDelegateFlowLayout {
     }
 }
 
-extension EditSelf: UICollectionViewDelegate {
+extension Edit: UICollectionViewDelegate {
     
     //MARK: Render //gotta look at this...
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == self.tschessElementCollectionView {
             let elementCell = collectionView.dequeueReusableCell(withReuseIdentifier: "ConfigCell", for: indexPath) as! ConfigCell
             
-            let elementImageIdentifier: String = self.editCore.ELEMENT_LIST[indexPath.row]
+            let elementImageIdentifier: String = self.ELEMENT_LIST[indexPath.row]
             let elementImage: UIImage = UIImage(named: elementImageIdentifier)!
             elementCell.configureCell(image: elementImage)
             
-            let elementObject: Piece = self.editCore.generateTschessElement(name: self.editCore.ELEMENT_LIST[indexPath.row])!
+            let elementObject: Piece = self.generateTschessElement(name: self.ELEMENT_LIST[indexPath.row])!
             elementCell.nameLabel.text = "\(elementObject.name.lowercased()): \(elementObject.strength)"
             elementCell.pointsLabel.isHidden = true
             
             elementCell.imageView.alpha = 1
             elementCell.nameLabel.alpha = 1
             elementCell.pointsLabel.alpha = 1
-            if(!self.editCore.allocatable(piece: elementObject, config: self.configActiv!)){
+            if(!self.allocatable(piece: elementObject, config: self.configActiv!)){
                 elementCell.imageView.alpha = 0.5
                 elementCell.nameLabel.alpha = 0.5
                 elementCell.pointsLabel.alpha = 0.5
@@ -392,20 +390,20 @@ extension EditSelf: UICollectionViewDelegate {
 
 
 //MARK: DragDelegate
-extension EditSelf: UICollectionViewDragDelegate {
+extension Edit: UICollectionViewDragDelegate {
     
     func collectionView(_ collectionView: UICollectionView, itemsForBeginning session: UIDragSession, at indexPath: IndexPath) -> [UIDragItem] {
         self.configCache = self.configActiv!
         let row: Int = indexPath.row
         if collectionView == self.tschessElementCollectionView {
-            let piece: Piece = self.editCore.generateTschessElement(name: self.editCore.ELEMENT_LIST[row])!
-            let allocatable: Bool = self.editCore.allocatable(piece: piece, config: self.configActiv!)
+            let piece: Piece = self.generateTschessElement(name: self.ELEMENT_LIST[row])!
+            let allocatable: Bool = self.allocatable(piece: piece, config: self.configActiv!)
             if(!allocatable){
                 return []
             }
             UIImpactFeedbackGenerator(style: .light).impactOccurred()
             
-            let name: String = self.editCore.imageNameFromPiece(piece: piece)!
+            let name: String = self.imageNameFromPiece(piece: piece)!
             self.candidateName = name
             
             let image: UIImage = UIImage(named: name)!
@@ -430,7 +428,7 @@ extension EditSelf: UICollectionViewDragDelegate {
         }
         UIImpactFeedbackGenerator(style: .light).impactOccurred()
         
-        let name: String = self.editCore.imageNameFromPiece(piece: tschessElement!)!
+        let name: String = self.imageNameFromPiece(piece: tschessElement!)!
         let image: UIImage = UIImage(named: name)!
         let itemProvider = NSItemProvider(object: image)
         
@@ -471,7 +469,7 @@ extension EditSelf: UICollectionViewDragDelegate {
 }
 
 //MARK: DropDelegate
-extension EditSelf: UICollectionViewDropDelegate {
+extension Edit: UICollectionViewDropDelegate {
     
     func dropInteraction(_ interaction: UIDropInteraction, canHandle session: UIDropSession) -> Bool {
         return true
@@ -548,7 +546,7 @@ extension EditSelf: UICollectionViewDropDelegate {
             }
         }
         self.confirm = true
-        let piece: Piece? = self.editCore.generateTschessElement(name: self.candidateName!)
+        let piece: Piece? = self.generateTschessElement(name: self.candidateName!)
         if(self.candidateCoord == nil){
             self.configActiv![x][y] = piece
             return
