@@ -54,6 +54,7 @@
 		83DFCF7F25797DD5007088E5 /* Leaderboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DFCF7E25797DD5007088E5 /* Leaderboard.swift */; };
 		83DFCF812579812B007088E5 /* LeaderboardTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DFCF802579812B007088E5 /* LeaderboardTable.swift */; };
 		83DFCF832579813E007088E5 /* LeaderboardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DFCF822579813E007088E5 /* LeaderboardCell.swift */; };
+		83DFCF85257ADDBE007088E5 /* Fairies.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83DFCF84257ADDBE007088E5 /* Fairies.storyboard */; };
 		B7021F3023FDFC5200C9346A /* FairiesL.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7021F2F23FDFC5200C9346A /* FairiesL.storyboard */; };
 		B7021F3223FDFCC100C9346A /* FairiesP.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7021F3123FDFCC100C9346A /* FairiesP.storyboard */; };
 		B7021F5923FE303000C9346A /* EditSelfL.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7021F5823FE303000C9346A /* EditSelfL.storyboard */; };
@@ -235,6 +236,7 @@
 		83DFCF7E25797DD5007088E5 /* Leaderboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Leaderboard.swift; sourceTree = "<group>"; };
 		83DFCF802579812B007088E5 /* LeaderboardTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardTable.swift; sourceTree = "<group>"; };
 		83DFCF822579813E007088E5 /* LeaderboardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardCell.swift; sourceTree = "<group>"; };
+		83DFCF84257ADDBE007088E5 /* Fairies.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Fairies.storyboard; sourceTree = "<group>"; };
 		AD83F59EDBC27D005F033F41 /* Pods-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios.debug.xcconfig"; path = "Target Support Files/Pods-ios/Pods-ios.debug.xcconfig"; sourceTree = "<group>"; };
 		B7021F2F23FDFC5200C9346A /* FairiesL.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FairiesL.storyboard; sourceTree = "<group>"; };
 		B7021F3123FDFCC100C9346A /* FairiesP.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FairiesP.storyboard; sourceTree = "<group>"; };
@@ -959,6 +961,7 @@
 				B7BE124723EB023700ADA499 /* Fairies.swift */,
 				B7BE124923EB027400ADA499 /* FairiesTable.swift */,
 				B7BE124B23EB02A200ADA499 /* FairiesCell.swift */,
+				83DFCF84257ADDBE007088E5 /* Fairies.storyboard */,
 			);
 			path = fairies;
 			sourceTree = "<group>";
@@ -1246,6 +1249,7 @@
 			files = (
 				83ACC6A32500165500D394D0 /* PopConfirm.storyboard in Resources */,
 				830946872566D767003A1B9A /* Home.storyboard in Resources */,
+				83DFCF85257ADDBE007088E5 /* Fairies.storyboard in Resources */,
 				B787C73122E970DD009C94F7 /* Assets.xcassets in Resources */,
 				8375E1E9256C0963001809FF /* Opponent.xib in Resources */,
 				83B72B85256716C400FA5D8F /* Header.xib in Resources */,

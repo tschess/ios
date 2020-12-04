@@ -326,17 +326,17 @@ extension Config: UICollectionViewDelegate {
         switch item.tag {
         case 1:
             self.tabBarMenu.selectedItem = nil
-            let height: CGFloat = UIScreen.main.bounds.height
-            if(height.isLess(than: 750)){
-                let storyboard: UIStoryboard = UIStoryboard(name: "FairiesL", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "FairiesL") as! Fairies
-                viewController.playerSelf = self.playerSelf!
-                self.navigationController?.pushViewController(viewController, animated: false)
-                return
-            }
-            let storyboard: UIStoryboard = UIStoryboard(name: "FairiesP", bundle: nil)
-            let viewController = storyboard.instantiateViewController(withIdentifier: "FairiesP") as! Fairies
-            viewController.playerSelf = self.playerSelf!
+            //let height: CGFloat = UIScreen.main.bounds.height
+            //if(height.isLess(than: 750)){
+                //let storyboard: UIStoryboard = UIStoryboard(name: "FairiesL", bundle: nil)
+                //let viewController = storyboard.instantiateViewController(withIdentifier: "FairiesL") as! Fairies
+                //viewController.playerSelf = self.playerSelf!
+                //self.navigationController?.pushViewController(viewController, animated: false)
+                //return
+            //}
+            let storyboard: UIStoryboard = UIStoryboard(name: "Fairies", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier: "Fairies") as! Fairies
+            viewController.player = self.playerSelf!
             self.navigationController?.pushViewController(viewController, animated: false)
         default:
             self.navigationController?.popViewController(animated: false)

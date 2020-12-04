@@ -18,12 +18,13 @@ class Fairies: UIViewController, UITabBarDelegate {
     //@IBOutlet weak var displacementImage: UIImageView!
     //@IBOutlet weak var displacementLabel: UILabel!
     //@IBOutlet weak var eloLabel: UILabel!
+    @IBOutlet weak var viewHeader: UIView!
     //@IBOutlet weak var rankLabel: UILabel!
     //@IBOutlet weak var usernameLabel: UILabel!
     //@IBOutlet weak var avatarImageView: UIImageView!
     //@IBOutlet weak var activityIndicatorLabel: UIActivityIndicatorView!
     
-    var playerSelf: EntityPlayer?
+    var player: EntityPlayer?
     
     //public func renderHeader() {
     //    self.avatarImageView.image = self.playerSelf!.getImageAvatar()
@@ -50,9 +51,19 @@ class Fairies: UIViewController, UITabBarDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //TODO: Header
+        let viewHeaderDynamic = Bundle.loadView(fromNib: "Header", withType: Header.self)
+        self.viewHeader.addSubview(viewHeaderDynamic)
+        viewHeaderDynamic.translatesAutoresizingMaskIntoConstraints = false
+        let attributes: [NSLayoutConstraint.Attribute] = [.top, .bottom, .right, .left]
+        NSLayoutConstraint.activate(attributes.map {
+            NSLayoutConstraint(item: viewHeaderDynamic, attribute: $0, relatedBy: .equal, toItem: viewHeaderDynamic.superview, attribute: $0, multiplier: 1, constant: 0)
+        })
+        viewHeaderDynamic.set(player: self.player!)
+        
         self.tabBarMenu.delegate = self
         self.squadUpAdapter = children.first as? FairiesTable
-        self.squadUpAdapter!.setPlayer(player: self.playerSelf!)
+        self.squadUpAdapter!.setPlayer(player: self.player!)
         self.squadUpAdapter!.setFairyElementList(fairyElementList: self.fairyElementList)
         
         NotificationCenter.default.addObserver(
