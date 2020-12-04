@@ -10,6 +10,12 @@ import UIKit
 
 class Edit: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIDropInteractionDelegate {
     
+    //@IBOutlet weak var componentHeader: Header!
+    //viewHeader
+    //header
+    var header: Header?
+    @IBOutlet weak var viewHeader: UIView!
+    
     //MARK: Constant
     let ELEMENT_LIST = [
         "red_pawn",
@@ -115,7 +121,7 @@ class Edit: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate, UII
     //@IBOutlet weak var labelHoldDrag: UILabel!
     
     //MARK: Member
-    var playerSelf: EntityPlayer!
+    var player: EntityPlayer!
     var selection: Int!
     //var editCore: EditCore!
     var confirm: Bool!
@@ -131,21 +137,21 @@ class Edit: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate, UII
     @IBOutlet weak var tschessElementCollectionView: UICollectionView!
     @IBOutlet weak var configCollectionViewHeight: NSLayoutConstraint!
     @IBOutlet weak var configCollectionView: BoardView!
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    @IBOutlet weak var displacementImage: UIImageView!
-    @IBOutlet weak var displacementLabel: UILabel!
-    @IBOutlet weak var eloLabel: UILabel!
-    @IBOutlet weak var rankLabel: UILabel!
-    @IBOutlet weak var usernameLabel: UILabel!
-    @IBOutlet weak var avatarImageView: UIImageView!
-    @IBOutlet weak var backButton: UIButton!
+    //@IBOutlet weak var titleLabel: UILabel!
+    //@IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    //@IBOutlet weak var displacementImage: UIImageView!
+    //@IBOutlet weak var displacementLabel: UILabel!
+    //@IBOutlet weak var eloLabel: UILabel!
+    //@IBOutlet weak var rankLabel: UILabel!
+    //@IBOutlet weak var usernameLabel: UILabel!
+    //@IBOutlet weak var avatarImageView: UIImageView!
+    //@IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var tabBarMenu: UITabBar!
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var totalPointLabel: UILabel!
     
-    @IBAction func backButtonClick(_ sender: Any) {
+    func back() {
         if(!self.confirm){
             self.navigationController?.popViewController(animated: false)
             return
@@ -160,7 +166,7 @@ class Edit: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate, UII
     static func create(player: EntityPlayer, select: Int, height: CGFloat) -> Edit {
         let storyboard: UIStoryboard = UIStoryboard(name: "Edit", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "Edit") as! Edit
-        viewController.playerSelf = player
+        viewController.player = player
         viewController.selection = select
         viewController.confirm = false
         return viewController
@@ -182,7 +188,7 @@ class Edit: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate, UII
         self.tschessElementCollectionView.dragDelegate = self
         
         self.tabBarMenu.delegate = self
-        self.activityIndicator.isHidden = true
+        //self.activityIndicator.isHidden = true
         self.configCollectionView.isUserInteractionEnabled = true
         self.configCollectionView.dragInteractionEnabled = true
         self.configCollectionView.alwaysBounceVertical = false
@@ -219,32 +225,35 @@ class Edit: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate, UII
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        self.header = Bundle.loadView(fromNib: "Header", withType: Header.self)
+        self.viewHeader!.addSubview(self.header!)
+        self.header!.translatesAutoresizingMaskIntoConstraints = false
+        let attributes: [NSLayoutConstraint.Attribute] = [.top, .bottom, .right, .left]
+        NSLayoutConstraint.activate(attributes.map {
+            NSLayoutConstraint(item: self.header!, attribute: $0, relatedBy: .equal, toItem: self.header!.superview, attribute: $0, multiplier: 1, constant: 0)
+        })
+        self.header!.set(player: self.player!)
+        
         switch self.selection! {
         case 1:
-            self.configActiv = self.playerSelf!.getConfig(index: 1)
-            self.titleLabel.text = "config. 1"
+            self.configActiv = self.player!.getConfig(index: 1)
+            self.header!.labelTitle.text = "config. 1"
             break
         case 2:
-            self.configActiv = self.playerSelf!.getConfig(index: 2)
-            self.titleLabel.text = "config. 2"
+            self.configActiv = self.player!.getConfig(index: 2)
+            self.header!.labelTitle.text = "config. 2"
             break
         default:
-            self.configActiv = self.playerSelf!.getConfig(index: 0)
-            self.titleLabel.text = "config. 0̸"
+            self.configActiv = self.player!.getConfig(index: 0)
+            self.header!.labelTitle.text = "config. 0̸"
         }
         self.configCache = self.configActiv
-        self.renderHeader()
+        
+     
+        
+        
         self.setTotalPointValue()
-    }
-    
-    private func renderHeader() {
-        self.avatarImageView.image = self.playerSelf!.getImageAvatar()
-        self.usernameLabel.text = self.playerSelf!.username
-        self.eloLabel.text = self.playerSelf!.getLabelTextElo()
-        self.rankLabel.text = self.playerSelf!.getLabelTextRank()
-        self.displacementLabel.text = self.playerSelf!.getLabelTextDisp()
-        self.displacementImage.image = self.playerSelf!.getImageDisp()!
-        self.displacementImage.tintColor = self.playerSelf!.tintColor
     }
     
     private func setTotalPointValue() {
@@ -256,25 +265,25 @@ class Edit: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate, UII
         tabBar.selectedItem = nil
         switch item.tag {
         case 0:
-            self.backButtonClick("")
+            self.back()
         case 2:
             let storyboard: UIStoryboard = UIStoryboard(name: "PopHelp", bundle: nil)
             let viewController = storyboard.instantiateViewController(withIdentifier: "PopHelp") as! PopDismiss
             self.present(viewController, animated: true, completion: nil)
         default:
             DispatchQueue.main.async() {
-                self.activityIndicator!.isHidden = false
-                self.activityIndicator!.startAnimating()
+                self.header!.indicatorActivity!.isHidden = false
+                self.header!.indicatorActivity!.startAnimating()
             }
-            let id = self.playerSelf!.id
-            let config = self.playerSelf!.setConfig(index: self.selection!, config: self.configActiv!)
+            let id = self.player!.id
+            let config = self.player!.setConfig(index: self.selection!, config: self.configActiv!)
             let updateConfig = ["id": id, "config": config, "index": self.selection!] as [String: Any]
             
             UpdateConfig().execute(requestPayload: updateConfig) { (result) in
                 
                 DispatchQueue.main.async() {
-                    self.activityIndicator!.isHidden = true
-                    self.activityIndicator!.stopAnimating()
+                    self.header!.indicatorActivity!.isHidden = true
+                    self.header!.indicatorActivity!.stopAnimating()
                     
                     guard let navigationController = self.navigationController else { return }
                     var navigationArray = navigationController.viewControllers
