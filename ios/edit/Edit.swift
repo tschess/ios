@@ -10,6 +10,8 @@ import UIKit
 
 class Edit: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIDropInteractionDelegate {
     
+    @IBOutlet weak var viewFairy: UIView!
+    
     //@IBOutlet weak var componentHeader: Header!
     //viewHeader
     //header
@@ -176,7 +178,7 @@ class Edit: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate, UII
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //self.labelHoldDrag.isHidden = true
+        self.viewFairy!.isHidden = true
         
         self.configCollectionView.isHidden = true
         self.configCollectionView.delegate = self
@@ -406,6 +408,11 @@ extension Edit: UICollectionViewDragDelegate {
         let row: Int = indexPath.row
         if collectionView == self.tschessElementCollectionView {
             let piece: Piece = self.generateTschessElement(name: self.ELEMENT_LIST[row])!
+            
+            if(!piece.standard){
+                self.viewFairy!.isHidden = false
+            }
+            
             let allocatable: Bool = self.allocatable(piece: piece, config: self.configActiv!)
             if(!allocatable){
                 return []
@@ -436,6 +443,12 @@ extension Edit: UICollectionViewDragDelegate {
             return []
         }
         UIImpactFeedbackGenerator(style: .light).impactOccurred()
+        
+        
+        if(!tschessElement!.standard){
+            self.viewFairy!.isHidden = false
+        }
+        
         
         let name: String = self.imageNameFromPiece(piece: tschessElement!)!
         let image: UIImage = UIImage(named: name)!
@@ -521,6 +534,9 @@ extension Edit: UICollectionViewDropDelegate {
     }
     
     func dropInteraction(_ interaction: UIDropInteraction, performDrop session: UIDropSession) {
+        
+        self.viewFairy!.isHidden = true
+        
         if(self.revert()){
             self.rollback()
             return
@@ -545,6 +561,9 @@ extension Edit: UICollectionViewDropDelegate {
     }
     
     func collectionView(_ collectionView: UICollectionView, performDropWith coordinator: UICollectionViewDropCoordinator) {
+        
+        self.viewFairy!.isHidden = true
+        
         let x = coordinator.destinationIndexPath!.row / 8
         let y = coordinator.destinationIndexPath!.row % 8
         let candidate: Piece? = self.configActiv![x][y]

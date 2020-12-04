@@ -300,6 +300,7 @@
                         <outlet property="tabBarMenu" destination="lR1-2A-YPc" id="CDf-K6-4Hh"/>
                         <outlet property="totalPointLabel" destination="bnj-gY-QC6" id="Jkc-fl-nvp"/>
                         <outlet property="tschessElementCollectionView" destination="nQP-5X-zQQ" id="1cF-NF-axm"/>
+                        <outlet property="viewFairy" destination="h5R-q7-MGi" id="cps-hM-ebG"/>
                         <outlet property="viewHeader" destination="cqz-eh-zNQ" id="pBi-5x-3Kq"/>
                         <outlet property="viewPointLabel" destination="bUh-Du-Cy4" id="eeh-ik-gYe"/>
                     </connections>
