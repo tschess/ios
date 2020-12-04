@@ -81,20 +81,47 @@ class Fairies: UIViewController, UITabBarDelegate {
         let squadUpDetailSelectionIndex = notification.userInfo!["fairies_table_selection"] as! Int
         let fairy: Fairy = squadUpAdapter!.getFairyElementList()![squadUpDetailSelectionIndex]
         
-        //let height: CGFloat = UIScreen.main.bounds.height
-        //if(height.isLess(than: 750)){
-            //let storyboard: UIStoryboard = UIStoryboard(name: "InfoL", bundle: nil)
-            //let viewController = storyboard.instantiateViewController(withIdentifier: "InfoL") as! Info
-            //viewController.setPlayer(player: self.playerSelf!)
-            //viewController.setFairyElement(fairyElement: fairy)
-            //self.navigationController?.pushViewController(viewController, animated: false)
-            //return
-        //}
-        //let storyboard: UIStoryboard = UIStoryboard(name: "InfoP", bundle: nil)
-        //let viewController = storyboard.instantiateViewController(withIdentifier: "InfoP") as! Info
-        //viewController.setPlayer(player: self.playerSelf!)
-        //viewController.setFairyElement(fairyElement: fairy)
-        //self.navigationController?.pushViewController(viewController, animated: false)
+        //let viewController = UIViewController()
+        //viewController.preferredContentSize = CGSize(width: 250, height: 108) //108
+        //self.pickerView = UIPickerView(frame: CGRect(x: 0, y: 0, width: 250, height: 100))
+        //pickerView!.delegate = self
+        //pickerView!.dataSource = self
+        //pickerView!.backgroundColor = .black
+        
+        //pickerView!.layer.cornerRadius = 10
+        //pickerView!.layer.masksToBounds = true
+        
+        //pickerView!.selectRow(1, inComponent: 0, animated: true)
+        
+        //viewController.view.addSubview(self.pickerView!)
+        //let alert = UIAlertController(title: "🧚 \(fairy.name) ♟️", message: "", preferredStyle: UIAlertController.Style.alert)
+        
+        //alert.setValue(viewController, forKey: "contentViewController")
+        
+        
+        
+        
+        
+        let message: String = "\n\(fairy.description)"
+
+        let alert = UIAlertController(title: "🧚 \(fairy.name) 🧚", message: message, preferredStyle: .alert)
+        
+        let option01 = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+        option01.setValue(UIColor.lightGray, forKey: "titleTextColor")
+        alert.addAction(option01)
+        
+        //let image = UIImageView(image: fairy.imageDefault)
+        //alert.view.addSubview(image)
+        //image.translatesAutoresizingMaskIntoConstraints = false
+        //alert.view.addConstraint(NSLayoutConstraint(item: image, attribute: .centerX, relatedBy: .equal, toItem: alert.view, attribute: .centerX, multiplier: 1, constant: 0))
+        //alert.view.addConstraint(NSLayoutConstraint(item: image, attribute: .centerY, relatedBy: .equal, toItem: alert.view, attribute: .centerY, multiplier: 1, constant: 0))
+        //alert.view.addConstraint(NSLayoutConstraint(item: image, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 65.0))
+        //alert.view.addConstraint(NSLayoutConstraint(item: image, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 65.0))
+        
+       
+    
+        
+        self.present(alert, animated: true)
     }
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {

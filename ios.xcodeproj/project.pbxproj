@@ -55,8 +55,6 @@
 		83DFCF812579812B007088E5 /* LeaderboardTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DFCF802579812B007088E5 /* LeaderboardTable.swift */; };
 		83DFCF832579813E007088E5 /* LeaderboardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83DFCF822579813E007088E5 /* LeaderboardCell.swift */; };
 		83DFCF85257ADDBE007088E5 /* Fairies.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83DFCF84257ADDBE007088E5 /* Fairies.storyboard */; };
-		B7021F3023FDFC5200C9346A /* FairiesL.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7021F2F23FDFC5200C9346A /* FairiesL.storyboard */; };
-		B7021F3223FDFCC100C9346A /* FairiesP.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7021F3123FDFCC100C9346A /* FairiesP.storyboard */; };
 		B7021F5923FE303000C9346A /* EditSelfL.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7021F5823FE303000C9346A /* EditSelfL.storyboard */; };
 		B7021F5C23FE304D00C9346A /* EditSelfP.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7021F5B23FE304D00C9346A /* EditSelfP.storyboard */; };
 		B7021F9623FE5D7F00C9346A /* OtherL.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7021F9523FE5D7F00C9346A /* OtherL.storyboard */; };
@@ -238,8 +236,6 @@
 		83DFCF822579813E007088E5 /* LeaderboardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardCell.swift; sourceTree = "<group>"; };
 		83DFCF84257ADDBE007088E5 /* Fairies.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Fairies.storyboard; sourceTree = "<group>"; };
 		AD83F59EDBC27D005F033F41 /* Pods-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios.debug.xcconfig"; path = "Target Support Files/Pods-ios/Pods-ios.debug.xcconfig"; sourceTree = "<group>"; };
-		B7021F2F23FDFC5200C9346A /* FairiesL.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FairiesL.storyboard; sourceTree = "<group>"; };
-		B7021F3123FDFCC100C9346A /* FairiesP.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FairiesP.storyboard; sourceTree = "<group>"; };
 		B7021F5823FE303000C9346A /* EditSelfL.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditSelfL.storyboard; sourceTree = "<group>"; };
 		B7021F5B23FE304D00C9346A /* EditSelfP.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditSelfP.storyboard; sourceTree = "<group>"; };
 		B7021F9523FE5D7F00C9346A /* OtherL.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OtherL.storyboard; sourceTree = "<group>"; };
@@ -521,22 +517,6 @@
 				45C0F287A16E70CE8A23A2EB /* Pods_ios.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		B7021F2D23FDFC2D00C9346A /* primary */ = {
-			isa = PBXGroup;
-			children = (
-				B7021F3123FDFCC100C9346A /* FairiesP.storyboard */,
-			);
-			path = primary;
-			sourceTree = "<group>";
-		};
-		B7021F2E23FDFC3800C9346A /* legacy */ = {
-			isa = PBXGroup;
-			children = (
-				B7021F2F23FDFC5200C9346A /* FairiesL.storyboard */,
-			);
-			path = legacy;
 			sourceTree = "<group>";
 		};
 		B7021F5723FE300F00C9346A /* legacy */ = {
@@ -957,7 +937,6 @@
 		B7BE121B23EAD8BB00ADA499 /* fairies */ = {
 			isa = PBXGroup;
 			children = (
-				B7BE124D23EB02B400ADA499 /* storyboard */,
 				B7BE124723EB023700ADA499 /* Fairies.swift */,
 				B7BE124923EB027400ADA499 /* FairiesTable.swift */,
 				B7BE124B23EB02A200ADA499 /* FairiesCell.swift */,
@@ -976,15 +955,6 @@
 				83DFCF7725795948007088E5 /* Profile.storyboard */,
 			);
 			path = profile;
-			sourceTree = "<group>";
-		};
-		B7BE124D23EB02B400ADA499 /* storyboard */ = {
-			isa = PBXGroup;
-			children = (
-				B7021F2E23FDFC3800C9346A /* legacy */,
-				B7021F2D23FDFC2D00C9346A /* primary */,
-			);
-			path = storyboard;
 			sourceTree = "<group>";
 		};
 		B7BE125923EB03F100ADA499 /* networking */ = {
@@ -1256,7 +1226,6 @@
 				83DFCF7825795948007088E5 /* Profile.storyboard in Resources */,
 				83ACC6772500113A00D394D0 /* PopHelp.storyboard in Resources */,
 				83ACC67D250011C700D394D0 /* PopPoison.storyboard in Resources */,
-				B7021F3023FDFC5200C9346A /* FairiesL.storyboard in Resources */,
 				83ACC69F2500159C00D394D0 /* PopNote.storyboard in Resources */,
 				B7021F9623FE5D7F00C9346A /* OtherL.storyboard in Resources */,
 				83ACC67F2500120100D394D0 /* PopPassant.storyboard in Resources */,
@@ -1276,7 +1245,6 @@
 				B7BE121623EAD7E700ADA499 /* Init.storyboard in Resources */,
 				B7ED646423F4D9D400292FBC /* Create.storyboard in Resources */,
 				B7021F5C23FE304D00C9346A /* EditSelfP.storyboard in Resources */,
-				B7021F3223FDFCC100C9346A /* FairiesP.storyboard in Resources */,
 				B7021F5923FE303000C9346A /* EditSelfL.storyboard in Resources */,
 				83ACC699250014DE00D394D0 /* PopOption.storyboard in Resources */,
 				83ACC673250010D400D394D0 /* PopInvalid.storyboard in Resources */,

@@ -63,7 +63,7 @@ class Home: UIViewController, UITabBarDelegate {
         switch item.tag {
         
         case 0:
-            let alert = UIAlertController(title: "⏱️ hang tight 🤖", message: "\nSingle-player mode coming soon!", preferredStyle: .alert)
+            let alert = UIAlertController(title: "⏱️ Hang tight! 🤖", message: "\nSingle-player mode coming soon.", preferredStyle: .alert)
             let action = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
             action.setValue(UIColor.lightGray, forKey: "titleTextColor")
             alert.addAction(action)

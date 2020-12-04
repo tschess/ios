@@ -122,7 +122,7 @@
         <scene sceneID="t9W-IB-wtN">
             <objects>
                 <tableViewController id="Mmr-Cq-zzT" customClass="FairiesTable" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="123" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" contentViewInsetsToSafeArea="NO" id="PH5-kq-hL3">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" contentViewInsetsToSafeArea="NO" id="PH5-kq-hL3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="644"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -130,24 +130,24 @@
                         <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="sectionIndexTrackingBackgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="center" restorationIdentifier="FairiesCell" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="default" indentationWidth="10" reuseIdentifier="FairiesCell" rowHeight="123" id="Ehq-F2-xM4" customClass="FairiesCell" customModule="ios" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="123"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="center" restorationIdentifier="FairiesCell" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="default" indentationWidth="10" reuseIdentifier="FairiesCell" id="Ehq-F2-xM4" customClass="FairiesCell" customModule="ios" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="73.333335876464844"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ehq-F2-xM4" id="QS4-PJ-kjd">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="123"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="73"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zQu-Vi-hoM">
-                                            <rect key="frame" x="169.66666666666666" y="4" width="75" height="75"/>
+                                            <rect key="frame" x="8" y="4" width="65" height="65.333333333333329"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="75" id="RqJ-gi-b8H"/>
-                                                <constraint firstAttribute="height" constant="75" id="u7J-E2-WVG"/>
+                                                <constraint firstAttribute="width" constant="65" id="RqJ-gi-b8H"/>
+                                                <constraint firstAttribute="height" constant="65" id="u7J-E2-WVG"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="element name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3NA-qj-JnP">
-                                            <rect key="frame" x="0.0" y="83" width="414" height="40"/>
+                                            <rect key="frame" x="77.000000000000014" y="28.333333333333329" width="133.33333333333337" height="30"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="40" id="afq-ch-XmP"/>
+                                                <constraint firstAttribute="height" constant="30" id="afq-ch-XmP"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="22"/>
                                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -156,11 +156,11 @@
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
-                                        <constraint firstItem="3NA-qj-JnP" firstAttribute="top" secondItem="zQu-Vi-hoM" secondAttribute="bottom" constant="4" id="3fg-Bl-W0V"/>
-                                        <constraint firstItem="3NA-qj-JnP" firstAttribute="leading" secondItem="QS4-PJ-kjd" secondAttribute="leading" id="G4j-qo-Dm8"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="3NA-qj-JnP" secondAttribute="bottom" constant="4" id="1pp-JA-4EE"/>
+                                        <constraint firstAttribute="bottom" secondItem="zQu-Vi-hoM" secondAttribute="bottom" constant="4" id="QdK-aS-P1H"/>
+                                        <constraint firstItem="3NA-qj-JnP" firstAttribute="leading" secondItem="zQu-Vi-hoM" secondAttribute="trailing" constant="4" id="a05-FD-Anf"/>
                                         <constraint firstItem="zQu-Vi-hoM" firstAttribute="top" secondItem="QS4-PJ-kjd" secondAttribute="top" constant="4" id="a4W-2T-gqU"/>
-                                        <constraint firstAttribute="trailing" secondItem="3NA-qj-JnP" secondAttribute="trailing" id="akZ-az-UDI"/>
-                                        <constraint firstItem="zQu-Vi-hoM" firstAttribute="centerX" secondItem="QS4-PJ-kjd" secondAttribute="centerX" id="h5e-HO-DXE"/>
+                                        <constraint firstItem="zQu-Vi-hoM" firstAttribute="leading" secondItem="QS4-PJ-kjd" secondAttribute="leading" constant="8" id="ihj-Ps-LcN"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
