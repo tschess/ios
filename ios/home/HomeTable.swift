@@ -188,15 +188,15 @@ class HomeTable: UITableViewController, SwipeTableViewCellDelegate, UIPickerView
             
             self.activity!.setIndicator(on: true)
             //TODO: MENU
-            //let requestPayload: [String: Any] = ["id_game": game.id, "id_self": self.activity!.player!.id]
-            //UpdateNack().execute(requestPayload: requestPayload) { (result) in
-                //self.list.remove(at: indexPath.row)
-                //self.activity!.setIndicator(on: false)
+            let requestPayload: [String: Any] = ["id_game": game.id, "id_self": self.activity!.player!.id]
+            UpdateNack().execute(requestPayload: requestPayload) { (result) in
+                self.list.remove(at: indexPath.row)
+                self.activity!.setIndicator(on: false)
                 
-                //DispatchQueue.main.async {
-                    //self.tableView.reloadData()
-                //}
-            //}
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+            }
         }
         nAction.backgroundColor = UIColor(red: 39.0/255, green: 41.0/255, blue: 44.0/255, alpha: 1.0)
         nAction.image = UIImage(named: "td_w")!
@@ -232,14 +232,14 @@ class HomeTable: UITableViewController, SwipeTableViewCellDelegate, UIPickerView
                 
                 self.activity!.setIndicator(on: true)
                 let game = self.list[indexPath.row]
-//                let requestPayload: [String: Any] = ["id_game": game.id, "id_self": self.activity!.player!.id]
-//                UpdateRescind().execute(requestPayload: requestPayload) { (result) in
-//                    self.list.remove(at: indexPath.row)
-//                    //self.activity!.setIndicator(on: false)
-//                    DispatchQueue.main.async {
-//                        self.tableView.reloadData()
-//                    }
-//                }
+                let requestPayload: [String: Any] = ["id_game": game.id, "id_self": self.activity!.player!.id]
+                UpdateRescind().execute(requestPayload: requestPayload) { (result) in
+                    self.list.remove(at: indexPath.row)
+                    //self.activity!.setIndicator(on: false)
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                    }
+                }
             }
             rescind.backgroundColor = UIColor(red: 39.0/255, green: 41.0/255, blue: 44.0/255, alpha: 1.0)
             rescind.image = UIImage(named: "close_w")!

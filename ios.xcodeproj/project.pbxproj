@@ -24,6 +24,8 @@
 		8385908E24F98B2A00BBC11C /* Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8385908D24F98B2A00BBC11C /* Presenter.swift */; };
 		83872647257EE9F700F62288 /* RequestAck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83872646257EE9F700F62288 /* RequestAck.swift */; };
 		83872649257EEAE300F62288 /* RequestChallenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83872648257EEAE300F62288 /* RequestChallenge.swift */; };
+		8387264B257EEBF700F62288 /* UpdateRescind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8387264A257EEBF700F62288 /* UpdateRescind.swift */; };
+		8387264D257EEC3200F62288 /* UpdateNack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8387264C257EEC3200F62288 /* UpdateNack.swift */; };
 		83ACC67D250011C700D394D0 /* PopPoison.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83ACC67C250011C700D394D0 /* PopPoison.storyboard */; };
 		83ACC67F2500120100D394D0 /* PopPassant.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83ACC67E2500120100D394D0 /* PopPassant.storyboard */; };
 		83ACC6932500143900D394D0 /* PopPromo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83ACC6922500143900D394D0 /* PopPromo.swift */; };
@@ -192,6 +194,8 @@
 		8385908D24F98B2A00BBC11C /* Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presenter.swift; sourceTree = "<group>"; };
 		83872646257EE9F700F62288 /* RequestAck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestAck.swift; sourceTree = "<group>"; };
 		83872648257EEAE300F62288 /* RequestChallenge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestChallenge.swift; sourceTree = "<group>"; };
+		8387264A257EEBF700F62288 /* UpdateRescind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateRescind.swift; sourceTree = "<group>"; };
+		8387264C257EEC3200F62288 /* UpdateNack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateNack.swift; sourceTree = "<group>"; };
 		83ACC67C250011C700D394D0 /* PopPoison.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PopPoison.storyboard; sourceTree = "<group>"; };
 		83ACC67E2500120100D394D0 /* PopPassant.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PopPassant.storyboard; sourceTree = "<group>"; };
 		83ACC6922500143900D394D0 /* PopPromo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopPromo.swift; sourceTree = "<group>"; };
@@ -967,6 +971,8 @@
 				8375E1EA256C0AE9001809FF /* Opponent.swift */,
 				83872646257EE9F700F62288 /* RequestAck.swift */,
 				83872648257EEAE300F62288 /* RequestChallenge.swift */,
+				8387264A257EEBF700F62288 /* UpdateRescind.swift */,
+				8387264C257EEC3200F62288 /* UpdateNack.swift */,
 			);
 			path = home;
 			sourceTree = "<group>";
@@ -1225,6 +1231,7 @@
 				83ACC6A82500173F00D394D0 /* UpdateConfirm.swift in Sources */,
 				B771365423F222AF007F0962 /* UpdateMate.swift in Sources */,
 				835FADA524F00A910080A194 /* Countdown.swift in Sources */,
+				8387264B257EEBF700F62288 /* UpdateRescind.swift in Sources */,
 				8358928224BE65A0004F9703 /* UpdatePush.swift in Sources */,
 				B7AF787323E0B9DA00BAD8EC /* RequestPage.swift in Sources */,
 				B7BE12AE23EB0CDB00ADA499 /* Checker.swift in Sources */,
@@ -1270,6 +1277,7 @@
 				8385908E24F98B2A00BBC11C /* Presenter.swift in Sources */,
 				B7BE11B023EA9D2B00ADA499 /* Queen.swift in Sources */,
 				B7EF701E23EA28BA00BAF2E2 /* EntityPlayer.swift in Sources */,
+				8387264D257EEC3200F62288 /* UpdateNack.swift in Sources */,
 				B7D8ECD9240820EB001B5D2D /* AmazonBlack.swift in Sources */,
 				B7BE11C723EA9EA700ADA499 /* RookWhite.swift in Sources */,
 				B7BE11B423EA9D7E00ADA499 /* QueenBlack.swift in Sources */,
