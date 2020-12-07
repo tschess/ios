@@ -533,29 +533,26 @@ extension Edit: UICollectionViewDropDelegate {
         self.flash()
     }
     
+    func renderPopup(fairy: Fairy) {
+        let message: String = "\n\(fairy.description)"
+        let alert = UIAlertController(title: "🧚 \(fairy.name) 🧚", message: message, preferredStyle: .alert)
+        let option01 = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+        option01.setValue(UIColor.lightGray, forKey: "titleTextColor")
+        alert.addAction(option01)
+        self.present(alert, animated: true)
+    }
+    
     func dropInteraction(_ interaction: UIDropInteraction, performDrop session: UIDropSession) {
         
-        
-        // Perform additional UI updates as needed.
-        let point = session.location(in: self.viewFairy!)
-        
-        //print("\n\nLoCaTiOn: \(point)")
-        
-        //let isPointInFrame = self.viewFairy!.frame.contains(point)
-        
-        //print("isPointInFrame: \(isPointInFrame)")
-        
-       
-        if self.viewFairy!.bounds.contains(point) {
-           // do something
-            //print("true true true\n\n")
-        }
-        //else {
-            //print("FALSE!\n\n")
-        //}
-        
-        
         self.viewFairy!.isHidden = true
+        
+        let point = session.location(in: self.viewFairy!)
+        let piece: Piece? = self.generateTschessElement(name: self.candidateName!)
+        if self.viewFairy!.bounds.contains(point) {
+            if(!piece!.standard){
+                self.renderPopup(fairy: piece as! Fairy)
+            }
+        }
         
         if(self.revert()){
             self.rollback()
@@ -568,6 +565,16 @@ extension Edit: UICollectionViewDropDelegate {
         if(candidate == nil){
             return
         }
+
+        
+        if self.viewFairy!.bounds.contains(point) {
+            if(!candidate!.standard){
+                self.renderPopup(fairy: candidate as! Fairy)
+            }
+        }
+        
+        
+        
         if(candidate!.name == "King"){
             self.rollback()
             return
