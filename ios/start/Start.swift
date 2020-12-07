@@ -67,12 +67,12 @@ class Start: UIViewController, UITextFieldDelegate {
         
         KeyboardAvoiding.avoidingView = self.contentView
         
-        let testTaskIncrementer: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.testTaskIncrementer))
-        self.testTaskImageView.addGestureRecognizer(testTaskIncrementer)
-        self.testTaskImageView.isUserInteractionEnabled = true
-        let testTaskExecuter: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.testTaskExecuter))
-        self.testTaskLabel.addGestureRecognizer(testTaskExecuter)
-        self.testTaskLabel.isUserInteractionEnabled = true
+        //let testTaskIncrementer: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.testTaskIncrementer))
+        //self.testTaskImageView.addGestureRecognizer(testTaskIncrementer)
+        //self.testTaskImageView.isUserInteractionEnabled = true
+        //let testTaskExecuter: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.testTaskExecuter))
+        //self.testTaskLabel.addGestureRecognizer(testTaskExecuter)
+        //self.testTaskLabel.isUserInteractionEnabled = true
     }
     
     //MARK: Layout ~ View
@@ -123,8 +123,10 @@ class Start: UIViewController, UITextFieldDelegate {
             username: usernameTextString!.lowercased(),
             password: passwordTextString!)
         
-        RequestLogin().execute(requestPayload: request) { (player) in
-            if let player = player {
+        self.execute(requestPayload: request) { (result) in
+            
+            if (result["id"] as? String) != nil {
+                let player: EntityPlayer = ParsePlayer().execute(json: result)
                 DispatchQueue.main.async {
                     let storyboard: UIStoryboard = UIStoryboard(name: "Home", bundle: nil)
                     let viewController = storyboard.instantiateViewController(withIdentifier: "Home") as! Home
@@ -133,6 +135,37 @@ class Start: UIViewController, UITextFieldDelegate {
                 }
                 return
             }
+            if let error = result as? [String: String] {
+                let unknown = error["unknown"] == "login"
+                if(unknown){
+                    DispatchQueue.main.async {
+                        self.activityIndicator.isHidden = true
+                        self.activityIndicator.stopAnimating()
+                        self.buttonLogin.isHidden = false
+                        self.buttonCreate.isHidden = false
+                        self.usernameTextField.isHidden = false
+                        self.passwordTextField.isHidden = false
+                        let alert = UIAlertController(title: "❓ Username unknown 🧐", message: "\nNo registered player under this name.", preferredStyle: .alert)
+                        let action = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+                        action.setValue(UIColor.lightGray, forKey: "titleTextColor")
+                        alert.addAction(action)
+                        self.present(alert, animated: true)
+                    }
+                    return
+                }
+            }
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             DispatchQueue.main.async {
                 self.activityIndicator.isHidden = true
                 self.activityIndicator.stopAnimating()
@@ -253,69 +286,18 @@ class Start: UIViewController, UITextFieldDelegate {
         self.testTaskLabel.text = String(testCount)
     }
     
-    
-    @objc func testTaskExecuter(){
-        let rowA: [String] = ["RookBlack_x", "KnightBlack_x", "BishopBlack_x", "QueenBlack_x", "KingBlack_x", "BishopBlack_x", "KnightBlack_x", "RookBlack_x"]
-        let rowB: [String] = ["PawnBlack_x", "PawnBlack_x", "PawnBlack_x", "PawnBlack_x", "PawnBlack_x", "PawnBlack_x", "PawnBlack_x", "PawnBlack_x"]
-        var rowC: [String] = [String](repeating: "", count: 8)
-        let rowD: [String] = [String](repeating: "", count: 8)
-        
-        rowC[6] = "PawnWhite"
-        
-        let rowE: [String] = [String](repeating: "", count: 8)
-        var rowF: [String] = [String](repeating: "", count: 8)
-        rowF[6] = "PawnBlack"
-        
-        let rowG: [String] = ["PawnWhite_x", "PawnWhite_x", "PawnWhite_x", "PawnWhite_x", "PawnWhite_x", "PawnWhite_x", "PawnWhite_x", "PawnWhite_x"]
-        let rowH: [String] = ["RookWhite_x", "KnightWhite_x", "BishopWhite_x", "QueenWhite_x", "KingWhite_x", "BishopWhite_x", "KnightWhite_x", "RookWhite_x"]
-        
-        view.removeGestureRecognizer(self.dismissKeyboardGesture!)
-        if(self.testCount == 3){
-            let STATE = [rowH, rowG, rowF, rowE, rowD, rowC, rowB, rowA]
-            let TURN = "WHITE"
-            let REQUEST: [String: Any] = ["state": STATE, "turn": TURN]
-            RequestTest().execute(requestPayload: REQUEST) { (game) in
-                DispatchQueue.main.async {
-                    let storyboard: UIStoryboard = UIStoryboard(name: "dTschessP", bundle: nil)
-                    let viewController = storyboard.instantiateViewController(withIdentifier: "dTschessP") as! Tschess
-                    viewController.playerOther = game!.getPlayerOther(username: game!.white.username)
-                    viewController.player = game!.white
-                    viewController.game = game!
-                    UIApplication.shared.keyWindow?.rootViewController = viewController
-                }
-            }
-            return
-        }
-        if(self.testCount == 4){
-            let STATE = [[""]]
-            let TURN = "WHITE"
-            let REQUEST: [String: Any] = ["state": STATE, "turn": TURN]
-            RequestTest().execute(requestPayload: REQUEST) { (game) in
-                DispatchQueue.main.async {
-                    let storyboard: UIStoryboard = UIStoryboard(name: "dTschessP", bundle: nil)
-                    let viewController = storyboard.instantiateViewController(withIdentifier: "dTschessP") as! Tschess
-                    viewController.playerOther = game!.getPlayerOther(username: game!.black.username)
-                    viewController.player = game!.black
-                    viewController.game = game!
-                    UIApplication.shared.keyWindow?.rootViewController = viewController
-                }
-            }
-            return
-        }
-        
-        
-    }
-    
     @IBAction func buttonClickRecover(_ sender: Any) {
         DispatchQueue.main.async {
-            let storyboard: UIStoryboard = UIStoryboard(name: "PopRecover", bundle: nil)
-            let viewController = storyboard.instantiateViewController(withIdentifier: "PopRecover") as! PopRecover
-            self.present(viewController, animated: true, completion: nil)
+            let alert = UIAlertController(title: "🔐 Recover account 📧", message: "\nPlease send email to hello@tschess.io", preferredStyle: .alert)
+            let action = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+            action.setValue(UIColor.lightGray, forKey: "titleTextColor")
+            alert.addAction(action)
+            self.present(alert, animated: true)
         }
     }
     
     
-    func execute(requestPayload: [String: String], completion: @escaping (EntityPlayer?) -> Void) {
+    func execute(requestPayload: [String: String], completion: @escaping ([String: Any]) -> Void) {
         let url = URL(string: "http://\(ServerAddress().IP):8080/player/login")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
@@ -324,62 +306,41 @@ class Start: UIViewController, UITextFieldDelegate {
         do {
             request.httpBody = try JSONSerialization.data(withJSONObject: requestPayload, options: .prettyPrinted)
         } catch _ {
-            completion(nil)
+            completion(self.renderError())
         }
         let session = URLSession.shared
         let task = session.dataTask(with: request, completionHandler: { data, response, error in
             guard error == nil else {
-                completion(nil)
+                completion(self.renderError())
                 return
             }
             guard let data = data else {
-                completion(nil)
+                completion(self.renderError())
                 return
             }
             do {
                 guard let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any] else {
-                    completion(nil)
+                    completion(self.renderError())
                     return
                 }
-                if (json["id"] as? String) == nil {
-                    //print("MIA")
-                    completion(nil)
-                    return
-                    
-                }
-                //print("json: \(json)")
-                
-                let player: EntityPlayer = ParsePlayer().execute(json: json)
-                completion(player)
-                return
-                
-            } catch let error {
-                
-                
-               
-                //this.progressBar.visibility = View.INVISIBLE
-                //val title: String = "⚡ server error ⚡"
-                //val message: String = "\uD83D\uDD0C unable to reach server.\ncheck connection and try again. \uD83D\uDCF1"
-                //DialogOk(context).render(title, message)
-                
-                completion(nil)
+                completion(json)
+            } catch _ {
+                completion(self.renderError())
             }
         })
         task.resume()
     }
     
-    func error() {
-        
-        let alert = UIAlertController(title: "🙅‍♀️ Input invalid 🙅‍♂️", message: "\nPlease re-evaluate input and try again. 📲", preferredStyle: .alert)
-        let action = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
-        action.setValue(UIColor.lightGray, forKey: "titleTextColor")
-        alert.addAction(action)
-        self.present(alert, animated: true)
+    func renderError() -> [String: String] {
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: "📡 Server error 👽", message: "\nCheck network connectivity.", preferredStyle: .alert)
+            let action = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+            action.setValue(UIColor.lightGray, forKey: "titleTextColor")
+            alert.addAction(action)
+            self.present(alert, animated: true)
+        }
+        return ["login": "error"]
     }
-    
-    
-    
-    
 }
 
 extension String {
