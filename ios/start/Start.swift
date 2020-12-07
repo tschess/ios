@@ -105,9 +105,15 @@ class Start: UIViewController, UITextFieldDelegate {
         
         if(!usernameTextString!.isAlphanumeric || !passwordTextString!.isAlphanumeric){
             DispatchQueue.main.async {
-                let storyboard: UIStoryboard = UIStoryboard(name: "PopInvalid", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "PopInvalid") as! PopDismiss
-                self.present(viewController, animated: true, completion: nil)
+                //let storyboard: UIStoryboard = UIStoryboard(name: "PopInvalid", bundle: nil)
+                //let viewController = storyboard.instantiateViewController(withIdentifier: "PopInvalid") as! PopDismiss
+                //self.present(viewController, animated: true, completion: nil)
+                
+                let alert = UIAlertController(title: "🙅‍♀️ Input invalid 🙅‍♂️", message: "\nPlease re-evaluate input and try again.", preferredStyle: .alert)
+                let action = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+                action.setValue(UIColor.lightGray, forKey: "titleTextColor")
+                alert.addAction(action)
+                self.present(alert, animated: true)
             }
             return
         }
@@ -135,13 +141,13 @@ class Start: UIViewController, UITextFieldDelegate {
                 self.usernameTextField.isHidden = false
                 self.passwordTextField.isHidden = false
                 
-                
                 // HINT
-                self.setHintText()
-                
-                let storyboard: UIStoryboard = UIStoryboard(name: "PopInvalid", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "PopInvalid") as! PopDismiss
-                self.present(viewController, animated: true, completion: nil)
+                // self.setHintText()
+                let alert = UIAlertController(title: "🙅‍♀️ Input invalid 🙅‍♂️", message: "\nPlease re-evaluate input and try again. 📲", preferredStyle: .alert)
+                let action = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+                action.setValue(UIColor.lightGray, forKey: "titleTextColor")
+                alert.addAction(action)
+                self.present(alert, animated: true)
             }
         }
     }
@@ -308,6 +314,72 @@ class Start: UIViewController, UITextFieldDelegate {
         }
     }
     
+    
+    func execute(requestPayload: [String: String], completion: @escaping (EntityPlayer?) -> Void) {
+        let url = URL(string: "http://\(ServerAddress().IP):8080/player/login")!
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        do {
+            request.httpBody = try JSONSerialization.data(withJSONObject: requestPayload, options: .prettyPrinted)
+        } catch _ {
+            completion(nil)
+        }
+        let session = URLSession.shared
+        let task = session.dataTask(with: request, completionHandler: { data, response, error in
+            guard error == nil else {
+                completion(nil)
+                return
+            }
+            guard let data = data else {
+                completion(nil)
+                return
+            }
+            do {
+                guard let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any] else {
+                    completion(nil)
+                    return
+                }
+                if (json["id"] as? String) == nil {
+                    //print("MIA")
+                    completion(nil)
+                    return
+                    
+                }
+                //print("json: \(json)")
+                
+                let player: EntityPlayer = ParsePlayer().execute(json: json)
+                completion(player)
+                return
+                
+            } catch let error {
+                
+                
+               
+                //this.progressBar.visibility = View.INVISIBLE
+                //val title: String = "⚡ server error ⚡"
+                //val message: String = "\uD83D\uDD0C unable to reach server.\ncheck connection and try again. \uD83D\uDCF1"
+                //DialogOk(context).render(title, message)
+                
+                completion(nil)
+            }
+        })
+        task.resume()
+    }
+    
+    func error() {
+        
+        let alert = UIAlertController(title: "🙅‍♀️ Input invalid 🙅‍♂️", message: "\nPlease re-evaluate input and try again. 📲", preferredStyle: .alert)
+        let action = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+        action.setValue(UIColor.lightGray, forKey: "titleTextColor")
+        alert.addAction(action)
+        self.present(alert, animated: true)
+    }
+    
+    
+    
+    
 }
 
 extension String {
@@ -315,3 +387,6 @@ extension String {
         return !isEmpty && range(of: "[^a-zA-Z0-9]", options: .regularExpression) == nil
     }
 }
+
+
+
