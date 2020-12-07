@@ -535,6 +535,26 @@ extension Edit: UICollectionViewDropDelegate {
     
     func dropInteraction(_ interaction: UIDropInteraction, performDrop session: UIDropSession) {
         
+        
+        // Perform additional UI updates as needed.
+        let point = session.location(in: self.viewFairy!)
+        
+        //print("\n\nLoCaTiOn: \(point)")
+        
+        //let isPointInFrame = self.viewFairy!.frame.contains(point)
+        
+        //print("isPointInFrame: \(isPointInFrame)")
+        
+       
+        if self.viewFairy!.bounds.contains(point) {
+           // do something
+            //print("true true true\n\n")
+        }
+        //else {
+            //print("FALSE!\n\n")
+        //}
+        
+        
         self.viewFairy!.isHidden = true
         
         if(self.revert()){
