@@ -80,7 +80,6 @@ class Home: UIViewController, UITabBarDelegate {
             _ = self.navigationController?.popViewController(animated: false)
             self.navigationController?.pushViewController(viewController, animated: false)
         case 2:
-            print("LEADERBOARD !!!!!!!")
             let storyboard: UIStoryboard = UIStoryboard(name: "Leaderboard", bundle: nil)
             let viewController = storyboard.instantiateViewController(withIdentifier: "Leaderboard") as! Leaderboard
             viewController.playerSelf = self.player!
@@ -92,7 +91,6 @@ class Home: UIViewController, UITabBarDelegate {
             _ = self.navigationController?.popViewController(animated: false)
             self.navigationController?.pushViewController(viewController, animated: false)
         default:
-            print("PROFILE !!!!!!!")
             let storyboard: UIStoryboard = UIStoryboard(name: "Profile", bundle: nil)
             let viewController = storyboard.instantiateViewController(withIdentifier: "Profile") as! Profile
             viewController.player = self.player!

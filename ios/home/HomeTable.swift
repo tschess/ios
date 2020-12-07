@@ -46,53 +46,51 @@ class HomeTable: UITableViewController, SwipeTableViewCellDelegate, UIPickerView
     //TODO: play
     func play(config: Int, id_game: String) {
         
-        
-        
-        
-        
         let id_player = self.activity!.player!.id
-        
         
         let payload: [String: Any] = [
             "id_game": id_game,
             "id_self": id_player,
             "config": config]
         
-//        RequestAck().execute(requestPayload: payload) { (result) in
-//            let game: EntityGame = ParseGame().execute(json: result)
-//            DispatchQueue.main.async {
-//                let height: CGFloat = UIScreen.main.bounds.height
-//                let playerOther: EntityPlayer = game.getPlayerOther(username: self.activity!.player!.username)
-//                if(height.isLess(than: 750)){
-//                    let storyboard: UIStoryboard = UIStoryboard(name: "Tschess", bundle: nil)
-//                    let viewController = storyboard.instantiateViewController(withIdentifier: "Tschess") as! Tschess
-//                    viewController.playerOther = playerOther
-//                    viewController.player = self.activity!.player!
-//                    viewController.game = game
-//                    self.navigationController?.pushViewController(viewController, animated: false)
-//                    guard let navigationController = self.navigationController else { return }
-//                    var navigationArray = navigationController.viewControllers // To get all UIViewController stack as Array
-//                    navigationArray.remove(at: navigationArray.count - 2) // To remove previous UIViewController
-//                    self.navigationController?.viewControllers = navigationArray
-//                    return
-//                }
-//                let storyboard: UIStoryboard = UIStoryboard(name: "Tschess", bundle: nil)
-//                let viewController = storyboard.instantiateViewController(withIdentifier: "Tschess") as! Tschess
-//                viewController.playerOther = playerOther
-//                viewController.player = self.activity!.player!
-//                viewController.game = game
-//                self.navigationController?.pushViewController(viewController, animated: false)
-//                guard let navigationController = self.navigationController else { return }
-//                var navigationArray = navigationController.viewControllers // To get all UIViewController stack as Array
-//                navigationArray.remove(at: navigationArray.count - 2) // To remove previous UIViewController
-//                self.navigationController?.viewControllers = navigationArray
-//            }
-//        }
-        
-        
-        
-        
+        RequestAck().execute(requestPayload: payload) { (result) in
+            let game: EntityGame = ParseGame().execute(json: result)
+            DispatchQueue.main.async {
+                let opponent: EntityPlayer = game.getPlayerOther(username: self.activity!.player!.username)
+                let storyboard: UIStoryboard = UIStoryboard(name: "Tschess", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "Tschess") as! Tschess
+                viewController.playerOther = opponent
+                viewController.player = self.activity!.player!
+                viewController.game = game
+                self.navigationController?.pushViewController(viewController, animated: false)
+            }
+        }
     }
+    
+    func challenge(config: Int, id_other: String) {
+        
+        let id_player = self.activity!.player!.id
+        
+        let payload: [String: Any] = [
+            "id_self": id_player,
+            "id_other": id_other,
+            "config": config]
+        
+        RequestAck().execute(requestPayload: payload) { (result) in
+            let game: EntityGame = ParseGame().execute(json: result)
+            DispatchQueue.main.async {
+                let opponent: EntityPlayer = game.getPlayerOther(username: self.activity!.player!.username)
+                let storyboard: UIStoryboard = UIStoryboard(name: "Tschess", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "Tschess") as! Tschess
+                viewController.playerOther = opponent
+                viewController.player = self.activity!.player!
+                viewController.game = game
+                self.navigationController?.pushViewController(viewController, animated: false)
+            }
+        }
+    }
+    
+    
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
         let username: String = self.activity!.player!.username
@@ -166,7 +164,7 @@ class HomeTable: UITableViewController, SwipeTableViewCellDelegate, UIPickerView
         let option00 = UIAlertAction(title: "⚡ rematch ⚡", style: .default, handler:{ _ in
             let value = self.pickerView?.selectedRow(inComponent: 0)
             
-            //self.challenge(config: value!, id_other: opponent.id)
+            self.challenge(config: value!, id_other: opponent.id)
         })
         alert.addAction(option00)
         

@@ -22,6 +22,8 @@
 		8379820A24F05EE000254FBD /* Highlighter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8379820924F05EE000254FBD /* Highlighter.swift */; };
 		8385908C24F98AD600BBC11C /* TransDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8385908B24F98AD600BBC11C /* TransDelegate.swift */; };
 		8385908E24F98B2A00BBC11C /* Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8385908D24F98B2A00BBC11C /* Presenter.swift */; };
+		83872647257EE9F700F62288 /* RequestAck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83872646257EE9F700F62288 /* RequestAck.swift */; };
+		83872649257EEAE300F62288 /* RequestChallenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83872648257EEAE300F62288 /* RequestChallenge.swift */; };
 		83ACC67D250011C700D394D0 /* PopPoison.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83ACC67C250011C700D394D0 /* PopPoison.storyboard */; };
 		83ACC67F2500120100D394D0 /* PopPassant.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83ACC67E2500120100D394D0 /* PopPassant.storyboard */; };
 		83ACC6932500143900D394D0 /* PopPromo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83ACC6922500143900D394D0 /* PopPromo.swift */; };
@@ -188,6 +190,8 @@
 		8379820924F05EE000254FBD /* Highlighter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Highlighter.swift; sourceTree = "<group>"; };
 		8385908B24F98AD600BBC11C /* TransDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransDelegate.swift; sourceTree = "<group>"; };
 		8385908D24F98B2A00BBC11C /* Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presenter.swift; sourceTree = "<group>"; };
+		83872646257EE9F700F62288 /* RequestAck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestAck.swift; sourceTree = "<group>"; };
+		83872648257EEAE300F62288 /* RequestChallenge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestChallenge.swift; sourceTree = "<group>"; };
 		83ACC67C250011C700D394D0 /* PopPoison.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PopPoison.storyboard; sourceTree = "<group>"; };
 		83ACC67E2500120100D394D0 /* PopPassant.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PopPassant.storyboard; sourceTree = "<group>"; };
 		83ACC6922500143900D394D0 /* PopPromo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopPromo.swift; sourceTree = "<group>"; };
@@ -961,6 +965,8 @@
 				B7F541C523D51ADD00E89074 /* HomeTable.swift */,
 				B7F541C723D51B0C00E89074 /* HomeCell.swift */,
 				8375E1EA256C0AE9001809FF /* Opponent.swift */,
+				83872646257EE9F700F62288 /* RequestAck.swift */,
+				83872648257EEAE300F62288 /* RequestChallenge.swift */,
 			);
 			path = home;
 			sourceTree = "<group>";
@@ -1215,6 +1221,7 @@
 				B7BE115D23EA4FBE00ADA499 /* ParsePlayer.swift in Sources */,
 				B708D0E9236B369D00A899F9 /* Start.swift in Sources */,
 				83ACC6B2250021FA00D394D0 /* PopDismiss.swift in Sources */,
+				83872647257EE9F700F62288 /* RequestAck.swift in Sources */,
 				83ACC6A82500173F00D394D0 /* UpdateConfirm.swift in Sources */,
 				B771365423F222AF007F0962 /* UpdateMate.swift in Sources */,
 				835FADA524F00A910080A194 /* Countdown.swift in Sources */,
@@ -1226,6 +1233,7 @@
 				B7BE128D23EB09B400ADA499 /* GameUpdate.swift in Sources */,
 				B7BE121023EAD64100ADA499 /* Hopper.swift in Sources */,
 				B79D05DB2410272500B8A889 /* Const.swift in Sources */,
+				83872649257EEAE300F62288 /* RequestChallenge.swift in Sources */,
 				83ACC69D2500152D00D394D0 /* PopEval.swift in Sources */,
 				B7F541C823D51B0C00E89074 /* HomeCell.swift in Sources */,
 				B7D8ECE92408B823001B5D2D /* RevealWhite.swift in Sources */,
