@@ -11,9 +11,9 @@ import UIKit
 class Other: UIViewController, UITabBarDelegate {
     
     //@IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var viewHeader: UIView!
     
     //MARK: Properties
-    @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var tabBarMenu: UITabBar!
     //@IBOutlet weak var usernameLabel: UILabel!
     //@IBOutlet weak var rankLabel: UILabel!
@@ -25,15 +25,15 @@ class Other: UIViewController, UITabBarDelegate {
     
     var playerOther: EntityPlayer?
     
-    func setPlayerOther(playerOther: EntityPlayer){
-        self.playerOther = playerOther
-    }
+    //func setPlayerOther(playerOther: EntityPlayer){
+        //self.playerOther = playerOther
+    //}
     
     var playerSelf: EntityPlayer?
     
-    func setPlayerSelf(playerSelf: EntityPlayer){
-        self.playerSelf = playerSelf
-    }
+    //func setPlayerSelf(playerSelf: EntityPlayer){
+        //self.playerSelf = playerSelf
+    //}
     
  
     
@@ -48,9 +48,16 @@ class Other: UIViewController, UITabBarDelegate {
         
         self.tabBarMenu.delegate = self
         
-        //self.activityIndicator.isHidden = true
         
-        //self.renderHeader()
+        //TODO: Header
+        let viewHeaderDynamic = Bundle.loadView(fromNib: "Header", withType: Header.self)
+        self.viewHeader.addSubview(viewHeaderDynamic)
+        viewHeaderDynamic.translatesAutoresizingMaskIntoConstraints = false
+        let attributes: [NSLayoutConstraint.Attribute] = [.top, .bottom, .right, .left]
+        NSLayoutConstraint.activate(attributes.map {
+            NSLayoutConstraint(item: viewHeaderDynamic, attribute: $0, relatedBy: .equal, toItem: viewHeaderDynamic.superview, attribute: $0, multiplier: 1, constant: 0)
+        })
+        viewHeaderDynamic.set(player: self.playerOther!)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -75,7 +82,9 @@ class Other: UIViewController, UITabBarDelegate {
         //SelectSnapshot().snapshot(playerSelf: self.playerSelf!, game: game, presentor: self)
     }
     
-    @IBAction func backButtonClick(_ sender: Any) {
+    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        self.tabBarMenu.selectedItem = nil
+      
         let transition = CATransition()
         transition.duration = 0.3
         transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
@@ -83,36 +92,7 @@ class Other: UIViewController, UITabBarDelegate {
         self.navigationController?.view.layer.add(transition, forKey: nil)
         _ = self.navigationController?.popToRootViewController(animated: false)
         self.navigationController?.popViewController(animated: false)
-    }
-    
-    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-        self.tabBarMenu.selectedItem = nil
-        switch item.tag {
-        case 0:
-            self.backButtonClick("")
-        default:
-            print("ugh")
-//            DispatchQueue.main.async {
-//                let height: CGFloat = UIScreen.main.bounds.height
-//                if(height.isLess(than: 750)){
-//                    let storyboard: UIStoryboard = UIStoryboard(name: "ChallengeL", bundle: nil)
-//                    let viewController = storyboard.instantiateViewController(withIdentifier: "ChallengeL") as! Challenge
-//                    viewController.setPlayerSelf(playerSelf: self.playerSelf!)
-//                    viewController.setPlayerOther(playerOther: self.playerOther!)
-//                    viewController.setSelection(selection: Int.random(in: 0...3))
-//                    viewController.BACK = "OTHER"
-//                    self.navigationController?.pushViewController(viewController, animated: false)
-//                    return
-//                }
-//                let storyboard: UIStoryboard = UIStoryboard(name: "ChallengeP", bundle: nil)
-//                let viewController = storyboard.instantiateViewController(withIdentifier: "ChallengeP") as! Challenge
-//                viewController.setPlayerSelf(playerSelf: self.playerSelf!)
-//                viewController.setPlayerOther(playerOther: self.playerOther!)
-//                viewController.setSelection(selection: Int.random(in: 0...3))
-//                viewController.BACK = "OTHER"
-//                self.navigationController?.pushViewController(viewController, animated: false)
-//            }
             
-        }
+        
     }
 }

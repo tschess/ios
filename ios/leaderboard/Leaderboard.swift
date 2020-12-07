@@ -15,13 +15,6 @@ class Leaderboard: UIViewController, UITabBarDelegate {
     
     //MARK: Header
     @IBOutlet weak var headerView: UIView!
-    //@IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    //@IBOutlet weak var avatarImageView: UIImageView!
-    //@IBOutlet weak var usernameLabel: UILabel!
-    //@IBOutlet weak var eloLabel: UILabel!
-    //@IBOutlet weak var rankLabel: UILabel!
-    //@IBOutlet weak var dispImageView: UIImageView!
-    //@IBOutlet weak var dispLabel: UILabel!
     @IBOutlet weak var tabBarMenu: UITabBar!
     
     var playerSelf: EntityPlayer?
@@ -47,7 +40,7 @@ class Leaderboard: UIViewController, UITabBarDelegate {
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(self.onDidReceiveData(_:)),
-            name: NSNotification.Name(rawValue: "HomeMenuSelection"),
+            name: NSNotification.Name(rawValue: "LeaderboardSelection"),
             object: nil)
     }
     
@@ -63,7 +56,7 @@ class Leaderboard: UIViewController, UITabBarDelegate {
     
     // TODO: IF SELF GO TO GAMES!!!!
     @objc func onDidReceiveData(_ notification: NSNotification) {
-        let menuSelectionIndex = notification.userInfo!["home_menu_selection"] as! Int
+        let menuSelectionIndex = notification.userInfo!["leaderboard_selection"] as! Int
         
         let playerOther: EntityPlayer = self.homeMenuTable!.getOther(index: menuSelectionIndex)
         DispatchQueue.main.async {
@@ -78,8 +71,8 @@ class Leaderboard: UIViewController, UITabBarDelegate {
             //}
             let storyboard: UIStoryboard = UIStoryboard(name: "Other", bundle: nil)
             let viewController = storyboard.instantiateViewController(withIdentifier: "Other") as! Other
-            viewController.setPlayerSelf(playerSelf: self.playerSelf!)
-            viewController.setPlayerOther(playerOther: playerOther)
+            viewController.playerSelf = self.playerSelf!
+            viewController.playerOther = playerOther
             self.navigationController?.pushViewController(viewController, animated: false)
         }
     }

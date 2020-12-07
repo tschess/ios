@@ -106,10 +106,10 @@ class LeaderboardTable: UITableViewController, SwipeTableViewCellDelegate {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        let discoverSelectionDictionary: [String: Any] = ["home_menu_selection": indexPath.row]
+        let discoverSelectionDictionary: [String: Any] = ["leaderboard_selection": indexPath.row]
         
         NotificationCenter.default.post(
-            name: NSNotification.Name(rawValue: "HomeMenuSelection"),
+            name: NSNotification.Name(rawValue: "LeaderboardSelection"),
             object: nil,
             userInfo: discoverSelectionDictionary)
     }
