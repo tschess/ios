@@ -151,7 +151,6 @@
 		B7D8ECE12408A917001B5D2D /* Landmine.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D8ECE02408A917001B5D2D /* Landmine.swift */; };
 		B7D8ECE92408B823001B5D2D /* RevealWhite.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D8ECE82408B823001B5D2D /* RevealWhite.swift */; };
 		B7D8ECEB2408B845001B5D2D /* RevealBlack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D8ECEA2408B845001B5D2D /* RevealBlack.swift */; };
-		B7E6C93023EE1FBB009711B8 /* RequestTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7E6C92F23EE1FBB009711B8 /* RequestTest.swift */; };
 		B7ED646423F4D9D400292FBC /* Create.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7ED646323F4D9D400292FBC /* Create.storyboard */; };
 		B7ED646823F4DC9B00292FBC /* Create.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7ED646723F4DC9B00292FBC /* Create.swift */; };
 		B7EF701E23EA28BA00BAF2E2 /* EntityPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7EF701D23EA28BA00BAF2E2 /* EntityPlayer.swift */; };
@@ -334,7 +333,6 @@
 		B7D8ECE02408A917001B5D2D /* Landmine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Landmine.swift; sourceTree = "<group>"; };
 		B7D8ECE82408B823001B5D2D /* RevealWhite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RevealWhite.swift; sourceTree = "<group>"; };
 		B7D8ECEA2408B845001B5D2D /* RevealBlack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RevealBlack.swift; sourceTree = "<group>"; };
-		B7E6C92F23EE1FBB009711B8 /* RequestTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestTest.swift; sourceTree = "<group>"; };
 		B7ED646323F4D9D400292FBC /* Create.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Create.storyboard; sourceTree = "<group>"; };
 		B7ED646723F4DC9B00292FBC /* Create.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Create.swift; sourceTree = "<group>"; };
 		B7EF701D23EA28BA00BAF2E2 /* EntityPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityPlayer.swift; sourceTree = "<group>"; };
@@ -538,9 +536,9 @@
 		B70F0C0522EBBF28001415AE /* start */ = {
 			isa = PBXGroup;
 			children = (
+				B745AD3423F353BF00E450EF /* RequestCreate.swift */,
 				B7CB62F5237BB10800E50204 /* Start.storyboard */,
 				B7ED646323F4D9D400292FBC /* Create.storyboard */,
-				B714BF26237C9410000DD80E /* networking */,
 				B708D0E8236B369D00A899F9 /* Start.swift */,
 				B7ED646723F4DC9B00292FBC /* Create.swift */,
 				83D758EB24CA0E79008DC4B5 /* CoreStart.swift */,
@@ -558,15 +556,6 @@
 				B7EF705E23EA48E400BAF2E2 /* ios.entitlements */,
 			);
 			path = default;
-			sourceTree = "<group>";
-		};
-		B714BF26237C9410000DD80E /* networking */ = {
-			isa = PBXGroup;
-			children = (
-				B7E6C92F23EE1FBB009711B8 /* RequestTest.swift */,
-				B745AD3423F353BF00E450EF /* RequestCreate.swift */,
-			);
-			path = networking;
 			sourceTree = "<group>";
 		};
 		B787C71D22E970DC009C94F7 = {
@@ -1362,7 +1351,6 @@
 				B7BE11B423EA9D7E00ADA499 /* QueenBlack.swift in Sources */,
 				B7BE12A023EB0B5800ADA499 /* KingOffense.swift in Sources */,
 				B7BE11DA23EAA4BF00ADA499 /* SerializerState.swift in Sources */,
-				B7E6C93023EE1FBB009711B8 /* RequestTest.swift in Sources */,
 				B7BE12B123EB0D3100ADA499 /* KnightOffense.swift in Sources */,
 				B7ED646823F4DC9B00292FBC /* Create.swift in Sources */,
 				83ACC6B0250021DE00D394D0 /* PopUp.swift in Sources */,

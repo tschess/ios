@@ -11,7 +11,6 @@ import IHKeyboardAvoiding
 class Start: UIViewController, UITextFieldDelegate {
     
     required init?(coder aDecoder: NSCoder) {
-        self.testCount = 0
         self.core = CoreStart()
         super.init(coder: aDecoder)
     }
@@ -57,7 +56,6 @@ class Start: UIViewController, UITextFieldDelegate {
         
         // HIDE
         self.activityIndicator.isHidden = true
-        self.testTaskLabel.isHidden = true
         
         // HINT
         self.setHintText()
@@ -66,13 +64,6 @@ class Start: UIViewController, UITextFieldDelegate {
         view.addGestureRecognizer(dismissKeyboardGesture!)
         
         KeyboardAvoiding.avoidingView = self.contentView
-        
-        //let testTaskIncrementer: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.testTaskIncrementer))
-        //self.testTaskImageView.addGestureRecognizer(testTaskIncrementer)
-        //self.testTaskImageView.isUserInteractionEnabled = true
-        //let testTaskExecuter: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.testTaskExecuter))
-        //self.testTaskLabel.addGestureRecognizer(testTaskExecuter)
-        //self.testTaskLabel.isUserInteractionEnabled = true
     }
     
     //MARK: Layout ~ View
@@ -97,6 +88,16 @@ class Start: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var buttonLogin: UIButton!
     @IBOutlet weak var buttonCreate: UIButton!
     
+    
+    func renderAlphanumeric() {
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: "🔤 Input invalid 🔢", message: "\nUsername and password must be alphanumeric.", preferredStyle: .alert)
+            let action = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+            action.setValue(UIColor.lightGray, forKey: "titleTextColor")
+            alert.addAction(action)
+            self.present(alert, animated: true)
+        }
+    }
     //MARK: Button ~ Login
     @IBAction func loginButtonClick(_ sender: UIButton) {
         self.dismissKeyboard()
@@ -104,17 +105,7 @@ class Start: UIViewController, UITextFieldDelegate {
         self.passwordTextString = passwordTextField.text!
         
         if(!usernameTextString!.isAlphanumeric || !passwordTextString!.isAlphanumeric){
-            DispatchQueue.main.async {
-                //let storyboard: UIStoryboard = UIStoryboard(name: "PopInvalid", bundle: nil)
-                //let viewController = storyboard.instantiateViewController(withIdentifier: "PopInvalid") as! PopDismiss
-                //self.present(viewController, animated: true, completion: nil)
-                
-                let alert = UIAlertController(title: "🙅‍♀️ Input invalid 🙅‍♂️", message: "\nPlease re-evaluate input and try again.", preferredStyle: .alert)
-                let action = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
-                action.setValue(UIColor.lightGray, forKey: "titleTextColor")
-                alert.addAction(action)
-                self.present(alert, animated: true)
-            }
+            self.renderAlphanumeric()
             return
         }
         self.activityIndicatorStart()
@@ -124,48 +115,23 @@ class Start: UIViewController, UITextFieldDelegate {
             password: passwordTextString!)
         
         self.execute(requestPayload: request) { (result) in
-            
-            if (result["id"] as? String) != nil {
-                let player: EntityPlayer = ParsePlayer().execute(json: result)
-                DispatchQueue.main.async {
-                    let storyboard: UIStoryboard = UIStoryboard(name: "Home", bundle: nil)
-                    let viewController = storyboard.instantiateViewController(withIdentifier: "Home") as! Home
-                    viewController.player = player
-                    self.navigationController?.pushViewController(viewController, animated: false)
-                }
-                return
+            self.handleResult(result: result)
+        }
+    }
+    
+    func handleResult(result: [String: Any]) {
+        
+        if (result["id"] as? String) != nil {
+            let player: EntityPlayer = ParsePlayer().execute(json: result)
+            DispatchQueue.main.async {
+                let storyboard: UIStoryboard = UIStoryboard(name: "Home", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "Home") as! Home
+                viewController.player = player
+                self.navigationController?.pushViewController(viewController, animated: false)
             }
-            if let error = result as? [String: String] {
-                let unknown = error["unknown"] == "login"
-                if(unknown){
-                    DispatchQueue.main.async {
-                        self.activityIndicator.isHidden = true
-                        self.activityIndicator.stopAnimating()
-                        self.buttonLogin.isHidden = false
-                        self.buttonCreate.isHidden = false
-                        self.usernameTextField.isHidden = false
-                        self.passwordTextField.isHidden = false
-                        let alert = UIAlertController(title: "❓ Username unknown 🧐", message: "\nNo registered player under this name.", preferredStyle: .alert)
-                        let action = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
-                        action.setValue(UIColor.lightGray, forKey: "titleTextColor")
-                        alert.addAction(action)
-                        self.present(alert, animated: true)
-                    }
-                    return
-                }
-            }
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
+            return
+        }
+        if let error = result as? [String: String] {
             DispatchQueue.main.async {
                 self.activityIndicator.isHidden = true
                 self.activityIndicator.stopAnimating()
@@ -173,22 +139,53 @@ class Start: UIViewController, UITextFieldDelegate {
                 self.buttonCreate.isHidden = false
                 self.usernameTextField.isHidden = false
                 self.passwordTextField.isHidden = false
-                
-                // HINT
-                // self.setHintText()
-                let alert = UIAlertController(title: "🙅‍♀️ Input invalid 🙅‍♂️", message: "\nPlease re-evaluate input and try again. 📲", preferredStyle: .alert)
-                let action = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
-                action.setValue(UIColor.lightGray, forKey: "titleTextColor")
-                alert.addAction(action)
-                self.present(alert, animated: true)
+            }
+            let unknown = error["unknown"] == "login"
+            if(unknown){
+                DispatchQueue.main.async {
+                    let alert = UIAlertController(title: "❓ Username unknown 🧐", message: "\nNo registered player under this name.", preferredStyle: .alert)
+                    let action = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+                    action.setValue(UIColor.lightGray, forKey: "titleTextColor")
+                    alert.addAction(action)
+                    self.present(alert, animated: true)
+                }
+                return
+            }
+            let invalid = error["invalid"] == "login"
+            if(invalid){
+                DispatchQueue.main.async {
+                    let alert = UIAlertController(title: "🔑 Incorrect password 😸", message: "\nPlease re-evaluate input and try again.", preferredStyle: .alert)
+                    let action = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+                    action.setValue(UIColor.lightGray, forKey: "titleTextColor")
+                    alert.addAction(action)
+                    self.present(alert, animated: true)
+                }
+                return
+            }
+            let reserved = error["reserved"] == "create"
+            if(reserved){
+                DispatchQueue.main.async {
+                    let alert = UIAlertController(title: "⚔️ Username reserved 😯", message: "\nThis username is reserved already! Please choose another.", preferredStyle: .alert)
+                    let action = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+                    action.setValue(UIColor.lightGray, forKey: "titleTextColor")
+                    alert.addAction(action)
+                    self.present(alert, animated: true)
+                }
+                return
             }
         }
+        self.renderInvalid()
     }
     
-    //MARK: Test
-    @IBOutlet weak var testTaskImageView: UIImageView!
-    @IBOutlet weak var testTaskLabel: UILabel!
-    var testCount: Int
+    func renderInvalid() {
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: "🙅‍♀️ Input invalid 🙅‍♂️", message: "\nPlease re-evaluate input and try again.", preferredStyle: .alert)
+            let action = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+            action.setValue(UIColor.lightGray, forKey: "titleTextColor")
+            alert.addAction(action)
+            self.present(alert, animated: true)
+        }
+    }
     
     //MARK: Common
     let core: CoreStart
@@ -216,11 +213,7 @@ class Start: UIViewController, UITextFieldDelegate {
             return
         }
         if(!usernameTextString!.isAlphanumeric || !passwordTextString!.isAlphanumeric){
-            DispatchQueue.main.async {
-                let storyboard: UIStoryboard = UIStoryboard(name: "PopInvalid", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "PopInvalid") as! PopDismiss
-                self.present(viewController, animated: true, completion: nil)
-            }
+            self.renderAlphanumeric()
             return
         }
         self.activityIndicatorStart()
@@ -229,34 +222,10 @@ class Start: UIViewController, UITextFieldDelegate {
             username: usernameTextString!.lowercased(),
             password: passwordTextString!)
         
-        RequestCreate().execute(requestPayload: request) { (player) in
-            if let player = player {
-                DispatchQueue.main.async {
-                    let storyboard: UIStoryboard = UIStoryboard(name: "Home", bundle: nil)
-                    let viewController = storyboard.instantiateViewController(withIdentifier: "Home") as! Home
-                    viewController.player = player
-                    self.navigationController?.pushViewController(viewController, animated: false)
-                    
-                }
-                return
-            }
-            DispatchQueue.main.async {
-                self.activityIndicator.isHidden = true
-                self.activityIndicator.stopAnimating()
-                self.buttonLogin.isHidden = false
-                self.buttonCreate.isHidden = false
-                self.usernameTextField.isHidden = false
-                self.passwordTextField.isHidden = false
-                self.usernameTextField.text?.removeAll()
-                self.usernameTextField.attributedPlaceholder = NSAttributedString(string: "username",
-                                                                                  attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
-                self.passwordTextField.text?.removeAll()
-                self.passwordTextField.attributedPlaceholder = NSAttributedString(string: "password",
-                                                                                  attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
-                let storyboard: UIStoryboard = UIStoryboard(name: "PopInvalid", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "PopInvalid") as! PopDismiss
-                self.present(viewController, animated: true, completion: nil)
-            }
+        self.create(requestPayload: request) { (result) in
+            
+            //HANDLE RESULT...
+            self.handleResult(result: result)
             
         }
         
@@ -273,17 +242,6 @@ class Start: UIViewController, UITextFieldDelegate {
         self.usernameTextField.resignFirstResponder()
         self.passwordTextField.resignFirstResponder()
         return true
-    }
-    
-    @objc func testTaskIncrementer() {
-        self.testCount += 1
-        if(self.testCount < 3){
-            return
-        }
-        if(self.testTaskLabel.isHidden){
-            self.testTaskLabel.isHidden = false
-        }
-        self.testTaskLabel.text = String(testCount)
     }
     
     @IBAction func buttonClickRecover(_ sender: Any) {
@@ -340,6 +298,41 @@ class Start: UIViewController, UITextFieldDelegate {
             self.present(alert, animated: true)
         }
         return ["login": "error"]
+    }
+    
+    
+    func create(requestPayload: [String: String], completion: @escaping ([String: Any]) -> Void) {
+        let url = URL(string: "http://\(ServerAddress().IP):8080/player/create")!
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        do {
+            request.httpBody = try JSONSerialization.data(withJSONObject: requestPayload, options: .prettyPrinted)
+        } catch _ {
+            completion(self.renderError())
+        }
+        let session = URLSession.shared
+        let task = session.dataTask(with: request, completionHandler: { data, response, error in
+            guard error == nil else {
+                completion(self.renderError())
+                return
+            }
+            guard let data = data else {
+                completion(self.renderError())
+                return
+            }
+            do {
+                guard let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any] else {
+                    completion(self.renderError())
+                    return
+                }
+                completion(json)
+            } catch _ {
+                completion(self.renderError())
+            }
+        })
+        task.resume()
     }
 }
 

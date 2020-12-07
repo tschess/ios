@@ -23,16 +23,6 @@
                                     <constraint firstAttribute="height" constant="35" id="evD-ZK-mb5"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="13" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d6V-ci-BVi">
-                                <rect key="frame" x="366" y="814" width="40" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="40" id="AAY-J3-ff3"/>
-                                    <constraint firstAttribute="height" constant="40" id="pn1-SU-bpm"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="30"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" alpha="0.40000000000000002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="13Q-ST-VzR">
                                 <rect key="frame" x="107" y="832" width="200" height="30"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -177,11 +167,9 @@
                         <constraints>
                             <constraint firstItem="282-SC-i56" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="4xb-bn-KLo"/>
                             <constraint firstItem="282-SC-i56" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="67s-2U-vke"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="d6V-ci-BVi" secondAttribute="bottom" constant="8" id="8nL-RC-HE8"/>
                             <constraint firstItem="8th-jg-167" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="A9Z-Ah-sUK"/>
                             <constraint firstItem="13Q-ST-VzR" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Jin-6E-cmn"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="8th-jg-167" secondAttribute="bottom" constant="8" id="Jzd-8U-M5u"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="d6V-ci-BVi" secondAttribute="trailing" constant="8" id="LRV-5R-Mhs"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="13Q-ST-VzR" secondAttribute="bottom" id="YbP-QY-HXe"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="282-SC-i56" secondAttribute="trailing" id="aey-ld-24Z"/>
                             <constraint firstItem="282-SC-i56" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="snY-Z0-Up7"/>
@@ -199,8 +187,7 @@
                         <outlet property="logoHeight" destination="AAJ-6H-Mc5" id="0I9-1j-l0S"/>
                         <outlet property="logoWidth" destination="q8V-9P-vgY" id="eqB-a4-OA9"/>
                         <outlet property="passwordTextField" destination="iP2-rm-ezV" id="qvL-MI-C4Z"/>
-                        <outlet property="testTaskImageView" destination="8th-jg-167" id="H5U-bI-dKI"/>
-                        <outlet property="testTaskLabel" destination="d6V-ci-BVi" id="yMq-mh-qtQ"/>
+                        
                         <outlet property="titleLabelHeight" destination="s0k-NJ-99C" id="vxw-at-MR8"/>
                         <outlet property="usernameTextField" destination="nRp-yq-OSS" id="sLH-kV-N8W"/>
                     </connections>
