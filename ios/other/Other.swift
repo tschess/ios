@@ -10,18 +10,18 @@ import UIKit
 
 class Other: UIViewController, UITabBarDelegate {
     
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    //@IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     //MARK: Properties
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var tabBarMenu: UITabBar!
-    @IBOutlet weak var usernameLabel: UILabel!
-    @IBOutlet weak var rankLabel: UILabel!
-    @IBOutlet weak var avatarImageView: UIImageView!
+    //@IBOutlet weak var usernameLabel: UILabel!
+    //@IBOutlet weak var rankLabel: UILabel!
+    //@IBOutlet weak var avatarImageView: UIImageView!
     
-    @IBOutlet weak var eloLabel: UILabel!
+    //@IBOutlet weak var eloLabel: UILabel!
     
-    var otherMenuTable: OtherMenuTable?
+    var otherMenuTable: OtherTable?
     
     var playerOther: EntityPlayer?
     
@@ -35,18 +35,12 @@ class Other: UIViewController, UITabBarDelegate {
         self.playerSelf = playerSelf
     }
     
-    public func renderHeader() {
-        self.avatarImageView.image = self.playerOther!.getImageAvatar()
-        self.usernameLabel.text = self.playerOther!.username
-        self.eloLabel.text = self.playerOther!.getLabelTextElo()
-        self.rankLabel.text = self.playerOther!.getLabelTextRank()
-        
-    }
+ 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.otherMenuTable = children.first as? OtherMenuTable
-        self.otherMenuTable!.setActivityIndicator(activityIndicator: self.activityIndicator!)
+        self.otherMenuTable = children.first as? OtherTable
+        //self.otherMenuTable!.setActivityIndicator(activityIndicator: self.activityIndicator!)
         self.otherMenuTable!.setPlayer(player: self.playerOther!)
         self.otherMenuTable!.fetchMenuTableList()
         
@@ -54,9 +48,9 @@ class Other: UIViewController, UITabBarDelegate {
         
         self.tabBarMenu.delegate = self
         
-        self.activityIndicator.isHidden = true
+        //self.activityIndicator.isHidden = true
         
-        self.renderHeader()
+        //self.renderHeader()
     }
     
     override func viewWillAppear(_ animated: Bool) {

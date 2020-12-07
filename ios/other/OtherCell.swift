@@ -8,7 +8,7 @@
 
 import UIKit
 
-class OtherMenuCell: UITableViewCell {
+class OtherCell: UITableViewCell {
     
     @IBOutlet weak var displacementImage: UIImageView!
     @IBOutlet weak var avatarImageView: UIImageView!

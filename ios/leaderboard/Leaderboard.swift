@@ -67,17 +67,17 @@ class Leaderboard: UIViewController, UITabBarDelegate {
         
         let playerOther: EntityPlayer = self.homeMenuTable!.getOther(index: menuSelectionIndex)
         DispatchQueue.main.async {
-            let height: CGFloat = UIScreen.main.bounds.height
-            if(height.isLess(than: 750)){
-                let storyboard: UIStoryboard = UIStoryboard(name: "OtherL", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "OtherL") as! Other
-                viewController.setPlayerSelf(playerSelf: self.playerSelf!)
-                viewController.setPlayerOther(playerOther: playerOther)
-                self.navigationController?.pushViewController(viewController, animated: false)
-                return
-            }
-            let storyboard: UIStoryboard = UIStoryboard(name: "OtherP", bundle: nil)
-            let viewController = storyboard.instantiateViewController(withIdentifier: "OtherP") as! Other
+            //let height: CGFloat = UIScreen.main.bounds.height
+            //if(height.isLess(than: 750)){
+                //let storyboard: UIStoryboard = UIStoryboard(name: "OtherL", bundle: nil)
+                //let viewController = storyboard.instantiateViewController(withIdentifier: "OtherL") as! Other
+                //viewController.setPlayerSelf(playerSelf: self.playerSelf!)
+                //viewController.setPlayerOther(playerOther: playerOther)
+                //self.navigationController?.pushViewController(viewController, animated: false)
+                //return
+            //}
+            let storyboard: UIStoryboard = UIStoryboard(name: "Other", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier: "Other") as! Other
             viewController.setPlayerSelf(playerSelf: self.playerSelf!)
             viewController.setPlayerOther(playerOther: playerOther)
             self.navigationController?.pushViewController(viewController, animated: false)

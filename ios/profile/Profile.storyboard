@@ -24,7 +24,7 @@
                                     <constraint firstAttribute="height" constant="50" id="2HL-WR-1Yj"/>
                                 </constraints>
                                 <items>
-                                    <tabBarItem tag="2" title="HOME" image="back.grey" selectedImage="back.white" id="VMB-Hy-TLu">
+                                    <tabBarItem tag="2" title="Home" image="back.grey" selectedImage="back.white" id="VMB-Hy-TLu">
                                         <inset key="imageInsets" minX="4" minY="4" maxX="4" maxY="4"/>
                                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tabBarItem>

@@ -58,19 +58,19 @@
                                     <constraint firstAttribute="height" constant="50" id="3Aw-0g-FIT"/>
                                 </constraints>
                                 <items>
-                                    <tabBarItem title="SINGLE-PLAYER" image="tab_gray_singleplayer" selectedImage="tab_gray_singleplayer" id="Z5R-KS-Z6j">
+                                    <tabBarItem title="Single-player" image="tab_gray_singleplayer" selectedImage="tab_gray_singleplayer" id="Z5R-KS-Z6j">
                                         <inset key="imageInsets" minX="4" minY="4" maxX="4" maxY="4"/>
                                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tabBarItem>
-                                    <tabBarItem tag="1" title="CONFIG(S)" image="setup.grey" selectedImage="setup.white" id="Ccy-HC-zcU">
+                                    <tabBarItem tag="1" title="Config(s)" image="setup.grey" selectedImage="setup.white" id="Ccy-HC-zcU">
                                         <inset key="imageInsets" minX="4" minY="4" maxX="4" maxY="4"/>
                                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tabBarItem>
-                                    <tabBarItem tag="2" title="LEADERBOARD" image="tab_gray_leaderboard" selectedImage="tab_gray_leaderboard" id="AZo-Y4-Yez">
+                                    <tabBarItem tag="2" title="Leaderboard" image="tab_gray_leaderboard" selectedImage="tab_gray_leaderboard" id="AZo-Y4-Yez">
                                         <inset key="imageInsets" minX="4" minY="4" maxX="4" maxY="4"/>
                                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tabBarItem>
-                                    <tabBarItem tag="3" title="PROFILE" image="pro_g" selectedImage="pro_w" id="RmV-cI-lZG">
+                                    <tabBarItem tag="3" title="Profile" image="pro_g" selectedImage="pro_w" id="RmV-cI-lZG">
                                         <inset key="imageInsets" minX="4" minY="4" maxX="4" maxY="4"/>
                                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tabBarItem>

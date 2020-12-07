@@ -75,7 +75,7 @@
                                                 </constraints>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="20"/>
-                                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="done"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password" textAlignment="center" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="iP2-rm-ezV">
                                                 <rect key="frame" x="8" y="38" width="398" height="30"/>
@@ -86,7 +86,7 @@
                                                 </constraints>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="20"/>
-                                                <textInputTraits key="textInputTraits" autocorrectionType="no" secureTextEntry="YES" textContentType="password"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="done" secureTextEntry="YES" textContentType="password"/>
                                             </textField>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YEk-ia-8qZ" userLabel="ButtonView">
                                                 <rect key="frame" x="0.0" y="76" width="414" height="30"/>
@@ -187,7 +187,6 @@
                         <outlet property="logoHeight" destination="AAJ-6H-Mc5" id="0I9-1j-l0S"/>
                         <outlet property="logoWidth" destination="q8V-9P-vgY" id="eqB-a4-OA9"/>
                         <outlet property="passwordTextField" destination="iP2-rm-ezV" id="qvL-MI-C4Z"/>
-                        
                         <outlet property="titleLabelHeight" destination="s0k-NJ-99C" id="vxw-at-MR8"/>
                         <outlet property="usernameTextField" destination="nRp-yq-OSS" id="sLH-kV-N8W"/>
                     </connections>

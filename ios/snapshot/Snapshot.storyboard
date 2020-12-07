@@ -232,7 +232,7 @@
                                     <constraint firstAttribute="height" constant="50" id="CtS-Ad-lXP"/>
                                 </constraints>
                                 <items>
-                                    <tabBarItem tag="1" title="CLOSE" image="close_g" selectedImage="close_w" id="6f1-4w-L4h">
+                                    <tabBarItem tag="1" title="Close" image="close_g" selectedImage="close_w" id="6f1-4w-L4h">
                                         <inset key="imageInsets" minX="4" minY="4" maxX="4" maxY="4"/>
                                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tabBarItem>

@@ -53,11 +53,11 @@
                                     <constraint firstAttribute="height" constant="50" id="CtS-Ad-lXP"/>
                                 </constraints>
                                 <items>
-                                    <tabBarItem title="HOME" image="back.grey" selectedImage="back.white" id="WH1-kp-AQb">
+                                    <tabBarItem title="Home" image="back.grey" selectedImage="back.white" id="WH1-kp-AQb">
                                         <inset key="imageInsets" minX="4" minY="4" maxX="4" maxY="4"/>
                                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tabBarItem>
-                                    <tabBarItem tag="1" title="FAIRY TSCHESS" image="fg" selectedImage="fw" id="fjf-cy-wGx">
+                                    <tabBarItem tag="1" title="Fairy Tschess" image="fg" selectedImage="fw" id="fjf-cy-wGx">
                                         <inset key="imageInsets" minX="5" minY="5" maxX="5" maxY="5"/>
                                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tabBarItem>

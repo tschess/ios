@@ -8,7 +8,7 @@
 
 import UIKit
 
-class OtherMenuTable: UITableViewController {
+class OtherTable: UITableViewController {
         
     var player: EntityPlayer?
     
@@ -59,7 +59,7 @@ class OtherMenuTable: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let game = gameMenuTableList[indexPath.row]
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "OtherMenuCell", for: indexPath) as! OtherMenuCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "OtherMenuCell", for: indexPath) as! OtherCell
         //cell.terminalDateLabel.text = game.getLabelTextDate()
         cell.usernameLabel.text = game.getLabelTextUsernameOpponent(username: self.player!.username)
         cell.avatarImageView.image = game.getImageAvatarOpponent(username: self.player!.username)
@@ -114,11 +114,10 @@ class OtherMenuTable: UITableViewController {
     
     func fetchMenuTableList() {
 
-        DispatchQueue.main.async() {
-            self.activityIndicator!.isHidden = false
-            self.activityIndicator!.startAnimating()
-            
-        }
+        //DispatchQueue.main.async() {
+            //self.activityIndicator!.isHidden = false
+            //self.activityIndicator!.startAnimating()
+        //}
         
         let requestPayload = [
             "id": self.player!.id,
@@ -127,10 +126,10 @@ class OtherMenuTable: UITableViewController {
             "self": false
             ] as [String: Any]
         RequestActual().execute(requestPayload: requestPayload) { (result) in
-            DispatchQueue.main.async() {
-                self.activityIndicator!.stopAnimating()
-                self.activityIndicator!.isHidden = true
-            }
+            //DispatchQueue.main.async() {
+                //self.activityIndicator!.stopAnimating()
+                //self.activityIndicator!.isHidden = true
+            //}
             self.appendToLeaderboardTableList(additionalCellList: result)
         }
     }

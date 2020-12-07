@@ -255,15 +255,15 @@
                                     <constraint firstAttribute="height" constant="50" id="CtS-Ad-lXP"/>
                                 </constraints>
                                 <items>
-                                    <tabBarItem title="CANCEL" image="cancel_grey" selectedImage="cancel_white" id="cNg-v3-E35">
+                                    <tabBarItem title="Cancel" image="cancel_grey" selectedImage="cancel_white" id="cNg-v3-E35">
                                         <inset key="imageInsets" minX="4" minY="4" maxX="4" maxY="4"/>
                                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tabBarItem>
-                                    <tabBarItem tag="2" title="HELP" image="q_g" selectedImage="q_w" id="Xpt-F4-hWh">
+                                    <tabBarItem tag="2" title="Help" image="q_g" selectedImage="q_w" id="Xpt-F4-hWh">
                                         <inset key="imageInsets" minX="4" minY="4" maxX="4" maxY="4"/>
                                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tabBarItem>
-                                    <tabBarItem tag="1" title="SAVE" image="save_grey" selectedImage="save_white" id="xqj-Cj-U3q">
+                                    <tabBarItem tag="1" title="Save" image="save_grey" selectedImage="save_white" id="xqj-Cj-U3q">
                                         <inset key="imageInsets" minX="4" minY="4" maxX="4" maxY="4"/>
                                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tabBarItem>
