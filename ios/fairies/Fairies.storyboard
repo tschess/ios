@@ -32,11 +32,11 @@
                                     <constraint firstAttribute="height" constant="50" id="l5Z-67-pQ0"/>
                                 </constraints>
                                 <items>
-                                    <tabBarItem title="CONFIG" image="back.grey" selectedImage="back.white" id="kx7-zM-ipx">
+                                    <tabBarItem title="Config(s)" image="back.grey" selectedImage="back.white" id="kx7-zM-ipx">
                                         <inset key="imageInsets" minX="4" minY="4" maxX="4" maxY="4"/>
                                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tabBarItem>
-                                    <tabBarItem tag="1" title="HOME" image="home.grey" selectedImage="home.white" id="EpU-gU-ur4">
+                                    <tabBarItem tag="1" title="Home" image="home.grey" selectedImage="home.white" id="EpU-gU-ur4">
                                         <inset key="imageInsets" minX="4" minY="4" maxX="4" maxY="4"/>
                                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tabBarItem>
