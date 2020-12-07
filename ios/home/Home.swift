@@ -71,10 +71,6 @@ class Home: UIViewController, UITabBarDelegate {
         case 1:
             let storyboard: UIStoryboard = UIStoryboard(name: "Config", bundle: nil)
             let viewController = storyboard.instantiateViewController(withIdentifier: "Config") as! Config
-            //if(UIScreen.main.bounds.height.isLess(than: 750)){
-                //storyboard = UIStoryboard(name: "ConfigL", bundle: nil)
-                //viewController = storyboard.instantiateViewController(withIdentifier: "ConfigL") as! Config
-            //}
             viewController.playerSelf = self.player!
             let transition = CATransition()
             transition.duration = 0.3

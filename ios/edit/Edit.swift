@@ -12,9 +12,6 @@ class Edit: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate, UII
     
     @IBOutlet weak var viewFairy: UIView!
     
-    //@IBOutlet weak var componentHeader: Header!
-    //viewHeader
-    //header
     var header: Header?
     @IBOutlet weak var viewHeader: UIView!
     
@@ -139,15 +136,7 @@ class Edit: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate, UII
     @IBOutlet weak var tschessElementCollectionView: UICollectionView!
     @IBOutlet weak var configCollectionViewHeight: NSLayoutConstraint!
     @IBOutlet weak var configCollectionView: BoardView!
-    //@IBOutlet weak var titleLabel: UILabel!
-    //@IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    //@IBOutlet weak var displacementImage: UIImageView!
-    //@IBOutlet weak var displacementLabel: UILabel!
-    //@IBOutlet weak var eloLabel: UILabel!
-    //@IBOutlet weak var rankLabel: UILabel!
-    //@IBOutlet weak var usernameLabel: UILabel!
-    //@IBOutlet weak var avatarImageView: UIImageView!
-    //@IBOutlet weak var backButton: UIButton!
+   
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var tabBarMenu: UITabBar!
     @IBOutlet weak var contentView: UIView!
@@ -159,10 +148,20 @@ class Edit: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate, UII
             return
         }
         self.confirm = false
-        let storyboard: UIStoryboard = UIStoryboard(name: "PopCancel", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "PopCancel") as! PopCancel
-        viewController.presentingController = self.navigationController
-        self.present(viewController, animated: true, completion: nil)
+        
+        
+        let alert = UIAlertController(title: "🚪 Exit without saving? 💾", message: "\nUpdates to config won't be saved.", preferredStyle: .alert)
+        let action0 = UIAlertAction(title: "Yes", style: .default, handler: {_ in
+            self.navigationController!.popViewController(animated: false)
+        })
+        action0.setValue(UIColor.lightGray, forKey: "titleTextColor")
+        alert.addAction(action0)
+        
+        let action1 = UIAlertAction(title: "No", style: .default, handler: nil)
+        action1.setValue(UIColor.lightGray, forKey: "titleTextColor")
+        alert.addAction(action1)
+        
+        self.present(alert, animated: true)
     }
     
     static func create(player: EntityPlayer, select: Int, height: CGFloat) -> Edit {
@@ -269,9 +268,11 @@ class Edit: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate, UII
         case 0:
             self.back()
         case 2:
-            let storyboard: UIStoryboard = UIStoryboard(name: "PopHelp", bundle: nil)
-            let viewController = storyboard.instantiateViewController(withIdentifier: "PopHelp") as! PopDismiss
-            self.present(viewController, animated: true, completion: nil)
+            let alert = UIAlertController(title: "🧩 Edit config 👇", message: "\nLong touch piece to engage, then drag to destination.", preferredStyle: .alert)
+            let action = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+            action.setValue(UIColor.lightGray, forKey: "titleTextColor")
+            alert.addAction(action)
+            self.present(alert, animated: true)
         default:
             DispatchQueue.main.async() {
                 self.header!.indicatorActivity!.isHidden = false
@@ -292,12 +293,8 @@ class Edit: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate, UII
                     navigationArray.remove(at: 1) //Config
                     self.navigationController?.viewControllers = navigationArray
                     
-                    var storyboard: UIStoryboard = UIStoryboard(name: "ConfigP", bundle: nil)
-                    var viewController = storyboard.instantiateViewController(withIdentifier: "ConfigP") as! Config
-                    if(UIScreen.main.bounds.height.isLess(than: 750)){
-                        storyboard = UIStoryboard(name: "ConfigL", bundle: nil)
-                        viewController = storyboard.instantiateViewController(withIdentifier: "ConfigL") as! Config
-                    }
+                    let storyboard: UIStoryboard = UIStoryboard(name: "Config", bundle: nil)
+                    let viewController = storyboard.instantiateViewController(withIdentifier: "Config") as! Config
                     viewController.playerSelf = result!
                     viewController.labelTapHidden = true
                     self.navigationController?.pushViewController(viewController, animated: false)

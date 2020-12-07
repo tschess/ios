@@ -22,12 +22,8 @@
 		8379820A24F05EE000254FBD /* Highlighter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8379820924F05EE000254FBD /* Highlighter.swift */; };
 		8385908C24F98AD600BBC11C /* TransDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8385908B24F98AD600BBC11C /* TransDelegate.swift */; };
 		8385908E24F98B2A00BBC11C /* Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8385908D24F98B2A00BBC11C /* Presenter.swift */; };
-		83ACC6772500113A00D394D0 /* PopHelp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83ACC6762500113A00D394D0 /* PopHelp.storyboard */; };
-		83ACC6792500116C00D394D0 /* PopCancel.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83ACC6782500116C00D394D0 /* PopCancel.storyboard */; };
-		83ACC67B250011A100D394D0 /* PopNoop.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83ACC67A250011A100D394D0 /* PopNoop.storyboard */; };
 		83ACC67D250011C700D394D0 /* PopPoison.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83ACC67C250011C700D394D0 /* PopPoison.storyboard */; };
 		83ACC67F2500120100D394D0 /* PopPassant.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83ACC67E2500120100D394D0 /* PopPassant.storyboard */; };
-		83ACC689250012CE00D394D0 /* PopCancel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83ACC688250012CE00D394D0 /* PopCancel.swift */; };
 		83ACC6932500143900D394D0 /* PopPromo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83ACC6922500143900D394D0 /* PopPromo.swift */; };
 		83ACC6952500145200D394D0 /* PopPromo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83ACC6942500145200D394D0 /* PopPromo.storyboard */; };
 		83ACC6972500148C00D394D0 /* PopEval.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83ACC6962500148C00D394D0 /* PopEval.storyboard */; };
@@ -192,12 +188,8 @@
 		8379820924F05EE000254FBD /* Highlighter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Highlighter.swift; sourceTree = "<group>"; };
 		8385908B24F98AD600BBC11C /* TransDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransDelegate.swift; sourceTree = "<group>"; };
 		8385908D24F98B2A00BBC11C /* Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presenter.swift; sourceTree = "<group>"; };
-		83ACC6762500113A00D394D0 /* PopHelp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PopHelp.storyboard; sourceTree = "<group>"; };
-		83ACC6782500116C00D394D0 /* PopCancel.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PopCancel.storyboard; sourceTree = "<group>"; };
-		83ACC67A250011A100D394D0 /* PopNoop.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PopNoop.storyboard; sourceTree = "<group>"; };
 		83ACC67C250011C700D394D0 /* PopPoison.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PopPoison.storyboard; sourceTree = "<group>"; };
 		83ACC67E2500120100D394D0 /* PopPassant.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PopPassant.storyboard; sourceTree = "<group>"; };
-		83ACC688250012CE00D394D0 /* PopCancel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopCancel.swift; sourceTree = "<group>"; };
 		83ACC6922500143900D394D0 /* PopPromo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopPromo.swift; sourceTree = "<group>"; };
 		83ACC6942500145200D394D0 /* PopPromo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PopPromo.storyboard; sourceTree = "<group>"; };
 		83ACC6962500148C00D394D0 /* PopEval.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PopEval.storyboard; sourceTree = "<group>"; };
@@ -415,8 +407,6 @@
 		83ACC66E2500108200D394D0 /* storyboard */ = {
 			isa = PBXGroup;
 			children = (
-				83ACC6762500113A00D394D0 /* PopHelp.storyboard */,
-				83ACC67A250011A100D394D0 /* PopNoop.storyboard */,
 				83ACC67C250011C700D394D0 /* PopPoison.storyboard */,
 				83ACC67E2500120100D394D0 /* PopPassant.storyboard */,
 				83ACC69E2500159C00D394D0 /* PopNote.storyboard */,
@@ -427,7 +417,6 @@
 		83ACC6702500109700D394D0 /* storyboard */ = {
 			isa = PBXGroup;
 			children = (
-				83ACC6782500116C00D394D0 /* PopCancel.storyboard */,
 				83ACC6942500145200D394D0 /* PopPromo.storyboard */,
 				83ACC6962500148C00D394D0 /* PopEval.storyboard */,
 				83ACC698250014DE00D394D0 /* PopOption.storyboard */,
@@ -440,7 +429,6 @@
 		83ACC671250010A000D394D0 /* instance */ = {
 			isa = PBXGroup;
 			children = (
-				83ACC688250012CE00D394D0 /* PopCancel.swift */,
 				83ACC6922500143900D394D0 /* PopPromo.swift */,
 				83ACC69A2500151200D394D0 /* PopOption.swift */,
 				83ACC69C2500152D00D394D0 /* PopEval.swift */,
@@ -1098,7 +1086,6 @@
 				8375E1E9256C0963001809FF /* Opponent.xib in Resources */,
 				83B72B85256716C400FA5D8F /* Header.xib in Resources */,
 				83DFCF7825795948007088E5 /* Profile.storyboard in Resources */,
-				83ACC6772500113A00D394D0 /* PopHelp.storyboard in Resources */,
 				83ACC67D250011C700D394D0 /* PopPoison.storyboard in Resources */,
 				83ACC69F2500159C00D394D0 /* PopNote.storyboard in Resources */,
 				83ACC67F2500120100D394D0 /* PopPassant.storyboard in Resources */,
@@ -1108,7 +1095,6 @@
 				83ACC6AE250021AE00D394D0 /* PopUp.storyboard in Resources */,
 				8307D803257835880054FDDE /* Tschess.storyboard in Resources */,
 				83ACC6972500148C00D394D0 /* PopEval.storyboard in Resources */,
-				83ACC67B250011A100D394D0 /* PopNoop.storyboard in Resources */,
 				8307D80725784D990054FDDE /* Snapshot.storyboard in Resources */,
 				83ACC6952500145200D394D0 /* PopPromo.storyboard in Resources */,
 				835C1885256D68D300390AE8 /* HeaderSnapshot.xib in Resources */,
@@ -1118,7 +1104,6 @@
 				B7ED646423F4D9D400292FBC /* Create.storyboard in Resources */,
 				83ACC699250014DE00D394D0 /* PopOption.storyboard in Resources */,
 				83DFCF87257AEB56007088E5 /* Edit.storyboard in Resources */,
-				83ACC6792500116C00D394D0 /* PopCancel.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1238,7 +1223,6 @@
 				B7BE12AE23EB0CDB00ADA499 /* Checker.swift in Sources */,
 				B745AD3523F353BF00E450EF /* RequestCreate.swift in Sources */,
 				B7D8ECEB2408B845001B5D2D /* RevealBlack.swift in Sources */,
-				83ACC689250012CE00D394D0 /* PopCancel.swift in Sources */,
 				B7BE128D23EB09B400ADA499 /* GameUpdate.swift in Sources */,
 				B7BE121023EAD64100ADA499 /* Hopper.swift in Sources */,
 				B79D05DB2410272500B8A889 /* Const.swift in Sources */,
