@@ -540,20 +540,12 @@
 			path = init;
 			sourceTree = "<group>";
 		};
-		B708D0F2236B4EDF00A899F9 /* storyboard */ = {
+		B70F0C0522EBBF28001415AE /* start */ = {
 			isa = PBXGroup;
 			children = (
 				B7CB62F5237BB10800E50204 /* Start.storyboard */,
 				B7ED646323F4D9D400292FBC /* Create.storyboard */,
-			);
-			path = storyboard;
-			sourceTree = "<group>";
-		};
-		B70F0C0522EBBF28001415AE /* start */ = {
-			isa = PBXGroup;
-			children = (
 				B714BF26237C9410000DD80E /* networking */,
-				B708D0F2236B4EDF00A899F9 /* storyboard */,
 				B708D0E8236B369D00A899F9 /* Start.swift */,
 				B7ED646723F4DC9B00292FBC /* Create.swift */,
 				83D758EB24CA0E79008DC4B5 /* CoreStart.swift */,
