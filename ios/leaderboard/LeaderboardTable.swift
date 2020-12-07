@@ -35,22 +35,22 @@ class LeaderboardTable: UITableViewController, SwipeTableViewCellDelegate {
                 
                 let playerOther = self.leaderboardList[indexPath.row]
                 
-                RequestRecent().execute(id: playerOther.id) { (result) in
-                    self.home!.setIndicator(on: false)
+                //RequestRecent().execute(id: playerOther.id) { (result) in
+                    //self.home!.setIndicator(on: false)
                     
-                    if(result["fail"] != nil) {
-                        DispatchQueue.main.async {
-                            let storyboard: UIStoryboard = UIStoryboard(name: "PopNoop", bundle: nil)
-                            let viewController = storyboard.instantiateViewController(withIdentifier: "PopNoop") as! PopDismiss
-                            self.present(viewController, animated: true, completion: nil)
-                        }
-                        return
-                    }
-                    let game: EntityGame = ParseGame().execute(json: result)
-                    DispatchQueue.main.async() {
+                    //if(result["fail"] != nil) {
+                        //DispatchQueue.main.async {
+                            //let storyboard: UIStoryboard = UIStoryboard(name: "PopNoop", bundle: nil)
+                            //let viewController = storyboard.instantiateViewController(withIdentifier: "PopNoop") as! PopDismiss
+                            //self.present(viewController, animated: true, completion: nil)
+                        //}
+                        //return
+                    //}
+                    //let game: EntityGame = ParseGame().execute(json: result)
+                    //DispatchQueue.main.async() {
                         //SelectSnapshot().snapshot(playerSelf: self.home!.playerSelf!, game: game, presentor: self)
-                    }
-                }
+                    //}
+                //}
             }
             modifyAction.image = UIImage(named: "eyeye")!
             //modifyAction.image = UIImage(named: "eye_g")!
@@ -124,9 +124,11 @@ class LeaderboardTable: UITableViewController, SwipeTableViewCellDelegate {
     
     @objc func refresh(refreshControl: UIRefreshControl) {
         self.requestPageIndex = 0
-        let requestPayload: [String: Any] = ["id_player": self.home!.playerSelf!.id,
-                                             "size": Const().PAGE_SIZE]
-        RequestRefresh().execute(requestPayload: requestPayload) { (response) in
+        //let requestPayload: [String: Any] = ["id_player": self.home!.playerSelf!.id,
+                                             //"size": Const().PAGE_SIZE]
+        let requestPayload = ["index": self.requestPageIndex,
+                              "size": Const().PAGE_SIZE] as [String: Int]
+        RequestPage().execute(requestPayload: requestPayload) { (response) in
             if(response == nil){
                 return
             }
