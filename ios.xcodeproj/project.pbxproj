@@ -31,12 +31,8 @@
 		83ACC6932500143900D394D0 /* PopPromo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83ACC6922500143900D394D0 /* PopPromo.swift */; };
 		83ACC6952500145200D394D0 /* PopPromo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83ACC6942500145200D394D0 /* PopPromo.storyboard */; };
 		83ACC6972500148C00D394D0 /* PopEval.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83ACC6962500148C00D394D0 /* PopEval.storyboard */; };
-		83ACC699250014DE00D394D0 /* PopOption.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83ACC698250014DE00D394D0 /* PopOption.storyboard */; };
-		83ACC69B2500151200D394D0 /* PopOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83ACC69A2500151200D394D0 /* PopOption.swift */; };
 		83ACC69D2500152D00D394D0 /* PopEval.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83ACC69C2500152D00D394D0 /* PopEval.swift */; };
 		83ACC69F2500159C00D394D0 /* PopNote.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83ACC69E2500159C00D394D0 /* PopNote.storyboard */; };
-		83ACC6A32500165500D394D0 /* PopConfirm.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83ACC6A22500165500D394D0 /* PopConfirm.storyboard */; };
-		83ACC6A52500171800D394D0 /* PopConfirm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83ACC6A42500171800D394D0 /* PopConfirm.swift */; };
 		83ACC6A82500173F00D394D0 /* UpdateConfirm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83ACC6A72500173F00D394D0 /* UpdateConfirm.swift */; };
 		83ACC6AE250021AE00D394D0 /* PopUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83ACC6AD250021AE00D394D0 /* PopUp.storyboard */; };
 		83ACC6B0250021DE00D394D0 /* PopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83ACC6AF250021DE00D394D0 /* PopUp.swift */; };
@@ -201,12 +197,8 @@
 		83ACC6922500143900D394D0 /* PopPromo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopPromo.swift; sourceTree = "<group>"; };
 		83ACC6942500145200D394D0 /* PopPromo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PopPromo.storyboard; sourceTree = "<group>"; };
 		83ACC6962500148C00D394D0 /* PopEval.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PopEval.storyboard; sourceTree = "<group>"; };
-		83ACC698250014DE00D394D0 /* PopOption.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PopOption.storyboard; sourceTree = "<group>"; };
-		83ACC69A2500151200D394D0 /* PopOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopOption.swift; sourceTree = "<group>"; };
 		83ACC69C2500152D00D394D0 /* PopEval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopEval.swift; sourceTree = "<group>"; };
 		83ACC69E2500159C00D394D0 /* PopNote.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PopNote.storyboard; sourceTree = "<group>"; };
-		83ACC6A22500165500D394D0 /* PopConfirm.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PopConfirm.storyboard; sourceTree = "<group>"; };
-		83ACC6A42500171800D394D0 /* PopConfirm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopConfirm.swift; sourceTree = "<group>"; };
 		83ACC6A72500173F00D394D0 /* UpdateConfirm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateConfirm.swift; sourceTree = "<group>"; };
 		83ACC6AD250021AE00D394D0 /* PopUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PopUp.storyboard; sourceTree = "<group>"; };
 		83ACC6AF250021DE00D394D0 /* PopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUp.swift; sourceTree = "<group>"; };
@@ -427,8 +419,6 @@
 			children = (
 				83ACC6942500145200D394D0 /* PopPromo.storyboard */,
 				83ACC6962500148C00D394D0 /* PopEval.storyboard */,
-				83ACC698250014DE00D394D0 /* PopOption.storyboard */,
-				83ACC6A22500165500D394D0 /* PopConfirm.storyboard */,
 				83ACC6AD250021AE00D394D0 /* PopUp.storyboard */,
 			);
 			path = storyboard;
@@ -438,9 +428,7 @@
 			isa = PBXGroup;
 			children = (
 				83ACC6922500143900D394D0 /* PopPromo.swift */,
-				83ACC69A2500151200D394D0 /* PopOption.swift */,
 				83ACC69C2500152D00D394D0 /* PopEval.swift */,
-				83ACC6A42500171800D394D0 /* PopConfirm.swift */,
 				83ACC6AF250021DE00D394D0 /* PopUp.swift */,
 			);
 			path = instance;
@@ -1091,7 +1079,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				83ACC6A32500165500D394D0 /* PopConfirm.storyboard in Resources */,
 				830946872566D767003A1B9A /* Home.storyboard in Resources */,
 				83DFCF85257ADDBE007088E5 /* Fairies.storyboard in Resources */,
 				B787C73122E970DD009C94F7 /* Assets.xcassets in Resources */,
@@ -1114,7 +1101,6 @@
 				83DFCF7A25797492007088E5 /* Config.storyboard in Resources */,
 				B7BE121623EAD7E700ADA499 /* Init.storyboard in Resources */,
 				B7ED646423F4D9D400292FBC /* Create.storyboard in Resources */,
-				83ACC699250014DE00D394D0 /* PopOption.storyboard in Resources */,
 				83DFCF87257AEB56007088E5 /* Edit.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1219,7 +1205,6 @@
 				B7BE11AB23EA9C9C00ADA499 /* KingWhite.swift in Sources */,
 				B7BE11FF23EACCDE00ADA499 /* ConfigCell.swift in Sources */,
 				B7BE116C23EA750B00ADA499 /* ParseGame.swift in Sources */,
-				83ACC6A52500171800D394D0 /* PopConfirm.swift in Sources */,
 				B7BE11D023EA9F2400ADA499 /* KnightBlack.swift in Sources */,
 				B7BE129E23EB0B2A00ADA499 /* HopperOffense.swift in Sources */,
 				83D758EC24CA0E79008DC4B5 /* CoreStart.swift in Sources */,
@@ -1249,7 +1234,6 @@
 				B7BE120523EAD3C600ADA499 /* Poison.swift in Sources */,
 				B7BE11D723EAA23200ADA499 /* SquareCell.swift in Sources */,
 				B7BE116523EA727200ADA499 /* OtherTable.swift in Sources */,
-				83ACC69B2500151200D394D0 /* PopOption.swift in Sources */,
 				B7BE124C23EB02A200ADA499 /* FairiesCell.swift in Sources */,
 				B7BE11C523EA9E7C00ADA499 /* Rook.swift in Sources */,
 				83DFCF832579813E007088E5 /* LeaderboardCell.swift in Sources */,

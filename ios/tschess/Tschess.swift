@@ -341,11 +341,30 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     
     func renderDialogConfirm() {
         DispatchQueue.main.async {
-            let storyboard: UIStoryboard = UIStoryboard(name: "PopConfirm", bundle: nil)
-            let viewController = storyboard.instantiateViewController(withIdentifier: "PopConfirm") as! PopConfirm
-            viewController.game = self.game!
-            viewController.playerSelf = self.player!
-            self.present(viewController, animated: true, completion: nil)
+            let draw: Bool = self.game!.isDraw()
+            if(draw){
+                let alert = UIAlertController(title: "😐 Game over ✍️", message: "\nYou draw.", preferredStyle: .alert)
+                let action = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+                action.setValue(UIColor.lightGray, forKey: "titleTextColor")
+                alert.addAction(action)
+                self.present(alert, animated: true)
+                return
+            }
+            let username: String = self.player!.username
+            let wins: Bool = self.game!.getWinner(username: username)
+            if(wins){
+                let alert = UIAlertController(title: "🙂 Game over 🎉", message: "\nYou win!", preferredStyle: .alert)
+                let action = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+                action.setValue(UIColor.lightGray, forKey: "titleTextColor")
+                alert.addAction(action)
+                self.present(alert, animated: true)
+                return
+            }
+            let alert = UIAlertController(title: "🙃 Game over 🤝", message: "\nYou lost.", preferredStyle: .alert)
+            let action = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+            action.setValue(UIColor.lightGray, forKey: "titleTextColor")
+            alert.addAction(action)
+            self.present(alert, animated: true)
         }
     }
     
