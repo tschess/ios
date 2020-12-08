@@ -154,11 +154,11 @@
                                     <constraint firstAttribute="height" constant="50" id="CtS-Ad-lXP"/>
                                 </constraints>
                                 <items>
-                                    <tabBarItem title="GAMES" image="back.grey" selectedImage="back.white" id="6f1-4w-L4h">
+                                    <tabBarItem title="Home" image="back.grey" selectedImage="back.white" id="6f1-4w-L4h">
                                         <inset key="imageInsets" minX="3" minY="3" maxX="3" maxY="3"/>
                                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tabBarItem>
-                                    <tabBarItem tag="1" title="OPTIONS" image="options_grey" selectedImage="options_white" id="ZJf-6D-pXa">
+                                    <tabBarItem tag="1" title="Options" image="options_grey" selectedImage="options_white" id="ZJf-6D-pXa">
                                         <inset key="imageInsets" minX="3" minY="3" maxX="3" maxY="3"/>
                                         <color key="badgeColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tabBarItem>

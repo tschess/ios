@@ -55,16 +55,57 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     }
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        self.tabBarMenu.selectedItem = nil
+        
         switch item.tag {
         case 1:
             DispatchQueue.main.async {
-                let storyboard: UIStoryboard = UIStoryboard(name: "PopOption", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "PopOption") as! PopOption
-                viewController.playerSelf = self.player!
-                viewController.playerOther = self.game!.getPlayerOther(username: self.player!.username)
-                viewController.game = self.game!
-                self.tabBarMenu.selectedItem = nil
-                self.present(viewController, animated: true, completion: nil)
+                let alert = UIAlertController(title: "Options", message: nil, preferredStyle: .actionSheet)
+                if(self.game!.isResolved()){
+                    self.flash()
+                    return
+                }
+                let username: String = self.player!.username
+                let turn: Bool = self.game!.getTurnFlag(username: username)
+                if(turn){
+                    let action0 = UIAlertAction(title: "Draw 🤝", style: .default, handler: {_ in
+                        //self.activityIndicatorDraw.isHidden = false
+                        //self.activityIndicatorDraw.startAnimating()
+                        UpdateProp().execute(id: self.game!.id) { (result) in
+                            //DispatchQueue.main.async {
+                                //self.activityIndicatorDraw.isHidden = true
+                                //self.activityIndicatorDraw.stopAnimating()
+                                //self.presentingViewController!.dismiss(animated: false, completion: nil)
+                            //}
+                        }
+                    })
+                    action0.setValue(UIColor.lightGray, forKey: "titleTextColor")
+                    alert.addAction(action0)
+                }
+                let action1 = UIAlertAction(title: "Resign 🏳️", style: .default, handler: { _ in
+                    //self.activityIndicatorResign.isHidden = false
+                    //self.activityIndicatorResign.startAnimating()
+                    let payload: [String: Any] = [
+                        "id_game": self.game!.id,
+                        "id_self": self.player!.id,
+                        "white": self.game!.getWhite(username: self.player!.username)
+                    ]
+                    UpdateResign().execute(requestPayload: payload) { (result) in
+                        //DispatchQueue.main.async {
+                            //self.activityIndicatorResign!.stopAnimating()
+                            //self.activityIndicatorResign!.isHidden = true
+                            //self.presentingViewController!.dismiss(animated: false, completion: nil)
+                        //}
+                    }
+                })
+                action1.setValue(UIColor.lightGray, forKey: "titleTextColor")
+                alert.addAction(action1)
+                
+                let action2 = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+                action2.setValue(UIColor.lightGray, forKey: "titleTextColor")
+                alert.addAction(action2)
+                
+                self.present(alert, animated: true)
             }
         default:
             self.homeRefresh()
