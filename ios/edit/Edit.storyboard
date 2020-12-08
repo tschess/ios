@@ -192,10 +192,10 @@
                                         <rect key="frame" x="0.0" y="471" width="414" height="173"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q9m-sp-ed0" userLabel="TimerView">
-                                                <rect key="frame" x="113.33333333333333" y="56.666666666666629" width="187.66666666666669" height="60"/>
+                                                <rect key="frame" x="111.00000000000001" y="56.666666666666629" width="192.33333333333337" height="60"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="👉 ¿what is this? 🤔" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D6s-Ff-HAS" userLabel="TimerLabel">
-                                                        <rect key="frame" x="0.0" y="0.0" width="187.66666666666666" height="30"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="👉 what's this? 🤔" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D6s-Ff-HAS" userLabel="TimerLabel">
+                                                        <rect key="frame" x="0.0" y="0.0" width="192.33333333333334" height="30"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="30" id="C5y-Ag-IiZ"/>
@@ -204,8 +204,8 @@
                                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="👇 drag/drop here 💨" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ejO-dI-hkm" userLabel="TurnaryLabel">
-                                                        <rect key="frame" x="0.0" y="30" width="187.66666666666666" height="30"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="👇 drag/drop here. 💨" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ejO-dI-hkm" userLabel="TurnaryLabel">
+                                                        <rect key="frame" x="0.0" y="30" width="192.33333333333334" height="30"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="30" id="OL5-ac-w67"/>
