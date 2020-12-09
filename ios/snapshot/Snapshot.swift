@@ -12,28 +12,16 @@ class Snapshot: UIViewController, UICollectionViewDataSource, UICollectionViewDe
     
     var player: EntityPlayer?
     
-    func setPlayer(player: EntityPlayer){
-        self.player = player
-    }
-    
     var game: EntityGame?
-    
-    func setGame(game: EntityGame){
-        self.game = game
-    }
     
     @IBOutlet weak var titleBackView: UIView!
     
-    @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var titleLabel: UILabel!
     
     @IBOutlet weak var viewHeader: UIView!
     
-    //@IBOutlet weak var winnerImageView: UIImageView!
-    //@IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var usernameLabelWhite: UILabel!
     @IBOutlet weak var usernameLabelBlack: UILabel!
-    //@IBOutlet weak var usernameWinner: UILabel!
     
     @IBOutlet weak var contentView: UIView!
     
@@ -43,9 +31,6 @@ class Snapshot: UIViewController, UICollectionViewDataSource, UICollectionViewDe
     @IBOutlet weak var boardViewHeight: NSLayoutConstraint!
     
     @IBOutlet weak var statsView: UIView!
-    
-    //@IBOutlet weak var moveCountLabel: UILabel!
-    //@IBOutlet weak var outcomeLabel: UILabel!
     
     @IBOutlet weak var tabBarMenu: UITabBar!
     
@@ -62,15 +47,8 @@ class Snapshot: UIViewController, UICollectionViewDataSource, UICollectionViewDe
         self.boardView.dataSource = self
         self.boardView.isHidden = true
         
-        //self.activityIndicator.isHidden = true
-        //self.winnerImageView!.image = self.game!.getImageAvatarWinner()
-        //self.usernameWinner.text = self.game!.getUsernameWinner()
         self.dateLabel.text = self.game!.getLabelTextDate()
-        //self.moveCountLabel.text = String(self.game!.moves)
-        //self.outcomeLabel.text = self.game!.condition
-        
-        
-        //let opponent: EntityPlayer = self.game!.getPlayerOther(username: self.player!.username)
+     
         //TODO: Header
         let viewHeaderDynamic = Bundle.loadView(fromNib: "HeaderSnapshot", withType: HeaderSnapshot.self)
         self.viewHeader.addSubview(viewHeaderDynamic)
@@ -138,14 +116,8 @@ class Snapshot: UIViewController, UICollectionViewDataSource, UICollectionViewDe
         return cell
     }
     
-
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 64
-    }
-    
-    @IBAction func backButtonClick(_ sender: Any) {
-        self.presentingViewController!.dismiss(animated: false, completion: nil)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -153,21 +125,6 @@ class Snapshot: UIViewController, UICollectionViewDataSource, UICollectionViewDe
         
         self.boardView.reloadData()
         self.boardView.isHidden = false
-        
-        if(self.game!.prompt){
-            self.renderDialogConfirm()
-        }
-        
-    }
-    
-    func renderDialogConfirm() {
-        DispatchQueue.main.async {
-            let storyboard: UIStoryboard = UIStoryboard(name: "PopConfirm", bundle: nil)
-            let viewController = storyboard.instantiateViewController(withIdentifier: "PopConfirm") as! PopConfirm
-            viewController.game = self.game!
-            viewController.playerSelf = self.player!
-            self.present(viewController, animated: true, completion: nil)
-        }
     }
     
     override func viewDidLayoutSubviews() {
@@ -176,14 +133,10 @@ class Snapshot: UIViewController, UICollectionViewDataSource, UICollectionViewDe
         self.boardView.bounces = false
         self.boardView.alwaysBounceVertical = false
         self.boardViewHeight.constant = boardView.contentSize.height
-        
     }
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-        switch item.tag {
-        default:
-            self.presentingViewController!.dismiss(animated: false, completion: nil)
-        }
+        self.presentingViewController!.dismiss(animated: false, completion: nil)
     }
     
 }

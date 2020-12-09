@@ -261,12 +261,10 @@ class HomeTable: UITableViewController, SwipeTableViewCellDelegate, UIPickerView
                 let game: EntityGame = self.list[indexPath.row]
                 
                 DispatchQueue.main.async {
-                    //cell.hideSwipe(animated: false, completion: nil)
-                    
                     let storyboard: UIStoryboard = UIStoryboard(name: "Snapshot", bundle: nil)
                     let viewController = storyboard.instantiateViewController(withIdentifier: "Snapshot") as! Snapshot
-                    viewController.setGame(game: game)
-                    viewController.setPlayer(player: self.activity!.player!)
+                    viewController.game = game
+                    viewController.player = self.activity!.player!
                     self.activity!.present(viewController, animated: false, completion: nil)
                 }
             }

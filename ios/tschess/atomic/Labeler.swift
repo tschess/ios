@@ -48,18 +48,61 @@ class Labeler {
         
         if(turnFlag){
             DispatchQueue.main.async {
-                let storyboard: UIStoryboard = UIStoryboard(name: "PopEval", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "PopEval") as! PopEval
-                viewController.modalTransitionStyle = .crossDissolve
-                viewController.playerSelf = self.player
-                viewController.playerOther = self.game!.getPlayerOther(username: self.player!.username)
-                viewController.gameTschess = self.game!
+                
+                let alert = UIAlertController(title: "🧳 Draw proposal 👀 ", message: "\nOpponent has proposed a draw.", preferredStyle: .alert)
+                
+                
+                let action0 = UIAlertAction(title: "Accept 👌", style: .default, handler: {_ in
+                    //self.activityIndicatorAccept.isHidden = false
+                    //self.activityIndicatorAccept.startAnimating()
+                    let payload: [String: Any] = [
+                        "id_game": self.game!.id,
+                        "id_self": self.player!.id,
+                        "accept": true
+                    ]
+                    UpdateEval().execute(requestPayload: payload) { (result) in
+                        //DispatchQueue.main.async {
+                            //self.activityIndicatorAccept!.stopAnimating()
+                            //self.activityIndicatorAccept!.isHidden = true
+                            //self.presentingViewController!.dismiss(animated: false, completion: nil)
+                        //}
+                    }
+                })
+                action0.setValue(UIColor.lightGray, forKey: "titleTextColor")
+                alert.addAction(action0)
+                
+                let action1 = UIAlertAction(title: "Reject 🙅‍♀️", style: .default, handler: {_ in
+                    //self.activityIndicatorAccept.isHidden = false
+                    //self.activityIndicatorAccept.startAnimating()
+                    let payload: [String: Any] = [
+                        "id_game": self.game!.id,
+                        "id_self": self.player!.id,
+                        "accept": false
+                    ]
+                    UpdateEval().execute(requestPayload: payload) { (result) in
+                        //DispatchQueue.main.async {
+                            //self.activityIndicatorAccept!.stopAnimating()
+                            //self.activityIndicatorAccept!.isHidden = true
+                            //self.presentingViewController!.dismiss(animated: false, completion: nil)
+                        //}
+                    }
+                })
+                action1.setValue(UIColor.lightGray, forKey: "titleTextColor")
+                alert.addAction(action1)
+                
+                //self.present(alert, animated: true)
+                //let storyboard: UIStoryboard = UIStoryboard(name: "PopEval", bundle: nil)
+                //let viewController = storyboard.instantiateViewController(withIdentifier: "PopEval") as! PopEval
+                //viewController.modalTransitionStyle = .crossDissolve
+                //viewController.playerSelf = self.player
+                //viewController.playerOther = self.game!.getPlayerOther(username: self.player!.username)
+                //viewController.gameTschess = self.game!
                 
                 if var viewControllerTop = UIApplication.shared.keyWindow?.rootViewController {
-                    while let presentedViewController = viewController.presentedViewController {
+                    while let presentedViewController = alert.presentedViewController {
                         viewControllerTop = presentedViewController
                     }
-                    viewControllerTop.present(viewController, animated: true, completion: nil)
+                    viewControllerTop.present(alert, animated: true)
                 }
             }
         }
