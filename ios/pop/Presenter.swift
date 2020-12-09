@@ -59,7 +59,7 @@ class Presenter: UIPresentationController {
         
         dimmingView.alpha = 0
         presentingViewController.transitionCoordinator?.animate(alongsideTransition: { _ in
-            self.dimmingView.alpha = 1
+            self.dimmingView.alpha = 0.90
         }, completion: nil)
     }
     

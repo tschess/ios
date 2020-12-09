@@ -21,7 +21,6 @@ class PopPromo: UIViewController {
     @IBOutlet weak var imageViewQueen: UIImageView!
     @IBOutlet weak var imageViewRook: UIImageView!
     
-    //private var customTransitioningDelegate = TransPro()
     private let transDelegate: TransDelegate = TransDelegate(width: 230, height: 222)
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -38,6 +37,8 @@ class PopPromo: UIViewController {
         modalPresentationStyle = .custom
         modalTransitionStyle = .crossDissolve
         transitioningDelegate = transDelegate
+        
+        //self.view.layer.cornerRadius = 10
     }
     
     override func viewDidLoad() {

@@ -310,7 +310,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
             //let storyboard: UIStoryboard = UIStoryboard(name: "PopPoison", bundle: nil)
             //let viewController = storyboard.instantiateViewController(withIdentifier: "PopPoison") as! PopDismiss
             //self.present(viewController, animated: true, completion: nil)
-            let alert = UIAlertController(title: "💣 Poison pawn ♟️", message: "\nYou've attacked a poison pawn!", preferredStyle: .alert)
+            let alert = UIAlertController(title: "💣 Poison pawn 💀", message: "\nYou've attacked a poison pawn!", preferredStyle: .alert)
             let action = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
             action.setValue(UIColor.lightGray, forKey: "titleTextColor")
             alert.addAction(action)
@@ -323,7 +323,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
             //let storyboard: UIStoryboard = UIStoryboard(name: "PopPassant", bundle: nil)
             //let viewController = storyboard.instantiateViewController(withIdentifier: "PopPassant") as! PopDismiss
             //self.present(viewController, animated: true, completion: nil)
-            let alert = UIAlertController(title: "🇫🇷 En passant ♟️", message: "\nPawn taken en passant!", preferredStyle: .alert)
+            let alert = UIAlertController(title: "🇫🇷 En passant 💀", message: "\nPawn taken en passant!", preferredStyle: .alert)
             let action = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
             action.setValue(UIColor.lightGray, forKey: "titleTextColor")
             alert.addAction(action)
