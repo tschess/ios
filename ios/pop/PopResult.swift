@@ -10,7 +10,8 @@ import UIKit
 
 class PopResult: UIViewController {
     
-  
+    @IBOutlet weak var ok: UIButton!
+    
     
     var transitioner: Transitioner?
     private let transDelegate: TransDelegate = TransDelegate(width: 271, height: 301)
@@ -39,7 +40,10 @@ class PopResult: UIViewController {
     }
     
    
-   
+    @IBAction func selectOk(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
 
     
 }

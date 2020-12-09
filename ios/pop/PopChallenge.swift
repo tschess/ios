@@ -81,12 +81,11 @@ class PopChallenge: UIViewController, UIPickerViewDelegate, UIPickerViewDataSour
     @IBAction func sendChallenge(_ sender: Any) {
         
         
-        let storyboard: UIStoryboard = UIStoryboard(name: "PopResult", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "PopResult") as! PopResult
         
-
+        
+        dismiss(animated: true, completion: nil)
       
-        self.present(viewController, animated: true)
+        //self.present(viewController, animated: true)
     }
     
 
