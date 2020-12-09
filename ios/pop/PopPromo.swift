@@ -21,7 +21,7 @@ class PopPromo: UIViewController {
     @IBOutlet weak var imageViewQueen: UIImageView!
     @IBOutlet weak var imageViewRook: UIImageView!
     
-    private let transDelegate: TransDelegate = TransDelegate(width: 230, height: 222)
+    private let transDelegate: TransDelegate = TransDelegate(width: 230, height: 209)
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
