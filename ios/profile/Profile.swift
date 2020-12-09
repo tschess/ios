@@ -83,7 +83,7 @@ class Profile: UIViewController, UITabBarDelegate, UINavigationControllerDelegat
         appDelegate.id = self.player!.id
         
         
-        _ = UNUserNotificationCenter.current().getNotificationSettings { (settings) in
+        UNUserNotificationCenter.current().getNotificationSettings { (settings) in
             switch settings.authorizationStatus {
             case .notDetermined:
                 UNUserNotificationCenter.current().requestAuthorization(options: [.sound, .alert, .badge]) {
@@ -101,9 +101,14 @@ class Profile: UIViewController, UITabBarDelegate, UINavigationControllerDelegat
             
             default:
                 DispatchQueue.main.async {
-                    let storyboard: UIStoryboard = UIStoryboard(name: "PopNote", bundle: nil)
-                    let viewController = storyboard.instantiateViewController(withIdentifier: "PopNote") as! PopDismiss
-                    self.present(viewController, animated: true, completion: nil)
+                    //let storyboard: UIStoryboard = UIStoryboard(name: "PopNote", bundle: nil)
+                    //let viewController = storyboard.instantiateViewController(withIdentifier: "PopNote") as! PopDismiss
+                    //self.present(viewController, animated: true, completion: nil)
+                    let alert = UIAlertController(title: "🔔 Move notifications 🚦", message: "\nEnable/disable notifications in device settings.", preferredStyle: .alert)
+                    let action = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+                    action.setValue(UIColor.lightGray, forKey: "titleTextColor")
+                    alert.addAction(action)
+                    self.present(alert, animated: true)
                 }
             }
         }
@@ -148,7 +153,21 @@ class Profile: UIViewController, UITabBarDelegate, UINavigationControllerDelegat
         case 1://notification
             self.notification()
         default:
-            self.signOut()
+            //self.signOut()
+            DispatchQueue.main.async {
+                let alert = UIAlertController(title: "🚪 Sign out from device? 📲", message: "\nConfirm to clear automatic login credentials from this device.", preferredStyle: .alert)
+                let action0 = UIAlertAction(title: "Yes", style: .default, handler: {_ in
+                    self.signOut()
+                })
+                action0.setValue(UIColor.lightGray, forKey: "titleTextColor")
+                alert.addAction(action0)
+                
+                let action1 = UIAlertAction(title: "No", style: .default, handler: nil)
+                action1.setValue(UIColor.lightGray, forKey: "titleTextColor")
+                alert.addAction(action1)
+                
+                self.present(alert, animated: true)
+            }
         }
     }
     

@@ -30,9 +30,6 @@
 		83ACC67F2500120100D394D0 /* PopPassant.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83ACC67E2500120100D394D0 /* PopPassant.storyboard */; };
 		83ACC6932500143900D394D0 /* PopPromo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83ACC6922500143900D394D0 /* PopPromo.swift */; };
 		83ACC6952500145200D394D0 /* PopPromo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83ACC6942500145200D394D0 /* PopPromo.storyboard */; };
-		83ACC6972500148C00D394D0 /* PopEval.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83ACC6962500148C00D394D0 /* PopEval.storyboard */; };
-		83ACC69D2500152D00D394D0 /* PopEval.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83ACC69C2500152D00D394D0 /* PopEval.swift */; };
-		83ACC69F2500159C00D394D0 /* PopNote.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83ACC69E2500159C00D394D0 /* PopNote.storyboard */; };
 		83ACC6A82500173F00D394D0 /* UpdateConfirm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83ACC6A72500173F00D394D0 /* UpdateConfirm.swift */; };
 		83ACC6AE250021AE00D394D0 /* PopUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83ACC6AD250021AE00D394D0 /* PopUp.storyboard */; };
 		83ACC6B0250021DE00D394D0 /* PopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83ACC6AF250021DE00D394D0 /* PopUp.swift */; };
@@ -196,9 +193,6 @@
 		83ACC67E2500120100D394D0 /* PopPassant.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PopPassant.storyboard; sourceTree = "<group>"; };
 		83ACC6922500143900D394D0 /* PopPromo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopPromo.swift; sourceTree = "<group>"; };
 		83ACC6942500145200D394D0 /* PopPromo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PopPromo.storyboard; sourceTree = "<group>"; };
-		83ACC6962500148C00D394D0 /* PopEval.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PopEval.storyboard; sourceTree = "<group>"; };
-		83ACC69C2500152D00D394D0 /* PopEval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopEval.swift; sourceTree = "<group>"; };
-		83ACC69E2500159C00D394D0 /* PopNote.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PopNote.storyboard; sourceTree = "<group>"; };
 		83ACC6A72500173F00D394D0 /* UpdateConfirm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateConfirm.swift; sourceTree = "<group>"; };
 		83ACC6AD250021AE00D394D0 /* PopUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PopUp.storyboard; sourceTree = "<group>"; };
 		83ACC6AF250021DE00D394D0 /* PopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUp.swift; sourceTree = "<group>"; };
@@ -409,7 +403,6 @@
 			children = (
 				83ACC67C250011C700D394D0 /* PopPoison.storyboard */,
 				83ACC67E2500120100D394D0 /* PopPassant.storyboard */,
-				83ACC69E2500159C00D394D0 /* PopNote.storyboard */,
 			);
 			path = storyboard;
 			sourceTree = "<group>";
@@ -418,7 +411,6 @@
 			isa = PBXGroup;
 			children = (
 				83ACC6942500145200D394D0 /* PopPromo.storyboard */,
-				83ACC6962500148C00D394D0 /* PopEval.storyboard */,
 				83ACC6AD250021AE00D394D0 /* PopUp.storyboard */,
 			);
 			path = storyboard;
@@ -428,7 +420,6 @@
 			isa = PBXGroup;
 			children = (
 				83ACC6922500143900D394D0 /* PopPromo.swift */,
-				83ACC69C2500152D00D394D0 /* PopEval.swift */,
 				83ACC6AF250021DE00D394D0 /* PopUp.swift */,
 			);
 			path = instance;
@@ -1086,14 +1077,12 @@
 				83B72B85256716C400FA5D8F /* Header.xib in Resources */,
 				83DFCF7825795948007088E5 /* Profile.storyboard in Resources */,
 				83ACC67D250011C700D394D0 /* PopPoison.storyboard in Resources */,
-				83ACC69F2500159C00D394D0 /* PopNote.storyboard in Resources */,
 				83ACC67F2500120100D394D0 /* PopPassant.storyboard in Resources */,
 				83DFCF7D25797DC3007088E5 /* Leaderboard.storyboard in Resources */,
 				B708D0E7236B366800A899F9 /* LaunchScreen.storyboard in Resources */,
 				B7CB62F6237BB10800E50204 /* Start.storyboard in Resources */,
 				83ACC6AE250021AE00D394D0 /* PopUp.storyboard in Resources */,
 				8307D803257835880054FDDE /* Tschess.storyboard in Resources */,
-				83ACC6972500148C00D394D0 /* PopEval.storyboard in Resources */,
 				8307D80725784D990054FDDE /* Snapshot.storyboard in Resources */,
 				83ACC6952500145200D394D0 /* PopPromo.storyboard in Resources */,
 				835C1885256D68D300390AE8 /* HeaderSnapshot.xib in Resources */,
@@ -1226,7 +1215,6 @@
 				B7BE121023EAD64100ADA499 /* Hopper.swift in Sources */,
 				B79D05DB2410272500B8A889 /* Const.swift in Sources */,
 				83872649257EEAE300F62288 /* RequestChallenge.swift in Sources */,
-				83ACC69D2500152D00D394D0 /* PopEval.swift in Sources */,
 				B7F541C823D51B0C00E89074 /* HomeCell.swift in Sources */,
 				B7D8ECE92408B823001B5D2D /* RevealWhite.swift in Sources */,
 				B7BE125123EB032E00ADA499 /* Profile.swift in Sources */,
