@@ -44,6 +44,7 @@ class PopChallenge: UIViewController, UIPickerViewDelegate, UIPickerViewDataSour
         
         self.pickerView!.delegate = self
         self.pickerView!.dataSource = self
+        self.pickerView!.selectRow(1, inComponent: 0, animated: true)
     }
     
    
@@ -67,20 +68,30 @@ class PopChallenge: UIViewController, UIPickerViewDelegate, UIPickerViewDataSour
         return 30
     }
     
-    let pickerSet = ["Chess (Traditional)", "I'm feelin' lucky (Random)", "Config. 0̸", "Config. 1", "Config. 2"]
+    let pickerSet = ["\tChess", "\tI'm Feelin' Lucky", "\tConfig. 0̸", "\tConfig. 1", "\tConfig. 2"]
     
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         let label = UILabel()
         label.textColor = .white
-        label.textAlignment = .center
-        label.font = UIFont.systemFont(ofSize: 18, weight: UIFont.Weight.light)
+        //label.textAlignment = .center
+        label.font = UIFont.systemFont(ofSize: 16, weight: UIFont.Weight.light)
         label.text = pickerSet[row]
         return label
     }
 
     
     @IBAction func sendChallenge(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+        
+        
+        let storyboard: UIStoryboard = UIStoryboard(name: "PopResult", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "PopResult") as! PopResult
+        
+
+        //self.rootViewController?.present(viewController, animated: true, completion: nil)
+        
+        
+        //dismiss(animated: true, completion: nil)
+        self.present(viewController, animated: true)
     }
     
 

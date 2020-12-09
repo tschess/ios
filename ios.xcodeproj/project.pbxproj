@@ -15,6 +15,8 @@
 		83295C472475C2DE00820C6C /* GetTimeout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83295C462475C2DE00820C6C /* GetTimeout.swift */; };
 		83510E012581519600544DA6 /* PopChallenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83510E002581519600544DA6 /* PopChallenge.swift */; };
 		83510E03258151A300544DA6 /* PopChallenge.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83510E02258151A300544DA6 /* PopChallenge.storyboard */; };
+		83510E052581639000544DA6 /* PopResult.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83510E042581639000544DA6 /* PopResult.storyboard */; };
+		83510E072581668000544DA6 /* PopResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83510E062581668000544DA6 /* PopResult.swift */; };
 		8358928224BE65A0004F9703 /* UpdatePush.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8358928124BE65A0004F9703 /* UpdatePush.swift */; };
 		835C1885256D68D300390AE8 /* HeaderSnapshot.xib in Resources */ = {isa = PBXBuildFile; fileRef = 835C1884256D68D300390AE8 /* HeaderSnapshot.xib */; };
 		835C18872571573000390AE8 /* HeaderSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835C18862571573000390AE8 /* HeaderSnapshot.swift */; };
@@ -175,6 +177,8 @@
 		83295C462475C2DE00820C6C /* GetTimeout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTimeout.swift; sourceTree = "<group>"; };
 		83510E002581519600544DA6 /* PopChallenge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopChallenge.swift; sourceTree = "<group>"; };
 		83510E02258151A300544DA6 /* PopChallenge.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PopChallenge.storyboard; sourceTree = "<group>"; };
+		83510E042581639000544DA6 /* PopResult.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PopResult.storyboard; sourceTree = "<group>"; };
+		83510E062581668000544DA6 /* PopResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopResult.swift; sourceTree = "<group>"; };
 		8358928124BE65A0004F9703 /* UpdatePush.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePush.swift; sourceTree = "<group>"; };
 		835C1884256D68D300390AE8 /* HeaderSnapshot.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderSnapshot.xib; sourceTree = "<group>"; };
 		835C18862571573000390AE8 /* HeaderSnapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderSnapshot.swift; sourceTree = "<group>"; };
@@ -372,6 +376,8 @@
 				8385908D24F98B2A00BBC11C /* Presenter.swift */,
 				83510E002581519600544DA6 /* PopChallenge.swift */,
 				83510E02258151A300544DA6 /* PopChallenge.storyboard */,
+				83510E042581639000544DA6 /* PopResult.storyboard */,
+				83510E062581668000544DA6 /* PopResult.swift */,
 			);
 			path = pop;
 			sourceTree = "<group>";
@@ -1035,6 +1041,7 @@
 				83ACC6952500145200D394D0 /* PopPromo.storyboard in Resources */,
 				83510E03258151A300544DA6 /* PopChallenge.storyboard in Resources */,
 				835C1885256D68D300390AE8 /* HeaderSnapshot.xib in Resources */,
+				83510E052581639000544DA6 /* PopResult.storyboard in Resources */,
 				B7021F9823FE5D8F00C9346A /* Other.storyboard in Resources */,
 				83DFCF7A25797492007088E5 /* Config.storyboard in Resources */,
 				B7BE121623EAD7E700ADA499 /* Init.storyboard in Resources */,
@@ -1114,6 +1121,7 @@
 				B7BE11C023EA9E3D00ADA499 /* PawnWhite.swift in Sources */,
 				8385908C24F98AD600BBC11C /* TransDelegate.swift in Sources */,
 				B7BE11B923EA9DD400ADA499 /* BishopWhite.swift in Sources */,
+				83510E072581668000544DA6 /* PopResult.swift in Sources */,
 				B7BE128F23EB09C700ADA499 /* GameRequest.swift in Sources */,
 				B7BE11BB23EA9DE200ADA499 /* BishopBlack.swift in Sources */,
 				83DFCF7F25797DD5007088E5 /* Leaderboard.swift in Sources */,

@@ -108,7 +108,7 @@
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="zaD-CE-khl"/>
-            <color key="backgroundColor" systemColor="viewFlipsideBackgroundColor"/>
+            <color key="backgroundColor" red="0.1215686275" green="0.1215686275" blue="0.1215686275" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="l3d-v4-Nyn" firstAttribute="leading" secondItem="zaD-CE-khl" secondAttribute="leading" constant="8" id="0bH-c6-q2f"/>
@@ -144,8 +144,5 @@
     </objects>
     <resources>
         <image name="avatar_default" width="320" height="320"/>
-        <systemColor name="viewFlipsideBackgroundColor">
-            <color red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
     </resources>
 </document>
