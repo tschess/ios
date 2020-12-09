@@ -7,19 +7,36 @@
 //
 
 import UIKit
+import SwipeCellKit
 
-class OtherCell: UITableViewCell {
+class OtherCell: SwipeTableViewCell {
     
-    @IBOutlet weak var displacementImage: UIImageView!
+    func set(game: EntityGame, username: String) {
+        let winner: Bool = game.getWinner(username: username)
+    
+        self.imageSlide.isHidden = false
+        if(game.condition == "DRAW"){
+            self.imageSlide.image = UIImage(named: "more_vert_yel")
+            return
+        }
+        if(winner){
+            self.imageSlide.image = UIImage(named: "more_vert_grn")
+            return
+        }
+        self.imageSlide.image = UIImage(named: "more_vert_red")
+    }
+    
+    @IBOutlet weak var imageSlide: UIImageView!
+    //@IBOutlet weak var displacementImage: UIImageView!
     @IBOutlet weak var avatarImageView: UIImageView!
     
-    @IBOutlet weak var dispLabelAdjacent: UILabel!
     //@IBOutlet weak var dispLabelAdjacent: UILabel!
-    @IBOutlet weak var displacementLabel: UILabel!
+    //@IBOutlet weak var dispLabelAdjacent: UILabel!
+    //@IBOutlet weak var displacementLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
     
-    @IBOutlet weak var oddsLabel: UILabel!
-    @IBOutlet weak var terminalDateLabel: UILabel!
+    //@IBOutlet weak var oddsLabel: UILabel!
+    //@IBOutlet weak var terminalDateLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

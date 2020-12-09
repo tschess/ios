@@ -41,7 +41,7 @@ class Other: UIViewController, UITabBarDelegate {
         super.viewDidLoad()
         self.otherMenuTable = children.first as? OtherTable
         //self.otherMenuTable!.setActivityIndicator(activityIndicator: self.activityIndicator!)
-        self.otherMenuTable!.setPlayer(player: self.playerOther!)
+        self.otherMenuTable!.player = self.playerOther!
         self.otherMenuTable!.fetchMenuTableList()
         
         
@@ -78,21 +78,35 @@ class Other: UIViewController, UITabBarDelegate {
         let gameMenuSelectionIndex = notification.userInfo!["other_menu_selection"] as! Int
         let game = self.otherMenuTable!.getGameMenuTableList()[gameMenuSelectionIndex]
         
-        
+        DispatchQueue.main.async {
+            let storyboard: UIStoryboard = UIStoryboard(name: "Snapshot", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier: "Snapshot") as! Snapshot
+            viewController.game = game
+            viewController.player = self.playerOther!
+            self.present(viewController, animated: false, completion: nil)
+        }
         //SelectSnapshot().snapshot(playerSelf: self.playerSelf!, game: game, presentor: self)
     }
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         self.tabBarMenu.selectedItem = nil
+        
+        
       
-        let transition = CATransition()
-        transition.duration = 0.3
-        transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
-        transition.type = CATransitionType.fade
-        self.navigationController?.view.layer.add(transition, forKey: nil)
-        _ = self.navigationController?.popToRootViewController(animated: false)
-        self.navigationController?.popViewController(animated: false)
-            
+        //let transition = CATransition()
+        //transition.duration = 0.3
+        //transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+        //transition.type = CATransitionType.fade
+        //self.navigationController?.view.layer.add(transition, forKey: nil)
+        //_ = self.navigationController?.popToRootViewController(animated: false)
+        //self.navigationController?.popViewController(animated: false)
+        
+        switch item.tag {
+        case 1:
+            self.navigationController?.popViewController(animated: false)
+        default:
+            self.navigationController?.popViewController(animated: false)
+        }
         
     }
 }

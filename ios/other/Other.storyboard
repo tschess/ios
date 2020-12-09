@@ -90,7 +90,7 @@
         <scene sceneID="q3I-tM-n4B">
             <objects>
                 <tableViewController id="ymK-8I-rfn" customClass="OtherTable" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="102" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="RGj-zf-Ij8">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="RGj-zf-Ij8">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="644"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -99,42 +99,54 @@
                         <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="sectionIndexTrackingBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="OtherMenuCell" rowHeight="102" id="fEE-xr-pP7" customClass="OtherCell" customModule="ios" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="102"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="OtherCell" id="fEE-xr-pP7" customClass="OtherCell" customModule="ios" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="73.333335876464844"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fEE-xr-pP7" id="hNs-pd-88F">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="102"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="73.333335876464844"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatar_inverse" translatesAutoresizingMaskIntoConstraints="NO" id="eaF-37-5Tf">
-                                            <rect key="frame" x="8" y="4" width="65" height="65"/>
+                                            <rect key="frame" x="8" y="4" width="65" height="65.333333333333329"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="65" id="4Rc-dM-WE8"/>
                                                 <constraint firstAttribute="width" constant="65" id="WGk-4h-lhB"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" tag="111" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UOX-Pd-b6f">
-                                            <rect key="frame" x="8" y="70" width="80" height="30"/>
+                                            <rect key="frame" x="77" y="15" width="80" height="25"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="30" id="jmw-zP-xlh"/>
+                                                <constraint firstAttribute="height" constant="25" id="jmw-zP-xlh"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="18"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="more_vert_vfs" translatesAutoresizingMaskIntoConstraints="NO" id="N0t-B1-OG2">
+                                            <rect key="frame" x="380" y="0.0" width="30" height="73.333333333333329"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="30" id="AuG-eu-qsN"/>
+                                            </constraints>
+                                        </imageView>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="N0t-B1-OG2" secondAttribute="bottom" id="DPe-FZ-PTV"/>
+                                        <constraint firstAttribute="bottom" secondItem="eaF-37-5Tf" secondAttribute="bottom" constant="4" id="H59-2T-lTZ"/>
                                         <constraint firstItem="eaF-37-5Tf" firstAttribute="leading" secondItem="hNs-pd-88F" secondAttribute="leading" constant="8" id="ND0-Ju-Lpu"/>
-                                        <constraint firstAttribute="bottom" secondItem="UOX-Pd-b6f" secondAttribute="bottom" constant="2" id="blq-EC-kwz"/>
-                                        <constraint firstItem="UOX-Pd-b6f" firstAttribute="top" secondItem="eaF-37-5Tf" secondAttribute="bottom" constant="1" id="eFl-Vc-G1J"/>
-                                        <constraint firstItem="UOX-Pd-b6f" firstAttribute="leading" secondItem="hNs-pd-88F" secondAttribute="leading" constant="8" id="gnN-vR-fiI"/>
+                                        <constraint firstItem="UOX-Pd-b6f" firstAttribute="top" secondItem="hNs-pd-88F" secondAttribute="topMargin" constant="4" id="UlY-aa-Qkj"/>
+                                        <constraint firstItem="UOX-Pd-b6f" firstAttribute="leading" secondItem="eaF-37-5Tf" secondAttribute="trailing" constant="4" id="bpi-h8-HgQ"/>
+                                        <constraint firstAttribute="trailing" secondItem="N0t-B1-OG2" secondAttribute="trailing" constant="4" id="lEJ-Gn-tx3"/>
+                                        <constraint firstItem="N0t-B1-OG2" firstAttribute="top" secondItem="hNs-pd-88F" secondAttribute="top" id="pzo-bS-b4Y"/>
                                         <constraint firstItem="eaF-37-5Tf" firstAttribute="top" secondItem="hNs-pd-88F" secondAttribute="top" constant="4" id="rPf-Tx-MF6"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="avatarImageView" destination="eaF-37-5Tf" id="DKq-uK-Dcc"/>
+                                    <outlet property="imageSlide" destination="N0t-B1-OG2" id="b5S-YR-WrP"/>
                                     <outlet property="usernameLabel" destination="UOX-Pd-b6f" id="yEM-QA-mwD"/>
                                 </connections>
                             </tableViewCell>
@@ -156,6 +168,7 @@
         <image name="back.white" width="39" height="33"/>
         <image name="challenge" width="39" height="39"/>
         <image name="challenge_g" width="39" height="39"/>
+        <image name="more_vert_vfs" width="256" height="256"/>
         <systemColor name="systemYellowColor">
             <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

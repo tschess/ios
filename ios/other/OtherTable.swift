@@ -7,14 +7,55 @@
 //
 
 import UIKit
+import SwipeCellKit
 
-class OtherTable: UITableViewController {
+class OtherTable: UITableViewController, SwipeTableViewCellDelegate {
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
+        let username: String = self.player!.username
+        if(orientation == .right) {
+            let rematch = SwipeAction(style: .default, title: nil) { action, indexPath in
+                
+                let cell = self.tableView.cellForRow(at: indexPath) as! SwipeTableViewCell
+                
+                cell.hideSwipe(animated: false, completion: nil)
+                
+                let game: EntityGame = self.list[indexPath.row]
+                
+                DispatchQueue.main.async {
+                    let storyboard: UIStoryboard = UIStoryboard(name: "Snapshot", bundle: nil)
+                    let viewController = storyboard.instantiateViewController(withIdentifier: "Snapshot") as! Snapshot
+                    viewController.game = game
+                    viewController.player = self.player!
+                    self.present(viewController, animated: false, completion: nil)
+                }
+            }
+            rematch.backgroundColor = UIColor(red: 39.0/255, green: 41.0/255, blue: 44.0/255, alpha: 1.0)
+            rematch.title = "Snapshot"
+            let game: EntityGame = self.list[indexPath.row]
+            if(game.condition == "DRAW"){
+                rematch.textColor = .yellow
+                rematch.image = UIImage(named: "challenge_yel")!
+                return [rematch]
+            }
+            if(game.getWinner(username: username)){
+                rematch.textColor = .green
+                rematch.image = UIImage(named: "challenge_grn")!
+                return [rematch]
+            }
+            rematch.textColor = .red
+            rematch.image = UIImage(named: "challenge_red")!
+            return [rematch]
+        }
+        return nil
+    }
+    
         
     var player: EntityPlayer?
     
-    func setPlayer(player: EntityPlayer){
-        self.player = player
-    }
+    //func setPlayer(player: EntityPlayer){
+        //self.player = player
+    //}
     
     var activityIndicator: UIActivityIndicatorView?
     
@@ -22,9 +63,9 @@ class OtherTable: UITableViewController {
         self.activityIndicator = activityIndicator
     }
     
-    let DATE_TIME: DateTime = DateTime()
+    //let DATE_TIME: DateTime = DateTime()
     
-    var gameMenuTableList: [EntityGame] = [EntityGame]()
+    var list: [EntityGame] = [EntityGame]()
     
     var label: UILabel?
     
@@ -36,7 +77,7 @@ class OtherTable: UITableViewController {
     }
     
     func getGameMenuTableList() -> [EntityGame] {
-        return gameMenuTableList
+        return list
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -48,7 +89,7 @@ class OtherTable: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return gameMenuTableList.count
+        return list.count
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -57,12 +98,18 @@ class OtherTable: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let game = gameMenuTableList[indexPath.row]
+        let game = list[indexPath.row]
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "OtherMenuCell", for: indexPath) as! OtherCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "OtherCell", for: indexPath) as! OtherCell
         //cell.terminalDateLabel.text = game.getLabelTextDate()
         cell.usernameLabel.text = game.getLabelTextUsernameOpponent(username: self.player!.username)
         cell.avatarImageView.image = game.getImageAvatarOpponent(username: self.player!.username)
+        cell.avatarImageView.layer.cornerRadius = cell.avatarImageView.frame.size.width/2
+        cell.avatarImageView.clipsToBounds = true
+        
+        cell.set(game: game, username: self.player!.username)
+        
+        cell.delegate = self
         
         //cell.oddsLabel.text = game.getOdds(username: self.player!.username)
         //cell.displacementImage.image = game.getImageDisp(username: self.player!.username)
@@ -135,14 +182,14 @@ class OtherTable: UITableViewController {
     }
     
     func appendToLeaderboardTableList(additionalCellList: [EntityGame]) {
-        let currentCount = self.gameMenuTableList.count
+        let currentCount = self.list.count
         
         for game in additionalCellList {
-            if(!self.gameMenuTableList.contains(game)){
-                self.gameMenuTableList.append(game)
+            if(!self.list.contains(game)){
+                self.list.append(game)
             }
         }
-        if(currentCount != self.gameMenuTableList.count){
+        if(currentCount != self.list.count){
             DispatchQueue.main.async() {
                 self.tableView.reloadData()
             }
