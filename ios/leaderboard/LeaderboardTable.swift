@@ -26,14 +26,15 @@ class LeaderboardTable: UITableViewController, SwipeTableViewCellDelegate {
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
         if(orientation == .left) {
-            let modifyAction = SwipeAction(style: .default, title: nil) { action, indexPath in
+            return nil
+            //let modifyAction = SwipeAction(style: .default, title: nil) { action, indexPath in
                 
-                let cell = tableView.cellForRow(at: indexPath) as! SwipeTableViewCell
-                cell.hideSwipe(animated: false, completion: nil)
+                //let cell = tableView.cellForRow(at: indexPath) as! SwipeTableViewCell
+                //cell.hideSwipe(animated: false, completion: nil)
                 
-                self.home!.setIndicator(on: true)
+                //self.home!.setIndicator(on: true)
                 
-                let playerOther = self.leaderboardList[indexPath.row]
+                //let playerOther = self.leaderboardList[indexPath.row]
                 
                 //RequestRecent().execute(id: playerOther.id) { (result) in
                     //self.home!.setIndicator(on: false)
@@ -51,47 +52,34 @@ class LeaderboardTable: UITableViewController, SwipeTableViewCellDelegate {
                         //SelectSnapshot().snapshot(playerSelf: self.home!.playerSelf!, game: game, presentor: self)
                     //}
                 //}
-            }
-            modifyAction.image = UIImage(named: "eyeye")!
+            //}
+            //modifyAction.image = UIImage(named: "eyeye")!
             //modifyAction.image = UIImage(named: "eye_g")!
             //modifyAction.backgroundColor = .orange
-            modifyAction.backgroundColor = UIColor(red: 39.0/255, green: 41.0/255, blue: 44.0/255, alpha: 1.0)
+            //modifyAction.backgroundColor = UIColor(red: 39.0/255, green: 41.0/255, blue: 44.0/255, alpha: 1.0)
             
-            modifyAction.title = "recent"
+            //modifyAction.title = "recent"
             //modifyAction.textColor = UIColor.lightGray
-            modifyAction.textColor = UIColor.white
-            return [modifyAction]
+            //modifyAction.textColor = UIColor.white
+            //return [modifyAction]
         }
         let modifyAction = SwipeAction(style: .default, title: nil) { action, indexPath in
             
             let cell = tableView.cellForRow(at: indexPath) as! SwipeTableViewCell
             cell.hideSwipe(animated: false, completion: nil)
             
-            let playerOther = self.leaderboardList[indexPath.row]
-//                DispatchQueue.main.async {
-//                    let height: CGFloat = UIScreen.main.bounds.height
-//                    if(height.isLess(than: 750)){
-//                        let storyboard: UIStoryboard = UIStoryboard(name: "ChallengeL", bundle: nil)
-//                        let viewController = storyboard.instantiateViewController(withIdentifier: "ChallengeL") as! Challenge
-//                        viewController.setPlayerSelf(playerSelf: self.home!.playerSelf!)
-//                        viewController.setPlayerOther(playerOther: playerOther)
-//                        viewController.setSelection(selection: Int.random(in: 0...3))
-//                        viewController.BACK = "HOME"
-//                        self.navigationController?.pushViewController(viewController, animated: false)
-//                        return
-//                    }
-//                    let storyboard: UIStoryboard = UIStoryboard(name: "ChallengeP", bundle: nil)
-//                    let viewController = storyboard.instantiateViewController(withIdentifier: "ChallengeP") as! Challenge
-//                    viewController.setPlayerSelf(playerSelf: self.home!.playerSelf!)
-//                    viewController.setPlayerOther(playerOther: playerOther)
-//                    viewController.setSelection(selection: Int.random(in: 0...3))
-//                    viewController.BACK = "HOME"
-//                    self.navigationController?.pushViewController(viewController, animated: false)
-//                }
+            //let opponent: EntityPlayer =
+            
+            let storyboard: UIStoryboard = UIStoryboard(name: "Other", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier: "Other") as! Other
+            viewController.playerSelf = self.home!.playerSelf!
+            viewController.playerOther = self.leaderboardList[indexPath.row]
+            self.navigationController?.pushViewController(viewController, animated: false)
+
         }
         //modifyAction.image = UIImage(named: "challenge_g")!
-        modifyAction.image = UIImage(named: "challenge")!
-        modifyAction.title = "challenge"
+        modifyAction.image = UIImage(named: "eyeye")!
+        modifyAction.title = "Games"
         modifyAction.textColor = UIColor.white
         //modifyAction.backgroundColor = .purple
         modifyAction.backgroundColor = UIColor(red: 39.0/255, green: 41.0/255, blue: 44.0/255, alpha: 1.0)

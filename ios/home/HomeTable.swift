@@ -218,7 +218,7 @@ class HomeTable: UITableViewController, SwipeTableViewCellDelegate, UIPickerView
             self.ack(game: game)
         }
         ackAction.backgroundColor = UIColor(red: 39.0/255, green: 41.0/255, blue: 44.0/255, alpha: 1.0)
-        ackAction.title = "accept"
+        ackAction.title = "Accept"
         ackAction.image = UIImage(named: "tu_w")!
         return [ackAction,nAction]
     }
@@ -243,7 +243,7 @@ class HomeTable: UITableViewController, SwipeTableViewCellDelegate, UIPickerView
             }
             rescind.backgroundColor = UIColor(red: 39.0/255, green: 41.0/255, blue: 44.0/255, alpha: 1.0)
             rescind.image = UIImage(named: "close_w")!
-            rescind.title = "rescind"
+            rescind.title = "Rescind"
             return [rescind]
         }
         return nil
@@ -269,7 +269,7 @@ class HomeTable: UITableViewController, SwipeTableViewCellDelegate, UIPickerView
                 }
             }
             rematch.backgroundColor = UIColor(red: 39.0/255, green: 41.0/255, blue: 44.0/255, alpha: 1.0)
-            rematch.title = "snapshot"
+            rematch.title = "Snapshot"
             if(game.condition == "DRAW"){
                 rematch.textColor = .yellow
                 rematch.image = UIImage(named: "challenge_yel")!
