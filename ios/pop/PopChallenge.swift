@@ -13,7 +13,6 @@ class PopChallenge: UIViewController, UIPickerViewDelegate, UIPickerViewDataSour
     @IBOutlet weak var labelTitle: UILabel!
     
     @IBOutlet weak var pickerView: UIPickerView!
-    //@IBOutlet weak var pickerView: UIDatePicker!
     
     @IBOutlet weak var buttonChallenge: UIButton!
     @IBOutlet weak var buttonCancel: UIButton!
@@ -73,7 +72,6 @@ class PopChallenge: UIViewController, UIPickerViewDelegate, UIPickerViewDataSour
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         let label = UILabel()
         label.textColor = .white
-        //label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 16, weight: UIFont.Weight.light)
         label.text = pickerSet[row]
         return label
@@ -87,10 +85,7 @@ class PopChallenge: UIViewController, UIPickerViewDelegate, UIPickerViewDataSour
         let viewController = storyboard.instantiateViewController(withIdentifier: "PopResult") as! PopResult
         
 
-        //self.rootViewController?.present(viewController, animated: true, completion: nil)
-        
-        
-        //dismiss(animated: true, completion: nil)
+      
         self.present(viewController, animated: true)
     }
     
