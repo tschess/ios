@@ -307,17 +307,27 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     
     func renderDialogPoison() {
         DispatchQueue.main.async {
-            let storyboard: UIStoryboard = UIStoryboard(name: "PopPoison", bundle: nil)
-            let viewController = storyboard.instantiateViewController(withIdentifier: "PopPoison") as! PopDismiss
-            self.present(viewController, animated: true, completion: nil)
+            //let storyboard: UIStoryboard = UIStoryboard(name: "PopPoison", bundle: nil)
+            //let viewController = storyboard.instantiateViewController(withIdentifier: "PopPoison") as! PopDismiss
+            //self.present(viewController, animated: true, completion: nil)
+            let alert = UIAlertController(title: "💣 Poison pawn ♟️", message: "\nYou've attacked a poison pawn!", preferredStyle: .alert)
+            let action = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+            action.setValue(UIColor.lightGray, forKey: "titleTextColor")
+            alert.addAction(action)
+            self.present(alert, animated: true)
         }
     }
     
     func renderDialogPassant() {
         DispatchQueue.main.async {
-            let storyboard: UIStoryboard = UIStoryboard(name: "PopPassant", bundle: nil)
-            let viewController = storyboard.instantiateViewController(withIdentifier: "PopPassant") as! PopDismiss
-            self.present(viewController, animated: true, completion: nil)
+            //let storyboard: UIStoryboard = UIStoryboard(name: "PopPassant", bundle: nil)
+            //let viewController = storyboard.instantiateViewController(withIdentifier: "PopPassant") as! PopDismiss
+            //self.present(viewController, animated: true, completion: nil)
+            let alert = UIAlertController(title: "🇫🇷 En passant ♟️", message: "\nPawn taken en passant!", preferredStyle: .alert)
+            let action = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+            action.setValue(UIColor.lightGray, forKey: "titleTextColor")
+            alert.addAction(action)
+            self.present(alert, animated: true)
         }
     }
     
@@ -325,14 +335,15 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         DispatchQueue.main.async {
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             appDelegate.id = self.player!.id
-            _ = UNUserNotificationCenter.current().getNotificationSettings { (settings) in
+            UNUserNotificationCenter.current().getNotificationSettings { (settings) in
                 if (settings.authorizationStatus == .notDetermined) {
-                    DispatchQueue.main.async {
-                        let storyboard: UIStoryboard = UIStoryboard(name: "PopUp", bundle: nil)
-                        let viewController = storyboard.instantiateViewController(withIdentifier: "PopUp") as! PopUp
-                        viewController.playerSelf = self.player!
-                        self.present(viewController, animated: true, completion: nil)
-                    }
+                    //DispatchQueue.main.async {
+                        let alert = UIAlertController(title: "🎲 Enable notification 👂", message: "\nTo be notified when opponent moves enable notifications.", preferredStyle: .alert)
+                        let action = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+                        action.setValue(UIColor.lightGray, forKey: "titleTextColor")
+                        alert.addAction(action)
+                        self.present(alert, animated: true)
+                    //}
                 }
             }
         }
