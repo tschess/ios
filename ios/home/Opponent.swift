@@ -8,40 +8,7 @@
 
 import UIKit
 
-class Opponent: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
-    
-    //var table: HomeTable?
-    
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return pickerSet.count
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return pickerSet[row]
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
-        return 30
-    }
-    
-    let pickerSet = ["chess", "i'm feelin' lucky", "config. 0̸", "config. 1", "config. 2"]
-    
-    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
-        let label = UILabel()
-        label.textColor = .white
-        label.textAlignment = .center
-        label.font = UIFont.systemFont(ofSize: 18, weight: UIFont.Weight.light)
-        label.text = pickerSet[row]
-        return label
-    }
+class Opponent: UIView {
     
     @IBOutlet weak var viewHolder00: UIView!
     @IBOutlet weak var imageAvatar00: UIImageView!
@@ -60,55 +27,15 @@ class Opponent: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
     
     @IBOutlet weak var indicatorActivity: UIActivityIndicatorView!
     
-    
-    var pickerView: UIPickerView?
-    
-    
     func execute(opponent: EntityPlayer) {
-        
         let storyboard: UIStoryboard = UIStoryboard(name: "PopInvite", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "PopInvite") as! PopInvite
             
-        viewController.player = self.playerSelf
+        viewController.player = self.player
         viewController.opponent = opponent
 
         self.window?.rootViewController?.present(viewController, animated: true, completion: nil)
-        
-        
-//        let viewController = UIViewController()
-//        viewController.preferredContentSize = CGSize(width: 250, height: 108) //108
-//        self.pickerView = UIPickerView(frame: CGRect(x: 0, y: 0, width: 250, height: 100))
-//        pickerView!.delegate = self
-//        pickerView!.dataSource = self
-//        pickerView!.backgroundColor = .black
-//
-//        pickerView!.layer.cornerRadius = 10
-//        pickerView!.layer.masksToBounds = true
-//
-//        pickerView!.selectRow(1, inComponent: 0, animated: true)
-//
-//        viewController.view.addSubview(self.pickerView!)
-//        let alert = UIAlertController(title: "🤜 \(opponent.username) 🤛", message: "", preferredStyle: UIAlertController.Style.alert)
-//
-//        alert.setValue(viewController, forKey: "contentViewController")
-//
-//        let option00 = UIAlertAction(title: "⚡ issue challenge ⚡", style: .default, handler:{ _ in
-//            let value = self.pickerView?.selectedRow(inComponent: 0)
-//
-//            self.challenge(config: value!, id_other: opponent.id)
-//        })
-//        alert.addAction(option00)
-//
-//        let option01 = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-//        option01.setValue(UIColor.lightGray, forKey: "titleTextColor")
-//        alert.addAction(option01)
-//
-//        self.window?.rootViewController?.present(alert, animated: true, completion: nil)
     }
-    
-    
-
-    
     
     var opponent00: EntityPlayer?
     @objc func checkAction00(sender: UITapGestureRecognizer) {
@@ -125,16 +52,10 @@ class Opponent: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
         self.execute(opponent: self.opponent02!)
     }
     
+    var player: EntityPlayer?
     
-    
-    
-    var playerSelf: EntityPlayer?
-    
-    public func set(playerSelf: EntityPlayer) {
-        
-        self.playerSelf = playerSelf
-        //showErrorMessage()
-        
+    public func set(player: EntityPlayer) {
+        self.player = player
         
         let screenSize = UIScreen.main.bounds
         let screenWidth = screenSize.width
@@ -143,16 +64,12 @@ class Opponent: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
         self.viewHolder01width.constant = screenWidth/3
         self.viewHolder02width.constant = screenWidth/3
         
-        
-        
         viewHolder00.isHidden = true
         viewHolder01.isHidden = true
         viewHolder02.isHidden = true
         
         indicatorActivity.isHidden = false
         indicatorActivity.startAnimating()
-        
-        
         
         let gesture00 = UITapGestureRecognizer(target: self, action:  #selector(self.checkAction00))
         self.viewHolder00.isUserInteractionEnabled = true
@@ -169,7 +86,7 @@ class Opponent: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
         
         
         print("!!!!!!")
-        self.execute(id: playerSelf.id) { (result) in
+        self.execute(id: player.id) { (result) in
             
             DispatchQueue.main.async() {
                 self.indicatorActivity.stopAnimating()
