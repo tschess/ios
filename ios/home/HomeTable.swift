@@ -80,48 +80,30 @@ class HomeTable: UITableViewController, SwipeTableViewCellDelegate {
         return self.swipProposedOutbound(orientation: orientation, game: game)
     }
     
-    func ack(game: EntityGame) {
-        let viewController = UIViewController()
-        viewController.preferredContentSize = CGSize(width: 250, height: 108) //108
-        self.pickerView = UIPickerView(frame: CGRect(x: 0, y: 0, width: 250, height: 100))
-        //pickerView!.delegate = self
-        //pickerView!.dataSource = self
-        pickerView!.backgroundColor = .black
-        
-        pickerView!.layer.cornerRadius = 10
-        pickerView!.layer.masksToBounds = true
-        
-        pickerView!.selectRow(1, inComponent: 0, animated: true)
-        
-        viewController.view.addSubview(self.pickerView!)
-        
-        let opponent: EntityPlayer = game.getPlayerOther(username: self.activity!.player!.username)
-        
-        let alert = UIAlertController(title: "🤜 \(opponent.username) 🤛", message: "", preferredStyle: UIAlertController.Style.alert)
-        
-        alert.setValue(viewController, forKey: "contentViewController")
-        
-        let option00 = UIAlertAction(title: "🎉 let's play 🎉", style: .default, handler:{ _ in
-            let value = self.pickerView?.selectedRow(inComponent: 0)
+   
+    func ack(opponent: EntityPlayer, game: EntityGame) {
+        let storyboard: UIStoryboard = UIStoryboard(name: "PopInvite", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "PopInvite") as! PopInvite
             
-            self.play(config: value!, id_game: game.id)
-        })
-        alert.addAction(option00)
+        viewController.ACCEPT = true
+        viewController.player = self.activity!.player
+        viewController.opponent = opponent
         
-        let option01 = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        option01.setValue(UIColor.lightGray, forKey: "titleTextColor")
-        alert.addAction(option01)
-        
-        self.activity!.present(alert, animated: true, completion: nil)
+        viewController.game = game
+
+        self.activity!.present(viewController, animated: true, completion: nil)
     }
     
-    func rematch(opponent: EntityPlayer) {        
+    
+    func rematch(opponent: EntityPlayer, game: EntityGame) {
         let storyboard: UIStoryboard = UIStoryboard(name: "PopInvite", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "PopInvite") as! PopInvite
             
         viewController.REMATCH = true
         viewController.player = self.activity!.player
         viewController.opponent = opponent
+        
+        viewController.game = game
 
         self.activity!.present(viewController, animated: true, completion: nil)
     }
@@ -159,14 +141,14 @@ class HomeTable: UITableViewController, SwipeTableViewCellDelegate {
             cell.hideSwipe(animated: false, completion: nil)
             
             let game: EntityGame = self.list[indexPath.row]
-            //let username: String = self.activity!.player!.username
-            //let opponent: EntityPlayer = game.getPlayerOther(username: username)
+            let username: String = self.activity!.player!.username
+            let opponent: EntityPlayer = game.getPlayerOther(username: username)
             
             //viewController.setPlayerSelf(playerSelf: self.activity!.player!)
             //viewController.setPlayerOther(playerOther: playerOther)
             //viewController.setGameTschess(gameTschess: game)
             //viewController.setSelection(selection: Int.random(in: 0...3))
-            self.ack(game: game)
+            self.ack(opponent: opponent, game: game)
         }
         ackAction.backgroundColor = UIColor(red: 39.0/255, green: 41.0/255, blue: 44.0/255, alpha: 1.0)
         ackAction.title = "Accept"
@@ -299,13 +281,16 @@ class HomeTable: UITableViewController, SwipeTableViewCellDelegate {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        self.tableView.deselectSelectedRow(animated: true)
+        
         let game = self.list[indexPath.row]
         if(game.isResolved()){
             let game: EntityGame = self.list[indexPath.row]
             let username: String = self.activity!.player!.username
             let opponent: EntityPlayer = game.getPlayerOther(username: username)
             
-            self.rematch(opponent: opponent)
+            self.rematch(opponent: opponent, game: game)
             return
         }
         if(game.status == "ONGOING"){
@@ -374,4 +359,17 @@ class HomeTable: UITableViewController, SwipeTableViewCellDelegate {
         //}
     }
     
+}
+
+
+
+extension UITableView {
+
+    func deselectSelectedRow(animated: Bool)
+    {
+        if let indexPathForSelectedRow = self.indexPathForSelectedRow {
+            self.deselectRow(at: indexPathForSelectedRow, animated: animated)
+        }
+    }
+
 }
