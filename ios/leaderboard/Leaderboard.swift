@@ -102,36 +102,46 @@ class Leaderboard: UIViewController, UITabBarDelegate, UIPickerViewDelegate, UIP
             //viewController.playerSelf = self.playerSelf!
             //viewController.playerOther = playerOther
             //self.navigationController?.pushViewController(viewController, animated: false)
-            let viewController = UIViewController()
-            viewController.preferredContentSize = CGSize(width: 250, height: 108) //108
-            self.pickerView = UIPickerView(frame: CGRect(x: 0, y: 0, width: 250, height: 100))
-            self.pickerView!.delegate = self
-            self.pickerView!.dataSource = self
-            self.pickerView!.backgroundColor = .black
-            
-            self.pickerView!.layer.cornerRadius = 10
-            self.pickerView!.layer.masksToBounds = true
-            
-            self.pickerView!.selectRow(1, inComponent: 0, animated: true)
-            
-            viewController.view.addSubview(self.pickerView!)
-            let alert = UIAlertController(title: "🤜 \(opponent.username) 🤛", message: "", preferredStyle: UIAlertController.Style.alert)
-            
-            alert.setValue(viewController, forKey: "contentViewController")
-            
-            let option00 = UIAlertAction(title: "⚡ issue challenge ⚡", style: .default, handler:{ _ in
-                let value = self.pickerView?.selectedRow(inComponent: 0)
-                
-                self.challenge(config: value!, id_other: opponent.id)
-            })
-            alert.addAction(option00)
-            
-            let option01 = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-            option01.setValue(UIColor.lightGray, forKey: "titleTextColor")
-            alert.addAction(option01)
+//            let viewController = UIViewController()
+//            viewController.preferredContentSize = CGSize(width: 250, height: 108) //108
+//            self.pickerView = UIPickerView(frame: CGRect(x: 0, y: 0, width: 250, height: 100))
+//            self.pickerView!.delegate = self
+//            self.pickerView!.dataSource = self
+//            self.pickerView!.backgroundColor = .black
+//
+//            self.pickerView!.layer.cornerRadius = 10
+//            self.pickerView!.layer.masksToBounds = true
+//
+//            self.pickerView!.selectRow(1, inComponent: 0, animated: true)
+//
+//            viewController.view.addSubview(self.pickerView!)
+//            let alert = UIAlertController(title: "🤜 \(opponent.username) 🤛", message: "", preferredStyle: UIAlertController.Style.alert)
+//
+//            alert.setValue(viewController, forKey: "contentViewController")
+//
+//            let option00 = UIAlertAction(title: "⚡ issue challenge ⚡", style: .default, handler:{ _ in
+//                let value = self.pickerView?.selectedRow(inComponent: 0)
+//
+//                self.challenge(config: value!, id_other: opponent.id)
+//            })
+//            alert.addAction(option00)
+//
+//            let option01 = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+//            option01.setValue(UIColor.lightGray, forKey: "titleTextColor")
+//            alert.addAction(option01)
             
             //self.window?.rootViewController?.present(alert, animated: true, completion: nil)
-            self.present(alert, animated: true)
+            //self.present(alert, animated: true)
+            
+            let storyboard: UIStoryboard = UIStoryboard(name: "PopInvite", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier: "PopInvite") as! PopInvite
+                
+            viewController.player = self.playerSelf
+            viewController.opponent = opponent
+
+            //self.window?.rootViewController?.present(viewController, animated: true, completion: nil)
+            self.present(viewController, animated: true)
+            
         }
     }
     
