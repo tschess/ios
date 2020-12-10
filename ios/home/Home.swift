@@ -63,16 +63,11 @@ class Home: UIViewController, UITabBarDelegate {
         switch item.tag {
         
         case 0:
-            
-            let storyboard: UIStoryboard = UIStoryboard(name: "PopResult", bundle: nil)
-            let viewController = storyboard.instantiateViewController(withIdentifier: "PopResult") as! PopResult
-            self.present(viewController, animated: true)
-            
-            //let alert = UIAlertController(title: "⏱️ Hang tight! 🤖", message: "\nSingle-player mode coming soon.", preferredStyle: .alert)
-            //let action = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
-            //action.setValue(UIColor.lightGray, forKey: "titleTextColor")
-            //alert.addAction(action)
-            //self.present(alert, animated: true)
+            let alert = UIAlertController(title: "⏱️ Hang tight! 🤖", message: "\nSingle-player mode coming soon.", preferredStyle: .alert)
+            let action = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+            action.setValue(UIColor.lightGray, forKey: "titleTextColor")
+            alert.addAction(action)
+            self.present(alert, animated: true)
         case 1:
             let storyboard: UIStoryboard = UIStoryboard(name: "Config", bundle: nil)
             let viewController = storyboard.instantiateViewController(withIdentifier: "Config") as! Config

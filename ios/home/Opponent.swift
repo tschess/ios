@@ -68,7 +68,9 @@ class Opponent: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
         
         let storyboard: UIStoryboard = UIStoryboard(name: "PopChallenge", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "PopChallenge") as! PopChallenge
-        
+            
+        viewController.player = self.playerSelf
+        viewController.opponent = opponent
 
         self.window?.rootViewController?.present(viewController, animated: true, completion: nil)
         
@@ -105,52 +107,7 @@ class Opponent: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     
-    func challenge(config: Int, id_other: String) {
-        print("\n\nYAYAYAYA: \(config) <-- config")
-        print("\n\nYAYAYAYA: \(id_other) <-- id_other \n\n")
-        
-        let url = URL(string: "http://\(ServerAddress().IP):8080/game/challenge")!
-        
-        let payload: [String: Any] = [
-            "id_self": self.playerSelf!.id,
-            "id_other": id_other,
-            "config": config
-        ]
-        
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.addValue("application/json", forHTTPHeaderField: "Accept")
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        do {
-            request.httpBody = try JSONSerialization.data(withJSONObject: payload, options: .prettyPrinted)
-        } catch let error {
-            print(error.localizedDescription)
-        }
-        URLSession.shared.dataTask(with: request, completionHandler: { data, response, error in
-            guard error == nil else {
-                //completion([["fail": "0"]])
-                return
-            }
-            guard let data = data else {
-                //completion([["fail": "1"]])
-                return
-            }
-            do {
-                guard let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [[String: Any]] else {
-                    //completion([["fail": "2"]])
-                    return
-                }
-                //completion(json)
-                
-                //DispatchQueue.main.async {
-                    //self.table!.tableView.reloadData()
-                //}
-                
-            } catch _ {
-                //completion([["fail": "3"]])
-            }
-        }).resume()
-    }
+
     
     
     var opponent00: EntityPlayer?

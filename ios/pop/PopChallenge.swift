@@ -36,8 +36,11 @@ class PopChallenge: UIViewController, UIPickerViewDelegate, UIPickerViewDataSour
         super.init(coder: aDecoder)
         self.configure()
         
-      
+        
     }
+    
+    var player: EntityPlayer?
+    var opponent: EntityPlayer?
     
     func configure() {
         modalPresentationStyle = .custom
@@ -47,6 +50,8 @@ class PopChallenge: UIViewController, UIPickerViewDelegate, UIPickerViewDataSour
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.labelTitle.text = "🤜 vs. \(self.opponent!.username) 🤛"
         
         self.pickerView!.delegate = self
         self.pickerView!.dataSource = self
@@ -59,7 +64,7 @@ class PopChallenge: UIViewController, UIPickerViewDelegate, UIPickerViewDataSour
         self.indicatorActivity.isHidden = true
     }
     
-   
+    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -89,45 +94,127 @@ class PopChallenge: UIViewController, UIPickerViewDelegate, UIPickerViewDataSour
         label.text = pickerSet[row]
         return label
     }
-
+    
     
     @IBAction func selectChallenge(_ sender: Any) {
         
+        self.labelTitle.isHidden = true
         
+        self.labelDirection.isHidden = true
         
         self.pickerView.isHidden = true
+        
+        self.labelChallenge.isHidden = true
+        self.buttonChallenge.isHidden = true
+        self.buttonChallenge.isEnabled = false
+        
+        self.labelCancel.isHidden = true
+        self.buttonCancel.isHidden = true
+        self.buttonCancel.isEnabled = false
+        
         
         self.indicatorActivity.isHidden = false
         self.indicatorActivity.startAnimating()
         
-        self.buttonOk.isHidden = false
-        self.buttonOk.isEnabled = true
         
-        self.buttonChallenge.isHidden = true
-        self.buttonChallenge.isEnabled = false
         
-        self.buttonCancel.isHidden = true
-        self.buttonCancel.isEnabled = false
         
-        self.labelOk.isHidden = false
         
-        //self.labelTitle.text = "✅ Success ✅"
-        self.labelChallenge.isHidden = true
+        let value = self.pickerView?.selectedRow(inComponent: 0)
         
-        self.labelCancel.isHidden = true
+        self.challenge(config: value!, id_other: opponent!.id)
         
-        self.labelDirection.isHidden = true
-
+        
+        
+        
+        
+        
+        
+        
+        
     }
     
-
+    
     @IBAction func selectCancel(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
     
-
+    
     @IBAction func selectOk(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
     
+    
+    func challenge(config: Int, id_other: String) {
+        print("\n\nYAYAYAYA: \(config) <-- config")
+        print("\n\nYAYAYAYA: \(id_other) <-- id_other \n\n")
+        
+        let url = URL(string: "http://\(ServerAddress().IP):8080/game/challenge")!
+        
+        let payload: [String: Any] = [
+            "id_self": self.player!.id,
+            "id_other": id_other,
+            "config": config
+        ]
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        do {
+            request.httpBody = try JSONSerialization.data(withJSONObject: payload, options: .prettyPrinted)
+        } catch let error {
+            print(error.localizedDescription)
+        }
+        URLSession.shared.dataTask(with: request, completionHandler: { data, response, error in
+            guard error == nil else {
+                self.error()
+                return
+            }
+            guard let data = data else {
+                self.error()
+                return
+            }
+            do {
+                guard (try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [[String: Any]]) != nil else {
+                    self.error()
+                    return
+                }
+                DispatchQueue.main.async() {
+                    self.indicatorActivity.isHidden = true
+                    self.indicatorActivity.stopAnimating()
+                    
+                    self.labelTitle.isHidden = false
+                    self.labelTitle.text = "✅ Success ✅"
+                    
+                    self.labelDirection.isHidden = false
+                    self.labelDirection.text = "Invite has been sent. 👍"
+                    
+                    self.labelOk.isHidden = false
+                    self.buttonOk.isHidden = false
+                    self.buttonOk.isEnabled = true
+                }
+                return
+            } catch _ {
+                self.error()
+            }
+        }).resume()
+    }
+    
+    func error() {
+        DispatchQueue.main.async() {
+            self.indicatorActivity.isHidden = true
+            self.indicatorActivity.stopAnimating()
+            
+            self.labelTitle.isHidden = false
+            self.labelTitle.text = "❌ Error ❌"
+            
+            self.labelDirection.isHidden = false
+            self.labelDirection.text = "Invite has not been sent. 🤖"
+            
+            self.labelOk.isHidden = false
+            self.buttonOk.isHidden = false
+            self.buttonOk.isEnabled = true
+        }
+    }
 }
