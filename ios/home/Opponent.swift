@@ -83,16 +83,11 @@ class Opponent: UIView {
         self.viewHolder02.isUserInteractionEnabled = true
         self.viewHolder02.addGestureRecognizer(gesture02)
         
-        
-        
-        print("!!!!!!")
         self.execute(id: player.id) { (result) in
-            
             DispatchQueue.main.async() {
                 self.indicatorActivity.stopAnimating()
                 self.indicatorActivity.isHidden = true
             }
-            
             let opponent00: EntityPlayer = ParsePlayer().execute(json: result[0])
             self.opponent00 = opponent00
             DispatchQueue.main.async() {
@@ -101,10 +96,7 @@ class Opponent: UIView {
                 self.imageAvatar00.layer.cornerRadius = self.imageAvatar00.frame.size.width/2
                 self.imageAvatar00.clipsToBounds = true
                 self.viewHolder00.isHidden = false
-                
-                
             }
-            
             let opponent01: EntityPlayer = ParsePlayer().execute(json: result[1])
             self.opponent01 = opponent01
             DispatchQueue.main.async() {
@@ -113,9 +105,7 @@ class Opponent: UIView {
                 self.imageAvatar01.layer.cornerRadius = self.imageAvatar01.frame.size.width/2
                 self.imageAvatar01.clipsToBounds = true
                 self.viewHolder01.isHidden = false
-                
             }
-            
             let opponent02: EntityPlayer = ParsePlayer().execute(json: result[2])
             self.opponent02 = opponent02
             DispatchQueue.main.async() {
@@ -124,18 +114,11 @@ class Opponent: UIView {
                 self.imageAvatar02.layer.cornerRadius = self.imageAvatar02.frame.size.width/2
                 self.imageAvatar02.clipsToBounds = true
                 self.viewHolder02.isHidden = false
-                
             }
-            
-            
         }
-        
-        
     }
     
     func execute(id: String, completion: @escaping ([[String: Any]]) -> Void) {
-        
-        //val url = "${ServerAddress().IP}:8080/player/rivals/${this.playerSelf.id}"
         let url = URL(string: "http://\(ServerAddress().IP):8080/player/rivals/\(id)")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
@@ -156,17 +139,11 @@ class Opponent: UIView {
                     return
                 }
                 completion(json)
-                
-                
-                
-                
             } catch _ {
                 completion([["fail": "3"]])
             }
         }).resume()
     }
-    
-    
 }
 
 
