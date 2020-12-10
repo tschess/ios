@@ -42,25 +42,25 @@
                                 </connections>
                             </containerView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rgV-i2-gvq">
-                                <rect key="frame" x="107" y="744" width="200" height="60"/>
+                                <rect key="frame" x="107" y="754" width="200" height="50"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bahlsenwitz LLC" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N3L-CS-g4u">
-                                        <rect key="frame" x="0.0" y="0.0" width="200" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="200" height="25"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="200" id="QNP-6x-woZ"/>
-                                            <constraint firstAttribute="height" constant="30" id="xht-FV-PAK"/>
+                                            <constraint firstAttribute="height" constant="25" id="xht-FV-PAK"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="20"/>
+                                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="16"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🇺🇸 Made in the USA 🦅" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JyI-Ga-VqG">
-                                        <rect key="frame" x="0.0" y="30" width="200" height="30"/>
+                                        <rect key="frame" x="0.0" y="25" width="200" height="25"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="Dmg-fh-hsD"/>
+                                            <constraint firstAttribute="height" constant="25" id="Dmg-fh-hsD"/>
                                             <constraint firstAttribute="width" constant="200" id="rjQ-1c-5ag"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="20"/>
+                                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="16"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -74,7 +74,7 @@
                                     <constraint firstItem="N3L-CS-g4u" firstAttribute="top" secondItem="rgV-i2-gvq" secondAttribute="top" id="b9q-vt-rBW"/>
                                     <constraint firstAttribute="width" constant="200" id="eZV-Po-GMK"/>
                                     <constraint firstAttribute="bottom" secondItem="JyI-Ga-VqG" secondAttribute="bottom" id="iJy-e5-8SM"/>
-                                    <constraint firstAttribute="height" constant="60" id="seD-92-7Md"/>
+                                    <constraint firstAttribute="height" constant="50" id="seD-92-7Md"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rzc-fm-J5Z">
