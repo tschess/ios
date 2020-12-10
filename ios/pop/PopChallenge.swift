@@ -10,8 +10,15 @@ import UIKit
 
 class PopChallenge: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
-    @IBOutlet weak var labelTitle: UILabel!
+    @IBOutlet weak var labelOk: UILabel!
+    @IBOutlet weak var buttonOk: UIButton!
+    @IBOutlet weak var indicatorActivity: UIActivityIndicatorView!
     
+    @IBOutlet weak var labelTitle: UILabel!
+    @IBOutlet weak var labelChallenge: UILabel!
+    
+    @IBOutlet weak var labelCancel: UILabel!
+    @IBOutlet weak var labelDirection: UILabel!
     @IBOutlet weak var pickerView: UIPickerView!
     
     @IBOutlet weak var buttonChallenge: UIButton!
@@ -44,6 +51,12 @@ class PopChallenge: UIViewController, UIPickerViewDelegate, UIPickerViewDataSour
         self.pickerView!.delegate = self
         self.pickerView!.dataSource = self
         self.pickerView!.selectRow(1, inComponent: 0, animated: true)
+        
+        self.labelOk!.isHidden = true
+        self.buttonOk.isHidden = true
+        self.buttonOk.isEnabled = false
+        
+        self.indicatorActivity.isHidden = true
     }
     
    
@@ -78,21 +91,43 @@ class PopChallenge: UIViewController, UIPickerViewDelegate, UIPickerViewDataSour
     }
 
     
-    @IBAction func sendChallenge(_ sender: Any) {
+    @IBAction func selectChallenge(_ sender: Any) {
         
         
         
+        self.pickerView.isHidden = true
         
-        dismiss(animated: true, completion: nil)
-      
-        //self.present(viewController, animated: true)
+        self.indicatorActivity.isHidden = false
+        self.indicatorActivity.startAnimating()
+        
+        self.buttonOk.isHidden = false
+        self.buttonOk.isEnabled = true
+        
+        self.buttonChallenge.isHidden = true
+        self.buttonChallenge.isEnabled = false
+        
+        self.buttonCancel.isHidden = true
+        self.buttonCancel.isEnabled = false
+        
+        self.labelOk.isHidden = false
+        
+        //self.labelTitle.text = "✅ Success ✅"
+        self.labelChallenge.isHidden = true
+        
+        self.labelCancel.isHidden = true
+        
+        self.labelDirection.isHidden = true
+
     }
     
 
-    @IBAction func cancel(_ sender: Any) {
+    @IBAction func selectCancel(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
     
 
+    @IBAction func selectOk(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
     
 }
