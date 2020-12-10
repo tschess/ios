@@ -137,16 +137,16 @@ class HomeTable: UITableViewController, SwipeTableViewCellDelegate {
             let cell = self.tableView.cellForRow(at: indexPath) as! SwipeTableViewCell
             cell.hideSwipe(animated: false, completion: nil)
             
-            self.activity!.setIndicator(on: true)
+            self.activity!.header!.setIndicator(on: true)
             //TODO: MENU
             let requestPayload: [String: Any] = ["id_game": game.id, "id_self": self.activity!.player!.id]
             UpdateNack().execute(requestPayload: requestPayload) { (result) in
                 self.list.remove(at: indexPath.row)
-                self.activity!.setIndicator(on: false)
-                
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                }
+                //self.activity!.header!.setIndicator(on: false)
+                self.activity!.header!.setIndicator(on: false, tableView: self.activity!.table!)
+                //DispatchQueue.main.async {
+                    //self.tableView.reloadData()
+                //}
             }
         }
         nAction.backgroundColor = UIColor(red: 39.0/255, green: 41.0/255, blue: 44.0/255, alpha: 1.0)
@@ -181,15 +181,17 @@ class HomeTable: UITableViewController, SwipeTableViewCellDelegate {
                 let cell = self.tableView.cellForRow(at: indexPath) as! SwipeTableViewCell
                 cell.hideSwipe(animated: false, completion: nil)
                 
-                self.activity!.setIndicator(on: true)
+                self.activity!.header!.setIndicator(on: true)
+                //self.activity!.setIndicator(on: true)
                 let game = self.list[indexPath.row]
                 let requestPayload: [String: Any] = ["id_game": game.id, "id_self": self.activity!.player!.id]
                 UpdateRescind().execute(requestPayload: requestPayload) { (result) in
                     self.list.remove(at: indexPath.row)
-                    self.activity!.setIndicator(on: false)
-                    DispatchQueue.main.async {
-                        self.tableView.reloadData()
-                    }
+                    //self.activity!.setIndicator(on: false)
+                    self.activity!.header!.setIndicator(on: false, tableView: self.activity!.table!)
+                    //DispatchQueue.main.async {
+                        //self.tableView.reloadData()
+                    //}
                 }
             }
             rescind.backgroundColor = UIColor(red: 39.0/255, green: 41.0/255, blue: 44.0/255, alpha: 1.0)

@@ -71,7 +71,7 @@ class Opponent: UIView {
         viewHolder02.isHidden = true
         
         //
-        self.home!.setIndicator(on: true)
+        self.home!.header!.setIndicator(on: true)
         self.indicatorActivity.isHidden = true
         //indicatorActivity.startAnimating()
         
@@ -92,7 +92,8 @@ class Opponent: UIView {
                 //self.indicatorActivity.stopAnimating()
                 //self.indicatorActivity.isHidden = true
             //}
-            self.home!.setIndicator(on: false)
+            self.home!.header!.setIndicator(on: false, tableView: self.home!.table!)
+            //self.home!.setIndicator(on: false)
             
             let opponent00: EntityPlayer = ParsePlayer().execute(json: result[0])
             self.opponent00 = opponent00

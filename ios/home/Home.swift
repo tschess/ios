@@ -32,7 +32,7 @@ class Home: UIViewController, UITabBarDelegate {
         self.header!.translatesAutoresizingMaskIntoConstraints = false
         let attributes: [NSLayoutConstraint.Attribute] = [.top, .bottom, .right, .left]
         NSLayoutConstraint.activate(attributes.map {
-            NSLayoutConstraint(item: self.header, attribute: $0, relatedBy: .equal, toItem: self.header!.superview, attribute: $0, multiplier: 1, constant: 0)
+            NSLayoutConstraint(item: self.header!, attribute: $0, relatedBy: .equal, toItem: self.header!.superview, attribute: $0, multiplier: 1, constant: 0)
         })
         self.header!.set(player: self.player!)
         
@@ -107,24 +107,24 @@ class Home: UIViewController, UITabBarDelegate {
         }
     }
     
-    func setIndicator(on: Bool) {
-        if(on) {
-            DispatchQueue.main.async() {
-                if(self.header!.indicatorActivity!.isHidden){
-                    self.header!.indicatorActivity!.isHidden = false
-                }
-                if(!self.header!.indicatorActivity!.isAnimating){
-                    self.header!.indicatorActivity!.startAnimating()
-                }
-            }
-            return
-        }
-        DispatchQueue.main.async() {
-            self.header!.indicatorActivity!.isHidden = true
-            self.header!.indicatorActivity!.stopAnimating()
-            self.table!.tableView.reloadData()
-        }
-    }
+//    func setIndicator(on: Bool) {
+//        if(on) {
+//            DispatchQueue.main.async() {
+//                if(self.header!.indicatorActivity!.isHidden){
+//                    self.header!.indicatorActivity!.isHidden = false
+//                }
+//                if(!self.header!.indicatorActivity!.isAnimating){
+//                    self.header!.indicatorActivity!.startAnimating()
+//                }
+//            }
+//            return
+//        }
+//        DispatchQueue.main.async() {
+//            self.header!.indicatorActivity!.isHidden = true
+//            self.header!.indicatorActivity!.stopAnimating()
+//            self.table!.tableView.reloadData()
+//        }
+//    }
 }
 
 

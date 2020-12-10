@@ -35,8 +35,25 @@ class Header: UIView {
         imageAvatar.layer.cornerRadius = imageAvatar.frame.size.width/2
         imageAvatar.clipsToBounds = true
     }
-
-
+    
+    func setIndicator(on: Bool, tableView: UITableViewController? = nil) {
+        if(on) {
+            DispatchQueue.main.async() {
+                if(self.indicatorActivity!.isHidden){
+                    self.indicatorActivity!.isHidden = false
+                }
+                if(!self.indicatorActivity!.isAnimating){
+                    self.indicatorActivity!.startAnimating()
+                }
+            }
+            return
+        }
+        DispatchQueue.main.async() {
+            tableView!.tableView.reloadData()
+            self.indicatorActivity!.stopAnimating()
+            self.indicatorActivity!.isHidden = true
+        }
+    }
         
 }
 
