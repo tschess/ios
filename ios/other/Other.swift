@@ -88,25 +88,49 @@ class Other: UIViewController, UITabBarDelegate {
         //SelectSnapshot().snapshot(playerSelf: self.playerSelf!, game: game, presentor: self)
     }
     
+//    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+//        self.tabBarMenu.selectedItem = nil
+//
+//
+//
+//        //let transition = CATransition()
+//        //transition.duration = 0.3
+//        //transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+//        //transition.type = CATransitionType.fade
+//        //self.navigationController?.view.layer.add(transition, forKey: nil)
+//        //_ = self.navigationController?.popToRootViewController(animated: false)
+//        //self.navigationController?.popViewController(animated: false)
+//
+//        switch item.tag {
+//        case 1:
+//            self.navigationController?.popViewController(animated: false)
+//        default:
+//            self.navigationController?.popViewController(animated: false)
+//        }
+//
+//    }
+//
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        
         self.tabBarMenu.selectedItem = nil
-        
-        
-      
-        //let transition = CATransition()
-        //transition.duration = 0.3
-        //transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
-        //transition.type = CATransitionType.fade
-        //self.navigationController?.view.layer.add(transition, forKey: nil)
-        //_ = self.navigationController?.popToRootViewController(animated: false)
-        //self.navigationController?.popViewController(animated: false)
-        
         switch item.tag {
+        
         case 1:
-            self.navigationController?.popViewController(animated: false)
+            DispatchQueue.main.async {
+                let storyboard: UIStoryboard = UIStoryboard(name: "PopInvite", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "PopInvite") as! PopInvite
+                viewController.player = self.playerSelf
+                viewController.opponent = self.playerOther
+                self.present(viewController, animated: true)
+            }
         default:
+            let transition = CATransition()
+            transition.duration = 0.3
+            transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+            transition.type = CATransitionType.fade
+            self.navigationController?.view.layer.add(transition, forKey: nil)
+            _ = self.navigationController?.popViewController(animated: false)
             self.navigationController?.popViewController(animated: false)
         }
-        
     }
 }
