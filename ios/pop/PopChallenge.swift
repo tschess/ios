@@ -164,22 +164,35 @@ class PopChallenge: UIViewController, UIPickerViewDelegate, UIPickerViewDataSour
         do {
             request.httpBody = try JSONSerialization.data(withJSONObject: payload, options: .prettyPrinted)
         } catch let error {
+            
+            print("0")
+            
             print(error.localizedDescription)
         }
         URLSession.shared.dataTask(with: request, completionHandler: { data, response, error in
             guard error == nil else {
+                
+                print("1")
+                
                 self.error()
                 return
             }
             guard let data = data else {
+                
+                print("2")
+                
                 self.error()
                 return
             }
             do {
-                guard (try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [[String: Any]]) != nil else {
+                guard let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any] else {
+                    
+                    print("3")
+                    
                     self.error()
                     return
                 }
+                
                 DispatchQueue.main.async() {
                     self.indicatorActivity.isHidden = true
                     self.indicatorActivity.stopAnimating()
@@ -194,8 +207,14 @@ class PopChallenge: UIViewController, UIPickerViewDelegate, UIPickerViewDataSour
                     self.buttonOk.isHidden = false
                     self.buttonOk.isEnabled = true
                 }
-                return
+                
+                print("4")
+                
+                print(json)
             } catch _ {
+                
+                print("5")
+                
                 self.error()
             }
         }).resume()
