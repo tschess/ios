@@ -151,13 +151,13 @@ class Edit: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate, UII
         
         
         let alert = UIAlertController(title: "✏️ Exit without saving? 💾", message: "\nUpdates to config won't be saved.", preferredStyle: .alert)
-        let action0 = UIAlertAction(title: "Exit", style: .default, handler: {_ in
+        let action0 = UIAlertAction(title: "Exit", style: .destructive, handler: {_ in
             self.navigationController!.popViewController(animated: false)
         })
         action0.setValue(UIColor.lightGray, forKey: "titleTextColor")
         alert.addAction(action0)
         
-        let action1 = UIAlertAction(title: "No", style: .cancel, handler: nil)
+        let action1 = UIAlertAction(title: "Back", style: .cancel, handler: nil)
         action1.setValue(UIColor.lightGray, forKey: "titleTextColor")
         alert.addAction(action1)
         
