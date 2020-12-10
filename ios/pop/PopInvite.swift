@@ -10,10 +10,12 @@ import UIKit
 
 class PopInvite: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
+    var url: URL = URL(string: "http://\(ServerAddress().IP):8080/game/challenge")!
     let transDelegate: TransDelegate = TransDelegate(width: 271, height: 301)
     var transitioner: Transitioner?
     var opponent: EntityPlayer?
     var player: EntityPlayer?
+    var game: EntityGame?
     
     /**
      * The default value is 'CHALLENGE'.
@@ -69,10 +71,13 @@ class PopInvite: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource 
         
         if(self.REMATCH){
             self.buttonInvite.setTitle("⚡ Rematch ⚡", for: .normal)
+            self.url = URL(string: "http://\(ServerAddress().IP):8080/game/rematch")!
             return
         }
         if(self.ACCEPT){
             self.buttonInvite.setTitle("🎉 Let's play! 🎉", for: .normal)
+            //val url: String = "${ServerAddress().IP}:8080/game/ack"
+            self.url = URL(string: "http://\(ServerAddress().IP):8080/game/ack")!
             return
         }
     }
@@ -135,7 +140,7 @@ class PopInvite: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource 
         
         let value = self.pickerView?.selectedRow(inComponent: 0)
         
-        self.challenge(config: value!, id_other: opponent!.id)
+        self.challenge(config0: value!, id_other: opponent!.id)
         
         
         
@@ -158,17 +163,42 @@ class PopInvite: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource 
     }
     
     
-    func challenge(config: Int, id_other: String) {
-        print("\n\nYAYAYAYA: \(config) <-- config")
-        print("\n\nYAYAYAYA: \(id_other) <-- id_other \n\n")
+    func challenge(config0: Int, id_other: String) {
+        //print("\n\nYAYAYAYA: \(config0) <-- config")
+        //print("\n\nYAYAYAYA: \(id_other) <-- id_other \n\n")
         
-        let url = URL(string: "http://\(ServerAddress().IP):8080/game/challenge")!
+        var config: Int = 0
+        switch config0 {
+        case 0:
+            config = 3
+        case 1:
+            config = 4
+        case 2:
+            config = 0
+        case 3:
+            config = 1
+        default: //4
+            config = 2
+        }
         
-        let payload: [String: Any] = [
+        var payload: [String: Any] = [
             "id_self": self.player!.id,
-            "id_other": id_other,
             "config": config
         ]
+        if(self.REMATCH){
+            let white: Bool = self.game!.getWhite(username: self.player!.username)
+            payload["white"] = white
+        }
+        if(self.ACCEPT){
+            //val params: MutableMap<String, String> = mutableMapOf()
+            //params["id_self"] = playerSelf.id
+            //params["id_game"] = game_id
+            //params["config"] = config.toString()
+            payload[ "id_game"] = self.game!.id
+        }
+        if(!self.REMATCH && !self.ACCEPT) { //invite/challenge
+            payload[ "id_other"] = id_other
+        }
         
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
