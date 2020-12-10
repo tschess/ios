@@ -143,36 +143,15 @@ class HomeTable: UITableViewController, SwipeTableViewCellDelegate, UIPickerView
         self.activity!.present(alert, animated: true, completion: nil)
     }
     
-    func rematch(opponent: EntityPlayer) {
-        let viewController = UIViewController()
-        viewController.preferredContentSize = CGSize(width: 250, height: 108) //108
-        self.pickerView = UIPickerView(frame: CGRect(x: 0, y: 0, width: 250, height: 100))
-        pickerView!.delegate = self
-        pickerView!.dataSource = self
-        pickerView!.backgroundColor = .black
-        
-        pickerView!.layer.cornerRadius = 10
-        pickerView!.layer.masksToBounds = true
-        
-        pickerView!.selectRow(1, inComponent: 0, animated: true)
-        
-        viewController.view.addSubview(self.pickerView!)
-        let alert = UIAlertController(title: "🤜 \(opponent.username) 🤛", message: "", preferredStyle: UIAlertController.Style.alert)
-        
-        alert.setValue(viewController, forKey: "contentViewController")
-        
-        let option00 = UIAlertAction(title: "⚡ rematch ⚡", style: .default, handler:{ _ in
-            let value = self.pickerView?.selectedRow(inComponent: 0)
+    func rematch(opponent: EntityPlayer) {        
+        let storyboard: UIStoryboard = UIStoryboard(name: "PopInvite", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "PopInvite") as! PopInvite
             
-            self.challenge(config: value!, id_other: opponent.id)
-        })
-        alert.addAction(option00)
-        
-        let option01 = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        option01.setValue(UIColor.lightGray, forKey: "titleTextColor")
-        alert.addAction(option01)
-        
-        self.activity!.present(alert, animated: true, completion: nil)
+        viewController.REMATCH = true
+        viewController.player = self.activity!.player
+        viewController.opponent = opponent
+
+        self.activity!.present(viewController, animated: true, completion: nil)
     }
     
     var pickerView: UIPickerView?

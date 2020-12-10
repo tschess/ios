@@ -156,13 +156,13 @@ class Profile: UIViewController, UITabBarDelegate, UINavigationControllerDelegat
             //self.signOut()
             DispatchQueue.main.async {
                 let alert = UIAlertController(title: "🚪 Sign out from device? 📲", message: "\nConfirm to clear automatic login credentials from the server.", preferredStyle: .alert)
-                let action0 = UIAlertAction(title: "Yes", style: .default, handler: {_ in
+                let action0 = UIAlertAction(title: "Sign out", style: .destructive, handler: {_ in
                     self.signOut()
                 })
                 action0.setValue(UIColor.lightGray, forKey: "titleTextColor")
                 alert.addAction(action0)
                 
-                let action1 = UIAlertAction(title: "No", style: .cancel, handler: nil)
+                let action1 = UIAlertAction(title: "Back", style: .cancel, handler: nil)
                 action1.setValue(UIColor.lightGray, forKey: "titleTextColor")
                 alert.addAction(action1)
                 

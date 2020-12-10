@@ -11,7 +11,7 @@
         <!--Pop Invite-->
         <scene sceneID="LAn-pV-dbr">
             <objects>
-                <viewController storyboardIdentifier="PopChallenge" modalPresentationStyle="overCurrentContext" id="KZp-pR-rDR" customClass="PopInvite" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PopInvite" modalPresentationStyle="overCurrentContext" id="KZp-pR-rDR" customClass="PopInvite" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="RRv-CF-dpA"/>
                         <viewControllerLayoutGuide type="bottom" id="A0B-ZU-VNy"/>
@@ -192,12 +192,12 @@
                     </view>
                     <connections>
                         <outlet property="buttonCancel" destination="4HB-GV-zd2" id="cSA-Rx-GhH"/>
-                        <outlet property="buttonChallenge" destination="dec-go-mPC" id="sIh-8p-dXq"/>
+                        <outlet property="buttonInvite" destination="dec-go-mPC" id="sIh-8p-dXq"/>
                         <outlet property="buttonOk" destination="Hfa-47-ITz" id="Bn1-AR-BpD"/>
                         <outlet property="indicatorActivity" destination="NzA-xc-KNl" id="tLg-Kl-4Yq"/>
                         <outlet property="labelCancel" destination="VEv-vu-gY3" id="4MS-7A-Scf"/>
-                        <outlet property="labelChallenge" destination="VMR-I4-9GK" id="kRG-pA-KKw"/>
                         <outlet property="labelDirection" destination="yyE-sY-Qxl" id="Gw8-WF-jVj"/>
+                        <outlet property="labelInvite" destination="VMR-I4-9GK" id="kRG-pA-KKw"/>
                         <outlet property="labelOk" destination="LCL-68-hyw" id="qfs-lp-iq1"/>
                         <outlet property="labelTitle" destination="36g-XG-vt9" id="Jwq-Il-H2b"/>
                         <outlet property="pickerView" destination="adF-VN-YRI" id="MDd-0q-WQV"/>

@@ -66,8 +66,8 @@ class Opponent: UIView, UIPickerViewDelegate, UIPickerViewDataSource {
     
     func execute(opponent: EntityPlayer) {
         
-        let storyboard: UIStoryboard = UIStoryboard(name: "PopChallenge", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "PopChallenge") as! PopInvite
+        let storyboard: UIStoryboard = UIStoryboard(name: "PopInvite", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "PopInvite") as! PopInvite
             
         viewController.player = self.playerSelf
         viewController.opponent = opponent

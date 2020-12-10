@@ -10,28 +10,31 @@ import UIKit
 
 class PopInvite: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
+    let transDelegate: TransDelegate = TransDelegate(width: 271, height: 301)
+    var transitioner: Transitioner?
+    var opponent: EntityPlayer?
+    var player: EntityPlayer?
+    
     /**
      * The default value is 'CHALLENGE'.
      */
-    var ACCEPT: Bool?
-    var REMATCH: Bool?
+    var REMATCH: Bool = false
+    var ACCEPT: Bool = false
+    
+    @IBOutlet weak var labelTitle: UILabel!
+    @IBOutlet weak var labelDirection: UILabel!
+    
+    @IBOutlet weak var indicatorActivity: UIActivityIndicatorView!
+    @IBOutlet weak var pickerView: UIPickerView!
+    
+    @IBOutlet weak var labelInvite: UILabel!
+    @IBOutlet weak var buttonInvite: UIButton!
+    
+    @IBOutlet weak var labelCancel: UILabel!
+    @IBOutlet weak var buttonCancel: UIButton!
     
     @IBOutlet weak var labelOk: UILabel!
     @IBOutlet weak var buttonOk: UIButton!
-    @IBOutlet weak var indicatorActivity: UIActivityIndicatorView!
-    
-    @IBOutlet weak var labelTitle: UILabel!
-    @IBOutlet weak var labelChallenge: UILabel!
-    
-    @IBOutlet weak var labelCancel: UILabel!
-    @IBOutlet weak var labelDirection: UILabel!
-    @IBOutlet weak var pickerView: UIPickerView!
-    
-    @IBOutlet weak var buttonChallenge: UIButton!
-    @IBOutlet weak var buttonCancel: UIButton!
-    
-    var transitioner: Transitioner?
-    private let transDelegate: TransDelegate = TransDelegate(width: 271, height: 301)
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -41,12 +44,7 @@ class PopInvite: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.configure()
-        
-        
     }
-    
-    var player: EntityPlayer?
-    var opponent: EntityPlayer?
     
     func configure() {
         modalPresentationStyle = .custom
@@ -68,6 +66,15 @@ class PopInvite: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource 
         self.buttonOk.isEnabled = false
         
         self.indicatorActivity.isHidden = true
+        
+        if(self.REMATCH){
+            self.buttonInvite.setTitle("⚡ Rematch ⚡", for: .normal)
+            return
+        }
+        if(self.ACCEPT){
+            self.buttonInvite.setTitle("🎉 Let's play! 🎉", for: .normal)
+            return
+        }
     }
     
     
@@ -110,9 +117,9 @@ class PopInvite: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource 
         
         self.pickerView.isHidden = true
         
-        self.labelChallenge.isHidden = true
-        self.buttonChallenge.isHidden = true
-        self.buttonChallenge.isEnabled = false
+        self.labelInvite.isHidden = true
+        self.buttonInvite.isHidden = true
+        self.buttonInvite.isEnabled = false
         
         self.labelCancel.isHidden = true
         self.buttonCancel.isHidden = true
