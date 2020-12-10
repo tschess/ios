@@ -50,20 +50,7 @@ class OtherTable: UITableViewController, SwipeTableViewCellDelegate {
         return nil
     }
     
-        
     var player: EntityPlayer?
-    
-    //func setPlayer(player: EntityPlayer){
-        //self.player = player
-    //}
-    
-    var activityIndicator: UIActivityIndicatorView?
-    
-    public func setActivityIndicator(activityIndicator: UIActivityIndicatorView) {
-        self.activityIndicator = activityIndicator
-    }
-    
-    //let DATE_TIME: DateTime = DateTime()
     
     var list: [EntityGame] = [EntityGame]()
     
@@ -101,7 +88,6 @@ class OtherTable: UITableViewController, SwipeTableViewCellDelegate {
         let game = list[indexPath.row]
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "OtherCell", for: indexPath) as! OtherCell
-        //cell.terminalDateLabel.text = game.getLabelTextDate()
         cell.usernameLabel.text = game.getLabelTextUsernameOpponent(username: self.player!.username)
         cell.avatarImageView.image = game.getImageAvatarOpponent(username: self.player!.username)
         cell.avatarImageView.layer.cornerRadius = cell.avatarImageView.frame.size.width/2
@@ -111,18 +97,6 @@ class OtherTable: UITableViewController, SwipeTableViewCellDelegate {
         
         cell.delegate = self
         
-        //cell.oddsLabel.text = game.getOdds(username: self.player!.username)
-        //cell.displacementImage.image = game.getImageDisp(username: self.player!.username)
-        //cell.displacementImage.tintColor = game.getTint(username: self.player!.username)
-        
-        //let disp: String = game.getLabelTextDisp(username: self.player!.username)!
-        //cell.displacementLabel.text = disp
-        //if(disp == "0"){
-            //cell.displacementImage.isHidden = true
-            //cell.displacementLabel.isHidden = true
-            //cell.dispImageView.isHidden = true
-            //cell.dispLabelAdjacent.isHidden = true
-        //}
         return cell
     }
     
@@ -136,64 +110,62 @@ class OtherTable: UITableViewController, SwipeTableViewCellDelegate {
             userInfo: discoverSelectionDictionary)
     }
     
-     override func viewDidLayoutSubviews() {
-           super.viewDidLayoutSubviews()
-           let visibleRows = self.tableView.indexPathsForVisibleRows
-           let lastRow = visibleRows?.last?.row
-           if(lastRow == nil){
-               return
-           }
-           let REQUEST_PAGE_SIZE: Int = 9
-           
-           let index = self.pageCount
-           let size = REQUEST_PAGE_SIZE
-           let indexFrom: Int =  index * size
-           let indexTo: Int = indexFrom + REQUEST_PAGE_SIZE - 2
-           
-           if(lastRow! <= indexTo){
-               return
-           }
-           if lastRow == indexTo {
-               self.pageCount += 1
-               self.fetchMenuTableList()
-           }
-       }
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        let visibleRows = self.tableView.indexPathsForVisibleRows
+        let lastRow = visibleRows?.last?.row
+        if(lastRow == nil){
+            return
+        }
+        let REQUEST_PAGE_SIZE: Int = 9
+        
+        let index = self.pageCount
+        let size = REQUEST_PAGE_SIZE
+        let indexFrom: Int =  index * size
+        let indexTo: Int = indexFrom + REQUEST_PAGE_SIZE - 2
+        
+        if(lastRow! <= indexTo){
+            return
+        }
+        if lastRow == indexTo {
+            self.pageCount += 1
+            self.fetchMenuTableList()
+        }
+    }
     
     func fetchMenuTableList() {
-
-        //DispatchQueue.main.async() {
-            //self.activityIndicator!.isHidden = false
-            //self.activityIndicator!.startAnimating()
-        //}
         
         let requestPayload = [
             "id": self.player!.id,
             "index": self.pageCount,
             "size": Const().PAGE_SIZE,
             "self": false
-            ] as [String: Any]
+        ] as [String: Any]
         RequestActual().execute(requestPayload: requestPayload) { (result) in
-            //DispatchQueue.main.async() {
-                //self.activityIndicator!.stopAnimating()
-                //self.activityIndicator!.isHidden = true
-            //}
             self.appendToLeaderboardTableList(additionalCellList: result)
         }
     }
     
+    var other: Other?
+    
     func appendToLeaderboardTableList(additionalCellList: [EntityGame]) {
-        let currentCount = self.list.count
-        
+        if(additionalCellList.count == 0){
+            DispatchQueue.main.async {
+                self.other!.header!.setIndicator(on: false, tableView: self)
+                let alert = UIAlertController(title: "❎ No concluded games ❎", message: "\n\(self.player!.username) hasn't yet finished any games.", preferredStyle: .alert)
+                let action = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+                action.setValue(UIColor.lightGray, forKey: "titleTextColor")
+                alert.addAction(action)
+                self.other!.present(alert, animated: true)
+            }
+            return
+        }
         for game in additionalCellList {
             if(!self.list.contains(game)){
                 self.list.append(game)
             }
         }
-        if(currentCount != self.list.count){
-            DispatchQueue.main.async() {
-                self.tableView.reloadData()
-            }
-        }
+        self.other!.header!.setIndicator(on: false, tableView: self)
     }
     
 }

@@ -12,52 +12,37 @@ class Other: UIViewController, UITabBarDelegate {
     
     //@IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var viewHeader: UIView!
+    var header: Header?
     
     //MARK: Properties
-    @IBOutlet weak var tabBarMenu: UITabBar!
-    //@IBOutlet weak var usernameLabel: UILabel!
-    //@IBOutlet weak var rankLabel: UILabel!
-    //@IBOutlet weak var avatarImageView: UIImageView!
-    
-    //@IBOutlet weak var eloLabel: UILabel!
+    @IBOutlet weak var tabBar: UITabBar!
     
     var otherMenuTable: OtherTable?
     
-    var playerOther: EntityPlayer?
+    var opponent: EntityPlayer?
     
-    //func setPlayerOther(playerOther: EntityPlayer){
-        //self.playerOther = playerOther
-    //}
-    
-    var playerSelf: EntityPlayer?
-    
-    //func setPlayerSelf(playerSelf: EntityPlayer){
-        //self.playerSelf = playerSelf
-    //}
-    
- 
+    var player: EntityPlayer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.otherMenuTable = children.first as? OtherTable
-        //self.otherMenuTable!.setActivityIndicator(activityIndicator: self.activityIndicator!)
-        self.otherMenuTable!.player = self.playerOther!
+        self.otherMenuTable!.player = self.opponent!
         self.otherMenuTable!.fetchMenuTableList()
+        self.otherMenuTable!.other = self
         
-        
-        
-        self.tabBarMenu.delegate = self
+        self.tabBar.delegate = self
         
         
         //TODO: Header
-        let viewHeaderDynamic = Bundle.loadView(fromNib: "Header", withType: Header.self)
-        self.viewHeader.addSubview(viewHeaderDynamic)
-        viewHeaderDynamic.translatesAutoresizingMaskIntoConstraints = false
+        self.header = Bundle.loadView(fromNib: "Header", withType: Header.self)
+        self.viewHeader.addSubview(self.header!)
+        self.header!.translatesAutoresizingMaskIntoConstraints = false
         let attributes: [NSLayoutConstraint.Attribute] = [.top, .bottom, .right, .left]
         NSLayoutConstraint.activate(attributes.map {
-            NSLayoutConstraint(item: viewHeaderDynamic, attribute: $0, relatedBy: .equal, toItem: viewHeaderDynamic.superview, attribute: $0, multiplier: 1, constant: 0)
+            NSLayoutConstraint(item: self.header!, attribute: $0, relatedBy: .equal, toItem: self.header!.superview, attribute: $0, multiplier: 1, constant: 0)
         })
-        viewHeaderDynamic.set(player: self.playerOther!)
+        self.header!.set(player: self.opponent!)
+        self.header!.setIndicator(on: true)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -82,7 +67,7 @@ class Other: UIViewController, UITabBarDelegate {
             let storyboard: UIStoryboard = UIStoryboard(name: "Snapshot", bundle: nil)
             let viewController = storyboard.instantiateViewController(withIdentifier: "Snapshot") as! Snapshot
             viewController.game = game
-            viewController.player = self.playerOther!
+            viewController.player = self.opponent!
             self.present(viewController, animated: false, completion: nil)
         }
     }
@@ -90,15 +75,15 @@ class Other: UIViewController, UITabBarDelegate {
 
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         
-        self.tabBarMenu.selectedItem = nil
+        self.tabBar.selectedItem = nil
         switch item.tag {
         
         case 1:
             DispatchQueue.main.async {
                 let storyboard: UIStoryboard = UIStoryboard(name: "PopInvite", bundle: nil)
                 let viewController = storyboard.instantiateViewController(withIdentifier: "PopInvite") as! PopInvite
-                viewController.player = self.playerSelf
-                viewController.opponent = self.playerOther
+                viewController.player = self.player
+                viewController.opponent = self.opponent
                 self.present(viewController, animated: true)
             }
         default:

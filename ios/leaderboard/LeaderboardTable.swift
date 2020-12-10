@@ -72,8 +72,8 @@ class LeaderboardTable: UITableViewController, SwipeTableViewCellDelegate {
             
             let storyboard: UIStoryboard = UIStoryboard(name: "Other", bundle: nil)
             let viewController = storyboard.instantiateViewController(withIdentifier: "Other") as! Other
-            viewController.playerSelf = self.home!.playerSelf!
-            viewController.playerOther = self.leaderboardList[indexPath.row]
+            viewController.player = self.home!.playerSelf!
+            viewController.opponent = self.leaderboardList[indexPath.row]
             self.navigationController?.pushViewController(viewController, animated: false)
 
         }
@@ -237,6 +237,7 @@ class LeaderboardTable: UITableViewController, SwipeTableViewCellDelegate {
                               "size": Const().PAGE_SIZE] as [String: Int]
         RequestPage().execute(requestPayload: requestPayload) { (result) in
             if(result == nil){
+                self.home!.header!.setIndicator(on: false, tableView: self)
                 return
             }
             for game in result! {

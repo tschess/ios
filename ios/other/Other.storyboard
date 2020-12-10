@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -14,11 +12,11 @@
             <objects>
                 <viewController storyboardIdentifier="Other" useStoryboardIdentifierAsRestorationIdentifier="YES" id="DAE-jB-YvD" customClass="Other" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="9gv-Ja-N4g">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YPS-Tp-PVu" userLabel="HeaderView">
-                                <rect key="frame" x="0.0" y="44" width="414" height="124"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="124"/>
                                 <color key="backgroundColor" systemColor="systemYellowColor"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -26,7 +24,7 @@
                                 </constraints>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bur-R0-dip">
-                                <rect key="frame" x="0.0" y="168" width="414" height="644"/>
+                                <rect key="frame" x="0.0" y="124" width="600" height="426"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
@@ -34,11 +32,11 @@
                                 </connections>
                             </containerView>
                             <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5B6-k7-X3H" userLabel="SafeAreaView">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <tabBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lR1-2A-YPc">
-                                <rect key="frame" x="0.0" y="812" width="414" height="50"/>
+                                <rect key="frame" x="0.0" y="550" width="600" height="50"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="CtS-Ad-lXP"/>
@@ -78,7 +76,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="tabBarMenu" destination="lR1-2A-YPc" id="CDf-K6-4Hh"/>
+                        <outlet property="tabBar" destination="lR1-2A-YPc" id="CDf-K6-4Hh"/>
                         <outlet property="viewHeader" destination="YPS-Tp-PVu" id="6h5-3E-bBi"/>
                     </connections>
                 </viewController>
@@ -100,14 +98,14 @@
                         <color key="sectionIndexTrackingBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="OtherCell" id="fEE-xr-pP7" customClass="OtherCell" customModule="ios" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="73.333335876464844"/>
+                                <rect key="frame" x="0.0" y="28" width="414" height="73.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fEE-xr-pP7" id="hNs-pd-88F">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="73.333335876464844"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="73.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatar_inverse" translatesAutoresizingMaskIntoConstraints="NO" id="eaF-37-5Tf">
-                                            <rect key="frame" x="8" y="4" width="65" height="65.333333333333329"/>
+                                            <rect key="frame" x="8" y="4" width="65" height="65.5"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="65" id="4Rc-dM-WE8"/>
                                                 <constraint firstAttribute="width" constant="65" id="WGk-4h-lhB"/>
@@ -123,7 +121,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="more_vert_vfs" translatesAutoresizingMaskIntoConstraints="NO" id="N0t-B1-OG2">
-                                            <rect key="frame" x="380" y="0.0" width="30" height="73.333333333333329"/>
+                                            <rect key="frame" x="380" y="0.0" width="30" height="73.5"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>

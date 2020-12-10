@@ -275,10 +275,13 @@ class HomeTable: UITableViewController, SwipeTableViewCellDelegate {
     
     @objc func refresh(refreshControl: UIRefreshControl?) {
         self.index = 0
-        self.fetch(refreshControl: refreshControl)
+        self.fetch(refreshControl: refreshControl, refresh: true)
     }
     
-    func fetch(refreshControl: UIRefreshControl? = nil) {
+    func fetch(refreshControl: UIRefreshControl? = nil, refresh: Bool = false) {
+        if(!refresh){
+            self.activity!.header!.setIndicator(on: true)
+        }
         let payload = ["id": self.activity!.player!.id,
                        "index": self.index,
                        "size": Const().PAGE_SIZE,
@@ -315,25 +318,6 @@ class HomeTable: UITableViewController, SwipeTableViewCellDelegate {
                 viewController.game = game
                 self.navigationController?.pushViewController(viewController, animated: false)
             }
-            //DispatchQueue.main.async {
-                //let height: CGFloat = UIScreen.main.bounds.height
-                //let playerOther: EntityPlayer = game.getPlayerOther(username: self.activity!.player!.username)
-                //if(height.isLess(than: 750)){
-                    //let storyboard: UIStoryboard = UIStoryboard(name: "dTschessL", bundle: nil)
-                    //let viewController = storyboard.instantiateViewController(withIdentifier: "dTschessL") as! Tschess
-                    //viewController.playerOther = playerOther
-                    //viewController.playerSelf = self.activity!.player!
-                    //viewController.game = game
-                    //self.navigationController?.pushViewController(viewController, animated: false)
-                    //return
-                //}
-                //let storyboard: UIStoryboard = UIStoryboard(name: "dTschessP", bundle: nil)
-                //let viewController = storyboard.instantiateViewController(withIdentifier: "dTschessP") as! Tschess
-                //viewController.playerOther = playerOther
-                //viewController.playerSelf = self.activity!.player!
-                //viewController.game = game
-                //self.navigationController?.pushViewController(viewController, animated: false)
-            //}
         }
     }
     
@@ -384,9 +368,10 @@ class HomeTable: UITableViewController, SwipeTableViewCellDelegate {
         for game in additionalCellList {
             self.list.append(game)
         }
-        DispatchQueue.main.async() {
-            self.tableView.reloadData()
-        }
+        self.activity!.header!.setIndicator(on: false, tableView: self)
+        //DispatchQueue.main.async() {
+            //self.tableView.reloadData()
+        //}
     }
     
 }
