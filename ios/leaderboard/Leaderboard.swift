@@ -17,20 +17,22 @@ class Leaderboard: UIViewController, UITabBarDelegate {
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var tabBarMenu: UITabBar!
     
+    var header: Header?
+    
     var playerSelf: EntityPlayer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //TODO: Header
-        let viewHeaderDynamic = Bundle.loadView(fromNib: "Header", withType: Header.self)
-        self.headerView.addSubview(viewHeaderDynamic)
-        viewHeaderDynamic.translatesAutoresizingMaskIntoConstraints = false
+        self.header = Bundle.loadView(fromNib: "Header", withType: Header.self)
+        self.headerView.addSubview(self.header!)
+        self.header!.translatesAutoresizingMaskIntoConstraints = false
         let attributes: [NSLayoutConstraint.Attribute] = [.top, .bottom, .right, .left]
         NSLayoutConstraint.activate(attributes.map {
-            NSLayoutConstraint(item: viewHeaderDynamic, attribute: $0, relatedBy: .equal, toItem: viewHeaderDynamic.superview, attribute: $0, multiplier: 1, constant: 0)
+            NSLayoutConstraint(item: self.header!, attribute: $0, relatedBy: .equal, toItem: self.header!.superview, attribute: $0, multiplier: 1, constant: 0)
         })
-        viewHeaderDynamic.set(player: self.playerSelf!)
+        self.header!.set(player: self.playerSelf!)
        
         self.tabBarMenu.delegate = self
         self.homeMenuTable = children.first as? LeaderboardTable
@@ -56,25 +58,6 @@ class Leaderboard: UIViewController, UITabBarDelegate {
             viewController.opponent = opponent
             self.present(viewController, animated: true)
         }
-    }
-    
-    func setIndicator(on: Bool) {
-//        if(on) {
-//            DispatchQueue.main.async() {
-//                if(self.activityIndicator!.isHidden){
-//                    self.activityIndicator!.isHidden = false
-//                }
-//                if(!self.activityIndicator!.isAnimating){
-//                    self.activityIndicator!.startAnimating()
-//                }
-//            }
-//            return
-//        }
-//        DispatchQueue.main.async() {
-//            self.activityIndicator!.isHidden = true
-//            self.activityIndicator!.stopAnimating()
-//            self.homeMenuTable!.tableView.reloadData()
-//        }
     }
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {

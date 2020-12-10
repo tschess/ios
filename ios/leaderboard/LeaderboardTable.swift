@@ -129,10 +129,17 @@ class LeaderboardTable: UITableViewController, SwipeTableViewCellDelegate {
                 
                 //self.home!.renderHeader()
                 
-                self.leaderboardList = [EntityPlayer]()
-                self.tableView.reloadData()
-                self.appendToLeaderboardTableList(additionalCellList: list)
+                //self.leaderboardList = [EntityPlayer]()
+                //self.tableView.reloadData()
+                //self.appendToLeaderboardTableList(additionalCellList: list)
+                
+                
                 refreshControl.endRefreshing()
+                self.leaderboardList = [EntityPlayer]()
+                for game in list {
+                    self.leaderboardList.append(game)
+                }
+                self.home!.header!.setIndicator(on: false, tableView: self)
             }
         }
     }
@@ -224,25 +231,30 @@ class LeaderboardTable: UITableViewController, SwipeTableViewCellDelegate {
     }
     
     func fetchGameList() {
-        self.home!.setIndicator(on: true)
+        self.home!.header!.setIndicator(on: true)
         
         let requestPayload = ["index": self.requestPageIndex,
                               "size": Const().PAGE_SIZE] as [String: Int]
         RequestPage().execute(requestPayload: requestPayload) { (result) in
-            self.home!.setIndicator(on: false)
             if(result == nil){
                 return
             }
-            self.appendToLeaderboardTableList(additionalCellList: result!)
+            for game in result! {
+                self.leaderboardList.append(game)
+            }
+            
+            self.home!.header!.setIndicator(on: false, tableView: self)
+            
+            //self.appendToLeaderboardTableList(additionalCellList: result!)
         }
     }
     
-    func appendToLeaderboardTableList(additionalCellList: [EntityPlayer]) {
-        for game in additionalCellList {
-            self.leaderboardList.append(game)
-        }
-        DispatchQueue.main.async() {
-            self.tableView.reloadData()
-        }
-    }
+//    func appendToLeaderboardTableList(additionalCellList: [EntityPlayer]) {
+//        for game in additionalCellList {
+//            self.leaderboardList.append(game)
+//        }
+//        DispatchQueue.main.async() {
+//            self.tableView.reloadData()
+//        }
+//    }
 }

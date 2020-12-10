@@ -51,12 +51,6 @@ class Home: UIViewController, UITabBarDelegate {
         self.table!.activity = self
         self.table!.fetch()
         
-        //NotificationCenter.default.addObserver(
-            //self,
-            //selector: #selector(self.onDidReceiveData(_:)),
-            //name: NSNotification.Name(rawValue: "HomeMenuSelection"),
-            //object: nil)
-        
         self.tabBar.delegate = self
     }
     
@@ -107,24 +101,6 @@ class Home: UIViewController, UITabBarDelegate {
         }
     }
     
-//    func setIndicator(on: Bool) {
-//        if(on) {
-//            DispatchQueue.main.async() {
-//                if(self.header!.indicatorActivity!.isHidden){
-//                    self.header!.indicatorActivity!.isHidden = false
-//                }
-//                if(!self.header!.indicatorActivity!.isAnimating){
-//                    self.header!.indicatorActivity!.startAnimating()
-//                }
-//            }
-//            return
-//        }
-//        DispatchQueue.main.async() {
-//            self.header!.indicatorActivity!.isHidden = true
-//            self.header!.indicatorActivity!.stopAnimating()
-//            self.table!.tableView.reloadData()
-//        }
-//    }
 }
 
 
