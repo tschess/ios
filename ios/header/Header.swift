@@ -19,7 +19,7 @@ class Header: UIView {
     
     @IBOutlet weak var imageAvatar: UIImageView!
     
-    @IBOutlet weak var indicatorActivity: UIActivityIndicatorView!
+    @IBOutlet var indicatorActivity: UIActivityIndicatorView!
 
    
     public func set(player: EntityPlayer) {

@@ -10,6 +10,8 @@ import UIKit
 
 class Opponent: UIView {
     
+    var home: Home?
+    
     @IBOutlet weak var viewHolder00: UIView!
     @IBOutlet weak var imageAvatar00: UIImageView!
     @IBOutlet weak var labelUsername00: UILabel!
@@ -68,8 +70,10 @@ class Opponent: UIView {
         viewHolder01.isHidden = true
         viewHolder02.isHidden = true
         
-        indicatorActivity.isHidden = false
-        indicatorActivity.startAnimating()
+        //
+        self.home!.setIndicator(on: true)
+        self.indicatorActivity.isHidden = true
+        //indicatorActivity.startAnimating()
         
         let gesture00 = UITapGestureRecognizer(target: self, action:  #selector(self.checkAction00))
         self.viewHolder00.isUserInteractionEnabled = true
@@ -84,10 +88,12 @@ class Opponent: UIView {
         self.viewHolder02.addGestureRecognizer(gesture02)
         
         self.execute(id: player.id) { (result) in
-            DispatchQueue.main.async() {
-                self.indicatorActivity.stopAnimating()
-                self.indicatorActivity.isHidden = true
-            }
+            //DispatchQueue.main.async() {
+                //self.indicatorActivity.stopAnimating()
+                //self.indicatorActivity.isHidden = true
+            //}
+            self.home!.setIndicator(on: false)
+            
             let opponent00: EntityPlayer = ParsePlayer().execute(json: result[0])
             self.opponent00 = opponent00
             DispatchQueue.main.async() {

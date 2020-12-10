@@ -15,8 +15,11 @@ class Home: UIViewController, UITabBarDelegate {
     
     //MARK: OUTLET
     @IBOutlet weak var tabBar: UITabBar!
-    @IBOutlet weak var componentHeader: Header!
+    
     @IBOutlet weak var componentOpponent: UIView!
+    
+    @IBOutlet weak var viewHeader: UIView!
+    var header: Header?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,14 +27,14 @@ class Home: UIViewController, UITabBarDelegate {
         self.navigationController?.viewControllers = [self]
         
         //TODO: Header
-        let viewHeaderDynamic = Bundle.loadView(fromNib: "Header", withType: Header.self)
-        self.componentHeader.addSubview(viewHeaderDynamic)
-        viewHeaderDynamic.translatesAutoresizingMaskIntoConstraints = false
+        self.header = Bundle.loadView(fromNib: "Header", withType: Header.self)
+        self.viewHeader.addSubview(self.header!)
+        self.header!.translatesAutoresizingMaskIntoConstraints = false
         let attributes: [NSLayoutConstraint.Attribute] = [.top, .bottom, .right, .left]
         NSLayoutConstraint.activate(attributes.map {
-            NSLayoutConstraint(item: viewHeaderDynamic, attribute: $0, relatedBy: .equal, toItem: viewHeaderDynamic.superview, attribute: $0, multiplier: 1, constant: 0)
+            NSLayoutConstraint(item: self.header, attribute: $0, relatedBy: .equal, toItem: self.header!.superview, attribute: $0, multiplier: 1, constant: 0)
         })
-        viewHeaderDynamic.set(player: self.player!)
+        self.header!.set(player: self.player!)
         
         //TODO: Opponent
         let opponent = Bundle.loadView(fromNib: "Opponent", withType: Opponent.self)
@@ -40,6 +43,7 @@ class Home: UIViewController, UITabBarDelegate {
         NSLayoutConstraint.activate(attributes.map {
             NSLayoutConstraint(item: opponent, attribute: $0, relatedBy: .equal, toItem: opponent.superview, attribute: $0, multiplier: 1, constant: 0)
         })
+        opponent.home = self
         opponent.set(player: self.player!)
         
         //TODO: Table
@@ -47,11 +51,11 @@ class Home: UIViewController, UITabBarDelegate {
         self.table!.activity = self
         self.table!.fetch()
         
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(self.onDidReceiveData(_:)),
-            name: NSNotification.Name(rawValue: "HomeMenuSelection"),
-            object: nil)
+        //NotificationCenter.default.addObserver(
+            //self,
+            //selector: #selector(self.onDidReceiveData(_:)),
+            //name: NSNotification.Name(rawValue: "HomeMenuSelection"),
+            //object: nil)
         
         self.tabBar.delegate = self
     }
@@ -103,31 +107,23 @@ class Home: UIViewController, UITabBarDelegate {
         }
     }
     
-    // TODO:
-    @objc func onDidReceiveData(_ notification: NSNotification) {
-        let index: Int = notification.userInfo!["home_menu_selection"] as! Int
-        let game: EntityGame = self.table!.list[index]
-        
-        
-    }
-    
     func setIndicator(on: Bool) {
-        //if(on) {
-        //    DispatchQueue.main.async() {
-        //        if(self.headerView.indicatorActivity!.isHidden){
-        //            self.headerView.indicatorActivity!.isHidden = false
-        //        }
-        //        if(!self.headerView.indicatorActivity!.isAnimating){
-        //            self.headerView.indicatorActivity!.startAnimating()
-        //        }
-        //    }
-        //    return
-        //}
-        //DispatchQueue.main.async() {
-        //    self.headerView.indicatorActivity!.isHidden = true
-        //    self.headerView.indicatorActivity!.stopAnimating()
-        //    self.homeMenuTable!.tableView.reloadData()
-        //}
+        if(on) {
+            DispatchQueue.main.async() {
+                if(self.header!.indicatorActivity!.isHidden){
+                    self.header!.indicatorActivity!.isHidden = false
+                }
+                if(!self.header!.indicatorActivity!.isAnimating){
+                    self.header!.indicatorActivity!.startAnimating()
+                }
+            }
+            return
+        }
+        DispatchQueue.main.async() {
+            self.header!.indicatorActivity!.isHidden = true
+            self.header!.indicatorActivity!.stopAnimating()
+            self.table!.tableView.reloadData()
+        }
     }
 }
 

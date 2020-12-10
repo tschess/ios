@@ -10,38 +10,7 @@ import UIKit
 import SwipeCellKit
 
 
-class HomeTable: UITableViewController, SwipeTableViewCellDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
-    
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return pickerSet.count
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return pickerSet[row]
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
-        return 30
-    }
-    
-    let pickerSet = ["chess", "i'm feelin' lucky", "config. 0̸", "config. 1", "config. 2"]
-    
-    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
-        let label = UILabel()
-        label.textColor = .white
-        label.textAlignment = .center
-        label.font = UIFont.systemFont(ofSize: 18, weight: UIFont.Weight.light)
-        label.text = pickerSet[row]
-        return label
-    }
+class HomeTable: UITableViewController, SwipeTableViewCellDelegate {
     
     //TODO: play
     func play(config: Int, id_game: String) {
@@ -67,6 +36,9 @@ class HomeTable: UITableViewController, SwipeTableViewCellDelegate, UIPickerView
         }
     }
     
+    //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    //!!!!!!!!!!!!!!!!!!!!!!!!!
+    //!!!!!!!!!!!!!!!!!!!!!!!!
     func challenge(config: Int, id_other: String) {
         
         let id_player = self.activity!.player!.id
@@ -112,8 +84,8 @@ class HomeTable: UITableViewController, SwipeTableViewCellDelegate, UIPickerView
         let viewController = UIViewController()
         viewController.preferredContentSize = CGSize(width: 250, height: 108) //108
         self.pickerView = UIPickerView(frame: CGRect(x: 0, y: 0, width: 250, height: 100))
-        pickerView!.delegate = self
-        pickerView!.dataSource = self
+        //pickerView!.delegate = self
+        //pickerView!.dataSource = self
         pickerView!.backgroundColor = .black
         
         pickerView!.layer.cornerRadius = 10
@@ -214,7 +186,7 @@ class HomeTable: UITableViewController, SwipeTableViewCellDelegate, UIPickerView
                 let requestPayload: [String: Any] = ["id_game": game.id, "id_self": self.activity!.player!.id]
                 UpdateRescind().execute(requestPayload: requestPayload) { (result) in
                     self.list.remove(at: indexPath.row)
-                    //self.activity!.setIndicator(on: false)
+                    self.activity!.setIndicator(on: false)
                     DispatchQueue.main.async {
                         self.tableView.reloadData()
                     }
@@ -305,7 +277,6 @@ class HomeTable: UITableViewController, SwipeTableViewCellDelegate, UIPickerView
     }
     
     func fetch(refreshControl: UIRefreshControl? = nil) {
-        self.activity!.setIndicator(on: true)
         let payload = ["id": self.activity!.player!.id,
                        "index": self.index,
                        "size": Const().PAGE_SIZE,
@@ -317,8 +288,6 @@ class HomeTable: UITableViewController, SwipeTableViewCellDelegate, UIPickerView
                 DispatchQueue.main.async {
                     refreshControl!.endRefreshing()
                 }
-            } else {
-                self.activity!.setIndicator(on: false)
             }
             self.appendToLeaderboardTableList(additionalCellList: result)
         }
@@ -331,9 +300,6 @@ class HomeTable: UITableViewController, SwipeTableViewCellDelegate, UIPickerView
             let username: String = self.activity!.player!.username
             let opponent: EntityPlayer = game.getPlayerOther(username: username)
             
-            //viewController.playerSelf = self.activity!.player!
-            //viewController.playerOther = opponent
-            //viewController.selection = Int.random(in: 0...3)
             self.rematch(opponent: opponent)
             return
         }
