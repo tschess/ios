@@ -8,7 +8,13 @@
 
 import UIKit
 
-class PopChallenge: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class PopInvite: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+    
+    /**
+     * The default value is 'CHALLENGE'.
+     */
+    var ACCEPT: Bool?
+    var REMATCH: Bool?
     
     @IBOutlet weak var labelOk: UILabel!
     @IBOutlet weak var buttonOk: UIButton!

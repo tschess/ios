@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Pop Challenge-->
+        <!--Pop Invite-->
         <scene sceneID="LAn-pV-dbr">
             <objects>
-                <viewController storyboardIdentifier="PopChallenge" modalPresentationStyle="overCurrentContext" id="KZp-pR-rDR" customClass="PopChallenge" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PopChallenge" modalPresentationStyle="overCurrentContext" id="KZp-pR-rDR" customClass="PopInvite" customModule="ios" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="RRv-CF-dpA"/>
                         <viewControllerLayoutGuide type="bottom" id="A0B-ZU-VNy"/>
