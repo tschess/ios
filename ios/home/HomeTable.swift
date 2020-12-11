@@ -12,6 +12,28 @@ import SwipeCellKit
 
 class HomeTable: UITableViewController, SwipeTableViewCellDelegate {
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        let listRowVisible: [IndexPath]? = self.tableView.indexPathsForVisibleRows
+        let rowLast = listRowVisible?.last?.row
+        if(rowLast == nil){
+            return
+        }
+        let index = self.index
+        let size = Const().PAGE_SIZE
+        let indexFrom: Int =  index * size
+        let indexTo: Int = indexFrom + Const().PAGE_SIZE - 2
+        if rowLast == indexTo {
+            self.index += 1
+            self.fetch()
+        }
+    }
+    
+    @objc func refresh(refreshControl: UIRefreshControl?) {
+        self.index = 0
+        self.fetch(refreshControl: refreshControl, refresh: true)
+    }
+    
     func fetch(refreshControl: UIRefreshControl? = nil, refresh: Bool = false) {
         if(!refresh){
             self.activity!.header!.setIndicator(on: true)
@@ -34,6 +56,10 @@ class HomeTable: UITableViewController, SwipeTableViewCellDelegate {
             self.activity!.header!.setIndicator(on: false, tableView: self)
         }
     }
+    
+    /**
+     * ~~~
+     */
     
     var index: Int
     var swiped: Bool
@@ -69,7 +95,7 @@ class HomeTable: UITableViewController, SwipeTableViewCellDelegate {
         refreshControl.tintColor = UIColor.white
         self.tableView.refreshControl = refreshControl
     }
-        
+    
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
         let username: String = self.activity!.player!.username
         let game = self.list[indexPath.row]
@@ -86,6 +112,42 @@ class HomeTable: UITableViewController, SwipeTableViewCellDelegate {
         return self.swipProposedOutbound(orientation: orientation, game: game)
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.tableView.deselectSelectedRow(animated: true)
+        let game = self.list[indexPath.row]
+        if(game.isResolved()){
+            let game: EntityGame = self.list[indexPath.row]
+            let username: String = self.activity!.player!.username
+            let opponent: EntityPlayer = game.getPlayerOther(username: username)
+            self.invite(opponent: opponent, game: game, REMATCH: true)
+            return
+        }
+        if(game.status == "ONGOING"){
+            let opponent: EntityPlayer = game.getPlayerOther(username: self.activity!.player!.username)
+            DispatchQueue.main.async {
+                let storyboard: UIStoryboard = UIStoryboard(name: "Tschess", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "Tschess") as! Tschess
+                viewController.playerOther = opponent
+                viewController.player = self.activity!.player!
+                viewController.game = game
+                self.navigationController?.pushViewController(viewController, animated: false)
+            }
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let index: Int = indexPath.row
+        let game: EntityGame = self.list[index]
+        let username: String = self.activity!.player!.username
+        let opponentUsername: String = game.getLabelTextUsernameOpponent(username: username)
+        let opponentAvatar: UIImage = game.getImageAvatarOpponent(username: username)
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "HomeCell", for: indexPath) as! HomeCell
+        cell.delegate = self
+        cell.setContent(usernameSelf: username, usernameOther: opponentUsername, game: game, avatarImageOther: opponentAvatar)
+        return cell
+    }
+    
     func invite(opponent: EntityPlayer, game: EntityGame, ACCEPT: Bool = false, REMATCH: Bool = false) {
         let storyboard: UIStoryboard = UIStoryboard(name: "PopInvite", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "PopInvite") as! PopInvite
@@ -97,6 +159,11 @@ class HomeTable: UITableViewController, SwipeTableViewCellDelegate {
         viewController.ACCEPT = ACCEPT
         self.activity!.present(viewController, animated: true, completion: nil)
     }
+    
+    /**
+     * Inbound, Outbound, & Resolved
+     */
+    
     
     private func swipProposedInbound(orientation: SwipeActionsOrientation, game: EntityGame) -> [SwipeAction]? {
         if(orientation == .left) {
@@ -183,68 +250,6 @@ class HomeTable: UITableViewController, SwipeTableViewCellDelegate {
             return [rematch]
         }
         return nil
-    }
-    
-    @objc func refresh(refreshControl: UIRefreshControl?) {
-        self.index = 0
-        self.fetch(refreshControl: refreshControl, refresh: true)
-    }
-    
-    
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.tableView.deselectSelectedRow(animated: true)
-        let game = self.list[indexPath.row]
-        if(game.isResolved()){
-            let game: EntityGame = self.list[indexPath.row]
-            let username: String = self.activity!.player!.username
-            let opponent: EntityPlayer = game.getPlayerOther(username: username)
-            self.invite(opponent: opponent, game: game, REMATCH: true)
-            return
-        }
-        if(game.status == "ONGOING"){
-            let opponent: EntityPlayer = game.getPlayerOther(username: self.activity!.player!.username)
-            DispatchQueue.main.async {
-                let storyboard: UIStoryboard = UIStoryboard(name: "Tschess", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "Tschess") as! Tschess
-                viewController.playerOther = opponent
-                viewController.player = self.activity!.player!
-                viewController.game = game
-                self.navigationController?.pushViewController(viewController, animated: false)
-            }
-        }
-    }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let index: Int = indexPath.row
-        let game: EntityGame = self.list[index]
-        let username: String = self.activity!.player!.username
-        let opponentUsername: String = game.getLabelTextUsernameOpponent(username: username)
-        let opponentAvatar: UIImage = game.getImageAvatarOpponent(username: username)
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "HomeCell", for: indexPath) as! HomeCell
-        cell.delegate = self
-        cell.setContent(usernameSelf: username, usernameOther: opponentUsername, game: game, avatarImageOther: opponentAvatar)
-        return cell
-    }
-    
-
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        let listRowVisible: [IndexPath]? = self.tableView.indexPathsForVisibleRows
-        let rowLast = listRowVisible?.last?.row
-        if(rowLast == nil){
-            return
-        }
-        let index = self.index
-        let size = Const().PAGE_SIZE
-        let indexFrom: Int =  index * size
-        let indexTo: Int = indexFrom + Const().PAGE_SIZE - 2
-        if rowLast == indexTo {
-            self.index += 1
-            self.fetch()
-        }
     }
     
 }

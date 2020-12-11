@@ -34,26 +34,8 @@ class HomeCell: SwipeTableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    
-    
-    
-    //    @objc func imageTapped(sender: UITapGestureRecognizer) {
-    //        guard let cell = sender.view?.superview?.superview as? HomeCell else {
-    //            return
-    //        }
-    //        if(!self.swiped){
-    //            cell.showSwipe(orientation: .right, animated: true)
-    //            self.swiped = true
-    //            return
-    //        }
-    //        cell.hideSwipe(animated: true, completion: nil)
-    //        self.swiped = false
-    //    }
-    
     @objc func imageTapped(sender: UITapGestureRecognizer) {
-        //guard let cell = sender.view?.superview?.superview as? HomeCell else {
         guard let cell = sender.view?.superview as? HomeCell else {
-            print("fak fak fak fak!!!")
             return
         }
         if(!self.isSideSlide){
@@ -66,17 +48,7 @@ class HomeCell: SwipeTableViewCell {
     }
     
     func setContent(usernameSelf: String, usernameOther: String, game: EntityGame, avatarImageOther: UIImage) {
-        //let pictureTap = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
-        //self.imageSlide.addGestureRecognizer(pictureTap)
-        //self.imageSlide.isUserInteractionEnabled = true
-        
-        //self.imageAction.addGestureRecognizer(pictureTap)
-        //self.imageAction.isUserInteractionEnabled = true
-        
-        //self.labelAction.addGestureRecognizer(pictureTap)
-        //self.labelAction.isUserInteractionEnabled = true
         self.viewContent.gestureRecognizers?.forEach(self.viewContent.removeGestureRecognizer)
-
         
         self.labelUsername.text = usernameOther
         self.imageAvatar.image = avatarImageOther
