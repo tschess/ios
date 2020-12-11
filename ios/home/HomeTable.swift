@@ -12,6 +12,29 @@ import SwipeCellKit
 
 class HomeTable: UITableViewController, SwipeTableViewCellDelegate {
     
+    func fetch(refreshControl: UIRefreshControl? = nil, refresh: Bool = false) {
+        if(!refresh){
+            self.activity!.header!.setIndicator(on: true)
+        }
+        let payload = ["id": self.activity!.player!.id,
+                       "index": self.index,
+                       "size": Const().PAGE_SIZE,
+                       "self": true
+        ] as [String: Any]
+        RequestActual().execute(requestPayload: payload) { (result) in
+            if(refreshControl != nil){
+                self.list = [EntityGame]()
+                DispatchQueue.main.async {
+                    refreshControl!.endRefreshing()
+                }
+            }
+            for game in result {
+                self.list.append(game)
+            }
+            self.activity!.header!.setIndicator(on: false, tableView: self)
+        }
+    }
+    
     var index: Int
     var swiped: Bool
     var list: [EntityGame]
@@ -167,28 +190,7 @@ class HomeTable: UITableViewController, SwipeTableViewCellDelegate {
         self.fetch(refreshControl: refreshControl, refresh: true)
     }
     
-    func fetch(refreshControl: UIRefreshControl? = nil, refresh: Bool = false) {
-        if(!refresh){
-            self.activity!.header!.setIndicator(on: true)
-        }
-        let payload = ["id": self.activity!.player!.id,
-                       "index": self.index,
-                       "size": Const().PAGE_SIZE,
-                       "self": true
-        ] as [String: Any]
-        RequestActual().execute(requestPayload: payload) { (result) in
-            if(refreshControl != nil){
-                self.list = [EntityGame]()
-                DispatchQueue.main.async {
-                    refreshControl!.endRefreshing()
-                }
-            }
-            for game in result {
-                self.list.append(game)
-            }
-            self.activity!.header!.setIndicator(on: false, tableView: self)
-        }
-    }
+    
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.tableView.deselectSelectedRow(animated: true)
@@ -226,18 +228,7 @@ class HomeTable: UITableViewController, SwipeTableViewCellDelegate {
         return cell
     }
     
-    @objc func imageTapped(sender: UITapGestureRecognizer) {
-        guard let cell = sender.view?.superview?.superview as? HomeCell else {
-            return
-        }
-        if(!self.swiped){
-            cell.showSwipe(orientation: .right, animated: true)
-            self.swiped = true
-            return
-        }
-        cell.hideSwipe(animated: true, completion: nil)
-        self.swiped = false
-    }
+
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
