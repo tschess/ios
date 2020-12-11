@@ -62,7 +62,7 @@ class HomeCell: SwipeTableViewCell {
             return
         }
         self.setActive()
-        let inbound: Bool = game.getTurnFlag(username: usernameSelf)
+        var inbound: Bool = game.getTurnFlag(username: usernameSelf)
         if(game.status == "ONGOING"){
             self.imageSlide.isHidden = true
             if(inbound){
@@ -78,6 +78,8 @@ class HomeCell: SwipeTableViewCell {
             self.labelAction.text = "game"
             return
         }
+        
+        inbound = game.getInboundInvitation(username: usernameSelf)
         if(game.status == "PROPOSED"){
             self.imageSlide.isHidden = false
             if(inbound){
