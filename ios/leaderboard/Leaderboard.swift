@@ -60,7 +60,27 @@ class Leaderboard: UIViewController, UITabBarDelegate {
         }
     }
     
+    //TODO: ought not be here...
+//    func refreshHome() {
+//        DispatchQueue.main.async {
+//            if let navigationController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController {
+//                let viewControllers = navigationController.viewControllers
+//                for vc in viewControllers {
+//                    if vc.isKind(of: Home.classForCoder()) {
+//                        let home: Home = vc as! Home
+//
+//                        home.table!.index = 0
+//                        home.table!.list = [EntityGame]()
+//                        home.table!.fetch(refreshControl: nil, refresh: true)
+//                    }
+//                }
+//
+//            }
+//        }
+//    }
+    
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        //self.refreshHome()
         let transition = CATransition()
         transition.duration = 0.3
         transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
