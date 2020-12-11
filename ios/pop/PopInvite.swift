@@ -10,7 +10,7 @@ import UIKit
 
 class PopInvite: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
-    var test: UINavigationController?
+    var navigator: UINavigationController?
     
     var url: URL = URL(string: "http://\(ServerAddress().IP):8080/game/challenge")!
     let transDelegate: TransDelegate = TransDelegate(width: 271, height: 301)
@@ -228,7 +228,7 @@ class PopInvite: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource 
                         viewController.game = game
                         
                         self.dismiss(animated: true, completion: nil)
-                        self.test!.pushViewController(viewController, animated: false)
+                        self.navigator!.pushViewController(viewController, animated: false)
                     }
                     return
                 }

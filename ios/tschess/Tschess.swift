@@ -38,21 +38,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         super.init(coder: aDecoder)
     }
     
-    //TODO: ought not be here...
-    func homeRefresh() {
-        DispatchQueue.main.async {
-            if let navigationController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController {
-                let viewControllers = navigationController.viewControllers
-                for vc in viewControllers {
-                    if vc.isKind(of: Home.classForCoder()) {
-                        let menu: Home = vc as! Home
-                        menu.table!.refresh(refreshControl: nil)
-                    }
-                }
-                
-            }
-        }
-    }
+   
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         self.tabBarMenu.selectedItem = nil
@@ -108,7 +94,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
                 self.present(alert, animated: true)
             }
         default:
-            self.homeRefresh()
+            //self.refreshHome()
             let transition = CATransition()
             transition.duration = 0.3
             transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
@@ -520,7 +506,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         if(resolved){
             self.endTimer()
             self.renderDialogConfirm()
-            self.homeRefresh()
+            //self.refreshHome()
         }
         //self.labeler!.setResolve(resolved: resolved)
         let winner: Bool = self.game!.getWinner(username: username)
@@ -539,7 +525,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         let check: Bool = czecher.other(coordinate: king, state: self.matrix!)
         if (mate) {
             UpdateMate().execute(id: self.game!.id) { (_) in
-                self.homeRefresh()
+                //self.refreshHome()
             }
             return
         }
