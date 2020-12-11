@@ -11,39 +11,6 @@ import SwipeCellKit
 
 
 class HomeTable: UITableViewController, SwipeTableViewCellDelegate {
-    
-    var swiped: Bool
-    var index: Int
-    var list: [EntityGame]
-    var activity: Home?
-    
-    required init?(coder aDecoder: NSCoder) {
-        self.swiped = false
-        self.index = 0
-        self.list = [EntityGame]()
-        super.init(coder: aDecoder)
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        tableView.tableFooterView = UIView()
-    }
-    
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return list.count
-    }
-    
-    override func viewDidLoad() {
-        let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
-        refreshControl.backgroundColor = UIColor.clear
-        refreshControl.tintColor = UIColor.white
-        self.tableView.refreshControl = refreshControl
-    }
         
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
         let username: String = self.activity!.player!.username
@@ -167,10 +134,41 @@ class HomeTable: UITableViewController, SwipeTableViewCellDelegate {
         return nil
     }
     
+    var swiped: Bool
+    var index: Int
+    var list: [EntityGame]
+    var activity: Home?
+    
+    required init?(coder aDecoder: NSCoder) {
+        self.swiped = false
+        self.index = 0
+        self.list = [EntityGame]()
+        super.init(coder: aDecoder)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.tableFooterView = UIView()
+    }
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return list.count
+    }
+    
+    override func viewDidLoad() {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        refreshControl.backgroundColor = UIColor.clear
+        refreshControl.tintColor = UIColor.white
+        self.tableView.refreshControl = refreshControl
+    }
+    
     @objc func refresh(refreshControl: UIRefreshControl?) {
         self.index = 0
-        //self.list = [EntityGame]()
-        self.list = [EntityGame]()
         self.fetch(refreshControl: refreshControl, refresh: true)
     }
     
@@ -185,15 +183,12 @@ class HomeTable: UITableViewController, SwipeTableViewCellDelegate {
         ] as [String: Any]
         RequestActual().execute(requestPayload: payload) { (result) in
             if(refreshControl != nil){
+                self.list = [EntityGame]()
                 DispatchQueue.main.async {
                     refreshControl!.endRefreshing()
                 }
             }
-            for game in result {
-                self.list.append(game)
-            }
-            self.activity!.header!.setIndicator(on: false, tableView: self)
-            //self.appendToLeaderboardTableList(additionalCellList: result)
+            self.appendToLeaderboardTableList(additionalCellList: result)
         }
     }
     
@@ -265,7 +260,12 @@ class HomeTable: UITableViewController, SwipeTableViewCellDelegate {
         }
     }
     
-
+    func appendToLeaderboardTableList(additionalCellList: [EntityGame]) {
+        for game in additionalCellList {
+            self.list.append(game)
+        }
+        self.activity!.header!.setIndicator(on: false, tableView: self)
+    }
 }
 
 
