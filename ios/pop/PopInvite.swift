@@ -186,6 +186,11 @@ class PopInvite: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource 
         if(self.REMATCH){
             let white: Bool = self.game!.getWhite(username: self.player!.username)
             payload["white"] = white
+            payload["id_other"] = id_other
+            //val id_self: String,
+            //val id_other: String,
+            //val config: Int,
+            //val white: Boolean
         }
         if(self.ACCEPT){
             payload[ "id_game"] = self.game!.id
@@ -216,6 +221,13 @@ class PopInvite: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource 
                     self.error()
                     return
                 }
+                
+                print("AHAHAHAHAHAHAHA\n\n\n\n")
+                print("AHAHAHAHAHAHAHA\n\n\n\n")
+                print("::::: \(json)")
+                print("AHAHAHAHAHAHAHA\n\n\n\n")
+                print("AHAHAHAHAHAHAHA\n\n\n\n")
+                
                 if(self.ACCEPT){
             
                     DispatchQueue.main.async {
