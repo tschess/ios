@@ -12,58 +12,39 @@ import SwipeCellKit
 
 class HomeTable: UITableViewController, SwipeTableViewCellDelegate {
     
-    //TODO: play
-    func play(config: Int, id_game: String) {
-        
-        let id_player = self.activity!.player!.id
-        
-        let payload: [String: Any] = [
-            "id_game": id_game,
-            "id_self": id_player,
-            "config": config]
-        
-        RequestAck().execute(requestPayload: payload) { (result) in
-            let game: EntityGame = ParseGame().execute(json: result)
-            DispatchQueue.main.async {
-                let opponent: EntityPlayer = game.getPlayerOther(username: self.activity!.player!.username)
-                let storyboard: UIStoryboard = UIStoryboard(name: "Tschess", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "Tschess") as! Tschess
-                viewController.playerOther = opponent
-                viewController.player = self.activity!.player!
-                viewController.game = game
-                self.navigationController?.pushViewController(viewController, animated: false)
-            }
-        }
+    var swiped: Bool
+    var index: Int
+    var list: [EntityGame]
+    var activity: Home?
+    
+    required init?(coder aDecoder: NSCoder) {
+        self.swiped = false
+        self.index = 0
+        self.list = [EntityGame]()
+        super.init(coder: aDecoder)
     }
     
-    //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    //!!!!!!!!!!!!!!!!!!!!!!!!!
-    //!!!!!!!!!!!!!!!!!!!!!!!!
-    func challenge(config: Int, id_other: String) {
-        
-        let id_player = self.activity!.player!.id
-        
-        let payload: [String: Any] = [
-            "id_self": id_player,
-            "id_other": id_other,
-            "config": config]
-        
-        RequestAck().execute(requestPayload: payload) { (result) in
-            let game: EntityGame = ParseGame().execute(json: result)
-            DispatchQueue.main.async {
-                let opponent: EntityPlayer = game.getPlayerOther(username: self.activity!.player!.username)
-                let storyboard: UIStoryboard = UIStoryboard(name: "Tschess", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "Tschess") as! Tschess
-                viewController.playerOther = opponent
-                viewController.player = self.activity!.player!
-                viewController.game = game
-                self.navigationController?.pushViewController(viewController, animated: false)
-            }
-        }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.tableFooterView = UIView()
     }
     
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
     
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return list.count
+    }
     
+    override func viewDidLoad() {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        refreshControl.backgroundColor = UIColor.clear
+        refreshControl.tintColor = UIColor.white
+        self.tableView.refreshControl = refreshControl
+    }
+        
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
         let username: String = self.activity!.player!.username
         let game = self.list[indexPath.row]
@@ -80,35 +61,17 @@ class HomeTable: UITableViewController, SwipeTableViewCellDelegate {
         return self.swipProposedOutbound(orientation: orientation, game: game)
     }
     
-   
-    func ack(opponent: EntityPlayer, game: EntityGame) {
+    func invite(opponent: EntityPlayer, game: EntityGame, ACCEPT: Bool = false, REMATCH: Bool = false) {
         let storyboard: UIStoryboard = UIStoryboard(name: "PopInvite", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "PopInvite") as! PopInvite
-            
-        viewController.ACCEPT = true
+        viewController.ACCEPT = ACCEPT
+        viewController.REMATCH = REMATCH
         viewController.player = self.activity!.player
         viewController.opponent = opponent
-        
+        viewController.test = self.activity!.navigationController
         viewController.game = game
-
         self.activity!.present(viewController, animated: true, completion: nil)
     }
-    
-    
-    func rematch(opponent: EntityPlayer, game: EntityGame) {
-        let storyboard: UIStoryboard = UIStoryboard(name: "PopInvite", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "PopInvite") as! PopInvite
-            
-        viewController.REMATCH = true
-        viewController.player = self.activity!.player
-        viewController.opponent = opponent
-        
-        viewController.game = game
-
-        self.activity!.present(viewController, animated: true, completion: nil)
-    }
-    
-    var pickerView: UIPickerView?
     
     private func swipProposedInbound(orientation: SwipeActionsOrientation, game: EntityGame) -> [SwipeAction]? {
         if(orientation == .left) {
@@ -120,15 +83,10 @@ class HomeTable: UITableViewController, SwipeTableViewCellDelegate {
             cell.hideSwipe(animated: false, completion: nil)
             
             self.activity!.header!.setIndicator(on: true)
-            //TODO: MENU
             let requestPayload: [String: Any] = ["id_game": game.id, "id_self": self.activity!.player!.id]
             UpdateNack().execute(requestPayload: requestPayload) { (result) in
                 self.list.remove(at: indexPath.row)
-                //self.activity!.header!.setIndicator(on: false)
                 self.activity!.header!.setIndicator(on: false, tableView: self.activity!.table!)
-                //DispatchQueue.main.async {
-                    //self.tableView.reloadData()
-                //}
             }
         }
         nAction.backgroundColor = UIColor(red: 39.0/255, green: 41.0/255, blue: 44.0/255, alpha: 1.0)
@@ -136,19 +94,13 @@ class HomeTable: UITableViewController, SwipeTableViewCellDelegate {
         nAction.title = "reject"
         
         let ackAction = SwipeAction(style: .default, title: nil) { action, indexPath in
-            
             let cell = self.tableView.cellForRow(at: indexPath) as! SwipeTableViewCell
             cell.hideSwipe(animated: false, completion: nil)
             
             let game: EntityGame = self.list[indexPath.row]
             let username: String = self.activity!.player!.username
             let opponent: EntityPlayer = game.getPlayerOther(username: username)
-            
-            //viewController.setPlayerSelf(playerSelf: self.activity!.player!)
-            //viewController.setPlayerOther(playerOther: playerOther)
-            //viewController.setGameTschess(gameTschess: game)
-            //viewController.setSelection(selection: Int.random(in: 0...3))
-            self.ack(opponent: opponent, game: game)
+            self.invite(opponent: opponent, game: game, ACCEPT: true)
         }
         ackAction.backgroundColor = UIColor(red: 39.0/255, green: 41.0/255, blue: 44.0/255, alpha: 1.0)
         ackAction.title = "Accept"
@@ -159,21 +111,14 @@ class HomeTable: UITableViewController, SwipeTableViewCellDelegate {
     private func swipProposedOutbound(orientation: SwipeActionsOrientation, game: EntityGame) -> [SwipeAction]? {
         if(orientation == .right) {
             let rescind = SwipeAction(style: .default, title: nil) { action, indexPath in
-                
                 let cell = self.tableView.cellForRow(at: indexPath) as! SwipeTableViewCell
                 cell.hideSwipe(animated: false, completion: nil)
-                
                 self.activity!.header!.setIndicator(on: true)
-                //self.activity!.setIndicator(on: true)
                 let game = self.list[indexPath.row]
                 let requestPayload: [String: Any] = ["id_game": game.id, "id_self": self.activity!.player!.id]
                 UpdateRescind().execute(requestPayload: requestPayload) { (result) in
                     self.list.remove(at: indexPath.row)
-                    //self.activity!.setIndicator(on: false)
                     self.activity!.header!.setIndicator(on: false, tableView: self.activity!.table!)
-                    //DispatchQueue.main.async {
-                        //self.tableView.reloadData()
-                    //}
                 }
             }
             rescind.backgroundColor = UIColor(red: 39.0/255, green: 41.0/255, blue: 44.0/255, alpha: 1.0)
@@ -222,41 +167,10 @@ class HomeTable: UITableViewController, SwipeTableViewCellDelegate {
         return nil
     }
     
-    var swiped: Bool
-    var index: Int
-    var list: [EntityGame]
-    var activity: Home?
-    
-    required init?(coder aDecoder: NSCoder) {
-        self.swiped = false
-        self.index = 0
-        self.list = [EntityGame]()
-        super.init(coder: aDecoder)
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        tableView.tableFooterView = UIView()
-    }
-    
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return list.count
-    }
-    
-    override func viewDidLoad() {
-        let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
-        refreshControl.backgroundColor = UIColor.clear
-        refreshControl.tintColor = UIColor.white
-        self.tableView.refreshControl = refreshControl
-    }
-    
     @objc func refresh(refreshControl: UIRefreshControl?) {
         self.index = 0
+        //self.list = [EntityGame]()
+        self.list = [EntityGame]()
         self.fetch(refreshControl: refreshControl, refresh: true)
     }
     
@@ -271,12 +185,15 @@ class HomeTable: UITableViewController, SwipeTableViewCellDelegate {
         ] as [String: Any]
         RequestActual().execute(requestPayload: payload) { (result) in
             if(refreshControl != nil){
-                self.list = [EntityGame]()
                 DispatchQueue.main.async {
                     refreshControl!.endRefreshing()
                 }
             }
-            self.appendToLeaderboardTableList(additionalCellList: result)
+            for game in result {
+                self.list.append(game)
+            }
+            self.activity!.header!.setIndicator(on: false, tableView: self)
+            //self.appendToLeaderboardTableList(additionalCellList: result)
         }
     }
     
@@ -289,8 +206,7 @@ class HomeTable: UITableViewController, SwipeTableViewCellDelegate {
             let game: EntityGame = self.list[indexPath.row]
             let username: String = self.activity!.player!.username
             let opponent: EntityPlayer = game.getPlayerOther(username: username)
-            
-            self.rematch(opponent: opponent, game: game)
+            self.invite(opponent: opponent, game: game, REMATCH: true)
             return
         }
         if(game.status == "ONGOING"){
@@ -349,16 +265,7 @@ class HomeTable: UITableViewController, SwipeTableViewCellDelegate {
         }
     }
     
-    func appendToLeaderboardTableList(additionalCellList: [EntityGame]) {
-        for game in additionalCellList {
-            self.list.append(game)
-        }
-        self.activity!.header!.setIndicator(on: false, tableView: self)
-        //DispatchQueue.main.async() {
-            //self.tableView.reloadData()
-        //}
-    }
-    
+
 }
 
 

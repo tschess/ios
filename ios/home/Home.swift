@@ -21,6 +21,20 @@ class Home: UIViewController, UITabBarDelegate {
     @IBOutlet weak var viewHeader: UIView!
     var header: Header?
     
+    override func viewWillAppear(_ animated: Bool) {
+        
+        //self.table!.fetch()
+        
+        self.table = children.first as? HomeTable
+        self.table!.activity = self
+        
+        self.table!.index = 0
+        self.table!.list = [EntityGame]()
+        self.table!.fetch()
+        
+        self.header!.setIndicator(on: true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -47,9 +61,9 @@ class Home: UIViewController, UITabBarDelegate {
         opponent.set(player: self.player!)
         
         //TODO: Table
-        self.table = children.first as? HomeTable
-        self.table!.activity = self
-        self.table!.fetch()
+//        self.table = children.first as? HomeTable
+//        self.table!.activity = self
+//        self.table!.fetch()
         
         self.tabBar.delegate = self
     }

@@ -10,6 +10,8 @@ import UIKit
 
 class PopInvite: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
+    var test: UINavigationController?
+    
     var url: URL = URL(string: "http://\(ServerAddress().IP):8080/game/challenge")!
     let transDelegate: TransDelegate = TransDelegate(width: 271, height: 301)
     var transitioner: Transitioner?
@@ -164,9 +166,6 @@ class PopInvite: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource 
     
     
     func challenge(config0: Int, id_other: String) {
-        //print("\n\nYAYAYAYA: \(config0) <-- config")
-        //print("\n\nYAYAYAYA: \(id_other) <-- id_other \n\n")
-        
         var config: Int = 0
         switch config0 {
         case 0:
@@ -180,7 +179,6 @@ class PopInvite: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource 
         default: //4
             config = 2
         }
-        
         var payload: [String: Any] = [
             "id_self": self.player!.id,
             "config": config
@@ -190,16 +188,11 @@ class PopInvite: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource 
             payload["white"] = white
         }
         if(self.ACCEPT){
-            //val params: MutableMap<String, String> = mutableMapOf()
-            //params["id_self"] = playerSelf.id
-            //params["id_game"] = game_id
-            //params["config"] = config.toString()
             payload[ "id_game"] = self.game!.id
         }
         if(!self.REMATCH && !self.ACCEPT) { //invite/challenge
             payload[ "id_other"] = id_other
         }
-        
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Accept")
@@ -207,60 +200,62 @@ class PopInvite: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource 
         do {
             request.httpBody = try JSONSerialization.data(withJSONObject: payload, options: .prettyPrinted)
         } catch let error {
-            
-            print("0")
-            
             print(error.localizedDescription)
         }
         URLSession.shared.dataTask(with: request, completionHandler: { data, response, error in
             guard error == nil else {
-                
-                print("1")
-                
                 self.error()
                 return
             }
             guard let data = data else {
-                
-                print("2")
-                
                 self.error()
                 return
             }
             do {
                 guard let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any] else {
-                    
-                    print("3")
-                    
                     self.error()
                     return
                 }
-                
-                DispatchQueue.main.async() {
-                    self.indicatorActivity.isHidden = true
-                    self.indicatorActivity.stopAnimating()
-                    
-                    self.labelTitle.isHidden = false
-                    self.labelTitle.text = "✅ Success ✅"
-                    
-                    self.labelDirection.isHidden = false
-                    self.labelDirection.text = "Invite has been sent. 👍"
-                    
-                    self.labelOk.isHidden = false
-                    self.buttonOk.isHidden = false
-                    self.buttonOk.isEnabled = true
+                if(self.ACCEPT){
+            
+                    DispatchQueue.main.async {
+                        let game: EntityGame = ParseGame().execute(json: json)
+                        let opponent: EntityPlayer = game.getPlayerOther(username: self.player!.username)
+                        let storyboard: UIStoryboard = UIStoryboard(name: "Tschess", bundle: nil)
+                        let viewController = storyboard.instantiateViewController(withIdentifier: "Tschess") as! Tschess
+                        viewController.playerOther = opponent
+                        viewController.player = self.player!
+                        viewController.game = game
+                        
+                        self.dismiss(animated: true, completion: nil)
+                        self.test!.pushViewController(viewController, animated: false)
+                    }
+                    return
                 }
-                
-                print("4")
-                
-                print(json)
+                self.success()
             } catch _ {
-                
-                print("5")
-                
                 self.error()
             }
         }).resume()
+    }
+    
+    
+    
+    func success() {
+        DispatchQueue.main.async() {
+            self.indicatorActivity.isHidden = true
+            self.indicatorActivity.stopAnimating()
+            
+            self.labelTitle.isHidden = false
+            self.labelTitle.text = "✅ Success ✅"
+            
+            self.labelDirection.isHidden = false
+            self.labelDirection.text = "Invite has been sent. 👍"
+            
+            self.labelOk.isHidden = false
+            self.buttonOk.isHidden = false
+            self.buttonOk.isEnabled = true
+        }
     }
     
     func error() {
