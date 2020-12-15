@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import StoreKit
 
 class Opponent: UIView {
     
@@ -30,12 +31,19 @@ class Opponent: UIView {
     @IBOutlet weak var indicatorActivity: UIActivityIndicatorView!
     
     func execute(opponent: EntityPlayer) {
-        let storyboard: UIStoryboard = UIStoryboard(name: "PopInvite", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "PopInvite") as! PopInvite
-            
+        //Check if product is purchased
+        if (UserDefaults.standard.bool(forKey: "purchased")){
+            let storyboard: UIStoryboard = UIStoryboard(name: "PopInvite", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier: "PopInvite") as! PopInvite
+            viewController.player = self.player
+            viewController.opponent = opponent
+            self.window?.rootViewController?.present(viewController, animated: true, completion: nil)
+            return
+           }
+        let storyboard: UIStoryboard = UIStoryboard(name: "PopPurchase", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "PopPurchase") as! PopPurchase
         viewController.player = self.player
         viewController.opponent = opponent
-
         self.window?.rootViewController?.present(viewController, animated: true, completion: nil)
     }
     

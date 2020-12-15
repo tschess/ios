@@ -51,6 +51,9 @@ class HomeTable: UITableViewController, SwipeTableViewCellDelegate {
                 }
             }
             for game in result {
+                //if(self.list.contains(game)){
+                   //continue
+                //}
                 self.list.append(game)
             }
             self.activity!.header!.setIndicator(on: false, tableView: self)
@@ -163,7 +166,6 @@ class HomeTable: UITableViewController, SwipeTableViewCellDelegate {
     /**
      * Inbound, Outbound, & Resolved
      */
-    
     
     private func swipProposedInbound(orientation: SwipeActionsOrientation, game: EntityGame) -> [SwipeAction]? {
         if(orientation == .left) {
