@@ -142,8 +142,7 @@ class PopPurchase: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
         return label
     }
     
-    @IBAction func selectSubscribe(_ sender: Any) {
-        
+    func hide() {
         self.labelTitle.isHidden = true
         self.labelDirection.isHidden = true
         
@@ -155,15 +154,45 @@ class PopPurchase: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
         
         self.labelCancel.isHidden = true
         self.buttonCancel.isHidden = true
-        self.buttonCancel.isEnabled = false
+        //self.buttonCancel.isEnabled = false
         
         self.labelOk.isHidden = true
         self.buttonOk.isHidden = true
-        self.buttonOk.isEnabled = false
+        //self.buttonOk.isEnabled = false
         
         self.labelSubscribe.isHidden = true
         self.buttonSubscribe.isHidden = true
-        self.buttonSubscribe.isEnabled = false
+        //self.buttonSubscribe.isEnabled = false
+    }
+    
+    func reveal() {
+        self.labelTitle.isHidden = false
+        self.labelDirection.isHidden = false
+        
+        self.indicatorActivity.isHidden = true
+        
+        self.pickerView.isHidden = false
+        
+        self.labelInvite.isHidden = false
+        self.buttonInvite.isHidden = false
+        self.buttonOk.isEnabled = true
+        
+        self.labelCancel.isHidden = false
+        self.buttonCancel.isHidden = false
+        self.buttonCancel.isEnabled = true
+        
+        self.labelSubscribe.isHidden = false
+        self.buttonSubscribe.isHidden = false
+        self.buttonSubscribe.isEnabled = true
+        //
+        self.labelOk.isHidden = true
+        self.buttonOk.isHidden = true
+        self.buttonOk.isEnabled = false
+    }
+    
+    @IBAction func selectSubscribe(_ sender: Any) {
+        
+        self.hide()
         
         let alert = UIAlertController(title: "🔑 Subscription plan 🔑", message: "\nSelect subscription plan below.", preferredStyle: .alert)
         
@@ -174,20 +203,20 @@ class PopPurchase: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
             //self.id_month = "001"
             
             // Can make payments
-            if (SKPaymentQueue.canMakePayments()){
-                    let productID:NSSet = NSSet(object: self.id_month!)
-                let productsRequest:SKProductsRequest = SKProductsRequest(productIdentifiers: productID as! Set<String>)
-                    productsRequest.delegate = self
-                    productsRequest.start()
-                    print("Fetching Products")
-                
-                print("Sending the Payment Request to Apple")
-                    //let payment = SKPayment(product: product)
-                    //SKPaymentQueue.default().add(payment)
-                
-                }else{
-                    print("Can't make purchases")
-                }
+//            if (SKPaymentQueue.canMakePayments()){
+//                    let productID:NSSet = NSSet(object: self.id_month!)
+//                let productsRequest:SKProductsRequest = SKProductsRequest(productIdentifiers: productID as! Set<String>)
+//                    productsRequest.delegate = self
+//                    productsRequest.start()
+//                    print("Fetching Products")
+//
+//                print("Sending the Payment Request to Apple")
+//                    //let payment = SKPayment(product: product)
+//                    //SKPaymentQueue.default().add(payment)
+//
+//                }else{
+//                    print("Can't make purchases")
+//                }
 
             
             
@@ -199,7 +228,9 @@ class PopPurchase: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
         action1.setValue(UIColor.lightGray, forKey: "titleTextColor")
         alert.addAction(action1)
         
-        let action2 = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let action2 = UIAlertAction(title: "Cancel", style: .cancel, handler: {_ in 
+            self.reveal()
+        })
         action2.setValue(UIColor.lightGray, forKey: "titleTextColor")
         alert.addAction(action2)
         
@@ -208,7 +239,6 @@ class PopPurchase: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
     
     
     @IBAction func selectChallenge(_ sender: Any) {
-        
         self.labelTitle.isHidden = true
         self.labelDirection.isHidden = true
         

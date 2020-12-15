@@ -114,7 +114,12 @@ class Start: UIViewController, UITextFieldDelegate {
             username: usernameTextString!.lowercased(),
             password: passwordTextString!)
         
+        print("\n\n\n\n REQUEST: \(request) \n\n\n\n")
+        
         self.execute(requestPayload: request) { (result) in
+            
+            print("\n\n\n\n result: \(result) \n\n\n\n")
+            
             self.handleResult(result: result)
         }
     }
@@ -264,29 +269,45 @@ class Start: UIViewController, UITextFieldDelegate {
         do {
             request.httpBody = try JSONSerialization.data(withJSONObject: requestPayload, options: .prettyPrinted)
         } catch _ {
+            
+            print("AAA")
+            
             completion(self.renderError())
         }
-        let session = URLSession.shared
-        let task = session.dataTask(with: request, completionHandler: { data, response, error in
+        URLSession.shared.dataTask(with: request, completionHandler: { data, response, error in
             guard error == nil else {
+                
+                print("BBB")
+                
                 completion(self.renderError())
                 return
             }
             guard let data = data else {
+                
+                print("CCC")
+                
                 completion(self.renderError())
                 return
             }
             do {
                 guard let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any] else {
+                    
+                    print("DDD")
+                    
                     completion(self.renderError())
                     return
                 }
+                
+                print("EEE")
+                
                 completion(json)
             } catch _ {
+                
+                print("FFF")
+                
                 completion(self.renderError())
             }
-        })
-        task.resume()
+        }).resume()
     }
     
     func renderError() -> [String: String] {
