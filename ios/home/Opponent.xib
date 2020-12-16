@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -15,10 +15,10 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yNv-ER-N86" userLabel="holder00">
-                    <rect key="frame" x="0.0" y="0.0" width="150" height="90"/>
+                    <rect key="frame" x="0.0" y="0.0" width="150" height="120"/>
                     <subviews>
                         <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="geX-7D-Yq9" userLabel="opponent00">
-                            <rect key="frame" x="14" y="0.0" width="104" height="90"/>
+                            <rect key="frame" x="14" y="0.0" width="104" height="120"/>
                             <subviews>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="avatar_inverse" translatesAutoresizingMaskIntoConstraints="NO" id="CaL-rD-0Ce">
                                     <rect key="frame" x="8" y="4" width="83" height="65"/>
@@ -53,7 +53,6 @@
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="90" id="00l-oz-kYZ"/>
                         <constraint firstItem="geX-7D-Yq9" firstAttribute="top" secondItem="yNv-ER-N86" secondAttribute="top" id="4ah-SC-Yn2"/>
                         <constraint firstAttribute="width" constant="150" id="Bem-FB-cBq"/>
                         <constraint firstItem="geX-7D-Yq9" firstAttribute="centerX" secondItem="yNv-ER-N86" secondAttribute="centerX" id="v6B-cd-tUQ"/>
@@ -61,10 +60,10 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="086-Qg-Ky3" userLabel="holder01">
-                    <rect key="frame" x="150" y="0.0" width="150" height="90"/>
+                    <rect key="frame" x="150" y="0.0" width="150" height="120"/>
                     <subviews>
                         <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="D4z-AZ-QJ0" userLabel="opponent01">
-                            <rect key="frame" x="14" y="0.0" width="104" height="90"/>
+                            <rect key="frame" x="14" y="0.0" width="104" height="120"/>
                             <subviews>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="avatar_inverse" translatesAutoresizingMaskIntoConstraints="NO" id="cXM-53-wMU">
                                     <rect key="frame" x="8" y="4" width="83" height="65"/>
@@ -103,14 +102,13 @@
                         <constraint firstAttribute="width" constant="150" id="Y24-g4-w7r"/>
                         <constraint firstItem="D4z-AZ-QJ0" firstAttribute="centerX" secondItem="086-Qg-Ky3" secondAttribute="centerX" id="na3-jQ-VW1"/>
                         <constraint firstItem="D4z-AZ-QJ0" firstAttribute="top" secondItem="086-Qg-Ky3" secondAttribute="top" id="oZq-0Q-SWm"/>
-                        <constraint firstAttribute="height" constant="90" id="sha-ro-Fya"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DmB-Rf-JKP" userLabel="holder02">
-                    <rect key="frame" x="300" y="0.0" width="150" height="90"/>
+                    <rect key="frame" x="300" y="0.0" width="404" height="120"/>
                     <subviews>
                         <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6My-ed-vaX" userLabel="opponent02">
-                            <rect key="frame" x="14" y="0.0" width="104" height="90"/>
+                            <rect key="frame" x="14" y="0.0" width="104" height="120"/>
                             <subviews>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="avatar_inverse" translatesAutoresizingMaskIntoConstraints="NO" id="yDx-ub-Xdx">
                                     <rect key="frame" x="8" y="4" width="83" height="65"/>
@@ -147,13 +145,12 @@
                     <constraints>
                         <constraint firstItem="6My-ed-vaX" firstAttribute="top" secondItem="DmB-Rf-JKP" secondAttribute="top" id="Q1K-3p-6Us"/>
                         <constraint firstItem="6My-ed-vaX" firstAttribute="centerX" secondItem="DmB-Rf-JKP" secondAttribute="centerX" id="W5k-Mh-A7n"/>
-                        <constraint firstAttribute="height" constant="90" id="fb3-ca-TwZ"/>
                         <constraint firstAttribute="bottom" secondItem="6My-ed-vaX" secondAttribute="bottom" id="rWc-UG-QXz"/>
                         <constraint firstAttribute="width" constant="150" id="zfS-tU-eK4"/>
                     </constraints>
                 </view>
                 <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="hTZ-m6-Fhk">
-                    <rect key="frame" x="206.5" y="26.5" width="37" height="37"/>
+                    <rect key="frame" x="333.5" y="41.5" width="37" height="37"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </activityIndicatorView>
