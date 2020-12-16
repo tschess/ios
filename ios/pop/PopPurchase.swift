@@ -132,7 +132,7 @@ class PopPurchase: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
         return 30
     }
     
-    let pickerSet = ["\tChess 🔒", "\tI'm Feelin' Lucky", "\tConfig. 0̸ 🔒", "\tConfig. 1 🔒", "\tConfig. 2 🔒"]
+    let pickerSet = ["\tChess", "\tI'm Feelin' Lucky", "\tConfig. 0̸ 🔒", "\tConfig. 1 🔒", "\tConfig. 2 🔒"]
     
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         let label = UILabel()
