@@ -227,11 +227,12 @@ class PopInvite: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource 
                 print("::::: \(json)")
                 print("AHAHAHAHAHAHAHA\n\n\n\n")
                 print("AHAHAHAHAHAHAHA\n\n\n\n")
+                let game: EntityGame = ParseGame().execute(json: json)
                 
                 if(self.ACCEPT){
             
                     DispatchQueue.main.async {
-                        let game: EntityGame = ParseGame().execute(json: json)
+                        
                         let opponent: EntityPlayer = game.getPlayerOther(username: self.player!.username)
                         let storyboard: UIStoryboard = UIStoryboard(name: "Tschess", bundle: nil)
                         let viewController = storyboard.instantiateViewController(withIdentifier: "Tschess") as! Tschess
@@ -244,6 +245,22 @@ class PopInvite: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource 
                     }
                     return
                 }
+                
+                
+                DispatchQueue.main.async {
+                    if let navigationController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController {
+                        let viewControllers = navigationController.viewControllers
+                        for vc in viewControllers {
+                            if vc.isKind(of: Home.classForCoder()) {
+                                let home: Home = vc as! Home
+                                home.table!.list.insert(game, at: 0)
+                                home.table!.tableView.reloadData()
+                            }
+                        }
+                    }
+                }
+                
+                
                 self.success()
             } catch _ {
                 self.error()
