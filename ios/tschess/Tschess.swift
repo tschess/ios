@@ -329,11 +329,27 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
             appDelegate.id = self.player!.id
             UNUserNotificationCenter.current().getNotificationSettings { (settings) in
                 if (settings.authorizationStatus == .notDetermined) {
-                    let alert = UIAlertController(title: "🎲 Enable notification 👂", message: "\nTo be notified when opponent moves enable notifications.", preferredStyle: .alert)
-                    let action = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
-                    action.setValue(UIColor.lightGray, forKey: "titleTextColor")
-                    alert.addAction(action)
-                    self.present(alert, animated: true)
+                    
+                    DispatchQueue.main.async {
+                        let alert = UIAlertController(title: "🎲 Enable notification 👂", message: "\nTo be notified when opponent moves enable notifications.", preferredStyle: .alert)
+                        let action = UIAlertAction(title: "Ok", style: .cancel, handler: {_ in 
+                            
+                            
+                            UNUserNotificationCenter.current().requestAuthorization(options: [.sound, .alert, .badge]) {
+                                (granted, error) in
+                                if error == nil{
+                                    DispatchQueue.main.async(execute: {
+                                        UIApplication.shared.registerForRemoteNotifications()
+                                    })
+                                }
+                            }
+                            
+                            
+                        })
+                        action.setValue(UIColor.lightGray, forKey: "titleTextColor")
+                        alert.addAction(action)
+                        self.present(alert, animated: true)
+                    }
                 }
             }
         }
@@ -441,7 +457,9 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
                     
                     /* * */
                     if(self.player!.isPopup()){
-                        self.renderDialogPopup()
+                        //DispatchQueue.main.async() {
+                            self.renderDialogPopup()
+                        //}
                     }
                     /* * */
                     
