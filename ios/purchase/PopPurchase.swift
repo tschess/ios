@@ -9,31 +9,10 @@
 import UIKit
 import StoreKit
 
-class PopPurchase: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, SKProductsRequestDelegate, SKPaymentTransactionObserver {
-    
-    func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
-        print("")
-    }
-    
-    func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
-        print("")
-    }
-    
-    
-    
-    var id_year: String?
-    var id_month: String?
-    
-    
+class PopPurchase: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.id_year = "002"
-        self.id_month = "001"
-        SKPaymentQueue.default().add(self)
-        
-        /* * */
         
         self.labelTitle.text = "🤜 vs. \(self.opponent!.username) 🤛"
         
@@ -108,9 +87,6 @@ class PopPurchase: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
         modalTransitionStyle = .crossDissolve
         transitioningDelegate = transDelegate
     }
-    
-    
-    
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -190,6 +166,8 @@ class PopPurchase: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
         self.buttonOk.isEnabled = false
     }
     
+    var products: [SKProduct] = [SKProduct]()
+    
     @IBAction func selectSubscribe(_ sender: Any) {
         
         self.hide()
@@ -197,26 +175,24 @@ class PopPurchase: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
         let alert = UIAlertController(title: "🔑 Subscription plan 🔑", message: "\nSelect subscription plan below.", preferredStyle: .alert)
         
         let action0 = UIAlertAction(title: "$0.99 / Month 📅", style: .default, handler: {_ in
-            self.navigationController!.popViewController(animated: false)
-            
+          
             //self.id_year = "002"
             //self.id_month = "001"
             
-            // Can make payments
-//            if (SKPaymentQueue.canMakePayments()){
-//                    let productID:NSSet = NSSet(object: self.id_month!)
-//                let productsRequest:SKProductsRequest = SKProductsRequest(productIdentifiers: productID as! Set<String>)
-//                    productsRequest.delegate = self
-//                    productsRequest.start()
-//                    print("Fetching Products")
-//
-//                print("Sending the Payment Request to Apple")
-//                    //let payment = SKPayment(product: product)
-//                    //SKPaymentQueue.default().add(payment)
-//
-//                }else{
-//                    print("Can't make purchases")
-//                }
+            Product.store.requestProducts{ [weak self] success, products in
+                        guard let self = self else {
+                            return
+                        }
+                        if success {
+                            self.products = products!
+                            let product: SKProduct = self.products[0]
+                            DispatchQueue.main.async {
+                                //self.purchaseButton.setTitle( "$\(product.price.floatValue)" , for: .normal)
+                                
+                                print("$\(product.price.floatValue)")
+                            }
+                        }
+                    }
 
             
             

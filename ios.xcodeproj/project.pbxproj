@@ -20,6 +20,8 @@
 		835C18872571573000390AE8 /* HeaderSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835C18862571573000390AE8 /* HeaderSnapshot.swift */; };
 		835EE0C025896FC90064424F /* RequestLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835EE0BF25896FC90064424F /* RequestLogin.swift */; };
 		835FADA524F00A910080A194 /* Countdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835FADA424F00A910080A194 /* Countdown.swift */; };
+		836267B0258BBBA900A37A29 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836267AF258BBBA900A37A29 /* Product.swift */; };
+		836267B2258BBBDD00A37A29 /* InAppPurchase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836267B1258BBBDD00A37A29 /* InAppPurchase.swift */; };
 		8375E1E9256C0963001809FF /* Opponent.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8375E1E8256C0963001809FF /* Opponent.xib */; };
 		8375E1EB256C0AE9001809FF /* Opponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8375E1EA256C0AE9001809FF /* Opponent.swift */; };
 		837612742589157A00C527D3 /* PopPurchase.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 837612732589157A00C527D3 /* PopPurchase.storyboard */; };
@@ -183,6 +185,8 @@
 		835C18862571573000390AE8 /* HeaderSnapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderSnapshot.swift; sourceTree = "<group>"; };
 		835EE0BF25896FC90064424F /* RequestLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestLogin.swift; sourceTree = "<group>"; };
 		835FADA424F00A910080A194 /* Countdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Countdown.swift; sourceTree = "<group>"; };
+		836267AF258BBBA900A37A29 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
+		836267B1258BBBDD00A37A29 /* InAppPurchase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InAppPurchase.swift; sourceTree = "<group>"; };
 		8375E1E8256C0963001809FF /* Opponent.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Opponent.xib; sourceTree = "<group>"; };
 		8375E1EA256C0AE9001809FF /* Opponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Opponent.swift; sourceTree = "<group>"; };
 		837612732589157A00C527D3 /* PopPurchase.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PopPurchase.storyboard; sourceTree = "<group>"; };
@@ -369,6 +373,17 @@
 			path = atomic;
 			sourceTree = "<group>";
 		};
+		836267AE258BBB8800A37A29 /* purchase */ = {
+			isa = PBXGroup;
+			children = (
+				837612732589157A00C527D3 /* PopPurchase.storyboard */,
+				83761275258919C400C527D3 /* PopPurchase.swift */,
+				836267AF258BBBA900A37A29 /* Product.swift */,
+				836267B1258BBBDD00A37A29 /* InAppPurchase.swift */,
+			);
+			path = purchase;
+			sourceTree = "<group>";
+		};
 		8385908A24F98AB700BBC11C /* pop */ = {
 			isa = PBXGroup;
 			children = (
@@ -378,8 +393,6 @@
 				8385908D24F98B2A00BBC11C /* Presenter.swift */,
 				83510E002581519600544DA6 /* PopInvite.swift */,
 				83510E02258151A300544DA6 /* PopInvite.storyboard */,
-				837612732589157A00C527D3 /* PopPurchase.storyboard */,
-				83761275258919C400C527D3 /* PopPurchase.swift */,
 			);
 			path = pop;
 			sourceTree = "<group>";
@@ -483,6 +496,7 @@
 		B787C72822E970DC009C94F7 /* ios */ = {
 			isa = PBXGroup;
 			children = (
+				836267AE258BBB8800A37A29 /* purchase */,
 				83DFCF7B25797DB1007088E5 /* leaderboard */,
 				83B72B83256716A900FA5D8F /* header */,
 				83ACC6A62500172C00D394D0 /* networking */,
@@ -1133,6 +1147,7 @@
 				B7BE125323EB035000ADA499 /* ProfileTable.swift in Sources */,
 				B7BE120923EAD3DD00ADA499 /* Hunter.swift in Sources */,
 				B7BE11A923EA9C8800ADA499 /* King.swift in Sources */,
+				836267B0258BBBA900A37A29 /* Product.swift in Sources */,
 				B7BE129123EB09FC00ADA499 /* UpdateResign.swift in Sources */,
 				B7D8ECD7240820DD001B5D2D /* AmazonWhite.swift in Sources */,
 				835C18872571573000390AE8 /* HeaderSnapshot.swift in Sources */,
@@ -1175,6 +1190,7 @@
 				B7BE128D23EB09B400ADA499 /* GameUpdate.swift in Sources */,
 				B7BE121023EAD64100ADA499 /* Hopper.swift in Sources */,
 				B79D05DB2410272500B8A889 /* Const.swift in Sources */,
+				836267B2258BBBDD00A37A29 /* InAppPurchase.swift in Sources */,
 				83872649257EEAE300F62288 /* RequestChallenge.swift in Sources */,
 				B7F541C823D51B0C00E89074 /* HomeCell.swift in Sources */,
 				B7D8ECE92408B823001B5D2D /* RevealWhite.swift in Sources */,
