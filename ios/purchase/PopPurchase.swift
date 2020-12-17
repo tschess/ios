@@ -176,14 +176,14 @@ class PopPurchase: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
         
         let action0 = UIAlertAction(title: "$0.99 / Month 📅", style: .default, handler: {_ in
             //Product.store.requestProducts{ [weak self] success, products in
-                //guard let self = self else {
-                    //return
-                //}
-                //if success {
-                    //self.products = products!
-                    //let product: SKProduct = self.products[0]
-                    //print("$\(product.price.floatValue)")
-                //}
+            //guard let self = self else {
+            //return
+            //}
+            //if success {
+            //self.products = products!
+            //let product: SKProduct = self.products[0]
+            //print("$\(product.price.floatValue)")
+            //}
             //}
             self.reveal()
         })
@@ -220,6 +220,10 @@ class PopPurchase: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
         self.buttonCancel.isHidden = true
         self.buttonCancel.isEnabled = false
         
+        self.labelSubscribe.isHidden = true
+        self.buttonSubscribe.isHidden = true
+        self.buttonSubscribe.isEnabled = false
+        
         self.indicatorActivity.isHidden = false
         self.indicatorActivity.startAnimating()
         
@@ -232,11 +236,9 @@ class PopPurchase: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
         dismiss(animated: true, completion: nil)
     }
     
-    
     @IBAction func selectOk(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
-    
     
     func challenge(config0: Int, id_other: String) {
         var config: Int = 0
@@ -246,11 +248,11 @@ class PopPurchase: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
         case 1:
             config = 4
         case 2:
-            config = 0
+            config = 4//0
         case 3:
-            config = 1
+            config = 4//1
         default: //4
-            config = 2
+            config = 4//2
         }
         var payload: [String: Any] = [
             "id_self": self.player!.id,
@@ -300,11 +302,11 @@ class PopPurchase: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
                 print("::::: \(json)")
                 print("AHAHAHAHAHAHAHA\n\n\n\n")
                 print("AHAHAHAHAHAHAHA\n\n\n\n")
+                let game: EntityGame = ParseGame().execute(json: json)
                 
                 if(self.ACCEPT){
-                    
                     DispatchQueue.main.async {
-                        let game: EntityGame = ParseGame().execute(json: json)
+                        
                         let opponent: EntityPlayer = game.getPlayerOther(username: self.player!.username)
                         let storyboard: UIStoryboard = UIStoryboard(name: "Tschess", bundle: nil)
                         let viewController = storyboard.instantiateViewController(withIdentifier: "Tschess") as! Tschess
@@ -317,6 +319,21 @@ class PopPurchase: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
                     }
                     return
                 }
+                
+                DispatchQueue.main.async {
+                    if let navigationController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController {
+                        let viewControllers = navigationController.viewControllers
+                        for vc in viewControllers {
+                            if vc.isKind(of: Home.classForCoder()) {
+                                let home: Home = vc as! Home
+                                home.table!.list.insert(game, at: 0)
+                                home.table!.tableView.reloadData()
+                            }
+                        }
+                    }
+                }
+                
+                
                 self.success()
             } catch _ {
                 self.error()
@@ -357,6 +374,7 @@ class PopPurchase: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
             self.labelOk.isHidden = false
             self.buttonOk.isHidden = false
             self.buttonOk.isEnabled = true
+            
         }
     }
 }

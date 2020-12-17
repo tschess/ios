@@ -38,7 +38,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         super.init(coder: aDecoder)
     }
     
-   
+    
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         self.tabBarMenu.selectedItem = nil
@@ -59,9 +59,9 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
                         //self.activityIndicatorDraw.startAnimating()
                         UpdateProp().execute(id: self.game!.id) { (result) in
                             //DispatchQueue.main.async {
-                                //self.activityIndicatorDraw.isHidden = true
-                                //self.activityIndicatorDraw.stopAnimating()
-                                //self.presentingViewController!.dismiss(animated: false, completion: nil)
+                            //self.activityIndicatorDraw.isHidden = true
+                            //self.activityIndicatorDraw.stopAnimating()
+                            //self.presentingViewController!.dismiss(animated: false, completion: nil)
                             //}
                         }
                     })
@@ -78,9 +78,9 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
                     ]
                     UpdateResign().execute(requestPayload: payload) { (result) in
                         //DispatchQueue.main.async {
-                            //self.activityIndicatorResign!.stopAnimating()
-                            //self.activityIndicatorResign!.isHidden = true
-                            //self.presentingViewController!.dismiss(animated: false, completion: nil)
+                        //self.activityIndicatorResign!.stopAnimating()
+                        //self.activityIndicatorResign!.isHidden = true
+                        //self.presentingViewController!.dismiss(animated: false, completion: nil)
                         //}
                     }
                 })
@@ -94,7 +94,17 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
                 self.present(alert, animated: true)
             }
         default:
-            //self.refreshHome()
+            if let navigationController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController {
+                let viewControllers = navigationController.viewControllers
+                for vc in viewControllers {
+                    if vc.isKind(of: Home.classForCoder()) {
+                        let home: Home = vc as! Home
+                        let index: Int = home.table!.list.firstIndex(of: self.game!)!
+                        home.table!.list[index] = self.game!
+                        home.table!.tableView.reloadData()
+                    }
+                }
+            }
             let transition = CATransition()
             transition.duration = 0.3
             transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
@@ -104,27 +114,6 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
             self.navigationController?.popViewController(animated: false)
         }
     }
-    
-    //TODO: ought not be here...
-//    func refreshHome() {
-//        DispatchQueue.main.async {
-//            if let navigationController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController {
-//                let viewControllers = navigationController.viewControllers
-//                for vc in viewControllers {
-//                    if vc.isKind(of: Home.classForCoder()) {
-//                        let home: Home = vc as! Home
-//
-//                        home.table!.index = 0
-//                        home.table!.list = [EntityGame]()
-//                        home.table!.fetch(refreshControl: nil, refresh: true)
-//                    }
-//                }
-//
-//            }
-//        }
-//    }
-    
-    
     
     var player: EntityPlayer?
     var playerOther: EntityPlayer?
@@ -170,6 +159,8 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     // MARK: TSCHESS VARIABLES
     var matrix: [[Piece?]]?
     
+    var header: Header?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.viewBoard.dataSource = self
@@ -180,14 +171,14 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         
         let opponent: EntityPlayer = self.game!.getPlayerOther(username: self.player!.username)
         //TODO: Header
-        let viewHeaderDynamic = Bundle.loadView(fromNib: "Header", withType: Header.self)
-        self.viewHeader.addSubview(viewHeaderDynamic)
-        viewHeaderDynamic.translatesAutoresizingMaskIntoConstraints = false
+        self.header = Bundle.loadView(fromNib: "Header", withType: Header.self)
+        self.viewHeader.addSubview(self.header!)
+        self.header!.translatesAutoresizingMaskIntoConstraints = false
         let attributes: [NSLayoutConstraint.Attribute] = [.top, .bottom, .right, .left]
         NSLayoutConstraint.activate(attributes.map {
-            NSLayoutConstraint(item: viewHeaderDynamic, attribute: $0, relatedBy: .equal, toItem: viewHeaderDynamic.superview, attribute: $0, multiplier: 1, constant: 0)
+            NSLayoutConstraint(item: self.header!, attribute: $0, relatedBy: .equal, toItem: self.header!.superview, attribute: $0, multiplier: 1, constant: 0)
         })
-        viewHeaderDynamic.set(player: opponent)
+        self.header!.set(player: opponent)
         
         
         
@@ -202,7 +193,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
         self.promotion.setTschess(tschess: self)
         
         let game_id: String = self.game!.id
-        self.landmine = Landmine(game_id: game_id, white: white, transitioner: transitioner, activityIndicator: viewHeaderDynamic.indicatorActivity, tschess: self)
+        self.landmine = Landmine(game_id: game_id, white: white, transitioner: transitioner, activityIndicator: self.header!.indicatorActivity, tschess: self)
         self.passant = Passant(white: white, transitioner: transitioner, tschess: self)
         self.castle = Castle(white: white, transitioner: transitioner, tschess: self)
         self.transitioner = transitioner
@@ -214,7 +205,7 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
             labelNote: self.labelNotification,
             labelTurn: self.labelTurnary,
             labelCount: self.labelCountdown,
-            labelTitle: viewHeaderDynamic.labelTitle)
+            labelTitle: self.header!.labelTitle)
         
         //TODO: REMOVE FOR POPPER
         self.labeler!.removePopper(game: self.game!, player: self.player!)
@@ -314,9 +305,6 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     
     func renderDialogPoison() {
         DispatchQueue.main.async {
-            //let storyboard: UIStoryboard = UIStoryboard(name: "PopPoison", bundle: nil)
-            //let viewController = storyboard.instantiateViewController(withIdentifier: "PopPoison") as! PopDismiss
-            //self.present(viewController, animated: true, completion: nil)
             let alert = UIAlertController(title: "💣 Poison pawn 💀", message: "\nYou've attacked a poison pawn!", preferredStyle: .alert)
             let action = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
             action.setValue(UIColor.lightGray, forKey: "titleTextColor")
@@ -327,9 +315,6 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
     
     func renderDialogPassant() {
         DispatchQueue.main.async {
-            //let storyboard: UIStoryboard = UIStoryboard(name: "PopPassant", bundle: nil)
-            //let viewController = storyboard.instantiateViewController(withIdentifier: "PopPassant") as! PopDismiss
-            //self.present(viewController, animated: true, completion: nil)
             let alert = UIAlertController(title: "🇫🇷 En passant 💀", message: "\nPawn taken en passant!", preferredStyle: .alert)
             let action = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
             action.setValue(UIColor.lightGray, forKey: "titleTextColor")
@@ -344,13 +329,11 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
             appDelegate.id = self.player!.id
             UNUserNotificationCenter.current().getNotificationSettings { (settings) in
                 if (settings.authorizationStatus == .notDetermined) {
-                    //DispatchQueue.main.async {
-                        let alert = UIAlertController(title: "🎲 Enable notification 👂", message: "\nTo be notified when opponent moves enable notifications.", preferredStyle: .alert)
-                        let action = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
-                        action.setValue(UIColor.lightGray, forKey: "titleTextColor")
-                        alert.addAction(action)
-                        self.present(alert, animated: true)
-                    //}
+                    let alert = UIAlertController(title: "🎲 Enable notification 👂", message: "\nTo be notified when opponent moves enable notifications.", preferredStyle: .alert)
+                    let action = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+                    action.setValue(UIColor.lightGray, forKey: "titleTextColor")
+                    alert.addAction(action)
+                    self.present(alert, animated: true)
                 }
             }
         }
@@ -447,8 +430,8 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
                     "highlight": highlight,
                     "condition": "TBD"]
                 DispatchQueue.main.async() {
-                    //self.activityIndicator.isHidden = false
-                    //self.activityIndicator.startAnimating()
+                    self.header!.indicatorActivity.isHidden = false
+                    self.header!.indicatorActivity.startAnimating()
                 }
                 GameUpdate().success(requestPayload: requestPayload) { (success) in
                     if(!success){
@@ -496,8 +479,8 @@ class Tschess: UIViewController, UICollectionViewDataSource, UICollectionViewDel
                 return
             case .orderedDescending:
                 DispatchQueue.main.async {
-                    //self.activityIndicator.stopAnimating()
-                    //self.activityIndicator.isHidden = true
+                    self.header!.indicatorActivity.stopAnimating()
+                    self.header!.indicatorActivity.isHidden = true
                     
                     self.game = game0!
                     
