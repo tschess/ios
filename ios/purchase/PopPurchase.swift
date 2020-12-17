@@ -175,32 +175,24 @@ class PopPurchase: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
         let alert = UIAlertController(title: "🔑 Subscription plan 🔑", message: "\nSelect subscription plan below.", preferredStyle: .alert)
         
         let action0 = UIAlertAction(title: "$0.99 / Month 📅", style: .default, handler: {_ in
-          
-            //self.id_year = "002"
-            //self.id_month = "001"
-            
-            Product.store.requestProducts{ [weak self] success, products in
-                        guard let self = self else {
-                            return
-                        }
-                        if success {
-                            self.products = products!
-                            let product: SKProduct = self.products[0]
-                            DispatchQueue.main.async {
-                                //self.purchaseButton.setTitle( "$\(product.price.floatValue)" , for: .normal)
-                                
-                                print("$\(product.price.floatValue)")
-                            }
-                        }
-                    }
-
-            
-            
+            //Product.store.requestProducts{ [weak self] success, products in
+                //guard let self = self else {
+                    //return
+                //}
+                //if success {
+                    //self.products = products!
+                    //let product: SKProduct = self.products[0]
+                    //print("$\(product.price.floatValue)")
+                //}
+            //}
+            self.reveal()
         })
         action0.setValue(UIColor.lightGray, forKey: "titleTextColor")
         alert.addAction(action0)
         
-        let action1 = UIAlertAction(title: "$5.99 / Year 🍂❄️🌷☀️", style: .default, handler: nil)
+        let action1 = UIAlertAction(title: "$5.99 / Year 🍂❄️🌷☀️", style: .default, handler: {_ in
+            self.reveal()
+        })
         action1.setValue(UIColor.lightGray, forKey: "titleTextColor")
         alert.addAction(action1)
         
@@ -310,7 +302,7 @@ class PopPurchase: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
                 print("AHAHAHAHAHAHAHA\n\n\n\n")
                 
                 if(self.ACCEPT){
-            
+                    
                     DispatchQueue.main.async {
                         let game: EntityGame = ParseGame().execute(json: json)
                         let opponent: EntityPlayer = game.getPlayerOther(username: self.player!.username)
