@@ -9,7 +9,7 @@
 import UIKit
 import StoreKit
 
-class PopPurchase: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class PopPurchase: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, SKProductsRequestDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -170,40 +170,58 @@ class PopPurchase: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
     
     @IBAction func selectSubscribe(_ sender: Any) {
         
-        self.hide()
+        self.labelTitle.text = "🔑 Subscription plan 🔑"
         
-        let alert = UIAlertController(title: "🔑 Subscription plan 🔑", message: "\nSelect subscription plan below.", preferredStyle: .alert)
+        self.labelDirection.text = "Select an option below to proceed."
         
-        let action0 = UIAlertAction(title: "$0.99 / Month 📅", style: .default, handler: {_ in
-            //Product.store.requestProducts{ [weak self] success, products in
-            //guard let self = self else {
-            //return
-            //}
-            //if success {
-            //self.products = products!
-            //let product: SKProduct = self.products[0]
-            //print("$\(product.price.floatValue)")
-            //}
-            //}
-            self.reveal()
-        })
-        action0.setValue(UIColor.lightGray, forKey: "titleTextColor")
-        alert.addAction(action0)
+        self.pickerView.alpha = 0.5
+        self.pickerView.isUserInteractionEnabled = false
+       
         
-        let action1 = UIAlertAction(title: "$5.99 / Year 🍂❄️🌷☀️", style: .default, handler: {_ in
-            self.reveal()
-        })
-        action1.setValue(UIColor.lightGray, forKey: "titleTextColor")
-        alert.addAction(action1)
+        self.buttonInvite.setTitle("$5.99 × Year 🍂❄️🌷🌞", for: .normal)
+        self.buttonInvite.setTitleColor(UIColor.white, for: .normal)
+        self.buttonSubscribe.setTitle("$0.99 × Month 📅", for: .normal)
+        self.buttonSubscribe.setTitleColor(UIColor.white, for: .normal)
+      
         
-        let action2 = UIAlertAction(title: "Cancel", style: .cancel, handler: {_ in 
-            self.reveal()
-        })
-        action2.setValue(UIColor.lightGray, forKey: "titleTextColor")
-        alert.addAction(action2)
+        let month = "io.bahlsenwitz.tschess.001"
         
-        self.present(alert, animated: true)
+        let request = SKProductsRequest(productIdentifiers: [month])
+        // Set the request delegate to self, so we receive a response
+        request.delegate = self
+        // start the request
+        request.start()
+        
     }
+    
+    public func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse){
+
+        print("13 - 13 - 13")
+
+
+        // Let's try to get the first product from the response
+        // to the request
+        if let product = response.products.first{
+            // We were able to get the product! Make a new payment
+            // using this product
+            let payment = SKPayment(product: product)
+
+            // add the new payment to the queue
+            //SKPaymentQueue.default().add(self)
+            SKPaymentQueue.default().add(payment)
+        }
+        else{
+            // Something went wrong! It is likely that either
+            // the user doesn't have internet connection, or
+            // your product ID is wrong!
+            //
+            // Tell the user in requestFailed() by sending an alert,
+            // or something of the sort
+
+            //RemoveAdsManager.removeAdsFailure()
+        }
+    }
+    
     
     
     @IBAction func selectChallenge(_ sender: Any) {
