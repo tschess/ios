@@ -296,7 +296,6 @@ class Edit: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate, UII
                     let storyboard: UIStoryboard = UIStoryboard(name: "Config", bundle: nil)
                     let viewController = storyboard.instantiateViewController(withIdentifier: "Config") as! Config
                     viewController.playerSelf = result!
-                    viewController.labelTapHidden = true
                     self.navigationController?.pushViewController(viewController, animated: false)
                     
                     guard let navigationController0 = self.navigationController else { return }

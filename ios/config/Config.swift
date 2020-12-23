@@ -10,14 +10,8 @@ import UIKit
 
 class Config: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIDropInteractionDelegate {
     
-    var titleText: String?
+  
     @IBOutlet weak var viewHeader: UIView!
-    
-    //@IBOutlet weak var labelTapHere: UILabel!
-    
-    func setTitleText(titleText: String) {
-        self.titleText = titleText
-    }
     
     @IBOutlet weak var contentView: UIView!
     
@@ -25,24 +19,15 @@ class Config: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate, U
     @IBOutlet weak var splitViewHeight1: NSLayoutConstraint!
     @IBOutlet weak var splitViewHeight2: NSLayoutConstraint!
     
-    @IBOutlet weak var titleLabel: UILabel!
-    
-    @IBOutlet weak var backButton: UIButton!
-    
-//    @IBOutlet weak var displacementImage: UIImageView!
-//    @IBOutlet weak var displacementLabel: UILabel!
-//    @IBOutlet weak var eloLabel: UILabel!
-//    @IBOutlet weak var rankLabel: UILabel!
-//    @IBOutlet weak var usernameLabel: UILabel!
-//    @IBOutlet weak var avatarImageView: UIImageView!
-//    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    
+    @IBOutlet weak var splitView0: UIView!
     @IBOutlet weak var configCollectionView0: BoardView!
     @IBOutlet weak var configCollectionViewHeight0: NSLayoutConstraint!
     
+    @IBOutlet weak var splitView1: UIView!
     @IBOutlet weak var configCollectionView1: BoardView!
     @IBOutlet weak var configCollectionViewHeight1: NSLayoutConstraint!
     
+    @IBOutlet weak var splitView2: UIView!
     @IBOutlet weak var configCollectionView2: BoardView!
     @IBOutlet weak var configCollectionViewHeight2: NSLayoutConstraint!
     
@@ -63,17 +48,7 @@ class Config: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate, U
     
     var playerSelf: EntityPlayer?
     
-    @objc func fade() {
-        UIView.animate(withDuration: 1.5, animations: {
-            //self.labelTapHere.alpha = 0
-        })
-    }
-    
     //MARK: - lifecycle
-    
-    @IBAction func backButtonClick(_ sender: Any) {
-        self.navigationController?.popViewController(animated: false)
-    }
     
     @objc func editCollectionView0() {
         let viewController = Edit.create(
@@ -99,32 +74,8 @@ class Config: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate, U
         self.navigationController?.pushViewController(viewController, animated: false)
     }
     
-//    public func renderHeader() {
-//        self.avatarImageView.image = self.playerSelf!.getImageAvatar()
-//        self.usernameLabel.text = self.playerSelf!.username
-//        self.eloLabel.text = self.playerSelf!.getLabelTextElo()
-//        self.rankLabel.text = self.playerSelf!.getLabelTextRank()
-//        self.displacementLabel.text = self.playerSelf!.getLabelTextDisp()
-//        self.displacementImage.image = self.playerSelf!.getImageDisp()!
-//        self.displacementImage.tintColor = self.playerSelf!.tintColor
-//    }
-    
-    var labelTapHidden: Bool = false
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        
-        if(self.labelTapHidden){
-            //self.labelTapHere.isHidden = true
-        } else {
-            Timer.scheduledTimer(timeInterval: 1.5, target: self, selector: #selector(fade), userInfo: nil, repeats: false)
-        }
-        
-        
-        
-        //self.labelTapHere.adjustsFontSizeToFitWidth = true //maybe dont need this...
-        //self.labelTapHere.minimumScaleFactor = 0.2
         
         self.tabBarMenu.delegate = self
         
@@ -156,11 +107,10 @@ class Config: UIViewController, UITabBarDelegate, UIGestureRecognizerDelegate, U
         let editCollectionView0 = UITapGestureRecognizer(target: self, action: #selector(self.editCollectionView0))
         let editCollectionView1 = UITapGestureRecognizer(target: self, action: #selector(self.editCollectionView1))
         let editCollectionView2 = UITapGestureRecognizer(target: self, action: #selector(self.editCollectionView2))
-        self.configCollectionView0.addGestureRecognizer(editCollectionView0)
-        self.configCollectionView1.addGestureRecognizer(editCollectionView1)
-        self.configCollectionView2.addGestureRecognizer(editCollectionView2)
+        self.splitView0.addGestureRecognizer(editCollectionView0)
+        self.splitView1.addGestureRecognizer(editCollectionView1)
+        self.splitView2.addGestureRecognizer(editCollectionView2)
         
-        //self.renderHeader()
         //TODO: Header
         let viewHeaderDynamic = Bundle.loadView(fromNib: "Header", withType: Header.self)
         self.viewHeader!.addSubview(viewHeaderDynamic)
@@ -326,14 +276,7 @@ extension Config: UICollectionViewDelegate {
         switch item.tag {
         case 1:
             self.tabBarMenu.selectedItem = nil
-            //let height: CGFloat = UIScreen.main.bounds.height
-            //if(height.isLess(than: 750)){
-                //let storyboard: UIStoryboard = UIStoryboard(name: "FairiesL", bundle: nil)
-                //let viewController = storyboard.instantiateViewController(withIdentifier: "FairiesL") as! Fairies
-                //viewController.playerSelf = self.playerSelf!
-                //self.navigationController?.pushViewController(viewController, animated: false)
-                //return
-            //}
+            
             let storyboard: UIStoryboard = UIStoryboard(name: "Fairies", bundle: nil)
             let viewController = storyboard.instantiateViewController(withIdentifier: "Fairies") as! Fairies
             viewController.player = self.playerSelf!
