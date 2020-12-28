@@ -180,27 +180,35 @@ class PopPurchase: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
         
         self.buttonInvite.setTitle("$5.99 × Year 🍂❄️🌷🌞", for: .normal)
         self.buttonInvite.setTitleColor(UIColor.white, for: .normal)
+        //no - don't do it like this - do it by the button text...
+        let year = UITapGestureRecognizer(target: self, action: #selector(subscribe002))
+        self.buttonInvite.addGestureRecognizer(year)
+        self.buttonInvite.isUserInteractionEnabled = true
+        
+        
         self.buttonSubscribe.setTitle("$0.99 × Month 📅", for: .normal)
         self.buttonSubscribe.setTitleColor(UIColor.white, for: .normal)
+        
+        
       
         //validate(productIdentifiers: ["001", "002"])
-        self.validate(productIdentifiers: ["001"])
         
+        //...!
+        //self.validate(productIdentifiers: ["001"])
+        
+    }
+    
+    @objc func subscribe002(sender: UITapGestureRecognizer) {
+        //...
+        let productIdentifiers = Set(["001"])
+
+        request = SKProductsRequest(productIdentifiers: productIdentifiers)
+        request.delegate = self
+        request.start()
     }
     
     // Keep a strong reference to the product request.
     var request: SKProductsRequest!
-
-
-    func validate(productIdentifiers: [String]) {
-         let productIdentifiers = Set(productIdentifiers)
-
-
-         request = SKProductsRequest(productIdentifiers: productIdentifiers)
-         request.delegate = self
-         request.start()
-    }
-
 
     var products = [SKProduct]()
     // SKProductsRequestDelegate protocol method.
@@ -220,15 +228,28 @@ class PopPurchase: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
                 
                 }
         }
-
-
         for invalidIdentifier in response.invalidProductIdentifiers {
            // Handle any invalid product identifiers as appropriate.
             print("invalidIdentifier: \(invalidIdentifier)")
         }
     }
     
+    
+    func validate(productIdentifiers: [String]) {
+         let productIdentifiers = Set(productIdentifiers)
+         request = SKProductsRequest(productIdentifiers: productIdentifiers)
+         request.delegate = self
+         request.start()
+    }
+    
+   
+    
+    
+    
     @IBAction func selectChallenge(_ sender: Any) {
+        
+        print("text: \(buttonInvite.titleLabel!.text)") //have a switch statement based on this...
+        
         self.labelTitle.isHidden = true
         self.labelDirection.isHidden = true
         
