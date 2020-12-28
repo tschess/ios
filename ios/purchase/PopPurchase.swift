@@ -166,7 +166,7 @@ class PopPurchase: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
         self.buttonOk.isEnabled = false
     }
     
-    var products: [SKProduct] = [SKProduct]()
+    
     
     @IBAction func selectSubscribe(_ sender: Any) {
         
@@ -183,46 +183,50 @@ class PopPurchase: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
         self.buttonSubscribe.setTitle("$0.99 × Month 📅", for: .normal)
         self.buttonSubscribe.setTitleColor(UIColor.white, for: .normal)
       
-        
-        let month = "io.bahlsenwitz.tschess.001"
-        
-        let request = SKProductsRequest(productIdentifiers: [month])
-        // Set the request delegate to self, so we receive a response
-        request.delegate = self
-        // start the request
-        request.start()
+        //validate(productIdentifiers: ["001", "002"])
+        self.validate(productIdentifiers: ["001"])
         
     }
     
-    public func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse){
+    // Keep a strong reference to the product request.
+    var request: SKProductsRequest!
 
-        print("13 - 13 - 13")
+
+    func validate(productIdentifiers: [String]) {
+         let productIdentifiers = Set(productIdentifiers)
 
 
-        // Let's try to get the first product from the response
-        // to the request
-        if let product = response.products.first{
-            // We were able to get the product! Make a new payment
-            // using this product
-            let payment = SKPayment(product: product)
+         request = SKProductsRequest(productIdentifiers: productIdentifiers)
+         request.delegate = self
+         request.start()
+    }
 
-            // add the new payment to the queue
-            //SKPaymentQueue.default().add(self)
-            SKPaymentQueue.default().add(payment)
+
+    var products = [SKProduct]()
+    // SKProductsRequestDelegate protocol method.
+    func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
+        if !response.products.isEmpty {
+           products = response.products
+           // Custom method.
+           //displayStore(products)
+            
+            print("products: \(products)")
+        
+            for p in products {
+                  print("Found product: \(p.productIdentifier) \(p.localizedTitle) \(p.price.floatValue)")
+                
+                let payment = SKMutablePayment(product: p)
+                SKPaymentQueue.default().add(payment)
+                
+                }
         }
-        else{
-            // Something went wrong! It is likely that either
-            // the user doesn't have internet connection, or
-            // your product ID is wrong!
-            //
-            // Tell the user in requestFailed() by sending an alert,
-            // or something of the sort
 
-            //RemoveAdsManager.removeAdsFailure()
+
+        for invalidIdentifier in response.invalidProductIdentifiers {
+           // Handle any invalid product identifiers as appropriate.
+            print("invalidIdentifier: \(invalidIdentifier)")
         }
     }
-    
-    
     
     @IBAction func selectChallenge(_ sender: Any) {
         self.labelTitle.isHidden = true
@@ -396,3 +400,5 @@ class PopPurchase: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
         }
     }
 }
+
+

@@ -31,6 +31,7 @@
 		83872649257EEAE300F62288 /* RequestChallenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83872648257EEAE300F62288 /* RequestChallenge.swift */; };
 		8387264B257EEBF700F62288 /* UpdateRescind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8387264A257EEBF700F62288 /* UpdateRescind.swift */; };
 		8387264D257EEC3200F62288 /* UpdateNack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8387264C257EEC3200F62288 /* UpdateNack.swift */; };
+		8394DFDA259A778D00860381 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8394DFD9259A778D00860381 /* StoreKit.framework */; };
 		83ACC6932500143900D394D0 /* PopPromo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83ACC6922500143900D394D0 /* PopPromo.swift */; };
 		83ACC6952500145200D394D0 /* PopPromo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83ACC6942500145200D394D0 /* PopPromo.storyboard */; };
 		83ACC6A82500173F00D394D0 /* UpdateConfirm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83ACC6A72500173F00D394D0 /* UpdateConfirm.swift */; };
@@ -194,6 +195,7 @@
 		83872648257EEAE300F62288 /* RequestChallenge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestChallenge.swift; sourceTree = "<group>"; };
 		8387264A257EEBF700F62288 /* UpdateRescind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateRescind.swift; sourceTree = "<group>"; };
 		8387264C257EEC3200F62288 /* UpdateNack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateNack.swift; sourceTree = "<group>"; };
+		8394DFD9259A778D00860381 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		83ACC6922500143900D394D0 /* PopPromo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopPromo.swift; sourceTree = "<group>"; };
 		83ACC6942500145200D394D0 /* PopPromo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PopPromo.storyboard; sourceTree = "<group>"; };
 		83ACC6A72500173F00D394D0 /* UpdateConfirm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateConfirm.swift; sourceTree = "<group>"; };
@@ -330,6 +332,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4E766FB2BBF9176550BB45F9 /* Pods_ios.framework in Frameworks */,
+				8394DFDA259A778D00860381 /* StoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -425,6 +428,7 @@
 		ABCDD5D6671D39DB5DBFE22A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8394DFD9259A778D00860381 /* StoreKit.framework */,
 				45C0F287A16E70CE8A23A2EB /* Pods_ios.framework */,
 			);
 			name = Frameworks;
