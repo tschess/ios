@@ -128,6 +128,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         }
     }
     
+    //https://gist.github.com/smatthewenglish/e668b7d37a2969a2dd1af3a24bc349bc
+    //
     //https://developer.apple.com/documentation/storekit/in-app_purchase/setting_up_the_transaction_observer_for_the_payment_queue
     //
     //https://developer.apple.com/documentation/storekit/in-app_purchase/processing_a_transaction
