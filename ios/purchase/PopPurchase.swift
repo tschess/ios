@@ -169,6 +169,13 @@ class PopPurchase: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
     
     
     @IBAction func selectSubscribe(_ sender: Any) {
+        let month: String = "$0.99 × Month 📅"
+        //let year: String = "$5.99 × Year 🍂❄️🌷🌞"
+        let text: String = buttonSubscribe.titleLabel!.text!
+        if(text == month){
+            self.subscribe(product: "001")
+            return
+        }
         
         self.labelTitle.text = "🔑 Subscription plan 🔑"
         
@@ -249,9 +256,9 @@ class PopPurchase: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
         }
     }
    
-    func subscribe002() {
+    func subscribe(product: String) {
         //...
-        let productIdentifiers = Set(["002"])
+        let productIdentifiers = Set([product])
         request = SKProductsRequest(productIdentifiers: productIdentifiers)
         request.delegate = self
         request.start()
@@ -269,7 +276,7 @@ class PopPurchase: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
         if(text == year){
             
             
-            self.subscribe002()
+            self.subscribe(product: "002")
             return
         }
         self.labelTitle.isHidden = true
