@@ -181,9 +181,9 @@ class PopPurchase: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
         self.buttonInvite.setTitle("$5.99 × Year 🍂❄️🌷🌞", for: .normal)
         self.buttonInvite.setTitleColor(UIColor.white, for: .normal)
         //no - don't do it like this - do it by the button text...
-        let year = UITapGestureRecognizer(target: self, action: #selector(subscribe002))
-        self.buttonInvite.addGestureRecognizer(year)
-        self.buttonInvite.isUserInteractionEnabled = true
+        //let year = UITapGestureRecognizer(target: self, action: #selector(subscribe002))
+        //self.buttonInvite.addGestureRecognizer(year)
+        //self.buttonInvite.isUserInteractionEnabled = true
         
         
         self.buttonSubscribe.setTitle("$0.99 × Month 📅", for: .normal)
@@ -198,14 +198,18 @@ class PopPurchase: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
         
     }
     
-    @objc func subscribe002(sender: UITapGestureRecognizer) {
-        //...
-        let productIdentifiers = Set(["001"])
-
-        request = SKProductsRequest(productIdentifiers: productIdentifiers)
-        request.delegate = self
-        request.start()
+   
+    
+    
+    func validate(productIdentifiers: [String]) {
+         let productIdentifiers = Set(productIdentifiers)
+         request = SKProductsRequest(productIdentifiers: productIdentifiers)
+         request.delegate = self
+         request.start()
     }
+    
+    
+    
     
     // Keep a strong reference to the product request.
     var request: SKProductsRequest!
@@ -213,6 +217,10 @@ class PopPurchase: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
     var products = [SKProduct]()
     // SKProductsRequestDelegate protocol method.
     func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
+        
+       
+       
+        
         if !response.products.isEmpty {
            products = response.products
            // Custom method.
@@ -226,6 +234,13 @@ class PopPurchase: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
                 let payment = SKMutablePayment(product: p)
                 SKPaymentQueue.default().add(payment)
                 
+                DispatchQueue.main.async() {
+                    self.dismiss(animated: true, completion: nil)
+                    //self.indicatorActivity.isHidden = true
+                    //self.indicatorActivity.stopAnimating()
+                }
+                
+                
                 }
         }
         for invalidIdentifier in response.invalidProductIdentifiers {
@@ -233,40 +248,47 @@ class PopPurchase: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
             print("invalidIdentifier: \(invalidIdentifier)")
         }
     }
-    
-    
-    func validate(productIdentifiers: [String]) {
-         let productIdentifiers = Set(productIdentifiers)
-         request = SKProductsRequest(productIdentifiers: productIdentifiers)
-         request.delegate = self
-         request.start()
-    }
-    
    
-    
+    func subscribe002() {
+        //...
+        let productIdentifiers = Set(["002"])
+        request = SKProductsRequest(productIdentifiers: productIdentifiers)
+        request.delegate = self
+        request.start()
+    }
     
     
     @IBAction func selectChallenge(_ sender: Any) {
+       
         
-        print("text: \(buttonInvite.titleLabel!.text)") //have a switch statement based on this...
+        //print("text: \(buttonInvite.titleLabel!.text)") //have a switch statement based on this...
+        //let month: String = "$0.99 × Month 📅"
         
+        let year: String = "$5.99 × Year 🍂❄️🌷🌞"
+        let text: String = buttonInvite.titleLabel!.text!
+        if(text == year){
+            
+            
+            self.subscribe002()
+            return
+        }
         self.labelTitle.isHidden = true
         self.labelDirection.isHidden = true
-        
+
         self.pickerView.isHidden = true
-        
+
         self.labelInvite.isHidden = true
         self.buttonInvite.isHidden = true
         self.buttonInvite.isEnabled = false
-        
+
         self.labelCancel.isHidden = true
         self.buttonCancel.isHidden = true
         self.buttonCancel.isEnabled = false
-        
+
         self.labelSubscribe.isHidden = true
         self.buttonSubscribe.isHidden = true
         self.buttonSubscribe.isEnabled = false
-        
+
         self.indicatorActivity.isHidden = false
         self.indicatorActivity.startAnimating()
         
