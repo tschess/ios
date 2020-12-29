@@ -128,4 +128,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         }
     }
     
+    //https://developer.apple.com/documentation/storekit/in-app_purchase/setting_up_the_transaction_observer_for_the_payment_queue
+    //
+    //https://developer.apple.com/documentation/storekit/in-app_purchase/processing_a_transaction
+    func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
+         for transaction in transactions {
+         switch transaction.transactionState {
+              // Call the appropriate custom method for the transaction state.
+         case .purchasing: showTransactionAsInProgress(transaction, deferred: false)
+         case .deferred: showTransactionAsInProgress(transaction, deferred: true)
+         case .failed: failedTransaction(transaction)
+              case .purchased: completeTransaction(transaction)
+         case .restored: restoreTransaction(transaction)
+              // For debugging purposes.
+         @unknown default: print("Unexpected transaction state \(transaction.transactionState)")
+        }
+         }
+    }
+    
 }

@@ -208,12 +208,12 @@ class PopPurchase: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
    
     
     
-    func validate(productIdentifiers: [String]) {
-         let productIdentifiers = Set(productIdentifiers)
-         request = SKProductsRequest(productIdentifiers: productIdentifiers)
-         request.delegate = self
-         request.start()
-    }
+//    func validate(productIdentifiers: [String]) {
+//         let productIdentifiers = Set(productIdentifiers)
+//         request = SKProductsRequest(productIdentifiers: productIdentifiers)
+//         request.delegate = self
+//         request.start()
+//    }
     
     
     
@@ -225,7 +225,7 @@ class PopPurchase: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
     // SKProductsRequestDelegate protocol method.
     func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
         
-       
+        print("121212")
        
         
         if !response.products.isEmpty {
