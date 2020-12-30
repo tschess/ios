@@ -80,10 +80,27 @@ class Other: UIViewController, UITabBarDelegate {
         
         case 1:
             DispatchQueue.main.async {
-                let storyboard: UIStoryboard = UIStoryboard(name: "PopInvite", bundle: nil)
-                let viewController = storyboard.instantiateViewController(withIdentifier: "PopInvite") as! PopInvite
+                //let storyboard: UIStoryboard = UIStoryboard(name: "PopInvite", bundle: nil)
+                //let viewController = storyboard.instantiateViewController(withIdentifier: "PopInvite") as! PopInvite
+                //viewController.player = self.player
+                //viewController.opponent = self.opponent
+                //self.present(viewController, animated: true)
+                
+                let purchased: Bool = self.player!.subscription
+                if (purchased){
+                    let storyboard: UIStoryboard = UIStoryboard(name: "PopInvite", bundle: nil)
+                    let viewController = storyboard.instantiateViewController(withIdentifier: "PopInvite") as! PopInvite
+                    viewController.player = self.player
+                    viewController.opponent = self.opponent
+                    //self.window?.rootViewController?.present(viewController, animated: true, completion: nil)
+                    self.present(viewController, animated: true)
+                    return
+                   }
+                let storyboard: UIStoryboard = UIStoryboard(name: "PopPurchase", bundle: nil)
+                let viewController = storyboard.instantiateViewController(withIdentifier: "PopPurchase") as! PopPurchase
                 viewController.player = self.player
                 viewController.opponent = self.opponent
+                //self.window?.rootViewController?.present(viewController, animated: true, completion: nil)
                 self.present(viewController, animated: true)
             }
         default:

@@ -152,15 +152,31 @@ class HomeTable: UITableViewController, SwipeTableViewCellDelegate {
     }
     
     func invite(opponent: EntityPlayer, game: EntityGame, ACCEPT: Bool = false, REMATCH: Bool = false) {
-        let storyboard: UIStoryboard = UIStoryboard(name: "PopInvite", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "PopInvite") as! PopInvite
-        viewController.game = game
-        viewController.opponent = opponent
-        viewController.player = self.activity!.player
-        viewController.navigator = self.activity!.navigationController
-        viewController.REMATCH = REMATCH
-        viewController.ACCEPT = ACCEPT
-        self.activity!.present(viewController, animated: true, completion: nil)
+        
+        var storyboard: UIStoryboard
+        //var viewController: UIViewController
+        let purchased: Bool = activity!.player!.subscription
+        if (purchased){
+            storyboard = UIStoryboard(name: "PopInvite", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier: "PopInvite") as! PopInvite
+            viewController.game = game
+            viewController.opponent = opponent
+            viewController.player = self.activity!.player
+            viewController.navigator = self.activity!.navigationController
+            viewController.REMATCH = REMATCH
+            viewController.ACCEPT = ACCEPT
+            self.activity!.present(viewController, animated: true, completion: nil)
+        } else {
+            storyboard = UIStoryboard(name: "PopPurchase", bundle: nil)
+            let viewController = storyboard.instantiateViewController(withIdentifier: "PopPurchase") as! PopPurchase
+            viewController.game = game
+            viewController.opponent = opponent
+            viewController.player = self.activity!.player
+            viewController.navigator = self.activity!.navigationController
+            viewController.REMATCH = REMATCH
+            viewController.ACCEPT = ACCEPT
+            self.activity!.present(viewController, animated: true, completion: nil)
+        }
     }
     
     /**
