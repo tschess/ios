@@ -32,7 +32,9 @@ class Opponent: UIView {
     
     func execute(opponent: EntityPlayer) {
         //Check if product is purchased
-        if (UserDefaults.standard.bool(forKey: "purchased")){
+        
+        let purchased: Bool = home!.player!.subscription
+        if (purchased){
             let storyboard: UIStoryboard = UIStoryboard(name: "PopInvite", bundle: nil)
             let viewController = storyboard.instantiateViewController(withIdentifier: "PopInvite") as! PopInvite
             viewController.player = self.player

@@ -31,6 +31,7 @@
 		83872649257EEAE300F62288 /* RequestChallenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83872648257EEAE300F62288 /* RequestChallenge.swift */; };
 		8387264B257EEBF700F62288 /* UpdateRescind.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8387264A257EEBF700F62288 /* UpdateRescind.swift */; };
 		8387264D257EEC3200F62288 /* UpdateNack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8387264C257EEC3200F62288 /* UpdateNack.swift */; };
+		838DCC92259CE4DD000970C5 /* StoreObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838DCC91259CE4DD000970C5 /* StoreObserver.swift */; };
 		8394DFDA259A778D00860381 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8394DFD9259A778D00860381 /* StoreKit.framework */; };
 		83ACC6932500143900D394D0 /* PopPromo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83ACC6922500143900D394D0 /* PopPromo.swift */; };
 		83ACC6952500145200D394D0 /* PopPromo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83ACC6942500145200D394D0 /* PopPromo.storyboard */; };
@@ -195,6 +196,7 @@
 		83872648257EEAE300F62288 /* RequestChallenge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestChallenge.swift; sourceTree = "<group>"; };
 		8387264A257EEBF700F62288 /* UpdateRescind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateRescind.swift; sourceTree = "<group>"; };
 		8387264C257EEC3200F62288 /* UpdateNack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateNack.swift; sourceTree = "<group>"; };
+		838DCC91259CE4DD000970C5 /* StoreObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreObserver.swift; sourceTree = "<group>"; };
 		8394DFD9259A778D00860381 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		83ACC6922500143900D394D0 /* PopPromo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopPromo.swift; sourceTree = "<group>"; };
 		83ACC6942500145200D394D0 /* PopPromo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PopPromo.storyboard; sourceTree = "<group>"; };
@@ -377,6 +379,7 @@
 			children = (
 				837612732589157A00C527D3 /* PopPurchase.storyboard */,
 				83761275258919C400C527D3 /* PopPurchase.swift */,
+				838DCC91259CE4DD000970C5 /* StoreObserver.swift */,
 			);
 			path = purchase;
 			sourceTree = "<group>";
@@ -1139,6 +1142,7 @@
 				B7BE128F23EB09C700ADA499 /* GameRequest.swift in Sources */,
 				B7BE11BB23EA9DE200ADA499 /* BishopBlack.swift in Sources */,
 				83DFCF7F25797DD5007088E5 /* Leaderboard.swift in Sources */,
+				838DCC92259CE4DD000970C5 /* StoreObserver.swift in Sources */,
 				B7BE11F123EAC92C00ADA499 /* Edit.swift in Sources */,
 				83510E012581519600544DA6 /* PopInvite.swift in Sources */,
 				B7BE125523EB038700ADA499 /* ProfileCell.swift in Sources */,

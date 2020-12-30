@@ -7,10 +7,13 @@
 //
 
 import UIKit
+import StoreKit
 import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
+    
+   
     
     var window: UIWindow?
     
@@ -27,9 +30,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         self.window?.tintColor = .white
         
+        
+       
+        
+        
         self.configureGlobalUI()
         return true
     }
+    
+    func applicationWillTerminate(_ application: UIApplication) {
+        // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    }
+    // Called when the application is about to terminate.
+    //func applicationWillTerminate(_ application: UIApplication) {
+           // Remove the observer.
+           //SKPaymentQueue.default().remove(iapObserver)
+    //}
     
     public var id: String?
     
@@ -52,6 +68,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         }
     }
     
+    
+   
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
         print("111")
         print("Failed to register: \(error)")
@@ -110,9 +128,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         //application.applicationIconBadgeNumber = 0 //reset badge count
     }
     
-    func applicationWillTerminate(_ application: UIApplication) {
-        // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-    }
+   
     
     func configureGlobalUI() {
         UINavigationBar.appearance().tintColor = UIColor.white
@@ -128,24 +144,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         }
     }
     
-    //https://gist.github.com/smatthewenglish/e668b7d37a2969a2dd1af3a24bc349bc
-    //
-    //https://developer.apple.com/documentation/storekit/in-app_purchase/setting_up_the_transaction_observer_for_the_payment_queue
-    //
-    //https://developer.apple.com/documentation/storekit/in-app_purchase/processing_a_transaction
-    func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
-         for transaction in transactions {
-         switch transaction.transactionState {
-              // Call the appropriate custom method for the transaction state.
-         case .purchasing: showTransactionAsInProgress(transaction, deferred: false)
-         case .deferred: showTransactionAsInProgress(transaction, deferred: true)
-         case .failed: failedTransaction(transaction)
-              case .purchased: completeTransaction(transaction)
-         case .restored: restoreTransaction(transaction)
-              // For debugging purposes.
-         @unknown default: print("Unexpected transaction state \(transaction.transactionState)")
-        }
-         }
-    }
+
     
 }

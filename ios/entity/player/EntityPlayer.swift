@@ -23,6 +23,7 @@ class EntityPlayer: Equatable, Hashable {
     var config2: [[String]]
  
     var note_key: String?
+    var subscription: Bool
 
     var device: String?
     var updated: String
@@ -42,6 +43,7 @@ class EntityPlayer: Equatable, Hashable {
         config2: [[String]],
        
         note_key: String?,
+        subscription: Bool = false,
         
         device: String?,
         updated: String,
@@ -60,6 +62,7 @@ class EntityPlayer: Equatable, Hashable {
         self.config2 = config2
         
         self.note_key = note_key
+        self.subscription = subscription
         
         self.device = device
         self.updated = updated

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import StoreKit
 
 class Home: UIViewController, UITabBarDelegate {
     
@@ -20,6 +21,8 @@ class Home: UIViewController, UITabBarDelegate {
     
     @IBOutlet weak var viewHeader: UIView!
     var header: Header?
+    
+    let iapObserver = StoreObserver()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +38,13 @@ class Home: UIViewController, UITabBarDelegate {
             NSLayoutConstraint(item: self.header!, attribute: $0, relatedBy: .equal, toItem: self.header!.superview, attribute: $0, multiplier: 1, constant: 0)
         })
         self.header!.set(player: self.player!)
+        
+        
+        iapObserver.header = self.header
+        iapObserver.player = self.player
+        SKPaymentQueue.default().add(iapObserver)
+        
+        
         
         //TODO: Opponent
         let opponent = Bundle.loadView(fromNib: "Opponent", withType: Opponent.self)
