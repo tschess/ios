@@ -173,7 +173,8 @@ class PopPurchase: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
         //let year: String = "$5.99 × Year 🍂❄️🌷🌞"
         let text: String = buttonSubscribe.titleLabel!.text!
         if(text == month){
-            self.subscribe(product: "001")
+            //self.subscribe(product: "001")
+            self.subscribe(product: "io.bahlsenwitz.tschess.001")
             return
         }
         
@@ -266,17 +267,14 @@ class PopPurchase: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
     
     
     @IBAction func selectChallenge(_ sender: Any) {
-       
-        
         //print("text: \(buttonInvite.titleLabel!.text)") //have a switch statement based on this...
         //let month: String = "$0.99 × Month 📅"
         
         let year: String = "$5.99 × Year 🍂❄️🌷🌞"
         let text: String = buttonInvite.titleLabel!.text!
         if(text == year){
-            
-            
-            self.subscribe(product: "002")
+            //self.subscribe(product: "002")
+            self.subscribe(product: "io.bahlsenwitz.tschess.002")
             return
         }
         self.labelTitle.isHidden = true
