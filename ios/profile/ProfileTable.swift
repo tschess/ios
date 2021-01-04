@@ -43,15 +43,15 @@ class ProfileTable: UITableViewController {
             }
         case 2:
             if #available(iOS 13.0, *) {
-                return UIImage(named: "notifications")!.withTintColor(.white)
+                return UIImage(named: "skins.grey")!.withTintColor(.white)
             } else {
-                return UIImage(named: "notifications")
+                return UIImage(named: "skins.grey")
             }
         case 3:
             if #available(iOS 13.0, *) {
-                return UIImage(named: "notifications")!.withTintColor(.white)
+                return UIImage(named: "book.grey")!.withTintColor(.white)
             } else {
-                return UIImage(named: "notifications")
+                return UIImage(named: "book.grey")
             }
         default:
             if #available(iOS 13.0, *) {
