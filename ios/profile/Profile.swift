@@ -150,6 +150,12 @@ class Profile: UIViewController, UITabBarDelegate, UINavigationControllerDelegat
             self.changePhoto()
         case 1://notification
             self.notification()
+        case 2:
+            guard let url = URL(string: "https://www.termsfeed.com/live/1ef95484-a74d-4d73-afe4-136ce04fa5bd") else { return }
+            UIApplication.shared.open(url)
+        case 3:
+            guard let url = URL(string: "https://app.termly.io/document/privacy-policy/ba997f72-8bfd-4abd-8171-a0aa53a30fd3") else { return }
+            UIApplication.shared.open(url)
         default:
             //self.signOut()
             DispatchQueue.main.async {

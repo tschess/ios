@@ -10,7 +10,7 @@ import UIKit
 
 class ProfileTable: UITableViewController {
     
-    let options = ["update photo", "move notifications", "sign out"]
+    let options = ["Update Photo", "Move Notifications", "Terms of Use", "Privacy Policy", "Sign Out"]
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -36,6 +36,18 @@ class ProfileTable: UITableViewController {
             }
             return image
         case 1:
+            if #available(iOS 13.0, *) {
+                return UIImage(named: "notifications")!.withTintColor(.white)
+            } else {
+                return UIImage(named: "notifications")
+            }
+        case 2:
+            if #available(iOS 13.0, *) {
+                return UIImage(named: "notifications")!.withTintColor(.white)
+            } else {
+                return UIImage(named: "notifications")
+            }
+        case 3:
             if #available(iOS 13.0, *) {
                 return UIImage(named: "notifications")!.withTintColor(.white)
             } else {
