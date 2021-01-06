@@ -118,116 +118,33 @@ class PopPurchase: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
         return label
     }
     
-    func hide() {
-        self.labelTitle.isHidden = true
-        self.labelDirection.isHidden = true
-        
-        self.indicatorActivity.isHidden = true
-        self.pickerView.isHidden = true
-        
-        self.labelInvite.isHidden = true
-        self.buttonInvite.isHidden = true
-        
-        self.labelCancel.isHidden = true
-        self.buttonCancel.isHidden = true
-        //self.buttonCancel.isEnabled = false
-        
-        self.labelOk.isHidden = true
-        self.buttonOk.isHidden = true
-        //self.buttonOk.isEnabled = false
-        
-        self.labelSubscribe.isHidden = true
-        self.buttonSubscribe.isHidden = true
-        //self.buttonSubscribe.isEnabled = false
-    }
-    
-    func reveal() {
-        self.labelTitle.isHidden = false
-        self.labelDirection.isHidden = false
-        
-        self.indicatorActivity.isHidden = true
-        
-        self.pickerView.isHidden = false
-        
-        self.labelInvite.isHidden = false
-        self.buttonInvite.isHidden = false
-        self.buttonOk.isEnabled = true
-        
-        self.labelCancel.isHidden = false
-        self.buttonCancel.isHidden = false
-        self.buttonCancel.isEnabled = true
-        
-        self.labelSubscribe.isHidden = false
-        self.buttonSubscribe.isHidden = false
-        self.buttonSubscribe.isEnabled = true
-        //
-        self.labelOk.isHidden = true
-        self.buttonOk.isHidden = true
-        self.buttonOk.isEnabled = false
-    }
-    
-    
-    
     @IBAction func selectSubscribe(_ sender: Any) {
-        let month: String = "$0.99 × Month 📅"
-        //let year: String = "$5.99 × Year 🍂❄️🌷🌞"
+        //let month: String = "$0.99 × Month 📅"
         let text: String = buttonSubscribe.titleLabel!.text!
-        if(text == month){
-            //self.subscribe(product: "001")
-            self.subscribe(product: "io.bahlsenwitz.tschess.001")
+        //if(text == month){
+        if(text.contains("Month")){
+            self.subscribe(product: "io.bahlsenwitz.tschess.100")
             return
         }
-        
         self.labelTitle.text = "🔑 Subscription plan 🔑"
-        
         self.labelDirection.text = "Select an option below to proceed."
         
         self.pickerView.alpha = 0.5
         self.pickerView.isUserInteractionEnabled = false
-       
         
         self.buttonInvite.setTitle("$5.99 × Year 🍂❄️🌷🌞", for: .normal)
         self.buttonInvite.setTitleColor(UIColor.white, for: .normal)
-        //no - don't do it like this - do it by the button text...
-        //let year = UITapGestureRecognizer(target: self, action: #selector(subscribe002))
-        //self.buttonInvite.addGestureRecognizer(year)
-        //self.buttonInvite.isUserInteractionEnabled = true
-        
         
         self.buttonSubscribe.setTitle("$0.99 × Month 📅", for: .normal)
         self.buttonSubscribe.setTitleColor(UIColor.white, for: .normal)
-        
-        
-      
-        //validate(productIdentifiers: ["001", "002"])
-        
-        //...!
-        //self.validate(productIdentifiers: ["001"])
-        
     }
-    
-   
-    
-    
-//    func validate(productIdentifiers: [String]) {
-//         let productIdentifiers = Set(productIdentifiers)
-//         request = SKProductsRequest(productIdentifiers: productIdentifiers)
-//         request.delegate = self
-//         request.start()
-//    }
-    
-    
-    
     
     // Keep a strong reference to the product request.
     var request: SKProductsRequest!
-
-    var products = [SKProduct]()
-    // SKProductsRequestDelegate protocol method.
+    var products: [SKProduct] = [SKProduct]()
+    
     func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
-        
         print("121212")
-       
         
         if !response.products.isEmpty {
            products = response.products
@@ -253,7 +170,7 @@ class PopPurchase: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
         }
         for invalidIdentifier in response.invalidProductIdentifiers {
            // Handle any invalid product identifiers as appropriate.
-            print("invalidIdentifier: \(invalidIdentifier)")
+            print("invalidIdentifier: \(invalidIdentifier)")//
         }
     }
    
@@ -267,14 +184,11 @@ class PopPurchase: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
     
     
     @IBAction func selectChallenge(_ sender: Any) {
-        //print("text: \(buttonInvite.titleLabel!.text)") //have a switch statement based on this...
-        //let month: String = "$0.99 × Month 📅"
-        
         let year: String = "$5.99 × Year 🍂❄️🌷🌞"
         let text: String = buttonInvite.titleLabel!.text!
         if(text == year){
             //self.subscribe(product: "002")
-            self.subscribe(product: "io.bahlsenwitz.tschess.002")
+            self.subscribe(product: "io.bahlsenwitz.tschess.200")
             return
         }
         self.labelTitle.isHidden = true
@@ -366,7 +280,6 @@ class PopPurchase: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
                     self.error()
                     return
                 }
-                
                 print("AHAHAHAHAHAHAHA\n\n\n\n")
                 print("AHAHAHAHAHAHAHA\n\n\n\n")
                 print("::::: \(json)")
@@ -410,8 +323,6 @@ class PopPurchase: UIViewController, UIPickerViewDelegate, UIPickerViewDataSourc
             }
         }).resume()
     }
-    
-    
     
     func success() {
         DispatchQueue.main.async() {
